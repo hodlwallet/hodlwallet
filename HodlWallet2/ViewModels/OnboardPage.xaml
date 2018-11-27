@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.OnboardPage">
+    <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
+        
+        <Button Text="?" FontSize="Large"
+                Style="{DynamicResource customButton}"
+                BackgroundColor="Transparent"
+                FlexLayout.AlignSelf="End"/>
+        
+        <FlexLayout FlexLayout.Grow="1">
+            <Image Source="logo_front.png" FlexLayout.AlignSelf="Center"
+                   Scale="0.5"/>
+        </FlexLayout>
+        
+        <Button x:Name="createButton"
+                Style="{DynamicResource customButton}"
+                BackgroundColor="{StaticResource DarkGray}"
+                FlexLayout.AlignSelf="Stretch" />
+        
+        <BoxView BackgroundColor="{StaticResource GrayBackground}"
+                 HeightRequest="1" />
+        
+        <Button x:Name="recoverButton"
+                Style="{DynamicResource customButton}"
+                BackgroundColor="{StaticResource DarkGray}"
+                FlexLayout.AlignSelf="Stretch" />
+        
+    </FlexLayout>
+</ContentPage>

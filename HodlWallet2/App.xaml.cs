@@ -11,7 +11,7 @@ namespace HodlWallet2
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new OnboardPage());
         }
 
         protected override void OnStart()
