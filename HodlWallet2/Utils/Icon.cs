@@ -5,7 +5,7 @@ using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 using SKSvg = SkiaSharp.Extended.Svg.SKSvg;
 
-namespace HodlWallet2
+namespace HodlWallet2.Utils
 {
     public class Icon : Frame
     {

@@ -1,5 +1,35 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.App">
     <Application.Resources>
+        <ResourceDictionary>
+            
+            <!-- Colors -->
+            <Color x:Key="GrayBackground">#212121</Color>
+            <Color x:Key="White">#F5F7FA</Color>
+            <Color x:Key="DarkGray">#161616</Color>
+            <Color x:Key="SyncGradientStart">#DAAB28</Color>
+            <Color x:Key="SyncGradientEnd">#DBAC29</Color>
+            <Color x:Key="GrayTextTint">#A3A8AD</Color>
+            
+            <!-- Styles -->
+            <OnPlatform x:Key="FontFamilyName" x:TypeArguments="x:String" iOS="Electrolize" Android="Electrolize-Regular.ttf#Electrolize" />
+            
+            <Style x:Key="customButton" TargetType="Button">
+                <Setter Property="FontFamily" Value="{DynamicResource FontFamilyName}" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Style>
+            
+            <Style x:Key="customLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{DynamicResource FontFamilyName}" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Style>
+            
+            <Style x:Key="DashboardFooterButton" TargetType="FlexLayout">
+                <Setter Property="Direction" Value="Column" />
+                <Setter Property="JustifyContent" Value="SpaceEvenly" />
+                <Setter Property="FlexLayout.Grow" Value="1" />
+            </Style>
+            
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -26,6 +26,4122 @@ namespace HodlWallet2.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::FormsControls.Droid.Resource.Animation.abc_fade_in = global::HodlWallet2.Droid.Resource.Animation.abc_fade_in;
+			global::FormsControls.Droid.Resource.Animation.abc_fade_out = global::HodlWallet2.Droid.Resource.Animation.abc_fade_out;
+			global::FormsControls.Droid.Resource.Animation.abc_grow_fade_in_from_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
+			global::FormsControls.Droid.Resource.Animation.abc_popup_enter = global::HodlWallet2.Droid.Resource.Animation.abc_popup_enter;
+			global::FormsControls.Droid.Resource.Animation.abc_popup_exit = global::HodlWallet2.Droid.Resource.Animation.abc_popup_exit;
+			global::FormsControls.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
+			global::FormsControls.Droid.Resource.Animation.abc_slide_in_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_slide_in_bottom;
+			global::FormsControls.Droid.Resource.Animation.abc_slide_in_top = global::HodlWallet2.Droid.Resource.Animation.abc_slide_in_top;
+			global::FormsControls.Droid.Resource.Animation.abc_slide_out_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_slide_out_bottom;
+			global::FormsControls.Droid.Resource.Animation.abc_slide_out_top = global::HodlWallet2.Droid.Resource.Animation.abc_slide_out_top;
+			global::FormsControls.Droid.Resource.Animation.design_bottom_sheet_slide_in = global::HodlWallet2.Droid.Resource.Animation.design_bottom_sheet_slide_in;
+			global::FormsControls.Droid.Resource.Animation.design_bottom_sheet_slide_out = global::HodlWallet2.Droid.Resource.Animation.design_bottom_sheet_slide_out;
+			global::FormsControls.Droid.Resource.Animation.design_snackbar_in = global::HodlWallet2.Droid.Resource.Animation.design_snackbar_in;
+			global::FormsControls.Droid.Resource.Animation.design_snackbar_out = global::HodlWallet2.Droid.Resource.Animation.design_snackbar_out;
+			global::FormsControls.Droid.Resource.Animation.tooltip_enter = global::HodlWallet2.Droid.Resource.Animation.tooltip_enter;
+			global::FormsControls.Droid.Resource.Animation.tooltip_exit = global::HodlWallet2.Droid.Resource.Animation.tooltip_exit;
+			global::FormsControls.Droid.Resource.Animator.design_appbar_state_list_animator = global::HodlWallet2.Droid.Resource.Animator.design_appbar_state_list_animator;
+			global::FormsControls.Droid.Resource.Animator.empty_Animation = global::HodlWallet2.Droid.Resource.Animator.empty_Animation;
+			global::FormsControls.Droid.Resource.Animator.empty_Animation_long = global::HodlWallet2.Droid.Resource.Animator.empty_Animation_long;
+			global::FormsControls.Droid.Resource.Animator.empty_Animation_short = global::HodlWallet2.Droid.Resource.Animator.empty_Animation_short;
+			global::FormsControls.Droid.Resource.Animator.enter_from_bottom = global::HodlWallet2.Droid.Resource.Animator.enter_from_bottom;
+			global::FormsControls.Droid.Resource.Animator.enter_from_bottom_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_from_bottom_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_from_bottom_long = global::HodlWallet2.Droid.Resource.Animator.enter_from_bottom_long;
+			global::FormsControls.Droid.Resource.Animator.enter_from_bottom_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_from_bottom_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_from_bottom_short = global::HodlWallet2.Droid.Resource.Animator.enter_from_bottom_short;
+			global::FormsControls.Droid.Resource.Animator.enter_from_bottom_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_from_bottom_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_from_left = global::HodlWallet2.Droid.Resource.Animator.enter_from_left;
+			global::FormsControls.Droid.Resource.Animator.enter_from_left_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_from_left_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_from_left_long = global::HodlWallet2.Droid.Resource.Animator.enter_from_left_long;
+			global::FormsControls.Droid.Resource.Animator.enter_from_left_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_from_left_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_from_left_short = global::HodlWallet2.Droid.Resource.Animator.enter_from_left_short;
+			global::FormsControls.Droid.Resource.Animator.enter_from_left_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_from_left_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_from_right = global::HodlWallet2.Droid.Resource.Animator.enter_from_right;
+			global::FormsControls.Droid.Resource.Animator.enter_from_right_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_from_right_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_from_right_long = global::HodlWallet2.Droid.Resource.Animator.enter_from_right_long;
+			global::FormsControls.Droid.Resource.Animator.enter_from_right_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_from_right_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_from_right_short = global::HodlWallet2.Droid.Resource.Animator.enter_from_right_short;
+			global::FormsControls.Droid.Resource.Animator.enter_from_right_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_from_right_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_from_top = global::HodlWallet2.Droid.Resource.Animator.enter_from_top;
+			global::FormsControls.Droid.Resource.Animator.enter_from_top_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_from_top_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_from_top_long = global::HodlWallet2.Droid.Resource.Animator.enter_from_top_long;
+			global::FormsControls.Droid.Resource.Animator.enter_from_top_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_from_top_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_from_top_short = global::HodlWallet2.Droid.Resource.Animator.enter_from_top_short;
+			global::FormsControls.Droid.Resource.Animator.enter_from_top_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_from_top_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing = global::HodlWallet2.Droid.Resource.Animator.enter_landing;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_bottom = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_bottom;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_bottom_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_bottom_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_bottom_long = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_bottom_long;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_bottom_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_bottom_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_bottom_short = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_bottom_short;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_bottom_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_bottom_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_left = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_left;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_left_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_left_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_left_long = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_left_long;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_left_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_left_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_left_short = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_left_short;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_left_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_left_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_right = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_right;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_right_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_right_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_right_long = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_right_long;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_right_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_right_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_right_short = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_right_short;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_right_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_right_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_top = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_top;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_top_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_top_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_top_long = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_top_long;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_top_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_top_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_top_short = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_top_short;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_from_top_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_from_top_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_long = global::HodlWallet2.Droid.Resource.Animator.enter_landing_long;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_short = global::HodlWallet2.Droid.Resource.Animator.enter_landing_short;
+			global::FormsControls.Droid.Resource.Animator.enter_landing_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_landing_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_bottom = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_bottom;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_bottom_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_bottom_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_bottom_long = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_bottom_long;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_bottom_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_bottom_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_bottom_short = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_bottom_short;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_bottom_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_bottom_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_left = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_left;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_left_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_left_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_left_long = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_left_long;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_left_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_left_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_left_short = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_left_short;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_left_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_left_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_right = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_right;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_right_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_right_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_right_long = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_right_long;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_right_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_right_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_right_short = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_right_short;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_right_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_right_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_top = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_top;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_top_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_top_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_top_long = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_top_long;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_top_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_top_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_top_short = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_top_short;
+			global::FormsControls.Droid.Resource.Animator.enter_roll_from_top_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_roll_from_top_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate = global::HodlWallet2.Droid.Resource.Animator.enter_rotate;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_bottom = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_bottom;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_bottom_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_bottom_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_bottom_long = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_bottom_long;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_bottom_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_bottom_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_bottom_short = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_bottom_short;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_bottom_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_bottom_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_left = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_left;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_left_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_left_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_left_long = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_left_long;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_left_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_left_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_left_short = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_left_short;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_left_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_left_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_right = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_right;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_right_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_right_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_right_long = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_right_long;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_right_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_right_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_right_short = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_right_short;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_right_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_right_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_top = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_top;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_top_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_top_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_top_long = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_top_long;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_top_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_top_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_top_short = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_top_short;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_from_top_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_from_top_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_long = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_long;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_short = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_short;
+			global::FormsControls.Droid.Resource.Animator.enter_rotate_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_rotate_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale = global::HodlWallet2.Droid.Resource.Animator.enter_scale;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_bottom = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_bottom;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_bottom_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_bottom_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_bottom_long = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_bottom_long;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_bottom_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_bottom_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_bottom_short = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_bottom_short;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_bottom_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_bottom_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_left = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_left;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_left_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_left_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_left_long = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_left_long;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_left_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_left_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_left_short = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_left_short;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_left_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_left_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_right = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_right;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_right_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_right_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_right_long = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_right_long;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_right_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_right_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_right_short = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_right_short;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_right_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_right_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_top = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_top;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_top_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_top_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_top_long = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_top_long;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_top_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_top_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_top_short = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_top_short;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_from_top_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_from_top_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_long = global::HodlWallet2.Droid.Resource.Animator.enter_scale_long;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_long_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_short = global::HodlWallet2.Droid.Resource.Animator.enter_scale_short;
+			global::FormsControls.Droid.Resource.Animator.enter_scale_short_bounce = global::HodlWallet2.Droid.Resource.Animator.enter_scale_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.exit_landing = global::HodlWallet2.Droid.Resource.Animator.exit_landing;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_from_bottom = global::HodlWallet2.Droid.Resource.Animator.exit_landing_from_bottom;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_from_bottom_long = global::HodlWallet2.Droid.Resource.Animator.exit_landing_from_bottom_long;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_from_bottom_short = global::HodlWallet2.Droid.Resource.Animator.exit_landing_from_bottom_short;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_from_left = global::HodlWallet2.Droid.Resource.Animator.exit_landing_from_left;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_from_left_long = global::HodlWallet2.Droid.Resource.Animator.exit_landing_from_left_long;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_from_left_short = global::HodlWallet2.Droid.Resource.Animator.exit_landing_from_left_short;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_from_right = global::HodlWallet2.Droid.Resource.Animator.exit_landing_from_right;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_from_right_long = global::HodlWallet2.Droid.Resource.Animator.exit_landing_from_right_long;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_from_right_short = global::HodlWallet2.Droid.Resource.Animator.exit_landing_from_right_short;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_from_top = global::HodlWallet2.Droid.Resource.Animator.exit_landing_from_top;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_from_top_long = global::HodlWallet2.Droid.Resource.Animator.exit_landing_from_top_long;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_from_top_short = global::HodlWallet2.Droid.Resource.Animator.exit_landing_from_top_short;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_long = global::HodlWallet2.Droid.Resource.Animator.exit_landing_long;
+			global::FormsControls.Droid.Resource.Animator.exit_landing_short = global::HodlWallet2.Droid.Resource.Animator.exit_landing_short;
+			global::FormsControls.Droid.Resource.Animator.exit_roll_to_bottom = global::HodlWallet2.Droid.Resource.Animator.exit_roll_to_bottom;
+			global::FormsControls.Droid.Resource.Animator.exit_roll_to_bottom_long = global::HodlWallet2.Droid.Resource.Animator.exit_roll_to_bottom_long;
+			global::FormsControls.Droid.Resource.Animator.exit_roll_to_bottom_short = global::HodlWallet2.Droid.Resource.Animator.exit_roll_to_bottom_short;
+			global::FormsControls.Droid.Resource.Animator.exit_roll_to_left = global::HodlWallet2.Droid.Resource.Animator.exit_roll_to_left;
+			global::FormsControls.Droid.Resource.Animator.exit_roll_to_left_long = global::HodlWallet2.Droid.Resource.Animator.exit_roll_to_left_long;
+			global::FormsControls.Droid.Resource.Animator.exit_roll_to_left_short = global::HodlWallet2.Droid.Resource.Animator.exit_roll_to_left_short;
+			global::FormsControls.Droid.Resource.Animator.exit_roll_to_right = global::HodlWallet2.Droid.Resource.Animator.exit_roll_to_right;
+			global::FormsControls.Droid.Resource.Animator.exit_roll_to_right_long = global::HodlWallet2.Droid.Resource.Animator.exit_roll_to_right_long;
+			global::FormsControls.Droid.Resource.Animator.exit_roll_to_right_short = global::HodlWallet2.Droid.Resource.Animator.exit_roll_to_right_short;
+			global::FormsControls.Droid.Resource.Animator.exit_roll_to_top = global::HodlWallet2.Droid.Resource.Animator.exit_roll_to_top;
+			global::FormsControls.Droid.Resource.Animator.exit_roll_to_top_long = global::HodlWallet2.Droid.Resource.Animator.exit_roll_to_top_long;
+			global::FormsControls.Droid.Resource.Animator.exit_roll_to_top_short = global::HodlWallet2.Droid.Resource.Animator.exit_roll_to_top_short;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate = global::HodlWallet2.Droid.Resource.Animator.exit_rotate;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_long = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_long;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_short = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_short;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_to_bottom = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_to_bottom;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_to_bottom_long = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_to_bottom_long;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_to_bottom_short = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_to_bottom_short;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_to_left = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_to_left;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_to_left_long = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_to_left_long;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_to_left_short = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_to_left_short;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_to_right = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_to_right;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_to_right_long = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_to_right_long;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_to_right_short = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_to_right_short;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_to_top = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_to_top;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_to_top_long = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_to_top_long;
+			global::FormsControls.Droid.Resource.Animator.exit_rotate_to_top_short = global::HodlWallet2.Droid.Resource.Animator.exit_rotate_to_top_short;
+			global::FormsControls.Droid.Resource.Animator.exit_scale = global::HodlWallet2.Droid.Resource.Animator.exit_scale;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_from_bottom = global::HodlWallet2.Droid.Resource.Animator.exit_scale_from_bottom;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_from_bottom_long = global::HodlWallet2.Droid.Resource.Animator.exit_scale_from_bottom_long;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_from_bottom_short = global::HodlWallet2.Droid.Resource.Animator.exit_scale_from_bottom_short;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_from_left = global::HodlWallet2.Droid.Resource.Animator.exit_scale_from_left;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_from_left_long = global::HodlWallet2.Droid.Resource.Animator.exit_scale_from_left_long;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_from_left_short = global::HodlWallet2.Droid.Resource.Animator.exit_scale_from_left_short;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_from_right = global::HodlWallet2.Droid.Resource.Animator.exit_scale_from_right;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_from_right_long = global::HodlWallet2.Droid.Resource.Animator.exit_scale_from_right_long;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_from_right_short = global::HodlWallet2.Droid.Resource.Animator.exit_scale_from_right_short;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_from_top = global::HodlWallet2.Droid.Resource.Animator.exit_scale_from_top;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_from_top_long = global::HodlWallet2.Droid.Resource.Animator.exit_scale_from_top_long;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_from_top_short = global::HodlWallet2.Droid.Resource.Animator.exit_scale_from_top_short;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_long = global::HodlWallet2.Droid.Resource.Animator.exit_scale_long;
+			global::FormsControls.Droid.Resource.Animator.exit_scale_short = global::HodlWallet2.Droid.Resource.Animator.exit_scale_short;
+			global::FormsControls.Droid.Resource.Animator.exit_to_bottom = global::HodlWallet2.Droid.Resource.Animator.exit_to_bottom;
+			global::FormsControls.Droid.Resource.Animator.exit_to_bottom_bounce = global::HodlWallet2.Droid.Resource.Animator.exit_to_bottom_bounce;
+			global::FormsControls.Droid.Resource.Animator.exit_to_bottom_long = global::HodlWallet2.Droid.Resource.Animator.exit_to_bottom_long;
+			global::FormsControls.Droid.Resource.Animator.exit_to_bottom_long_bounce = global::HodlWallet2.Droid.Resource.Animator.exit_to_bottom_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.exit_to_bottom_short = global::HodlWallet2.Droid.Resource.Animator.exit_to_bottom_short;
+			global::FormsControls.Droid.Resource.Animator.exit_to_bottom_short_bounce = global::HodlWallet2.Droid.Resource.Animator.exit_to_bottom_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.exit_to_left = global::HodlWallet2.Droid.Resource.Animator.exit_to_left;
+			global::FormsControls.Droid.Resource.Animator.exit_to_left_bounce = global::HodlWallet2.Droid.Resource.Animator.exit_to_left_bounce;
+			global::FormsControls.Droid.Resource.Animator.exit_to_left_long = global::HodlWallet2.Droid.Resource.Animator.exit_to_left_long;
+			global::FormsControls.Droid.Resource.Animator.exit_to_left_long_bounce = global::HodlWallet2.Droid.Resource.Animator.exit_to_left_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.exit_to_left_short = global::HodlWallet2.Droid.Resource.Animator.exit_to_left_short;
+			global::FormsControls.Droid.Resource.Animator.exit_to_left_short_bounce = global::HodlWallet2.Droid.Resource.Animator.exit_to_left_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.exit_to_right = global::HodlWallet2.Droid.Resource.Animator.exit_to_right;
+			global::FormsControls.Droid.Resource.Animator.exit_to_right_bounce = global::HodlWallet2.Droid.Resource.Animator.exit_to_right_bounce;
+			global::FormsControls.Droid.Resource.Animator.exit_to_right_long = global::HodlWallet2.Droid.Resource.Animator.exit_to_right_long;
+			global::FormsControls.Droid.Resource.Animator.exit_to_right_long_bounce = global::HodlWallet2.Droid.Resource.Animator.exit_to_right_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.exit_to_right_short = global::HodlWallet2.Droid.Resource.Animator.exit_to_right_short;
+			global::FormsControls.Droid.Resource.Animator.exit_to_right_short_bounce = global::HodlWallet2.Droid.Resource.Animator.exit_to_right_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.exit_to_top = global::HodlWallet2.Droid.Resource.Animator.exit_to_top;
+			global::FormsControls.Droid.Resource.Animator.exit_to_top_bounce = global::HodlWallet2.Droid.Resource.Animator.exit_to_top_bounce;
+			global::FormsControls.Droid.Resource.Animator.exit_to_top_long = global::HodlWallet2.Droid.Resource.Animator.exit_to_top_long;
+			global::FormsControls.Droid.Resource.Animator.exit_to_top_long_bounce = global::HodlWallet2.Droid.Resource.Animator.exit_to_top_long_bounce;
+			global::FormsControls.Droid.Resource.Animator.exit_to_top_short = global::HodlWallet2.Droid.Resource.Animator.exit_to_top_short;
+			global::FormsControls.Droid.Resource.Animator.exit_to_top_short_bounce = global::HodlWallet2.Droid.Resource.Animator.exit_to_top_short_bounce;
+			global::FormsControls.Droid.Resource.Attribute.actionBarDivider = global::HodlWallet2.Droid.Resource.Attribute.actionBarDivider;
+			global::FormsControls.Droid.Resource.Attribute.actionBarItemBackground = global::HodlWallet2.Droid.Resource.Attribute.actionBarItemBackground;
+			global::FormsControls.Droid.Resource.Attribute.actionBarPopupTheme = global::HodlWallet2.Droid.Resource.Attribute.actionBarPopupTheme;
+			global::FormsControls.Droid.Resource.Attribute.actionBarSize = global::HodlWallet2.Droid.Resource.Attribute.actionBarSize;
+			global::FormsControls.Droid.Resource.Attribute.actionBarSplitStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarSplitStyle;
+			global::FormsControls.Droid.Resource.Attribute.actionBarStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarStyle;
+			global::FormsControls.Droid.Resource.Attribute.actionBarTabBarStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarTabBarStyle;
+			global::FormsControls.Droid.Resource.Attribute.actionBarTabStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarTabStyle;
+			global::FormsControls.Droid.Resource.Attribute.actionBarTabTextStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarTabTextStyle;
+			global::FormsControls.Droid.Resource.Attribute.actionBarTheme = global::HodlWallet2.Droid.Resource.Attribute.actionBarTheme;
+			global::FormsControls.Droid.Resource.Attribute.actionBarWidgetTheme = global::HodlWallet2.Droid.Resource.Attribute.actionBarWidgetTheme;
+			global::FormsControls.Droid.Resource.Attribute.actionButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.actionButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.actionDropDownStyle = global::HodlWallet2.Droid.Resource.Attribute.actionDropDownStyle;
+			global::FormsControls.Droid.Resource.Attribute.actionLayout = global::HodlWallet2.Droid.Resource.Attribute.actionLayout;
+			global::FormsControls.Droid.Resource.Attribute.actionMenuTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.actionMenuTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.actionMenuTextColor = global::HodlWallet2.Droid.Resource.Attribute.actionMenuTextColor;
+			global::FormsControls.Droid.Resource.Attribute.actionModeBackground = global::HodlWallet2.Droid.Resource.Attribute.actionModeBackground;
+			global::FormsControls.Droid.Resource.Attribute.actionModeCloseButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.actionModeCloseButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.actionModeCloseDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeCloseDrawable;
+			global::FormsControls.Droid.Resource.Attribute.actionModeCopyDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeCopyDrawable;
+			global::FormsControls.Droid.Resource.Attribute.actionModeCutDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeCutDrawable;
+			global::FormsControls.Droid.Resource.Attribute.actionModeFindDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeFindDrawable;
+			global::FormsControls.Droid.Resource.Attribute.actionModePasteDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModePasteDrawable;
+			global::FormsControls.Droid.Resource.Attribute.actionModePopupWindowStyle = global::HodlWallet2.Droid.Resource.Attribute.actionModePopupWindowStyle;
+			global::FormsControls.Droid.Resource.Attribute.actionModeSelectAllDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeSelectAllDrawable;
+			global::FormsControls.Droid.Resource.Attribute.actionModeShareDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeShareDrawable;
+			global::FormsControls.Droid.Resource.Attribute.actionModeSplitBackground = global::HodlWallet2.Droid.Resource.Attribute.actionModeSplitBackground;
+			global::FormsControls.Droid.Resource.Attribute.actionModeStyle = global::HodlWallet2.Droid.Resource.Attribute.actionModeStyle;
+			global::FormsControls.Droid.Resource.Attribute.actionModeWebSearchDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeWebSearchDrawable;
+			global::FormsControls.Droid.Resource.Attribute.actionOverflowButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.actionOverflowButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.actionOverflowMenuStyle = global::HodlWallet2.Droid.Resource.Attribute.actionOverflowMenuStyle;
+			global::FormsControls.Droid.Resource.Attribute.actionProviderClass = global::HodlWallet2.Droid.Resource.Attribute.actionProviderClass;
+			global::FormsControls.Droid.Resource.Attribute.actionViewClass = global::HodlWallet2.Droid.Resource.Attribute.actionViewClass;
+			global::FormsControls.Droid.Resource.Attribute.activityChooserViewStyle = global::HodlWallet2.Droid.Resource.Attribute.activityChooserViewStyle;
+			global::FormsControls.Droid.Resource.Attribute.alertDialogButtonGroupStyle = global::HodlWallet2.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
+			global::FormsControls.Droid.Resource.Attribute.alertDialogCenterButtons = global::HodlWallet2.Droid.Resource.Attribute.alertDialogCenterButtons;
+			global::FormsControls.Droid.Resource.Attribute.alertDialogStyle = global::HodlWallet2.Droid.Resource.Attribute.alertDialogStyle;
+			global::FormsControls.Droid.Resource.Attribute.alertDialogTheme = global::HodlWallet2.Droid.Resource.Attribute.alertDialogTheme;
+			global::FormsControls.Droid.Resource.Attribute.allowStacking = global::HodlWallet2.Droid.Resource.Attribute.allowStacking;
+			global::FormsControls.Droid.Resource.Attribute.alpha = global::HodlWallet2.Droid.Resource.Attribute.alpha;
+			global::FormsControls.Droid.Resource.Attribute.alphabeticModifiers = global::HodlWallet2.Droid.Resource.Attribute.alphabeticModifiers;
+			global::FormsControls.Droid.Resource.Attribute.arrowHeadLength = global::HodlWallet2.Droid.Resource.Attribute.arrowHeadLength;
+			global::FormsControls.Droid.Resource.Attribute.arrowShaftLength = global::HodlWallet2.Droid.Resource.Attribute.arrowShaftLength;
+			global::FormsControls.Droid.Resource.Attribute.autoCompleteTextViewStyle = global::HodlWallet2.Droid.Resource.Attribute.autoCompleteTextViewStyle;
+			global::FormsControls.Droid.Resource.Attribute.autoSizeMaxTextSize = global::HodlWallet2.Droid.Resource.Attribute.autoSizeMaxTextSize;
+			global::FormsControls.Droid.Resource.Attribute.autoSizeMinTextSize = global::HodlWallet2.Droid.Resource.Attribute.autoSizeMinTextSize;
+			global::FormsControls.Droid.Resource.Attribute.autoSizePresetSizes = global::HodlWallet2.Droid.Resource.Attribute.autoSizePresetSizes;
+			global::FormsControls.Droid.Resource.Attribute.autoSizeStepGranularity = global::HodlWallet2.Droid.Resource.Attribute.autoSizeStepGranularity;
+			global::FormsControls.Droid.Resource.Attribute.autoSizeTextType = global::HodlWallet2.Droid.Resource.Attribute.autoSizeTextType;
+			global::FormsControls.Droid.Resource.Attribute.background = global::HodlWallet2.Droid.Resource.Attribute.background;
+			global::FormsControls.Droid.Resource.Attribute.backgroundSplit = global::HodlWallet2.Droid.Resource.Attribute.backgroundSplit;
+			global::FormsControls.Droid.Resource.Attribute.backgroundStacked = global::HodlWallet2.Droid.Resource.Attribute.backgroundStacked;
+			global::FormsControls.Droid.Resource.Attribute.backgroundTint = global::HodlWallet2.Droid.Resource.Attribute.backgroundTint;
+			global::FormsControls.Droid.Resource.Attribute.backgroundTintMode = global::HodlWallet2.Droid.Resource.Attribute.backgroundTintMode;
+			global::FormsControls.Droid.Resource.Attribute.barLength = global::HodlWallet2.Droid.Resource.Attribute.barLength;
+			global::FormsControls.Droid.Resource.Attribute.behavior_autoHide = global::HodlWallet2.Droid.Resource.Attribute.behavior_autoHide;
+			global::FormsControls.Droid.Resource.Attribute.behavior_hideable = global::HodlWallet2.Droid.Resource.Attribute.behavior_hideable;
+			global::FormsControls.Droid.Resource.Attribute.behavior_overlapTop = global::HodlWallet2.Droid.Resource.Attribute.behavior_overlapTop;
+			global::FormsControls.Droid.Resource.Attribute.behavior_peekHeight = global::HodlWallet2.Droid.Resource.Attribute.behavior_peekHeight;
+			global::FormsControls.Droid.Resource.Attribute.behavior_skipCollapsed = global::HodlWallet2.Droid.Resource.Attribute.behavior_skipCollapsed;
+			global::FormsControls.Droid.Resource.Attribute.borderWidth = global::HodlWallet2.Droid.Resource.Attribute.borderWidth;
+			global::FormsControls.Droid.Resource.Attribute.borderlessButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.borderlessButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.bottomSheetDialogTheme = global::HodlWallet2.Droid.Resource.Attribute.bottomSheetDialogTheme;
+			global::FormsControls.Droid.Resource.Attribute.bottomSheetStyle = global::HodlWallet2.Droid.Resource.Attribute.bottomSheetStyle;
+			global::FormsControls.Droid.Resource.Attribute.buttonBarButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.buttonBarNegativeButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.buttonBarNeutralButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.buttonBarPositiveButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.buttonBarStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarStyle;
+			global::FormsControls.Droid.Resource.Attribute.buttonGravity = global::HodlWallet2.Droid.Resource.Attribute.buttonGravity;
+			global::FormsControls.Droid.Resource.Attribute.buttonPanelSideLayout = global::HodlWallet2.Droid.Resource.Attribute.buttonPanelSideLayout;
+			global::FormsControls.Droid.Resource.Attribute.buttonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonStyle;
+			global::FormsControls.Droid.Resource.Attribute.buttonStyleSmall = global::HodlWallet2.Droid.Resource.Attribute.buttonStyleSmall;
+			global::FormsControls.Droid.Resource.Attribute.buttonTint = global::HodlWallet2.Droid.Resource.Attribute.buttonTint;
+			global::FormsControls.Droid.Resource.Attribute.buttonTintMode = global::HodlWallet2.Droid.Resource.Attribute.buttonTintMode;
+			global::FormsControls.Droid.Resource.Attribute.cardBackgroundColor = global::HodlWallet2.Droid.Resource.Attribute.cardBackgroundColor;
+			global::FormsControls.Droid.Resource.Attribute.cardCornerRadius = global::HodlWallet2.Droid.Resource.Attribute.cardCornerRadius;
+			global::FormsControls.Droid.Resource.Attribute.cardElevation = global::HodlWallet2.Droid.Resource.Attribute.cardElevation;
+			global::FormsControls.Droid.Resource.Attribute.cardMaxElevation = global::HodlWallet2.Droid.Resource.Attribute.cardMaxElevation;
+			global::FormsControls.Droid.Resource.Attribute.cardPreventCornerOverlap = global::HodlWallet2.Droid.Resource.Attribute.cardPreventCornerOverlap;
+			global::FormsControls.Droid.Resource.Attribute.cardUseCompatPadding = global::HodlWallet2.Droid.Resource.Attribute.cardUseCompatPadding;
+			global::FormsControls.Droid.Resource.Attribute.checkboxStyle = global::HodlWallet2.Droid.Resource.Attribute.checkboxStyle;
+			global::FormsControls.Droid.Resource.Attribute.checkedTextViewStyle = global::HodlWallet2.Droid.Resource.Attribute.checkedTextViewStyle;
+			global::FormsControls.Droid.Resource.Attribute.closeIcon = global::HodlWallet2.Droid.Resource.Attribute.closeIcon;
+			global::FormsControls.Droid.Resource.Attribute.closeItemLayout = global::HodlWallet2.Droid.Resource.Attribute.closeItemLayout;
+			global::FormsControls.Droid.Resource.Attribute.collapseContentDescription = global::HodlWallet2.Droid.Resource.Attribute.collapseContentDescription;
+			global::FormsControls.Droid.Resource.Attribute.collapseIcon = global::HodlWallet2.Droid.Resource.Attribute.collapseIcon;
+			global::FormsControls.Droid.Resource.Attribute.collapsedTitleGravity = global::HodlWallet2.Droid.Resource.Attribute.collapsedTitleGravity;
+			global::FormsControls.Droid.Resource.Attribute.collapsedTitleTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.collapsedTitleTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.color = global::HodlWallet2.Droid.Resource.Attribute.color;
+			global::FormsControls.Droid.Resource.Attribute.colorAccent = global::HodlWallet2.Droid.Resource.Attribute.colorAccent;
+			global::FormsControls.Droid.Resource.Attribute.colorBackgroundFloating = global::HodlWallet2.Droid.Resource.Attribute.colorBackgroundFloating;
+			global::FormsControls.Droid.Resource.Attribute.colorButtonNormal = global::HodlWallet2.Droid.Resource.Attribute.colorButtonNormal;
+			global::FormsControls.Droid.Resource.Attribute.colorControlActivated = global::HodlWallet2.Droid.Resource.Attribute.colorControlActivated;
+			global::FormsControls.Droid.Resource.Attribute.colorControlHighlight = global::HodlWallet2.Droid.Resource.Attribute.colorControlHighlight;
+			global::FormsControls.Droid.Resource.Attribute.colorControlNormal = global::HodlWallet2.Droid.Resource.Attribute.colorControlNormal;
+			global::FormsControls.Droid.Resource.Attribute.colorError = global::HodlWallet2.Droid.Resource.Attribute.colorError;
+			global::FormsControls.Droid.Resource.Attribute.colorPrimary = global::HodlWallet2.Droid.Resource.Attribute.colorPrimary;
+			global::FormsControls.Droid.Resource.Attribute.colorPrimaryDark = global::HodlWallet2.Droid.Resource.Attribute.colorPrimaryDark;
+			global::FormsControls.Droid.Resource.Attribute.colorSwitchThumbNormal = global::HodlWallet2.Droid.Resource.Attribute.colorSwitchThumbNormal;
+			global::FormsControls.Droid.Resource.Attribute.commitIcon = global::HodlWallet2.Droid.Resource.Attribute.commitIcon;
+			global::FormsControls.Droid.Resource.Attribute.contentDescription = global::HodlWallet2.Droid.Resource.Attribute.contentDescription;
+			global::FormsControls.Droid.Resource.Attribute.contentInsetEnd = global::HodlWallet2.Droid.Resource.Attribute.contentInsetEnd;
+			global::FormsControls.Droid.Resource.Attribute.contentInsetEndWithActions = global::HodlWallet2.Droid.Resource.Attribute.contentInsetEndWithActions;
+			global::FormsControls.Droid.Resource.Attribute.contentInsetLeft = global::HodlWallet2.Droid.Resource.Attribute.contentInsetLeft;
+			global::FormsControls.Droid.Resource.Attribute.contentInsetRight = global::HodlWallet2.Droid.Resource.Attribute.contentInsetRight;
+			global::FormsControls.Droid.Resource.Attribute.contentInsetStart = global::HodlWallet2.Droid.Resource.Attribute.contentInsetStart;
+			global::FormsControls.Droid.Resource.Attribute.contentInsetStartWithNavigation = global::HodlWallet2.Droid.Resource.Attribute.contentInsetStartWithNavigation;
+			global::FormsControls.Droid.Resource.Attribute.contentPadding = global::HodlWallet2.Droid.Resource.Attribute.contentPadding;
+			global::FormsControls.Droid.Resource.Attribute.contentPaddingBottom = global::HodlWallet2.Droid.Resource.Attribute.contentPaddingBottom;
+			global::FormsControls.Droid.Resource.Attribute.contentPaddingLeft = global::HodlWallet2.Droid.Resource.Attribute.contentPaddingLeft;
+			global::FormsControls.Droid.Resource.Attribute.contentPaddingRight = global::HodlWallet2.Droid.Resource.Attribute.contentPaddingRight;
+			global::FormsControls.Droid.Resource.Attribute.contentPaddingTop = global::HodlWallet2.Droid.Resource.Attribute.contentPaddingTop;
+			global::FormsControls.Droid.Resource.Attribute.contentScrim = global::HodlWallet2.Droid.Resource.Attribute.contentScrim;
+			global::FormsControls.Droid.Resource.Attribute.controlBackground = global::HodlWallet2.Droid.Resource.Attribute.controlBackground;
+			global::FormsControls.Droid.Resource.Attribute.counterEnabled = global::HodlWallet2.Droid.Resource.Attribute.counterEnabled;
+			global::FormsControls.Droid.Resource.Attribute.counterMaxLength = global::HodlWallet2.Droid.Resource.Attribute.counterMaxLength;
+			global::FormsControls.Droid.Resource.Attribute.counterOverflowTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.counterOverflowTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.counterTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.counterTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.customNavigationLayout = global::HodlWallet2.Droid.Resource.Attribute.customNavigationLayout;
+			global::FormsControls.Droid.Resource.Attribute.defaultQueryHint = global::HodlWallet2.Droid.Resource.Attribute.defaultQueryHint;
+			global::FormsControls.Droid.Resource.Attribute.dialogPreferredPadding = global::HodlWallet2.Droid.Resource.Attribute.dialogPreferredPadding;
+			global::FormsControls.Droid.Resource.Attribute.dialogTheme = global::HodlWallet2.Droid.Resource.Attribute.dialogTheme;
+			global::FormsControls.Droid.Resource.Attribute.displayOptions = global::HodlWallet2.Droid.Resource.Attribute.displayOptions;
+			global::FormsControls.Droid.Resource.Attribute.divider = global::HodlWallet2.Droid.Resource.Attribute.divider;
+			global::FormsControls.Droid.Resource.Attribute.dividerHorizontal = global::HodlWallet2.Droid.Resource.Attribute.dividerHorizontal;
+			global::FormsControls.Droid.Resource.Attribute.dividerPadding = global::HodlWallet2.Droid.Resource.Attribute.dividerPadding;
+			global::FormsControls.Droid.Resource.Attribute.dividerVertical = global::HodlWallet2.Droid.Resource.Attribute.dividerVertical;
+			global::FormsControls.Droid.Resource.Attribute.drawableSize = global::HodlWallet2.Droid.Resource.Attribute.drawableSize;
+			global::FormsControls.Droid.Resource.Attribute.drawerArrowStyle = global::HodlWallet2.Droid.Resource.Attribute.drawerArrowStyle;
+			global::FormsControls.Droid.Resource.Attribute.dropDownListViewStyle = global::HodlWallet2.Droid.Resource.Attribute.dropDownListViewStyle;
+			global::FormsControls.Droid.Resource.Attribute.dropdownListPreferredItemHeight = global::HodlWallet2.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::FormsControls.Droid.Resource.Attribute.editTextBackground = global::HodlWallet2.Droid.Resource.Attribute.editTextBackground;
+			global::FormsControls.Droid.Resource.Attribute.editTextColor = global::HodlWallet2.Droid.Resource.Attribute.editTextColor;
+			global::FormsControls.Droid.Resource.Attribute.editTextStyle = global::HodlWallet2.Droid.Resource.Attribute.editTextStyle;
+			global::FormsControls.Droid.Resource.Attribute.elevation = global::HodlWallet2.Droid.Resource.Attribute.elevation;
+			global::FormsControls.Droid.Resource.Attribute.errorEnabled = global::HodlWallet2.Droid.Resource.Attribute.errorEnabled;
+			global::FormsControls.Droid.Resource.Attribute.errorTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.errorTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable = global::HodlWallet2.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
+			global::FormsControls.Droid.Resource.Attribute.expanded = global::HodlWallet2.Droid.Resource.Attribute.expanded;
+			global::FormsControls.Droid.Resource.Attribute.expandedTitleGravity = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleGravity;
+			global::FormsControls.Droid.Resource.Attribute.expandedTitleMargin = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMargin;
+			global::FormsControls.Droid.Resource.Attribute.expandedTitleMarginBottom = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMarginBottom;
+			global::FormsControls.Droid.Resource.Attribute.expandedTitleMarginEnd = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMarginEnd;
+			global::FormsControls.Droid.Resource.Attribute.expandedTitleMarginStart = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMarginStart;
+			global::FormsControls.Droid.Resource.Attribute.expandedTitleMarginTop = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMarginTop;
+			global::FormsControls.Droid.Resource.Attribute.expandedTitleTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.externalRouteEnabledDrawable = global::HodlWallet2.Droid.Resource.Attribute.externalRouteEnabledDrawable;
+			global::FormsControls.Droid.Resource.Attribute.fabSize = global::HodlWallet2.Droid.Resource.Attribute.fabSize;
+			global::FormsControls.Droid.Resource.Attribute.fastScrollEnabled = global::HodlWallet2.Droid.Resource.Attribute.fastScrollEnabled;
+			global::FormsControls.Droid.Resource.Attribute.fastScrollHorizontalThumbDrawable = global::HodlWallet2.Droid.Resource.Attribute.fastScrollHorizontalThumbDrawable;
+			global::FormsControls.Droid.Resource.Attribute.fastScrollHorizontalTrackDrawable = global::HodlWallet2.Droid.Resource.Attribute.fastScrollHorizontalTrackDrawable;
+			global::FormsControls.Droid.Resource.Attribute.fastScrollVerticalThumbDrawable = global::HodlWallet2.Droid.Resource.Attribute.fastScrollVerticalThumbDrawable;
+			global::FormsControls.Droid.Resource.Attribute.fastScrollVerticalTrackDrawable = global::HodlWallet2.Droid.Resource.Attribute.fastScrollVerticalTrackDrawable;
+			global::FormsControls.Droid.Resource.Attribute.font = global::HodlWallet2.Droid.Resource.Attribute.font;
+			global::FormsControls.Droid.Resource.Attribute.fontFamily = global::HodlWallet2.Droid.Resource.Attribute.fontFamily;
+			global::FormsControls.Droid.Resource.Attribute.fontProviderAuthority = global::HodlWallet2.Droid.Resource.Attribute.fontProviderAuthority;
+			global::FormsControls.Droid.Resource.Attribute.fontProviderCerts = global::HodlWallet2.Droid.Resource.Attribute.fontProviderCerts;
+			global::FormsControls.Droid.Resource.Attribute.fontProviderFetchStrategy = global::HodlWallet2.Droid.Resource.Attribute.fontProviderFetchStrategy;
+			global::FormsControls.Droid.Resource.Attribute.fontProviderFetchTimeout = global::HodlWallet2.Droid.Resource.Attribute.fontProviderFetchTimeout;
+			global::FormsControls.Droid.Resource.Attribute.fontProviderPackage = global::HodlWallet2.Droid.Resource.Attribute.fontProviderPackage;
+			global::FormsControls.Droid.Resource.Attribute.fontProviderQuery = global::HodlWallet2.Droid.Resource.Attribute.fontProviderQuery;
+			global::FormsControls.Droid.Resource.Attribute.fontStyle = global::HodlWallet2.Droid.Resource.Attribute.fontStyle;
+			global::FormsControls.Droid.Resource.Attribute.fontWeight = global::HodlWallet2.Droid.Resource.Attribute.fontWeight;
+			global::FormsControls.Droid.Resource.Attribute.foregroundInsidePadding = global::HodlWallet2.Droid.Resource.Attribute.foregroundInsidePadding;
+			global::FormsControls.Droid.Resource.Attribute.gapBetweenBars = global::HodlWallet2.Droid.Resource.Attribute.gapBetweenBars;
+			global::FormsControls.Droid.Resource.Attribute.goIcon = global::HodlWallet2.Droid.Resource.Attribute.goIcon;
+			global::FormsControls.Droid.Resource.Attribute.headerLayout = global::HodlWallet2.Droid.Resource.Attribute.headerLayout;
+			global::FormsControls.Droid.Resource.Attribute.height = global::HodlWallet2.Droid.Resource.Attribute.height;
+			global::FormsControls.Droid.Resource.Attribute.hideOnContentScroll = global::HodlWallet2.Droid.Resource.Attribute.hideOnContentScroll;
+			global::FormsControls.Droid.Resource.Attribute.hintAnimationEnabled = global::HodlWallet2.Droid.Resource.Attribute.hintAnimationEnabled;
+			global::FormsControls.Droid.Resource.Attribute.hintEnabled = global::HodlWallet2.Droid.Resource.Attribute.hintEnabled;
+			global::FormsControls.Droid.Resource.Attribute.hintTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.hintTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.homeAsUpIndicator = global::HodlWallet2.Droid.Resource.Attribute.homeAsUpIndicator;
+			global::FormsControls.Droid.Resource.Attribute.homeLayout = global::HodlWallet2.Droid.Resource.Attribute.homeLayout;
+			global::FormsControls.Droid.Resource.Attribute.icon = global::HodlWallet2.Droid.Resource.Attribute.icon;
+			global::FormsControls.Droid.Resource.Attribute.iconTint = global::HodlWallet2.Droid.Resource.Attribute.iconTint;
+			global::FormsControls.Droid.Resource.Attribute.iconTintMode = global::HodlWallet2.Droid.Resource.Attribute.iconTintMode;
+			global::FormsControls.Droid.Resource.Attribute.iconifiedByDefault = global::HodlWallet2.Droid.Resource.Attribute.iconifiedByDefault;
+			global::FormsControls.Droid.Resource.Attribute.imageButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.imageButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.indeterminateProgressStyle = global::HodlWallet2.Droid.Resource.Attribute.indeterminateProgressStyle;
+			global::FormsControls.Droid.Resource.Attribute.initialActivityCount = global::HodlWallet2.Droid.Resource.Attribute.initialActivityCount;
+			global::FormsControls.Droid.Resource.Attribute.insetForeground = global::HodlWallet2.Droid.Resource.Attribute.insetForeground;
+			global::FormsControls.Droid.Resource.Attribute.isLightTheme = global::HodlWallet2.Droid.Resource.Attribute.isLightTheme;
+			global::FormsControls.Droid.Resource.Attribute.itemBackground = global::HodlWallet2.Droid.Resource.Attribute.itemBackground;
+			global::FormsControls.Droid.Resource.Attribute.itemIconTint = global::HodlWallet2.Droid.Resource.Attribute.itemIconTint;
+			global::FormsControls.Droid.Resource.Attribute.itemPadding = global::HodlWallet2.Droid.Resource.Attribute.itemPadding;
+			global::FormsControls.Droid.Resource.Attribute.itemTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.itemTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.itemTextColor = global::HodlWallet2.Droid.Resource.Attribute.itemTextColor;
+			global::FormsControls.Droid.Resource.Attribute.keylines = global::HodlWallet2.Droid.Resource.Attribute.keylines;
+			global::FormsControls.Droid.Resource.Attribute.layout = global::HodlWallet2.Droid.Resource.Attribute.layout;
+			global::FormsControls.Droid.Resource.Attribute.layoutManager = global::HodlWallet2.Droid.Resource.Attribute.layoutManager;
+			global::FormsControls.Droid.Resource.Attribute.layout_anchor = global::HodlWallet2.Droid.Resource.Attribute.layout_anchor;
+			global::FormsControls.Droid.Resource.Attribute.layout_anchorGravity = global::HodlWallet2.Droid.Resource.Attribute.layout_anchorGravity;
+			global::FormsControls.Droid.Resource.Attribute.layout_behavior = global::HodlWallet2.Droid.Resource.Attribute.layout_behavior;
+			global::FormsControls.Droid.Resource.Attribute.layout_collapseMode = global::HodlWallet2.Droid.Resource.Attribute.layout_collapseMode;
+			global::FormsControls.Droid.Resource.Attribute.layout_collapseParallaxMultiplier = global::HodlWallet2.Droid.Resource.Attribute.layout_collapseParallaxMultiplier;
+			global::FormsControls.Droid.Resource.Attribute.layout_dodgeInsetEdges = global::HodlWallet2.Droid.Resource.Attribute.layout_dodgeInsetEdges;
+			global::FormsControls.Droid.Resource.Attribute.layout_insetEdge = global::HodlWallet2.Droid.Resource.Attribute.layout_insetEdge;
+			global::FormsControls.Droid.Resource.Attribute.layout_keyline = global::HodlWallet2.Droid.Resource.Attribute.layout_keyline;
+			global::FormsControls.Droid.Resource.Attribute.layout_scrollFlags = global::HodlWallet2.Droid.Resource.Attribute.layout_scrollFlags;
+			global::FormsControls.Droid.Resource.Attribute.layout_scrollInterpolator = global::HodlWallet2.Droid.Resource.Attribute.layout_scrollInterpolator;
+			global::FormsControls.Droid.Resource.Attribute.listChoiceBackgroundIndicator = global::HodlWallet2.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::FormsControls.Droid.Resource.Attribute.listDividerAlertDialog = global::HodlWallet2.Droid.Resource.Attribute.listDividerAlertDialog;
+			global::FormsControls.Droid.Resource.Attribute.listItemLayout = global::HodlWallet2.Droid.Resource.Attribute.listItemLayout;
+			global::FormsControls.Droid.Resource.Attribute.listLayout = global::HodlWallet2.Droid.Resource.Attribute.listLayout;
+			global::FormsControls.Droid.Resource.Attribute.listMenuViewStyle = global::HodlWallet2.Droid.Resource.Attribute.listMenuViewStyle;
+			global::FormsControls.Droid.Resource.Attribute.listPopupWindowStyle = global::HodlWallet2.Droid.Resource.Attribute.listPopupWindowStyle;
+			global::FormsControls.Droid.Resource.Attribute.listPreferredItemHeight = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemHeight;
+			global::FormsControls.Droid.Resource.Attribute.listPreferredItemHeightLarge = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemHeightLarge;
+			global::FormsControls.Droid.Resource.Attribute.listPreferredItemHeightSmall = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemHeightSmall;
+			global::FormsControls.Droid.Resource.Attribute.listPreferredItemPaddingLeft = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
+			global::FormsControls.Droid.Resource.Attribute.listPreferredItemPaddingRight = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemPaddingRight;
+			global::FormsControls.Droid.Resource.Attribute.logo = global::HodlWallet2.Droid.Resource.Attribute.logo;
+			global::FormsControls.Droid.Resource.Attribute.logoDescription = global::HodlWallet2.Droid.Resource.Attribute.logoDescription;
+			global::FormsControls.Droid.Resource.Attribute.maxActionInlineWidth = global::HodlWallet2.Droid.Resource.Attribute.maxActionInlineWidth;
+			global::FormsControls.Droid.Resource.Attribute.maxButtonHeight = global::HodlWallet2.Droid.Resource.Attribute.maxButtonHeight;
+			global::FormsControls.Droid.Resource.Attribute.measureWithLargestChild = global::HodlWallet2.Droid.Resource.Attribute.measureWithLargestChild;
+			global::FormsControls.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable;
+			global::FormsControls.Droid.Resource.Attribute.mediaRouteButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.mediaRouteButtonTint = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteButtonTint;
+			global::FormsControls.Droid.Resource.Attribute.mediaRouteCloseDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteCloseDrawable;
+			global::FormsControls.Droid.Resource.Attribute.mediaRouteControlPanelThemeOverlay = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteControlPanelThemeOverlay;
+			global::FormsControls.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable;
+			global::FormsControls.Droid.Resource.Attribute.mediaRoutePauseDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRoutePauseDrawable;
+			global::FormsControls.Droid.Resource.Attribute.mediaRoutePlayDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRoutePlayDrawable;
+			global::FormsControls.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable;
+			global::FormsControls.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable;
+			global::FormsControls.Droid.Resource.Attribute.mediaRouteStopDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteStopDrawable;
+			global::FormsControls.Droid.Resource.Attribute.mediaRouteTheme = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteTheme;
+			global::FormsControls.Droid.Resource.Attribute.mediaRouteTvIconDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteTvIconDrawable;
+			global::FormsControls.Droid.Resource.Attribute.menu = global::HodlWallet2.Droid.Resource.Attribute.menu;
+			global::FormsControls.Droid.Resource.Attribute.multiChoiceItemLayout = global::HodlWallet2.Droid.Resource.Attribute.multiChoiceItemLayout;
+			global::FormsControls.Droid.Resource.Attribute.navigationContentDescription = global::HodlWallet2.Droid.Resource.Attribute.navigationContentDescription;
+			global::FormsControls.Droid.Resource.Attribute.navigationIcon = global::HodlWallet2.Droid.Resource.Attribute.navigationIcon;
+			global::FormsControls.Droid.Resource.Attribute.navigationMode = global::HodlWallet2.Droid.Resource.Attribute.navigationMode;
+			global::FormsControls.Droid.Resource.Attribute.numericModifiers = global::HodlWallet2.Droid.Resource.Attribute.numericModifiers;
+			global::FormsControls.Droid.Resource.Attribute.overlapAnchor = global::HodlWallet2.Droid.Resource.Attribute.overlapAnchor;
+			global::FormsControls.Droid.Resource.Attribute.paddingBottomNoButtons = global::HodlWallet2.Droid.Resource.Attribute.paddingBottomNoButtons;
+			global::FormsControls.Droid.Resource.Attribute.paddingEnd = global::HodlWallet2.Droid.Resource.Attribute.paddingEnd;
+			global::FormsControls.Droid.Resource.Attribute.paddingStart = global::HodlWallet2.Droid.Resource.Attribute.paddingStart;
+			global::FormsControls.Droid.Resource.Attribute.paddingTopNoTitle = global::HodlWallet2.Droid.Resource.Attribute.paddingTopNoTitle;
+			global::FormsControls.Droid.Resource.Attribute.panelBackground = global::HodlWallet2.Droid.Resource.Attribute.panelBackground;
+			global::FormsControls.Droid.Resource.Attribute.panelMenuListTheme = global::HodlWallet2.Droid.Resource.Attribute.panelMenuListTheme;
+			global::FormsControls.Droid.Resource.Attribute.panelMenuListWidth = global::HodlWallet2.Droid.Resource.Attribute.panelMenuListWidth;
+			global::FormsControls.Droid.Resource.Attribute.passwordToggleContentDescription = global::HodlWallet2.Droid.Resource.Attribute.passwordToggleContentDescription;
+			global::FormsControls.Droid.Resource.Attribute.passwordToggleDrawable = global::HodlWallet2.Droid.Resource.Attribute.passwordToggleDrawable;
+			global::FormsControls.Droid.Resource.Attribute.passwordToggleEnabled = global::HodlWallet2.Droid.Resource.Attribute.passwordToggleEnabled;
+			global::FormsControls.Droid.Resource.Attribute.passwordToggleTint = global::HodlWallet2.Droid.Resource.Attribute.passwordToggleTint;
+			global::FormsControls.Droid.Resource.Attribute.passwordToggleTintMode = global::HodlWallet2.Droid.Resource.Attribute.passwordToggleTintMode;
+			global::FormsControls.Droid.Resource.Attribute.popupMenuStyle = global::HodlWallet2.Droid.Resource.Attribute.popupMenuStyle;
+			global::FormsControls.Droid.Resource.Attribute.popupTheme = global::HodlWallet2.Droid.Resource.Attribute.popupTheme;
+			global::FormsControls.Droid.Resource.Attribute.popupWindowStyle = global::HodlWallet2.Droid.Resource.Attribute.popupWindowStyle;
+			global::FormsControls.Droid.Resource.Attribute.preserveIconSpacing = global::HodlWallet2.Droid.Resource.Attribute.preserveIconSpacing;
+			global::FormsControls.Droid.Resource.Attribute.pressedTranslationZ = global::HodlWallet2.Droid.Resource.Attribute.pressedTranslationZ;
+			global::FormsControls.Droid.Resource.Attribute.progressBarPadding = global::HodlWallet2.Droid.Resource.Attribute.progressBarPadding;
+			global::FormsControls.Droid.Resource.Attribute.progressBarStyle = global::HodlWallet2.Droid.Resource.Attribute.progressBarStyle;
+			global::FormsControls.Droid.Resource.Attribute.queryBackground = global::HodlWallet2.Droid.Resource.Attribute.queryBackground;
+			global::FormsControls.Droid.Resource.Attribute.queryHint = global::HodlWallet2.Droid.Resource.Attribute.queryHint;
+			global::FormsControls.Droid.Resource.Attribute.radioButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.radioButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.ratingBarStyle = global::HodlWallet2.Droid.Resource.Attribute.ratingBarStyle;
+			global::FormsControls.Droid.Resource.Attribute.ratingBarStyleIndicator = global::HodlWallet2.Droid.Resource.Attribute.ratingBarStyleIndicator;
+			global::FormsControls.Droid.Resource.Attribute.ratingBarStyleSmall = global::HodlWallet2.Droid.Resource.Attribute.ratingBarStyleSmall;
+			global::FormsControls.Droid.Resource.Attribute.reverseLayout = global::HodlWallet2.Droid.Resource.Attribute.reverseLayout;
+			global::FormsControls.Droid.Resource.Attribute.rippleColor = global::HodlWallet2.Droid.Resource.Attribute.rippleColor;
+			global::FormsControls.Droid.Resource.Attribute.scrimAnimationDuration = global::HodlWallet2.Droid.Resource.Attribute.scrimAnimationDuration;
+			global::FormsControls.Droid.Resource.Attribute.scrimVisibleHeightTrigger = global::HodlWallet2.Droid.Resource.Attribute.scrimVisibleHeightTrigger;
+			global::FormsControls.Droid.Resource.Attribute.searchHintIcon = global::HodlWallet2.Droid.Resource.Attribute.searchHintIcon;
+			global::FormsControls.Droid.Resource.Attribute.searchIcon = global::HodlWallet2.Droid.Resource.Attribute.searchIcon;
+			global::FormsControls.Droid.Resource.Attribute.searchViewStyle = global::HodlWallet2.Droid.Resource.Attribute.searchViewStyle;
+			global::FormsControls.Droid.Resource.Attribute.seekBarStyle = global::HodlWallet2.Droid.Resource.Attribute.seekBarStyle;
+			global::FormsControls.Droid.Resource.Attribute.selectableItemBackground = global::HodlWallet2.Droid.Resource.Attribute.selectableItemBackground;
+			global::FormsControls.Droid.Resource.Attribute.selectableItemBackgroundBorderless = global::HodlWallet2.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::FormsControls.Droid.Resource.Attribute.showAsAction = global::HodlWallet2.Droid.Resource.Attribute.showAsAction;
+			global::FormsControls.Droid.Resource.Attribute.showDividers = global::HodlWallet2.Droid.Resource.Attribute.showDividers;
+			global::FormsControls.Droid.Resource.Attribute.showText = global::HodlWallet2.Droid.Resource.Attribute.showText;
+			global::FormsControls.Droid.Resource.Attribute.showTitle = global::HodlWallet2.Droid.Resource.Attribute.showTitle;
+			global::FormsControls.Droid.Resource.Attribute.singleChoiceItemLayout = global::HodlWallet2.Droid.Resource.Attribute.singleChoiceItemLayout;
+			global::FormsControls.Droid.Resource.Attribute.spanCount = global::HodlWallet2.Droid.Resource.Attribute.spanCount;
+			global::FormsControls.Droid.Resource.Attribute.spinBars = global::HodlWallet2.Droid.Resource.Attribute.spinBars;
+			global::FormsControls.Droid.Resource.Attribute.spinnerDropDownItemStyle = global::HodlWallet2.Droid.Resource.Attribute.spinnerDropDownItemStyle;
+			global::FormsControls.Droid.Resource.Attribute.spinnerStyle = global::HodlWallet2.Droid.Resource.Attribute.spinnerStyle;
+			global::FormsControls.Droid.Resource.Attribute.splitTrack = global::HodlWallet2.Droid.Resource.Attribute.splitTrack;
+			global::FormsControls.Droid.Resource.Attribute.srcCompat = global::HodlWallet2.Droid.Resource.Attribute.srcCompat;
+			global::FormsControls.Droid.Resource.Attribute.stackFromEnd = global::HodlWallet2.Droid.Resource.Attribute.stackFromEnd;
+			global::FormsControls.Droid.Resource.Attribute.state_above_anchor = global::HodlWallet2.Droid.Resource.Attribute.state_above_anchor;
+			global::FormsControls.Droid.Resource.Attribute.state_collapsed = global::HodlWallet2.Droid.Resource.Attribute.state_collapsed;
+			global::FormsControls.Droid.Resource.Attribute.state_collapsible = global::HodlWallet2.Droid.Resource.Attribute.state_collapsible;
+			global::FormsControls.Droid.Resource.Attribute.statusBarBackground = global::HodlWallet2.Droid.Resource.Attribute.statusBarBackground;
+			global::FormsControls.Droid.Resource.Attribute.statusBarScrim = global::HodlWallet2.Droid.Resource.Attribute.statusBarScrim;
+			global::FormsControls.Droid.Resource.Attribute.subMenuArrow = global::HodlWallet2.Droid.Resource.Attribute.subMenuArrow;
+			global::FormsControls.Droid.Resource.Attribute.submitBackground = global::HodlWallet2.Droid.Resource.Attribute.submitBackground;
+			global::FormsControls.Droid.Resource.Attribute.subtitle = global::HodlWallet2.Droid.Resource.Attribute.subtitle;
+			global::FormsControls.Droid.Resource.Attribute.subtitleTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.subtitleTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.subtitleTextColor = global::HodlWallet2.Droid.Resource.Attribute.subtitleTextColor;
+			global::FormsControls.Droid.Resource.Attribute.subtitleTextStyle = global::HodlWallet2.Droid.Resource.Attribute.subtitleTextStyle;
+			global::FormsControls.Droid.Resource.Attribute.suggestionRowLayout = global::HodlWallet2.Droid.Resource.Attribute.suggestionRowLayout;
+			global::FormsControls.Droid.Resource.Attribute.switchMinWidth = global::HodlWallet2.Droid.Resource.Attribute.switchMinWidth;
+			global::FormsControls.Droid.Resource.Attribute.switchPadding = global::HodlWallet2.Droid.Resource.Attribute.switchPadding;
+			global::FormsControls.Droid.Resource.Attribute.switchStyle = global::HodlWallet2.Droid.Resource.Attribute.switchStyle;
+			global::FormsControls.Droid.Resource.Attribute.switchTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.switchTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.tabBackground = global::HodlWallet2.Droid.Resource.Attribute.tabBackground;
+			global::FormsControls.Droid.Resource.Attribute.tabContentStart = global::HodlWallet2.Droid.Resource.Attribute.tabContentStart;
+			global::FormsControls.Droid.Resource.Attribute.tabGravity = global::HodlWallet2.Droid.Resource.Attribute.tabGravity;
+			global::FormsControls.Droid.Resource.Attribute.tabIndicatorColor = global::HodlWallet2.Droid.Resource.Attribute.tabIndicatorColor;
+			global::FormsControls.Droid.Resource.Attribute.tabIndicatorHeight = global::HodlWallet2.Droid.Resource.Attribute.tabIndicatorHeight;
+			global::FormsControls.Droid.Resource.Attribute.tabMaxWidth = global::HodlWallet2.Droid.Resource.Attribute.tabMaxWidth;
+			global::FormsControls.Droid.Resource.Attribute.tabMinWidth = global::HodlWallet2.Droid.Resource.Attribute.tabMinWidth;
+			global::FormsControls.Droid.Resource.Attribute.tabMode = global::HodlWallet2.Droid.Resource.Attribute.tabMode;
+			global::FormsControls.Droid.Resource.Attribute.tabPadding = global::HodlWallet2.Droid.Resource.Attribute.tabPadding;
+			global::FormsControls.Droid.Resource.Attribute.tabPaddingBottom = global::HodlWallet2.Droid.Resource.Attribute.tabPaddingBottom;
+			global::FormsControls.Droid.Resource.Attribute.tabPaddingEnd = global::HodlWallet2.Droid.Resource.Attribute.tabPaddingEnd;
+			global::FormsControls.Droid.Resource.Attribute.tabPaddingStart = global::HodlWallet2.Droid.Resource.Attribute.tabPaddingStart;
+			global::FormsControls.Droid.Resource.Attribute.tabPaddingTop = global::HodlWallet2.Droid.Resource.Attribute.tabPaddingTop;
+			global::FormsControls.Droid.Resource.Attribute.tabSelectedTextColor = global::HodlWallet2.Droid.Resource.Attribute.tabSelectedTextColor;
+			global::FormsControls.Droid.Resource.Attribute.tabTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.tabTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.tabTextColor = global::HodlWallet2.Droid.Resource.Attribute.tabTextColor;
+			global::FormsControls.Droid.Resource.Attribute.textAllCaps = global::HodlWallet2.Droid.Resource.Attribute.textAllCaps;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceLargePopupMenu = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceListItem = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceListItem;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceListItemSecondary = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceListItemSecondary;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceListItemSmall = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceListItemSmall;
+			global::FormsControls.Droid.Resource.Attribute.textAppearancePopupMenuHeader = global::HodlWallet2.Droid.Resource.Attribute.textAppearancePopupMenuHeader;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceSearchResultTitle = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceSmallPopupMenu = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::FormsControls.Droid.Resource.Attribute.textColorAlertDialogListItem = global::HodlWallet2.Droid.Resource.Attribute.textColorAlertDialogListItem;
+			global::FormsControls.Droid.Resource.Attribute.textColorError = global::HodlWallet2.Droid.Resource.Attribute.textColorError;
+			global::FormsControls.Droid.Resource.Attribute.textColorSearchUrl = global::HodlWallet2.Droid.Resource.Attribute.textColorSearchUrl;
+			global::FormsControls.Droid.Resource.Attribute.theme = global::HodlWallet2.Droid.Resource.Attribute.theme;
+			global::FormsControls.Droid.Resource.Attribute.thickness = global::HodlWallet2.Droid.Resource.Attribute.thickness;
+			global::FormsControls.Droid.Resource.Attribute.thumbTextPadding = global::HodlWallet2.Droid.Resource.Attribute.thumbTextPadding;
+			global::FormsControls.Droid.Resource.Attribute.thumbTint = global::HodlWallet2.Droid.Resource.Attribute.thumbTint;
+			global::FormsControls.Droid.Resource.Attribute.thumbTintMode = global::HodlWallet2.Droid.Resource.Attribute.thumbTintMode;
+			global::FormsControls.Droid.Resource.Attribute.tickMark = global::HodlWallet2.Droid.Resource.Attribute.tickMark;
+			global::FormsControls.Droid.Resource.Attribute.tickMarkTint = global::HodlWallet2.Droid.Resource.Attribute.tickMarkTint;
+			global::FormsControls.Droid.Resource.Attribute.tickMarkTintMode = global::HodlWallet2.Droid.Resource.Attribute.tickMarkTintMode;
+			global::FormsControls.Droid.Resource.Attribute.tint = global::HodlWallet2.Droid.Resource.Attribute.tint;
+			global::FormsControls.Droid.Resource.Attribute.tintMode = global::HodlWallet2.Droid.Resource.Attribute.tintMode;
+			global::FormsControls.Droid.Resource.Attribute.title = global::HodlWallet2.Droid.Resource.Attribute.title;
+			global::FormsControls.Droid.Resource.Attribute.titleEnabled = global::HodlWallet2.Droid.Resource.Attribute.titleEnabled;
+			global::FormsControls.Droid.Resource.Attribute.titleMargin = global::HodlWallet2.Droid.Resource.Attribute.titleMargin;
+			global::FormsControls.Droid.Resource.Attribute.titleMarginBottom = global::HodlWallet2.Droid.Resource.Attribute.titleMarginBottom;
+			global::FormsControls.Droid.Resource.Attribute.titleMarginEnd = global::HodlWallet2.Droid.Resource.Attribute.titleMarginEnd;
+			global::FormsControls.Droid.Resource.Attribute.titleMarginStart = global::HodlWallet2.Droid.Resource.Attribute.titleMarginStart;
+			global::FormsControls.Droid.Resource.Attribute.titleMarginTop = global::HodlWallet2.Droid.Resource.Attribute.titleMarginTop;
+			global::FormsControls.Droid.Resource.Attribute.titleMargins = global::HodlWallet2.Droid.Resource.Attribute.titleMargins;
+			global::FormsControls.Droid.Resource.Attribute.titleTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.titleTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.titleTextColor = global::HodlWallet2.Droid.Resource.Attribute.titleTextColor;
+			global::FormsControls.Droid.Resource.Attribute.titleTextStyle = global::HodlWallet2.Droid.Resource.Attribute.titleTextStyle;
+			global::FormsControls.Droid.Resource.Attribute.toolbarId = global::HodlWallet2.Droid.Resource.Attribute.toolbarId;
+			global::FormsControls.Droid.Resource.Attribute.toolbarNavigationButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.toolbarStyle = global::HodlWallet2.Droid.Resource.Attribute.toolbarStyle;
+			global::FormsControls.Droid.Resource.Attribute.tooltipForegroundColor = global::HodlWallet2.Droid.Resource.Attribute.tooltipForegroundColor;
+			global::FormsControls.Droid.Resource.Attribute.tooltipFrameBackground = global::HodlWallet2.Droid.Resource.Attribute.tooltipFrameBackground;
+			global::FormsControls.Droid.Resource.Attribute.tooltipText = global::HodlWallet2.Droid.Resource.Attribute.tooltipText;
+			global::FormsControls.Droid.Resource.Attribute.track = global::HodlWallet2.Droid.Resource.Attribute.track;
+			global::FormsControls.Droid.Resource.Attribute.trackTint = global::HodlWallet2.Droid.Resource.Attribute.trackTint;
+			global::FormsControls.Droid.Resource.Attribute.trackTintMode = global::HodlWallet2.Droid.Resource.Attribute.trackTintMode;
+			global::FormsControls.Droid.Resource.Attribute.useCompatPadding = global::HodlWallet2.Droid.Resource.Attribute.useCompatPadding;
+			global::FormsControls.Droid.Resource.Attribute.voiceIcon = global::HodlWallet2.Droid.Resource.Attribute.voiceIcon;
+			global::FormsControls.Droid.Resource.Attribute.windowActionBar = global::HodlWallet2.Droid.Resource.Attribute.windowActionBar;
+			global::FormsControls.Droid.Resource.Attribute.windowActionBarOverlay = global::HodlWallet2.Droid.Resource.Attribute.windowActionBarOverlay;
+			global::FormsControls.Droid.Resource.Attribute.windowActionModeOverlay = global::HodlWallet2.Droid.Resource.Attribute.windowActionModeOverlay;
+			global::FormsControls.Droid.Resource.Attribute.windowFixedHeightMajor = global::HodlWallet2.Droid.Resource.Attribute.windowFixedHeightMajor;
+			global::FormsControls.Droid.Resource.Attribute.windowFixedHeightMinor = global::HodlWallet2.Droid.Resource.Attribute.windowFixedHeightMinor;
+			global::FormsControls.Droid.Resource.Attribute.windowFixedWidthMajor = global::HodlWallet2.Droid.Resource.Attribute.windowFixedWidthMajor;
+			global::FormsControls.Droid.Resource.Attribute.windowFixedWidthMinor = global::HodlWallet2.Droid.Resource.Attribute.windowFixedWidthMinor;
+			global::FormsControls.Droid.Resource.Attribute.windowMinWidthMajor = global::HodlWallet2.Droid.Resource.Attribute.windowMinWidthMajor;
+			global::FormsControls.Droid.Resource.Attribute.windowMinWidthMinor = global::HodlWallet2.Droid.Resource.Attribute.windowMinWidthMinor;
+			global::FormsControls.Droid.Resource.Attribute.windowNoTitle = global::HodlWallet2.Droid.Resource.Attribute.windowNoTitle;
+			global::FormsControls.Droid.Resource.Boolean.abc_action_bar_embed_tabs = global::HodlWallet2.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::FormsControls.Droid.Resource.Boolean.abc_allow_stacked_button_bar = global::HodlWallet2.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
+			global::FormsControls.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::HodlWallet2.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::FormsControls.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::HodlWallet2.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
+			global::FormsControls.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::HodlWallet2.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
+			global::FormsControls.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
+			global::FormsControls.Droid.Resource.Color.abc_background_cache_hint_selector_material_light = global::HodlWallet2.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
+			global::FormsControls.Droid.Resource.Color.abc_btn_colored_borderless_text_material = global::HodlWallet2.Droid.Resource.Color.abc_btn_colored_borderless_text_material;
+			global::FormsControls.Droid.Resource.Color.abc_btn_colored_text_material = global::HodlWallet2.Droid.Resource.Color.abc_btn_colored_text_material;
+			global::FormsControls.Droid.Resource.Color.abc_color_highlight_material = global::HodlWallet2.Droid.Resource.Color.abc_color_highlight_material;
+			global::FormsControls.Droid.Resource.Color.abc_hint_foreground_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_hint_foreground_material_dark;
+			global::FormsControls.Droid.Resource.Color.abc_hint_foreground_material_light = global::HodlWallet2.Droid.Resource.Color.abc_hint_foreground_material_light;
+			global::FormsControls.Droid.Resource.Color.abc_input_method_navigation_guard = global::HodlWallet2.Droid.Resource.Color.abc_input_method_navigation_guard;
+			global::FormsControls.Droid.Resource.Color.abc_primary_text_disable_only_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
+			global::FormsControls.Droid.Resource.Color.abc_primary_text_disable_only_material_light = global::HodlWallet2.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::FormsControls.Droid.Resource.Color.abc_primary_text_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_primary_text_material_dark;
+			global::FormsControls.Droid.Resource.Color.abc_primary_text_material_light = global::HodlWallet2.Droid.Resource.Color.abc_primary_text_material_light;
+			global::FormsControls.Droid.Resource.Color.abc_search_url_text = global::HodlWallet2.Droid.Resource.Color.abc_search_url_text;
+			global::FormsControls.Droid.Resource.Color.abc_search_url_text_normal = global::HodlWallet2.Droid.Resource.Color.abc_search_url_text_normal;
+			global::FormsControls.Droid.Resource.Color.abc_search_url_text_pressed = global::HodlWallet2.Droid.Resource.Color.abc_search_url_text_pressed;
+			global::FormsControls.Droid.Resource.Color.abc_search_url_text_selected = global::HodlWallet2.Droid.Resource.Color.abc_search_url_text_selected;
+			global::FormsControls.Droid.Resource.Color.abc_secondary_text_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_secondary_text_material_dark;
+			global::FormsControls.Droid.Resource.Color.abc_secondary_text_material_light = global::HodlWallet2.Droid.Resource.Color.abc_secondary_text_material_light;
+			global::FormsControls.Droid.Resource.Color.abc_tint_btn_checkable = global::HodlWallet2.Droid.Resource.Color.abc_tint_btn_checkable;
+			global::FormsControls.Droid.Resource.Color.abc_tint_default = global::HodlWallet2.Droid.Resource.Color.abc_tint_default;
+			global::FormsControls.Droid.Resource.Color.abc_tint_edittext = global::HodlWallet2.Droid.Resource.Color.abc_tint_edittext;
+			global::FormsControls.Droid.Resource.Color.abc_tint_seek_thumb = global::HodlWallet2.Droid.Resource.Color.abc_tint_seek_thumb;
+			global::FormsControls.Droid.Resource.Color.abc_tint_spinner = global::HodlWallet2.Droid.Resource.Color.abc_tint_spinner;
+			global::FormsControls.Droid.Resource.Color.abc_tint_switch_track = global::HodlWallet2.Droid.Resource.Color.abc_tint_switch_track;
+			global::FormsControls.Droid.Resource.Color.accent_material_dark = global::HodlWallet2.Droid.Resource.Color.accent_material_dark;
+			global::FormsControls.Droid.Resource.Color.accent_material_light = global::HodlWallet2.Droid.Resource.Color.accent_material_light;
+			global::FormsControls.Droid.Resource.Color.background_floating_material_dark = global::HodlWallet2.Droid.Resource.Color.background_floating_material_dark;
+			global::FormsControls.Droid.Resource.Color.background_floating_material_light = global::HodlWallet2.Droid.Resource.Color.background_floating_material_light;
+			global::FormsControls.Droid.Resource.Color.background_material_dark = global::HodlWallet2.Droid.Resource.Color.background_material_dark;
+			global::FormsControls.Droid.Resource.Color.background_material_light = global::HodlWallet2.Droid.Resource.Color.background_material_light;
+			global::FormsControls.Droid.Resource.Color.bright_foreground_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.bright_foreground_disabled_material_dark;
+			global::FormsControls.Droid.Resource.Color.bright_foreground_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.bright_foreground_disabled_material_light;
+			global::FormsControls.Droid.Resource.Color.bright_foreground_inverse_material_dark = global::HodlWallet2.Droid.Resource.Color.bright_foreground_inverse_material_dark;
+			global::FormsControls.Droid.Resource.Color.bright_foreground_inverse_material_light = global::HodlWallet2.Droid.Resource.Color.bright_foreground_inverse_material_light;
+			global::FormsControls.Droid.Resource.Color.bright_foreground_material_dark = global::HodlWallet2.Droid.Resource.Color.bright_foreground_material_dark;
+			global::FormsControls.Droid.Resource.Color.bright_foreground_material_light = global::HodlWallet2.Droid.Resource.Color.bright_foreground_material_light;
+			global::FormsControls.Droid.Resource.Color.button_material_dark = global::HodlWallet2.Droid.Resource.Color.button_material_dark;
+			global::FormsControls.Droid.Resource.Color.button_material_light = global::HodlWallet2.Droid.Resource.Color.button_material_light;
+			global::FormsControls.Droid.Resource.Color.cardview_dark_background = global::HodlWallet2.Droid.Resource.Color.cardview_dark_background;
+			global::FormsControls.Droid.Resource.Color.cardview_light_background = global::HodlWallet2.Droid.Resource.Color.cardview_light_background;
+			global::FormsControls.Droid.Resource.Color.cardview_shadow_end_color = global::HodlWallet2.Droid.Resource.Color.cardview_shadow_end_color;
+			global::FormsControls.Droid.Resource.Color.cardview_shadow_start_color = global::HodlWallet2.Droid.Resource.Color.cardview_shadow_start_color;
+			global::FormsControls.Droid.Resource.Color.design_bottom_navigation_shadow_color = global::HodlWallet2.Droid.Resource.Color.design_bottom_navigation_shadow_color;
+			global::FormsControls.Droid.Resource.Color.design_error = global::HodlWallet2.Droid.Resource.Color.design_error;
+			global::FormsControls.Droid.Resource.Color.design_fab_shadow_end_color = global::HodlWallet2.Droid.Resource.Color.design_fab_shadow_end_color;
+			global::FormsControls.Droid.Resource.Color.design_fab_shadow_mid_color = global::HodlWallet2.Droid.Resource.Color.design_fab_shadow_mid_color;
+			global::FormsControls.Droid.Resource.Color.design_fab_shadow_start_color = global::HodlWallet2.Droid.Resource.Color.design_fab_shadow_start_color;
+			global::FormsControls.Droid.Resource.Color.design_fab_stroke_end_inner_color = global::HodlWallet2.Droid.Resource.Color.design_fab_stroke_end_inner_color;
+			global::FormsControls.Droid.Resource.Color.design_fab_stroke_end_outer_color = global::HodlWallet2.Droid.Resource.Color.design_fab_stroke_end_outer_color;
+			global::FormsControls.Droid.Resource.Color.design_fab_stroke_top_inner_color = global::HodlWallet2.Droid.Resource.Color.design_fab_stroke_top_inner_color;
+			global::FormsControls.Droid.Resource.Color.design_fab_stroke_top_outer_color = global::HodlWallet2.Droid.Resource.Color.design_fab_stroke_top_outer_color;
+			global::FormsControls.Droid.Resource.Color.design_snackbar_background_color = global::HodlWallet2.Droid.Resource.Color.design_snackbar_background_color;
+			global::FormsControls.Droid.Resource.Color.design_tint_password_toggle = global::HodlWallet2.Droid.Resource.Color.design_tint_password_toggle;
+			global::FormsControls.Droid.Resource.Color.dim_foreground_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.dim_foreground_disabled_material_dark;
+			global::FormsControls.Droid.Resource.Color.dim_foreground_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.dim_foreground_disabled_material_light;
+			global::FormsControls.Droid.Resource.Color.dim_foreground_material_dark = global::HodlWallet2.Droid.Resource.Color.dim_foreground_material_dark;
+			global::FormsControls.Droid.Resource.Color.dim_foreground_material_light = global::HodlWallet2.Droid.Resource.Color.dim_foreground_material_light;
+			global::FormsControls.Droid.Resource.Color.error_color_material = global::HodlWallet2.Droid.Resource.Color.error_color_material;
+			global::FormsControls.Droid.Resource.Color.foreground_material_dark = global::HodlWallet2.Droid.Resource.Color.foreground_material_dark;
+			global::FormsControls.Droid.Resource.Color.foreground_material_light = global::HodlWallet2.Droid.Resource.Color.foreground_material_light;
+			global::FormsControls.Droid.Resource.Color.highlighted_text_material_dark = global::HodlWallet2.Droid.Resource.Color.highlighted_text_material_dark;
+			global::FormsControls.Droid.Resource.Color.highlighted_text_material_light = global::HodlWallet2.Droid.Resource.Color.highlighted_text_material_light;
+			global::FormsControls.Droid.Resource.Color.material_blue_grey_800 = global::HodlWallet2.Droid.Resource.Color.material_blue_grey_800;
+			global::FormsControls.Droid.Resource.Color.material_blue_grey_900 = global::HodlWallet2.Droid.Resource.Color.material_blue_grey_900;
+			global::FormsControls.Droid.Resource.Color.material_blue_grey_950 = global::HodlWallet2.Droid.Resource.Color.material_blue_grey_950;
+			global::FormsControls.Droid.Resource.Color.material_deep_teal_200 = global::HodlWallet2.Droid.Resource.Color.material_deep_teal_200;
+			global::FormsControls.Droid.Resource.Color.material_deep_teal_500 = global::HodlWallet2.Droid.Resource.Color.material_deep_teal_500;
+			global::FormsControls.Droid.Resource.Color.material_grey_100 = global::HodlWallet2.Droid.Resource.Color.material_grey_100;
+			global::FormsControls.Droid.Resource.Color.material_grey_300 = global::HodlWallet2.Droid.Resource.Color.material_grey_300;
+			global::FormsControls.Droid.Resource.Color.material_grey_50 = global::HodlWallet2.Droid.Resource.Color.material_grey_50;
+			global::FormsControls.Droid.Resource.Color.material_grey_600 = global::HodlWallet2.Droid.Resource.Color.material_grey_600;
+			global::FormsControls.Droid.Resource.Color.material_grey_800 = global::HodlWallet2.Droid.Resource.Color.material_grey_800;
+			global::FormsControls.Droid.Resource.Color.material_grey_850 = global::HodlWallet2.Droid.Resource.Color.material_grey_850;
+			global::FormsControls.Droid.Resource.Color.material_grey_900 = global::HodlWallet2.Droid.Resource.Color.material_grey_900;
+			global::FormsControls.Droid.Resource.Color.notification_action_color_filter = global::HodlWallet2.Droid.Resource.Color.notification_action_color_filter;
+			global::FormsControls.Droid.Resource.Color.notification_icon_bg_color = global::HodlWallet2.Droid.Resource.Color.notification_icon_bg_color;
+			global::FormsControls.Droid.Resource.Color.notification_material_background_media_default_color = global::HodlWallet2.Droid.Resource.Color.notification_material_background_media_default_color;
+			global::FormsControls.Droid.Resource.Color.primary_dark_material_dark = global::HodlWallet2.Droid.Resource.Color.primary_dark_material_dark;
+			global::FormsControls.Droid.Resource.Color.primary_dark_material_light = global::HodlWallet2.Droid.Resource.Color.primary_dark_material_light;
+			global::FormsControls.Droid.Resource.Color.primary_material_dark = global::HodlWallet2.Droid.Resource.Color.primary_material_dark;
+			global::FormsControls.Droid.Resource.Color.primary_material_light = global::HodlWallet2.Droid.Resource.Color.primary_material_light;
+			global::FormsControls.Droid.Resource.Color.primary_text_default_material_dark = global::HodlWallet2.Droid.Resource.Color.primary_text_default_material_dark;
+			global::FormsControls.Droid.Resource.Color.primary_text_default_material_light = global::HodlWallet2.Droid.Resource.Color.primary_text_default_material_light;
+			global::FormsControls.Droid.Resource.Color.primary_text_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.primary_text_disabled_material_dark;
+			global::FormsControls.Droid.Resource.Color.primary_text_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.primary_text_disabled_material_light;
+			global::FormsControls.Droid.Resource.Color.ripple_material_dark = global::HodlWallet2.Droid.Resource.Color.ripple_material_dark;
+			global::FormsControls.Droid.Resource.Color.ripple_material_light = global::HodlWallet2.Droid.Resource.Color.ripple_material_light;
+			global::FormsControls.Droid.Resource.Color.secondary_text_default_material_dark = global::HodlWallet2.Droid.Resource.Color.secondary_text_default_material_dark;
+			global::FormsControls.Droid.Resource.Color.secondary_text_default_material_light = global::HodlWallet2.Droid.Resource.Color.secondary_text_default_material_light;
+			global::FormsControls.Droid.Resource.Color.secondary_text_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.secondary_text_disabled_material_dark;
+			global::FormsControls.Droid.Resource.Color.secondary_text_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.secondary_text_disabled_material_light;
+			global::FormsControls.Droid.Resource.Color.switch_thumb_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.switch_thumb_disabled_material_dark;
+			global::FormsControls.Droid.Resource.Color.switch_thumb_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.switch_thumb_disabled_material_light;
+			global::FormsControls.Droid.Resource.Color.switch_thumb_material_dark = global::HodlWallet2.Droid.Resource.Color.switch_thumb_material_dark;
+			global::FormsControls.Droid.Resource.Color.switch_thumb_material_light = global::HodlWallet2.Droid.Resource.Color.switch_thumb_material_light;
+			global::FormsControls.Droid.Resource.Color.switch_thumb_normal_material_dark = global::HodlWallet2.Droid.Resource.Color.switch_thumb_normal_material_dark;
+			global::FormsControls.Droid.Resource.Color.switch_thumb_normal_material_light = global::HodlWallet2.Droid.Resource.Color.switch_thumb_normal_material_light;
+			global::FormsControls.Droid.Resource.Color.tooltip_background_dark = global::HodlWallet2.Droid.Resource.Color.tooltip_background_dark;
+			global::FormsControls.Droid.Resource.Color.tooltip_background_light = global::HodlWallet2.Droid.Resource.Color.tooltip_background_light;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_content_inset_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_content_inset_with_nav = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_content_inset_with_nav;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_default_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_default_height_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_elevation_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_elevation_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_progress_bar_size = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_progress_bar_size;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_stacked_max_height = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_button_min_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_button_min_height_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_button_min_width_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_button_min_width_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height = global::HodlWallet2.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::FormsControls.Droid.Resource.Dimension.abc_button_inset_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_button_inset_vertical_material = global::HodlWallet2.Droid.Resource.Dimension.abc_button_inset_vertical_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_button_padding_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_button_padding_vertical_material = global::HodlWallet2.Droid.Resource.Dimension.abc_button_padding_vertical_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_cascading_menus_min_smallest_width = global::HodlWallet2.Droid.Resource.Dimension.abc_cascading_menus_min_smallest_width;
+			global::FormsControls.Droid.Resource.Dimension.abc_config_prefDialogWidth = global::HodlWallet2.Droid.Resource.Dimension.abc_config_prefDialogWidth;
+			global::FormsControls.Droid.Resource.Dimension.abc_control_corner_material = global::HodlWallet2.Droid.Resource.Dimension.abc_control_corner_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_control_inset_material = global::HodlWallet2.Droid.Resource.Dimension.abc_control_inset_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_control_padding_material = global::HodlWallet2.Droid.Resource.Dimension.abc_control_padding_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_dialog_fixed_height_major = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_fixed_height_major;
+			global::FormsControls.Droid.Resource.Dimension.abc_dialog_fixed_height_minor = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_fixed_height_minor;
+			global::FormsControls.Droid.Resource.Dimension.abc_dialog_fixed_width_major = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_fixed_width_major;
+			global::FormsControls.Droid.Resource.Dimension.abc_dialog_fixed_width_minor = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_fixed_width_minor;
+			global::FormsControls.Droid.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons;
+			global::FormsControls.Droid.Resource.Dimension.abc_dialog_list_padding_top_no_title = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_list_padding_top_no_title;
+			global::FormsControls.Droid.Resource.Dimension.abc_dialog_min_width_major = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_min_width_major;
+			global::FormsControls.Droid.Resource.Dimension.abc_dialog_min_width_minor = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_min_width_minor;
+			global::FormsControls.Droid.Resource.Dimension.abc_dialog_padding_material = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_padding_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_dialog_padding_top_material = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_padding_top_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_dialog_title_divider_material = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_title_divider_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_disabled_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
+			global::FormsControls.Droid.Resource.Dimension.abc_disabled_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
+			global::FormsControls.Droid.Resource.Dimension.abc_dropdownitem_icon_width = global::HodlWallet2.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
+			global::FormsControls.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left = global::HodlWallet2.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
+			global::FormsControls.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right = global::HodlWallet2.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
+			global::FormsControls.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material = global::HodlWallet2.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_edit_text_inset_top_material = global::HodlWallet2.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_floating_window_z = global::HodlWallet2.Droid.Resource.Dimension.abc_floating_window_z;
+			global::FormsControls.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_panel_menu_list_width = global::HodlWallet2.Droid.Resource.Dimension.abc_panel_menu_list_width;
+			global::FormsControls.Droid.Resource.Dimension.abc_progress_bar_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_progress_bar_height_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_search_view_preferred_height = global::HodlWallet2.Droid.Resource.Dimension.abc_search_view_preferred_height;
+			global::FormsControls.Droid.Resource.Dimension.abc_search_view_preferred_width = global::HodlWallet2.Droid.Resource.Dimension.abc_search_view_preferred_width;
+			global::FormsControls.Droid.Resource.Dimension.abc_seekbar_track_background_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_seekbar_track_background_height_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_select_dialog_padding_start_material = global::HodlWallet2.Droid.Resource.Dimension.abc_select_dialog_padding_start_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_switch_padding = global::HodlWallet2.Droid.Resource.Dimension.abc_switch_padding;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_body_1_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_body_1_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_body_2_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_body_2_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_button_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_button_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_caption_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_caption_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_display_1_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_display_1_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_display_2_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_display_2_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_display_3_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_display_3_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_display_4_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_display_4_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_headline_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_headline_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_large_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_large_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_medium_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_medium_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_menu_header_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_menu_header_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_menu_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_menu_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_small_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_small_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_subhead_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_subhead_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_title_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_title_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_text_size_title_material_toolbar = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::FormsControls.Droid.Resource.Dimension.cardview_compat_inset_shadow = global::HodlWallet2.Droid.Resource.Dimension.cardview_compat_inset_shadow;
+			global::FormsControls.Droid.Resource.Dimension.cardview_default_elevation = global::HodlWallet2.Droid.Resource.Dimension.cardview_default_elevation;
+			global::FormsControls.Droid.Resource.Dimension.cardview_default_radius = global::HodlWallet2.Droid.Resource.Dimension.cardview_default_radius;
+			global::FormsControls.Droid.Resource.Dimension.compat_button_inset_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::FormsControls.Droid.Resource.Dimension.compat_button_inset_vertical_material = global::HodlWallet2.Droid.Resource.Dimension.compat_button_inset_vertical_material;
+			global::FormsControls.Droid.Resource.Dimension.compat_button_padding_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::FormsControls.Droid.Resource.Dimension.compat_button_padding_vertical_material = global::HodlWallet2.Droid.Resource.Dimension.compat_button_padding_vertical_material;
+			global::FormsControls.Droid.Resource.Dimension.compat_control_corner_material = global::HodlWallet2.Droid.Resource.Dimension.compat_control_corner_material;
+			global::FormsControls.Droid.Resource.Dimension.design_appbar_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_appbar_elevation;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_active_item_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_active_item_max_width;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_active_text_size = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_active_text_size;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_elevation;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_height = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_height;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_item_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_item_max_width;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_item_min_width = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_item_min_width;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_margin = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_margin;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_shadow_height = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_shadow_height;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_text_size = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_text_size;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_sheet_peek_height_min = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_sheet_peek_height_min;
+			global::FormsControls.Droid.Resource.Dimension.design_fab_border_width = global::HodlWallet2.Droid.Resource.Dimension.design_fab_border_width;
+			global::FormsControls.Droid.Resource.Dimension.design_fab_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_fab_elevation;
+			global::FormsControls.Droid.Resource.Dimension.design_fab_image_size = global::HodlWallet2.Droid.Resource.Dimension.design_fab_image_size;
+			global::FormsControls.Droid.Resource.Dimension.design_fab_size_mini = global::HodlWallet2.Droid.Resource.Dimension.design_fab_size_mini;
+			global::FormsControls.Droid.Resource.Dimension.design_fab_size_normal = global::HodlWallet2.Droid.Resource.Dimension.design_fab_size_normal;
+			global::FormsControls.Droid.Resource.Dimension.design_fab_translation_z_pressed = global::HodlWallet2.Droid.Resource.Dimension.design_fab_translation_z_pressed;
+			global::FormsControls.Droid.Resource.Dimension.design_navigation_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_elevation;
+			global::FormsControls.Droid.Resource.Dimension.design_navigation_icon_padding = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_icon_padding;
+			global::FormsControls.Droid.Resource.Dimension.design_navigation_icon_size = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_icon_size;
+			global::FormsControls.Droid.Resource.Dimension.design_navigation_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_max_width;
+			global::FormsControls.Droid.Resource.Dimension.design_navigation_padding_bottom = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_padding_bottom;
+			global::FormsControls.Droid.Resource.Dimension.design_navigation_separator_vertical_padding = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_separator_vertical_padding;
+			global::FormsControls.Droid.Resource.Dimension.design_snackbar_action_inline_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_action_inline_max_width;
+			global::FormsControls.Droid.Resource.Dimension.design_snackbar_background_corner_radius = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_background_corner_radius;
+			global::FormsControls.Droid.Resource.Dimension.design_snackbar_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_elevation;
+			global::FormsControls.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
+			global::FormsControls.Droid.Resource.Dimension.design_snackbar_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_max_width;
+			global::FormsControls.Droid.Resource.Dimension.design_snackbar_min_width = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_min_width;
+			global::FormsControls.Droid.Resource.Dimension.design_snackbar_padding_horizontal = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_padding_horizontal;
+			global::FormsControls.Droid.Resource.Dimension.design_snackbar_padding_vertical = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_padding_vertical;
+			global::FormsControls.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
+			global::FormsControls.Droid.Resource.Dimension.design_snackbar_text_size = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_text_size;
+			global::FormsControls.Droid.Resource.Dimension.design_tab_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_tab_max_width;
+			global::FormsControls.Droid.Resource.Dimension.design_tab_scrollable_min_width = global::HodlWallet2.Droid.Resource.Dimension.design_tab_scrollable_min_width;
+			global::FormsControls.Droid.Resource.Dimension.design_tab_text_size = global::HodlWallet2.Droid.Resource.Dimension.design_tab_text_size;
+			global::FormsControls.Droid.Resource.Dimension.design_tab_text_size_2line = global::HodlWallet2.Droid.Resource.Dimension.design_tab_text_size_2line;
+			global::FormsControls.Droid.Resource.Dimension.disabled_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.disabled_alpha_material_dark;
+			global::FormsControls.Droid.Resource.Dimension.disabled_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.disabled_alpha_material_light;
+			global::FormsControls.Droid.Resource.Dimension.fastscroll_default_thickness = global::HodlWallet2.Droid.Resource.Dimension.fastscroll_default_thickness;
+			global::FormsControls.Droid.Resource.Dimension.fastscroll_margin = global::HodlWallet2.Droid.Resource.Dimension.fastscroll_margin;
+			global::FormsControls.Droid.Resource.Dimension.fastscroll_minimum_range = global::HodlWallet2.Droid.Resource.Dimension.fastscroll_minimum_range;
+			global::FormsControls.Droid.Resource.Dimension.highlight_alpha_material_colored = global::HodlWallet2.Droid.Resource.Dimension.highlight_alpha_material_colored;
+			global::FormsControls.Droid.Resource.Dimension.highlight_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.highlight_alpha_material_dark;
+			global::FormsControls.Droid.Resource.Dimension.highlight_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.highlight_alpha_material_light;
+			global::FormsControls.Droid.Resource.Dimension.hint_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.hint_alpha_material_dark;
+			global::FormsControls.Droid.Resource.Dimension.hint_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.hint_alpha_material_light;
+			global::FormsControls.Droid.Resource.Dimension.hint_pressed_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.hint_pressed_alpha_material_dark;
+			global::FormsControls.Droid.Resource.Dimension.hint_pressed_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.hint_pressed_alpha_material_light;
+			global::FormsControls.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::HodlWallet2.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::FormsControls.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::HodlWallet2.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::FormsControls.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::HodlWallet2.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::FormsControls.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height = global::HodlWallet2.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height;
+			global::FormsControls.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size = global::HodlWallet2.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size;
+			global::FormsControls.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height = global::HodlWallet2.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height;
+			global::FormsControls.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top = global::HodlWallet2.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top;
+			global::FormsControls.Droid.Resource.Dimension.mr_dialog_fixed_width_major = global::HodlWallet2.Droid.Resource.Dimension.mr_dialog_fixed_width_major;
+			global::FormsControls.Droid.Resource.Dimension.mr_dialog_fixed_width_minor = global::HodlWallet2.Droid.Resource.Dimension.mr_dialog_fixed_width_minor;
+			global::FormsControls.Droid.Resource.Dimension.notification_action_icon_size = global::HodlWallet2.Droid.Resource.Dimension.notification_action_icon_size;
+			global::FormsControls.Droid.Resource.Dimension.notification_action_text_size = global::HodlWallet2.Droid.Resource.Dimension.notification_action_text_size;
+			global::FormsControls.Droid.Resource.Dimension.notification_big_circle_margin = global::HodlWallet2.Droid.Resource.Dimension.notification_big_circle_margin;
+			global::FormsControls.Droid.Resource.Dimension.notification_content_margin_start = global::HodlWallet2.Droid.Resource.Dimension.notification_content_margin_start;
+			global::FormsControls.Droid.Resource.Dimension.notification_large_icon_height = global::HodlWallet2.Droid.Resource.Dimension.notification_large_icon_height;
+			global::FormsControls.Droid.Resource.Dimension.notification_large_icon_width = global::HodlWallet2.Droid.Resource.Dimension.notification_large_icon_width;
+			global::FormsControls.Droid.Resource.Dimension.notification_main_column_padding_top = global::HodlWallet2.Droid.Resource.Dimension.notification_main_column_padding_top;
+			global::FormsControls.Droid.Resource.Dimension.notification_media_narrow_margin = global::HodlWallet2.Droid.Resource.Dimension.notification_media_narrow_margin;
+			global::FormsControls.Droid.Resource.Dimension.notification_right_icon_size = global::HodlWallet2.Droid.Resource.Dimension.notification_right_icon_size;
+			global::FormsControls.Droid.Resource.Dimension.notification_right_side_padding_top = global::HodlWallet2.Droid.Resource.Dimension.notification_right_side_padding_top;
+			global::FormsControls.Droid.Resource.Dimension.notification_small_icon_background_padding = global::HodlWallet2.Droid.Resource.Dimension.notification_small_icon_background_padding;
+			global::FormsControls.Droid.Resource.Dimension.notification_small_icon_size_as_large = global::HodlWallet2.Droid.Resource.Dimension.notification_small_icon_size_as_large;
+			global::FormsControls.Droid.Resource.Dimension.notification_subtext_size = global::HodlWallet2.Droid.Resource.Dimension.notification_subtext_size;
+			global::FormsControls.Droid.Resource.Dimension.notification_top_pad = global::HodlWallet2.Droid.Resource.Dimension.notification_top_pad;
+			global::FormsControls.Droid.Resource.Dimension.notification_top_pad_large_text = global::HodlWallet2.Droid.Resource.Dimension.notification_top_pad_large_text;
+			global::FormsControls.Droid.Resource.Dimension.tooltip_corner_radius = global::HodlWallet2.Droid.Resource.Dimension.tooltip_corner_radius;
+			global::FormsControls.Droid.Resource.Dimension.tooltip_horizontal_padding = global::HodlWallet2.Droid.Resource.Dimension.tooltip_horizontal_padding;
+			global::FormsControls.Droid.Resource.Dimension.tooltip_margin = global::HodlWallet2.Droid.Resource.Dimension.tooltip_margin;
+			global::FormsControls.Droid.Resource.Dimension.tooltip_precise_anchor_extra_offset = global::HodlWallet2.Droid.Resource.Dimension.tooltip_precise_anchor_extra_offset;
+			global::FormsControls.Droid.Resource.Dimension.tooltip_precise_anchor_threshold = global::HodlWallet2.Droid.Resource.Dimension.tooltip_precise_anchor_threshold;
+			global::FormsControls.Droid.Resource.Dimension.tooltip_vertical_padding = global::HodlWallet2.Droid.Resource.Dimension.tooltip_vertical_padding;
+			global::FormsControls.Droid.Resource.Dimension.tooltip_y_offset_non_touch = global::HodlWallet2.Droid.Resource.Dimension.tooltip_y_offset_non_touch;
+			global::FormsControls.Droid.Resource.Dimension.tooltip_y_offset_touch = global::HodlWallet2.Droid.Resource.Dimension.tooltip_y_offset_touch;
+			global::FormsControls.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_action_bar_item_background_material = global::HodlWallet2.Droid.Resource.Drawable.abc_action_bar_item_background_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_btn_borderless_material = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_borderless_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_btn_check_material = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_check_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
+			global::FormsControls.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
+			global::FormsControls.Droid.Resource.Drawable.abc_btn_colored_material = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_colored_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_btn_default_mtrl_shape = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
+			global::FormsControls.Droid.Resource.Drawable.abc_btn_radio_material = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_radio_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
+			global::FormsControls.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
+			global::FormsControls.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
+			global::FormsControls.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
+			global::FormsControls.Droid.Resource.Drawable.abc_cab_background_internal_bg = global::HodlWallet2.Droid.Resource.Drawable.abc_cab_background_internal_bg;
+			global::FormsControls.Droid.Resource.Drawable.abc_cab_background_top_material = global::HodlWallet2.Droid.Resource.Drawable.abc_cab_background_top_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_control_background_material = global::HodlWallet2.Droid.Resource.Drawable.abc_control_background_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_dialog_material_background = global::HodlWallet2.Droid.Resource.Drawable.abc_dialog_material_background;
+			global::FormsControls.Droid.Resource.Drawable.abc_edit_text_material = global::HodlWallet2.Droid.Resource.Drawable.abc_edit_text_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_ab_back_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_ab_back_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_clear_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_clear_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_go_search_api_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_go_search_api_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_menu_overflow_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_overflow_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_search_api_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_search_api_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_star_black_16dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_black_16dp;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_star_black_36dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_black_36dp;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_star_black_48dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_black_48dp;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_star_half_black_16dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_half_black_16dp;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_star_half_black_36dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_half_black_36dp;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_star_half_black_48dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_half_black_48dp;
+			global::FormsControls.Droid.Resource.Drawable.abc_ic_voice_search_api_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_voice_search_api_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_item_background_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_item_background_holo_dark;
+			global::FormsControls.Droid.Resource.Drawable.abc_item_background_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_item_background_holo_light;
+			global::FormsControls.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_list_focused_holo = global::HodlWallet2.Droid.Resource.Drawable.abc_list_focused_holo;
+			global::FormsControls.Droid.Resource.Drawable.abc_list_longpressed_holo = global::HodlWallet2.Droid.Resource.Drawable.abc_list_longpressed_holo;
+			global::FormsControls.Droid.Resource.Drawable.abc_list_pressed_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
+			global::FormsControls.Droid.Resource.Drawable.abc_list_pressed_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_list_pressed_holo_light;
+			global::FormsControls.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
+			global::FormsControls.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
+			global::FormsControls.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
+			global::FormsControls.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
+			global::FormsControls.Droid.Resource.Drawable.abc_list_selector_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_holo_dark;
+			global::FormsControls.Droid.Resource.Drawable.abc_list_selector_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_holo_light;
+			global::FormsControls.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::HodlWallet2.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
+			global::FormsControls.Droid.Resource.Drawable.abc_popup_background_mtrl_mult = global::HodlWallet2.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
+			global::FormsControls.Droid.Resource.Drawable.abc_ratingbar_indicator_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ratingbar_indicator_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_ratingbar_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ratingbar_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_ratingbar_small_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ratingbar_small_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
+			global::FormsControls.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
+			global::FormsControls.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_seekbar_thumb_material = global::HodlWallet2.Droid.Resource.Drawable.abc_seekbar_thumb_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_seekbar_tick_mark_material = global::HodlWallet2.Droid.Resource.Drawable.abc_seekbar_tick_mark_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_seekbar_track_material = global::HodlWallet2.Droid.Resource.Drawable.abc_seekbar_track_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_spinner_textfield_background_material = global::HodlWallet2.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_switch_thumb_material = global::HodlWallet2.Droid.Resource.Drawable.abc_switch_thumb_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_tab_indicator_material = global::HodlWallet2.Droid.Resource.Drawable.abc_tab_indicator_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_text_cursor_material = global::HodlWallet2.Droid.Resource.Drawable.abc_text_cursor_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_dark;
+			global::FormsControls.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_light = global::HodlWallet2.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_light;
+			global::FormsControls.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark;
+			global::FormsControls.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_light = global::HodlWallet2.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_light;
+			global::FormsControls.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_dark;
+			global::FormsControls.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_light = global::HodlWallet2.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_light;
+			global::FormsControls.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_textfield_search_material = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_search_material;
+			global::FormsControls.Droid.Resource.Drawable.abc_vector_test = global::HodlWallet2.Droid.Resource.Drawable.abc_vector_test;
+			global::FormsControls.Droid.Resource.Drawable.avd_hide_password = global::HodlWallet2.Droid.Resource.Drawable.avd_hide_password;
+			global::FormsControls.Droid.Resource.Drawable.avd_hide_password_1 = global::HodlWallet2.Droid.Resource.Drawable.avd_hide_password_1;
+			global::FormsControls.Droid.Resource.Drawable.avd_hide_password_2 = global::HodlWallet2.Droid.Resource.Drawable.avd_hide_password_2;
+			global::FormsControls.Droid.Resource.Drawable.avd_hide_password_3 = global::HodlWallet2.Droid.Resource.Drawable.avd_hide_password_3;
+			global::FormsControls.Droid.Resource.Drawable.avd_show_password = global::HodlWallet2.Droid.Resource.Drawable.avd_show_password;
+			global::FormsControls.Droid.Resource.Drawable.avd_show_password_1 = global::HodlWallet2.Droid.Resource.Drawable.avd_show_password_1;
+			global::FormsControls.Droid.Resource.Drawable.avd_show_password_2 = global::HodlWallet2.Droid.Resource.Drawable.avd_show_password_2;
+			global::FormsControls.Droid.Resource.Drawable.avd_show_password_3 = global::HodlWallet2.Droid.Resource.Drawable.avd_show_password_3;
+			global::FormsControls.Droid.Resource.Drawable.design_bottom_navigation_item_background = global::HodlWallet2.Droid.Resource.Drawable.design_bottom_navigation_item_background;
+			global::FormsControls.Droid.Resource.Drawable.design_fab_background = global::HodlWallet2.Droid.Resource.Drawable.design_fab_background;
+			global::FormsControls.Droid.Resource.Drawable.design_ic_visibility = global::HodlWallet2.Droid.Resource.Drawable.design_ic_visibility;
+			global::FormsControls.Droid.Resource.Drawable.design_ic_visibility_off = global::HodlWallet2.Droid.Resource.Drawable.design_ic_visibility_off;
+			global::FormsControls.Droid.Resource.Drawable.design_password_eye = global::HodlWallet2.Droid.Resource.Drawable.design_password_eye;
+			global::FormsControls.Droid.Resource.Drawable.design_snackbar_background = global::HodlWallet2.Droid.Resource.Drawable.design_snackbar_background;
+			global::FormsControls.Droid.Resource.Drawable.ic_audiotrack_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_audiotrack_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_audiotrack_light = global::HodlWallet2.Droid.Resource.Drawable.ic_audiotrack_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_dialog_close_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_dialog_close_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_dialog_close_light = global::HodlWallet2.Droid.Resource.Drawable.ic_dialog_close_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_00 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_00;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_01 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_01;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_02 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_02;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_03 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_03;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_04 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_04;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_05 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_05;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_06 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_06;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_07 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_07;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_08 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_08;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_09 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_09;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_10 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_10;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_11 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_11;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_12 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_12;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_13 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_13;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_14 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_14;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_collapse_15 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_15;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_00 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_00;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_01 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_01;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_02 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_02;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_03 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_03;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_04 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_04;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_05 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_05;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_06 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_06;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_07 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_07;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_08 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_08;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_09 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_09;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_10 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_10;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_11 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_11;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_12 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_12;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_13 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_13;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_14 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_14;
+			global::FormsControls.Droid.Resource.Drawable.ic_group_expand_15 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_15;
+			global::FormsControls.Droid.Resource.Drawable.ic_media_pause_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_media_pause_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_media_pause_light = global::HodlWallet2.Droid.Resource.Drawable.ic_media_pause_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_media_play_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_media_play_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_media_play_light = global::HodlWallet2.Droid.Resource.Drawable.ic_media_play_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_media_stop_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_media_stop_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_media_stop_light = global::HodlWallet2.Droid.Resource.Drawable.ic_media_stop_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_00_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_00_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_00_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_00_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_01_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_01_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_01_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_01_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_02_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_02_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_02_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_02_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_03_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_03_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_03_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_03_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_04_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_04_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_04_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_04_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_05_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_05_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_05_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_05_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_06_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_06_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_06_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_06_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_07_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_07_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_07_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_07_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_08_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_08_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_08_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_08_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_09_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_09_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_09_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_09_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_10_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_10_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_10_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_10_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_11_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_11_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_11_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_11_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_12_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_12_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_12_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_12_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_13_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_13_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_13_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_13_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_14_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_14_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_14_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_14_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_15_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_15_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_15_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_15_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_16_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_16_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_16_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_16_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_17_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_17_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_17_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_17_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_18_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_18_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_18_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_18_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_19_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_19_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_19_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_19_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_20_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_20_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_20_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_20_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_21_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_21_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_21_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_21_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_22_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_22_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_22_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_22_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_23_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_23_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_23_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_23_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_24_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_24_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_24_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_24_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_25_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_25_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_25_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_25_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_26_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_26_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_26_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_26_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_27_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_27_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_27_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_27_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_28_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_28_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_28_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_28_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_29_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_29_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_29_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_29_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_30_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_30_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connected_30_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_30_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_00_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_00_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_00_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_00_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_01_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_01_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_01_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_01_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_02_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_02_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_02_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_02_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_03_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_03_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_03_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_03_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_04_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_04_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_04_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_04_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_05_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_05_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_05_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_05_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_06_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_06_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_06_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_06_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_07_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_07_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_07_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_07_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_08_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_08_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_08_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_08_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_09_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_09_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_09_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_09_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_10_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_10_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_10_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_10_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_11_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_11_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_11_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_11_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_12_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_12_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_12_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_12_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_13_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_13_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_13_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_13_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_14_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_14_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_14_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_14_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_15_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_15_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_15_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_15_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_16_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_16_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_16_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_16_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_17_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_17_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_17_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_17_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_18_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_18_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_18_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_18_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_19_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_19_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_19_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_19_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_20_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_20_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_20_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_20_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_21_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_21_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_21_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_21_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_22_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_22_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_22_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_22_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_23_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_23_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_23_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_23_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_24_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_24_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_24_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_24_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_25_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_25_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_25_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_25_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_26_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_26_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_26_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_26_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_27_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_27_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_27_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_27_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_28_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_28_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_28_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_28_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_29_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_29_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_29_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_29_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_30_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_30_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_connecting_30_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_30_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_disabled_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_disabled_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_disabled_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_disabled_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_disconnected_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_disconnected_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_disconnected_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_disconnected_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_mr_button_grey = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_grey;
+			global::FormsControls.Droid.Resource.Drawable.ic_vol_type_speaker_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_vol_type_speaker_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_vol_type_speaker_group_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_vol_type_speaker_group_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_vol_type_speaker_group_light = global::HodlWallet2.Droid.Resource.Drawable.ic_vol_type_speaker_group_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_vol_type_speaker_light = global::HodlWallet2.Droid.Resource.Drawable.ic_vol_type_speaker_light;
+			global::FormsControls.Droid.Resource.Drawable.ic_vol_type_tv_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_vol_type_tv_dark;
+			global::FormsControls.Droid.Resource.Drawable.ic_vol_type_tv_light = global::HodlWallet2.Droid.Resource.Drawable.ic_vol_type_tv_light;
+			global::FormsControls.Droid.Resource.Drawable.mr_button_connected_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_button_connected_dark;
+			global::FormsControls.Droid.Resource.Drawable.mr_button_connected_light = global::HodlWallet2.Droid.Resource.Drawable.mr_button_connected_light;
+			global::FormsControls.Droid.Resource.Drawable.mr_button_connecting_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_button_connecting_dark;
+			global::FormsControls.Droid.Resource.Drawable.mr_button_connecting_light = global::HodlWallet2.Droid.Resource.Drawable.mr_button_connecting_light;
+			global::FormsControls.Droid.Resource.Drawable.mr_button_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_button_dark;
+			global::FormsControls.Droid.Resource.Drawable.mr_button_light = global::HodlWallet2.Droid.Resource.Drawable.mr_button_light;
+			global::FormsControls.Droid.Resource.Drawable.mr_dialog_close_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_dialog_close_dark;
+			global::FormsControls.Droid.Resource.Drawable.mr_dialog_close_light = global::HodlWallet2.Droid.Resource.Drawable.mr_dialog_close_light;
+			global::FormsControls.Droid.Resource.Drawable.mr_dialog_material_background_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_dialog_material_background_dark;
+			global::FormsControls.Droid.Resource.Drawable.mr_dialog_material_background_light = global::HodlWallet2.Droid.Resource.Drawable.mr_dialog_material_background_light;
+			global::FormsControls.Droid.Resource.Drawable.mr_group_collapse = global::HodlWallet2.Droid.Resource.Drawable.mr_group_collapse;
+			global::FormsControls.Droid.Resource.Drawable.mr_group_expand = global::HodlWallet2.Droid.Resource.Drawable.mr_group_expand;
+			global::FormsControls.Droid.Resource.Drawable.mr_media_pause_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_media_pause_dark;
+			global::FormsControls.Droid.Resource.Drawable.mr_media_pause_light = global::HodlWallet2.Droid.Resource.Drawable.mr_media_pause_light;
+			global::FormsControls.Droid.Resource.Drawable.mr_media_play_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_media_play_dark;
+			global::FormsControls.Droid.Resource.Drawable.mr_media_play_light = global::HodlWallet2.Droid.Resource.Drawable.mr_media_play_light;
+			global::FormsControls.Droid.Resource.Drawable.mr_media_stop_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_media_stop_dark;
+			global::FormsControls.Droid.Resource.Drawable.mr_media_stop_light = global::HodlWallet2.Droid.Resource.Drawable.mr_media_stop_light;
+			global::FormsControls.Droid.Resource.Drawable.mr_vol_type_audiotrack_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_vol_type_audiotrack_dark;
+			global::FormsControls.Droid.Resource.Drawable.mr_vol_type_audiotrack_light = global::HodlWallet2.Droid.Resource.Drawable.mr_vol_type_audiotrack_light;
+			global::FormsControls.Droid.Resource.Drawable.navigation_empty_icon = global::HodlWallet2.Droid.Resource.Drawable.navigation_empty_icon;
+			global::FormsControls.Droid.Resource.Drawable.notification_action_background = global::HodlWallet2.Droid.Resource.Drawable.notification_action_background;
+			global::FormsControls.Droid.Resource.Drawable.notification_bg = global::HodlWallet2.Droid.Resource.Drawable.notification_bg;
+			global::FormsControls.Droid.Resource.Drawable.notification_bg_low = global::HodlWallet2.Droid.Resource.Drawable.notification_bg_low;
+			global::FormsControls.Droid.Resource.Drawable.notification_bg_low_normal = global::HodlWallet2.Droid.Resource.Drawable.notification_bg_low_normal;
+			global::FormsControls.Droid.Resource.Drawable.notification_bg_low_pressed = global::HodlWallet2.Droid.Resource.Drawable.notification_bg_low_pressed;
+			global::FormsControls.Droid.Resource.Drawable.notification_bg_normal = global::HodlWallet2.Droid.Resource.Drawable.notification_bg_normal;
+			global::FormsControls.Droid.Resource.Drawable.notification_bg_normal_pressed = global::HodlWallet2.Droid.Resource.Drawable.notification_bg_normal_pressed;
+			global::FormsControls.Droid.Resource.Drawable.notification_icon_background = global::HodlWallet2.Droid.Resource.Drawable.notification_icon_background;
+			global::FormsControls.Droid.Resource.Drawable.notification_template_icon_bg = global::HodlWallet2.Droid.Resource.Drawable.notification_template_icon_bg;
+			global::FormsControls.Droid.Resource.Drawable.notification_template_icon_low_bg = global::HodlWallet2.Droid.Resource.Drawable.notification_template_icon_low_bg;
+			global::FormsControls.Droid.Resource.Drawable.notification_tile_bg = global::HodlWallet2.Droid.Resource.Drawable.notification_tile_bg;
+			global::FormsControls.Droid.Resource.Drawable.notify_panel_notification_icon_bg = global::HodlWallet2.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::FormsControls.Droid.Resource.Drawable.tooltip_frame_dark = global::HodlWallet2.Droid.Resource.Drawable.tooltip_frame_dark;
+			global::FormsControls.Droid.Resource.Drawable.tooltip_frame_light = global::HodlWallet2.Droid.Resource.Drawable.tooltip_frame_light;
+			global::FormsControls.Droid.Resource.Id.ALT = global::HodlWallet2.Droid.Resource.Id.ALT;
+			global::FormsControls.Droid.Resource.Id.CTRL = global::HodlWallet2.Droid.Resource.Id.CTRL;
+			global::FormsControls.Droid.Resource.Id.FUNCTION = global::HodlWallet2.Droid.Resource.Id.FUNCTION;
+			global::FormsControls.Droid.Resource.Id.META = global::HodlWallet2.Droid.Resource.Id.META;
+			global::FormsControls.Droid.Resource.Id.SHIFT = global::HodlWallet2.Droid.Resource.Id.SHIFT;
+			global::FormsControls.Droid.Resource.Id.SYM = global::HodlWallet2.Droid.Resource.Id.SYM;
+			global::FormsControls.Droid.Resource.Id.action0 = global::HodlWallet2.Droid.Resource.Id.action0;
+			global::FormsControls.Droid.Resource.Id.action_bar = global::HodlWallet2.Droid.Resource.Id.action_bar;
+			global::FormsControls.Droid.Resource.Id.action_bar_activity_content = global::HodlWallet2.Droid.Resource.Id.action_bar_activity_content;
+			global::FormsControls.Droid.Resource.Id.action_bar_container = global::HodlWallet2.Droid.Resource.Id.action_bar_container;
+			global::FormsControls.Droid.Resource.Id.action_bar_root = global::HodlWallet2.Droid.Resource.Id.action_bar_root;
+			global::FormsControls.Droid.Resource.Id.action_bar_spinner = global::HodlWallet2.Droid.Resource.Id.action_bar_spinner;
+			global::FormsControls.Droid.Resource.Id.action_bar_subtitle = global::HodlWallet2.Droid.Resource.Id.action_bar_subtitle;
+			global::FormsControls.Droid.Resource.Id.action_bar_title = global::HodlWallet2.Droid.Resource.Id.action_bar_title;
+			global::FormsControls.Droid.Resource.Id.action_container = global::HodlWallet2.Droid.Resource.Id.action_container;
+			global::FormsControls.Droid.Resource.Id.action_context_bar = global::HodlWallet2.Droid.Resource.Id.action_context_bar;
+			global::FormsControls.Droid.Resource.Id.action_divider = global::HodlWallet2.Droid.Resource.Id.action_divider;
+			global::FormsControls.Droid.Resource.Id.action_image = global::HodlWallet2.Droid.Resource.Id.action_image;
+			global::FormsControls.Droid.Resource.Id.action_menu_divider = global::HodlWallet2.Droid.Resource.Id.action_menu_divider;
+			global::FormsControls.Droid.Resource.Id.action_menu_presenter = global::HodlWallet2.Droid.Resource.Id.action_menu_presenter;
+			global::FormsControls.Droid.Resource.Id.action_mode_bar = global::HodlWallet2.Droid.Resource.Id.action_mode_bar;
+			global::FormsControls.Droid.Resource.Id.action_mode_bar_stub = global::HodlWallet2.Droid.Resource.Id.action_mode_bar_stub;
+			global::FormsControls.Droid.Resource.Id.action_mode_close_button = global::HodlWallet2.Droid.Resource.Id.action_mode_close_button;
+			global::FormsControls.Droid.Resource.Id.action_text = global::HodlWallet2.Droid.Resource.Id.action_text;
+			global::FormsControls.Droid.Resource.Id.actions = global::HodlWallet2.Droid.Resource.Id.actions;
+			global::FormsControls.Droid.Resource.Id.activity_chooser_view_content = global::HodlWallet2.Droid.Resource.Id.activity_chooser_view_content;
+			global::FormsControls.Droid.Resource.Id.add = global::HodlWallet2.Droid.Resource.Id.add;
+			global::FormsControls.Droid.Resource.Id.alertTitle = global::HodlWallet2.Droid.Resource.Id.alertTitle;
+			global::FormsControls.Droid.Resource.Id.all = global::HodlWallet2.Droid.Resource.Id.all;
+			global::FormsControls.Droid.Resource.Id.always = global::HodlWallet2.Droid.Resource.Id.always;
+			global::FormsControls.Droid.Resource.Id.async = global::HodlWallet2.Droid.Resource.Id.async;
+			global::FormsControls.Droid.Resource.Id.auto = global::HodlWallet2.Droid.Resource.Id.auto;
+			global::FormsControls.Droid.Resource.Id.beginning = global::HodlWallet2.Droid.Resource.Id.beginning;
+			global::FormsControls.Droid.Resource.Id.blocking = global::HodlWallet2.Droid.Resource.Id.blocking;
+			global::FormsControls.Droid.Resource.Id.bottom = global::HodlWallet2.Droid.Resource.Id.bottom;
+			global::FormsControls.Droid.Resource.Id.buttonPanel = global::HodlWallet2.Droid.Resource.Id.buttonPanel;
+			global::FormsControls.Droid.Resource.Id.cancel_action = global::HodlWallet2.Droid.Resource.Id.cancel_action;
+			global::FormsControls.Droid.Resource.Id.center = global::HodlWallet2.Droid.Resource.Id.center;
+			global::FormsControls.Droid.Resource.Id.center_horizontal = global::HodlWallet2.Droid.Resource.Id.center_horizontal;
+			global::FormsControls.Droid.Resource.Id.center_vertical = global::HodlWallet2.Droid.Resource.Id.center_vertical;
+			global::FormsControls.Droid.Resource.Id.checkbox = global::HodlWallet2.Droid.Resource.Id.checkbox;
+			global::FormsControls.Droid.Resource.Id.chronometer = global::HodlWallet2.Droid.Resource.Id.chronometer;
+			global::FormsControls.Droid.Resource.Id.clip_horizontal = global::HodlWallet2.Droid.Resource.Id.clip_horizontal;
+			global::FormsControls.Droid.Resource.Id.clip_vertical = global::HodlWallet2.Droid.Resource.Id.clip_vertical;
+			global::FormsControls.Droid.Resource.Id.collapseActionView = global::HodlWallet2.Droid.Resource.Id.collapseActionView;
+			global::FormsControls.Droid.Resource.Id.container = global::HodlWallet2.Droid.Resource.Id.container;
+			global::FormsControls.Droid.Resource.Id.contentPanel = global::HodlWallet2.Droid.Resource.Id.contentPanel;
+			global::FormsControls.Droid.Resource.Id.coordinator = global::HodlWallet2.Droid.Resource.Id.coordinator;
+			global::FormsControls.Droid.Resource.Id.custom = global::HodlWallet2.Droid.Resource.Id.custom;
+			global::FormsControls.Droid.Resource.Id.customPanel = global::HodlWallet2.Droid.Resource.Id.customPanel;
+			global::FormsControls.Droid.Resource.Id.decor_content_parent = global::HodlWallet2.Droid.Resource.Id.decor_content_parent;
+			global::FormsControls.Droid.Resource.Id.default_activity_button = global::HodlWallet2.Droid.Resource.Id.default_activity_button;
+			global::FormsControls.Droid.Resource.Id.design_bottom_sheet = global::HodlWallet2.Droid.Resource.Id.design_bottom_sheet;
+			global::FormsControls.Droid.Resource.Id.design_menu_item_action_area = global::HodlWallet2.Droid.Resource.Id.design_menu_item_action_area;
+			global::FormsControls.Droid.Resource.Id.design_menu_item_action_area_stub = global::HodlWallet2.Droid.Resource.Id.design_menu_item_action_area_stub;
+			global::FormsControls.Droid.Resource.Id.design_menu_item_text = global::HodlWallet2.Droid.Resource.Id.design_menu_item_text;
+			global::FormsControls.Droid.Resource.Id.design_navigation_view = global::HodlWallet2.Droid.Resource.Id.design_navigation_view;
+			global::FormsControls.Droid.Resource.Id.disableHome = global::HodlWallet2.Droid.Resource.Id.disableHome;
+			global::FormsControls.Droid.Resource.Id.edit_query = global::HodlWallet2.Droid.Resource.Id.edit_query;
+			global::FormsControls.Droid.Resource.Id.end = global::HodlWallet2.Droid.Resource.Id.end;
+			global::FormsControls.Droid.Resource.Id.end_padder = global::HodlWallet2.Droid.Resource.Id.end_padder;
+			global::FormsControls.Droid.Resource.Id.enterAlways = global::HodlWallet2.Droid.Resource.Id.enterAlways;
+			global::FormsControls.Droid.Resource.Id.enterAlwaysCollapsed = global::HodlWallet2.Droid.Resource.Id.enterAlwaysCollapsed;
+			global::FormsControls.Droid.Resource.Id.exitUntilCollapsed = global::HodlWallet2.Droid.Resource.Id.exitUntilCollapsed;
+			global::FormsControls.Droid.Resource.Id.expand_activities_button = global::HodlWallet2.Droid.Resource.Id.expand_activities_button;
+			global::FormsControls.Droid.Resource.Id.expanded_menu = global::HodlWallet2.Droid.Resource.Id.expanded_menu;
+			global::FormsControls.Droid.Resource.Id.fill = global::HodlWallet2.Droid.Resource.Id.fill;
+			global::FormsControls.Droid.Resource.Id.fill_horizontal = global::HodlWallet2.Droid.Resource.Id.fill_horizontal;
+			global::FormsControls.Droid.Resource.Id.fill_vertical = global::HodlWallet2.Droid.Resource.Id.fill_vertical;
+			global::FormsControls.Droid.Resource.Id.@fixed = global::HodlWallet2.Droid.Resource.Id.@fixed;
+			global::FormsControls.Droid.Resource.Id.forever = global::HodlWallet2.Droid.Resource.Id.forever;
+			global::FormsControls.Droid.Resource.Id.ghost_view = global::HodlWallet2.Droid.Resource.Id.ghost_view;
+			global::FormsControls.Droid.Resource.Id.home = global::HodlWallet2.Droid.Resource.Id.home;
+			global::FormsControls.Droid.Resource.Id.homeAsUp = global::HodlWallet2.Droid.Resource.Id.homeAsUp;
+			global::FormsControls.Droid.Resource.Id.icon = global::HodlWallet2.Droid.Resource.Id.icon;
+			global::FormsControls.Droid.Resource.Id.icon_group = global::HodlWallet2.Droid.Resource.Id.icon_group;
+			global::FormsControls.Droid.Resource.Id.ifRoom = global::HodlWallet2.Droid.Resource.Id.ifRoom;
+			global::FormsControls.Droid.Resource.Id.image = global::HodlWallet2.Droid.Resource.Id.image;
+			global::FormsControls.Droid.Resource.Id.info = global::HodlWallet2.Droid.Resource.Id.info;
+			global::FormsControls.Droid.Resource.Id.italic = global::HodlWallet2.Droid.Resource.Id.italic;
+			global::FormsControls.Droid.Resource.Id.item_touch_helper_previous_elevation = global::HodlWallet2.Droid.Resource.Id.item_touch_helper_previous_elevation;
+			global::FormsControls.Droid.Resource.Id.largeLabel = global::HodlWallet2.Droid.Resource.Id.largeLabel;
+			global::FormsControls.Droid.Resource.Id.left = global::HodlWallet2.Droid.Resource.Id.left;
+			global::FormsControls.Droid.Resource.Id.line1 = global::HodlWallet2.Droid.Resource.Id.line1;
+			global::FormsControls.Droid.Resource.Id.line3 = global::HodlWallet2.Droid.Resource.Id.line3;
+			global::FormsControls.Droid.Resource.Id.listMode = global::HodlWallet2.Droid.Resource.Id.listMode;
+			global::FormsControls.Droid.Resource.Id.list_item = global::HodlWallet2.Droid.Resource.Id.list_item;
+			global::FormsControls.Droid.Resource.Id.masked = global::HodlWallet2.Droid.Resource.Id.masked;
+			global::FormsControls.Droid.Resource.Id.media_actions = global::HodlWallet2.Droid.Resource.Id.media_actions;
+			global::FormsControls.Droid.Resource.Id.message = global::HodlWallet2.Droid.Resource.Id.message;
+			global::FormsControls.Droid.Resource.Id.middle = global::HodlWallet2.Droid.Resource.Id.middle;
+			global::FormsControls.Droid.Resource.Id.mini = global::HodlWallet2.Droid.Resource.Id.mini;
+			global::FormsControls.Droid.Resource.Id.mr_art = global::HodlWallet2.Droid.Resource.Id.mr_art;
+			global::FormsControls.Droid.Resource.Id.mr_chooser_list = global::HodlWallet2.Droid.Resource.Id.mr_chooser_list;
+			global::FormsControls.Droid.Resource.Id.mr_chooser_route_desc = global::HodlWallet2.Droid.Resource.Id.mr_chooser_route_desc;
+			global::FormsControls.Droid.Resource.Id.mr_chooser_route_icon = global::HodlWallet2.Droid.Resource.Id.mr_chooser_route_icon;
+			global::FormsControls.Droid.Resource.Id.mr_chooser_route_name = global::HodlWallet2.Droid.Resource.Id.mr_chooser_route_name;
+			global::FormsControls.Droid.Resource.Id.mr_chooser_title = global::HodlWallet2.Droid.Resource.Id.mr_chooser_title;
+			global::FormsControls.Droid.Resource.Id.mr_close = global::HodlWallet2.Droid.Resource.Id.mr_close;
+			global::FormsControls.Droid.Resource.Id.mr_control_divider = global::HodlWallet2.Droid.Resource.Id.mr_control_divider;
+			global::FormsControls.Droid.Resource.Id.mr_control_playback_ctrl = global::HodlWallet2.Droid.Resource.Id.mr_control_playback_ctrl;
+			global::FormsControls.Droid.Resource.Id.mr_control_subtitle = global::HodlWallet2.Droid.Resource.Id.mr_control_subtitle;
+			global::FormsControls.Droid.Resource.Id.mr_control_title = global::HodlWallet2.Droid.Resource.Id.mr_control_title;
+			global::FormsControls.Droid.Resource.Id.mr_control_title_container = global::HodlWallet2.Droid.Resource.Id.mr_control_title_container;
+			global::FormsControls.Droid.Resource.Id.mr_custom_control = global::HodlWallet2.Droid.Resource.Id.mr_custom_control;
+			global::FormsControls.Droid.Resource.Id.mr_default_control = global::HodlWallet2.Droid.Resource.Id.mr_default_control;
+			global::FormsControls.Droid.Resource.Id.mr_dialog_area = global::HodlWallet2.Droid.Resource.Id.mr_dialog_area;
+			global::FormsControls.Droid.Resource.Id.mr_expandable_area = global::HodlWallet2.Droid.Resource.Id.mr_expandable_area;
+			global::FormsControls.Droid.Resource.Id.mr_group_expand_collapse = global::HodlWallet2.Droid.Resource.Id.mr_group_expand_collapse;
+			global::FormsControls.Droid.Resource.Id.mr_media_main_control = global::HodlWallet2.Droid.Resource.Id.mr_media_main_control;
+			global::FormsControls.Droid.Resource.Id.mr_name = global::HodlWallet2.Droid.Resource.Id.mr_name;
+			global::FormsControls.Droid.Resource.Id.mr_playback_control = global::HodlWallet2.Droid.Resource.Id.mr_playback_control;
+			global::FormsControls.Droid.Resource.Id.mr_title_bar = global::HodlWallet2.Droid.Resource.Id.mr_title_bar;
+			global::FormsControls.Droid.Resource.Id.mr_volume_control = global::HodlWallet2.Droid.Resource.Id.mr_volume_control;
+			global::FormsControls.Droid.Resource.Id.mr_volume_group_list = global::HodlWallet2.Droid.Resource.Id.mr_volume_group_list;
+			global::FormsControls.Droid.Resource.Id.mr_volume_item_icon = global::HodlWallet2.Droid.Resource.Id.mr_volume_item_icon;
+			global::FormsControls.Droid.Resource.Id.mr_volume_slider = global::HodlWallet2.Droid.Resource.Id.mr_volume_slider;
+			global::FormsControls.Droid.Resource.Id.multiply = global::HodlWallet2.Droid.Resource.Id.multiply;
+			global::FormsControls.Droid.Resource.Id.navigation_header_container = global::HodlWallet2.Droid.Resource.Id.navigation_header_container;
+			global::FormsControls.Droid.Resource.Id.never = global::HodlWallet2.Droid.Resource.Id.never;
+			global::FormsControls.Droid.Resource.Id.none = global::HodlWallet2.Droid.Resource.Id.none;
+			global::FormsControls.Droid.Resource.Id.normal = global::HodlWallet2.Droid.Resource.Id.normal;
+			global::FormsControls.Droid.Resource.Id.notification_background = global::HodlWallet2.Droid.Resource.Id.notification_background;
+			global::FormsControls.Droid.Resource.Id.notification_main_column = global::HodlWallet2.Droid.Resource.Id.notification_main_column;
+			global::FormsControls.Droid.Resource.Id.notification_main_column_container = global::HodlWallet2.Droid.Resource.Id.notification_main_column_container;
+			global::FormsControls.Droid.Resource.Id.parallax = global::HodlWallet2.Droid.Resource.Id.parallax;
+			global::FormsControls.Droid.Resource.Id.parentPanel = global::HodlWallet2.Droid.Resource.Id.parentPanel;
+			global::FormsControls.Droid.Resource.Id.parent_matrix = global::HodlWallet2.Droid.Resource.Id.parent_matrix;
+			global::FormsControls.Droid.Resource.Id.pin = global::HodlWallet2.Droid.Resource.Id.pin;
+			global::FormsControls.Droid.Resource.Id.progress_circular = global::HodlWallet2.Droid.Resource.Id.progress_circular;
+			global::FormsControls.Droid.Resource.Id.progress_horizontal = global::HodlWallet2.Droid.Resource.Id.progress_horizontal;
+			global::FormsControls.Droid.Resource.Id.radio = global::HodlWallet2.Droid.Resource.Id.radio;
+			global::FormsControls.Droid.Resource.Id.right = global::HodlWallet2.Droid.Resource.Id.right;
+			global::FormsControls.Droid.Resource.Id.right_icon = global::HodlWallet2.Droid.Resource.Id.right_icon;
+			global::FormsControls.Droid.Resource.Id.right_side = global::HodlWallet2.Droid.Resource.Id.right_side;
+			global::FormsControls.Droid.Resource.Id.save_image_matrix = global::HodlWallet2.Droid.Resource.Id.save_image_matrix;
+			global::FormsControls.Droid.Resource.Id.save_non_transition_alpha = global::HodlWallet2.Droid.Resource.Id.save_non_transition_alpha;
+			global::FormsControls.Droid.Resource.Id.save_scale_type = global::HodlWallet2.Droid.Resource.Id.save_scale_type;
+			global::FormsControls.Droid.Resource.Id.screen = global::HodlWallet2.Droid.Resource.Id.screen;
+			global::FormsControls.Droid.Resource.Id.scroll = global::HodlWallet2.Droid.Resource.Id.scroll;
+			global::FormsControls.Droid.Resource.Id.scrollIndicatorDown = global::HodlWallet2.Droid.Resource.Id.scrollIndicatorDown;
+			global::FormsControls.Droid.Resource.Id.scrollIndicatorUp = global::HodlWallet2.Droid.Resource.Id.scrollIndicatorUp;
+			global::FormsControls.Droid.Resource.Id.scrollView = global::HodlWallet2.Droid.Resource.Id.scrollView;
+			global::FormsControls.Droid.Resource.Id.scrollable = global::HodlWallet2.Droid.Resource.Id.scrollable;
+			global::FormsControls.Droid.Resource.Id.search_badge = global::HodlWallet2.Droid.Resource.Id.search_badge;
+			global::FormsControls.Droid.Resource.Id.search_bar = global::HodlWallet2.Droid.Resource.Id.search_bar;
+			global::FormsControls.Droid.Resource.Id.search_button = global::HodlWallet2.Droid.Resource.Id.search_button;
+			global::FormsControls.Droid.Resource.Id.search_close_btn = global::HodlWallet2.Droid.Resource.Id.search_close_btn;
+			global::FormsControls.Droid.Resource.Id.search_edit_frame = global::HodlWallet2.Droid.Resource.Id.search_edit_frame;
+			global::FormsControls.Droid.Resource.Id.search_go_btn = global::HodlWallet2.Droid.Resource.Id.search_go_btn;
+			global::FormsControls.Droid.Resource.Id.search_mag_icon = global::HodlWallet2.Droid.Resource.Id.search_mag_icon;
+			global::FormsControls.Droid.Resource.Id.search_plate = global::HodlWallet2.Droid.Resource.Id.search_plate;
+			global::FormsControls.Droid.Resource.Id.search_src_text = global::HodlWallet2.Droid.Resource.Id.search_src_text;
+			global::FormsControls.Droid.Resource.Id.search_voice_btn = global::HodlWallet2.Droid.Resource.Id.search_voice_btn;
+			global::FormsControls.Droid.Resource.Id.select_dialog_listview = global::HodlWallet2.Droid.Resource.Id.select_dialog_listview;
+			global::FormsControls.Droid.Resource.Id.shortcut = global::HodlWallet2.Droid.Resource.Id.shortcut;
+			global::FormsControls.Droid.Resource.Id.showCustom = global::HodlWallet2.Droid.Resource.Id.showCustom;
+			global::FormsControls.Droid.Resource.Id.showHome = global::HodlWallet2.Droid.Resource.Id.showHome;
+			global::FormsControls.Droid.Resource.Id.showTitle = global::HodlWallet2.Droid.Resource.Id.showTitle;
+			global::FormsControls.Droid.Resource.Id.smallLabel = global::HodlWallet2.Droid.Resource.Id.smallLabel;
+			global::FormsControls.Droid.Resource.Id.snackbar_action = global::HodlWallet2.Droid.Resource.Id.snackbar_action;
+			global::FormsControls.Droid.Resource.Id.snackbar_text = global::HodlWallet2.Droid.Resource.Id.snackbar_text;
+			global::FormsControls.Droid.Resource.Id.snap = global::HodlWallet2.Droid.Resource.Id.snap;
+			global::FormsControls.Droid.Resource.Id.spacer = global::HodlWallet2.Droid.Resource.Id.spacer;
+			global::FormsControls.Droid.Resource.Id.split_action_bar = global::HodlWallet2.Droid.Resource.Id.split_action_bar;
+			global::FormsControls.Droid.Resource.Id.src_atop = global::HodlWallet2.Droid.Resource.Id.src_atop;
+			global::FormsControls.Droid.Resource.Id.src_in = global::HodlWallet2.Droid.Resource.Id.src_in;
+			global::FormsControls.Droid.Resource.Id.src_over = global::HodlWallet2.Droid.Resource.Id.src_over;
+			global::FormsControls.Droid.Resource.Id.start = global::HodlWallet2.Droid.Resource.Id.start;
+			global::FormsControls.Droid.Resource.Id.status_bar_latest_event_content = global::HodlWallet2.Droid.Resource.Id.status_bar_latest_event_content;
+			global::FormsControls.Droid.Resource.Id.submenuarrow = global::HodlWallet2.Droid.Resource.Id.submenuarrow;
+			global::FormsControls.Droid.Resource.Id.submit_area = global::HodlWallet2.Droid.Resource.Id.submit_area;
+			global::FormsControls.Droid.Resource.Id.tabMode = global::HodlWallet2.Droid.Resource.Id.tabMode;
+			global::FormsControls.Droid.Resource.Id.tag_transition_group = global::HodlWallet2.Droid.Resource.Id.tag_transition_group;
+			global::FormsControls.Droid.Resource.Id.text = global::HodlWallet2.Droid.Resource.Id.text;
+			global::FormsControls.Droid.Resource.Id.text2 = global::HodlWallet2.Droid.Resource.Id.text2;
+			global::FormsControls.Droid.Resource.Id.textSpacerNoButtons = global::HodlWallet2.Droid.Resource.Id.textSpacerNoButtons;
+			global::FormsControls.Droid.Resource.Id.textSpacerNoTitle = global::HodlWallet2.Droid.Resource.Id.textSpacerNoTitle;
+			global::FormsControls.Droid.Resource.Id.text_input_password_toggle = global::HodlWallet2.Droid.Resource.Id.text_input_password_toggle;
+			global::FormsControls.Droid.Resource.Id.textinput_counter = global::HodlWallet2.Droid.Resource.Id.textinput_counter;
+			global::FormsControls.Droid.Resource.Id.textinput_error = global::HodlWallet2.Droid.Resource.Id.textinput_error;
+			global::FormsControls.Droid.Resource.Id.time = global::HodlWallet2.Droid.Resource.Id.time;
+			global::FormsControls.Droid.Resource.Id.title = global::HodlWallet2.Droid.Resource.Id.title;
+			global::FormsControls.Droid.Resource.Id.titleDividerNoCustom = global::HodlWallet2.Droid.Resource.Id.titleDividerNoCustom;
+			global::FormsControls.Droid.Resource.Id.title_template = global::HodlWallet2.Droid.Resource.Id.title_template;
+			global::FormsControls.Droid.Resource.Id.top = global::HodlWallet2.Droid.Resource.Id.top;
+			global::FormsControls.Droid.Resource.Id.topPanel = global::HodlWallet2.Droid.Resource.Id.topPanel;
+			global::FormsControls.Droid.Resource.Id.touch_outside = global::HodlWallet2.Droid.Resource.Id.touch_outside;
+			global::FormsControls.Droid.Resource.Id.transition_current_scene = global::HodlWallet2.Droid.Resource.Id.transition_current_scene;
+			global::FormsControls.Droid.Resource.Id.transition_layout_save = global::HodlWallet2.Droid.Resource.Id.transition_layout_save;
+			global::FormsControls.Droid.Resource.Id.transition_position = global::HodlWallet2.Droid.Resource.Id.transition_position;
+			global::FormsControls.Droid.Resource.Id.transition_scene_layoutid_cache = global::HodlWallet2.Droid.Resource.Id.transition_scene_layoutid_cache;
+			global::FormsControls.Droid.Resource.Id.transition_transform = global::HodlWallet2.Droid.Resource.Id.transition_transform;
+			global::FormsControls.Droid.Resource.Id.uniform = global::HodlWallet2.Droid.Resource.Id.uniform;
+			global::FormsControls.Droid.Resource.Id.up = global::HodlWallet2.Droid.Resource.Id.up;
+			global::FormsControls.Droid.Resource.Id.useLogo = global::HodlWallet2.Droid.Resource.Id.useLogo;
+			global::FormsControls.Droid.Resource.Id.view_offset_helper = global::HodlWallet2.Droid.Resource.Id.view_offset_helper;
+			global::FormsControls.Droid.Resource.Id.visible = global::HodlWallet2.Droid.Resource.Id.visible;
+			global::FormsControls.Droid.Resource.Id.volume_item_container = global::HodlWallet2.Droid.Resource.Id.volume_item_container;
+			global::FormsControls.Droid.Resource.Id.withText = global::HodlWallet2.Droid.Resource.Id.withText;
+			global::FormsControls.Droid.Resource.Id.wrap_content = global::HodlWallet2.Droid.Resource.Id.wrap_content;
+			global::FormsControls.Droid.Resource.Integer.abc_config_activityDefaultDur = global::HodlWallet2.Droid.Resource.Integer.abc_config_activityDefaultDur;
+			global::FormsControls.Droid.Resource.Integer.abc_config_activityShortDur = global::HodlWallet2.Droid.Resource.Integer.abc_config_activityShortDur;
+			global::FormsControls.Droid.Resource.Integer.animation_duration = global::HodlWallet2.Droid.Resource.Integer.animation_duration;
+			global::FormsControls.Droid.Resource.Integer.animation_duration_long = global::HodlWallet2.Droid.Resource.Integer.animation_duration_long;
+			global::FormsControls.Droid.Resource.Integer.animation_duration_short = global::HodlWallet2.Droid.Resource.Integer.animation_duration_short;
+			global::FormsControls.Droid.Resource.Integer.app_bar_elevation_anim_duration = global::HodlWallet2.Droid.Resource.Integer.app_bar_elevation_anim_duration;
+			global::FormsControls.Droid.Resource.Integer.bottom_sheet_slide_duration = global::HodlWallet2.Droid.Resource.Integer.bottom_sheet_slide_duration;
+			global::FormsControls.Droid.Resource.Integer.cancel_button_image_alpha = global::HodlWallet2.Droid.Resource.Integer.cancel_button_image_alpha;
+			global::FormsControls.Droid.Resource.Integer.config_tooltipAnimTime = global::HodlWallet2.Droid.Resource.Integer.config_tooltipAnimTime;
+			global::FormsControls.Droid.Resource.Integer.design_snackbar_text_max_lines = global::HodlWallet2.Droid.Resource.Integer.design_snackbar_text_max_lines;
+			global::FormsControls.Droid.Resource.Integer.hide_password_duration = global::HodlWallet2.Droid.Resource.Integer.hide_password_duration;
+			global::FormsControls.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms = global::HodlWallet2.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms;
+			global::FormsControls.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms = global::HodlWallet2.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms;
+			global::FormsControls.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms = global::HodlWallet2.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms;
+			global::FormsControls.Droid.Resource.Integer.show_password_duration = global::HodlWallet2.Droid.Resource.Integer.show_password_duration;
+			global::FormsControls.Droid.Resource.Integer.status_bar_notification_info_maxnum = global::HodlWallet2.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::FormsControls.Droid.Resource.Interpolator.mr_fast_out_slow_in = global::HodlWallet2.Droid.Resource.Interpolator.mr_fast_out_slow_in;
+			global::FormsControls.Droid.Resource.Interpolator.mr_linear_out_slow_in = global::HodlWallet2.Droid.Resource.Interpolator.mr_linear_out_slow_in;
+			global::FormsControls.Droid.Resource.Layout.abc_action_bar_title_item = global::HodlWallet2.Droid.Resource.Layout.abc_action_bar_title_item;
+			global::FormsControls.Droid.Resource.Layout.abc_action_bar_up_container = global::HodlWallet2.Droid.Resource.Layout.abc_action_bar_up_container;
+			global::FormsControls.Droid.Resource.Layout.abc_action_menu_item_layout = global::HodlWallet2.Droid.Resource.Layout.abc_action_menu_item_layout;
+			global::FormsControls.Droid.Resource.Layout.abc_action_menu_layout = global::HodlWallet2.Droid.Resource.Layout.abc_action_menu_layout;
+			global::FormsControls.Droid.Resource.Layout.abc_action_mode_bar = global::HodlWallet2.Droid.Resource.Layout.abc_action_mode_bar;
+			global::FormsControls.Droid.Resource.Layout.abc_action_mode_close_item_material = global::HodlWallet2.Droid.Resource.Layout.abc_action_mode_close_item_material;
+			global::FormsControls.Droid.Resource.Layout.abc_activity_chooser_view = global::HodlWallet2.Droid.Resource.Layout.abc_activity_chooser_view;
+			global::FormsControls.Droid.Resource.Layout.abc_activity_chooser_view_list_item = global::HodlWallet2.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
+			global::FormsControls.Droid.Resource.Layout.abc_alert_dialog_button_bar_material = global::HodlWallet2.Droid.Resource.Layout.abc_alert_dialog_button_bar_material;
+			global::FormsControls.Droid.Resource.Layout.abc_alert_dialog_material = global::HodlWallet2.Droid.Resource.Layout.abc_alert_dialog_material;
+			global::FormsControls.Droid.Resource.Layout.abc_alert_dialog_title_material = global::HodlWallet2.Droid.Resource.Layout.abc_alert_dialog_title_material;
+			global::FormsControls.Droid.Resource.Layout.abc_dialog_title_material = global::HodlWallet2.Droid.Resource.Layout.abc_dialog_title_material;
+			global::FormsControls.Droid.Resource.Layout.abc_expanded_menu_layout = global::HodlWallet2.Droid.Resource.Layout.abc_expanded_menu_layout;
+			global::FormsControls.Droid.Resource.Layout.abc_list_menu_item_checkbox = global::HodlWallet2.Droid.Resource.Layout.abc_list_menu_item_checkbox;
+			global::FormsControls.Droid.Resource.Layout.abc_list_menu_item_icon = global::HodlWallet2.Droid.Resource.Layout.abc_list_menu_item_icon;
+			global::FormsControls.Droid.Resource.Layout.abc_list_menu_item_layout = global::HodlWallet2.Droid.Resource.Layout.abc_list_menu_item_layout;
+			global::FormsControls.Droid.Resource.Layout.abc_list_menu_item_radio = global::HodlWallet2.Droid.Resource.Layout.abc_list_menu_item_radio;
+			global::FormsControls.Droid.Resource.Layout.abc_popup_menu_header_item_layout = global::HodlWallet2.Droid.Resource.Layout.abc_popup_menu_header_item_layout;
+			global::FormsControls.Droid.Resource.Layout.abc_popup_menu_item_layout = global::HodlWallet2.Droid.Resource.Layout.abc_popup_menu_item_layout;
+			global::FormsControls.Droid.Resource.Layout.abc_screen_content_include = global::HodlWallet2.Droid.Resource.Layout.abc_screen_content_include;
+			global::FormsControls.Droid.Resource.Layout.abc_screen_simple = global::HodlWallet2.Droid.Resource.Layout.abc_screen_simple;
+			global::FormsControls.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode = global::HodlWallet2.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
+			global::FormsControls.Droid.Resource.Layout.abc_screen_toolbar = global::HodlWallet2.Droid.Resource.Layout.abc_screen_toolbar;
+			global::FormsControls.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line = global::HodlWallet2.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
+			global::FormsControls.Droid.Resource.Layout.abc_search_view = global::HodlWallet2.Droid.Resource.Layout.abc_search_view;
+			global::FormsControls.Droid.Resource.Layout.abc_select_dialog_material = global::HodlWallet2.Droid.Resource.Layout.abc_select_dialog_material;
+			global::FormsControls.Droid.Resource.Layout.design_bottom_navigation_item = global::HodlWallet2.Droid.Resource.Layout.design_bottom_navigation_item;
+			global::FormsControls.Droid.Resource.Layout.design_bottom_sheet_dialog = global::HodlWallet2.Droid.Resource.Layout.design_bottom_sheet_dialog;
+			global::FormsControls.Droid.Resource.Layout.design_layout_snackbar = global::HodlWallet2.Droid.Resource.Layout.design_layout_snackbar;
+			global::FormsControls.Droid.Resource.Layout.design_layout_snackbar_include = global::HodlWallet2.Droid.Resource.Layout.design_layout_snackbar_include;
+			global::FormsControls.Droid.Resource.Layout.design_layout_tab_icon = global::HodlWallet2.Droid.Resource.Layout.design_layout_tab_icon;
+			global::FormsControls.Droid.Resource.Layout.design_layout_tab_text = global::HodlWallet2.Droid.Resource.Layout.design_layout_tab_text;
+			global::FormsControls.Droid.Resource.Layout.design_menu_item_action_area = global::HodlWallet2.Droid.Resource.Layout.design_menu_item_action_area;
+			global::FormsControls.Droid.Resource.Layout.design_navigation_item = global::HodlWallet2.Droid.Resource.Layout.design_navigation_item;
+			global::FormsControls.Droid.Resource.Layout.design_navigation_item_header = global::HodlWallet2.Droid.Resource.Layout.design_navigation_item_header;
+			global::FormsControls.Droid.Resource.Layout.design_navigation_item_separator = global::HodlWallet2.Droid.Resource.Layout.design_navigation_item_separator;
+			global::FormsControls.Droid.Resource.Layout.design_navigation_item_subheader = global::HodlWallet2.Droid.Resource.Layout.design_navigation_item_subheader;
+			global::FormsControls.Droid.Resource.Layout.design_navigation_menu = global::HodlWallet2.Droid.Resource.Layout.design_navigation_menu;
+			global::FormsControls.Droid.Resource.Layout.design_navigation_menu_item = global::HodlWallet2.Droid.Resource.Layout.design_navigation_menu_item;
+			global::FormsControls.Droid.Resource.Layout.design_text_input_password_icon = global::HodlWallet2.Droid.Resource.Layout.design_text_input_password_icon;
+			global::FormsControls.Droid.Resource.Layout.mr_chooser_dialog = global::HodlWallet2.Droid.Resource.Layout.mr_chooser_dialog;
+			global::FormsControls.Droid.Resource.Layout.mr_chooser_list_item = global::HodlWallet2.Droid.Resource.Layout.mr_chooser_list_item;
+			global::FormsControls.Droid.Resource.Layout.mr_controller_material_dialog_b = global::HodlWallet2.Droid.Resource.Layout.mr_controller_material_dialog_b;
+			global::FormsControls.Droid.Resource.Layout.mr_controller_volume_item = global::HodlWallet2.Droid.Resource.Layout.mr_controller_volume_item;
+			global::FormsControls.Droid.Resource.Layout.mr_playback_control = global::HodlWallet2.Droid.Resource.Layout.mr_playback_control;
+			global::FormsControls.Droid.Resource.Layout.mr_volume_control = global::HodlWallet2.Droid.Resource.Layout.mr_volume_control;
+			global::FormsControls.Droid.Resource.Layout.notification_action = global::HodlWallet2.Droid.Resource.Layout.notification_action;
+			global::FormsControls.Droid.Resource.Layout.notification_action_tombstone = global::HodlWallet2.Droid.Resource.Layout.notification_action_tombstone;
+			global::FormsControls.Droid.Resource.Layout.notification_media_action = global::HodlWallet2.Droid.Resource.Layout.notification_media_action;
+			global::FormsControls.Droid.Resource.Layout.notification_media_cancel_action = global::HodlWallet2.Droid.Resource.Layout.notification_media_cancel_action;
+			global::FormsControls.Droid.Resource.Layout.notification_template_big_media = global::HodlWallet2.Droid.Resource.Layout.notification_template_big_media;
+			global::FormsControls.Droid.Resource.Layout.notification_template_big_media_custom = global::HodlWallet2.Droid.Resource.Layout.notification_template_big_media_custom;
+			global::FormsControls.Droid.Resource.Layout.notification_template_big_media_narrow = global::HodlWallet2.Droid.Resource.Layout.notification_template_big_media_narrow;
+			global::FormsControls.Droid.Resource.Layout.notification_template_big_media_narrow_custom = global::HodlWallet2.Droid.Resource.Layout.notification_template_big_media_narrow_custom;
+			global::FormsControls.Droid.Resource.Layout.notification_template_custom_big = global::HodlWallet2.Droid.Resource.Layout.notification_template_custom_big;
+			global::FormsControls.Droid.Resource.Layout.notification_template_icon_group = global::HodlWallet2.Droid.Resource.Layout.notification_template_icon_group;
+			global::FormsControls.Droid.Resource.Layout.notification_template_lines_media = global::HodlWallet2.Droid.Resource.Layout.notification_template_lines_media;
+			global::FormsControls.Droid.Resource.Layout.notification_template_media = global::HodlWallet2.Droid.Resource.Layout.notification_template_media;
+			global::FormsControls.Droid.Resource.Layout.notification_template_media_custom = global::HodlWallet2.Droid.Resource.Layout.notification_template_media_custom;
+			global::FormsControls.Droid.Resource.Layout.notification_template_part_chronometer = global::HodlWallet2.Droid.Resource.Layout.notification_template_part_chronometer;
+			global::FormsControls.Droid.Resource.Layout.notification_template_part_time = global::HodlWallet2.Droid.Resource.Layout.notification_template_part_time;
+			global::FormsControls.Droid.Resource.Layout.select_dialog_item_material = global::HodlWallet2.Droid.Resource.Layout.select_dialog_item_material;
+			global::FormsControls.Droid.Resource.Layout.select_dialog_multichoice_material = global::HodlWallet2.Droid.Resource.Layout.select_dialog_multichoice_material;
+			global::FormsControls.Droid.Resource.Layout.select_dialog_singlechoice_material = global::HodlWallet2.Droid.Resource.Layout.select_dialog_singlechoice_material;
+			global::FormsControls.Droid.Resource.Layout.support_simple_spinner_dropdown_item = global::HodlWallet2.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::FormsControls.Droid.Resource.Layout.tooltip = global::HodlWallet2.Droid.Resource.Layout.tooltip;
+			global::FormsControls.Droid.Resource.String.abc_action_bar_home_description = global::HodlWallet2.Droid.Resource.String.abc_action_bar_home_description;
+			global::FormsControls.Droid.Resource.String.abc_action_bar_up_description = global::HodlWallet2.Droid.Resource.String.abc_action_bar_up_description;
+			global::FormsControls.Droid.Resource.String.abc_action_menu_overflow_description = global::HodlWallet2.Droid.Resource.String.abc_action_menu_overflow_description;
+			global::FormsControls.Droid.Resource.String.abc_action_mode_done = global::HodlWallet2.Droid.Resource.String.abc_action_mode_done;
+			global::FormsControls.Droid.Resource.String.abc_activity_chooser_view_see_all = global::HodlWallet2.Droid.Resource.String.abc_activity_chooser_view_see_all;
+			global::FormsControls.Droid.Resource.String.abc_activitychooserview_choose_application = global::HodlWallet2.Droid.Resource.String.abc_activitychooserview_choose_application;
+			global::FormsControls.Droid.Resource.String.abc_capital_off = global::HodlWallet2.Droid.Resource.String.abc_capital_off;
+			global::FormsControls.Droid.Resource.String.abc_capital_on = global::HodlWallet2.Droid.Resource.String.abc_capital_on;
+			global::FormsControls.Droid.Resource.String.abc_font_family_body_1_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_body_1_material;
+			global::FormsControls.Droid.Resource.String.abc_font_family_body_2_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_body_2_material;
+			global::FormsControls.Droid.Resource.String.abc_font_family_button_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_button_material;
+			global::FormsControls.Droid.Resource.String.abc_font_family_caption_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_caption_material;
+			global::FormsControls.Droid.Resource.String.abc_font_family_display_1_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_display_1_material;
+			global::FormsControls.Droid.Resource.String.abc_font_family_display_2_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_display_2_material;
+			global::FormsControls.Droid.Resource.String.abc_font_family_display_3_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_display_3_material;
+			global::FormsControls.Droid.Resource.String.abc_font_family_display_4_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_display_4_material;
+			global::FormsControls.Droid.Resource.String.abc_font_family_headline_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_headline_material;
+			global::FormsControls.Droid.Resource.String.abc_font_family_menu_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_menu_material;
+			global::FormsControls.Droid.Resource.String.abc_font_family_subhead_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_subhead_material;
+			global::FormsControls.Droid.Resource.String.abc_font_family_title_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_title_material;
+			global::FormsControls.Droid.Resource.String.abc_search_hint = global::HodlWallet2.Droid.Resource.String.abc_search_hint;
+			global::FormsControls.Droid.Resource.String.abc_searchview_description_clear = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_clear;
+			global::FormsControls.Droid.Resource.String.abc_searchview_description_query = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_query;
+			global::FormsControls.Droid.Resource.String.abc_searchview_description_search = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_search;
+			global::FormsControls.Droid.Resource.String.abc_searchview_description_submit = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_submit;
+			global::FormsControls.Droid.Resource.String.abc_searchview_description_voice = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_voice;
+			global::FormsControls.Droid.Resource.String.abc_shareactionprovider_share_with = global::HodlWallet2.Droid.Resource.String.abc_shareactionprovider_share_with;
+			global::FormsControls.Droid.Resource.String.abc_shareactionprovider_share_with_application = global::HodlWallet2.Droid.Resource.String.abc_shareactionprovider_share_with_application;
+			global::FormsControls.Droid.Resource.String.abc_toolbar_collapse_description = global::HodlWallet2.Droid.Resource.String.abc_toolbar_collapse_description;
+			global::FormsControls.Droid.Resource.String.appbar_scrolling_view_behavior = global::HodlWallet2.Droid.Resource.String.appbar_scrolling_view_behavior;
+			global::FormsControls.Droid.Resource.String.bottom_sheet_behavior = global::HodlWallet2.Droid.Resource.String.bottom_sheet_behavior;
+			global::FormsControls.Droid.Resource.String.character_counter_pattern = global::HodlWallet2.Droid.Resource.String.character_counter_pattern;
+			global::FormsControls.Droid.Resource.String.mr_button_content_description = global::HodlWallet2.Droid.Resource.String.mr_button_content_description;
+			global::FormsControls.Droid.Resource.String.mr_cast_button_connected = global::HodlWallet2.Droid.Resource.String.mr_cast_button_connected;
+			global::FormsControls.Droid.Resource.String.mr_cast_button_connecting = global::HodlWallet2.Droid.Resource.String.mr_cast_button_connecting;
+			global::FormsControls.Droid.Resource.String.mr_cast_button_disconnected = global::HodlWallet2.Droid.Resource.String.mr_cast_button_disconnected;
+			global::FormsControls.Droid.Resource.String.mr_chooser_searching = global::HodlWallet2.Droid.Resource.String.mr_chooser_searching;
+			global::FormsControls.Droid.Resource.String.mr_chooser_title = global::HodlWallet2.Droid.Resource.String.mr_chooser_title;
+			global::FormsControls.Droid.Resource.String.mr_controller_album_art = global::HodlWallet2.Droid.Resource.String.mr_controller_album_art;
+			global::FormsControls.Droid.Resource.String.mr_controller_casting_screen = global::HodlWallet2.Droid.Resource.String.mr_controller_casting_screen;
+			global::FormsControls.Droid.Resource.String.mr_controller_close_description = global::HodlWallet2.Droid.Resource.String.mr_controller_close_description;
+			global::FormsControls.Droid.Resource.String.mr_controller_collapse_group = global::HodlWallet2.Droid.Resource.String.mr_controller_collapse_group;
+			global::FormsControls.Droid.Resource.String.mr_controller_disconnect = global::HodlWallet2.Droid.Resource.String.mr_controller_disconnect;
+			global::FormsControls.Droid.Resource.String.mr_controller_expand_group = global::HodlWallet2.Droid.Resource.String.mr_controller_expand_group;
+			global::FormsControls.Droid.Resource.String.mr_controller_no_info_available = global::HodlWallet2.Droid.Resource.String.mr_controller_no_info_available;
+			global::FormsControls.Droid.Resource.String.mr_controller_no_media_selected = global::HodlWallet2.Droid.Resource.String.mr_controller_no_media_selected;
+			global::FormsControls.Droid.Resource.String.mr_controller_pause = global::HodlWallet2.Droid.Resource.String.mr_controller_pause;
+			global::FormsControls.Droid.Resource.String.mr_controller_play = global::HodlWallet2.Droid.Resource.String.mr_controller_play;
+			global::FormsControls.Droid.Resource.String.mr_controller_stop = global::HodlWallet2.Droid.Resource.String.mr_controller_stop;
+			global::FormsControls.Droid.Resource.String.mr_controller_stop_casting = global::HodlWallet2.Droid.Resource.String.mr_controller_stop_casting;
+			global::FormsControls.Droid.Resource.String.mr_controller_volume_slider = global::HodlWallet2.Droid.Resource.String.mr_controller_volume_slider;
+			global::FormsControls.Droid.Resource.String.mr_system_route_name = global::HodlWallet2.Droid.Resource.String.mr_system_route_name;
+			global::FormsControls.Droid.Resource.String.mr_user_route_category_name = global::HodlWallet2.Droid.Resource.String.mr_user_route_category_name;
+			global::FormsControls.Droid.Resource.String.password_toggle_content_description = global::HodlWallet2.Droid.Resource.String.password_toggle_content_description;
+			global::FormsControls.Droid.Resource.String.path_password_eye = global::HodlWallet2.Droid.Resource.String.path_password_eye;
+			global::FormsControls.Droid.Resource.String.path_password_eye_mask_strike_through = global::HodlWallet2.Droid.Resource.String.path_password_eye_mask_strike_through;
+			global::FormsControls.Droid.Resource.String.path_password_eye_mask_visible = global::HodlWallet2.Droid.Resource.String.path_password_eye_mask_visible;
+			global::FormsControls.Droid.Resource.String.path_password_strike_through = global::HodlWallet2.Droid.Resource.String.path_password_strike_through;
+			global::FormsControls.Droid.Resource.String.search_menu_title = global::HodlWallet2.Droid.Resource.String.search_menu_title;
+			global::FormsControls.Droid.Resource.String.status_bar_notification_info_overflow = global::HodlWallet2.Droid.Resource.String.status_bar_notification_info_overflow;
+			global::FormsControls.Droid.Resource.Style.AlertDialog_AppCompat = global::HodlWallet2.Droid.Resource.Style.AlertDialog_AppCompat;
+			global::FormsControls.Droid.Resource.Style.AlertDialog_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.AlertDialog_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Animation_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Animation_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Animation_AppCompat_DropDownUp = global::HodlWallet2.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::FormsControls.Droid.Resource.Style.Animation_AppCompat_Tooltip = global::HodlWallet2.Droid.Resource.Style.Animation_AppCompat_Tooltip;
+			global::FormsControls.Droid.Resource.Style.Animation_Design_BottomSheetDialog = global::HodlWallet2.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::FormsControls.Droid.Resource.Style.Base_AlertDialog_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_AlertDialog_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Base_Animation_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::HodlWallet2.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::FormsControls.Droid.Resource.Style.Base_Animation_AppCompat_Tooltip = global::HodlWallet2.Droid.Resource.Style.Base_Animation_AppCompat_Tooltip;
+			global::FormsControls.Droid.Resource.Style.Base_CardView = global::HodlWallet2.Droid.Resource.Style.Base_CardView;
+			global::FormsControls.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Tooltip = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Tooltip;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
+			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
+			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_V11_ThemeOverlay_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V11_ThemeOverlay_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
+			global::FormsControls.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::HodlWallet2.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
+			global::FormsControls.Droid.Resource.Style.Base_V14_Widget_Design_AppBarLayout = global::HodlWallet2.Droid.Resource.Style.Base_V14_Widget_Design_AppBarLayout;
+			global::FormsControls.Droid.Resource.Style.Base_V21_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V21_Theme_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_V21_Widget_Design_AppBarLayout = global::HodlWallet2.Droid.Resource.Style.Base_V21_Widget_Design_AppBarLayout;
+			global::FormsControls.Droid.Resource.Style.Base_V22_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V22_Theme_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Base_V23_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V23_Theme_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Base_V26_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V26_Theme_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_V26_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V26_Theme_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::HodlWallet2.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
+			global::FormsControls.Droid.Resource.Style.Base_V26_Widget_Design_AppBarLayout = global::HodlWallet2.Droid.Resource.Style.Base_V26_Widget_Design_AppBarLayout;
+			global::FormsControls.Droid.Resource.Style.Base_V7_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V7_Theme_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
+			global::FormsControls.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::HodlWallet2.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::FormsControls.Droid.Resource.Style.Base_V7_Widget_AppCompat_Toolbar = global::HodlWallet2.Droid.Resource.Style.Base_V7_Widget_AppCompat_Toolbar;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Button = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_EditText = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ListMenuView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListMenuView;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ListView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_SearchView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Spinner = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_Design_AppBarLayout = global::HodlWallet2.Droid.Resource.Style.Base_Widget_Design_AppBarLayout;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_Design_TabLayout = global::HodlWallet2.Droid.Resource.Style.Base_Widget_Design_TabLayout;
+			global::FormsControls.Droid.Resource.Style.CardView = global::HodlWallet2.Droid.Resource.Style.CardView;
+			global::FormsControls.Droid.Resource.Style.CardView_Dark = global::HodlWallet2.Droid.Resource.Style.CardView_Dark;
+			global::FormsControls.Droid.Resource.Style.CardView_Light = global::HodlWallet2.Droid.Resource.Style.CardView_Light;
+			global::FormsControls.Droid.Resource.Style.Platform_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Platform_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::HodlWallet2.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
+			global::FormsControls.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Platform_V11_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_V11_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Platform_V11_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_V11_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Platform_V14_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_V14_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Platform_V14_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_V14_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Platform_V21_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_V21_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Platform_V21_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_V21_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Platform_V25_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_V25_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Platform_V25_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_V25_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner = global::HodlWallet2.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+			global::FormsControls.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::HodlWallet2.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
+			global::FormsControls.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::HodlWallet2.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Body1 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Body2 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Button = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Button;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Caption = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Display1 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Display2 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Display3 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Display4 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Headline = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Large = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Large;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Medium = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Menu = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Small = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Small;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Subhead = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Title;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Tooltip = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Tooltip;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Compat_Notification = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Compat_Notification;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Compat_Notification_Info = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Compat_Notification_Info_Media = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Compat_Notification_Info_Media;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2_Media = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2_Media;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Compat_Notification_Media = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Compat_Notification_Media;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Compat_Notification_Time = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Compat_Notification_Time_Media = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Compat_Notification_Time_Media;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Compat_Notification_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Compat_Notification_Title_Media = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Compat_Notification_Title_Media;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_Counter = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Counter;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_Error = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Error;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_Hint = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Hint;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_Tab = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Tab;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MediaRouter_PrimaryText = global::HodlWallet2.Droid.Resource.Style.TextAppearance_MediaRouter_PrimaryText;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MediaRouter_SecondaryText = global::HodlWallet2.Droid.Resource.Style.TextAppearance_MediaRouter_SecondaryText;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MediaRouter_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_MediaRouter_Title;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_CompactMenu = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::FormsControls.Droid.Resource.Style.Theme_Design = global::HodlWallet2.Droid.Resource.Style.Theme_Design;
+			global::FormsControls.Droid.Resource.Style.Theme_Design_BottomSheetDialog = global::HodlWallet2.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
+			global::FormsControls.Droid.Resource.Style.Theme_Design_Light = global::HodlWallet2.Droid.Resource.Style.Theme_Design_Light;
+			global::FormsControls.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::HodlWallet2.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
+			global::FormsControls.Droid.Resource.Style.Theme_Design_Light_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
+			global::FormsControls.Droid.Resource.Style.Theme_Design_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_Design_NoActionBar;
+			global::FormsControls.Droid.Resource.Style.Theme_MediaRouter = global::HodlWallet2.Droid.Resource.Style.Theme_MediaRouter;
+			global::FormsControls.Droid.Resource.Style.Theme_MediaRouter_Light = global::HodlWallet2.Droid.Resource.Style.Theme_MediaRouter_Light;
+			global::FormsControls.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel = global::HodlWallet2.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel;
+			global::FormsControls.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel = global::HodlWallet2.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MediaRouter_Dark = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_MediaRouter_Dark;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MediaRouter_Light = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_MediaRouter_Light;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActionButton = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionButton;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActionMode = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionMode;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Button = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Button_Borderless = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Button_Colored = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Button_Small = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_Small;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ButtonBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_EditText = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_EditText;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ImageButton = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ImageButton;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_SearchView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ListMenuView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListMenuView;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ListView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListView;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ListView_Menu = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_PopupMenu = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_PopupWindow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ProgressBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_RatingBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_RatingBar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_SearchView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_SearchView;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_SeekBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_SeekBar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_SeekBar_Discrete = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_SeekBar_Discrete;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Spinner = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Spinner;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Toolbar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Toolbar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::FormsControls.Droid.Resource.Style.Widget_Compat_NotificationActionContainer = global::HodlWallet2.Droid.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::FormsControls.Droid.Resource.Style.Widget_Compat_NotificationActionText = global::HodlWallet2.Droid.Resource.Style.Widget_Compat_NotificationActionText;
+			global::FormsControls.Droid.Resource.Style.Widget_Design_AppBarLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_AppBarLayout;
+			global::FormsControls.Droid.Resource.Style.Widget_Design_BottomNavigationView = global::HodlWallet2.Droid.Resource.Style.Widget_Design_BottomNavigationView;
+			global::FormsControls.Droid.Resource.Style.Widget_Design_BottomSheet_Modal = global::HodlWallet2.Droid.Resource.Style.Widget_Design_BottomSheet_Modal;
+			global::FormsControls.Droid.Resource.Style.Widget_Design_CollapsingToolbar = global::HodlWallet2.Droid.Resource.Style.Widget_Design_CollapsingToolbar;
+			global::FormsControls.Droid.Resource.Style.Widget_Design_CoordinatorLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_CoordinatorLayout;
+			global::FormsControls.Droid.Resource.Style.Widget_Design_FloatingActionButton = global::HodlWallet2.Droid.Resource.Style.Widget_Design_FloatingActionButton;
+			global::FormsControls.Droid.Resource.Style.Widget_Design_NavigationView = global::HodlWallet2.Droid.Resource.Style.Widget_Design_NavigationView;
+			global::FormsControls.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
+			global::FormsControls.Droid.Resource.Style.Widget_Design_Snackbar = global::HodlWallet2.Droid.Resource.Style.Widget_Design_Snackbar;
+			global::FormsControls.Droid.Resource.Style.Widget_Design_TabLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_TabLayout;
+			global::FormsControls.Droid.Resource.Style.Widget_Design_TextInputLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_TextInputLayout;
+			global::FormsControls.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::HodlWallet2.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
+			global::FormsControls.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::HodlWallet2.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar = global::HodlWallet2.Droid.Resource.Styleable.ActionBar;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_background = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_background;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_backgroundSplit = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_backgroundSplit;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_backgroundStacked = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_backgroundStacked;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_contentInsetEnd = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_contentInsetEndWithActions = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetEndWithActions;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_contentInsetLeft = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_contentInsetRight = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetRight;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_contentInsetStart = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetStart;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_contentInsetStartWithNavigation = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetStartWithNavigation;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_customNavigationLayout = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_displayOptions = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_displayOptions;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_divider = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_divider;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_elevation = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_elevation;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_height = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_height;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_hideOnContentScroll = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_homeLayout = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_homeLayout;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_icon = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_icon;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_itemPadding = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_itemPadding;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_logo = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_logo;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_navigationMode = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_navigationMode;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_popupTheme = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_popupTheme;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_progressBarPadding = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_progressBarPadding;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_progressBarStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_progressBarStyle;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_subtitle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_subtitle;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_subtitleTextStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_title = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_title;
+			global::FormsControls.Droid.Resource.Styleable.ActionBar_titleTextStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_titleTextStyle;
+			global::FormsControls.Droid.Resource.Styleable.ActionBarLayout = global::HodlWallet2.Droid.Resource.Styleable.ActionBarLayout;
+			global::FormsControls.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::HodlWallet2.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
+			global::FormsControls.Droid.Resource.Styleable.ActionMenuItemView = global::HodlWallet2.Droid.Resource.Styleable.ActionMenuItemView;
+			global::FormsControls.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth = global::HodlWallet2.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
+			global::FormsControls.Droid.Resource.Styleable.ActionMenuView = global::HodlWallet2.Droid.Resource.Styleable.ActionMenuView;
+			global::FormsControls.Droid.Resource.Styleable.ActionMode = global::HodlWallet2.Droid.Resource.Styleable.ActionMode;
+			global::FormsControls.Droid.Resource.Styleable.ActionMode_background = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_background;
+			global::FormsControls.Droid.Resource.Styleable.ActionMode_backgroundSplit = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_backgroundSplit;
+			global::FormsControls.Droid.Resource.Styleable.ActionMode_closeItemLayout = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_closeItemLayout;
+			global::FormsControls.Droid.Resource.Styleable.ActionMode_height = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_height;
+			global::FormsControls.Droid.Resource.Styleable.ActionMode_subtitleTextStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
+			global::FormsControls.Droid.Resource.Styleable.ActionMode_titleTextStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_titleTextStyle;
+			global::FormsControls.Droid.Resource.Styleable.ActivityChooserView = global::HodlWallet2.Droid.Resource.Styleable.ActivityChooserView;
+			global::FormsControls.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::HodlWallet2.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
+			global::FormsControls.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount = global::HodlWallet2.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
+			global::FormsControls.Droid.Resource.Styleable.AlertDialog = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog;
+			global::FormsControls.Droid.Resource.Styleable.AlertDialog_android_layout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_android_layout;
+			global::FormsControls.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
+			global::FormsControls.Droid.Resource.Styleable.AlertDialog_listItemLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_listItemLayout;
+			global::FormsControls.Droid.Resource.Styleable.AlertDialog_listLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_listLayout;
+			global::FormsControls.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
+			global::FormsControls.Droid.Resource.Styleable.AlertDialog_showTitle = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_showTitle;
+			global::FormsControls.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayout = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_android_background = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_android_background;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_elevation = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_elevation;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_expanded = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_expanded;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayoutStates = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayoutStates;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_Layout = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_Layout;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatImageView = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatImageView_android_src = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView_android_src;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatImageView_srcCompat = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatImageView_tint = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView_tint;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatImageView_tintMode = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView_tintMode;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatSeekBar = global::HodlWallet2.Droid.Resource.Styleable.AppCompatSeekBar;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatSeekBar_android_thumb = global::HodlWallet2.Droid.Resource.Styleable.AppCompatSeekBar_android_thumb;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatSeekBar_tickMark = global::HodlWallet2.Droid.Resource.Styleable.AppCompatSeekBar_tickMark;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTint = global::HodlWallet2.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTint;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode = global::HodlWallet2.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextHelper = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableBottom = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableBottom;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableEnd = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableEnd;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableLeft = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableLeft;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableRight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableRight;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableStart = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableStart;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableTop = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableTop;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextHelper_android_textAppearance = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_textAppearance;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_fontFamily = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView_fontFamily;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_textAllCaps = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionBarSize = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarSize;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_buttonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_colorAccent = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorAccent;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_colorBackgroundFloating = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorBackgroundFloating;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_colorError = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorError;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_colorPrimary = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorPrimary;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_controlBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_controlBackground;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dialogTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dividerVertical = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_editTextBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_editTextColor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_editTextStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_listMenuViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listMenuViewStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_panelBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_switchStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_switchStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_tooltipForegroundColor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_tooltipForegroundColor;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_tooltipFrameBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_tooltipFrameBackground;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowActionBar = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle;
+			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView = global::HodlWallet2.Droid.Resource.Styleable.BottomNavigationView;
+			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_elevation = global::HodlWallet2.Droid.Resource.Styleable.BottomNavigationView_elevation;
+			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_itemBackground = global::HodlWallet2.Droid.Resource.Styleable.BottomNavigationView_itemBackground;
+			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_itemIconTint = global::HodlWallet2.Droid.Resource.Styleable.BottomNavigationView_itemIconTint;
+			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_itemTextColor = global::HodlWallet2.Droid.Resource.Styleable.BottomNavigationView_itemTextColor;
+			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_menu = global::HodlWallet2.Droid.Resource.Styleable.BottomNavigationView_menu;
+			global::FormsControls.Droid.Resource.Styleable.BottomSheetBehavior_Layout = global::HodlWallet2.Droid.Resource.Styleable.BottomSheetBehavior_Layout;
+			global::FormsControls.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable = global::HodlWallet2.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable;
+			global::FormsControls.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight = global::HodlWallet2.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight;
+			global::FormsControls.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed = global::HodlWallet2.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed;
+			global::FormsControls.Droid.Resource.Styleable.ButtonBarLayout = global::HodlWallet2.Droid.Resource.Styleable.ButtonBarLayout;
+			global::FormsControls.Droid.Resource.Styleable.ButtonBarLayout_allowStacking = global::HodlWallet2.Droid.Resource.Styleable.ButtonBarLayout_allowStacking;
+			global::FormsControls.Droid.Resource.Styleable.CardView = global::HodlWallet2.Droid.Resource.Styleable.CardView;
+			global::FormsControls.Droid.Resource.Styleable.CardView_android_minHeight = global::HodlWallet2.Droid.Resource.Styleable.CardView_android_minHeight;
+			global::FormsControls.Droid.Resource.Styleable.CardView_android_minWidth = global::HodlWallet2.Droid.Resource.Styleable.CardView_android_minWidth;
+			global::FormsControls.Droid.Resource.Styleable.CardView_cardBackgroundColor = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardBackgroundColor;
+			global::FormsControls.Droid.Resource.Styleable.CardView_cardCornerRadius = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardCornerRadius;
+			global::FormsControls.Droid.Resource.Styleable.CardView_cardElevation = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardElevation;
+			global::FormsControls.Droid.Resource.Styleable.CardView_cardMaxElevation = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardMaxElevation;
+			global::FormsControls.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
+			global::FormsControls.Droid.Resource.Styleable.CardView_cardUseCompatPadding = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardUseCompatPadding;
+			global::FormsControls.Droid.Resource.Styleable.CardView_contentPadding = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPadding;
+			global::FormsControls.Droid.Resource.Styleable.CardView_contentPaddingBottom = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPaddingBottom;
+			global::FormsControls.Droid.Resource.Styleable.CardView_contentPaddingLeft = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPaddingLeft;
+			global::FormsControls.Droid.Resource.Styleable.CardView_contentPaddingRight = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPaddingRight;
+			global::FormsControls.Droid.Resource.Styleable.CardView_contentPaddingTop = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPaddingTop;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_title = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
+			global::FormsControls.Droid.Resource.Styleable.ColorStateListItem = global::HodlWallet2.Droid.Resource.Styleable.ColorStateListItem;
+			global::FormsControls.Droid.Resource.Styleable.ColorStateListItem_alpha = global::HodlWallet2.Droid.Resource.Styleable.ColorStateListItem_alpha;
+			global::FormsControls.Droid.Resource.Styleable.ColorStateListItem_android_alpha = global::HodlWallet2.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::FormsControls.Droid.Resource.Styleable.ColorStateListItem_android_color = global::HodlWallet2.Droid.Resource.Styleable.ColorStateListItem_android_color;
+			global::FormsControls.Droid.Resource.Styleable.CompoundButton = global::HodlWallet2.Droid.Resource.Styleable.CompoundButton;
+			global::FormsControls.Droid.Resource.Styleable.CompoundButton_android_button = global::HodlWallet2.Droid.Resource.Styleable.CompoundButton_android_button;
+			global::FormsControls.Droid.Resource.Styleable.CompoundButton_buttonTint = global::HodlWallet2.Droid.Resource.Styleable.CompoundButton_buttonTint;
+			global::FormsControls.Droid.Resource.Styleable.CompoundButton_buttonTintMode = global::HodlWallet2.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
+			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout;
+			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_keylines = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_keylines;
+			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout;
+			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
+			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
+			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
+			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
+			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
+			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
+			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::FormsControls.Droid.Resource.Styleable.DesignTheme = global::HodlWallet2.Droid.Resource.Styleable.DesignTheme;
+			global::FormsControls.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::HodlWallet2.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
+			global::FormsControls.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle = global::HodlWallet2.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle;
+			global::FormsControls.Droid.Resource.Styleable.DesignTheme_textColorError = global::HodlWallet2.Droid.Resource.Styleable.DesignTheme_textColorError;
+			global::FormsControls.Droid.Resource.Styleable.DrawerArrowToggle = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle;
+			global::FormsControls.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
+			global::FormsControls.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
+			global::FormsControls.Droid.Resource.Styleable.DrawerArrowToggle_barLength = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_barLength;
+			global::FormsControls.Droid.Resource.Styleable.DrawerArrowToggle_color = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_color;
+			global::FormsControls.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
+			global::FormsControls.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
+			global::FormsControls.Droid.Resource.Styleable.DrawerArrowToggle_spinBars = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
+			global::FormsControls.Droid.Resource.Styleable.DrawerArrowToggle_thickness = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_backgroundTint = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_borderWidth = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_elevation = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_elevation;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_fabSize = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_fabSize;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_rippleColor = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
+			global::FormsControls.Droid.Resource.Styleable.FontFamily = global::HodlWallet2.Droid.Resource.Styleable.FontFamily;
+			global::FormsControls.Droid.Resource.Styleable.FontFamily_fontProviderAuthority = global::HodlWallet2.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::FormsControls.Droid.Resource.Styleable.FontFamily_fontProviderCerts = global::HodlWallet2.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::FormsControls.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::HodlWallet2.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::FormsControls.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::HodlWallet2.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::FormsControls.Droid.Resource.Styleable.FontFamily_fontProviderPackage = global::HodlWallet2.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::FormsControls.Droid.Resource.Styleable.FontFamily_fontProviderQuery = global::HodlWallet2.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont = global::HodlWallet2.Droid.Resource.Styleable.FontFamilyFont;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_android_font = global::HodlWallet2.Droid.Resource.Styleable.FontFamilyFont_android_font;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle = global::HodlWallet2.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight = global::HodlWallet2.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_font = global::HodlWallet2.Droid.Resource.Styleable.FontFamilyFont_font;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_fontStyle = global::HodlWallet2.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_fontWeight = global::HodlWallet2.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::FormsControls.Droid.Resource.Styleable.ForegroundLinearLayout = global::HodlWallet2.Droid.Resource.Styleable.ForegroundLinearLayout;
+			global::FormsControls.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::HodlWallet2.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
+			global::FormsControls.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::HodlWallet2.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
+			global::FormsControls.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::HodlWallet2.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_divider = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_divider;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_showDividers = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_Layout = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::FormsControls.Droid.Resource.Styleable.ListPopupWindow = global::HodlWallet2.Droid.Resource.Styleable.ListPopupWindow;
+			global::FormsControls.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::HodlWallet2.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
+			global::FormsControls.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::HodlWallet2.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::FormsControls.Droid.Resource.Styleable.MediaRouteButton = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton;
+			global::FormsControls.Droid.Resource.Styleable.MediaRouteButton_android_minHeight = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
+			global::FormsControls.Droid.Resource.Styleable.MediaRouteButton_android_minWidth = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
+			global::FormsControls.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
+			global::FormsControls.Droid.Resource.Styleable.MediaRouteButton_mediaRouteButtonTint = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton_mediaRouteButtonTint;
+			global::FormsControls.Droid.Resource.Styleable.MenuGroup = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup;
+			global::FormsControls.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
+			global::FormsControls.Droid.Resource.Styleable.MenuGroup_android_enabled = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_enabled;
+			global::FormsControls.Droid.Resource.Styleable.MenuGroup_android_id = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_id;
+			global::FormsControls.Droid.Resource.Styleable.MenuGroup_android_menuCategory = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
+			global::FormsControls.Droid.Resource.Styleable.MenuGroup_android_orderInCategory = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
+			global::FormsControls.Droid.Resource.Styleable.MenuGroup_android_visible = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_visible;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem = global::HodlWallet2.Droid.Resource.Styleable.MenuItem;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_actionLayout = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_actionLayout;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_actionProviderClass = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_actionProviderClass;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_actionViewClass = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_actionViewClass;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_alphabeticModifiers = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_alphabeticModifiers;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_checkable = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_checkable;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_checked = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_checked;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_enabled = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_enabled;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_icon = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_icon;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_id = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_id;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_menuCategory = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_menuCategory;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_numericShortcut = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_onClick = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_onClick;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_orderInCategory = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_title = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_title;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_titleCondensed = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_android_visible = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_visible;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_contentDescription = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_contentDescription;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_iconTint = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_iconTint;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_iconTintMode = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_iconTintMode;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_numericModifiers = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_numericModifiers;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_showAsAction = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_showAsAction;
+			global::FormsControls.Droid.Resource.Styleable.MenuItem_tooltipText = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_tooltipText;
+			global::FormsControls.Droid.Resource.Styleable.MenuView = global::HodlWallet2.Droid.Resource.Styleable.MenuView;
+			global::FormsControls.Droid.Resource.Styleable.MenuView_android_headerBackground = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_headerBackground;
+			global::FormsControls.Droid.Resource.Styleable.MenuView_android_horizontalDivider = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
+			global::FormsControls.Droid.Resource.Styleable.MenuView_android_itemBackground = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_itemBackground;
+			global::FormsControls.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
+			global::FormsControls.Droid.Resource.Styleable.MenuView_android_itemTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.MenuView_android_verticalDivider = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_verticalDivider;
+			global::FormsControls.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
+			global::FormsControls.Droid.Resource.Styleable.MenuView_preserveIconSpacing = global::HodlWallet2.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
+			global::FormsControls.Droid.Resource.Styleable.MenuView_subMenuArrow = global::HodlWallet2.Droid.Resource.Styleable.MenuView_subMenuArrow;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView = global::HodlWallet2.Droid.Resource.Styleable.NavigationView;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView_android_background = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_android_background;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView_android_maxWidth = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_android_maxWidth;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView_elevation = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_elevation;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView_headerLayout = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_headerLayout;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView_itemBackground = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_itemBackground;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView_itemIconTint = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_itemIconTint;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView_itemTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_itemTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView_itemTextColor = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_itemTextColor;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView_menu = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_menu;
+			global::FormsControls.Droid.Resource.Styleable.PopupWindow = global::HodlWallet2.Droid.Resource.Styleable.PopupWindow;
+			global::FormsControls.Droid.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::HodlWallet2.Droid.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
+			global::FormsControls.Droid.Resource.Styleable.PopupWindow_android_popupBackground = global::HodlWallet2.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
+			global::FormsControls.Droid.Resource.Styleable.PopupWindow_overlapAnchor = global::HodlWallet2.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::FormsControls.Droid.Resource.Styleable.PopupWindowBackgroundState = global::HodlWallet2.Droid.Resource.Styleable.PopupWindowBackgroundState;
+			global::FormsControls.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::HodlWallet2.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
+			global::FormsControls.Droid.Resource.Styleable.RecycleListView = global::HodlWallet2.Droid.Resource.Styleable.RecycleListView;
+			global::FormsControls.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::HodlWallet2.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
+			global::FormsControls.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::HodlWallet2.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle;
+			global::FormsControls.Droid.Resource.Styleable.RecyclerView = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView;
+			global::FormsControls.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
+			global::FormsControls.Droid.Resource.Styleable.RecyclerView_android_orientation = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_android_orientation;
+			global::FormsControls.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled;
+			global::FormsControls.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable;
+			global::FormsControls.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable;
+			global::FormsControls.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable;
+			global::FormsControls.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable;
+			global::FormsControls.Droid.Resource.Styleable.RecyclerView_layoutManager = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_layoutManager;
+			global::FormsControls.Droid.Resource.Styleable.RecyclerView_reverseLayout = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_reverseLayout;
+			global::FormsControls.Droid.Resource.Styleable.RecyclerView_spanCount = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_spanCount;
+			global::FormsControls.Droid.Resource.Styleable.RecyclerView_stackFromEnd = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
+			global::FormsControls.Droid.Resource.Styleable.ScrimInsetsFrameLayout = global::HodlWallet2.Droid.Resource.Styleable.ScrimInsetsFrameLayout;
+			global::FormsControls.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::HodlWallet2.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
+			global::FormsControls.Droid.Resource.Styleable.ScrollingViewBehavior_Layout = global::HodlWallet2.Droid.Resource.Styleable.ScrollingViewBehavior_Layout;
+			global::FormsControls.Droid.Resource.Styleable.ScrollingViewBehavior_Layout_behavior_overlapTop = global::HodlWallet2.Droid.Resource.Styleable.ScrollingViewBehavior_Layout_behavior_overlapTop;
+			global::FormsControls.Droid.Resource.Styleable.SearchView = global::HodlWallet2.Droid.Resource.Styleable.SearchView;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_android_focusable = global::HodlWallet2.Droid.Resource.Styleable.SearchView_android_focusable;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_android_imeOptions = global::HodlWallet2.Droid.Resource.Styleable.SearchView_android_imeOptions;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_android_inputType = global::HodlWallet2.Droid.Resource.Styleable.SearchView_android_inputType;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_android_maxWidth = global::HodlWallet2.Droid.Resource.Styleable.SearchView_android_maxWidth;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_closeIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_closeIcon;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_commitIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_commitIcon;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_defaultQueryHint = global::HodlWallet2.Droid.Resource.Styleable.SearchView_defaultQueryHint;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_goIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_goIcon;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_iconifiedByDefault = global::HodlWallet2.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_layout = global::HodlWallet2.Droid.Resource.Styleable.SearchView_layout;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_queryBackground = global::HodlWallet2.Droid.Resource.Styleable.SearchView_queryBackground;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_queryHint = global::HodlWallet2.Droid.Resource.Styleable.SearchView_queryHint;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_searchHintIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_searchHintIcon;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_searchIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_searchIcon;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_submitBackground = global::HodlWallet2.Droid.Resource.Styleable.SearchView_submitBackground;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_suggestionRowLayout = global::HodlWallet2.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
+			global::FormsControls.Droid.Resource.Styleable.SearchView_voiceIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_voiceIcon;
+			global::FormsControls.Droid.Resource.Styleable.SnackbarLayout = global::HodlWallet2.Droid.Resource.Styleable.SnackbarLayout;
+			global::FormsControls.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth = global::HodlWallet2.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
+			global::FormsControls.Droid.Resource.Styleable.SnackbarLayout_elevation = global::HodlWallet2.Droid.Resource.Styleable.SnackbarLayout_elevation;
+			global::FormsControls.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::HodlWallet2.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
+			global::FormsControls.Droid.Resource.Styleable.Spinner = global::HodlWallet2.Droid.Resource.Styleable.Spinner;
+			global::FormsControls.Droid.Resource.Styleable.Spinner_android_dropDownWidth = global::HodlWallet2.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
+			global::FormsControls.Droid.Resource.Styleable.Spinner_android_entries = global::HodlWallet2.Droid.Resource.Styleable.Spinner_android_entries;
+			global::FormsControls.Droid.Resource.Styleable.Spinner_android_popupBackground = global::HodlWallet2.Droid.Resource.Styleable.Spinner_android_popupBackground;
+			global::FormsControls.Droid.Resource.Styleable.Spinner_android_prompt = global::HodlWallet2.Droid.Resource.Styleable.Spinner_android_prompt;
+			global::FormsControls.Droid.Resource.Styleable.Spinner_popupTheme = global::HodlWallet2.Droid.Resource.Styleable.Spinner_popupTheme;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_android_textOff = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_android_textOff;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_android_textOn = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_android_textOn;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_android_thumb = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_android_thumb;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_showText = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_showText;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_splitTrack = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_splitTrack;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_switchMinWidth = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_switchPadding = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_switchPadding;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_thumbTint = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_thumbTint;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_thumbTintMode = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_thumbTintMode;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_track = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_track;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_trackTint = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_trackTint;
+			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_trackTintMode = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_trackTintMode;
+			global::FormsControls.Droid.Resource.Styleable.TabItem = global::HodlWallet2.Droid.Resource.Styleable.TabItem;
+			global::FormsControls.Droid.Resource.Styleable.TabItem_android_icon = global::HodlWallet2.Droid.Resource.Styleable.TabItem_android_icon;
+			global::FormsControls.Droid.Resource.Styleable.TabItem_android_layout = global::HodlWallet2.Droid.Resource.Styleable.TabItem_android_layout;
+			global::FormsControls.Droid.Resource.Styleable.TabItem_android_text = global::HodlWallet2.Droid.Resource.Styleable.TabItem_android_text;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout = global::HodlWallet2.Droid.Resource.Styleable.TabLayout;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabBackground = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabBackground;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabContentStart = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabContentStart;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabGravity = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabGravity;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabIndicatorColor = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabIndicatorColor;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabMaxWidth = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabMaxWidth;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabMinWidth = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabMinWidth;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabMode = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabMode;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabPadding = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPadding;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabPaddingBottom = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPaddingBottom;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabPaddingEnd = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPaddingEnd;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabPaddingStart = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPaddingStart;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabPaddingTop = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPaddingTop;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabTextColor = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabTextColor;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_fontFamily = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_fontFamily;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_shadowColor = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_shadowDx = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_shadowDx;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_shadowDy = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_shadowDy;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_shadowRadius = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_shadowRadius;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_textColor = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_textColor;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_textColorHint = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_textColorHint;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_textColorLink = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_textColorLink;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_textSize = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_textSize;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_textStyle = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_textStyle;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_typeface = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_typeface;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_fontFamily = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_fontFamily;
+			global::FormsControls.Droid.Resource.Styleable.TextAppearance_textAllCaps = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_textAllCaps;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_android_hint = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_android_hint;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_android_textColorHint = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_counterEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_counterEnabled;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_counterMaxLength = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_counterMaxLength;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_errorEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_errorEnabled;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_hintEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_hintEnabled;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_passwordToggleContentDescription = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_passwordToggleContentDescription;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_passwordToggleDrawable = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_passwordToggleDrawable;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_passwordToggleEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_passwordToggleEnabled;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_passwordToggleTint = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_passwordToggleTint;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_passwordToggleTintMode = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_passwordToggleTintMode;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar = global::HodlWallet2.Droid.Resource.Styleable.Toolbar;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_android_gravity = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_android_gravity;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_android_minHeight = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_android_minHeight;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_buttonGravity = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_buttonGravity;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_collapseContentDescription = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_collapseIcon = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_collapseIcon;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_contentInsetEnd = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_contentInsetEndWithActions = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetEndWithActions;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_contentInsetLeft = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_contentInsetRight = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetRight;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_contentInsetStart = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetStart;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_contentInsetStartWithNavigation = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetStartWithNavigation;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_logo = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_logo;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_logoDescription = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_logoDescription;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_maxButtonHeight = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_navigationContentDescription = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_navigationIcon = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_navigationIcon;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_popupTheme = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_popupTheme;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_subtitle = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_subtitle;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_subtitleTextColor = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_subtitleTextColor;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_title = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_title;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMargin = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMargin;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMarginBottom = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMarginEnd = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMarginStart = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMarginStart;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMarginTop = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMarginTop;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMargins = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMargins;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleTextColor = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleTextColor;
+			global::FormsControls.Droid.Resource.Styleable.View = global::HodlWallet2.Droid.Resource.Styleable.View;
+			global::FormsControls.Droid.Resource.Styleable.View_android_focusable = global::HodlWallet2.Droid.Resource.Styleable.View_android_focusable;
+			global::FormsControls.Droid.Resource.Styleable.View_android_theme = global::HodlWallet2.Droid.Resource.Styleable.View_android_theme;
+			global::FormsControls.Droid.Resource.Styleable.View_paddingEnd = global::HodlWallet2.Droid.Resource.Styleable.View_paddingEnd;
+			global::FormsControls.Droid.Resource.Styleable.View_paddingStart = global::HodlWallet2.Droid.Resource.Styleable.View_paddingStart;
+			global::FormsControls.Droid.Resource.Styleable.View_theme = global::HodlWallet2.Droid.Resource.Styleable.View_theme;
+			global::FormsControls.Droid.Resource.Styleable.ViewBackgroundHelper = global::HodlWallet2.Droid.Resource.Styleable.ViewBackgroundHelper;
+			global::FormsControls.Droid.Resource.Styleable.ViewBackgroundHelper_android_background = global::HodlWallet2.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
+			global::FormsControls.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::HodlWallet2.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
+			global::FormsControls.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::HodlWallet2.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
+			global::FormsControls.Droid.Resource.Styleable.ViewStubCompat = global::HodlWallet2.Droid.Resource.Styleable.ViewStubCompat;
+			global::FormsControls.Droid.Resource.Styleable.ViewStubCompat_android_id = global::HodlWallet2.Droid.Resource.Styleable.ViewStubCompat_android_id;
+			global::FormsControls.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId = global::HodlWallet2.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
+			global::FormsControls.Droid.Resource.Styleable.ViewStubCompat_android_layout = global::HodlWallet2.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::FormsPinView.Droid.Resource.Animation.abc_fade_in = global::HodlWallet2.Droid.Resource.Animation.abc_fade_in;
+			global::FormsPinView.Droid.Resource.Animation.abc_fade_out = global::HodlWallet2.Droid.Resource.Animation.abc_fade_out;
+			global::FormsPinView.Droid.Resource.Animation.abc_grow_fade_in_from_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
+			global::FormsPinView.Droid.Resource.Animation.abc_popup_enter = global::HodlWallet2.Droid.Resource.Animation.abc_popup_enter;
+			global::FormsPinView.Droid.Resource.Animation.abc_popup_exit = global::HodlWallet2.Droid.Resource.Animation.abc_popup_exit;
+			global::FormsPinView.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
+			global::FormsPinView.Droid.Resource.Animation.abc_slide_in_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_slide_in_bottom;
+			global::FormsPinView.Droid.Resource.Animation.abc_slide_in_top = global::HodlWallet2.Droid.Resource.Animation.abc_slide_in_top;
+			global::FormsPinView.Droid.Resource.Animation.abc_slide_out_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_slide_out_bottom;
+			global::FormsPinView.Droid.Resource.Animation.abc_slide_out_top = global::HodlWallet2.Droid.Resource.Animation.abc_slide_out_top;
+			global::FormsPinView.Droid.Resource.Animation.design_bottom_sheet_slide_in = global::HodlWallet2.Droid.Resource.Animation.design_bottom_sheet_slide_in;
+			global::FormsPinView.Droid.Resource.Animation.design_bottom_sheet_slide_out = global::HodlWallet2.Droid.Resource.Animation.design_bottom_sheet_slide_out;
+			global::FormsPinView.Droid.Resource.Animation.design_snackbar_in = global::HodlWallet2.Droid.Resource.Animation.design_snackbar_in;
+			global::FormsPinView.Droid.Resource.Animation.design_snackbar_out = global::HodlWallet2.Droid.Resource.Animation.design_snackbar_out;
+			global::FormsPinView.Droid.Resource.Attribute.actionBarDivider = global::HodlWallet2.Droid.Resource.Attribute.actionBarDivider;
+			global::FormsPinView.Droid.Resource.Attribute.actionBarItemBackground = global::HodlWallet2.Droid.Resource.Attribute.actionBarItemBackground;
+			global::FormsPinView.Droid.Resource.Attribute.actionBarPopupTheme = global::HodlWallet2.Droid.Resource.Attribute.actionBarPopupTheme;
+			global::FormsPinView.Droid.Resource.Attribute.actionBarSize = global::HodlWallet2.Droid.Resource.Attribute.actionBarSize;
+			global::FormsPinView.Droid.Resource.Attribute.actionBarSplitStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarSplitStyle;
+			global::FormsPinView.Droid.Resource.Attribute.actionBarStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarStyle;
+			global::FormsPinView.Droid.Resource.Attribute.actionBarTabBarStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarTabBarStyle;
+			global::FormsPinView.Droid.Resource.Attribute.actionBarTabStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarTabStyle;
+			global::FormsPinView.Droid.Resource.Attribute.actionBarTabTextStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarTabTextStyle;
+			global::FormsPinView.Droid.Resource.Attribute.actionBarTheme = global::HodlWallet2.Droid.Resource.Attribute.actionBarTheme;
+			global::FormsPinView.Droid.Resource.Attribute.actionBarWidgetTheme = global::HodlWallet2.Droid.Resource.Attribute.actionBarWidgetTheme;
+			global::FormsPinView.Droid.Resource.Attribute.actionButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.actionButtonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.actionDropDownStyle = global::HodlWallet2.Droid.Resource.Attribute.actionDropDownStyle;
+			global::FormsPinView.Droid.Resource.Attribute.actionLayout = global::HodlWallet2.Droid.Resource.Attribute.actionLayout;
+			global::FormsPinView.Droid.Resource.Attribute.actionMenuTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.actionMenuTextAppearance;
+			global::FormsPinView.Droid.Resource.Attribute.actionMenuTextColor = global::HodlWallet2.Droid.Resource.Attribute.actionMenuTextColor;
+			global::FormsPinView.Droid.Resource.Attribute.actionModeBackground = global::HodlWallet2.Droid.Resource.Attribute.actionModeBackground;
+			global::FormsPinView.Droid.Resource.Attribute.actionModeCloseButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.actionModeCloseButtonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.actionModeCloseDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeCloseDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.actionModeCopyDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeCopyDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.actionModeCutDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeCutDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.actionModeFindDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeFindDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.actionModePasteDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModePasteDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.actionModePopupWindowStyle = global::HodlWallet2.Droid.Resource.Attribute.actionModePopupWindowStyle;
+			global::FormsPinView.Droid.Resource.Attribute.actionModeSelectAllDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeSelectAllDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.actionModeShareDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeShareDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.actionModeSplitBackground = global::HodlWallet2.Droid.Resource.Attribute.actionModeSplitBackground;
+			global::FormsPinView.Droid.Resource.Attribute.actionModeStyle = global::HodlWallet2.Droid.Resource.Attribute.actionModeStyle;
+			global::FormsPinView.Droid.Resource.Attribute.actionModeWebSearchDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeWebSearchDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.actionOverflowButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.actionOverflowButtonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.actionOverflowMenuStyle = global::HodlWallet2.Droid.Resource.Attribute.actionOverflowMenuStyle;
+			global::FormsPinView.Droid.Resource.Attribute.actionProviderClass = global::HodlWallet2.Droid.Resource.Attribute.actionProviderClass;
+			global::FormsPinView.Droid.Resource.Attribute.actionViewClass = global::HodlWallet2.Droid.Resource.Attribute.actionViewClass;
+			global::FormsPinView.Droid.Resource.Attribute.activityChooserViewStyle = global::HodlWallet2.Droid.Resource.Attribute.activityChooserViewStyle;
+			global::FormsPinView.Droid.Resource.Attribute.alertDialogButtonGroupStyle = global::HodlWallet2.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
+			global::FormsPinView.Droid.Resource.Attribute.alertDialogCenterButtons = global::HodlWallet2.Droid.Resource.Attribute.alertDialogCenterButtons;
+			global::FormsPinView.Droid.Resource.Attribute.alertDialogStyle = global::HodlWallet2.Droid.Resource.Attribute.alertDialogStyle;
+			global::FormsPinView.Droid.Resource.Attribute.alertDialogTheme = global::HodlWallet2.Droid.Resource.Attribute.alertDialogTheme;
+			global::FormsPinView.Droid.Resource.Attribute.allowStacking = global::HodlWallet2.Droid.Resource.Attribute.allowStacking;
+			global::FormsPinView.Droid.Resource.Attribute.arrowHeadLength = global::HodlWallet2.Droid.Resource.Attribute.arrowHeadLength;
+			global::FormsPinView.Droid.Resource.Attribute.arrowShaftLength = global::HodlWallet2.Droid.Resource.Attribute.arrowShaftLength;
+			global::FormsPinView.Droid.Resource.Attribute.autoCompleteTextViewStyle = global::HodlWallet2.Droid.Resource.Attribute.autoCompleteTextViewStyle;
+			global::FormsPinView.Droid.Resource.Attribute.background = global::HodlWallet2.Droid.Resource.Attribute.background;
+			global::FormsPinView.Droid.Resource.Attribute.backgroundSplit = global::HodlWallet2.Droid.Resource.Attribute.backgroundSplit;
+			global::FormsPinView.Droid.Resource.Attribute.backgroundStacked = global::HodlWallet2.Droid.Resource.Attribute.backgroundStacked;
+			global::FormsPinView.Droid.Resource.Attribute.backgroundTint = global::HodlWallet2.Droid.Resource.Attribute.backgroundTint;
+			global::FormsPinView.Droid.Resource.Attribute.backgroundTintMode = global::HodlWallet2.Droid.Resource.Attribute.backgroundTintMode;
+			global::FormsPinView.Droid.Resource.Attribute.barLength = global::HodlWallet2.Droid.Resource.Attribute.barLength;
+			global::FormsPinView.Droid.Resource.Attribute.behavior_hideable = global::HodlWallet2.Droid.Resource.Attribute.behavior_hideable;
+			global::FormsPinView.Droid.Resource.Attribute.behavior_overlapTop = global::HodlWallet2.Droid.Resource.Attribute.behavior_overlapTop;
+			global::FormsPinView.Droid.Resource.Attribute.behavior_peekHeight = global::HodlWallet2.Droid.Resource.Attribute.behavior_peekHeight;
+			global::FormsPinView.Droid.Resource.Attribute.borderWidth = global::HodlWallet2.Droid.Resource.Attribute.borderWidth;
+			global::FormsPinView.Droid.Resource.Attribute.borderlessButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.borderlessButtonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.bottomSheetDialogTheme = global::HodlWallet2.Droid.Resource.Attribute.bottomSheetDialogTheme;
+			global::FormsPinView.Droid.Resource.Attribute.bottomSheetStyle = global::HodlWallet2.Droid.Resource.Attribute.bottomSheetStyle;
+			global::FormsPinView.Droid.Resource.Attribute.buttonBarButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarButtonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.buttonBarNegativeButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.buttonBarNeutralButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.buttonBarPositiveButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.buttonBarStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarStyle;
+			global::FormsPinView.Droid.Resource.Attribute.buttonPanelSideLayout = global::HodlWallet2.Droid.Resource.Attribute.buttonPanelSideLayout;
+			global::FormsPinView.Droid.Resource.Attribute.buttonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.buttonStyleSmall = global::HodlWallet2.Droid.Resource.Attribute.buttonStyleSmall;
+			global::FormsPinView.Droid.Resource.Attribute.buttonTint = global::HodlWallet2.Droid.Resource.Attribute.buttonTint;
+			global::FormsPinView.Droid.Resource.Attribute.buttonTintMode = global::HodlWallet2.Droid.Resource.Attribute.buttonTintMode;
+			global::FormsPinView.Droid.Resource.Attribute.cardBackgroundColor = global::HodlWallet2.Droid.Resource.Attribute.cardBackgroundColor;
+			global::FormsPinView.Droid.Resource.Attribute.cardCornerRadius = global::HodlWallet2.Droid.Resource.Attribute.cardCornerRadius;
+			global::FormsPinView.Droid.Resource.Attribute.cardElevation = global::HodlWallet2.Droid.Resource.Attribute.cardElevation;
+			global::FormsPinView.Droid.Resource.Attribute.cardMaxElevation = global::HodlWallet2.Droid.Resource.Attribute.cardMaxElevation;
+			global::FormsPinView.Droid.Resource.Attribute.cardPreventCornerOverlap = global::HodlWallet2.Droid.Resource.Attribute.cardPreventCornerOverlap;
+			global::FormsPinView.Droid.Resource.Attribute.cardUseCompatPadding = global::HodlWallet2.Droid.Resource.Attribute.cardUseCompatPadding;
+			global::FormsPinView.Droid.Resource.Attribute.checkboxStyle = global::HodlWallet2.Droid.Resource.Attribute.checkboxStyle;
+			global::FormsPinView.Droid.Resource.Attribute.checkedTextViewStyle = global::HodlWallet2.Droid.Resource.Attribute.checkedTextViewStyle;
+			global::FormsPinView.Droid.Resource.Attribute.closeIcon = global::HodlWallet2.Droid.Resource.Attribute.closeIcon;
+			global::FormsPinView.Droid.Resource.Attribute.closeItemLayout = global::HodlWallet2.Droid.Resource.Attribute.closeItemLayout;
+			global::FormsPinView.Droid.Resource.Attribute.collapseContentDescription = global::HodlWallet2.Droid.Resource.Attribute.collapseContentDescription;
+			global::FormsPinView.Droid.Resource.Attribute.collapseIcon = global::HodlWallet2.Droid.Resource.Attribute.collapseIcon;
+			global::FormsPinView.Droid.Resource.Attribute.collapsedTitleGravity = global::HodlWallet2.Droid.Resource.Attribute.collapsedTitleGravity;
+			global::FormsPinView.Droid.Resource.Attribute.collapsedTitleTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.collapsedTitleTextAppearance;
+			global::FormsPinView.Droid.Resource.Attribute.color = global::HodlWallet2.Droid.Resource.Attribute.color;
+			global::FormsPinView.Droid.Resource.Attribute.colorAccent = global::HodlWallet2.Droid.Resource.Attribute.colorAccent;
+			global::FormsPinView.Droid.Resource.Attribute.colorButtonNormal = global::HodlWallet2.Droid.Resource.Attribute.colorButtonNormal;
+			global::FormsPinView.Droid.Resource.Attribute.colorControlActivated = global::HodlWallet2.Droid.Resource.Attribute.colorControlActivated;
+			global::FormsPinView.Droid.Resource.Attribute.colorControlHighlight = global::HodlWallet2.Droid.Resource.Attribute.colorControlHighlight;
+			global::FormsPinView.Droid.Resource.Attribute.colorControlNormal = global::HodlWallet2.Droid.Resource.Attribute.colorControlNormal;
+			global::FormsPinView.Droid.Resource.Attribute.colorPrimary = global::HodlWallet2.Droid.Resource.Attribute.colorPrimary;
+			global::FormsPinView.Droid.Resource.Attribute.colorPrimaryDark = global::HodlWallet2.Droid.Resource.Attribute.colorPrimaryDark;
+			global::FormsPinView.Droid.Resource.Attribute.colorSwitchThumbNormal = global::HodlWallet2.Droid.Resource.Attribute.colorSwitchThumbNormal;
+			global::FormsPinView.Droid.Resource.Attribute.commitIcon = global::HodlWallet2.Droid.Resource.Attribute.commitIcon;
+			global::FormsPinView.Droid.Resource.Attribute.contentInsetEnd = global::HodlWallet2.Droid.Resource.Attribute.contentInsetEnd;
+			global::FormsPinView.Droid.Resource.Attribute.contentInsetLeft = global::HodlWallet2.Droid.Resource.Attribute.contentInsetLeft;
+			global::FormsPinView.Droid.Resource.Attribute.contentInsetRight = global::HodlWallet2.Droid.Resource.Attribute.contentInsetRight;
+			global::FormsPinView.Droid.Resource.Attribute.contentInsetStart = global::HodlWallet2.Droid.Resource.Attribute.contentInsetStart;
+			global::FormsPinView.Droid.Resource.Attribute.contentPadding = global::HodlWallet2.Droid.Resource.Attribute.contentPadding;
+			global::FormsPinView.Droid.Resource.Attribute.contentPaddingBottom = global::HodlWallet2.Droid.Resource.Attribute.contentPaddingBottom;
+			global::FormsPinView.Droid.Resource.Attribute.contentPaddingLeft = global::HodlWallet2.Droid.Resource.Attribute.contentPaddingLeft;
+			global::FormsPinView.Droid.Resource.Attribute.contentPaddingRight = global::HodlWallet2.Droid.Resource.Attribute.contentPaddingRight;
+			global::FormsPinView.Droid.Resource.Attribute.contentPaddingTop = global::HodlWallet2.Droid.Resource.Attribute.contentPaddingTop;
+			global::FormsPinView.Droid.Resource.Attribute.contentScrim = global::HodlWallet2.Droid.Resource.Attribute.contentScrim;
+			global::FormsPinView.Droid.Resource.Attribute.controlBackground = global::HodlWallet2.Droid.Resource.Attribute.controlBackground;
+			global::FormsPinView.Droid.Resource.Attribute.counterEnabled = global::HodlWallet2.Droid.Resource.Attribute.counterEnabled;
+			global::FormsPinView.Droid.Resource.Attribute.counterMaxLength = global::HodlWallet2.Droid.Resource.Attribute.counterMaxLength;
+			global::FormsPinView.Droid.Resource.Attribute.counterOverflowTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.counterOverflowTextAppearance;
+			global::FormsPinView.Droid.Resource.Attribute.counterTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.counterTextAppearance;
+			global::FormsPinView.Droid.Resource.Attribute.customNavigationLayout = global::HodlWallet2.Droid.Resource.Attribute.customNavigationLayout;
+			global::FormsPinView.Droid.Resource.Attribute.defaultQueryHint = global::HodlWallet2.Droid.Resource.Attribute.defaultQueryHint;
+			global::FormsPinView.Droid.Resource.Attribute.dialogPreferredPadding = global::HodlWallet2.Droid.Resource.Attribute.dialogPreferredPadding;
+			global::FormsPinView.Droid.Resource.Attribute.dialogTheme = global::HodlWallet2.Droid.Resource.Attribute.dialogTheme;
+			global::FormsPinView.Droid.Resource.Attribute.displayOptions = global::HodlWallet2.Droid.Resource.Attribute.displayOptions;
+			global::FormsPinView.Droid.Resource.Attribute.divider = global::HodlWallet2.Droid.Resource.Attribute.divider;
+			global::FormsPinView.Droid.Resource.Attribute.dividerHorizontal = global::HodlWallet2.Droid.Resource.Attribute.dividerHorizontal;
+			global::FormsPinView.Droid.Resource.Attribute.dividerPadding = global::HodlWallet2.Droid.Resource.Attribute.dividerPadding;
+			global::FormsPinView.Droid.Resource.Attribute.dividerVertical = global::HodlWallet2.Droid.Resource.Attribute.dividerVertical;
+			global::FormsPinView.Droid.Resource.Attribute.drawableSize = global::HodlWallet2.Droid.Resource.Attribute.drawableSize;
+			global::FormsPinView.Droid.Resource.Attribute.drawerArrowStyle = global::HodlWallet2.Droid.Resource.Attribute.drawerArrowStyle;
+			global::FormsPinView.Droid.Resource.Attribute.dropDownListViewStyle = global::HodlWallet2.Droid.Resource.Attribute.dropDownListViewStyle;
+			global::FormsPinView.Droid.Resource.Attribute.dropdownListPreferredItemHeight = global::HodlWallet2.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::FormsPinView.Droid.Resource.Attribute.editTextBackground = global::HodlWallet2.Droid.Resource.Attribute.editTextBackground;
+			global::FormsPinView.Droid.Resource.Attribute.editTextColor = global::HodlWallet2.Droid.Resource.Attribute.editTextColor;
+			global::FormsPinView.Droid.Resource.Attribute.editTextStyle = global::HodlWallet2.Droid.Resource.Attribute.editTextStyle;
+			global::FormsPinView.Droid.Resource.Attribute.elevation = global::HodlWallet2.Droid.Resource.Attribute.elevation;
+			global::FormsPinView.Droid.Resource.Attribute.errorEnabled = global::HodlWallet2.Droid.Resource.Attribute.errorEnabled;
+			global::FormsPinView.Droid.Resource.Attribute.errorTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.errorTextAppearance;
+			global::FormsPinView.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable = global::HodlWallet2.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.expanded = global::HodlWallet2.Droid.Resource.Attribute.expanded;
+			global::FormsPinView.Droid.Resource.Attribute.expandedTitleGravity = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleGravity;
+			global::FormsPinView.Droid.Resource.Attribute.expandedTitleMargin = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMargin;
+			global::FormsPinView.Droid.Resource.Attribute.expandedTitleMarginBottom = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMarginBottom;
+			global::FormsPinView.Droid.Resource.Attribute.expandedTitleMarginEnd = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMarginEnd;
+			global::FormsPinView.Droid.Resource.Attribute.expandedTitleMarginStart = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMarginStart;
+			global::FormsPinView.Droid.Resource.Attribute.expandedTitleMarginTop = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMarginTop;
+			global::FormsPinView.Droid.Resource.Attribute.expandedTitleTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleTextAppearance;
+			global::FormsPinView.Droid.Resource.Attribute.externalRouteEnabledDrawable = global::HodlWallet2.Droid.Resource.Attribute.externalRouteEnabledDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.fabSize = global::HodlWallet2.Droid.Resource.Attribute.fabSize;
+			global::FormsPinView.Droid.Resource.Attribute.foregroundInsidePadding = global::HodlWallet2.Droid.Resource.Attribute.foregroundInsidePadding;
+			global::FormsPinView.Droid.Resource.Attribute.gapBetweenBars = global::HodlWallet2.Droid.Resource.Attribute.gapBetweenBars;
+			global::FormsPinView.Droid.Resource.Attribute.goIcon = global::HodlWallet2.Droid.Resource.Attribute.goIcon;
+			global::FormsPinView.Droid.Resource.Attribute.headerLayout = global::HodlWallet2.Droid.Resource.Attribute.headerLayout;
+			global::FormsPinView.Droid.Resource.Attribute.height = global::HodlWallet2.Droid.Resource.Attribute.height;
+			global::FormsPinView.Droid.Resource.Attribute.hideOnContentScroll = global::HodlWallet2.Droid.Resource.Attribute.hideOnContentScroll;
+			global::FormsPinView.Droid.Resource.Attribute.hintAnimationEnabled = global::HodlWallet2.Droid.Resource.Attribute.hintAnimationEnabled;
+			global::FormsPinView.Droid.Resource.Attribute.hintEnabled = global::HodlWallet2.Droid.Resource.Attribute.hintEnabled;
+			global::FormsPinView.Droid.Resource.Attribute.hintTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.hintTextAppearance;
+			global::FormsPinView.Droid.Resource.Attribute.homeAsUpIndicator = global::HodlWallet2.Droid.Resource.Attribute.homeAsUpIndicator;
+			global::FormsPinView.Droid.Resource.Attribute.homeLayout = global::HodlWallet2.Droid.Resource.Attribute.homeLayout;
+			global::FormsPinView.Droid.Resource.Attribute.icon = global::HodlWallet2.Droid.Resource.Attribute.icon;
+			global::FormsPinView.Droid.Resource.Attribute.iconifiedByDefault = global::HodlWallet2.Droid.Resource.Attribute.iconifiedByDefault;
+			global::FormsPinView.Droid.Resource.Attribute.imageButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.imageButtonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.indeterminateProgressStyle = global::HodlWallet2.Droid.Resource.Attribute.indeterminateProgressStyle;
+			global::FormsPinView.Droid.Resource.Attribute.initialActivityCount = global::HodlWallet2.Droid.Resource.Attribute.initialActivityCount;
+			global::FormsPinView.Droid.Resource.Attribute.insetForeground = global::HodlWallet2.Droid.Resource.Attribute.insetForeground;
+			global::FormsPinView.Droid.Resource.Attribute.isLightTheme = global::HodlWallet2.Droid.Resource.Attribute.isLightTheme;
+			global::FormsPinView.Droid.Resource.Attribute.itemBackground = global::HodlWallet2.Droid.Resource.Attribute.itemBackground;
+			global::FormsPinView.Droid.Resource.Attribute.itemIconTint = global::HodlWallet2.Droid.Resource.Attribute.itemIconTint;
+			global::FormsPinView.Droid.Resource.Attribute.itemPadding = global::HodlWallet2.Droid.Resource.Attribute.itemPadding;
+			global::FormsPinView.Droid.Resource.Attribute.itemTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.itemTextAppearance;
+			global::FormsPinView.Droid.Resource.Attribute.itemTextColor = global::HodlWallet2.Droid.Resource.Attribute.itemTextColor;
+			global::FormsPinView.Droid.Resource.Attribute.keylines = global::HodlWallet2.Droid.Resource.Attribute.keylines;
+			global::FormsPinView.Droid.Resource.Attribute.layout = global::HodlWallet2.Droid.Resource.Attribute.layout;
+			global::FormsPinView.Droid.Resource.Attribute.layoutManager = global::HodlWallet2.Droid.Resource.Attribute.layoutManager;
+			global::FormsPinView.Droid.Resource.Attribute.layout_anchor = global::HodlWallet2.Droid.Resource.Attribute.layout_anchor;
+			global::FormsPinView.Droid.Resource.Attribute.layout_anchorGravity = global::HodlWallet2.Droid.Resource.Attribute.layout_anchorGravity;
+			global::FormsPinView.Droid.Resource.Attribute.layout_behavior = global::HodlWallet2.Droid.Resource.Attribute.layout_behavior;
+			global::FormsPinView.Droid.Resource.Attribute.layout_collapseMode = global::HodlWallet2.Droid.Resource.Attribute.layout_collapseMode;
+			global::FormsPinView.Droid.Resource.Attribute.layout_collapseParallaxMultiplier = global::HodlWallet2.Droid.Resource.Attribute.layout_collapseParallaxMultiplier;
+			global::FormsPinView.Droid.Resource.Attribute.layout_keyline = global::HodlWallet2.Droid.Resource.Attribute.layout_keyline;
+			global::FormsPinView.Droid.Resource.Attribute.layout_scrollFlags = global::HodlWallet2.Droid.Resource.Attribute.layout_scrollFlags;
+			global::FormsPinView.Droid.Resource.Attribute.layout_scrollInterpolator = global::HodlWallet2.Droid.Resource.Attribute.layout_scrollInterpolator;
+			global::FormsPinView.Droid.Resource.Attribute.listChoiceBackgroundIndicator = global::HodlWallet2.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::FormsPinView.Droid.Resource.Attribute.listDividerAlertDialog = global::HodlWallet2.Droid.Resource.Attribute.listDividerAlertDialog;
+			global::FormsPinView.Droid.Resource.Attribute.listItemLayout = global::HodlWallet2.Droid.Resource.Attribute.listItemLayout;
+			global::FormsPinView.Droid.Resource.Attribute.listLayout = global::HodlWallet2.Droid.Resource.Attribute.listLayout;
+			global::FormsPinView.Droid.Resource.Attribute.listPopupWindowStyle = global::HodlWallet2.Droid.Resource.Attribute.listPopupWindowStyle;
+			global::FormsPinView.Droid.Resource.Attribute.listPreferredItemHeight = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemHeight;
+			global::FormsPinView.Droid.Resource.Attribute.listPreferredItemHeightLarge = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemHeightLarge;
+			global::FormsPinView.Droid.Resource.Attribute.listPreferredItemHeightSmall = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemHeightSmall;
+			global::FormsPinView.Droid.Resource.Attribute.listPreferredItemPaddingLeft = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
+			global::FormsPinView.Droid.Resource.Attribute.listPreferredItemPaddingRight = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemPaddingRight;
+			global::FormsPinView.Droid.Resource.Attribute.logo = global::HodlWallet2.Droid.Resource.Attribute.logo;
+			global::FormsPinView.Droid.Resource.Attribute.logoDescription = global::HodlWallet2.Droid.Resource.Attribute.logoDescription;
+			global::FormsPinView.Droid.Resource.Attribute.maxActionInlineWidth = global::HodlWallet2.Droid.Resource.Attribute.maxActionInlineWidth;
+			global::FormsPinView.Droid.Resource.Attribute.maxButtonHeight = global::HodlWallet2.Droid.Resource.Attribute.maxButtonHeight;
+			global::FormsPinView.Droid.Resource.Attribute.measureWithLargestChild = global::HodlWallet2.Droid.Resource.Attribute.measureWithLargestChild;
+			global::FormsPinView.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.mediaRouteButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteButtonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.mediaRouteCloseDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteCloseDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.mediaRoutePauseDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRoutePauseDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.mediaRoutePlayDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRoutePlayDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.mediaRouteTvIconDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteTvIconDrawable;
+			global::FormsPinView.Droid.Resource.Attribute.menu = global::HodlWallet2.Droid.Resource.Attribute.menu;
+			global::FormsPinView.Droid.Resource.Attribute.multiChoiceItemLayout = global::HodlWallet2.Droid.Resource.Attribute.multiChoiceItemLayout;
+			global::FormsPinView.Droid.Resource.Attribute.navigationContentDescription = global::HodlWallet2.Droid.Resource.Attribute.navigationContentDescription;
+			global::FormsPinView.Droid.Resource.Attribute.navigationIcon = global::HodlWallet2.Droid.Resource.Attribute.navigationIcon;
+			global::FormsPinView.Droid.Resource.Attribute.navigationMode = global::HodlWallet2.Droid.Resource.Attribute.navigationMode;
+			global::FormsPinView.Droid.Resource.Attribute.overlapAnchor = global::HodlWallet2.Droid.Resource.Attribute.overlapAnchor;
+			global::FormsPinView.Droid.Resource.Attribute.paddingEnd = global::HodlWallet2.Droid.Resource.Attribute.paddingEnd;
+			global::FormsPinView.Droid.Resource.Attribute.paddingStart = global::HodlWallet2.Droid.Resource.Attribute.paddingStart;
+			global::FormsPinView.Droid.Resource.Attribute.panelBackground = global::HodlWallet2.Droid.Resource.Attribute.panelBackground;
+			global::FormsPinView.Droid.Resource.Attribute.panelMenuListTheme = global::HodlWallet2.Droid.Resource.Attribute.panelMenuListTheme;
+			global::FormsPinView.Droid.Resource.Attribute.panelMenuListWidth = global::HodlWallet2.Droid.Resource.Attribute.panelMenuListWidth;
+			global::FormsPinView.Droid.Resource.Attribute.popupMenuStyle = global::HodlWallet2.Droid.Resource.Attribute.popupMenuStyle;
+			global::FormsPinView.Droid.Resource.Attribute.popupTheme = global::HodlWallet2.Droid.Resource.Attribute.popupTheme;
+			global::FormsPinView.Droid.Resource.Attribute.popupWindowStyle = global::HodlWallet2.Droid.Resource.Attribute.popupWindowStyle;
+			global::FormsPinView.Droid.Resource.Attribute.preserveIconSpacing = global::HodlWallet2.Droid.Resource.Attribute.preserveIconSpacing;
+			global::FormsPinView.Droid.Resource.Attribute.pressedTranslationZ = global::HodlWallet2.Droid.Resource.Attribute.pressedTranslationZ;
+			global::FormsPinView.Droid.Resource.Attribute.progressBarPadding = global::HodlWallet2.Droid.Resource.Attribute.progressBarPadding;
+			global::FormsPinView.Droid.Resource.Attribute.progressBarStyle = global::HodlWallet2.Droid.Resource.Attribute.progressBarStyle;
+			global::FormsPinView.Droid.Resource.Attribute.queryBackground = global::HodlWallet2.Droid.Resource.Attribute.queryBackground;
+			global::FormsPinView.Droid.Resource.Attribute.queryHint = global::HodlWallet2.Droid.Resource.Attribute.queryHint;
+			global::FormsPinView.Droid.Resource.Attribute.radioButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.radioButtonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.ratingBarStyle = global::HodlWallet2.Droid.Resource.Attribute.ratingBarStyle;
+			global::FormsPinView.Droid.Resource.Attribute.ratingBarStyleIndicator = global::HodlWallet2.Droid.Resource.Attribute.ratingBarStyleIndicator;
+			global::FormsPinView.Droid.Resource.Attribute.ratingBarStyleSmall = global::HodlWallet2.Droid.Resource.Attribute.ratingBarStyleSmall;
+			global::FormsPinView.Droid.Resource.Attribute.reverseLayout = global::HodlWallet2.Droid.Resource.Attribute.reverseLayout;
+			global::FormsPinView.Droid.Resource.Attribute.rippleColor = global::HodlWallet2.Droid.Resource.Attribute.rippleColor;
+			global::FormsPinView.Droid.Resource.Attribute.searchHintIcon = global::HodlWallet2.Droid.Resource.Attribute.searchHintIcon;
+			global::FormsPinView.Droid.Resource.Attribute.searchIcon = global::HodlWallet2.Droid.Resource.Attribute.searchIcon;
+			global::FormsPinView.Droid.Resource.Attribute.searchViewStyle = global::HodlWallet2.Droid.Resource.Attribute.searchViewStyle;
+			global::FormsPinView.Droid.Resource.Attribute.seekBarStyle = global::HodlWallet2.Droid.Resource.Attribute.seekBarStyle;
+			global::FormsPinView.Droid.Resource.Attribute.selectableItemBackground = global::HodlWallet2.Droid.Resource.Attribute.selectableItemBackground;
+			global::FormsPinView.Droid.Resource.Attribute.selectableItemBackgroundBorderless = global::HodlWallet2.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::FormsPinView.Droid.Resource.Attribute.showAsAction = global::HodlWallet2.Droid.Resource.Attribute.showAsAction;
+			global::FormsPinView.Droid.Resource.Attribute.showDividers = global::HodlWallet2.Droid.Resource.Attribute.showDividers;
+			global::FormsPinView.Droid.Resource.Attribute.showText = global::HodlWallet2.Droid.Resource.Attribute.showText;
+			global::FormsPinView.Droid.Resource.Attribute.singleChoiceItemLayout = global::HodlWallet2.Droid.Resource.Attribute.singleChoiceItemLayout;
+			global::FormsPinView.Droid.Resource.Attribute.spanCount = global::HodlWallet2.Droid.Resource.Attribute.spanCount;
+			global::FormsPinView.Droid.Resource.Attribute.spinBars = global::HodlWallet2.Droid.Resource.Attribute.spinBars;
+			global::FormsPinView.Droid.Resource.Attribute.spinnerDropDownItemStyle = global::HodlWallet2.Droid.Resource.Attribute.spinnerDropDownItemStyle;
+			global::FormsPinView.Droid.Resource.Attribute.spinnerStyle = global::HodlWallet2.Droid.Resource.Attribute.spinnerStyle;
+			global::FormsPinView.Droid.Resource.Attribute.splitTrack = global::HodlWallet2.Droid.Resource.Attribute.splitTrack;
+			global::FormsPinView.Droid.Resource.Attribute.srcCompat = global::HodlWallet2.Droid.Resource.Attribute.srcCompat;
+			global::FormsPinView.Droid.Resource.Attribute.stackFromEnd = global::HodlWallet2.Droid.Resource.Attribute.stackFromEnd;
+			global::FormsPinView.Droid.Resource.Attribute.state_above_anchor = global::HodlWallet2.Droid.Resource.Attribute.state_above_anchor;
+			global::FormsPinView.Droid.Resource.Attribute.statusBarBackground = global::HodlWallet2.Droid.Resource.Attribute.statusBarBackground;
+			global::FormsPinView.Droid.Resource.Attribute.statusBarScrim = global::HodlWallet2.Droid.Resource.Attribute.statusBarScrim;
+			global::FormsPinView.Droid.Resource.Attribute.submitBackground = global::HodlWallet2.Droid.Resource.Attribute.submitBackground;
+			global::FormsPinView.Droid.Resource.Attribute.subtitle = global::HodlWallet2.Droid.Resource.Attribute.subtitle;
+			global::FormsPinView.Droid.Resource.Attribute.subtitleTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.subtitleTextAppearance;
+			global::FormsPinView.Droid.Resource.Attribute.subtitleTextColor = global::HodlWallet2.Droid.Resource.Attribute.subtitleTextColor;
+			global::FormsPinView.Droid.Resource.Attribute.subtitleTextStyle = global::HodlWallet2.Droid.Resource.Attribute.subtitleTextStyle;
+			global::FormsPinView.Droid.Resource.Attribute.suggestionRowLayout = global::HodlWallet2.Droid.Resource.Attribute.suggestionRowLayout;
+			global::FormsPinView.Droid.Resource.Attribute.switchMinWidth = global::HodlWallet2.Droid.Resource.Attribute.switchMinWidth;
+			global::FormsPinView.Droid.Resource.Attribute.switchPadding = global::HodlWallet2.Droid.Resource.Attribute.switchPadding;
+			global::FormsPinView.Droid.Resource.Attribute.switchStyle = global::HodlWallet2.Droid.Resource.Attribute.switchStyle;
+			global::FormsPinView.Droid.Resource.Attribute.switchTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.switchTextAppearance;
+			global::FormsPinView.Droid.Resource.Attribute.tabBackground = global::HodlWallet2.Droid.Resource.Attribute.tabBackground;
+			global::FormsPinView.Droid.Resource.Attribute.tabContentStart = global::HodlWallet2.Droid.Resource.Attribute.tabContentStart;
+			global::FormsPinView.Droid.Resource.Attribute.tabGravity = global::HodlWallet2.Droid.Resource.Attribute.tabGravity;
+			global::FormsPinView.Droid.Resource.Attribute.tabIndicatorColor = global::HodlWallet2.Droid.Resource.Attribute.tabIndicatorColor;
+			global::FormsPinView.Droid.Resource.Attribute.tabIndicatorHeight = global::HodlWallet2.Droid.Resource.Attribute.tabIndicatorHeight;
+			global::FormsPinView.Droid.Resource.Attribute.tabMaxWidth = global::HodlWallet2.Droid.Resource.Attribute.tabMaxWidth;
+			global::FormsPinView.Droid.Resource.Attribute.tabMinWidth = global::HodlWallet2.Droid.Resource.Attribute.tabMinWidth;
+			global::FormsPinView.Droid.Resource.Attribute.tabMode = global::HodlWallet2.Droid.Resource.Attribute.tabMode;
+			global::FormsPinView.Droid.Resource.Attribute.tabPadding = global::HodlWallet2.Droid.Resource.Attribute.tabPadding;
+			global::FormsPinView.Droid.Resource.Attribute.tabPaddingBottom = global::HodlWallet2.Droid.Resource.Attribute.tabPaddingBottom;
+			global::FormsPinView.Droid.Resource.Attribute.tabPaddingEnd = global::HodlWallet2.Droid.Resource.Attribute.tabPaddingEnd;
+			global::FormsPinView.Droid.Resource.Attribute.tabPaddingStart = global::HodlWallet2.Droid.Resource.Attribute.tabPaddingStart;
+			global::FormsPinView.Droid.Resource.Attribute.tabPaddingTop = global::HodlWallet2.Droid.Resource.Attribute.tabPaddingTop;
+			global::FormsPinView.Droid.Resource.Attribute.tabSelectedTextColor = global::HodlWallet2.Droid.Resource.Attribute.tabSelectedTextColor;
+			global::FormsPinView.Droid.Resource.Attribute.tabTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.tabTextAppearance;
+			global::FormsPinView.Droid.Resource.Attribute.tabTextColor = global::HodlWallet2.Droid.Resource.Attribute.tabTextColor;
+			global::FormsPinView.Droid.Resource.Attribute.textAllCaps = global::HodlWallet2.Droid.Resource.Attribute.textAllCaps;
+			global::FormsPinView.Droid.Resource.Attribute.textAppearanceLargePopupMenu = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
+			global::FormsPinView.Droid.Resource.Attribute.textAppearanceListItem = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceListItem;
+			global::FormsPinView.Droid.Resource.Attribute.textAppearanceListItemSmall = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceListItemSmall;
+			global::FormsPinView.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
+			global::FormsPinView.Droid.Resource.Attribute.textAppearanceSearchResultTitle = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
+			global::FormsPinView.Droid.Resource.Attribute.textAppearanceSmallPopupMenu = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::FormsPinView.Droid.Resource.Attribute.textColorAlertDialogListItem = global::HodlWallet2.Droid.Resource.Attribute.textColorAlertDialogListItem;
+			global::FormsPinView.Droid.Resource.Attribute.textColorError = global::HodlWallet2.Droid.Resource.Attribute.textColorError;
+			global::FormsPinView.Droid.Resource.Attribute.textColorSearchUrl = global::HodlWallet2.Droid.Resource.Attribute.textColorSearchUrl;
+			global::FormsPinView.Droid.Resource.Attribute.theme = global::HodlWallet2.Droid.Resource.Attribute.theme;
+			global::FormsPinView.Droid.Resource.Attribute.thickness = global::HodlWallet2.Droid.Resource.Attribute.thickness;
+			global::FormsPinView.Droid.Resource.Attribute.thumbTextPadding = global::HodlWallet2.Droid.Resource.Attribute.thumbTextPadding;
+			global::FormsPinView.Droid.Resource.Attribute.title = global::HodlWallet2.Droid.Resource.Attribute.title;
+			global::FormsPinView.Droid.Resource.Attribute.titleEnabled = global::HodlWallet2.Droid.Resource.Attribute.titleEnabled;
+			global::FormsPinView.Droid.Resource.Attribute.titleMarginBottom = global::HodlWallet2.Droid.Resource.Attribute.titleMarginBottom;
+			global::FormsPinView.Droid.Resource.Attribute.titleMarginEnd = global::HodlWallet2.Droid.Resource.Attribute.titleMarginEnd;
+			global::FormsPinView.Droid.Resource.Attribute.titleMarginStart = global::HodlWallet2.Droid.Resource.Attribute.titleMarginStart;
+			global::FormsPinView.Droid.Resource.Attribute.titleMarginTop = global::HodlWallet2.Droid.Resource.Attribute.titleMarginTop;
+			global::FormsPinView.Droid.Resource.Attribute.titleMargins = global::HodlWallet2.Droid.Resource.Attribute.titleMargins;
+			global::FormsPinView.Droid.Resource.Attribute.titleTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.titleTextAppearance;
+			global::FormsPinView.Droid.Resource.Attribute.titleTextColor = global::HodlWallet2.Droid.Resource.Attribute.titleTextColor;
+			global::FormsPinView.Droid.Resource.Attribute.titleTextStyle = global::HodlWallet2.Droid.Resource.Attribute.titleTextStyle;
+			global::FormsPinView.Droid.Resource.Attribute.toolbarId = global::HodlWallet2.Droid.Resource.Attribute.toolbarId;
+			global::FormsPinView.Droid.Resource.Attribute.toolbarNavigationButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
+			global::FormsPinView.Droid.Resource.Attribute.toolbarStyle = global::HodlWallet2.Droid.Resource.Attribute.toolbarStyle;
+			global::FormsPinView.Droid.Resource.Attribute.track = global::HodlWallet2.Droid.Resource.Attribute.track;
+			global::FormsPinView.Droid.Resource.Attribute.useCompatPadding = global::HodlWallet2.Droid.Resource.Attribute.useCompatPadding;
+			global::FormsPinView.Droid.Resource.Attribute.voiceIcon = global::HodlWallet2.Droid.Resource.Attribute.voiceIcon;
+			global::FormsPinView.Droid.Resource.Attribute.windowActionBar = global::HodlWallet2.Droid.Resource.Attribute.windowActionBar;
+			global::FormsPinView.Droid.Resource.Attribute.windowActionBarOverlay = global::HodlWallet2.Droid.Resource.Attribute.windowActionBarOverlay;
+			global::FormsPinView.Droid.Resource.Attribute.windowActionModeOverlay = global::HodlWallet2.Droid.Resource.Attribute.windowActionModeOverlay;
+			global::FormsPinView.Droid.Resource.Attribute.windowFixedHeightMajor = global::HodlWallet2.Droid.Resource.Attribute.windowFixedHeightMajor;
+			global::FormsPinView.Droid.Resource.Attribute.windowFixedHeightMinor = global::HodlWallet2.Droid.Resource.Attribute.windowFixedHeightMinor;
+			global::FormsPinView.Droid.Resource.Attribute.windowFixedWidthMajor = global::HodlWallet2.Droid.Resource.Attribute.windowFixedWidthMajor;
+			global::FormsPinView.Droid.Resource.Attribute.windowFixedWidthMinor = global::HodlWallet2.Droid.Resource.Attribute.windowFixedWidthMinor;
+			global::FormsPinView.Droid.Resource.Attribute.windowMinWidthMajor = global::HodlWallet2.Droid.Resource.Attribute.windowMinWidthMajor;
+			global::FormsPinView.Droid.Resource.Attribute.windowMinWidthMinor = global::HodlWallet2.Droid.Resource.Attribute.windowMinWidthMinor;
+			global::FormsPinView.Droid.Resource.Attribute.windowNoTitle = global::HodlWallet2.Droid.Resource.Attribute.windowNoTitle;
+			global::FormsPinView.Droid.Resource.Boolean.abc_action_bar_embed_tabs = global::HodlWallet2.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::FormsPinView.Droid.Resource.Boolean.abc_allow_stacked_button_bar = global::HodlWallet2.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
+			global::FormsPinView.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::HodlWallet2.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::FormsPinView.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::HodlWallet2.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
+			global::FormsPinView.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::HodlWallet2.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
+			global::FormsPinView.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
+			global::FormsPinView.Droid.Resource.Color.abc_background_cache_hint_selector_material_light = global::HodlWallet2.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
+			global::FormsPinView.Droid.Resource.Color.abc_color_highlight_material = global::HodlWallet2.Droid.Resource.Color.abc_color_highlight_material;
+			global::FormsPinView.Droid.Resource.Color.abc_input_method_navigation_guard = global::HodlWallet2.Droid.Resource.Color.abc_input_method_navigation_guard;
+			global::FormsPinView.Droid.Resource.Color.abc_primary_text_disable_only_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
+			global::FormsPinView.Droid.Resource.Color.abc_primary_text_disable_only_material_light = global::HodlWallet2.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::FormsPinView.Droid.Resource.Color.abc_primary_text_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_primary_text_material_dark;
+			global::FormsPinView.Droid.Resource.Color.abc_primary_text_material_light = global::HodlWallet2.Droid.Resource.Color.abc_primary_text_material_light;
+			global::FormsPinView.Droid.Resource.Color.abc_search_url_text = global::HodlWallet2.Droid.Resource.Color.abc_search_url_text;
+			global::FormsPinView.Droid.Resource.Color.abc_search_url_text_normal = global::HodlWallet2.Droid.Resource.Color.abc_search_url_text_normal;
+			global::FormsPinView.Droid.Resource.Color.abc_search_url_text_pressed = global::HodlWallet2.Droid.Resource.Color.abc_search_url_text_pressed;
+			global::FormsPinView.Droid.Resource.Color.abc_search_url_text_selected = global::HodlWallet2.Droid.Resource.Color.abc_search_url_text_selected;
+			global::FormsPinView.Droid.Resource.Color.abc_secondary_text_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_secondary_text_material_dark;
+			global::FormsPinView.Droid.Resource.Color.abc_secondary_text_material_light = global::HodlWallet2.Droid.Resource.Color.abc_secondary_text_material_light;
+			global::FormsPinView.Droid.Resource.Color.accent_material_dark = global::HodlWallet2.Droid.Resource.Color.accent_material_dark;
+			global::FormsPinView.Droid.Resource.Color.accent_material_light = global::HodlWallet2.Droid.Resource.Color.accent_material_light;
+			global::FormsPinView.Droid.Resource.Color.background_floating_material_dark = global::HodlWallet2.Droid.Resource.Color.background_floating_material_dark;
+			global::FormsPinView.Droid.Resource.Color.background_floating_material_light = global::HodlWallet2.Droid.Resource.Color.background_floating_material_light;
+			global::FormsPinView.Droid.Resource.Color.background_material_dark = global::HodlWallet2.Droid.Resource.Color.background_material_dark;
+			global::FormsPinView.Droid.Resource.Color.background_material_light = global::HodlWallet2.Droid.Resource.Color.background_material_light;
+			global::FormsPinView.Droid.Resource.Color.bright_foreground_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.bright_foreground_disabled_material_dark;
+			global::FormsPinView.Droid.Resource.Color.bright_foreground_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.bright_foreground_disabled_material_light;
+			global::FormsPinView.Droid.Resource.Color.bright_foreground_inverse_material_dark = global::HodlWallet2.Droid.Resource.Color.bright_foreground_inverse_material_dark;
+			global::FormsPinView.Droid.Resource.Color.bright_foreground_inverse_material_light = global::HodlWallet2.Droid.Resource.Color.bright_foreground_inverse_material_light;
+			global::FormsPinView.Droid.Resource.Color.bright_foreground_material_dark = global::HodlWallet2.Droid.Resource.Color.bright_foreground_material_dark;
+			global::FormsPinView.Droid.Resource.Color.bright_foreground_material_light = global::HodlWallet2.Droid.Resource.Color.bright_foreground_material_light;
+			global::FormsPinView.Droid.Resource.Color.button_material_dark = global::HodlWallet2.Droid.Resource.Color.button_material_dark;
+			global::FormsPinView.Droid.Resource.Color.button_material_light = global::HodlWallet2.Droid.Resource.Color.button_material_light;
+			global::FormsPinView.Droid.Resource.Color.cardview_dark_background = global::HodlWallet2.Droid.Resource.Color.cardview_dark_background;
+			global::FormsPinView.Droid.Resource.Color.cardview_light_background = global::HodlWallet2.Droid.Resource.Color.cardview_light_background;
+			global::FormsPinView.Droid.Resource.Color.cardview_shadow_end_color = global::HodlWallet2.Droid.Resource.Color.cardview_shadow_end_color;
+			global::FormsPinView.Droid.Resource.Color.cardview_shadow_start_color = global::HodlWallet2.Droid.Resource.Color.cardview_shadow_start_color;
+			global::FormsPinView.Droid.Resource.Color.design_fab_shadow_end_color = global::HodlWallet2.Droid.Resource.Color.design_fab_shadow_end_color;
+			global::FormsPinView.Droid.Resource.Color.design_fab_shadow_mid_color = global::HodlWallet2.Droid.Resource.Color.design_fab_shadow_mid_color;
+			global::FormsPinView.Droid.Resource.Color.design_fab_shadow_start_color = global::HodlWallet2.Droid.Resource.Color.design_fab_shadow_start_color;
+			global::FormsPinView.Droid.Resource.Color.design_fab_stroke_end_inner_color = global::HodlWallet2.Droid.Resource.Color.design_fab_stroke_end_inner_color;
+			global::FormsPinView.Droid.Resource.Color.design_fab_stroke_end_outer_color = global::HodlWallet2.Droid.Resource.Color.design_fab_stroke_end_outer_color;
+			global::FormsPinView.Droid.Resource.Color.design_fab_stroke_top_inner_color = global::HodlWallet2.Droid.Resource.Color.design_fab_stroke_top_inner_color;
+			global::FormsPinView.Droid.Resource.Color.design_fab_stroke_top_outer_color = global::HodlWallet2.Droid.Resource.Color.design_fab_stroke_top_outer_color;
+			global::FormsPinView.Droid.Resource.Color.design_snackbar_background_color = global::HodlWallet2.Droid.Resource.Color.design_snackbar_background_color;
+			global::FormsPinView.Droid.Resource.Color.dim_foreground_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.dim_foreground_disabled_material_dark;
+			global::FormsPinView.Droid.Resource.Color.dim_foreground_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.dim_foreground_disabled_material_light;
+			global::FormsPinView.Droid.Resource.Color.dim_foreground_material_dark = global::HodlWallet2.Droid.Resource.Color.dim_foreground_material_dark;
+			global::FormsPinView.Droid.Resource.Color.dim_foreground_material_light = global::HodlWallet2.Droid.Resource.Color.dim_foreground_material_light;
+			global::FormsPinView.Droid.Resource.Color.foreground_material_dark = global::HodlWallet2.Droid.Resource.Color.foreground_material_dark;
+			global::FormsPinView.Droid.Resource.Color.foreground_material_light = global::HodlWallet2.Droid.Resource.Color.foreground_material_light;
+			global::FormsPinView.Droid.Resource.Color.highlighted_text_material_dark = global::HodlWallet2.Droid.Resource.Color.highlighted_text_material_dark;
+			global::FormsPinView.Droid.Resource.Color.highlighted_text_material_light = global::HodlWallet2.Droid.Resource.Color.highlighted_text_material_light;
+			global::FormsPinView.Droid.Resource.Color.material_blue_grey_800 = global::HodlWallet2.Droid.Resource.Color.material_blue_grey_800;
+			global::FormsPinView.Droid.Resource.Color.material_blue_grey_900 = global::HodlWallet2.Droid.Resource.Color.material_blue_grey_900;
+			global::FormsPinView.Droid.Resource.Color.material_blue_grey_950 = global::HodlWallet2.Droid.Resource.Color.material_blue_grey_950;
+			global::FormsPinView.Droid.Resource.Color.material_deep_teal_200 = global::HodlWallet2.Droid.Resource.Color.material_deep_teal_200;
+			global::FormsPinView.Droid.Resource.Color.material_deep_teal_500 = global::HodlWallet2.Droid.Resource.Color.material_deep_teal_500;
+			global::FormsPinView.Droid.Resource.Color.material_grey_100 = global::HodlWallet2.Droid.Resource.Color.material_grey_100;
+			global::FormsPinView.Droid.Resource.Color.material_grey_300 = global::HodlWallet2.Droid.Resource.Color.material_grey_300;
+			global::FormsPinView.Droid.Resource.Color.material_grey_50 = global::HodlWallet2.Droid.Resource.Color.material_grey_50;
+			global::FormsPinView.Droid.Resource.Color.material_grey_600 = global::HodlWallet2.Droid.Resource.Color.material_grey_600;
+			global::FormsPinView.Droid.Resource.Color.material_grey_800 = global::HodlWallet2.Droid.Resource.Color.material_grey_800;
+			global::FormsPinView.Droid.Resource.Color.material_grey_850 = global::HodlWallet2.Droid.Resource.Color.material_grey_850;
+			global::FormsPinView.Droid.Resource.Color.material_grey_900 = global::HodlWallet2.Droid.Resource.Color.material_grey_900;
+			global::FormsPinView.Droid.Resource.Color.primary_dark_material_dark = global::HodlWallet2.Droid.Resource.Color.primary_dark_material_dark;
+			global::FormsPinView.Droid.Resource.Color.primary_dark_material_light = global::HodlWallet2.Droid.Resource.Color.primary_dark_material_light;
+			global::FormsPinView.Droid.Resource.Color.primary_material_dark = global::HodlWallet2.Droid.Resource.Color.primary_material_dark;
+			global::FormsPinView.Droid.Resource.Color.primary_material_light = global::HodlWallet2.Droid.Resource.Color.primary_material_light;
+			global::FormsPinView.Droid.Resource.Color.primary_text_default_material_dark = global::HodlWallet2.Droid.Resource.Color.primary_text_default_material_dark;
+			global::FormsPinView.Droid.Resource.Color.primary_text_default_material_light = global::HodlWallet2.Droid.Resource.Color.primary_text_default_material_light;
+			global::FormsPinView.Droid.Resource.Color.primary_text_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.primary_text_disabled_material_dark;
+			global::FormsPinView.Droid.Resource.Color.primary_text_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.primary_text_disabled_material_light;
+			global::FormsPinView.Droid.Resource.Color.ripple_material_dark = global::HodlWallet2.Droid.Resource.Color.ripple_material_dark;
+			global::FormsPinView.Droid.Resource.Color.ripple_material_light = global::HodlWallet2.Droid.Resource.Color.ripple_material_light;
+			global::FormsPinView.Droid.Resource.Color.secondary_text_default_material_dark = global::HodlWallet2.Droid.Resource.Color.secondary_text_default_material_dark;
+			global::FormsPinView.Droid.Resource.Color.secondary_text_default_material_light = global::HodlWallet2.Droid.Resource.Color.secondary_text_default_material_light;
+			global::FormsPinView.Droid.Resource.Color.secondary_text_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.secondary_text_disabled_material_dark;
+			global::FormsPinView.Droid.Resource.Color.secondary_text_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.secondary_text_disabled_material_light;
+			global::FormsPinView.Droid.Resource.Color.switch_thumb_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.switch_thumb_disabled_material_dark;
+			global::FormsPinView.Droid.Resource.Color.switch_thumb_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.switch_thumb_disabled_material_light;
+			global::FormsPinView.Droid.Resource.Color.switch_thumb_material_dark = global::HodlWallet2.Droid.Resource.Color.switch_thumb_material_dark;
+			global::FormsPinView.Droid.Resource.Color.switch_thumb_material_light = global::HodlWallet2.Droid.Resource.Color.switch_thumb_material_light;
+			global::FormsPinView.Droid.Resource.Color.switch_thumb_normal_material_dark = global::HodlWallet2.Droid.Resource.Color.switch_thumb_normal_material_dark;
+			global::FormsPinView.Droid.Resource.Color.switch_thumb_normal_material_light = global::HodlWallet2.Droid.Resource.Color.switch_thumb_normal_material_light;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_bar_content_inset_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_bar_default_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_default_height_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_bar_progress_bar_size = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_progress_bar_size;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_bar_stacked_max_height = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_button_min_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_button_min_height_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_button_min_width_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_button_min_width_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height = global::HodlWallet2.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::FormsPinView.Droid.Resource.Dimension.abc_button_inset_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_button_inset_vertical_material = global::HodlWallet2.Droid.Resource.Dimension.abc_button_inset_vertical_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_button_padding_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_button_padding_vertical_material = global::HodlWallet2.Droid.Resource.Dimension.abc_button_padding_vertical_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_config_prefDialogWidth = global::HodlWallet2.Droid.Resource.Dimension.abc_config_prefDialogWidth;
+			global::FormsPinView.Droid.Resource.Dimension.abc_control_corner_material = global::HodlWallet2.Droid.Resource.Dimension.abc_control_corner_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_control_inset_material = global::HodlWallet2.Droid.Resource.Dimension.abc_control_inset_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_control_padding_material = global::HodlWallet2.Droid.Resource.Dimension.abc_control_padding_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_dialog_fixed_height_major = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_fixed_height_major;
+			global::FormsPinView.Droid.Resource.Dimension.abc_dialog_fixed_height_minor = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_fixed_height_minor;
+			global::FormsPinView.Droid.Resource.Dimension.abc_dialog_fixed_width_major = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_fixed_width_major;
+			global::FormsPinView.Droid.Resource.Dimension.abc_dialog_fixed_width_minor = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_fixed_width_minor;
+			global::FormsPinView.Droid.Resource.Dimension.abc_dialog_min_width_major = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_min_width_major;
+			global::FormsPinView.Droid.Resource.Dimension.abc_dialog_min_width_minor = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_min_width_minor;
+			global::FormsPinView.Droid.Resource.Dimension.abc_dialog_padding_material = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_padding_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_dialog_padding_top_material = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_padding_top_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_disabled_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
+			global::FormsPinView.Droid.Resource.Dimension.abc_disabled_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
+			global::FormsPinView.Droid.Resource.Dimension.abc_dropdownitem_icon_width = global::HodlWallet2.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
+			global::FormsPinView.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left = global::HodlWallet2.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
+			global::FormsPinView.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right = global::HodlWallet2.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
+			global::FormsPinView.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material = global::HodlWallet2.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_edit_text_inset_top_material = global::HodlWallet2.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_floating_window_z = global::HodlWallet2.Droid.Resource.Dimension.abc_floating_window_z;
+			global::FormsPinView.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_panel_menu_list_width = global::HodlWallet2.Droid.Resource.Dimension.abc_panel_menu_list_width;
+			global::FormsPinView.Droid.Resource.Dimension.abc_search_view_preferred_width = global::HodlWallet2.Droid.Resource.Dimension.abc_search_view_preferred_width;
+			global::FormsPinView.Droid.Resource.Dimension.abc_seekbar_track_background_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_seekbar_track_background_height_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_select_dialog_padding_start_material = global::HodlWallet2.Droid.Resource.Dimension.abc_select_dialog_padding_start_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_switch_padding = global::HodlWallet2.Droid.Resource.Dimension.abc_switch_padding;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_body_1_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_body_1_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_body_2_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_body_2_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_button_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_button_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_caption_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_caption_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_display_1_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_display_1_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_display_2_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_display_2_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_display_3_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_display_3_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_display_4_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_display_4_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_headline_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_headline_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_large_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_large_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_medium_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_medium_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_menu_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_menu_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_small_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_small_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_subhead_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_subhead_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_title_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_title_material;
+			global::FormsPinView.Droid.Resource.Dimension.abc_text_size_title_material_toolbar = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::FormsPinView.Droid.Resource.Dimension.cardview_compat_inset_shadow = global::HodlWallet2.Droid.Resource.Dimension.cardview_compat_inset_shadow;
+			global::FormsPinView.Droid.Resource.Dimension.cardview_default_elevation = global::HodlWallet2.Droid.Resource.Dimension.cardview_default_elevation;
+			global::FormsPinView.Droid.Resource.Dimension.cardview_default_radius = global::HodlWallet2.Droid.Resource.Dimension.cardview_default_radius;
+			global::FormsPinView.Droid.Resource.Dimension.design_appbar_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_appbar_elevation;
+			global::FormsPinView.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation;
+			global::FormsPinView.Droid.Resource.Dimension.design_fab_border_width = global::HodlWallet2.Droid.Resource.Dimension.design_fab_border_width;
+			global::FormsPinView.Droid.Resource.Dimension.design_fab_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_fab_elevation;
+			global::FormsPinView.Droid.Resource.Dimension.design_fab_image_size = global::HodlWallet2.Droid.Resource.Dimension.design_fab_image_size;
+			global::FormsPinView.Droid.Resource.Dimension.design_fab_size_mini = global::HodlWallet2.Droid.Resource.Dimension.design_fab_size_mini;
+			global::FormsPinView.Droid.Resource.Dimension.design_fab_size_normal = global::HodlWallet2.Droid.Resource.Dimension.design_fab_size_normal;
+			global::FormsPinView.Droid.Resource.Dimension.design_fab_translation_z_pressed = global::HodlWallet2.Droid.Resource.Dimension.design_fab_translation_z_pressed;
+			global::FormsPinView.Droid.Resource.Dimension.design_navigation_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_elevation;
+			global::FormsPinView.Droid.Resource.Dimension.design_navigation_icon_padding = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_icon_padding;
+			global::FormsPinView.Droid.Resource.Dimension.design_navigation_icon_size = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_icon_size;
+			global::FormsPinView.Droid.Resource.Dimension.design_navigation_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_max_width;
+			global::FormsPinView.Droid.Resource.Dimension.design_navigation_padding_bottom = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_padding_bottom;
+			global::FormsPinView.Droid.Resource.Dimension.design_navigation_separator_vertical_padding = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_separator_vertical_padding;
+			global::FormsPinView.Droid.Resource.Dimension.design_snackbar_action_inline_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_action_inline_max_width;
+			global::FormsPinView.Droid.Resource.Dimension.design_snackbar_background_corner_radius = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_background_corner_radius;
+			global::FormsPinView.Droid.Resource.Dimension.design_snackbar_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_elevation;
+			global::FormsPinView.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
+			global::FormsPinView.Droid.Resource.Dimension.design_snackbar_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_max_width;
+			global::FormsPinView.Droid.Resource.Dimension.design_snackbar_min_width = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_min_width;
+			global::FormsPinView.Droid.Resource.Dimension.design_snackbar_padding_horizontal = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_padding_horizontal;
+			global::FormsPinView.Droid.Resource.Dimension.design_snackbar_padding_vertical = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_padding_vertical;
+			global::FormsPinView.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
+			global::FormsPinView.Droid.Resource.Dimension.design_snackbar_text_size = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_text_size;
+			global::FormsPinView.Droid.Resource.Dimension.design_tab_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_tab_max_width;
+			global::FormsPinView.Droid.Resource.Dimension.design_tab_scrollable_min_width = global::HodlWallet2.Droid.Resource.Dimension.design_tab_scrollable_min_width;
+			global::FormsPinView.Droid.Resource.Dimension.design_tab_text_size = global::HodlWallet2.Droid.Resource.Dimension.design_tab_text_size;
+			global::FormsPinView.Droid.Resource.Dimension.design_tab_text_size_2line = global::HodlWallet2.Droid.Resource.Dimension.design_tab_text_size_2line;
+			global::FormsPinView.Droid.Resource.Dimension.disabled_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.disabled_alpha_material_dark;
+			global::FormsPinView.Droid.Resource.Dimension.disabled_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.disabled_alpha_material_light;
+			global::FormsPinView.Droid.Resource.Dimension.highlight_alpha_material_colored = global::HodlWallet2.Droid.Resource.Dimension.highlight_alpha_material_colored;
+			global::FormsPinView.Droid.Resource.Dimension.highlight_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.highlight_alpha_material_dark;
+			global::FormsPinView.Droid.Resource.Dimension.highlight_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.highlight_alpha_material_light;
+			global::FormsPinView.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::HodlWallet2.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::FormsPinView.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::HodlWallet2.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::FormsPinView.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::HodlWallet2.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::FormsPinView.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height = global::HodlWallet2.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height;
+			global::FormsPinView.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size = global::HodlWallet2.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size;
+			global::FormsPinView.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height = global::HodlWallet2.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height;
+			global::FormsPinView.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top = global::HodlWallet2.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top;
+			global::FormsPinView.Droid.Resource.Dimension.mr_dialog_fixed_width_major = global::HodlWallet2.Droid.Resource.Dimension.mr_dialog_fixed_width_major;
+			global::FormsPinView.Droid.Resource.Dimension.mr_dialog_fixed_width_minor = global::HodlWallet2.Droid.Resource.Dimension.mr_dialog_fixed_width_minor;
+			global::FormsPinView.Droid.Resource.Dimension.notification_large_icon_height = global::HodlWallet2.Droid.Resource.Dimension.notification_large_icon_height;
+			global::FormsPinView.Droid.Resource.Dimension.notification_large_icon_width = global::HodlWallet2.Droid.Resource.Dimension.notification_large_icon_width;
+			global::FormsPinView.Droid.Resource.Dimension.notification_subtext_size = global::HodlWallet2.Droid.Resource.Dimension.notification_subtext_size;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_action_bar_item_background_material = global::HodlWallet2.Droid.Resource.Drawable.abc_action_bar_item_background_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_btn_borderless_material = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_borderless_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_btn_check_material = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_check_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
+			global::FormsPinView.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
+			global::FormsPinView.Droid.Resource.Drawable.abc_btn_colored_material = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_colored_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_btn_default_mtrl_shape = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
+			global::FormsPinView.Droid.Resource.Drawable.abc_btn_radio_material = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_radio_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
+			global::FormsPinView.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
+			global::FormsPinView.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
+			global::FormsPinView.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
+			global::FormsPinView.Droid.Resource.Drawable.abc_cab_background_internal_bg = global::HodlWallet2.Droid.Resource.Drawable.abc_cab_background_internal_bg;
+			global::FormsPinView.Droid.Resource.Drawable.abc_cab_background_top_material = global::HodlWallet2.Droid.Resource.Drawable.abc_cab_background_top_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_control_background_material = global::HodlWallet2.Droid.Resource.Drawable.abc_control_background_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_edit_text_material = global::HodlWallet2.Droid.Resource.Drawable.abc_edit_text_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ic_star_black_16dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_black_16dp;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ic_star_black_36dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_black_36dp;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ic_star_half_black_16dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_half_black_16dp;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ic_star_half_black_36dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_half_black_36dp;
+			global::FormsPinView.Droid.Resource.Drawable.abc_item_background_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_item_background_holo_dark;
+			global::FormsPinView.Droid.Resource.Drawable.abc_item_background_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_item_background_holo_light;
+			global::FormsPinView.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_list_focused_holo = global::HodlWallet2.Droid.Resource.Drawable.abc_list_focused_holo;
+			global::FormsPinView.Droid.Resource.Drawable.abc_list_longpressed_holo = global::HodlWallet2.Droid.Resource.Drawable.abc_list_longpressed_holo;
+			global::FormsPinView.Droid.Resource.Drawable.abc_list_pressed_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
+			global::FormsPinView.Droid.Resource.Drawable.abc_list_pressed_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_list_pressed_holo_light;
+			global::FormsPinView.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
+			global::FormsPinView.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
+			global::FormsPinView.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
+			global::FormsPinView.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
+			global::FormsPinView.Droid.Resource.Drawable.abc_list_selector_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_holo_dark;
+			global::FormsPinView.Droid.Resource.Drawable.abc_list_selector_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_holo_light;
+			global::FormsPinView.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::HodlWallet2.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
+			global::FormsPinView.Droid.Resource.Drawable.abc_popup_background_mtrl_mult = global::HodlWallet2.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ratingbar_indicator_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ratingbar_indicator_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_ratingbar_small_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ratingbar_small_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
+			global::FormsPinView.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
+			global::FormsPinView.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_seekbar_thumb_material = global::HodlWallet2.Droid.Resource.Drawable.abc_seekbar_thumb_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_seekbar_track_material = global::HodlWallet2.Droid.Resource.Drawable.abc_seekbar_track_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_spinner_textfield_background_material = global::HodlWallet2.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_switch_thumb_material = global::HodlWallet2.Droid.Resource.Drawable.abc_switch_thumb_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_tab_indicator_material = global::HodlWallet2.Droid.Resource.Drawable.abc_tab_indicator_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_text_cursor_material = global::HodlWallet2.Droid.Resource.Drawable.abc_text_cursor_material;
+			global::FormsPinView.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::FormsPinView.Droid.Resource.Drawable.abc_textfield_search_material = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_search_material;
+			global::FormsPinView.Droid.Resource.Drawable.bkg_roundedview = global::HodlWallet2.Droid.Resource.Drawable.bkg_roundedview;
+			global::FormsPinView.Droid.Resource.Drawable.design_fab_background = global::HodlWallet2.Droid.Resource.Drawable.design_fab_background;
+			global::FormsPinView.Droid.Resource.Drawable.design_snackbar_background = global::HodlWallet2.Droid.Resource.Drawable.design_snackbar_background;
+			global::FormsPinView.Droid.Resource.Drawable.ic_audiotrack_light = global::HodlWallet2.Droid.Resource.Drawable.ic_audiotrack_light;
+			global::FormsPinView.Droid.Resource.Drawable.img_circle = global::HodlWallet2.Droid.Resource.Drawable.img_circle;
+			global::FormsPinView.Droid.Resource.Drawable.img_circle_filled = global::HodlWallet2.Droid.Resource.Drawable.img_circle_filled;
+			global::FormsPinView.Droid.Resource.Drawable.mr_dialog_material_background_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_dialog_material_background_dark;
+			global::FormsPinView.Droid.Resource.Drawable.mr_dialog_material_background_light = global::HodlWallet2.Droid.Resource.Drawable.mr_dialog_material_background_light;
+			global::FormsPinView.Droid.Resource.Drawable.notification_template_icon_bg = global::HodlWallet2.Droid.Resource.Drawable.notification_template_icon_bg;
+			global::FormsPinView.Droid.Resource.Id.action0 = global::HodlWallet2.Droid.Resource.Id.action0;
+			global::FormsPinView.Droid.Resource.Id.action_bar = global::HodlWallet2.Droid.Resource.Id.action_bar;
+			global::FormsPinView.Droid.Resource.Id.action_bar_activity_content = global::HodlWallet2.Droid.Resource.Id.action_bar_activity_content;
+			global::FormsPinView.Droid.Resource.Id.action_bar_container = global::HodlWallet2.Droid.Resource.Id.action_bar_container;
+			global::FormsPinView.Droid.Resource.Id.action_bar_root = global::HodlWallet2.Droid.Resource.Id.action_bar_root;
+			global::FormsPinView.Droid.Resource.Id.action_bar_spinner = global::HodlWallet2.Droid.Resource.Id.action_bar_spinner;
+			global::FormsPinView.Droid.Resource.Id.action_bar_subtitle = global::HodlWallet2.Droid.Resource.Id.action_bar_subtitle;
+			global::FormsPinView.Droid.Resource.Id.action_bar_title = global::HodlWallet2.Droid.Resource.Id.action_bar_title;
+			global::FormsPinView.Droid.Resource.Id.action_context_bar = global::HodlWallet2.Droid.Resource.Id.action_context_bar;
+			global::FormsPinView.Droid.Resource.Id.action_divider = global::HodlWallet2.Droid.Resource.Id.action_divider;
+			global::FormsPinView.Droid.Resource.Id.action_menu_divider = global::HodlWallet2.Droid.Resource.Id.action_menu_divider;
+			global::FormsPinView.Droid.Resource.Id.action_menu_presenter = global::HodlWallet2.Droid.Resource.Id.action_menu_presenter;
+			global::FormsPinView.Droid.Resource.Id.action_mode_bar = global::HodlWallet2.Droid.Resource.Id.action_mode_bar;
+			global::FormsPinView.Droid.Resource.Id.action_mode_bar_stub = global::HodlWallet2.Droid.Resource.Id.action_mode_bar_stub;
+			global::FormsPinView.Droid.Resource.Id.action_mode_close_button = global::HodlWallet2.Droid.Resource.Id.action_mode_close_button;
+			global::FormsPinView.Droid.Resource.Id.activity_chooser_view_content = global::HodlWallet2.Droid.Resource.Id.activity_chooser_view_content;
+			global::FormsPinView.Droid.Resource.Id.alertTitle = global::HodlWallet2.Droid.Resource.Id.alertTitle;
+			global::FormsPinView.Droid.Resource.Id.always = global::HodlWallet2.Droid.Resource.Id.always;
+			global::FormsPinView.Droid.Resource.Id.beginning = global::HodlWallet2.Droid.Resource.Id.beginning;
+			global::FormsPinView.Droid.Resource.Id.bottom = global::HodlWallet2.Droid.Resource.Id.bottom;
+			global::FormsPinView.Droid.Resource.Id.buttonPanel = global::HodlWallet2.Droid.Resource.Id.buttonPanel;
+			global::FormsPinView.Droid.Resource.Id.cancel_action = global::HodlWallet2.Droid.Resource.Id.cancel_action;
+			global::FormsPinView.Droid.Resource.Id.center = global::HodlWallet2.Droid.Resource.Id.center;
+			global::FormsPinView.Droid.Resource.Id.center_horizontal = global::HodlWallet2.Droid.Resource.Id.center_horizontal;
+			global::FormsPinView.Droid.Resource.Id.center_vertical = global::HodlWallet2.Droid.Resource.Id.center_vertical;
+			global::FormsPinView.Droid.Resource.Id.checkbox = global::HodlWallet2.Droid.Resource.Id.checkbox;
+			global::FormsPinView.Droid.Resource.Id.chronometer = global::HodlWallet2.Droid.Resource.Id.chronometer;
+			global::FormsPinView.Droid.Resource.Id.clip_horizontal = global::HodlWallet2.Droid.Resource.Id.clip_horizontal;
+			global::FormsPinView.Droid.Resource.Id.clip_vertical = global::HodlWallet2.Droid.Resource.Id.clip_vertical;
+			global::FormsPinView.Droid.Resource.Id.collapseActionView = global::HodlWallet2.Droid.Resource.Id.collapseActionView;
+			global::FormsPinView.Droid.Resource.Id.contentPanel = global::HodlWallet2.Droid.Resource.Id.contentPanel;
+			global::FormsPinView.Droid.Resource.Id.custom = global::HodlWallet2.Droid.Resource.Id.custom;
+			global::FormsPinView.Droid.Resource.Id.customPanel = global::HodlWallet2.Droid.Resource.Id.customPanel;
+			global::FormsPinView.Droid.Resource.Id.decor_content_parent = global::HodlWallet2.Droid.Resource.Id.decor_content_parent;
+			global::FormsPinView.Droid.Resource.Id.default_activity_button = global::HodlWallet2.Droid.Resource.Id.default_activity_button;
+			global::FormsPinView.Droid.Resource.Id.design_bottom_sheet = global::HodlWallet2.Droid.Resource.Id.design_bottom_sheet;
+			global::FormsPinView.Droid.Resource.Id.design_menu_item_action_area = global::HodlWallet2.Droid.Resource.Id.design_menu_item_action_area;
+			global::FormsPinView.Droid.Resource.Id.design_menu_item_action_area_stub = global::HodlWallet2.Droid.Resource.Id.design_menu_item_action_area_stub;
+			global::FormsPinView.Droid.Resource.Id.design_menu_item_text = global::HodlWallet2.Droid.Resource.Id.design_menu_item_text;
+			global::FormsPinView.Droid.Resource.Id.design_navigation_view = global::HodlWallet2.Droid.Resource.Id.design_navigation_view;
+			global::FormsPinView.Droid.Resource.Id.disableHome = global::HodlWallet2.Droid.Resource.Id.disableHome;
+			global::FormsPinView.Droid.Resource.Id.edit_query = global::HodlWallet2.Droid.Resource.Id.edit_query;
+			global::FormsPinView.Droid.Resource.Id.end = global::HodlWallet2.Droid.Resource.Id.end;
+			global::FormsPinView.Droid.Resource.Id.end_padder = global::HodlWallet2.Droid.Resource.Id.end_padder;
+			global::FormsPinView.Droid.Resource.Id.enterAlways = global::HodlWallet2.Droid.Resource.Id.enterAlways;
+			global::FormsPinView.Droid.Resource.Id.enterAlwaysCollapsed = global::HodlWallet2.Droid.Resource.Id.enterAlwaysCollapsed;
+			global::FormsPinView.Droid.Resource.Id.exitUntilCollapsed = global::HodlWallet2.Droid.Resource.Id.exitUntilCollapsed;
+			global::FormsPinView.Droid.Resource.Id.expand_activities_button = global::HodlWallet2.Droid.Resource.Id.expand_activities_button;
+			global::FormsPinView.Droid.Resource.Id.expanded_menu = global::HodlWallet2.Droid.Resource.Id.expanded_menu;
+			global::FormsPinView.Droid.Resource.Id.fill = global::HodlWallet2.Droid.Resource.Id.fill;
+			global::FormsPinView.Droid.Resource.Id.fill_horizontal = global::HodlWallet2.Droid.Resource.Id.fill_horizontal;
+			global::FormsPinView.Droid.Resource.Id.fill_vertical = global::HodlWallet2.Droid.Resource.Id.fill_vertical;
+			global::FormsPinView.Droid.Resource.Id.@fixed = global::HodlWallet2.Droid.Resource.Id.@fixed;
+			global::FormsPinView.Droid.Resource.Id.home = global::HodlWallet2.Droid.Resource.Id.home;
+			global::FormsPinView.Droid.Resource.Id.homeAsUp = global::HodlWallet2.Droid.Resource.Id.homeAsUp;
+			global::FormsPinView.Droid.Resource.Id.icon = global::HodlWallet2.Droid.Resource.Id.icon;
+			global::FormsPinView.Droid.Resource.Id.ifRoom = global::HodlWallet2.Droid.Resource.Id.ifRoom;
+			global::FormsPinView.Droid.Resource.Id.image = global::HodlWallet2.Droid.Resource.Id.image;
+			global::FormsPinView.Droid.Resource.Id.info = global::HodlWallet2.Droid.Resource.Id.info;
+			global::FormsPinView.Droid.Resource.Id.item_touch_helper_previous_elevation = global::HodlWallet2.Droid.Resource.Id.item_touch_helper_previous_elevation;
+			global::FormsPinView.Droid.Resource.Id.left = global::HodlWallet2.Droid.Resource.Id.left;
+			global::FormsPinView.Droid.Resource.Id.line1 = global::HodlWallet2.Droid.Resource.Id.line1;
+			global::FormsPinView.Droid.Resource.Id.line3 = global::HodlWallet2.Droid.Resource.Id.line3;
+			global::FormsPinView.Droid.Resource.Id.listMode = global::HodlWallet2.Droid.Resource.Id.listMode;
+			global::FormsPinView.Droid.Resource.Id.list_item = global::HodlWallet2.Droid.Resource.Id.list_item;
+			global::FormsPinView.Droid.Resource.Id.media_actions = global::HodlWallet2.Droid.Resource.Id.media_actions;
+			global::FormsPinView.Droid.Resource.Id.middle = global::HodlWallet2.Droid.Resource.Id.middle;
+			global::FormsPinView.Droid.Resource.Id.mini = global::HodlWallet2.Droid.Resource.Id.mini;
+			global::FormsPinView.Droid.Resource.Id.mr_art = global::HodlWallet2.Droid.Resource.Id.mr_art;
+			global::FormsPinView.Droid.Resource.Id.mr_chooser_list = global::HodlWallet2.Droid.Resource.Id.mr_chooser_list;
+			global::FormsPinView.Droid.Resource.Id.mr_chooser_route_desc = global::HodlWallet2.Droid.Resource.Id.mr_chooser_route_desc;
+			global::FormsPinView.Droid.Resource.Id.mr_chooser_route_icon = global::HodlWallet2.Droid.Resource.Id.mr_chooser_route_icon;
+			global::FormsPinView.Droid.Resource.Id.mr_chooser_route_name = global::HodlWallet2.Droid.Resource.Id.mr_chooser_route_name;
+			global::FormsPinView.Droid.Resource.Id.mr_close = global::HodlWallet2.Droid.Resource.Id.mr_close;
+			global::FormsPinView.Droid.Resource.Id.mr_control_divider = global::HodlWallet2.Droid.Resource.Id.mr_control_divider;
+			global::FormsPinView.Droid.Resource.Id.mr_control_subtitle = global::HodlWallet2.Droid.Resource.Id.mr_control_subtitle;
+			global::FormsPinView.Droid.Resource.Id.mr_control_title = global::HodlWallet2.Droid.Resource.Id.mr_control_title;
+			global::FormsPinView.Droid.Resource.Id.mr_control_title_container = global::HodlWallet2.Droid.Resource.Id.mr_control_title_container;
+			global::FormsPinView.Droid.Resource.Id.mr_custom_control = global::HodlWallet2.Droid.Resource.Id.mr_custom_control;
+			global::FormsPinView.Droid.Resource.Id.mr_default_control = global::HodlWallet2.Droid.Resource.Id.mr_default_control;
+			global::FormsPinView.Droid.Resource.Id.mr_dialog_area = global::HodlWallet2.Droid.Resource.Id.mr_dialog_area;
+			global::FormsPinView.Droid.Resource.Id.mr_expandable_area = global::HodlWallet2.Droid.Resource.Id.mr_expandable_area;
+			global::FormsPinView.Droid.Resource.Id.mr_group_expand_collapse = global::HodlWallet2.Droid.Resource.Id.mr_group_expand_collapse;
+			global::FormsPinView.Droid.Resource.Id.mr_media_main_control = global::HodlWallet2.Droid.Resource.Id.mr_media_main_control;
+			global::FormsPinView.Droid.Resource.Id.mr_name = global::HodlWallet2.Droid.Resource.Id.mr_name;
+			global::FormsPinView.Droid.Resource.Id.mr_playback_control = global::HodlWallet2.Droid.Resource.Id.mr_playback_control;
+			global::FormsPinView.Droid.Resource.Id.mr_title_bar = global::HodlWallet2.Droid.Resource.Id.mr_title_bar;
+			global::FormsPinView.Droid.Resource.Id.mr_volume_control = global::HodlWallet2.Droid.Resource.Id.mr_volume_control;
+			global::FormsPinView.Droid.Resource.Id.mr_volume_group_list = global::HodlWallet2.Droid.Resource.Id.mr_volume_group_list;
+			global::FormsPinView.Droid.Resource.Id.mr_volume_item_icon = global::HodlWallet2.Droid.Resource.Id.mr_volume_item_icon;
+			global::FormsPinView.Droid.Resource.Id.mr_volume_slider = global::HodlWallet2.Droid.Resource.Id.mr_volume_slider;
+			global::FormsPinView.Droid.Resource.Id.multiply = global::HodlWallet2.Droid.Resource.Id.multiply;
+			global::FormsPinView.Droid.Resource.Id.navigation_header_container = global::HodlWallet2.Droid.Resource.Id.navigation_header_container;
+			global::FormsPinView.Droid.Resource.Id.never = global::HodlWallet2.Droid.Resource.Id.never;
+			global::FormsPinView.Droid.Resource.Id.none = global::HodlWallet2.Droid.Resource.Id.none;
+			global::FormsPinView.Droid.Resource.Id.normal = global::HodlWallet2.Droid.Resource.Id.normal;
+			global::FormsPinView.Droid.Resource.Id.parallax = global::HodlWallet2.Droid.Resource.Id.parallax;
+			global::FormsPinView.Droid.Resource.Id.parentPanel = global::HodlWallet2.Droid.Resource.Id.parentPanel;
+			global::FormsPinView.Droid.Resource.Id.pin = global::HodlWallet2.Droid.Resource.Id.pin;
+			global::FormsPinView.Droid.Resource.Id.progress_circular = global::HodlWallet2.Droid.Resource.Id.progress_circular;
+			global::FormsPinView.Droid.Resource.Id.progress_horizontal = global::HodlWallet2.Droid.Resource.Id.progress_horizontal;
+			global::FormsPinView.Droid.Resource.Id.radio = global::HodlWallet2.Droid.Resource.Id.radio;
+			global::FormsPinView.Droid.Resource.Id.right = global::HodlWallet2.Droid.Resource.Id.right;
+			global::FormsPinView.Droid.Resource.Id.screen = global::HodlWallet2.Droid.Resource.Id.screen;
+			global::FormsPinView.Droid.Resource.Id.scroll = global::HodlWallet2.Droid.Resource.Id.scroll;
+			global::FormsPinView.Droid.Resource.Id.scrollIndicatorDown = global::HodlWallet2.Droid.Resource.Id.scrollIndicatorDown;
+			global::FormsPinView.Droid.Resource.Id.scrollIndicatorUp = global::HodlWallet2.Droid.Resource.Id.scrollIndicatorUp;
+			global::FormsPinView.Droid.Resource.Id.scrollView = global::HodlWallet2.Droid.Resource.Id.scrollView;
+			global::FormsPinView.Droid.Resource.Id.scrollable = global::HodlWallet2.Droid.Resource.Id.scrollable;
+			global::FormsPinView.Droid.Resource.Id.search_badge = global::HodlWallet2.Droid.Resource.Id.search_badge;
+			global::FormsPinView.Droid.Resource.Id.search_bar = global::HodlWallet2.Droid.Resource.Id.search_bar;
+			global::FormsPinView.Droid.Resource.Id.search_button = global::HodlWallet2.Droid.Resource.Id.search_button;
+			global::FormsPinView.Droid.Resource.Id.search_close_btn = global::HodlWallet2.Droid.Resource.Id.search_close_btn;
+			global::FormsPinView.Droid.Resource.Id.search_edit_frame = global::HodlWallet2.Droid.Resource.Id.search_edit_frame;
+			global::FormsPinView.Droid.Resource.Id.search_go_btn = global::HodlWallet2.Droid.Resource.Id.search_go_btn;
+			global::FormsPinView.Droid.Resource.Id.search_mag_icon = global::HodlWallet2.Droid.Resource.Id.search_mag_icon;
+			global::FormsPinView.Droid.Resource.Id.search_plate = global::HodlWallet2.Droid.Resource.Id.search_plate;
+			global::FormsPinView.Droid.Resource.Id.search_src_text = global::HodlWallet2.Droid.Resource.Id.search_src_text;
+			global::FormsPinView.Droid.Resource.Id.search_voice_btn = global::HodlWallet2.Droid.Resource.Id.search_voice_btn;
+			global::FormsPinView.Droid.Resource.Id.select_dialog_listview = global::HodlWallet2.Droid.Resource.Id.select_dialog_listview;
+			global::FormsPinView.Droid.Resource.Id.shortcut = global::HodlWallet2.Droid.Resource.Id.shortcut;
+			global::FormsPinView.Droid.Resource.Id.showCustom = global::HodlWallet2.Droid.Resource.Id.showCustom;
+			global::FormsPinView.Droid.Resource.Id.showHome = global::HodlWallet2.Droid.Resource.Id.showHome;
+			global::FormsPinView.Droid.Resource.Id.showTitle = global::HodlWallet2.Droid.Resource.Id.showTitle;
+			global::FormsPinView.Droid.Resource.Id.snackbar_action = global::HodlWallet2.Droid.Resource.Id.snackbar_action;
+			global::FormsPinView.Droid.Resource.Id.snackbar_text = global::HodlWallet2.Droid.Resource.Id.snackbar_text;
+			global::FormsPinView.Droid.Resource.Id.snap = global::HodlWallet2.Droid.Resource.Id.snap;
+			global::FormsPinView.Droid.Resource.Id.spacer = global::HodlWallet2.Droid.Resource.Id.spacer;
+			global::FormsPinView.Droid.Resource.Id.split_action_bar = global::HodlWallet2.Droid.Resource.Id.split_action_bar;
+			global::FormsPinView.Droid.Resource.Id.src_atop = global::HodlWallet2.Droid.Resource.Id.src_atop;
+			global::FormsPinView.Droid.Resource.Id.src_in = global::HodlWallet2.Droid.Resource.Id.src_in;
+			global::FormsPinView.Droid.Resource.Id.src_over = global::HodlWallet2.Droid.Resource.Id.src_over;
+			global::FormsPinView.Droid.Resource.Id.start = global::HodlWallet2.Droid.Resource.Id.start;
+			global::FormsPinView.Droid.Resource.Id.status_bar_latest_event_content = global::HodlWallet2.Droid.Resource.Id.status_bar_latest_event_content;
+			global::FormsPinView.Droid.Resource.Id.submit_area = global::HodlWallet2.Droid.Resource.Id.submit_area;
+			global::FormsPinView.Droid.Resource.Id.tabMode = global::HodlWallet2.Droid.Resource.Id.tabMode;
+			global::FormsPinView.Droid.Resource.Id.text = global::HodlWallet2.Droid.Resource.Id.text;
+			global::FormsPinView.Droid.Resource.Id.text2 = global::HodlWallet2.Droid.Resource.Id.text2;
+			global::FormsPinView.Droid.Resource.Id.textSpacerNoButtons = global::HodlWallet2.Droid.Resource.Id.textSpacerNoButtons;
+			global::FormsPinView.Droid.Resource.Id.time = global::HodlWallet2.Droid.Resource.Id.time;
+			global::FormsPinView.Droid.Resource.Id.title = global::HodlWallet2.Droid.Resource.Id.title;
+			global::FormsPinView.Droid.Resource.Id.title_template = global::HodlWallet2.Droid.Resource.Id.title_template;
+			global::FormsPinView.Droid.Resource.Id.top = global::HodlWallet2.Droid.Resource.Id.top;
+			global::FormsPinView.Droid.Resource.Id.topPanel = global::HodlWallet2.Droid.Resource.Id.topPanel;
+			global::FormsPinView.Droid.Resource.Id.touch_outside = global::HodlWallet2.Droid.Resource.Id.touch_outside;
+			global::FormsPinView.Droid.Resource.Id.up = global::HodlWallet2.Droid.Resource.Id.up;
+			global::FormsPinView.Droid.Resource.Id.useLogo = global::HodlWallet2.Droid.Resource.Id.useLogo;
+			global::FormsPinView.Droid.Resource.Id.view_offset_helper = global::HodlWallet2.Droid.Resource.Id.view_offset_helper;
+			global::FormsPinView.Droid.Resource.Id.volume_item_container = global::HodlWallet2.Droid.Resource.Id.volume_item_container;
+			global::FormsPinView.Droid.Resource.Id.withText = global::HodlWallet2.Droid.Resource.Id.withText;
+			global::FormsPinView.Droid.Resource.Id.wrap_content = global::HodlWallet2.Droid.Resource.Id.wrap_content;
+			global::FormsPinView.Droid.Resource.Integer.abc_config_activityDefaultDur = global::HodlWallet2.Droid.Resource.Integer.abc_config_activityDefaultDur;
+			global::FormsPinView.Droid.Resource.Integer.abc_config_activityShortDur = global::HodlWallet2.Droid.Resource.Integer.abc_config_activityShortDur;
+			global::FormsPinView.Droid.Resource.Integer.bottom_sheet_slide_duration = global::HodlWallet2.Droid.Resource.Integer.bottom_sheet_slide_duration;
+			global::FormsPinView.Droid.Resource.Integer.cancel_button_image_alpha = global::HodlWallet2.Droid.Resource.Integer.cancel_button_image_alpha;
+			global::FormsPinView.Droid.Resource.Integer.design_snackbar_text_max_lines = global::HodlWallet2.Droid.Resource.Integer.design_snackbar_text_max_lines;
+			global::FormsPinView.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms = global::HodlWallet2.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms;
+			global::FormsPinView.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms = global::HodlWallet2.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms;
+			global::FormsPinView.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms = global::HodlWallet2.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms;
+			global::FormsPinView.Droid.Resource.Integer.status_bar_notification_info_maxnum = global::HodlWallet2.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::FormsPinView.Droid.Resource.Interpolator.mr_fast_out_slow_in = global::HodlWallet2.Droid.Resource.Interpolator.mr_fast_out_slow_in;
+			global::FormsPinView.Droid.Resource.Interpolator.mr_linear_out_slow_in = global::HodlWallet2.Droid.Resource.Interpolator.mr_linear_out_slow_in;
+			global::FormsPinView.Droid.Resource.Layout.abc_action_bar_title_item = global::HodlWallet2.Droid.Resource.Layout.abc_action_bar_title_item;
+			global::FormsPinView.Droid.Resource.Layout.abc_action_bar_up_container = global::HodlWallet2.Droid.Resource.Layout.abc_action_bar_up_container;
+			global::FormsPinView.Droid.Resource.Layout.abc_action_menu_item_layout = global::HodlWallet2.Droid.Resource.Layout.abc_action_menu_item_layout;
+			global::FormsPinView.Droid.Resource.Layout.abc_action_menu_layout = global::HodlWallet2.Droid.Resource.Layout.abc_action_menu_layout;
+			global::FormsPinView.Droid.Resource.Layout.abc_action_mode_bar = global::HodlWallet2.Droid.Resource.Layout.abc_action_mode_bar;
+			global::FormsPinView.Droid.Resource.Layout.abc_action_mode_close_item_material = global::HodlWallet2.Droid.Resource.Layout.abc_action_mode_close_item_material;
+			global::FormsPinView.Droid.Resource.Layout.abc_activity_chooser_view = global::HodlWallet2.Droid.Resource.Layout.abc_activity_chooser_view;
+			global::FormsPinView.Droid.Resource.Layout.abc_activity_chooser_view_list_item = global::HodlWallet2.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
+			global::FormsPinView.Droid.Resource.Layout.abc_alert_dialog_button_bar_material = global::HodlWallet2.Droid.Resource.Layout.abc_alert_dialog_button_bar_material;
+			global::FormsPinView.Droid.Resource.Layout.abc_alert_dialog_material = global::HodlWallet2.Droid.Resource.Layout.abc_alert_dialog_material;
+			global::FormsPinView.Droid.Resource.Layout.abc_dialog_title_material = global::HodlWallet2.Droid.Resource.Layout.abc_dialog_title_material;
+			global::FormsPinView.Droid.Resource.Layout.abc_expanded_menu_layout = global::HodlWallet2.Droid.Resource.Layout.abc_expanded_menu_layout;
+			global::FormsPinView.Droid.Resource.Layout.abc_list_menu_item_checkbox = global::HodlWallet2.Droid.Resource.Layout.abc_list_menu_item_checkbox;
+			global::FormsPinView.Droid.Resource.Layout.abc_list_menu_item_icon = global::HodlWallet2.Droid.Resource.Layout.abc_list_menu_item_icon;
+			global::FormsPinView.Droid.Resource.Layout.abc_list_menu_item_layout = global::HodlWallet2.Droid.Resource.Layout.abc_list_menu_item_layout;
+			global::FormsPinView.Droid.Resource.Layout.abc_list_menu_item_radio = global::HodlWallet2.Droid.Resource.Layout.abc_list_menu_item_radio;
+			global::FormsPinView.Droid.Resource.Layout.abc_popup_menu_item_layout = global::HodlWallet2.Droid.Resource.Layout.abc_popup_menu_item_layout;
+			global::FormsPinView.Droid.Resource.Layout.abc_screen_content_include = global::HodlWallet2.Droid.Resource.Layout.abc_screen_content_include;
+			global::FormsPinView.Droid.Resource.Layout.abc_screen_simple = global::HodlWallet2.Droid.Resource.Layout.abc_screen_simple;
+			global::FormsPinView.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode = global::HodlWallet2.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
+			global::FormsPinView.Droid.Resource.Layout.abc_screen_toolbar = global::HodlWallet2.Droid.Resource.Layout.abc_screen_toolbar;
+			global::FormsPinView.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line = global::HodlWallet2.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
+			global::FormsPinView.Droid.Resource.Layout.abc_search_view = global::HodlWallet2.Droid.Resource.Layout.abc_search_view;
+			global::FormsPinView.Droid.Resource.Layout.abc_select_dialog_material = global::HodlWallet2.Droid.Resource.Layout.abc_select_dialog_material;
+			global::FormsPinView.Droid.Resource.Layout.design_bottom_sheet_dialog = global::HodlWallet2.Droid.Resource.Layout.design_bottom_sheet_dialog;
+			global::FormsPinView.Droid.Resource.Layout.design_layout_snackbar = global::HodlWallet2.Droid.Resource.Layout.design_layout_snackbar;
+			global::FormsPinView.Droid.Resource.Layout.design_layout_snackbar_include = global::HodlWallet2.Droid.Resource.Layout.design_layout_snackbar_include;
+			global::FormsPinView.Droid.Resource.Layout.design_layout_tab_icon = global::HodlWallet2.Droid.Resource.Layout.design_layout_tab_icon;
+			global::FormsPinView.Droid.Resource.Layout.design_layout_tab_text = global::HodlWallet2.Droid.Resource.Layout.design_layout_tab_text;
+			global::FormsPinView.Droid.Resource.Layout.design_menu_item_action_area = global::HodlWallet2.Droid.Resource.Layout.design_menu_item_action_area;
+			global::FormsPinView.Droid.Resource.Layout.design_navigation_item = global::HodlWallet2.Droid.Resource.Layout.design_navigation_item;
+			global::FormsPinView.Droid.Resource.Layout.design_navigation_item_header = global::HodlWallet2.Droid.Resource.Layout.design_navigation_item_header;
+			global::FormsPinView.Droid.Resource.Layout.design_navigation_item_separator = global::HodlWallet2.Droid.Resource.Layout.design_navigation_item_separator;
+			global::FormsPinView.Droid.Resource.Layout.design_navigation_item_subheader = global::HodlWallet2.Droid.Resource.Layout.design_navigation_item_subheader;
+			global::FormsPinView.Droid.Resource.Layout.design_navigation_menu = global::HodlWallet2.Droid.Resource.Layout.design_navigation_menu;
+			global::FormsPinView.Droid.Resource.Layout.design_navigation_menu_item = global::HodlWallet2.Droid.Resource.Layout.design_navigation_menu_item;
+			global::FormsPinView.Droid.Resource.Layout.mr_chooser_dialog = global::HodlWallet2.Droid.Resource.Layout.mr_chooser_dialog;
+			global::FormsPinView.Droid.Resource.Layout.mr_chooser_list_item = global::HodlWallet2.Droid.Resource.Layout.mr_chooser_list_item;
+			global::FormsPinView.Droid.Resource.Layout.mr_controller_material_dialog_b = global::HodlWallet2.Droid.Resource.Layout.mr_controller_material_dialog_b;
+			global::FormsPinView.Droid.Resource.Layout.mr_controller_volume_item = global::HodlWallet2.Droid.Resource.Layout.mr_controller_volume_item;
+			global::FormsPinView.Droid.Resource.Layout.mr_playback_control = global::HodlWallet2.Droid.Resource.Layout.mr_playback_control;
+			global::FormsPinView.Droid.Resource.Layout.mr_volume_control = global::HodlWallet2.Droid.Resource.Layout.mr_volume_control;
+			global::FormsPinView.Droid.Resource.Layout.notification_media_action = global::HodlWallet2.Droid.Resource.Layout.notification_media_action;
+			global::FormsPinView.Droid.Resource.Layout.notification_media_cancel_action = global::HodlWallet2.Droid.Resource.Layout.notification_media_cancel_action;
+			global::FormsPinView.Droid.Resource.Layout.notification_template_big_media = global::HodlWallet2.Droid.Resource.Layout.notification_template_big_media;
+			global::FormsPinView.Droid.Resource.Layout.notification_template_big_media_narrow = global::HodlWallet2.Droid.Resource.Layout.notification_template_big_media_narrow;
+			global::FormsPinView.Droid.Resource.Layout.notification_template_media = global::HodlWallet2.Droid.Resource.Layout.notification_template_media;
+			global::FormsPinView.Droid.Resource.Layout.notification_template_part_chronometer = global::HodlWallet2.Droid.Resource.Layout.notification_template_part_chronometer;
+			global::FormsPinView.Droid.Resource.Layout.notification_template_part_time = global::HodlWallet2.Droid.Resource.Layout.notification_template_part_time;
+			global::FormsPinView.Droid.Resource.Layout.select_dialog_item_material = global::HodlWallet2.Droid.Resource.Layout.select_dialog_item_material;
+			global::FormsPinView.Droid.Resource.Layout.select_dialog_multichoice_material = global::HodlWallet2.Droid.Resource.Layout.select_dialog_multichoice_material;
+			global::FormsPinView.Droid.Resource.Layout.select_dialog_singlechoice_material = global::HodlWallet2.Droid.Resource.Layout.select_dialog_singlechoice_material;
+			global::FormsPinView.Droid.Resource.Layout.support_simple_spinner_dropdown_item = global::HodlWallet2.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::FormsPinView.Droid.Resource.String.abc_action_bar_home_description = global::HodlWallet2.Droid.Resource.String.abc_action_bar_home_description;
+			global::FormsPinView.Droid.Resource.String.abc_action_bar_up_description = global::HodlWallet2.Droid.Resource.String.abc_action_bar_up_description;
+			global::FormsPinView.Droid.Resource.String.abc_action_menu_overflow_description = global::HodlWallet2.Droid.Resource.String.abc_action_menu_overflow_description;
+			global::FormsPinView.Droid.Resource.String.abc_action_mode_done = global::HodlWallet2.Droid.Resource.String.abc_action_mode_done;
+			global::FormsPinView.Droid.Resource.String.abc_activity_chooser_view_see_all = global::HodlWallet2.Droid.Resource.String.abc_activity_chooser_view_see_all;
+			global::FormsPinView.Droid.Resource.String.abc_activitychooserview_choose_application = global::HodlWallet2.Droid.Resource.String.abc_activitychooserview_choose_application;
+			global::FormsPinView.Droid.Resource.String.abc_capital_off = global::HodlWallet2.Droid.Resource.String.abc_capital_off;
+			global::FormsPinView.Droid.Resource.String.abc_capital_on = global::HodlWallet2.Droid.Resource.String.abc_capital_on;
+			global::FormsPinView.Droid.Resource.String.abc_search_hint = global::HodlWallet2.Droid.Resource.String.abc_search_hint;
+			global::FormsPinView.Droid.Resource.String.abc_searchview_description_clear = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_clear;
+			global::FormsPinView.Droid.Resource.String.abc_searchview_description_query = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_query;
+			global::FormsPinView.Droid.Resource.String.abc_searchview_description_search = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_search;
+			global::FormsPinView.Droid.Resource.String.abc_searchview_description_submit = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_submit;
+			global::FormsPinView.Droid.Resource.String.abc_searchview_description_voice = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_voice;
+			global::FormsPinView.Droid.Resource.String.abc_shareactionprovider_share_with = global::HodlWallet2.Droid.Resource.String.abc_shareactionprovider_share_with;
+			global::FormsPinView.Droid.Resource.String.abc_shareactionprovider_share_with_application = global::HodlWallet2.Droid.Resource.String.abc_shareactionprovider_share_with_application;
+			global::FormsPinView.Droid.Resource.String.abc_toolbar_collapse_description = global::HodlWallet2.Droid.Resource.String.abc_toolbar_collapse_description;
+			global::FormsPinView.Droid.Resource.String.appbar_scrolling_view_behavior = global::HodlWallet2.Droid.Resource.String.appbar_scrolling_view_behavior;
+			global::FormsPinView.Droid.Resource.String.bottom_sheet_behavior = global::HodlWallet2.Droid.Resource.String.bottom_sheet_behavior;
+			global::FormsPinView.Droid.Resource.String.character_counter_pattern = global::HodlWallet2.Droid.Resource.String.character_counter_pattern;
+			global::FormsPinView.Droid.Resource.String.library_name = global::HodlWallet2.Droid.Resource.String.library_name;
+			global::FormsPinView.Droid.Resource.String.mr_button_content_description = global::HodlWallet2.Droid.Resource.String.mr_button_content_description;
+			global::FormsPinView.Droid.Resource.String.mr_chooser_searching = global::HodlWallet2.Droid.Resource.String.mr_chooser_searching;
+			global::FormsPinView.Droid.Resource.String.mr_chooser_title = global::HodlWallet2.Droid.Resource.String.mr_chooser_title;
+			global::FormsPinView.Droid.Resource.String.mr_controller_casting_screen = global::HodlWallet2.Droid.Resource.String.mr_controller_casting_screen;
+			global::FormsPinView.Droid.Resource.String.mr_controller_close_description = global::HodlWallet2.Droid.Resource.String.mr_controller_close_description;
+			global::FormsPinView.Droid.Resource.String.mr_controller_collapse_group = global::HodlWallet2.Droid.Resource.String.mr_controller_collapse_group;
+			global::FormsPinView.Droid.Resource.String.mr_controller_disconnect = global::HodlWallet2.Droid.Resource.String.mr_controller_disconnect;
+			global::FormsPinView.Droid.Resource.String.mr_controller_expand_group = global::HodlWallet2.Droid.Resource.String.mr_controller_expand_group;
+			global::FormsPinView.Droid.Resource.String.mr_controller_no_info_available = global::HodlWallet2.Droid.Resource.String.mr_controller_no_info_available;
+			global::FormsPinView.Droid.Resource.String.mr_controller_no_media_selected = global::HodlWallet2.Droid.Resource.String.mr_controller_no_media_selected;
+			global::FormsPinView.Droid.Resource.String.mr_controller_pause = global::HodlWallet2.Droid.Resource.String.mr_controller_pause;
+			global::FormsPinView.Droid.Resource.String.mr_controller_play = global::HodlWallet2.Droid.Resource.String.mr_controller_play;
+			global::FormsPinView.Droid.Resource.String.mr_controller_stop = global::HodlWallet2.Droid.Resource.String.mr_controller_stop;
+			global::FormsPinView.Droid.Resource.String.mr_system_route_name = global::HodlWallet2.Droid.Resource.String.mr_system_route_name;
+			global::FormsPinView.Droid.Resource.String.mr_user_route_category_name = global::HodlWallet2.Droid.Resource.String.mr_user_route_category_name;
+			global::FormsPinView.Droid.Resource.String.status_bar_notification_info_overflow = global::HodlWallet2.Droid.Resource.String.status_bar_notification_info_overflow;
+			global::FormsPinView.Droid.Resource.Style.AlertDialog_AppCompat = global::HodlWallet2.Droid.Resource.Style.AlertDialog_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.AlertDialog_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.AlertDialog_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Animation_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Animation_AppCompat_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Animation_AppCompat_DropDownUp = global::HodlWallet2.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::FormsPinView.Droid.Resource.Style.Animation_Design_BottomSheetDialog = global::HodlWallet2.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::FormsPinView.Droid.Resource.Style.Base_AlertDialog_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_AlertDialog_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Base_Animation_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::HodlWallet2.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::FormsPinView.Droid.Resource.Style.Base_CardView = global::HodlWallet2.Droid.Resource.Style.Base_CardView;
+			global::FormsPinView.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::FormsPinView.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::FormsPinView.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::FormsPinView.Droid.Resource.Style.Base_ThemeOverlay_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
+			global::FormsPinView.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
+			global::FormsPinView.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::FormsPinView.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
+			global::FormsPinView.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::HodlWallet2.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
+			global::FormsPinView.Droid.Resource.Style.Base_V21_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V21_Theme_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Base_V22_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V22_Theme_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Base_V23_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V23_Theme_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Base_V7_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V7_Theme_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
+			global::FormsPinView.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::HodlWallet2.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Button = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_EditText = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ListView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_SearchView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Spinner = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
+			global::FormsPinView.Droid.Resource.Style.Base_Widget_Design_TabLayout = global::HodlWallet2.Droid.Resource.Style.Base_Widget_Design_TabLayout;
+			global::FormsPinView.Droid.Resource.Style.CardView = global::HodlWallet2.Droid.Resource.Style.CardView;
+			global::FormsPinView.Droid.Resource.Style.CardView_Dark = global::HodlWallet2.Droid.Resource.Style.CardView_Dark;
+			global::FormsPinView.Droid.Resource.Style.CardView_Light = global::HodlWallet2.Droid.Resource.Style.CardView_Light;
+			global::FormsPinView.Droid.Resource.Style.Platform_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Platform_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::HodlWallet2.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
+			global::FormsPinView.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Platform_V11_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_V11_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Platform_V11_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_V11_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Platform_V14_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_V14_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Platform_V14_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_V14_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner = global::HodlWallet2.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
+			global::FormsPinView.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+			global::FormsPinView.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+			global::FormsPinView.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
+			global::FormsPinView.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::FormsPinView.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::FormsPinView.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
+			global::FormsPinView.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+			global::FormsPinView.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+			global::FormsPinView.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+			global::FormsPinView.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::FormsPinView.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+			global::FormsPinView.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::HodlWallet2.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
+			global::FormsPinView.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::HodlWallet2.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Body1 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Body2 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Button = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Button;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Caption = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Display1 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Display2 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Display3 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Display4 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Headline = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Large = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Large;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Medium = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Menu = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Small = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Small;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Subhead = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Title;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_Design_Counter = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Counter;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_Design_Error = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Error;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_Design_Hint = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Hint;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_Design_Tab = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Tab;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::FormsPinView.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_CompactMenu = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_DayNight = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::FormsPinView.Droid.Resource.Style.Theme_AppCompat_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::FormsPinView.Droid.Resource.Style.Theme_Design = global::HodlWallet2.Droid.Resource.Style.Theme_Design;
+			global::FormsPinView.Droid.Resource.Style.Theme_Design_BottomSheetDialog = global::HodlWallet2.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
+			global::FormsPinView.Droid.Resource.Style.Theme_Design_Light = global::HodlWallet2.Droid.Resource.Style.Theme_Design_Light;
+			global::FormsPinView.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::HodlWallet2.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
+			global::FormsPinView.Droid.Resource.Style.Theme_Design_Light_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
+			global::FormsPinView.Droid.Resource.Style.Theme_Design_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_Design_NoActionBar;
+			global::FormsPinView.Droid.Resource.Style.Theme_MediaRouter = global::HodlWallet2.Droid.Resource.Style.Theme_MediaRouter;
+			global::FormsPinView.Droid.Resource.Style.Theme_MediaRouter_Light = global::HodlWallet2.Droid.Resource.Style.Theme_MediaRouter_Light;
+			global::FormsPinView.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel = global::HodlWallet2.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel;
+			global::FormsPinView.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel = global::HodlWallet2.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel;
+			global::FormsPinView.Droid.Resource.Style.ThemeOverlay_AppCompat = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat;
+			global::FormsPinView.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::FormsPinView.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::FormsPinView.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::FormsPinView.Droid.Resource.Style.ThemeOverlay_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ActionButton = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionButton;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ActionMode = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionMode;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Button = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Button_Borderless = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Button_Colored = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Button_Small = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_Small;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ButtonBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_EditText = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_EditText;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ImageButton = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ImageButton;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_SearchView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ListView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListView;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ListView_Menu = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_PopupMenu = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_PopupWindow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ProgressBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_RatingBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_RatingBar;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_SearchView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_SearchView;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_SeekBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_SeekBar;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Spinner = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Spinner;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Toolbar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Toolbar;
+			global::FormsPinView.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::FormsPinView.Droid.Resource.Style.Widget_Design_AppBarLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_AppBarLayout;
+			global::FormsPinView.Droid.Resource.Style.Widget_Design_BottomSheet_Modal = global::HodlWallet2.Droid.Resource.Style.Widget_Design_BottomSheet_Modal;
+			global::FormsPinView.Droid.Resource.Style.Widget_Design_CollapsingToolbar = global::HodlWallet2.Droid.Resource.Style.Widget_Design_CollapsingToolbar;
+			global::FormsPinView.Droid.Resource.Style.Widget_Design_CoordinatorLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_CoordinatorLayout;
+			global::FormsPinView.Droid.Resource.Style.Widget_Design_FloatingActionButton = global::HodlWallet2.Droid.Resource.Style.Widget_Design_FloatingActionButton;
+			global::FormsPinView.Droid.Resource.Style.Widget_Design_NavigationView = global::HodlWallet2.Droid.Resource.Style.Widget_Design_NavigationView;
+			global::FormsPinView.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
+			global::FormsPinView.Droid.Resource.Style.Widget_Design_Snackbar = global::HodlWallet2.Droid.Resource.Style.Widget_Design_Snackbar;
+			global::FormsPinView.Droid.Resource.Style.Widget_Design_TabLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_TabLayout;
+			global::FormsPinView.Droid.Resource.Style.Widget_Design_TextInputLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_TextInputLayout;
+			global::FormsPinView.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::HodlWallet2.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
+			global::FormsPinView.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::HodlWallet2.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar = global::HodlWallet2.Droid.Resource.Styleable.ActionBar;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_background = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_background;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_backgroundSplit = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_backgroundSplit;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_backgroundStacked = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_backgroundStacked;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_contentInsetEnd = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_contentInsetLeft = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_contentInsetRight = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetRight;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_contentInsetStart = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetStart;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_customNavigationLayout = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_displayOptions = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_displayOptions;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_divider = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_divider;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_elevation = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_elevation;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_height = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_height;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_hideOnContentScroll = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_homeLayout = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_homeLayout;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_icon = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_icon;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_itemPadding = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_itemPadding;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_logo = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_logo;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_navigationMode = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_navigationMode;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_popupTheme = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_popupTheme;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_progressBarPadding = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_progressBarPadding;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_progressBarStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_progressBarStyle;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_subtitle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_subtitle;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_subtitleTextStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_title = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_title;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBar_titleTextStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_titleTextStyle;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBarLayout = global::HodlWallet2.Droid.Resource.Styleable.ActionBarLayout;
+			global::FormsPinView.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::HodlWallet2.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
+			global::FormsPinView.Droid.Resource.Styleable.ActionMenuItemView = global::HodlWallet2.Droid.Resource.Styleable.ActionMenuItemView;
+			global::FormsPinView.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth = global::HodlWallet2.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
+			global::FormsPinView.Droid.Resource.Styleable.ActionMenuView = global::HodlWallet2.Droid.Resource.Styleable.ActionMenuView;
+			global::FormsPinView.Droid.Resource.Styleable.ActionMode = global::HodlWallet2.Droid.Resource.Styleable.ActionMode;
+			global::FormsPinView.Droid.Resource.Styleable.ActionMode_background = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_background;
+			global::FormsPinView.Droid.Resource.Styleable.ActionMode_backgroundSplit = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_backgroundSplit;
+			global::FormsPinView.Droid.Resource.Styleable.ActionMode_closeItemLayout = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_closeItemLayout;
+			global::FormsPinView.Droid.Resource.Styleable.ActionMode_height = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_height;
+			global::FormsPinView.Droid.Resource.Styleable.ActionMode_subtitleTextStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
+			global::FormsPinView.Droid.Resource.Styleable.ActionMode_titleTextStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_titleTextStyle;
+			global::FormsPinView.Droid.Resource.Styleable.ActivityChooserView = global::HodlWallet2.Droid.Resource.Styleable.ActivityChooserView;
+			global::FormsPinView.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::HodlWallet2.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
+			global::FormsPinView.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount = global::HodlWallet2.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
+			global::FormsPinView.Droid.Resource.Styleable.AlertDialog = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog;
+			global::FormsPinView.Droid.Resource.Styleable.AlertDialog_android_layout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_android_layout;
+			global::FormsPinView.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
+			global::FormsPinView.Droid.Resource.Styleable.AlertDialog_listItemLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_listItemLayout;
+			global::FormsPinView.Droid.Resource.Styleable.AlertDialog_listLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_listLayout;
+			global::FormsPinView.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
+			global::FormsPinView.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::FormsPinView.Droid.Resource.Styleable.AppBarLayout = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout;
+			global::FormsPinView.Droid.Resource.Styleable.AppBarLayout_android_background = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_android_background;
+			global::FormsPinView.Droid.Resource.Styleable.AppBarLayout_elevation = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_elevation;
+			global::FormsPinView.Droid.Resource.Styleable.AppBarLayout_expanded = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_expanded;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatImageView = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatImageView_android_src = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView_android_src;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatImageView_srcCompat = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTextView = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTextView_textAllCaps = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionBarSize = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarSize;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_buttonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_colorAccent = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorAccent;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_colorPrimary = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorPrimary;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_controlBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_controlBackground;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_dialogTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_dividerVertical = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_editTextBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_editTextColor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_editTextStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_panelBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_switchStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_switchStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_windowActionBar = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
+			global::FormsPinView.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle;
+			global::FormsPinView.Droid.Resource.Styleable.ButtonBarLayout = global::HodlWallet2.Droid.Resource.Styleable.ButtonBarLayout;
+			global::FormsPinView.Droid.Resource.Styleable.ButtonBarLayout_allowStacking = global::HodlWallet2.Droid.Resource.Styleable.ButtonBarLayout_allowStacking;
+			global::FormsPinView.Droid.Resource.Styleable.CardView = global::HodlWallet2.Droid.Resource.Styleable.CardView;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_android_minHeight = global::HodlWallet2.Droid.Resource.Styleable.CardView_android_minHeight;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_android_minWidth = global::HodlWallet2.Droid.Resource.Styleable.CardView_android_minWidth;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_cardBackgroundColor = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardBackgroundColor;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_cardCornerRadius = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardCornerRadius;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_cardElevation = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardElevation;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_cardMaxElevation = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardMaxElevation;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_cardUseCompatPadding = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardUseCompatPadding;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_contentPadding = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPadding;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_contentPaddingBottom = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPaddingBottom;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_contentPaddingLeft = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPaddingLeft;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_contentPaddingRight = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPaddingRight;
+			global::FormsPinView.Droid.Resource.Styleable.CardView_contentPaddingTop = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPaddingTop;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_title = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
+			global::FormsPinView.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
+			global::FormsPinView.Droid.Resource.Styleable.CompoundButton = global::HodlWallet2.Droid.Resource.Styleable.CompoundButton;
+			global::FormsPinView.Droid.Resource.Styleable.CompoundButton_android_button = global::HodlWallet2.Droid.Resource.Styleable.CompoundButton_android_button;
+			global::FormsPinView.Droid.Resource.Styleable.CompoundButton_buttonTint = global::HodlWallet2.Droid.Resource.Styleable.CompoundButton_buttonTint;
+			global::FormsPinView.Droid.Resource.Styleable.CompoundButton_buttonTintMode = global::HodlWallet2.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
+			global::FormsPinView.Droid.Resource.Styleable.CoordinatorLayout = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout;
+			global::FormsPinView.Droid.Resource.Styleable.CoordinatorLayout_keylines = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_keylines;
+			global::FormsPinView.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::FormsPinView.Droid.Resource.Styleable.DesignTheme = global::HodlWallet2.Droid.Resource.Styleable.DesignTheme;
+			global::FormsPinView.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::HodlWallet2.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
+			global::FormsPinView.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle = global::HodlWallet2.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle;
+			global::FormsPinView.Droid.Resource.Styleable.DesignTheme_textColorError = global::HodlWallet2.Droid.Resource.Styleable.DesignTheme_textColorError;
+			global::FormsPinView.Droid.Resource.Styleable.DrawerArrowToggle = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle;
+			global::FormsPinView.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
+			global::FormsPinView.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
+			global::FormsPinView.Droid.Resource.Styleable.DrawerArrowToggle_barLength = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_barLength;
+			global::FormsPinView.Droid.Resource.Styleable.DrawerArrowToggle_color = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_color;
+			global::FormsPinView.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
+			global::FormsPinView.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
+			global::FormsPinView.Droid.Resource.Styleable.DrawerArrowToggle_spinBars = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
+			global::FormsPinView.Droid.Resource.Styleable.DrawerArrowToggle_thickness = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
+			global::FormsPinView.Droid.Resource.Styleable.FloatingActionButton = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton;
+			global::FormsPinView.Droid.Resource.Styleable.FloatingActionButton_backgroundTint = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
+			global::FormsPinView.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
+			global::FormsPinView.Droid.Resource.Styleable.FloatingActionButton_borderWidth = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
+			global::FormsPinView.Droid.Resource.Styleable.FloatingActionButton_elevation = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_elevation;
+			global::FormsPinView.Droid.Resource.Styleable.FloatingActionButton_fabSize = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_fabSize;
+			global::FormsPinView.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
+			global::FormsPinView.Droid.Resource.Styleable.FloatingActionButton_rippleColor = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
+			global::FormsPinView.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
+			global::FormsPinView.Droid.Resource.Styleable.ForegroundLinearLayout = global::HodlWallet2.Droid.Resource.Styleable.ForegroundLinearLayout;
+			global::FormsPinView.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::HodlWallet2.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
+			global::FormsPinView.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::HodlWallet2.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
+			global::FormsPinView.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::HodlWallet2.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_divider = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_divider;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_showDividers = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_Layout = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
+			global::FormsPinView.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::FormsPinView.Droid.Resource.Styleable.ListPopupWindow = global::HodlWallet2.Droid.Resource.Styleable.ListPopupWindow;
+			global::FormsPinView.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::HodlWallet2.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
+			global::FormsPinView.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::HodlWallet2.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::FormsPinView.Droid.Resource.Styleable.MediaRouteButton = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton;
+			global::FormsPinView.Droid.Resource.Styleable.MediaRouteButton_android_minHeight = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
+			global::FormsPinView.Droid.Resource.Styleable.MediaRouteButton_android_minWidth = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
+			global::FormsPinView.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
+			global::FormsPinView.Droid.Resource.Styleable.MenuGroup = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup;
+			global::FormsPinView.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
+			global::FormsPinView.Droid.Resource.Styleable.MenuGroup_android_enabled = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_enabled;
+			global::FormsPinView.Droid.Resource.Styleable.MenuGroup_android_id = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_id;
+			global::FormsPinView.Droid.Resource.Styleable.MenuGroup_android_menuCategory = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
+			global::FormsPinView.Droid.Resource.Styleable.MenuGroup_android_orderInCategory = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
+			global::FormsPinView.Droid.Resource.Styleable.MenuGroup_android_visible = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_visible;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem = global::HodlWallet2.Droid.Resource.Styleable.MenuItem;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_actionLayout = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_actionLayout;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_actionProviderClass = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_actionProviderClass;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_actionViewClass = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_actionViewClass;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_checkable = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_checkable;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_checked = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_checked;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_enabled = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_enabled;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_icon = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_icon;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_id = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_id;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_menuCategory = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_menuCategory;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_numericShortcut = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_onClick = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_onClick;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_orderInCategory = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_title = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_title;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_titleCondensed = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_android_visible = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_visible;
+			global::FormsPinView.Droid.Resource.Styleable.MenuItem_showAsAction = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_showAsAction;
+			global::FormsPinView.Droid.Resource.Styleable.MenuView = global::HodlWallet2.Droid.Resource.Styleable.MenuView;
+			global::FormsPinView.Droid.Resource.Styleable.MenuView_android_headerBackground = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_headerBackground;
+			global::FormsPinView.Droid.Resource.Styleable.MenuView_android_horizontalDivider = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
+			global::FormsPinView.Droid.Resource.Styleable.MenuView_android_itemBackground = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_itemBackground;
+			global::FormsPinView.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
+			global::FormsPinView.Droid.Resource.Styleable.MenuView_android_itemTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.MenuView_android_verticalDivider = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_verticalDivider;
+			global::FormsPinView.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
+			global::FormsPinView.Droid.Resource.Styleable.MenuView_preserveIconSpacing = global::HodlWallet2.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
+			global::FormsPinView.Droid.Resource.Styleable.NavigationView = global::HodlWallet2.Droid.Resource.Styleable.NavigationView;
+			global::FormsPinView.Droid.Resource.Styleable.NavigationView_android_background = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_android_background;
+			global::FormsPinView.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
+			global::FormsPinView.Droid.Resource.Styleable.NavigationView_android_maxWidth = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_android_maxWidth;
+			global::FormsPinView.Droid.Resource.Styleable.NavigationView_elevation = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_elevation;
+			global::FormsPinView.Droid.Resource.Styleable.NavigationView_headerLayout = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_headerLayout;
+			global::FormsPinView.Droid.Resource.Styleable.NavigationView_itemBackground = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_itemBackground;
+			global::FormsPinView.Droid.Resource.Styleable.NavigationView_itemIconTint = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_itemIconTint;
+			global::FormsPinView.Droid.Resource.Styleable.NavigationView_itemTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_itemTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.NavigationView_itemTextColor = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_itemTextColor;
+			global::FormsPinView.Droid.Resource.Styleable.NavigationView_menu = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_menu;
+			global::FormsPinView.Droid.Resource.Styleable.PopupWindow = global::HodlWallet2.Droid.Resource.Styleable.PopupWindow;
+			global::FormsPinView.Droid.Resource.Styleable.PopupWindow_android_popupBackground = global::HodlWallet2.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
+			global::FormsPinView.Droid.Resource.Styleable.PopupWindow_overlapAnchor = global::HodlWallet2.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::FormsPinView.Droid.Resource.Styleable.PopupWindowBackgroundState = global::HodlWallet2.Droid.Resource.Styleable.PopupWindowBackgroundState;
+			global::FormsPinView.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::HodlWallet2.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
+			global::FormsPinView.Droid.Resource.Styleable.RecyclerView = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView;
+			global::FormsPinView.Droid.Resource.Styleable.RecyclerView_android_orientation = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_android_orientation;
+			global::FormsPinView.Droid.Resource.Styleable.RecyclerView_layoutManager = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_layoutManager;
+			global::FormsPinView.Droid.Resource.Styleable.RecyclerView_reverseLayout = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_reverseLayout;
+			global::FormsPinView.Droid.Resource.Styleable.RecyclerView_spanCount = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_spanCount;
+			global::FormsPinView.Droid.Resource.Styleable.RecyclerView_stackFromEnd = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
+			global::FormsPinView.Droid.Resource.Styleable.ScrimInsetsFrameLayout = global::HodlWallet2.Droid.Resource.Styleable.ScrimInsetsFrameLayout;
+			global::FormsPinView.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::HodlWallet2.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView = global::HodlWallet2.Droid.Resource.Styleable.SearchView;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_android_focusable = global::HodlWallet2.Droid.Resource.Styleable.SearchView_android_focusable;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_android_imeOptions = global::HodlWallet2.Droid.Resource.Styleable.SearchView_android_imeOptions;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_android_inputType = global::HodlWallet2.Droid.Resource.Styleable.SearchView_android_inputType;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_android_maxWidth = global::HodlWallet2.Droid.Resource.Styleable.SearchView_android_maxWidth;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_closeIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_closeIcon;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_commitIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_commitIcon;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_defaultQueryHint = global::HodlWallet2.Droid.Resource.Styleable.SearchView_defaultQueryHint;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_goIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_goIcon;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_iconifiedByDefault = global::HodlWallet2.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_layout = global::HodlWallet2.Droid.Resource.Styleable.SearchView_layout;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_queryBackground = global::HodlWallet2.Droid.Resource.Styleable.SearchView_queryBackground;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_queryHint = global::HodlWallet2.Droid.Resource.Styleable.SearchView_queryHint;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_searchHintIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_searchHintIcon;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_searchIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_searchIcon;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_submitBackground = global::HodlWallet2.Droid.Resource.Styleable.SearchView_submitBackground;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_suggestionRowLayout = global::HodlWallet2.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
+			global::FormsPinView.Droid.Resource.Styleable.SearchView_voiceIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_voiceIcon;
+			global::FormsPinView.Droid.Resource.Styleable.SnackbarLayout = global::HodlWallet2.Droid.Resource.Styleable.SnackbarLayout;
+			global::FormsPinView.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth = global::HodlWallet2.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
+			global::FormsPinView.Droid.Resource.Styleable.SnackbarLayout_elevation = global::HodlWallet2.Droid.Resource.Styleable.SnackbarLayout_elevation;
+			global::FormsPinView.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::HodlWallet2.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
+			global::FormsPinView.Droid.Resource.Styleable.Spinner = global::HodlWallet2.Droid.Resource.Styleable.Spinner;
+			global::FormsPinView.Droid.Resource.Styleable.Spinner_android_dropDownWidth = global::HodlWallet2.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
+			global::FormsPinView.Droid.Resource.Styleable.Spinner_android_entries = global::HodlWallet2.Droid.Resource.Styleable.Spinner_android_entries;
+			global::FormsPinView.Droid.Resource.Styleable.Spinner_android_popupBackground = global::HodlWallet2.Droid.Resource.Styleable.Spinner_android_popupBackground;
+			global::FormsPinView.Droid.Resource.Styleable.Spinner_android_prompt = global::HodlWallet2.Droid.Resource.Styleable.Spinner_android_prompt;
+			global::FormsPinView.Droid.Resource.Styleable.Spinner_popupTheme = global::HodlWallet2.Droid.Resource.Styleable.Spinner_popupTheme;
+			global::FormsPinView.Droid.Resource.Styleable.SwitchCompat = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat;
+			global::FormsPinView.Droid.Resource.Styleable.SwitchCompat_android_textOff = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_android_textOff;
+			global::FormsPinView.Droid.Resource.Styleable.SwitchCompat_android_textOn = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_android_textOn;
+			global::FormsPinView.Droid.Resource.Styleable.SwitchCompat_android_thumb = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_android_thumb;
+			global::FormsPinView.Droid.Resource.Styleable.SwitchCompat_showText = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_showText;
+			global::FormsPinView.Droid.Resource.Styleable.SwitchCompat_splitTrack = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_splitTrack;
+			global::FormsPinView.Droid.Resource.Styleable.SwitchCompat_switchMinWidth = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
+			global::FormsPinView.Droid.Resource.Styleable.SwitchCompat_switchPadding = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_switchPadding;
+			global::FormsPinView.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
+			global::FormsPinView.Droid.Resource.Styleable.SwitchCompat_track = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_track;
+			global::FormsPinView.Droid.Resource.Styleable.TabItem = global::HodlWallet2.Droid.Resource.Styleable.TabItem;
+			global::FormsPinView.Droid.Resource.Styleable.TabItem_android_icon = global::HodlWallet2.Droid.Resource.Styleable.TabItem_android_icon;
+			global::FormsPinView.Droid.Resource.Styleable.TabItem_android_layout = global::HodlWallet2.Droid.Resource.Styleable.TabItem_android_layout;
+			global::FormsPinView.Droid.Resource.Styleable.TabItem_android_text = global::HodlWallet2.Droid.Resource.Styleable.TabItem_android_text;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout = global::HodlWallet2.Droid.Resource.Styleable.TabLayout;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabBackground = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabBackground;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabContentStart = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabContentStart;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabGravity = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabGravity;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabIndicatorColor = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabIndicatorColor;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabMaxWidth = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabMaxWidth;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabMinWidth = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabMinWidth;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabMode = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabMode;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabPadding = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPadding;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabPaddingBottom = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPaddingBottom;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabPaddingEnd = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPaddingEnd;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabPaddingStart = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPaddingStart;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabPaddingTop = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPaddingTop;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.TabLayout_tabTextColor = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabTextColor;
+			global::FormsPinView.Droid.Resource.Styleable.TextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.TextAppearance_android_shadowColor = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
+			global::FormsPinView.Droid.Resource.Styleable.TextAppearance_android_shadowDx = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_shadowDx;
+			global::FormsPinView.Droid.Resource.Styleable.TextAppearance_android_shadowDy = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_shadowDy;
+			global::FormsPinView.Droid.Resource.Styleable.TextAppearance_android_shadowRadius = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_shadowRadius;
+			global::FormsPinView.Droid.Resource.Styleable.TextAppearance_android_textColor = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_textColor;
+			global::FormsPinView.Droid.Resource.Styleable.TextAppearance_android_textSize = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_textSize;
+			global::FormsPinView.Droid.Resource.Styleable.TextAppearance_android_textStyle = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_textStyle;
+			global::FormsPinView.Droid.Resource.Styleable.TextAppearance_android_typeface = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_typeface;
+			global::FormsPinView.Droid.Resource.Styleable.TextAppearance_textAllCaps = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_textAllCaps;
+			global::FormsPinView.Droid.Resource.Styleable.TextInputLayout = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout;
+			global::FormsPinView.Droid.Resource.Styleable.TextInputLayout_android_hint = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_android_hint;
+			global::FormsPinView.Droid.Resource.Styleable.TextInputLayout_android_textColorHint = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
+			global::FormsPinView.Droid.Resource.Styleable.TextInputLayout_counterEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_counterEnabled;
+			global::FormsPinView.Droid.Resource.Styleable.TextInputLayout_counterMaxLength = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_counterMaxLength;
+			global::FormsPinView.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.TextInputLayout_errorEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_errorEnabled;
+			global::FormsPinView.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
+			global::FormsPinView.Droid.Resource.Styleable.TextInputLayout_hintEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_hintEnabled;
+			global::FormsPinView.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar = global::HodlWallet2.Droid.Resource.Styleable.Toolbar;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_android_gravity = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_android_gravity;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_android_minHeight = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_android_minHeight;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_collapseContentDescription = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_collapseIcon = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_collapseIcon;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_contentInsetEnd = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_contentInsetLeft = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_contentInsetRight = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetRight;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_contentInsetStart = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetStart;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_logo = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_logo;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_logoDescription = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_logoDescription;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_maxButtonHeight = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_navigationContentDescription = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_navigationIcon = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_navigationIcon;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_popupTheme = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_popupTheme;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_subtitle = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_subtitle;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_subtitleTextColor = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_subtitleTextColor;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_title = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_title;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_titleMarginBottom = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_titleMarginEnd = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_titleMarginStart = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMarginStart;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_titleMarginTop = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMarginTop;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_titleMargins = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMargins;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_titleTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
+			global::FormsPinView.Droid.Resource.Styleable.Toolbar_titleTextColor = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleTextColor;
+			global::FormsPinView.Droid.Resource.Styleable.View = global::HodlWallet2.Droid.Resource.Styleable.View;
+			global::FormsPinView.Droid.Resource.Styleable.View_android_focusable = global::HodlWallet2.Droid.Resource.Styleable.View_android_focusable;
+			global::FormsPinView.Droid.Resource.Styleable.View_android_theme = global::HodlWallet2.Droid.Resource.Styleable.View_android_theme;
+			global::FormsPinView.Droid.Resource.Styleable.View_paddingEnd = global::HodlWallet2.Droid.Resource.Styleable.View_paddingEnd;
+			global::FormsPinView.Droid.Resource.Styleable.View_paddingStart = global::HodlWallet2.Droid.Resource.Styleable.View_paddingStart;
+			global::FormsPinView.Droid.Resource.Styleable.View_theme = global::HodlWallet2.Droid.Resource.Styleable.View_theme;
+			global::FormsPinView.Droid.Resource.Styleable.ViewBackgroundHelper = global::HodlWallet2.Droid.Resource.Styleable.ViewBackgroundHelper;
+			global::FormsPinView.Droid.Resource.Styleable.ViewBackgroundHelper_android_background = global::HodlWallet2.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
+			global::FormsPinView.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::HodlWallet2.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
+			global::FormsPinView.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::HodlWallet2.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
+			global::FormsPinView.Droid.Resource.Styleable.ViewStubCompat = global::HodlWallet2.Droid.Resource.Styleable.ViewStubCompat;
+			global::FormsPinView.Droid.Resource.Styleable.ViewStubCompat_android_id = global::HodlWallet2.Droid.Resource.Styleable.ViewStubCompat_android_id;
+			global::FormsPinView.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId = global::HodlWallet2.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
+			global::FormsPinView.Droid.Resource.Styleable.ViewStubCompat_android_layout = global::HodlWallet2.Droid.Resource.Styleable.ViewStubCompat_android_layout;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::HodlWallet2.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -95,6 +4211,672 @@ namespace HodlWallet2.Droid
 			
 			// aapt resource value: 0x7f060000
 			public const int design_appbar_state_list_animator = 2131099648;
+			
+			// aapt resource value: 0x7f060001
+			public const int empty_Animation = 2131099649;
+			
+			// aapt resource value: 0x7f060002
+			public const int empty_Animation_long = 2131099650;
+			
+			// aapt resource value: 0x7f060003
+			public const int empty_Animation_short = 2131099651;
+			
+			// aapt resource value: 0x7f060004
+			public const int enter_from_bottom = 2131099652;
+			
+			// aapt resource value: 0x7f060005
+			public const int enter_from_bottom_bounce = 2131099653;
+			
+			// aapt resource value: 0x7f060006
+			public const int enter_from_bottom_long = 2131099654;
+			
+			// aapt resource value: 0x7f060007
+			public const int enter_from_bottom_long_bounce = 2131099655;
+			
+			// aapt resource value: 0x7f060008
+			public const int enter_from_bottom_short = 2131099656;
+			
+			// aapt resource value: 0x7f060009
+			public const int enter_from_bottom_short_bounce = 2131099657;
+			
+			// aapt resource value: 0x7f06000a
+			public const int enter_from_left = 2131099658;
+			
+			// aapt resource value: 0x7f06000b
+			public const int enter_from_left_bounce = 2131099659;
+			
+			// aapt resource value: 0x7f06000c
+			public const int enter_from_left_long = 2131099660;
+			
+			// aapt resource value: 0x7f06000d
+			public const int enter_from_left_long_bounce = 2131099661;
+			
+			// aapt resource value: 0x7f06000e
+			public const int enter_from_left_short = 2131099662;
+			
+			// aapt resource value: 0x7f06000f
+			public const int enter_from_left_short_bounce = 2131099663;
+			
+			// aapt resource value: 0x7f060010
+			public const int enter_from_right = 2131099664;
+			
+			// aapt resource value: 0x7f060011
+			public const int enter_from_right_bounce = 2131099665;
+			
+			// aapt resource value: 0x7f060012
+			public const int enter_from_right_long = 2131099666;
+			
+			// aapt resource value: 0x7f060013
+			public const int enter_from_right_long_bounce = 2131099667;
+			
+			// aapt resource value: 0x7f060014
+			public const int enter_from_right_short = 2131099668;
+			
+			// aapt resource value: 0x7f060015
+			public const int enter_from_right_short_bounce = 2131099669;
+			
+			// aapt resource value: 0x7f060016
+			public const int enter_from_top = 2131099670;
+			
+			// aapt resource value: 0x7f060017
+			public const int enter_from_top_bounce = 2131099671;
+			
+			// aapt resource value: 0x7f060018
+			public const int enter_from_top_long = 2131099672;
+			
+			// aapt resource value: 0x7f060019
+			public const int enter_from_top_long_bounce = 2131099673;
+			
+			// aapt resource value: 0x7f06001a
+			public const int enter_from_top_short = 2131099674;
+			
+			// aapt resource value: 0x7f06001b
+			public const int enter_from_top_short_bounce = 2131099675;
+			
+			// aapt resource value: 0x7f06001c
+			public const int enter_landing = 2131099676;
+			
+			// aapt resource value: 0x7f06001d
+			public const int enter_landing_bounce = 2131099677;
+			
+			// aapt resource value: 0x7f06001e
+			public const int enter_landing_from_bottom = 2131099678;
+			
+			// aapt resource value: 0x7f06001f
+			public const int enter_landing_from_bottom_bounce = 2131099679;
+			
+			// aapt resource value: 0x7f060020
+			public const int enter_landing_from_bottom_long = 2131099680;
+			
+			// aapt resource value: 0x7f060021
+			public const int enter_landing_from_bottom_long_bounce = 2131099681;
+			
+			// aapt resource value: 0x7f060022
+			public const int enter_landing_from_bottom_short = 2131099682;
+			
+			// aapt resource value: 0x7f060023
+			public const int enter_landing_from_bottom_short_bounce = 2131099683;
+			
+			// aapt resource value: 0x7f060024
+			public const int enter_landing_from_left = 2131099684;
+			
+			// aapt resource value: 0x7f060025
+			public const int enter_landing_from_left_bounce = 2131099685;
+			
+			// aapt resource value: 0x7f060026
+			public const int enter_landing_from_left_long = 2131099686;
+			
+			// aapt resource value: 0x7f060027
+			public const int enter_landing_from_left_long_bounce = 2131099687;
+			
+			// aapt resource value: 0x7f060028
+			public const int enter_landing_from_left_short = 2131099688;
+			
+			// aapt resource value: 0x7f060029
+			public const int enter_landing_from_left_short_bounce = 2131099689;
+			
+			// aapt resource value: 0x7f06002a
+			public const int enter_landing_from_right = 2131099690;
+			
+			// aapt resource value: 0x7f06002b
+			public const int enter_landing_from_right_bounce = 2131099691;
+			
+			// aapt resource value: 0x7f06002c
+			public const int enter_landing_from_right_long = 2131099692;
+			
+			// aapt resource value: 0x7f06002d
+			public const int enter_landing_from_right_long_bounce = 2131099693;
+			
+			// aapt resource value: 0x7f06002e
+			public const int enter_landing_from_right_short = 2131099694;
+			
+			// aapt resource value: 0x7f06002f
+			public const int enter_landing_from_right_short_bounce = 2131099695;
+			
+			// aapt resource value: 0x7f060030
+			public const int enter_landing_from_top = 2131099696;
+			
+			// aapt resource value: 0x7f060031
+			public const int enter_landing_from_top_bounce = 2131099697;
+			
+			// aapt resource value: 0x7f060032
+			public const int enter_landing_from_top_long = 2131099698;
+			
+			// aapt resource value: 0x7f060033
+			public const int enter_landing_from_top_long_bounce = 2131099699;
+			
+			// aapt resource value: 0x7f060034
+			public const int enter_landing_from_top_short = 2131099700;
+			
+			// aapt resource value: 0x7f060035
+			public const int enter_landing_from_top_short_bounce = 2131099701;
+			
+			// aapt resource value: 0x7f060036
+			public const int enter_landing_long = 2131099702;
+			
+			// aapt resource value: 0x7f060037
+			public const int enter_landing_long_bounce = 2131099703;
+			
+			// aapt resource value: 0x7f060038
+			public const int enter_landing_short = 2131099704;
+			
+			// aapt resource value: 0x7f060039
+			public const int enter_landing_short_bounce = 2131099705;
+			
+			// aapt resource value: 0x7f06003a
+			public const int enter_roll_from_bottom = 2131099706;
+			
+			// aapt resource value: 0x7f06003b
+			public const int enter_roll_from_bottom_bounce = 2131099707;
+			
+			// aapt resource value: 0x7f06003c
+			public const int enter_roll_from_bottom_long = 2131099708;
+			
+			// aapt resource value: 0x7f06003d
+			public const int enter_roll_from_bottom_long_bounce = 2131099709;
+			
+			// aapt resource value: 0x7f06003e
+			public const int enter_roll_from_bottom_short = 2131099710;
+			
+			// aapt resource value: 0x7f06003f
+			public const int enter_roll_from_bottom_short_bounce = 2131099711;
+			
+			// aapt resource value: 0x7f060040
+			public const int enter_roll_from_left = 2131099712;
+			
+			// aapt resource value: 0x7f060041
+			public const int enter_roll_from_left_bounce = 2131099713;
+			
+			// aapt resource value: 0x7f060042
+			public const int enter_roll_from_left_long = 2131099714;
+			
+			// aapt resource value: 0x7f060043
+			public const int enter_roll_from_left_long_bounce = 2131099715;
+			
+			// aapt resource value: 0x7f060044
+			public const int enter_roll_from_left_short = 2131099716;
+			
+			// aapt resource value: 0x7f060045
+			public const int enter_roll_from_left_short_bounce = 2131099717;
+			
+			// aapt resource value: 0x7f060046
+			public const int enter_roll_from_right = 2131099718;
+			
+			// aapt resource value: 0x7f060047
+			public const int enter_roll_from_right_bounce = 2131099719;
+			
+			// aapt resource value: 0x7f060048
+			public const int enter_roll_from_right_long = 2131099720;
+			
+			// aapt resource value: 0x7f060049
+			public const int enter_roll_from_right_long_bounce = 2131099721;
+			
+			// aapt resource value: 0x7f06004a
+			public const int enter_roll_from_right_short = 2131099722;
+			
+			// aapt resource value: 0x7f06004b
+			public const int enter_roll_from_right_short_bounce = 2131099723;
+			
+			// aapt resource value: 0x7f06004c
+			public const int enter_roll_from_top = 2131099724;
+			
+			// aapt resource value: 0x7f06004d
+			public const int enter_roll_from_top_bounce = 2131099725;
+			
+			// aapt resource value: 0x7f06004e
+			public const int enter_roll_from_top_long = 2131099726;
+			
+			// aapt resource value: 0x7f06004f
+			public const int enter_roll_from_top_long_bounce = 2131099727;
+			
+			// aapt resource value: 0x7f060050
+			public const int enter_roll_from_top_short = 2131099728;
+			
+			// aapt resource value: 0x7f060051
+			public const int enter_roll_from_top_short_bounce = 2131099729;
+			
+			// aapt resource value: 0x7f060052
+			public const int enter_rotate = 2131099730;
+			
+			// aapt resource value: 0x7f060053
+			public const int enter_rotate_bounce = 2131099731;
+			
+			// aapt resource value: 0x7f060054
+			public const int enter_rotate_from_bottom = 2131099732;
+			
+			// aapt resource value: 0x7f060055
+			public const int enter_rotate_from_bottom_bounce = 2131099733;
+			
+			// aapt resource value: 0x7f060056
+			public const int enter_rotate_from_bottom_long = 2131099734;
+			
+			// aapt resource value: 0x7f060057
+			public const int enter_rotate_from_bottom_long_bounce = 2131099735;
+			
+			// aapt resource value: 0x7f060058
+			public const int enter_rotate_from_bottom_short = 2131099736;
+			
+			// aapt resource value: 0x7f060059
+			public const int enter_rotate_from_bottom_short_bounce = 2131099737;
+			
+			// aapt resource value: 0x7f06005a
+			public const int enter_rotate_from_left = 2131099738;
+			
+			// aapt resource value: 0x7f06005b
+			public const int enter_rotate_from_left_bounce = 2131099739;
+			
+			// aapt resource value: 0x7f06005c
+			public const int enter_rotate_from_left_long = 2131099740;
+			
+			// aapt resource value: 0x7f06005d
+			public const int enter_rotate_from_left_long_bounce = 2131099741;
+			
+			// aapt resource value: 0x7f06005e
+			public const int enter_rotate_from_left_short = 2131099742;
+			
+			// aapt resource value: 0x7f06005f
+			public const int enter_rotate_from_left_short_bounce = 2131099743;
+			
+			// aapt resource value: 0x7f060060
+			public const int enter_rotate_from_right = 2131099744;
+			
+			// aapt resource value: 0x7f060061
+			public const int enter_rotate_from_right_bounce = 2131099745;
+			
+			// aapt resource value: 0x7f060062
+			public const int enter_rotate_from_right_long = 2131099746;
+			
+			// aapt resource value: 0x7f060063
+			public const int enter_rotate_from_right_long_bounce = 2131099747;
+			
+			// aapt resource value: 0x7f060064
+			public const int enter_rotate_from_right_short = 2131099748;
+			
+			// aapt resource value: 0x7f060065
+			public const int enter_rotate_from_right_short_bounce = 2131099749;
+			
+			// aapt resource value: 0x7f060066
+			public const int enter_rotate_from_top = 2131099750;
+			
+			// aapt resource value: 0x7f060067
+			public const int enter_rotate_from_top_bounce = 2131099751;
+			
+			// aapt resource value: 0x7f060068
+			public const int enter_rotate_from_top_long = 2131099752;
+			
+			// aapt resource value: 0x7f060069
+			public const int enter_rotate_from_top_long_bounce = 2131099753;
+			
+			// aapt resource value: 0x7f06006a
+			public const int enter_rotate_from_top_short = 2131099754;
+			
+			// aapt resource value: 0x7f06006b
+			public const int enter_rotate_from_top_short_bounce = 2131099755;
+			
+			// aapt resource value: 0x7f06006c
+			public const int enter_rotate_long = 2131099756;
+			
+			// aapt resource value: 0x7f06006d
+			public const int enter_rotate_long_bounce = 2131099757;
+			
+			// aapt resource value: 0x7f06006e
+			public const int enter_rotate_short = 2131099758;
+			
+			// aapt resource value: 0x7f06006f
+			public const int enter_rotate_short_bounce = 2131099759;
+			
+			// aapt resource value: 0x7f060070
+			public const int enter_scale = 2131099760;
+			
+			// aapt resource value: 0x7f060071
+			public const int enter_scale_bounce = 2131099761;
+			
+			// aapt resource value: 0x7f060072
+			public const int enter_scale_from_bottom = 2131099762;
+			
+			// aapt resource value: 0x7f060073
+			public const int enter_scale_from_bottom_bounce = 2131099763;
+			
+			// aapt resource value: 0x7f060074
+			public const int enter_scale_from_bottom_long = 2131099764;
+			
+			// aapt resource value: 0x7f060075
+			public const int enter_scale_from_bottom_long_bounce = 2131099765;
+			
+			// aapt resource value: 0x7f060076
+			public const int enter_scale_from_bottom_short = 2131099766;
+			
+			// aapt resource value: 0x7f060077
+			public const int enter_scale_from_bottom_short_bounce = 2131099767;
+			
+			// aapt resource value: 0x7f060078
+			public const int enter_scale_from_left = 2131099768;
+			
+			// aapt resource value: 0x7f060079
+			public const int enter_scale_from_left_bounce = 2131099769;
+			
+			// aapt resource value: 0x7f06007a
+			public const int enter_scale_from_left_long = 2131099770;
+			
+			// aapt resource value: 0x7f06007b
+			public const int enter_scale_from_left_long_bounce = 2131099771;
+			
+			// aapt resource value: 0x7f06007c
+			public const int enter_scale_from_left_short = 2131099772;
+			
+			// aapt resource value: 0x7f06007d
+			public const int enter_scale_from_left_short_bounce = 2131099773;
+			
+			// aapt resource value: 0x7f06007e
+			public const int enter_scale_from_right = 2131099774;
+			
+			// aapt resource value: 0x7f06007f
+			public const int enter_scale_from_right_bounce = 2131099775;
+			
+			// aapt resource value: 0x7f060080
+			public const int enter_scale_from_right_long = 2131099776;
+			
+			// aapt resource value: 0x7f060081
+			public const int enter_scale_from_right_long_bounce = 2131099777;
+			
+			// aapt resource value: 0x7f060082
+			public const int enter_scale_from_right_short = 2131099778;
+			
+			// aapt resource value: 0x7f060083
+			public const int enter_scale_from_right_short_bounce = 2131099779;
+			
+			// aapt resource value: 0x7f060084
+			public const int enter_scale_from_top = 2131099780;
+			
+			// aapt resource value: 0x7f060085
+			public const int enter_scale_from_top_bounce = 2131099781;
+			
+			// aapt resource value: 0x7f060086
+			public const int enter_scale_from_top_long = 2131099782;
+			
+			// aapt resource value: 0x7f060087
+			public const int enter_scale_from_top_long_bounce = 2131099783;
+			
+			// aapt resource value: 0x7f060088
+			public const int enter_scale_from_top_short = 2131099784;
+			
+			// aapt resource value: 0x7f060089
+			public const int enter_scale_from_top_short_bounce = 2131099785;
+			
+			// aapt resource value: 0x7f06008a
+			public const int enter_scale_long = 2131099786;
+			
+			// aapt resource value: 0x7f06008b
+			public const int enter_scale_long_bounce = 2131099787;
+			
+			// aapt resource value: 0x7f06008c
+			public const int enter_scale_short = 2131099788;
+			
+			// aapt resource value: 0x7f06008d
+			public const int enter_scale_short_bounce = 2131099789;
+			
+			// aapt resource value: 0x7f06008e
+			public const int exit_landing = 2131099790;
+			
+			// aapt resource value: 0x7f06008f
+			public const int exit_landing_from_bottom = 2131099791;
+			
+			// aapt resource value: 0x7f060090
+			public const int exit_landing_from_bottom_long = 2131099792;
+			
+			// aapt resource value: 0x7f060091
+			public const int exit_landing_from_bottom_short = 2131099793;
+			
+			// aapt resource value: 0x7f060092
+			public const int exit_landing_from_left = 2131099794;
+			
+			// aapt resource value: 0x7f060093
+			public const int exit_landing_from_left_long = 2131099795;
+			
+			// aapt resource value: 0x7f060094
+			public const int exit_landing_from_left_short = 2131099796;
+			
+			// aapt resource value: 0x7f060095
+			public const int exit_landing_from_right = 2131099797;
+			
+			// aapt resource value: 0x7f060096
+			public const int exit_landing_from_right_long = 2131099798;
+			
+			// aapt resource value: 0x7f060097
+			public const int exit_landing_from_right_short = 2131099799;
+			
+			// aapt resource value: 0x7f060098
+			public const int exit_landing_from_top = 2131099800;
+			
+			// aapt resource value: 0x7f060099
+			public const int exit_landing_from_top_long = 2131099801;
+			
+			// aapt resource value: 0x7f06009a
+			public const int exit_landing_from_top_short = 2131099802;
+			
+			// aapt resource value: 0x7f06009b
+			public const int exit_landing_long = 2131099803;
+			
+			// aapt resource value: 0x7f06009c
+			public const int exit_landing_short = 2131099804;
+			
+			// aapt resource value: 0x7f06009d
+			public const int exit_roll_to_bottom = 2131099805;
+			
+			// aapt resource value: 0x7f06009e
+			public const int exit_roll_to_bottom_long = 2131099806;
+			
+			// aapt resource value: 0x7f06009f
+			public const int exit_roll_to_bottom_short = 2131099807;
+			
+			// aapt resource value: 0x7f0600a0
+			public const int exit_roll_to_left = 2131099808;
+			
+			// aapt resource value: 0x7f0600a1
+			public const int exit_roll_to_left_long = 2131099809;
+			
+			// aapt resource value: 0x7f0600a2
+			public const int exit_roll_to_left_short = 2131099810;
+			
+			// aapt resource value: 0x7f0600a3
+			public const int exit_roll_to_right = 2131099811;
+			
+			// aapt resource value: 0x7f0600a4
+			public const int exit_roll_to_right_long = 2131099812;
+			
+			// aapt resource value: 0x7f0600a5
+			public const int exit_roll_to_right_short = 2131099813;
+			
+			// aapt resource value: 0x7f0600a6
+			public const int exit_roll_to_top = 2131099814;
+			
+			// aapt resource value: 0x7f0600a7
+			public const int exit_roll_to_top_long = 2131099815;
+			
+			// aapt resource value: 0x7f0600a8
+			public const int exit_roll_to_top_short = 2131099816;
+			
+			// aapt resource value: 0x7f0600a9
+			public const int exit_rotate = 2131099817;
+			
+			// aapt resource value: 0x7f0600aa
+			public const int exit_rotate_long = 2131099818;
+			
+			// aapt resource value: 0x7f0600ab
+			public const int exit_rotate_short = 2131099819;
+			
+			// aapt resource value: 0x7f0600ac
+			public const int exit_rotate_to_bottom = 2131099820;
+			
+			// aapt resource value: 0x7f0600ad
+			public const int exit_rotate_to_bottom_long = 2131099821;
+			
+			// aapt resource value: 0x7f0600ae
+			public const int exit_rotate_to_bottom_short = 2131099822;
+			
+			// aapt resource value: 0x7f0600af
+			public const int exit_rotate_to_left = 2131099823;
+			
+			// aapt resource value: 0x7f0600b0
+			public const int exit_rotate_to_left_long = 2131099824;
+			
+			// aapt resource value: 0x7f0600b1
+			public const int exit_rotate_to_left_short = 2131099825;
+			
+			// aapt resource value: 0x7f0600b2
+			public const int exit_rotate_to_right = 2131099826;
+			
+			// aapt resource value: 0x7f0600b3
+			public const int exit_rotate_to_right_long = 2131099827;
+			
+			// aapt resource value: 0x7f0600b4
+			public const int exit_rotate_to_right_short = 2131099828;
+			
+			// aapt resource value: 0x7f0600b5
+			public const int exit_rotate_to_top = 2131099829;
+			
+			// aapt resource value: 0x7f0600b6
+			public const int exit_rotate_to_top_long = 2131099830;
+			
+			// aapt resource value: 0x7f0600b7
+			public const int exit_rotate_to_top_short = 2131099831;
+			
+			// aapt resource value: 0x7f0600b8
+			public const int exit_scale = 2131099832;
+			
+			// aapt resource value: 0x7f0600b9
+			public const int exit_scale_from_bottom = 2131099833;
+			
+			// aapt resource value: 0x7f0600ba
+			public const int exit_scale_from_bottom_long = 2131099834;
+			
+			// aapt resource value: 0x7f0600bb
+			public const int exit_scale_from_bottom_short = 2131099835;
+			
+			// aapt resource value: 0x7f0600bc
+			public const int exit_scale_from_left = 2131099836;
+			
+			// aapt resource value: 0x7f0600bd
+			public const int exit_scale_from_left_long = 2131099837;
+			
+			// aapt resource value: 0x7f0600be
+			public const int exit_scale_from_left_short = 2131099838;
+			
+			// aapt resource value: 0x7f0600bf
+			public const int exit_scale_from_right = 2131099839;
+			
+			// aapt resource value: 0x7f0600c0
+			public const int exit_scale_from_right_long = 2131099840;
+			
+			// aapt resource value: 0x7f0600c1
+			public const int exit_scale_from_right_short = 2131099841;
+			
+			// aapt resource value: 0x7f0600c2
+			public const int exit_scale_from_top = 2131099842;
+			
+			// aapt resource value: 0x7f0600c3
+			public const int exit_scale_from_top_long = 2131099843;
+			
+			// aapt resource value: 0x7f0600c4
+			public const int exit_scale_from_top_short = 2131099844;
+			
+			// aapt resource value: 0x7f0600c5
+			public const int exit_scale_long = 2131099845;
+			
+			// aapt resource value: 0x7f0600c6
+			public const int exit_scale_short = 2131099846;
+			
+			// aapt resource value: 0x7f0600c7
+			public const int exit_to_bottom = 2131099847;
+			
+			// aapt resource value: 0x7f0600c8
+			public const int exit_to_bottom_bounce = 2131099848;
+			
+			// aapt resource value: 0x7f0600c9
+			public const int exit_to_bottom_long = 2131099849;
+			
+			// aapt resource value: 0x7f0600ca
+			public const int exit_to_bottom_long_bounce = 2131099850;
+			
+			// aapt resource value: 0x7f0600cb
+			public const int exit_to_bottom_short = 2131099851;
+			
+			// aapt resource value: 0x7f0600cc
+			public const int exit_to_bottom_short_bounce = 2131099852;
+			
+			// aapt resource value: 0x7f0600cd
+			public const int exit_to_left = 2131099853;
+			
+			// aapt resource value: 0x7f0600ce
+			public const int exit_to_left_bounce = 2131099854;
+			
+			// aapt resource value: 0x7f0600cf
+			public const int exit_to_left_long = 2131099855;
+			
+			// aapt resource value: 0x7f0600d0
+			public const int exit_to_left_long_bounce = 2131099856;
+			
+			// aapt resource value: 0x7f0600d1
+			public const int exit_to_left_short = 2131099857;
+			
+			// aapt resource value: 0x7f0600d2
+			public const int exit_to_left_short_bounce = 2131099858;
+			
+			// aapt resource value: 0x7f0600d3
+			public const int exit_to_right = 2131099859;
+			
+			// aapt resource value: 0x7f0600d4
+			public const int exit_to_right_bounce = 2131099860;
+			
+			// aapt resource value: 0x7f0600d5
+			public const int exit_to_right_long = 2131099861;
+			
+			// aapt resource value: 0x7f0600d6
+			public const int exit_to_right_long_bounce = 2131099862;
+			
+			// aapt resource value: 0x7f0600d7
+			public const int exit_to_right_short = 2131099863;
+			
+			// aapt resource value: 0x7f0600d8
+			public const int exit_to_right_short_bounce = 2131099864;
+			
+			// aapt resource value: 0x7f0600d9
+			public const int exit_to_top = 2131099865;
+			
+			// aapt resource value: 0x7f0600da
+			public const int exit_to_top_bounce = 2131099866;
+			
+			// aapt resource value: 0x7f0600db
+			public const int exit_to_top_long = 2131099867;
+			
+			// aapt resource value: 0x7f0600dc
+			public const int exit_to_top_long_bounce = 2131099868;
+			
+			// aapt resource value: 0x7f0600dd
+			public const int exit_to_top_short = 2131099869;
+			
+			// aapt resource value: 0x7f0600de
+			public const int exit_to_top_short_bounce = 2131099870;
 			
 			static Animator()
 			{
@@ -2342,680 +7124,707 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f02012f
-			public const int avd_hide_password_1 = 2130837807;
+			// aapt resource value: 0x7f020138
+			public const int avd_hide_password_1 = 2130837816;
 			
-			// aapt resource value: 0x7f020130
-			public const int avd_hide_password_2 = 2130837808;
+			// aapt resource value: 0x7f020139
+			public const int avd_hide_password_2 = 2130837817;
 			
-			// aapt resource value: 0x7f020131
-			public const int avd_hide_password_3 = 2130837809;
+			// aapt resource value: 0x7f02013a
+			public const int avd_hide_password_3 = 2130837818;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020132
-			public const int avd_show_password_1 = 2130837810;
+			// aapt resource value: 0x7f02013b
+			public const int avd_show_password_1 = 2130837819;
 			
-			// aapt resource value: 0x7f020133
-			public const int avd_show_password_2 = 2130837811;
+			// aapt resource value: 0x7f02013c
+			public const int avd_show_password_2 = 2130837820;
 			
-			// aapt resource value: 0x7f020134
-			public const int avd_show_password_3 = 2130837812;
+			// aapt resource value: 0x7f02013d
+			public const int avd_show_password_3 = 2130837821;
 			
 			// aapt resource value: 0x7f020055
-			public const int design_bottom_navigation_item_background = 2130837589;
+			public const int bkg_roundedview = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int design_fab_background = 2130837590;
+			public const int design_bottom_navigation_item_background = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int design_ic_visibility = 2130837591;
+			public const int design_fab_background = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int design_ic_visibility_off = 2130837592;
+			public const int design_ic_visibility = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int design_password_eye = 2130837593;
+			public const int design_ic_visibility_off = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int design_snackbar_background = 2130837594;
+			public const int design_password_eye = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int ic_audiotrack_dark = 2130837595;
+			public const int design_snackbar_background = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int ic_audiotrack_light = 2130837596;
+			public const int ic_audiotrack_dark = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_dialog_close_dark = 2130837597;
+			public const int ic_audiotrack_light = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ic_dialog_close_light = 2130837598;
+			public const int ic_dialog_close_dark = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int ic_group_collapse_00 = 2130837599;
+			public const int ic_dialog_close_light = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int ic_group_collapse_01 = 2130837600;
+			public const int ic_group_collapse_00 = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int ic_group_collapse_02 = 2130837601;
+			public const int ic_group_collapse_01 = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int ic_group_collapse_03 = 2130837602;
+			public const int ic_group_collapse_02 = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int ic_group_collapse_04 = 2130837603;
+			public const int ic_group_collapse_03 = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int ic_group_collapse_05 = 2130837604;
+			public const int ic_group_collapse_04 = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int ic_group_collapse_06 = 2130837605;
+			public const int ic_group_collapse_05 = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int ic_group_collapse_07 = 2130837606;
+			public const int ic_group_collapse_06 = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int ic_group_collapse_08 = 2130837607;
+			public const int ic_group_collapse_07 = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int ic_group_collapse_09 = 2130837608;
+			public const int ic_group_collapse_08 = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int ic_group_collapse_10 = 2130837609;
+			public const int ic_group_collapse_09 = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int ic_group_collapse_11 = 2130837610;
+			public const int ic_group_collapse_10 = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int ic_group_collapse_12 = 2130837611;
+			public const int ic_group_collapse_11 = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int ic_group_collapse_13 = 2130837612;
+			public const int ic_group_collapse_12 = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int ic_group_collapse_14 = 2130837613;
+			public const int ic_group_collapse_13 = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int ic_group_collapse_15 = 2130837614;
+			public const int ic_group_collapse_14 = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int ic_group_expand_00 = 2130837615;
+			public const int ic_group_collapse_15 = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int ic_group_expand_01 = 2130837616;
+			public const int ic_group_expand_00 = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int ic_group_expand_02 = 2130837617;
+			public const int ic_group_expand_01 = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int ic_group_expand_03 = 2130837618;
+			public const int ic_group_expand_02 = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int ic_group_expand_04 = 2130837619;
+			public const int ic_group_expand_03 = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int ic_group_expand_05 = 2130837620;
+			public const int ic_group_expand_04 = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int ic_group_expand_06 = 2130837621;
+			public const int ic_group_expand_05 = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int ic_group_expand_07 = 2130837622;
+			public const int ic_group_expand_06 = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int ic_group_expand_08 = 2130837623;
+			public const int ic_group_expand_07 = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int ic_group_expand_09 = 2130837624;
+			public const int ic_group_expand_08 = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int ic_group_expand_10 = 2130837625;
+			public const int ic_group_expand_09 = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int ic_group_expand_11 = 2130837626;
+			public const int ic_group_expand_10 = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int ic_group_expand_12 = 2130837627;
+			public const int ic_group_expand_11 = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int ic_group_expand_13 = 2130837628;
+			public const int ic_group_expand_12 = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int ic_group_expand_14 = 2130837629;
+			public const int ic_group_expand_13 = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int ic_group_expand_15 = 2130837630;
+			public const int ic_group_expand_14 = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int ic_media_pause_dark = 2130837631;
+			public const int ic_group_expand_15 = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int ic_media_pause_light = 2130837632;
+			public const int ic_media_pause_dark = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int ic_media_play_dark = 2130837633;
+			public const int ic_media_pause_light = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int ic_media_play_light = 2130837634;
+			public const int ic_media_play_dark = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int ic_media_stop_dark = 2130837635;
+			public const int ic_media_play_light = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int ic_media_stop_light = 2130837636;
+			public const int ic_media_stop_dark = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int ic_mr_button_connected_00_dark = 2130837637;
+			public const int ic_media_stop_light = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int ic_mr_button_connected_00_light = 2130837638;
+			public const int ic_mr_button_connected_00_dark = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int ic_mr_button_connected_01_dark = 2130837639;
+			public const int ic_mr_button_connected_00_light = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int ic_mr_button_connected_01_light = 2130837640;
+			public const int ic_mr_button_connected_01_dark = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int ic_mr_button_connected_02_dark = 2130837641;
+			public const int ic_mr_button_connected_01_light = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int ic_mr_button_connected_02_light = 2130837642;
+			public const int ic_mr_button_connected_02_dark = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int ic_mr_button_connected_03_dark = 2130837643;
+			public const int ic_mr_button_connected_02_light = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int ic_mr_button_connected_03_light = 2130837644;
+			public const int ic_mr_button_connected_03_dark = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int ic_mr_button_connected_04_dark = 2130837645;
+			public const int ic_mr_button_connected_03_light = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int ic_mr_button_connected_04_light = 2130837646;
+			public const int ic_mr_button_connected_04_dark = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int ic_mr_button_connected_05_dark = 2130837647;
+			public const int ic_mr_button_connected_04_light = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int ic_mr_button_connected_05_light = 2130837648;
+			public const int ic_mr_button_connected_05_dark = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int ic_mr_button_connected_06_dark = 2130837649;
+			public const int ic_mr_button_connected_05_light = 2130837649;
 			
 			// aapt resource value: 0x7f020092
-			public const int ic_mr_button_connected_06_light = 2130837650;
+			public const int ic_mr_button_connected_06_dark = 2130837650;
 			
 			// aapt resource value: 0x7f020093
-			public const int ic_mr_button_connected_07_dark = 2130837651;
+			public const int ic_mr_button_connected_06_light = 2130837651;
 			
 			// aapt resource value: 0x7f020094
-			public const int ic_mr_button_connected_07_light = 2130837652;
+			public const int ic_mr_button_connected_07_dark = 2130837652;
 			
 			// aapt resource value: 0x7f020095
-			public const int ic_mr_button_connected_08_dark = 2130837653;
+			public const int ic_mr_button_connected_07_light = 2130837653;
 			
 			// aapt resource value: 0x7f020096
-			public const int ic_mr_button_connected_08_light = 2130837654;
+			public const int ic_mr_button_connected_08_dark = 2130837654;
 			
 			// aapt resource value: 0x7f020097
-			public const int ic_mr_button_connected_09_dark = 2130837655;
+			public const int ic_mr_button_connected_08_light = 2130837655;
 			
 			// aapt resource value: 0x7f020098
-			public const int ic_mr_button_connected_09_light = 2130837656;
+			public const int ic_mr_button_connected_09_dark = 2130837656;
 			
 			// aapt resource value: 0x7f020099
-			public const int ic_mr_button_connected_10_dark = 2130837657;
+			public const int ic_mr_button_connected_09_light = 2130837657;
 			
 			// aapt resource value: 0x7f02009a
-			public const int ic_mr_button_connected_10_light = 2130837658;
+			public const int ic_mr_button_connected_10_dark = 2130837658;
 			
 			// aapt resource value: 0x7f02009b
-			public const int ic_mr_button_connected_11_dark = 2130837659;
+			public const int ic_mr_button_connected_10_light = 2130837659;
 			
 			// aapt resource value: 0x7f02009c
-			public const int ic_mr_button_connected_11_light = 2130837660;
+			public const int ic_mr_button_connected_11_dark = 2130837660;
 			
 			// aapt resource value: 0x7f02009d
-			public const int ic_mr_button_connected_12_dark = 2130837661;
+			public const int ic_mr_button_connected_11_light = 2130837661;
 			
 			// aapt resource value: 0x7f02009e
-			public const int ic_mr_button_connected_12_light = 2130837662;
+			public const int ic_mr_button_connected_12_dark = 2130837662;
 			
 			// aapt resource value: 0x7f02009f
-			public const int ic_mr_button_connected_13_dark = 2130837663;
+			public const int ic_mr_button_connected_12_light = 2130837663;
 			
 			// aapt resource value: 0x7f0200a0
-			public const int ic_mr_button_connected_13_light = 2130837664;
+			public const int ic_mr_button_connected_13_dark = 2130837664;
 			
 			// aapt resource value: 0x7f0200a1
-			public const int ic_mr_button_connected_14_dark = 2130837665;
+			public const int ic_mr_button_connected_13_light = 2130837665;
 			
 			// aapt resource value: 0x7f0200a2
-			public const int ic_mr_button_connected_14_light = 2130837666;
+			public const int ic_mr_button_connected_14_dark = 2130837666;
 			
 			// aapt resource value: 0x7f0200a3
-			public const int ic_mr_button_connected_15_dark = 2130837667;
+			public const int ic_mr_button_connected_14_light = 2130837667;
 			
 			// aapt resource value: 0x7f0200a4
-			public const int ic_mr_button_connected_15_light = 2130837668;
+			public const int ic_mr_button_connected_15_dark = 2130837668;
 			
 			// aapt resource value: 0x7f0200a5
-			public const int ic_mr_button_connected_16_dark = 2130837669;
+			public const int ic_mr_button_connected_15_light = 2130837669;
 			
 			// aapt resource value: 0x7f0200a6
-			public const int ic_mr_button_connected_16_light = 2130837670;
+			public const int ic_mr_button_connected_16_dark = 2130837670;
 			
 			// aapt resource value: 0x7f0200a7
-			public const int ic_mr_button_connected_17_dark = 2130837671;
+			public const int ic_mr_button_connected_16_light = 2130837671;
 			
 			// aapt resource value: 0x7f0200a8
-			public const int ic_mr_button_connected_17_light = 2130837672;
+			public const int ic_mr_button_connected_17_dark = 2130837672;
 			
 			// aapt resource value: 0x7f0200a9
-			public const int ic_mr_button_connected_18_dark = 2130837673;
+			public const int ic_mr_button_connected_17_light = 2130837673;
 			
 			// aapt resource value: 0x7f0200aa
-			public const int ic_mr_button_connected_18_light = 2130837674;
+			public const int ic_mr_button_connected_18_dark = 2130837674;
 			
 			// aapt resource value: 0x7f0200ab
-			public const int ic_mr_button_connected_19_dark = 2130837675;
+			public const int ic_mr_button_connected_18_light = 2130837675;
 			
 			// aapt resource value: 0x7f0200ac
-			public const int ic_mr_button_connected_19_light = 2130837676;
+			public const int ic_mr_button_connected_19_dark = 2130837676;
 			
 			// aapt resource value: 0x7f0200ad
-			public const int ic_mr_button_connected_20_dark = 2130837677;
+			public const int ic_mr_button_connected_19_light = 2130837677;
 			
 			// aapt resource value: 0x7f0200ae
-			public const int ic_mr_button_connected_20_light = 2130837678;
+			public const int ic_mr_button_connected_20_dark = 2130837678;
 			
 			// aapt resource value: 0x7f0200af
-			public const int ic_mr_button_connected_21_dark = 2130837679;
+			public const int ic_mr_button_connected_20_light = 2130837679;
 			
 			// aapt resource value: 0x7f0200b0
-			public const int ic_mr_button_connected_21_light = 2130837680;
+			public const int ic_mr_button_connected_21_dark = 2130837680;
 			
 			// aapt resource value: 0x7f0200b1
-			public const int ic_mr_button_connected_22_dark = 2130837681;
+			public const int ic_mr_button_connected_21_light = 2130837681;
 			
 			// aapt resource value: 0x7f0200b2
-			public const int ic_mr_button_connected_22_light = 2130837682;
+			public const int ic_mr_button_connected_22_dark = 2130837682;
 			
 			// aapt resource value: 0x7f0200b3
-			public const int ic_mr_button_connected_23_dark = 2130837683;
+			public const int ic_mr_button_connected_22_light = 2130837683;
 			
 			// aapt resource value: 0x7f0200b4
-			public const int ic_mr_button_connected_23_light = 2130837684;
+			public const int ic_mr_button_connected_23_dark = 2130837684;
 			
 			// aapt resource value: 0x7f0200b5
-			public const int ic_mr_button_connected_24_dark = 2130837685;
+			public const int ic_mr_button_connected_23_light = 2130837685;
 			
 			// aapt resource value: 0x7f0200b6
-			public const int ic_mr_button_connected_24_light = 2130837686;
+			public const int ic_mr_button_connected_24_dark = 2130837686;
 			
 			// aapt resource value: 0x7f0200b7
-			public const int ic_mr_button_connected_25_dark = 2130837687;
+			public const int ic_mr_button_connected_24_light = 2130837687;
 			
 			// aapt resource value: 0x7f0200b8
-			public const int ic_mr_button_connected_25_light = 2130837688;
+			public const int ic_mr_button_connected_25_dark = 2130837688;
 			
 			// aapt resource value: 0x7f0200b9
-			public const int ic_mr_button_connected_26_dark = 2130837689;
+			public const int ic_mr_button_connected_25_light = 2130837689;
 			
 			// aapt resource value: 0x7f0200ba
-			public const int ic_mr_button_connected_26_light = 2130837690;
+			public const int ic_mr_button_connected_26_dark = 2130837690;
 			
 			// aapt resource value: 0x7f0200bb
-			public const int ic_mr_button_connected_27_dark = 2130837691;
+			public const int ic_mr_button_connected_26_light = 2130837691;
 			
 			// aapt resource value: 0x7f0200bc
-			public const int ic_mr_button_connected_27_light = 2130837692;
+			public const int ic_mr_button_connected_27_dark = 2130837692;
 			
 			// aapt resource value: 0x7f0200bd
-			public const int ic_mr_button_connected_28_dark = 2130837693;
+			public const int ic_mr_button_connected_27_light = 2130837693;
 			
 			// aapt resource value: 0x7f0200be
-			public const int ic_mr_button_connected_28_light = 2130837694;
+			public const int ic_mr_button_connected_28_dark = 2130837694;
 			
 			// aapt resource value: 0x7f0200bf
-			public const int ic_mr_button_connected_29_dark = 2130837695;
+			public const int ic_mr_button_connected_28_light = 2130837695;
 			
 			// aapt resource value: 0x7f0200c0
-			public const int ic_mr_button_connected_29_light = 2130837696;
+			public const int ic_mr_button_connected_29_dark = 2130837696;
 			
 			// aapt resource value: 0x7f0200c1
-			public const int ic_mr_button_connected_30_dark = 2130837697;
+			public const int ic_mr_button_connected_29_light = 2130837697;
 			
 			// aapt resource value: 0x7f0200c2
-			public const int ic_mr_button_connected_30_light = 2130837698;
+			public const int ic_mr_button_connected_30_dark = 2130837698;
 			
 			// aapt resource value: 0x7f0200c3
-			public const int ic_mr_button_connecting_00_dark = 2130837699;
+			public const int ic_mr_button_connected_30_light = 2130837699;
 			
 			// aapt resource value: 0x7f0200c4
-			public const int ic_mr_button_connecting_00_light = 2130837700;
+			public const int ic_mr_button_connecting_00_dark = 2130837700;
 			
 			// aapt resource value: 0x7f0200c5
-			public const int ic_mr_button_connecting_01_dark = 2130837701;
+			public const int ic_mr_button_connecting_00_light = 2130837701;
 			
 			// aapt resource value: 0x7f0200c6
-			public const int ic_mr_button_connecting_01_light = 2130837702;
+			public const int ic_mr_button_connecting_01_dark = 2130837702;
 			
 			// aapt resource value: 0x7f0200c7
-			public const int ic_mr_button_connecting_02_dark = 2130837703;
+			public const int ic_mr_button_connecting_01_light = 2130837703;
 			
 			// aapt resource value: 0x7f0200c8
-			public const int ic_mr_button_connecting_02_light = 2130837704;
+			public const int ic_mr_button_connecting_02_dark = 2130837704;
 			
 			// aapt resource value: 0x7f0200c9
-			public const int ic_mr_button_connecting_03_dark = 2130837705;
+			public const int ic_mr_button_connecting_02_light = 2130837705;
 			
 			// aapt resource value: 0x7f0200ca
-			public const int ic_mr_button_connecting_03_light = 2130837706;
+			public const int ic_mr_button_connecting_03_dark = 2130837706;
 			
 			// aapt resource value: 0x7f0200cb
-			public const int ic_mr_button_connecting_04_dark = 2130837707;
+			public const int ic_mr_button_connecting_03_light = 2130837707;
 			
 			// aapt resource value: 0x7f0200cc
-			public const int ic_mr_button_connecting_04_light = 2130837708;
+			public const int ic_mr_button_connecting_04_dark = 2130837708;
 			
 			// aapt resource value: 0x7f0200cd
-			public const int ic_mr_button_connecting_05_dark = 2130837709;
+			public const int ic_mr_button_connecting_04_light = 2130837709;
 			
 			// aapt resource value: 0x7f0200ce
-			public const int ic_mr_button_connecting_05_light = 2130837710;
+			public const int ic_mr_button_connecting_05_dark = 2130837710;
 			
 			// aapt resource value: 0x7f0200cf
-			public const int ic_mr_button_connecting_06_dark = 2130837711;
+			public const int ic_mr_button_connecting_05_light = 2130837711;
 			
 			// aapt resource value: 0x7f0200d0
-			public const int ic_mr_button_connecting_06_light = 2130837712;
+			public const int ic_mr_button_connecting_06_dark = 2130837712;
 			
 			// aapt resource value: 0x7f0200d1
-			public const int ic_mr_button_connecting_07_dark = 2130837713;
+			public const int ic_mr_button_connecting_06_light = 2130837713;
 			
 			// aapt resource value: 0x7f0200d2
-			public const int ic_mr_button_connecting_07_light = 2130837714;
+			public const int ic_mr_button_connecting_07_dark = 2130837714;
 			
 			// aapt resource value: 0x7f0200d3
-			public const int ic_mr_button_connecting_08_dark = 2130837715;
+			public const int ic_mr_button_connecting_07_light = 2130837715;
 			
 			// aapt resource value: 0x7f0200d4
-			public const int ic_mr_button_connecting_08_light = 2130837716;
+			public const int ic_mr_button_connecting_08_dark = 2130837716;
 			
 			// aapt resource value: 0x7f0200d5
-			public const int ic_mr_button_connecting_09_dark = 2130837717;
+			public const int ic_mr_button_connecting_08_light = 2130837717;
 			
 			// aapt resource value: 0x7f0200d6
-			public const int ic_mr_button_connecting_09_light = 2130837718;
+			public const int ic_mr_button_connecting_09_dark = 2130837718;
 			
 			// aapt resource value: 0x7f0200d7
-			public const int ic_mr_button_connecting_10_dark = 2130837719;
+			public const int ic_mr_button_connecting_09_light = 2130837719;
 			
 			// aapt resource value: 0x7f0200d8
-			public const int ic_mr_button_connecting_10_light = 2130837720;
+			public const int ic_mr_button_connecting_10_dark = 2130837720;
 			
 			// aapt resource value: 0x7f0200d9
-			public const int ic_mr_button_connecting_11_dark = 2130837721;
+			public const int ic_mr_button_connecting_10_light = 2130837721;
 			
 			// aapt resource value: 0x7f0200da
-			public const int ic_mr_button_connecting_11_light = 2130837722;
+			public const int ic_mr_button_connecting_11_dark = 2130837722;
 			
 			// aapt resource value: 0x7f0200db
-			public const int ic_mr_button_connecting_12_dark = 2130837723;
+			public const int ic_mr_button_connecting_11_light = 2130837723;
 			
 			// aapt resource value: 0x7f0200dc
-			public const int ic_mr_button_connecting_12_light = 2130837724;
+			public const int ic_mr_button_connecting_12_dark = 2130837724;
 			
 			// aapt resource value: 0x7f0200dd
-			public const int ic_mr_button_connecting_13_dark = 2130837725;
+			public const int ic_mr_button_connecting_12_light = 2130837725;
 			
 			// aapt resource value: 0x7f0200de
-			public const int ic_mr_button_connecting_13_light = 2130837726;
+			public const int ic_mr_button_connecting_13_dark = 2130837726;
 			
 			// aapt resource value: 0x7f0200df
-			public const int ic_mr_button_connecting_14_dark = 2130837727;
+			public const int ic_mr_button_connecting_13_light = 2130837727;
 			
 			// aapt resource value: 0x7f0200e0
-			public const int ic_mr_button_connecting_14_light = 2130837728;
+			public const int ic_mr_button_connecting_14_dark = 2130837728;
 			
 			// aapt resource value: 0x7f0200e1
-			public const int ic_mr_button_connecting_15_dark = 2130837729;
+			public const int ic_mr_button_connecting_14_light = 2130837729;
 			
 			// aapt resource value: 0x7f0200e2
-			public const int ic_mr_button_connecting_15_light = 2130837730;
+			public const int ic_mr_button_connecting_15_dark = 2130837730;
 			
 			// aapt resource value: 0x7f0200e3
-			public const int ic_mr_button_connecting_16_dark = 2130837731;
+			public const int ic_mr_button_connecting_15_light = 2130837731;
 			
 			// aapt resource value: 0x7f0200e4
-			public const int ic_mr_button_connecting_16_light = 2130837732;
+			public const int ic_mr_button_connecting_16_dark = 2130837732;
 			
 			// aapt resource value: 0x7f0200e5
-			public const int ic_mr_button_connecting_17_dark = 2130837733;
+			public const int ic_mr_button_connecting_16_light = 2130837733;
 			
 			// aapt resource value: 0x7f0200e6
-			public const int ic_mr_button_connecting_17_light = 2130837734;
+			public const int ic_mr_button_connecting_17_dark = 2130837734;
 			
 			// aapt resource value: 0x7f0200e7
-			public const int ic_mr_button_connecting_18_dark = 2130837735;
+			public const int ic_mr_button_connecting_17_light = 2130837735;
 			
 			// aapt resource value: 0x7f0200e8
-			public const int ic_mr_button_connecting_18_light = 2130837736;
+			public const int ic_mr_button_connecting_18_dark = 2130837736;
 			
 			// aapt resource value: 0x7f0200e9
-			public const int ic_mr_button_connecting_19_dark = 2130837737;
+			public const int ic_mr_button_connecting_18_light = 2130837737;
 			
 			// aapt resource value: 0x7f0200ea
-			public const int ic_mr_button_connecting_19_light = 2130837738;
+			public const int ic_mr_button_connecting_19_dark = 2130837738;
 			
 			// aapt resource value: 0x7f0200eb
-			public const int ic_mr_button_connecting_20_dark = 2130837739;
+			public const int ic_mr_button_connecting_19_light = 2130837739;
 			
 			// aapt resource value: 0x7f0200ec
-			public const int ic_mr_button_connecting_20_light = 2130837740;
+			public const int ic_mr_button_connecting_20_dark = 2130837740;
 			
 			// aapt resource value: 0x7f0200ed
-			public const int ic_mr_button_connecting_21_dark = 2130837741;
+			public const int ic_mr_button_connecting_20_light = 2130837741;
 			
 			// aapt resource value: 0x7f0200ee
-			public const int ic_mr_button_connecting_21_light = 2130837742;
+			public const int ic_mr_button_connecting_21_dark = 2130837742;
 			
 			// aapt resource value: 0x7f0200ef
-			public const int ic_mr_button_connecting_22_dark = 2130837743;
+			public const int ic_mr_button_connecting_21_light = 2130837743;
 			
 			// aapt resource value: 0x7f0200f0
-			public const int ic_mr_button_connecting_22_light = 2130837744;
+			public const int ic_mr_button_connecting_22_dark = 2130837744;
 			
 			// aapt resource value: 0x7f0200f1
-			public const int ic_mr_button_connecting_23_dark = 2130837745;
+			public const int ic_mr_button_connecting_22_light = 2130837745;
 			
 			// aapt resource value: 0x7f0200f2
-			public const int ic_mr_button_connecting_23_light = 2130837746;
+			public const int ic_mr_button_connecting_23_dark = 2130837746;
 			
 			// aapt resource value: 0x7f0200f3
-			public const int ic_mr_button_connecting_24_dark = 2130837747;
+			public const int ic_mr_button_connecting_23_light = 2130837747;
 			
 			// aapt resource value: 0x7f0200f4
-			public const int ic_mr_button_connecting_24_light = 2130837748;
+			public const int ic_mr_button_connecting_24_dark = 2130837748;
 			
 			// aapt resource value: 0x7f0200f5
-			public const int ic_mr_button_connecting_25_dark = 2130837749;
+			public const int ic_mr_button_connecting_24_light = 2130837749;
 			
 			// aapt resource value: 0x7f0200f6
-			public const int ic_mr_button_connecting_25_light = 2130837750;
+			public const int ic_mr_button_connecting_25_dark = 2130837750;
 			
 			// aapt resource value: 0x7f0200f7
-			public const int ic_mr_button_connecting_26_dark = 2130837751;
+			public const int ic_mr_button_connecting_25_light = 2130837751;
 			
 			// aapt resource value: 0x7f0200f8
-			public const int ic_mr_button_connecting_26_light = 2130837752;
+			public const int ic_mr_button_connecting_26_dark = 2130837752;
 			
 			// aapt resource value: 0x7f0200f9
-			public const int ic_mr_button_connecting_27_dark = 2130837753;
+			public const int ic_mr_button_connecting_26_light = 2130837753;
 			
 			// aapt resource value: 0x7f0200fa
-			public const int ic_mr_button_connecting_27_light = 2130837754;
+			public const int ic_mr_button_connecting_27_dark = 2130837754;
 			
 			// aapt resource value: 0x7f0200fb
-			public const int ic_mr_button_connecting_28_dark = 2130837755;
+			public const int ic_mr_button_connecting_27_light = 2130837755;
 			
 			// aapt resource value: 0x7f0200fc
-			public const int ic_mr_button_connecting_28_light = 2130837756;
+			public const int ic_mr_button_connecting_28_dark = 2130837756;
 			
 			// aapt resource value: 0x7f0200fd
-			public const int ic_mr_button_connecting_29_dark = 2130837757;
+			public const int ic_mr_button_connecting_28_light = 2130837757;
 			
 			// aapt resource value: 0x7f0200fe
-			public const int ic_mr_button_connecting_29_light = 2130837758;
+			public const int ic_mr_button_connecting_29_dark = 2130837758;
 			
 			// aapt resource value: 0x7f0200ff
-			public const int ic_mr_button_connecting_30_dark = 2130837759;
+			public const int ic_mr_button_connecting_29_light = 2130837759;
 			
 			// aapt resource value: 0x7f020100
-			public const int ic_mr_button_connecting_30_light = 2130837760;
+			public const int ic_mr_button_connecting_30_dark = 2130837760;
 			
 			// aapt resource value: 0x7f020101
-			public const int ic_mr_button_disabled_dark = 2130837761;
+			public const int ic_mr_button_connecting_30_light = 2130837761;
 			
 			// aapt resource value: 0x7f020102
-			public const int ic_mr_button_disabled_light = 2130837762;
+			public const int ic_mr_button_disabled_dark = 2130837762;
 			
 			// aapt resource value: 0x7f020103
-			public const int ic_mr_button_disconnected_dark = 2130837763;
+			public const int ic_mr_button_disabled_light = 2130837763;
 			
 			// aapt resource value: 0x7f020104
-			public const int ic_mr_button_disconnected_light = 2130837764;
+			public const int ic_mr_button_disconnected_dark = 2130837764;
 			
 			// aapt resource value: 0x7f020105
-			public const int ic_mr_button_grey = 2130837765;
+			public const int ic_mr_button_disconnected_light = 2130837765;
 			
 			// aapt resource value: 0x7f020106
-			public const int ic_vol_type_speaker_dark = 2130837766;
+			public const int ic_mr_button_grey = 2130837766;
 			
 			// aapt resource value: 0x7f020107
-			public const int ic_vol_type_speaker_group_dark = 2130837767;
+			public const int ic_vol_type_speaker_dark = 2130837767;
 			
 			// aapt resource value: 0x7f020108
-			public const int ic_vol_type_speaker_group_light = 2130837768;
+			public const int ic_vol_type_speaker_group_dark = 2130837768;
 			
 			// aapt resource value: 0x7f020109
-			public const int ic_vol_type_speaker_light = 2130837769;
+			public const int ic_vol_type_speaker_group_light = 2130837769;
 			
 			// aapt resource value: 0x7f02010a
-			public const int ic_vol_type_tv_dark = 2130837770;
+			public const int ic_vol_type_speaker_light = 2130837770;
 			
 			// aapt resource value: 0x7f02010b
-			public const int ic_vol_type_tv_light = 2130837771;
+			public const int ic_vol_type_tv_dark = 2130837771;
 			
 			// aapt resource value: 0x7f02010c
-			public const int mr_button_connected_dark = 2130837772;
+			public const int ic_vol_type_tv_light = 2130837772;
 			
 			// aapt resource value: 0x7f02010d
-			public const int mr_button_connected_light = 2130837773;
+			public const int img_circle = 2130837773;
 			
 			// aapt resource value: 0x7f02010e
-			public const int mr_button_connecting_dark = 2130837774;
+			public const int img_circle_filled = 2130837774;
 			
 			// aapt resource value: 0x7f02010f
-			public const int mr_button_connecting_light = 2130837775;
+			public const int logo = 2130837775;
 			
 			// aapt resource value: 0x7f020110
-			public const int mr_button_dark = 2130837776;
+			public const int logo_front = 2130837776;
 			
 			// aapt resource value: 0x7f020111
-			public const int mr_button_light = 2130837777;
+			public const int menu_tab_icon = 2130837777;
 			
 			// aapt resource value: 0x7f020112
-			public const int mr_dialog_close_dark = 2130837778;
+			public const int mr_button_connected_dark = 2130837778;
 			
 			// aapt resource value: 0x7f020113
-			public const int mr_dialog_close_light = 2130837779;
+			public const int mr_button_connected_light = 2130837779;
 			
 			// aapt resource value: 0x7f020114
-			public const int mr_dialog_material_background_dark = 2130837780;
+			public const int mr_button_connecting_dark = 2130837780;
 			
 			// aapt resource value: 0x7f020115
-			public const int mr_dialog_material_background_light = 2130837781;
+			public const int mr_button_connecting_light = 2130837781;
 			
 			// aapt resource value: 0x7f020116
-			public const int mr_group_collapse = 2130837782;
+			public const int mr_button_dark = 2130837782;
 			
 			// aapt resource value: 0x7f020117
-			public const int mr_group_expand = 2130837783;
+			public const int mr_button_light = 2130837783;
 			
 			// aapt resource value: 0x7f020118
-			public const int mr_media_pause_dark = 2130837784;
+			public const int mr_dialog_close_dark = 2130837784;
 			
 			// aapt resource value: 0x7f020119
-			public const int mr_media_pause_light = 2130837785;
+			public const int mr_dialog_close_light = 2130837785;
 			
 			// aapt resource value: 0x7f02011a
-			public const int mr_media_play_dark = 2130837786;
+			public const int mr_dialog_material_background_dark = 2130837786;
 			
 			// aapt resource value: 0x7f02011b
-			public const int mr_media_play_light = 2130837787;
+			public const int mr_dialog_material_background_light = 2130837787;
 			
 			// aapt resource value: 0x7f02011c
-			public const int mr_media_stop_dark = 2130837788;
+			public const int mr_group_collapse = 2130837788;
 			
 			// aapt resource value: 0x7f02011d
-			public const int mr_media_stop_light = 2130837789;
+			public const int mr_group_expand = 2130837789;
 			
 			// aapt resource value: 0x7f02011e
-			public const int mr_vol_type_audiotrack_dark = 2130837790;
+			public const int mr_media_pause_dark = 2130837790;
 			
 			// aapt resource value: 0x7f02011f
-			public const int mr_vol_type_audiotrack_light = 2130837791;
+			public const int mr_media_pause_light = 2130837791;
 			
 			// aapt resource value: 0x7f020120
-			public const int navigation_empty_icon = 2130837792;
+			public const int mr_media_play_dark = 2130837792;
 			
 			// aapt resource value: 0x7f020121
-			public const int notification_action_background = 2130837793;
+			public const int mr_media_play_light = 2130837793;
 			
 			// aapt resource value: 0x7f020122
-			public const int notification_bg = 2130837794;
+			public const int mr_media_stop_dark = 2130837794;
 			
 			// aapt resource value: 0x7f020123
-			public const int notification_bg_low = 2130837795;
+			public const int mr_media_stop_light = 2130837795;
 			
 			// aapt resource value: 0x7f020124
-			public const int notification_bg_low_normal = 2130837796;
+			public const int mr_vol_type_audiotrack_dark = 2130837796;
 			
 			// aapt resource value: 0x7f020125
-			public const int notification_bg_low_pressed = 2130837797;
+			public const int mr_vol_type_audiotrack_light = 2130837797;
 			
 			// aapt resource value: 0x7f020126
-			public const int notification_bg_normal = 2130837798;
+			public const int navigation_empty_icon = 2130837798;
 			
 			// aapt resource value: 0x7f020127
-			public const int notification_bg_normal_pressed = 2130837799;
+			public const int notification_action_background = 2130837799;
 			
 			// aapt resource value: 0x7f020128
-			public const int notification_icon_background = 2130837800;
-			
-			// aapt resource value: 0x7f02012d
-			public const int notification_template_icon_bg = 2130837805;
-			
-			// aapt resource value: 0x7f02012e
-			public const int notification_template_icon_low_bg = 2130837806;
+			public const int notification_bg = 2130837800;
 			
 			// aapt resource value: 0x7f020129
-			public const int notification_tile_bg = 2130837801;
+			public const int notification_bg_low = 2130837801;
 			
 			// aapt resource value: 0x7f02012a
-			public const int notify_panel_notification_icon_bg = 2130837802;
+			public const int notification_bg_low_normal = 2130837802;
 			
 			// aapt resource value: 0x7f02012b
-			public const int tooltip_frame_dark = 2130837803;
+			public const int notification_bg_low_pressed = 2130837803;
 			
 			// aapt resource value: 0x7f02012c
-			public const int tooltip_frame_light = 2130837804;
+			public const int notification_bg_normal = 2130837804;
+			
+			// aapt resource value: 0x7f02012d
+			public const int notification_bg_normal_pressed = 2130837805;
+			
+			// aapt resource value: 0x7f02012e
+			public const int notification_icon_background = 2130837806;
+			
+			// aapt resource value: 0x7f020136
+			public const int notification_template_icon_bg = 2130837814;
+			
+			// aapt resource value: 0x7f020137
+			public const int notification_template_icon_low_bg = 2130837815;
+			
+			// aapt resource value: 0x7f02012f
+			public const int notification_tile_bg = 2130837807;
+			
+			// aapt resource value: 0x7f020130
+			public const int notify_panel_notification_icon_bg = 2130837808;
+			
+			// aapt resource value: 0x7f020131
+			public const int receive_tab_icon = 2130837809;
+			
+			// aapt resource value: 0x7f020132
+			public const int search = 2130837810;
+			
+			// aapt resource value: 0x7f020133
+			public const int send_tab_icon = 2130837811;
+			
+			// aapt resource value: 0x7f020134
+			public const int tooltip_frame_dark = 2130837812;
+			
+			// aapt resource value: 0x7f020135
+			public const int tooltip_frame_light = 2130837813;
 			
 			static Drawable()
 			{
@@ -3658,6 +8467,15 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0004
 			public const int abc_config_activityShortDur = 2131427332;
 			
+			// aapt resource value: 0x7f0b000e
+			public const int animation_duration = 2131427342;
+			
+			// aapt resource value: 0x7f0b000f
+			public const int animation_duration_long = 2131427343;
+			
+			// aapt resource value: 0x7f0b000d
+			public const int animation_duration_short = 2131427341;
+			
 			// aapt resource value: 0x7f0b0008
 			public const int app_bar_elevation_anim_duration = 2131427336;
 			
@@ -4057,6 +8875,9 @@ namespace HodlWallet2.Droid
 			
 			// aapt resource value: 0x7f0a0035
 			public const int character_counter_pattern = 2131361845;
+			
+			// aapt resource value: 0x7f0a003c
+			public const int library_name = 2131361852;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int mr_button_content_description = 2131361792;

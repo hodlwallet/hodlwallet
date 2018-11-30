@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.OnboardPage">
-    <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HodlWallet2.OnboardPage" BackgroundColor="{StaticResource GrayBackground}">
+    
+    <FlexLayout Direction="Column">
         
         <Button Text="?" FontSize="Large"
                 Style="{DynamicResource customButton}"
-                BackgroundColor="Transparent"
-                FlexLayout.AlignSelf="End"/>
+                BackgroundColor="Gray"
+                FlexLayout.AlignSelf="End"
+                FlexLayout.Grow="1" />
         
-        <FlexLayout FlexLayout.Grow="1">
-            <Image Source="logo_front.png" FlexLayout.AlignSelf="Center"
-                   Scale="0.5"/>
+        <Image Source="logo_front.png"
+               Scale="0.5"
+               FlexLayout.Grow="2" />
+        
+        <FlexLayout Direction="Column" FlexLayout.Grow="1" BackgroundColor="{StaticResource GrayBackground}">    
+            <Button x:Name="createButton"
+                    Style="{DynamicResource customButton}"
+                    BackgroundColor="{StaticResource DarkGray}"
+                    CornerRadius="0"
+                    FlexLayout.AlignSelf="Stretch"
+                    Clicked="Handle_Clicked"
+                    FlexLayout.Grow="1" />
+            
+            <BoxView BackgroundColor="{StaticResource GrayBackground}"
+                     FlexLayout.AlignSelf="Stretch"
+                     HeightRequest="5" />
+            
+            <Button x:Name="recoverButton"
+                    Style="{DynamicResource customButton}"
+                    BackgroundColor="{StaticResource DarkGray}"
+                    CornerRadius="0"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="1" />
         </FlexLayout>
         
-        <Button x:Name="createButton"
-                Style="{DynamicResource customButton}"
-                BackgroundColor="{StaticResource DarkGray}"
-                FlexLayout.AlignSelf="Stretch" />
-        
-        <BoxView BackgroundColor="{StaticResource GrayBackground}"
-                 HeightRequest="1" />
-        
-        <Button x:Name="recoverButton"
-                Style="{DynamicResource customButton}"
-                BackgroundColor="{StaticResource DarkGray}"
-                FlexLayout.AlignSelf="Stretch" />
-        
     </FlexLayout>
+        
 </ContentPage>

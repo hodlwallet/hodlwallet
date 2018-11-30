@@ -1,8 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using HodlWallet2.Utils;
+using HodlWallet2.ViewModels;
 
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HodlWallet2
 {
     public partial class App : Application
@@ -11,7 +12,8 @@ namespace HodlWallet2
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new OnboardPage());
+            MainPage = new DashboardPage();
+                //CustomNavigationPage(new OnboardPage());
         }
 
         protected override void OnStart()

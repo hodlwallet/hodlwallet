@@ -10,6 +10,81 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581" />
+    <PackageReference Include="FormsPinView" Version="2.0.0" />
+    <PackageReference Include="XForms.Plugin.AnimationNavigationPage" Version="1.0.5" />
+    <PackageReference Include="SkiaSharp" Version="1.60.3" />
+    <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Assets\" />
+    <Folder Include="Locale\" />
+    <Folder Include="Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\logo_front.png" />
+    <None Remove="Assets\sendtabicon.svg" />
+    <None Remove="Resource\sendtabicon.svg" />
+    <None Remove="Assets\search.svg" />
+    <None Remove="Assets\receive_tab.svg" />
+    <None Remove="Assets\menu_tab.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\logo_front.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Colors.xaml" />
+    <EmbeddedResource Remove="Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\send_tab.svg">
+      <LogicalName>Assets.send_tab.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\search.svg">
+      <LogicalName>Assets.search.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\receive_tab.svg">
+      <LogicalName>Assets.receive_tab.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\menu_tab.svg">
+      <LogicalName>Assets.menu_tab.svg</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Locale\LocaleResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>
+      <LogicalName>HodlWallet2.LocaleResources.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Locale\resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocaleResources_es_.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Locale\LocaleResources_es_.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocaleResources_es_.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Locale\LocaleResources.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocaleResources.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="LocaleResources.Designer.cs" />
+    <Compile Remove="Locale\LocaleResources_es_.Designer.cs" />
+    <Compile Remove="ViewModels\MyPage.xaml.cs" />
+    <Compile Remove="Resources.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Locale\LocaleResources.Designer.cs">
+      <DependentUpon>LocaleResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xamarin.iOS" />
   </ItemGroup>
 </Project>

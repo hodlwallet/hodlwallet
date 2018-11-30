@@ -1,5 +1,121 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.ViewModels.DashboardPage">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HodlWallet2.ViewModels.DashboardPage" BackgroundColor="{StaticResource GrayBackground}"
+             xmlns:svg="clr-namespace:HodlWallet2.Utils">
     <ContentPage.Content>
+        <FlexLayout Direction="Column">
+            
+            <FlexLayout Direction="Row" FlexLayout.Grow="1">
+                
+                <FlexLayout Direction="Column" FlexLayout.Grow="1">
+                    
+                    <FlexLayout FlexLayout.Grow="2" />
+                    
+                    <Image Source="logo.png" HeightRequest="20" FlexLayout.Grow="1" BackgroundColor="Teal" />
+                    
+                    <FlexLayout FlexLayout.Grow="1" />
+                    
+                    <Label x:Name="amountLabel" FlexLayout.AlignSelf="Center"
+                           Style="{DynamicResource customLabel}" BackgroundColor="Teal"
+                           FlexLayout.Grow="1" />
+                    
+                    <FlexLayout FlexLayout.Grow="2" />
+                    
+                </FlexLayout>
+                
+                <FlexLayout Direction="Column" FlexLayout.Grow="1" >
+                    
+                    <FlexLayout FlexLayout.Grow="2" />
+                    
+                    <Label x:Name="priceLabel"
+                           Style="{DynamicResource customLabel}" FlexLayout.Grow="1" />
+                    
+                    <svg:Icon ResourceId="Assets.search.svg"
+                              HorizontalOptions="Center" VerticalOptions="Center"
+                              FlexLayout.Grow="1" />
+                    
+                    <FlexLayout FlexLayout.Grow="2" />
+                    
+                </FlexLayout>
+            </FlexLayout>
+            
+            <FlexLayout FlexLayout.Grow="2">
+                <ListView BackgroundColor="{StaticResource DarkGray}"></ListView>
+            </FlexLayout>
+            
+            <FlexLayout Direction="Row" FlexLayout.Grow="1" JustifyContent="SpaceAround">
+                
+                <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="SpaceEvenly" FlexLayout.Grow="1">
+                    
+                    <FlexLayout FlexLayout.Grow="1"/>
+                    
+                    <FlexLayout FlexLayout.Grow="3" BackgroundColor="Teal">
+                        <svg:Icon ResourceId="Assets.send_tab.svg"
+                                  HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="1"/>
+                    </FlexLayout>
+                    
+                    <Label x:Name="sendLabel"
+                           Style="{DynamicResource customLabel}"
+                           FlexLayout.Grow="1"
+                     />
+                    
+                    <FlexLayout FlexLayout.Grow="1" />
+                           
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSendTapped"
+                                              NumberOfTapsRequired="1" />
+                    </FlexLayout.GestureRecognizers>
+                    
+                </FlexLayout>
+                
+                <FlexLayout Direction="Column" JustifyContent="SpaceEvenly" FlexLayout.Grow="1">
+                    
+                    <FlexLayout FlexLayout.Grow="1"/>
+                    
+                    <FlexLayout FlexLayout.Grow="3" BackgroundColor="Teal">
+                        <svg:Icon ResourceId="Assets.receive_tab.svg"
+                                  HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="1"/>
+                    </FlexLayout>
+                    
+                    <Label x:Name="receiveLabel"
+                           Style="{DynamicResource customLabel}"
+                           FlexLayout.Grow="1"
+                           FlexLayout.AlignSelf="Center" />
+                    
+                    <FlexLayout FlexLayout.Grow="1" />
+                    
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnReceiveTapped"
+                                              NumberOfTapsRequired="1" />
+                    </FlexLayout.GestureRecognizers>
+                    
+                </FlexLayout>
+                
+                <FlexLayout Direction="Column" JustifyContent="SpaceEvenly" FlexLayout.Grow="1">
+                    
+                    <FlexLayout FlexLayout.Grow="1"/>
+                    
+                    <FlexLayout FlexLayout.Grow="3" BackgroundColor="Teal">
+                        <svg:Icon ResourceId="Assets.menu_tab.svg"
+                                  HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="1"/>
+                    </FlexLayout>
+                    
+                    <Label x:Name="menuLabel"
+                           Style="{DynamicResource customLabel}"
+                           FlexLayout.Grow="1"
+                           FlexLayout.AlignSelf="Center" />
+                    
+                    <FlexLayout FlexLayout.Grow="1" />
+                    
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnMenuTapped"
+                                              NumberOfTapsRequired="1" />
+                    </FlexLayout.GestureRecognizers>
+                    
+                </FlexLayout>
+                
+            </FlexLayout>
+            
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

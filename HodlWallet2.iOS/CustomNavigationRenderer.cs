@@ -3,11 +3,11 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
 using System;
-using TransparentNavBarXForms;
-using TransparentNavBarXForms.iOS.Renderers;
+using HodlWallet2.Utils;
+using HodlWallet2.iOS;
 
 [assembly: ExportRenderer(typeof(CustomNavigationPage), typeof(CustomNavigationRenderer))]
-namespace TransparentNavBarXForms.iOS.Renderers
+namespace HodlWallet2.iOS
 {
     public class CustomNavigationRenderer : NavigationRenderer
     {

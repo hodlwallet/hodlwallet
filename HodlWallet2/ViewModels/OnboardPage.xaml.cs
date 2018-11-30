@@ -14,10 +14,10 @@ namespace HodlWallet2
         public OnboardPage()
         {
             InitializeComponent();
-            setButtonLabels();
+            SetButtonLabels();
         }
 
-        private void setButtonLabels()
+        private void SetButtonLabels()
         {
             createButton.Text = LocaleResources.Onboard_create.ToUpper();
             recoverButton.Text = LocaleResources.Onboard_recover.ToUpper();
