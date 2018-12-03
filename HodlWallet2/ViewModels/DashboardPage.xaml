@@ -9,32 +9,37 @@
                 
                 <FlexLayout Direction="Column" FlexLayout.Grow="1">
                     
-                    <FlexLayout FlexLayout.Grow="2" />
+                    <FlexLayout FlexLayout.Grow="1" />
                     
-                    <Image Source="logo.png" HeightRequest="20" FlexLayout.Grow="1" BackgroundColor="Teal" />
+                    <Image Source="logo.png" HeightRequest="20" 
+                           FlexLayout.AlignSelf="Start" Margin="20,0,0,0"
+                           FlexLayout.Grow="1" BackgroundColor="Teal" />
                     
                     <FlexLayout FlexLayout.Grow="1" />
                     
-                    <Label x:Name="amountLabel" FlexLayout.AlignSelf="Center"
+                    <Label x:Name="amountLabel" FlexLayout.AlignSelf="Start" VerticalTextAlignment="Center"
                            Style="{DynamicResource customLabel}" BackgroundColor="Teal"
-                           FlexLayout.Grow="1" />
+                           FlexLayout.Grow="2" Margin="20,0,0,0" FontSize="Large" />
                     
-                    <FlexLayout FlexLayout.Grow="2" />
+                    <FlexLayout FlexLayout.Grow="1" />
                     
                 </FlexLayout>
                 
                 <FlexLayout Direction="Column" FlexLayout.Grow="1" >
                     
-                    <FlexLayout FlexLayout.Grow="2" />
+                    <FlexLayout FlexLayout.Grow="1" />
                     
-                    <Label x:Name="priceLabel"
-                           Style="{DynamicResource customLabel}" FlexLayout.Grow="1" />
+                    <Label x:Name="priceLabel" FlexLayout.AlignSelf="End" VerticalTextAlignment="Center"
+                           Style="{DynamicResource customLabel}" BackgroundColor="Teal"
+                           FlexLayout.Grow="1"  Margin="0,0,20,0" FontSize="Medium" />
+                    
+                    <FlexLayout FlexLayout.Grow="1" />
                     
                     <svg:Icon ResourceId="Assets.search.svg"
-                              HorizontalOptions="Center" VerticalOptions="Center"
-                              FlexLayout.Grow="1" />
+                              FlexLayout.AlignSelf="End"
+                              FlexLayout.Grow="2" Margin="0,0,20,0" />
                     
-                    <FlexLayout FlexLayout.Grow="2" />
+                    <FlexLayout FlexLayout.Grow="1" />
                     
                 </FlexLayout>
             </FlexLayout>
