@@ -87,6 +87,9 @@
     <Compile Update="Locale\LocaleResources.Designer.cs">
       <DependentUpon>LocaleResources.resx</DependentUpon>
     </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS" />
