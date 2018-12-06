@@ -1,0 +1,3 @@
+[submodule "LivianoWallet"]
+	path = LivianoWallet
+	url = git@github.com:bitstopco/LivianoWallet.git
