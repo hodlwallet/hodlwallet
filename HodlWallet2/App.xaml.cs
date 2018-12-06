@@ -3,32 +3,36 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using HodlWallet2.Utils;
 using HodlWallet2.ViewModels;
+using HodlWallet2;
 
 namespace HodlWallet2
 {
     public partial class App : Application
     {
+        public Wallet Wallet { get; set; }
+
         public App()
         {
             InitializeComponent();
 
             MainPage = new DashboardPage();
-                //CustomNavigationPage(new OnboardPage());
+
+            Wallet = new Wallet();
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            Wallet.Logger.Information("OnStart {datetime}", DateTime.Now);
         }
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            Wallet.Logger.Information("OnSleep {datetime}", DateTime.Now);
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            Wallet.Logger.Information("OnResume {datetime}", DateTime.Now);
         }
     }
 }

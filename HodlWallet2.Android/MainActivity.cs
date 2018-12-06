@@ -7,6 +7,9 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+using Serilog;
+using Serilog.Core;
+
 namespace HodlWallet2.Droid
 {
     [Activity(Label = "HodlWallet2", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -20,7 +23,19 @@ namespace HodlWallet2.Droid
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             FormsControls.Droid.Main.Init(this);
-            LoadApplication(new App());
+            LoadApplication();
+        }
+
+        void LoadApplication()
+        {
+            var app = new App();
+
+            app.Wallet.Logger = new LoggerConfiguration()
+                .WriteTo.AndroidLog()
+                .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
+                .CreateLogger();
+
+            LoadApplication(app);
         }
     }
 }
