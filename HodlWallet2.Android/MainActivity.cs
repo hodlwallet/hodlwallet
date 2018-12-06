@@ -23,19 +23,13 @@ namespace HodlWallet2.Droid
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             FormsControls.Droid.Main.Init(this);
-            LoadApplication();
-        }
 
-        void LoadApplication()
-        {
-            var app = new App();
-
-            app.Wallet.Logger = new LoggerConfiguration()
+            Wallet.Instance.Logger = new LoggerConfiguration()
                 .WriteTo.AndroidLog()
                 .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
                 .CreateLogger();
 
-            LoadApplication(app);
+            LoadApplication(new App());
         }
     }
 }

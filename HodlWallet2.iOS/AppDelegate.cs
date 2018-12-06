@@ -23,18 +23,11 @@ namespace HodlWallet2.iOS
             global::Xamarin.Forms.Forms.Init();
             FormsControls.Touch.Main.Init();
 
-            LoadApplication();
+            Wallet.Instance.Logger = new LoggerConfiguration().WriteTo.NSLog().CreateLogger();
+
+            LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
-        }
-
-        private void LoadApplication()
-        {
-            var app = new App();
-
-            app.Wallet.Logger = new LoggerConfiguration().WriteTo.NSLog().CreateLogger();
-
-            LoadApplication(app);
         }
     }
 }

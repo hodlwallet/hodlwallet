@@ -14,10 +14,8 @@ namespace HodlWallet2
         public App()
         {
             InitializeComponent();
-
+            Wallet = Wallet.Instance;
             MainPage = new DashboardPage();
-
-            Wallet = new Wallet();
         }
 
         protected override void OnStart()
