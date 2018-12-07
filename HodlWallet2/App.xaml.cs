@@ -14,8 +14,16 @@ namespace HodlWallet2
         public App()
         {
             InitializeComponent();
+
             Wallet = Wallet.Instance;
             MainPage = new DashboardPage();
+        }
+
+        private void InitWallet()
+        {
+            Wallet = Wallet.Instance;
+
+            Wallet.Configure(network: "testnet");
         }
 
         protected override void OnStart()
