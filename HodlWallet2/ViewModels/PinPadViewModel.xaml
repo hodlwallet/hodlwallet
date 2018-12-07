@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HodlWallet2.ViewModels.PinPadViewModel" BackgroundColor="{StaticResource DarkGray}">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkGray}" />
+                <Setter Property="FontFamily" Value="{DynamicResource FontFamilyName}" />
+                <Setter Property="TextColor" Value="{StaticResource SyncGradientStart}" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Label x:Name="EnterPin"
+               Text="Enter Pin"
+               Grid.Row="1" Grid.Column="2"
+               Grid.ColumnSpan="4" />
+        
+        <BoxView x:Name="BoxOne"
+                 BackgroundColor="{StaticResource White}"
+                 Grid.Row="2"
+                 Grid.Column="1" />
+        <BoxView x:Name="BoxTwo"
+                 BackgroundColor="{StaticResource White}"
+                 Grid.Row="2"
+                 Grid.Column="2" />
+        <BoxView x:Name="BoxThree"
+                 BackgroundColor="{StaticResource White}"
+                 Grid.Row="2"
+                 Grid.Column="3" />
+        <BoxView x:Name="BoxFour"
+                 BackgroundColor="{StaticResource White}"
+                 Grid.Row="2"
+                 Grid.Column="4" />
+        <BoxView x:Name="BoxFive"
+                 BackgroundColor="{StaticResource White}"
+                 Grid.Row="2"
+                 Grid.Column="5" />
+        <BoxView x:Name="BoxSix"
+                 BackgroundColor="{StaticResource White}"
+                 Grid.Row="2"
+                 Grid.Column="6" />
+        
+        <BoxView BackgroundColor="Transparent"
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="6" />
+    </Grid>
+    
+    <Grid x:Name="PinPad">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Text="1" 
+                Grid.Row="1" Grid.Column="1"
+                Command="{Binding DigitCommand}"
+                CommandParameter="1" />
+
+        <Button Text="2" 
+                Grid.Row="1" Grid.Column="2"
+                Command="{Binding DigitCommand}"
+                CommandParameter="2" />
+
+        <Button Text="3" 
+                Grid.Row="1" Grid.Column="3"
+                Command="{Binding DigitCommand}"
+                CommandParameter="3" />
+        
+         <Button Text="4" 
+                Grid.Row="2" Grid.Column="1"
+                Command="{Binding DigitCommand}"
+                CommandParameter="4" />
+
+        <Button Text="5" 
+                Grid.Row="2" Grid.Column="2"
+                Command="{Binding DigitCommand}"
+                CommandParameter="5" />
+
+        <Button Text="6" 
+                Grid.Row="2" Grid.Column="3"
+                Command="{Binding DigitCommand}"
+                CommandParameter="6" />
+        
+        <Button Text="7" 
+                Grid.Row="3" Grid.Column="1"
+                Command="{Binding DigitCommand}"
+                CommandParameter="7" />
+
+        <Button Text="8" 
+                Grid.Row="3" Grid.Column="2"
+                Command="{Binding DigitCommand}"
+                CommandParameter="8" />
+
+        <Button Text="9" 
+                Grid.Row="3" Grid.Column="3"
+                Command="{Binding DigitCommand}"
+                CommandParameter="9" />
+
+        <Button Text="&#x00B7;" 
+                Grid.Row="4" Grid.Column="1"
+                Command="{Binding DigitCommand}"
+                CommandParameter="." />
+
+        <Button Text="0" 
+                Grid.Row="4" Grid.Column="2"
+                Command="{Binding DigitCommand}"
+                CommandParameter="0" />
+        
+        <Button Text="&#x21E6;"
+                Grid.Row="4" Grid.Column="3"
+                Command="{Binding BackspaceCommand}" />
+    </Grid>
+</ContentPage>
