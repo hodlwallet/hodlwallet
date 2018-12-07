@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
 using UIKit;
+
+using Serilog;
 
 namespace HodlWallet2.iOS
 {
@@ -24,6 +22,9 @@ namespace HodlWallet2.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             FormsControls.Touch.Main.Init();
+
+            Wallet.Instance.Logger = new LoggerConfiguration().WriteTo.NSLog().CreateLogger();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

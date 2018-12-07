@@ -7,14 +7,22 @@ using Xamarin.Forms;
 using HodlWallet2.Locale;
 using HodlWallet2.ViewModels;
 
+using HodlWallet2;
+
 namespace HodlWallet2
 {
     public partial class OnboardPage : ContentPage
     {
+        private Wallet _Wallet;
+
         public OnboardPage()
         {
             InitializeComponent();
             SetButtonLabels();
+
+            _Wallet = Wallet.Instance;
+
+            _Wallet.Logger.Information("Attached Wallet!");
         }
 
         private void SetButtonLabels()

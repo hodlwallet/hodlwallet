@@ -3,22 +3,27 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using HodlWallet2.Locale;
+using Serilog;
 
 namespace HodlWallet2.ViewModels
 {
     public partial class DashboardPage : ContentPage
     {
+        private Wallet _Wallet;
+        private ILogger _Logger;
+
         public DashboardPage()
         {
+            _Wallet = Wallet.Instance;
+            _Logger = _Wallet.Logger;
+
             InitializeComponent();
             SetTempLabels();
-
-
         }
 
         public void OnSendTapped(object sender, EventArgs e)
         {
-            //TODO add code here
+            _Logger.Information("On Send Tapped.");
         }
 
         public void OnReceiveTapped(object sender, EventArgs e)

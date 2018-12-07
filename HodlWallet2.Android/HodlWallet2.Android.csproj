@@ -56,6 +56,12 @@
     <PackageReference Include="Xamarin.Forms">
       <Version>3.4.0.1008975</Version>
     </PackageReference>
+    <PackageReference Include="Serilog.Sinks.Xamarin">
+      <Version>0.1.29</Version>
+    </PackageReference>
+    <PackageReference Include="Serilog">
+      <Version>2.7.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
