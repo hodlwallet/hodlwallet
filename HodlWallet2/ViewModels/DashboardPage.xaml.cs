@@ -14,7 +14,8 @@ namespace HodlWallet2.ViewModels
 
         public DashboardPage()
         {
-            _Logger = Wallet.Instance.Logger;
+            _Wallet = Wallet.Instance;
+            _Logger = _Wallet.Logger;
 
             InitializeComponent();
             SetTempLabels();
