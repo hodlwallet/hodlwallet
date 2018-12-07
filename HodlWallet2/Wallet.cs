@@ -92,7 +92,13 @@ namespace HodlWallet2
 
         private static string GetConfigFile(string fileName)
         {
-            return Path.Combine(Directory.GetCurrentDirectory(), "data", fileName);
+            string appDirectory = Directory.GetParent(typeof(App).Assembly.Location).FullName;
+            string dir = Path.Combine(appDirectory, "data", fileName);
+
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+
+            return dir;
         }
 
         private static string AddrmanFile()

@@ -15,11 +15,12 @@ namespace HodlWallet2
         {
             InitializeComponent();
 
-            Wallet = Wallet.Instance;
+            InitializeWallet();
+
             MainPage = new DashboardPage();
         }
 
-        private void InitWallet()
+        private void InitializeWallet()
         {
             Wallet = Wallet.Instance;
 
