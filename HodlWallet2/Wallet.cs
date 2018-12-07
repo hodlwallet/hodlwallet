@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 using Liviano.Behaviors;
 using Liviano.Enums;
 
+using Xamarin.Essentials;
+
 namespace HodlWallet2
 {
     public sealed class Wallet
@@ -83,7 +85,6 @@ namespace HodlWallet2
                 using (var fs = File.Open(ChainFile(), FileMode.OpenOrCreate))
                 {
                     chain.Load(fs);
-
                 }
 
                 return chain;
@@ -93,7 +94,7 @@ namespace HodlWallet2
         private static string GetConfigFile(string fileName)
         {
             string appDirectory = Directory.GetParent(typeof(App).Assembly.Location).FullName;
-            string dir = Path.Combine(appDirectory, "data", fileName);
+            string dir = Path.Combine(appDirectory, fileName);
 
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
@@ -222,7 +223,12 @@ namespace HodlWallet2
             ScanLocation = new BlockLocator();
             ScanLocation.Blocks.Add(_Network.GenesisHash);
 
+
             Logger.Information("Adding Genesis block ({hash}) to blockchain scanner", _Network.GenesisHash.ToString());
+
+            _DefaultCoinSelector = new DefaultCoinSelector();
+
+            Logger.Information("Coin selector: {coinSelector}", _DefaultCoinSelector.GetType().ToString());
 
             Logger.Information("Configured wallet.");
         }
