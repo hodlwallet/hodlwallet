@@ -17,8 +17,6 @@ using System.Threading.Tasks;
 using Liviano.Behaviors;
 using Liviano.Enums;
 
-using Xamarin.Essentials;
-
 namespace HodlWallet2
 {
     public sealed class Wallet
@@ -46,6 +44,8 @@ namespace HodlWallet2
         private DefaultCoinSelector _DefaultCoinSelector;
 
         private NodesGroup _NodesGroup;
+
+        private WalletSyncManagerBehavior _WalletSyncManagerBehavior;
 
         private string _WalletId;
 
@@ -199,9 +199,13 @@ namespace HodlWallet2
             WalletManager = new WalletManager(Logger, _Network, _Chain, AsyncLoopFactory, DateTimeProvider, ScriptAddressReader, StorageProvider);
             WalletSyncManager = new WalletSyncManager(Logger, WalletManager, _Chain);
 
+            _WalletSyncManagerBehavior = new WalletSyncManagerBehavior(Logger, WalletSyncManager, ScriptTypes.SegwitAndLegacy);
+
             _ConParams.TemplateBehaviors.Add(new AddressManagerBehavior(_AddressManager));
             _ConParams.TemplateBehaviors.Add(new ChainBehavior(_Chain));
-            _ConParams.TemplateBehaviors.Add(new WalletSyncManagerBehavior(Logger, WalletSyncManager, ScriptTypes.SegwitAndLegacy));
+            _ConParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
+
+            _ConParams.UserAgent = "hodlwallet:2.0";
 
             _NodesGroup = new NodesGroup(_Network, _ConParams, new NodeRequirement()
             {
@@ -219,7 +223,6 @@ namespace HodlWallet2
 
             ScanLocation = new BlockLocator();
             ScanLocation.Blocks.Add(_Network.GenesisHash);
-
 
             Logger.Information("Adding Genesis block ({hash}) to blockchain scanner", _Network.GenesisHash.ToString());
 
@@ -241,14 +244,22 @@ namespace HodlWallet2
             if (WalletManager.GetWalletBlockLocator() != null)
             {
                 ScanLocation.Blocks.AddRange(WalletManager.GetWalletBlockLocator());
-                timeToStartOn = timeToStartOn ?? _Chain.GetBlock(WalletManager.LastReceivedBlockHash()).Header.BlockTime; // Skip all time before last blockhash synced
+
+                if (_Chain.GetBlock(WalletManager.LastReceivedBlockHash()) != null)
+                {
+                    timeToStartOn = timeToStartOn ?? _Chain.GetBlock(WalletManager.LastReceivedBlockHash()).Header.BlockTime;
+                }
+                else
+                {
+                    timeToStartOn = timeToStartOn ?? _Chain.Tip.Header.BlockTime; // Skip all time before last blockhash synced
+                }
             }
             else
             {
                 if (!ScanLocation.Blocks.Contains(_Network.GenesisHash))
                     ScanLocation.Blocks.Add(_Network.GenesisHash); // Set starting scan location to begining of network chain
 
-                timeToStartOn = timeToStartOn ?? (WalletManager.GetWalletCreationTime() != null ? WalletManager.GetWalletCreationTime() : _Network.GetGenesis().Header.BlockTime); // Skip all time before, start of BIP32
+                timeToStartOn = timeToStartOn ?? WalletManager.GetWalletCreationTime(); // Skip all time before, start of BIP32
             }
 
             WalletSyncManager.Scan(ScanLocation, timeToStartOn.Value);
