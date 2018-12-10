@@ -230,9 +230,28 @@ namespace HodlWallet2
             Logger.Information("Configured wallet.");
         }
 
-        public void Start(string password)
+        public void Start(string password, DateTimeOffset? timeToStartOn = null)
         {
+            WalletManager.LoadWallet(password);
 
+            _NodesGroup.Connect();
+
+            WalletManager.Start();
+
+            if (WalletManager.GetWalletBlockLocator() != null)
+            {
+                ScanLocation.Blocks.AddRange(WalletManager.GetWalletBlockLocator());
+                timeToStartOn = timeToStartOn ?? _Chain.GetBlock(WalletManager.LastReceivedBlockHash()).Header.BlockTime; // Skip all time before last blockhash synced
+            }
+            else
+            {
+                if (!ScanLocation.Blocks.Contains(_Network.GenesisHash))
+                    ScanLocation.Blocks.Add(_Network.GenesisHash); // Set starting scan location to begining of network chain
+
+                timeToStartOn = timeToStartOn ?? (WalletManager.GetWalletCreationTime() != null ? WalletManager.GetWalletCreationTime() : _Network.GetGenesis().Header.BlockTime); // Skip all time before, start of BIP32
+            }
+
+            WalletSyncManager.Scan(ScanLocation, timeToStartOn.Value);
         }
 
         public string NewMnemonic(string wordList = "english", int wordCount = 12)

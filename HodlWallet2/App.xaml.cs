@@ -24,7 +24,9 @@ namespace HodlWallet2
         {
             Wallet = Wallet.Instance;
 
-            Wallet.Configure(network: "testnet");
+            // TODO Please store and run the network the user is using.
+            //Wallet.Configure(walletId: "wallet_guid", network: "testnet", nodesToConnect: 4);
+            Wallet.Configure(network: "testnet", nodesToConnect: 4);
         }
 
         protected override void OnStart()
