@@ -93,13 +93,9 @@ namespace HodlWallet2
 
         private static string GetConfigFile(string fileName)
         {
-            string appDirectory = Directory.GetParent(typeof(App).Assembly.Location).FullName;
-            string dir = Path.Combine(appDirectory, fileName);
+            string appDirectory = Directory.GetParent(Directory.GetParent(typeof(App).Assembly.Location).FullName).FullName;
 
-            if (!Directory.Exists(dir))
-                Directory.CreateDirectory(dir);
-
-            return dir;
+            return Path.Combine(appDirectory, fileName);
         }
 
         private static string AddrmanFile()
@@ -192,6 +188,7 @@ namespace HodlWallet2
 
             DateTimeProvider = new DateTimeProvider();
             AsyncLoopFactory = new AsyncLoopFactory();
+            ScriptAddressReader = new ScriptAddressReader();
             StorageProvider = new FileSystemStorageProvider(_WalletId);
 
             if (!StorageProvider.WalletExists())
