@@ -93,6 +93,8 @@ namespace HodlWallet2
 
         private static string GetConfigFile(string fileName)
         {
+            // FIXME Figure out why we cannot write to some parts of the file system
+            // TODO Test on iOS.
             string appDirectory = Directory.GetParent(Directory.GetParent(typeof(App).Assembly.Location).FullName).FullName;
 
             return Path.Combine(appDirectory, fileName);
