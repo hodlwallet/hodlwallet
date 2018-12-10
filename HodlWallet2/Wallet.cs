@@ -189,7 +189,7 @@ namespace HodlWallet2
             DateTimeProvider = new DateTimeProvider();
             AsyncLoopFactory = new AsyncLoopFactory();
             ScriptAddressReader = new ScriptAddressReader();
-            StorageProvider = new FileSystemStorageProvider(_WalletId);
+            StorageProvider = new HodlWallet2StorageProvider(_WalletId);
 
             if (!StorageProvider.WalletExists())
             {
@@ -252,6 +252,14 @@ namespace HodlWallet2
             }
 
             WalletSyncManager.Scan(ScanLocation, timeToStartOn.Value);
+        }
+
+        public bool WalletExists()
+        {
+            if (_WalletId == null)
+                return false;
+
+            return StorageProvider.WalletExists();
         }
 
         public string NewMnemonic(string wordList = "english", int wordCount = 12)
