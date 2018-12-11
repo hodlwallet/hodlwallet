@@ -31,7 +31,14 @@ namespace HodlWallet2.ViewModels
 
                 return barcodeImage;
             }
+        }
 
+        public ImageSource BarcodeImageSource
+        {
+            get
+            {
+                return BarcodeImage.Source;
+            }
         }
 
         public ReceiveViewModel(string address)
