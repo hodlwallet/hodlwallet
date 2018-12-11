@@ -25,6 +25,8 @@ namespace HodlWallet2.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
+            global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
+
             FormsControls.Droid.Main.Init(this);
 
             Wallet.Instance.Logger = new LoggerConfiguration()

@@ -2,6 +2,7 @@
 using Xamarin.Forms.Xaml;
 
 using HodlWallet2.ViewModels;
+using ZXing.Common;
 
 namespace HodlWallet2.Views
 {
@@ -9,19 +10,15 @@ namespace HodlWallet2.Views
     public partial class RecieveView : ContentPage
     {
         private ReceiveViewModel _ViewModel;
+        public EncodingOptions BarcodeOptions => new EncodingOptions() { Height = 300, Width = 300, PureBarcode = true };
 
         public RecieveView(ReceiveViewModel viewModel)
         {
             InitializeComponent();
 
-            BindingContext = viewModel;
+            _ViewModel = viewModel;
 
-            _QrCode.Source = viewModel.BarcodeImageSource;
-            _QrCode.Aspect = Aspect.Fill;
-
-            _QrCode.BindingContext = viewModel.BarcodeImage;
-
-            //Content = new ContentView { Content = viewModel.BarcodeImage };
+            BindingContext = _ViewModel;
         }
 
         public ReceiveViewModel ViewModel { get => BindingContext as ReceiveViewModel; }

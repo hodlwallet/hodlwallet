@@ -87,6 +87,7 @@
     <Compile Remove="ViewModels\MyPage.xaml.cs" />
     <Compile Remove="Resources.Designer.cs" />
     <Compile Remove="MainPage.xaml.cs" />
+    <Compile Remove="Views\QrCodeView.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Locale\LocaleResources.Designer.cs">

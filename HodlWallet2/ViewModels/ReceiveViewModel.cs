@@ -1,49 +1,23 @@
-﻿using Xamarin.Forms;
-
-using ZXing.Net.Mobile.Forms;
+﻿using Serilog;
 
 namespace HodlWallet2.ViewModels
 {
     public class ReceiveViewModel
     {
+        private ILogger _Logger;
+        private Wallet _Wallet;
         public string Address { get; }
 
-        public Image BarcodeImage
+        public ReceiveViewModel()
         {
-            get
-            {
-                var barcodeImage = new ZXingBarcodeImageView
-                {
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                    AutomationId = "zxingBarcodeImageView",
-                    Scale = .75
-                };
+            _Wallet = Wallet.Instance;
 
-                barcodeImage.BarcodeFormat = ZXing.BarcodeFormat.QR_CODE;
+            _Logger = _Wallet.Logger;
+           
+            Address = _Wallet.GetReceiveAddress().Address;
 
-                barcodeImage.BarcodeOptions.Width = 300;
-                barcodeImage.BarcodeOptions.Height = 300;
-
-                barcodeImage.BarcodeOptions.Margin = 10;
-
-                barcodeImage.BarcodeValue = Address;
-
-                return barcodeImage;
-            }
+            _Logger.Information("New Receive Address: {address}", Address);
         }
 
-        public ImageSource BarcodeImageSource
-        {
-            get
-            {
-                return BarcodeImage.Source;
-            }
-        }
-
-        public ReceiveViewModel(string address)
-        {
-            Address = address;
-        }
     }
 }

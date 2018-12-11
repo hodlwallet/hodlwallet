@@ -1,15 +1,12 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:HodlWallet2.Views"
-             x:Class="HodlWallet2.Views.RecieveView"
-             x:Name="main">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:HodlWallet2.Views" x:Class="HodlWallet2.Views.RecieveView" x:Name="main" xmlns:forms="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" xmlns:zx="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable">
     <StackLayout>
-        <StackLayout>
-            <Label x:Name="_Address" Text="{Binding Address}" HorizontalOptions="Center" VerticalOptions="Start"></Label>
-        </StackLayout>
-        <StackLayout>
-            <Image x:Name="_QrCode" Source="{Binding BarcodeImageSource}" Aspect="Fill"></Image>
-        </StackLayout>
+        <Label x:Name="_Address" Text="{Binding Address}" HorizontalOptions="Center" VerticalOptions="Start">
+        </Label>
+        <forms:ZXingBarcodeImageView BarcodeValue="{Binding Address}" IsVisible="True" x:Name="_QrCodeView" BarcodeFormat="QR_CODE" HeightRequest="300" WidthRequest="300">
+            <zx:ZXingBarcodeImageView.BarcodeOptions>
+                <zxcm:EncodingOptions Width="300" Height="300" />
+            </zx:ZXingBarcodeImageView.BarcodeOptions>
+        </forms:ZXingBarcodeImageView>
     </StackLayout>
 </ContentPage>
