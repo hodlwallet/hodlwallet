@@ -30,7 +30,7 @@ namespace HodlWallet2
 
             // TODO Please store and run the network the user is using.
             //Wallet.Configure(walletId: "wallet_guid", network: "testnet", nodesToConnect: 4);
-            Wallet.Configure(walletId: guid, network: "testnet", nodesToConnect: 4);
+            Wallet.Configure(walletId: guid, network: "testnet", nodesToConnect: 1);
 
             // FIXME Remove this code later when we have a way to create a wallet,
             // for now, the wallet is created and hardcoded

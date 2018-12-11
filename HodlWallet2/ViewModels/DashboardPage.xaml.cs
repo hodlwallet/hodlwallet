@@ -6,7 +6,6 @@ using HodlWallet2.Locale;
 using Serilog;
 
 using HodlWallet2.Views;
-using HodlWallet2.ViewModels;
 
 namespace HodlWallet2.ViewModels
 {
@@ -30,7 +29,7 @@ namespace HodlWallet2.ViewModels
 
         public async void OnReceiveTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RecieveView(new ReceiveViewModel()));
+            await Navigation.PushAsync(new RecieveView());
         }
 
         public void OnMenuTapped(object sender, EventArgs e)
