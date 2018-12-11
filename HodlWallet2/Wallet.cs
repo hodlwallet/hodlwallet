@@ -128,6 +128,9 @@ namespace HodlWallet2
             while (true)
             {
                 await Instance.Save();
+
+                Instance.Logger.Information("Saved chain file to filepath: {filepath} on {now}", ChainFile(), DateTime.Now);
+
                 await Task.Delay(50_000);
             }
         }
@@ -256,7 +259,7 @@ namespace HodlWallet2
 
             Scan(timeToStartOn);
 
-            Task.Run(async () => await PeriodicSave());
+            PeriodicSave();
         }
 
         public void Scan(DateTimeOffset? timeToStartOn)
@@ -310,6 +313,16 @@ namespace HodlWallet2
         public HdAddress GetReceiveAddress()
         {
             return CurrentAccount.GetFirstUnusedReceivingAddress();
+        }
+
+        public TransactionData[] GetCurrentAccountTransactions()
+        {
+            var txs = WalletManager
+                .GetAllAccountsByCoinType(CoinType.Bitcoin)
+                .SelectMany((HdAccount arg) => arg.GetCombinedAddresses())
+                .SelectMany((HdAddress arg) => arg.Transactions);
+
+            return txs.ToArray();
         }
     }
 

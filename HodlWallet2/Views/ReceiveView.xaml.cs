@@ -6,7 +6,6 @@ using ZXing.Common;
 
 namespace HodlWallet2.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RecieveView : ContentPage
     {
         private ReceiveViewModel _ViewModel;
