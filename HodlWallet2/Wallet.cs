@@ -84,6 +84,11 @@ namespace HodlWallet2
                 //       different account.
                 return WalletManager.GetWallet().GetAccountsByCoinType(CoinType.Bitcoin).FirstOrDefault();
             }
+
+            set
+            {
+                throw new NotImplementedException("Please code this.");
+            }
         }
 
         private ConcurrentChain GetChain()
