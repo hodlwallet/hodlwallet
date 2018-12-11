@@ -7,8 +7,9 @@
     <StackLayout>
         <StackLayout>
             <Label x:Name="_Address" Text="{Binding Address}" HorizontalOptions="Center" VerticalOptions="Start"></Label>
-<!--            <Image x:Name="_QrCode" BackgroundColor="Black" Source="{Binding BarcodeImageSource}" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Aspect="Fill" Grid.Row="2"></Image>-->
-            <Image x:Name="_QrCode" Source="{Binding BarcodeImageSource}"></Image>
+        </StackLayout>
+        <StackLayout>
+            <Image x:Name="_QrCode" Source="{Binding BarcodeImageSource}" Aspect="Fill"></Image>
         </StackLayout>
     </StackLayout>
 </ContentPage>
