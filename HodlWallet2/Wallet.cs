@@ -2,6 +2,8 @@
 using Liviano.Managers;
 using Serilog;
 
+using System.Linq;
+
 using NBitcoin;
 using NBitcoin.Protocol;
 
@@ -16,6 +18,7 @@ using System.Threading.Tasks;
 
 using Liviano.Behaviors;
 using Liviano.Enums;
+using Liviano.Models;
 
 namespace HodlWallet2
 {
@@ -276,6 +279,14 @@ namespace HodlWallet2
         public string NewMnemonic(string wordList = "english", int wordCount = 12)
         {
             return WalletManager.NewMnemonic(wordList, wordCount).ToString();
+        }
+
+        public HdAddress GetReceiveAddress()
+        {
+            var wallet = WalletManager.GetWallet();
+            var account = wallet.GetAccountsByCoinType(CoinType.Bitcoin).First();
+
+            return account.GetFirstUnusedReceivingAddress();
         }
     }
 

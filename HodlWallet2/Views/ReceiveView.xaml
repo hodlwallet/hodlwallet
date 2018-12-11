@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HodlWallet2.Views"
+             x:Class="HodlWallet2.Views.RecieveView"
+             x:Name="main">
+    <StackLayout>
+        <StackLayout>
+            <Label Text="test" HorizontalOptions="Start" VerticalOptions="Start"></Label>
+        </StackLayout>
+
+        <StackLayout>
+            <local:QrCodeView x:Name="qrResult"></local:QrCodeView>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

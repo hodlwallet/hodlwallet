@@ -27,6 +27,7 @@ namespace HodlWallet2.iOS
 
             LoadApplication(new App());
 
+            ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             return base.FinishedLaunching(app, options);
         }
     }
