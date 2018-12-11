@@ -75,6 +75,17 @@ namespace HodlWallet2
 
         public BlockLocator ScanLocation { get; set; }
 
+        public HdAccount CurrentAccount
+        {
+            get
+            {
+                // FIXME Please change this method once accounts are implemented.
+                //       That means people will change this manually by clicking on a
+                //       different account.
+                return WalletManager.GetWallet().GetAccountsByCoinType(CoinType.Bitcoin).FirstOrDefault();
+            }
+        }
+
         private ConcurrentChain GetChain()
         {
             lock (_Lock)
@@ -298,10 +309,7 @@ namespace HodlWallet2
 
         public HdAddress GetReceiveAddress()
         {
-            var wallet = WalletManager.GetWallet();
-            var account = wallet.GetAccountsByCoinType(CoinType.Bitcoin).First();
-
-            return account.GetFirstUnusedReceivingAddress();
+            return CurrentAccount.GetFirstUnusedReceivingAddress();
         }
     }
 
