@@ -14,10 +14,14 @@ namespace HodlWallet2.Views
         {
             InitializeComponent();
 
-            _ViewModel = viewModel;
             BindingContext = viewModel;
 
-            Content = new ContentView() { Content = viewModel.GetBarcodeImage() };
+            //_ViewModel = viewModel;
+
+            //_Address.Text = _ViewModel.Address;
+            //_QrCode.Content = new ContentView() { Content = _ViewModel.GetBarcodeImage() };
+
+            //Content = new ContentView() { Content = _ViewModel.GetBarcodeImage() };
         }
 
         public ReceiveViewModel ViewModel { get => BindingContext as ReceiveViewModel; }

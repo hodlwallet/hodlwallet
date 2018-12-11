@@ -6,12 +6,8 @@
              x:Name="main">
     <StackLayout>
         <StackLayout>
-            <Label Text="test" HorizontalOptions="Start" VerticalOptions="Start"></Label>
+            <Label x:Name="_Address" Text="{Binding Address}" HorizontalOptions="Center" VerticalOptions="Start"></Label>
+            <Image x:Name="_QrCode" Source="{Binding BarcodeImage}" HorizontalOptions="Center" VerticalOptions="EndAndExpand"></Image>
         </StackLayout>
-
-        <StackLayout>
-            <local:QrCodeView x:Name="qrResult"></local:QrCodeView>
-        </StackLayout>
-
     </StackLayout>
 </ContentPage>

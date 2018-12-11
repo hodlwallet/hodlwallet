@@ -24,16 +24,16 @@ namespace HodlWallet2.ViewModels
             SetTempLabels();
         }
 
-        public async void OnSendTapped(object sender, EventArgs e)
+        public void OnSendTapped(object sender, EventArgs e)
         {
             _Logger.Information("On Send Tapped.");
-
-            await Navigation.PushAsync(new RecieveView(new ReceiveViewModel(_Wallet.GetReceiveAddress().ToString())));
         }
 
-        public void OnReceiveTapped(object sender, EventArgs e)
+        public async void OnReceiveTapped(object sender, EventArgs e)
         {
-            //TODO add code here
+            _Logger.Information("On Receive Tapped.");
+
+            await Navigation.PushAsync(new RecieveView(new ReceiveViewModel(_Wallet.GetReceiveAddress().Address)));
         }
 
         public void OnMenuTapped(object sender, EventArgs e)

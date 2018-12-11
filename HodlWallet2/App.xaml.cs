@@ -17,7 +17,7 @@ namespace HodlWallet2
 
             InitializeWallet();
 
-            MainPage = new DashboardPage();
+            MainPage = new NavigationPage(new DashboardPage());
         }
 
         private void InitializeWallet()
