@@ -96,9 +96,15 @@ namespace HodlWallet2
             List<(int Height, BlockHeader BlockHeader)> checkpoints = new List<(int, BlockHeader)> ();
             List<(int Height, int Version, uint256 PrevBlockHeaderHash, uint256 MerkleRootHash, uint Time, uint NBits, uint Nonce)> rawBlockHeaders = new List<(int, int, uint256, uint256, uint, uint, uint)>();
 
-            rawBlockHeaders.Add(
-                (100800, 2, new uint256("0000000000af10f3079b4989ac4ff0baaecab38220510cdae9672d6922e93919"), new uint256("0000000000a33112f86f3f7b0aa590cb4949b84c2d9c673e9e303257b3be9000"), uint.Parse("1376543922"), uint.Parse("469817607"), uint.Parse("3078589146"))
-            );
+//            if (_Network == Network.Main)
+//            {
+//            }
+//            else
+//            {
+//                rawBlockHeaders.Add(
+//(100800, 2, new uint256("0000000000af10f3079b4989ac4ff0baaecab38220510cdae9672d6922e93919"), new uint256("0000000000a33112f86f3f7b0aa590cb4949b84c2d9c673e9e303257b3be9000"), uint.Parse("1376543922"), uint.Parse("469817607"), uint.Parse("3078589146"))
+//);
+            //}
 
             foreach (var rawBlockHeader in rawBlockHeaders)
             {
@@ -133,11 +139,6 @@ namespace HodlWallet2
             {
                 var chain = new ConcurrentChain(_Network);
 
-                foreach (var checkpoint in GetCheckpoints())
-                {
-                    chain.SetTip(new ChainedBlock(checkpoint.BlockHeader, checkpoint.Height));
-                }
-
                 if (_ConParams != null)
                 {
                     chain = _ConParams.TemplateBehaviors.Find<ChainBehavior>().Chain;
@@ -151,11 +152,12 @@ namespace HodlWallet2
                 }
 
                 // Add default checkpoints if our chain tip is not up to our checkpoints lastest header
-                foreach (var checkpoint in GetCheckpoints())
-                {
-                    if (checkpoint.Height > chain.Height)
-                        chain.SetTip(new ChainedBlock(checkpoint.BlockHeader, checkpoint.Height));
-                }
+                //foreach (var checkpoint in GetCheckpoints())
+                //{
+                    //if (checkpoint.Height > chain.Height)
+                        //chain.re
+                        //chain.SetTip(new ChainedBlock(checkpoint.BlockHeader, checkpoint.Height));
+                //}
 
                 return chain;
             }
@@ -331,7 +333,8 @@ namespace HodlWallet2
 
             if (timeToStartOn == null)
             {
-                ChainedBlock lastReceivedBlock = _Chain.GetBlock(WalletManager.LastReceivedBlockHash());
+                ChainedBlock lastReceivedBlock = _Chain.GetBlock(WalletManager.LastReceivedBlockHash() ?? (uint)_Chain.Tip.Height);
+
                 if (lastReceivedBlock != null)
                 {
                     timeToStartOn = lastReceivedBlock.Header.BlockTime;
