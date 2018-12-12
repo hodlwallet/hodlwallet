@@ -28,20 +28,14 @@ namespace HodlWallet2
 
         public App()
         {
-            InitializeComponent();
-
             _Wallet = Wallet.Instance;
 
+            InitializeComponent();
+
             MainPage = new NavigationPage(new DashboardPage());
-
-            _Wallet.Logger.Information("This is the time before running init wallet: {now}", DateTime.Now);
-
-            Task.Run(async () => InitializeWallet());
-
-            _Wallet.Logger.Information("This is the time now: {now}", DateTime.Now);
         }
 
-        private async void InitializeWallet()
+        private void InitializeWallet()
         {
             // FIXME Remove this with the removable code bellow.
             string guid = "736083c0-7f11-46c2-b3d7-e4e88dc38889";
@@ -77,6 +71,8 @@ namespace HodlWallet2
         protected override void OnStart()
         {
             _Wallet.Logger.Information("OnStart {datetime}", DateTime.Now);
+
+            InitializeWallet();
         }
 
         protected override void OnSleep()
