@@ -91,20 +91,70 @@ namespace HodlWallet2
             }
         }
 
+        private IEnumerable<(int Height, BlockHeader BlockHeader)> GetCheckpoints()
+        {
+            List<(int Height, BlockHeader BlockHeader)> checkpoints = new List<(int, BlockHeader)> ();
+            List<(int Height, int Version, uint256 PrevBlockHeaderHash, uint256 MerkleRootHash, uint Time, uint NBits, uint Nonce)> rawBlockHeaders = new List<(int, int, uint256, uint256, uint, uint, uint)>();
+
+            rawBlockHeaders.Add(
+                (100800, 2, new uint256("0000000000af10f3079b4989ac4ff0baaecab38220510cdae9672d6922e93919"), new uint256("0000000000a33112f86f3f7b0aa590cb4949b84c2d9c673e9e303257b3be9000"), uint.Parse("1376543922"), uint.Parse("469817607"), uint.Parse("3078589146"))
+            );
+
+            foreach (var rawBlockHeader in rawBlockHeaders)
+            {
+                var blockHeader = _Network.Consensus.ConsensusFactory.CreateBlockHeader();
+                var bitcoinStream = new BitcoinStream(new MemoryStream(), serializing: true);
+
+                bitcoinStream.ReadWrite(rawBlockHeader.Version);
+                bitcoinStream.ReadWrite(rawBlockHeader.PrevBlockHeaderHash);
+                bitcoinStream.ReadWrite(rawBlockHeader.MerkleRootHash);
+                bitcoinStream.ReadWrite(rawBlockHeader.Time);
+                bitcoinStream.ReadWrite(rawBlockHeader.Nonce);
+
+                blockHeader.ReadWrite(bitcoinStream);
+
+                //blockHeader.Version = rawBlockHeader.Version;
+                //blockHeader.HashPrevBlock = rawBlockHeader.PrevBlockHeaderHash;
+                //blockHeader.HashMerkleRoot = rawBlockHeader.MerkleRootHash;
+                //blockHeader.BlockTime = DateTimeOffset.Parse(rawBlockHeader.Time.ToString());
+                //blockHeader.Bits = new Target(rawBlockHeader.NBits);
+                //blockHeader.Nonce = rawBlockHeader.Nonce;
+
+                checkpoints.Add((rawBlockHeader.Height, blockHeader));
+                //var blockHeader = new BlockHeader(bitcoinStream., _Network);
+            }
+
+            return checkpoints;
+        }
+
         private ConcurrentChain GetChain()
         {
             lock (_Lock)
             {
-                if (_ConParams != null)
-                {
-                    return _ConParams.TemplateBehaviors.Find<ChainBehavior>().Chain;
-                }
-
                 var chain = new ConcurrentChain(_Network);
 
-                using (var fs = File.Open(ChainFile(), FileMode.OpenOrCreate))
+                foreach (var checkpoint in GetCheckpoints())
                 {
-                    chain.Load(fs);
+                    chain.SetTip(new ChainedBlock(checkpoint.BlockHeader, checkpoint.Height));
+                }
+
+                if (_ConParams != null)
+                {
+                    chain = _ConParams.TemplateBehaviors.Find<ChainBehavior>().Chain;
+                }
+                else
+                {
+                    using (var fs = File.Open(ChainFile(), FileMode.OpenOrCreate))
+                    {
+                        chain.Load(fs);
+                    }
+                }
+
+                // Add default checkpoints if our chain tip is not up to our checkpoints lastest header
+                foreach (var checkpoint in GetCheckpoints())
+                {
+                    if (checkpoint.Height > chain.Height)
+                        chain.SetTip(new ChainedBlock(checkpoint.BlockHeader, checkpoint.Height));
                 }
 
                 return chain;

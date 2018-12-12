@@ -8,6 +8,7 @@ using Liviano.Models;
 using Liviano.Managers;
 
 using HodlWallet2.ViewModels;
+using System.Threading.Tasks;
 
 namespace HodlWallet2
 {
@@ -31,12 +32,16 @@ namespace HodlWallet2
 
             _Wallet = Wallet.Instance;
 
-            InitializeWallet();
-
             MainPage = new NavigationPage(new DashboardPage());
+
+            _Wallet.Logger.Information("This is the time before running init wallet: {now}", DateTime.Now);
+
+            Task.Run(async () => InitializeWallet());
+
+            _Wallet.Logger.Information("This is the time now: {now}", DateTime.Now);
         }
 
-        private void InitializeWallet()
+        private async void InitializeWallet()
         {
             // FIXME Remove this with the removable code bellow.
             string guid = "736083c0-7f11-46c2-b3d7-e4e88dc38889";
