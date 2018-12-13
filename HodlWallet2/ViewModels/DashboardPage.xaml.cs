@@ -5,6 +5,8 @@ using Xamarin.Forms;
 using HodlWallet2.Locale;
 using Serilog;
 
+using HodlWallet2.Views;
+
 namespace HodlWallet2.ViewModels
 {
     public partial class DashboardPage : ContentPage
@@ -23,17 +25,15 @@ namespace HodlWallet2.ViewModels
 
         public void OnSendTapped(object sender, EventArgs e)
         {
-            _Logger.Information("On Send Tapped.");
         }
 
-        public void OnReceiveTapped(object sender, EventArgs e)
+        public async void OnReceiveTapped(object sender, EventArgs e)
         {
-            //TODO add code here
+            await Navigation.PushAsync(new RecieveView());
         }
 
         public void OnMenuTapped(object sender, EventArgs e)
         {
-            //TODO add code here
         }
 
         public void SetTempLabels()

@@ -25,6 +25,8 @@ namespace HodlWallet2.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
+            global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
+
             FormsControls.Droid.Main.Init(this);
 
             Wallet.Instance.Logger = new LoggerConfiguration()
@@ -37,6 +39,7 @@ namespace HodlWallet2.Droid
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
+            global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
