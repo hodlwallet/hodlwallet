@@ -1,36 +1,39 @@
-﻿using System;
+﻿using NBitcoin;
+using System;
 using System.Collections.Generic;
-using HodlWallet2.ViewModels;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using HodlWallet2.ViewModels;
+using ZXing.Mobile;
 
 namespace HodlWallet2.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SendView : ContentPage
     {
         public SendViewModel ViewModel { get { return BindingContext as SendViewModel; } }
 
-        public SendView()
+        public SendView(SendViewModel sendViewModel)
         {
             InitializeComponent();
-        }
-
-        public SendView(SendViewModel svm)
-        {
-            InitializeComponent();
-            BindingContext = svm;
+            BindingContext = sendViewModel;
 
         }
 
-        public async void Scan()
+        public async void Scan(object sender, System.EventArgs e)
         {
             var address = await ViewModel.Scan();
             sendAddress.Text = address;
         }
 
-        public async void Send()
+        public async void Send(object sender, System.EventArgs e)
         {
             ViewModel.Send();
         }
-
     }
 }
