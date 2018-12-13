@@ -1,5 +1,19 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.SendView">
-    <ContentPage.Content>
-    </ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+        <Label Text="Send Bitcoin" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
+
+        <Button Text="Scan Address" Clicked="Scan"></Button>
+        <Label Text="Receiving Address"></Label>
+        <Entry Placeholder="mx16baf4...."  Text="{Binding AddressToSendTo}" x:Name="sendAddress"></Entry>
+
+        <Label Text="Amount to send"></Label>
+        <Entry Placeholder="1.0 BTC" Text="{Binding AmountToSend}"></Entry>
+
+        <Label Text="Fee (sats/byte)"></Label>
+        <Entry Placeholder="0.0001" Text="{Binding Fee}"></Entry>
+
+
+        <Button Text="Send Bitcoin" Clicked="Send"></Button>
+        </StackLayout>
 </ContentPage>

@@ -23,8 +23,9 @@ namespace HodlWallet2.ViewModels
             SetTempLabels();
         }
 
-        public void OnSendTapped(object sender, EventArgs e)
+        public async void OnSendTapped(object sender, EventArgs e)
         {
+            await Navigation.PushAsync(new SendView(new ViewModels.SendViewModel()));
         }
 
         public async void OnReceiveTapped(object sender, EventArgs e)
