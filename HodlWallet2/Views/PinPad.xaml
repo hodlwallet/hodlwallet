@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HodlWallet2.ViewModels.PinPadViewModel" BackgroundColor="{StaticResource DarkGray}" xmlns:local="clr-namespace:HodlWallet2.ViewModels">
+             x:Class="HodlWallet2.Views.PinPad" BackgroundColor="{StaticResource DarkGray}" xmlns:local="clr-namespace:HodlWallet2.ViewModels">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -14,7 +14,7 @@
     </ContentPage.Resources>
     
     <ContentPage.BindingContext>
-        <local:PinPad />
+        <local:PinPadViewModel />
     </ContentPage.BindingContext>
     
     <!-- Make Top Grid Appear -->

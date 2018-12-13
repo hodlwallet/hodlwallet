@@ -5,26 +5,15 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 
-using HodlWallet2.Locale;
-
 namespace HodlWallet2.ViewModels
 {
-    public partial class PinPadViewModel : ContentPage
-    {
-        public PinPadViewModel()
-        {
-            InitializeComponent();
-        }
-
-    }
-
-    public class PinPad : INotifyPropertyChanged
+    public class PinPadViewModel : INotifyPropertyChanged
     {
         private List<int> Pin = new List<int>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public PinPad()
+        public PinPadViewModel()
         {
             BackspaceCommand = new Command(
                 execute: () =>

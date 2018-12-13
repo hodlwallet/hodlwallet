@@ -7,7 +7,7 @@ using Serilog;
 
 using HodlWallet2.Views;
 
-namespace HodlWallet2.ViewModels
+namespace HodlWallet2.Views
 {
     public partial class DashboardPage : ContentPage
     {
