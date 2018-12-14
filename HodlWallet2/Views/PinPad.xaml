@@ -61,7 +61,7 @@
                      Grid.ColumnSpan="6" />
         </Grid>
         
-        <Grid x:Name="PinPad" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid x:Name="PinGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
