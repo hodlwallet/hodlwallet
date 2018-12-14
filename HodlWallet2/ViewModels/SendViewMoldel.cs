@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using Serilog;
 using ZXing.Mobile;
 
 namespace HodlWallet2.ViewModels
@@ -11,9 +12,12 @@ namespace HodlWallet2.ViewModels
 
         private Wallet _Wallet;
 
+        private ILogger _Logger;
+
         public SendViewModel()
         {
             _Wallet = Wallet.Instance;
+            _Logger = _Wallet.Logger;
         }
 
         public async Task<string> Scan()
@@ -45,8 +49,8 @@ namespace HodlWallet2.ViewModels
             }
         }
 
-        private decimal _Fee;
-        public decimal Fee
+        private int _Fee;
+        public int Fee
         {
             get
             {
@@ -83,7 +87,25 @@ namespace HodlWallet2.ViewModels
 
         public async Task Send()
         {
+            string password = "123456";
+            var txCreateResult = _Wallet.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
+            if (txCreateResult.Success)
+            {
+                await _Wallet.BroadcastManager.BroadcastTransactionAsync(txCreateResult.Tx);
+            }
+            else
+            {
+                // TODO show error screen for now just log it.
+                _Logger.Error(
+                    "Error trying to create a transaction.\nAmount to send: {amount}, address: {address}, fee: {fee}, password: {password}.\nFull Error: {error}",
+                    AmountToSend,
+                    AddressToSendTo,
+                    Fee,
+                    password,
+                    txCreateResult.Error
+                );
+            }
         }
     }
 }

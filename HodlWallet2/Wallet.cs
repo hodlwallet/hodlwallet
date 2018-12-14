@@ -20,6 +20,7 @@ using Liviano.Behaviors;
 using Liviano.Enums;
 using Liviano.Models;
 using System.Collections.Generic;
+using Liviano.Exceptions;
 
 namespace HodlWallet2
 {
@@ -264,6 +265,10 @@ namespace HodlWallet2
 
             Logger.Information("Coin selector: {coinSelector}", _DefaultCoinSelector.GetType().ToString());
 
+            TransactionManager = new TransactionManager(broadcastManager, WalletManager, _DefaultCoinSelector, _Chain);
+
+            Logger.Information("Add transaction manager.");
+
             Logger.Information("Configured wallet.");
         }
 
@@ -334,14 +339,55 @@ namespace HodlWallet2
             return CurrentAccount.GetFirstUnusedReceivingAddress();
         }
 
-        public TransactionData[] GetCurrentAccountTransactions()
+        public IEnumerable<TransactionData> GetCurrentAccountTransactions()
         {
-            var txs = WalletManager
+            return WalletManager
                 .GetAllAccountsByCoinType(CoinType.Bitcoin)
                 .SelectMany((HdAccount arg) => arg.GetCombinedAddresses())
                 .SelectMany((HdAddress arg) => arg.Transactions);
+        }
 
-            return txs.ToArray();
+        public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, int feeSatsPerByte, string password)
+        {
+            Money btcAmount = new Money(amount, MoneyUnit.BTC);
+            Transaction tx = null;
+            decimal fees = 0.0m;
+
+            try
+            {
+                tx = TransactionManager.CreateTransaction(
+                    addressTo,
+                    btcAmount,
+                    feeSatsPerByte,
+                    CurrentAccount,
+                    password,
+                    signTransaction: true
+                );
+                fees = tx.GetVirtualSize() * feeSatsPerByte;
+
+                return (true, tx, fees, null);
+            }
+            catch (WalletException e)
+            {
+                Logger.Error(e.Message);
+
+                return (false, tx, fees, e.Message);
+            }
+        }
+
+        public async Task<(bool Sent, string Error)> SendTransaction(Transaction tx)
+        {
+            try
+            {
+                await TransactionManager.BroadcastTransaction(tx);
+                return (true, null);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.Message);
+
+                return (false, e.Message);
+            }
         }
     }
 
