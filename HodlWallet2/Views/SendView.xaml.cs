@@ -33,7 +33,7 @@ namespace HodlWallet2.Views
 
         public async void Send(object sender, System.EventArgs e)
         {
-            ViewModel.Send();
+            await ViewModel.Send();
         }
     }
 }

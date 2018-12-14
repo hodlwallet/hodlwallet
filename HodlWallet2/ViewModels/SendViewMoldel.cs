@@ -81,7 +81,7 @@ namespace HodlWallet2.ViewModels
             }
         }
 
-        public async void Send()
+        public async Task Send()
         {
 
         }
