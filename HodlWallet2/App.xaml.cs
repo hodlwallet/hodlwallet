@@ -60,7 +60,8 @@ namespace HodlWallet2
             }
 
             // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
-            _Wallet.Start(password);
+            //      Also change the date, the argument should be avoided.
+            _Wallet.Start(password, new DateTimeOffset(new DateTime(2018, 11, 1)));
 
             _Wallet.Logger.Information("Wallet started.");
 

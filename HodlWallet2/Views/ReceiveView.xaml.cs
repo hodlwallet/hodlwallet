@@ -11,11 +11,11 @@ namespace HodlWallet2.Views
         private ReceiveViewModel _ViewModel;
         public EncodingOptions BarcodeOptions => new EncodingOptions() { Height = 300, Width = 300, PureBarcode = true };
 
-        public RecieveView()
+        public RecieveView(ReceiveViewModel receiveViewModel)
         {
             InitializeComponent();
 
-            _ViewModel = new ReceiveViewModel();
+            _ViewModel = receiveViewModel;
 
             BindingContext = _ViewModel;
         }
