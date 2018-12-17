@@ -337,12 +337,29 @@ namespace HodlWallet2
             return CurrentAccount.GetFirstUnusedReceivingAddress();
         }
 
-        public IEnumerable<TransactionData> GetCurrentAccountTransactions()
+        public IEnumerable<(TransactionData TransactionData, bool IsReceive)> GetCurrentAccountTransactions()
         {
-            return WalletManager
-                .GetAllAccountsByCoinType(CoinType.Bitcoin)
-                .SelectMany((HdAccount arg) => arg.GetCombinedAddresses())
-                .SelectMany((HdAddress arg) => arg.Transactions);
+            List<(TransactionData TransactionData, bool IsReceive)> result = new List<(TransactionData, bool)>();
+            IEnumerable<HdAccount> accounts = this.WalletManager.GetAllAccountsByCoinType(CoinType.Bitcoin).Select((HdAccount account) => account);
+
+            foreach (HdAccount hdAccount in accounts)
+            {
+                foreach (HdAddress hdAddress in hdAccount.InternalAddresses)
+                {
+                    foreach (TransactionData transactionData in hdAddress.Transactions)
+                        result.Add((transactionData, false));
+                }
+
+                foreach (HdAddress hdAddress in hdAccount.ExternalAddresses)
+                {
+                    foreach (TransactionData transactionData in hdAddress.Transactions)
+                        result.Add((transactionData, true));
+                }
+            }
+
+            var orderedResult = result.OrderBy(o => o.TransactionData.CreationTime);
+
+            return orderedResult;
         }
 
         public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, int feeSatsPerByte, string password)
