@@ -13,7 +13,6 @@ using ZXing.Mobile;
 
 namespace HodlWallet2.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SendView : ContentPage
     {
         public SendViewModel ViewModel { get { return BindingContext as SendViewModel; } }
