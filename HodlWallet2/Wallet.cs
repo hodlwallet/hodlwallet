@@ -114,7 +114,7 @@ namespace HodlWallet2
                 foreach (var checkpoint in _Network.GetCheckpoints())
                 {
                     if (checkpoint.Height > chain.Height)
-                        chain.SetTip(checkpoint.BlockHeader);
+                        chain.SetTip(checkpoint.Header);
                 }
 
                 return chain;
