@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -6,6 +7,9 @@ using HodlWallet2.Locale;
 using Serilog;
 
 using HodlWallet2.Views;
+using Liviano.Models;
+using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace HodlWallet2.Views
 {
@@ -13,6 +17,7 @@ namespace HodlWallet2.Views
     {
         private Wallet _Wallet;
         private ILogger _Logger;
+        private IOrderedEnumerable<TransactionData> _Transactions;
 
         public DashboardPage()
         {
@@ -21,6 +26,45 @@ namespace HodlWallet2.Views
 
             InitializeComponent();
             SetTempLabels();
+
+            InitTransactions();
+        }
+
+        public void InitTransactions()
+        {
+            _Wallet.OnStarted += (sender, e) =>
+            {
+                ((Wallet)sender).WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
+                ((Wallet)sender).WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
+                ((Wallet)sender).WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
+
+                LoadTransactions();
+            };
+        }
+
+        /// <summary>
+        /// This is obviously not the final form of this... but for now,
+        /// since all im doing is realoading the transactions then this is fine.
+        /// </summary>
+        /// <param name="sender">WalleWanager.</param>
+        /// <param name="e">TranscactionData.</param>
+        void WalletManager_OnWhateverTransaction(object sender, TransactionData e)
+        {
+            LoadTransactions();
+        }
+
+        public void LoadTransactions()
+        {
+            _Transactions = _Wallet.GetCurrentAccountTransactions().OrderBy(
+               (TransactionData txData) => txData.CreationTime
+            );
+
+            _Logger.Information(new string('*', 20));
+            foreach (TransactionData transactionData in _Transactions)
+            {
+                _Logger.Information(JsonConvert.SerializeObject(transactionData, Formatting.Indented));
+            }
+            _Logger.Information(new string('*', 20));
         }
 
         public async void OnSendTapped(object sender, EventArgs e)

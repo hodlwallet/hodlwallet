@@ -76,6 +76,10 @@ namespace HodlWallet2
 
         public BlockLocator ScanLocation { get; set; }
 
+        public EventHandler OnConfigured;
+        public EventHandler OnStarted;
+        public EventHandler OnScanning;
+
         public HdAccount CurrentAccount
         {
             get
@@ -268,6 +272,8 @@ namespace HodlWallet2
             Logger.Information("Add transaction manager.");
 
             Logger.Information("Configured wallet.");
+
+            OnConfigured?.Invoke(this, null);
         }
 
         public void Start(string password, DateTimeOffset? timeToStartOn = null)
@@ -281,6 +287,8 @@ namespace HodlWallet2
             Scan(timeToStartOn);
 
             PeriodicSave();
+
+            OnStarted?.Invoke(this, null);
         }
 
         public void Scan(DateTimeOffset? timeToStartOn)
@@ -317,6 +325,8 @@ namespace HodlWallet2
             }
 
             WalletSyncManager.Scan(ScanLocation, timeToStartOn.Value);
+
+            OnScanning?.Invoke(this, null);
         }
 
         public bool WalletExists()
@@ -337,29 +347,18 @@ namespace HodlWallet2
             return CurrentAccount.GetFirstUnusedReceivingAddress();
         }
 
-        public IEnumerable<(TransactionData TransactionData, bool IsReceive)> GetCurrentAccountTransactions()
+        public IEnumerable<TransactionData> GetCurrentAccountTransactions()
         {
-            List<(TransactionData TransactionData, bool IsReceive)> result = new List<(TransactionData, bool)>();
-            IEnumerable<HdAccount> accounts = this.WalletManager.GetAllAccountsByCoinType(CoinType.Bitcoin).Select((HdAccount account) => account);
+            IEnumerable<TransactionData> result = new List<TransactionData>();
 
-            foreach (HdAccount hdAccount in accounts)
+            if (WalletManager != null)
             {
-                foreach (HdAddress hdAddress in hdAccount.InternalAddresses)
-                {
-                    foreach (TransactionData transactionData in hdAddress.Transactions)
-                        result.Add((transactionData, false));
-                }
-
-                foreach (HdAddress hdAddress in hdAccount.ExternalAddresses)
-                {
-                    foreach (TransactionData transactionData in hdAddress.Transactions)
-                        result.Add((transactionData, true));
-                }
+                result = WalletManager.GetAllAccountsByCoinType(CoinType.Bitcoin)
+                        .SelectMany((HdAccount account) => account.GetCombinedAddresses())
+                        .SelectMany((HdAddress address) => address.Transactions);
             }
 
-            var orderedResult = result.OrderBy(o => o.TransactionData.CreationTime);
-
-            return orderedResult;
+            return result;
         }
 
         public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, int feeSatsPerByte, string password)
