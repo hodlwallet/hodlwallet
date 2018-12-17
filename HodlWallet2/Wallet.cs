@@ -147,8 +147,6 @@ namespace HodlWallet2
                 Instance.Logger.Information("Saved chain file to filepath: {filepath} on {now}", ChainFile(), DateTime.Now);
 
                 int delay = 50_000;
-                if (!Instance._Chain.IsDownloaded())
-                    delay = 10;
 
                 await Task.Delay(delay);
             }
