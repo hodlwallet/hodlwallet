@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HodlWallet2.ViewModels.DashboardPage" BackgroundColor="{StaticResource GrayBackground}"
+             x:Class="HodlWallet2.Views.DashboardPage" BackgroundColor="{StaticResource GrayBackground}"
              xmlns:svg="clr-namespace:HodlWallet2.Utils">
     <ContentPage.Content>
         <FlexLayout Direction="Column">

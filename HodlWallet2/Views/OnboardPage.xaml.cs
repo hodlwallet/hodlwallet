@@ -9,7 +9,7 @@ using HodlWallet2.ViewModels;
 
 using HodlWallet2;
 
-namespace HodlWallet2
+namespace HodlWallet2.Views
 {
     public partial class OnboardPage : ContentPage
     {

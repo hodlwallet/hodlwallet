@@ -7,4 +7,9 @@
             <On Platform="Android, iOS" Value="Transparent" />
         </OnPlatform>
     </NavigationPage.BarBackgroundColor>
+    <NavigationPage.BarTextColor>
+        <OnPlatform x:TypeArguments="Color">
+            <On Platform="Android, iOS" Value="{StaticResource White}" />
+        </OnPlatform>
+    </NavigationPage.BarTextColor>
 </NavigationPage>

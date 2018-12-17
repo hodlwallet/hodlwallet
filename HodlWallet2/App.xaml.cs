@@ -7,7 +7,8 @@ using NBitcoin;
 using Liviano.Models;
 using Liviano.Managers;
 
-using HodlWallet2.ViewModels;
+using HodlWallet2.Views;
+using HodlWallet2.Utils;
 using System.Threading.Tasks;
 
 namespace HodlWallet2
@@ -32,7 +33,7 @@ namespace HodlWallet2
 
             InitializeComponent();
 
-            MainPage = new NavigationPage(new DashboardPage());
+            MainPage = new CustomNavigationPage(new DashboardPage());
         }
 
         private void InitializeWallet()
