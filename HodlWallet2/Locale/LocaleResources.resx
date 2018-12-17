@@ -37,4 +37,39 @@
         <value>Menu</value>
         <comment>label for menu button</comment>
     </data>
+    
+    <data name="Seed.title" xml:space="preserve">
+        <value>Paper Key</value>
+        <comment>label for seed view title</comment>
+    </data>
+    
+    <data name="Seed.next" xml:space="preserve">
+        <value>Next</value>
+        <comment>label for next button</comment>
+    </data>
+    
+    <data name="Seed.subheader" xml:space="preserve">
+        <value>Write down each word in order and store it in a safe place.</value>
+        <comment>label for seed view subheader</comment>
+    </data>
+    
+    <data name="Backup.title" xml:space="preserve">
+        <value>Backup Recovery Key</value>
+        <comment>label for backup view title</comment>
+    </data>
+    
+    <data name="Backup.subheader" xml:space="preserve">
+        <value>Your backup recovery key is the only way to restore your wallet if your phone is lost, stolen, broken, or upgraded. We will show you a list of words to write down on paper and keep safe.</value>
+        <comment>label for backup subheader</comment>
+    </data>
+    
+    <data name="Backup.button" xml:space="preserve">
+        <value>Write Down Backup Recovery Key</value>
+        <comment>label for backup recovery button</comment>
+    </data>
+    
+    <data name="ConfirmBackup.header" xml:space="preserve">
+        <value>To make sure everything was written down correctly, please choose from the following words the correct backup recovery key.</value>
+        <comment>label for backup confirmation</comment>
+    </data>
 </root>
