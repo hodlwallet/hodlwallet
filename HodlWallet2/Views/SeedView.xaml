@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.SeedView">
+    <ContentPage.Content>
+        <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
+            <Label  x:Name="Title"
+                    Style="{DynamicResource customLabel}"
+                    FlexLayout.AlignSelf="Center"
+                    FlexLayout.Grow="1"
+                    Margin="20" />
+            <Label x:Name="Subheader"
+                   FontFamily="{DynamicResource FontFamilyName}"
+                   TextColor="{StaticResource SyncGradientStart}"
+                   HorizontalTextAlignment="Center"
+                   FlexLayout.AlignSelf="Center"
+                   FlexLayout.Grow="1" />
+            <FlexLayout FlexLayout.Grow="2" />
+            <BoxView x:Name="WordBox"
+                     Color="{StaticResource DarkGray}"
+                     FlexLayout.AlignSelf="Center"
+                     WidthRequest="200"
+                     HeightRequest="70" />
+            <FlexLayout FlexLayout.Grow="2" />
+            <Button x:Name="NextButton"
+                    Style="{DynamicResource customButton}"
+                    BackgroundColor="{StaticResource DarkGray}"
+                    CornerRadius="0"
+                    FontSize="Large"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="1" />
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>
