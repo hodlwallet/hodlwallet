@@ -20,7 +20,7 @@
     <!-- Make Top Grid Appear -->
     <StackLayout>
         
-        <Grid HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />

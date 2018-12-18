@@ -1,5 +1,75 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.BackupRecoveryConfirmView">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkGray}" />
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="FontFamily" Value="{DynamicResource FontFamilyName}" />
+                <Setter Property="TextColor" Value="{StaticResource SyncGradientStart}" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
+        
+        <!-- Add View Model Binding -->
+        
+        <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
+            
+            <Label x:Name="Header"
+                   Style="{DynamicResource customLabel}"
+                   HorizontalTextAlignment="Center"
+                   FlexLayout.AlignSelf="Center"
+                   FlexLayout.Grow="1"
+                   Margin="20" />
+            
+            <FlexLayout FlexLayout.Grow="1" />
+            
+            <Grid FlexLayout.Grow="2" HorizontalOptions="Center" Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                    
+                    <Button Grid.Row="1"
+                            Grid.Column="1"
+                            Command="{Binding WordCommand}"
+                            CommandParameter="1" />
+
+                    <Button Grid.Row="2"
+                            Grid.Column="1"
+                            Command="{Binding WordCommand}"
+                            CommandParameter="2" />
+
+                    <Button Grid.Row="3"
+                            Grid.Column="1"
+                            Command="{Binding WordCommand}"
+                            CommandParameter="3" />
+                    
+                    <Button Grid.Row="4"
+                            Grid.Column="1"
+                            Command="{Binding WordCommand}"
+                            CommandParameter="4" />
+
+                    <Button Grid.Row="5"
+                            Grid.Column="1"
+                            Command="{Binding WordCommand}"
+                            CommandParameter="5" />
+            </Grid>
+            
+            <FlexLayout FlexLayout.Grow="1" />
+        
+        </FlexLayout>
+    
     </ContentPage.Content>
 </ContentPage>
