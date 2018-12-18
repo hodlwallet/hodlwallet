@@ -76,5 +76,47 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("Dashboard.menu", resourceCulture);
             }
         }
+        
+        internal static string Seed_title {
+            get {
+                return ResourceManager.GetString("Seed.title", resourceCulture);
+            }
+        }
+        
+        internal static string Seed_next {
+            get {
+                return ResourceManager.GetString("Seed.next", resourceCulture);
+            }
+        }
+        
+        internal static string Seed_subheader {
+            get {
+                return ResourceManager.GetString("Seed.subheader", resourceCulture);
+            }
+        }
+        
+        internal static string Backup_title {
+            get {
+                return ResourceManager.GetString("Backup.title", resourceCulture);
+            }
+        }
+        
+        internal static string Backup_subheader {
+            get {
+                return ResourceManager.GetString("Backup.subheader", resourceCulture);
+            }
+        }
+        
+        internal static string Backup_button {
+            get {
+                return ResourceManager.GetString("Backup.button", resourceCulture);
+            }
+        }
+        
+        internal static string ConfirmBackup_header {
+            get {
+                return ResourceManager.GetString("ConfirmBackup.header", resourceCulture);
+            }
+        }
     }
 }
