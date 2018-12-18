@@ -22,6 +22,8 @@ using Liviano.Models;
 using System.Collections.Generic;
 using Liviano.Exceptions;
 
+using HodlWallet2.Utils;
+
 namespace HodlWallet2
 {
     public sealed class Wallet
