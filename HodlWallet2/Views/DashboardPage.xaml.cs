@@ -11,6 +11,8 @@ using Liviano.Models;
 using System.ComponentModel;
 using Newtonsoft.Json;
 
+using HodlWallet2.ViewModels;
+
 namespace HodlWallet2.Views
 {
     public partial class DashboardPage : ContentPage

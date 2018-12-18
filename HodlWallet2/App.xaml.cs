@@ -11,6 +11,8 @@ using HodlWallet2.Views;
 using HodlWallet2.Utils;
 using System.Threading.Tasks;
 
+using Xamarin.Essentials;
+
 namespace HodlWallet2
 {
     public partial class App : Application
@@ -33,7 +35,18 @@ namespace HodlWallet2
 
             InitializeComponent();
 
-            MainPage = new CustomNavigationPage(new DashboardPage());
+            var res = SecureStorage.GetAsync("hodlwallet2:password");
+
+            if (string.IsNullOrEmpty(res.Result))
+            {
+                //MainPage = new OnboardPage();
+                // TODO Make this the onboard if the password is empty.
+                MainPage = new CustomNavigationPage(new DashboardPage());
+            }
+            else
+            {
+                MainPage = new CustomNavigationPage(new DashboardPage());
+            }
         }
 
         private void InitializeWallet()
@@ -43,7 +56,7 @@ namespace HodlWallet2
 
             // TODO Please store and run the network the user is using.
             //Wallet.Configure(walletId: "wallet_guid", network: "testnet", nodesToConnect: 4);
-            _Wallet.Configure(walletId: guid, network: "testnet", nodesToConnect: 1);
+            _Wallet.Configure(walletId: guid, network: "testnet");
 
             // FIXME Remove this code later when we have a way to create a wallet,
             // for now, the wallet is created and hardcoded
@@ -61,7 +74,7 @@ namespace HodlWallet2
 
             // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
             //      Also change the date, the argument should be avoided.
-            _Wallet.Start(password, new DateTimeOffset(new DateTime(2018, 11, 1)));
+            _Wallet.Start(password, new DateTimeOffset(new DateTime(2018, 12, 1)));
 
             _Wallet.Logger.Information("Wallet started.");
 
