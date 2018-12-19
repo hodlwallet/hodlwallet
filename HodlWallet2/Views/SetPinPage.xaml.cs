@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace HodlWallet2.ViewModels
 {
-    public partial class SetPinPage : ContentPage
+    public partial class SetPinView : ContentPage
     {
-        public SetPinPage()
+        public SetPinView()
         {
             InitializeComponent();
         }

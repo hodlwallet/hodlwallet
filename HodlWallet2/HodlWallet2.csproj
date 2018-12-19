@@ -27,7 +27,6 @@
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Assets\" />
     <Folder Include="Locale\" />
@@ -93,6 +92,12 @@
   <ItemGroup>
     <Compile Update="Locale\LocaleResources.Designer.cs">
       <DependentUpon>LocaleResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DashboardView.xaml.cs">
+      <DependentUpon>DashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PinPadView.xaml.cs">
+      <DependentUpon>PinPadView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

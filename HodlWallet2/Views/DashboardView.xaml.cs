@@ -8,20 +8,17 @@ using Serilog;
 
 using HodlWallet2.Views;
 using Liviano.Models;
-using System.ComponentModel;
 using Newtonsoft.Json;
-
-using HodlWallet2.ViewModels;
 
 namespace HodlWallet2.Views
 {
-    public partial class DashboardPage : ContentPage
+    public partial class DashboardView : ContentPage
     {
         private Wallet _Wallet;
         private ILogger _Logger;
         private IOrderedEnumerable<TransactionData> _Transactions;
 
-        public DashboardPage()
+        public DashboardView()
         {
             _Wallet = Wallet.Instance;
             _Logger = _Wallet.Logger;

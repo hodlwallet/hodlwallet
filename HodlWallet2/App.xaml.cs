@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using Xamarin.Forms;
 
@@ -9,9 +9,6 @@ using Liviano.Managers;
 
 using HodlWallet2.Views;
 using HodlWallet2.Utils;
-using System.Threading.Tasks;
-
-using Xamarin.Essentials;
 
 namespace HodlWallet2
 {
@@ -35,17 +32,15 @@ namespace HodlWallet2
 
             InitializeComponent();
 
-            var res = SecureStorage.GetAsync("hodlwallet2:password");
-
-            if (string.IsNullOrEmpty(res.Result))
+            // If the application secure storage has the mnemonic code,
+            // then the app is installed. And we just need to show the dashboard.
+            if (SecureStorageProvider.HasMnemonic())
             {
-                //MainPage = new OnboardPage();
-                // TODO Make this the onboard if the password is empty.
-                MainPage = new CustomNavigationPage(new DashboardPage());
+                MainPage = new CustomNavigationPage(new PinPadView());
             }
             else
             {
-                MainPage = new CustomNavigationPage(new DashboardPage());
+                MainPage = new CustomNavigationPage(new OnboardView());
             }
         }
 

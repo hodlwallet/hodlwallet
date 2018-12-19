@@ -1,20 +1,18 @@
 ﻿using Xamarin.Forms;
 
-using HodlWallet2.Locale;
 using HodlWallet2.Utils;
 
-using HodlWallet2;
 
 namespace HodlWallet2.Views
 {
-    public partial class PinPad : ContentPage
+    public partial class PinPadView : ContentPage
     {
         void On9Clicked(object sender, System.EventArgs e)
         {
-            Application.Current.MainPage = new CustomNavigationPage(new DashboardPage());
+            Application.Current.MainPage = new CustomNavigationPage(new DashboardView());
         }
 
-        public PinPad()
+        public PinPadView()
         {
             InitializeComponent();
         }

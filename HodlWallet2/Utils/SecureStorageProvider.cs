@@ -60,9 +60,7 @@ namespace HodlWallet2.Utils
 
         private static string Get(string key)
         {
-            var res = SecureStorage.GetAsync(key);
-
-            return res.Result;
+            return SecureStorage.GetAsync(key).Result;
         }
         
         private static void Set(string key, string val)
