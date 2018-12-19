@@ -228,7 +228,7 @@ namespace HodlWallet2
             DateTimeProvider = new DateTimeProvider();
             AsyncLoopFactory = new AsyncLoopFactory();
             ScriptAddressReader = new ScriptAddressReader();
-            StorageProvider = new HodlWallet2StorageProvider(_WalletId);
+            StorageProvider = new StorageProvider(_WalletId);
 
             if (!StorageProvider.WalletExists())
             {

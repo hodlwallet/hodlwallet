@@ -4,9 +4,9 @@ using Liviano;
 
 namespace HodlWallet2.Utils
 {
-    public class HodlWallet2StorageProvider : FileSystemStorageProvider
+    public class StorageProvider : FileSystemStorageProvider
     {
-        public HodlWallet2StorageProvider(string id = null) : base(id, Environment.GetFolderPath(Environment.SpecialFolder.Personal))
+        public StorageProvider(string id = null) : base(id, Environment.GetFolderPath(Environment.SpecialFolder.Personal))
         {
         }
     }
