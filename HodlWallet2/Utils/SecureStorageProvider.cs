@@ -15,7 +15,7 @@ namespace HodlWallet2.Utils
 
         public static bool HasWalletId()
         {
-            return string.IsNullOrEmpty(GetWalletId());
+            return !string.IsNullOrEmpty(GetWalletId());
         }
 
         public static void SetWalletId(string walletId)
@@ -30,7 +30,7 @@ namespace HodlWallet2.Utils
 
         public static bool HasMnemonic()
         {
-            return string.IsNullOrEmpty(GetMnemonic());
+            return !string.IsNullOrEmpty(GetMnemonic());
         }
 
         public static void SetMnemonic(string mnemonic)
@@ -45,7 +45,7 @@ namespace HodlWallet2.Utils
 
         public static bool HasPassword()
         {
-            return string.IsNullOrEmpty(GetPassword());
+            return !string.IsNullOrEmpty(GetPassword());
         }
 
         public static void SetPassword(string password)
