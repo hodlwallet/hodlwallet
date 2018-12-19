@@ -18,7 +18,7 @@
                     <FlexLayout FlexLayout.Grow="1" />
                     
                     <Label x:Name="amountLabel" FlexLayout.AlignSelf="Start" VerticalTextAlignment="Center"
-                           Style="{DynamicResource customLabel}" BackgroundColor="Teal"
+                           Style="{DynamicResource CustomLabel}" BackgroundColor="Teal"
                            FlexLayout.Grow="2" Margin="20,0,0,0" FontSize="Large" />
                     
                     <FlexLayout FlexLayout.Grow="1" />
@@ -30,7 +30,7 @@
                     <FlexLayout FlexLayout.Grow="1" />
                     
                     <Label x:Name="priceLabel" FlexLayout.AlignSelf="End" VerticalTextAlignment="Center"
-                           Style="{DynamicResource customLabel}" BackgroundColor="Teal"
+                           Style="{DynamicResource CustomLabel}" BackgroundColor="Teal"
                            FlexLayout.Grow="1"  Margin="0,0,20,0" FontSize="Medium" />
                     
                     <FlexLayout FlexLayout.Grow="1" />
@@ -60,7 +60,7 @@
                     </FlexLayout>
                     
                     <Label x:Name="sendLabel"
-                           Style="{DynamicResource customLabel}"
+                           Style="{DynamicResource CustomLabel}"
                            FlexLayout.Grow="1"
                      />
                     
@@ -83,7 +83,7 @@
                     </FlexLayout>
                     
                     <Label x:Name="receiveLabel"
-                           Style="{DynamicResource customLabel}"
+                           Style="{DynamicResource CustomLabel}"
                            FlexLayout.Grow="1"
                            FlexLayout.AlignSelf="Center" />
                     
@@ -106,7 +106,7 @@
                     </FlexLayout>
                     
                     <Label x:Name="menuLabel"
-                           Style="{DynamicResource customLabel}"
+                           Style="{DynamicResource CustomLabel}"
                            FlexLayout.Grow="1"
                            FlexLayout.AlignSelf="Center" />
                     

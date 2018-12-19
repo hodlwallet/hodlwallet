@@ -82,7 +82,7 @@ namespace HodlWallet2
         {
             _Wallet.Logger.Information("OnStart {datetime}", DateTime.Now);
 
-            InitializeWallet();
+            //InitializeWallet();
         }
 
         protected override void OnSleep()

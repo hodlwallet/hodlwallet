@@ -20,7 +20,7 @@
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
             
             <Label x:Name="Header"
-                   Style="{DynamicResource customLabel}"
+                   Style="{DynamicResource CustomLabel}"
                    HorizontalTextAlignment="Center"
                    FlexLayout.AlignSelf="Center"
                    FlexLayout.Grow="1"

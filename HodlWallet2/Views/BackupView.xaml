@@ -3,7 +3,7 @@
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
             <Label  x:Name="Title"
-                    Style="{DynamicResource customLabel}"
+                    Style="{DynamicResource CustomLabel}"
                     FlexLayout.AlignSelf="Center"
                     FlexLayout.Grow="1"
                     Margin="20" />
@@ -17,7 +17,7 @@
                    FlexLayout.Grow="1" />
             <FlexLayout FlexLayout.Grow="2" />
             <Button x:Name="Button"
-                    Style="{DynamicResource customButton}"
+                    Style="{DynamicResource CustomButton}"
                     BackgroundColor="{StaticResource DarkGray}"
                     CornerRadius="0"
                     FontSize="Large"

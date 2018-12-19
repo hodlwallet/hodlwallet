@@ -1,40 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HodlWallet2.Views.OnboardView" BackgroundColor="{StaticResource GrayBackground}">
-    
-    <FlexLayout Direction="Column">
-        
-        <Button Text="?" FontSize="Large"
-                Style="{DynamicResource customButton}"
-                BackgroundColor="Gray"
-                FlexLayout.AlignSelf="End"
-                FlexLayout.Grow="1" />
-        
+<d:BaseView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            x:Class="HodlWallet2.Views.OnboardView"
+            xmlns:d="clr-namespace:HodlWallet2.Views"
+            BackgroundColor="{StaticResource GrayBackground}">
+
+    <FlexLayout Direction="Column" AlignItems="Center">
+        <Button x:Name="HelpButton"
+                Style="{DynamicResource ContextualHelpButton}"
+                Clicked="HelpButton_Clicked" />
+
         <Image Source="logo_front.png"
                Scale="0.5"
-               FlexLayout.Grow="2" />
-        
-        <FlexLayout Direction="Column" FlexLayout.Grow="1" BackgroundColor="{StaticResource GrayBackground}">    
-            <Button x:Name="createButton"
-                    Style="{DynamicResource customButton}"
-                    BackgroundColor="{StaticResource DarkGray}"
-                    CornerRadius="0"
-                    FlexLayout.AlignSelf="Stretch"
-                    Clicked="Handle_Clicked"
-                    FlexLayout.Grow="1" />
-            
-            <BoxView BackgroundColor="{StaticResource GrayBackground}"
-                     FlexLayout.AlignSelf="Stretch"
-                     HeightRequest="5" />
-            
-            <Button x:Name="recoverButton"
-                    Style="{DynamicResource customButton}"
-                    BackgroundColor="{StaticResource DarkGray}"
-                    CornerRadius="0"
-                    FlexLayout.AlignSelf="Stretch"
-                    FlexLayout.Grow="1" />
+               FlexLayout.Grow="8" />
+
+        <FlexLayout FlexLayout.Grow="1" Direction="Row">
+            <Button x:Name="CreateButton"
+                    Style="{DynamicResource CustomButton}"
+                    Text="Create"
+                    FontSize="Medium"
+                    FlexLayout.Grow="2"
+                    Clicked="CreateButton_Clicked" />
+
+            <Button x:Name="RecoverButton"
+                    Style="{DynamicResource CustomButton}"
+                    Text="Recover"
+                    FontSize="Medium"
+                    FlexLayout.Grow="2"
+                    Clicked="RecoverButton_Clicked" />
         </FlexLayout>
-        
     </FlexLayout>
-        
-</ContentPage>
+</d:BaseView>
