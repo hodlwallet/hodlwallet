@@ -82,6 +82,9 @@ namespace HodlWallet2
         public EventHandler OnStarted;
         public EventHandler OnScanning;
 
+        public bool Started = false;
+        public bool Configured = false;
+
         public HdAccount CurrentAccount
         {
             get
@@ -276,6 +279,7 @@ namespace HodlWallet2
             Logger.Information("Configured wallet.");
 
             OnConfigured?.Invoke(this, null);
+            Configured = true;
         }
 
         public void Start(string password, DateTimeOffset? timeToStartOn = null)
@@ -291,6 +295,7 @@ namespace HodlWallet2
             PeriodicSave();
 
             OnStarted?.Invoke(this, null);
+            Started = true;
         }
 
         public void Scan(DateTimeOffset? timeToStartOn)

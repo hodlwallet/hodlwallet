@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -9,61 +9,23 @@ using Serilog;
 using HodlWallet2.Views;
 using Liviano.Models;
 using Newtonsoft.Json;
+using HodlWallet2.ViewModels;
 
 namespace HodlWallet2.Views
 {
     public partial class DashboardView : ContentPage
     {
-        private Wallet _Wallet;
-        private ILogger _Logger;
-        private IOrderedEnumerable<TransactionData> _Transactions;
+        private DashboardViewModel _ViewModel;
+        public DashboardViewModel ViewModel { get => BindingContext as DashboardViewModel; }
 
-        public DashboardView()
+        public DashboardView(DashboardViewModel dashboardViewModel)
         {
-            _Wallet = Wallet.Instance;
-            _Logger = _Wallet.Logger;
+            _ViewModel = dashboardViewModel;
+
+            BindingContext = _ViewModel;
 
             InitializeComponent();
             SetTempLabels();
-
-            InitTransactions();
-        }
-
-        public void InitTransactions()
-        {
-            _Wallet.OnStarted += (sender, e) =>
-            {
-                ((Wallet)sender).WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
-                ((Wallet)sender).WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
-                ((Wallet)sender).WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
-
-                LoadTransactions();
-            };
-        }
-
-        /// <summary>
-        /// This is obviously not the final form of this... but for now,
-        /// since all im doing is realoading the transactions then this is fine.
-        /// </summary>
-        /// <param name="sender">WalleWanager.</param>
-        /// <param name="e">TranscactionData.</param>
-        void WalletManager_OnWhateverTransaction(object sender, TransactionData e)
-        {
-            LoadTransactions();
-        }
-
-        public void LoadTransactions()
-        {
-            _Transactions = _Wallet.GetCurrentAccountTransactions().OrderBy(
-               (TransactionData txData) => txData.CreationTime
-            );
-
-            _Logger.Information(new string('*', 20));
-            foreach (TransactionData transactionData in _Transactions)
-            {
-                _Logger.Information(JsonConvert.SerializeObject(transactionData, Formatting.Indented));
-            }
-            _Logger.Information(new string('*', 20));
         }
 
         public async void OnSendTapped(object sender, EventArgs e)

@@ -5,28 +5,26 @@
             BackgroundColor="{StaticResource GrayBackground}">
 
     <FlexLayout Direction="Column" AlignItems="Center">
-        <Button x:Name="HelpButton"
-                Style="{DynamicResource ContextualHelpButton}"
-                Clicked="HelpButton_Clicked" />
+        <BoxView FlexLayout.Grow="1" />
 
         <Image Source="logo_front.png"
                Scale="0.5"
-               FlexLayout.Grow="8" />
+               FlexLayout.Grow="7" />
 
-        <FlexLayout FlexLayout.Grow="1" Direction="Row">
+        <FlexLayout FlexLayout.Grow="2" Direction="Column" JustifyContent="SpaceEvenly">
             <Button x:Name="CreateButton"
                     Style="{DynamicResource CustomButton}"
-                    Text="Create"
+                    Text="CREATE NEW WALLET"
                     FontSize="Medium"
-                    FlexLayout.Grow="2"
-                    Clicked="CreateButton_Clicked" />
+                    Clicked="CreateButton_Clicked"
+                    FlexLayout.Grow="1" />
 
             <Button x:Name="RecoverButton"
                     Style="{DynamicResource CustomButton}"
-                    Text="Recover"
+                    Text="RECOVER WALLET"
                     FontSize="Medium"
-                    FlexLayout.Grow="2"
-                    Clicked="RecoverButton_Clicked" />
+                    Clicked="RecoverButton_Clicked"
+                    FlexLayout.Grow="1" />
         </FlexLayout>
     </FlexLayout>
 </d:BaseView>

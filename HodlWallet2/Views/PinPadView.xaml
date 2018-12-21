@@ -118,7 +118,7 @@
             <Button Text="9" 
                     Grid.Row="3" Grid.Column="3"
                     Command="{Binding DigitCommand}"
-                    CommandParameter="9" Clicked="On9Clicked" />
+                    CommandParameter="9" />
 
             <Button Text="" 
                     Grid.Row="4" Grid.Column="1" />

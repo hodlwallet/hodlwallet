@@ -12,4 +12,8 @@
             <On Platform="Android, iOS" Value="{StaticResource White}" />
         </OnPlatform>
     </NavigationPage.BarTextColor>
+    <NavigationPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="?" Clicked="HelpToolbarItem_Clicked">
+        </ToolbarItem>
+    </NavigationPage.ToolbarItems>
 </NavigationPage>

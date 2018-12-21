@@ -1,4 +1,4 @@
-﻿using Android.Support.V7.Widget;
+using Android.Support.V7.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Platform.Android.AppCompat;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace HodlWallet2.ViewModels
+namespace HodlWallet2.Views
 {
     public partial class SetPinView : ContentPage
     {

@@ -27,7 +27,6 @@
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
     <Folder Include="Assets\" />
     <Folder Include="Locale\" />
     <Folder Include="Utils\" />
@@ -98,6 +97,9 @@
     </Compile>
     <Compile Update="Views\PinPadView.xaml.cs">
       <DependentUpon>PinPadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SetPinView.xaml.cs">
+      <DependentUpon>SetPinView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

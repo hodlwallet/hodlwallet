@@ -1,4 +1,4 @@
-using Xamarin.Forms;
+using System;
 
 namespace HodlWallet2.Views
 {
@@ -9,17 +9,12 @@ namespace HodlWallet2.Views
             InitializeComponent();
         }
 
-        public override void HelpButton_Clicked(object sender, System.EventArgs e)
+        private void CreateButton_Clicked(object sender, EventArgs e)
         {
-            base.HelpButton_Clicked(this, e);
+            Navigation.PushAsync(new SetPinView());
         }
 
-        private void CreateButton_Clicked(object sender, System.EventArgs e)
-        {
-            _Logger.Information("Create button clicked.");
-        }
-
-        private void RecoverButton_Clicked(object sender, System.EventArgs e)
+        private void RecoverButton_Clicked(object sender, EventArgs e)
         {
             _Logger.Information("Recover button clicked.");
         }

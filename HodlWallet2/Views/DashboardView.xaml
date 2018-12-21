@@ -13,12 +13,12 @@
                     
                     <Image Source="logo.png" HeightRequest="20" 
                            FlexLayout.AlignSelf="Start" Margin="20,0,0,0"
-                           FlexLayout.Grow="1" BackgroundColor="Teal" />
+                           FlexLayout.Grow="1" />
                     
                     <FlexLayout FlexLayout.Grow="1" />
                     
                     <Label x:Name="amountLabel" FlexLayout.AlignSelf="Start" VerticalTextAlignment="Center"
-                           Style="{DynamicResource CustomLabel}" BackgroundColor="Teal"
+                           Style="{DynamicResource CustomLabel}"
                            FlexLayout.Grow="2" Margin="20,0,0,0" FontSize="Large" />
                     
                     <FlexLayout FlexLayout.Grow="1" />
@@ -30,7 +30,7 @@
                     <FlexLayout FlexLayout.Grow="1" />
                     
                     <Label x:Name="priceLabel" FlexLayout.AlignSelf="End" VerticalTextAlignment="Center"
-                           Style="{DynamicResource CustomLabel}" BackgroundColor="Teal"
+                           Style="{DynamicResource CustomLabel}"
                            FlexLayout.Grow="1"  Margin="0,0,20,0" FontSize="Medium" />
                     
                     <FlexLayout FlexLayout.Grow="1" />
@@ -45,7 +45,7 @@
             </FlexLayout>
             
             <FlexLayout FlexLayout.Grow="2">
-                <ListView BackgroundColor="{StaticResource DarkGray}"></ListView>
+                <ListView x:Name="_Transactions" ItemsSource="{Binding Transactions}" BackgroundColor="{StaticResource DarkGray}"></ListView>
             </FlexLayout>
             
             <FlexLayout Direction="Row" FlexLayout.Grow="1" JustifyContent="SpaceAround">
@@ -54,7 +54,7 @@
                     
                     <FlexLayout FlexLayout.Grow="1"/>
                     
-                    <FlexLayout FlexLayout.Grow="3" BackgroundColor="Teal">
+                    <FlexLayout FlexLayout.Grow="3">
                         <svg:Icon ResourceId="Assets.send_tab.svg"
                                   HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="1"/>
                     </FlexLayout>
@@ -77,7 +77,7 @@
                     
                     <FlexLayout FlexLayout.Grow="1"/>
                     
-                    <FlexLayout FlexLayout.Grow="3" BackgroundColor="Teal">
+                    <FlexLayout FlexLayout.Grow="3">
                         <svg:Icon ResourceId="Assets.receive_tab.svg"
                                   HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="1"/>
                     </FlexLayout>
@@ -100,7 +100,7 @@
                     
                     <FlexLayout FlexLayout.Grow="1"/>
                     
-                    <FlexLayout FlexLayout.Grow="3" BackgroundColor="Teal">
+                    <FlexLayout FlexLayout.Grow="3">
                         <svg:Icon ResourceId="Assets.menu_tab.svg"
                                   HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="1"/>
                     </FlexLayout>

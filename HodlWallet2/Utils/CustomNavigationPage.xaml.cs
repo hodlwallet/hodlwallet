@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Xamarin.Forms;
 
@@ -23,6 +24,30 @@ namespace HodlWallet2.Utils
         {
             if (!IgnoreLayoutChange)
                 base.OnSizeAllocated(width, height);
+        }
+
+        private void HelpToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Page view = Navigation.NavigationStack.LastOrDefault<Page>();
+
+            if (view != null)
+            {
+                string articleName = GetArticleName(view.GetType().ToString());
+
+                Wallet.Instance.Logger.Information("TODO: Open help article for {articleName}", articleName);
+            }
+        }
+
+        private string GetArticleName(string viewName)
+        {
+            string result = viewName.Split('.').LastOrDefault();
+
+            if (result != null)
+            {
+                result = result.Replace("View", "");
+            }
+
+            return result;
         }
     }
 }

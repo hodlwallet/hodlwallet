@@ -8,6 +8,7 @@ using Liviano.Models;
 using Liviano.Managers;
 
 using HodlWallet2.Views;
+using HodlWallet2.ViewModels;
 using HodlWallet2.Utils;
 
 namespace HodlWallet2
@@ -34,14 +35,19 @@ namespace HodlWallet2
 
             // If the application secure storage has the mnemonic code,
             // then the app is installed. And we just need to show the dashboard.
-            if (SecureStorageProvider.HasMnemonic())
-            {
-                MainPage = new CustomNavigationPage(new PinPadView());
-            }
-            else
-            {
-                MainPage = new CustomNavigationPage(new OnboardView());
-            }
+            //if (SecureStorageProvider.HasMnemonic())
+            //{
+            //    MainPage = new CustomNavigationPage(new PinPadView());
+            //}
+            //else
+            //{
+            //    MainPage = new CustomNavigationPage(new OnboardView());
+            //}
+
+            // TODO This is temporal, please use the code above.
+            MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
+
+            InitializeWallet();
         }
 
         private void InitializeWallet()
