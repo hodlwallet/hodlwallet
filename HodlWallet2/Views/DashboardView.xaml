@@ -2,6 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HodlWallet2.Views.DashboardView" BackgroundColor="{StaticResource GrayBackground}"
              xmlns:svg="clr-namespace:HodlWallet2.Utils">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DashboardFooterButton" TargetType="FlexLayout">
+                <Setter Property="Direction" Value="Column" />
+                <Setter Property="JustifyContent" Value="SpaceEvenly" />
+                <Setter Property="FlexLayout.Grow" Value="1" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <FlexLayout Direction="Column">
             

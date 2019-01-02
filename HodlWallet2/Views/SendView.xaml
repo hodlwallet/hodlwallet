@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.SendView">
-        <StackLayout Orientation="Vertical">
-        <Label Text="Send Bitcoin" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
+        <StackLayout Orientation="Vertical" BackgroundColor="{StaticResource GrayBackground}">
+        <Label Text="Send Bitcoin" FontSize="Large" HorizontalOptions="CenterAndExpand" Style="{DynamicResource CustomLabel}" Margin="20"></Label>
 
-        <Button Text="Scan Address" Clicked="Scan"></Button>
-        <Label Text="Receiving Address"></Label>
-        <Entry Placeholder="mx16baf4...."  Text="{Binding AddressToSendTo}" x:Name="sendAddress"></Entry>
+        <Button Text="Scan Address" Clicked="Scan" Style="{DynamicResource CustomButton}"></Button>
+        <Label Text="Receiving Address" Style="{DynamicResource CustomLabel}"></Label>
+        <Entry Placeholder="mx16baf4...."  Text="{Binding AddressToSendTo}" x:Name="sendAddress" Style="{StaticResource CustomEntry}"></Entry>
 
-        <Label Text="Amount to send"></Label>
-        <Entry Placeholder="1.0 BTC" Text="{Binding AmountToSend}"></Entry>
+        <Label Text="Amount to send" Style="{StaticResource CustomLabel}"></Label>
+        <Entry Placeholder="1.0 BTC" Text="{Binding AmountToSend}" TextColor="{StaticResource SyncGradientStart}" FontFamily="{StaticResource ElectrolizeFont}"></Entry>
 
-        <Label Text="Fee (sats/byte)"></Label>
-        <Entry Placeholder="0.0001" Text="{Binding Fee}"></Entry>
+        <Label Text="Fee (sats/byte)" Style="{StaticResource CustomLabel}"></Label>
+        <Entry Placeholder="0.0001" Text="{Binding Fee}" Style="{StaticResource CustomEntry}"></Entry>
 
 
-        <Button Text="Send Bitcoin" Clicked="Send"></Button>
+        <Button Text="Send Bitcoin" Clicked="Send" Style="{StaticResource CustomButton}"></Button>
         </StackLayout>
 </ContentPage>

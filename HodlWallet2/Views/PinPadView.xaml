@@ -6,7 +6,7 @@
         <ResourceDictionary>
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource DarkGray}" />
-                <Setter Property="FontFamily" Value="{DynamicResource FontFamilyName}" />
+                <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
                 <Setter Property="TextColor" Value="{StaticResource SyncGradientStart}" />
                 <Setter Property="FontSize" Value="Large" />
             </Style>

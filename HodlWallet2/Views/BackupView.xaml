@@ -9,7 +9,7 @@
                     Margin="20" />
             <FlexLayout FlexLayout.Grow="2" />
             <Label x:Name="Subheader"
-                   FontFamily="{DynamicResource FontFamilyName}"
+                   FontFamily="{DynamicResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
