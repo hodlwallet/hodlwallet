@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Serilog;
@@ -43,8 +43,8 @@ namespace HodlWallet2.ViewModels
                 if (value != _AddressToSendTo)
                 {
                     _AddressToSendTo = value;
-                    if (PropertyChanged != null)
-                        PropertyChanged(this, new PropertyChangedEventArgs("AddressToSendTo"));
+
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AddressToSendTo)));
                 }
             }
         }
@@ -61,8 +61,8 @@ namespace HodlWallet2.ViewModels
                 if (value != _Fee)
                 {
                     _Fee = value;
-                    if (PropertyChanged != null)
-                        PropertyChanged(this, new PropertyChangedEventArgs("Fee"));
+
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Fee)));
                 }
             }
         }
@@ -79,8 +79,8 @@ namespace HodlWallet2.ViewModels
                 if (value != _AmountToSend)
                 {
                     _AmountToSend = value;
-                    if (PropertyChanged != null)
-                        PropertyChanged(this, new PropertyChangedEventArgs("AmountToSend"));
+
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AmountToSend)));
                 }
             }
         }

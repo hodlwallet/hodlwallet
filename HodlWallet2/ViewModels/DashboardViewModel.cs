@@ -5,15 +5,18 @@ using Newtonsoft.Json;
 
 using Liviano.Models;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace HodlWallet2.ViewModels
 {
-    public class DashboardViewModel
+    public class DashboardViewModel : INotifyPropertyChanged
     {
         private ILogger _Logger;
         private Wallet _Wallet;
 
-        private ObservableCollection<TransactionData> _Transactions = new ObservableCollection<TransactionData> ();
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private ObservableCollection<TransactionData> _Transactions = new ObservableCollection<TransactionData>();
         public ObservableCollection<TransactionData> Transactions
         {
             get
@@ -24,6 +27,8 @@ namespace HodlWallet2.ViewModels
             set
             {
                 _Transactions = value;
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Transactions)));
             }
         }
 

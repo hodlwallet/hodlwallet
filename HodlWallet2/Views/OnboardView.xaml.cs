@@ -1,11 +1,20 @@
 using System;
+using Xamarin.Forms;
+
+using Serilog;
 
 namespace HodlWallet2.Views
 {
-    public partial class OnboardView : BaseView
+    public partial class OnboardView : ContentPage
     {
+        Wallet _Wallet;
+        ILogger _Logger;
+
         public OnboardView()
         {
+            _Wallet = Wallet.Instance;
+            _Logger = _Wallet.Logger;
+
             InitializeComponent();
         }
 
