@@ -4,6 +4,7 @@ using Serilog;
 using Newtonsoft.Json;
 
 using Liviano.Models;
+using System.Collections.ObjectModel;
 
 namespace HodlWallet2.ViewModels
 {
@@ -12,7 +13,19 @@ namespace HodlWallet2.ViewModels
         private ILogger _Logger;
         private Wallet _Wallet;
 
-        public IOrderedEnumerable<TransactionData> Transactions;
+        private ObservableCollection<TransactionData> _Transactions = new ObservableCollection<TransactionData> ();
+        public ObservableCollection<TransactionData> Transactions
+        {
+            get
+            {
+                return _Transactions;
+            }
+
+            set
+            {
+                _Transactions = value;
+            }
+        }
 
         public DashboardViewModel()
         {
@@ -38,6 +51,9 @@ namespace HodlWallet2.ViewModels
                     LoadTransactions();
                 };
             }
+
+            if (_Wallet.GetCurrentAccountTransactions().Count<TransactionData>() > 0)
+                LoadTransactions();
         }
 
         /// <summary>
@@ -53,12 +69,14 @@ namespace HodlWallet2.ViewModels
 
         public void LoadTransactions()
         {
-            Transactions = _Wallet.GetCurrentAccountTransactions().OrderBy(
-               (TransactionData txData) => txData.CreationTime
+            _Transactions = new ObservableCollection<TransactionData>(
+                _Wallet.GetCurrentAccountTransactions().OrderBy(
+                    (TransactionData txData) => txData.CreationTime
+                )
             );
 
             _Logger.Information(new string('*', 20));
-            foreach (TransactionData transactionData in Transactions)
+            foreach (TransactionData transactionData in _Transactions)
             {
                 _Logger.Information(JsonConvert.SerializeObject(transactionData, Formatting.Indented));
             }

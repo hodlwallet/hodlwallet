@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HodlWallet2.Views.DashboardView" BackgroundColor="{StaticResource GrayBackground}"
+             x:Name="DashboardPage"
              xmlns:svg="clr-namespace:HodlWallet2.Utils">
     
     <ContentPage.Resources>
@@ -55,8 +56,8 @@
                 </FlexLayout>
             </FlexLayout>
             
-            <FlexLayout FlexLayout.Grow="2">
-                <ListView x:Name="_Transactions" ItemsSource="{Binding Transactions}" BackgroundColor="{StaticResource DarkGray}"></ListView>
+            <FlexLayout FlexLayout.Grow="2" BackgroundColor="Red" Direction="Row">
+                <ListView x:Name="_Transactions" ItemsSource="{x:Binding ViewModel.Transactions, Source={x:Reference DashboardPage}}" BackgroundColor="White"></ListView>
             </FlexLayout>
             
             <FlexLayout Direction="Row" FlexLayout.Grow="1" JustifyContent="SpaceAround">

@@ -21,25 +21,27 @@ namespace HodlWallet2.Views
         public DashboardView(DashboardViewModel dashboardViewModel)
         {
             _ViewModel = dashboardViewModel;
-
-            BindingContext = _ViewModel;
+            this.BindingContext = _ViewModel;
 
             InitializeComponent();
             SetTempLabels();
+
+            this._Transactions.ItemsSource = _ViewModel.Transactions;
         }
 
         public async void OnSendTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SendView(new ViewModels.SendViewModel()));
+            await Navigation.PushAsync(new SendView(new SendViewModel()));
         }
 
         public async void OnReceiveTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RecieveView(new ViewModels.ReceiveViewModel()));
+            await Navigation.PushAsync(new RecieveView(new ReceiveViewModel()));
         }
 
         public void OnMenuTapped(object sender, EventArgs e)
         {
+            _Transactions.ItemsSource = ViewModel.Transactions;
         }
 
         public void SetTempLabels()
