@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using Serilog;
 using ZXing.Mobile;
+using ZXing.Net.Mobile.Forms;
 
 namespace HodlWallet2.ViewModels
 {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using Android.App;
 using Android.Content.PM;
@@ -9,6 +9,7 @@ using Android.OS;
 
 using Serilog;
 using Serilog.Core;
+using ZXing.Mobile;
 
 namespace HodlWallet2.Droid
 {
@@ -25,6 +26,7 @@ namespace HodlWallet2.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
+            MobileBarcodeScanner.Initialize(Application);
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
             FormsControls.Droid.Main.Init(this);
