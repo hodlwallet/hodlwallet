@@ -1,32 +1,37 @@
 using System;
-using System.Linq;
-using System.Collections.Generic;
 
 using Xamarin.Forms;
-using HodlWallet2.Locale;
+
 using Serilog;
 
-using HodlWallet2.Views;
-using Liviano.Models;
-using Newtonsoft.Json;
+using HodlWallet2.Locale;
 using HodlWallet2.ViewModels;
 
 namespace HodlWallet2.Views
 {
     public partial class DashboardView : ContentPage
     {
+        Wallet _Wallet;
+        ILogger _Logger;
+
         private DashboardViewModel _ViewModel;
         public DashboardViewModel ViewModel { get => BindingContext as DashboardViewModel; }
 
         public DashboardView(DashboardViewModel dashboardViewModel)
         {
+            _Wallet = Wallet.Instance;
+            _Logger = _Wallet.Logger;
+
             _ViewModel = dashboardViewModel;
-            this.BindingContext = _ViewModel;
+            BindingContext = _ViewModel;
 
             InitializeComponent();
             SetTempLabels();
 
-            this._Transactions.ItemsSource = _ViewModel.Transactions;
+            Wallet.InitializeWallet();
+
+            // FIXME. Figure out a way to use observable collections and update this automatically.
+            _Transactions.ItemsSource = _ViewModel.Transactions;
         }
 
         public async void OnSendTapped(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Liviano.Managers;
 using Serilog;
 
@@ -215,6 +215,36 @@ namespace HodlWallet2
             }
         }
 
+        public static void InitializeWallet()
+        {
+            // FIXME Remove this with the removable code bellow.
+            string guid = "736083c0-7f11-46c2-b3d7-e4e88dc38889";
+
+            // TODO Please store and run the network the user is using.
+            //Wallet.Configure(walletId: "wallet_guid", network: "testnet", nodesToConnect: 4);
+            Instance.Configure(walletId: guid, network: "testnet");
+
+            // FIXME Remove this code later when we have a way to create a wallet,
+            // for now, the wallet is created and hardcoded
+            string mnemonic = "erase fog enforce rice coil start few hold grocery lock youth service among menu life salmon fiction diamond lyrics love key stairs toe transfer";
+            string password = "123456";
+
+            if (!Instance.WalletExists())
+            {
+                Instance.Logger.Information("Creating wallet ({guid}) with password: {password}", guid, password);
+
+                Instance.WalletManager.CreateWallet(password, guid, WalletManager.MnemonicFromString(mnemonic));
+
+                Instance.Logger.Information("Wallet created.");
+            }
+
+            // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
+            //      Also change the date, the argument should be avoided.
+            Instance.Start(password, new DateTimeOffset(new DateTime(2018, 12, 1)));
+
+            Instance.Logger.Information("Wallet started.");
+        }
+
         public void Configure(string walletId = null, string network = null, int? nodesToConnect = null)
         {
             _Network = HdOperations.GetNetwork(network ?? DEFAULT_NETWORK);
@@ -411,5 +441,4 @@ namespace HodlWallet2
             }
         }
     }
-
 }
