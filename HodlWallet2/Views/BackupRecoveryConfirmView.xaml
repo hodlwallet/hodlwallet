@@ -19,16 +19,23 @@
         
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
             
-            <Label x:Name="Header"
+            <Label x:Name="Title"
                    Style="{DynamicResource CustomLabel}"
                    HorizontalTextAlignment="Center"
                    FlexLayout.AlignSelf="Center"
                    FlexLayout.Grow="1"
-                   Margin="20" />
+                   Margin="0, 20, 0, 0" />
+            
+            <Label x:Name="Header"
+                   FontFamily="{StaticResource ElectrolizeFont}"
+                   TextColor="{StaticResource SyncGradientStart}"
+                   HorizontalTextAlignment="Center"
+                   FlexLayout.AlignSelf="Center"
+                   FlexLayout.Grow="1" />
             
             <FlexLayout FlexLayout.Grow="1" />
             
-            <Grid FlexLayout.Grow="2" HorizontalOptions="Center" Padding="10">
+            <Grid FlexLayout.Grow="2" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -39,6 +46,7 @@
                 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                     
                     <Button Grid.Row="1"
@@ -60,11 +68,26 @@
                             Grid.Column="1"
                             Command="{Binding WordCommand}"
                             CommandParameter="4" />
-
-                    <Button Grid.Row="5"
-                            Grid.Column="1"
+                    
+                    <Button Grid.Row="1"
+                            Grid.Column="2"
                             Command="{Binding WordCommand}"
-                            CommandParameter="5" />
+                            CommandParameter="1" />
+
+                    <Button Grid.Row="2"
+                            Grid.Column="2"
+                            Command="{Binding WordCommand}"
+                            CommandParameter="2" />
+
+                    <Button Grid.Row="3"
+                            Grid.Column="2"
+                            Command="{Binding WordCommand}"
+                            CommandParameter="3" />
+                    
+                    <Button Grid.Row="4"
+                            Grid.Column="2"
+                            Command="{Binding WordCommand}"
+                            CommandParameter="4" />
             </Grid>
             
             <FlexLayout FlexLayout.Grow="1" />
