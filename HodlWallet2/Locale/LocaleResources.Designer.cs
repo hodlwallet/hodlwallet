@@ -113,6 +113,12 @@ namespace HodlWallet2.Locale {
             }
         }
         
+        internal static string Backup_wordheader {
+            get {
+                return ResourceManager.GetString("Backup.wordheader", resourceCulture);
+            }
+        }
+        
         internal static string ConfirmBackup_header {
             get {
                 return ResourceManager.GetString("ConfirmBackup.header", resourceCulture);
