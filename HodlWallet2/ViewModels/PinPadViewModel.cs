@@ -5,6 +5,8 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 
+using HodlWallet2.Utils;
+
 namespace HodlWallet2.ViewModels
 {
     public class PinPadViewModel : INotifyPropertyChanged
@@ -13,7 +15,7 @@ namespace HodlWallet2.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public PinPadViewModel()
+        public PinPadViewModel(bool didSet = false)
         {
             BackspaceCommand = new Command(
                 execute: () =>
@@ -33,11 +35,33 @@ namespace HodlWallet2.ViewModels
                         Pin.Add(int.Parse(arg));
                         RefreshCanExecutes();
                     }
-                    else
+                    else if (didSet == false)
                     {
-                        // Store Pin
+                        if (SecureStorageProvider.HasPassword())
+                        {
+                            throw new System.ArgumentException("Pin should be null.");
+                        }
+                        SecureStorageProvider.SetPassword(Pin.ToString());
                         Pin.Clear();
                         RefreshCanExecutes();
+                    }
+                    else if (didSet == true)
+                    {
+                        if (!SecureStorageProvider.HasPassword())
+                        {
+                            throw new System.ArgumentNullException();
+                        }
+                        if (SecureStorageProvider.GetPassword() == Pin.ToString())
+                        {
+                            // Set Binding and Navigation
+                            Pin.Clear();
+                            RefreshCanExecutes();
+                        }
+                        else
+                        {
+                            Pin.Clear();
+                            RefreshCanExecutes();
+                        }
                     }
                 });
         }

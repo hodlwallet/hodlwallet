@@ -30,28 +30,22 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             
-            <BoxView x:Name="BoxOne"
-                     BackgroundColor="{StaticResource White}"
+            <BoxView Color="{Binding PinOne}"
                      Grid.Row="1"
                      Grid.Column="1" />
-            <BoxView x:Name="BoxTwo"
-                     BackgroundColor="{StaticResource White}"
+            <BoxView Color="{Binding PinTwo}"
                      Grid.Row="1"
                      Grid.Column="2" />
-            <BoxView x:Name="BoxThree"
-                     BackgroundColor="{StaticResource White}"
+            <BoxView Color="{Binding PinThree}"
                      Grid.Row="1"
                      Grid.Column="3" />
-            <BoxView x:Name="BoxFour"
-                     BackgroundColor="{StaticResource White}"
+            <BoxView Color="{Binding PinFour}"
                      Grid.Row="1"
                      Grid.Column="4" />
-            <BoxView x:Name="BoxFive"
-                     BackgroundColor="{StaticResource White}"
+            <BoxView Color="{Binding PinFive}"
                      Grid.Row="1"
                      Grid.Column="5" />
-            <BoxView x:Name="BoxSix"
-                     BackgroundColor="{StaticResource White}"
+            <BoxView Color="{Binding PinSix}"
                      Grid.Row="1"
                      Grid.Column="6" />
             
