@@ -15,7 +15,7 @@ namespace HodlWallet2.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Color pinOne;
+        private Color pinOne, pinTwo, pinThree, pinFour, pinFive, pinSix;
 
         public Color PinOne
         {
@@ -33,8 +33,90 @@ namespace HodlWallet2.ViewModels
             }
         }
 
+        public Color PinTwo
+        {
+            set
+            {
+                if (pinTwo != value)
+                {
+                    pinTwo = value;
+                    OnPropertyChanged("PinTwo");
+                }
+            }
+            get
+            {
+                return pinTwo;
+            }
+        }
+
+        public Color PinThree
+        {
+            set
+            {
+                if (pinThree != value)
+                {
+                    pinThree = value;
+                    OnPropertyChanged("PinThree");
+                }
+            }
+            get
+            {
+                return pinThree;
+            }
+        }
+
+        public Color PinFour
+        {
+            set
+            {
+                if (pinFour != value)
+                {
+                    pinFour = value;
+                    OnPropertyChanged("PinFour");
+                }
+            }
+            get
+            {
+                return pinFour;
+            }
+        }
+
+        public Color PinFive
+        {
+            set
+            {
+                if (pinFive != value)
+                {
+                    pinFive = value;
+                    OnPropertyChanged("PinFive");
+                }
+            }
+            get
+            {
+                return pinFive;
+            }
+        }
+
+        public Color PinSix
+        {
+            set
+            {
+                if (pinSix != value)
+                {
+                    pinSix = value;
+                    OnPropertyChanged("PinSix");
+                }
+            }
+            get
+            {
+                return pinSix;
+            }
+        }
+
         public PinPadViewModel()
         {
+            PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
+
             BackspaceCommand = new Command(
                 execute: () =>
                 {
@@ -57,13 +139,29 @@ namespace HodlWallet2.ViewModels
                             case 1:
                                 PinOne = (Color)App.Current.Resources["SyncGradientStart"];
                                 break;
+                            case 2:
+                                PinTwo = (Color)App.Current.Resources["SyncGradientStart"];
+                                break;
+                            case 3:
+                                PinThree = (Color)App.Current.Resources["SyncGradientStart"];
+                                break;
+                            case 4:
+                                PinFour = (Color)App.Current.Resources["SyncGradientStart"];
+                                break;
+                            case 5:
+                                PinFive = (Color)App.Current.Resources["SyncGradientStart"];
+                                break;
+                            case 6:
+                                PinSix = (Color)App.Current.Resources["SyncGradientStart"];
+                                break;
                         }
                     }
                     else if (SecureStorageProvider.HasPassword() == false)
                     {
-                        SecureStorageProvider.SetPassword(Pin.ToString());
+                        // SecureStorageProvider.SetPassword(Pin.ToString());
                         Pin.Clear();
                         RefreshCanExecutes();
+                        PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
                         // Next Page
                     }
                     else if (SecureStorageProvider.HasPassword() == true)
@@ -78,7 +176,7 @@ namespace HodlWallet2.ViewModels
                         {
                             Pin.Clear();
                             RefreshCanExecutes();
-                            PinOne = (Color)App.Current.Resources["White"];
+                            PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
                         }
                     }
                 });
