@@ -15,6 +15,24 @@ namespace HodlWallet2.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private Color pinOne;
+
+        public Color PinOne
+        {
+            set
+            {
+                if (pinOne != value)
+                {
+                    pinOne = value;
+                    OnPropertyChanged("PinOne");
+                }
+            }
+            get
+            {
+                return pinOne;
+            }
+        }
+
         public PinPadViewModel()
         {
             BackspaceCommand = new Command(
@@ -34,6 +52,12 @@ namespace HodlWallet2.ViewModels
                     {
                         Pin.Add(int.Parse(arg));
                         RefreshCanExecutes();
+                        switch (Pin.Count)
+                        {
+                            case 1:
+                                PinOne = (Color)App.Current.Resources["SyncGradientStart"];
+                                break;
+                        }
                     }
                     else if (SecureStorageProvider.HasPassword() == false)
                     {
@@ -48,15 +72,25 @@ namespace HodlWallet2.ViewModels
                         {
                             Pin.Clear();
                             RefreshCanExecutes();
-                            // Next page
+                            // Next Page
                         }
                         else
                         {
                             Pin.Clear();
                             RefreshCanExecutes();
+                            PinOne = (Color)App.Current.Resources["White"];
                         }
                     }
                 });
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
         void RefreshCanExecutes()
