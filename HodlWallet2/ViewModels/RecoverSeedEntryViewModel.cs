@@ -1,14 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Input;
 
 using Xamarin.Forms;
 
 namespace HodlWallet2.ViewModels
 {
-    public class RecoverSeedEntryViewModel : ContentView
+    public class RecoverSeedEntryViewModel : INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public RecoverSeedEntryViewModel()
         {
-            Content = new Label { Text = "Hello ContentView" };
+
         }
     }
 }
