@@ -9,17 +9,18 @@ namespace HodlWallet2.Views
 {
     public partial class BackupRecoveryWordView : ContentPage
     {
-        public BackupRecoveryWordView()
+        public BackupRecoveryWordView(int position, string word)
         {
             InitializeComponent();
-            SetLabels();
+            SetLabels(position, word);
         }
 
-        private void SetLabels()
+        private void SetLabels(int position, string word)
         {
             Title.Text = LocaleResources.Backup_title;
             Header.Text = LocaleResources.Backup_wordheader;
-            Position.Text = "1 of 12";
+            Position.Text = position + " of 12";
+            Word.Text = word;
             Next.Text = LocaleResources.Seed_next;
         }
     }
