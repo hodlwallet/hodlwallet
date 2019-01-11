@@ -122,6 +122,27 @@ namespace HodlWallet2.ViewModels
                 {
                     if (Pin.Count - 1 >= 0)
                     {
+                        switch (Pin.Count)
+                        {
+                            case 1:
+                                PinOne = (Color)App.Current.Resources["White"];
+                                break;
+                            case 2:
+                                PinTwo = (Color)App.Current.Resources["White"];
+                                break;
+                            case 3:
+                                PinThree = (Color)App.Current.Resources["White"];
+                                break;
+                            case 4:
+                                PinFour = (Color)App.Current.Resources["White"];
+                                break;
+                            case 5:
+                                PinFive = (Color)App.Current.Resources["White"];
+                                break;
+                            case 6:
+                                PinSix = (Color)App.Current.Resources["White"];
+                                break;
+                        }
                         Pin.RemoveAt(Pin.Count - 1);
                         RefreshCanExecutes();
                     }
@@ -133,7 +154,6 @@ namespace HodlWallet2.ViewModels
                     if (Pin.Count < 6)
                     {
                         Pin.Add(int.Parse(arg));
-                        RefreshCanExecutes();
                         switch (Pin.Count)
                         {
                             case 1:
@@ -155,6 +175,7 @@ namespace HodlWallet2.ViewModels
                                 PinSix = (Color)App.Current.Resources["SyncGradientStart"];
                                 break;
                         }
+                        RefreshCanExecutes();
                     }
                     else if (SecureStorageProvider.HasPassword() == false)
                     {
