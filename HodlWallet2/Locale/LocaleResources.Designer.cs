@@ -124,5 +124,17 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("ConfirmBackup.header", resourceCulture);
             }
         }
+        
+        internal static string Recover_title {
+            get {
+                return ResourceManager.GetString("Recover.title", resourceCulture);
+            }
+        }
+        
+        internal static string Recover_subheader {
+            get {
+                return ResourceManager.GetString("Recover.subheader", resourceCulture);
+            }
+        }
     }
 }
