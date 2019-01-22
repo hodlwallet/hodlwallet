@@ -6,8 +6,7 @@
         <ResourceDictionary>
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource DarkGray}" />
-                <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
-                <Setter Property="TextColor" Value="{StaticResource SyncGradientStart}" />
+                <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
                 <Setter Property="FontSize" Value="Large" />
             </Style>
         </ResourceDictionary>
@@ -20,7 +19,7 @@
     <!-- Make Top Grid Appear -->
     <StackLayout>
         
-        <Label x:Name="Title" Style="{DynamicResource CustomLabel}" Text="{Binding Title}" />
+        <Label x:Name="Title" Style="{DynamicResource CustomLabel}" Text="{Binding Title}" FontSize="Large" />
         <Label x:Name="Header" Style="{DynamicResource CustomLabel}" Text="{Binding Header}" />
         
         <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
@@ -129,7 +128,8 @@
             
             <Button Text="&#x21E6;"
                     Grid.Row="4" Grid.Column="3"
-                    Command="{Binding BackspaceCommand}" />
+                    Command="{Binding BackspaceCommand}"
+                    TextColor="{StaticResource SyncGradientStart}" />
         </Grid>
     </StackLayout>
 </ContentPage>

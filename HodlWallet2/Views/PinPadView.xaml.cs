@@ -16,6 +16,7 @@ namespace HodlWallet2.Views
         public PinPadView(PinPadViewModel viewModel)
         {
             InitializeComponent();
+            viewModel._Navigation = Navigation;
             BindingContext = viewModel;
         }
 

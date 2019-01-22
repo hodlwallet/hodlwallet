@@ -7,6 +7,7 @@ using Xamarin.Forms;
 
 using HodlWallet2.Utils;
 using HodlWallet2.Locale;
+using HodlWallet2.Views;
 
 namespace HodlWallet2.ViewModels
 {
@@ -14,13 +15,15 @@ namespace HodlWallet2.ViewModels
 
     public class PinPadViewModel : INotifyPropertyChanged
     {
-        private List<int> Pin = new List<int>();
-
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Color pinOne, pinTwo, pinThree, pinFour, pinFive, pinSix;
+        List<int> Pin = new List<int>();
 
-        private string title, header, warning;
+        Color pinOne, pinTwo, pinThree, pinFour, pinFive, pinSix;
+
+        string title, header, warning;
+
+        public INavigation _Navigation;
 
         public Color PinOne
         {
@@ -166,9 +169,16 @@ namespace HodlWallet2.ViewModels
             }
         }
 
+        public PinPadViewModel()
+        {
+
+        }
+
         public PinPadViewModel(ViewType viewType)
         {
             PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
+
+            bool query = viewType == ViewType.Setup ? false : true;
 
             switch (viewType)
             {
@@ -247,29 +257,38 @@ namespace HodlWallet2.ViewModels
                                 PinSix = (Color)App.Current.Resources["SyncGradientStart"];
                                 break;
                         }
+
                         RefreshCanExecutes();
-                    }
-                    else if (SecureStorageProvider.HasPassword() == false)
-                    {
-                        // SecureStorageProvider.SetPassword(Pin.ToString());
-                        Pin.Clear();
-                        RefreshCanExecutes();
-                        PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
-                        // Next Page
-                    }
-                    else if (SecureStorageProvider.HasPassword() == true)
-                    {
-                        if (SecureStorageProvider.GetPassword() == Pin.ToString())
+
+                        if (Pin.Count == 6)
                         {
-                            Pin.Clear();
-                            RefreshCanExecutes();
-                            // Next Page
-                        }
-                        else
-                        {
-                            Pin.Clear();
-                            RefreshCanExecutes();
-                            PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
+                            if (/*SecureStorageProvider.HasPassword()*/ query == false)
+                            {
+                                // SecureStorageProvider.SetPassword(Pin.ToString());
+                                Pin.Clear();
+                                RefreshCanExecutes();
+                                PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
+                                _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter)));
+                                query = true;
+                            }
+                            else if (/*SecureStorageProvider.HasPassword() == */query == true)
+                            {
+                                if (/*SecureStorageProvider.GetPassword() == Pin.ToString()*/ true)
+                                {
+                                    Pin.Clear();
+                                    RefreshCanExecutes();
+                                    if (viewType == ViewType.Re_enter)
+                                    {
+                                        Application.Current.MainPage = new CustomNavigationPage(new BackupView());
+                                    }
+                                }
+                                else
+                                {
+                                    Pin.Clear();
+                                    RefreshCanExecutes();
+                                    PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
+                                }
+                            }
                         }
                     }
                 });

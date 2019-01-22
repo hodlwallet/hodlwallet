@@ -45,7 +45,7 @@ namespace HodlWallet2
             //}
 
             // TODO This is temporal, please use the code above.
-            MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
+            MainPage = new CustomNavigationPage(new OnboardView());
 
             // Add event handlers
             _Wallet.OnStarted += (object sender, EventArgs args) =>
