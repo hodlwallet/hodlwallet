@@ -77,4 +77,24 @@
         <value>To make sure everything was written down correctly, please choose from the following words the correct backup recovery key.</value>
         <comment>label for backup confirmation</comment>
     </data>
+    
+    <data name="Pin.setTitle" xml:space="preserve">
+        <value>Set PIN</value>
+        <comment>label for set pin title</comment>
+    </data>
+    
+    <data name="Pin.redoTitle" xml:space="preserve">
+        <value>Re-Enter PIN</value>
+        <comment>label for re-enter pin title</comment>
+    </data>
+    
+    <data name="Pin.header" xml:space="preserve">
+        <value>Your PIN will be used to unlock your wallet and send money</value>
+        <comment>label for pin header</comment>
+    </data>
+    
+    <data name="Pin.warning" xml:space="preserve">
+        <value>Remember this PIN. If you forget it, you won't be able to access your bitcoin</value>
+        <comment>label for pin warning</comment>
+    </data>
 </root>

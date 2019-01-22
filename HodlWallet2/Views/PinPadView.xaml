@@ -20,6 +20,9 @@
     <!-- Make Top Grid Appear -->
     <StackLayout>
         
+        <Label x:Name="Title" Style="{DynamicResource CustomLabel}" />
+        <Label x:Name="Header" Style="{DynamicResource CustomLabel}" />
+        
         <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -54,6 +57,8 @@
                      Grid.Column="1"
                      Grid.ColumnSpan="6" />
         </Grid>
+        
+        <Label x:Name="Warning" Style="{DynamicResource CustomLabel}" />
         
         <Grid x:Name="PinGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
