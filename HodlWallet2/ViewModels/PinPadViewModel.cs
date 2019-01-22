@@ -6,9 +6,12 @@ using System.Windows.Input;
 using Xamarin.Forms;
 
 using HodlWallet2.Utils;
+using HodlWallet2.Locale;
 
 namespace HodlWallet2.ViewModels
 {
+    public enum ViewType { Setup, Re_enter, Update }
+
     public class PinPadViewModel : INotifyPropertyChanged
     {
         private List<int> Pin = new List<int>();
@@ -16,6 +19,8 @@ namespace HodlWallet2.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         private Color pinOne, pinTwo, pinThree, pinFour, pinFive, pinSix;
+
+        private string title, header, warning;
 
         public Color PinOne
         {
@@ -113,9 +118,76 @@ namespace HodlWallet2.ViewModels
             }
         }
 
-        public PinPadViewModel()
+        public string Title
+        {
+            set
+            {
+                if (title != value)
+                {
+                    title = value;
+                    OnPropertyChanged("Title");
+                }
+            }
+            get
+            {
+                return title;
+            }
+        }
+
+        public string Header
+        {
+            set
+            {
+                if (header != value)
+                {
+                    header = value;
+                    OnPropertyChanged("Header");
+                }
+            }
+            get
+            {
+                return header;
+            }
+        }
+
+        public string Warning
+        {
+            set
+            {
+                if (warning != value)
+                {
+                    warning = value;
+                    OnPropertyChanged("Warning");
+                }
+            }
+            get
+            {
+                return warning;
+            }
+        }
+
+        public PinPadViewModel(ViewType viewType)
         {
             PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
+
+            switch (viewType)
+            {
+                case ViewType.Setup:
+                    Title = LocaleResources.Pin_setTitle;
+                    Header = LocaleResources.Pin_header;
+                    Warning = LocaleResources.Pin_warning;
+                    break;
+                case ViewType.Re_enter:
+                    Title = LocaleResources.Pin_redoTitle;
+                    Header = LocaleResources.Pin_header;
+                    Warning = "";
+                    break;
+                default:
+                    Title = LocaleResources.Pin_setTitle;
+                    Header = LocaleResources.Pin_header;
+                    Warning = LocaleResources.Pin_warning;
+                    break;
+            }
 
             BackspaceCommand = new Command(
                 execute: () =>
