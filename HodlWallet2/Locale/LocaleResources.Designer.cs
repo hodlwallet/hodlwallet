@@ -124,5 +124,29 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("ConfirmBackup.header", resourceCulture);
             }
         }
+        
+        internal static string Pin_setTitle {
+            get {
+                return ResourceManager.GetString("Pin.setTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Pin_redoTitle {
+            get {
+                return ResourceManager.GetString("Pin.redoTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Pin_header {
+            get {
+                return ResourceManager.GetString("Pin.header", resourceCulture);
+            }
+        }
+        
+        internal static string Pin_warning {
+            get {
+                return ResourceManager.GetString("Pin.warning", resourceCulture);
+            }
+        }
     }
 }
