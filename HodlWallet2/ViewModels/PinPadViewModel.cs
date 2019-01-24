@@ -178,8 +178,6 @@ namespace HodlWallet2.ViewModels
         {
             PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
 
-            bool query = viewType == ViewType.Setup ? false : true;
-
             switch (viewType)
             {
                 case ViewType.Setup:
@@ -262,18 +260,18 @@ namespace HodlWallet2.ViewModels
 
                         if (Pin.Count == 6)
                         {
-                            if (/*SecureStorageProvider.HasPassword()*/ query == false)
+                            if (viewType == ViewType.Setup)
                             {
-                                // SecureStorageProvider.SetPassword(Pin.ToString());
+                                SecureStorageProvider.SetPassword(string.Join("", Pin.ToArray()));
                                 Pin.Clear();
-                                RefreshCanExecutes();
-                                PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
                                 _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter)));
-                                query = true;
+                                PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
+                                RefreshCanExecutes();
                             }
-                            else if (/*SecureStorageProvider.HasPassword() == */query == true)
+                            else if (viewType == ViewType.Update || viewType == ViewType.Re_enter)
                             {
-                                if (/*SecureStorageProvider.GetPassword() == Pin.ToString()*/ true)
+                                string store = SecureStorageProvider.GetPassword();
+                                if (SecureStorageProvider.GetPassword() == string.Join("", Pin.ToArray()))
                                 {
                                     Pin.Clear();
                                     RefreshCanExecutes();
@@ -281,13 +279,16 @@ namespace HodlWallet2.ViewModels
                                     {
                                         Application.Current.MainPage = new CustomNavigationPage(new BackupView());
                                     }
+                                    else
+                                    {
+                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Setup)));
+                                    }
                                 }
                                 else
                                 {
                                     Pin.Clear();
                                     RefreshCanExecutes();
-                                    PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
-                                    /* Remove Pin */
+                                    _Navigation.PopAsync();
                                 }
                             }
                         }
