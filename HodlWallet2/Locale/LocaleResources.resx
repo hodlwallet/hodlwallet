@@ -104,7 +104,7 @@
     </data>
     
     <data name="Recover.header" xml:space="preserve">
-        <value>Recover your wallet with your backup key</value>
+        <value>Recover your wallet with your backup key.</value>
         <comment>label for recover wallet header</comment>
     </data>
     
