@@ -14,10 +14,16 @@
       <!-- Styles -->
       <OnPlatform x:Key="ElectrolizeFont" x:TypeArguments="x:String" iOS="Electrolize" Android="Electrolize-Regular.ttf#Electrolize" />
 
-      <Style x:Key="CustomButton" TargetType="Button">
+      <Style x:Key="GrayButton" TargetType="Button">
         <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
         <Setter Property="TextColor" Value="{StaticResource White}" />
         <Setter Property="BackgroundColor" Value="{StaticResource GrayBackground}" />
+        <Setter Property="CornerRadius" Value="0" />
+      </Style>
+            
+      <Style x:Key="CustomButton" TargetType="Button">
+        <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
+        <Setter Property="TextColor" Value="{StaticResource White}" />
         <Setter Property="CornerRadius" Value="0" />
       </Style>
 

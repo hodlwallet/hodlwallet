@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
             x:Class="HodlWallet2.Views.OnboardView"
-            BackgroundColor="{StaticResource GrayBackground}">
+            BackgroundColor="{StaticResource DarkGray}">
 
     <FlexLayout Direction="Column" AlignItems="Center">
         <BoxView FlexLayout.Grow="1" />
@@ -13,15 +13,15 @@
         <FlexLayout FlexLayout.Grow="2" Direction="Column" JustifyContent="SpaceEvenly">
             <Button x:Name="CreateButton"
                     Style="{DynamicResource CustomButton}"
-                    BackgroundColor="{StaticResource DarkGray}"
+                    BackgroundColor="{StaticResource GrayBackground}"
                     Text="CREATE NEW WALLET"
                     FontSize="Medium"
                     Clicked="CreateButton_Clicked"
                     FlexLayout.Grow="1" />
-            <BoxView HeightRequest="4" BackgroundColor="{StaticResource GrayBackground}" />
+            <BoxView HeightRequest="2" BackgroundColor="Transparent" />
             <Button x:Name="RecoverButton"
                     Style="{DynamicResource CustomButton}"
-                    BackgroundColor="{StaticResource DarkGray}"
+                    BackgroundColor="{StaticResource GrayBackground}"
                     Text="RECOVER WALLET"
                     FontSize="Medium"
                     Clicked="RecoverButton_Clicked"
