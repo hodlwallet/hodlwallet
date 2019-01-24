@@ -13,13 +13,15 @@
         <FlexLayout FlexLayout.Grow="2" Direction="Column" JustifyContent="SpaceEvenly">
             <Button x:Name="CreateButton"
                     Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{StaticResource DarkGray}"
                     Text="CREATE NEW WALLET"
                     FontSize="Medium"
                     Clicked="CreateButton_Clicked"
                     FlexLayout.Grow="1" />
-
+            <BoxView HeightRequest="4" BackgroundColor="{StaticResource GrayBackground}" />
             <Button x:Name="RecoverButton"
                     Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{StaticResource DarkGray}"
                     Text="RECOVER WALLET"
                     FontSize="Medium"
                     Clicked="RecoverButton_Clicked"

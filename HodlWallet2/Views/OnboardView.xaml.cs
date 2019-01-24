@@ -23,6 +23,7 @@ namespace HodlWallet2.Views
         private void CreateButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Setup)));
+            _Logger.Information("Create button clicked.");
         }
 
         private void RecoverButton_Clicked(object sender, EventArgs e)
