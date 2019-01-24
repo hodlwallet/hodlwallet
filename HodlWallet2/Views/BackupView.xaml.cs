@@ -6,6 +6,7 @@ using Serilog;
 
 using HodlWallet2.Locale;
 using HodlWallet2.ViewModels;
+using HodlWallet2.Utils;
 
 namespace HodlWallet2.Views
 {
@@ -13,16 +14,23 @@ namespace HodlWallet2.Views
     {
         Wallet _Wallet;
         ILogger _Logger;
-        string[] Words = { "zebra", "blame", "wink", "cactus", "hungry", "often", "uniform", "minute", "broom", "weapon", "venture", "creek" }; /* WIP until Wallet.Instance isses are fixed */
+        string mnemonic;
+        string[] Words;
 
         public BackupView()
         {
             _Wallet = Wallet.Instance;
             _Logger = _Wallet.Logger;
 
-            if (/*SecureStorageProvider.HasMnemonic() == false*/ true)
+            if (SecureStorageProvider.HasMnemonic() == false)
             {
-                // SecureStorageProvider.SetMnemonic(_Wallet.WalletManager.CreateWallet("hodl", SecureStorageProvider.GetPassword(), null, "english", 12).ToString());
+                mnemonic = Wallet.GetNewMnemonic("english", 12);
+                SecureStorageProvider.SetMnemonic(mnemonic);
+                Words = mnemonic.Split(' ');
+            }
+            else
+            {
+                Words = SecureStorageProvider.GetMnemonic().Split(' ');
             }
             InitializeComponent();
             SetLabels();
