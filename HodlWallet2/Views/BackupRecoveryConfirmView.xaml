@@ -24,7 +24,7 @@
                    HorizontalTextAlignment="Center"
                    FlexLayout.AlignSelf="Center"
                    FlexLayout.Grow="1"
-                   Margin="0, 20, 0, 0" />
+                   Margin="0, 30, 0, 0" />
             
             <Label x:Name="Header"
                    FontFamily="{StaticResource ElectrolizeFont}"

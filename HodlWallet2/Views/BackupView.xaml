@@ -22,6 +22,7 @@
                     CornerRadius="0"
                     FontSize="Large"
                     FlexLayout.AlignSelf="Stretch"
+                    Clicked="BackupButton_Clicked"
                     FlexLayout.Grow="1" />
         </FlexLayout>
     </ContentPage.Content>
