@@ -20,17 +20,5 @@ namespace HodlWallet2.Views
             BindingContext = viewModel;
         }
 
-        public void LoginSuccess (bool setup = false)
-        {
-            if (setup == false)
-            {
-                // Update Main Page
-            }
-            else
-            {
-
-            }
-        }
-
     }
 }

@@ -287,6 +287,7 @@ namespace HodlWallet2.ViewModels
                                     Pin.Clear();
                                     RefreshCanExecutes();
                                     PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
+                                    /* Remove Pin */
                                 }
                             }
                         }
