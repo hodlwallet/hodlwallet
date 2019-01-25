@@ -270,7 +270,6 @@ namespace HodlWallet2.ViewModels
                             }
                             else if (viewType == ViewType.Update || viewType == ViewType.Re_enter)
                             {
-                                string store = SecureStorageProvider.GetPassword();
                                 if (SecureStorageProvider.GetPassword() == string.Join("", Pin.ToArray()))
                                 {
                                     Pin.Clear();

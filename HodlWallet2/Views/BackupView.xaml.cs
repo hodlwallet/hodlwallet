@@ -14,8 +14,7 @@ namespace HodlWallet2.Views
     {
         Wallet _Wallet;
         ILogger _Logger;
-        string mnemonic;
-        string[] Words;
+        string[] mnemonic;
 
         public BackupView()
         {
@@ -24,13 +23,12 @@ namespace HodlWallet2.Views
 
             if (SecureStorageProvider.HasMnemonic() == false)
             {
-                mnemonic = Wallet.GetNewMnemonic("english", 12);
-                SecureStorageProvider.SetMnemonic(mnemonic);
-                Words = mnemonic.Split(' ');
+                mnemonic = Wallet.GetNewMnemonic("english", 12).Split(' ');
+                SecureStorageProvider.SetMnemonic(string.Join(" ", mnemonic));
             }
             else
             {
-                Words = SecureStorageProvider.GetMnemonic().Split(' ');
+                mnemonic = SecureStorageProvider.GetMnemonic().Split(' ');
             }
             InitializeComponent();
             SetLabels();
@@ -45,7 +43,7 @@ namespace HodlWallet2.Views
 
         private void BackupButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new BackupRecoveryWordView(1, Words));
+            Navigation.PushAsync(new BackupRecoveryWordView(1, mnemonic));
             _Logger.Information("Backup button clicked.");
         }
     }

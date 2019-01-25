@@ -12,17 +12,17 @@ namespace HodlWallet2.Views
     public partial class BackupRecoveryWordView : ContentPage
     {
         int Position;
-        string[] Words;
+        string[] Mnemonic;
         Wallet _Wallet;
         ILogger _Logger;
 
-        public BackupRecoveryWordView(int position, string[] words)
+        public BackupRecoveryWordView(int position, string[] mnemonic)
         {
             _Wallet = Wallet.Instance;
             _Logger = _Wallet.Logger;
             InitializeComponent();
             Position = position;
-            Words = words;
+            Mnemonic = mnemonic;
             SetLabels();
         }
 
@@ -31,7 +31,7 @@ namespace HodlWallet2.Views
             Title.Text = LocaleResources.Backup_title;
             Header.Text = LocaleResources.Backup_wordheader;
             Index.Text = Position + " of 12";
-            Word.Text = Words[Position - 1];
+            Word.Text = Mnemonic[Position - 1];
             Next.Text = LocaleResources.Seed_next;
         }
 
@@ -40,7 +40,7 @@ namespace HodlWallet2.Views
             if (Position < 12)
             {
                 Position++;
-                Navigation.PushAsync(new BackupRecoveryWordView(Position, Words));
+                Navigation.PushAsync(new BackupRecoveryWordView(Position, Mnemonic));
                 _Logger.Information("Backup button clicked.");
             }
             else
