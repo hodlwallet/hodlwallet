@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.BackupRecoveryConfirmView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HodlWallet2.Views.BackupRecoveryConfirmView" xmlns:local="clr-namespace:HodlWallet2.ViewModels">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -12,6 +13,10 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+    
+    <ContentPage.BindingContext>
+        <local:BackupConfirmViewModel />
+    </ContentPage.BindingContext>
     
     <ContentPage.Content>
         
@@ -51,43 +56,51 @@
                     
                     <Button Grid.Row="1"
                             Grid.Column="1"
+                            Text="{Binding WordOne}"
                             Command="{Binding WordCommand}"
                             CommandParameter="1" />
 
                     <Button Grid.Row="2"
                             Grid.Column="1"
+                            Text="{Binding WordTwo}"
                             Command="{Binding WordCommand}"
                             CommandParameter="2" />
 
                     <Button Grid.Row="3"
                             Grid.Column="1"
+                            Text="{Binding WordThree}"
                             Command="{Binding WordCommand}"
                             CommandParameter="3" />
                     
                     <Button Grid.Row="4"
                             Grid.Column="1"
+                            Text="{Binding WordFour}"
                             Command="{Binding WordCommand}"
                             CommandParameter="4" />
                     
                     <Button Grid.Row="1"
                             Grid.Column="2"
+                            Text="{Binding WordFive}"
                             Command="{Binding WordCommand}"
-                            CommandParameter="1" />
+                            CommandParameter="5" />
 
                     <Button Grid.Row="2"
                             Grid.Column="2"
+                            Text="{Binding WordSix}"
                             Command="{Binding WordCommand}"
-                            CommandParameter="2" />
+                            CommandParameter="6" />
 
                     <Button Grid.Row="3"
                             Grid.Column="2"
+                            Text="{Binding WordSeven}"
                             Command="{Binding WordCommand}"
-                            CommandParameter="3" />
+                            CommandParameter="7" />
                     
                     <Button Grid.Row="4"
                             Grid.Column="2"
+                            Text="{Binding WordEight}"
                             Command="{Binding WordCommand}"
-                            CommandParameter="4" />
+                            CommandParameter="8" />
             </Grid>
             
             <FlexLayout FlexLayout.Grow="1" />
