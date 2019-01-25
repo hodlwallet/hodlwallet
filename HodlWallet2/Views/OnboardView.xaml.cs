@@ -28,7 +28,7 @@ namespace HodlWallet2.Views
 
         private void RecoverButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new RecoverView());
+            // Navigation.PushAsync(new RecoverView());
             _Logger.Information("Recover button clicked.");
         }
     }
