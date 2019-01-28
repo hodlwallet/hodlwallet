@@ -11,5 +11,10 @@ namespace HodlWallet2.Views
         {
             InitializeComponent();
         }
+
+        private void SetLabels()
+        {
+
+        }
     }
 }

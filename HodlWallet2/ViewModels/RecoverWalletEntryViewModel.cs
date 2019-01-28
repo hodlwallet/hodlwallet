@@ -24,16 +24,6 @@ namespace HodlWallet2.ViewModels
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        void RefreshCanExecutes()
-        {
-            ((Command)BackspaceCommand).ChangeCanExecute();
-            ((Command)DigitCommand).ChangeCanExecute();
-        }
-
-        public ICommand BackspaceCommand { private set; get; }
-
-        public ICommand DigitCommand { private set; get; }
     }
 }
 
