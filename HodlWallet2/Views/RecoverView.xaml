@@ -21,6 +21,7 @@
                     BackgroundColor="{StaticResource DarkGray}"
                     CornerRadius="0"
                     FontSize="Large"
+                    Clicked="RecoverNext_Clicked"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1" />
         </FlexLayout>
