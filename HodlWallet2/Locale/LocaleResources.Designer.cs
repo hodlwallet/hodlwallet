@@ -166,5 +166,11 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("Recover.next", resourceCulture);
             }
         }
+        
+        internal static string Recover_entryHeader {
+            get {
+                return ResourceManager.GetString("Recover.entryHeader", resourceCulture);
+            }
+        }
     }
 }
