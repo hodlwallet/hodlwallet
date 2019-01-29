@@ -20,5 +20,11 @@ namespace HodlWallet2.Views
             Title.Text = LocaleResources.Recover_title;
             Header.Text = LocaleResources.Recover_entryHeader;
         }
+
+        private void Entry_Completed(object sender, EventArgs e)
+        {
+            string word = ((Entry)sender).Text.ToLower();
+            // Add IsWordInWordlist()
+        }
     }
 }
