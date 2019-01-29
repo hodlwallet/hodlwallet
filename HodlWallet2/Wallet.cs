@@ -237,6 +237,11 @@ namespace HodlWallet2
             Instance.Logger.Information("Wallet started.");
         }
 
+        public static string GetNewMnemonic(string wordlist="english", int wordcount=12)
+        {
+            return new Mnemonic(HdOperations.WordlistFromString(wordlist), HdOperations.WordCountFromInt(wordcount)).ToString();
+        }
+
         public void Configure(string walletId = null, string network = null, int? nodesToConnect = null)
         {
             _Network = HdOperations.GetNetwork(network ?? DEFAULT_NETWORK);

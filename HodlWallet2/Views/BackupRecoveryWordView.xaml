@@ -6,7 +6,7 @@
                     Style="{DynamicResource CustomLabel}"
                     FlexLayout.AlignSelf="Center"
                     FlexLayout.Grow="1"
-                    Margin="0, 20, 0, 0" />
+                    Margin="0, 30, 0, 0" />
             <Label x:Name="Header"
                    FontFamily="{StaticResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
@@ -15,15 +15,16 @@
                    FlexLayout.Grow="1" />
             <FlexLayout FlexLayout.Grow="2" />
             <Button x:Name="Word"
-                   Style="{DynamicResource CustomButton}"
-                   BackgroundColor="{StaticResource DarkGray}"
-                   FontSize="Medium"
-                   Margin="40"
-                   FlexLayout.Grow="1" />
-            <Label x:Name="Position"
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{StaticResource DarkGray}"
+                    FontSize="Medium"
+                    Margin="40"
+                    FlexLayout.Grow="1" />
+            <Label x:Name="Index"
                    FontFamily="{StaticResource ElectrolizeFont}"
                    TextColor="Gray"
-                   FontSize="Micro" />
+                   FontSize="Micro"
+                   FlexLayout.AlignSelf="Center" />
             <FlexLayout FlexLayout.Grow="2" />
             <Button x:Name="Next"
                     Style="{DynamicResource CustomButton}"
@@ -31,6 +32,7 @@
                     CornerRadius="0"
                     FontSize="Large"
                     FlexLayout.AlignSelf="Stretch"
+                    Clicked="BackupWord_Clicked"
                     FlexLayout.Grow="1" />
         </FlexLayout>
     </ContentPage.Content>

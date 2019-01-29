@@ -3,6 +3,8 @@ using Xamarin.Forms;
 
 using Serilog;
 
+using HodlWallet2.ViewModels;
+
 namespace HodlWallet2.Views
 {
     public partial class OnboardView : ContentPage
@@ -20,11 +22,13 @@ namespace HodlWallet2.Views
 
         private void CreateButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SetPinView());
+            Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Setup)));
+            _Logger.Information("Create button clicked.");
         }
 
         private void RecoverButton_Clicked(object sender, EventArgs e)
         {
+            Navigation.PushAsync(new RecoverView());
             _Logger.Information("Recover button clicked.");
         }
     }

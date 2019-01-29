@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HodlWallet2.Views.PinPadView" BackgroundColor="{StaticResource DarkGray}" xmlns:local="clr-namespace:HodlWallet2.ViewModels">
+             x:Class="HodlWallet2.Views.PinPadView" BackgroundColor="{StaticResource GrayBackground}" xmlns:local="clr-namespace:HodlWallet2.ViewModels">
     
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{StaticResource DarkGray}" />
-                <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
-                <Setter Property="TextColor" Value="{StaticResource SyncGradientStart}" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
                 <Setter Property="FontSize" Value="Large" />
             </Style>
         </ResourceDictionary>
@@ -18,11 +17,14 @@
     </ContentPage.BindingContext>
     
     <!-- Make Top Grid Appear -->
-    <StackLayout>
+    <StackLayout Margin="10,70,10,10">
+        
+        <Label x:Name="Title" Style="{DynamicResource CustomLabel}" Text="{Binding Title}" FontSize="Large" />
+        <Label x:Name="Header" Style="{DynamicResource CustomLabel}" Text="{Binding Header}" />
         
         <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             
@@ -30,28 +32,22 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             
-            <BoxView x:Name="BoxOne"
-                     BackgroundColor="{StaticResource White}"
+            <BoxView Color="{Binding PinOne}"
                      Grid.Row="1"
                      Grid.Column="1" />
-            <BoxView x:Name="BoxTwo"
-                     BackgroundColor="{StaticResource White}"
+            <BoxView Color="{Binding PinTwo}"
                      Grid.Row="1"
                      Grid.Column="2" />
-            <BoxView x:Name="BoxThree"
-                     BackgroundColor="{StaticResource White}"
+            <BoxView Color="{Binding PinThree}"
                      Grid.Row="1"
                      Grid.Column="3" />
-            <BoxView x:Name="BoxFour"
-                     BackgroundColor="{StaticResource White}"
+            <BoxView Color="{Binding PinFour}"
                      Grid.Row="1"
                      Grid.Column="4" />
-            <BoxView x:Name="BoxFive"
-                     BackgroundColor="{StaticResource White}"
+            <BoxView Color="{Binding PinFive}"
                      Grid.Row="1"
                      Grid.Column="5" />
-            <BoxView x:Name="BoxSix"
-                     BackgroundColor="{StaticResource White}"
+            <BoxView Color="{Binding PinSix}"
                      Grid.Row="1"
                      Grid.Column="6" />
             
@@ -60,6 +56,8 @@
                      Grid.Column="1"
                      Grid.ColumnSpan="6" />
         </Grid>
+        
+        <Label x:Name="Warning" Style="{DynamicResource CustomLabel}" Text="{Binding Warning}" />
         
         <Grid x:Name="PinGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
@@ -130,7 +128,8 @@
             
             <Button Text="&#x21E6;"
                     Grid.Row="4" Grid.Column="3"
-                    Command="{Binding BackspaceCommand}" />
+                    Command="{Binding BackspaceCommand}"
+                    TextColor="{StaticResource SyncGradientStart}" />
         </Grid>
     </StackLayout>
 </ContentPage>

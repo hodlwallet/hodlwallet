@@ -7,11 +7,8 @@
                     Style="{DynamicResource CustomLabel}"
                     FlexLayout.AlignSelf="Center"
                     FlexLayout.Grow="1"
-                    Margin="20" />
-            <FlexLayout FlexLayout.Grow="2">
-                        <svg:Icon ResourceId="Assets.paper_key.svg"
-                                  HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="1"/>
-            </FlexLayout>
+                    Margin="30" />
+            <FlexLayout FlexLayout.Grow="2" />
             <Label x:Name="Subheader"
                    FontFamily="{DynamicResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
@@ -26,6 +23,7 @@
                     CornerRadius="0"
                     FontSize="Large"
                     FlexLayout.AlignSelf="Stretch"
+                    Clicked="BackupButton_Clicked"
                     FlexLayout.Grow="1" />
         </FlexLayout>
     </ContentPage.Content>
