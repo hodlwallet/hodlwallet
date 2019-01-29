@@ -5,10 +5,9 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Entry">
-                <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
+                <Setter Property="Style" Value="{DynamicResource CustomEntry}" />
                 <Setter Property="FontSize" Value="Large" />
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="MaxLength" Value="10" />
+                <Setter Property="MaxLength" Value="8" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -21,12 +20,16 @@
         <StackLayout Margin="10,70,10,10">
         
             <Label x:Name="Title" Style="{DynamicResource CustomLabel}" FontSize="Large" />
-            <Label x:Name="Header" Style="{DynamicResource CustomLabel}" />
+            <Label x:Name="Header" Style="{DynamicResource CustomLabel}" Margin="0, 0, 0, 20"/>
         
             <Grid HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{StaticResource LightGray}" Padding="10">
                 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -38,18 +41,65 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 
-                <Entry Text="{Binding WordOne, Mode=TwoWay}"    Grid.Row="1" Grid.Column="1" />
-                <Entry Text="{Binding WordTwo, Mode=TwoWay}"    Grid.Row="1" Grid.Column="2" />
-                <Entry Text="{Binding WordThree, Mode=TwoWay}"  Grid.Row="1" Grid.Column="3" />
-                <Entry Text="{Binding WordFour, Mode=TwoWay}"   Grid.Row="2" Grid.Column="1" />
-                <Entry Text="{Binding WordFive, Mode=TwoWay}"   Grid.Row="2" Grid.Column="2" />
-                <Entry Text="{Binding WordSix, Mode=TwoWay}"    Grid.Row="2" Grid.Column="3" />
-                <Entry Text="{Binding WordSeven, Mode=TwoWay}"  Grid.Row="3" Grid.Column="1" />
-                <Entry Text="{Binding WordEight, Mode=TwoWay}"  Grid.Row="3" Grid.Column="2" />
-                <Entry Text="{Binding WordNine, Mode=TwoWay}"   Grid.Row="3" Grid.Column="3" />
-                <Entry Text="{Binding WordTen, Mode=TwoWay}"    Grid.Row="4" Grid.Column="1" />
-                <Entry Text="{Binding WordEleven, Mode=TwoWay}" Grid.Row="4" Grid.Column="2" />
-                <Entry Text="{Binding WordTwelve, Mode=TwoWay}" Grid.Row="4" Grid.Column="3" />
+                <Entry Text="{Binding WordOne, Mode=OneWayToSource}"    TextColor="{Binding WordColorOne}"   
+                       Grid.Row="1" Grid.Column="1" />
+                <Label Text="1" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
+                       FontSize="Micro" Grid.Row="2" Grid.Column="1"/>
+                
+                <Entry Text="{Binding WordTwo, Mode=OneWayToSource}"    TextColor="{Binding WordColorTwo}"
+                       Grid.Row="1" Grid.Column="2" />
+                <Label Text="2" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
+                       FontSize="Micro" Grid.Row="2" Grid.Column="2"/>
+                
+                <Entry Text="{Binding WordThree, Mode=OneWayToSource}"  TextColor="{Binding WordColorThree}"
+                       Grid.Row="1" Grid.Column="3" />
+                <Label Text="3" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
+                       FontSize="Micro" Grid.Row="2" Grid.Column="3"/>
+                
+                <Entry Text="{Binding WordFour, Mode=OneWayToSource}"   TextColor="{Binding WordColorFour}"
+                       Grid.Row="3" Grid.Column="1" />
+                <Label Text="4" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
+                       FontSize="Micro" Grid.Row="4" Grid.Column="1"/>
+                
+                <Entry Text="{Binding WordFive, Mode=OneWayToSource}"   TextColor="{Binding WordColorFive}"
+                       Grid.Row="3" Grid.Column="2" />
+                <Label Text="5" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
+                       FontSize="Micro" Grid.Row="4" Grid.Column="2"/>
+                
+                <Entry Text="{Binding WordSix, Mode=OneWayToSource}"    TextColor="{Binding WordColorSix}"
+                       Grid.Row="3" Grid.Column="3" />
+                <Label Text="6" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
+                       FontSize="Micro" Grid.Row="4" Grid.Column="3"/>
+                
+                <Entry Text="{Binding WordSeven, Mode=OneWayToSource}"  TextColor="{Binding WordColorSeven}"
+                       Grid.Row="5" Grid.Column="1" />
+                <Label Text="7" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
+                       FontSize="Micro" Grid.Row="6" Grid.Column="1"/>
+                
+                <Entry Text="{Binding WordEight, Mode=OneWayToSource}"  TextColor="{Binding WordColorEight}"
+                       Grid.Row="5" Grid.Column="2" />
+                <Label Text="8" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
+                       FontSize="Micro" Grid.Row="6" Grid.Column="2"/>
+                
+                <Entry Text="{Binding WordNine, Mode=OneWayToSource}"   TextColor="{Binding WordColorNine}"
+                       Grid.Row="5" Grid.Column="3" />
+                <Label Text="9" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
+                       FontSize="Micro" Grid.Row="6" Grid.Column="3"/>
+                
+                <Entry Text="{Binding WordTen, Mode=OneWayToSource}"    TextColor="{Binding WordColorTen}"
+                       Grid.Row="7" Grid.Column="1" />
+                <Label Text="10" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
+                       FontSize="Micro" Grid.Row="8" Grid.Column="1"/>
+                
+                <Entry Text="{Binding WordEleven, Mode=OneWayToSource}" TextColor="{Binding WordColorEleven}"
+                       Grid.Row="7" Grid.Column="2" />
+                <Label Text="11" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
+                       FontSize="Micro" Grid.Row="8" Grid.Column="2"/>
+                
+                <Entry Text="{Binding WordTwelve, Mode=OneWayToSource}" TextColor="{Binding WordColorTwelve}"
+                       Grid.Row="7" Grid.Column="3" />
+                <Label Text="12" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
+                       FontSize="Micro" Grid.Row="8" Grid.Column="3"/>
                 
             </Grid>
             
