@@ -13,7 +13,7 @@
                    HorizontalTextAlignment="Center"
                    FlexLayout.AlignSelf="Center"
                    FlexLayout.Grow="1" />
-            <FlexLayout FlexLayout.Grow="2" />
+            <BoxView FlexLayout.Grow="2" />
             <Button x:Name="Word"
                     Style="{DynamicResource CustomButton}"
                     BackgroundColor="{StaticResource DarkGray}"
@@ -25,7 +25,7 @@
                    TextColor="Gray"
                    FontSize="Micro"
                    FlexLayout.AlignSelf="Center" />
-            <FlexLayout FlexLayout.Grow="2" />
+            <BoxView FlexLayout.Grow="2" />
             <Button x:Name="Next"
                     Style="{DynamicResource CustomButton}"
                     BackgroundColor="{StaticResource DarkGray}"
