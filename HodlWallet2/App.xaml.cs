@@ -33,8 +33,6 @@ namespace HodlWallet2
 
             InitializeComponent();
 
-            // Wallet.InitializeWallet();
-
             //If the application secure storage has the mnemonic code,
             // then the app is installed.And we just need to show the dashboard.
             //if (SecureStorageProvider.HasMnemonic())
