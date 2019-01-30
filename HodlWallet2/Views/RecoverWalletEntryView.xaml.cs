@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using Serilog;
 
 using HodlWallet2.Locale;
 
@@ -9,9 +10,14 @@ namespace HodlWallet2.Views
 {
     public partial class RecoverWalletEntryView : ContentPage
     {
+        Wallet _Wallet;
+        ILogger _Logger;
+
         public RecoverWalletEntryView()
         {
             InitializeComponent();
+            _Wallet = Wallet.Instance;
+            _Logger = _Wallet.Logger;
             SetLabels();
         }
 
@@ -24,7 +30,15 @@ namespace HodlWallet2.Views
         private void Entry_Completed(object sender, EventArgs e)
         {
             string word = ((Entry)sender).Text.ToLower();
-            // Add IsWordInWordlist()
+
+            if (_Wallet.IsWordInWordlist(word, "english") == false)
+            {
+                ((Entry)sender).TextColor = Color.Red;
+            }
+            else
+            {
+                ((Entry)sender).TextColor = Color.Black;
+            }
         }
     }
 }
