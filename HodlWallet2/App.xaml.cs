@@ -53,6 +53,8 @@ namespace HodlWallet2
                 _Wallet.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnWalletPositionUpdate;
                 _Wallet.WalletSyncManager.OnWalletSyncedToTipOfChain += WalletSyncManager_OnWalletSyncedToTipOfChain;
             };
+
+            Wallet.InitializeWallet();
         }
 
         protected override void OnStart()

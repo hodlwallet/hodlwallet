@@ -33,11 +33,7 @@ namespace HodlWallet2.iOS
 
             LoadApplication(new App());
             
-            var didLaunch = base.FinishedLaunching(app, options);
-
-            Wallet.InitializeWallet();
-
-            return didLaunch;
+            return base.FinishedLaunching(app, options);
         }
     }
 }
