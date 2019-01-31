@@ -7,7 +7,7 @@
                     FlexLayout.AlignSelf="Center"
                     FlexLayout.Grow="1"
                     Margin="30" />
-            <FlexLayout FlexLayout.Grow="2" />
+            <BoxView FlexLayout.Grow="2" />
             <Label x:Name="Header"
                    FontFamily="{DynamicResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
@@ -15,7 +15,7 @@
                    FontSize="Medium"
                    FlexLayout.AlignSelf="Center"
                    FlexLayout.Grow="1" />
-            <FlexLayout FlexLayout.Grow="2" />
+            <BoxView FlexLayout.Grow="2" />
             <Button x:Name="Next"
                     Style="{DynamicResource CustomButton}"
                     BackgroundColor="{StaticResource DarkGray}"
