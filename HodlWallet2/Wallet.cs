@@ -386,6 +386,9 @@ namespace HodlWallet2
 
         public bool IsWordInWordlist(string word, string wordList = "english")
         {
+            if (string.IsNullOrEmpty(word))
+                return false;
+
             return HdOperations.IsWordInWordlist(word, wordList);
         }
 
