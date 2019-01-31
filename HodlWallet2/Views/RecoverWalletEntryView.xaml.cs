@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Xamarin.Forms;
 using Serilog;
 
 using HodlWallet2.Locale;
+using HodlWallet2.ViewModels;
 
 namespace HodlWallet2.Views
 {
@@ -15,9 +17,15 @@ namespace HodlWallet2.Views
 
         public RecoverWalletEntryView()
         {
+
+        }
+
+        public RecoverWalletEntryView(RecoverWalletEntryViewModel viewModel)
+        {
             InitializeComponent();
             _Wallet = Wallet.Instance;
             _Logger = _Wallet.Logger;
+            viewModel._EntryGrid = EntryGrid;
             SetLabels();
         }
 
@@ -39,6 +47,14 @@ namespace HodlWallet2.Views
             {
                 ((Entry)sender).TextColor = Color.Black;
             }
+
+            Entry NextEntry = this.FindByName(((Entry)sender).Placeholder) as Entry;
+            NextEntry?.Focus();
+        }
+
+        private void Entry_Fully_Completed(object sender, EventArgs e)
+        {
+            //TODO
         }
     }
 }
