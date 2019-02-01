@@ -430,6 +430,14 @@ namespace HodlWallet2
             return WalletManager.NewMnemonic(wordList, wordCount).ToString();
         }
 
+        public bool IsWordInWordlist(string word, string wordList = "english")
+        {
+            if (string.IsNullOrEmpty(word))
+                return false;
+
+            return HdOperations.IsWordInWordlist(word, wordList);
+        }
+
         public HdAddress GetReceiveAddress()
         {
             return CurrentAccount.GetFirstUnusedReceivingAddress();

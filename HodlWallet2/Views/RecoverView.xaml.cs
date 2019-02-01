@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Serilog;
 
 using HodlWallet2.Locale;
+using HodlWallet2.ViewModels;
 
 namespace HodlWallet2.Views
 {
@@ -31,7 +32,7 @@ namespace HodlWallet2.Views
 
         private void RecoverNext_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new RecoverWalletEntryView());
+            Navigation.PushAsync(new RecoverWalletEntryView(new RecoverWalletEntryViewModel()));
             _Logger.Information("Recover button clicked.");
         }
     }

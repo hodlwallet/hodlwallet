@@ -21,37 +21,37 @@
                 
                 <FlexLayout Direction="Column" FlexLayout.Grow="1">
                     
-                    <FlexLayout FlexLayout.Grow="1" />
+                    <BoxView FlexLayout.Grow="1" />
                     
                     <Image Source="logo.png" HeightRequest="20" 
                            FlexLayout.AlignSelf="Start" Margin="20,0,0,0"
                            FlexLayout.Grow="1" />
                     
-                    <FlexLayout FlexLayout.Grow="1" />
+                    <BoxView FlexLayout.Grow="1" />
                     
                     <Label x:Name="amountLabel" FlexLayout.AlignSelf="Start" VerticalTextAlignment="Center"
                            Style="{DynamicResource CustomLabel}"
                            FlexLayout.Grow="2" Margin="20,0,0,0" FontSize="Large" />
                     
-                    <FlexLayout FlexLayout.Grow="1" />
+                    <BoxView FlexLayout.Grow="1" />
                     
                 </FlexLayout>
                 
                 <FlexLayout Direction="Column" FlexLayout.Grow="1" >
                     
-                    <FlexLayout FlexLayout.Grow="1" />
+                    <BoxView FlexLayout.Grow="1" />
                     
                     <Label x:Name="priceLabel" FlexLayout.AlignSelf="End" VerticalTextAlignment="Center"
                            Style="{DynamicResource CustomLabel}"
                            FlexLayout.Grow="1"  Margin="0,0,20,0" FontSize="Medium" />
                     
-                    <FlexLayout FlexLayout.Grow="1" />
+                    <BoxView FlexLayout.Grow="1" />
                     
                     <svg:Icon ResourceId="Assets.search.svg"
                               FlexLayout.AlignSelf="End"
                               FlexLayout.Grow="2" Margin="0,0,20,0" />
                     
-                    <FlexLayout FlexLayout.Grow="1" />
+                    <BoxView FlexLayout.Grow="1" />
                     
                 </FlexLayout>
             </FlexLayout>
@@ -64,7 +64,7 @@
                 
                 <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="SpaceEvenly" FlexLayout.Grow="1">
                     
-                    <FlexLayout FlexLayout.Grow="1"/>
+                    <BoxView FlexLayout.Grow="1"/>
                     
                     <FlexLayout FlexLayout.Grow="3">
                         <svg:Icon ResourceId="Assets.send_tab.svg"
@@ -76,7 +76,7 @@
                            FlexLayout.Grow="1"
                      />
                     
-                    <FlexLayout FlexLayout.Grow="1" />
+                    <BoxView FlexLayout.Grow="1" />
                            
                     <FlexLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnSendTapped"
@@ -87,7 +87,7 @@
                 
                 <FlexLayout Direction="Column" JustifyContent="SpaceEvenly" FlexLayout.Grow="1">
                     
-                    <FlexLayout FlexLayout.Grow="1"/>
+                    <BoxView FlexLayout.Grow="1"/>
                     
                     <FlexLayout FlexLayout.Grow="3">
                         <svg:Icon ResourceId="Assets.receive_tab.svg"
@@ -99,7 +99,7 @@
                            FlexLayout.Grow="1"
                            FlexLayout.AlignSelf="Center" />
                     
-                    <FlexLayout FlexLayout.Grow="1" />
+                    <BoxView FlexLayout.Grow="1" />
                     
                     <FlexLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnReceiveTapped"
@@ -110,7 +110,7 @@
                 
                 <FlexLayout Direction="Column" JustifyContent="SpaceEvenly" FlexLayout.Grow="1">
                     
-                    <FlexLayout FlexLayout.Grow="1"/>
+                    <BoxView FlexLayout.Grow="1"/>
                     
                     <FlexLayout FlexLayout.Grow="3">
                         <svg:Icon ResourceId="Assets.menu_tab.svg"
@@ -122,7 +122,7 @@
                            FlexLayout.Grow="1"
                            FlexLayout.AlignSelf="Center" />
                     
-                    <FlexLayout FlexLayout.Grow="1" />
+                    <BoxView FlexLayout.Grow="1" />
                     
                     <FlexLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnMenuTapped"

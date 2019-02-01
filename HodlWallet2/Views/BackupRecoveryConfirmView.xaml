@@ -38,7 +38,7 @@
                    FlexLayout.AlignSelf="Center"
                    FlexLayout.Grow="1" />
             
-            <FlexLayout FlexLayout.Grow="1" />
+            <BoxView FlexLayout.Grow="1" />
             
             <Grid FlexLayout.Grow="2" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                 <Grid.RowDefinitions>
@@ -103,7 +103,7 @@
                             CommandParameter="8" />
             </Grid>
             
-            <FlexLayout FlexLayout.Grow="1" />
+            <BoxView FlexLayout.Grow="1" />
         
         </FlexLayout>
     
