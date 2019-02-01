@@ -7,6 +7,7 @@ using Serilog;
 
 using HodlWallet2.Locale;
 using HodlWallet2.ViewModels;
+using HodlWallet2.Utils;
 
 namespace HodlWallet2.Views
 {
@@ -37,18 +38,19 @@ namespace HodlWallet2.Views
 
         private void Entry_Completed(object sender, EventArgs e)
         {
-            string word = ((Entry)sender).Text.ToLower();
+            Entry completed = sender as Entry;
+            string word = completed.Text.ToLower();
 
             if (_Wallet.IsWordInWordlist(word, "english") == false)
             {
-                ((Entry)sender).TextColor = Color.Red;
+                completed.TextColor = Color.Red;
             }
             else
             {
-                ((Entry)sender).TextColor = Color.Black;
+                completed.TextColor = Color.Black;
             }
 
-            Entry NextEntry = this.FindByName(((Entry)sender).Placeholder) as Entry;
+            Entry NextEntry = this.FindByName(completed.Placeholder) as Entry;
             NextEntry?.Focus();
         }
 
