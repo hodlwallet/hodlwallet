@@ -232,7 +232,7 @@ namespace HodlWallet2
 
             // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
             //      Also change the date, the argument should be avoided.
-            Instance.Start(password, new DateTimeOffset(new DateTime(2018, 12, 1)));
+            Instance.Start(password, new DateTimeOffset(new DateTime(2014, 12, 1)));
 
             Instance.Logger.Information("Wallet started.");
         }
@@ -314,7 +314,7 @@ namespace HodlWallet2
 
             Scan(timeToStartOn);
 
-            PeriodicSave();
+            _ = PeriodicSave();
 
             OnStarted?.Invoke(this, null);
             Started = true;
@@ -325,17 +325,17 @@ namespace HodlWallet2
             ScanLocation = new BlockLocator();
             ICollection<uint256> walletBlockLocator = WalletManager.GetWalletBlockLocator();
 
-            if (walletBlockLocator != null)
+            
+            // If there are block locations in the wallet
+            if (walletBlockLocator != null && walletBlockLocator.Count > 0)
             {
                 ScanLocation.Blocks.AddRange(walletBlockLocator);
             }
-
-            // Regardless we always add the checkpoints.
-            ScanLocation.Blocks.Add(_Network.GetBIP39ActivationChainedBlock().HashBlock);
-            // Then the checkpoints
-            ScanLocation.Blocks.AddRange(
-                _Network.GetCheckpoints().Select(checkpoint => checkpoint.HashBlock)
-            );
+            else
+            {
+                // Add genesis
+                ScanLocation = _Network.GetDefaultBlockLocator();
+            }
 
             if (timeToStartOn == null)
             {
@@ -349,13 +349,17 @@ namespace HodlWallet2
                 {
                     if (WalletManager.GetWalletCreationTime() < _Chain.Tip.Header.BlockTime)
                     {
-                        timeToStartOn = _Chain.Tip.Header.BlockTime;
+                        timeToStartOn = WalletManager.GetWalletCreationTime();
                     }
                     else
                     {
-                        timeToStartOn = WalletManager.GetWalletCreationTime();
+                        timeToStartOn = _Network.GetCheckpoints().ToArray()[(_Network.GetCheckpoints().Count - 1)].Header.BlockTime;
                     }
                 }
+            }
+            else
+            {
+                timeToStartOn = _Network.GetGenesis().Header.BlockTime;
             }
 
             WalletSyncManager.Scan(ScanLocation, timeToStartOn.Value);
@@ -365,9 +369,13 @@ namespace HodlWallet2
 
         public void ReScan(DateTimeOffset? timeToStartOn)
         {
+            // FIXME this method dosn't work crashes on Scan.
+            throw new NotImplementedException("Please finish work here");
+
             string chainFile = ChainFile();
             string addrmanFile = AddrmanFile();
             string walletFile = ((StorageProvider)StorageProvider).FilePath;
+            DateTimeOffset currentCreationTime = WalletManager.GetWallet().CreationTime;
 
             // Database cleanup
             Logger.Information("Deleting chain file: {chainFile}", chainFile);
@@ -395,11 +403,15 @@ namespace HodlWallet2
             Logger.Information("Wallet created.");
 
             Logger.Information("Wallet re-loaded");
-            WalletManager.LoadWallet();
-            
-            // Nodes reconnect
-            NodesGroup.Disconnect();
-            NodesGroup.Connect();
+            WalletManager.LoadWallet(password);
+
+            WalletManager.GetWallet().CreationTime = currentCreationTime;
+
+            WalletManager.SaveWallet(WalletManager.GetWallet());
+
+            // Nodes reconnect if it's not null
+            NodesGroup?.Disconnect();
+            NodesGroup?.Connect();
 
             // Start scanning again
             Scan(timeToStartOn);
