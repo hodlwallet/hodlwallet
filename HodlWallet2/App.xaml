@@ -10,6 +10,7 @@
       <Color x:Key="SyncGradientStart">#DAAB28</Color>
       <Color x:Key="SyncGradientEnd">#DBAC29</Color>
       <Color x:Key="GrayTextTint">#A3A8AD</Color>
+      <Color x:Key="LightGray">#EBEBEB</Color>
 
       <!-- Styles -->
       <OnPlatform x:Key="ElectrolizeFont" x:TypeArguments="x:String" iOS="Electrolize" Android="Electrolize-Regular.ttf#Electrolize" />
@@ -34,8 +35,6 @@
             
       <Style x:Key="CustomEntry" TargetType="Entry">
         <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
-        <Setter Property="TextColor" Value="{StaticResource White}" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
       </Style>
 
     </ResourceDictionary>
