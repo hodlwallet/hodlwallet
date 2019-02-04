@@ -46,7 +46,7 @@ namespace HodlWallet2
 
         private AddressManager _AddressManager;
 
-        private ConcurrentChain _Chain;
+        private PartialConcurrentChain _Chain;
 
         private DefaultCoinSelector _DefaultCoinSelector;
 
@@ -101,7 +101,7 @@ namespace HodlWallet2
             }
         }
 
-        private ConcurrentChain GetChain()
+        private PartialConcurrentChain GetChain()
         {
             lock (_Lock)
             {
@@ -110,6 +110,7 @@ namespace HodlWallet2
                     return _ConParams.TemplateBehaviors.Find<PartialChainBehavior>().Chain as PartialConcurrentChain;
                 }
 
+                // var chain = new PartialConcurrentChain(_Network, _Logger);
                 var chain = new PartialConcurrentChain(_Network);
 
                 using (var fs = File.Open(ChainFile(), FileMode.OpenOrCreate))
@@ -124,19 +125,28 @@ namespace HodlWallet2
             }
         }
 
+
         private static string GetConfigFile(string fileName)
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), fileName);
+            string configFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), fileName);
+
+            Instance.Logger?.Information("Getting config file: {configFileName}", configFileName);
+
+            return configFileName;
         }
 
         private static string AddrmanFile()
         {
-            return GetConfigFile("addrman.dat");
+            Guard.NotNull(Instance._Network, nameof(Instance._Network));
+
+            return GetConfigFile($"addrman-{Instance._Network.Name.ToLower()}.dat");
         }
 
         private static string ChainFile()
         {
-            return GetConfigFile("chain.dat");
+            Guard.NotNull(Instance._Network, nameof(Instance._Network));
+
+            return GetConfigFile($"chain-{Instance._Network.Name.ToLower()}.dat");
         }
 
         private static async Task PeriodicSave()
@@ -163,7 +173,8 @@ namespace HodlWallet2
 
                     using (var fs = File.Open(ChainFile(), FileMode.OpenOrCreate))
                     {
-                        _Chain.WriteTo(fs);
+                        PartialConcurrentChain chain = GetChain();
+                        chain.WriteTo(new BitcoinStream(fs, true));
                     }
                 }
             });
@@ -185,6 +196,17 @@ namespace HodlWallet2
             {
                 return new AddressManager();
             }
+        }
+
+        private static ChainedBlock GetClosestChainedBlockToDateTimeOffset(DateTimeOffset? creationDate)
+        {
+            Guard.NotNull(Instance._Network, nameof(Instance._Network));
+            long ticks = 0;
+
+            if (creationDate.HasValue)
+                ticks = creationDate.Value.Ticks;
+
+            return Instance._Network.GetCheckpoints().OrderBy(chainedBlock => Math.Abs(chainedBlock.Header.BlockTime.Ticks - ticks)).FirstOrDefault();
         }
 
         Wallet()
@@ -262,7 +284,7 @@ namespace HodlWallet2
 
             if (!StorageProvider.WalletExists())
             {
-                Logger.Information("Creating a new wallet {walletId}", _WalletId);
+                Logger.Information("Will create a new wallet {walletId} since it doesn't exists", _WalletId);
             }
 
             WalletManager = new WalletManager(Logger, _Network, _Chain, AsyncLoopFactory, DateTimeProvider, ScriptAddressReader, StorageProvider);
@@ -271,7 +293,7 @@ namespace HodlWallet2
             _WalletSyncManagerBehavior = new WalletSyncManagerBehavior(Logger, WalletSyncManager, ScriptTypes.SegwitAndLegacy);
 
             _ConParams.TemplateBehaviors.Add(new AddressManagerBehavior(_AddressManager));
-            _ConParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network));
+            _ConParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
             _ConParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
 
             _ConParams.UserAgent = "/hodlwallet:2.0/";
@@ -324,7 +346,7 @@ namespace HodlWallet2
         {
             ScanLocation = new BlockLocator();
             ICollection<uint256> walletBlockLocator = WalletManager.GetWalletBlockLocator();
-
+            ChainedBlock closestChainedBlock = GetClosestChainedBlockToDateTimeOffset(timeToStartOn);
             
             // If there are block locations in the wallet
             if (walletBlockLocator != null && walletBlockLocator.Count > 0)
@@ -337,32 +359,10 @@ namespace HodlWallet2
                 ScanLocation = _Network.GetDefaultBlockLocator();
             }
 
-            if (timeToStartOn == null)
-            {
-                ChainedBlock lastReceivedBlock = _Chain.GetBlock(WalletManager.LastReceivedBlockHash() ?? (uint)_Chain.Tip.Height);
+            if (_Chain.Tip.Height < closestChainedBlock.Height)
+                _Chain.SetCustomTip(closestChainedBlock);
 
-                if (lastReceivedBlock != null)
-                {
-                    timeToStartOn = lastReceivedBlock.Header.BlockTime;
-                }
-                else
-                {
-                    if (WalletManager.GetWalletCreationTime() < _Chain.Tip.Header.BlockTime)
-                    {
-                        timeToStartOn = WalletManager.GetWalletCreationTime();
-                    }
-                    else
-                    {
-                        timeToStartOn = _Network.GetCheckpoints().ToArray()[(_Network.GetCheckpoints().Count - 1)].Header.BlockTime;
-                    }
-                }
-            }
-            else
-            {
-                timeToStartOn = _Network.GetGenesis().Header.BlockTime;
-            }
-
-            WalletSyncManager.Scan(ScanLocation, timeToStartOn.Value);
+            WalletSyncManager.Scan(ScanLocation, closestChainedBlock.Header.BlockTime);
 
             OnScanning?.Invoke(this, null);
         }
