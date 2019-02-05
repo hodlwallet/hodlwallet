@@ -16,10 +16,10 @@ namespace HodlWallet2.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        int amount = 8, confirm = 0;
+        int amountAround = 7, confirm = 0;
         string wordToGuess, exercise;
         string[] confirmWords = new string[8], place = { "first", "second", "third", "fourth", 
-        "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelveth" };
+        "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelveth" }; // Localize
 
         Wallet _Wallet;
 
@@ -200,9 +200,9 @@ namespace HodlWallet2.ViewModels
             {
                 int wordIndex = rng.Next(0, mnemonic.Length - 1);
                 wordToGuess = mnemonic[wordIndex];
-                Exercise = "Choose the " + place[wordIndex] + " word from your mnemonic:"; // Format and localize label. 
+                Exercise = "Choose the " + place[wordIndex] + " word from your mnemonic:"; // Format and localize label.
                 string language = "english"; //Implement MVVMCross
-                string[] guessWords = _Wallet.GenerateGuessWords(wordToGuess, language, amount);
+                string[] guessWords = _Wallet.GenerateGuessWords(wordToGuess, language, amountAround);
                 UpdateWords(guessWords);
             }
             else
