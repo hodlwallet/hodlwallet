@@ -18,13 +18,13 @@
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
-        <StackLayout Margin="10,70,10,10">
+        <StackLayout Margin="10,70,10,10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         
             <Label x:Name="Title" Style="{DynamicResource CustomLabel}" FontSize="Large" Margin="10, 0, 0, 0" />
             <Label x:Name="Header" Style="{DynamicResource CustomLabel}" Margin="10, 0, 10, 20"/>
             
             <ScrollView>
-                <Grid x:Name="EntryGrid" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{StaticResource LightGray}" Padding="10" Margin="10">
+                <Grid x:Name="EntryGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource LightGray}" Padding="10" Margin="10">
                     
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
