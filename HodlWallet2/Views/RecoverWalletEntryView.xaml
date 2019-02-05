@@ -119,8 +119,7 @@
                     
                     <Entry x:Name="Entry10" Text="{Binding WordTen, Mode=OneWayToSource}" 
                            Grid.Row="7" Grid.Column="1"
-                           Completed="Entry_Completed" ReturnType="Next" 
-                           Placeholder="Entry11" PlaceholderColor="Transparent"
+                           Completed="Entry_Completed" ReturnType="Next"
                            controls:Tags.NextEntryTag="Entry11" />
                     
                     <Label Text="10" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
