@@ -4,6 +4,11 @@ using System.ComponentModel;
 using System.Windows.Input;
 
 using Xamarin.Forms;
+using Serilog;
+
+using HodlWallet2.Locale;
+using HodlWallet2.Utils;
+using HodlWallet2.Views;
 
 namespace HodlWallet2.ViewModels
 {
@@ -11,21 +16,28 @@ namespace HodlWallet2.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        string wordOne, wordTwo, wordThree, wordFour, wordFive, wordSix, wordSeven, wordEight;
+        int amount = 8, confirm = 0;
+        string wordToGuess, exercise;
+        string[] confirmWords = new string[8], place = { "first", "second", "third", "fourth", 
+        "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelveth" };
+
+        Wallet _Wallet;
+
+        ILogger _Logger;
 
         public string WordOne
         {
             set
             {
-                if (wordOne != value)
+                if (confirmWords[0] != value)
                 {
-                    wordOne = value;
+                    confirmWords[0] = value;
                     OnPropertyChanged("WordOne");
                 }
             }
             get
             {
-                return wordOne;
+                return confirmWords[0];
             }
         }
 
@@ -33,15 +45,15 @@ namespace HodlWallet2.ViewModels
         {
             set
             {
-                if (wordTwo != value)
+                if (confirmWords[1] != value)
                 {
-                    wordTwo = value;
+                    confirmWords[1] = value;
                     OnPropertyChanged("WordTwo");
                 }
             }
             get
             {
-                return wordTwo;
+                return confirmWords[1];
             }
         }
 
@@ -49,15 +61,15 @@ namespace HodlWallet2.ViewModels
         {
             set
             {
-                if (wordThree != value)
+                if (confirmWords[2] != value)
                 {
-                    wordThree = value;
+                    confirmWords[2] = value;
                     OnPropertyChanged("WordThree");
                 }
             }
             get
             {
-                return wordThree;
+                return confirmWords[2];
             }
         }
 
@@ -65,15 +77,15 @@ namespace HodlWallet2.ViewModels
         {
             set
             {
-                if (wordFour != value)
+                if (confirmWords[3] != value)
                 {
-                    wordFour = value;
+                    confirmWords[3] = value;
                     OnPropertyChanged("WordFour");
                 }
             }
             get
             {
-                return wordFour;
+                return confirmWords[3];
             }
         }
 
@@ -81,15 +93,15 @@ namespace HodlWallet2.ViewModels
         {
             set
             {
-                if (wordFive != value)
+                if (confirmWords[4] != value)
                 {
-                    wordFive = value;
+                    confirmWords[4] = value;
                     OnPropertyChanged("WordFive");
                 }
             }
             get
             {
-                return wordFive;
+                return confirmWords[4];
             }
         }
 
@@ -97,15 +109,15 @@ namespace HodlWallet2.ViewModels
         {
             set
             {
-                if (wordSix != value)
+                if (confirmWords[5] != value)
                 {
-                    wordSix = value;
+                    confirmWords[5] = value;
                     OnPropertyChanged("WordSix");
                 }
             }
             get
             {
-                return wordSix;
+                return confirmWords[5];
             }
         }
 
@@ -113,15 +125,15 @@ namespace HodlWallet2.ViewModels
         {
             set
             {
-                if (wordSeven != value)
+                if (confirmWords[6] != value)
                 {
-                    wordSeven = value;
+                    confirmWords[6] = value;
                     OnPropertyChanged("WordSeven");
                 }
             }
             get
             {
-                return wordSeven;
+                return confirmWords[6];
             }
         }
 
@@ -129,15 +141,31 @@ namespace HodlWallet2.ViewModels
         {
             set
             {
-                if (wordEight != value)
+                if (confirmWords[7] != value)
                 {
-                    wordEight = value;
+                    confirmWords[7] = value;
                     OnPropertyChanged("WordEight");
                 }
             }
             get
             {
-                return wordEight;
+                return confirmWords[7];
+            }
+        }
+
+        public string Exercise
+        {
+            set
+            {
+                if (exercise != value)
+                {
+                    exercise = value;
+                    OnPropertyChanged("Exercise");
+                }
+            }
+            get
+            {
+                return exercise;
             }
         }
 
@@ -148,7 +176,51 @@ namespace HodlWallet2.ViewModels
 
         public BackupConfirmViewModel(string[] mnemonic)
         {
+            _Wallet = Wallet.Instance;
+            _Logger = _Wallet.Logger;
+            RefreshWords(mnemonic);
 
+            WordCommand = new Command<string>(
+                execute: (string arg) =>
+                {
+                    int input = Convert.ToInt32(arg);
+
+                    if (confirmWords[input] == wordToGuess)
+                        confirm++;
+
+                    RefreshWords(mnemonic);
+                });
+        }
+
+        public void RefreshWords(string[] mnemonic)
+        {
+            Random rng = new Random();
+
+            if (confirm < 2)
+            {
+                int wordIndex = rng.Next(0, mnemonic.Length - 1);
+                wordToGuess = mnemonic[wordIndex];
+                Exercise = "Choose the " + place[wordIndex] + " word from your mnemonic:"; // Format and localize label. 
+                string language = "english"; //Implement MVVMCross
+                string[] guessWords = _Wallet.GenerateGuessWords(wordToGuess, language, amount);
+                UpdateWords(guessWords);
+            }
+            else
+            {
+                Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
+            }
+        }
+
+        private void UpdateWords(string[] guessWords)
+        {
+            WordOne = guessWords[0];
+            WordTwo = guessWords[1];
+            WordThree = guessWords[2];
+            WordFour = guessWords[3];
+            WordFive = guessWords[4];
+            WordSix = guessWords[5];
+            WordSeven = guessWords[6];
+            WordEight = guessWords[7];
         }
 
         protected void OnPropertyChanged(string propertyName)
@@ -159,6 +231,8 @@ namespace HodlWallet2.ViewModels
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        public ICommand WordCommand { private set; get; }
     }
 }
 

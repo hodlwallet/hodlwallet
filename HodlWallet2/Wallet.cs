@@ -392,6 +392,11 @@ namespace HodlWallet2
             return HdOperations.IsWordInWordlist(word, wordList);
         }
 
+        public string[] GenerateGuessWords(string wordToGuess, string language = "english", int amountAround = 9)
+        {
+            return HdOperations.GenerateGuessWords(wordToGuess, language, amountAround);
+        }
+
         public HdAddress GetReceiveAddress()
         {
             return CurrentAccount.GetFirstUnusedReceivingAddress();
