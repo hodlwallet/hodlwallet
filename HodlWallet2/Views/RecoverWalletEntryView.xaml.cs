@@ -50,7 +50,7 @@ namespace HodlWallet2.Views
                 completed.TextColor = Color.Black;
             }
 
-            Entry NextEntry = this.FindByName(completed.Placeholder) as Entry;
+            Entry NextEntry = this.FindByName(Tags.GetNextEntryTag(completed)) as Entry;
             NextEntry?.Focus();
         }
 

@@ -4,16 +4,18 @@ using Xamarin.Forms;
 
 namespace HodlWallet2.Utils
 {
-    public class Tags : ContentPage
+    public class Tags 
     {
-        public Tags()
+        public static readonly BindableProperty NextEntryTagProperty = BindableProperty.CreateAttached("NextEntryTag", typeof(string), typeof(Tags), null);
+
+        public static string GetNextEntryTag(BindableObject view)
         {
-            Content = new StackLayout
-            {
-                Children = {
-                    new Label { Text = "Hello ContentPage" }
-                }
-            };
+            return (string)view.GetValue(NextEntryTagProperty);
+        }
+
+        public static void SetNextEntryTag(BindableObject view, string value)
+        {
+            view.SetValue(NextEntryTagProperty, value);
         }
     }
 }
