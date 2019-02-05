@@ -6,6 +6,7 @@ using Serilog;
 
 using HodlWallet2.Locale;
 using HodlWallet2.Utils;
+using HodlWallet2.ViewModels;
 
 namespace HodlWallet2.Views
 {
@@ -45,9 +46,15 @@ namespace HodlWallet2.Views
             }
             else
             {
-                Navigation.PushAsync(new BackupRecoveryConfirmView());
+                Navigation.PushAsync(new BackupRecoveryConfirmView(new BackupConfirmViewModel(Mnemonic)));
                 _Logger.Information("Backup recovery confirmation initiated.");
             }
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            Position--;
         }
     }
 }
