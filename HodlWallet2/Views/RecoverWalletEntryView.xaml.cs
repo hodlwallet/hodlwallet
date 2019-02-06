@@ -15,6 +15,7 @@ namespace HodlWallet2.Views
     {
         Wallet _Wallet;
         ILogger _Logger;
+        string mnemonic;
 
         public RecoverWalletEntryView()
         {
@@ -56,7 +57,19 @@ namespace HodlWallet2.Views
 
         private void Entry_Fully_Completed(object sender, EventArgs e)
         {
-            //TODO
+
+            for (int i = 1; i <= 12; i++)
+            {
+                string x_Name = "Entry" + i.ToString();
+                Entry currentEntry = this.FindByName(x_Name) as Entry;
+                if (_Wallet.IsWordInWordlist(currentEntry.Text) != true)
+                {
+                    _Logger.Information("User input not found in wordlist.");
+                    DisplayAlert(LocaleResources.Recover_alertTitle, LocaleResources.Recover_alertHeader, LocaleResources.Recover_alertButton);
+                    return;
+                }
+                mnemonic += i < 12 ? currentEntry.Text + " " : currentEntry.Text;
+            }
         }
     }
 }

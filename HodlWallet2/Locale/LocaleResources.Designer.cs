@@ -172,5 +172,23 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("Recover.entryHeader", resourceCulture);
             }
         }
+        
+        internal static string Recover_alertTitle {
+            get {
+                return ResourceManager.GetString("Recover.alertTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Recover_alertHeader {
+            get {
+                return ResourceManager.GetString("Recover.alertHeader", resourceCulture);
+            }
+        }
+        
+        internal static string Recover_alertButton {
+            get {
+                return ResourceManager.GetString("Recover.alertButton", resourceCulture);
+            }
+        }
     }
 }

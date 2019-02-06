@@ -117,4 +117,19 @@
         <value>Enter the backup recovery key for the wallet you want to recover.</value>
         <comment>label for recover wallet entry</comment>
     </data>
+    
+    <data name="Recover.alertTitle" xml:space="preserve">
+        <value>Invalid Mnemonic</value>
+        <comment>label for recover wallet entry alert title</comment>
+    </data>
+    
+    <data name="Recover.alertHeader" xml:space="preserve">
+        <value>One or more of the words you entered are either mispelled or invalid.</value>
+        <comment>label for recover wallet entry alert header</comment>
+    </data>
+    
+    <data name="Recover.alertButton" xml:space="preserve">
+        <value>Try Again</value>
+        <comment>label for recover wallet entry alert button</comment>
+    </data>
 </root>
