@@ -2,12 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.BackupView">
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
-            <Label  x:Name="Title"
-                    Style="{DynamicResource CustomLabel}"
-                    FlexLayout.AlignSelf="Center"
-                    FlexLayout.Grow="1"
-                    Margin="30" />
-            <BoxView FlexLayout.Grow="2" />
+            <BoxView FlexLayout.Grow="3" />
             <Label x:Name="Subheader"
                    FontFamily="{DynamicResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
@@ -15,7 +10,7 @@
                    FontSize="Medium"
                    FlexLayout.AlignSelf="Center"
                    FlexLayout.Grow="1" />
-            <BoxView FlexLayout.Grow="2" />
+            <BoxView FlexLayout.Grow="3" />
             <Button x:Name="Button"
                     Style="{DynamicResource CustomButton}"
                     BackgroundColor="{StaticResource DarkGray}"

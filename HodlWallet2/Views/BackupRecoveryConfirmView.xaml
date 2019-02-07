@@ -24,13 +24,6 @@
         
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
             
-            <Label x:Name="Title"
-                   Style="{DynamicResource CustomLabel}"
-                   HorizontalTextAlignment="Center"
-                   FlexLayout.AlignSelf="Center"
-                   FlexLayout.Grow="1"
-                   Margin="0, 30, 0, 0" />
-            
             <BoxView FlexLayout.Grow="1" />
             
             <Label x:Name="Header"

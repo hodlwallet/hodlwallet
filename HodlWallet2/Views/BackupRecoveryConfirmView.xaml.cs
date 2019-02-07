@@ -29,7 +29,7 @@ namespace HodlWallet2.Views
 
         private void SetLabels()
         {
-            Title.Text = LocaleResources.Backup_title;
+            Title = LocaleResources.Backup_title;
             Header.Text = LocaleResources.ConfirmBackup_header;
         }
 
