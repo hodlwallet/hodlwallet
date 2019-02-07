@@ -9,6 +9,7 @@
                 <Setter Property="Style" Value="{DynamicResource CustomEntry}" />
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="MaxLength" Value="8" />
+                <Setter Property="Keyboard" Value="Plain" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>

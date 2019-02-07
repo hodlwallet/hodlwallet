@@ -62,14 +62,26 @@ namespace HodlWallet2.Views
             {
                 string x_Name = "Entry" + i.ToString();
                 Entry currentEntry = this.FindByName(x_Name) as Entry;
-                if (_Wallet.IsWordInWordlist(currentEntry.Text) != true)
+
+                if (_Wallet.IsWordInWordlist(currentEntry.Text) == false)
                 {
                     _Logger.Information("User input not found in wordlist.");
                     DisplayAlert(LocaleResources.Recover_alertTitle, LocaleResources.Recover_alertHeader, LocaleResources.Recover_alertButton);
                     return;
                 }
+
                 mnemonic += i < 12 ? currentEntry.Text + " " : currentEntry.Text;
             }
+
+            if (_Wallet.IsVerifyChecksum(mnemonic, "english") == false)
+            {
+                DisplayAlert(LocaleResources.Recover_alertTitle, LocaleResources.Recover_alertHeader, LocaleResources.Recover_alertButton);
+                return;
+            }
+
+            // TODO: Create wallet
+            SecureStorageProvider.SetMnemonic(mnemonic);
+            Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Recover)));
         }
     }
 }
