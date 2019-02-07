@@ -98,6 +98,11 @@
         <comment>label for pin warning</comment>
     </data>
     
+    <data name="Pin.enter" xml:space="preserve">
+        <value>Enter Pin</value>
+        <comment>label for current wallet pin</comment>
+    </data>
+    
     <data name="Recover.title" xml:space="preserve">
         <value>Recover Wallet</value>
         <comment>label for recover wallet title</comment>

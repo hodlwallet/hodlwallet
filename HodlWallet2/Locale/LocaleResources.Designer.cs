@@ -149,6 +149,12 @@ namespace HodlWallet2.Locale {
             }
         }
         
+        internal static string Pin_enter {
+            get {
+                return ResourceManager.GetString("Pin.enter", resourceCulture);
+            }
+        }
+        
         internal static string Recover_title {
             get {
                 return ResourceManager.GetString("Recover.title", resourceCulture);
