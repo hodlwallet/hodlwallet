@@ -11,7 +11,7 @@ using HodlWallet2.Views;
 
 namespace HodlWallet2.ViewModels
 {
-    public enum ViewType { Setup, Re_enter, Update }
+    public enum ViewType { Setup, Re_enter, Recover, Re_enter_recover, Update, Update_setup, Re_enter_update }
 
     public class PinPadViewModel : INotifyPropertyChanged
     {
@@ -181,15 +181,19 @@ namespace HodlWallet2.ViewModels
             switch (viewType)
             {
                 case ViewType.Setup:
+                case ViewType.Update_setup:
                     Title = LocaleResources.Pin_setTitle;
                     Header = LocaleResources.Pin_header;
                     Warning = LocaleResources.Pin_warning;
                     break;
+
                 case ViewType.Re_enter:
+                case ViewType.Re_enter_recover:
                     Title = LocaleResources.Pin_redoTitle;
                     Header = LocaleResources.Pin_header;
                     Warning = "";
                     break;
+
                 default:
                     Title = LocaleResources.Pin_setTitle;
                     Header = LocaleResources.Pin_header;
@@ -260,27 +264,48 @@ namespace HodlWallet2.ViewModels
 
                         if (Pin.Count == 6)
                         {
-                            if (viewType == ViewType.Setup)
+                            if (viewType == ViewType.Setup || viewType == ViewType.Recover || viewType == ViewType.Update_setup)
                             {
                                 SecureStorageProvider.SetPassword(string.Join("", Pin.ToArray()));
                                 Pin.Clear();
-                                _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter)));
                                 PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
                                 RefreshCanExecutes();
+
+                                switch(viewType)
+                                {
+                                    case ViewType.Setup:
+                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter)));
+                                        break;
+                                    case ViewType.Recover:
+                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter_recover)));
+                                        break;
+                                    case ViewType.Update_setup:
+                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter_update)));
+                                        break;
+                                }
                             }
-                            else if (viewType == ViewType.Update || viewType == ViewType.Re_enter)
+                            else if (viewType == ViewType.Update || viewType == ViewType.Re_enter || 
+                                     viewType == ViewType.Re_enter_recover || viewType == ViewType.Re_enter_update)
                             {
                                 if (SecureStorageProvider.GetPassword() == string.Join("", Pin.ToArray()))
                                 {
                                     Pin.Clear();
                                     RefreshCanExecutes();
-                                    if (viewType == ViewType.Re_enter)
+
+                                    switch (viewType)
                                     {
-                                        Application.Current.MainPage = new CustomNavigationPage(new BackupView());
-                                    }
-                                    else
-                                    {
-                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Setup)));
+                                        case ViewType.Re_enter:
+                                            Application.Current.MainPage = new CustomNavigationPage(new BackupView());
+                                            break;
+                                        case ViewType.Re_enter_recover:
+                                            Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
+                                            break;
+                                        case ViewType.Re_enter_update:
+                                            _Navigation.PopToRootAsync();
+                                            break;
+                                        case ViewType.Update:
+                                            _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Update_setup)));
+                                            break;
                                     }
                                 }
                                 else
