@@ -397,6 +397,11 @@ namespace HodlWallet2
             return HdOperations.GenerateGuessWords(wordToGuess, language, amountAround);
         }
 
+        public bool IsVerifyChecksum(string mnemonic, string wordList = "english")
+        {
+            return HdOperations.IsValidChecksum(mnemonic, wordList);
+        }
+
         public HdAddress GetReceiveAddress()
         {
             return CurrentAccount.GetFirstUnusedReceivingAddress();
