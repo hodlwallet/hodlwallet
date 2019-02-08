@@ -91,6 +91,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -162,6 +163,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MvvmCross.Forms">
+      <Version>6.2.2</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
     <PackageReference Include="Serilog">
       <Version>2.7.1</Version>
@@ -178,6 +182,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\HodlWallet2.Core\HodlWallet2.Core.csproj">
+      <Project>{89c10fd5-180b-40fe-b7c0-b13a6e6933cc}</Project>
+      <Name>HodlWallet2.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HodlWallet2\HodlWallet2.csproj">
       <Project>{BB2AB7ED-FBE3-4F4D-80AD-1A9CB54EC734}</Project>
       <Name>HodlWallet2</Name>

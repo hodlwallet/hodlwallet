@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Liviano.Utilities", "Livian
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NBitcoin", "LivianoWallet\NBitcoin\NBitcoin\NBitcoin.csproj", "{F2A90465-945E-48FC-B0FC-0DA484111543}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HodlWallet2.Core", "HodlWallet2.Core\HodlWallet2.Core.csproj", "{89C10FD5-180B-40FE-B7C0-B13A6E6933CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
