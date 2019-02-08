@@ -1,4 +1,5 @@
 using Foundation;
+using MvvmCross.Forms.Platforms.Ios.Core;
 using UIKit;
 
 using Serilog;
@@ -10,7 +11,7 @@ namespace HodlWallet2.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : MvxFormsApplicationDelegate<MvxFormsIosSetup<Core.App, App>, Core.App, App>
     {
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -21,18 +22,25 @@ namespace HodlWallet2.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
-            global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
-
-            FormsControls.Touch.Main.Init();
-
+//            global::Xamarin.Forms.Forms.Init();
+              global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
+//
+              FormsControls.Touch.Main.Init();
+              
+              UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+              UINavigationBar.Appearance.ShadowImage = new UIImage();
+              UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
+              UINavigationBar.Appearance.TintColor = UIColor.White;
+              UINavigationBar.Appearance.BarTintColor = UIColor.Clear;
+              UINavigationBar.Appearance.Translucent = true;
+//
             Wallet.Instance.Logger = new LoggerConfiguration()
                 .WriteTo.NSLog()
                 .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
                 .CreateLogger();
 
-            LoadApplication(new App());
-            
+//            LoadApplication(new App());
+//            
             return base.FinishedLaunching(app, options);
         }
     }
