@@ -11,8 +11,9 @@ using Liviano.Managers;
 using HodlWallet2.Views;
 using HodlWallet2.ViewModels;
 using HodlWallet2.Utils;
+using Xamarin.Forms.Xaml;
 
-
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HodlWallet2
 {
     public partial class App : Application
@@ -47,7 +48,7 @@ namespace HodlWallet2
             //}
 
             // TODO This is temporal, please use the code above.
-            MainPage = new CustomNavigationPage(new OnboardView());
+            //MainPage = new CustomNavigationPage(new OnboardView());
 
             // Add event handlers
             _Wallet.OnStarted += (object sender, EventArgs args) =>
