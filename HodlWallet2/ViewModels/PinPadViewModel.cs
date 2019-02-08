@@ -121,14 +121,14 @@ namespace HodlWallet2.ViewModels
             }
         }
 
-        public string Title
+        public string PinTitle
         {
             set
             {
                 if (title != value)
                 {
                     title = value;
-                    OnPropertyChanged("Title");
+                    OnPropertyChanged("PinTitle");
                 }
             }
             get
@@ -182,20 +182,20 @@ namespace HodlWallet2.ViewModels
             {
                 case ViewType.Setup:
                 case ViewType.Update_setup:
-                    Title = LocaleResources.Pin_setTitle;
+                    PinTitle = LocaleResources.Pin_setTitle;
                     Header = LocaleResources.Pin_header;
                     Warning = LocaleResources.Pin_warning;
                     break;
 
                 case ViewType.Re_enter:
                 case ViewType.Re_enter_recover:
-                    Title = LocaleResources.Pin_redoTitle;
+                    PinTitle = LocaleResources.Pin_redoTitle;
                     Header = LocaleResources.Pin_header;
                     Warning = "";
                     break;
 
                 default:
-                    Title = LocaleResources.Pin_setTitle;
+                    PinTitle = LocaleResources.Pin_setTitle;
                     Header = LocaleResources.Pin_header;
                     Warning = LocaleResources.Pin_warning;
                     break;

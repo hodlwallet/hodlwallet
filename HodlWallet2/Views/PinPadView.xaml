@@ -19,7 +19,7 @@
     <!-- Make Top Grid Appear -->
     <StackLayout Margin="10,70,10,10">
         
-        <Label x:Name="Title" Style="{DynamicResource CustomLabel}" Text="{Binding Title}" FontSize="Large" />
+        <Label x:Name="PinTitle" Style="{DynamicResource CustomLabel}" Text="{Binding PinTitle}" FontSize="Large" />
         <Label x:Name="Header" Style="{DynamicResource CustomLabel}" Text="{Binding Header}" />
         
         <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
