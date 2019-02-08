@@ -12,10 +12,11 @@ namespace HodlWallet2.Views
     {
         public LoginViewModel ViewModel { get { return BindingContext as LoginViewModel; } }
 
-        public LoginView()
+        public LoginView(LoginViewModel viewModel)
         {
             InitializeComponent();
             SetLabel();
+            viewModel._Navigation = Navigation;
         }
 
         private void SetLabel()

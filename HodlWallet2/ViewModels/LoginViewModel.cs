@@ -177,6 +177,24 @@ namespace HodlWallet2.ViewModels
                                 PinSix = (Color)App.Current.Resources["SyncGradientStart"];
                                 break;
                         }
+
+                        RefreshCanExecutes();
+
+                        if (Pin.Count == 6)
+                        {
+                            if (SecureStorageProvider.HasPassword() == false)
+                            {
+                                // Throw exception
+                                return;
+                            }
+                            if (SecureStorageProvider.GetPassword() == string.Join("", Pin.ToArray()))
+                            {
+                                Pin.Clear();
+                                RefreshCanExecutes();
+                                // Continue to dashboard navigation
+                                return;
+                            }
+                        }
                     }
                 });
         }
@@ -197,6 +215,14 @@ namespace HodlWallet2.ViewModels
             if (handler != null)
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public class ClientBillingException : Exception
+        {
+            public ClientBillingException(string message)
+               : base(message)
+            {
             }
         }
     }
