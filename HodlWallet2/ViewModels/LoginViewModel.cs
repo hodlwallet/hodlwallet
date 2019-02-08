@@ -217,14 +217,6 @@ namespace HodlWallet2.ViewModels
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        public class ClientBillingException : Exception
-        {
-            public ClientBillingException(string message)
-               : base(message)
-            {
-            }
-        }
     }
 }
 
