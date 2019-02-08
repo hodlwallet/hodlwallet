@@ -1,6 +1,7 @@
 using System;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 using NBitcoin;
 
@@ -11,6 +12,7 @@ using HodlWallet2.Views;
 using HodlWallet2.ViewModels;
 using HodlWallet2.Utils;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HodlWallet2
 {
     public partial class App : Application
