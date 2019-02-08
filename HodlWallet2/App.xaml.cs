@@ -13,11 +13,7 @@ using HodlWallet2.Views;
 using HodlWallet2.ViewModels;
 using HodlWallet2.Utils;
 
-<<<<<<< HEAD
-
-=======
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
->>>>>>> 092cc11... Add Xaml Assembly Compilation
 namespace HodlWallet2
 {
     public partial class App : Application
