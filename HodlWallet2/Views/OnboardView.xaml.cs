@@ -1,13 +1,17 @@
 using System;
+using HodlWallet2.Core.ViewModels;
 using Xamarin.Forms;
 
 using Serilog;
 
 using HodlWallet2.ViewModels;
+using MvvmCross.Forms.Presenters.Attributes;
+using MvvmCross.Forms.Views;
 
 namespace HodlWallet2.Views
 {
-    public partial class OnboardView : ContentPage
+    [MvxContentPagePresentation(WrapInNavigationPage = true)]
+    public partial class OnboardView : MvxContentPage<OnboardViewModel>
     {
         Wallet _Wallet;
         ILogger _Logger;

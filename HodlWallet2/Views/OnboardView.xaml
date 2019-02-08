@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-            x:Class="HodlWallet2.Views.OnboardView"
-            BackgroundColor="{StaticResource DarkGray}">
+<views:MvxContentPage
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    x:Class="HodlWallet2.Views.OnboardView"
+    x:TypeArguments="viewModels:OnboardViewModel"
+    BackgroundColor="{StaticResource DarkGray}"
+    NavigationPage.TitleIcon="">
 
     <FlexLayout Direction="Column" AlignItems="Center">
         <BoxView FlexLayout.Grow="1" />
@@ -28,4 +34,4 @@
                     FlexLayout.Grow="1" />
         </FlexLayout>
     </FlexLayout>
-</ContentPage>
+</views:MvxContentPage>
