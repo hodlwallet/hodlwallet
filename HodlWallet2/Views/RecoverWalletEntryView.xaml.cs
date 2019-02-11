@@ -40,15 +40,18 @@ namespace HodlWallet2.Views
         private void Entry_Completed(object sender, EventArgs e)
         {
             Entry completed = sender as Entry;
-            string word = completed.Text.ToLower();
+            if (completed.Text != null)
+            {
+                string word = completed.Text.ToLower();
 
-            if (_Wallet.IsWordInWordlist(word, "english") == false)
-            {
-                completed.TextColor = Color.Red;
-            }
-            else
-            {
-                completed.TextColor = Color.Black;
+                if (_Wallet.IsWordInWordlist(word, "english") == false)
+                {
+                    completed.TextColor = Color.Red;
+                }
+                else
+                {
+                    completed.TextColor = Color.Black;
+                }
             }
 
             Entry NextEntry = this.FindByName(Tags.GetNextEntryTag(completed)) as Entry;
