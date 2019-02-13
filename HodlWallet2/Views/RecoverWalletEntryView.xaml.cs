@@ -54,7 +54,7 @@ namespace HodlWallet2.Views
                 }
             }
 
-            Entry NextEntry = this.FindByName(Tags.GetNextEntryTag(completed)) as Entry;
+            Entry NextEntry = this.FindByName(Tags.GetTag(completed)) as Entry;
             NextEntry?.Focus();
         }
 

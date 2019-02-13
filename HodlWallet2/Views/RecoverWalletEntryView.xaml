@@ -49,7 +49,7 @@
                     <Entry x:Name="Entry1" Text="{Binding WordOne, Mode=OneWayToSource}" 
                            Grid.Row="1" Grid.Column="1" 
                            Completed="Entry_Completed" ReturnType="Next"
-                           controls:Tags.NextEntryTag="Entry2" />
+                           controls:Tags.Tag="Entry2" />
                     
                     <Label Text="1" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
                            FontSize="Micro" Grid.Row="2" Grid.Column="1"/>
@@ -57,7 +57,7 @@
                     <Entry x:Name="Entry2" Text="{Binding WordTwo, Mode=OneWayToSource}" 
                            Grid.Row="1" Grid.Column="2" 
                            Completed="Entry_Completed" ReturnType="Next"
-                           controls:Tags.NextEntryTag="Entry3" />
+                           controls:Tags.Tag="Entry3" />
                     
                     <Label Text="2" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
                            FontSize="Micro" Grid.Row="2" Grid.Column="2"/>
@@ -65,7 +65,7 @@
                     <Entry x:Name="Entry3" Text="{Binding WordThree, Mode=OneWayToSource}" 
                            Grid.Row="1" Grid.Column="3"
                            Completed="Entry_Completed" ReturnType="Next"
-                           controls:Tags.NextEntryTag="Entry4" />
+                           controls:Tags.Tag="Entry4" />
                     
                     <Label Text="3" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
                            FontSize="Micro" Grid.Row="2" Grid.Column="3"/>
@@ -73,7 +73,7 @@
                     <Entry x:Name="Entry4" Text="{Binding WordFour, Mode=OneWayToSource}" 
                            Grid.Row="3" Grid.Column="1" 
                            Completed="Entry_Completed" ReturnType="Next"
-                           controls:Tags.NextEntryTag="Entry5" />
+                           controls:Tags.Tag="Entry5" />
                     
                     <Label Text="4" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
                            FontSize="Micro" Grid.Row="4" Grid.Column="1"/>
@@ -81,7 +81,7 @@
                     <Entry x:Name="Entry5" Text="{Binding WordFive, Mode=OneWayToSource}" 
                            Grid.Row="3" Grid.Column="2"
                            Completed="Entry_Completed" ReturnType="Next"
-                           controls:Tags.NextEntryTag="Entry6" />
+                           controls:Tags.Tag="Entry6" />
                     
                     <Label Text="5" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
                            FontSize="Micro" Grid.Row="4" Grid.Column="2"/>
@@ -89,7 +89,7 @@
                     <Entry x:Name="Entry6" Text="{Binding WordSix, Mode=OneWayToSource}"
                            Grid.Row="3" Grid.Column="3"
                            Completed="Entry_Completed" ReturnType="Next"
-                           controls:Tags.NextEntryTag="Entry7" />
+                           controls:Tags.Tag="Entry7" />
                     
                     <Label Text="6" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
                            FontSize="Micro" Grid.Row="4" Grid.Column="3"/>
@@ -97,7 +97,7 @@
                     <Entry x:Name="Entry7" Text="{Binding WordSeven, Mode=OneWayToSource}" 
                            Grid.Row="5" Grid.Column="1"
                            Completed="Entry_Completed" ReturnType="Next"
-                           controls:Tags.NextEntryTag="Entry8" />
+                           controls:Tags.Tag="Entry8" />
                     
                     <Label Text="7" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
                            FontSize="Micro" Grid.Row="6" Grid.Column="1"/>
@@ -105,7 +105,7 @@
                     <Entry x:Name="Entry8" Text="{Binding WordEight, Mode=OneWayToSource}"
                            Grid.Row="5" Grid.Column="2"
                            Completed="Entry_Completed" ReturnType="Next"
-                           controls:Tags.NextEntryTag="Entry9" />
+                           controls:Tags.Tag="Entry9" />
                     
                     <Label Text="8" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
                            FontSize="Micro" Grid.Row="6" Grid.Column="2"/>
@@ -113,7 +113,7 @@
                     <Entry x:Name="Entry9" Text="{Binding WordNine, Mode=OneWayToSource}" 
                            Grid.Row="5" Grid.Column="3" 
                            Completed="Entry_Completed" ReturnType="Next"
-                           controls:Tags.NextEntryTag="Entry10" />
+                           controls:Tags.Tag="Entry10" />
                     
                     <Label Text="9" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
                            FontSize="Micro" Grid.Row="6" Grid.Column="3"/>
@@ -121,7 +121,7 @@
                     <Entry x:Name="Entry10" Text="{Binding WordTen, Mode=OneWayToSource}" 
                            Grid.Row="7" Grid.Column="1"
                            Completed="Entry_Completed" ReturnType="Next"
-                           controls:Tags.NextEntryTag="Entry11" />
+                           controls:Tags.Tag="Entry11" />
                     
                     <Label Text="10" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
                            FontSize="Micro" Grid.Row="8" Grid.Column="1"/>
@@ -129,7 +129,7 @@
                     <Entry x:Name="Entry11" Text="{Binding WordEleven, Mode=OneWayToSource}" 
                            Grid.Row="7" Grid.Column="2" 
                            Completed="Entry_Completed" ReturnType="Next"
-                           controls:Tags.NextEntryTag="Entry12" />
+                           controls:Tags.Tag="Entry12" />
                     
                     <Label Text="11" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
                            FontSize="Micro" Grid.Row="8" Grid.Column="2"/>

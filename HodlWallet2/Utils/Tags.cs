@@ -6,16 +6,16 @@ namespace HodlWallet2.Utils
 {
     public class Tags 
     {
-        public static readonly BindableProperty NextEntryTagProperty = BindableProperty.CreateAttached("NextEntryTag", typeof(string), typeof(Tags), null);
+        public static readonly BindableProperty TagProperty = BindableProperty.CreateAttached("NextEntryTag", typeof(string), typeof(Tags), null);
 
-        public static string GetNextEntryTag(BindableObject view)
+        public static string GetTag(BindableObject view)
         {
-            return (string)view.GetValue(NextEntryTagProperty);
+            return (string)view.GetValue(TagProperty);
         }
 
         public static void SetNextEntryTag(BindableObject view, string value)
         {
-            view.SetValue(NextEntryTagProperty, value);
+            view.SetValue(TagProperty, value);
         }
     }
 }
