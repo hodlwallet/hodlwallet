@@ -2,30 +2,34 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.BackupRecoveryWordView">
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
-            <Label  x:Name="Title"
-                    Style="{DynamicResource CustomLabel}"
-                    FlexLayout.AlignSelf="Center"
-                    FlexLayout.Grow="1"
-                    Margin="0, 30, 0, 0" />
+            
+            <BoxView FlexLayout.Grow="2" />
+            
             <Label x:Name="Header"
                    FontFamily="{StaticResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
                    FlexLayout.AlignSelf="Center"
                    FlexLayout.Grow="1" />
-            <BoxView FlexLayout.Grow="2" />
-            <Button x:Name="Word"
-                    Style="{DynamicResource CustomButton}"
-                    BackgroundColor="{StaticResource DarkGray}"
-                    FontSize="Medium"
-                    Margin="40"
-                    FlexLayout.Grow="1" />
+            
+            <BoxView FlexLayout.Grow="3" />
+            
+            <ContentView BackgroundColor="{StaticResource DarkGray}" Margin="40" FlexLayout.Grow="2">
+                <Label x:Name="Word"
+                         Style="{DynamicResource CustomLabel}"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand"
+                         FontSize="Medium" />
+            </ContentView>
+            
             <Label x:Name="Index"
                    FontFamily="{StaticResource ElectrolizeFont}"
                    TextColor="Gray"
                    FontSize="Micro"
                    FlexLayout.AlignSelf="Center" />
+            
             <BoxView FlexLayout.Grow="3" />
+            
             <FlexLayout Direction="Row" FlexLayout.Grow="2">
                 <Button x:Name="Previous"
                         Style="{DynamicResource CustomButton}"
@@ -35,7 +39,9 @@
                         FlexLayout.AlignSelf="Stretch"
                         Clicked="Previous_Clicked"
                         FlexLayout.Grow="2" />
+                
                 <BoxView x:Name="Divider" BackgroundColor="Transparent" WidthRequest="2" />
+               
                 <Button x:Name="Next"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{StaticResource DarkGray}"
@@ -45,6 +51,7 @@
                         Clicked="BackupWord_Clicked"
                         FlexLayout.Grow="3" />
             </FlexLayout>
+            
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
