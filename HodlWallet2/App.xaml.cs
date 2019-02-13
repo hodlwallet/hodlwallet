@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 using NBitcoin;
 
 using Liviano.Models;
+using Liviano;
 using Liviano.Managers;
 
 using HodlWallet2.Views;
@@ -35,8 +36,6 @@ namespace HodlWallet2
 
             InitializeComponent();
 
-            // Wallet.InitializeWallet();
-
             //If the application secure storage has the mnemonic code,
             // then the app is installed.And we just need to show the dashboard.
             //if (SecureStorageProvider.HasMnemonic())
@@ -57,6 +56,8 @@ namespace HodlWallet2
                 _Wallet.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnWalletPositionUpdate;
                 _Wallet.WalletSyncManager.OnWalletSyncedToTipOfChain += WalletSyncManager_OnWalletSyncedToTipOfChain;
             };
+
+            Wallet.InitializeWallet();
         }
 
         protected override void OnStart()

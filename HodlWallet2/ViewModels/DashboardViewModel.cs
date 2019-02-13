@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Liviano.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System;
 
 namespace HodlWallet2.ViewModels
 {
@@ -86,6 +87,11 @@ namespace HodlWallet2.ViewModels
                 _Logger.Information(JsonConvert.SerializeObject(transactionData, Formatting.Indented));
             }
             _Logger.Information(new string('*', 20));
+        }
+
+        public void ReScan()
+        {
+            _Wallet.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
         }
     }
 }

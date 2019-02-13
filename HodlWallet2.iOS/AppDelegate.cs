@@ -1,7 +1,8 @@
-﻿using Foundation;
+using Foundation;
 using UIKit;
 
 using Serilog;
+using Serilog.Core;
 
 namespace HodlWallet2.iOS
 {
@@ -25,10 +26,13 @@ namespace HodlWallet2.iOS
 
             FormsControls.Touch.Main.Init();
 
-            Wallet.Instance.Logger = new LoggerConfiguration().WriteTo.NSLog().CreateLogger();
+            Wallet.Instance.Logger = new LoggerConfiguration()
+                .WriteTo.NSLog()
+                .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
+                .CreateLogger();
 
             LoadApplication(new App());
-
+            
             return base.FinishedLaunching(app, options);
         }
     }

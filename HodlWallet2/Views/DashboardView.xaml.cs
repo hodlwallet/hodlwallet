@@ -47,6 +47,8 @@ namespace HodlWallet2.Views
         public void OnMenuTapped(object sender, EventArgs e)
         {
             _Transactions.ItemsSource = ViewModel.Transactions;
+
+            _Wallet.ReScan(new DateTimeOffset(new DateTime(2018, 11, 8)));
         }
 
         public void SetTempLabels()
