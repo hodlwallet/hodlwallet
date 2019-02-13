@@ -39,7 +39,7 @@ namespace HodlWallet2.Views
             Word.Text = Mnemonic[Position - 1];
             Next.Text = LocaleResources.Seed_next;
             Previous.Text = LocaleResources.Backup_previous;
-            Previous.IsVisible = Position > 1 ? true : false;
+            Previous.IsVisible = Divider.IsVisible = Position > 1 ? true : false;
         }
 
         private void BackupWord_Clicked(object sender, EventArgs e)

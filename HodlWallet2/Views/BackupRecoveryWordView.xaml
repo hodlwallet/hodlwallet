@@ -31,7 +31,7 @@
                         FlexLayout.AlignSelf="Stretch"
                         Clicked="Previous_Clicked"
                         FlexLayout.Grow="2" />
-                <BoxView BackgroundColor="Transparent" WidthRequest="2" />
+                <BoxView x:Name="Divider" BackgroundColor="Transparent" WidthRequest="2" />
                 <Button x:Name="Next"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{StaticResource DarkGray}"
