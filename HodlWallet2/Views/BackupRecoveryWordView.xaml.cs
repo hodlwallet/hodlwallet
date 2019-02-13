@@ -21,9 +21,13 @@ namespace HodlWallet2.Views
         {
             _Wallet = Wallet.Instance;
             _Logger = _Wallet.Logger;
+
             InitializeComponent();
+
             Position = position;
             Mnemonic = mnemonic;
+
+            NavigationPage.SetHasBackButton(this, false);
             SetLabels();
         }
 
@@ -34,6 +38,8 @@ namespace HodlWallet2.Views
             Index.Text = Position + " of 12";
             Word.Text = Mnemonic[Position - 1];
             Next.Text = LocaleResources.Seed_next;
+            Previous.Text = LocaleResources.Backup_previous;
+            Previous.IsVisible = Position > 1 ? true : false;
         }
 
         private void BackupWord_Clicked(object sender, EventArgs e)
@@ -49,6 +55,11 @@ namespace HodlWallet2.Views
                 Navigation.PushAsync(new BackupRecoveryConfirmView(new BackupConfirmViewModel(Mnemonic)));
                 _Logger.Information("Backup recovery confirmation initiated.");
             }
+        }
+
+        private void Previous_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
 
         protected override void OnDisappearing()

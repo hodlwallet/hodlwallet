@@ -22,14 +22,25 @@
                    FontSize="Micro"
                    FlexLayout.AlignSelf="Center" />
             <BoxView FlexLayout.Grow="3" />
-            <Button x:Name="Next"
-                    Style="{DynamicResource CustomButton}"
-                    BackgroundColor="{StaticResource DarkGray}"
-                    CornerRadius="0"
-                    FontSize="Large"
-                    FlexLayout.AlignSelf="Stretch"
-                    Clicked="BackupWord_Clicked"
-                    FlexLayout.Grow="2" />
+            <FlexLayout Direction="Row" FlexLayout.Grow="2">
+                <Button x:Name="Previous"
+                        Style="{DynamicResource CustomButton}"
+                        BackgroundColor="{StaticResource DarkGray}"
+                        CornerRadius="0"
+                        FontSize="Large"
+                        FlexLayout.AlignSelf="Stretch"
+                        Clicked="Previous_Clicked"
+                        FlexLayout.Grow="2" />
+                <BoxView BackgroundColor="Transparent" WidthRequest="2" />
+                <Button x:Name="Next"
+                        Style="{DynamicResource CustomButton}"
+                        BackgroundColor="{StaticResource DarkGray}"
+                        CornerRadius="0"
+                        FontSize="Large"
+                        FlexLayout.AlignSelf="Stretch"
+                        Clicked="BackupWord_Clicked"
+                        FlexLayout.Grow="3" />
+            </FlexLayout>
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
