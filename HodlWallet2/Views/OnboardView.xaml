@@ -2,8 +2,10 @@
 <views:MvxContentPage
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:utils="clr-namespace:HodlWallet2.Utils;assembly=HodlWallet2"
     x:Class="HodlWallet2.Views.OnboardView"
     x:TypeArguments="viewModels:OnboardViewModel"
     BackgroundColor="{StaticResource DarkGray}"
@@ -22,7 +24,7 @@
                     BackgroundColor="{StaticResource GrayBackground}"
                     Text="CREATE NEW WALLET"
                     FontSize="Medium"
-                    Clicked="CreateButton_Clicked"
+                    mvx:Bi.nd="Command NavigateToViewCommand, CommandParameter='Create'"
                     FlexLayout.Grow="1" />
             <BoxView HeightRequest="2" BackgroundColor="Transparent" />
             <Button x:Name="RecoverButton"
@@ -30,7 +32,8 @@
                     BackgroundColor="{StaticResource GrayBackground}"
                     Text="RECOVER WALLET"
                     FontSize="Medium"
-                    Clicked="RecoverButton_Clicked"
+                    utils:Tags.Tag="Recover"
+                    mvx:Bi.nd="Command NavigateToViewCommand, CommandParameter='Recover'"
                     FlexLayout.Grow="1" />
         </FlexLayout>
     </FlexLayout>
