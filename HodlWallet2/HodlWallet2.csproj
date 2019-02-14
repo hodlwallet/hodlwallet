@@ -41,6 +41,7 @@
     <None Remove="Assets\menu_tab.svg" />
     <None Remove="Assets\recover_wallet_illustration.svg" />
     <None Remove="Assets\paper_key.svg" />
+    <None Remove="Assets\send_tab.svg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo_front.png" />
@@ -50,9 +51,6 @@
     <EmbeddedResource Remove="Resources.resx" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\send_tab.svg">
-      <LogicalName>Assets.send_tab.svg</LogicalName>
-    </EmbeddedResource>
     <EmbeddedResource Include="Assets\search.svg">
       <LogicalName>Assets.search.svg</LogicalName>
     </EmbeddedResource>
@@ -67,6 +65,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\paper_key.svg">
       <LogicalName>Assets.paper_key.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\send_tab.svg">
+      <LogicalName>Assets.send_tab.svg</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
