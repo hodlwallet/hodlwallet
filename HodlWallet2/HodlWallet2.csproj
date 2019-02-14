@@ -39,6 +39,7 @@
     <None Remove="Assets\search.svg" />
     <None Remove="Assets\receive_tab.svg" />
     <None Remove="Assets\menu_tab.svg" />
+    <None Remove="Assets\recover_wallet_illustration.svg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo_front.png" />
@@ -59,6 +60,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\menu_tab.svg">
       <LogicalName>Assets.menu_tab.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\recover_wallet_illustration.svg">
+      <LogicalName>Assets.recover_wallet_illustration.svg</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -105,10 +109,5 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Assets\recover_wallet_illustration.svg">
-      <LogicalName>Assets.recover_wallet_illustration.svg</LogicalName>
-    </None>
   </ItemGroup>
 </Project>
