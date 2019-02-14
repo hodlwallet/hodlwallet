@@ -40,6 +40,7 @@
     <None Remove="Assets\receive_tab.svg" />
     <None Remove="Assets\menu_tab.svg" />
     <None Remove="Assets\recover_wallet_illustration.svg" />
+    <None Remove="Assets\paper_key.svg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo_front.png" />
@@ -63,6 +64,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\recover_wallet_illustration.svg">
       <LogicalName>Assets.recover_wallet_illustration.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\paper_key.svg">
+      <LogicalName>Assets.paper_key.svg</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
