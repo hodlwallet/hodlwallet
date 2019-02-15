@@ -17,6 +17,7 @@ namespace HodlWallet2.Views
             InitializeComponent();
             SetLabel();
             viewModel._Navigation = Navigation;
+            BindingContext = viewModel;
         }
 
         private void SetLabel()
