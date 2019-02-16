@@ -19,16 +19,16 @@
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Padding="10">
                 <svg:Icon ResourceId="Assets.receive_tab.svg"
                       HorizontalOptions="Start">
-                    <ContentView.GestureRecognizers>
+                    <svg:Icon.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnReceiveTapped"/>
-                    </ContentView.GestureRecognizers>
+                    </svg:Icon.GestureRecognizers>
                 </svg:Icon>
             
                 <svg:Icon ResourceId="Assets.send_tab.svg"
                       HorizontalOptions="End">
-                    <ContentView.GestureRecognizers>
+                    <svg:Icon.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnSendTapped"/>
-                    </ContentView.GestureRecognizers>
+                    </svg:Icon.GestureRecognizers>
                 </svg:Icon>
             </FlexLayout>
             
