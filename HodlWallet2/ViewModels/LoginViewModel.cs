@@ -189,6 +189,7 @@ namespace HodlWallet2.ViewModels
                             if (SecureStorageProvider.HasPassword() == false)
                             {
                                 // TODO: Throw exception
+                                Pin.Clear();
                                 return;
                             }
                             if (SecureStorageProvider.GetPassword() == string.Join("", Pin.ToArray()))
