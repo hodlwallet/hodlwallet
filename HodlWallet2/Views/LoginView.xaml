@@ -18,10 +18,18 @@
             
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Padding="10">
                 <svg:Icon ResourceId="Assets.receive_tab.svg"
-                      HorizontalOptions="Start" />
+                      HorizontalOptions="Start">
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnReceiveTapped"/>
+                    </ContentView.GestureRecognizers>
+                </svg:Icon>
             
                 <svg:Icon ResourceId="Assets.send_tab.svg"
-                      HorizontalOptions="End" />
+                      HorizontalOptions="End">
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSendTapped"/>
+                    </ContentView.GestureRecognizers>
+                </svg:Icon>
             </FlexLayout>
             
             <Image Source="logo_front.png"
@@ -31,8 +39,7 @@
             
             <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5" />
                 </Grid.RowDefinitions>
                 
                 <Grid.ColumnDefinitions>
@@ -57,11 +64,6 @@
                 <BoxView Color="{Binding PinSix}"
                          Grid.Row="1"
                          Grid.Column="6" />
-                
-                <BoxView BackgroundColor="Transparent"
-                         Grid.Row="2"
-                         Grid.Column="1"
-                         Grid.ColumnSpan="6" />
             </Grid>
                         
             <Grid x:Name="PinGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

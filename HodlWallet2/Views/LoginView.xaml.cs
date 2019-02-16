@@ -24,5 +24,15 @@ namespace HodlWallet2.Views
         {
             Header.Text = LocaleResources.Pin_enter;
         }
+
+        public async void OnSendTapped(object sender, EventArgs e)
+        {
+            // TODO
+        }
+
+        public async void OnReceiveTapped(object sender, EventArgs e)
+        {
+            // TODO
+        }
     }
 }
