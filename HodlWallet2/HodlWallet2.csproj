@@ -14,17 +14,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581" />
+    <PackageReference Include="Xamarin.Forms" Version="3.5.0.129452" />
     <PackageReference Include="FormsPinView" Version="2.0.0" />
-    <PackageReference Include="XForms.Plugin.AnimationNavigationPage" Version="1.0.5" />
-    <PackageReference Include="SkiaSharp" Version="1.60.3" />
+    <PackageReference Include="XForms.Plugin.AnimationNavigationPage" Version="1.0.6" />
+    <PackageReference Include="SkiaSharp" Version="1.68.0" />
     <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
     <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.3" />
-    <PackageReference Include="Serilog" Version="2.7.1" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.0.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
+    <PackageReference Include="Serilog" Version="2.8.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
     <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.4.859" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
@@ -104,5 +105,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Assets\recover_wallet_illustration.svg">
+      <LogicalName>Assets.recover_wallet_illustration.svg</LogicalName>
+    </None>
   </ItemGroup>
 </Project>

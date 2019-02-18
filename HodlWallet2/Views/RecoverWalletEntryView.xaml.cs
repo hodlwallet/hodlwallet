@@ -15,6 +15,7 @@ namespace HodlWallet2.Views
     {
         Wallet _Wallet;
         ILogger _Logger;
+        string mnemonic;
 
         public RecoverWalletEntryView()
         {
@@ -32,31 +33,58 @@ namespace HodlWallet2.Views
 
         private void SetLabels()
         {
-            Title.Text = LocaleResources.Recover_title;
+            RecoverTitle.Text = LocaleResources.Recover_title;
             Header.Text = LocaleResources.Recover_entryHeader;
         }
 
         private void Entry_Completed(object sender, EventArgs e)
         {
             Entry completed = sender as Entry;
-            string word = completed.Text.ToLower();
-
-            if (_Wallet.IsWordInWordlist(word, "english") == false)
+            if (completed.Text != null)
             {
-                completed.TextColor = Color.Red;
-            }
-            else
-            {
-                completed.TextColor = Color.Black;
+                string word = completed.Text.ToLower();
+
+                if (_Wallet.IsWordInWordlist(word, "english") == false)
+                {
+                    completed.TextColor = Color.Red;
+                }
+                else
+                {
+                    completed.TextColor = Color.Black;
+                }
             }
 
-            Entry NextEntry = this.FindByName(completed.Placeholder) as Entry;
+            Entry NextEntry = this.FindByName(Tags.GetTag(completed)) as Entry;
             NextEntry?.Focus();
         }
 
         private void Entry_Fully_Completed(object sender, EventArgs e)
         {
-            //TODO
+
+            for (int i = 1; i <= 12; i++)
+            {
+                string x_Name = "Entry" + i.ToString();
+                Entry currentEntry = this.FindByName(x_Name) as Entry;
+
+                if (_Wallet.IsWordInWordlist(currentEntry.Text) == false)
+                {
+                    _Logger.Information("User input not found in wordlist.");
+                    DisplayAlert(LocaleResources.Recover_alertTitle, LocaleResources.Recover_alertHeader, LocaleResources.Recover_alertButton);
+                    return;
+                }
+
+                mnemonic += i < 12 ? currentEntry.Text + " " : currentEntry.Text;
+            }
+
+            if (_Wallet.IsVerifyChecksum(mnemonic, "english") == false)
+            {
+                DisplayAlert(LocaleResources.Recover_alertTitle, LocaleResources.Recover_alertHeader, LocaleResources.Recover_alertButton);
+                return;
+            }
+
+            // TODO: Create wallet
+            SecureStorageProvider.SetMnemonic(mnemonic);
+            Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Recover)));
         }
     }
 }

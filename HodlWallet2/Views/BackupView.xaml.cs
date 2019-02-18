@@ -30,13 +30,14 @@ namespace HodlWallet2.Views
             {
                 mnemonic = SecureStorageProvider.GetMnemonic().Split(' ');
             }
+
             InitializeComponent();
             SetLabels();
         }
 
         private void SetLabels()
         {
-            Title.Text = LocaleResources.Backup_title;
+            Title = LocaleResources.Backup_title;
             Subheader.Text = LocaleResources.Backup_subheader;
             Button.Text = LocaleResources.Backup_button;
         }

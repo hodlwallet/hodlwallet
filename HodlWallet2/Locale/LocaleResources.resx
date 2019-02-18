@@ -103,6 +103,11 @@
         <comment>label for pin warning</comment>
     </data>
     
+    <data name="Pin.enter" xml:space="preserve">
+        <value>Enter Pin</value>
+        <comment>label for current wallet pin</comment>
+    </data>
+    
     <data name="Recover.title" xml:space="preserve">
         <value>Recover Wallet</value>
         <comment>label for recover wallet title</comment>
@@ -121,5 +126,20 @@
     <data name="Recover.entryHeader" xml:space="preserve">
         <value>Enter the backup recovery key for the wallet you want to recover.</value>
         <comment>label for recover wallet entry</comment>
+    </data>
+    
+    <data name="Recover.alertTitle" xml:space="preserve">
+        <value>Invalid Mnemonic</value>
+        <comment>label for recover wallet entry alert title</comment>
+    </data>
+    
+    <data name="Recover.alertHeader" xml:space="preserve">
+        <value>One or more of the words you entered are either mispelled or invalid.</value>
+        <comment>label for recover wallet entry alert header</comment>
+    </data>
+    
+    <data name="Recover.alertButton" xml:space="preserve">
+        <value>Try Again</value>
+        <comment>label for recover wallet entry alert button</comment>
     </data>
 </root>

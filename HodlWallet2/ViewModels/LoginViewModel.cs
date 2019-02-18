@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -11,17 +11,13 @@ using HodlWallet2.Views;
 
 namespace HodlWallet2.ViewModels
 {
-    public enum ViewType { Setup, Re_enter, Recover, Re_enter_recover, Update, Update_setup, Re_enter_update }
-
-    public class PinPadViewModel : INotifyPropertyChanged
+    public class LoginViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         List<int> Pin = new List<int>();
 
         Color pinOne, pinTwo, pinThree, pinFour, pinFive, pinSix;
-
-        string title, header, warning;
 
         public INavigation _Navigation;
 
@@ -121,86 +117,8 @@ namespace HodlWallet2.ViewModels
             }
         }
 
-        public string PinTitle
+        public LoginViewModel()
         {
-            set
-            {
-                if (title != value)
-                {
-                    title = value;
-                    OnPropertyChanged("PinTitle");
-                }
-            }
-            get
-            {
-                return title;
-            }
-        }
-
-        public string Header
-        {
-            set
-            {
-                if (header != value)
-                {
-                    header = value;
-                    OnPropertyChanged("Header");
-                }
-            }
-            get
-            {
-                return header;
-            }
-        }
-
-        public string Warning
-        {
-            set
-            {
-                if (warning != value)
-                {
-                    warning = value;
-                    OnPropertyChanged("Warning");
-                }
-            }
-            get
-            {
-                return warning;
-            }
-        }
-
-        public PinPadViewModel()
-        {
-
-        }
-
-        public PinPadViewModel(ViewType viewType)
-        {
-            PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
-
-            switch (viewType)
-            {
-                case ViewType.Setup:
-                case ViewType.Update_setup:
-                    PinTitle = LocaleResources.Pin_setTitle;
-                    Header = LocaleResources.Pin_header;
-                    Warning = LocaleResources.Pin_warning;
-                    break;
-
-                case ViewType.Re_enter:
-                case ViewType.Re_enter_recover:
-                    PinTitle = LocaleResources.Pin_redoTitle;
-                    Header = LocaleResources.Pin_header;
-                    Warning = "";
-                    break;
-
-                default:
-                    PinTitle = LocaleResources.Pin_setTitle;
-                    Header = LocaleResources.Pin_header;
-                    Warning = LocaleResources.Pin_warning;
-                    break;
-            }
-
             BackspaceCommand = new Command(
                 execute: () =>
                 {
@@ -264,69 +182,21 @@ namespace HodlWallet2.ViewModels
 
                         if (Pin.Count == 6)
                         {
-                            if (viewType == ViewType.Setup || viewType == ViewType.Recover || viewType == ViewType.Update_setup)
+                            if (SecureStorageProvider.HasPassword() == false)
                             {
-                                SecureStorageProvider.SetPassword(string.Join("", Pin.ToArray()));
-                                Pin.Clear();
-                                PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
-                                RefreshCanExecutes();
-
-                                switch(viewType)
-                                {
-                                    case ViewType.Setup:
-                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter)));
-                                        break;
-                                    case ViewType.Recover:
-                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter_recover)));
-                                        break;
-                                    case ViewType.Update_setup:
-                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter_update)));
-                                        break;
-                                }
+                                // Throw exception
+                                return;
                             }
-                            else if (viewType == ViewType.Update || viewType == ViewType.Re_enter || 
-                                     viewType == ViewType.Re_enter_recover || viewType == ViewType.Re_enter_update)
+                            if (SecureStorageProvider.GetPassword() == string.Join("", Pin.ToArray()))
                             {
-                                if (SecureStorageProvider.GetPassword() == string.Join("", Pin.ToArray()))
-                                {
-                                    Pin.Clear();
-                                    RefreshCanExecutes();
-
-                                    switch (viewType)
-                                    {
-                                        case ViewType.Re_enter:
-                                            Application.Current.MainPage = new CustomNavigationPage(new BackupView());
-                                            break;
-                                        case ViewType.Re_enter_recover:
-                                            Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
-                                            break;
-                                        case ViewType.Re_enter_update:
-                                            _Navigation.PopToRootAsync();
-                                            break;
-                                        case ViewType.Update:
-                                            _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Update_setup)));
-                                            break;
-                                    }
-                                }
-                                else
-                                {
-                                    Pin.Clear();
-                                    RefreshCanExecutes();
-                                    _Navigation.PopAsync();
-                                }
+                                Pin.Clear();
+                                RefreshCanExecutes();
+                                // Continue to dashboard navigation
+                                return;
                             }
                         }
                     }
                 });
-        }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
         }
 
         void RefreshCanExecutes()
@@ -338,5 +208,15 @@ namespace HodlWallet2.ViewModels
         public ICommand BackspaceCommand { private set; get; }
 
         public ICommand DigitCommand { private set; get; }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
 }
+
