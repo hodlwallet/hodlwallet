@@ -6,12 +6,12 @@ using ZXing.Common;
 
 namespace HodlWallet2.Views
 {
-    public partial class RecieveView : ContentPage
+    public partial class ReceiveView : ContentPage
     {
         private ReceiveViewModel _ViewModel;
         public EncodingOptions BarcodeOptions => new EncodingOptions() { Height = 300, Width = 300, PureBarcode = true };
 
-        public RecieveView(ReceiveViewModel receiveViewModel)
+        public ReceiveView(ReceiveViewModel receiveViewModel)
         {
             InitializeComponent();
 

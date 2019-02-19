@@ -41,7 +41,7 @@ namespace HodlWallet2.Views
 
         public async void OnReceiveTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RecieveView(new ReceiveViewModel()));
+            await Navigation.PushAsync(new ReceiveView(new ReceiveViewModel()));
         }
 
         public void OnMenuTapped(object sender, EventArgs e)
