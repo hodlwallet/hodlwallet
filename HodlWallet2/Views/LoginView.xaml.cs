@@ -27,12 +27,12 @@ namespace HodlWallet2.Views
 
         public async void OnSendTapped(object sender, EventArgs e)
         {
-            // TODO
+            await Navigation.PushModalAsync(new SendView(new SendViewModel()));
         }
 
         public async void OnReceiveTapped(object sender, EventArgs e)
         {
-            // TODO
+            await Navigation.PushModalAsync(new ReceiveView(new ReceiveViewModel()));
         }
     }
 }
