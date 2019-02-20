@@ -1,3 +1,4 @@
+using CarouselView.FormsPlugin.iOS;
 using Foundation;
 using MvvmCross.Forms.Platforms.Ios.Core;
 using UIKit;
@@ -26,6 +27,7 @@ namespace HodlWallet2.iOS
               global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
 //
               FormsControls.Touch.Main.Init();
+              CarouselViewRenderer.Init();
               
               UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
               UINavigationBar.Appearance.ShadowImage = new UIImage();
