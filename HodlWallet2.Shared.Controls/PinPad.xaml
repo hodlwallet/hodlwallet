@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HodlWallet2.Shared.Controls"
+             xmlns:utils="clr-namespace:HodlWallet2.Shared.Controls.Utils;assembly=HodlWallet2.Shared.Controls"
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="HodlWallet2.Shared.Controls.PinPad">
+             
+<ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
+    <!--<ContentPage.BindingContext>
+        <local:PinPadViewModel />
+    </ContentPage.BindingContext>-->
+    
+    <!-- Make Top Grid Appear -->
+    <StackLayout Margin="10,70,10,10">
+        
+        <Label x:Name="lblTitle" Style="{DynamicResource CustomLabel}" Text="Bindable Title" FontSize="Large" />
+        <Label x:Name="lblHeader" Style="{DynamicResource CustomLabel}" Text="Bindable Header" />
+        
+        <controls:CarouselViewControl x:Name="carouselPin" IsSwipeEnabled="False" Orientation="Horizontal" InterPageSpacing="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <controls:CarouselViewControl.ItemsSource>
+                <x:Array Type="{x:Type View}">
+                    <ContentView x:Name="vwEnterPin">
+                        <Grid x:Name="grdSetPin" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <BoxView 
+                                x:Name="pin1"
+                                Color="White"
+                                     Grid.Row="1"
+                                     Grid.Column="1"
+                                utils:Tags.Tag="1">
+                            </BoxView>
+                            <BoxView 
+                                x:Name="pin2" Color="White"
+                                     Grid.Row="1"
+                                     Grid.Column="2"
+                                utils:Tags.Tag="2"/>
+                            <BoxView x:Name="pin3" Color="White"
+                                     Grid.Row="1"
+                                     Grid.Column="3" 
+                                     utils:Tags.Tag="3"/>
+                            <BoxView x:Name="pin4" Color="White"
+                                     Grid.Row="1"
+                                     Grid.Column="4" 
+                                     utils:Tags.Tag="4"/>
+                            <BoxView x:Name="pin5" Color="White"
+                                     Grid.Row="1"
+                                     Grid.Column="5" 
+                                     utils:Tags.Tag="5" />
+                            <BoxView x:Name="pin6" Color="White"
+                                     Grid.Row="1"
+                                     Grid.Column="6"
+                                     utils:Tags.Tag="6" />
+            
+                            <BoxView BackgroundColor="Transparent"
+                                     Grid.Row="2"
+                                     Grid.Column="1"
+                                     Grid.ColumnSpan="6" 
+                                      />
+                        </Grid>
+                    </ContentView>
+                    <ContentView x:Name="vwReEnterPin">
+                        <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <BoxView x:Name="pin7" Color="White"
+                                     Grid.Row="1"
+                                     Grid.Column="1"
+                                     utils:Tags.Tag="7" >
+                            </BoxView>
+                            <BoxView x:Name="pin8" Color="White"
+                                     Grid.Row="1"
+                                     Grid.Column="2"
+                                     utils:Tags.Tag="8" />
+                            <BoxView x:Name="pin9" Color="White"
+                                     Grid.Row="1"
+                                     Grid.Column="3"
+                                     utils:Tags.Tag="9" />
+                            <BoxView x:Name="pin10" Color="White"
+                                     Grid.Row="1"
+                                     Grid.Column="4"
+                                     utils:Tags.Tag="10" />
+                            <BoxView x:Name="pin11" Color="White"
+                                     Grid.Row="1"
+                                     Grid.Column="5"
+                                     utils:Tags.Tag="11" />
+                            <BoxView x:Name="pin12" Color="White"
+                                     Grid.Row="1"
+                                     Grid.Column="6"
+                                     utils:Tags.Tag="12" />
+            
+                            <BoxView BackgroundColor="Transparent"
+                                     Grid.Row="2"
+                                     Grid.Column="1"
+                                     Grid.ColumnSpan="6" />
+                        </Grid>
+                    </ContentView>
+                </x:Array>
+            </controls:CarouselViewControl.ItemsSource>
+        </controls:CarouselViewControl>
+        
+        <Label x:Name="lblWarning" Style="{DynamicResource CustomLabel}" Text="Bindable Warning" />
+        
+        <Grid x:Name="PinGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Text="1" 
+                    Grid.Row="1" Grid.Column="1"
+                    Clicked="OnPinTapped"
+                    utils:Tags.Tag="1"
+                    Command="{Binding DigitCommand}"
+                    CommandParameter="1" />
+
+            <Button Text="2" 
+                    Grid.Row="1" Grid.Column="2"
+                    Clicked="OnPinTapped"
+                    utils:Tags.Tag="2"
+                    Command="{Binding DigitCommand}"
+                    CommandParameter="2" />
+
+            <Button Text="3" 
+                    Grid.Row="1" Grid.Column="3"
+                    Clicked="OnPinTapped"
+                    utils:Tags.Tag="3"
+                    Command="{Binding DigitCommand}"
+                    CommandParameter="3" />
+            
+             <Button Text="4" 
+                    Grid.Row="2" Grid.Column="1"
+                    Clicked="OnPinTapped"
+                    utils:Tags.Tag="4"
+                    Command="{Binding DigitCommand}"
+                    CommandParameter="4" />
+
+            <Button Text="5" 
+                    Grid.Row="2" Grid.Column="2"
+                    Clicked="OnPinTapped"
+                    utils:Tags.Tag="5"
+                    Command="{Binding DigitCommand}"
+                    CommandParameter="5" />
+
+            <Button Text="6" 
+                    Grid.Row="2" Grid.Column="3"
+                    Clicked="OnPinTapped"
+                    utils:Tags.Tag="6"
+                    Command="{Binding DigitCommand}"
+                    CommandParameter="6" />
+            
+            <Button Text="7" 
+                    Grid.Row="3" Grid.Column="1"
+                    Clicked="OnPinTapped"
+                    utils:Tags.Tag="7"
+                    Command="{Binding DigitCommand}"
+                    CommandParameter="7" />
+
+            <Button Text="8" 
+                    Grid.Row="3" Grid.Column="2"
+                    Clicked="OnPinTapped"
+                    utils:Tags.Tag="8"
+                    Command="{Binding DigitCommand}"
+                    CommandParameter="8" />
+
+            <Button Text="9" 
+                    Grid.Row="3" Grid.Column="3"
+                    Clicked="OnPinTapped"
+                    utils:Tags.Tag="9"
+                    Command="{Binding DigitCommand}"
+                    CommandParameter="9" />
+
+            <Button Text="" 
+                    Grid.Row="4" Grid.Column="1"
+                    />
+
+            <Button Text="0" 
+                    Grid.Row="4" Grid.Column="2"
+                    Clicked="OnPinTapped"
+                    utils:Tags.Tag="0"
+                    Command="{Binding DigitCommand}"
+                    CommandParameter="0" />
+            
+            <Button Text="&#x21E6;"
+                    Grid.Row="4" Grid.Column="3"
+                    Command="{Binding BackspaceCommand}"
+                    TextColor="{StaticResource SyncGradientStart}" />
+        </Grid>
+    </StackLayout>
+</ContentView>
