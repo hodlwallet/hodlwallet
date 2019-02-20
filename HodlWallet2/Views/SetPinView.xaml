@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HodlWallet2.Views.SetPinView" xmlns:local="clr-namespace:HodlWallet2.Views" >
+<views:MvxContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="HodlWallet2.Views.SetPinView"
+    x:TypeArguments="viewModels:SetPinViewModel"
+    xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+    xmlns:local="clr-namespace:HodlWallet2.Views"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms">
     <FlexLayout BackgroundColor="{StaticResource GrayBackground}" Direction="Column" >
         <Label FlexLayout.Grow="1">Set PIN</Label>
 
@@ -8,4 +14,4 @@
 
         <FlexLayout Direction="Row" FlexLayout.Grow="3"></FlexLayout>
     </FlexLayout>
-</ContentPage>
+</views:MvxContentPage>
