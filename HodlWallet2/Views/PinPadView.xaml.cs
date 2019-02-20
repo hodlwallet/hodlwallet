@@ -3,21 +3,16 @@
 using Xamarin.Forms;
 
 using HodlWallet2.Utils;
-using HodlWallet2.ViewModels;
-
+using HodlWallet2.Core.ViewModels;
+using MvvmCross.Forms.Views;
 
 namespace HodlWallet2.Views
 {
-    public partial class PinPadView : ContentPage
+    public partial class PinPadView : MvxContentPage<PinPadViewModel>
     {
-
-        public PinPadViewModel ViewModel { get { return BindingContext as PinPadViewModel; } }
-
-        public PinPadView(PinPadViewModel viewModel)
+        public PinPadView()
         {
             InitializeComponent();
-            viewModel._Navigation = Navigation;
-            BindingContext = viewModel;
         }
 
     }

@@ -264,7 +264,7 @@ namespace HodlWallet2.ViewModels
                             {
                                 SecureStorageProvider.SetPassword(string.Join("", Pin.ToArray()));
                                 Pin.Clear();
-                                _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter)));
+                                //_Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter)));
                                 PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
                                 RefreshCanExecutes();
                             }
@@ -280,7 +280,7 @@ namespace HodlWallet2.ViewModels
                                     }
                                     else
                                     {
-                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Setup)));
+                                        //_Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Setup)));
                                     }
                                 }
                                 else

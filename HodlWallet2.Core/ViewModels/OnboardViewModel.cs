@@ -20,8 +20,7 @@ namespace HodlWallet2.Core.ViewModels
             switch (option)
             {
                 case "Create":
-                    //TODO: Add PinViewModel
-                    //await NavigationService.Navigate<PinViewModel>();
+                    await NavigationService.Navigate<PinPadViewModel>();
                     break;
                 case "Recover":
                     await NavigationService.Navigate<RecoverViewModel>();
