@@ -142,4 +142,29 @@
         <value>Try Again</value>
         <comment>label for recover wallet entry alert button</comment>
     </data>
+    
+    <data name="Send.title" xml:space="preserve">
+        <value>Send</value>
+        <comment>label for send view title</comment>
+    </data>
+    
+    <data name="Send.to" xml:space="preserve">
+        <value>To</value>
+        <comment>label for send entry header</comment>
+    </data>
+    
+    <data name="Send.scan" xml:space="preserve">
+        <value>Scan</value>
+        <comment>label for send scan button</comment>
+    </data>
+    
+    <data name="Send.paste" xml:space="preserve">
+        <value>Paste</value>
+        <comment>label for send paste button</comment>
+    </data>
+    
+    <data name="Send.amount" xml:space="preserve">
+        <value>Amount</value>
+        <comment>label for send amount entry</comment>
+    </data>
 </root>

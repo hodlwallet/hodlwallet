@@ -42,6 +42,11 @@
     <None Remove="Assets\recover_wallet_illustration.svg" />
     <None Remove="Assets\paper_key.svg" />
     <None Remove="Assets\send_tab.svg" />
+    <None Remove="Assets\faq.svg" />
+    <None Remove="Assets\close.svg" />
+    <None Remove="Assets\scan.svg" />
+    <None Remove="Assets\paste.svg" />
+    <None Remove="Assets\currency_switch.svg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo_front.png" />
@@ -68,6 +73,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\send_tab.svg">
       <LogicalName>Assets.send_tab.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\faq.svg">
+      <LogicalName>Assets.faq.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\close.svg">
+      <LogicalName>Assets.close.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\scan.svg">
+      <LogicalName>Assets.scan.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\paste.svg">
+      <LogicalName>Assets.paste.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\currency_switch.svg">
+      <LogicalName>Assets.currency_switch.svg</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

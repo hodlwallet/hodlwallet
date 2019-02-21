@@ -202,5 +202,35 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("Recover.alertButton", resourceCulture);
             }
         }
+        
+        internal static string Send_title {
+            get {
+                return ResourceManager.GetString("Send.title", resourceCulture);
+            }
+        }
+        
+        internal static string Send_to {
+            get {
+                return ResourceManager.GetString("Send.to", resourceCulture);
+            }
+        }
+        
+        internal static string Send_scan {
+            get {
+                return ResourceManager.GetString("Send.scan", resourceCulture);
+            }
+        }
+        
+        internal static string Send_paste {
+            get {
+                return ResourceManager.GetString("Send.paste", resourceCulture);
+            }
+        }
+        
+        internal static string Send_amount {
+            get {
+                return ResourceManager.GetString("Send.amount", resourceCulture);
+            }
+        }
     }
 }
