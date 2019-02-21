@@ -25,6 +25,8 @@ namespace HodlWallet2.Views
             Header.Text = LocaleResources.Pin_enter;
         }
 
+        //TODO: Add close button to navigation bar
+
         public async void OnSendTapped(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new SendView(new SendViewModel()));
