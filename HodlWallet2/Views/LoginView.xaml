@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HodlWallet2.Views.LoginView" BackgroundColor="{StaticResource GrayBackground}"
-             xmlns:svg="clr-namespace:HodlWallet2.Utils">
+             x:Class="HodlWallet2.Views.LoginView" BackgroundColor="{StaticResource White}"
+             xmlns:svg="clr-namespace:HodlWallet2.Utils" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -14,7 +15,7 @@
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <StackLayout Margin="10,70,10,10">
+        <StackLayout Margin="10,0,10,10" BackgroundColor="{StaticResource GrayBackground}">
             
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Padding="10">
                 <svg:Icon ResourceId="Assets.receive_tab.svg"
