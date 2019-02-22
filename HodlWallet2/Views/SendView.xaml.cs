@@ -46,5 +46,15 @@ namespace HodlWallet2.Views
         {
             await ViewModel.Send();
         }
+
+        public async void OnCloseTapped(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+
+        public async void OnFaqTapped(object sender, EventArgs e)
+        {
+            // TODO:
+        }
     }
 }
