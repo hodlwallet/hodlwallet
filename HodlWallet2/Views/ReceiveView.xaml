@@ -16,12 +16,17 @@
             </zx:ZXingBarcodeImageView.BarcodeOptions>
         </forms:ZXingBarcodeImageView>
         
-        <Label x:Name="_Address" 
-               Style="{DynamicResource CustomLabel}" 
-               Text="{Binding Address}" 
-               HorizontalOptions="Center" 
-               VerticalOptions="Start" 
-               FlexLayout.Grow="2" />
+       <ContentView> 
+            <Label x:Name="_Address" 
+                   Style="{DynamicResource CustomLabel}" 
+                   Text="{Binding Address}"
+                   HorizontalTextAlignment="Center"
+                   Margin="10"
+                   FlexLayout.Grow="2" />
+            <ContentView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnAddressTapped"/>
+            </ContentView.GestureRecognizers>
+        </ContentView>
         
         <Button x:Name="Share"  
                 Style="{DynamicResource CustomButton}" 

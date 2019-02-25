@@ -1,7 +1,11 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Collections.Generic;
+
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using ZXing.Common;
+using Xamarin.Essentials;
 
 using HodlWallet2.ViewModels;
 using HodlWallet2.Locale;
@@ -31,6 +35,11 @@ namespace HodlWallet2.Views
             Title = LocaleResources.Receive_title;
             Share.Text = LocaleResources.Receive_share;
             RequestAmount.Text = LocaleResources.Receive_requestAmount;
+        }
+
+        public async void OnAddressTapped(object sender, EventArgs e)
+        {
+            await ViewModel.ToClipboard();
         }
     }
 }
