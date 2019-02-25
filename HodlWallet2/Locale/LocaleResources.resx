@@ -167,4 +167,19 @@
         <value>Amount</value>
         <comment>label for send amount entry</comment>
     </data>
+    
+    <data name="Receive.title" xml:space="preserve">
+        <value>Receive</value>
+        <comment>label for receive title</comment>
+    </data>
+    
+    <data name="Receive.share" xml:space="preserve">
+        <value>Share</value>
+        <comment>label for receive share button</comment>
+    </data>
+    
+    <data name="Receive.requestAmount" xml:space="preserve">
+        <value>Request An Amount</value>
+        <comment>label for receive request amount button</comment>
+    </data>
 </root>

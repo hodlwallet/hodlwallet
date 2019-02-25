@@ -1,8 +1,10 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using HodlWallet2.ViewModels;
 using ZXing.Common;
+
+using HodlWallet2.ViewModels;
+using HodlWallet2.Locale;
 
 namespace HodlWallet2.Views
 {
@@ -18,9 +20,17 @@ namespace HodlWallet2.Views
             _ViewModel = receiveViewModel;
 
             BindingContext = _ViewModel;
+
+            SetLabels();
         }
 
         public ReceiveViewModel ViewModel { get => BindingContext as ReceiveViewModel; }
 
+        void SetLabels()
+        {
+            Title = LocaleResources.Receive_title;
+            Share.Text = LocaleResources.Receive_share;
+            RequestAmount.Text = LocaleResources.Receive_requestAmount;
+        }
     }
 }

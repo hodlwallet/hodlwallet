@@ -232,5 +232,23 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("Send.amount", resourceCulture);
             }
         }
+        
+        internal static string Receive_title {
+            get {
+                return ResourceManager.GetString("Receive.title", resourceCulture);
+            }
+        }
+        
+        internal static string Receive_share {
+            get {
+                return ResourceManager.GetString("Receive.share", resourceCulture);
+            }
+        }
+        
+        internal static string Receive_requestAmount {
+            get {
+                return ResourceManager.GetString("Receive.requestAmount", resourceCulture);
+            }
+        }
     }
 }

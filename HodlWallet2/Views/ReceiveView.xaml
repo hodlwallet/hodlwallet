@@ -6,15 +6,38 @@
              xmlns:zx="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
              BackgroundColor="{StaticResource GrayBackground}">
+    
     <FlexLayout Direction="Column" AlignItems="Center">
         <BoxView FlexLayout.Grow="1" />
-
-        <Label x:Name="_Address" Style="{DynamicResource CustomLabel}" Text="{Binding Address}" HorizontalOptions="Center" VerticalOptions="Start" FlexLayout.Grow="2" />
         
-        <forms:ZXingBarcodeImageView BarcodeValue="{Binding Address}" IsVisible="True" x:Name="_QrCodeView" BarcodeFormat="QR_CODE" HeightRequest="300" WidthRequest="300" FlexLayout.Grow="7">
+        <forms:ZXingBarcodeImageView BarcodeValue="{Binding Address}" IsVisible="True" x:Name="_QrCodeView" BarcodeFormat="QR_CODE" HeightRequest="300" WidthRequest="300" FlexLayout.Grow="5">
             <zx:ZXingBarcodeImageView.BarcodeOptions>
                 <zxcm:EncodingOptions Width="300" Height="300" />
             </zx:ZXingBarcodeImageView.BarcodeOptions>
         </forms:ZXingBarcodeImageView>
+        
+        <Label x:Name="_Address" 
+               Style="{DynamicResource CustomLabel}" 
+               Text="{Binding Address}" 
+               HorizontalOptions="Center" 
+               VerticalOptions="Start" 
+               FlexLayout.Grow="2" />
+        
+        <Button x:Name="Share"  
+                Style="{DynamicResource CustomButton}" 
+                BackgroundColor="{StaticResource DarkGray}"
+                FontSize="Large"
+                FlexLayout.AlignSelf="Stretch"
+                FlexLayout.Grow="1" />
+        
+        <BoxView HeightRequest="2" BackgroundColor="Transparent" />
+        
+        <Button x:Name="RequestAmount"  
+                Style="{DynamicResource CustomButton}" 
+                BackgroundColor="{StaticResource DarkGray}"
+                FontSize="Large"
+                FlexLayout.AlignSelf="Stretch"
+                FlexLayout.Grow="1" />
+        
     </FlexLayout>
 </ContentPage>
