@@ -6,20 +6,23 @@
     <ScrollView>
     <FlexLayout Direction="Column">
         
-        <FlexLayout Direction="Row" FlexLayout.Grow="1" JustifyContent="SpaceBetween">
-            <svg:Icon ResourceId="Assets.close.svg" FlexLayout.Grow="1">
+        <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.Grow="1" Margin="10">
+            <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center">
                 <svg:Icon.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnCloseTapped"/>
                 </svg:Icon.GestureRecognizers>
             </svg:Icon>
-            <svg:Icon ResourceId="Assets.faq.svg" FlexLayout.Grow="1">
+                
+            <BoxView FlexLayout.Grow="1" BackgroundColor="Transparent" FlexLayout.AlignSelf="Stretch" />
+            
+            <svg:Icon ResourceId="Assets.faq.svg" FlexLayout.AlignSelf="Center">
                 <svg:Icon.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnFaqTapped"/>
                 </svg:Icon.GestureRecognizers>
             </svg:Icon>
         </FlexLayout>
                 
-        <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" FlexLayout.Grow="2" AlignItems="Center">
+        <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" FlexLayout.Grow="2">
             <StackLayout Orientation="Vertical" FlexLayout.Grow="4" FlexLayout.AlignSelf="Center">
                     
                 <Label x:Name="ToLabel" 

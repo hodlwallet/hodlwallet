@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HodlWallet2.Views.LoginView" BackgroundColor="{StaticResource White}"
+             x:Class="HodlWallet2.Views.LoginView" BackgroundColor="{StaticResource GrayBackground}"
              xmlns:svg="clr-namespace:HodlWallet2.Utils" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true">
     
