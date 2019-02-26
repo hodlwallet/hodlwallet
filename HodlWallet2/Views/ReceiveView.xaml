@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:HodlWallet2.Views"
              x:Class="HodlWallet2.Views.ReceiveView"
+             xmlns:local="clr-namespace:HodlWallet2.Views"
              xmlns:forms="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              xmlns:zx="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             xmlns:svg="clr-namespace:HodlWallet2.Utils"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
              BackgroundColor="{StaticResource GrayBackground}">
     
     <FlexLayout Direction="Column" AlignItems="Center">
+        
+        <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.Grow="1" Margin="10">
+            <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center">
+                <svg:Icon.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                </svg:Icon.GestureRecognizers>
+            </svg:Icon>
+            
+            <BoxView FlexLayout.Grow="1" BackgroundColor="Transparent" FlexLayout.AlignSelf="Stretch" />
+            
+            <svg:Icon ResourceId="Assets.faq.svg" FlexLayout.AlignSelf="Center">
+                <svg:Icon.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnFaqTapped"/>
+                </svg:Icon.GestureRecognizers>
+            </svg:Icon>
+        </FlexLayout>
+        
         <BoxView FlexLayout.Grow="1" />
         
-        <forms:ZXingBarcodeImageView BarcodeValue="{Binding Address}" IsVisible="True" x:Name="_QrCodeView" BarcodeFormat="QR_CODE" HeightRequest="300" WidthRequest="300" FlexLayout.Grow="5">
+        <forms:ZXingBarcodeImageView BarcodeValue="{Binding Address}" IsVisible="True" x:Name="_QrCodeView" BarcodeFormat="QR_CODE" HeightRequest="300" WidthRequest="300" FlexLayout.Grow="3">
             <zx:ZXingBarcodeImageView.BarcodeOptions>
                 <zxcm:EncodingOptions Width="300" Height="300" />
             </zx:ZXingBarcodeImageView.BarcodeOptions>

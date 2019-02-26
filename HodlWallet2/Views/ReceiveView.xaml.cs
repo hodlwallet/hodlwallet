@@ -37,6 +37,16 @@ namespace HodlWallet2.Views
             RequestAmount.Text = LocaleResources.Receive_requestAmount;
         }
 
+        public async void OnCloseTapped(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+
+        public async void OnFaqTapped(object sender, EventArgs e)
+        {
+            // TODO:
+        }
+
         public async void OnAddressTapped(object sender, EventArgs e)
         {
             await ViewModel.ToClipboard();
