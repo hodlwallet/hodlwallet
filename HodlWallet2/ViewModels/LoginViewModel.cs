@@ -196,7 +196,7 @@ namespace HodlWallet2.ViewModels
                             {
                                 Pin.Clear();
                                 RefreshCanExecutes();
-                                // TODO: Continue to dashboard navigation
+                                Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
                                 return;
                             }
                         }
