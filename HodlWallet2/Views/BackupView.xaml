@@ -3,7 +3,9 @@
              xmlns:svg="clr-namespace:HodlWallet2.Utils">
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
-            <BoxView FlexLayout.Grow="3" />
+            <BoxView FlexLayout.Grow="1" />
+            <svg:Icon ResourceId="Assets.paper_key.svg"
+                      HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="2" />
             <Label x:Name="Subheader"
                    FontFamily="{DynamicResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"

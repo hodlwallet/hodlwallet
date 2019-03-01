@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using HodlWallet2.ViewModels;
 using ZXing.Mobile;
+
+using HodlWallet2.ViewModels;
+using HodlWallet2.Locale;
 
 namespace HodlWallet2.Views
 {
@@ -21,7 +23,17 @@ namespace HodlWallet2.Views
         {
             InitializeComponent();
             BindingContext = sendViewModel;
+            SetLabels();
+        }
 
+        private void SetLabels()
+        {
+            Title = LocaleResources.Send_title;
+            ToLabel.Text = LocaleResources.Send_to;
+            ScanLabel.Text = LocaleResources.Send_scan;
+            PasteLabel.Text = LocaleResources.Send_paste;
+            AmountLabel.Text = LocaleResources.Send_amount;
+            ISOLabel.Text = "USD($)"; // Localize
         }
 
         public async void Scan(object sender, System.EventArgs e)
@@ -33,6 +45,16 @@ namespace HodlWallet2.Views
         public async void Send(object sender, System.EventArgs e)
         {
             await ViewModel.Send();
+        }
+
+        public async void OnCloseTapped(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+
+        public async void OnFaqTapped(object sender, EventArgs e)
+        {
+            // TODO:
         }
     }
 }

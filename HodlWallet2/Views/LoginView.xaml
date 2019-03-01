@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HodlWallet2.Views.LoginView" BackgroundColor="{StaticResource GrayBackground}">
+             x:Class="HodlWallet2.Views.LoginView" BackgroundColor="{StaticResource GrayBackground}"
+             xmlns:svg="clr-namespace:HodlWallet2.Utils" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -13,18 +15,32 @@
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <StackLayout Margin="10,70,10,10">
+        <StackLayout Margin="10,0,10,10" BackgroundColor="{StaticResource GrayBackground}">
+            
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Padding="10">
+                <svg:Icon ResourceId="Assets.receive_tab.svg"
+                      HorizontalOptions="Start">
+                    <svg:Icon.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnReceiveTapped"/>
+                    </svg:Icon.GestureRecognizers>
+                </svg:Icon>
+            
+                <svg:Icon ResourceId="Assets.send_tab.svg"
+                      HorizontalOptions="End">
+                    <svg:Icon.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSendTapped"/>
+                    </svg:Icon.GestureRecognizers>
+                </svg:Icon>
+            </FlexLayout>
             
             <Image Source="logo_front.png"
-               Scale="0.5" />
+               Scale="0.4" />
             
             <Label x:Name="Header" Style="{DynamicResource CustomLabel}" HorizontalOptions="Center" />
             
             <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5" />
                 </Grid.RowDefinitions>
                 
                 <Grid.ColumnDefinitions>
@@ -49,15 +65,8 @@
                 <BoxView Color="{Binding PinSix}"
                          Grid.Row="1"
                          Grid.Column="6" />
-                
-                <BoxView BackgroundColor="Transparent"
-                         Grid.Row="2"
-                         Grid.Column="1"
-                         Grid.ColumnSpan="6" />
             </Grid>
-            
-            <Label x:Name="Warning" Style="{DynamicResource CustomLabel}" Text="{Binding Warning}" />
-            
+                        
             <Grid x:Name="PinGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />

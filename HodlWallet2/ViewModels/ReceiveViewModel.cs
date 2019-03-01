@@ -1,5 +1,8 @@
 using Serilog;
+using System.Threading.Tasks;
 using System.ComponentModel;
+
+using Xamarin.Essentials;
 
 namespace HodlWallet2.ViewModels
 {
@@ -36,5 +39,10 @@ namespace HodlWallet2.ViewModels
             _Logger.Information("New Receive Address: {address}", Address);
         }
 
+        public Task ToClipboard()
+        {
+            // TODO: Clipboard Animation
+            return Clipboard.SetTextAsync(Address);
+        }
     }
 }

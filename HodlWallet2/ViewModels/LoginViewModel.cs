@@ -119,6 +119,8 @@ namespace HodlWallet2.ViewModels
 
         public LoginViewModel()
         {
+            PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
+
             BackspaceCommand = new Command(
                 execute: () =>
                 {
@@ -182,16 +184,19 @@ namespace HodlWallet2.ViewModels
 
                         if (Pin.Count == 6)
                         {
+                            PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
+
                             if (SecureStorageProvider.HasPassword() == false)
                             {
-                                // Throw exception
+                                // TODO: Throw exception
+                                Pin.Clear();
                                 return;
                             }
                             if (SecureStorageProvider.GetPassword() == string.Join("", Pin.ToArray()))
                             {
                                 Pin.Clear();
                                 RefreshCanExecutes();
-                                // Continue to dashboard navigation
+                                Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
                                 return;
                             }
                         }

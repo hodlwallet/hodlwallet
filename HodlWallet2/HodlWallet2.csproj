@@ -36,9 +36,17 @@
     <None Remove="Assets\logo_front.png" />
     <None Remove="Assets\sendtabicon.svg" />
     <None Remove="Resource\sendtabicon.svg" />
-    <None Remove="Assets\search.svg" />
     <None Remove="Assets\receive_tab.svg" />
     <None Remove="Assets\menu_tab.svg" />
+    <None Remove="Assets\recover_wallet_illustration.svg" />
+    <None Remove="Assets\paper_key.svg" />
+    <None Remove="Assets\send_tab.svg" />
+    <None Remove="Assets\faq.svg" />
+    <None Remove="Assets\close.svg" />
+    <None Remove="Assets\scan.svg" />
+    <None Remove="Assets\paste.svg" />
+    <None Remove="Assets\currency_switch.svg" />
+    <None Remove="Assets\search.svg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo_front.png" />
@@ -48,17 +56,38 @@
     <EmbeddedResource Remove="Resources.resx" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\send_tab.svg">
-      <LogicalName>Assets.send_tab.svg</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Assets\search.svg">
-      <LogicalName>Assets.search.svg</LogicalName>
-    </EmbeddedResource>
     <EmbeddedResource Include="Assets\receive_tab.svg">
       <LogicalName>Assets.receive_tab.svg</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\menu_tab.svg">
       <LogicalName>Assets.menu_tab.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\recover_wallet_illustration.svg">
+      <LogicalName>Assets.recover_wallet_illustration.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\paper_key.svg">
+      <LogicalName>Assets.paper_key.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\send_tab.svg">
+      <LogicalName>Assets.send_tab.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\faq.svg">
+      <LogicalName>Assets.faq.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\close.svg">
+      <LogicalName>Assets.close.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\scan.svg">
+      <LogicalName>Assets.scan.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\paste.svg">
+      <LogicalName>Assets.paste.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\currency_switch.svg">
+      <LogicalName>Assets.currency_switch.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\search.svg">
+      <LogicalName>Assets.search.svg</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -105,10 +134,5 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Assets\recover_wallet_illustration.svg">
-      <LogicalName>Assets.recover_wallet_illustration.svg</LogicalName>
-    </None>
   </ItemGroup>
 </Project>
