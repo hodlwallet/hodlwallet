@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HodlWallet2.Views.RecoverWalletEntryView" BackgroundColor="{StaticResource GrayBackground}" xmlns:local="clr-namespace:HodlWallet2.ViewModels">
+<views:MvxContentPage 
+       xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+       x:Class="HodlWallet2.Views.RecoverWalletEntryView" 
+       BackgroundColor="{StaticResource GrayBackground}" 
+       xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+       xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+       x:TypeArguments="viewModels:RecoverWalletEntryViewModel" >
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -12,17 +19,22 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <ContentPage.BindingContext>
-        <local:RecoverWalletEntryViewModel />
-    </ContentPage.BindingContext>
-    
     <ContentPage.Content>
         <StackLayout Margin="10,70,10,10">
         
-            <Label x:Name="Title" Style="{DynamicResource CustomLabel}" FontSize="Large" Margin="10, 0, 0, 0" />
-            <Label x:Name="Header" Style="{DynamicResource CustomLabel}" Margin="10, 0, 10, 20"/>
+            <Label 
+                   x:Name="Title" 
+                   bindings:Bi.nd="Text RecoverTitle"
+                   Style="{DynamicResource CustomLabel}" 
+                   FontSize="Large" 
+                   Margin="10, 0, 0, 0" />
+            <Label 
+                   x:Name="Header" 
+                   bindings:Bi.nd="Text RecoverHeader"
+                   Style="{DynamicResource CustomLabel}" 
+                   Margin="10, 0, 10, 20"/>
             <ScrollView>
-            <Grid x:Name="EntryGrid" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{StaticResource LightGray}" Padding="10" Margin="10">
+            <Grid x:Name="EntryGrid" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="LightGray" Padding="10" Margin="10">
                 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -145,4 +157,4 @@
         </StackLayout>
     </ContentPage.Content>
     
-</ContentPage>
+</views:MvxContentPage>
