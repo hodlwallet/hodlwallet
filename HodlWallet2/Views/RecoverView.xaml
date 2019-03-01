@@ -5,6 +5,7 @@
     x:Class="HodlWallet2.Views.RecoverView"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     x:TypeArguments="viewModels:RecoverViewModel">
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
@@ -27,7 +28,7 @@
                     BackgroundColor="{StaticResource DarkGray}"
                     CornerRadius="0"
                     FontSize="Large"
-                    Clicked="RecoverNext_Clicked"
+                    bindings:Bi.nd="Command RecoverNextCommand"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1" />
         </FlexLayout>

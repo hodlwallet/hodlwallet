@@ -33,7 +33,7 @@ namespace HodlWallet2.Views
 
         private void RecoverNext_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new RecoverWalletEntryView(new RecoverWalletEntryViewModel()));
+            //Navigation.PushAsync(new RecoverWalletEntryView(new RecoverWalletEntryViewModel()));
             _Logger.Information("Recover button clicked.");
         }
     }
