@@ -36,19 +36,16 @@ namespace HodlWallet2
 
             InitializeComponent();
 
-            //If the application secure storage has the mnemonic code,
+            // If the application secure storage has the mnemonic code,
             // then the app is installed.And we just need to show the dashboard.
-            //if (SecureStorageProvider.HasMnemonic())
-            //{
-            //    MainPage = new CustomNavigationPage(new PinPadView());
-            //}
-            //else
-            //{
-            //    MainPage = new CustomNavigationPage(new OnboardView());
-            //}
-
-            // TODO This is temporal, please use the code above.
-            MainPage = new CustomNavigationPage(new OnboardView());
+            if (SecureStorageProvider.HasMnemonic())
+            {
+                MainPage = new CustomNavigationPage(new LoginView(new LoginViewModel()));
+            }
+            else
+            {
+                MainPage = new CustomNavigationPage(new OnboardView());
+            }
 
             // Add event handlers
             _Wallet.OnStarted += (object sender, EventArgs args) =>
