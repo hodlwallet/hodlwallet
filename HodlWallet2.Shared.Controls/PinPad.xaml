@@ -13,6 +13,10 @@
                 <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
                 <Setter Property="FontSize" Value="Large" />
             </Style>
+            <Style x:Key="CustomLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Style>
         </ResourceDictionary>
     </ContentView.Resources>
     
@@ -23,7 +27,7 @@
     <!-- Make Top Grid Appear -->
     <StackLayout Margin="10,70,10,10">
         
-        <Label x:Name="lblTitle" Style="{DynamicResource CustomLabel}" Text="Bindable Title" FontSize="Large" />
+        <Label x:Name="lblTitle" Style="{DynamicResource CustomLabel}" FontSize="Large" />
         <Label x:Name="lblHeader" Style="{DynamicResource CustomLabel}" Text="Bindable Header" />
         
         <controls:CarouselViewControl x:Name="carouselPin" IsSwipeEnabled="False" Orientation="Horizontal" InterPageSpacing="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">

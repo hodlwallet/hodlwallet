@@ -1,10 +1,17 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace HodlWallet2.Shared.Controls
 {
     public partial class PinPad : ContentView
     {
+        private string _pin1 = string.Empty;
+        private string _pin2 = string.Empty;
+        
         public static readonly BindableProperty TitleProperty =
             BindableProperty.CreateAttached(
                 "TitleText", 
@@ -16,7 +23,11 @@ namespace HodlWallet2.Shared.Controls
         public string TitleText
         {
             get => (string) GetValue(TitleProperty);
-            set => SetValue(TitleProperty, value);
+            set
+            {
+                SetValue(TitleProperty, value);
+                lblTitle.Text = value;
+            }
         }
         
         public static readonly BindableProperty HeaderProperty =
@@ -30,7 +41,11 @@ namespace HodlWallet2.Shared.Controls
         public string HeaderText
         {
             get => (string) GetValue(HeaderProperty);
-            set => SetValue(HeaderProperty, value);
+            set
+            {
+                SetValue(HeaderProperty, value);
+                lblHeader.Text = value;
+            }
         }
         
         public static readonly BindableProperty WarningProperty =
@@ -44,7 +59,11 @@ namespace HodlWallet2.Shared.Controls
         public string WarningText
         {
             get => (string) GetValue(WarningProperty);
-            set => SetValue(WarningProperty, value);
+            set
+            {
+                SetValue(WarningProperty, value);
+                lblWarning.Text = value;
+            }
         }
 
         public PinPad()
@@ -54,6 +73,194 @@ namespace HodlWallet2.Shared.Controls
             lblTitle.SetBinding(Label.TextProperty, new Binding(nameof(TitleText), source: this));
             lblHeader.SetBinding(Label.TextProperty, new Binding(nameof(HeaderText), source: this));
             lblWarning.SetBinding(Label.TextProperty, new Binding(nameof(WarningText), source: this));
+        }
+        
+        /// <summary>Backing store for the Command bindable property.</summary>
+        /// <remarks>To be added.</remarks>
+        public static readonly BindableProperty CommandProperty = BindableProperty.Create(
+            nameof (Command), 
+            typeof (ICommand), 
+            typeof (PinPad), 
+            (object) null, 
+            BindingMode.OneWay, 
+            (BindableProperty.ValidateValueDelegate) null, 
+            (BindableProperty.BindingPropertyChangedDelegate) ((bo, o, n) => ((PinPad) bo).OnCommandChanged()), 
+            (BindableProperty.BindingPropertyChangingDelegate) null, 
+            (BindableProperty.CoerceValueDelegate) null, 
+            (BindableProperty.CreateDefaultValueDelegate) null);
+        
+        /// <summary>Backing store for the CommandParameter bindable property.</summary>
+        /// <remarks>To be added.</remarks>
+        public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(
+            nameof (CommandParameter), 
+            typeof (object), 
+            typeof (PinPad), 
+            (object) null, 
+            BindingMode.OneWay, 
+            (BindableProperty.ValidateValueDelegate) null, 
+            (BindableProperty.BindingPropertyChangedDelegate) ((bindable, oldvalue, newvalue) => ((PinPad) bindable).CommandCanExecuteChanged((object) bindable, EventArgs.Empty)), 
+            (BindableProperty.BindingPropertyChangingDelegate) null, 
+            (BindableProperty.CoerceValueDelegate) null, 
+            (BindableProperty.CreateDefaultValueDelegate) null);
+        
+        /// <summary>Gets or sets the command to invoke when the button is activated. This is a bindable property.</summary>
+        /// <value>A command to invoke when the button is activated. The default value is <see langword="null" />.</value>
+        /// <remarks>This property is used to associate a command with an instance of a button. This property is most often set in the MVVM pattern to bind callbacks back into the ViewModel. <see cref="P:Xamarin.Forms.VisualElement.IsEnabled" /> is controlled by the Command if set.</remarks>
+        public ICommand Command
+        {
+            get
+            {
+                return (ICommand) this.GetValue(PinPad.CommandProperty);
+            }
+            set
+            {
+                this.SetValue(PinPad.CommandProperty, (object) value);
+            }
+        }
+        
+        /// <summary>Gets or sets the parameter to pass to the Command property. This is a bindable property.</summary>
+        /// <value>A object to pass to the command property. The default value is <see langword="null" />.</value>
+        /// <remarks>To be added.</remarks>
+        public object CommandParameter
+        {
+            get
+            {
+                return this.GetValue(PinPad.CommandParameterProperty);
+            }
+            set
+            {
+                this.SetValue(PinPad.CommandParameterProperty, value);
+            }
+        }
+        
+        private void CommandCanExecuteChanged(object sender, EventArgs eventArgs)
+        {
+            ICommand command = this.Command;
+            if (command == null)
+                return;
+            this.IsEnabledCore = command.CanExecute(this.CommandParameter);
+        }
+        
+        private bool IsEnabledCore
+        {
+            set
+            {
+                this.SetValueCore(VisualElement.IsEnabledProperty, (object) value, SetValueFlags.None);
+            }
+        }
+        
+        private void OnCommandChanged()
+        {
+            if (this.Command != null)
+            {
+                this.Command.CanExecuteChanged += new EventHandler(this.CommandCanExecuteChanged);
+                this.CommandCanExecuteChanged((object) this, EventArgs.Empty);
+            }
+            else
+                this.IsEnabledCore = true;
+        }
+        
+        public async void OnPinTapped(object sender, EventArgs e)
+        {
+            if (carouselPin.Position == 0) // Enter PIN
+            {
+                
+                if (sender is Button button && _pin1.Length < 6)
+                {
+                    _pin1 += Utils.Tags.GetTag(button);
+                    PaintBoxView(Color.Orange, _pin1.Length);
+                    if (_pin1.Length == 6)
+                    {
+                        carouselPin.Position = 1;
+                    }
+                }
+            }
+            else // Re-Enter PIN
+            {
+                if (sender is Button button && _pin2.Length < 6)
+                {
+                    _pin2 += Utils.Tags.GetTag(button);
+                    PaintBoxView(Color.Orange, _pin2.Length + 6);
+                    if (_pin2.Length == 6)
+                    {
+                        if (_pin1.Equals(_pin2))
+                        {
+                            Command?.Execute(_pin1);
+                        }
+                        else
+                        {
+                            // Shake ContentView Re-Enter PIN
+                            uint timeout = 50;
+                            await carouselPin.TranslateTo(-15, 0, timeout);  
+  
+                            await carouselPin.TranslateTo(15, 0, timeout);  
+  
+                            await carouselPin.TranslateTo(-10, 0, timeout);  
+  
+                            await carouselPin.TranslateTo(10, 0, timeout);  
+  
+                            await carouselPin.TranslateTo(-5, 0, timeout);  
+  
+                            await carouselPin.TranslateTo(5, 0, timeout);  
+  
+                            carouselPin.TranslationX = 0;  
+                            
+                            await Task.Delay(500);
+                            ClearBoxViews();
+                            carouselPin.Position = 0;
+                        }
+                        _pin1 = string.Empty;
+                        _pin2 = string.Empty;
+                    }
+                }
+            }
+        }
+
+        private void ClearBoxViews()
+        {
+            var list = carouselPin.ItemsSource.Cast<ContentView>().ToList();
+            foreach (var contentView in list)
+            {
+                foreach (Grid grid in contentView.Children)
+                {
+                    foreach (var boxView in grid.Children)
+                    {
+                        if (boxView.BackgroundColor != Color.Transparent)
+                        {
+                            var bxView = boxView as BoxView;
+                            if (bxView != null)
+                            {
+                                bxView.Color = Color.White;
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+
+        private void PaintBoxView(Color fillColor, int boxViewNumber)
+        {
+            var list = carouselPin.ItemsSource.Cast<ContentView>().ToList();
+            var grid = carouselPin.Position == 0 ? list[0].Content as Grid : list[1].Content as Grid;
+            BoxView bxView1 = new BoxView();
+            foreach (var boxView in grid.Children)
+            {
+                var bxView = boxView as BoxView;
+                if (bxView != null)
+                {
+                    var tag = Utils.Tags.GetTag(bxView);
+                    if (tag.Equals(boxViewNumber.ToString()))
+                    {
+                        bxView.Color = Color.Orange;
+                        break;
+                    }
+                }
+            }
+        }
+
+        public async void OnPrevious(object sender, EventArgs e)
+        {
+            carouselPin.Position = 0;
         }
     }
 }
