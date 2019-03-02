@@ -25,6 +25,7 @@ namespace HodlWallet2.iOS
         {
 //            global::Xamarin.Forms.Forms.Init();
               global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
+              Rg.Plugins.Popup.Popup.Init();
 //
               FormsControls.Touch.Main.Init();
               CarouselViewRenderer.Init();
