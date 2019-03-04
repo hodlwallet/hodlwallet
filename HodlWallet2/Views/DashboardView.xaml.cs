@@ -44,11 +44,14 @@ namespace HodlWallet2.Views
             await Navigation.PushModalAsync(new ReceiveView(new ReceiveViewModel()));
         }
 
-        public void OnMenuTapped(object sender, EventArgs e)
+        public async void OnMenuTapped(object sender, EventArgs e)
         {
-            _Transactions.ItemsSource = ViewModel.Transactions;
+            // TODO:
+            /* _Transactions.ItemsSource = ViewModel.Transactions;
 
-            _Wallet.ReScan(new DateTimeOffset(new DateTime(2018, 11, 8)));
+            _Wallet.ReScan(new DateTimeOffset(new DateTime(2018, 11, 8))); */
+
+            await Navigation.PushModalAsync(new MenuView());
         }
 
         public void SetTempLabels()
