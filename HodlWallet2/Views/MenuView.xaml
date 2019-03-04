@@ -1,5 +1,55 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.MenuView">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.MenuView"
+             xmlns:svg="clr-namespace:HodlWallet2.Utils" BackgroundColor="{StaticResource GrayBackground}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true">
     <ContentPage.Content>
+        <ScrollView x:Name="MenuScroll">
+            <FlexLayout Direction="Column">
+                
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.Grow="1" Margin="10">
+                    <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center" FlexLayout.Grow="1">
+                        <svg:Icon.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                        </svg:Icon.GestureRecognizers>
+                    </svg:Icon>
+                    <Label x:Name="MenuTitle" Style="{DynamicResource CustomLabel}" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center" />
+                    <BoxView FlexLayout.AlignSelf="Center" />
+                </FlexLayout>
+                
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
+                
+                <Button x:Name="Security" 
+                        Style="{DynamicResource CustomButton}" 
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1"/>
+                
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
+                
+                <Button x:Name="Knowledge" 
+                        Style="{DynamicResource CustomButton}"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1"/>
+                
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
+                
+                <Button x:Name="Settings" 
+                        Style="{DynamicResource CustomButton}"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1"/>
+                
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
+                
+                <Button x:Name="LockWallet" 
+                        Style="{DynamicResource CustomButton}"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1"/>
+                
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
+                
+                <BoxView FlexLayout.Grow="4" />
+                
+            </FlexLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
