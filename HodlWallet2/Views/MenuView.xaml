@@ -8,13 +8,21 @@
             <FlexLayout Direction="Column">
                 
                 <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.Grow="1" Margin="10">
-                    <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center" FlexLayout.Grow="1">
+                    <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center" >
                         <svg:Icon.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnCloseTapped"/>
                         </svg:Icon.GestureRecognizers>
                     </svg:Icon>
-                    <Label x:Name="MenuTitle" Style="{DynamicResource CustomLabel}" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center" />
-                    <BoxView FlexLayout.AlignSelf="Center" />
+                    <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
+                    
+                    <Label x:Name="MenuTitle" 
+                           Style="{DynamicResource CustomLabel}"
+                           FontSize="Large"
+                           FlexLayout.AlignSelf="Center" />
+                    
+                    <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
+                    
+                    <svg:Icon ResourceId="Assets.faq.svg" FlexLayout.AlignSelf="Center" Opacity="0" />
                 </FlexLayout>
                 
                 <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
