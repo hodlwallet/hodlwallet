@@ -58,9 +58,9 @@ namespace HodlWallet2.Views
         {
             amountLabel.Text = "20 BTC";
             priceLabel.Text = "1 BTC = $4";
-            sendLabel.Text = LocaleResources.Dashboard_send;
-            receiveLabel.Text = LocaleResources.Dashboard_receive;
-            menuLabel.Text = LocaleResources.Dashboard_menu;
+            sendLabel.Text = LocaleResources.Dashboard_send.ToUpper();
+            receiveLabel.Text = LocaleResources.Dashboard_receive.ToUpper();
+            menuLabel.Text = LocaleResources.Dashboard_menu.ToUpper();
         }
     }
 }
