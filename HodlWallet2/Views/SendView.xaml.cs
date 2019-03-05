@@ -28,7 +28,7 @@ namespace HodlWallet2.Views
 
         private void SetLabels()
         {
-            Title = LocaleResources.Send_title;
+            SendTitle.Text = LocaleResources.Send_title;
             ToLabel.Text = LocaleResources.Send_to;
             ScanLabel.Text = LocaleResources.Send_scan;
             PasteLabel.Text = LocaleResources.Send_paste;
