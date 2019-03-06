@@ -182,4 +182,30 @@
         <value>Request An Amount</value>
         <comment>label for receive request amount button</comment>
     </data>
+    
+    <data name="Menu.title" xml:space="preserve">
+        <value>Menu</value>
+        <comment>label for menu view title</comment>
+    </data>
+    
+    <data name="Menu.security" xml:space="preserve">
+        <value>Security Center</value>
+        <comment>label for security view title</comment>
+    </data>
+    
+    <data name="Menu.knowledge" xml:space="preserve">
+        <value>Knowledge</value>
+        <comment>label for knowledge page</comment>
+    </data>
+    
+    <data name="Menu.settings" xml:space="preserve">
+        <value>Settings</value>
+        <comment>label for settigns view title</comment>
+    </data>
+    
+    <data name="Menu.lock" xml:space="preserve">
+        <value>Lock Wallet</value>
+        <comment>label for menu lock wallet</comment>
+    </data>
+   
 </root>

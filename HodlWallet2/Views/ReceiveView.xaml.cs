@@ -32,7 +32,7 @@ namespace HodlWallet2.Views
 
         void SetLabels()
         {
-            Title = LocaleResources.Receive_title;
+            ReceiveTitle.Text = LocaleResources.Receive_title;
             Share.Text = LocaleResources.Receive_share;
             RequestAmount.Text = LocaleResources.Receive_requestAmount;
         }

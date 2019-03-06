@@ -72,7 +72,8 @@
                     </FlexLayout>
                     
                     <Label x:Name="sendLabel"
-                           Style="{DynamicResource CustomLabel}"
+                           FontFamily="{StaticResource ElectrolizeFont}"
+                           TextColor="{StaticResource GrayTextTint}"
                            Margin="0, 10, 0, 0"
                            FlexLayout.Grow="1"
                            FlexLayout.AlignSelf="Center" />
@@ -96,7 +97,8 @@
                     </FlexLayout>
                     
                     <Label x:Name="receiveLabel"
-                           Style="{DynamicResource CustomLabel}"
+                           FontFamily="{StaticResource ElectrolizeFont}"
+                           TextColor="{StaticResource SyncGradientStart}"
                            Margin="0, 10, 0, 0"
                            FlexLayout.Grow="1"
                            FlexLayout.AlignSelf="Center" />
@@ -120,7 +122,8 @@
                     </FlexLayout>
                     
                     <Label x:Name="menuLabel"
-                           Style="{DynamicResource CustomLabel}"
+                           FontFamily="{StaticResource ElectrolizeFont}"
+                           TextColor="{StaticResource White}"
                            Margin="0, 10, 0, 0"
                            FlexLayout.Grow="1"
                            FlexLayout.AlignSelf="Center" />

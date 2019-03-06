@@ -19,7 +19,14 @@
                 </svg:Icon.GestureRecognizers>
             </svg:Icon>
             
-            <BoxView FlexLayout.Grow="1" BackgroundColor="Transparent" FlexLayout.AlignSelf="Stretch" />
+            <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
+                
+            <Label x:Name="ReceiveTitle" 
+                   Style="{DynamicResource CustomLabel}"
+                   FontSize="Large"
+                   FlexLayout.AlignSelf="Center" />
+            
+            <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
             
             <svg:Icon ResourceId="Assets.faq.svg" FlexLayout.AlignSelf="Center">
                 <svg:Icon.GestureRecognizers>
@@ -36,8 +43,8 @@
             </zx:ZXingBarcodeImageView.BarcodeOptions>
         </forms:ZXingBarcodeImageView>
         
-       <ContentView> 
-            <Label x:Name="_Address" 
+       <ContentView>
+            <Label x:Name="_Address"
                    Style="{DynamicResource CustomLabel}" 
                    Text="{Binding Address}"
                    HorizontalTextAlignment="Center"
@@ -48,7 +55,9 @@
             </ContentView.GestureRecognizers>
         </ContentView>
         
-        <Button x:Name="Share"  
+        <BoxView FlexLayout.Grow="1" />
+        
+        <Button x:Name="Share"
                 Style="{DynamicResource CustomButton}" 
                 BackgroundColor="{StaticResource DarkGray}"
                 FontSize="Large"
@@ -57,7 +66,7 @@
         
         <BoxView HeightRequest="2" BackgroundColor="Transparent" />
         
-        <Button x:Name="RequestAmount"  
+        <Button x:Name="RequestAmount"
                 Style="{DynamicResource CustomButton}" 
                 BackgroundColor="{StaticResource DarkGray}"
                 FontSize="Large"

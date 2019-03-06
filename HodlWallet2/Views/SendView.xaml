@@ -13,7 +13,14 @@
                 </svg:Icon.GestureRecognizers>
             </svg:Icon>
                 
-            <BoxView FlexLayout.Grow="1" BackgroundColor="Transparent" FlexLayout.AlignSelf="Stretch" />
+            <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
+                
+            <Label x:Name="SendTitle" 
+                   Style="{DynamicResource CustomLabel}"
+                   FontSize="Large"
+                   FlexLayout.AlignSelf="Center" />
+            
+            <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
             
             <svg:Icon ResourceId="Assets.faq.svg" FlexLayout.AlignSelf="Center">
                 <svg:Icon.GestureRecognizers>

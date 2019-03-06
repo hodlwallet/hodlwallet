@@ -250,5 +250,35 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("Receive.requestAmount", resourceCulture);
             }
         }
+        
+        internal static string Menu_title {
+            get {
+                return ResourceManager.GetString("Menu.title", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_security {
+            get {
+                return ResourceManager.GetString("Menu.security", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_knowledge {
+            get {
+                return ResourceManager.GetString("Menu.knowledge", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_settings {
+            get {
+                return ResourceManager.GetString("Menu.settings", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_lock {
+            get {
+                return ResourceManager.GetString("Menu.lock", resourceCulture);
+            }
+        }
     }
 }
