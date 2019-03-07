@@ -48,8 +48,8 @@
     <None Remove="Assets\currency_switch.svg" />
     <None Remove="Assets\search.svg" />
     <None Remove="Assets\security_center.svg" />
-    <None Remove="Assets\circle_check.svg" />
-    <None Remove="Assets\circle_check_yellow.svg" />
+    <None Remove="Assets\circle_check_gray.svg" />
+    <None Remove="Assets\circle_check_gray %28copy%29.svg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo_front.png" />
@@ -96,7 +96,7 @@
       <LogicalName>Assets.shield.svg</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\circle_check_gray.svg">
-      <LogicalName>Assets.circle_check.svg</LogicalName>
+      <LogicalName>Assets.circle_check_gray.svg</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\circle_check_yellow.svg">
       <LogicalName>Assets.circle_check_yellow.svg</LogicalName>
