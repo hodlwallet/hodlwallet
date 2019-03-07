@@ -280,5 +280,11 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("Menu.lock", resourceCulture);
             }
         }
+        
+        internal static string SecurityCenter_title {
+            get {
+                return ResourceManager.GetString("SecurityCenter.title", resourceCulture);
+            }
+        }
     }
 }

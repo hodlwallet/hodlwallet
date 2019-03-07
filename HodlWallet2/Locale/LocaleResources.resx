@@ -207,5 +207,9 @@
         <value>Lock Wallet</value>
         <comment>label for menu lock wallet</comment>
     </data>
-   
+    
+    <data name="SecurityCenter.title" xml:space="preserve">
+        <value>Security Center</value>
+        <comment>label for security center title</comment>
+    </data>
 </root>
