@@ -28,15 +28,22 @@
             </svg:Icon>
         </FlexLayout>
         
-        <svg:Icon ResourceId="Assets.shield.svg" FlexLayout.AlignSelf="Center" Margin="10"/>
+        <FlexLayout FlexLayout.Grow="2">
+            <svg:Icon ResourceId="Assets.shield.svg" HorizontalOptions="Center" VerticalOptions="Center" Margin="10" FlexLayout.Grow="1"/>
+        </FlexLayout>
         
-        <Label x:Name="ShieldHeader" Style="{DynamicResource CustomFont}" FontSize="Large" />
+        <Label x:Name="ShieldHeader" Style="{DynamicResource CustomLabel}" FontSize="Large" />
         
         <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
         
-        <StackLayout FlexLayout.Grow="1">
-            <svg:Icon ResourceId="{Binding PinCheck}" HorizontalOptions="Start"/>
-        </StackLayout>
+        <FlexLayout Direction="Row" FlexLayout.Grow="1">
+            <svg:Icon ResourceId="{Binding PinCheck}" FlexLayout.AlignSelf="Start" FlexLayout.Grow="1" BackgroundColor="Teal"/>
+            <StackLayout HorizontalOptions="Start" FlexLayout.Grow="2">
+                <Label x:Name="PinCheckHeader" Style="{DynamicResource CustomLabel}" />
+                <Label x:Name="PinCheckDetail" Style="{DynamicResource CustomLabel}" />
+            </StackLayout>
+            <BoxView FlexLayout.Grow="1" />
+        </FlexLayout>
         
         <BoxView FlexLayout.Grow="1" />
         

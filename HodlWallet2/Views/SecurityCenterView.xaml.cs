@@ -12,6 +12,8 @@ namespace HodlWallet2.Views
     {
         public SecurityCenterViewModel ViewModel { get { return BindingContext as SecurityCenterViewModel; } }
 
+        const string grayCheck = "Assets.circle_check_gray.svg", yellowCheck = "Assets.circle_check_yellow.svg";
+
         public SecurityCenterView(SecurityCenterViewModel viewModel)
         {
             InitializeComponent();
@@ -22,7 +24,9 @@ namespace HodlWallet2.Views
         private void SetLabels()
         {
             SecurityCenterTitle.Text = LocaleResources.SecurityCenter_title;
-            ShieldHeader.Text = "Header";
+            ShieldHeader.Text = LocaleResources.SecurityCenter_header;
+            PinCheckHeader.Text = LocaleResources.SecurityCenter_pinHeader;
+            PinCheckDetail.Text = LocaleResources.SecurityCenter_pinDetail;
         }
 
         public async void OnCloseTapped(object sender, EventArgs e)
