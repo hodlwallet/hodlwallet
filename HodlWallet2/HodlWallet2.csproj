@@ -47,6 +47,9 @@
     <None Remove="Assets\paste.svg" />
     <None Remove="Assets\currency_switch.svg" />
     <None Remove="Assets\search.svg" />
+    <None Remove="Assets\security_center.svg" />
+    <None Remove="Assets\circle_check.svg" />
+    <None Remove="Assets\circle_check_yellow.svg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo_front.png" />
@@ -89,6 +92,15 @@
     <EmbeddedResource Include="Assets\search.svg">
       <LogicalName>Assets.search.svg</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="Assets\shield.svg">
+      <LogicalName>Assets.shield.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\circle_check_gray.svg">
+      <LogicalName>Assets.circle_check.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\circle_check_yellow.svg">
+      <LogicalName>Assets.circle_check_yellow.svg</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Locale\LocaleResources.resx">
@@ -130,6 +142,9 @@
     </Compile>
     <Compile Update="Views\SetPinView.xaml.cs">
       <DependentUpon>SetPinView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="ViewModels\SecurityCenterViewModel.cs">
+      <LogicalName>HodlWallet2.ViewModels.SecurityCenterViewModel.cs</LogicalName>
     </Compile>
   </ItemGroup>
   <ItemGroup>
