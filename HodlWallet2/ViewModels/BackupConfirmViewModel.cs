@@ -207,6 +207,7 @@ namespace HodlWallet2.ViewModels
             }
             else
             {
+                SecureStorageProvider.SetMnemonicStatus("TRUE");
                 Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
             }
         }

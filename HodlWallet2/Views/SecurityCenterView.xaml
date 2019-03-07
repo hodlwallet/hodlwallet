@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.SecurityCenter"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.SecurityCenterView"
              xmlns:svg="clr-namespace:HodlWallet2.Utils" BackgroundColor="{StaticResource GrayBackground}"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-             ios:Page.UseSafeArea="true">
-    <FlexLayout Direction="Column">
+             xmlns:controls="clr-namespace:HodlWallet2.Utils;assembly=HodlWallet2" ios:Page.UseSafeArea="true">
+    <FlexLayout Direction="Column" >
         
-        <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.Grow="1" Margin="10">
+        <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.AlignSelf="Start" FlexLayout.Grow="1" Margin="10">
             <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center">
                 <svg:Icon.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnCloseTapped"/>
@@ -14,7 +14,7 @@
                 
             <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
                 
-            <Label x:Name="SendTitle" 
+            <Label x:Name="SecurityCenterTitle" 
                    Style="{DynamicResource CustomLabel}"
                    FontSize="Large"
                    FlexLayout.AlignSelf="Center" />
@@ -28,9 +28,17 @@
             </svg:Icon>
         </FlexLayout>
         
-        <ScrollView>
-            
-        </ScrollView>
+        <svg:Icon ResourceId="Assets.shield.svg" FlexLayout.AlignSelf="Center" Margin="10"/>
+        
+        <Label x:Name="ShieldHeader" Style="{DynamicResource CustomFont}" FontSize="Large" />
+        
+        <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
+        
+        <StackLayout FlexLayout.Grow="1">
+            <svg:Icon ResourceId="{Binding PinCheck}" HorizontalOptions="Start"/>
+        </StackLayout>
+        
+        <BoxView FlexLayout.Grow="1" />
         
     </FlexLayout>
 </ContentPage>
