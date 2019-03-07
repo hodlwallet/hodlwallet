@@ -286,5 +286,53 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("SecurityCenter.title", resourceCulture);
             }
         }
+        
+        internal static string SecurityCenter_header {
+            get {
+                return ResourceManager.GetString("SecurityCenter.header", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_pinHeader {
+            get {
+                return ResourceManager.GetString("SecurityCenter.pinHeader", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_pinDetail {
+            get {
+                return ResourceManager.GetString("SecurityCenter.pinDetail", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_fingerprintHeaderIOS {
+            get {
+                return ResourceManager.GetString("SecurityCenter.fingerprintHeaderIOS", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_fingerprintHeaderAndroid {
+            get {
+                return ResourceManager.GetString("SecurityCenter.fingerprintHeaderAndroid", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_fingerprintDetail {
+            get {
+                return ResourceManager.GetString("SecurityCenter.fingerprintDetail", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_mnemonicHeader {
+            get {
+                return ResourceManager.GetString("SecurityCenter.mnemonicHeader", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_mnemonicDetail {
+            get {
+                return ResourceManager.GetString("SecurityCenter.mnemonicDetail", resourceCulture);
+            }
+        }
     }
 }

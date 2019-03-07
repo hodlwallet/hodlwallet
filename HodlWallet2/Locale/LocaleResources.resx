@@ -212,4 +212,44 @@
         <value>Security Center</value>
         <comment>label for security center title</comment>
     </data>
+    
+    <data name="SecurityCenter.header" xml:space="preserve">
+        <value>Enable all security features for maximum protection.</value>
+        <comment>label for security center header</comment>
+    </data>
+    
+    <data name="SecurityCenter.pinHeader" xml:space="preserve">
+        <value>6-Digit PIN</value>
+        <comment>label for security center pin header</comment>
+    </data>
+    
+    <data name="SecurityCenter.pinDetail" xml:space="preserve">
+        <value>Protects your wallet from unauthorized users.</value>
+        <comment>label for security center pin detail</comment>
+    </data>
+    
+    <data name="SecurityCenter.fingerprintHeaderIOS" xml:space="preserve">
+        <value>Touch ID</value>
+        <comment>label for security center fingerprint header for ios</comment>
+    </data>
+    
+    <data name="SecurityCenter.fingerprintHeaderAndroid" xml:space="preserve">
+        <value>Fingerprint Authentication</value>
+        <comment>label for security center fingerprint header for android</comment>
+    </data>
+    
+    <data name="SecurityCenter.fingerprintDetail" xml:space="preserve">
+        <value>Conveniently unlock your wallet and send money up to a set limit.</value>
+        <comment>label for security center fingerprint detail</comment>
+    </data>
+    
+    <data name="SecurityCenter.mnemonicHeader" xml:space="preserve">
+        <value>Backup Recovery Key</value>
+        <comment>label for security center mnemonic header</comment>
+    </data>
+    
+    <data name="SecurityCenter.mnemonicDetail" xml:space="preserve">
+        <value>The only way to access your bitcoin if you lose or upgrade your phone.</value>
+        <comment>label for security center mnemonic detail</comment>
+    </data>
 </root>
