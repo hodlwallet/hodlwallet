@@ -15,7 +15,6 @@ namespace HodlWallet2.Views
     public partial class ReceiveView : ContentPage
     {
         private ReceiveViewModel _ViewModel;
-        public EncodingOptions BarcodeOptions => new EncodingOptions() { Height = 300, Width = 300, PureBarcode = true };
 
         public ReceiveView(ReceiveViewModel receiveViewModel)
         {

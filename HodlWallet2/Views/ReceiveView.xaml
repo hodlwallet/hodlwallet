@@ -37,11 +37,17 @@
         
         <BoxView FlexLayout.Grow="1" />
         
-        <forms:ZXingBarcodeImageView BarcodeValue="{Binding Address}" IsVisible="True" x:Name="_QrCodeView" BarcodeFormat="QR_CODE" HeightRequest="300" WidthRequest="300" FlexLayout.Grow="3">
-            <zx:ZXingBarcodeImageView.BarcodeOptions>
-                <zxcm:EncodingOptions Width="300" Height="300" />
-            </zx:ZXingBarcodeImageView.BarcodeOptions>
-        </forms:ZXingBarcodeImageView>
+        <ContentView FlexLayout.Grow="2">
+            <forms:ZXingBarcodeImageView BarcodeValue="{Binding Address}" 
+                                         x:Name="_QrCodeView" 
+                                         BarcodeFormat="QR_CODE"
+                                         HeightRequest="299"
+                                         WidthRequest="299">
+                <zx:ZXingBarcodeImageView.BarcodeOptions>
+                    <zxcm:EncodingOptions Width="300" Height="300" />
+                </zx:ZXingBarcodeImageView.BarcodeOptions>
+            </forms:ZXingBarcodeImageView>
+        </ContentView>
         
        <ContentView>
             <Label x:Name="_Address"
