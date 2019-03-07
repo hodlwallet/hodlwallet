@@ -35,6 +35,38 @@ namespace HodlWallet2.ViewModels
             }
         }
 
+        public string FingerprintCheck
+        {
+            set
+            {
+                if (fingerprintCheck != value)
+                {
+                    fingerprintCheck = value;
+                    OnPropertyChanged("FingerprintCheck");
+                }
+            }
+            get
+            {
+                return fingerprintCheck;
+            }
+        }
+
+        public string MnemonicCheck
+        {
+            set
+            {
+                if (mnemonicCheck != value)
+                {
+                    mnemonicCheck = value;
+                    OnPropertyChanged("MnemonicCheck");
+                }
+            }
+            get
+            {
+                return mnemonicCheck;
+            }
+        }
+
         public SecurityCenterViewModel()
         {
             InitializeChecks();
@@ -48,9 +80,26 @@ namespace HodlWallet2.ViewModels
             }
             else
             {
-                PinCheck = grayCheck;
+                throw new ArgumentException("Pin cannot be null after setup!");
             }
-            // TODO: Add next two checks.
+
+            if (SecureStorageProvider.HasFingerprintStatus())
+            {
+                FingerprintCheck = SecureStorageProvider.GetFingerprintStatus() == "1" ? yellowCheck : grayCheck;
+            }
+            else
+            {
+                throw new ArgumentException("Fingerprint status cannot be null after setup!");
+            }
+
+            if (SecureStorageProvider.HasMnemonicStatus())
+            {
+                MnemonicCheck = SecureStorageProvider.GetMnemonicStatus() == "1" ? yellowCheck : grayCheck;
+            }
+            else
+            {
+                throw new ArgumentException("Mnemonic status cannot be null after setup!");
+            }
         }
 
         protected void OnPropertyChanged(string propertyName)
