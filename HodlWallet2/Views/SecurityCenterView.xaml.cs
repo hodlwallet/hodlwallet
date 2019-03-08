@@ -27,6 +27,19 @@ namespace HodlWallet2.Views
             ShieldHeader.Text = LocaleResources.SecurityCenter_header;
             PinCheckHeader.Text = LocaleResources.SecurityCenter_pinHeader;
             PinCheckDetail.Text = LocaleResources.SecurityCenter_pinDetail;
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                FingerprintCheckHeader.Text = LocaleResources.SecurityCenter_fingerprintHeaderIOS;
+            }
+            else
+            {
+                FingerprintCheckHeader.Text = LocaleResources.SecurityCenter_fingerprintHeaderAndroid;
+            }
+
+            FingerprintCheckDetail.Text = LocaleResources.SecurityCenter_fingerprintDetail;
+            MnemonicCheckHeader.Text = LocaleResources.SecurityCenter_mnemonicHeader;
+            MnemonicCheckDetail.Text = LocaleResources.SecurityCenter_mnemonicDetail;
         }
 
         public async void OnCloseTapped(object sender, EventArgs e)
