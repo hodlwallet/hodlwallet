@@ -334,5 +334,47 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("SecurityCenter.mnemonicDetail", resourceCulture);
             }
         }
+        
+        internal static string FingerprintAuth_header {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.header", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_switchLabelIOS {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.switchLabelIOS", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_switchAndroid {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.switchAndroid", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_spendingLimit {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.spendingLimit", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_subheader {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.subheader", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_limitButtonIOS {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.limitButtonIOS", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_limitButtonAndroid {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.limitButtonAndroid", resourceCulture);
+            }
+        }
     }
 }

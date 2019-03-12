@@ -252,4 +252,40 @@
         <value>The only way to access your bitcoin if you lose or upgrade your phone.</value>
         <comment>label for security center mnemonic detail</comment>
     </data>
+    
+    <data name="FingerprintAuth.header" xml:space="preserve">
+        <value>Use your fingerprint to unlock your wallet and send money up to a set limit.</value>
+        <comment>label for fingerprint auth header</comment>
+    </data>
+    
+    <data name="FingerprintAuth.switchLabelIOS" xml:space="preserve">
+        <value>Enable Touch ID for Hodl</value>
+        <comment>label for fingerprint auth slider on IOS</comment>
+    </data>
+    
+    <data name="FingerprintAuth.switchAndroid" xml:space="preserve">
+        <value>Enable Fingerprint Authentication for Hodl</value>
+        <comment>label for fingerprint auth slider on android</comment>
+    </data>
+    
+    <data name="FingerprintAuth.spendingLimit" xml:space="preserve">
+        <value>Spending limit: </value>
+        <comment>label for fingerprint auth spending limit</comment>
+    </data>
+    
+    <data name="FingerprintAuth.subheader" xml:space="preserve">
+        <value>You can customize your touch ID spending limit from the </value>
+        <comment>label for fingerprint auth subheader</comment>
+    </data>
+    
+    <data name="FingerprintAuth.limitButtonIOS" xml:space="preserve">
+        <value>Touch ID Spending Limit Screen.</value>
+        <comment>label for spending limit button on IOS</comment>
+    </data>
+    
+    <data name="FingerprintAuth.limitButtonAndroid" xml:space="preserve">
+        <value>Fingerprint Authentication Spending Limit Screen.</value>
+        <comment>label for spending limit button on Android</comment>
+    </data>
+        
 </root>
