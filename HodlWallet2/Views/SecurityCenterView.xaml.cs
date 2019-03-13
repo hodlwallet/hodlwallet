@@ -28,14 +28,8 @@ namespace HodlWallet2.Views
             PinCheckHeader.Text = LocaleResources.SecurityCenter_pinHeader;
             PinCheckDetail.Text = LocaleResources.SecurityCenter_pinDetail;
 
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                FingerprintCheckHeader.Text = LocaleResources.SecurityCenter_fingerprintHeaderIOS;
-            }
-            else
-            {
-                FingerprintCheckHeader.Text = LocaleResources.SecurityCenter_fingerprintHeaderAndroid;
-            }
+            FingerprintCheckHeader.Text = Device.RuntimePlatform == Device.iOS?
+                                          LocaleResources.SecurityCenter_fingerprintHeaderIOS : LocaleResources.SecurityCenter_fingerprintHeaderAndroid;
 
             FingerprintCheckDetail.Text = LocaleResources.SecurityCenter_fingerprintDetail;
             MnemonicCheckHeader.Text = LocaleResources.SecurityCenter_mnemonicHeader;
@@ -50,6 +44,17 @@ namespace HodlWallet2.Views
         public async void OnFaqTapped(object sender, EventArgs e)
         {
             // TODO:
+        }
+
+        public async void OnFingerprintTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FingerprintAuthView());
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ViewModel.InitializeChecks();
         }
     }
 }

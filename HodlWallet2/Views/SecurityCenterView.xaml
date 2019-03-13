@@ -3,9 +3,9 @@
              xmlns:svg="clr-namespace:HodlWallet2.Utils" BackgroundColor="{StaticResource GrayBackground}"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              xmlns:controls="clr-namespace:HodlWallet2.Utils;assembly=HodlWallet2" ios:Page.UseSafeArea="true">
-    <StackLayout>
+    <FlexLayout Direction="Column" Margin="20, 0, 20, 0">
         
-        <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.AlignSelf="Start" FlexLayout.Grow="1" Margin="10">
+        <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.AlignSelf="Start" FlexLayout.Grow="1">
             <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center">
                 <svg:Icon.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnCloseTapped"/>
@@ -17,6 +17,7 @@
             <Label x:Name="SecurityCenterTitle" 
                    Style="{DynamicResource CustomLabel}"
                    FontSize="Medium"
+                   LineBreakMode="MiddleTruncation"
                    FlexLayout.AlignSelf="Center" />
             
             <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
@@ -28,73 +29,63 @@
             </svg:Icon>
         </FlexLayout>
         
-            <svg:Icon ResourceId="Assets.shield.svg" 
-                      HorizontalOptions="CenterAndExpand" 
-                      VerticalOptions="CenterAndExpand"
-                      HeightRequest="170"
-                      WidthRequest="170"/>
-            
-            <Label x:Name="ShieldHeader" Style="{DynamicResource CustomLabel}" FontSize="Large" />
-            
-            <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
-            
-            <Grid Padding="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                
-                <svg:Icon ResourceId="{Binding PinCheck}" 
-                          Grid.Row="0"
-                          Grid.Column="0"
-                          BackgroundColor="Teal"/>
-                <Label x:Name="PinCheckHeader" 
-                           Style="{DynamicResource CustomLabel}"
-                           Grid.Row="0"
-                           Grid.Column="1"
-                           BackgroundColor="Teal" />
-                <Label x:Name="PinCheckDetail" 
-                           Style="{DynamicResource CustomLabel}"
-                           FontSize="Small"
-                           Grid.Row="1"
-                           Grid.Column="1"/>
-                <svg:Icon ResourceId="{Binding FingerprintCheck}" 
-                          Grid.Row="2"
-                          Grid.Column="0"/>
-                <Label x:Name="FingerprintCheckHeader" 
-                           Style="{DynamicResource CustomLabel}"
-                           Grid.Row="2"
-                           Grid.Column="1"/>
-                <Label x:Name="FingerprintCheckDetail" 
-                           Style="{DynamicResource CustomLabel}"
-                           FontSize="Small"
-                           Grid.Row="3"
-                           Grid.Column="1"/>
-                <svg:Icon ResourceId="{Binding MnemonicCheck}" 
-                          Grid.Row="4"
-                          Grid.Column="0"/>
-                <Label x:Name="MnemonicCheckHeader" 
-                           Style="{DynamicResource CustomLabel}"
-                           Grid.Row="4"
-                           Grid.Column="1"/>
-                <Label x:Name="MnemonicCheckDetail" 
-                           Style="{DynamicResource CustomLabel}"
-                           FontSize="Small"
-                           Grid.Row="5"
-                           Grid.Column="1"/>
-            </Grid>
-                    
-            <BoxView FlexLayout.Grow="1" />
-            
-            <BoxView FlexLayout.Grow="1" />
+        <svg:Icon ResourceId="Assets.shield.svg" 
+                  HorizontalOptions="CenterAndExpand" 
+                  VerticalOptions="CenterAndExpand"
+                  FlexLayout.Grow="2"
+                  Margin="0, 15, 0, 15"/>
         
-    </StackLayout>
+        <Label x:Name="ShieldHeader" Style="{DynamicResource CustomLabel}" />
+        
+        <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" Margin="0, 10, 0, 10" />
+        
+        <AbsoluteLayout FlexLayout.Grow="2">
+            <svg:Icon ResourceId="{Binding PinCheck}"
+                      AbsoluteLayout.LayoutBounds="0, 0, 50, 50" />
+            <Label x:Name="PinCheckHeader" 
+                   Style="{DynamicResource CustomLabel}"
+                   AbsoluteLayout.LayoutBounds="50, 0, 1, 40"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"/>
+            <Label x:Name="PinCheckDetail" 
+                   Style="{DynamicResource CustomLabel}"
+                   AbsoluteLayout.LayoutBounds="50, 50, 0.7, 50"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"
+                   FontSize="Small" />
+        </AbsoluteLayout>
+        
+        <AbsoluteLayout FlexLayout.Grow="2">
+            <svg:Icon ResourceId="{Binding FingerprintCheck}"
+                      AbsoluteLayout.LayoutBounds="0, 0, 50, 50"/>
+            <Label x:Name="FingerprintCheckHeader" 
+                   Style="{DynamicResource CustomLabel}"
+                   AbsoluteLayout.LayoutBounds="50, 0, 1, 40"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"/>
+            <Label x:Name="FingerprintCheckDetail" 
+                   Style="{DynamicResource CustomLabel}"
+                   AbsoluteLayout.LayoutBounds="50, 50, 0.7, 50"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"
+                   FontSize="Small"/>
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnFingerprintTapped" />
+            </AbsoluteLayout.GestureRecognizers>
+        </AbsoluteLayout>
+        
+        <AbsoluteLayout FlexLayout.Grow="2">
+            <svg:Icon ResourceId="{Binding MnemonicCheck}"
+                      AbsoluteLayout.LayoutBounds="0, 0, 50, 50"
+                      BackgroundColor="Teal"/>
+            <Label x:Name="MnemonicCheckHeader" 
+                   Style="{DynamicResource CustomLabel}"
+                   AbsoluteLayout.LayoutBounds="50, 0, 1, 40"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"
+                   BackgroundColor="Teal"/>
+            <Label x:Name="MnemonicCheckDetail" 
+                   Style="{DynamicResource CustomLabel}"
+                   FontSize="Small"
+                   LineBreakMode="WordWrap"
+                   AbsoluteLayout.LayoutBounds="50, 50, 0.7, 50"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"/>
+        </AbsoluteLayout>
+        
+    </FlexLayout>
 </ContentPage>

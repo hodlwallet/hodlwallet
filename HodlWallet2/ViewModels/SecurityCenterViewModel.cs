@@ -72,7 +72,7 @@ namespace HodlWallet2.ViewModels
             InitializeChecks();
         }
 
-        private void InitializeChecks()
+        public void InitializeChecks()
         {
             if (SecureStorageProvider.HasPassword())
             {
