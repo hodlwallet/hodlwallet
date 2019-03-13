@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+
 using HodlWallet2.Locale;
+using HodlWallet2.Utils;
 
 namespace HodlWallet2.Views
 {
@@ -12,6 +14,7 @@ namespace HodlWallet2.Views
         {
             InitializeComponent();
             SetLabels();
+            SetSwitch();
         }
 
         private void SetLabels()
@@ -41,6 +44,32 @@ namespace HodlWallet2.Views
             limitString.Spans.Add(textButton);
 
             LimitLabel.FormattedText = limitString;
+        }
+
+        private void SetSwitch()
+        {
+            if (SecureStorageProvider.HasFingerprintStatus())
+            {
+                if (SecureStorageProvider.GetFingerprintStatus() == "1")
+                {
+                    FingerprintSwitch.IsToggled = true;
+                }
+            }
+
+            FingerprintSwitch.Toggled += (sender, e) =>
+            {
+                if (SecureStorageProvider.HasFingerprintStatus())
+                {
+                    if (SecureStorageProvider.GetFingerprintStatus() == "1")
+                    {
+                        SecureStorageProvider.SetFingerprintStatus("0");
+                    }
+                    else
+                    {
+                        SecureStorageProvider.SetFingerprintStatus("1");
+                    }
+                }
+            };
         }
     }
 }
