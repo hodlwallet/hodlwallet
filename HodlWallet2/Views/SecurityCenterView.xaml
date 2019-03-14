@@ -83,6 +83,9 @@
                    LineBreakMode="WordWrap"
                    AbsoluteLayout.LayoutBounds="50, 30, 0.7, 50"
                    AbsoluteLayout.LayoutFlags="WidthProportional"/>
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnMnemonicTapped" />
+            </AbsoluteLayout.GestureRecognizers>
         </AbsoluteLayout>
         
     </FlexLayout>

@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 using HodlWallet2.ViewModels;
 using HodlWallet2.Locale;
+using HodlWallet2.Utils;
 
 namespace HodlWallet2.Views
 {
@@ -49,6 +50,12 @@ namespace HodlWallet2.Views
         public async void OnFingerprintTapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FingerprintAuthView());
+        }
+
+        public async void OnMnemonicTapped(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+            await App.Current.MainPage.Navigation.PushAsync(new CustomNavigationPage(new BackupView()));
         }
 
         protected override void OnAppearing()
