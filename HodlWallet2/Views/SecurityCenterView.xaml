@@ -44,11 +44,11 @@
                       AbsoluteLayout.LayoutBounds="0, 0, 50, 50" />
             <Label x:Name="PinCheckHeader" 
                    Style="{DynamicResource CustomLabel}"
-                   AbsoluteLayout.LayoutBounds="50, 0, 1, 40"
+                   AbsoluteLayout.LayoutBounds="50, 0, 1, 30"
                    AbsoluteLayout.LayoutFlags="WidthProportional"/>
             <Label x:Name="PinCheckDetail" 
                    Style="{DynamicResource CustomLabel}"
-                   AbsoluteLayout.LayoutBounds="50, 50, 0.7, 50"
+                   AbsoluteLayout.LayoutBounds="50, 30, 0.7, 50"
                    AbsoluteLayout.LayoutFlags="WidthProportional"
                    FontSize="Small" />
         </AbsoluteLayout>
@@ -58,11 +58,11 @@
                       AbsoluteLayout.LayoutBounds="0, 0, 50, 50"/>
             <Label x:Name="FingerprintCheckHeader" 
                    Style="{DynamicResource CustomLabel}"
-                   AbsoluteLayout.LayoutBounds="50, 0, 1, 40"
+                   AbsoluteLayout.LayoutBounds="50, 0, 1, 30"
                    AbsoluteLayout.LayoutFlags="WidthProportional"/>
             <Label x:Name="FingerprintCheckDetail" 
                    Style="{DynamicResource CustomLabel}"
-                   AbsoluteLayout.LayoutBounds="50, 50, 0.7, 50"
+                   AbsoluteLayout.LayoutBounds="50, 30, 0.7, 50"
                    AbsoluteLayout.LayoutFlags="WidthProportional"
                    FontSize="Small"/>
             <AbsoluteLayout.GestureRecognizers>
@@ -72,18 +72,16 @@
         
         <AbsoluteLayout FlexLayout.Grow="2">
             <svg:Icon ResourceId="{Binding MnemonicCheck}"
-                      AbsoluteLayout.LayoutBounds="0, 0, 50, 50"
-                      BackgroundColor="Teal"/>
+                      AbsoluteLayout.LayoutBounds="0, 0, 50, 50"/>
             <Label x:Name="MnemonicCheckHeader" 
                    Style="{DynamicResource CustomLabel}"
-                   AbsoluteLayout.LayoutBounds="50, 0, 1, 40"
-                   AbsoluteLayout.LayoutFlags="WidthProportional"
-                   BackgroundColor="Teal"/>
+                   AbsoluteLayout.LayoutBounds="50, 0, 1, 30"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"/>
             <Label x:Name="MnemonicCheckDetail" 
                    Style="{DynamicResource CustomLabel}"
                    FontSize="Small"
                    LineBreakMode="WordWrap"
-                   AbsoluteLayout.LayoutBounds="50, 50, 0.7, 50"
+                   AbsoluteLayout.LayoutBounds="50, 30, 0.7, 50"
                    AbsoluteLayout.LayoutFlags="WidthProportional"/>
         </AbsoluteLayout>
         
