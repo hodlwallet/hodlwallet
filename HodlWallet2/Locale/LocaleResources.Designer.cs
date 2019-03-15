@@ -143,6 +143,18 @@ namespace HodlWallet2.Locale {
             }
         }
         
+        internal static string Pin_updateTitle {
+            get {
+                return ResourceManager.GetString("Pin.updateTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Pin_updateHeader {
+            get {
+                return ResourceManager.GetString("Pin.updateHeader", resourceCulture);
+            }
+        }
+        
         internal static string Pin_header {
             get {
                 return ResourceManager.GetString("Pin.header", resourceCulture);

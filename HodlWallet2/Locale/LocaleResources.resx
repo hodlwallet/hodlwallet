@@ -93,13 +93,23 @@
         <comment>label for re-enter pin title</comment>
     </data>
     
+    <data name="Pin.updateTitle" xml:space="preserve">
+        <value>Update PIN</value>
+        <comment>label for update wallet pin</comment>
+    </data>
+    
+    <data name="Pin.updateHeader" xml:space="preserve">
+        <value>Enter your current PIN.</value>
+        <comment>label for update wallet header</comment>
+    </data>
+    
     <data name="Pin.header" xml:space="preserve">
-        <value>Your PIN will be used to unlock your wallet and send money</value>
+        <value>Your PIN will be used to unlock your wallet and send money.</value>
         <comment>label for pin header</comment>
     </data>
     
     <data name="Pin.warning" xml:space="preserve">
-        <value>Remember this PIN. If you forget it, you won't be able to access your bitcoin</value>
+        <value>Remember this PIN. If you forget it, you won't be able to access your bitcoin.</value>
         <comment>label for pin warning</comment>
     </data>
     

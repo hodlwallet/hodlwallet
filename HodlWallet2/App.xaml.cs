@@ -35,7 +35,6 @@ namespace HodlWallet2
             _Wallet = Wallet.Instance;
 
             InitializeComponent();
-            SetKeys();
 
             // If the application secure storage has the mnemonic code,
             // then the app is installed.And we just need to show the dashboard.
@@ -45,6 +44,7 @@ namespace HodlWallet2
             }
             else
             {
+                SetKeys();
                 MainPage = new CustomNavigationPage(new OnboardView());
             }
 

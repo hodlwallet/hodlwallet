@@ -51,6 +51,9 @@
                    AbsoluteLayout.LayoutBounds="50, 30, 0.7, 50"
                    AbsoluteLayout.LayoutFlags="WidthProportional"
                    FontSize="Small" />
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnPinTapped" />
+            </AbsoluteLayout.GestureRecognizers>
         </AbsoluteLayout>
         
         <AbsoluteLayout FlexLayout.Grow="2">

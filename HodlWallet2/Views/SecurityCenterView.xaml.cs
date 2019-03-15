@@ -47,6 +47,11 @@ namespace HodlWallet2.Views
             // TODO:
         }
 
+        public async void OnPinTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Update)));
+        }
+
         public async void OnFingerprintTapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FingerprintAuthView());
@@ -54,8 +59,7 @@ namespace HodlWallet2.Views
 
         public async void OnMnemonicTapped(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
-            await App.Current.MainPage.Navigation.PushAsync(new BackupView());
+            await Navigation.PushAsync(new BackupView());
         }
 
         protected override void OnAppearing()
