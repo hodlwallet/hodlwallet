@@ -26,7 +26,7 @@ namespace HodlWallet2.Views
 
         private void SetLabels()
         {
-            Title.Text = LocaleResources.Recover_title;
+            Title = LocaleResources.Recover_title;
             Header.Text = LocaleResources.Recover_header;
             Next.Text = LocaleResources.Recover_next;
         }

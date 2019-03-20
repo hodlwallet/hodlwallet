@@ -32,6 +32,8 @@ namespace HodlWallet2
 
         public const string DEFAULT_NETWORK = "main";
 
+        public static readonly string USER_AGENT = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
+
         private static Wallet instance = null;
 
         private static readonly object _SingletonLock = new object();
@@ -296,7 +298,7 @@ namespace HodlWallet2
             _ConParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
             _ConParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
 
-            _ConParams.UserAgent = "/hodlwallet:2.0/";
+            _ConParams.UserAgent = USER_AGENT;
 
             _NodesGroup = new NodesGroup(_Network, _ConParams, new NodeRequirement()
             {
@@ -436,6 +438,16 @@ namespace HodlWallet2
                 return false;
 
             return HdOperations.IsWordInWordlist(word, wordList);
+        }
+
+        public string[] GenerateGuessWords(string wordToGuess, string language = "english", int amountAround = 9)
+        {
+            return HdOperations.GenerateGuessWords(wordToGuess, language, amountAround);
+        }
+
+        public bool IsVerifyChecksum(string mnemonic, string wordList = "english")
+        {
+            return HdOperations.IsValidChecksum(mnemonic, wordList);
         }
 
         public HdAddress GetReceiveAddress()

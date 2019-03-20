@@ -119,6 +119,12 @@ namespace HodlWallet2.Locale {
             }
         }
         
+        internal static string Backup_previous {
+            get {
+                return ResourceManager.GetString("Backup.previous", resourceCulture);
+            }
+        }
+        
         internal static string ConfirmBackup_header {
             get {
                 return ResourceManager.GetString("ConfirmBackup.header", resourceCulture);
@@ -149,6 +155,12 @@ namespace HodlWallet2.Locale {
             }
         }
         
+        internal static string Pin_enter {
+            get {
+                return ResourceManager.GetString("Pin.enter", resourceCulture);
+            }
+        }
+        
         internal static string Recover_title {
             get {
                 return ResourceManager.GetString("Recover.title", resourceCulture);
@@ -170,6 +182,102 @@ namespace HodlWallet2.Locale {
         internal static string Recover_entryHeader {
             get {
                 return ResourceManager.GetString("Recover.entryHeader", resourceCulture);
+            }
+        }
+        
+        internal static string Recover_alertTitle {
+            get {
+                return ResourceManager.GetString("Recover.alertTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Recover_alertHeader {
+            get {
+                return ResourceManager.GetString("Recover.alertHeader", resourceCulture);
+            }
+        }
+        
+        internal static string Recover_alertButton {
+            get {
+                return ResourceManager.GetString("Recover.alertButton", resourceCulture);
+            }
+        }
+        
+        internal static string Send_title {
+            get {
+                return ResourceManager.GetString("Send.title", resourceCulture);
+            }
+        }
+        
+        internal static string Send_to {
+            get {
+                return ResourceManager.GetString("Send.to", resourceCulture);
+            }
+        }
+        
+        internal static string Send_scan {
+            get {
+                return ResourceManager.GetString("Send.scan", resourceCulture);
+            }
+        }
+        
+        internal static string Send_paste {
+            get {
+                return ResourceManager.GetString("Send.paste", resourceCulture);
+            }
+        }
+        
+        internal static string Send_amount {
+            get {
+                return ResourceManager.GetString("Send.amount", resourceCulture);
+            }
+        }
+        
+        internal static string Receive_title {
+            get {
+                return ResourceManager.GetString("Receive.title", resourceCulture);
+            }
+        }
+        
+        internal static string Receive_share {
+            get {
+                return ResourceManager.GetString("Receive.share", resourceCulture);
+            }
+        }
+        
+        internal static string Receive_requestAmount {
+            get {
+                return ResourceManager.GetString("Receive.requestAmount", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_title {
+            get {
+                return ResourceManager.GetString("Menu.title", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_security {
+            get {
+                return ResourceManager.GetString("Menu.security", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_knowledge {
+            get {
+                return ResourceManager.GetString("Menu.knowledge", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_settings {
+            get {
+                return ResourceManager.GetString("Menu.settings", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_lock {
+            get {
+                return ResourceManager.GetString("Menu.lock", resourceCulture);
             }
         }
     }

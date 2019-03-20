@@ -36,28 +36,31 @@ namespace HodlWallet2.Views
 
         public async void OnSendTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SendView(new SendViewModel()));
+            await Navigation.PushModalAsync(new SendView(new SendViewModel()));
         }
 
         public async void OnReceiveTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RecieveView(new ReceiveViewModel()));
+            await Navigation.PushModalAsync(new ReceiveView(new ReceiveViewModel()));
         }
 
-        public void OnMenuTapped(object sender, EventArgs e)
+        public async void OnMenuTapped(object sender, EventArgs e)
         {
-            _Transactions.ItemsSource = ViewModel.Transactions;
+            // TODO:
+            /* _Transactions.ItemsSource = ViewModel.Transactions;
 
-            _Wallet.ReScan(new DateTimeOffset(new DateTime(2018, 11, 8)));
+            _Wallet.ReScan(new DateTimeOffset(new DateTime(2018, 11, 8))); */
+
+            await Navigation.PushModalAsync(new MenuView());
         }
 
         public void SetTempLabels()
         {
             amountLabel.Text = "20 BTC";
             priceLabel.Text = "1 BTC = $4";
-            sendLabel.Text = LocaleResources.Dashboard_send;
-            receiveLabel.Text = LocaleResources.Dashboard_receive;
-            menuLabel.Text = LocaleResources.Dashboard_menu;
+            sendLabel.Text = LocaleResources.Dashboard_send.ToUpper();
+            receiveLabel.Text = LocaleResources.Dashboard_receive.ToUpper();
+            menuLabel.Text = LocaleResources.Dashboard_menu.ToUpper();
         }
     }
 }

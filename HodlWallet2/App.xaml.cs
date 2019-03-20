@@ -1,6 +1,7 @@
 using System;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 using NBitcoin;
 
@@ -36,7 +37,7 @@ namespace HodlWallet2
 
             InitializeComponent();
 
-            //If the application secure storage has the mnemonic code,
+            // If the application secure storage has the mnemonic code,
             // then the app is installed.And we just need to show the dashboard.
             //if (SecureStorageProvider.HasMnemonic())
             //{
@@ -46,9 +47,6 @@ namespace HodlWallet2
             //{
             //    MainPage = new CustomNavigationPage(new OnboardView());
             //}
-
-            // TODO This is temporal, please use the code above.
-            //MainPage = new CustomNavigationPage(new OnboardView());
 
             // Add event handlers
             _Wallet.OnStarted += (object sender, EventArgs args) =>

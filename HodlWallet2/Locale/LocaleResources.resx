@@ -73,6 +73,11 @@
         <comment>label for backup word header</comment>
     </data>
     
+    <data name="Backup.previous" xml:space="preserve">
+        <value>Previous</value>
+        <comment>label for previous backup word</comment>
+    </data>
+    
     <data name="ConfirmBackup.header" xml:space="preserve">
         <value>To make sure everything was written down correctly, please choose from the following words the correct backup recovery key.</value>
         <comment>label for backup confirmation</comment>
@@ -98,6 +103,11 @@
         <comment>label for pin warning</comment>
     </data>
     
+    <data name="Pin.enter" xml:space="preserve">
+        <value>Enter Pin</value>
+        <comment>label for current wallet pin</comment>
+    </data>
+    
     <data name="Recover.title" xml:space="preserve">
         <value>Recover Wallet</value>
         <comment>label for recover wallet title</comment>
@@ -117,4 +127,85 @@
         <value>Enter the backup recovery key for the wallet you want to recover.</value>
         <comment>label for recover wallet entry</comment>
     </data>
+    
+    <data name="Recover.alertTitle" xml:space="preserve">
+        <value>Invalid Mnemonic</value>
+        <comment>label for recover wallet entry alert title</comment>
+    </data>
+    
+    <data name="Recover.alertHeader" xml:space="preserve">
+        <value>One or more of the words you entered are either mispelled or invalid.</value>
+        <comment>label for recover wallet entry alert header</comment>
+    </data>
+    
+    <data name="Recover.alertButton" xml:space="preserve">
+        <value>Try Again</value>
+        <comment>label for recover wallet entry alert button</comment>
+    </data>
+    
+    <data name="Send.title" xml:space="preserve">
+        <value>Send</value>
+        <comment>label for send view title</comment>
+    </data>
+    
+    <data name="Send.to" xml:space="preserve">
+        <value>To</value>
+        <comment>label for send entry header</comment>
+    </data>
+    
+    <data name="Send.scan" xml:space="preserve">
+        <value>Scan</value>
+        <comment>label for send scan button</comment>
+    </data>
+    
+    <data name="Send.paste" xml:space="preserve">
+        <value>Paste</value>
+        <comment>label for send paste button</comment>
+    </data>
+    
+    <data name="Send.amount" xml:space="preserve">
+        <value>Amount</value>
+        <comment>label for send amount entry</comment>
+    </data>
+    
+    <data name="Receive.title" xml:space="preserve">
+        <value>Receive</value>
+        <comment>label for receive title</comment>
+    </data>
+    
+    <data name="Receive.share" xml:space="preserve">
+        <value>Share</value>
+        <comment>label for receive share button</comment>
+    </data>
+    
+    <data name="Receive.requestAmount" xml:space="preserve">
+        <value>Request An Amount</value>
+        <comment>label for receive request amount button</comment>
+    </data>
+    
+    <data name="Menu.title" xml:space="preserve">
+        <value>Menu</value>
+        <comment>label for menu view title</comment>
+    </data>
+    
+    <data name="Menu.security" xml:space="preserve">
+        <value>Security Center</value>
+        <comment>label for security view title</comment>
+    </data>
+    
+    <data name="Menu.knowledge" xml:space="preserve">
+        <value>Knowledge</value>
+        <comment>label for knowledge page</comment>
+    </data>
+    
+    <data name="Menu.settings" xml:space="preserve">
+        <value>Settings</value>
+        <comment>label for settigns view title</comment>
+    </data>
+    
+    <data name="Menu.lock" xml:space="preserve">
+        <value>Lock Wallet</value>
+        <comment>label for menu lock wallet</comment>
+    </data>
+   
 </root>

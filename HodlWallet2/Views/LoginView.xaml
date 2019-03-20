@@ -1,5 +1,144 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.LoginView">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HodlWallet2.Views.LoginView" BackgroundColor="{StaticResource GrayBackground}"
+             xmlns:svg="clr-namespace:HodlWallet2.Utils" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
+        <StackLayout Margin="10,0,10,10" BackgroundColor="{StaticResource GrayBackground}">
+            
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Padding="10">
+                <svg:Icon ResourceId="Assets.receive_tab.svg"
+                      HorizontalOptions="Start">
+                    <svg:Icon.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnReceiveTapped"/>
+                    </svg:Icon.GestureRecognizers>
+                </svg:Icon>
+            
+                <svg:Icon ResourceId="Assets.send_tab.svg"
+                      HorizontalOptions="End">
+                    <svg:Icon.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSendTapped"/>
+                    </svg:Icon.GestureRecognizers>
+                </svg:Icon>
+            </FlexLayout>
+            
+            <Image Source="logo_front.png"
+               Scale="0.4" />
+            
+            <Label x:Name="Header" Style="{DynamicResource CustomLabel}" HorizontalOptions="Center" />
+            
+            <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5" />
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                <BoxView Color="{Binding PinOne}"
+                         Grid.Row="1"
+                         Grid.Column="1" />
+                <BoxView Color="{Binding PinTwo}"
+                         Grid.Row="1"
+                         Grid.Column="2" />
+                <BoxView Color="{Binding PinThree}"
+                         Grid.Row="1"
+                         Grid.Column="3" />
+                <BoxView Color="{Binding PinFour}"
+                         Grid.Row="1"
+                         Grid.Column="4" />
+                <BoxView Color="{Binding PinFive}"
+                         Grid.Row="1"
+                         Grid.Column="5" />
+                <BoxView Color="{Binding PinSix}"
+                         Grid.Row="1"
+                         Grid.Column="6" />
+            </Grid>
+                        
+            <Grid x:Name="PinGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="1" 
+                        Grid.Row="1" Grid.Column="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="1" />
+
+                <Button Text="2" 
+                        Grid.Row="1" Grid.Column="2"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="2" />
+
+                <Button Text="3" 
+                        Grid.Row="1" Grid.Column="3"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="3" />
+                
+                <Button Text="4" 
+                        Grid.Row="2" Grid.Column="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="4" />
+
+                <Button Text="5" 
+                        Grid.Row="2" Grid.Column="2"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="5" />
+
+                <Button Text="6" 
+                        Grid.Row="2" Grid.Column="3"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="6" />
+                
+                <Button Text="7" 
+                        Grid.Row="3" Grid.Column="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="7" />
+
+                <Button Text="8" 
+                        Grid.Row="3" Grid.Column="2"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="8" />
+
+                <Button Text="9" 
+                        Grid.Row="3" Grid.Column="3"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="9" />
+
+                <Button Text="" 
+                        Grid.Row="4" Grid.Column="1" />
+
+                <Button Text="0" 
+                        Grid.Row="4" Grid.Column="2"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="0" />
+                
+                <Button Text="&#x21E6;"
+                        Grid.Row="4" Grid.Column="3"
+                        Command="{Binding BackspaceCommand}"
+                        TextColor="{StaticResource SyncGradientStart}" />
+            </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

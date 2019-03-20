@@ -6,6 +6,7 @@ using Serilog;
 
 using HodlWallet2.Locale;
 using HodlWallet2.Utils;
+using HodlWallet2.ViewModels;
 
 namespace HodlWallet2.Views
 {
@@ -20,19 +21,25 @@ namespace HodlWallet2.Views
         {
             _Wallet = Wallet.Instance;
             _Logger = _Wallet.Logger;
+
             InitializeComponent();
+
             Position = position;
             Mnemonic = mnemonic;
+
+            NavigationPage.SetHasBackButton(this, false);
             SetLabels();
         }
 
         private void SetLabels()
         {
-            Title.Text = LocaleResources.Backup_title;
+            Title = LocaleResources.Backup_title;
             Header.Text = LocaleResources.Backup_wordheader;
             Index.Text = Position + " of 12";
             Word.Text = Mnemonic[Position - 1];
             Next.Text = LocaleResources.Seed_next;
+            Previous.Text = LocaleResources.Backup_previous;
+            Previous.IsVisible = Divider.IsVisible = Position > 1 ? true : false;
         }
 
         private void BackupWord_Clicked(object sender, EventArgs e)
@@ -45,9 +52,20 @@ namespace HodlWallet2.Views
             }
             else
             {
-                Navigation.PushAsync(new BackupRecoveryConfirmView());
+                Navigation.PushAsync(new BackupRecoveryConfirmView(new BackupConfirmViewModel(Mnemonic)));
                 _Logger.Information("Backup recovery confirmation initiated.");
             }
+        }
+
+        private void Previous_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            Position--;
         }
     }
 }
