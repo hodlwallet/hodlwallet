@@ -10,17 +10,21 @@ namespace HodlWallet2.Core.ViewModels
         public IMvxCommand<string> SuccessCommand { get; private set; }
         
         //TODO: Localize properties
-        public string PinPadTitle => "This Title is coming from the ViewModel";
+        public string PinPadTitle => "Enter PIN";
 
-        public string PinPadHeader => "This Header is coming from the ViewModel";
+        public string PinPadHeader => "Your PIN will be used to unlock your wallet and send money.";
 
-        public string PinPadWarning => "This Warning is coming from the ViewModel";
+        public string PinPadWarning => "Remember this PIN. If you forget it, you won't be able to access your bitcoin.";
 
         public PinPadViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) 
             : base(logProvider, navigationService)
         {
             //TODO: Change Action.
-            SuccessCommand = new MvxCommand<string>(pin => Debug.WriteLine($"PIN Saved: {pin}"));
+            SuccessCommand = new MvxCommand<string>(pin =>
+            {
+                Debug.WriteLine($"PIN Saved: {pin}");
+                
+            });
         }
     }
 }

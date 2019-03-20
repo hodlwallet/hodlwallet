@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -185,6 +186,7 @@ namespace HodlWallet2.Shared.Controls
                     {
                         if (_pin1.Equals(_pin2))
                         {
+                            await Navigation.PushPopupAsync(new SetPin());
                             Command?.Execute(_pin1);
                         }
                         else
