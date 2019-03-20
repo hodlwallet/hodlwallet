@@ -41,6 +41,10 @@ namespace HodlWallet2
             // then the app is installed.And we just need to show the dashboard.
             if (SecureStorageProvider.HasMnemonic())
             {
+#if DEBUG
+                if (!Preferences.ContainsKey("FingerprintStatus") || !Preferences.ContainsKey("MnemonicStatus"))
+                    SetKeys();
+#endif
                 MainPage = new CustomNavigationPage(new LoginView(new LoginViewModel()));
             }
             else
