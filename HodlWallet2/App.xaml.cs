@@ -2,6 +2,7 @@ using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 using NBitcoin;
 
@@ -60,8 +61,8 @@ namespace HodlWallet2
 
         private void SetKeys()
         {
-            SecureStorageProvider.SetMnemonicStatus("0");
-            SecureStorageProvider.SetFingerprintStatus("0");
+            Preferences.Set("MnemonicStatus", false);
+            Preferences.Set("FingerprintStatus", false);
         }
 
         protected override void OnStart()

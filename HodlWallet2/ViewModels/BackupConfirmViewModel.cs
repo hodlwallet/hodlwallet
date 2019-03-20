@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 
 using Xamarin.Forms;
+using Xamarin.Essentials;
 using Serilog;
 
 using HodlWallet2.Locale;
@@ -207,7 +208,7 @@ namespace HodlWallet2.ViewModels
             }
             else
             {
-                SecureStorageProvider.SetMnemonicStatus("1");
+                Preferences.Set("MnemonicStatus", true);
                 Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
             }
         }

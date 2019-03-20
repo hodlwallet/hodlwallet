@@ -55,36 +55,6 @@ namespace HodlWallet2.Utils
             SecureStorage.SetAsync(PASSWORD_KEY, password);
         }
 
-        public static string GetFingerprintStatus()
-        {
-            return Get(FINGERPRINT_KEY);
-        }
-
-        public static bool HasFingerprintStatus()
-        {
-            return !string.IsNullOrEmpty(GetFingerprintStatus());
-        }
-
-        public static void SetFingerprintStatus(string status)
-        {
-            Set(FINGERPRINT_KEY, status);
-        }
-
-        public static string GetMnemonicStatus()
-        {
-            return Get(MNEMONIC_STATUS_KEY);
-        }
-
-        public static bool HasMnemonicStatus()
-        {
-            return !string.IsNullOrEmpty(GetMnemonicStatus());
-        }
-
-        public static void SetMnemonicStatus(string status)
-        {
-            Set(MNEMONIC_STATUS_KEY, status);
-        }
-
         public static void RemoveAll()
         {
             SecureStorage.RemoveAll();

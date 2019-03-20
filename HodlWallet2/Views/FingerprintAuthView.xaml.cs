@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 using HodlWallet2.Locale;
 using HodlWallet2.Utils;
@@ -48,9 +49,9 @@ namespace HodlWallet2.Views
 
         private void SetSwitch()
         {
-            if (SecureStorageProvider.HasFingerprintStatus())
+            if (Preferences.ContainsKey("FingerprintStatus"))
             {
-                if (SecureStorageProvider.GetFingerprintStatus() == "1")
+                if (Preferences.Get("FingerprintStatus", false))
                 {
                     FingerprintSwitch.IsToggled = true;
                 }
@@ -58,15 +59,15 @@ namespace HodlWallet2.Views
 
             FingerprintSwitch.Toggled += (sender, e) =>
             {
-                if (SecureStorageProvider.HasFingerprintStatus())
+                if (Preferences.ContainsKey("FingerprintStatus"))
                 {
-                    if (SecureStorageProvider.GetFingerprintStatus() == "1")
+                    if (Preferences.Get("FingerprintStatus", false))
                     {
-                        SecureStorageProvider.SetFingerprintStatus("0");
+                        Preferences.Set("FingerprintStatus", false);
                     }
                     else
                     {
-                        SecureStorageProvider.SetFingerprintStatus("1");
+                        Preferences.Set("FingerprintStatus", true);
                     }
                 }
             };

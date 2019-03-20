@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 using HodlWallet2.Utils;
 
@@ -83,18 +84,18 @@ namespace HodlWallet2.ViewModels
                 throw new ArgumentException("Pin cannot be null after setup!");
             }
 
-            if (SecureStorageProvider.HasFingerprintStatus())
+            if (Preferences.ContainsKey("FingerprintStatus"))
             {
-                FingerprintCheck = SecureStorageProvider.GetFingerprintStatus() == "1" ? yellowCheck : grayCheck;
+                FingerprintCheck = Preferences.Get("FingerprintStatus", false)  ? yellowCheck : grayCheck;
             }
             else
             {
                 throw new ArgumentException("Fingerprint status cannot be null after setup!");
             }
 
-            if (SecureStorageProvider.HasMnemonicStatus())
+            if (Preferences.ContainsKey("MnemonicStatus"))
             {
-                MnemonicCheck = SecureStorageProvider.GetMnemonicStatus() == "1" ? yellowCheck : grayCheck;
+                MnemonicCheck = Preferences.Get("MnemonicStatus", false) ? yellowCheck : grayCheck;
             }
             else
             {
