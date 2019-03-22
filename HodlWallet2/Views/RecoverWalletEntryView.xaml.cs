@@ -6,8 +6,12 @@ using Xamarin.Forms;
 using Serilog;
 
 using HodlWallet2.Locale;
-using HodlWallet2.Core.ViewModels;
+using HodlWallet2.Utils;
+using HodlWallet2.ViewModels;
 using MvvmCross.Forms.Views;
+using PinPadViewModel = HodlWallet2.Core.ViewModels.PinPadViewModel;
+using RecoverWalletEntryViewModel = HodlWallet2.Core.ViewModels.RecoverWalletEntryViewModel;
+using Tags = HodlWallet2.Shared.Controls.Utils.Tags;
 
 namespace HodlWallet2.Views
 {
@@ -79,7 +83,7 @@ namespace HodlWallet2.Views
 
             // TODO: Create wallet
             SecureStorageProvider.SetMnemonic(mnemonic);
-            Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Recover)));
+            //Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Recover)));
         }
     }
 }

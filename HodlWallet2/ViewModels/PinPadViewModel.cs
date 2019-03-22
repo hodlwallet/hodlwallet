@@ -275,13 +275,13 @@ namespace HodlWallet2.ViewModels
                                 switch(viewType)
                                 {
                                     case ViewType.Setup:
-                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter)));
+                                        //_Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter)));
                                         break;
                                     case ViewType.Recover:
-                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter_recover)));
+                                        //_Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter_recover)));
                                         break;
                                     case ViewType.Update_setup:
-                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter_update)));
+                                        //_Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter_update)));
                                         break;
                                 }
                             }
