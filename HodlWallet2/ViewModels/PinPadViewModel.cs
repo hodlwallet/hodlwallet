@@ -13,6 +13,7 @@ namespace HodlWallet2.ViewModels
 {
     public enum ViewType { Setup, Re_enter, Recover, Re_enter_recover, Update, Update_setup, Re_enter_update }
 
+    [Obsolete]
     public class PinPadViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
