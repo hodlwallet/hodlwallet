@@ -6,11 +6,12 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
     xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:utils="clr-namespace:HodlWallet2.Utils;assembly=HodlWallet2"
     x:TypeArguments="viewModels:RecoverViewModel">
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
             <BoxView FlexLayout.Grow="1" />
-            <svg:Icon ResourceId="Assets.recover_wallet_illustration.svg"
+            <utils:Icon ResourceId="Assets.recover_wallet_illustration.svg"
                       HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="2" />
             <Label x:Name="Header"
                    FontFamily="{DynamicResource ElectrolizeFont}"
