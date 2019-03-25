@@ -46,12 +46,10 @@ namespace HodlWallet2
                 if (!Preferences.ContainsKey("FingerprintStatus") || !Preferences.ContainsKey("MnemonicStatus"))
                     SetKeys();
 #endif
-                MainPage = new CustomNavigationPage(new LoginView(new LoginViewModel()));
             }
             else
             {
-                SetKeys();
-                MainPage = new CustomNavigationPage(new OnboardView());
+                SetKeys();          
             }
 
             // Add event handlers
