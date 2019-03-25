@@ -189,8 +189,15 @@ namespace HodlWallet2.ViewModels
 
                 case ViewType.Re_enter:
                 case ViewType.Re_enter_recover:
+                case ViewType.Re_enter_update:
                     PinTitle = LocaleResources.Pin_redoTitle;
                     Header = LocaleResources.Pin_header;
+                    Warning = "";
+                    break;
+
+                case ViewType.Update:
+                    PinTitle = LocaleResources.Pin_updateTitle;
+                    Header = LocaleResources.Pin_updateHeader;
                     Warning = "";
                     break;
 
@@ -305,6 +312,7 @@ namespace HodlWallet2.ViewModels
                                             break;
                                         case ViewType.Update:
                                             _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Update_setup)));
+                                            PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
                                             break;
                                     }
                                 }

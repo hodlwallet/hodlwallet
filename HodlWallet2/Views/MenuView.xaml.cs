@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 
 using HodlWallet2.Locale;
+using HodlWallet2.Utils;
+using HodlWallet2.ViewModels;
 
 namespace HodlWallet2.Views
 {
@@ -15,11 +17,6 @@ namespace HodlWallet2.Views
             SetLabels();
         }
 
-        public async void OnCloseTapped(object sender, EventArgs e)
-        {
-            await Navigation.PopModalAsync();
-        }
-
         private void SetLabels()
         {
             MenuTitle.Text = LocaleResources.Menu_title;
@@ -27,6 +24,17 @@ namespace HodlWallet2.Views
             Knowledge.Text = LocaleResources.Menu_knowledge;
             Settings.Text = LocaleResources.Menu_settings;
             LockWallet.Text = LocaleResources.Menu_lock;
+        }
+
+        public async void OnCloseTapped(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+
+        public async void OnSecurityClicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+            await App.Current.MainPage.Navigation.PushModalAsync(new CustomNavigationPage(new SecurityCenterView(new SecurityCenterViewModel())));
         }
     }
 }

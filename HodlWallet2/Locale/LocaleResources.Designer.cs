@@ -143,6 +143,18 @@ namespace HodlWallet2.Locale {
             }
         }
         
+        internal static string Pin_updateTitle {
+            get {
+                return ResourceManager.GetString("Pin.updateTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Pin_updateHeader {
+            get {
+                return ResourceManager.GetString("Pin.updateHeader", resourceCulture);
+            }
+        }
+        
         internal static string Pin_header {
             get {
                 return ResourceManager.GetString("Pin.header", resourceCulture);
@@ -278,6 +290,102 @@ namespace HodlWallet2.Locale {
         internal static string Menu_lock {
             get {
                 return ResourceManager.GetString("Menu.lock", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_title {
+            get {
+                return ResourceManager.GetString("SecurityCenter.title", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_header {
+            get {
+                return ResourceManager.GetString("SecurityCenter.header", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_pinHeader {
+            get {
+                return ResourceManager.GetString("SecurityCenter.pinHeader", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_pinDetail {
+            get {
+                return ResourceManager.GetString("SecurityCenter.pinDetail", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_fingerprintHeaderIOS {
+            get {
+                return ResourceManager.GetString("SecurityCenter.fingerprintHeaderIOS", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_fingerprintHeaderAndroid {
+            get {
+                return ResourceManager.GetString("SecurityCenter.fingerprintHeaderAndroid", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_fingerprintDetail {
+            get {
+                return ResourceManager.GetString("SecurityCenter.fingerprintDetail", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_mnemonicHeader {
+            get {
+                return ResourceManager.GetString("SecurityCenter.mnemonicHeader", resourceCulture);
+            }
+        }
+        
+        internal static string SecurityCenter_mnemonicDetail {
+            get {
+                return ResourceManager.GetString("SecurityCenter.mnemonicDetail", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_header {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.header", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_switchLabelIOS {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.switchLabelIOS", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_switchAndroid {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.switchAndroid", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_spendingLimit {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.spendingLimit", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_subheader {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.subheader", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_limitButtonIOS {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.limitButtonIOS", resourceCulture);
+            }
+        }
+        
+        internal static string FingerprintAuth_limitButtonAndroid {
+            get {
+                return ResourceManager.GetString("FingerprintAuth.limitButtonAndroid", resourceCulture);
             }
         }
     }

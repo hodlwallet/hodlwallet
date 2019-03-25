@@ -93,13 +93,23 @@
         <comment>label for re-enter pin title</comment>
     </data>
     
+    <data name="Pin.updateTitle" xml:space="preserve">
+        <value>Update PIN</value>
+        <comment>label for update wallet pin</comment>
+    </data>
+    
+    <data name="Pin.updateHeader" xml:space="preserve">
+        <value>Enter your current PIN.</value>
+        <comment>label for update wallet header</comment>
+    </data>
+    
     <data name="Pin.header" xml:space="preserve">
-        <value>Your PIN will be used to unlock your wallet and send money</value>
+        <value>Your PIN will be used to unlock your wallet and send money.</value>
         <comment>label for pin header</comment>
     </data>
     
     <data name="Pin.warning" xml:space="preserve">
-        <value>Remember this PIN. If you forget it, you won't be able to access your bitcoin</value>
+        <value>Remember this PIN. If you forget it, you won't be able to access your bitcoin.</value>
         <comment>label for pin warning</comment>
     </data>
     
@@ -207,5 +217,85 @@
         <value>Lock Wallet</value>
         <comment>label for menu lock wallet</comment>
     </data>
-   
+    
+    <data name="SecurityCenter.title" xml:space="preserve">
+        <value>Security Center</value>
+        <comment>label for security center title</comment>
+    </data>
+    
+    <data name="SecurityCenter.header" xml:space="preserve">
+        <value>Enable all security features for maximum protection.</value>
+        <comment>label for security center header</comment>
+    </data>
+    
+    <data name="SecurityCenter.pinHeader" xml:space="preserve">
+        <value>6-Digit PIN</value>
+        <comment>label for security center pin header</comment>
+    </data>
+    
+    <data name="SecurityCenter.pinDetail" xml:space="preserve">
+        <value>Protects your wallet from unauthorized users.</value>
+        <comment>label for security center pin detail</comment>
+    </data>
+    
+    <data name="SecurityCenter.fingerprintHeaderIOS" xml:space="preserve">
+        <value>Touch ID</value>
+        <comment>label for security center fingerprint header for ios</comment>
+    </data>
+    
+    <data name="SecurityCenter.fingerprintHeaderAndroid" xml:space="preserve">
+        <value>Fingerprint Authentication</value>
+        <comment>label for security center fingerprint header for android</comment>
+    </data>
+    
+    <data name="SecurityCenter.fingerprintDetail" xml:space="preserve">
+        <value>Conveniently unlock your wallet and send money up to a set limit.</value>
+        <comment>label for security center fingerprint detail</comment>
+    </data>
+    
+    <data name="SecurityCenter.mnemonicHeader" xml:space="preserve">
+        <value>Backup Recovery Key</value>
+        <comment>label for security center mnemonic header</comment>
+    </data>
+    
+    <data name="SecurityCenter.mnemonicDetail" xml:space="preserve">
+        <value>The only way to access your bitcoin if you lose or upgrade your phone.</value>
+        <comment>label for security center mnemonic detail</comment>
+    </data>
+    
+    <data name="FingerprintAuth.header" xml:space="preserve">
+        <value>Use your fingerprint to unlock your wallet and send money up to a set limit.</value>
+        <comment>label for fingerprint auth header</comment>
+    </data>
+    
+    <data name="FingerprintAuth.switchLabelIOS" xml:space="preserve">
+        <value>Enable Touch ID for Hodl</value>
+        <comment>label for fingerprint auth slider on IOS</comment>
+    </data>
+    
+    <data name="FingerprintAuth.switchAndroid" xml:space="preserve">
+        <value>Enable Fingerprint Authentication for Hodl</value>
+        <comment>label for fingerprint auth slider on android</comment>
+    </data>
+    
+    <data name="FingerprintAuth.spendingLimit" xml:space="preserve">
+        <value>Spending limit: </value>
+        <comment>label for fingerprint auth spending limit</comment>
+    </data>
+    
+    <data name="FingerprintAuth.subheader" xml:space="preserve">
+        <value>You can customize your touch ID spending limit from the </value>
+        <comment>label for fingerprint auth subheader</comment>
+    </data>
+    
+    <data name="FingerprintAuth.limitButtonIOS" xml:space="preserve">
+        <value>Touch ID Spending Limit Screen.</value>
+        <comment>label for spending limit button on IOS</comment>
+    </data>
+    
+    <data name="FingerprintAuth.limitButtonAndroid" xml:space="preserve">
+        <value>Fingerprint Authentication Spending Limit Screen.</value>
+        <comment>label for spending limit button on Android</comment>
+    </data>
+        
 </root>
