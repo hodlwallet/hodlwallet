@@ -7,6 +7,8 @@ namespace HodlWallet2.Utils
         private const string WALLET_ID_KEY = "wallet-id";
         private const string PASSWORD_KEY = "password";
         private const string MNEMONIC_KEY = "mnemonic";
+        private const string FINGERPRINT_KEY = "fingerprint";
+        private const string MNEMONIC_STATUS_KEY = "mnemonic-status";
 
         public static string GetWalletId()
         {

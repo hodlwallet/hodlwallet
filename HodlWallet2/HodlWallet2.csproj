@@ -31,6 +31,7 @@
     <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.4.859" />
+    <PackageReference Include="QRCoder" Version="1.3.5" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
@@ -52,6 +53,10 @@
     <None Remove="Assets\paste.svg" />
     <None Remove="Assets\currency_switch.svg" />
     <None Remove="Assets\search.svg" />
+    <None Remove="Assets\security_center.svg" />
+    <None Remove="Assets\circle_check_gray.svg" />
+    <None Remove="Assets\circle_check_gray %28copy%29.svg" />
+    <None Remove="Assets\fingerprint_large.svg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo_front.png" />
@@ -94,6 +99,18 @@
     <EmbeddedResource Include="Assets\search.svg">
       <LogicalName>Assets.search.svg</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="Assets\shield.svg">
+      <LogicalName>Assets.shield.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\circle_check_gray.svg">
+      <LogicalName>Assets.circle_check_gray.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\circle_check_yellow.svg">
+      <LogicalName>Assets.circle_check_yellow.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\fingerprint_large.svg">
+      <LogicalName>Assets.fingerprint_large.svg</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Locale\LocaleResources.resx">
@@ -135,6 +152,9 @@
     </Compile>
     <Compile Update="Views\SetPinView.xaml.cs">
       <DependentUpon>SetPinView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="ViewModels\SecurityCenterViewModel.cs">
+      <LogicalName>HodlWallet2.ViewModels.SecurityCenterViewModel.cs</LogicalName>
     </Compile>
   </ItemGroup>
   <ItemGroup>

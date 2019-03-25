@@ -2,6 +2,7 @@ using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 using NBitcoin;
 
@@ -39,14 +40,19 @@ namespace HodlWallet2
 
             // If the application secure storage has the mnemonic code,
             // then the app is installed.And we just need to show the dashboard.
-            //if (SecureStorageProvider.HasMnemonic())
-            //{
-            //    MainPage = new CustomNavigationPage(new PinPadView());
-            //}
-            //else
-            //{
-            //    MainPage = new CustomNavigationPage(new OnboardView());
-            //}
+            if (SecureStorageProvider.HasMnemonic())
+            {
+#if DEBUG
+                if (!Preferences.ContainsKey("FingerprintStatus") || !Preferences.ContainsKey("MnemonicStatus"))
+                    SetKeys();
+#endif
+                MainPage = new CustomNavigationPage(new LoginView(new LoginViewModel()));
+            }
+            else
+            {
+                SetKeys();
+                MainPage = new CustomNavigationPage(new OnboardView());
+            }
 
             // Add event handlers
             _Wallet.OnStarted += (object sender, EventArgs args) =>
@@ -56,6 +62,12 @@ namespace HodlWallet2
             };
 
             Wallet.InitializeWallet();
+        }
+
+        private void SetKeys()
+        {
+            Preferences.Set("MnemonicStatus", false);
+            Preferences.Set("FingerprintStatus", false);
         }
 
         protected override void OnStart()
