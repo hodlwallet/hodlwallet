@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 
 namespace HodlWallet2.Utils
 {
-    public partial class CustomNavigationPage : NavigationPage
+    public partial class CustomNavigationPage : MvxNavigationPage
     {
         public CustomNavigationPage() : base()
         {

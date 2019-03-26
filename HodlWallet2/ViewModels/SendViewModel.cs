@@ -7,6 +7,7 @@ using ZXing.Net.Mobile.Forms;
 
 namespace HodlWallet2.ViewModels
 {
+    [Obsolete]
     public class SendViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;

@@ -13,6 +13,7 @@ using Liviano.Managers;
 using HodlWallet2.Views;
 using HodlWallet2.ViewModels;
 using HodlWallet2.Utils;
+using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HodlWallet2
@@ -45,12 +46,10 @@ namespace HodlWallet2
                 if (!Preferences.ContainsKey("FingerprintStatus") || !Preferences.ContainsKey("MnemonicStatus"))
                     SetKeys();
 #endif
-                MainPage = new CustomNavigationPage(new LoginView(new LoginViewModel()));
             }
             else
             {
-                SetKeys();
-                MainPage = new CustomNavigationPage(new OnboardView());
+                SetKeys();          
             }
 
             // Add event handlers

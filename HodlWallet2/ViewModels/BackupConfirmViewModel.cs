@@ -13,6 +13,7 @@ using HodlWallet2.Views;
 
 namespace HodlWallet2.ViewModels
 {
+    [Obsolete]
     public class BackupConfirmViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

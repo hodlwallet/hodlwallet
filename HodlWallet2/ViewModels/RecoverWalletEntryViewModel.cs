@@ -9,6 +9,7 @@ using Serilog;
 
 namespace HodlWallet2.ViewModels
 {
+    [Obsolete]
     public class RecoverWalletEntryViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

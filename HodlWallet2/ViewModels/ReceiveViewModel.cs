@@ -1,3 +1,4 @@
+using System;
 using Serilog;
 using System.Threading.Tasks;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using Xamarin.Essentials;
 
 namespace HodlWallet2.ViewModels
 {
+    [Obsolete]
     public class ReceiveViewModel : INotifyPropertyChanged
     {
         private ILogger _Logger;

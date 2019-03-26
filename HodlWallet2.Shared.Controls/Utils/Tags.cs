@@ -1,8 +1,6 @@
-using System;
-
 using Xamarin.Forms;
 
-namespace HodlWallet2.Utils
+namespace HodlWallet2.Shared.Controls.Utils
 {
     public class Tags
     {
@@ -19,7 +17,6 @@ namespace HodlWallet2.Utils
 
         public static void SetTag(BindableObject bindable, string value)
         {
-            bindable.SetValue(TagProperty, value);
         }
 
     }

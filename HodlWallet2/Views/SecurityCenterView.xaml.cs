@@ -49,7 +49,7 @@ namespace HodlWallet2.Views
 
         public async void OnPinTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Update)));
+            // await Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Update)));
         }
 
         public async void OnFingerprintTapped(object sender, EventArgs e)

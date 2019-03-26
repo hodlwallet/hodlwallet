@@ -13,6 +13,7 @@ namespace HodlWallet2.ViewModels
 {
     public enum ViewType { Setup, Re_enter, Recover, Re_enter_recover, Update, Update_setup, Re_enter_update }
 
+    [Obsolete]
     public class PinPadViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -275,19 +276,20 @@ namespace HodlWallet2.ViewModels
                             {
                                 SecureStorageProvider.SetPassword(string.Join("", Pin.ToArray()));
                                 Pin.Clear();
+                                //_Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter)));
                                 PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
                                 RefreshCanExecutes();
 
                                 switch(viewType)
                                 {
                                     case ViewType.Setup:
-                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter)));
+                                        //_Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter)));
                                         break;
                                     case ViewType.Recover:
-                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter_recover)));
+                                        //_Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter_recover)));
                                         break;
                                     case ViewType.Update_setup:
-                                        _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter_update)));
+                                        //_Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Re_enter_update)));
                                         break;
                                 }
                             }
@@ -302,17 +304,17 @@ namespace HodlWallet2.ViewModels
                                     switch (viewType)
                                     {
                                         case ViewType.Re_enter:
-                                            Application.Current.MainPage = new CustomNavigationPage(new BackupView());
+                                            //Application.Current.MainPage = new CustomNavigationPage(new BackupView());
                                             break;
                                         case ViewType.Re_enter_recover:
-                                            Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
+                                            //Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
                                             break;
                                         case ViewType.Re_enter_update:
-                                            _Navigation.PopToRootAsync();
+                                            //_Navigation.PopToRootAsync();
                                             break;
                                         case ViewType.Update:
-                                            _Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Update_setup)));
-                                            PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
+                                            //_Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Update_setup)));
+                                            //PinOne = PinTwo = PinThree = PinFour = PinFive = PinSix = (Color)App.Current.Resources["White"];
                                             break;
                                     }
                                 }

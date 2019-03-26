@@ -6,12 +6,16 @@ using Xamarin.Forms;
 using Serilog;
 
 using HodlWallet2.Locale;
-using HodlWallet2.ViewModels;
 using HodlWallet2.Utils;
+using HodlWallet2.ViewModels;
+using MvvmCross.Forms.Views;
+using PinPadViewModel = HodlWallet2.Core.ViewModels.PinPadViewModel;
+using RecoverWalletEntryViewModel = HodlWallet2.Core.ViewModels.RecoverWalletEntryViewModel;
+using Tags = HodlWallet2.Shared.Controls.Utils.Tags;
 
 namespace HodlWallet2.Views
 {
-    public partial class RecoverWalletEntryView : ContentPage
+    public partial class RecoverWalletEntryView : MvxContentPage<RecoverWalletEntryViewModel>
     {
         Wallet _Wallet;
         ILogger _Logger;
@@ -19,22 +23,17 @@ namespace HodlWallet2.Views
 
         public RecoverWalletEntryView()
         {
-
-        }
-
-        public RecoverWalletEntryView(RecoverWalletEntryViewModel viewModel)
-        {
             InitializeComponent();
-            _Wallet = Wallet.Instance;
-            _Logger = _Wallet.Logger;
-            viewModel._EntryGrid = EntryGrid;
-            SetLabels();
+            //_Wallet = Wallet.Instance;
+            //_Logger = _Wallet.Logger;
+            //viewModel._EntryGrid = EntryGrid;
+            //SetLabels();
         }
 
         private void SetLabels()
         {
-            RecoverTitle.Text = LocaleResources.Recover_title;
-            Header.Text = LocaleResources.Recover_entryHeader;
+//            Title.Text = LocaleResources.Recover_title;
+//            Header.Text = LocaleResources.Recover_entryHeader;
         }
 
         private void Entry_Completed(object sender, EventArgs e)
@@ -84,7 +83,7 @@ namespace HodlWallet2.Views
 
             // TODO: Create wallet
             SecureStorageProvider.SetMnemonic(mnemonic);
-            Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Recover)));
+            //Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Recover)));
         }
     }
 }

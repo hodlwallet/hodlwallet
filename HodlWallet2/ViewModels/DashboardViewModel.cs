@@ -10,6 +10,7 @@ using System;
 
 namespace HodlWallet2.ViewModels
 {
+    [Obsolete]
     public class DashboardViewModel : INotifyPropertyChanged
     {
         private ILogger _Logger;
