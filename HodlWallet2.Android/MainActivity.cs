@@ -21,22 +21,19 @@ namespace HodlWallet2.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            base.OnCreate(savedInstanceState);
-
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-
             MobileBarcodeScanner.Initialize(Application);
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
-
             FormsControls.Droid.Main.Init(this);
-
+            
+            //TODO: Replace with MvvmCross Serilog integration.
             Wallet.Instance.Logger = new LoggerConfiguration()
                 .WriteTo.AndroidLog()
                 .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
                 .CreateLogger();
-
-            LoadApplication(new App());
+            
+            base.OnCreate(savedInstanceState);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
