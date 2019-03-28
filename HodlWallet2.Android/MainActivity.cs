@@ -6,7 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-
+using MvvmCross.Forms.Platforms.Android.Views;
 using Serilog;
 using Serilog.Core;
 using ZXing.Mobile;
@@ -14,7 +14,7 @@ using ZXing.Mobile;
 namespace HodlWallet2.Droid
 {
     [Activity(Label = "HodlWallet2", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : MvxFormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
