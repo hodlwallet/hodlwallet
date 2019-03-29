@@ -1,11 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFrameworks>netcoreapp2.1;netstandard2.0</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="MvvmCross.Forms" Version="6.2.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\LivianoWallet\LivianoWallet\Liviano\Liviano.csproj" />
+      <ProjectReference Include="..\LivianoWallet\LivianoWallet\Liviano.Utilities\Liviano.Utilities.csproj" />
+      <ProjectReference Include="..\LivianoWallet\NBitcoin\NBitcoin\NBitcoin.csproj" />
+    </ItemGroup>
 </Project>
