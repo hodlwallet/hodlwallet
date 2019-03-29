@@ -24,7 +24,7 @@ using Liviano.Exceptions;
 
 namespace HodlWallet2.Core.Services
 {
-    public sealed class Wallet
+    public sealed class WalletService
     {
         public const int DEFAULT_NODES_TO_CONNECT = 4;
 
@@ -32,7 +32,7 @@ namespace HodlWallet2.Core.Services
 
         public static readonly string USER_AGENT = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
 
-        private static Wallet instance = null;
+        private static WalletService instance = null;
 
         private static readonly object _SingletonLock = new object();
 
@@ -208,11 +208,11 @@ namespace HodlWallet2.Core.Services
             return Instance._Network.GetCheckpoints().OrderBy(chainedBlock => Math.Abs(chainedBlock.Header.BlockTime.Ticks - ticks)).FirstOrDefault();
         }
 
-        Wallet()
+        WalletService()
         {
         }
 
-        public static Wallet Instance
+        public static WalletService Instance
         {
             get
             {
@@ -220,7 +220,7 @@ namespace HodlWallet2.Core.Services
                 {
                     if (instance == null)
                     {
-                        instance = new Wallet();
+                        instance = new WalletService();
                     }
 
                     return instance;
