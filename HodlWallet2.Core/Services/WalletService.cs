@@ -20,11 +20,13 @@ using Liviano.Behaviors;
 using Liviano.Enums;
 using Liviano.Models;
 using System.Collections.Generic;
+using HodlWallet2.Core.Interfaces;
 using Liviano.Exceptions;
+using MvvmCross.Logging;
 
 namespace HodlWallet2.Core.Services
 {
-    public sealed class WalletService
+    public sealed class WalletService : IWalletService
     {
         public const int DEFAULT_NODES_TO_CONNECT = 4;
 
@@ -208,8 +210,9 @@ namespace HodlWallet2.Core.Services
             return Instance._Network.GetCheckpoints().OrderBy(chainedBlock => Math.Abs(chainedBlock.Header.BlockTime.Ticks - ticks)).FirstOrDefault();
         }
 
-        WalletService()
+        public WalletService(IMvxLogProvider logProvider)
         {
+            Logger = logProvider.GetLogFor()
         }
 
         public static WalletService Instance
