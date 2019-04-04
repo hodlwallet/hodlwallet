@@ -1,5 +1,8 @@
 using System.Threading.Tasks;
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Services;
 using HodlWallet2.Core.ViewModels;
+using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 
@@ -13,6 +16,8 @@ namespace HodlWallet2.Core
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
+            
+            Mvx.IoCProvider.ConstructAndRegisterSingleton<IWalletService, WalletService>();
             
             RegisterAppStart<OnboardViewModel>();
             
