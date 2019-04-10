@@ -341,7 +341,7 @@ namespace HodlWallet2.Core.Services
             _ = PeriodicSave();
 
             OnStarted?.Invoke(this, null);
-            Started = true;
+            IsStarted = true;
         }
 
         public void Scan(DateTimeOffset? timeToStartOn)
