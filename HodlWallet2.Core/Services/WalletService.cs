@@ -275,9 +275,9 @@ namespace HodlWallet2.Core.Services
             _WalletId = walletId ?? Guid.NewGuid().ToString();
             _ConParams = new NodeConnectionParameters();
 
-            Logger.Information("Running on {network}", _Network.Name);
-            Logger.Information("With wallet id: {walletId}", _WalletId);
-            Logger.Information("Will try to connect to {nodesToConnect}", _NodesToConnect);
+            Instance.Logger.Information("Running on {network}", _Network.Name);
+            Instance.Logger.Information("With wallet id: {walletId}", _WalletId);
+            Instance.Logger.Information("Will try to connect to {nodesToConnect}", _NodesToConnect);
 
             DateTimeProvider = new DateTimeProvider();
             AsyncLoopFactory = new AsyncLoopFactory();
@@ -286,16 +286,16 @@ namespace HodlWallet2.Core.Services
 
             if (!StorageProvider.WalletExists())
             {
-                Logger.Information("Will create a new wallet {walletId} since it doesn't exists", _WalletId);
+                Instance.Logger.Information("Will create a new wallet {walletId} since it doesn't exists", _WalletId);
             }
 
-            WalletManager = new WalletManager(Logger, _Network, _Chain, AsyncLoopFactory, DateTimeProvider, ScriptAddressReader, StorageProvider);
-            WalletSyncManager = new WalletSyncManager(Logger, WalletManager, _Chain);
+            WalletManager = new WalletManager(Instance.Logger, _Network, _Chain, AsyncLoopFactory, DateTimeProvider, ScriptAddressReader, StorageProvider);
+            WalletSyncManager = new WalletSyncManager(Instance.Logger, WalletManager, _Chain);
 
-            _WalletSyncManagerBehavior = new WalletSyncManagerBehavior(Logger, WalletSyncManager, ScriptTypes.SegwitAndLegacy);
+            _WalletSyncManagerBehavior = new WalletSyncManagerBehavior(Instance.Logger, WalletSyncManager, ScriptTypes.SegwitAndLegacy);
 
             _ConParams.TemplateBehaviors.Add(new AddressManagerBehavior(_AddressManager));
-            _ConParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network, Logger) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
+            _ConParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
             _ConParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
 
             _ConParams.UserAgent = USER_AGENT;
@@ -305,27 +305,27 @@ namespace HodlWallet2.Core.Services
                 RequiredServices = NodeServices.Network
             });
 
-            Logger.Information("Requiring service 'NETWORK' for SPV");
+            Instance.Logger.Information("Requiring service 'NETWORK' for SPV");
 
             BroadcastManager broadcastManager = new BroadcastManager(_NodesGroup);
 
-            _ConParams.TemplateBehaviors.Add(new TransactionBroadcastBehavior(broadcastManager, Logger));
+            _ConParams.TemplateBehaviors.Add(new TransactionBroadcastBehavior(broadcastManager));
 
             _NodesGroup.NodeConnectionParameters = _ConParams;
             _NodesGroup.MaximumNodeConnection = _NodesToConnect;
 
             _DefaultCoinSelector = new DefaultCoinSelector();
 
-            Logger.Information("Coin selector: {coinSelector}", _DefaultCoinSelector.GetType().ToString());
+            Instance.Logger.Information("Coin selector: {coinSelector}", _DefaultCoinSelector.GetType().ToString());
 
             TransactionManager = new TransactionManager(broadcastManager, WalletManager, _DefaultCoinSelector, _Chain);
 
-            Logger.Information("Add transaction manager.");
+            Instance.Logger.Information("Add transaction manager.");
 
-            Logger.Information("Configured wallet.");
+            Instance.Logger.Information("Configured wallet.");
 
             OnConfigured?.Invoke(this, null);
-            Configured = true;
+            IsConfigured = true;
         }
 
         public void Start(string password, DateTimeOffset? timeToStartOn = null)
