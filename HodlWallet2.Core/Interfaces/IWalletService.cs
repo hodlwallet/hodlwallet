@@ -38,7 +38,7 @@ namespace HodlWallet2.Core.Interfaces
         void ReScan(DateTimeOffset? timeToStartOn);
         bool WalletExists();
         string NewMnemonic(string wordList, int wordCount);
-        bool IsWordInList(string word, string wordList);
+        bool IsWordInWordlist(string word, string wordList);
         string[] GenerateGuessWords(string wordToGuess, string language, int amountAround);
         bool IsVerifyChecksum(string mnemonic, string wordList);
         HdAddress GetReceiveAddress();
@@ -46,6 +46,6 @@ namespace HodlWallet2.Core.Interfaces
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,
             int feeSatsPerByte, string password);
 
-        async Task<(bool Sent, string Error)> SendTransaction(Transaction tx);
+        Task<(bool Sent, string Error)> SendTransaction(Transaction tx);
     }
 }
