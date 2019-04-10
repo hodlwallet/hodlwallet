@@ -58,7 +58,7 @@ namespace HodlWallet2.Core.Services
 
         private string _WalletId;
 
-        public ILogger Logger { set; get; }
+        public Serilog.ILogger Logger { set; get; }
 
         public WalletManager WalletManager { get; set; }
 
@@ -80,12 +80,12 @@ namespace HodlWallet2.Core.Services
 
         public BlockLocator ScanLocation { get; set; }
 
-        public EventHandler OnConfigured;
-        public EventHandler OnStarted;
-        public EventHandler OnScanning;
+        public event EventHandler OnConfigured;
+        public event EventHandler OnStarted;
+        public event EventHandler OnScanning;
 
-        public bool Started = false;
-        public bool Configured = false;
+        public bool IsStarted { get; set; }
+        public bool IsConfigured { get; set; }
 
         public HdAccount CurrentAccount
         {
@@ -112,7 +112,7 @@ namespace HodlWallet2.Core.Services
                     return _ConParams.TemplateBehaviors.Find<PartialChainBehavior>().Chain as PartialConcurrentChain;
                 }
 
-                var chain = new PartialConcurrentChain(_Network, Logger);
+                var chain = new PartialConcurrentChain(_Network);
 
                 using (var fs = File.Open(ChainFile(), FileMode.OpenOrCreate))
                 {
