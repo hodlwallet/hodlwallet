@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Threading.Tasks;
 using HodlWallet2.Core.Interfaces;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
@@ -10,7 +11,7 @@ namespace HodlWallet2.Core.ViewModels
     {
         private IWalletService _walletService;
         
-        public IMvxCommand<string> SuccessCommand { get; private set; }
+        public IMvxAsyncCommand<string> SuccessCommand { get; private set; }
         
         //TODO: Localize properties
         public string PinPadTitle => "Enter PIN";
@@ -27,11 +28,14 @@ namespace HodlWallet2.Core.ViewModels
         {
             _walletService = walletService;
             //TODO: Change Action.
-            SuccessCommand = new MvxCommand<string>(pin =>
-            {
-                Debug.WriteLine($"PIN Saved: {pin}");
-                _walletService.InitializeWallet();
-            });
+            SuccessCommand = new MvxAsyncCommand<string>(Success_Callback);
+        }
+
+        private async Task Success_Callback(string pin)
+        {
+            Debug.WriteLine($"PIN Saved: {pin}");
+            _walletService.InitializeWallet();
+            await NavigationService.Navigate<BackupViewModel>();
         }
     }
 }
