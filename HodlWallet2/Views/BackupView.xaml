@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.BackupView"
-             xmlns:svg="clr-namespace:HodlWallet2.Utils">
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.BackupView"
+             xmlns:svg="clr-namespace:HodlWallet2.Utils"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+             x:TypeArguments="viewModels:BackupViewModel">
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
             <BoxView FlexLayout.Grow="1" />
@@ -24,4 +27,4 @@
                     FlexLayout.Grow="1" />
         </FlexLayout>
     </ContentPage.Content>
-</ContentPage>
+</views:MvxContentPage>
