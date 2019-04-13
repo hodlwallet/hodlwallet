@@ -1,7 +1,12 @@
+using MvvmCross.Logging;
+using MvvmCross.Navigation;
+
 namespace HodlWallet2.Core.ViewModels
 {
-    public class BackupRecoveryWordViewModel
+    public class BackupRecoveryWordViewModel : BaseViewModel
     {
-        
+        protected BackupRecoveryWordViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) : base(logProvider, navigationService)
+        {
+        }
     }
 }
