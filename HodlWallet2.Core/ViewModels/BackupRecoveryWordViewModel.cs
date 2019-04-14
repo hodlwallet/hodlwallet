@@ -5,7 +5,7 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class BackupRecoveryWordViewModel : BaseViewModel
     {
-        protected BackupRecoveryWordViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) : base(logProvider, navigationService)
+        public BackupRecoveryWordViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) : base(logProvider, navigationService)
         {
         }
     }
