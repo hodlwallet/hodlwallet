@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using HodlWallet2.Core.ViewModels;
 using Xamarin.Forms;
 using Serilog;
 
 using HodlWallet2.Locale;
 using HodlWallet2.ViewModels;
 using HodlWallet2.Utils;
+using MvvmCross.Forms.Views;
 
 namespace HodlWallet2.Views
 {
-    public partial class BackupView : ContentPage
+    public partial class BackupView : MvxContentPage<BackupViewModel>
     {
         Wallet _Wallet;
         ILogger _Logger;

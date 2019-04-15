@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.BackupRecoveryWordView">
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+                      x:Class="HodlWallet2.Views.BackupRecoveryWordView"
+                      x:TypeArguments="viewModels:BackupRecoveryWordViewModel">
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
             
@@ -54,4 +59,4 @@
             
         </FlexLayout>
     </ContentPage.Content>
-</ContentPage>
+</views:MvxContentPage>
