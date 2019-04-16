@@ -48,8 +48,6 @@ namespace HodlWallet2.iOS
                 .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
                 .CreateLogger();
 
-//            LoadApplication(new App());
-//            
             return base.FinishedLaunching(app, options);
         }
     }
