@@ -1,5 +1,5 @@
 using System;
-
+using HodlWallet2.Core.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
@@ -20,7 +20,7 @@ namespace HodlWallet2
 {
     public partial class App : Application
     {
-        private Wallet _Wallet;
+        private HodlWallet2.Core.Services.WalletService _Wallet;
 
         void WalletSyncManager_OnWalletSyncedToTipOfChain(object sender, ChainedBlock e)
         {
@@ -34,7 +34,7 @@ namespace HodlWallet2
 
         public App()
         {
-            _Wallet = Wallet.Instance;
+            _Wallet = WalletService.Instance;
 
             InitializeComponent();
 
