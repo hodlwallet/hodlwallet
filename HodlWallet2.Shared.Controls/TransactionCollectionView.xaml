@@ -50,7 +50,7 @@
                     Margin="0" />
                 <CollectionView
                     BackgroundColor="White"
-                    ItemsSource="{Binding Coins}">
+                    ItemsSource="{Binding Transactions}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid
@@ -60,51 +60,46 @@
                                         Height="20" />
                                     <RowDefinition
                                         Height="20" />
+                                    <RowDefinition
+                                        Height="20" />
+                                    <RowDefinition
+                                        Height="20" />
+                                    <RowDefinition
+                                        Height="20" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition
-                                        Width="1*" />
                                     <ColumnDefinition
                                         Width="2*" />
                                     <ColumnDefinition
                                         Width="1*" />
                                 </Grid.ColumnDefinitions>
-                                <Image
-                                    Grid.RowSpan="2"
+                                <Label
                                     Grid.Column="0"
                                     Grid.Row="0"
-                                    Source="{Binding Image}"
-                                    Aspect="AspectFit"
-                                    HeightRequest="40"
-                                    WidthRequest="40"
-                                    HorizontalOptions="Center" />
+                                    TextColor="{StaticResource SyncGradientStart}"
+                                    Text="{Binding Status}" />
                                 <Label
-                                    Grid.Column="1"
-                                    Grid.Row="0"
-                                    Text="{Binding Name}"
-                                    FontAttributes="Bold" />
-                                <Label
-                                    Grid.Column="1"
+                                    Grid.Column="0"
                                     Grid.Row="1"
-                                    TextColor="Silver"
-                                    Text="{Binding ShortName}" />
-                                <Frame
-                                    CornerRadius="15"
-                                    Padding="0"
-                                    Grid.RowSpan="2"
-                                    VerticalOptions="Center"
-                                    BackgroundColor="#FCF7F7"
-                                    HasShadow="False"
-                                    Grid.Row="0"
-                                    Grid.Column="2">
-                                    <Label
-                                        Margin="5"
-                                        HorizontalOptions="Center"
-                                        BackgroundColor="Transparent"
-                                        TextColor="#CC5055"
-                                        FontSize="Small"
-                                        Text="{Binding Value}" />
-                                </Frame>
+                                    TextColor="{StaticResource White}"
+                                    Text="{Binding AtAddress}" />
+                                <Entry
+                                    Grid.Column="0"
+                                    Grid.Row="2"
+                                    TextColor="{StaticResource White}"
+                                    Text="{Binding Memo}"
+                                    IsSpellCheckEnabled="false"
+                                    IsTextPredictionEnabled="false" />
+                                <Label
+                                    Grid.Column="0"
+                                    Grid.Row="3"
+                                    TextColor="{StaticResource White}"
+                                    Text="{Binding Confirmations}" />
+                                <Label
+                                    Grid.Column="0"
+                                    Grid.Row="4"
+                                    TextColor="{StaticResource SyncGradientStart}"
+                                    Text="{Binding IsAvailible}" />
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -113,37 +108,6 @@
                     BackgroundColor="#FCF7F7"
                     HeightRequest="1"
                     HorizontalOptions="FillAndExpand" />
-                <Grid
-                    Padding="10,20"
-                    Margin="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition
-                            Height="25" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="*" />
-                        <ColumnDefinition
-                            Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Margin="20,0"
-                        Text="View all assets"
-                        TextColor="Silver"
-                        FontAttributes="Bold"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Start" />
-                    <Label
-                        Grid.Column="1"
-                        Margin="0,0,20,0"
-                        Text="&gt;"
-                        TextColor="Silver"
-                        HeightRequest="20"
-                        WidthRequest="20"
-                        VerticalOptions="Center"
-                        HorizontalOptions="End" />
-                </Grid>
             </StackLayout>
         </Frame>
     </ContentView.Content>
