@@ -37,7 +37,13 @@ namespace HodlWallet2.iOS
               UINavigationBar.Appearance.BarTintColor = UIColor.Clear;
               UINavigationBar.Appearance.Translucent = true;
 //
+
             Wallet.Instance.Logger = new LoggerConfiguration()
+                .WriteTo.NSLog()
+                .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2_OLD") // Sets the tag fields
+                .CreateLogger();
+            
+            HodlWallet2.Core.Services.WalletService.Instance.Logger = new LoggerConfiguration()
                 .WriteTo.NSLog()
                 .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
                 .CreateLogger();
