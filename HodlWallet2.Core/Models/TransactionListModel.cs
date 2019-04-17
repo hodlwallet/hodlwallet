@@ -9,7 +9,7 @@ namespace HodlWallet2.Core.Models
 
         public TransactionListModel()
         {
-            // TODO: Incorporate Wallet Service when complete
+            // TODO: Incorporate Wallet Service and MVVMCross when complete.
         }
     }
 }

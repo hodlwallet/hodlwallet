@@ -2,6 +2,7 @@
 
 namespace HodlWallet2.Core.Models
 {
+    // TODO: Populate with TransactionData from Liviano.
     public class Transaction
     {
         public bool IsReceived { get; set; }

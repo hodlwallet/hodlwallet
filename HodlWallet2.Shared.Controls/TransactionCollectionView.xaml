@@ -4,52 +4,35 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="HodlWallet2.Shared.Controls.TransactionCollectionView">
     <ContentView.Content>
+        <!-- TODO: Determine a flexible frame height. 
+                   Replace 'Title' with wallet sync loading bar. -->
         <Frame
             HeightRequest="380"
-            BackgroundColor="White"
-            BorderColor="Silver"
+            BackgroundColor="Transparent"
             CornerRadius="20"
             Padding="0">
             <StackLayout>
-                <Grid
+                <ContentView
                     Padding="10,20"
-                    Margin="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition
-                            Height="25" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="4*" />
-                        <ColumnDefinition
-                            Width="1*" />
-                    </Grid.ColumnDefinitions>
+                    Margin="0"
+                    HeightRequest="40">
                     <Label
                         x:Name="Title"
-                        Grid.Column="0"
-                        Margin="20,0"
+                        Margin="0, 20"
                         Text="Transactions"
                         TextColor="Black"
                         FontSize="20"
                         FontAttributes="Bold"
                         VerticalOptions="Center"
                         HorizontalOptions="Start" />
-                    <Image
-                        Grid.Column="1"
-                        Margin="0,0,20,0"
-                        HeightRequest="20"
-                        WidthRequest="20"
-                        Source="tab_feed"
-                        VerticalOptions="Center"
-                        HorizontalOptions="End" />
-                </Grid>
+                </ContentView>
                 <BoxView
-                    BackgroundColor="#FCF7F7"
+                    BackgroundColor="{StaticResource GrayTextTint}"
                     HeightRequest="1"
                     HorizontalOptions="FillAndExpand"
                     Margin="0" />
                 <CollectionView
-                    BackgroundColor="White"
+                    BackgroundColor="{StaticResource DarkGray}"
                     ItemsSource="{Binding Transactions}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -57,19 +40,19 @@
                                 Padding="15">
                                 <Grid.RowDefinitions>
                                     <RowDefinition
-                                        Height="20" />
+                                        Height="40" />
                                     <RowDefinition
-                                        Height="20" />
+                                        Height="40" />
                                     <RowDefinition
-                                        Height="20" />
+                                        Height="40" />
                                     <RowDefinition
-                                        Height="20" />
+                                        Height="40" />
                                     <RowDefinition
-                                        Height="20" />
+                                        Height="40" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition
-                                        Width="2*" />
+                                        Width="4*" />
                                     <ColumnDefinition
                                         Width="1*" />
                                 </Grid.ColumnDefinitions>
@@ -105,7 +88,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 <BoxView
-                    BackgroundColor="#FCF7F7"
+                    BackgroundColor="{StaticResource GrayTextTint}"
                     HeightRequest="1"
                     HorizontalOptions="FillAndExpand" />
             </StackLayout>

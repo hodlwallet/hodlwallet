@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace HodlWallet2.Shared.Controls
 {
-    public partial class TransactionCollectionView : ContentPage
+    public partial class TransactionCollectionView : ContentView
     {
         public TransactionCollectionView()
         {
