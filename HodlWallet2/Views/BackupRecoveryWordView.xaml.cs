@@ -18,18 +18,18 @@ namespace HodlWallet2.Views
         Wallet _Wallet;
         ILogger _Logger;
 
-        public BackupRecoveryWordView(int position, string[] mnemonic)
+        public BackupRecoveryWordView()
         {
-            _Wallet = Wallet.Instance;
-            _Logger = _Wallet.Logger;
+//            _Wallet = Wallet.Instance;
+//            _Logger = _Wallet.Logger;
 
             InitializeComponent();
 
-            Position = position;
-            Mnemonic = mnemonic;
+            //Position = position;
+            //Mnemonic = mnemonic;
 
-            NavigationPage.SetHasBackButton(this, false);
-            SetLabels();
+//            NavigationPage.SetHasBackButton(this, false);
+//            SetLabels();
         }
 
         private void SetLabels()
@@ -43,30 +43,30 @@ namespace HodlWallet2.Views
             Previous.IsVisible = Divider.IsVisible = Position > 1 ? true : false;
         }
 
-        private void BackupWord_Clicked(object sender, EventArgs e)
-        {
-            if (Position < 12)
-            {
-                Position++;
-                Navigation.PushAsync(new BackupRecoveryWordView(Position, Mnemonic));
-                _Logger.Information("Backup button clicked.");
-            }
-            else
-            {
-                Navigation.PushAsync(new BackupRecoveryConfirmView(new BackupConfirmViewModel(Mnemonic)));
-                _Logger.Information("Backup recovery confirmation initiated.");
-            }
-        }
-
-        private void Previous_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PopAsync();
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            Position--;
-        }
+//        private void BackupWord_Clicked(object sender, EventArgs e)
+//        {
+//            if (Position < 12)
+//            {
+//                Position++;
+//                Navigation.PushAsync(new BackupRecoveryWordView(Position, Mnemonic));
+//                _Logger.Information("Backup button clicked.");
+//            }
+//            else
+//            {
+//                Navigation.PushAsync(new BackupRecoveryConfirmView(new BackupConfirmViewModel(Mnemonic)));
+//                _Logger.Information("Backup recovery confirmation initiated.");
+//            }
+//        }
+//
+//        private void Previous_Clicked(object sender, EventArgs e)
+//        {
+//            Navigation.PopAsync();
+//        }
+//
+//        protected override void OnDisappearing()
+//        {
+//            base.OnDisappearing();
+//            Position--;
+//        }
     }
 }
