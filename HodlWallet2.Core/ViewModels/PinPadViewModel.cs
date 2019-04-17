@@ -15,9 +15,7 @@ namespace HodlWallet2.Core.ViewModels
         
         //TODO: Localize properties
         public string PinPadTitle => "Enter PIN";
-
         public string PinPadHeader => "Your PIN will be used to unlock your wallet and send money.";
-
         public string PinPadWarning => "Remember this PIN. If you forget it, you won't be able to access your bitcoin.";
 
         public PinPadViewModel(
