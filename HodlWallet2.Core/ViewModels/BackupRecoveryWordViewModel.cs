@@ -11,11 +11,20 @@ namespace HodlWallet2.Core.ViewModels
     {
         private string[] _mnemonic;
         private int _position;
+        private string _word;
 
-        public string Word => (_mnemonic != null) ? _mnemonic[_position] : string.Empty;
+        public string Word
+        {
+            get => (_position == 0) ? _mnemonic[PositionText] : _word;
+            private set => SetProperty(ref _word, value);
+        }
         
         //TODO: Localize strings
-        public string PositionText => $"{_position} of 12";
+        public int PositionText
+        {
+            get => _position;
+            private set => SetProperty(ref _position, value);
+        }
         public string NextText => "Next word";
         public string PreviousText => "Previous";
         public string HeaderText => "Write down each word in order and store it in a safe place.";
@@ -31,17 +40,21 @@ namespace HodlWallet2.Core.ViewModels
 
         private void PreviousWord_Action()
         {
-            if (_position > 0)
+            if (PositionText > 0)
             {
-                _position--;
+                PositionText--;
+                Word = _mnemonic[PositionText];
+                //TODO: Log activity here.
             }
         }
 
         private void NextWord_Action()
         {
-            if (_position < 12)
+            
+            if (PositionText < 11)
             {
-                _position++;
+                PositionText++;
+                Word = _mnemonic[PositionText];
                 //TODO: Log activity here.
             }
             else
