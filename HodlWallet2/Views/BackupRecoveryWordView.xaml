@@ -4,9 +4,13 @@
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
                       xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                      xmlns:converters="clr-namespace:HodlWallet2.Converters;assembly=HodlWallet2"
                       x:Class="HodlWallet2.Views.BackupRecoveryWordView"
                       x:TypeArguments="viewModels:BackupRecoveryWordViewModel"
                       bindings:Bi.nd="Title TitleText">
+    <ContentPage.Resources>
+        <converters:IndexToStringConverter x:Key="IndexToStringConverter" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
             
@@ -36,7 +40,8 @@
                    TextColor="Gray"
                    FontSize="Micro"
                    FlexLayout.AlignSelf="Center"
-                   bindings:Bi.nd="Text PositionText"/>
+                   Text="{Binding PositionText, Converter={StaticResource IndexToStringConverter}}" />
+            <!--TODO: Fix binding converter with MvvmCross binding -->
             
             <BoxView FlexLayout.Grow="3" />
             
