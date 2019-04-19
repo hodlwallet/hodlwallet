@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using HodlWallet2.Core.Interfaces;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
@@ -7,9 +8,15 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class RecoverWalletEntryViewModel : BaseViewModel
     {
-        public RecoverWalletEntryViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+        private IWalletService _walletService;
+        
+        public RecoverWalletEntryViewModel(
+            IMvxLogProvider logProvider, 
+            IMvxNavigationService navigationService,
+            IWalletService walletService)
             : base(logProvider, navigationService)
         {
+            _walletService = walletService;
         }
 
         public string RecoverTitle
