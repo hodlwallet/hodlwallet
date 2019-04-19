@@ -13,6 +13,7 @@ namespace HodlWallet2.Core.Interfaces
 {
     public interface IWalletService
     {
+        Serilog.ILogger Logger { set; get; }
         bool IsStarted { get; }
         bool IsConfigured { get; }
         WalletManager WalletManager { get; set; }
