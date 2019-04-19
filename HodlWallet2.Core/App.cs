@@ -5,6 +5,7 @@ using HodlWallet2.Core.ViewModels;
 using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
+using Xamarin.Forms;
 
 namespace HodlWallet2.Core
 {
@@ -12,16 +13,16 @@ namespace HodlWallet2.Core
     {
         public override void Initialize()
         {
-            CreatableTypes()
-                .EndingWith("Service")
-                .AsInterfaces()
-                .RegisterAsLazySingleton();
-            
-            Mvx.IoCProvider.ConstructAndRegisterSingleton<IWalletService, WalletService>();
+            //TODO: Construct and register ILogger for the WalletService on Android
+            if (Device.RuntimePlatform != Device.iOS)
+            {
+                CreatableTypes()
+                    .EndingWith("Service")
+                    .AsInterfaces()
+                    .RegisterAsLazySingleton();                
+            }
             
             RegisterAppStart<OnboardViewModel>();
-            
-            
         }
 
         /// <summary>

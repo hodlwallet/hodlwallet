@@ -1,5 +1,7 @@
 using CarouselView.FormsPlugin.iOS;
 using Foundation;
+using HodlWallet2.Core.Interfaces;
+using MvvmCross;
 using MvvmCross.Forms.Platforms.Ios.Core;
 using UIKit;
 
@@ -42,11 +44,8 @@ namespace HodlWallet2.iOS
                 .WriteTo.NSLog()
                 .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2_OLD") // Sets the tag fields
                 .CreateLogger();
+
             
-            HodlWallet2.Core.Services.WalletService.Instance.Logger = new LoggerConfiguration()
-                .WriteTo.NSLog()
-                .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
-                .CreateLogger();
 
             return base.FinishedLaunching(app, options);
         }
