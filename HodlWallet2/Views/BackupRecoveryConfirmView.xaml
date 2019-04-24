@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HodlWallet2.Views.BackupRecoveryConfirmView" xmlns:local="clr-namespace:HodlWallet2.ViewModels">
+<views:MvxContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="HodlWallet2.Views.BackupRecoveryConfirmView" 
+    xmlns:local="clr-namespace:HodlWallet2.ViewModels"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:BackupRecoveryConfirmViewModel"
+    bindings:Bi.nd="Title BackupTitle">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -14,10 +22,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <ContentPage.BindingContext>
-        <local:BackupConfirmViewModel />
-    </ContentPage.BindingContext>
-    
     <ContentPage.Content>
         
         <!-- Add View Model Binding -->
@@ -26,12 +30,12 @@
             
             <BoxView FlexLayout.Grow="1" />
             
-            <Label x:Name="Header"
-                   FontFamily="{StaticResource ElectrolizeFont}"
+            <Label FontFamily="{StaticResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
                    FlexLayout.AlignSelf="Center"
-                   FlexLayout.Grow="1" />
+                   FlexLayout.Grow="1"
+                   bindings:Bi.nd="Text HeaderText"/>
             
             <BoxView FlexLayout.Grow="1" />
             
@@ -108,4 +112,4 @@
         </FlexLayout>
     
     </ContentPage.Content>
-</ContentPage>
+</views:MvxContentPage>
