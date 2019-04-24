@@ -4,6 +4,7 @@ using HodlWallet2.Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -60,7 +61,7 @@ namespace HodlWallet2.Core.ViewModels
             else
             {
                 //TODO: Log activity here.
-                NavigationService.Navigate<BackupRecoveryConfirmViewModel>();
+                NavigationService.Navigate<BackupRecoveryConfirmViewModel, string[]>(_mnemonic);
             }
         }
 
