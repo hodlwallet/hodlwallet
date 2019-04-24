@@ -5,92 +5,79 @@
     x:Class="HodlWallet2.Shared.Controls.TransactionCollectionView">
     <ContentView.Content>
         <!-- TODO: Determine a flexible frame height. 
-                   Replace 'Title' with wallet sync loading bar. -->
+                   Add wallet sync loading bar? -->
         <Frame
             HeightRequest="380"
             BackgroundColor="Transparent"
             CornerRadius="20"
             Padding="0">
             <StackLayout>
-                <ContentView
-                    Padding="10,20"
-                    Margin="0"
-                    HeightRequest="40">
-                    <Label
-                        x:Name="Title"
-                        Margin="0, 20"
-                        Text="Transactions"
-                        TextColor="Black"
-                        FontSize="20"
-                        FontAttributes="Bold"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Start" />
-                </ContentView>
-                <BoxView
-                    BackgroundColor="{StaticResource GrayTextTint}"
-                    HeightRequest="1"
-                    HorizontalOptions="FillAndExpand"
-                    Margin="0" />
                 <CollectionView
-                    BackgroundColor="{StaticResource DarkGray}"
+                    BackgroundColor="{StaticResource GrayBackground}"
                     ItemsSource="{Binding Transactions}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid
-                                Padding="15">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition
-                                        Height="40" />
-                                    <RowDefinition
-                                        Height="40" />
-                                    <RowDefinition
-                                        Height="40" />
-                                    <RowDefinition
-                                        Height="40" />
-                                    <RowDefinition
-                                        Height="40" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition
-                                        Width="4*" />
-                                    <ColumnDefinition
-                                        Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <Label
-                                    Grid.Column="0"
-                                    Grid.Row="0"
-                                    TextColor="{StaticResource SyncGradientStart}"
-                                    Text="{Binding Status}" />
-                                <Label
-                                    Grid.Column="0"
-                                    Grid.Row="1"
-                                    TextColor="{StaticResource White}"
-                                    Text="{Binding AtAddress}" />
-                                <Entry
-                                    Grid.Column="0"
-                                    Grid.Row="2"
-                                    TextColor="{StaticResource White}"
-                                    Text="{Binding Memo}"
-                                    IsSpellCheckEnabled="false"
-                                    IsTextPredictionEnabled="false" />
-                                <Label
-                                    Grid.Column="0"
-                                    Grid.Row="3"
-                                    TextColor="{StaticResource White}"
-                                    Text="{Binding Confirmations}" />
-                                <Label
-                                    Grid.Column="0"
-                                    Grid.Row="4"
-                                    TextColor="{StaticResource SyncGradientStart}"
-                                    Text="{Binding IsAvailible}" />
-                            </Grid>
+                            <StackLayout>
+                                <Grid
+                                    Margin="10"
+                                    BackgroundColor="{StaticResource DarkGray}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition
+                                            Height="40" />
+                                        <RowDefinition
+                                            Height="40" />
+                                        <RowDefinition
+                                            Height="40" />
+                                        <RowDefinition
+                                            Height="40" />
+                                        <RowDefinition
+                                            Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition
+                                            Width="4*" />
+                                        <ColumnDefinition
+                                            Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        TextColor="{StaticResource SyncGradientStart}"
+                                        Text="{Binding Status}" />
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="2"
+                                        LineBreakMode="MiddleTruncation"
+                                        TextColor="{StaticResource White}"
+                                        Text="{Binding AtAddress}" />
+                                    <Entry
+                                        Grid.Column="0"
+                                        Grid.Row="2"
+                                        BackgroundColor="Transparent"
+                                        TextColor="{StaticResource White}"
+                                        Text="{Binding Memo}"
+                                        IsSpellCheckEnabled="false"
+                                        IsTextPredictionEnabled="false" />
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="3"
+                                        Grid.ColumnSpan="2"
+                                        LineBreakMode="MiddleTruncation"
+                                        TextColor="{StaticResource White}"
+                                        Text="{Binding Confirmations}" />
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="4"
+                                        Grid.ColumnSpan="2"
+                                        LineBreakMode="MiddleTruncation"
+                                        TextColor="{StaticResource SyncGradientStart}"
+                                        Text="{Binding IsAvailible}" />
+                                </Grid>
+                            </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <BoxView
-                    BackgroundColor="{StaticResource GrayTextTint}"
-                    HeightRequest="1"
-                    HorizontalOptions="FillAndExpand" />
             </StackLayout>
         </Frame>
     </ContentView.Content>
