@@ -9,7 +9,6 @@ namespace HodlWallet2.Shared.Controls
     {
         public TransactionCollectionView()
         {
-            // TODO: Set Collection Template for Transaction Model (e.g. Labels)
             InitializeComponent();
         }
     }

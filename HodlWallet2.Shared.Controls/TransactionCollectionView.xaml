@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="HodlWallet2.Shared.Controls.TransactionCollectionView">
     <ContentView.Content>
-        <!-- TODO: Determine a flexible frame height. 
+        <!-- TODO: MVVMCross Bindings.
+                   Determine a flexible frame height. 
                    Add wallet sync loading bar? -->
         <Frame
             HeightRequest="380"
@@ -19,19 +20,20 @@
                         <DataTemplate>
                             <StackLayout>
                                 <Grid
-                                    Margin="10"
+                                    Margin="10, 5, 10, 5"
+                                    Padding="10"
                                     BackgroundColor="{StaticResource DarkGray}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition
-                                            Height="40" />
+                                            Height="20" />
                                         <RowDefinition
-                                            Height="40" />
+                                            Height="20" />
                                         <RowDefinition
-                                            Height="40" />
+                                            Height="20" />
                                         <RowDefinition
-                                            Height="40" />
+                                            Height="20" />
                                         <RowDefinition
-                                            Height="40" />
+                                            Height="20" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition
@@ -42,19 +44,22 @@
                                     <Label
                                         Grid.Column="0"
                                         Grid.Row="0"
+                                        Style="{StaticResource TransactionLabel}"
                                         TextColor="{StaticResource SyncGradientStart}"
                                         Text="{Binding Status}" />
                                     <Label
                                         Grid.Column="0"
                                         Grid.Row="1"
                                         Grid.ColumnSpan="2"
-                                        LineBreakMode="MiddleTruncation"
+                                        Style="{StaticResource TransactionLabel}"
                                         TextColor="{StaticResource White}"
                                         Text="{Binding AtAddress}" />
                                     <Entry
                                         Grid.Column="0"
                                         Grid.Row="2"
                                         BackgroundColor="Transparent"
+                                        FontFamily="{StaticResource ElectrolizeFont}"
+                                        FontSize="Small"
                                         TextColor="{StaticResource White}"
                                         Text="{Binding Memo}"
                                         IsSpellCheckEnabled="false"
@@ -63,16 +68,16 @@
                                         Grid.Column="0"
                                         Grid.Row="3"
                                         Grid.ColumnSpan="2"
-                                        LineBreakMode="MiddleTruncation"
+                                        Style="{StaticResource TransactionLabel}"
                                         TextColor="{StaticResource White}"
                                         Text="{Binding Confirmations}" />
                                     <Label
                                         Grid.Column="0"
                                         Grid.Row="4"
                                         Grid.ColumnSpan="2"
-                                        LineBreakMode="MiddleTruncation"
+                                        Style="{StaticResource TransactionLabel}"
                                         TextColor="{StaticResource SyncGradientStart}"
-                                        Text="{Binding IsAvailible}" />
+                                        Text="{Binding IsAvailable}" />
                                 </Grid>
                             </StackLayout>
                         </DataTemplate>
