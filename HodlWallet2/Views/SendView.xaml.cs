@@ -5,24 +5,22 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using HodlWallet2.Core.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Mobile;
 
-using HodlWallet2.ViewModels;
 using HodlWallet2.Locale;
+using MvvmCross.Forms.Views;
 
 namespace HodlWallet2.Views
 {
-    public partial class SendView : ContentPage
+    public partial class SendView : MvxContentPage<SendViewModel>
     {
-        public SendViewModel ViewModel { get { return BindingContext as SendViewModel; } }
-
-        public SendView(SendViewModel sendViewModel)
+        public SendView()
         {
             InitializeComponent();
-            BindingContext = sendViewModel;
+            //BindingContext = sendViewModel;
             SetLabels();
         }
 
@@ -36,19 +34,9 @@ namespace HodlWallet2.Views
             ISOLabel.Text = "USD($)"; // Localize
         }
 
-        public async void Scan(object sender, System.EventArgs e)
-        {
-            var address = await ViewModel.Scan();
-            sendAddress.Text = address;
-        }
-
-        public async void Send(object sender, System.EventArgs e)
-        {
-            await ViewModel.Send();
-        }
-
         public async void OnCloseTapped(object sender, EventArgs e)
         {
+            //TODO: Replace Modal navigation for MvvmCross.
             await Navigation.PopModalAsync();
         }
 
