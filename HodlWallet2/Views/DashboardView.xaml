@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HodlWallet2.Views.DashboardView" BackgroundColor="{StaticResource GrayBackground}"
-             x:Name="DashboardPage"
-             xmlns:svg="clr-namespace:HodlWallet2.Utils">
+<views:MvxContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HodlWallet2.Views.DashboardView" 
+    xmlns:svg="clr-namespace:HodlWallet2.Utils"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:DashboardViewModel"
+    bindings:Bi.nd="Title DashboardTitle"
+    x:Name="DashboardPage"
+    BackgroundColor="{StaticResource GrayBackground}">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -57,7 +65,9 @@
             </FlexLayout>
             
             <FlexLayout FlexLayout.Grow="2" BackgroundColor="Red" Direction="Row">
-                <ListView x:Name="_Transactions" ItemsSource="{x:Binding ViewModel.Transactions, Source={x:Reference DashboardPage}}" BackgroundColor="White"></ListView>
+                <ListView 
+                    bindings:Bi.nd="ItemsSource Transactions" 
+                    BackgroundColor="White" />
             </FlexLayout>
             
             <FlexLayout Direction="Row" FlexLayout.Grow="1" JustifyContent="SpaceAround">
@@ -76,12 +86,13 @@
                            TextColor="{StaticResource GrayTextTint}"
                            Margin="0, 10, 0, 0"
                            FlexLayout.Grow="1"
-                           FlexLayout.AlignSelf="Center" />
+                           FlexLayout.AlignSelf="Center"
+                           bindings:Bi.nd="Text SendText"/>
                     
                     <BoxView FlexLayout.Grow="1" />
                            
                     <FlexLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnSendTapped"
+                        <TapGestureRecognizer bindings:Bi.nd="Command NavigateToSendViewCommand"
                                               NumberOfTapsRequired="1" />
                     </FlexLayout.GestureRecognizers>
                     
@@ -101,12 +112,13 @@
                            TextColor="{StaticResource SyncGradientStart}"
                            Margin="0, 10, 0, 0"
                            FlexLayout.Grow="1"
-                           FlexLayout.AlignSelf="Center" />
+                           FlexLayout.AlignSelf="Center"
+                           bindings:Bi.nd="Text ReceiveText"/>
                     
                     <BoxView FlexLayout.Grow="1" />
                     
                     <FlexLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnReceiveTapped"
+                        <TapGestureRecognizer bindings:Bi.nd="Command NavigateToReceiveViewCommand"
                                               NumberOfTapsRequired="1" />
                     </FlexLayout.GestureRecognizers>
                     
@@ -131,7 +143,7 @@
                     <BoxView FlexLayout.Grow="1" />
                     
                     <FlexLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnMenuTapped"
+                        <TapGestureRecognizer bindings:Bi.nd="Command NavigateToMenuViewCommand"
                                               NumberOfTapsRequired="1" />
                     </FlexLayout.GestureRecognizers>
                     
@@ -141,4 +153,4 @@
             
         </FlexLayout>
     </ContentPage.Content>
-</ContentPage>
+</views:MvxContentPage>
