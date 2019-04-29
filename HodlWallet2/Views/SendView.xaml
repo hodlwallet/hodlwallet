@@ -1,102 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HodlWallet2.Views.SendView" xmlns:svg="clr-namespace:HodlWallet2.Utils" BackgroundColor="{StaticResource GrayBackground}"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-             ios:Page.UseSafeArea="true">
+<views:MvxContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="HodlWallet2.Views.SendView" 
+    xmlns:svg="clr-namespace:HodlWallet2.Utils" 
+    BackgroundColor="{StaticResource GrayBackground}"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:SendViewModel"
+    bindings:Bi.nd="Title DashboardTitle"
+    ios:Page.UseSafeArea="true">
     <ScrollView>
-    <FlexLayout Direction="Column">
+        <FlexLayout Direction="Column">
         
-        <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.Grow="1" Margin="10">
-            <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center">
-                <svg:Icon.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
-                </svg:Icon.GestureRecognizers>
-            </svg:Icon>
-                
-            <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
-                
-            <Label x:Name="SendTitle" 
-                   Style="{DynamicResource CustomLabel}"
-                   FontSize="Large"
-                   FlexLayout.AlignSelf="Center" />
-            
-            <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
-            
-            <svg:Icon ResourceId="Assets.faq.svg" FlexLayout.AlignSelf="Center">
-                <svg:Icon.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnFaqTapped"/>
-                </svg:Icon.GestureRecognizers>
-            </svg:Icon>
-        </FlexLayout>
-                
-        <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" FlexLayout.Grow="2">
-            <StackLayout Orientation="Vertical" FlexLayout.Grow="4" FlexLayout.AlignSelf="Center">
-                    
-                <Label x:Name="ToLabel" 
-                       Style="{DynamicResource CustomLabel}" 
-                       HorizontalTextAlignment="Start" />
-                    
-                <Entry x:Name="sendAddress"
-                       Placeholder="mx16baf4...."
-                       Text="{Binding AddressToSendTo}"
-                       Style="{StaticResource CustomEntry}" />
-                    
-            </StackLayout>
-            
-            <StackLayout Orientation="Vertical" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center">
-                <Label x:Name="ScanLabel" Style="{DynamicResource CustomLabel}" FontSize="Small" HorizontalTextAlignment="Center" />
-                <svg:Icon ResourceId="Assets.scan.svg">
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.Grow="1" Margin="10">
+                <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center">
                     <svg:Icon.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Scan"/>
+                        <TapGestureRecognizer Tapped="OnCloseTapped"/>
                     </svg:Icon.GestureRecognizers>
                 </svg:Icon>
-            </StackLayout>
-            
-            <StackLayout Orientation="Vertical" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center">
-                <Label x:Name="PasteLabel" Style="{DynamicResource CustomLabel}" FontSize="Small" HorizontalTextAlignment="Center" />
-                <svg:Icon ResourceId="Assets.paste.svg" />
-            </StackLayout>
-        </FlexLayout>
-        
-        <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" FlexLayout.Grow="2">
-            <StackLayout Orientation="Vertical" FlexLayout.Grow="4" FlexLayout.AlignSelf="Center">
-                <Label x:Name="AmountLabel" 
-                       Style="{DynamicResource CustomLabel}"
-                       HorizontalTextAlignment="Start" 
-                       VerticalOptions="Center" />
                     
-                <Entry Placeholder="1.0 BTC" 
-                       Text="{Binding AmountToSend}" 
-                       TextColor="{StaticResource SyncGradientStart}" 
-                       FontFamily="{StaticResource ElectrolizeFont}" 
-                       VerticalOptions="Center" />
+                <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
+                    
+                <Label x:Name="SendTitle" 
+                       Style="{DynamicResource CustomLabel}"
+                       FontSize="Large"
+                       FlexLayout.AlignSelf="Center" />
+                
+                <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
+                
+                <svg:Icon ResourceId="Assets.faq.svg" FlexLayout.AlignSelf="Center">
+                    <svg:Icon.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFaqTapped"/>
+                    </svg:Icon.GestureRecognizers>
+                </svg:Icon>
+            </FlexLayout>
+                    
+            <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" FlexLayout.Grow="2">
+                <StackLayout Orientation="Vertical" FlexLayout.Grow="4" FlexLayout.AlignSelf="Center">
+                        
+                    <Label x:Name="ToLabel" 
+                           Style="{DynamicResource CustomLabel}" 
+                           HorizontalTextAlignment="Start" />
+                        
+                    <Entry x:Name="sendAddress"
+                           Placeholder="mx16baf4...."
+                           Text="{Binding AddressToSendTo}"
+                           Style="{StaticResource CustomEntry}" />
+                        
+                </StackLayout>
+                
+                <StackLayout Orientation="Vertical" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center">
+                    <Label x:Name="ScanLabel" Style="{DynamicResource CustomLabel}" FontSize="Small" HorizontalTextAlignment="Center" />
+                    <svg:Icon ResourceId="Assets.scan.svg">
+                        <svg:Icon.GestureRecognizers>
+                            <TapGestureRecognizer bindings:Bi.nd="Command ScanCommand"/>
+                        </svg:Icon.GestureRecognizers>
+                    </svg:Icon>
+                </StackLayout>
+                
+                <StackLayout Orientation="Vertical" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center">
+                    <Label x:Name="PasteLabel" Style="{DynamicResource CustomLabel}" FontSize="Small" HorizontalTextAlignment="Center" />
+                    <svg:Icon ResourceId="Assets.paste.svg" />
+                </StackLayout>
+            </FlexLayout>
+            
+            <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" FlexLayout.Grow="2">
+                <StackLayout Orientation="Vertical" FlexLayout.Grow="4" FlexLayout.AlignSelf="Center">
+                    <Label x:Name="AmountLabel" 
+                           Style="{DynamicResource CustomLabel}"
+                           HorizontalTextAlignment="Start" 
+                           VerticalOptions="Center" />
+                        
+                    <Entry Placeholder="1.0 BTC" 
+                           Text="{Binding AmountToSend}" 
+                           TextColor="{StaticResource SyncGradientStart}" 
+                           FontFamily="{StaticResource ElectrolizeFont}" 
+                           VerticalOptions="Center" />
+                </StackLayout>
+                
+                <Label x:Name="ISOLabel" 
+                       Style="{DynamicResource CustomLabel}" 
+                       FontSize="Small" 
+                       FlexLayout.Grow="1" 
+                       FlexLayout.AlignSelf="Center" 
+                       HorizontalTextAlignment="Center" />
+                
+                <svg:Icon ResourceId="Assets.currency_switch.svg" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center" />
+            </FlexLayout>
+            
+            <StackLayout Orientation="Vertical" FlexLayout.Grow="2">
+                <Label Text="Fee (sats/byte)" Style="{StaticResource CustomLabel}" />
+                <Entry Placeholder="0.0001" Text="{Binding Fee}" Style="{StaticResource CustomEntry}" />
             </StackLayout>
+                
+            <BoxView BackgroundColor="Transparent" FlexLayout.Grow="4" />
+    
+            <Button Text="Send Bitcoin" 
+                    bindings:Bi.nd="Command SendCommand" 
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{StaticResource DarkGray}"
+                    FontSize="Large"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="2" />
             
-            <Label x:Name="ISOLabel" 
-                   Style="{DynamicResource CustomLabel}" 
-                   FontSize="Small" 
-                   FlexLayout.Grow="1" 
-                   FlexLayout.AlignSelf="Center" 
-                   HorizontalTextAlignment="Center" />
-            
-            <svg:Icon ResourceId="Assets.currency_switch.svg" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center" />
         </FlexLayout>
-        
-        <StackLayout Orientation="Vertical" FlexLayout.Grow="2">
-            <Label Text="Fee (sats/byte)" Style="{StaticResource CustomLabel}" />
-            <Entry Placeholder="0.0001" Text="{Binding Fee}" Style="{StaticResource CustomEntry}" />
-        </StackLayout>
-            
-        <BoxView BackgroundColor="Transparent" FlexLayout.Grow="4" />
-
-        <Button Text="Send Bitcoin" 
-                Clicked="Send" 
-                Style="{DynamicResource CustomButton}"
-                BackgroundColor="{StaticResource DarkGray}"
-                FontSize="Large"
-                FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="2" />
-        
-    </FlexLayout>
     </ScrollView>
-</ContentPage>
+</views:MvxContentPage>

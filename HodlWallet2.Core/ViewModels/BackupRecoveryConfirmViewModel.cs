@@ -176,7 +176,7 @@ namespace HodlWallet2.Core.ViewModels
             RefreshWords(_mnemonic);
         }
 
-        public void RefreshWords(string[] mnemonic)
+        public async void RefreshWords(string[] mnemonic)
         {
             Random rng = new Random();
 
@@ -192,6 +192,7 @@ namespace HodlWallet2.Core.ViewModels
             else
             {
                 Preferences.Set("MnemonicStatus", true);
+                await NavigationService.Navigate<DashboardViewModel>();
                 //Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
             }
         }

@@ -210,7 +210,7 @@ namespace HodlWallet2.ViewModels
             else
             {
                 Preferences.Set("MnemonicStatus", true);
-                Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
+                //Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
             }
         }
 
