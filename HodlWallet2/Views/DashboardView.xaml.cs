@@ -5,10 +5,12 @@ using Xamarin.Forms;
 using Serilog;
 
 using HodlWallet2.Locale;
+using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 
 namespace HodlWallet2.Views
 {
+    [MvxContentPagePresentation(NoHistory = true)]
     public partial class DashboardView : MvxContentPage<DashboardViewModel>
     {
         public DashboardView()
