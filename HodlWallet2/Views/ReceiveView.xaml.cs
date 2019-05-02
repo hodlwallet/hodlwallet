@@ -9,22 +9,17 @@ using Xamarin.Essentials;
 
 using HodlWallet2.ViewModels;
 using HodlWallet2.Locale;
+using MvvmCross.Forms.Views;
 
 namespace HodlWallet2.Views
 {
-    public partial class ReceiveView : ContentPage
+    public partial class ReceiveView : MvxContentPage
     {
         private ReceiveViewModel _ViewModel;
 
         public ReceiveView(ReceiveViewModel receiveViewModel)
         {
             InitializeComponent();
-
-            _ViewModel = receiveViewModel;
-
-            BindingContext = _ViewModel;
-
-            SetLabels();
         }
 
         public ReceiveViewModel ViewModel { get => BindingContext as ReceiveViewModel; }
