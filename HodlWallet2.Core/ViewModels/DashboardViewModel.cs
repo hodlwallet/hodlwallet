@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
+using HodlWallet2.Core.Models;
 using Liviano.Models;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
@@ -24,6 +25,11 @@ namespace HodlWallet2.Core.ViewModels
         {
             get => _transactions;
             set => SetProperty(ref _transactions, value);
+        }
+
+        public TransactionListModel TransactionList
+        {
+            get => new TransactionListModel(Transactions);
         }
 
         public MvxCommand NavigateToSendViewCommand { get; private set; }
@@ -86,7 +92,6 @@ namespace HodlWallet2.Core.ViewModels
                     (TransactionData txData) => txData.CreationTime
                 )
             );
-
             _walletService.Logger.Information(new string('*', 20));
             foreach (TransactionData transactionData in Transactions)
             {

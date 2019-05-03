@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using HodlWallet2.Core.Services;
+using Liviano.Models;
 
 namespace HodlWallet2.Core.Models
 {
@@ -9,17 +8,17 @@ namespace HodlWallet2.Core.Models
     {
         public IEnumerable<Transaction> Transactions { get; set; }
 
-        public TransactionListModel(WalletService Instance)
+        public TransactionListModel(IEnumerable<TransactionData> txList)
         {
             // TODO: Incorporate Wallet Service and MVVMCross when complete.
-            Transactions = CreateList(Instance);
+            Transactions = CreateList(txList);
         }
 
-        private IEnumerable<Transaction> CreateList(WalletService Instance)
+        private IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
         {
             List<Transaction> result = new List<Transaction>();
             // TODO: Make sure to only add new transactions to the existing list (Async?).
-            foreach (var tx in Instance.GetCurrentAccountTransactions())
+            foreach (var tx in txList)
             {
                 result.Add(new Transaction
                 {
@@ -28,7 +27,11 @@ namespace HodlWallet2.Core.Models
                     IsSpendable = tx.IsSpendable(),
                     IsComfirmed = tx.IsConfirmed(),
                     IsPropagated = (bool)tx.IsPropagated,
-                    BlockHeight = (int)tx.BlockHeight
+                    BlockHeight = (int)tx.BlockHeight,
+                    IsAvailable = tx.IsSpendable() ? "Available to spend" : "",
+                    Memo = "In Progress",
+                    Status = tx.Amount.ToString()
+
                     // TODO: Add data for transaction model.
                 });
             }

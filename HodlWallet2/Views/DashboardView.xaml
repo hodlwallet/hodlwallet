@@ -7,6 +7,7 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
     xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:controls="clr-namespace:HodlWallet2.Shared.Controls;assembly=HodlWallet2.Shared.Controls"
     x:TypeArguments="viewModels:DashboardViewModel"
     bindings:Bi.nd="Title DashboardTitle"
     x:Name="DashboardPage"
@@ -65,9 +66,7 @@
             </FlexLayout>
             
             <FlexLayout FlexLayout.Grow="2" BackgroundColor="Red" Direction="Row">
-                <ListView 
-                    bindings:Bi.nd="ItemsSource Transactions" 
-                    BackgroundColor="White" />
+                <controls:TransactionCollectionView bindings:Bi.nd="BindingContext TransactionList" />
             </FlexLayout>
             
             <FlexLayout Direction="Row" FlexLayout.Grow="1" JustifyContent="SpaceAround">

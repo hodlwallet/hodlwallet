@@ -3,12 +3,17 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="HodlWallet2.Shared.Controls.TransactionCollectionView">
-    <ContentView.Content>
-        <!-- TODO: MVVMCross Bindings.
-                   Determine a flexible frame height. 
-                   Add wallet sync loading bar? -->
-        <Frame
-            HeightRequest="380"
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TransactionLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource ElectrolizeFont}"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="LineBreakMode" Value="MiddleTruncation" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Frame
+            HeightRequest="150"
             BackgroundColor="Transparent"
             CornerRadius="20"
             Padding="0">
@@ -29,7 +34,7 @@
                                         <RowDefinition
                                             Height="20" />
                                         <RowDefinition
-                                            Height="20" />
+                                            Height="40" />
                                         <RowDefinition
                                             Height="20" />
                                         <RowDefinition
@@ -47,6 +52,13 @@
                                         Style="{StaticResource TransactionLabel}"
                                         TextColor="{StaticResource SyncGradientStart}"
                                         Text="{Binding Status}" />
+                                    <Label
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource TransactionLabel}"
+                                        TextColor="{StaticResource White}"
+                                        Text="{Binding Duration}" />
                                     <Label
                                         Grid.Column="0"
                                         Grid.Row="1"
@@ -85,5 +97,4 @@
                 </CollectionView>
             </StackLayout>
         </Frame>
-    </ContentView.Content>
 </ContentView>
