@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using HodlWallet2.Core.Interfaces;
 using MvvmCross.Commands;
@@ -48,11 +49,13 @@ namespace HodlWallet2.Core.ViewModels
         private Task Scan()
         {
             //TODO: Implement Scan
+            throw new NotImplementedException();
         }
 
         private Task Send()
         {
             //TODO: Implement Send
+            throw new NotImplementedException();
         }
     }
 }
