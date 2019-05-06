@@ -27,9 +27,12 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _transactions, value);
         }
 
+        public TransactionListModel _transactionList;
+
         public TransactionListModel TransactionList
         {
-            get => new TransactionListModel(Transactions);
+            get => _transactionList;
+            set => SetProperty(ref _transactionList, value);
         }
 
         public MvxCommand NavigateToSendViewCommand { get; private set; }
@@ -92,6 +95,9 @@ namespace HodlWallet2.Core.ViewModels
                     (TransactionData txData) => txData.CreationTime
                 )
             );
+
+            TransactionList = new TransactionListModel(Transactions);
+
             _walletService.Logger.Information(new string('*', 20));
             foreach (TransactionData transactionData in Transactions)
             {
