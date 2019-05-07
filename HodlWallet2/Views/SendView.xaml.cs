@@ -11,10 +11,12 @@ using Xamarin.Forms.Xaml;
 using ZXing.Mobile;
 
 using HodlWallet2.Locale;
+using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 
 namespace HodlWallet2.Views
 {
+    [MvxModalPresentation]
     public partial class SendView : MvxContentPage<SendViewModel>
     {
         public SendView()
