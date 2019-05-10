@@ -31,7 +31,7 @@ namespace HodlWallet2.Droid
             //TODO: Replace with MvvmCross Serilog integration.
             Wallet.Instance.Logger = new LoggerConfiguration()
                 .WriteTo.AndroidLog()
-                .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
+                .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2_OLD") // Sets the Tag field.
                 .CreateLogger();
             
             base.OnCreate(savedInstanceState);
