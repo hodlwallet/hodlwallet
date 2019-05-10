@@ -1,6 +1,13 @@
+using Android.Provider;
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Services;
+using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Core;
+using MvvmCross.IoC;
 using MvvmCross.Logging;
 using MvvmCross.Platforms.Android.Core;
+using Serilog;
+using Serilog.Core;
 
 namespace HodlWallet2.Droid
 {
@@ -30,6 +37,17 @@ namespace HodlWallet2.Droid
 //                Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IFoo, Foo>();
 //
 //            More info at https://www.mvvmcross.com/documentation/fundamentals/inversion-of-control-ioc
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IWalletService, WalletService>();
+            var walletService = Mvx.IoCProvider.Resolve<IWalletService>();
+            if (walletService != null)
+            {
+                walletService.Logger = new LoggerConfiguration()
+                    .WriteTo.AndroidLog()
+                    .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") //Sets the Tag field.
+                    .CreateLogger();               
+            }
+
+            var log = walletService.Logger;
         }
     }
 }
