@@ -35,6 +35,8 @@ namespace HodlWallet2.Core.ViewModels
         
         public MvxAsyncCommand ScanCommand { get; private set; }
         public MvxAsyncCommand SendCommand { get; private set; }
+        public MvxAsyncCommand CloseCommand { get; private set; }
+        public MvxAsyncCommand ShowFaqCommand { get; private set; }
 
         public SendViewModel(
             IMvxLogProvider logProvider, 
@@ -44,6 +46,18 @@ namespace HodlWallet2.Core.ViewModels
             _walletService = walletService;
             ScanCommand = new MvxAsyncCommand(Scan);
             SendCommand = new MvxAsyncCommand(Send);
+            CloseCommand = new MvxAsyncCommand(Close);
+            ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
+        }
+
+        private Task ShowFaq()
+        {
+            throw new NotImplementedException();
+        }
+
+        private async Task Close()
+        {
+            await NavigationService.Close(this);
         }
 
         private Task Scan()
