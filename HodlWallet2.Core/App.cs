@@ -14,13 +14,7 @@ namespace HodlWallet2.Core
         public override void Initialize()
         {
             //TODO: Construct and register ILogger for the WalletService on Android
-            if (Device.RuntimePlatform != Device.iOS)
-            {
-                CreatableTypes()
-                    .EndingWith("Service")
-                    .AsInterfaces()
-                    .RegisterAsLazySingleton();                
-            }
+            
             
             RegisterAppStart<OnboardViewModel>();
         }
