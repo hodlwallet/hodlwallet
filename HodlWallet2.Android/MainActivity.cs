@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using CarouselView.FormsPlugin.Android;
 using MvvmCross.Forms.Platforms.Android.Views;
 using Serilog;
 using Serilog.Core;
@@ -27,7 +28,7 @@ namespace HodlWallet2.Droid
             MobileBarcodeScanner.Initialize(Application);
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
             FormsControls.Droid.Main.Init(this);
-            
+            CarouselViewRenderer.Init();
             //TODO: Replace with MvvmCross Serilog integration.
             Wallet.Instance.Logger = new LoggerConfiguration()
                 .WriteTo.AndroidLog()
