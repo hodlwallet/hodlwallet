@@ -276,7 +276,7 @@ namespace HodlWallet2.Core.Services
             WalletManager = new WalletManager(Logger, _network, _chain, AsyncLoopFactory, DateTimeProvider, ScriptAddressReader, StorageProvider);
             WalletSyncManager = new WalletSyncManager(Logger, WalletManager, _chain);
 
-            _WalletSyncManagerBehavior = new WalletSyncManagerBehavior(Logger, WalletSyncManager, ScriptTypes.SegwitAndLegacy);
+            _WalletSyncManagerBehavior = new WalletSyncManagerBehavior(Logger, WalletSyncManager, ScriptTypes.P2WPKH);
 
             _conParams.TemplateBehaviors.Add(new AddressManagerBehavior(_addressManager));
             _conParams.TemplateBehaviors.Add(new PartialChainBehavior(_chain, _network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
