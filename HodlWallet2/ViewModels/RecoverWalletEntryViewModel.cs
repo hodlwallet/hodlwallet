@@ -6,6 +6,9 @@ using System.Linq;
 
 using Xamarin.Forms;
 using Serilog;
+using HodlWallet2.Core.Interfaces;
+using MvvmCross;
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.ViewModels
 {
@@ -16,12 +19,12 @@ namespace HodlWallet2.ViewModels
 
         public Grid _EntryGrid;
 
-        Wallet _Wallet;
-        ILogger _Logger;
+        WalletService _Wallet;
+        Serilog.ILogger _Logger;
 
         public RecoverWalletEntryViewModel()
         {
-            _Wallet = Wallet.Instance;
+            _Wallet = (WalletService) WalletService.Instance;
             _Logger = _Wallet.Logger;
 
         }

@@ -5,11 +5,13 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 using Xamarin.Essentials;
-using Serilog;
 
 using HodlWallet2.Locale;
 using HodlWallet2.Utils;
 using HodlWallet2.Views;
+using HodlWallet2.Core.Interfaces;
+using MvvmCross;
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.ViewModels
 {
@@ -23,9 +25,9 @@ namespace HodlWallet2.ViewModels
         string[] confirmWords = new string[8], place = { "first", "second", "third", "fourth", 
         "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelveth" }; // Localize
 
-        Wallet _Wallet;
+        IWalletService _Wallet;
 
-        ILogger _Logger;
+        Serilog.ILogger _Logger;
 
         public string WordOne
         {
@@ -178,8 +180,9 @@ namespace HodlWallet2.ViewModels
 
         public BackupConfirmViewModel(string[] mnemonic)
         {
-            _Wallet = Wallet.Instance;
+            _Wallet = WalletService.Instance;
             _Logger = _Wallet.Logger;
+
             RefreshWords(mnemonic);
 
             WordCommand = new Command<string>(

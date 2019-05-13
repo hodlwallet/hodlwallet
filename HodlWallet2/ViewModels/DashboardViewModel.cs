@@ -7,14 +7,15 @@ using Liviano.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System;
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.ViewModels
 {
     [Obsolete]
     public class DashboardViewModel : INotifyPropertyChanged
     {
-        private ILogger _Logger;
-        private Wallet _Wallet;
+        private Serilog.ILogger _Logger;
+        private WalletService _Wallet;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -36,10 +37,10 @@ namespace HodlWallet2.ViewModels
 
         public DashboardViewModel()
         {
-            _Wallet = Wallet.Instance;
+            _Wallet = WalletService.Instance;
             _Logger = _Wallet.Logger;
 
-            if (_Wallet.Started)
+            if (_Wallet.IsStarted)
             {
                 _Wallet.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
                 _Wallet.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
@@ -51,9 +52,9 @@ namespace HodlWallet2.ViewModels
             {
                 _Wallet.OnStarted += (sender, e) =>
                 {
-                    ((Wallet)sender).WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
-                    ((Wallet)sender).WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
-                    ((Wallet)sender).WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
+                    ((WalletService)sender).WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
+                    ((WalletService)sender).WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
+                    ((WalletService)sender).WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
 
                     LoadTransactions();
                 };

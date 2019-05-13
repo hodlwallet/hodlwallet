@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using HodlWallet2.Core.ViewModels;
 using Xamarin.Forms;
-using Serilog;
+//using Serilog;
 
 using HodlWallet2.Locale;
 using HodlWallet2.Utils;
 using HodlWallet2.ViewModels;
 using MvvmCross.Forms.Views;
+using HodlWallet2.Core.Interfaces;
 
 namespace HodlWallet2.Views
 {
@@ -15,7 +16,7 @@ namespace HodlWallet2.Views
     {
         int Position;
         string[] Mnemonic;
-        Wallet _Wallet;
+        IWalletService _Wallet;
         ILogger _Logger;
 
         public BackupRecoveryWordView()

@@ -69,7 +69,7 @@ namespace HodlWallet2
                 _wallet.WalletSyncManager.OnWalletSyncedToTipOfChain += WalletSyncManager_OnWalletSyncedToTipOfChain;
             };
 
-            Wallet.InitializeWallet();
+            _wallet.InitializeWallet();
         }
 
         private void SetKeys()

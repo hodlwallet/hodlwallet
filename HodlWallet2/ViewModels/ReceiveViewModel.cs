@@ -4,14 +4,16 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 
 using Xamarin.Essentials;
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.ViewModels
 {
     [Obsolete]
     public class ReceiveViewModel : INotifyPropertyChanged
     {
-        private ILogger _Logger;
-        private Wallet _Wallet;
+        private Serilog.ILogger _Logger;
+        private IWalletService _Wallet;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -33,7 +35,7 @@ namespace HodlWallet2.ViewModels
 
         public ReceiveViewModel()
         {
-            _Wallet = Wallet.Instance;
+            _Wallet = WalletService.Instance;
             _Logger = _Wallet.Logger;
            
             Address = _Wallet.GetReceiveAddress().Address;

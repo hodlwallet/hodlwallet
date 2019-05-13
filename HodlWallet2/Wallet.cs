@@ -26,7 +26,7 @@ using HodlWallet2.Utils;
 
 namespace HodlWallet2
 {
-    public sealed class Wallet
+    public sealed class WalletOLD
     {
         public const int DEFAULT_NODES_TO_CONNECT = 4;
 
@@ -34,7 +34,7 @@ namespace HodlWallet2
 
         public static readonly string USER_AGENT = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
 
-        private static Wallet instance = null;
+        private static WalletOLD instance = null;
 
         private static readonly object _SingletonLock = new object();
 
@@ -211,11 +211,11 @@ namespace HodlWallet2
             return Instance._Network.GetCheckpoints().OrderBy(chainedBlock => Math.Abs(chainedBlock.Header.BlockTime.Ticks - ticks)).FirstOrDefault();
         }
 
-        Wallet()
+        WalletOLD()
         {
         }
 
-        public static Wallet Instance
+        public static WalletOLD Instance
         {
             get
             {
@@ -223,7 +223,7 @@ namespace HodlWallet2
                 {
                     if (instance == null)
                     {
-                        instance = new Wallet();
+                        instance = new WalletOLD();
                     }
 
                     return instance;

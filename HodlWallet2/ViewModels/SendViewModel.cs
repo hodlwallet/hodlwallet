@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using HodlWallet2.Core.Services;
 using Serilog;
 using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
@@ -12,13 +13,13 @@ namespace HodlWallet2.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Wallet _Wallet;
+        WalletService _Wallet;
 
-        private ILogger _Logger;
+        ILogger _Logger;
 
         public SendViewModel()
         {
-            _Wallet = Wallet.Instance;
+            _Wallet = (WalletService) WalletService.Instance;
             _Logger = _Wallet.Logger;
         }
 
