@@ -2,7 +2,8 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="HodlWallet2.Shared.Controls.TransactionCollectionView">
+    x:Class="HodlWallet2.Shared.Controls.TransactionCollectionView"
+    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="TransactionLabel" TargetType="Label">
@@ -20,7 +21,7 @@
             <StackLayout>
                 <CollectionView
                     BackgroundColor="{StaticResource GrayBackground}"
-                    ItemsSource="{Binding Transactions}">
+                    bindings:Bi.nd="ItemsSource TransactionList">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
