@@ -15,7 +15,7 @@ namespace HodlWallet2.Core.Models
             TransactionList = CreateList(txList);
         }
 
-        private ObservableCollection<Transaction> CreateList(ObservableCollection<TransactionData> txList)
+        public ObservableCollection<Transaction> CreateList(ObservableCollection<TransactionData> txList)
         {
             ObservableCollection<Transaction> result = new ObservableCollection<Transaction>();
             // TODO: Make sure to only add new transactions to the existing list (Async?).
