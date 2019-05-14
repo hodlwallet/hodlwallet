@@ -4,6 +4,7 @@ using HodlWallet2.Core.Interfaces;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
+using ZXing.Mobile;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -52,24 +53,29 @@ namespace HodlWallet2.Core.ViewModels
 
         private Task ShowFaq()
         {
-            throw new NotImplementedException();
+            //TODO: Implement FAQ
+            return Task.FromResult(this);
         }
 
-        private async Task Close()
+        private async Task Close()    
         {
             await NavigationService.Close(this);
         }
 
-        private Task Scan()
+        private async Task Scan()
         {
             //TODO: Implement Scan
-            throw new NotImplementedException();
+            var scanner = new MobileBarcodeScanner();
+
+            var result = await scanner.Scan();
+
+            AddressToSendTo = result.Text;
         }
 
         private Task Send()
         {
             //TODO: Implement Send
-            throw new NotImplementedException();
+            return Task.FromResult(this);
         }
     }
 }
