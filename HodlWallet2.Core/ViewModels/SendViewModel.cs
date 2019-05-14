@@ -72,10 +72,27 @@ namespace HodlWallet2.Core.ViewModels
             AddressToSendTo = result.Text;
         }
 
-        private Task Send()
+        private async Task Send()
         {
-            //TODO: Implement Send
-            return Task.FromResult(this);
+            string password = "123456";
+            var txCreateResult = _walletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
+
+            if (txCreateResult.Success)
+            {
+                await _walletService.BroadcastManager.BroadcastTransactionAsync(txCreateResult.Tx);
+            }
+            else
+            {
+                // TODO show error screen for now just log it.
+                LogProvider.GetLogFor<SendViewModel>().Error(
+                    "Error trying to create a transaction.\nAmount to send: {amount}, address: {address}, fee: {fee}, password: {password}.\nFull Error: {error}",
+                    AmountToSend,
+                    AddressToSendTo,
+                    Fee,
+                    password,
+                    txCreateResult.Error
+                );
+            }
         }
     }
 }
