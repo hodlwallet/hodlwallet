@@ -1,7 +1,17 @@
+using MvvmCross.Forms.Presenters.Attributes;
+using MvvmCross.Logging;
+using MvvmCross.Navigation;
+
 namespace HodlWallet2.Core.ViewModels
 {
-    public class SecurityCenterViewModel
+    [MvxModalPresentation]
+    public class SecurityCenterViewModel : BaseViewModel
     {
-        
+        protected SecurityCenterViewModel(
+            IMvxLogProvider logProvider, 
+            IMvxNavigationService navigationService) 
+            : base(logProvider, navigationService)
+        {
+        }
     }
 }
