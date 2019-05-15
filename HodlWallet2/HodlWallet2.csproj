@@ -152,9 +152,6 @@
     <Compile Update="Views\SetPinView.xaml.cs">
       <DependentUpon>SetPinView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="ViewModels\SecurityCenterViewModel.cs">
-      <LogicalName>HodlWallet2.ViewModels.SecurityCenterViewModel.cs</LogicalName>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS" />

@@ -7,7 +7,6 @@ using Serilog;
 using Xamarin.Forms;
 using HodlWallet2.Locale;
 using HodlWallet2.Utils;
-using HodlWallet2.ViewModels;
 using MvvmCross.Forms.Views;
 using PinPadViewModel = HodlWallet2.Core.ViewModels.PinPadViewModel;
 using RecoverWalletEntryViewModel = HodlWallet2.Core.ViewModels.RecoverWalletEntryViewModel;

@@ -8,11 +8,7 @@ using Xamarin.Essentials;
 using NBitcoin;
 
 using Liviano.Models;
-using Liviano;
-using Liviano.Managers;
 
-using HodlWallet2.Views;
-using HodlWallet2.ViewModels;
 using HodlWallet2.Utils;
 using MvvmCross;
 using MvvmCross.Logging;

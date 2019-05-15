@@ -4,7 +4,6 @@ using Xamarin.Forms;
 
 using Serilog;
 
-using HodlWallet2.ViewModels;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using HodlWallet2.Core.Services;

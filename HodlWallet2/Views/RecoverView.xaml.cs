@@ -5,7 +5,6 @@ using Xamarin.Forms;
 using Serilog;
 
 using HodlWallet2.Locale;
-using HodlWallet2.ViewModels;
 using MvvmCross.Forms.Views;
 using HodlWallet2.Core.Services;
 
