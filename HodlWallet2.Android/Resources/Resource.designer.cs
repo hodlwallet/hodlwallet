@@ -26,2196 +26,6 @@ namespace HodlWallet2.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.abc_fade_in = global::HodlWallet2.Droid.Resource.Animation.abc_fade_in;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.abc_fade_out = global::HodlWallet2.Droid.Resource.Animation.abc_fade_out;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.abc_popup_enter = global::HodlWallet2.Droid.Resource.Animation.abc_popup_enter;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.abc_popup_exit = global::HodlWallet2.Droid.Resource.Animation.abc_popup_exit;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.abc_shrink_fade_out_from_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.abc_slide_in_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_slide_in_bottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.abc_slide_in_top = global::HodlWallet2.Droid.Resource.Animation.abc_slide_in_top;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.abc_slide_out_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_slide_out_bottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.abc_slide_out_top = global::HodlWallet2.Droid.Resource.Animation.abc_slide_out_top;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.design_bottom_sheet_slide_in = global::HodlWallet2.Droid.Resource.Animation.design_bottom_sheet_slide_in;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.design_bottom_sheet_slide_out = global::HodlWallet2.Droid.Resource.Animation.design_bottom_sheet_slide_out;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.design_snackbar_in = global::HodlWallet2.Droid.Resource.Animation.design_snackbar_in;
-			global::CarouselView.FormsPlugin.Android.Resource.Animation.design_snackbar_out = global::HodlWallet2.Droid.Resource.Animation.design_snackbar_out;
-			global::CarouselView.FormsPlugin.Android.Resource.Animator.design_appbar_state_list_animator = global::HodlWallet2.Droid.Resource.Animator.design_appbar_state_list_animator;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarDivider = global::HodlWallet2.Droid.Resource.Attribute.actionBarDivider;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarItemBackground = global::HodlWallet2.Droid.Resource.Attribute.actionBarItemBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarPopupTheme = global::HodlWallet2.Droid.Resource.Attribute.actionBarPopupTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarSize = global::HodlWallet2.Droid.Resource.Attribute.actionBarSize;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarSplitStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarSplitStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarTabBarStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarTabBarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarTabStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarTabStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarTabTextStyle = global::HodlWallet2.Droid.Resource.Attribute.actionBarTabTextStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarTheme = global::HodlWallet2.Droid.Resource.Attribute.actionBarTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarWidgetTheme = global::HodlWallet2.Droid.Resource.Attribute.actionBarWidgetTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.actionButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionDropDownStyle = global::HodlWallet2.Droid.Resource.Attribute.actionDropDownStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionLayout = global::HodlWallet2.Droid.Resource.Attribute.actionLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionMenuTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.actionMenuTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionMenuTextColor = global::HodlWallet2.Droid.Resource.Attribute.actionMenuTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModeBackground = global::HodlWallet2.Droid.Resource.Attribute.actionModeBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModeCloseButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.actionModeCloseButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModeCloseDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeCloseDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModeCopyDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeCopyDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModeCutDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeCutDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModeFindDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeFindDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModePasteDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModePasteDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModePopupWindowStyle = global::HodlWallet2.Droid.Resource.Attribute.actionModePopupWindowStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModeSelectAllDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeSelectAllDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModeShareDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeShareDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModeSplitBackground = global::HodlWallet2.Droid.Resource.Attribute.actionModeSplitBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModeStyle = global::HodlWallet2.Droid.Resource.Attribute.actionModeStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionModeWebSearchDrawable = global::HodlWallet2.Droid.Resource.Attribute.actionModeWebSearchDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionOverflowButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.actionOverflowButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionOverflowMenuStyle = global::HodlWallet2.Droid.Resource.Attribute.actionOverflowMenuStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionProviderClass = global::HodlWallet2.Droid.Resource.Attribute.actionProviderClass;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionViewClass = global::HodlWallet2.Droid.Resource.Attribute.actionViewClass;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.activityChooserViewStyle = global::HodlWallet2.Droid.Resource.Attribute.activityChooserViewStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.alertDialogButtonGroupStyle = global::HodlWallet2.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.alertDialogCenterButtons = global::HodlWallet2.Droid.Resource.Attribute.alertDialogCenterButtons;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.alertDialogStyle = global::HodlWallet2.Droid.Resource.Attribute.alertDialogStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.alertDialogTheme = global::HodlWallet2.Droid.Resource.Attribute.alertDialogTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.allowStacking = global::HodlWallet2.Droid.Resource.Attribute.allowStacking;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.alpha = global::HodlWallet2.Droid.Resource.Attribute.alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.arrowHeadLength = global::HodlWallet2.Droid.Resource.Attribute.arrowHeadLength;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.arrowShaftLength = global::HodlWallet2.Droid.Resource.Attribute.arrowShaftLength;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.autoCompleteTextViewStyle = global::HodlWallet2.Droid.Resource.Attribute.autoCompleteTextViewStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.background = global::HodlWallet2.Droid.Resource.Attribute.background;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.backgroundSplit = global::HodlWallet2.Droid.Resource.Attribute.backgroundSplit;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.backgroundStacked = global::HodlWallet2.Droid.Resource.Attribute.backgroundStacked;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.backgroundTint = global::HodlWallet2.Droid.Resource.Attribute.backgroundTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.backgroundTintMode = global::HodlWallet2.Droid.Resource.Attribute.backgroundTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.barLength = global::HodlWallet2.Droid.Resource.Attribute.barLength;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.behavior_autoHide = global::HodlWallet2.Droid.Resource.Attribute.behavior_autoHide;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.behavior_hideable = global::HodlWallet2.Droid.Resource.Attribute.behavior_hideable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.behavior_overlapTop = global::HodlWallet2.Droid.Resource.Attribute.behavior_overlapTop;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.behavior_peekHeight = global::HodlWallet2.Droid.Resource.Attribute.behavior_peekHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.behavior_skipCollapsed = global::HodlWallet2.Droid.Resource.Attribute.behavior_skipCollapsed;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.borderWidth = global::HodlWallet2.Droid.Resource.Attribute.borderWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.borderlessButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.borderlessButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.bottomSheetDialogTheme = global::HodlWallet2.Droid.Resource.Attribute.bottomSheetDialogTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.bottomSheetStyle = global::HodlWallet2.Droid.Resource.Attribute.bottomSheetStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.buttonBarButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.buttonBarNegativeButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.buttonBarNeutralButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.buttonBarPositiveButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.buttonBarStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonBarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.buttonGravity = global::HodlWallet2.Droid.Resource.Attribute.buttonGravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.buttonPanelSideLayout = global::HodlWallet2.Droid.Resource.Attribute.buttonPanelSideLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.buttonStyle = global::HodlWallet2.Droid.Resource.Attribute.buttonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.buttonStyleSmall = global::HodlWallet2.Droid.Resource.Attribute.buttonStyleSmall;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.buttonTint = global::HodlWallet2.Droid.Resource.Attribute.buttonTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.buttonTintMode = global::HodlWallet2.Droid.Resource.Attribute.buttonTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.cardBackgroundColor = global::HodlWallet2.Droid.Resource.Attribute.cardBackgroundColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.cardCornerRadius = global::HodlWallet2.Droid.Resource.Attribute.cardCornerRadius;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.cardElevation = global::HodlWallet2.Droid.Resource.Attribute.cardElevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.cardMaxElevation = global::HodlWallet2.Droid.Resource.Attribute.cardMaxElevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.cardPreventCornerOverlap = global::HodlWallet2.Droid.Resource.Attribute.cardPreventCornerOverlap;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.cardUseCompatPadding = global::HodlWallet2.Droid.Resource.Attribute.cardUseCompatPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.checkboxStyle = global::HodlWallet2.Droid.Resource.Attribute.checkboxStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.checkedTextViewStyle = global::HodlWallet2.Droid.Resource.Attribute.checkedTextViewStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.closeIcon = global::HodlWallet2.Droid.Resource.Attribute.closeIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.closeItemLayout = global::HodlWallet2.Droid.Resource.Attribute.closeItemLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.collapseContentDescription = global::HodlWallet2.Droid.Resource.Attribute.collapseContentDescription;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.collapseIcon = global::HodlWallet2.Droid.Resource.Attribute.collapseIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.collapsedTitleGravity = global::HodlWallet2.Droid.Resource.Attribute.collapsedTitleGravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.collapsedTitleTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.collapsedTitleTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.color = global::HodlWallet2.Droid.Resource.Attribute.color;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorAccent = global::HodlWallet2.Droid.Resource.Attribute.colorAccent;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorBackgroundFloating = global::HodlWallet2.Droid.Resource.Attribute.colorBackgroundFloating;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorButtonNormal = global::HodlWallet2.Droid.Resource.Attribute.colorButtonNormal;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorControlActivated = global::HodlWallet2.Droid.Resource.Attribute.colorControlActivated;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorControlHighlight = global::HodlWallet2.Droid.Resource.Attribute.colorControlHighlight;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorControlNormal = global::HodlWallet2.Droid.Resource.Attribute.colorControlNormal;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorPrimary = global::HodlWallet2.Droid.Resource.Attribute.colorPrimary;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorPrimaryDark = global::HodlWallet2.Droid.Resource.Attribute.colorPrimaryDark;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorSwitchThumbNormal = global::HodlWallet2.Droid.Resource.Attribute.colorSwitchThumbNormal;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.commitIcon = global::HodlWallet2.Droid.Resource.Attribute.commitIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentInsetEnd = global::HodlWallet2.Droid.Resource.Attribute.contentInsetEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentInsetEndWithActions = global::HodlWallet2.Droid.Resource.Attribute.contentInsetEndWithActions;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentInsetLeft = global::HodlWallet2.Droid.Resource.Attribute.contentInsetLeft;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentInsetRight = global::HodlWallet2.Droid.Resource.Attribute.contentInsetRight;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentInsetStart = global::HodlWallet2.Droid.Resource.Attribute.contentInsetStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentInsetStartWithNavigation = global::HodlWallet2.Droid.Resource.Attribute.contentInsetStartWithNavigation;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentPadding = global::HodlWallet2.Droid.Resource.Attribute.contentPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentPaddingBottom = global::HodlWallet2.Droid.Resource.Attribute.contentPaddingBottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentPaddingLeft = global::HodlWallet2.Droid.Resource.Attribute.contentPaddingLeft;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentPaddingRight = global::HodlWallet2.Droid.Resource.Attribute.contentPaddingRight;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentPaddingTop = global::HodlWallet2.Droid.Resource.Attribute.contentPaddingTop;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentScrim = global::HodlWallet2.Droid.Resource.Attribute.contentScrim;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.controlBackground = global::HodlWallet2.Droid.Resource.Attribute.controlBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.counterEnabled = global::HodlWallet2.Droid.Resource.Attribute.counterEnabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.counterMaxLength = global::HodlWallet2.Droid.Resource.Attribute.counterMaxLength;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.counterOverflowTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.counterOverflowTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.counterTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.counterTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.customNavigationLayout = global::HodlWallet2.Droid.Resource.Attribute.customNavigationLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.defaultQueryHint = global::HodlWallet2.Droid.Resource.Attribute.defaultQueryHint;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.dialogPreferredPadding = global::HodlWallet2.Droid.Resource.Attribute.dialogPreferredPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.dialogTheme = global::HodlWallet2.Droid.Resource.Attribute.dialogTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.displayOptions = global::HodlWallet2.Droid.Resource.Attribute.displayOptions;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.divider = global::HodlWallet2.Droid.Resource.Attribute.divider;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.dividerHorizontal = global::HodlWallet2.Droid.Resource.Attribute.dividerHorizontal;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.dividerPadding = global::HodlWallet2.Droid.Resource.Attribute.dividerPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.dividerVertical = global::HodlWallet2.Droid.Resource.Attribute.dividerVertical;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.drawableSize = global::HodlWallet2.Droid.Resource.Attribute.drawableSize;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.drawerArrowStyle = global::HodlWallet2.Droid.Resource.Attribute.drawerArrowStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.dropDownListViewStyle = global::HodlWallet2.Droid.Resource.Attribute.dropDownListViewStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.dropdownListPreferredItemHeight = global::HodlWallet2.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.editTextBackground = global::HodlWallet2.Droid.Resource.Attribute.editTextBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.editTextColor = global::HodlWallet2.Droid.Resource.Attribute.editTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.editTextStyle = global::HodlWallet2.Droid.Resource.Attribute.editTextStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.elevation = global::HodlWallet2.Droid.Resource.Attribute.elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.errorEnabled = global::HodlWallet2.Droid.Resource.Attribute.errorEnabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.errorTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.errorTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.expandActivityOverflowButtonDrawable = global::HodlWallet2.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.expanded = global::HodlWallet2.Droid.Resource.Attribute.expanded;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.expandedTitleGravity = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleGravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.expandedTitleMargin = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMargin;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.expandedTitleMarginBottom = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMarginBottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.expandedTitleMarginEnd = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMarginEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.expandedTitleMarginStart = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMarginStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.expandedTitleMarginTop = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleMarginTop;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.expandedTitleTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.expandedTitleTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.externalRouteEnabledDrawable = global::HodlWallet2.Droid.Resource.Attribute.externalRouteEnabledDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fabSize = global::HodlWallet2.Droid.Resource.Attribute.fabSize;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.foregroundInsidePadding = global::HodlWallet2.Droid.Resource.Attribute.foregroundInsidePadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.gapBetweenBars = global::HodlWallet2.Droid.Resource.Attribute.gapBetweenBars;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.goIcon = global::HodlWallet2.Droid.Resource.Attribute.goIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.headerLayout = global::HodlWallet2.Droid.Resource.Attribute.headerLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.height = global::HodlWallet2.Droid.Resource.Attribute.height;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.hideOnContentScroll = global::HodlWallet2.Droid.Resource.Attribute.hideOnContentScroll;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.hintAnimationEnabled = global::HodlWallet2.Droid.Resource.Attribute.hintAnimationEnabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.hintEnabled = global::HodlWallet2.Droid.Resource.Attribute.hintEnabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.hintTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.hintTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.homeAsUpIndicator = global::HodlWallet2.Droid.Resource.Attribute.homeAsUpIndicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.homeLayout = global::HodlWallet2.Droid.Resource.Attribute.homeLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.icon = global::HodlWallet2.Droid.Resource.Attribute.icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.iconifiedByDefault = global::HodlWallet2.Droid.Resource.Attribute.iconifiedByDefault;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.imageButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.imageButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.indeterminateProgressStyle = global::HodlWallet2.Droid.Resource.Attribute.indeterminateProgressStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.initialActivityCount = global::HodlWallet2.Droid.Resource.Attribute.initialActivityCount;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.insetForeground = global::HodlWallet2.Droid.Resource.Attribute.insetForeground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.isLightTheme = global::HodlWallet2.Droid.Resource.Attribute.isLightTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.itemBackground = global::HodlWallet2.Droid.Resource.Attribute.itemBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.itemIconTint = global::HodlWallet2.Droid.Resource.Attribute.itemIconTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.itemPadding = global::HodlWallet2.Droid.Resource.Attribute.itemPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.itemTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.itemTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.itemTextColor = global::HodlWallet2.Droid.Resource.Attribute.itemTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.keylines = global::HodlWallet2.Droid.Resource.Attribute.keylines;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.layout = global::HodlWallet2.Droid.Resource.Attribute.layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.layoutManager = global::HodlWallet2.Droid.Resource.Attribute.layoutManager;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.layout_anchor = global::HodlWallet2.Droid.Resource.Attribute.layout_anchor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.layout_anchorGravity = global::HodlWallet2.Droid.Resource.Attribute.layout_anchorGravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.layout_behavior = global::HodlWallet2.Droid.Resource.Attribute.layout_behavior;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.layout_collapseMode = global::HodlWallet2.Droid.Resource.Attribute.layout_collapseMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.layout_collapseParallaxMultiplier = global::HodlWallet2.Droid.Resource.Attribute.layout_collapseParallaxMultiplier;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.layout_dodgeInsetEdges = global::HodlWallet2.Droid.Resource.Attribute.layout_dodgeInsetEdges;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.layout_insetEdge = global::HodlWallet2.Droid.Resource.Attribute.layout_insetEdge;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.layout_keyline = global::HodlWallet2.Droid.Resource.Attribute.layout_keyline;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.layout_scrollFlags = global::HodlWallet2.Droid.Resource.Attribute.layout_scrollFlags;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.layout_scrollInterpolator = global::HodlWallet2.Droid.Resource.Attribute.layout_scrollInterpolator;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.listChoiceBackgroundIndicator = global::HodlWallet2.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.listDividerAlertDialog = global::HodlWallet2.Droid.Resource.Attribute.listDividerAlertDialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.listItemLayout = global::HodlWallet2.Droid.Resource.Attribute.listItemLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.listLayout = global::HodlWallet2.Droid.Resource.Attribute.listLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.listMenuViewStyle = global::HodlWallet2.Droid.Resource.Attribute.listMenuViewStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.listPopupWindowStyle = global::HodlWallet2.Droid.Resource.Attribute.listPopupWindowStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.listPreferredItemHeight = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.listPreferredItemHeightLarge = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemHeightLarge;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.listPreferredItemHeightSmall = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemHeightSmall;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.listPreferredItemPaddingLeft = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.listPreferredItemPaddingRight = global::HodlWallet2.Droid.Resource.Attribute.listPreferredItemPaddingRight;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.logo = global::HodlWallet2.Droid.Resource.Attribute.logo;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.logoDescription = global::HodlWallet2.Droid.Resource.Attribute.logoDescription;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.maxActionInlineWidth = global::HodlWallet2.Droid.Resource.Attribute.maxActionInlineWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.maxButtonHeight = global::HodlWallet2.Droid.Resource.Attribute.maxButtonHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.measureWithLargestChild = global::HodlWallet2.Droid.Resource.Attribute.measureWithLargestChild;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteAudioTrackDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteCloseDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteCloseDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteControlPanelThemeOverlay = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteControlPanelThemeOverlay;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteDefaultIconDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRoutePauseDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRoutePauseDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRoutePlayDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRoutePlayDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteSpeakerIconDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteStopDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteStopDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteTheme = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteTvIconDrawable = global::HodlWallet2.Droid.Resource.Attribute.mediaRouteTvIconDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.menu = global::HodlWallet2.Droid.Resource.Attribute.menu;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.multiChoiceItemLayout = global::HodlWallet2.Droid.Resource.Attribute.multiChoiceItemLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.navigationContentDescription = global::HodlWallet2.Droid.Resource.Attribute.navigationContentDescription;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.navigationIcon = global::HodlWallet2.Droid.Resource.Attribute.navigationIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.navigationMode = global::HodlWallet2.Droid.Resource.Attribute.navigationMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.overlapAnchor = global::HodlWallet2.Droid.Resource.Attribute.overlapAnchor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.paddingBottomNoButtons = global::HodlWallet2.Droid.Resource.Attribute.paddingBottomNoButtons;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.paddingEnd = global::HodlWallet2.Droid.Resource.Attribute.paddingEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.paddingStart = global::HodlWallet2.Droid.Resource.Attribute.paddingStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.paddingTopNoTitle = global::HodlWallet2.Droid.Resource.Attribute.paddingTopNoTitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.panelBackground = global::HodlWallet2.Droid.Resource.Attribute.panelBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.panelMenuListTheme = global::HodlWallet2.Droid.Resource.Attribute.panelMenuListTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.panelMenuListWidth = global::HodlWallet2.Droid.Resource.Attribute.panelMenuListWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.passwordToggleContentDescription = global::HodlWallet2.Droid.Resource.Attribute.passwordToggleContentDescription;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.passwordToggleDrawable = global::HodlWallet2.Droid.Resource.Attribute.passwordToggleDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.passwordToggleEnabled = global::HodlWallet2.Droid.Resource.Attribute.passwordToggleEnabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.passwordToggleTint = global::HodlWallet2.Droid.Resource.Attribute.passwordToggleTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.passwordToggleTintMode = global::HodlWallet2.Droid.Resource.Attribute.passwordToggleTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.popupMenuStyle = global::HodlWallet2.Droid.Resource.Attribute.popupMenuStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.popupTheme = global::HodlWallet2.Droid.Resource.Attribute.popupTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.popupWindowStyle = global::HodlWallet2.Droid.Resource.Attribute.popupWindowStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.preserveIconSpacing = global::HodlWallet2.Droid.Resource.Attribute.preserveIconSpacing;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.pressedTranslationZ = global::HodlWallet2.Droid.Resource.Attribute.pressedTranslationZ;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.progressBarPadding = global::HodlWallet2.Droid.Resource.Attribute.progressBarPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.progressBarStyle = global::HodlWallet2.Droid.Resource.Attribute.progressBarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.queryBackground = global::HodlWallet2.Droid.Resource.Attribute.queryBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.queryHint = global::HodlWallet2.Droid.Resource.Attribute.queryHint;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.radioButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.radioButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.ratingBarStyle = global::HodlWallet2.Droid.Resource.Attribute.ratingBarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.ratingBarStyleIndicator = global::HodlWallet2.Droid.Resource.Attribute.ratingBarStyleIndicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.ratingBarStyleSmall = global::HodlWallet2.Droid.Resource.Attribute.ratingBarStyleSmall;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.reverseLayout = global::HodlWallet2.Droid.Resource.Attribute.reverseLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.rippleColor = global::HodlWallet2.Droid.Resource.Attribute.rippleColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.scrimAnimationDuration = global::HodlWallet2.Droid.Resource.Attribute.scrimAnimationDuration;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.scrimVisibleHeightTrigger = global::HodlWallet2.Droid.Resource.Attribute.scrimVisibleHeightTrigger;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.searchHintIcon = global::HodlWallet2.Droid.Resource.Attribute.searchHintIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.searchIcon = global::HodlWallet2.Droid.Resource.Attribute.searchIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.searchViewStyle = global::HodlWallet2.Droid.Resource.Attribute.searchViewStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.seekBarStyle = global::HodlWallet2.Droid.Resource.Attribute.seekBarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.selectableItemBackground = global::HodlWallet2.Droid.Resource.Attribute.selectableItemBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.selectableItemBackgroundBorderless = global::HodlWallet2.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.showAsAction = global::HodlWallet2.Droid.Resource.Attribute.showAsAction;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.showDividers = global::HodlWallet2.Droid.Resource.Attribute.showDividers;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.showText = global::HodlWallet2.Droid.Resource.Attribute.showText;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.showTitle = global::HodlWallet2.Droid.Resource.Attribute.showTitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.singleChoiceItemLayout = global::HodlWallet2.Droid.Resource.Attribute.singleChoiceItemLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.spanCount = global::HodlWallet2.Droid.Resource.Attribute.spanCount;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.spinBars = global::HodlWallet2.Droid.Resource.Attribute.spinBars;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.spinnerDropDownItemStyle = global::HodlWallet2.Droid.Resource.Attribute.spinnerDropDownItemStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.spinnerStyle = global::HodlWallet2.Droid.Resource.Attribute.spinnerStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.splitTrack = global::HodlWallet2.Droid.Resource.Attribute.splitTrack;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.srcCompat = global::HodlWallet2.Droid.Resource.Attribute.srcCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.stackFromEnd = global::HodlWallet2.Droid.Resource.Attribute.stackFromEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.state_above_anchor = global::HodlWallet2.Droid.Resource.Attribute.state_above_anchor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.state_collapsed = global::HodlWallet2.Droid.Resource.Attribute.state_collapsed;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.state_collapsible = global::HodlWallet2.Droid.Resource.Attribute.state_collapsible;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.statusBarBackground = global::HodlWallet2.Droid.Resource.Attribute.statusBarBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.statusBarScrim = global::HodlWallet2.Droid.Resource.Attribute.statusBarScrim;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.subMenuArrow = global::HodlWallet2.Droid.Resource.Attribute.subMenuArrow;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.submitBackground = global::HodlWallet2.Droid.Resource.Attribute.submitBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.subtitle = global::HodlWallet2.Droid.Resource.Attribute.subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.subtitleTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.subtitleTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.subtitleTextColor = global::HodlWallet2.Droid.Resource.Attribute.subtitleTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.subtitleTextStyle = global::HodlWallet2.Droid.Resource.Attribute.subtitleTextStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.suggestionRowLayout = global::HodlWallet2.Droid.Resource.Attribute.suggestionRowLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.switchMinWidth = global::HodlWallet2.Droid.Resource.Attribute.switchMinWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.switchPadding = global::HodlWallet2.Droid.Resource.Attribute.switchPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.switchStyle = global::HodlWallet2.Droid.Resource.Attribute.switchStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.switchTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.switchTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabBackground = global::HodlWallet2.Droid.Resource.Attribute.tabBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabContentStart = global::HodlWallet2.Droid.Resource.Attribute.tabContentStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabGravity = global::HodlWallet2.Droid.Resource.Attribute.tabGravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabIndicatorColor = global::HodlWallet2.Droid.Resource.Attribute.tabIndicatorColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabIndicatorHeight = global::HodlWallet2.Droid.Resource.Attribute.tabIndicatorHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabMaxWidth = global::HodlWallet2.Droid.Resource.Attribute.tabMaxWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabMinWidth = global::HodlWallet2.Droid.Resource.Attribute.tabMinWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabMode = global::HodlWallet2.Droid.Resource.Attribute.tabMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabPadding = global::HodlWallet2.Droid.Resource.Attribute.tabPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabPaddingBottom = global::HodlWallet2.Droid.Resource.Attribute.tabPaddingBottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabPaddingEnd = global::HodlWallet2.Droid.Resource.Attribute.tabPaddingEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabPaddingStart = global::HodlWallet2.Droid.Resource.Attribute.tabPaddingStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabPaddingTop = global::HodlWallet2.Droid.Resource.Attribute.tabPaddingTop;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabSelectedTextColor = global::HodlWallet2.Droid.Resource.Attribute.tabSelectedTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.tabTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tabTextColor = global::HodlWallet2.Droid.Resource.Attribute.tabTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.textAllCaps = global::HodlWallet2.Droid.Resource.Attribute.textAllCaps;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.textAppearanceLargePopupMenu = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.textAppearanceListItem = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceListItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.textAppearanceListItemSecondary = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceListItemSecondary;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.textAppearanceListItemSmall = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceListItemSmall;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.textAppearancePopupMenuHeader = global::HodlWallet2.Droid.Resource.Attribute.textAppearancePopupMenuHeader;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.textAppearanceSearchResultSubtitle = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.textAppearanceSearchResultTitle = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.textAppearanceSmallPopupMenu = global::HodlWallet2.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.textColorAlertDialogListItem = global::HodlWallet2.Droid.Resource.Attribute.textColorAlertDialogListItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.textColorError = global::HodlWallet2.Droid.Resource.Attribute.textColorError;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.textColorSearchUrl = global::HodlWallet2.Droid.Resource.Attribute.textColorSearchUrl;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.theme = global::HodlWallet2.Droid.Resource.Attribute.theme;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.thickness = global::HodlWallet2.Droid.Resource.Attribute.thickness;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.thumbTextPadding = global::HodlWallet2.Droid.Resource.Attribute.thumbTextPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.thumbTint = global::HodlWallet2.Droid.Resource.Attribute.thumbTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.thumbTintMode = global::HodlWallet2.Droid.Resource.Attribute.thumbTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tickMark = global::HodlWallet2.Droid.Resource.Attribute.tickMark;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tickMarkTint = global::HodlWallet2.Droid.Resource.Attribute.tickMarkTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tickMarkTintMode = global::HodlWallet2.Droid.Resource.Attribute.tickMarkTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tint = global::HodlWallet2.Droid.Resource.Attribute.tint;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tintMode = global::HodlWallet2.Droid.Resource.Attribute.tintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.title = global::HodlWallet2.Droid.Resource.Attribute.title;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.titleEnabled = global::HodlWallet2.Droid.Resource.Attribute.titleEnabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.titleMargin = global::HodlWallet2.Droid.Resource.Attribute.titleMargin;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.titleMarginBottom = global::HodlWallet2.Droid.Resource.Attribute.titleMarginBottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.titleMarginEnd = global::HodlWallet2.Droid.Resource.Attribute.titleMarginEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.titleMarginStart = global::HodlWallet2.Droid.Resource.Attribute.titleMarginStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.titleMarginTop = global::HodlWallet2.Droid.Resource.Attribute.titleMarginTop;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.titleMargins = global::HodlWallet2.Droid.Resource.Attribute.titleMargins;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.titleTextAppearance = global::HodlWallet2.Droid.Resource.Attribute.titleTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.titleTextColor = global::HodlWallet2.Droid.Resource.Attribute.titleTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.titleTextStyle = global::HodlWallet2.Droid.Resource.Attribute.titleTextStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.toolbarId = global::HodlWallet2.Droid.Resource.Attribute.toolbarId;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.toolbarNavigationButtonStyle = global::HodlWallet2.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.toolbarStyle = global::HodlWallet2.Droid.Resource.Attribute.toolbarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.track = global::HodlWallet2.Droid.Resource.Attribute.track;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.trackTint = global::HodlWallet2.Droid.Resource.Attribute.trackTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.trackTintMode = global::HodlWallet2.Droid.Resource.Attribute.trackTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.useCompatPadding = global::HodlWallet2.Droid.Resource.Attribute.useCompatPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.voiceIcon = global::HodlWallet2.Droid.Resource.Attribute.voiceIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.vpiCentered = global::HodlWallet2.Droid.Resource.Attribute.vpiCentered;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.vpiCirclePageIndicatorStyle = global::HodlWallet2.Droid.Resource.Attribute.vpiCirclePageIndicatorStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.vpiFillColor = global::HodlWallet2.Droid.Resource.Attribute.vpiFillColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.vpiOrientation = global::HodlWallet2.Droid.Resource.Attribute.vpiOrientation;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.vpiPageColor = global::HodlWallet2.Droid.Resource.Attribute.vpiPageColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.vpiRadius = global::HodlWallet2.Droid.Resource.Attribute.vpiRadius;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.vpiSnap = global::HodlWallet2.Droid.Resource.Attribute.vpiSnap;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.vpiStrokeColor = global::HodlWallet2.Droid.Resource.Attribute.vpiStrokeColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.vpiStrokeWidth = global::HodlWallet2.Droid.Resource.Attribute.vpiStrokeWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.windowActionBar = global::HodlWallet2.Droid.Resource.Attribute.windowActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.windowActionBarOverlay = global::HodlWallet2.Droid.Resource.Attribute.windowActionBarOverlay;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.windowActionModeOverlay = global::HodlWallet2.Droid.Resource.Attribute.windowActionModeOverlay;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.windowFixedHeightMajor = global::HodlWallet2.Droid.Resource.Attribute.windowFixedHeightMajor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.windowFixedHeightMinor = global::HodlWallet2.Droid.Resource.Attribute.windowFixedHeightMinor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.windowFixedWidthMajor = global::HodlWallet2.Droid.Resource.Attribute.windowFixedWidthMajor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.windowFixedWidthMinor = global::HodlWallet2.Droid.Resource.Attribute.windowFixedWidthMinor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.windowMinWidthMajor = global::HodlWallet2.Droid.Resource.Attribute.windowMinWidthMajor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.windowMinWidthMinor = global::HodlWallet2.Droid.Resource.Attribute.windowMinWidthMinor;
-			global::CarouselView.FormsPlugin.Android.Resource.Attribute.windowNoTitle = global::HodlWallet2.Droid.Resource.Attribute.windowNoTitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Boolean.abc_action_bar_embed_tabs = global::HodlWallet2.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
-			global::CarouselView.FormsPlugin.Android.Resource.Boolean.abc_allow_stacked_button_bar = global::HodlWallet2.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
-			global::CarouselView.FormsPlugin.Android.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::HodlWallet2.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
-			global::CarouselView.FormsPlugin.Android.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::HodlWallet2.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
-			global::CarouselView.FormsPlugin.Android.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::HodlWallet2.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
-			global::CarouselView.FormsPlugin.Android.Resource.Boolean.default_circle_indicator_centered = global::HodlWallet2.Droid.Resource.Boolean.default_circle_indicator_centered;
-			global::CarouselView.FormsPlugin.Android.Resource.Boolean.default_circle_indicator_snap = global::HodlWallet2.Droid.Resource.Boolean.default_circle_indicator_snap;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_background_cache_hint_selector_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_background_cache_hint_selector_material_light = global::HodlWallet2.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_btn_colored_borderless_text_material = global::HodlWallet2.Droid.Resource.Color.abc_btn_colored_borderless_text_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_btn_colored_text_material = global::HodlWallet2.Droid.Resource.Color.abc_btn_colored_text_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_color_highlight_material = global::HodlWallet2.Droid.Resource.Color.abc_color_highlight_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_hint_foreground_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_hint_foreground_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_hint_foreground_material_light = global::HodlWallet2.Droid.Resource.Color.abc_hint_foreground_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_input_method_navigation_guard = global::HodlWallet2.Droid.Resource.Color.abc_input_method_navigation_guard;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_primary_text_disable_only_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_primary_text_disable_only_material_light = global::HodlWallet2.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_primary_text_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_primary_text_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_primary_text_material_light = global::HodlWallet2.Droid.Resource.Color.abc_primary_text_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_search_url_text = global::HodlWallet2.Droid.Resource.Color.abc_search_url_text;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_search_url_text_normal = global::HodlWallet2.Droid.Resource.Color.abc_search_url_text_normal;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_search_url_text_pressed = global::HodlWallet2.Droid.Resource.Color.abc_search_url_text_pressed;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_search_url_text_selected = global::HodlWallet2.Droid.Resource.Color.abc_search_url_text_selected;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_secondary_text_material_dark = global::HodlWallet2.Droid.Resource.Color.abc_secondary_text_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_secondary_text_material_light = global::HodlWallet2.Droid.Resource.Color.abc_secondary_text_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_tint_btn_checkable = global::HodlWallet2.Droid.Resource.Color.abc_tint_btn_checkable;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_tint_default = global::HodlWallet2.Droid.Resource.Color.abc_tint_default;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_tint_edittext = global::HodlWallet2.Droid.Resource.Color.abc_tint_edittext;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_tint_seek_thumb = global::HodlWallet2.Droid.Resource.Color.abc_tint_seek_thumb;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_tint_spinner = global::HodlWallet2.Droid.Resource.Color.abc_tint_spinner;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.abc_tint_switch_track = global::HodlWallet2.Droid.Resource.Color.abc_tint_switch_track;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.accent_material_dark = global::HodlWallet2.Droid.Resource.Color.accent_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.accent_material_light = global::HodlWallet2.Droid.Resource.Color.accent_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.background_floating_material_dark = global::HodlWallet2.Droid.Resource.Color.background_floating_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.background_floating_material_light = global::HodlWallet2.Droid.Resource.Color.background_floating_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.background_material_dark = global::HodlWallet2.Droid.Resource.Color.background_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.background_material_light = global::HodlWallet2.Droid.Resource.Color.background_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.bright_foreground_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.bright_foreground_disabled_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.bright_foreground_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.bright_foreground_disabled_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.bright_foreground_inverse_material_dark = global::HodlWallet2.Droid.Resource.Color.bright_foreground_inverse_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.bright_foreground_inverse_material_light = global::HodlWallet2.Droid.Resource.Color.bright_foreground_inverse_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.bright_foreground_material_dark = global::HodlWallet2.Droid.Resource.Color.bright_foreground_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.bright_foreground_material_light = global::HodlWallet2.Droid.Resource.Color.bright_foreground_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.button_material_dark = global::HodlWallet2.Droid.Resource.Color.button_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.button_material_light = global::HodlWallet2.Droid.Resource.Color.button_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.cardview_dark_background = global::HodlWallet2.Droid.Resource.Color.cardview_dark_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.cardview_light_background = global::HodlWallet2.Droid.Resource.Color.cardview_light_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.cardview_shadow_end_color = global::HodlWallet2.Droid.Resource.Color.cardview_shadow_end_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.cardview_shadow_start_color = global::HodlWallet2.Droid.Resource.Color.cardview_shadow_start_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.default_circle_indicator_fill_color = global::HodlWallet2.Droid.Resource.Color.default_circle_indicator_fill_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.default_circle_indicator_page_color = global::HodlWallet2.Droid.Resource.Color.default_circle_indicator_page_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.default_circle_indicator_stroke_color = global::HodlWallet2.Droid.Resource.Color.default_circle_indicator_stroke_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.design_bottom_navigation_shadow_color = global::HodlWallet2.Droid.Resource.Color.design_bottom_navigation_shadow_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.design_error = global::HodlWallet2.Droid.Resource.Color.design_error;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.design_fab_shadow_end_color = global::HodlWallet2.Droid.Resource.Color.design_fab_shadow_end_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.design_fab_shadow_mid_color = global::HodlWallet2.Droid.Resource.Color.design_fab_shadow_mid_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.design_fab_shadow_start_color = global::HodlWallet2.Droid.Resource.Color.design_fab_shadow_start_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.design_fab_stroke_end_inner_color = global::HodlWallet2.Droid.Resource.Color.design_fab_stroke_end_inner_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.design_fab_stroke_end_outer_color = global::HodlWallet2.Droid.Resource.Color.design_fab_stroke_end_outer_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.design_fab_stroke_top_inner_color = global::HodlWallet2.Droid.Resource.Color.design_fab_stroke_top_inner_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.design_fab_stroke_top_outer_color = global::HodlWallet2.Droid.Resource.Color.design_fab_stroke_top_outer_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.design_snackbar_background_color = global::HodlWallet2.Droid.Resource.Color.design_snackbar_background_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.design_tint_password_toggle = global::HodlWallet2.Droid.Resource.Color.design_tint_password_toggle;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.dim_foreground_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.dim_foreground_disabled_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.dim_foreground_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.dim_foreground_disabled_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.dim_foreground_material_dark = global::HodlWallet2.Droid.Resource.Color.dim_foreground_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.dim_foreground_material_light = global::HodlWallet2.Droid.Resource.Color.dim_foreground_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.foreground_material_dark = global::HodlWallet2.Droid.Resource.Color.foreground_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.foreground_material_light = global::HodlWallet2.Droid.Resource.Color.foreground_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.highlighted_text_material_dark = global::HodlWallet2.Droid.Resource.Color.highlighted_text_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.highlighted_text_material_light = global::HodlWallet2.Droid.Resource.Color.highlighted_text_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.material_blue_grey_800 = global::HodlWallet2.Droid.Resource.Color.material_blue_grey_800;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.material_blue_grey_900 = global::HodlWallet2.Droid.Resource.Color.material_blue_grey_900;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.material_blue_grey_950 = global::HodlWallet2.Droid.Resource.Color.material_blue_grey_950;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.material_deep_teal_200 = global::HodlWallet2.Droid.Resource.Color.material_deep_teal_200;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.material_deep_teal_500 = global::HodlWallet2.Droid.Resource.Color.material_deep_teal_500;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.material_grey_100 = global::HodlWallet2.Droid.Resource.Color.material_grey_100;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.material_grey_300 = global::HodlWallet2.Droid.Resource.Color.material_grey_300;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.material_grey_50 = global::HodlWallet2.Droid.Resource.Color.material_grey_50;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.material_grey_600 = global::HodlWallet2.Droid.Resource.Color.material_grey_600;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.material_grey_800 = global::HodlWallet2.Droid.Resource.Color.material_grey_800;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.material_grey_850 = global::HodlWallet2.Droid.Resource.Color.material_grey_850;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.material_grey_900 = global::HodlWallet2.Droid.Resource.Color.material_grey_900;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.notification_action_color_filter = global::HodlWallet2.Droid.Resource.Color.notification_action_color_filter;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.notification_icon_bg_color = global::HodlWallet2.Droid.Resource.Color.notification_icon_bg_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.notification_material_background_media_default_color = global::HodlWallet2.Droid.Resource.Color.notification_material_background_media_default_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.primary_dark_material_dark = global::HodlWallet2.Droid.Resource.Color.primary_dark_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.primary_dark_material_light = global::HodlWallet2.Droid.Resource.Color.primary_dark_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.primary_material_dark = global::HodlWallet2.Droid.Resource.Color.primary_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.primary_material_light = global::HodlWallet2.Droid.Resource.Color.primary_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.primary_text_default_material_dark = global::HodlWallet2.Droid.Resource.Color.primary_text_default_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.primary_text_default_material_light = global::HodlWallet2.Droid.Resource.Color.primary_text_default_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.primary_text_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.primary_text_disabled_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.primary_text_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.primary_text_disabled_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.ripple_material_dark = global::HodlWallet2.Droid.Resource.Color.ripple_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.ripple_material_light = global::HodlWallet2.Droid.Resource.Color.ripple_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.secondary_text_default_material_dark = global::HodlWallet2.Droid.Resource.Color.secondary_text_default_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.secondary_text_default_material_light = global::HodlWallet2.Droid.Resource.Color.secondary_text_default_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.secondary_text_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.secondary_text_disabled_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.secondary_text_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.secondary_text_disabled_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.switch_thumb_disabled_material_dark = global::HodlWallet2.Droid.Resource.Color.switch_thumb_disabled_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.switch_thumb_disabled_material_light = global::HodlWallet2.Droid.Resource.Color.switch_thumb_disabled_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.switch_thumb_material_dark = global::HodlWallet2.Droid.Resource.Color.switch_thumb_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.switch_thumb_material_light = global::HodlWallet2.Droid.Resource.Color.switch_thumb_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.switch_thumb_normal_material_dark = global::HodlWallet2.Droid.Resource.Color.switch_thumb_normal_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.switch_thumb_normal_material_light = global::HodlWallet2.Droid.Resource.Color.switch_thumb_normal_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.vpi__background_holo_dark = global::HodlWallet2.Droid.Resource.Color.vpi__background_holo_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.vpi__background_holo_light = global::HodlWallet2.Droid.Resource.Color.vpi__background_holo_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.vpi__bright_foreground_disabled_holo_dark = global::HodlWallet2.Droid.Resource.Color.vpi__bright_foreground_disabled_holo_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.vpi__bright_foreground_disabled_holo_light = global::HodlWallet2.Droid.Resource.Color.vpi__bright_foreground_disabled_holo_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.vpi__bright_foreground_holo_dark = global::HodlWallet2.Droid.Resource.Color.vpi__bright_foreground_holo_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.vpi__bright_foreground_holo_light = global::HodlWallet2.Droid.Resource.Color.vpi__bright_foreground_holo_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.vpi__bright_foreground_inverse_holo_dark = global::HodlWallet2.Droid.Resource.Color.vpi__bright_foreground_inverse_holo_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Color.vpi__bright_foreground_inverse_holo_light = global::HodlWallet2.Droid.Resource.Color.vpi__bright_foreground_inverse_holo_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_content_inset_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_content_inset_with_nav = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_content_inset_with_nav;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_default_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_default_height_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_default_padding_end_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_default_padding_start_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_elevation_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_elevation_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_progress_bar_size = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_progress_bar_size;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_stacked_max_height = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_button_min_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_button_min_height_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_button_min_width_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_button_min_width_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_action_button_min_width_overflow_material = global::HodlWallet2.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_alert_dialog_button_bar_height = global::HodlWallet2.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_button_inset_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_button_inset_vertical_material = global::HodlWallet2.Droid.Resource.Dimension.abc_button_inset_vertical_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_button_padding_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_button_padding_vertical_material = global::HodlWallet2.Droid.Resource.Dimension.abc_button_padding_vertical_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_cascading_menus_min_smallest_width = global::HodlWallet2.Droid.Resource.Dimension.abc_cascading_menus_min_smallest_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_config_prefDialogWidth = global::HodlWallet2.Droid.Resource.Dimension.abc_config_prefDialogWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_control_corner_material = global::HodlWallet2.Droid.Resource.Dimension.abc_control_corner_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_control_inset_material = global::HodlWallet2.Droid.Resource.Dimension.abc_control_inset_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_control_padding_material = global::HodlWallet2.Droid.Resource.Dimension.abc_control_padding_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dialog_fixed_height_major = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_fixed_height_major;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dialog_fixed_height_minor = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_fixed_height_minor;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dialog_fixed_width_major = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_fixed_width_major;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dialog_fixed_width_minor = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_fixed_width_minor;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dialog_list_padding_top_no_title = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_list_padding_top_no_title;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dialog_min_width_major = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_min_width_major;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dialog_min_width_minor = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_min_width_minor;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dialog_padding_material = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_padding_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dialog_padding_top_material = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_padding_top_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dialog_title_divider_material = global::HodlWallet2.Droid.Resource.Dimension.abc_dialog_title_divider_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_disabled_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_disabled_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dropdownitem_icon_width = global::HodlWallet2.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dropdownitem_text_padding_left = global::HodlWallet2.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_dropdownitem_text_padding_right = global::HodlWallet2.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_edit_text_inset_bottom_material = global::HodlWallet2.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_edit_text_inset_top_material = global::HodlWallet2.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_floating_window_z = global::HodlWallet2.Droid.Resource.Dimension.abc_floating_window_z;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_list_item_padding_horizontal_material = global::HodlWallet2.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_panel_menu_list_width = global::HodlWallet2.Droid.Resource.Dimension.abc_panel_menu_list_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_progress_bar_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_progress_bar_height_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_search_view_preferred_height = global::HodlWallet2.Droid.Resource.Dimension.abc_search_view_preferred_height;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_search_view_preferred_width = global::HodlWallet2.Droid.Resource.Dimension.abc_search_view_preferred_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_seekbar_track_background_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_seekbar_track_background_height_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_seekbar_track_progress_height_material = global::HodlWallet2.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_select_dialog_padding_start_material = global::HodlWallet2.Droid.Resource.Dimension.abc_select_dialog_padding_start_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_switch_padding = global::HodlWallet2.Droid.Resource.Dimension.abc_switch_padding;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_body_1_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_body_1_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_body_2_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_body_2_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_button_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_button_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_caption_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_caption_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_display_1_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_display_1_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_display_2_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_display_2_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_display_3_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_display_3_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_display_4_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_display_4_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_headline_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_headline_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_large_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_large_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_medium_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_medium_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_menu_header_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_menu_header_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_menu_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_menu_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_small_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_small_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_subhead_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_subhead_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_title_material = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_title_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.abc_text_size_title_material_toolbar = global::HodlWallet2.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.cardview_compat_inset_shadow = global::HodlWallet2.Droid.Resource.Dimension.cardview_compat_inset_shadow;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.cardview_default_elevation = global::HodlWallet2.Droid.Resource.Dimension.cardview_default_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.cardview_default_radius = global::HodlWallet2.Droid.Resource.Dimension.cardview_default_radius;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.default_circle_indicator_radius = global::HodlWallet2.Droid.Resource.Dimension.default_circle_indicator_radius;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.default_circle_indicator_stroke_width = global::HodlWallet2.Droid.Resource.Dimension.default_circle_indicator_stroke_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_appbar_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_appbar_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_bottom_navigation_active_item_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_active_item_max_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_bottom_navigation_active_text_size = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_active_text_size;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_bottom_navigation_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_bottom_navigation_height = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_height;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_bottom_navigation_item_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_item_max_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_bottom_navigation_item_min_width = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_item_min_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_bottom_navigation_margin = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_margin;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_bottom_navigation_shadow_height = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_shadow_height;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_bottom_navigation_text_size = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_navigation_text_size;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_bottom_sheet_modal_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_bottom_sheet_peek_height_min = global::HodlWallet2.Droid.Resource.Dimension.design_bottom_sheet_peek_height_min;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_fab_border_width = global::HodlWallet2.Droid.Resource.Dimension.design_fab_border_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_fab_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_fab_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_fab_image_size = global::HodlWallet2.Droid.Resource.Dimension.design_fab_image_size;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_fab_size_mini = global::HodlWallet2.Droid.Resource.Dimension.design_fab_size_mini;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_fab_size_normal = global::HodlWallet2.Droid.Resource.Dimension.design_fab_size_normal;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_fab_translation_z_pressed = global::HodlWallet2.Droid.Resource.Dimension.design_fab_translation_z_pressed;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_navigation_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_navigation_icon_padding = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_icon_padding;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_navigation_icon_size = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_icon_size;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_navigation_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_max_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_navigation_padding_bottom = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_padding_bottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_navigation_separator_vertical_padding = global::HodlWallet2.Droid.Resource.Dimension.design_navigation_separator_vertical_padding;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_snackbar_action_inline_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_action_inline_max_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_snackbar_background_corner_radius = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_background_corner_radius;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_snackbar_elevation = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_snackbar_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_max_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_snackbar_min_width = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_min_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_snackbar_padding_horizontal = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_padding_horizontal;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_snackbar_padding_vertical = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_padding_vertical;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_snackbar_text_size = global::HodlWallet2.Droid.Resource.Dimension.design_snackbar_text_size;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_tab_max_width = global::HodlWallet2.Droid.Resource.Dimension.design_tab_max_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_tab_scrollable_min_width = global::HodlWallet2.Droid.Resource.Dimension.design_tab_scrollable_min_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_tab_text_size = global::HodlWallet2.Droid.Resource.Dimension.design_tab_text_size;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_tab_text_size_2line = global::HodlWallet2.Droid.Resource.Dimension.design_tab_text_size_2line;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.disabled_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.disabled_alpha_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.disabled_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.disabled_alpha_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.highlight_alpha_material_colored = global::HodlWallet2.Droid.Resource.Dimension.highlight_alpha_material_colored;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.highlight_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.highlight_alpha_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.highlight_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.highlight_alpha_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.hint_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.hint_alpha_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.hint_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.hint_alpha_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.hint_pressed_alpha_material_dark = global::HodlWallet2.Droid.Resource.Dimension.hint_pressed_alpha_material_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.hint_pressed_alpha_material_light = global::HodlWallet2.Droid.Resource.Dimension.hint_pressed_alpha_material_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::HodlWallet2.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::HodlWallet2.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::HodlWallet2.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.mr_controller_volume_group_list_item_height = global::HodlWallet2.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.mr_controller_volume_group_list_item_icon_size = global::HodlWallet2.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.mr_controller_volume_group_list_max_height = global::HodlWallet2.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.mr_controller_volume_group_list_padding_top = global::HodlWallet2.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.mr_dialog_fixed_width_major = global::HodlWallet2.Droid.Resource.Dimension.mr_dialog_fixed_width_major;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.mr_dialog_fixed_width_minor = global::HodlWallet2.Droid.Resource.Dimension.mr_dialog_fixed_width_minor;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_action_icon_size = global::HodlWallet2.Droid.Resource.Dimension.notification_action_icon_size;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_action_text_size = global::HodlWallet2.Droid.Resource.Dimension.notification_action_text_size;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_big_circle_margin = global::HodlWallet2.Droid.Resource.Dimension.notification_big_circle_margin;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_content_margin_start = global::HodlWallet2.Droid.Resource.Dimension.notification_content_margin_start;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_large_icon_height = global::HodlWallet2.Droid.Resource.Dimension.notification_large_icon_height;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_large_icon_width = global::HodlWallet2.Droid.Resource.Dimension.notification_large_icon_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_main_column_padding_top = global::HodlWallet2.Droid.Resource.Dimension.notification_main_column_padding_top;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_media_narrow_margin = global::HodlWallet2.Droid.Resource.Dimension.notification_media_narrow_margin;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_right_icon_size = global::HodlWallet2.Droid.Resource.Dimension.notification_right_icon_size;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_right_side_padding_top = global::HodlWallet2.Droid.Resource.Dimension.notification_right_side_padding_top;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_small_icon_background_padding = global::HodlWallet2.Droid.Resource.Dimension.notification_small_icon_background_padding;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_small_icon_size_as_large = global::HodlWallet2.Droid.Resource.Dimension.notification_small_icon_size_as_large;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_subtext_size = global::HodlWallet2.Droid.Resource.Dimension.notification_subtext_size;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_top_pad = global::HodlWallet2.Droid.Resource.Dimension.notification_top_pad;
-			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_top_pad_large_text = global::HodlWallet2.Droid.Resource.Dimension.notification_top_pad_large_text;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_action_bar_item_background_material = global::HodlWallet2.Droid.Resource.Drawable.abc_action_bar_item_background_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_btn_borderless_material = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_borderless_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_btn_check_material = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_check_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_btn_colored_material = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_colored_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_btn_default_mtrl_shape = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_btn_radio_material = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_radio_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::HodlWallet2.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_cab_background_internal_bg = global::HodlWallet2.Droid.Resource.Drawable.abc_cab_background_internal_bg;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_cab_background_top_material = global::HodlWallet2.Droid.Resource.Drawable.abc_cab_background_top_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_control_background_material = global::HodlWallet2.Droid.Resource.Drawable.abc_control_background_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_dialog_material_background = global::HodlWallet2.Droid.Resource.Drawable.abc_dialog_material_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_edit_text_material = global::HodlWallet2.Droid.Resource.Drawable.abc_edit_text_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_ab_back_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_ab_back_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_clear_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_clear_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_go_search_api_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_go_search_api_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_menu_overflow_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_overflow_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_search_api_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_search_api_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_star_black_16dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_black_16dp;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_star_black_36dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_black_36dp;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_star_black_48dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_black_48dp;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_star_half_black_16dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_half_black_16dp;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_star_half_black_36dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_half_black_36dp;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_star_half_black_48dp = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_star_half_black_48dp;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ic_voice_search_api_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ic_voice_search_api_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_item_background_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_item_background_holo_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_item_background_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_item_background_holo_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_list_divider_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_list_focused_holo = global::HodlWallet2.Droid.Resource.Drawable.abc_list_focused_holo;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_list_longpressed_holo = global::HodlWallet2.Droid.Resource.Drawable.abc_list_longpressed_holo;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_list_pressed_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_list_pressed_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_list_pressed_holo_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_list_selector_disabled_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_list_selector_holo_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_holo_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_list_selector_holo_light = global::HodlWallet2.Droid.Resource.Drawable.abc_list_selector_holo_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::HodlWallet2.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_popup_background_mtrl_mult = global::HodlWallet2.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ratingbar_indicator_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ratingbar_indicator_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ratingbar_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ratingbar_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ratingbar_small_material = global::HodlWallet2.Droid.Resource.Drawable.abc_ratingbar_small_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_seekbar_thumb_material = global::HodlWallet2.Droid.Resource.Drawable.abc_seekbar_thumb_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_seekbar_tick_mark_material = global::HodlWallet2.Droid.Resource.Drawable.abc_seekbar_tick_mark_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_seekbar_track_material = global::HodlWallet2.Droid.Resource.Drawable.abc_seekbar_track_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_spinner_textfield_background_material = global::HodlWallet2.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_switch_thumb_material = global::HodlWallet2.Droid.Resource.Drawable.abc_switch_thumb_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_switch_track_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_tab_indicator_material = global::HodlWallet2.Droid.Resource.Drawable.abc_tab_indicator_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_text_cursor_material = global::HodlWallet2.Droid.Resource.Drawable.abc_text_cursor_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_text_select_handle_left_mtrl_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_text_select_handle_left_mtrl_light = global::HodlWallet2.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_text_select_handle_middle_mtrl_light = global::HodlWallet2.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_text_select_handle_right_mtrl_dark = global::HodlWallet2.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_text_select_handle_right_mtrl_light = global::HodlWallet2.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_textfield_search_material = global::HodlWallet2.Droid.Resource.Drawable.abc_textfield_search_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_vector_test = global::HodlWallet2.Droid.Resource.Drawable.abc_vector_test;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.avd_hide_password = global::HodlWallet2.Droid.Resource.Drawable.avd_hide_password;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.avd_hide_password_1 = global::HodlWallet2.Droid.Resource.Drawable.avd_hide_password_1;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.avd_hide_password_2 = global::HodlWallet2.Droid.Resource.Drawable.avd_hide_password_2;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.avd_hide_password_3 = global::HodlWallet2.Droid.Resource.Drawable.avd_hide_password_3;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.avd_show_password = global::HodlWallet2.Droid.Resource.Drawable.avd_show_password;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.avd_show_password_1 = global::HodlWallet2.Droid.Resource.Drawable.avd_show_password_1;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.avd_show_password_2 = global::HodlWallet2.Droid.Resource.Drawable.avd_show_password_2;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.avd_show_password_3 = global::HodlWallet2.Droid.Resource.Drawable.avd_show_password_3;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.design_bottom_navigation_item_background = global::HodlWallet2.Droid.Resource.Drawable.design_bottom_navigation_item_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.design_fab_background = global::HodlWallet2.Droid.Resource.Drawable.design_fab_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.design_ic_visibility = global::HodlWallet2.Droid.Resource.Drawable.design_ic_visibility;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.design_ic_visibility_off = global::HodlWallet2.Droid.Resource.Drawable.design_ic_visibility_off;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.design_password_eye = global::HodlWallet2.Droid.Resource.Drawable.design_password_eye;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.design_snackbar_background = global::HodlWallet2.Droid.Resource.Drawable.design_snackbar_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.Down = global::HodlWallet2.Droid.Resource.Drawable.Down;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_audiotrack_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_audiotrack_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_audiotrack_light = global::HodlWallet2.Droid.Resource.Drawable.ic_audiotrack_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_dialog_close_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_dialog_close_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_dialog_close_light = global::HodlWallet2.Droid.Resource.Drawable.ic_dialog_close_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_00 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_00;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_01 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_01;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_02 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_02;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_03 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_03;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_04 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_04;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_05 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_05;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_06 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_06;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_07 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_07;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_08 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_08;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_09 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_09;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_10 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_10;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_11 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_11;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_12 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_12;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_13 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_13;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_14 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_14;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_collapse_15 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_collapse_15;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_00 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_00;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_01 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_01;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_02 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_02;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_03 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_03;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_04 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_04;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_05 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_05;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_06 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_06;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_07 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_07;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_08 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_08;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_09 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_09;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_10 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_10;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_11 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_11;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_12 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_12;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_13 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_13;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_14 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_14;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_group_expand_15 = global::HodlWallet2.Droid.Resource.Drawable.ic_group_expand_15;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_media_pause_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_media_pause_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_media_pause_light = global::HodlWallet2.Droid.Resource.Drawable.ic_media_pause_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_media_play_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_media_play_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_media_play_light = global::HodlWallet2.Droid.Resource.Drawable.ic_media_play_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_media_stop_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_media_stop_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_media_stop_light = global::HodlWallet2.Droid.Resource.Drawable.ic_media_stop_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_00_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_00_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_00_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_00_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_01_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_01_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_01_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_01_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_02_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_02_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_02_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_02_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_03_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_03_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_03_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_03_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_04_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_04_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_04_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_04_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_05_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_05_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_05_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_05_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_06_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_06_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_06_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_06_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_07_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_07_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_07_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_07_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_08_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_08_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_08_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_08_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_09_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_09_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_09_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_09_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_10_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_10_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_10_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_10_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_11_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_11_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_11_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_11_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_12_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_12_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_12_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_12_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_13_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_13_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_13_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_13_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_14_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_14_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_14_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_14_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_15_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_15_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_15_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_15_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_16_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_16_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_16_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_16_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_17_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_17_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_17_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_17_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_18_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_18_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_18_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_18_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_19_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_19_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_19_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_19_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_20_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_20_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_20_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_20_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_21_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_21_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_21_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_21_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_22_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_22_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_22_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connected_22_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_00_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_00_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_00_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_00_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_01_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_01_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_01_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_01_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_02_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_02_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_02_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_02_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_03_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_03_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_03_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_03_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_04_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_04_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_04_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_04_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_05_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_05_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_05_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_05_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_06_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_06_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_06_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_06_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_07_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_07_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_07_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_07_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_08_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_08_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_08_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_08_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_09_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_09_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_09_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_09_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_10_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_10_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_10_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_10_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_11_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_11_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_11_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_11_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_12_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_12_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_12_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_12_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_13_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_13_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_13_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_13_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_14_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_14_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_14_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_14_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_15_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_15_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_15_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_15_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_16_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_16_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_16_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_16_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_17_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_17_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_17_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_17_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_18_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_18_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_18_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_18_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_19_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_19_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_19_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_19_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_20_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_20_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_20_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_20_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_21_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_21_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_21_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_21_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_22_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_22_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_22_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_connecting_22_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_disabled_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_disabled_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_disabled_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_disabled_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_disconnected_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_disconnected_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_disconnected_light = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_disconnected_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_grey = global::HodlWallet2.Droid.Resource.Drawable.ic_mr_button_grey;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_vol_type_speaker_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_vol_type_speaker_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_vol_type_speaker_group_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_vol_type_speaker_group_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_vol_type_speaker_group_light = global::HodlWallet2.Droid.Resource.Drawable.ic_vol_type_speaker_group_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_vol_type_speaker_light = global::HodlWallet2.Droid.Resource.Drawable.ic_vol_type_speaker_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_vol_type_tv_dark = global::HodlWallet2.Droid.Resource.Drawable.ic_vol_type_tv_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_vol_type_tv_light = global::HodlWallet2.Droid.Resource.Drawable.ic_vol_type_tv_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_button_connected_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_button_connected_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_button_connected_light = global::HodlWallet2.Droid.Resource.Drawable.mr_button_connected_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_button_connecting_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_button_connecting_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_button_connecting_light = global::HodlWallet2.Droid.Resource.Drawable.mr_button_connecting_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_button_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_button_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_button_light = global::HodlWallet2.Droid.Resource.Drawable.mr_button_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_dialog_close_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_dialog_close_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_dialog_close_light = global::HodlWallet2.Droid.Resource.Drawable.mr_dialog_close_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_dialog_material_background_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_dialog_material_background_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_dialog_material_background_light = global::HodlWallet2.Droid.Resource.Drawable.mr_dialog_material_background_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_group_collapse = global::HodlWallet2.Droid.Resource.Drawable.mr_group_collapse;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_group_expand = global::HodlWallet2.Droid.Resource.Drawable.mr_group_expand;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_media_pause_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_media_pause_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_media_pause_light = global::HodlWallet2.Droid.Resource.Drawable.mr_media_pause_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_media_play_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_media_play_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_media_play_light = global::HodlWallet2.Droid.Resource.Drawable.mr_media_play_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_media_stop_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_media_stop_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_media_stop_light = global::HodlWallet2.Droid.Resource.Drawable.mr_media_stop_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_vol_type_audiotrack_dark = global::HodlWallet2.Droid.Resource.Drawable.mr_vol_type_audiotrack_dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.mr_vol_type_audiotrack_light = global::HodlWallet2.Droid.Resource.Drawable.mr_vol_type_audiotrack_light;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.navigation_empty_icon = global::HodlWallet2.Droid.Resource.Drawable.navigation_empty_icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.Next = global::HodlWallet2.Droid.Resource.Drawable.Next;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notification_action_background = global::HodlWallet2.Droid.Resource.Drawable.notification_action_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notification_bg = global::HodlWallet2.Droid.Resource.Drawable.notification_bg;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notification_bg_low = global::HodlWallet2.Droid.Resource.Drawable.notification_bg_low;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notification_bg_low_normal = global::HodlWallet2.Droid.Resource.Drawable.notification_bg_low_normal;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notification_bg_low_pressed = global::HodlWallet2.Droid.Resource.Drawable.notification_bg_low_pressed;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notification_bg_normal = global::HodlWallet2.Droid.Resource.Drawable.notification_bg_normal;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notification_bg_normal_pressed = global::HodlWallet2.Droid.Resource.Drawable.notification_bg_normal_pressed;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notification_icon_background = global::HodlWallet2.Droid.Resource.Drawable.notification_icon_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notification_template_icon_bg = global::HodlWallet2.Droid.Resource.Drawable.notification_template_icon_bg;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notification_template_icon_low_bg = global::HodlWallet2.Droid.Resource.Drawable.notification_template_icon_low_bg;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notification_tile_bg = global::HodlWallet2.Droid.Resource.Drawable.notification_tile_bg;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notify_panel_notification_icon_bg = global::HodlWallet2.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.Prev = global::HodlWallet2.Droid.Resource.Drawable.Prev;
-			global::CarouselView.FormsPlugin.Android.Resource.Drawable.Up = global::HodlWallet2.Droid.Resource.Drawable.Up;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action0 = global::HodlWallet2.Droid.Resource.Id.action0;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_bar = global::HodlWallet2.Droid.Resource.Id.action_bar;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_bar_activity_content = global::HodlWallet2.Droid.Resource.Id.action_bar_activity_content;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_bar_container = global::HodlWallet2.Droid.Resource.Id.action_bar_container;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_bar_root = global::HodlWallet2.Droid.Resource.Id.action_bar_root;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_bar_spinner = global::HodlWallet2.Droid.Resource.Id.action_bar_spinner;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_bar_subtitle = global::HodlWallet2.Droid.Resource.Id.action_bar_subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_bar_title = global::HodlWallet2.Droid.Resource.Id.action_bar_title;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_container = global::HodlWallet2.Droid.Resource.Id.action_container;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_context_bar = global::HodlWallet2.Droid.Resource.Id.action_context_bar;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_divider = global::HodlWallet2.Droid.Resource.Id.action_divider;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_image = global::HodlWallet2.Droid.Resource.Id.action_image;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_menu_divider = global::HodlWallet2.Droid.Resource.Id.action_menu_divider;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_menu_presenter = global::HodlWallet2.Droid.Resource.Id.action_menu_presenter;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_mode_bar = global::HodlWallet2.Droid.Resource.Id.action_mode_bar;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_mode_bar_stub = global::HodlWallet2.Droid.Resource.Id.action_mode_bar_stub;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_mode_close_button = global::HodlWallet2.Droid.Resource.Id.action_mode_close_button;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.action_text = global::HodlWallet2.Droid.Resource.Id.action_text;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.actions = global::HodlWallet2.Droid.Resource.Id.actions;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.activity_chooser_view_content = global::HodlWallet2.Droid.Resource.Id.activity_chooser_view_content;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.add = global::HodlWallet2.Droid.Resource.Id.add;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.alertTitle = global::HodlWallet2.Droid.Resource.Id.alertTitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.all = global::HodlWallet2.Droid.Resource.Id.all;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.always = global::HodlWallet2.Droid.Resource.Id.always;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.auto = global::HodlWallet2.Droid.Resource.Id.auto;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.beginning = global::HodlWallet2.Droid.Resource.Id.beginning;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.bottom = global::HodlWallet2.Droid.Resource.Id.bottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.buttonPanel = global::HodlWallet2.Droid.Resource.Id.buttonPanel;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.cancel_action = global::HodlWallet2.Droid.Resource.Id.cancel_action;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.center = global::HodlWallet2.Droid.Resource.Id.center;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.center_horizontal = global::HodlWallet2.Droid.Resource.Id.center_horizontal;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.center_vertical = global::HodlWallet2.Droid.Resource.Id.center_vertical;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.checkbox = global::HodlWallet2.Droid.Resource.Id.checkbox;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.chronometer = global::HodlWallet2.Droid.Resource.Id.chronometer;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.clip_horizontal = global::HodlWallet2.Droid.Resource.Id.clip_horizontal;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.clip_vertical = global::HodlWallet2.Droid.Resource.Id.clip_vertical;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.collapseActionView = global::HodlWallet2.Droid.Resource.Id.collapseActionView;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.container = global::HodlWallet2.Droid.Resource.Id.container;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.contentPanel = global::HodlWallet2.Droid.Resource.Id.contentPanel;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.coordinator = global::HodlWallet2.Droid.Resource.Id.coordinator;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.custom = global::HodlWallet2.Droid.Resource.Id.custom;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.customPanel = global::HodlWallet2.Droid.Resource.Id.customPanel;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.decor_content_parent = global::HodlWallet2.Droid.Resource.Id.decor_content_parent;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.default_activity_button = global::HodlWallet2.Droid.Resource.Id.default_activity_button;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.design_bottom_sheet = global::HodlWallet2.Droid.Resource.Id.design_bottom_sheet;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.design_menu_item_action_area = global::HodlWallet2.Droid.Resource.Id.design_menu_item_action_area;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.design_menu_item_action_area_stub = global::HodlWallet2.Droid.Resource.Id.design_menu_item_action_area_stub;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.design_menu_item_text = global::HodlWallet2.Droid.Resource.Id.design_menu_item_text;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.design_navigation_view = global::HodlWallet2.Droid.Resource.Id.design_navigation_view;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.disableHome = global::HodlWallet2.Droid.Resource.Id.disableHome;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.edit_query = global::HodlWallet2.Droid.Resource.Id.edit_query;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.end = global::HodlWallet2.Droid.Resource.Id.end;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.end_padder = global::HodlWallet2.Droid.Resource.Id.end_padder;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.enterAlways = global::HodlWallet2.Droid.Resource.Id.enterAlways;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.enterAlwaysCollapsed = global::HodlWallet2.Droid.Resource.Id.enterAlwaysCollapsed;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.exitUntilCollapsed = global::HodlWallet2.Droid.Resource.Id.exitUntilCollapsed;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.expand_activities_button = global::HodlWallet2.Droid.Resource.Id.expand_activities_button;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.expanded_menu = global::HodlWallet2.Droid.Resource.Id.expanded_menu;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.fill = global::HodlWallet2.Droid.Resource.Id.fill;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.fill_horizontal = global::HodlWallet2.Droid.Resource.Id.fill_horizontal;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.fill_vertical = global::HodlWallet2.Droid.Resource.Id.fill_vertical;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.@fixed = global::HodlWallet2.Droid.Resource.Id.@fixed;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.home = global::HodlWallet2.Droid.Resource.Id.home;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.homeAsUp = global::HodlWallet2.Droid.Resource.Id.homeAsUp;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.horizontal = global::HodlWallet2.Droid.Resource.Id.horizontal;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.icon = global::HodlWallet2.Droid.Resource.Id.icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.icon_group = global::HodlWallet2.Droid.Resource.Id.icon_group;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.ifRoom = global::HodlWallet2.Droid.Resource.Id.ifRoom;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.image = global::HodlWallet2.Droid.Resource.Id.image;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.indicator = global::HodlWallet2.Droid.Resource.Id.indicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.info = global::HodlWallet2.Droid.Resource.Id.info;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.item_touch_helper_previous_elevation = global::HodlWallet2.Droid.Resource.Id.item_touch_helper_previous_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.largeLabel = global::HodlWallet2.Droid.Resource.Id.largeLabel;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.left = global::HodlWallet2.Droid.Resource.Id.left;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.line1 = global::HodlWallet2.Droid.Resource.Id.line1;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.line3 = global::HodlWallet2.Droid.Resource.Id.line3;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.listMode = global::HodlWallet2.Droid.Resource.Id.listMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.list_item = global::HodlWallet2.Droid.Resource.Id.list_item;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.masked = global::HodlWallet2.Droid.Resource.Id.masked;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.media_actions = global::HodlWallet2.Droid.Resource.Id.media_actions;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.middle = global::HodlWallet2.Droid.Resource.Id.middle;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mini = global::HodlWallet2.Droid.Resource.Id.mini;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_art = global::HodlWallet2.Droid.Resource.Id.mr_art;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_chooser_list = global::HodlWallet2.Droid.Resource.Id.mr_chooser_list;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_chooser_route_desc = global::HodlWallet2.Droid.Resource.Id.mr_chooser_route_desc;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_chooser_route_icon = global::HodlWallet2.Droid.Resource.Id.mr_chooser_route_icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_chooser_route_name = global::HodlWallet2.Droid.Resource.Id.mr_chooser_route_name;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_chooser_title = global::HodlWallet2.Droid.Resource.Id.mr_chooser_title;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_close = global::HodlWallet2.Droid.Resource.Id.mr_close;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_control_divider = global::HodlWallet2.Droid.Resource.Id.mr_control_divider;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_control_playback_ctrl = global::HodlWallet2.Droid.Resource.Id.mr_control_playback_ctrl;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_control_subtitle = global::HodlWallet2.Droid.Resource.Id.mr_control_subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_control_title = global::HodlWallet2.Droid.Resource.Id.mr_control_title;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_control_title_container = global::HodlWallet2.Droid.Resource.Id.mr_control_title_container;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_custom_control = global::HodlWallet2.Droid.Resource.Id.mr_custom_control;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_default_control = global::HodlWallet2.Droid.Resource.Id.mr_default_control;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_dialog_area = global::HodlWallet2.Droid.Resource.Id.mr_dialog_area;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_expandable_area = global::HodlWallet2.Droid.Resource.Id.mr_expandable_area;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_group_expand_collapse = global::HodlWallet2.Droid.Resource.Id.mr_group_expand_collapse;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_media_main_control = global::HodlWallet2.Droid.Resource.Id.mr_media_main_control;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_name = global::HodlWallet2.Droid.Resource.Id.mr_name;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_playback_control = global::HodlWallet2.Droid.Resource.Id.mr_playback_control;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_title_bar = global::HodlWallet2.Droid.Resource.Id.mr_title_bar;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_volume_control = global::HodlWallet2.Droid.Resource.Id.mr_volume_control;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_volume_group_list = global::HodlWallet2.Droid.Resource.Id.mr_volume_group_list;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_volume_item_icon = global::HodlWallet2.Droid.Resource.Id.mr_volume_item_icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_volume_slider = global::HodlWallet2.Droid.Resource.Id.mr_volume_slider;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.multiply = global::HodlWallet2.Droid.Resource.Id.multiply;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.navigation_header_container = global::HodlWallet2.Droid.Resource.Id.navigation_header_container;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.never = global::HodlWallet2.Droid.Resource.Id.never;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.next = global::HodlWallet2.Droid.Resource.Id.next;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.nextArrow = global::HodlWallet2.Droid.Resource.Id.nextArrow;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.none = global::HodlWallet2.Droid.Resource.Id.none;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.normal = global::HodlWallet2.Droid.Resource.Id.normal;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.notification_background = global::HodlWallet2.Droid.Resource.Id.notification_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.notification_main_column = global::HodlWallet2.Droid.Resource.Id.notification_main_column;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.notification_main_column_container = global::HodlWallet2.Droid.Resource.Id.notification_main_column_container;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.pager = global::HodlWallet2.Droid.Resource.Id.pager;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.parallax = global::HodlWallet2.Droid.Resource.Id.parallax;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.parentPanel = global::HodlWallet2.Droid.Resource.Id.parentPanel;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.pin = global::HodlWallet2.Droid.Resource.Id.pin;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.prev = global::HodlWallet2.Droid.Resource.Id.prev;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.prevArrow = global::HodlWallet2.Droid.Resource.Id.prevArrow;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.progress_circular = global::HodlWallet2.Droid.Resource.Id.progress_circular;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.progress_horizontal = global::HodlWallet2.Droid.Resource.Id.progress_horizontal;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.radio = global::HodlWallet2.Droid.Resource.Id.radio;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.right = global::HodlWallet2.Droid.Resource.Id.right;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.right_icon = global::HodlWallet2.Droid.Resource.Id.right_icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.right_side = global::HodlWallet2.Droid.Resource.Id.right_side;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.screen = global::HodlWallet2.Droid.Resource.Id.screen;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.scroll = global::HodlWallet2.Droid.Resource.Id.scroll;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.scrollIndicatorDown = global::HodlWallet2.Droid.Resource.Id.scrollIndicatorDown;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.scrollIndicatorUp = global::HodlWallet2.Droid.Resource.Id.scrollIndicatorUp;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.scrollView = global::HodlWallet2.Droid.Resource.Id.scrollView;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.scrollable = global::HodlWallet2.Droid.Resource.Id.scrollable;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.search_badge = global::HodlWallet2.Droid.Resource.Id.search_badge;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.search_bar = global::HodlWallet2.Droid.Resource.Id.search_bar;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.search_button = global::HodlWallet2.Droid.Resource.Id.search_button;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.search_close_btn = global::HodlWallet2.Droid.Resource.Id.search_close_btn;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.search_edit_frame = global::HodlWallet2.Droid.Resource.Id.search_edit_frame;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.search_go_btn = global::HodlWallet2.Droid.Resource.Id.search_go_btn;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.search_mag_icon = global::HodlWallet2.Droid.Resource.Id.search_mag_icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.search_plate = global::HodlWallet2.Droid.Resource.Id.search_plate;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.search_src_text = global::HodlWallet2.Droid.Resource.Id.search_src_text;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.search_voice_btn = global::HodlWallet2.Droid.Resource.Id.search_voice_btn;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.select_dialog_listview = global::HodlWallet2.Droid.Resource.Id.select_dialog_listview;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.shortcut = global::HodlWallet2.Droid.Resource.Id.shortcut;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.showCustom = global::HodlWallet2.Droid.Resource.Id.showCustom;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.showHome = global::HodlWallet2.Droid.Resource.Id.showHome;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.showTitle = global::HodlWallet2.Droid.Resource.Id.showTitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.smallLabel = global::HodlWallet2.Droid.Resource.Id.smallLabel;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.snackbar_action = global::HodlWallet2.Droid.Resource.Id.snackbar_action;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.snackbar_text = global::HodlWallet2.Droid.Resource.Id.snackbar_text;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.snap = global::HodlWallet2.Droid.Resource.Id.snap;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.spacer = global::HodlWallet2.Droid.Resource.Id.spacer;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.split_action_bar = global::HodlWallet2.Droid.Resource.Id.split_action_bar;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.src_atop = global::HodlWallet2.Droid.Resource.Id.src_atop;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.src_in = global::HodlWallet2.Droid.Resource.Id.src_in;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.src_over = global::HodlWallet2.Droid.Resource.Id.src_over;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.start = global::HodlWallet2.Droid.Resource.Id.start;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.status_bar_latest_event_content = global::HodlWallet2.Droid.Resource.Id.status_bar_latest_event_content;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.submenuarrow = global::HodlWallet2.Droid.Resource.Id.submenuarrow;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.submit_area = global::HodlWallet2.Droid.Resource.Id.submit_area;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.tabMode = global::HodlWallet2.Droid.Resource.Id.tabMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.text = global::HodlWallet2.Droid.Resource.Id.text;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.text2 = global::HodlWallet2.Droid.Resource.Id.text2;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.textSpacerNoButtons = global::HodlWallet2.Droid.Resource.Id.textSpacerNoButtons;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.textSpacerNoTitle = global::HodlWallet2.Droid.Resource.Id.textSpacerNoTitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.text_input_password_toggle = global::HodlWallet2.Droid.Resource.Id.text_input_password_toggle;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.textinput_counter = global::HodlWallet2.Droid.Resource.Id.textinput_counter;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.textinput_error = global::HodlWallet2.Droid.Resource.Id.textinput_error;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.time = global::HodlWallet2.Droid.Resource.Id.time;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.title = global::HodlWallet2.Droid.Resource.Id.title;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.titleDividerNoCustom = global::HodlWallet2.Droid.Resource.Id.titleDividerNoCustom;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.title_template = global::HodlWallet2.Droid.Resource.Id.title_template;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.top = global::HodlWallet2.Droid.Resource.Id.top;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.topPanel = global::HodlWallet2.Droid.Resource.Id.topPanel;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.touch_outside = global::HodlWallet2.Droid.Resource.Id.touch_outside;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.transition_current_scene = global::HodlWallet2.Droid.Resource.Id.transition_current_scene;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.transition_scene_layoutid_cache = global::HodlWallet2.Droid.Resource.Id.transition_scene_layoutid_cache;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.up = global::HodlWallet2.Droid.Resource.Id.up;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.useLogo = global::HodlWallet2.Droid.Resource.Id.useLogo;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.vertical = global::HodlWallet2.Droid.Resource.Id.vertical;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.view_offset_helper = global::HodlWallet2.Droid.Resource.Id.view_offset_helper;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.visible = global::HodlWallet2.Droid.Resource.Id.visible;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.volume_item_container = global::HodlWallet2.Droid.Resource.Id.volume_item_container;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.withText = global::HodlWallet2.Droid.Resource.Id.withText;
-			global::CarouselView.FormsPlugin.Android.Resource.Id.wrap_content = global::HodlWallet2.Droid.Resource.Id.wrap_content;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.abc_config_activityDefaultDur = global::HodlWallet2.Droid.Resource.Integer.abc_config_activityDefaultDur;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.abc_config_activityShortDur = global::HodlWallet2.Droid.Resource.Integer.abc_config_activityShortDur;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.app_bar_elevation_anim_duration = global::HodlWallet2.Droid.Resource.Integer.app_bar_elevation_anim_duration;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.bottom_sheet_slide_duration = global::HodlWallet2.Droid.Resource.Integer.bottom_sheet_slide_duration;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.cancel_button_image_alpha = global::HodlWallet2.Droid.Resource.Integer.cancel_button_image_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.default_circle_indicator_orientation = global::HodlWallet2.Droid.Resource.Integer.default_circle_indicator_orientation;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.design_snackbar_text_max_lines = global::HodlWallet2.Droid.Resource.Integer.design_snackbar_text_max_lines;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.hide_password_duration = global::HodlWallet2.Droid.Resource.Integer.hide_password_duration;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms = global::HodlWallet2.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms = global::HodlWallet2.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms = global::HodlWallet2.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.show_password_duration = global::HodlWallet2.Droid.Resource.Integer.show_password_duration;
-			global::CarouselView.FormsPlugin.Android.Resource.Integer.status_bar_notification_info_maxnum = global::HodlWallet2.Droid.Resource.Integer.status_bar_notification_info_maxnum;
-			global::CarouselView.FormsPlugin.Android.Resource.Interpolator.mr_fast_out_slow_in = global::HodlWallet2.Droid.Resource.Interpolator.mr_fast_out_slow_in;
-			global::CarouselView.FormsPlugin.Android.Resource.Interpolator.mr_linear_out_slow_in = global::HodlWallet2.Droid.Resource.Interpolator.mr_linear_out_slow_in;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_action_bar_title_item = global::HodlWallet2.Droid.Resource.Layout.abc_action_bar_title_item;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_action_bar_up_container = global::HodlWallet2.Droid.Resource.Layout.abc_action_bar_up_container;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_action_menu_item_layout = global::HodlWallet2.Droid.Resource.Layout.abc_action_menu_item_layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_action_menu_layout = global::HodlWallet2.Droid.Resource.Layout.abc_action_menu_layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_action_mode_bar = global::HodlWallet2.Droid.Resource.Layout.abc_action_mode_bar;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_action_mode_close_item_material = global::HodlWallet2.Droid.Resource.Layout.abc_action_mode_close_item_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_activity_chooser_view = global::HodlWallet2.Droid.Resource.Layout.abc_activity_chooser_view;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_activity_chooser_view_list_item = global::HodlWallet2.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_alert_dialog_button_bar_material = global::HodlWallet2.Droid.Resource.Layout.abc_alert_dialog_button_bar_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_alert_dialog_material = global::HodlWallet2.Droid.Resource.Layout.abc_alert_dialog_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_alert_dialog_title_material = global::HodlWallet2.Droid.Resource.Layout.abc_alert_dialog_title_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_dialog_title_material = global::HodlWallet2.Droid.Resource.Layout.abc_dialog_title_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_expanded_menu_layout = global::HodlWallet2.Droid.Resource.Layout.abc_expanded_menu_layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_list_menu_item_checkbox = global::HodlWallet2.Droid.Resource.Layout.abc_list_menu_item_checkbox;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_list_menu_item_icon = global::HodlWallet2.Droid.Resource.Layout.abc_list_menu_item_icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_list_menu_item_layout = global::HodlWallet2.Droid.Resource.Layout.abc_list_menu_item_layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_list_menu_item_radio = global::HodlWallet2.Droid.Resource.Layout.abc_list_menu_item_radio;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_popup_menu_header_item_layout = global::HodlWallet2.Droid.Resource.Layout.abc_popup_menu_header_item_layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_popup_menu_item_layout = global::HodlWallet2.Droid.Resource.Layout.abc_popup_menu_item_layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_screen_content_include = global::HodlWallet2.Droid.Resource.Layout.abc_screen_content_include;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_screen_simple = global::HodlWallet2.Droid.Resource.Layout.abc_screen_simple;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_screen_simple_overlay_action_mode = global::HodlWallet2.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_screen_toolbar = global::HodlWallet2.Droid.Resource.Layout.abc_screen_toolbar;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_search_dropdown_item_icons_2line = global::HodlWallet2.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_search_view = global::HodlWallet2.Droid.Resource.Layout.abc_search_view;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.abc_select_dialog_material = global::HodlWallet2.Droid.Resource.Layout.abc_select_dialog_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_bottom_navigation_item = global::HodlWallet2.Droid.Resource.Layout.design_bottom_navigation_item;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_bottom_sheet_dialog = global::HodlWallet2.Droid.Resource.Layout.design_bottom_sheet_dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_layout_snackbar = global::HodlWallet2.Droid.Resource.Layout.design_layout_snackbar;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_layout_snackbar_include = global::HodlWallet2.Droid.Resource.Layout.design_layout_snackbar_include;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_layout_tab_icon = global::HodlWallet2.Droid.Resource.Layout.design_layout_tab_icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_layout_tab_text = global::HodlWallet2.Droid.Resource.Layout.design_layout_tab_text;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_menu_item_action_area = global::HodlWallet2.Droid.Resource.Layout.design_menu_item_action_area;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_navigation_item = global::HodlWallet2.Droid.Resource.Layout.design_navigation_item;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_navigation_item_header = global::HodlWallet2.Droid.Resource.Layout.design_navigation_item_header;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_navigation_item_separator = global::HodlWallet2.Droid.Resource.Layout.design_navigation_item_separator;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_navigation_item_subheader = global::HodlWallet2.Droid.Resource.Layout.design_navigation_item_subheader;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_navigation_menu = global::HodlWallet2.Droid.Resource.Layout.design_navigation_menu;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_navigation_menu_item = global::HodlWallet2.Droid.Resource.Layout.design_navigation_menu_item;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.design_text_input_password_icon = global::HodlWallet2.Droid.Resource.Layout.design_text_input_password_icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.horizontal_viewpager = global::HodlWallet2.Droid.Resource.Layout.horizontal_viewpager;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.mr_chooser_dialog = global::HodlWallet2.Droid.Resource.Layout.mr_chooser_dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.mr_chooser_list_item = global::HodlWallet2.Droid.Resource.Layout.mr_chooser_list_item;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.mr_controller_material_dialog_b = global::HodlWallet2.Droid.Resource.Layout.mr_controller_material_dialog_b;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.mr_controller_volume_item = global::HodlWallet2.Droid.Resource.Layout.mr_controller_volume_item;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.mr_playback_control = global::HodlWallet2.Droid.Resource.Layout.mr_playback_control;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.mr_volume_control = global::HodlWallet2.Droid.Resource.Layout.mr_volume_control;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_action = global::HodlWallet2.Droid.Resource.Layout.notification_action;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_action_tombstone = global::HodlWallet2.Droid.Resource.Layout.notification_action_tombstone;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_media_action = global::HodlWallet2.Droid.Resource.Layout.notification_media_action;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_media_cancel_action = global::HodlWallet2.Droid.Resource.Layout.notification_media_cancel_action;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_template_big_media = global::HodlWallet2.Droid.Resource.Layout.notification_template_big_media;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_template_big_media_custom = global::HodlWallet2.Droid.Resource.Layout.notification_template_big_media_custom;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_template_big_media_narrow = global::HodlWallet2.Droid.Resource.Layout.notification_template_big_media_narrow;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_template_big_media_narrow_custom = global::HodlWallet2.Droid.Resource.Layout.notification_template_big_media_narrow_custom;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_template_custom_big = global::HodlWallet2.Droid.Resource.Layout.notification_template_custom_big;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_template_icon_group = global::HodlWallet2.Droid.Resource.Layout.notification_template_icon_group;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_template_lines_media = global::HodlWallet2.Droid.Resource.Layout.notification_template_lines_media;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_template_media = global::HodlWallet2.Droid.Resource.Layout.notification_template_media;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_template_media_custom = global::HodlWallet2.Droid.Resource.Layout.notification_template_media_custom;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_template_part_chronometer = global::HodlWallet2.Droid.Resource.Layout.notification_template_part_chronometer;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.notification_template_part_time = global::HodlWallet2.Droid.Resource.Layout.notification_template_part_time;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.select_dialog_item_material = global::HodlWallet2.Droid.Resource.Layout.select_dialog_item_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.select_dialog_multichoice_material = global::HodlWallet2.Droid.Resource.Layout.select_dialog_multichoice_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.select_dialog_singlechoice_material = global::HodlWallet2.Droid.Resource.Layout.select_dialog_singlechoice_material;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.support_simple_spinner_dropdown_item = global::HodlWallet2.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::CarouselView.FormsPlugin.Android.Resource.Layout.vertical_viewpager = global::HodlWallet2.Droid.Resource.Layout.vertical_viewpager;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_action_bar_home_description = global::HodlWallet2.Droid.Resource.String.abc_action_bar_home_description;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_action_bar_up_description = global::HodlWallet2.Droid.Resource.String.abc_action_bar_up_description;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_action_menu_overflow_description = global::HodlWallet2.Droid.Resource.String.abc_action_menu_overflow_description;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_action_mode_done = global::HodlWallet2.Droid.Resource.String.abc_action_mode_done;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_activity_chooser_view_see_all = global::HodlWallet2.Droid.Resource.String.abc_activity_chooser_view_see_all;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_activitychooserview_choose_application = global::HodlWallet2.Droid.Resource.String.abc_activitychooserview_choose_application;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_capital_off = global::HodlWallet2.Droid.Resource.String.abc_capital_off;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_capital_on = global::HodlWallet2.Droid.Resource.String.abc_capital_on;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_font_family_body_1_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_body_1_material;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_font_family_body_2_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_body_2_material;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_font_family_button_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_button_material;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_font_family_caption_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_caption_material;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_font_family_display_1_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_display_1_material;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_font_family_display_2_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_display_2_material;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_font_family_display_3_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_display_3_material;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_font_family_display_4_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_display_4_material;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_font_family_headline_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_headline_material;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_font_family_menu_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_menu_material;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_font_family_subhead_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_subhead_material;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_font_family_title_material = global::HodlWallet2.Droid.Resource.String.abc_font_family_title_material;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_search_hint = global::HodlWallet2.Droid.Resource.String.abc_search_hint;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_searchview_description_clear = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_clear;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_searchview_description_query = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_query;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_searchview_description_search = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_search;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_searchview_description_submit = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_submit;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_searchview_description_voice = global::HodlWallet2.Droid.Resource.String.abc_searchview_description_voice;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_shareactionprovider_share_with = global::HodlWallet2.Droid.Resource.String.abc_shareactionprovider_share_with;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_shareactionprovider_share_with_application = global::HodlWallet2.Droid.Resource.String.abc_shareactionprovider_share_with_application;
-			global::CarouselView.FormsPlugin.Android.Resource.String.abc_toolbar_collapse_description = global::HodlWallet2.Droid.Resource.String.abc_toolbar_collapse_description;
-			global::CarouselView.FormsPlugin.Android.Resource.String.appbar_scrolling_view_behavior = global::HodlWallet2.Droid.Resource.String.appbar_scrolling_view_behavior;
-			global::CarouselView.FormsPlugin.Android.Resource.String.bottom_sheet_behavior = global::HodlWallet2.Droid.Resource.String.bottom_sheet_behavior;
-			global::CarouselView.FormsPlugin.Android.Resource.String.character_counter_pattern = global::HodlWallet2.Droid.Resource.String.character_counter_pattern;
-			global::CarouselView.FormsPlugin.Android.Resource.String.library_name = global::HodlWallet2.Droid.Resource.String.library_name;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_button_content_description = global::HodlWallet2.Droid.Resource.String.mr_button_content_description;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_cast_button_connected = global::HodlWallet2.Droid.Resource.String.mr_cast_button_connected;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_cast_button_connecting = global::HodlWallet2.Droid.Resource.String.mr_cast_button_connecting;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_cast_button_disconnected = global::HodlWallet2.Droid.Resource.String.mr_cast_button_disconnected;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_chooser_searching = global::HodlWallet2.Droid.Resource.String.mr_chooser_searching;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_chooser_title = global::HodlWallet2.Droid.Resource.String.mr_chooser_title;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_album_art = global::HodlWallet2.Droid.Resource.String.mr_controller_album_art;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_casting_screen = global::HodlWallet2.Droid.Resource.String.mr_controller_casting_screen;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_close_description = global::HodlWallet2.Droid.Resource.String.mr_controller_close_description;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_collapse_group = global::HodlWallet2.Droid.Resource.String.mr_controller_collapse_group;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_disconnect = global::HodlWallet2.Droid.Resource.String.mr_controller_disconnect;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_expand_group = global::HodlWallet2.Droid.Resource.String.mr_controller_expand_group;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_no_info_available = global::HodlWallet2.Droid.Resource.String.mr_controller_no_info_available;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_no_media_selected = global::HodlWallet2.Droid.Resource.String.mr_controller_no_media_selected;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_pause = global::HodlWallet2.Droid.Resource.String.mr_controller_pause;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_play = global::HodlWallet2.Droid.Resource.String.mr_controller_play;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_stop = global::HodlWallet2.Droid.Resource.String.mr_controller_stop;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_stop_casting = global::HodlWallet2.Droid.Resource.String.mr_controller_stop_casting;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_controller_volume_slider = global::HodlWallet2.Droid.Resource.String.mr_controller_volume_slider;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_system_route_name = global::HodlWallet2.Droid.Resource.String.mr_system_route_name;
-			global::CarouselView.FormsPlugin.Android.Resource.String.mr_user_route_category_name = global::HodlWallet2.Droid.Resource.String.mr_user_route_category_name;
-			global::CarouselView.FormsPlugin.Android.Resource.String.password_toggle_content_description = global::HodlWallet2.Droid.Resource.String.password_toggle_content_description;
-			global::CarouselView.FormsPlugin.Android.Resource.String.path_password_eye = global::HodlWallet2.Droid.Resource.String.path_password_eye;
-			global::CarouselView.FormsPlugin.Android.Resource.String.path_password_eye_mask_strike_through = global::HodlWallet2.Droid.Resource.String.path_password_eye_mask_strike_through;
-			global::CarouselView.FormsPlugin.Android.Resource.String.path_password_eye_mask_visible = global::HodlWallet2.Droid.Resource.String.path_password_eye_mask_visible;
-			global::CarouselView.FormsPlugin.Android.Resource.String.path_password_strike_through = global::HodlWallet2.Droid.Resource.String.path_password_strike_through;
-			global::CarouselView.FormsPlugin.Android.Resource.String.search_menu_title = global::HodlWallet2.Droid.Resource.String.search_menu_title;
-			global::CarouselView.FormsPlugin.Android.Resource.String.status_bar_notification_info_overflow = global::HodlWallet2.Droid.Resource.String.status_bar_notification_info_overflow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.AlertDialog_AppCompat = global::HodlWallet2.Droid.Resource.Style.AlertDialog_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.AlertDialog_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.AlertDialog_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Animation_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Animation_AppCompat_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Animation_AppCompat_DropDownUp = global::HodlWallet2.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Animation_Design_BottomSheetDialog = global::HodlWallet2.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_AlertDialog_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_AlertDialog_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_AlertDialog_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Animation_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::HodlWallet2.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_CardView = global::HodlWallet2.Droid.Resource.Style.Base_CardView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_DialogWindowTitle_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Button = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Large = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Small = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::HodlWallet2.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_ThemeOverlay_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V11_ThemeOverlay_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V11_ThemeOverlay_AppCompat_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::HodlWallet2.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V21_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V21_Theme_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V21_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V22_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V22_Theme_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V22_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V23_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V23_Theme_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V23_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Base_V7_Theme_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::HodlWallet2.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActionButton = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActionMode = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Button = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Button_Small = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_EditText = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ImageButton = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ListMenuView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListMenuView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ListView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_RatingBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_SearchView = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_SeekBar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Spinner = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Toolbar = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::HodlWallet2.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_Design_AppBarLayout = global::HodlWallet2.Droid.Resource.Style.Base_Widget_Design_AppBarLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_Design_TabLayout = global::HodlWallet2.Droid.Resource.Style.Base_Widget_Design_TabLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.CardView = global::HodlWallet2.Droid.Resource.Style.CardView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.CardView_Dark = global::HodlWallet2.Droid.Resource.Style.CardView_Dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.CardView_Light = global::HodlWallet2.Droid.Resource.Style.CardView_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_ThemeOverlay_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::HodlWallet2.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_V11_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_V11_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_V11_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_V11_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_V14_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_V14_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_V14_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_V14_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_V21_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_V21_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_V21_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_V21_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_V25_AppCompat = global::HodlWallet2.Droid.Resource.Style.Platform_V25_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_V25_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Platform_V25_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Platform_Widget_AppCompat_Spinner = global::HodlWallet2.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::HodlWallet2.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::HodlWallet2.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::HodlWallet2.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Body1 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Body2 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Button = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Button;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Caption = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Display1 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Display2 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Display3 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Display4 = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Headline = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Large = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Large;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Medium = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Menu = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Small = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Small;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Subhead = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Title;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::HodlWallet2.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Design_Counter = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Counter;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Design_Counter_Overflow = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Design_Error = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Error;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Design_Hint = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Hint;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Design_Snackbar_Message = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Design_Tab = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Design_Tab;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_MediaRouter_PrimaryText = global::HodlWallet2.Droid.Resource.Style.TextAppearance_MediaRouter_PrimaryText;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_MediaRouter_SecondaryText = global::HodlWallet2.Droid.Resource.Style.TextAppearance_MediaRouter_SecondaryText;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_MediaRouter_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_MediaRouter_Title;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::HodlWallet2.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_CompactMenu = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_DayNight = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_Light_Dialog = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_AppCompat_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_Design = global::HodlWallet2.Droid.Resource.Style.Theme_Design;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_Design_BottomSheetDialog = global::HodlWallet2.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_Design_Light = global::HodlWallet2.Droid.Resource.Style.Theme_Design_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::HodlWallet2.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_Design_Light_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_Design_NoActionBar = global::HodlWallet2.Droid.Resource.Style.Theme_Design_NoActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_MediaRouter = global::HodlWallet2.Droid.Resource.Style.Theme_MediaRouter;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_MediaRouter_Light = global::HodlWallet2.Droid.Resource.Style.Theme_MediaRouter_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel = global::HodlWallet2.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_MediaRouter_LightControlPanel = global::HodlWallet2.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Theme_PageIndicatorDefaults = global::HodlWallet2.Droid.Resource.Style.Theme_PageIndicatorDefaults;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.ThemeOverlay_AppCompat = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.ThemeOverlay_AppCompat_Dark = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.ThemeOverlay_AppCompat_Light = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.ThemeOverlay_MediaRouter_Dark = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_MediaRouter_Dark;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.ThemeOverlay_MediaRouter_Light = global::HodlWallet2.Droid.Resource.Style.ThemeOverlay_MediaRouter_Light;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget = global::HodlWallet2.Droid.Resource.Style.Widget;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ActionButton = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ActionMode = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActionMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ActivityChooserView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Button = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Button_Borderless = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Button_Colored = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Button_Small = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Button_Small;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ButtonBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_EditText = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_EditText;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ImageButton = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ImageButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionButton = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_SearchView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ListMenuView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListMenuView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ListPopupWindow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ListView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ListView_DropDown = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ListView_Menu = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_PopupMenu = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_PopupWindow = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ProgressBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_RatingBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_RatingBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_RatingBar_Small = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_SearchView = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_SearchView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_SeekBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_SeekBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_SeekBar_Discrete = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_SeekBar_Discrete;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Spinner = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Spinner;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Toolbar = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Toolbar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::HodlWallet2.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_CirclePageIndicator = global::HodlWallet2.Droid.Resource.Style.Widget_CirclePageIndicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_AppBarLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_AppBarLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_BottomNavigationView = global::HodlWallet2.Droid.Resource.Style.Widget_Design_BottomNavigationView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_BottomSheet_Modal = global::HodlWallet2.Droid.Resource.Style.Widget_Design_BottomSheet_Modal;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_CollapsingToolbar = global::HodlWallet2.Droid.Resource.Style.Widget_Design_CollapsingToolbar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_CoordinatorLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_CoordinatorLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_FloatingActionButton = global::HodlWallet2.Droid.Resource.Style.Widget_Design_FloatingActionButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_NavigationView = global::HodlWallet2.Droid.Resource.Style.Widget_Design_NavigationView;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_Snackbar = global::HodlWallet2.Droid.Resource.Style.Widget_Design_Snackbar;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_TabLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_TabLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_TextInputLayout = global::HodlWallet2.Droid.Resource.Style.Widget_Design_TextInputLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::HodlWallet2.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::HodlWallet2.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar = global::HodlWallet2.Droid.Resource.Styleable.ActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_background = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_backgroundSplit = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_backgroundSplit;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_backgroundStacked = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_backgroundStacked;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_contentInsetEnd = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_contentInsetEndWithActions = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetEndWithActions;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_contentInsetLeft = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_contentInsetRight = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetRight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_contentInsetStart = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_contentInsetStartWithNavigation = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_contentInsetStartWithNavigation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_customNavigationLayout = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_displayOptions = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_displayOptions;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_divider = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_divider;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_elevation = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_height = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_height;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_hideOnContentScroll = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_homeAsUpIndicator = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_homeLayout = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_homeLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_icon = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_itemPadding = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_itemPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_logo = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_logo;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_navigationMode = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_navigationMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_popupTheme = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_popupTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_progressBarPadding = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_progressBarPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_progressBarStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_progressBarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_subtitle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_subtitleTextStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_title = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_title;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBar_titleTextStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionBar_titleTextStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBarLayout = global::HodlWallet2.Droid.Resource.Styleable.ActionBarLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::HodlWallet2.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionMenuItemView = global::HodlWallet2.Droid.Resource.Styleable.ActionMenuItemView;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionMenuItemView_android_minWidth = global::HodlWallet2.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionMenuView = global::HodlWallet2.Droid.Resource.Styleable.ActionMenuView;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionMode = global::HodlWallet2.Droid.Resource.Styleable.ActionMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionMode_background = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionMode_backgroundSplit = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_backgroundSplit;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionMode_closeItemLayout = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_closeItemLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionMode_height = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_height;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionMode_subtitleTextStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActionMode_titleTextStyle = global::HodlWallet2.Droid.Resource.Styleable.ActionMode_titleTextStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActivityChooserView = global::HodlWallet2.Droid.Resource.Styleable.ActivityChooserView;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::HodlWallet2.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ActivityChooserView_initialActivityCount = global::HodlWallet2.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AlertDialog = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AlertDialog_android_layout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_android_layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AlertDialog_listItemLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_listItemLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AlertDialog_listLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_listLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AlertDialog_showTitle = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_showTitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::HodlWallet2.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout_android_background = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_android_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout_elevation = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout_expanded = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_expanded;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayoutStates = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayoutStates;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayoutStates_state_collapsed = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayoutStates_state_collapsible = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout_Layout = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_Layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator = global::HodlWallet2.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatImageView = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatImageView_android_src = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView_android_src;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatImageView_srcCompat = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatImageView_tint = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView_tint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatImageView_tintMode = global::HodlWallet2.Droid.Resource.Styleable.AppCompatImageView_tintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatSeekBar = global::HodlWallet2.Droid.Resource.Styleable.AppCompatSeekBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatSeekBar_android_thumb = global::HodlWallet2.Droid.Resource.Styleable.AppCompatSeekBar_android_thumb;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatSeekBar_tickMark = global::HodlWallet2.Droid.Resource.Styleable.AppCompatSeekBar_tickMark;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatSeekBar_tickMarkTint = global::HodlWallet2.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode = global::HodlWallet2.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextHelper = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextHelper_android_drawableBottom = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableBottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextHelper_android_drawableEnd = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextHelper_android_drawableLeft = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableLeft;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextHelper_android_drawableRight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableRight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextHelper_android_drawableStart = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextHelper_android_drawableTop = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableTop;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextHelper_android_textAppearance = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextHelper_android_textAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextView = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextView_android_textAppearance = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextView_textAllCaps = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionBarDivider = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionBarSize = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarSize;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionBarTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModeBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModeStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_buttonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_checkboxStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorAccent = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorAccent;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorBackgroundFloating = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorBackgroundFloating;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorControlActivated = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorControlNormal = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorPrimary = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorPrimary;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_controlBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_controlBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_dialogTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_dividerVertical = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_editTextBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_editTextColor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_editTextStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_listMenuViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listMenuViewStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_panelBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_searchViewStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_seekBarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_spinnerStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_switchStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_switchStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_toolbarStyle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowActionBar = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowNoTitle = global::HodlWallet2.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.BottomNavigationView = global::HodlWallet2.Droid.Resource.Styleable.BottomNavigationView;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.BottomNavigationView_elevation = global::HodlWallet2.Droid.Resource.Styleable.BottomNavigationView_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.BottomNavigationView_itemBackground = global::HodlWallet2.Droid.Resource.Styleable.BottomNavigationView_itemBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.BottomNavigationView_itemIconTint = global::HodlWallet2.Droid.Resource.Styleable.BottomNavigationView_itemIconTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.BottomNavigationView_itemTextColor = global::HodlWallet2.Droid.Resource.Styleable.BottomNavigationView_itemTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.BottomNavigationView_menu = global::HodlWallet2.Droid.Resource.Styleable.BottomNavigationView_menu;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.BottomSheetBehavior_Layout = global::HodlWallet2.Droid.Resource.Styleable.BottomSheetBehavior_Layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable = global::HodlWallet2.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight = global::HodlWallet2.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed = global::HodlWallet2.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ButtonBarLayout = global::HodlWallet2.Droid.Resource.Styleable.ButtonBarLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ButtonBarLayout_allowStacking = global::HodlWallet2.Droid.Resource.Styleable.ButtonBarLayout_allowStacking;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView = global::HodlWallet2.Droid.Resource.Styleable.CardView;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_android_minHeight = global::HodlWallet2.Droid.Resource.Styleable.CardView_android_minHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_android_minWidth = global::HodlWallet2.Droid.Resource.Styleable.CardView_android_minWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_cardBackgroundColor = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardBackgroundColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_cardCornerRadius = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardCornerRadius;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_cardElevation = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardElevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_cardMaxElevation = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardMaxElevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_cardPreventCornerOverlap = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_cardUseCompatPadding = global::HodlWallet2.Droid.Resource.Styleable.CardView_cardUseCompatPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_contentPadding = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_contentPaddingBottom = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPaddingBottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_contentPaddingLeft = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPaddingLeft;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_contentPaddingRight = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPaddingRight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CardView_contentPaddingTop = global::HodlWallet2.Droid.Resource.Styleable.CardView_contentPaddingTop;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CirclePageIndicator = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CirclePageIndicator_vpiCentered = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiCentered;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CirclePageIndicator_vpiFillColor = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiFillColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CirclePageIndicator_vpiOrientation = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiOrientation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CirclePageIndicator_vpiPageColor = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiPageColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CirclePageIndicator_vpiRadius = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiRadius;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CirclePageIndicator_vpiSnap = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiSnap;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CirclePageIndicator_vpiStrokeColor = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiStrokeColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CirclePageIndicator_vpiStrokeWidth = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiStrokeWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_title = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_Layout = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::HodlWallet2.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ColorStateListItem = global::HodlWallet2.Droid.Resource.Styleable.ColorStateListItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ColorStateListItem_alpha = global::HodlWallet2.Droid.Resource.Styleable.ColorStateListItem_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ColorStateListItem_android_alpha = global::HodlWallet2.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ColorStateListItem_android_color = global::HodlWallet2.Droid.Resource.Styleable.ColorStateListItem_android_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CompoundButton = global::HodlWallet2.Droid.Resource.Styleable.CompoundButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CompoundButton_android_button = global::HodlWallet2.Droid.Resource.Styleable.CompoundButton_android_button;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CompoundButton_buttonTint = global::HodlWallet2.Droid.Resource.Styleable.CompoundButton_buttonTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CompoundButton_buttonTintMode = global::HodlWallet2.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CoordinatorLayout = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CoordinatorLayout_keylines = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_keylines;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CoordinatorLayout_Layout = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::HodlWallet2.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DesignTheme = global::HodlWallet2.Droid.Resource.Styleable.DesignTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::HodlWallet2.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DesignTheme_bottomSheetStyle = global::HodlWallet2.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DesignTheme_textColorError = global::HodlWallet2.Droid.Resource.Styleable.DesignTheme_textColorError;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DrawerArrowToggle = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DrawerArrowToggle_barLength = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_barLength;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DrawerArrowToggle_color = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_color;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DrawerArrowToggle_drawableSize = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DrawerArrowToggle_spinBars = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.DrawerArrowToggle_thickness = global::HodlWallet2.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_backgroundTint = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_borderWidth = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_elevation = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_fabSize = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_fabSize;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_rippleColor = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_useCompatPadding = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::HodlWallet2.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ForegroundLinearLayout = global::HodlWallet2.Droid.Resource.Styleable.ForegroundLinearLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::HodlWallet2.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::HodlWallet2.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::HodlWallet2.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_android_gravity = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_android_orientation = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_divider = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_divider;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_showDividers = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_Layout = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::HodlWallet2.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ListPopupWindow = global::HodlWallet2.Droid.Resource.Styleable.ListPopupWindow;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::HodlWallet2.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::HodlWallet2.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MediaRouteButton = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MediaRouteButton_android_minHeight = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MediaRouteButton_android_minWidth = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::HodlWallet2.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuGroup = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuGroup_android_checkableBehavior = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuGroup_android_enabled = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_enabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuGroup_android_id = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_id;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuGroup_android_menuCategory = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuGroup_android_orderInCategory = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuGroup_android_visible = global::HodlWallet2.Droid.Resource.Styleable.MenuGroup_android_visible;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem = global::HodlWallet2.Droid.Resource.Styleable.MenuItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_actionLayout = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_actionLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_actionProviderClass = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_actionProviderClass;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_actionViewClass = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_actionViewClass;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_checkable = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_checkable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_checked = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_checked;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_enabled = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_enabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_icon = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_id = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_id;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_menuCategory = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_menuCategory;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_numericShortcut = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_onClick = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_onClick;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_orderInCategory = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_title = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_title;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_titleCondensed = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_visible = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_android_visible;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_showAsAction = global::HodlWallet2.Droid.Resource.Styleable.MenuItem_showAsAction;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView = global::HodlWallet2.Droid.Resource.Styleable.MenuView;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView_android_headerBackground = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_headerBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView_android_horizontalDivider = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView_android_itemBackground = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_itemBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView_android_itemTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView_android_verticalDivider = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_verticalDivider;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView_android_windowAnimationStyle = global::HodlWallet2.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView_preserveIconSpacing = global::HodlWallet2.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView_subMenuArrow = global::HodlWallet2.Droid.Resource.Styleable.MenuView_subMenuArrow;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.NavigationView = global::HodlWallet2.Droid.Resource.Styleable.NavigationView;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.NavigationView_android_background = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_android_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.NavigationView_android_maxWidth = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_android_maxWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.NavigationView_elevation = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.NavigationView_headerLayout = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_headerLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.NavigationView_itemBackground = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_itemBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.NavigationView_itemIconTint = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_itemIconTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.NavigationView_itemTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_itemTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.NavigationView_itemTextColor = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_itemTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.NavigationView_menu = global::HodlWallet2.Droid.Resource.Styleable.NavigationView_menu;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.PopupWindow = global::HodlWallet2.Droid.Resource.Styleable.PopupWindow;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::HodlWallet2.Droid.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.PopupWindow_android_popupBackground = global::HodlWallet2.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.PopupWindow_overlapAnchor = global::HodlWallet2.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.PopupWindowBackgroundState = global::HodlWallet2.Droid.Resource.Styleable.PopupWindowBackgroundState;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::HodlWallet2.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecycleListView = global::HodlWallet2.Droid.Resource.Styleable.RecycleListView;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::HodlWallet2.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::HodlWallet2.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_android_descendantFocusability = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_android_orientation = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_android_orientation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_layoutManager = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_layoutManager;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_reverseLayout = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_reverseLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_spanCount = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_spanCount;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_stackFromEnd = global::HodlWallet2.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ScrimInsetsFrameLayout = global::HodlWallet2.Droid.Resource.Styleable.ScrimInsetsFrameLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::HodlWallet2.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ScrollingViewBehavior_Layout = global::HodlWallet2.Droid.Resource.Styleable.ScrollingViewBehavior_Layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ScrollingViewBehavior_Layout_behavior_overlapTop = global::HodlWallet2.Droid.Resource.Styleable.ScrollingViewBehavior_Layout_behavior_overlapTop;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView = global::HodlWallet2.Droid.Resource.Styleable.SearchView;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_android_focusable = global::HodlWallet2.Droid.Resource.Styleable.SearchView_android_focusable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_android_imeOptions = global::HodlWallet2.Droid.Resource.Styleable.SearchView_android_imeOptions;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_android_inputType = global::HodlWallet2.Droid.Resource.Styleable.SearchView_android_inputType;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_android_maxWidth = global::HodlWallet2.Droid.Resource.Styleable.SearchView_android_maxWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_closeIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_closeIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_commitIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_commitIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_defaultQueryHint = global::HodlWallet2.Droid.Resource.Styleable.SearchView_defaultQueryHint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_goIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_goIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_iconifiedByDefault = global::HodlWallet2.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_layout = global::HodlWallet2.Droid.Resource.Styleable.SearchView_layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_queryBackground = global::HodlWallet2.Droid.Resource.Styleable.SearchView_queryBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_queryHint = global::HodlWallet2.Droid.Resource.Styleable.SearchView_queryHint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_searchHintIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_searchHintIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_searchIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_searchIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_submitBackground = global::HodlWallet2.Droid.Resource.Styleable.SearchView_submitBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_suggestionRowLayout = global::HodlWallet2.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SearchView_voiceIcon = global::HodlWallet2.Droid.Resource.Styleable.SearchView_voiceIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SnackbarLayout = global::HodlWallet2.Droid.Resource.Styleable.SnackbarLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SnackbarLayout_android_maxWidth = global::HodlWallet2.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SnackbarLayout_elevation = global::HodlWallet2.Droid.Resource.Styleable.SnackbarLayout_elevation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::HodlWallet2.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Spinner = global::HodlWallet2.Droid.Resource.Styleable.Spinner;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Spinner_android_dropDownWidth = global::HodlWallet2.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Spinner_android_entries = global::HodlWallet2.Droid.Resource.Styleable.Spinner_android_entries;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Spinner_android_popupBackground = global::HodlWallet2.Droid.Resource.Styleable.Spinner_android_popupBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Spinner_android_prompt = global::HodlWallet2.Droid.Resource.Styleable.Spinner_android_prompt;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Spinner_popupTheme = global::HodlWallet2.Droid.Resource.Styleable.Spinner_popupTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_android_textOff = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_android_textOff;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_android_textOn = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_android_textOn;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_android_thumb = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_android_thumb;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_showText = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_showText;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_splitTrack = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_splitTrack;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_switchMinWidth = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_switchPadding = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_switchPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_switchTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_thumbTextPadding = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_thumbTint = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_thumbTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_thumbTintMode = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_thumbTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_track = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_track;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_trackTint = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_trackTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.SwitchCompat_trackTintMode = global::HodlWallet2.Droid.Resource.Styleable.SwitchCompat_trackTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabItem = global::HodlWallet2.Droid.Resource.Styleable.TabItem;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabItem_android_icon = global::HodlWallet2.Droid.Resource.Styleable.TabItem_android_icon;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabItem_android_layout = global::HodlWallet2.Droid.Resource.Styleable.TabItem_android_layout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabItem_android_text = global::HodlWallet2.Droid.Resource.Styleable.TabItem_android_text;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout = global::HodlWallet2.Droid.Resource.Styleable.TabLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabBackground = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabBackground;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabContentStart = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabContentStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabGravity = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabGravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabIndicatorColor = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabIndicatorColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabIndicatorHeight = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabMaxWidth = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabMaxWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabMinWidth = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabMinWidth;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabMode = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabPadding = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPadding;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabPaddingBottom = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPaddingBottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabPaddingEnd = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPaddingEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabPaddingStart = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPaddingStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabPaddingTop = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabPaddingTop;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabSelectedTextColor = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabTextColor = global::HodlWallet2.Droid.Resource.Styleable.TabLayout_tabTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_shadowColor = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_shadowDx = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_shadowDx;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_shadowDy = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_shadowDy;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_shadowRadius = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_shadowRadius;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_textColor = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_textColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_textColorHint = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_textColorHint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_textSize = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_textSize;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_textStyle = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_textStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_typeface = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_android_typeface;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_textAllCaps = global::HodlWallet2.Droid.Resource.Styleable.TextAppearance_textAllCaps;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_android_hint = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_android_hint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_android_textColorHint = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_counterEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_counterEnabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_counterMaxLength = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_counterMaxLength;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_counterTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_errorEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_errorEnabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_errorTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_hintEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_hintEnabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_hintTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_passwordToggleContentDescription = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_passwordToggleContentDescription;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_passwordToggleDrawable = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_passwordToggleDrawable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_passwordToggleEnabled = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_passwordToggleEnabled;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_passwordToggleTint = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_passwordToggleTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_passwordToggleTintMode = global::HodlWallet2.Droid.Resource.Styleable.TextInputLayout_passwordToggleTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar = global::HodlWallet2.Droid.Resource.Styleable.Toolbar;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_android_gravity = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_android_gravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_android_minHeight = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_android_minHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_buttonGravity = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_buttonGravity;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_collapseContentDescription = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_collapseIcon = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_collapseIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_contentInsetEnd = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_contentInsetEndWithActions = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetEndWithActions;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_contentInsetLeft = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_contentInsetRight = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetRight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_contentInsetStart = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_contentInsetStartWithNavigation = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_contentInsetStartWithNavigation;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_logo = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_logo;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_logoDescription = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_logoDescription;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_maxButtonHeight = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_navigationContentDescription = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_navigationIcon = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_navigationIcon;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_popupTheme = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_popupTheme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_subtitle = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_subtitle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_subtitleTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_subtitleTextColor = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_subtitleTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_title = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_title;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_titleMargin = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMargin;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_titleMarginBottom = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_titleMarginEnd = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_titleMarginStart = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMarginStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_titleMarginTop = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMarginTop;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_titleMargins = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleMargins;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_titleTextAppearance = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.Toolbar_titleTextColor = global::HodlWallet2.Droid.Resource.Styleable.Toolbar_titleTextColor;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.View = global::HodlWallet2.Droid.Resource.Styleable.View;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.View_android_focusable = global::HodlWallet2.Droid.Resource.Styleable.View_android_focusable;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.View_android_theme = global::HodlWallet2.Droid.Resource.Styleable.View_android_theme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.View_paddingEnd = global::HodlWallet2.Droid.Resource.Styleable.View_paddingEnd;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.View_paddingStart = global::HodlWallet2.Droid.Resource.Styleable.View_paddingStart;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.View_theme = global::HodlWallet2.Droid.Resource.Styleable.View_theme;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewBackgroundHelper = global::HodlWallet2.Droid.Resource.Styleable.ViewBackgroundHelper;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewBackgroundHelper_android_background = global::HodlWallet2.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::HodlWallet2.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::HodlWallet2.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewPagerIndicator = global::HodlWallet2.Droid.Resource.Styleable.ViewPagerIndicator;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewPagerIndicator_vpiCirclePageIndicatorStyle = global::HodlWallet2.Droid.Resource.Styleable.ViewPagerIndicator_vpiCirclePageIndicatorStyle;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewStubCompat = global::HodlWallet2.Droid.Resource.Styleable.ViewStubCompat;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewStubCompat_android_id = global::HodlWallet2.Droid.Resource.Styleable.ViewStubCompat_android_id;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewStubCompat_android_inflatedId = global::HodlWallet2.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
-			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewStubCompat_android_layout = global::HodlWallet2.Droid.Resource.Styleable.ViewStubCompat_android_layout;
-			global::Com.Android.DeskClock.Resource.String.library_name = global::HodlWallet2.Droid.Resource.String.library_name;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiCentered = global::HodlWallet2.Droid.Resource.Attribute.vpiCentered;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiCirclePageIndicatorStyle = global::HodlWallet2.Droid.Resource.Attribute.vpiCirclePageIndicatorStyle;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiFillColor = global::HodlWallet2.Droid.Resource.Attribute.vpiFillColor;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiOrientation = global::HodlWallet2.Droid.Resource.Attribute.vpiOrientation;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiPageColor = global::HodlWallet2.Droid.Resource.Attribute.vpiPageColor;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiRadius = global::HodlWallet2.Droid.Resource.Attribute.vpiRadius;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiSnap = global::HodlWallet2.Droid.Resource.Attribute.vpiSnap;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiStrokeColor = global::HodlWallet2.Droid.Resource.Attribute.vpiStrokeColor;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiStrokeWidth = global::HodlWallet2.Droid.Resource.Attribute.vpiStrokeWidth;
-			global::Com.ViewPagerIndicator.Resource.Boolean.default_circle_indicator_centered = global::HodlWallet2.Droid.Resource.Boolean.default_circle_indicator_centered;
-			global::Com.ViewPagerIndicator.Resource.Boolean.default_circle_indicator_snap = global::HodlWallet2.Droid.Resource.Boolean.default_circle_indicator_snap;
-			global::Com.ViewPagerIndicator.Resource.Color.default_circle_indicator_fill_color = global::HodlWallet2.Droid.Resource.Color.default_circle_indicator_fill_color;
-			global::Com.ViewPagerIndicator.Resource.Color.default_circle_indicator_page_color = global::HodlWallet2.Droid.Resource.Color.default_circle_indicator_page_color;
-			global::Com.ViewPagerIndicator.Resource.Color.default_circle_indicator_stroke_color = global::HodlWallet2.Droid.Resource.Color.default_circle_indicator_stroke_color;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__background_holo_dark = global::HodlWallet2.Droid.Resource.Color.vpi__background_holo_dark;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__background_holo_light = global::HodlWallet2.Droid.Resource.Color.vpi__background_holo_light;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__bright_foreground_disabled_holo_dark = global::HodlWallet2.Droid.Resource.Color.vpi__bright_foreground_disabled_holo_dark;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__bright_foreground_disabled_holo_light = global::HodlWallet2.Droid.Resource.Color.vpi__bright_foreground_disabled_holo_light;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__bright_foreground_holo_dark = global::HodlWallet2.Droid.Resource.Color.vpi__bright_foreground_holo_dark;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__bright_foreground_holo_light = global::HodlWallet2.Droid.Resource.Color.vpi__bright_foreground_holo_light;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__bright_foreground_inverse_holo_dark = global::HodlWallet2.Droid.Resource.Color.vpi__bright_foreground_inverse_holo_dark;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__bright_foreground_inverse_holo_light = global::HodlWallet2.Droid.Resource.Color.vpi__bright_foreground_inverse_holo_light;
-			global::Com.ViewPagerIndicator.Resource.Dimension.default_circle_indicator_radius = global::HodlWallet2.Droid.Resource.Dimension.default_circle_indicator_radius;
-			global::Com.ViewPagerIndicator.Resource.Dimension.default_circle_indicator_stroke_width = global::HodlWallet2.Droid.Resource.Dimension.default_circle_indicator_stroke_width;
-			global::Com.ViewPagerIndicator.Resource.Id.horizontal = global::HodlWallet2.Droid.Resource.Id.horizontal;
-			global::Com.ViewPagerIndicator.Resource.Id.vertical = global::HodlWallet2.Droid.Resource.Id.vertical;
-			global::Com.ViewPagerIndicator.Resource.Integer.default_circle_indicator_orientation = global::HodlWallet2.Droid.Resource.Integer.default_circle_indicator_orientation;
-			global::Com.ViewPagerIndicator.Resource.String.library_name = global::HodlWallet2.Droid.Resource.String.library_name;
-			global::Com.ViewPagerIndicator.Resource.Style.Theme_PageIndicatorDefaults = global::HodlWallet2.Droid.Resource.Style.Theme_PageIndicatorDefaults;
-			global::Com.ViewPagerIndicator.Resource.Style.Widget = global::HodlWallet2.Droid.Resource.Style.Widget;
-			global::Com.ViewPagerIndicator.Resource.Style.Widget_CirclePageIndicator = global::HodlWallet2.Droid.Resource.Style.Widget_CirclePageIndicator;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiCentered = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiCentered;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiFillColor = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiFillColor;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiOrientation = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiOrientation;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiPageColor = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiPageColor;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiRadius = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiRadius;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiSnap = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiSnap;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiStrokeColor = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiStrokeColor;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiStrokeWidth = global::HodlWallet2.Droid.Resource.Styleable.CirclePageIndicator_vpiStrokeWidth;
-			global::Com.ViewPagerIndicator.Resource.Styleable.ViewPagerIndicator = global::HodlWallet2.Droid.Resource.Styleable.ViewPagerIndicator;
-			global::Com.ViewPagerIndicator.Resource.Styleable.ViewPagerIndicator_vpiCirclePageIndicatorStyle = global::HodlWallet2.Droid.Resource.Styleable.ViewPagerIndicator_vpiCirclePageIndicatorStyle;
 			global::FormsControls.Droid.Resource.Animation.abc_fade_in = global::HodlWallet2.Droid.Resource.Animation.abc_fade_in;
 			global::FormsControls.Droid.Resource.Animation.abc_fade_out = global::HodlWallet2.Droid.Resource.Animation.abc_fade_out;
 			global::FormsControls.Droid.Resource.Animation.abc_grow_fade_in_from_bottom = global::HodlWallet2.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -14226,33 +12036,6 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0100f2
 			public const int voiceIcon = 2130772210;
 			
-			// aapt resource value: 0x7f01017a
-			public const int vpiCentered = 2130772346;
-			
-			// aapt resource value: 0x7f010179
-			public const int vpiCirclePageIndicatorStyle = 2130772345;
-			
-			// aapt resource value: 0x7f01017f
-			public const int vpiFillColor = 2130772351;
-			
-			// aapt resource value: 0x7f01017c
-			public const int vpiOrientation = 2130772348;
-			
-			// aapt resource value: 0x7f01017b
-			public const int vpiPageColor = 2130772347;
-			
-			// aapt resource value: 0x7f01017e
-			public const int vpiRadius = 2130772350;
-			
-			// aapt resource value: 0x7f01017d
-			public const int vpiSnap = 2130772349;
-			
-			// aapt resource value: 0x7f010180
-			public const int vpiStrokeColor = 2130772352;
-			
-			// aapt resource value: 0x7f010181
-			public const int vpiStrokeWidth = 2130772353;
-			
 			// aapt resource value: 0x7f010056
 			public const int windowActionBar = 2130772054;
 			
@@ -14311,12 +12094,6 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0f0004
 			public const int abc_config_showMenuShortcutsWhenKeyboardPresent = 2131689476;
 			
-			// aapt resource value: 0x7f0f0005
-			public const int default_circle_indicator_centered = 2131689477;
-			
-			// aapt resource value: 0x7f0f0006
-			public const int default_circle_indicator_snap = 2131689478;
-			
 			static Boolean()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -14330,44 +12107,44 @@ namespace HodlWallet2.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0e005a
-			public const int abc_background_cache_hint_selector_material_dark = 2131624026;
+			// aapt resource value: 0x7f0e004f
+			public const int abc_background_cache_hint_selector_material_dark = 2131624015;
 			
-			// aapt resource value: 0x7f0e005b
-			public const int abc_background_cache_hint_selector_material_light = 2131624027;
+			// aapt resource value: 0x7f0e0050
+			public const int abc_background_cache_hint_selector_material_light = 2131624016;
 			
-			// aapt resource value: 0x7f0e005c
-			public const int abc_btn_colored_borderless_text_material = 2131624028;
+			// aapt resource value: 0x7f0e0051
+			public const int abc_btn_colored_borderless_text_material = 2131624017;
 			
-			// aapt resource value: 0x7f0e005d
-			public const int abc_btn_colored_text_material = 2131624029;
+			// aapt resource value: 0x7f0e0052
+			public const int abc_btn_colored_text_material = 2131624018;
 			
-			// aapt resource value: 0x7f0e005e
-			public const int abc_color_highlight_material = 2131624030;
+			// aapt resource value: 0x7f0e0053
+			public const int abc_color_highlight_material = 2131624019;
 			
-			// aapt resource value: 0x7f0e005f
-			public const int abc_hint_foreground_material_dark = 2131624031;
+			// aapt resource value: 0x7f0e0054
+			public const int abc_hint_foreground_material_dark = 2131624020;
 			
-			// aapt resource value: 0x7f0e0060
-			public const int abc_hint_foreground_material_light = 2131624032;
+			// aapt resource value: 0x7f0e0055
+			public const int abc_hint_foreground_material_light = 2131624021;
 			
 			// aapt resource value: 0x7f0e0004
 			public const int abc_input_method_navigation_guard = 2131623940;
 			
-			// aapt resource value: 0x7f0e0061
-			public const int abc_primary_text_disable_only_material_dark = 2131624033;
+			// aapt resource value: 0x7f0e0056
+			public const int abc_primary_text_disable_only_material_dark = 2131624022;
 			
-			// aapt resource value: 0x7f0e0062
-			public const int abc_primary_text_disable_only_material_light = 2131624034;
+			// aapt resource value: 0x7f0e0057
+			public const int abc_primary_text_disable_only_material_light = 2131624023;
 			
-			// aapt resource value: 0x7f0e0063
-			public const int abc_primary_text_material_dark = 2131624035;
+			// aapt resource value: 0x7f0e0058
+			public const int abc_primary_text_material_dark = 2131624024;
 			
-			// aapt resource value: 0x7f0e0064
-			public const int abc_primary_text_material_light = 2131624036;
+			// aapt resource value: 0x7f0e0059
+			public const int abc_primary_text_material_light = 2131624025;
 			
-			// aapt resource value: 0x7f0e0065
-			public const int abc_search_url_text = 2131624037;
+			// aapt resource value: 0x7f0e005a
+			public const int abc_search_url_text = 2131624026;
 			
 			// aapt resource value: 0x7f0e0005
 			public const int abc_search_url_text_normal = 2131623941;
@@ -14378,29 +12155,29 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0e0007
 			public const int abc_search_url_text_selected = 2131623943;
 			
-			// aapt resource value: 0x7f0e0066
-			public const int abc_secondary_text_material_dark = 2131624038;
+			// aapt resource value: 0x7f0e005b
+			public const int abc_secondary_text_material_dark = 2131624027;
 			
-			// aapt resource value: 0x7f0e0067
-			public const int abc_secondary_text_material_light = 2131624039;
+			// aapt resource value: 0x7f0e005c
+			public const int abc_secondary_text_material_light = 2131624028;
 			
-			// aapt resource value: 0x7f0e0068
-			public const int abc_tint_btn_checkable = 2131624040;
+			// aapt resource value: 0x7f0e005d
+			public const int abc_tint_btn_checkable = 2131624029;
 			
-			// aapt resource value: 0x7f0e0069
-			public const int abc_tint_default = 2131624041;
+			// aapt resource value: 0x7f0e005e
+			public const int abc_tint_default = 2131624030;
 			
-			// aapt resource value: 0x7f0e006a
-			public const int abc_tint_edittext = 2131624042;
+			// aapt resource value: 0x7f0e005f
+			public const int abc_tint_edittext = 2131624031;
 			
-			// aapt resource value: 0x7f0e006b
-			public const int abc_tint_seek_thumb = 2131624043;
+			// aapt resource value: 0x7f0e0060
+			public const int abc_tint_seek_thumb = 2131624032;
 			
-			// aapt resource value: 0x7f0e006c
-			public const int abc_tint_spinner = 2131624044;
+			// aapt resource value: 0x7f0e0061
+			public const int abc_tint_spinner = 2131624033;
 			
-			// aapt resource value: 0x7f0e006d
-			public const int abc_tint_switch_track = 2131624045;
+			// aapt resource value: 0x7f0e0062
+			public const int abc_tint_switch_track = 2131624034;
 			
 			// aapt resource value: 0x7f0e0008
 			public const int accent_material_dark = 2131623944;
@@ -14456,29 +12233,20 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0e0003
 			public const int cardview_shadow_start_color = 2131623939;
 			
-			// aapt resource value: 0x7f0e0059
-			public const int colorAccent = 2131624025;
+			// aapt resource value: 0x7f0e004e
+			public const int colorAccent = 2131624014;
 			
-			// aapt resource value: 0x7f0e0057
-			public const int colorPrimary = 2131624023;
+			// aapt resource value: 0x7f0e004c
+			public const int colorPrimary = 2131624012;
 			
-			// aapt resource value: 0x7f0e0058
-			public const int colorPrimaryDark = 2131624024;
-			
-			// aapt resource value: 0x7f0e0053
-			public const int default_circle_indicator_fill_color = 2131624019;
-			
-			// aapt resource value: 0x7f0e0054
-			public const int default_circle_indicator_page_color = 2131624020;
-			
-			// aapt resource value: 0x7f0e0055
-			public const int default_circle_indicator_stroke_color = 2131624021;
+			// aapt resource value: 0x7f0e004d
+			public const int colorPrimaryDark = 2131624013;
 			
 			// aapt resource value: 0x7f0e0040
 			public const int design_bottom_navigation_shadow_color = 2131624000;
 			
-			// aapt resource value: 0x7f0e006e
-			public const int design_error = 2131624046;
+			// aapt resource value: 0x7f0e0063
+			public const int design_error = 2131624035;
 			
 			// aapt resource value: 0x7f0e0041
 			public const int design_fab_shadow_end_color = 2131624001;
@@ -14504,8 +12272,8 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0e0048
 			public const int design_snackbar_background_color = 2131624008;
 			
-			// aapt resource value: 0x7f0e006f
-			public const int design_tint_password_toggle = 2131624047;
+			// aapt resource value: 0x7f0e0064
+			public const int design_tint_password_toggle = 2131624036;
 			
 			// aapt resource value: 0x7f0e0016
 			public const int dim_foreground_disabled_material_dark = 2131623958;
@@ -14534,8 +12302,8 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0e001e
 			public const int highlighted_text_material_light = 2131623966;
 			
-			// aapt resource value: 0x7f0e0056
-			public const int launcher_background = 2131624022;
+			// aapt resource value: 0x7f0e004b
+			public const int launcher_background = 2131624011;
 			
 			// aapt resource value: 0x7f0e001f
 			public const int material_blue_grey_800 = 2131623967;
@@ -14630,11 +12398,11 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0e003a
 			public const int switch_thumb_disabled_material_light = 2131623994;
 			
-			// aapt resource value: 0x7f0e0070
-			public const int switch_thumb_material_dark = 2131624048;
+			// aapt resource value: 0x7f0e0065
+			public const int switch_thumb_material_dark = 2131624037;
 			
-			// aapt resource value: 0x7f0e0071
-			public const int switch_thumb_material_light = 2131624049;
+			// aapt resource value: 0x7f0e0066
+			public const int switch_thumb_material_light = 2131624038;
 			
 			// aapt resource value: 0x7f0e003b
 			public const int switch_thumb_normal_material_dark = 2131623995;
@@ -14647,30 +12415,6 @@ namespace HodlWallet2.Droid
 			
 			// aapt resource value: 0x7f0e003e
 			public const int tooltip_background_light = 2131623998;
-			
-			// aapt resource value: 0x7f0e004b
-			public const int vpi__background_holo_dark = 2131624011;
-			
-			// aapt resource value: 0x7f0e004c
-			public const int vpi__background_holo_light = 2131624012;
-			
-			// aapt resource value: 0x7f0e004f
-			public const int vpi__bright_foreground_disabled_holo_dark = 2131624015;
-			
-			// aapt resource value: 0x7f0e0050
-			public const int vpi__bright_foreground_disabled_holo_light = 2131624016;
-			
-			// aapt resource value: 0x7f0e004d
-			public const int vpi__bright_foreground_holo_dark = 2131624013;
-			
-			// aapt resource value: 0x7f0e004e
-			public const int vpi__bright_foreground_holo_light = 2131624014;
-			
-			// aapt resource value: 0x7f0e0051
-			public const int vpi__bright_foreground_inverse_holo_dark = 2131624017;
-			
-			// aapt resource value: 0x7f0e0052
-			public const int vpi__bright_foreground_inverse_holo_light = 2131624018;
 			
 			static Color()
 			{
@@ -14930,12 +12674,6 @@ namespace HodlWallet2.Droid
 			
 			// aapt resource value: 0x7f0a0098
 			public const int compat_control_corner_material = 2131361944;
-			
-			// aapt resource value: 0x7f0a00a4
-			public const int default_circle_indicator_radius = 2131361956;
-			
-			// aapt resource value: 0x7f0a00a5
-			public const int default_circle_indicator_stroke_width = 2131361957;
 			
 			// aapt resource value: 0x7f0a0072
 			public const int design_appbar_elevation = 2131361906;
@@ -15448,26 +13186,26 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f020138
-			public const int avd_hide_password_1 = 2130837816;
+			// aapt resource value: 0x7f020134
+			public const int avd_hide_password_1 = 2130837812;
 			
-			// aapt resource value: 0x7f020139
-			public const int avd_hide_password_2 = 2130837817;
+			// aapt resource value: 0x7f020135
+			public const int avd_hide_password_2 = 2130837813;
 			
-			// aapt resource value: 0x7f02013a
-			public const int avd_hide_password_3 = 2130837818;
+			// aapt resource value: 0x7f020136
+			public const int avd_hide_password_3 = 2130837814;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f02013b
-			public const int avd_show_password_1 = 2130837819;
+			// aapt resource value: 0x7f020137
+			public const int avd_show_password_1 = 2130837815;
 			
-			// aapt resource value: 0x7f02013c
-			public const int avd_show_password_2 = 2130837820;
+			// aapt resource value: 0x7f020138
+			public const int avd_show_password_2 = 2130837816;
 			
-			// aapt resource value: 0x7f02013d
-			public const int avd_show_password_3 = 2130837821;
+			// aapt resource value: 0x7f020139
+			public const int avd_show_password_3 = 2130837817;
 			
 			// aapt resource value: 0x7f020055
 			public const int bkg_roundedview = 2130837589;
@@ -15491,664 +13229,652 @@ namespace HodlWallet2.Droid
 			public const int design_snackbar_background = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int Down = 2130837596;
+			public const int ic_audiotrack_dark = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_audiotrack_dark = 2130837597;
+			public const int ic_audiotrack_light = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ic_audiotrack_light = 2130837598;
+			public const int ic_dialog_close_dark = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int ic_dialog_close_dark = 2130837599;
+			public const int ic_dialog_close_light = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int ic_dialog_close_light = 2130837600;
+			public const int ic_group_collapse_00 = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int ic_group_collapse_00 = 2130837601;
+			public const int ic_group_collapse_01 = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int ic_group_collapse_01 = 2130837602;
+			public const int ic_group_collapse_02 = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int ic_group_collapse_02 = 2130837603;
+			public const int ic_group_collapse_03 = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int ic_group_collapse_03 = 2130837604;
+			public const int ic_group_collapse_04 = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int ic_group_collapse_04 = 2130837605;
+			public const int ic_group_collapse_05 = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int ic_group_collapse_05 = 2130837606;
+			public const int ic_group_collapse_06 = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int ic_group_collapse_06 = 2130837607;
+			public const int ic_group_collapse_07 = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int ic_group_collapse_07 = 2130837608;
+			public const int ic_group_collapse_08 = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int ic_group_collapse_08 = 2130837609;
+			public const int ic_group_collapse_09 = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int ic_group_collapse_09 = 2130837610;
+			public const int ic_group_collapse_10 = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int ic_group_collapse_10 = 2130837611;
+			public const int ic_group_collapse_11 = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int ic_group_collapse_11 = 2130837612;
+			public const int ic_group_collapse_12 = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int ic_group_collapse_12 = 2130837613;
+			public const int ic_group_collapse_13 = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int ic_group_collapse_13 = 2130837614;
+			public const int ic_group_collapse_14 = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int ic_group_collapse_14 = 2130837615;
+			public const int ic_group_collapse_15 = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int ic_group_collapse_15 = 2130837616;
+			public const int ic_group_expand_00 = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int ic_group_expand_00 = 2130837617;
+			public const int ic_group_expand_01 = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int ic_group_expand_01 = 2130837618;
+			public const int ic_group_expand_02 = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int ic_group_expand_02 = 2130837619;
+			public const int ic_group_expand_03 = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int ic_group_expand_03 = 2130837620;
+			public const int ic_group_expand_04 = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int ic_group_expand_04 = 2130837621;
+			public const int ic_group_expand_05 = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int ic_group_expand_05 = 2130837622;
+			public const int ic_group_expand_06 = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int ic_group_expand_06 = 2130837623;
+			public const int ic_group_expand_07 = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int ic_group_expand_07 = 2130837624;
+			public const int ic_group_expand_08 = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int ic_group_expand_08 = 2130837625;
+			public const int ic_group_expand_09 = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int ic_group_expand_09 = 2130837626;
+			public const int ic_group_expand_10 = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int ic_group_expand_10 = 2130837627;
+			public const int ic_group_expand_11 = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int ic_group_expand_11 = 2130837628;
+			public const int ic_group_expand_12 = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int ic_group_expand_12 = 2130837629;
+			public const int ic_group_expand_13 = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int ic_group_expand_13 = 2130837630;
+			public const int ic_group_expand_14 = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int ic_group_expand_14 = 2130837631;
+			public const int ic_group_expand_15 = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int ic_group_expand_15 = 2130837632;
+			public const int ic_media_pause_dark = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int ic_media_pause_dark = 2130837633;
+			public const int ic_media_pause_light = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int ic_media_pause_light = 2130837634;
+			public const int ic_media_play_dark = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int ic_media_play_dark = 2130837635;
+			public const int ic_media_play_light = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int ic_media_play_light = 2130837636;
+			public const int ic_media_stop_dark = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int ic_media_stop_dark = 2130837637;
+			public const int ic_media_stop_light = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int ic_media_stop_light = 2130837638;
+			public const int ic_mr_button_connected_00_dark = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int ic_mr_button_connected_00_dark = 2130837639;
+			public const int ic_mr_button_connected_00_light = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int ic_mr_button_connected_00_light = 2130837640;
+			public const int ic_mr_button_connected_01_dark = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int ic_mr_button_connected_01_dark = 2130837641;
+			public const int ic_mr_button_connected_01_light = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int ic_mr_button_connected_01_light = 2130837642;
+			public const int ic_mr_button_connected_02_dark = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int ic_mr_button_connected_02_dark = 2130837643;
+			public const int ic_mr_button_connected_02_light = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int ic_mr_button_connected_02_light = 2130837644;
+			public const int ic_mr_button_connected_03_dark = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int ic_mr_button_connected_03_dark = 2130837645;
+			public const int ic_mr_button_connected_03_light = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int ic_mr_button_connected_03_light = 2130837646;
+			public const int ic_mr_button_connected_04_dark = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int ic_mr_button_connected_04_dark = 2130837647;
+			public const int ic_mr_button_connected_04_light = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int ic_mr_button_connected_04_light = 2130837648;
+			public const int ic_mr_button_connected_05_dark = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int ic_mr_button_connected_05_dark = 2130837649;
+			public const int ic_mr_button_connected_05_light = 2130837649;
 			
 			// aapt resource value: 0x7f020092
-			public const int ic_mr_button_connected_05_light = 2130837650;
+			public const int ic_mr_button_connected_06_dark = 2130837650;
 			
 			// aapt resource value: 0x7f020093
-			public const int ic_mr_button_connected_06_dark = 2130837651;
+			public const int ic_mr_button_connected_06_light = 2130837651;
 			
 			// aapt resource value: 0x7f020094
-			public const int ic_mr_button_connected_06_light = 2130837652;
+			public const int ic_mr_button_connected_07_dark = 2130837652;
 			
 			// aapt resource value: 0x7f020095
-			public const int ic_mr_button_connected_07_dark = 2130837653;
+			public const int ic_mr_button_connected_07_light = 2130837653;
 			
 			// aapt resource value: 0x7f020096
-			public const int ic_mr_button_connected_07_light = 2130837654;
+			public const int ic_mr_button_connected_08_dark = 2130837654;
 			
 			// aapt resource value: 0x7f020097
-			public const int ic_mr_button_connected_08_dark = 2130837655;
+			public const int ic_mr_button_connected_08_light = 2130837655;
 			
 			// aapt resource value: 0x7f020098
-			public const int ic_mr_button_connected_08_light = 2130837656;
+			public const int ic_mr_button_connected_09_dark = 2130837656;
 			
 			// aapt resource value: 0x7f020099
-			public const int ic_mr_button_connected_09_dark = 2130837657;
+			public const int ic_mr_button_connected_09_light = 2130837657;
 			
 			// aapt resource value: 0x7f02009a
-			public const int ic_mr_button_connected_09_light = 2130837658;
+			public const int ic_mr_button_connected_10_dark = 2130837658;
 			
 			// aapt resource value: 0x7f02009b
-			public const int ic_mr_button_connected_10_dark = 2130837659;
+			public const int ic_mr_button_connected_10_light = 2130837659;
 			
 			// aapt resource value: 0x7f02009c
-			public const int ic_mr_button_connected_10_light = 2130837660;
+			public const int ic_mr_button_connected_11_dark = 2130837660;
 			
 			// aapt resource value: 0x7f02009d
-			public const int ic_mr_button_connected_11_dark = 2130837661;
+			public const int ic_mr_button_connected_11_light = 2130837661;
 			
 			// aapt resource value: 0x7f02009e
-			public const int ic_mr_button_connected_11_light = 2130837662;
+			public const int ic_mr_button_connected_12_dark = 2130837662;
 			
 			// aapt resource value: 0x7f02009f
-			public const int ic_mr_button_connected_12_dark = 2130837663;
+			public const int ic_mr_button_connected_12_light = 2130837663;
 			
 			// aapt resource value: 0x7f0200a0
-			public const int ic_mr_button_connected_12_light = 2130837664;
+			public const int ic_mr_button_connected_13_dark = 2130837664;
 			
 			// aapt resource value: 0x7f0200a1
-			public const int ic_mr_button_connected_13_dark = 2130837665;
+			public const int ic_mr_button_connected_13_light = 2130837665;
 			
 			// aapt resource value: 0x7f0200a2
-			public const int ic_mr_button_connected_13_light = 2130837666;
+			public const int ic_mr_button_connected_14_dark = 2130837666;
 			
 			// aapt resource value: 0x7f0200a3
-			public const int ic_mr_button_connected_14_dark = 2130837667;
+			public const int ic_mr_button_connected_14_light = 2130837667;
 			
 			// aapt resource value: 0x7f0200a4
-			public const int ic_mr_button_connected_14_light = 2130837668;
+			public const int ic_mr_button_connected_15_dark = 2130837668;
 			
 			// aapt resource value: 0x7f0200a5
-			public const int ic_mr_button_connected_15_dark = 2130837669;
+			public const int ic_mr_button_connected_15_light = 2130837669;
 			
 			// aapt resource value: 0x7f0200a6
-			public const int ic_mr_button_connected_15_light = 2130837670;
+			public const int ic_mr_button_connected_16_dark = 2130837670;
 			
 			// aapt resource value: 0x7f0200a7
-			public const int ic_mr_button_connected_16_dark = 2130837671;
+			public const int ic_mr_button_connected_16_light = 2130837671;
 			
 			// aapt resource value: 0x7f0200a8
-			public const int ic_mr_button_connected_16_light = 2130837672;
+			public const int ic_mr_button_connected_17_dark = 2130837672;
 			
 			// aapt resource value: 0x7f0200a9
-			public const int ic_mr_button_connected_17_dark = 2130837673;
+			public const int ic_mr_button_connected_17_light = 2130837673;
 			
 			// aapt resource value: 0x7f0200aa
-			public const int ic_mr_button_connected_17_light = 2130837674;
+			public const int ic_mr_button_connected_18_dark = 2130837674;
 			
 			// aapt resource value: 0x7f0200ab
-			public const int ic_mr_button_connected_18_dark = 2130837675;
+			public const int ic_mr_button_connected_18_light = 2130837675;
 			
 			// aapt resource value: 0x7f0200ac
-			public const int ic_mr_button_connected_18_light = 2130837676;
+			public const int ic_mr_button_connected_19_dark = 2130837676;
 			
 			// aapt resource value: 0x7f0200ad
-			public const int ic_mr_button_connected_19_dark = 2130837677;
+			public const int ic_mr_button_connected_19_light = 2130837677;
 			
 			// aapt resource value: 0x7f0200ae
-			public const int ic_mr_button_connected_19_light = 2130837678;
+			public const int ic_mr_button_connected_20_dark = 2130837678;
 			
 			// aapt resource value: 0x7f0200af
-			public const int ic_mr_button_connected_20_dark = 2130837679;
+			public const int ic_mr_button_connected_20_light = 2130837679;
 			
 			// aapt resource value: 0x7f0200b0
-			public const int ic_mr_button_connected_20_light = 2130837680;
+			public const int ic_mr_button_connected_21_dark = 2130837680;
 			
 			// aapt resource value: 0x7f0200b1
-			public const int ic_mr_button_connected_21_dark = 2130837681;
+			public const int ic_mr_button_connected_21_light = 2130837681;
 			
 			// aapt resource value: 0x7f0200b2
-			public const int ic_mr_button_connected_21_light = 2130837682;
+			public const int ic_mr_button_connected_22_dark = 2130837682;
 			
 			// aapt resource value: 0x7f0200b3
-			public const int ic_mr_button_connected_22_dark = 2130837683;
+			public const int ic_mr_button_connected_22_light = 2130837683;
 			
 			// aapt resource value: 0x7f0200b4
-			public const int ic_mr_button_connected_22_light = 2130837684;
+			public const int ic_mr_button_connected_23_dark = 2130837684;
 			
 			// aapt resource value: 0x7f0200b5
-			public const int ic_mr_button_connected_23_dark = 2130837685;
+			public const int ic_mr_button_connected_23_light = 2130837685;
 			
 			// aapt resource value: 0x7f0200b6
-			public const int ic_mr_button_connected_23_light = 2130837686;
+			public const int ic_mr_button_connected_24_dark = 2130837686;
 			
 			// aapt resource value: 0x7f0200b7
-			public const int ic_mr_button_connected_24_dark = 2130837687;
+			public const int ic_mr_button_connected_24_light = 2130837687;
 			
 			// aapt resource value: 0x7f0200b8
-			public const int ic_mr_button_connected_24_light = 2130837688;
+			public const int ic_mr_button_connected_25_dark = 2130837688;
 			
 			// aapt resource value: 0x7f0200b9
-			public const int ic_mr_button_connected_25_dark = 2130837689;
+			public const int ic_mr_button_connected_25_light = 2130837689;
 			
 			// aapt resource value: 0x7f0200ba
-			public const int ic_mr_button_connected_25_light = 2130837690;
+			public const int ic_mr_button_connected_26_dark = 2130837690;
 			
 			// aapt resource value: 0x7f0200bb
-			public const int ic_mr_button_connected_26_dark = 2130837691;
+			public const int ic_mr_button_connected_26_light = 2130837691;
 			
 			// aapt resource value: 0x7f0200bc
-			public const int ic_mr_button_connected_26_light = 2130837692;
+			public const int ic_mr_button_connected_27_dark = 2130837692;
 			
 			// aapt resource value: 0x7f0200bd
-			public const int ic_mr_button_connected_27_dark = 2130837693;
+			public const int ic_mr_button_connected_27_light = 2130837693;
 			
 			// aapt resource value: 0x7f0200be
-			public const int ic_mr_button_connected_27_light = 2130837694;
+			public const int ic_mr_button_connected_28_dark = 2130837694;
 			
 			// aapt resource value: 0x7f0200bf
-			public const int ic_mr_button_connected_28_dark = 2130837695;
+			public const int ic_mr_button_connected_28_light = 2130837695;
 			
 			// aapt resource value: 0x7f0200c0
-			public const int ic_mr_button_connected_28_light = 2130837696;
+			public const int ic_mr_button_connected_29_dark = 2130837696;
 			
 			// aapt resource value: 0x7f0200c1
-			public const int ic_mr_button_connected_29_dark = 2130837697;
+			public const int ic_mr_button_connected_29_light = 2130837697;
 			
 			// aapt resource value: 0x7f0200c2
-			public const int ic_mr_button_connected_29_light = 2130837698;
+			public const int ic_mr_button_connected_30_dark = 2130837698;
 			
 			// aapt resource value: 0x7f0200c3
-			public const int ic_mr_button_connected_30_dark = 2130837699;
+			public const int ic_mr_button_connected_30_light = 2130837699;
 			
 			// aapt resource value: 0x7f0200c4
-			public const int ic_mr_button_connected_30_light = 2130837700;
+			public const int ic_mr_button_connecting_00_dark = 2130837700;
 			
 			// aapt resource value: 0x7f0200c5
-			public const int ic_mr_button_connecting_00_dark = 2130837701;
+			public const int ic_mr_button_connecting_00_light = 2130837701;
 			
 			// aapt resource value: 0x7f0200c6
-			public const int ic_mr_button_connecting_00_light = 2130837702;
+			public const int ic_mr_button_connecting_01_dark = 2130837702;
 			
 			// aapt resource value: 0x7f0200c7
-			public const int ic_mr_button_connecting_01_dark = 2130837703;
+			public const int ic_mr_button_connecting_01_light = 2130837703;
 			
 			// aapt resource value: 0x7f0200c8
-			public const int ic_mr_button_connecting_01_light = 2130837704;
+			public const int ic_mr_button_connecting_02_dark = 2130837704;
 			
 			// aapt resource value: 0x7f0200c9
-			public const int ic_mr_button_connecting_02_dark = 2130837705;
+			public const int ic_mr_button_connecting_02_light = 2130837705;
 			
 			// aapt resource value: 0x7f0200ca
-			public const int ic_mr_button_connecting_02_light = 2130837706;
+			public const int ic_mr_button_connecting_03_dark = 2130837706;
 			
 			// aapt resource value: 0x7f0200cb
-			public const int ic_mr_button_connecting_03_dark = 2130837707;
+			public const int ic_mr_button_connecting_03_light = 2130837707;
 			
 			// aapt resource value: 0x7f0200cc
-			public const int ic_mr_button_connecting_03_light = 2130837708;
+			public const int ic_mr_button_connecting_04_dark = 2130837708;
 			
 			// aapt resource value: 0x7f0200cd
-			public const int ic_mr_button_connecting_04_dark = 2130837709;
+			public const int ic_mr_button_connecting_04_light = 2130837709;
 			
 			// aapt resource value: 0x7f0200ce
-			public const int ic_mr_button_connecting_04_light = 2130837710;
+			public const int ic_mr_button_connecting_05_dark = 2130837710;
 			
 			// aapt resource value: 0x7f0200cf
-			public const int ic_mr_button_connecting_05_dark = 2130837711;
+			public const int ic_mr_button_connecting_05_light = 2130837711;
 			
 			// aapt resource value: 0x7f0200d0
-			public const int ic_mr_button_connecting_05_light = 2130837712;
+			public const int ic_mr_button_connecting_06_dark = 2130837712;
 			
 			// aapt resource value: 0x7f0200d1
-			public const int ic_mr_button_connecting_06_dark = 2130837713;
+			public const int ic_mr_button_connecting_06_light = 2130837713;
 			
 			// aapt resource value: 0x7f0200d2
-			public const int ic_mr_button_connecting_06_light = 2130837714;
+			public const int ic_mr_button_connecting_07_dark = 2130837714;
 			
 			// aapt resource value: 0x7f0200d3
-			public const int ic_mr_button_connecting_07_dark = 2130837715;
+			public const int ic_mr_button_connecting_07_light = 2130837715;
 			
 			// aapt resource value: 0x7f0200d4
-			public const int ic_mr_button_connecting_07_light = 2130837716;
+			public const int ic_mr_button_connecting_08_dark = 2130837716;
 			
 			// aapt resource value: 0x7f0200d5
-			public const int ic_mr_button_connecting_08_dark = 2130837717;
+			public const int ic_mr_button_connecting_08_light = 2130837717;
 			
 			// aapt resource value: 0x7f0200d6
-			public const int ic_mr_button_connecting_08_light = 2130837718;
+			public const int ic_mr_button_connecting_09_dark = 2130837718;
 			
 			// aapt resource value: 0x7f0200d7
-			public const int ic_mr_button_connecting_09_dark = 2130837719;
+			public const int ic_mr_button_connecting_09_light = 2130837719;
 			
 			// aapt resource value: 0x7f0200d8
-			public const int ic_mr_button_connecting_09_light = 2130837720;
+			public const int ic_mr_button_connecting_10_dark = 2130837720;
 			
 			// aapt resource value: 0x7f0200d9
-			public const int ic_mr_button_connecting_10_dark = 2130837721;
+			public const int ic_mr_button_connecting_10_light = 2130837721;
 			
 			// aapt resource value: 0x7f0200da
-			public const int ic_mr_button_connecting_10_light = 2130837722;
+			public const int ic_mr_button_connecting_11_dark = 2130837722;
 			
 			// aapt resource value: 0x7f0200db
-			public const int ic_mr_button_connecting_11_dark = 2130837723;
+			public const int ic_mr_button_connecting_11_light = 2130837723;
 			
 			// aapt resource value: 0x7f0200dc
-			public const int ic_mr_button_connecting_11_light = 2130837724;
+			public const int ic_mr_button_connecting_12_dark = 2130837724;
 			
 			// aapt resource value: 0x7f0200dd
-			public const int ic_mr_button_connecting_12_dark = 2130837725;
+			public const int ic_mr_button_connecting_12_light = 2130837725;
 			
 			// aapt resource value: 0x7f0200de
-			public const int ic_mr_button_connecting_12_light = 2130837726;
+			public const int ic_mr_button_connecting_13_dark = 2130837726;
 			
 			// aapt resource value: 0x7f0200df
-			public const int ic_mr_button_connecting_13_dark = 2130837727;
+			public const int ic_mr_button_connecting_13_light = 2130837727;
 			
 			// aapt resource value: 0x7f0200e0
-			public const int ic_mr_button_connecting_13_light = 2130837728;
+			public const int ic_mr_button_connecting_14_dark = 2130837728;
 			
 			// aapt resource value: 0x7f0200e1
-			public const int ic_mr_button_connecting_14_dark = 2130837729;
+			public const int ic_mr_button_connecting_14_light = 2130837729;
 			
 			// aapt resource value: 0x7f0200e2
-			public const int ic_mr_button_connecting_14_light = 2130837730;
+			public const int ic_mr_button_connecting_15_dark = 2130837730;
 			
 			// aapt resource value: 0x7f0200e3
-			public const int ic_mr_button_connecting_15_dark = 2130837731;
+			public const int ic_mr_button_connecting_15_light = 2130837731;
 			
 			// aapt resource value: 0x7f0200e4
-			public const int ic_mr_button_connecting_15_light = 2130837732;
+			public const int ic_mr_button_connecting_16_dark = 2130837732;
 			
 			// aapt resource value: 0x7f0200e5
-			public const int ic_mr_button_connecting_16_dark = 2130837733;
+			public const int ic_mr_button_connecting_16_light = 2130837733;
 			
 			// aapt resource value: 0x7f0200e6
-			public const int ic_mr_button_connecting_16_light = 2130837734;
+			public const int ic_mr_button_connecting_17_dark = 2130837734;
 			
 			// aapt resource value: 0x7f0200e7
-			public const int ic_mr_button_connecting_17_dark = 2130837735;
+			public const int ic_mr_button_connecting_17_light = 2130837735;
 			
 			// aapt resource value: 0x7f0200e8
-			public const int ic_mr_button_connecting_17_light = 2130837736;
+			public const int ic_mr_button_connecting_18_dark = 2130837736;
 			
 			// aapt resource value: 0x7f0200e9
-			public const int ic_mr_button_connecting_18_dark = 2130837737;
+			public const int ic_mr_button_connecting_18_light = 2130837737;
 			
 			// aapt resource value: 0x7f0200ea
-			public const int ic_mr_button_connecting_18_light = 2130837738;
+			public const int ic_mr_button_connecting_19_dark = 2130837738;
 			
 			// aapt resource value: 0x7f0200eb
-			public const int ic_mr_button_connecting_19_dark = 2130837739;
+			public const int ic_mr_button_connecting_19_light = 2130837739;
 			
 			// aapt resource value: 0x7f0200ec
-			public const int ic_mr_button_connecting_19_light = 2130837740;
+			public const int ic_mr_button_connecting_20_dark = 2130837740;
 			
 			// aapt resource value: 0x7f0200ed
-			public const int ic_mr_button_connecting_20_dark = 2130837741;
+			public const int ic_mr_button_connecting_20_light = 2130837741;
 			
 			// aapt resource value: 0x7f0200ee
-			public const int ic_mr_button_connecting_20_light = 2130837742;
+			public const int ic_mr_button_connecting_21_dark = 2130837742;
 			
 			// aapt resource value: 0x7f0200ef
-			public const int ic_mr_button_connecting_21_dark = 2130837743;
+			public const int ic_mr_button_connecting_21_light = 2130837743;
 			
 			// aapt resource value: 0x7f0200f0
-			public const int ic_mr_button_connecting_21_light = 2130837744;
+			public const int ic_mr_button_connecting_22_dark = 2130837744;
 			
 			// aapt resource value: 0x7f0200f1
-			public const int ic_mr_button_connecting_22_dark = 2130837745;
+			public const int ic_mr_button_connecting_22_light = 2130837745;
 			
 			// aapt resource value: 0x7f0200f2
-			public const int ic_mr_button_connecting_22_light = 2130837746;
+			public const int ic_mr_button_connecting_23_dark = 2130837746;
 			
 			// aapt resource value: 0x7f0200f3
-			public const int ic_mr_button_connecting_23_dark = 2130837747;
+			public const int ic_mr_button_connecting_23_light = 2130837747;
 			
 			// aapt resource value: 0x7f0200f4
-			public const int ic_mr_button_connecting_23_light = 2130837748;
+			public const int ic_mr_button_connecting_24_dark = 2130837748;
 			
 			// aapt resource value: 0x7f0200f5
-			public const int ic_mr_button_connecting_24_dark = 2130837749;
+			public const int ic_mr_button_connecting_24_light = 2130837749;
 			
 			// aapt resource value: 0x7f0200f6
-			public const int ic_mr_button_connecting_24_light = 2130837750;
+			public const int ic_mr_button_connecting_25_dark = 2130837750;
 			
 			// aapt resource value: 0x7f0200f7
-			public const int ic_mr_button_connecting_25_dark = 2130837751;
+			public const int ic_mr_button_connecting_25_light = 2130837751;
 			
 			// aapt resource value: 0x7f0200f8
-			public const int ic_mr_button_connecting_25_light = 2130837752;
+			public const int ic_mr_button_connecting_26_dark = 2130837752;
 			
 			// aapt resource value: 0x7f0200f9
-			public const int ic_mr_button_connecting_26_dark = 2130837753;
+			public const int ic_mr_button_connecting_26_light = 2130837753;
 			
 			// aapt resource value: 0x7f0200fa
-			public const int ic_mr_button_connecting_26_light = 2130837754;
+			public const int ic_mr_button_connecting_27_dark = 2130837754;
 			
 			// aapt resource value: 0x7f0200fb
-			public const int ic_mr_button_connecting_27_dark = 2130837755;
+			public const int ic_mr_button_connecting_27_light = 2130837755;
 			
 			// aapt resource value: 0x7f0200fc
-			public const int ic_mr_button_connecting_27_light = 2130837756;
+			public const int ic_mr_button_connecting_28_dark = 2130837756;
 			
 			// aapt resource value: 0x7f0200fd
-			public const int ic_mr_button_connecting_28_dark = 2130837757;
+			public const int ic_mr_button_connecting_28_light = 2130837757;
 			
 			// aapt resource value: 0x7f0200fe
-			public const int ic_mr_button_connecting_28_light = 2130837758;
+			public const int ic_mr_button_connecting_29_dark = 2130837758;
 			
 			// aapt resource value: 0x7f0200ff
-			public const int ic_mr_button_connecting_29_dark = 2130837759;
+			public const int ic_mr_button_connecting_29_light = 2130837759;
 			
 			// aapt resource value: 0x7f020100
-			public const int ic_mr_button_connecting_29_light = 2130837760;
+			public const int ic_mr_button_connecting_30_dark = 2130837760;
 			
 			// aapt resource value: 0x7f020101
-			public const int ic_mr_button_connecting_30_dark = 2130837761;
+			public const int ic_mr_button_connecting_30_light = 2130837761;
 			
 			// aapt resource value: 0x7f020102
-			public const int ic_mr_button_connecting_30_light = 2130837762;
+			public const int ic_mr_button_disabled_dark = 2130837762;
 			
 			// aapt resource value: 0x7f020103
-			public const int ic_mr_button_disabled_dark = 2130837763;
+			public const int ic_mr_button_disabled_light = 2130837763;
 			
 			// aapt resource value: 0x7f020104
-			public const int ic_mr_button_disabled_light = 2130837764;
+			public const int ic_mr_button_disconnected_dark = 2130837764;
 			
 			// aapt resource value: 0x7f020105
-			public const int ic_mr_button_disconnected_dark = 2130837765;
+			public const int ic_mr_button_disconnected_light = 2130837765;
 			
 			// aapt resource value: 0x7f020106
-			public const int ic_mr_button_disconnected_light = 2130837766;
+			public const int ic_mr_button_grey = 2130837766;
 			
 			// aapt resource value: 0x7f020107
-			public const int ic_mr_button_grey = 2130837767;
+			public const int ic_vol_type_speaker_dark = 2130837767;
 			
 			// aapt resource value: 0x7f020108
-			public const int ic_vol_type_speaker_dark = 2130837768;
+			public const int ic_vol_type_speaker_group_dark = 2130837768;
 			
 			// aapt resource value: 0x7f020109
-			public const int ic_vol_type_speaker_group_dark = 2130837769;
+			public const int ic_vol_type_speaker_group_light = 2130837769;
 			
 			// aapt resource value: 0x7f02010a
-			public const int ic_vol_type_speaker_group_light = 2130837770;
+			public const int ic_vol_type_speaker_light = 2130837770;
 			
 			// aapt resource value: 0x7f02010b
-			public const int ic_vol_type_speaker_light = 2130837771;
+			public const int ic_vol_type_tv_dark = 2130837771;
 			
 			// aapt resource value: 0x7f02010c
-			public const int ic_vol_type_tv_dark = 2130837772;
+			public const int ic_vol_type_tv_light = 2130837772;
 			
 			// aapt resource value: 0x7f02010d
-			public const int ic_vol_type_tv_light = 2130837773;
+			public const int img_circle = 2130837773;
 			
 			// aapt resource value: 0x7f02010e
-			public const int img_circle = 2130837774;
+			public const int img_circle_filled = 2130837774;
 			
 			// aapt resource value: 0x7f02010f
-			public const int img_circle_filled = 2130837775;
+			public const int logo = 2130837775;
 			
 			// aapt resource value: 0x7f020110
-			public const int logo = 2130837776;
+			public const int logo_front = 2130837776;
 			
 			// aapt resource value: 0x7f020111
-			public const int logo_front = 2130837777;
+			public const int mr_button_connected_dark = 2130837777;
 			
 			// aapt resource value: 0x7f020112
-			public const int mr_button_connected_dark = 2130837778;
+			public const int mr_button_connected_light = 2130837778;
 			
 			// aapt resource value: 0x7f020113
-			public const int mr_button_connected_light = 2130837779;
+			public const int mr_button_connecting_dark = 2130837779;
 			
 			// aapt resource value: 0x7f020114
-			public const int mr_button_connecting_dark = 2130837780;
+			public const int mr_button_connecting_light = 2130837780;
 			
 			// aapt resource value: 0x7f020115
-			public const int mr_button_connecting_light = 2130837781;
+			public const int mr_button_dark = 2130837781;
 			
 			// aapt resource value: 0x7f020116
-			public const int mr_button_dark = 2130837782;
+			public const int mr_button_light = 2130837782;
 			
 			// aapt resource value: 0x7f020117
-			public const int mr_button_light = 2130837783;
+			public const int mr_dialog_close_dark = 2130837783;
 			
 			// aapt resource value: 0x7f020118
-			public const int mr_dialog_close_dark = 2130837784;
+			public const int mr_dialog_close_light = 2130837784;
 			
 			// aapt resource value: 0x7f020119
-			public const int mr_dialog_close_light = 2130837785;
+			public const int mr_dialog_material_background_dark = 2130837785;
 			
 			// aapt resource value: 0x7f02011a
-			public const int mr_dialog_material_background_dark = 2130837786;
+			public const int mr_dialog_material_background_light = 2130837786;
 			
 			// aapt resource value: 0x7f02011b
-			public const int mr_dialog_material_background_light = 2130837787;
+			public const int mr_group_collapse = 2130837787;
 			
 			// aapt resource value: 0x7f02011c
-			public const int mr_group_collapse = 2130837788;
+			public const int mr_group_expand = 2130837788;
 			
 			// aapt resource value: 0x7f02011d
-			public const int mr_group_expand = 2130837789;
+			public const int mr_media_pause_dark = 2130837789;
 			
 			// aapt resource value: 0x7f02011e
-			public const int mr_media_pause_dark = 2130837790;
+			public const int mr_media_pause_light = 2130837790;
 			
 			// aapt resource value: 0x7f02011f
-			public const int mr_media_pause_light = 2130837791;
+			public const int mr_media_play_dark = 2130837791;
 			
 			// aapt resource value: 0x7f020120
-			public const int mr_media_play_dark = 2130837792;
+			public const int mr_media_play_light = 2130837792;
 			
 			// aapt resource value: 0x7f020121
-			public const int mr_media_play_light = 2130837793;
+			public const int mr_media_stop_dark = 2130837793;
 			
 			// aapt resource value: 0x7f020122
-			public const int mr_media_stop_dark = 2130837794;
+			public const int mr_media_stop_light = 2130837794;
 			
 			// aapt resource value: 0x7f020123
-			public const int mr_media_stop_light = 2130837795;
+			public const int mr_vol_type_audiotrack_dark = 2130837795;
 			
 			// aapt resource value: 0x7f020124
-			public const int mr_vol_type_audiotrack_dark = 2130837796;
+			public const int mr_vol_type_audiotrack_light = 2130837796;
 			
 			// aapt resource value: 0x7f020125
-			public const int mr_vol_type_audiotrack_light = 2130837797;
+			public const int navigation_empty_icon = 2130837797;
 			
 			// aapt resource value: 0x7f020126
-			public const int navigation_empty_icon = 2130837798;
+			public const int notification_action_background = 2130837798;
 			
 			// aapt resource value: 0x7f020127
-			public const int Next = 2130837799;
+			public const int notification_bg = 2130837799;
 			
 			// aapt resource value: 0x7f020128
-			public const int notification_action_background = 2130837800;
+			public const int notification_bg_low = 2130837800;
 			
 			// aapt resource value: 0x7f020129
-			public const int notification_bg = 2130837801;
+			public const int notification_bg_low_normal = 2130837801;
 			
 			// aapt resource value: 0x7f02012a
-			public const int notification_bg_low = 2130837802;
+			public const int notification_bg_low_pressed = 2130837802;
 			
 			// aapt resource value: 0x7f02012b
-			public const int notification_bg_low_normal = 2130837803;
+			public const int notification_bg_normal = 2130837803;
 			
 			// aapt resource value: 0x7f02012c
-			public const int notification_bg_low_pressed = 2130837804;
+			public const int notification_bg_normal_pressed = 2130837804;
 			
 			// aapt resource value: 0x7f02012d
-			public const int notification_bg_normal = 2130837805;
-			
-			// aapt resource value: 0x7f02012e
-			public const int notification_bg_normal_pressed = 2130837806;
-			
-			// aapt resource value: 0x7f02012f
-			public const int notification_icon_background = 2130837807;
-			
-			// aapt resource value: 0x7f020136
-			public const int notification_template_icon_bg = 2130837814;
-			
-			// aapt resource value: 0x7f020137
-			public const int notification_template_icon_low_bg = 2130837815;
-			
-			// aapt resource value: 0x7f020130
-			public const int notification_tile_bg = 2130837808;
-			
-			// aapt resource value: 0x7f020131
-			public const int notify_panel_notification_icon_bg = 2130837809;
+			public const int notification_icon_background = 2130837805;
 			
 			// aapt resource value: 0x7f020132
-			public const int Prev = 2130837810;
+			public const int notification_template_icon_bg = 2130837810;
 			
 			// aapt resource value: 0x7f020133
-			public const int tooltip_frame_dark = 2130837811;
+			public const int notification_template_icon_low_bg = 2130837811;
 			
-			// aapt resource value: 0x7f020134
-			public const int tooltip_frame_light = 2130837812;
+			// aapt resource value: 0x7f02012e
+			public const int notification_tile_bg = 2130837806;
 			
-			// aapt resource value: 0x7f020135
-			public const int Up = 2130837813;
+			// aapt resource value: 0x7f02012f
+			public const int notify_panel_notification_icon_bg = 2130837807;
+			
+			// aapt resource value: 0x7f020130
+			public const int tooltip_frame_dark = 2130837808;
+			
+			// aapt resource value: 0x7f020131
+			public const int tooltip_frame_light = 2130837809;
 			
 			static Drawable()
 			{
@@ -16187,41 +13913,41 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0039
 			public const int SYM = 2131427385;
 			
-			// aapt resource value: 0x7f0b00c4
-			public const int action0 = 2131427524;
+			// aapt resource value: 0x7f0b00bc
+			public const int action0 = 2131427516;
 			
-			// aapt resource value: 0x7f0b0080
-			public const int action_bar = 2131427456;
+			// aapt resource value: 0x7f0b007e
+			public const int action_bar = 2131427454;
 			
 			// aapt resource value: 0x7f0b0001
 			public const int action_bar_activity_content = 2131427329;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int action_bar_container = 2131427455;
+			// aapt resource value: 0x7f0b007d
+			public const int action_bar_container = 2131427453;
 			
-			// aapt resource value: 0x7f0b007b
-			public const int action_bar_root = 2131427451;
+			// aapt resource value: 0x7f0b0079
+			public const int action_bar_root = 2131427449;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_bar_spinner = 2131427330;
 			
-			// aapt resource value: 0x7f0b005f
-			public const int action_bar_subtitle = 2131427423;
+			// aapt resource value: 0x7f0b005d
+			public const int action_bar_subtitle = 2131427421;
 			
-			// aapt resource value: 0x7f0b005e
-			public const int action_bar_title = 2131427422;
+			// aapt resource value: 0x7f0b005c
+			public const int action_bar_title = 2131427420;
 			
-			// aapt resource value: 0x7f0b00c1
-			public const int action_container = 2131427521;
+			// aapt resource value: 0x7f0b00b9
+			public const int action_container = 2131427513;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int action_context_bar = 2131427457;
+			// aapt resource value: 0x7f0b007f
+			public const int action_context_bar = 2131427455;
 			
-			// aapt resource value: 0x7f0b00c8
-			public const int action_divider = 2131427528;
+			// aapt resource value: 0x7f0b00c0
+			public const int action_divider = 2131427520;
 			
-			// aapt resource value: 0x7f0b00c2
-			public const int action_image = 2131427522;
+			// aapt resource value: 0x7f0b00ba
+			public const int action_image = 2131427514;
 			
 			// aapt resource value: 0x7f0b0003
 			public const int action_menu_divider = 2131427331;
@@ -16229,29 +13955,29 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0004
 			public const int action_menu_presenter = 2131427332;
 			
-			// aapt resource value: 0x7f0b007d
-			public const int action_mode_bar = 2131427453;
+			// aapt resource value: 0x7f0b007b
+			public const int action_mode_bar = 2131427451;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int action_mode_bar_stub = 2131427452;
+			// aapt resource value: 0x7f0b007a
+			public const int action_mode_bar_stub = 2131427450;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int action_mode_close_button = 2131427424;
+			// aapt resource value: 0x7f0b005e
+			public const int action_mode_close_button = 2131427422;
 			
-			// aapt resource value: 0x7f0b00c3
-			public const int action_text = 2131427523;
+			// aapt resource value: 0x7f0b00bb
+			public const int action_text = 2131427515;
 			
-			// aapt resource value: 0x7f0b00d1
-			public const int actions = 2131427537;
+			// aapt resource value: 0x7f0b00c9
+			public const int actions = 2131427529;
 			
-			// aapt resource value: 0x7f0b0061
-			public const int activity_chooser_view_content = 2131427425;
+			// aapt resource value: 0x7f0b005f
+			public const int activity_chooser_view_content = 2131427423;
 			
 			// aapt resource value: 0x7f0b0029
 			public const int add = 2131427369;
 			
-			// aapt resource value: 0x7f0b0074
-			public const int alertTitle = 2131427444;
+			// aapt resource value: 0x7f0b0072
+			public const int alertTitle = 2131427442;
 			
 			// aapt resource value: 0x7f0b0054
 			public const int all = 2131427412;
@@ -16274,17 +14000,17 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b003f
 			public const int bottom = 2131427391;
 			
-			// aapt resource value: 0x7f0b008f
-			public const int bottomtab_navarea = 2131427471;
+			// aapt resource value: 0x7f0b008d
+			public const int bottomtab_navarea = 2131427469;
 			
-			// aapt resource value: 0x7f0b0090
-			public const int bottomtab_tabbar = 2131427472;
+			// aapt resource value: 0x7f0b008e
+			public const int bottomtab_tabbar = 2131427470;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int buttonPanel = 2131427431;
+			// aapt resource value: 0x7f0b0065
+			public const int buttonPanel = 2131427429;
 			
-			// aapt resource value: 0x7f0b00c5
-			public const int cancel_action = 2131427525;
+			// aapt resource value: 0x7f0b00bd
+			public const int cancel_action = 2131427517;
 			
 			// aapt resource value: 0x7f0b0047
 			public const int center = 2131427399;
@@ -16295,11 +14021,11 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0049
 			public const int center_vertical = 2131427401;
 			
-			// aapt resource value: 0x7f0b0077
-			public const int checkbox = 2131427447;
+			// aapt resource value: 0x7f0b0075
+			public const int checkbox = 2131427445;
 			
-			// aapt resource value: 0x7f0b00cd
-			public const int chronometer = 2131427533;
+			// aapt resource value: 0x7f0b00c5
+			public const int chronometer = 2131427525;
 			
 			// aapt resource value: 0x7f0b0050
 			public const int clip_horizontal = 2131427408;
@@ -16310,56 +14036,56 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b003b
 			public const int collapseActionView = 2131427387;
 			
-			// aapt resource value: 0x7f0b0093
-			public const int container = 2131427475;
+			// aapt resource value: 0x7f0b0091
+			public const int container = 2131427473;
 			
-			// aapt resource value: 0x7f0b00de
-			public const int contentFrame = 2131427550;
+			// aapt resource value: 0x7f0b00d6
+			public const int contentFrame = 2131427542;
 			
-			// aapt resource value: 0x7f0b006a
-			public const int contentPanel = 2131427434;
+			// aapt resource value: 0x7f0b0068
+			public const int contentPanel = 2131427432;
+			
+			// aapt resource value: 0x7f0b0092
+			public const int coordinator = 2131427474;
+			
+			// aapt resource value: 0x7f0b006f
+			public const int custom = 2131427439;
+			
+			// aapt resource value: 0x7f0b006e
+			public const int customPanel = 2131427438;
+			
+			// aapt resource value: 0x7f0b007c
+			public const int decor_content_parent = 2131427452;
+			
+			// aapt resource value: 0x7f0b0062
+			public const int default_activity_button = 2131427426;
 			
 			// aapt resource value: 0x7f0b0094
-			public const int coordinator = 2131427476;
-			
-			// aapt resource value: 0x7f0b0071
-			public const int custom = 2131427441;
-			
-			// aapt resource value: 0x7f0b0070
-			public const int customPanel = 2131427440;
-			
-			// aapt resource value: 0x7f0b007e
-			public const int decor_content_parent = 2131427454;
-			
-			// aapt resource value: 0x7f0b0064
-			public const int default_activity_button = 2131427428;
-			
-			// aapt resource value: 0x7f0b0096
-			public const int design_bottom_sheet = 2131427478;
-			
-			// aapt resource value: 0x7f0b009d
-			public const int design_menu_item_action_area = 2131427485;
-			
-			// aapt resource value: 0x7f0b009c
-			public const int design_menu_item_action_area_stub = 2131427484;
+			public const int design_bottom_sheet = 2131427476;
 			
 			// aapt resource value: 0x7f0b009b
-			public const int design_menu_item_text = 2131427483;
+			public const int design_menu_item_action_area = 2131427483;
 			
 			// aapt resource value: 0x7f0b009a
-			public const int design_navigation_view = 2131427482;
+			public const int design_menu_item_action_area_stub = 2131427482;
+			
+			// aapt resource value: 0x7f0b0099
+			public const int design_menu_item_text = 2131427481;
+			
+			// aapt resource value: 0x7f0b0098
+			public const int design_navigation_view = 2131427480;
 			
 			// aapt resource value: 0x7f0b0022
 			public const int disableHome = 2131427362;
 			
-			// aapt resource value: 0x7f0b0082
-			public const int edit_query = 2131427458;
+			// aapt resource value: 0x7f0b0080
+			public const int edit_query = 2131427456;
 			
 			// aapt resource value: 0x7f0b0032
 			public const int end = 2131427378;
 			
-			// aapt resource value: 0x7f0b00d3
-			public const int end_padder = 2131427539;
+			// aapt resource value: 0x7f0b00cb
+			public const int end_padder = 2131427531;
 			
 			// aapt resource value: 0x7f0b0041
 			public const int enterAlways = 2131427393;
@@ -16370,11 +14096,11 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0043
 			public const int exitUntilCollapsed = 2131427395;
 			
-			// aapt resource value: 0x7f0b0062
-			public const int expand_activities_button = 2131427426;
+			// aapt resource value: 0x7f0b0060
+			public const int expand_activities_button = 2131427424;
 			
-			// aapt resource value: 0x7f0b0076
-			public const int expanded_menu = 2131427446;
+			// aapt resource value: 0x7f0b0074
+			public const int expanded_menu = 2131427444;
 			
 			// aapt resource value: 0x7f0b0052
 			public const int fill = 2131427410;
@@ -16388,11 +14114,11 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0056
 			public const int @fixed = 2131427414;
 			
-			// aapt resource value: 0x7f0b009f
-			public const int flyoutcontent_appbar = 2131427487;
+			// aapt resource value: 0x7f0b009d
+			public const int flyoutcontent_appbar = 2131427485;
 			
-			// aapt resource value: 0x7f0b00a0
-			public const int flyoutcontent_recycler = 2131427488;
+			// aapt resource value: 0x7f0b009e
+			public const int flyoutcontent_recycler = 2131427486;
 			
 			// aapt resource value: 0x7f0b005a
 			public const int forever = 2131427418;
@@ -16406,26 +14132,20 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0023
 			public const int homeAsUp = 2131427363;
 			
-			// aapt resource value: 0x7f0b005c
-			public const int horizontal = 2131427420;
+			// aapt resource value: 0x7f0b0064
+			public const int icon = 2131427428;
 			
-			// aapt resource value: 0x7f0b0066
-			public const int icon = 2131427430;
-			
-			// aapt resource value: 0x7f0b00d2
-			public const int icon_group = 2131427538;
+			// aapt resource value: 0x7f0b00ca
+			public const int icon_group = 2131427530;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int ifRoom = 2131427388;
 			
-			// aapt resource value: 0x7f0b0063
-			public const int image = 2131427427;
+			// aapt resource value: 0x7f0b0061
+			public const int image = 2131427425;
 			
-			// aapt resource value: 0x7f0b00a6
-			public const int indicator = 2131427494;
-			
-			// aapt resource value: 0x7f0b00ce
-			public const int info = 2131427534;
+			// aapt resource value: 0x7f0b00c6
+			public const int info = 2131427526;
 			
 			// aapt resource value: 0x7f0b005b
 			public const int italic = 2131427419;
@@ -16433,8 +14153,8 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0000
 			public const int item_touch_helper_previous_elevation = 2131427328;
 			
-			// aapt resource value: 0x7f0b0092
-			public const int largeLabel = 2131427474;
+			// aapt resource value: 0x7f0b0090
+			public const int largeLabel = 2131427472;
 			
 			// aapt resource value: 0x7f0b004b
 			public const int left = 2131427403;
@@ -16448,29 +14168,29 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b001f
 			public const int listMode = 2131427359;
 			
-			// aapt resource value: 0x7f0b0065
-			public const int list_item = 2131427429;
+			// aapt resource value: 0x7f0b0063
+			public const int list_item = 2131427427;
 			
-			// aapt resource value: 0x7f0b00d4
-			public const int main_appbar = 2131427540;
+			// aapt resource value: 0x7f0b00cc
+			public const int main_appbar = 2131427532;
 			
-			// aapt resource value: 0x7f0b00d7
-			public const int main_scrollview = 2131427543;
+			// aapt resource value: 0x7f0b00cf
+			public const int main_scrollview = 2131427535;
 			
-			// aapt resource value: 0x7f0b00d6
-			public const int main_tablayout = 2131427542;
+			// aapt resource value: 0x7f0b00ce
+			public const int main_tablayout = 2131427534;
+			
+			// aapt resource value: 0x7f0b00cd
+			public const int main_toolbar = 2131427533;
+			
+			// aapt resource value: 0x7f0b00d8
+			public const int masked = 2131427544;
+			
+			// aapt resource value: 0x7f0b00bf
+			public const int media_actions = 2131427519;
 			
 			// aapt resource value: 0x7f0b00d5
-			public const int main_toolbar = 2131427541;
-			
-			// aapt resource value: 0x7f0b00e0
-			public const int masked = 2131427552;
-			
-			// aapt resource value: 0x7f0b00c7
-			public const int media_actions = 2131427527;
-			
-			// aapt resource value: 0x7f0b00dd
-			public const int message = 2131427549;
+			public const int message = 2131427541;
 			
 			// aapt resource value: 0x7f0b0033
 			public const int middle = 2131427379;
@@ -16478,95 +14198,89 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0055
 			public const int mini = 2131427413;
 			
-			// aapt resource value: 0x7f0b00b3
-			public const int mr_art = 2131427507;
+			// aapt resource value: 0x7f0b00ab
+			public const int mr_art = 2131427499;
+			
+			// aapt resource value: 0x7f0b00a0
+			public const int mr_chooser_list = 2131427488;
+			
+			// aapt resource value: 0x7f0b00a3
+			public const int mr_chooser_route_desc = 2131427491;
+			
+			// aapt resource value: 0x7f0b00a1
+			public const int mr_chooser_route_icon = 2131427489;
+			
+			// aapt resource value: 0x7f0b00a2
+			public const int mr_chooser_route_name = 2131427490;
+			
+			// aapt resource value: 0x7f0b009f
+			public const int mr_chooser_title = 2131427487;
 			
 			// aapt resource value: 0x7f0b00a8
-			public const int mr_chooser_list = 2131427496;
-			
-			// aapt resource value: 0x7f0b00ab
-			public const int mr_chooser_route_desc = 2131427499;
-			
-			// aapt resource value: 0x7f0b00a9
-			public const int mr_chooser_route_icon = 2131427497;
-			
-			// aapt resource value: 0x7f0b00aa
-			public const int mr_chooser_route_name = 2131427498;
-			
-			// aapt resource value: 0x7f0b00a7
-			public const int mr_chooser_title = 2131427495;
-			
-			// aapt resource value: 0x7f0b00b0
-			public const int mr_close = 2131427504;
-			
-			// aapt resource value: 0x7f0b00b6
-			public const int mr_control_divider = 2131427510;
-			
-			// aapt resource value: 0x7f0b00bc
-			public const int mr_control_playback_ctrl = 2131427516;
-			
-			// aapt resource value: 0x7f0b00bf
-			public const int mr_control_subtitle = 2131427519;
-			
-			// aapt resource value: 0x7f0b00be
-			public const int mr_control_title = 2131427518;
-			
-			// aapt resource value: 0x7f0b00bd
-			public const int mr_control_title_container = 2131427517;
-			
-			// aapt resource value: 0x7f0b00b1
-			public const int mr_custom_control = 2131427505;
-			
-			// aapt resource value: 0x7f0b00b2
-			public const int mr_default_control = 2131427506;
-			
-			// aapt resource value: 0x7f0b00ad
-			public const int mr_dialog_area = 2131427501;
-			
-			// aapt resource value: 0x7f0b00ac
-			public const int mr_expandable_area = 2131427500;
-			
-			// aapt resource value: 0x7f0b00c0
-			public const int mr_group_expand_collapse = 2131427520;
-			
-			// aapt resource value: 0x7f0b00b4
-			public const int mr_media_main_control = 2131427508;
-			
-			// aapt resource value: 0x7f0b00af
-			public const int mr_name = 2131427503;
-			
-			// aapt resource value: 0x7f0b00b5
-			public const int mr_playback_control = 2131427509;
+			public const int mr_close = 2131427496;
 			
 			// aapt resource value: 0x7f0b00ae
-			public const int mr_title_bar = 2131427502;
+			public const int mr_control_divider = 2131427502;
+			
+			// aapt resource value: 0x7f0b00b4
+			public const int mr_control_playback_ctrl = 2131427508;
 			
 			// aapt resource value: 0x7f0b00b7
-			public const int mr_volume_control = 2131427511;
+			public const int mr_control_subtitle = 2131427511;
+			
+			// aapt resource value: 0x7f0b00b6
+			public const int mr_control_title = 2131427510;
+			
+			// aapt resource value: 0x7f0b00b5
+			public const int mr_control_title_container = 2131427509;
+			
+			// aapt resource value: 0x7f0b00a9
+			public const int mr_custom_control = 2131427497;
+			
+			// aapt resource value: 0x7f0b00aa
+			public const int mr_default_control = 2131427498;
+			
+			// aapt resource value: 0x7f0b00a5
+			public const int mr_dialog_area = 2131427493;
+			
+			// aapt resource value: 0x7f0b00a4
+			public const int mr_expandable_area = 2131427492;
 			
 			// aapt resource value: 0x7f0b00b8
-			public const int mr_volume_group_list = 2131427512;
+			public const int mr_group_expand_collapse = 2131427512;
 			
-			// aapt resource value: 0x7f0b00ba
-			public const int mr_volume_item_icon = 2131427514;
+			// aapt resource value: 0x7f0b00ac
+			public const int mr_media_main_control = 2131427500;
 			
-			// aapt resource value: 0x7f0b00bb
-			public const int mr_volume_slider = 2131427515;
+			// aapt resource value: 0x7f0b00a7
+			public const int mr_name = 2131427495;
+			
+			// aapt resource value: 0x7f0b00ad
+			public const int mr_playback_control = 2131427501;
+			
+			// aapt resource value: 0x7f0b00a6
+			public const int mr_title_bar = 2131427494;
+			
+			// aapt resource value: 0x7f0b00af
+			public const int mr_volume_control = 2131427503;
+			
+			// aapt resource value: 0x7f0b00b0
+			public const int mr_volume_group_list = 2131427504;
+			
+			// aapt resource value: 0x7f0b00b2
+			public const int mr_volume_item_icon = 2131427506;
+			
+			// aapt resource value: 0x7f0b00b3
+			public const int mr_volume_slider = 2131427507;
 			
 			// aapt resource value: 0x7f0b002a
 			public const int multiply = 2131427370;
 			
-			// aapt resource value: 0x7f0b0099
-			public const int navigation_header_container = 2131427481;
+			// aapt resource value: 0x7f0b0097
+			public const int navigation_header_container = 2131427479;
 			
 			// aapt resource value: 0x7f0b003d
 			public const int never = 2131427389;
-			
-			// aapt resource value: 0x7f0b00a4
-			public const int next = 2131427492;
-			
-			// aapt resource value: 0x7f0b00a5
-			public const int nextArrow = 2131427493;
 			
 			// aapt resource value: 0x7f0b0024
 			public const int none = 2131427364;
@@ -16574,23 +14288,20 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0020
 			public const int normal = 2131427360;
 			
-			// aapt resource value: 0x7f0b00d0
-			public const int notification_background = 2131427536;
+			// aapt resource value: 0x7f0b00c8
+			public const int notification_background = 2131427528;
 			
-			// aapt resource value: 0x7f0b00ca
-			public const int notification_main_column = 2131427530;
+			// aapt resource value: 0x7f0b00c2
+			public const int notification_main_column = 2131427522;
 			
-			// aapt resource value: 0x7f0b00c9
-			public const int notification_main_column_container = 2131427529;
-			
-			// aapt resource value: 0x7f0b00a1
-			public const int pager = 2131427489;
+			// aapt resource value: 0x7f0b00c1
+			public const int notification_main_column_container = 2131427521;
 			
 			// aapt resource value: 0x7f0b004e
 			public const int parallax = 2131427406;
 			
-			// aapt resource value: 0x7f0b0069
-			public const int parentPanel = 2131427433;
+			// aapt resource value: 0x7f0b0067
+			public const int parentPanel = 2131427431;
 			
 			// aapt resource value: 0x7f0b000b
 			public const int parent_matrix = 2131427339;
@@ -16598,29 +14309,23 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b004f
 			public const int pin = 2131427407;
 			
-			// aapt resource value: 0x7f0b00a2
-			public const int prev = 2131427490;
-			
-			// aapt resource value: 0x7f0b00a3
-			public const int prevArrow = 2131427491;
-			
 			// aapt resource value: 0x7f0b0006
 			public const int progress_circular = 2131427334;
 			
 			// aapt resource value: 0x7f0b0007
 			public const int progress_horizontal = 2131427335;
 			
-			// aapt resource value: 0x7f0b0079
-			public const int radio = 2131427449;
+			// aapt resource value: 0x7f0b0077
+			public const int radio = 2131427447;
 			
 			// aapt resource value: 0x7f0b004c
 			public const int right = 2131427404;
 			
-			// aapt resource value: 0x7f0b00cf
-			public const int right_icon = 2131427535;
+			// aapt resource value: 0x7f0b00c7
+			public const int right_icon = 2131427527;
 			
-			// aapt resource value: 0x7f0b00cb
-			public const int right_side = 2131427531;
+			// aapt resource value: 0x7f0b00c3
+			public const int right_side = 2131427523;
 			
 			// aapt resource value: 0x7f0b000c
 			public const int save_image_matrix = 2131427340;
@@ -16637,62 +14342,62 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0044
 			public const int scroll = 2131427396;
 			
-			// aapt resource value: 0x7f0b006f
-			public const int scrollIndicatorDown = 2131427439;
+			// aapt resource value: 0x7f0b006d
+			public const int scrollIndicatorDown = 2131427437;
 			
-			// aapt resource value: 0x7f0b006b
-			public const int scrollIndicatorUp = 2131427435;
+			// aapt resource value: 0x7f0b0069
+			public const int scrollIndicatorUp = 2131427433;
 			
-			// aapt resource value: 0x7f0b006c
-			public const int scrollView = 2131427436;
+			// aapt resource value: 0x7f0b006a
+			public const int scrollView = 2131427434;
 			
 			// aapt resource value: 0x7f0b0057
 			public const int scrollable = 2131427415;
 			
-			// aapt resource value: 0x7f0b0084
-			public const int search_badge = 2131427460;
+			// aapt resource value: 0x7f0b0082
+			public const int search_badge = 2131427458;
+			
+			// aapt resource value: 0x7f0b0081
+			public const int search_bar = 2131427457;
 			
 			// aapt resource value: 0x7f0b0083
-			public const int search_bar = 2131427459;
-			
-			// aapt resource value: 0x7f0b0085
-			public const int search_button = 2131427461;
-			
-			// aapt resource value: 0x7f0b008a
-			public const int search_close_btn = 2131427466;
-			
-			// aapt resource value: 0x7f0b0086
-			public const int search_edit_frame = 2131427462;
-			
-			// aapt resource value: 0x7f0b008c
-			public const int search_go_btn = 2131427468;
-			
-			// aapt resource value: 0x7f0b0087
-			public const int search_mag_icon = 2131427463;
+			public const int search_button = 2131427459;
 			
 			// aapt resource value: 0x7f0b0088
-			public const int search_plate = 2131427464;
+			public const int search_close_btn = 2131427464;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int search_src_text = 2131427465;
+			// aapt resource value: 0x7f0b0084
+			public const int search_edit_frame = 2131427460;
 			
-			// aapt resource value: 0x7f0b008d
-			public const int search_voice_btn = 2131427469;
+			// aapt resource value: 0x7f0b008a
+			public const int search_go_btn = 2131427466;
 			
-			// aapt resource value: 0x7f0b008e
-			public const int select_dialog_listview = 2131427470;
+			// aapt resource value: 0x7f0b0085
+			public const int search_mag_icon = 2131427461;
 			
-			// aapt resource value: 0x7f0b00d8
-			public const int shellcontent_appbar = 2131427544;
+			// aapt resource value: 0x7f0b0086
+			public const int search_plate = 2131427462;
 			
-			// aapt resource value: 0x7f0b00da
-			public const int shellcontent_scrollview = 2131427546;
+			// aapt resource value: 0x7f0b0087
+			public const int search_src_text = 2131427463;
 			
-			// aapt resource value: 0x7f0b00d9
-			public const int shellcontent_toolbar = 2131427545;
+			// aapt resource value: 0x7f0b008b
+			public const int search_voice_btn = 2131427467;
 			
-			// aapt resource value: 0x7f0b0078
-			public const int shortcut = 2131427448;
+			// aapt resource value: 0x7f0b008c
+			public const int select_dialog_listview = 2131427468;
+			
+			// aapt resource value: 0x7f0b00d0
+			public const int shellcontent_appbar = 2131427536;
+			
+			// aapt resource value: 0x7f0b00d2
+			public const int shellcontent_scrollview = 2131427538;
+			
+			// aapt resource value: 0x7f0b00d1
+			public const int shellcontent_toolbar = 2131427537;
+			
+			// aapt resource value: 0x7f0b0076
+			public const int shortcut = 2131427446;
 			
 			// aapt resource value: 0x7f0b0025
 			public const int showCustom = 2131427365;
@@ -16703,23 +14408,23 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0027
 			public const int showTitle = 2131427367;
 			
-			// aapt resource value: 0x7f0b00db
-			public const int sliding_tabs = 2131427547;
+			// aapt resource value: 0x7f0b00d3
+			public const int sliding_tabs = 2131427539;
 			
-			// aapt resource value: 0x7f0b0091
-			public const int smallLabel = 2131427473;
+			// aapt resource value: 0x7f0b008f
+			public const int smallLabel = 2131427471;
 			
-			// aapt resource value: 0x7f0b0098
-			public const int snackbar_action = 2131427480;
+			// aapt resource value: 0x7f0b0096
+			public const int snackbar_action = 2131427478;
 			
-			// aapt resource value: 0x7f0b0097
-			public const int snackbar_text = 2131427479;
+			// aapt resource value: 0x7f0b0095
+			public const int snackbar_text = 2131427477;
 			
 			// aapt resource value: 0x7f0b0045
 			public const int snap = 2131427397;
 			
-			// aapt resource value: 0x7f0b0068
-			public const int spacer = 2131427432;
+			// aapt resource value: 0x7f0b0066
+			public const int spacer = 2131427430;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int split_action_bar = 2131427336;
@@ -16736,14 +14441,14 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b004d
 			public const int start = 2131427405;
 			
-			// aapt resource value: 0x7f0b00c6
-			public const int status_bar_latest_event_content = 2131427526;
+			// aapt resource value: 0x7f0b00be
+			public const int status_bar_latest_event_content = 2131427518;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int submenuarrow = 2131427450;
+			// aapt resource value: 0x7f0b0078
+			public const int submenuarrow = 2131427448;
 			
-			// aapt resource value: 0x7f0b008b
-			public const int submit_area = 2131427467;
+			// aapt resource value: 0x7f0b0089
+			public const int submit_area = 2131427465;
 			
 			// aapt resource value: 0x7f0b0021
 			public const int tabMode = 2131427361;
@@ -16757,14 +14462,14 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b001b
 			public const int text2 = 2131427355;
 			
-			// aapt resource value: 0x7f0b006e
-			public const int textSpacerNoButtons = 2131427438;
+			// aapt resource value: 0x7f0b006c
+			public const int textSpacerNoButtons = 2131427436;
 			
-			// aapt resource value: 0x7f0b006d
-			public const int textSpacerNoTitle = 2131427437;
+			// aapt resource value: 0x7f0b006b
+			public const int textSpacerNoTitle = 2131427435;
 			
-			// aapt resource value: 0x7f0b009e
-			public const int text_input_password_toggle = 2131427486;
+			// aapt resource value: 0x7f0b009c
+			public const int text_input_password_toggle = 2131427484;
 			
 			// aapt resource value: 0x7f0b0014
 			public const int textinput_counter = 2131427348;
@@ -16772,29 +14477,29 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0015
 			public const int textinput_error = 2131427349;
 			
-			// aapt resource value: 0x7f0b00cc
-			public const int time = 2131427532;
+			// aapt resource value: 0x7f0b00c4
+			public const int time = 2131427524;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int title = 2131427356;
 			
-			// aapt resource value: 0x7f0b0075
-			public const int titleDividerNoCustom = 2131427445;
-			
 			// aapt resource value: 0x7f0b0073
-			public const int title_template = 2131427443;
+			public const int titleDividerNoCustom = 2131427443;
 			
-			// aapt resource value: 0x7f0b00dc
-			public const int toolbar = 2131427548;
+			// aapt resource value: 0x7f0b0071
+			public const int title_template = 2131427441;
+			
+			// aapt resource value: 0x7f0b00d4
+			public const int toolbar = 2131427540;
 			
 			// aapt resource value: 0x7f0b0040
 			public const int top = 2131427392;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int topPanel = 2131427442;
+			// aapt resource value: 0x7f0b0070
+			public const int topPanel = 2131427440;
 			
-			// aapt resource value: 0x7f0b0095
-			public const int touch_outside = 2131427477;
+			// aapt resource value: 0x7f0b0093
+			public const int touch_outside = 2131427475;
 			
 			// aapt resource value: 0x7f0b000f
 			public const int transition_current_scene = 2131427343;
@@ -16820,17 +14525,14 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0b0028
 			public const int useLogo = 2131427368;
 			
-			// aapt resource value: 0x7f0b005d
-			public const int vertical = 2131427421;
-			
 			// aapt resource value: 0x7f0b0016
 			public const int view_offset_helper = 2131427350;
 			
-			// aapt resource value: 0x7f0b00df
-			public const int visible = 2131427551;
+			// aapt resource value: 0x7f0b00d7
+			public const int visible = 2131427543;
 			
-			// aapt resource value: 0x7f0b00b9
-			public const int volume_item_container = 2131427513;
+			// aapt resource value: 0x7f0b00b1
+			public const int volume_item_container = 2131427505;
 			
 			// aapt resource value: 0x7f0b003e
 			public const int withText = 2131427390;
@@ -16877,9 +14579,6 @@ namespace HodlWallet2.Droid
 			
 			// aapt resource value: 0x7f0c0006
 			public const int config_tooltipAnimTime = 2131492870;
-			
-			// aapt resource value: 0x7f0c0010
-			public const int default_circle_indicator_orientation = 2131492880;
 			
 			// aapt resource value: 0x7f0c0007
 			public const int design_snackbar_text_max_lines = 2131492871;
@@ -17061,106 +14760,100 @@ namespace HodlWallet2.Droid
 			public const int FlyoutContent = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int horizontal_viewpager = 2130968618;
+			public const int mr_chooser_dialog = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int mr_chooser_dialog = 2130968619;
+			public const int mr_chooser_list_item = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int mr_chooser_list_item = 2130968620;
+			public const int mr_controller_material_dialog_b = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int mr_controller_material_dialog_b = 2130968621;
+			public const int mr_controller_volume_item = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int mr_controller_volume_item = 2130968622;
+			public const int mr_playback_control = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int mr_playback_control = 2130968623;
+			public const int mr_volume_control = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int mr_volume_control = 2130968624;
+			public const int notification_action = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int notification_action = 2130968625;
+			public const int notification_action_tombstone = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int notification_action_tombstone = 2130968626;
+			public const int notification_media_action = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int notification_media_action = 2130968627;
+			public const int notification_media_cancel_action = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int notification_media_cancel_action = 2130968628;
+			public const int notification_template_big_media = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int notification_template_big_media = 2130968629;
+			public const int notification_template_big_media_custom = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int notification_template_big_media_custom = 2130968630;
+			public const int notification_template_big_media_narrow = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int notification_template_big_media_narrow = 2130968631;
+			public const int notification_template_big_media_narrow_custom = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int notification_template_big_media_narrow_custom = 2130968632;
+			public const int notification_template_custom_big = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int notification_template_custom_big = 2130968633;
+			public const int notification_template_icon_group = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int notification_template_icon_group = 2130968634;
+			public const int notification_template_lines_media = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int notification_template_lines_media = 2130968635;
+			public const int notification_template_media = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int notification_template_media = 2130968636;
+			public const int notification_template_media_custom = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int notification_template_media_custom = 2130968637;
+			public const int notification_template_part_chronometer = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int notification_template_part_chronometer = 2130968638;
+			public const int notification_template_part_time = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int notification_template_part_time = 2130968639;
+			public const int RootLayout = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int RootLayout = 2130968640;
+			public const int select_dialog_item_material = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int select_dialog_item_material = 2130968641;
+			public const int select_dialog_multichoice_material = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int select_dialog_multichoice_material = 2130968642;
+			public const int select_dialog_singlechoice_material = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int select_dialog_singlechoice_material = 2130968643;
+			public const int ShellContent = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int ShellContent = 2130968644;
+			public const int support_simple_spinner_dropdown_item = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int support_simple_spinner_dropdown_item = 2130968645;
+			public const int Tabbar = 2130968645;
 			
 			// aapt resource value: 0x7f040046
-			public const int Tabbar = 2130968646;
+			public const int Toolbar = 2130968646;
 			
 			// aapt resource value: 0x7f040047
-			public const int Toolbar = 2130968647;
+			public const int tooltip = 2130968647;
 			
 			// aapt resource value: 0x7f040048
-			public const int tooltip = 2130968648;
+			public const int zxingscanneractivitylayout = 2130968648;
 			
 			// aapt resource value: 0x7f040049
-			public const int vertical_viewpager = 2130968649;
-			
-			// aapt resource value: 0x7f04004a
-			public const int zxingscanneractivitylayout = 2130968650;
-			
-			// aapt resource value: 0x7f04004b
-			public const int zxingscannerfragmentlayout = 2130968651;
+			public const int zxingscannerfragmentlayout = 2130968649;
 			
 			static Layout()
 			{
@@ -17417,8 +15110,8 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0d016e
 			public const int Animation_Design_BottomSheetDialog = 2131558766;
 			
-			// aapt resource value: 0x7f0d0194
-			public const int AppCompatDialogStyle = 2131558804;
+			// aapt resource value: 0x7f0d0191
+			public const int AppCompatDialogStyle = 2131558801;
 			
 			// aapt resource value: 0x7f0d00a9
 			public const int Base_AlertDialog_AppCompat = 2131558569;
@@ -17921,11 +15614,11 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0d000e
 			public const int CardView_Light = 2131558414;
 			
-			// aapt resource value: 0x7f0d0192
-			public const int MainTheme = 2131558802;
+			// aapt resource value: 0x7f0d018f
+			public const int MainTheme = 2131558799;
 			
-			// aapt resource value: 0x7f0d0193
-			public const int MainTheme_Base = 2131558803;
+			// aapt resource value: 0x7f0d0190
+			public const int MainTheme_Base = 2131558800;
 			
 			// aapt resource value: 0x7f0d002d
 			public const int Platform_AppCompat = 2131558445;
@@ -18317,9 +16010,6 @@ namespace HodlWallet2.Droid
 			// aapt resource value: 0x7f0d0006
 			public const int Theme_MediaRouter_LightControlPanel = 2131558406;
 			
-			// aapt resource value: 0x7f0d018f
-			public const int Theme_PageIndicatorDefaults = 2131558799;
-			
 			// aapt resource value: 0x7f0d0116
 			public const int ThemeOverlay_AppCompat = 2131558678;
 			
@@ -18346,9 +16036,6 @@ namespace HodlWallet2.Droid
 			
 			// aapt resource value: 0x7f0d0008
 			public const int ThemeOverlay_MediaRouter_Light = 2131558408;
-			
-			// aapt resource value: 0x7f0d0190
-			public const int Widget = 2131558800;
 			
 			// aapt resource value: 0x7f0d011d
 			public const int Widget_AppCompat_ActionBar = 2131558685;
@@ -18565,9 +16252,6 @@ namespace HodlWallet2.Droid
 			
 			// aapt resource value: 0x7f0d0164
 			public const int Widget_AppCompat_Toolbar_Button_Navigation = 2131558756;
-			
-			// aapt resource value: 0x7f0d0191
-			public const int Widget_CirclePageIndicator = 2131558801;
 			
 			// aapt resource value: 0x7f0d018c
 			public const int Widget_Compat_NotificationActionContainer = 2131558796;
@@ -19559,40 +17243,6 @@ namespace HodlWallet2.Droid
 			
 			// aapt resource value: 11
 			public const int CardView_contentPaddingTop = 11;
-			
-			public static int[] CirclePageIndicator = new int[] {
-					2130772346,
-					2130772347,
-					2130772348,
-					2130772349,
-					2130772350,
-					2130772351,
-					2130772352,
-					2130772353};
-			
-			// aapt resource value: 0
-			public const int CirclePageIndicator_vpiCentered = 0;
-			
-			// aapt resource value: 5
-			public const int CirclePageIndicator_vpiFillColor = 5;
-			
-			// aapt resource value: 2
-			public const int CirclePageIndicator_vpiOrientation = 2;
-			
-			// aapt resource value: 1
-			public const int CirclePageIndicator_vpiPageColor = 1;
-			
-			// aapt resource value: 4
-			public const int CirclePageIndicator_vpiRadius = 4;
-			
-			// aapt resource value: 3
-			public const int CirclePageIndicator_vpiSnap = 3;
-			
-			// aapt resource value: 6
-			public const int CirclePageIndicator_vpiStrokeColor = 6;
-			
-			// aapt resource value: 7
-			public const int CirclePageIndicator_vpiStrokeWidth = 7;
 			
 			public static int[] CollapsingToolbarLayout = new int[] {
 					2130772005,
@@ -20813,12 +18463,6 @@ namespace HodlWallet2.Droid
 			
 			// aapt resource value: 2
 			public const int ViewBackgroundHelper_backgroundTintMode = 2;
-			
-			public static int[] ViewPagerIndicator = new int[] {
-					2130772345};
-			
-			// aapt resource value: 0
-			public const int ViewPagerIndicator_vpiCirclePageIndicatorStyle = 0;
 			
 			public static int[] ViewStubCompat = new int[] {
 					16842960,

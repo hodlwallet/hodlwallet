@@ -38,16 +38,15 @@ namespace HodlWallet2.Droid
 //
 //            More info at https://www.mvvmcross.com/documentation/fundamentals/inversion-of-control-ioc
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IWalletService, WalletService>();
-            var walletService = Mvx.IoCProvider.Resolve<IWalletService>();
-            if (walletService != null)
+            if (WalletService.Instance != null)
             {
-                walletService.Logger = new LoggerConfiguration()
+                WalletService.Instance.Logger = new LoggerConfiguration()
                     .WriteTo.AndroidLog()
-                    .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") //Sets the Tag field.
+                    .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
                     .CreateLogger();               
             }
 
-            var log = walletService.Logger;
+            var log = WalletService.Instance.Logger;
         }
     }
 }

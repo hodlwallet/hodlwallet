@@ -41,10 +41,9 @@ namespace HodlWallet2.iOS
 //
 //            More info at https://www.mvvmcross.com/documentation/fundamentals/inversion-of-control-ioc
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IWalletService, WalletService>();
-            var logger = Mvx.IoCProvider.Resolve<IWalletService>();
-            if (logger != null)
+            if (WalletService.Instance != null)
             {
-                logger.Logger = new LoggerConfiguration()
+                WalletService.Instance.Logger = new LoggerConfiguration()
                     .WriteTo.NSLog()
                     .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
                     .CreateLogger();                

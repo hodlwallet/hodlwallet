@@ -9,7 +9,7 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class PinPadViewModel : BaseViewModel
     {
-        private IWalletService _walletService;
+        private IWalletService _WalletService;
         
         public IMvxAsyncCommand<string> SuccessCommand { get; private set; }
         
@@ -24,7 +24,7 @@ namespace HodlWallet2.Core.ViewModels
             IWalletService walletService) 
             : base(logProvider, navigationService)
         {
-            _walletService = walletService;
+            _WalletService = walletService;
             //TODO: Change Action.
             SuccessCommand = new MvxAsyncCommand<string>(Success_Callback);
         }
@@ -32,7 +32,7 @@ namespace HodlWallet2.Core.ViewModels
         private async Task Success_Callback(string pin)
         {
             Debug.WriteLine($"PIN Saved: {pin}");
-            _walletService.InitializeWallet();
+            _WalletService.InitializeWallet();
             await NavigationService.Navigate<BackupViewModel>();
         }
     }
