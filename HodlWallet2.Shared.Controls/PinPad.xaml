@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:HodlWallet2.Shared.Controls"
              xmlns:utils="clr-namespace:HodlWallet2.Shared.Controls.Utils;assembly=HodlWallet2.Shared.Controls"
-             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              x:Class="HodlWallet2.Shared.Controls.PinPad">
              
     <ContentView.Resources>
@@ -26,11 +25,8 @@
         <Label x:Name="lblTitle" Style="{DynamicResource CustomLabel}" FontSize="Large" />
         <Label x:Name="lblHeader" Style="{DynamicResource CustomLabel}" Text="Bindable Header" />
         
-        <controls:CarouselViewControl x:Name="carouselPin" IsSwipeEnabled="False" Orientation="Horizontal" InterPageSpacing="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <controls:CarouselViewControl.ItemsSource>
-                <x:Array Type="{x:Type View}">
-                    <ContentView x:Name="vwEnterPin">
-                        <Grid x:Name="grdSetPin" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+        <Grid x:Name="cntViewBoxes">
+            <Grid x:Name="grdSetPin" IsVisible="True" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50" />
                                 <RowDefinition Height="*" />
@@ -74,9 +70,7 @@
                                      Grid.ColumnSpan="6" 
                                       />
                         </Grid>
-                    </ContentView>
-                    <ContentView x:Name="vwReEnterPin">
-                        <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                        <Grid x:Name="grdReSetPin" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50" />
                                 <RowDefinition Height="*" />
@@ -116,10 +110,8 @@
                                      Grid.Column="1"
                                      Grid.ColumnSpan="6" />
                         </Grid>
-                    </ContentView>
-                </x:Array>
-            </controls:CarouselViewControl.ItemsSource>
-        </controls:CarouselViewControl>
+                        
+        </Grid>
         
         <Label x:Name="lblWarning" Style="{DynamicResource CustomLabel}" Text="Bindable Warning" />
         

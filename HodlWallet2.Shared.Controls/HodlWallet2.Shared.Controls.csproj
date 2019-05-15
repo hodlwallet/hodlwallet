@@ -5,9 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
         <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
-        <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
+        <PackageReference Include="Xamarin.Forms" Version="3.6.0.344457" />
     </ItemGroup>
 
     <ItemGroup>

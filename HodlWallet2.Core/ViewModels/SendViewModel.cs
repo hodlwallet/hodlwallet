@@ -4,6 +4,7 @@ using HodlWallet2.Core.Interfaces;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
+using ZXing.Mobile;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -52,24 +53,46 @@ namespace HodlWallet2.Core.ViewModels
 
         private Task ShowFaq()
         {
-            throw new NotImplementedException();
+            //TODO: Implement FAQ
+            return Task.FromResult(this);
         }
 
-        private async Task Close()
+        private async Task Close()    
         {
             await NavigationService.Close(this);
         }
 
-        private Task Scan()
+        private async Task Scan()
         {
             //TODO: Implement Scan
-            throw new NotImplementedException();
+            var scanner = new MobileBarcodeScanner();
+
+            var result = await scanner.Scan();
+
+            AddressToSendTo = result.Text;
         }
 
-        private Task Send()
+        private async Task Send()
         {
-            //TODO: Implement Send
-            throw new NotImplementedException();
+            string password = "123456";
+            var txCreateResult = _walletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
+
+            if (txCreateResult.Success)
+            {
+                await _walletService.BroadcastManager.BroadcastTransactionAsync(txCreateResult.Tx);
+            }
+            else
+            {
+                // TODO show error screen for now just log it.
+                LogProvider.GetLogFor<SendViewModel>().Error(
+                    "Error trying to create a transaction.\nAmount to send: {amount}, address: {address}, fee: {fee}, password: {password}.\nFull Error: {error}",
+                    AmountToSend,
+                    AddressToSendTo,
+                    Fee,
+                    password,
+                    txCreateResult.Error
+                );
+            }
         }
     }
 }
