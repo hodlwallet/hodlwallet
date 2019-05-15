@@ -1,17 +1,25 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using HodlWallet2.Core.Utils;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 
 namespace HodlWallet2.Core.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
         private List<int> _pin;
+
+        private readonly MvxInteraction<Tuple<int, bool>> _changeDigitColorInteraction;
+        private readonly MvxInteraction _resetDigitsColorInteraction;
+
+        public IMvxInteraction<Tuple<int, bool>> ChangeDigitColorInteraction => _changeDigitColorInteraction;
         public MvxCommand<int> DigitCommand { get; private set; }
         public MvxCommand BackspaceCommand { get; private set; }
+
         protected LoginViewModel(
             IMvxLogProvider logProvider, 
             IMvxNavigationService navigationService) : base(logProvider, navigationService)
@@ -19,6 +27,8 @@ namespace HodlWallet2.Core.ViewModels
             _pin = new List<int>();
             DigitCommand = new MvxCommand<int>(DigitTapped);
             BackspaceCommand = new MvxCommand(BackspaceTapped);
+            _changeDigitColorInteraction = new MvxInteraction<Tuple<int, bool>>();
+            _resetDigitsColorInteraction = new MvxInteraction();
         }
 
         private void BackspaceTapped()
@@ -34,11 +44,12 @@ namespace HodlWallet2.Core.ViewModels
             if (_pin.Count < 6)
             {
                 _pin.Add(arg);
-                //TODO: Set color to specific digit.
+                // Set color to specific digit.
+                _changeDigitColorInteraction.Raise(new Tuple<int, bool>(_pin.Count, true));
                 if (_pin.Count == 6)
                 {
-                    //TODO: Reset colors of all digits.
-
+                    // Reset colors of all digits.
+                    _resetDigitsColorInteraction.Raise();
                     if (SecureStorageProvider.HasPassword() == false)
                     {
                         // TODO: Throw exception
