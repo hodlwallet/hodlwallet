@@ -22,7 +22,7 @@ namespace HodlWallet2.Core.ViewModels
         public string PinCheck
         {
             get => _pinCheck;
-            set => SetProperty(ref _pinCheck, va);
+            set => SetProperty(ref _pinCheck, value);
         }
 
         public string FingerprintCheck
