@@ -10,7 +10,7 @@ namespace HodlWallet2.Shared.Controls
         public TransactionCollectionView()
         {
             InitializeComponent();
-            Collection.SetBinding(CollectionView.ItemsSourceProperty, new Binding(nameof(ItemsSource), source: this));
+            Collection.SetBinding(ItemsView.ItemsSourceProperty, new Binding(nameof(ItemsSource), source: this));
         }
 
         public static readonly BindableProperty ItemsSourceProperty =
