@@ -257,6 +257,33 @@ namespace HodlWallet2.Core.Services
             return new Mnemonic(HdOperations.WordlistFromString(wordlist), HdOperations.WordCountFromInt(wordcount)).ToString();
         }
 
+        public static IEnumerable<HdAddress> GetAddressesFromTransaction(TransactionData txData)
+        {
+            return WalletService.Instance.CurrentAccount.FindAddressesForTransaction(tx => tx.Id == txData.Id);
+        }
+
+        public static string GetAddressFromTranscation(TransactionData txData)
+        {
+            var addrsFromTx = GetAddressesFromTransaction(txData).Select(hdAddress => hdAddress.Address);
+
+            if (txData.IsReceive == true)
+            {
+                return WalletService.Instance.CurrentAccount.ExternalAddresses.First(
+                    externalAddress => addrsFromTx.Contains(externalAddress.Address)
+                ).Address;
+            }
+            else if (txData.IsSend == true) // For verbosity and error catching...
+            {
+                return WalletService.Instance.CurrentAccount.InternalAddresses.First(
+                    internalAddress => addrsFromTx.Contains(internalAddress.Address)
+                ).Address;
+            }
+            else
+            {
+                throw new WalletException("Tx data isn't send or receive, something is wrong...");
+            }
+        }
+
         public void Configure(string walletId = null, string network = null, int? nodesToConnect = null)
         {
             _Network = HdOperations.GetNetwork(network ?? DEFAULT_NETWORK);
