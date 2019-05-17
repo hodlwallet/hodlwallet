@@ -180,7 +180,7 @@ namespace HodlWallet2.Core.ViewModels
                             return "Received BTC " + tx.Amount.ToString();
                         case false:
                         case null:
-                            return "Send or Receive is NULL";
+                            return "Send and Receive is NULL";
                     }
                     break;
             }
