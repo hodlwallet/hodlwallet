@@ -2,30 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using Xamarin.Forms;
 using Serilog;
 
+using Xamarin.Forms;
 using HodlWallet2.Locale;
 using HodlWallet2.Utils;
-using HodlWallet2.ViewModels;
 using MvvmCross.Forms.Views;
 using PinPadViewModel = HodlWallet2.Core.ViewModels.PinPadViewModel;
 using RecoverWalletEntryViewModel = HodlWallet2.Core.ViewModels.RecoverWalletEntryViewModel;
 using Tags = HodlWallet2.Shared.Controls.Utils.Tags;
+using HodlWallet2.Core.Interfaces;
+using MvvmCross;
 
 namespace HodlWallet2.Views
 {
     public partial class RecoverWalletEntryView : MvxContentPage<RecoverWalletEntryViewModel>
     {
-        Wallet _Wallet;
-        ILogger _Logger;
+        IWalletService _Wallet;
+        Serilog.ILogger _Logger;
         string mnemonic;
 
         public RecoverWalletEntryView()
         {
             InitializeComponent();
-            //_Wallet = Wallet.Instance;
-            //_Logger = _Wallet.Logger;
+
+            _Wallet = Mvx.IoCProvider.Resolve<IWalletService>();
+            _Logger = _Wallet.Logger;
             //viewModel._EntryGrid = EntryGrid;
             //SetLabels();
         }
@@ -65,7 +67,7 @@ namespace HodlWallet2.Views
                 string x_Name = "Entry" + i.ToString();
                 Entry currentEntry = this.FindByName(x_Name) as Entry;
 
-                if (_Wallet.IsWordInWordlist(currentEntry.Text) == false)
+                if (_Wallet.IsWordInWordlist(currentEntry.Text, "english") == false)
                 {
                     _Logger.Information("User input not found in wordlist.");
                     DisplayAlert(LocaleResources.Recover_alertTitle, LocaleResources.Recover_alertHeader, LocaleResources.Recover_alertButton);

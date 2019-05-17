@@ -78,15 +78,6 @@ namespace HodlWallet2.Core.ViewModels
 
             var txList = new List<TransactionData> { first, second, third };
 
-            if (first.IsSend == true)
-            {
-                Log.Info($"First tx is send to (or from): {first.ScriptPubKey.GetDestinationAddress(_walletService.WalletManager.Network)}");
-            }
-            else
-            {
-                Log.Info($"First tx is send to (or from): {first.ScriptPubKey.GetDestinationAddress(_walletService.WalletManager.Network)}");
-            }
-
             Transactions = new ObservableCollection<Transaction> ( CreateList(txList) );
         }
 
@@ -166,13 +157,34 @@ namespace HodlWallet2.Core.ViewModels
                     BlockHeight = tx.BlockHeight,
                     IsAvailable = tx.IsSpendable() ? "Available to spend" : "",
                     Memo = "In Progress",
-                    Status = tx.Amount.ToString(),
+                    Status = GetStatus(tx),
                     Duration = DateTimeOffsetOperations.shortDate(tx.CreationTime)
 
                     // TODO: Add data for transaction model.
                 });
             }
             return result;
+        }
+
+        private string GetStatus(TransactionData tx)
+        {
+            switch (tx.IsSend)
+            {
+                case true:
+                    return "Sent BTC " + tx.Amount.ToString();
+                case false:
+                case null:
+                    switch (tx.IsReceive)
+                    {
+                        case true:
+                            return "Received BTC " + tx.Amount.ToString();
+                        case false:
+                        case null:
+                            return "Send or Receive is NULL";
+                    }
+                    break;
+            }
+            return null;
         }
     }
 }

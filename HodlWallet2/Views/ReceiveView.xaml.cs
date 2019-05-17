@@ -1,28 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using HodlWallet2.Core.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using ZXing.Common;
 using Xamarin.Essentials;
 
-using HodlWallet2.ViewModels;
 using HodlWallet2.Locale;
+using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 
 namespace HodlWallet2.Views
 {
-    public partial class ReceiveView : MvxContentPage
+    [MvxModalPresentation]
+    public partial class ReceiveView : MvxContentPage<ReceiveViewModel>
     {
-        private ReceiveViewModel _ViewModel;
-
-        public ReceiveView(ReceiveViewModel receiveViewModel)
+       
+        public ReceiveView()
         {
             InitializeComponent();
         }
-
-        public ReceiveViewModel ViewModel { get => BindingContext as ReceiveViewModel; }
 
         void SetLabels()
         {

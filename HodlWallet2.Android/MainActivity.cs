@@ -29,12 +29,6 @@ namespace HodlWallet2.Droid
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
             FormsControls.Droid.Main.Init(this);
             
-            //TODO: Replace with MvvmCross Serilog integration.
-            Wallet.Instance.Logger = new LoggerConfiguration()
-                .WriteTo.AndroidLog()
-                .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
-                .CreateLogger();
-            
             base.OnCreate(savedInstanceState);
         }
 

@@ -5,19 +5,19 @@ using Xamarin.Forms;
 using Serilog;
 
 using HodlWallet2.Locale;
-using HodlWallet2.ViewModels;
 using MvvmCross.Forms.Views;
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Views
 {
     public partial class RecoverView : MvxContentPage<RecoverViewModel>
     {
-        Wallet _Wallet;
+        WalletService _Wallet;
         ILogger _Logger;
 
         public RecoverView()
         {
-            _Wallet = Wallet.Instance;
+            _Wallet = WalletService.Instance;
             _Logger = _Wallet.Logger;
 
             InitializeComponent();

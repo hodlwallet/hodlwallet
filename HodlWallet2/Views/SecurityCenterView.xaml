@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.SecurityCenterView"
-             xmlns:svg="clr-namespace:HodlWallet2.Utils" BackgroundColor="{StaticResource GrayBackground}"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-             xmlns:controls="clr-namespace:HodlWallet2.Utils;assembly=HodlWallet2" ios:Page.UseSafeArea="true">
+<views:MvxContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="HodlWallet2.Views.SecurityCenterView"
+    xmlns:svg="clr-namespace:HodlWallet2.Utils" 
+    BackgroundColor="{StaticResource GrayBackground}"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+    xmlns:controls="clr-namespace:HodlWallet2.Utils;assembly=HodlWallet2"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:SecurityCenterViewModel"
+    ios:Page.UseSafeArea="true">
     <FlexLayout Direction="Column" Margin="20, 0, 20, 0">
         
         <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.AlignSelf="Start" FlexLayout.Grow="1">
@@ -98,4 +107,4 @@
         <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" Margin="0, 5, 0, 5" />
         
     </FlexLayout>
-</ContentPage>
+</views:MvxContentPage>

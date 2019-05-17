@@ -9,15 +9,15 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class ReceiveViewModel : BaseViewModel
     {
-        private readonly IWalletService _walletService;
-        private string _address;
+        readonly IWalletService _WalletService;
+        string _Address;
 
         public IMvxCommand ShowFaqCommand { get; private set; }
 
         public string Address
         {
-            get => _address;
-            set => SetProperty(ref _address, value);
+            get => _Address;
+            set => SetProperty(ref _Address, value);
         }
 
         public ReceiveViewModel(
@@ -25,7 +25,7 @@ namespace HodlWallet2.Core.ViewModels
             IMvxNavigationService navigationService,
             IWalletService walletService) : base(logProvider, navigationService)
         {
-            _walletService = walletService;
+            _WalletService = walletService;
             ShowFaqCommand = new MvxCommand(ShowFaq);
         }
 
@@ -38,7 +38,7 @@ namespace HodlWallet2.Core.ViewModels
         public override void ViewAppeared()
         {
             base.ViewAppeared();
-            Address = _walletService.GetReceiveAddress().Address;
+            Address = _WalletService.GetReceiveAddress().Address;
             LogProvider.GetLogFor<ReceiveViewModel>().Info($"New Receive Address: {Address}");
         }
 

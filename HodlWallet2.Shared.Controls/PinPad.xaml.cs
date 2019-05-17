@@ -163,16 +163,16 @@ namespace HodlWallet2.Shared.Controls
         
         public async void OnPinTapped(object sender, EventArgs e)
         {
-            if (carouselPin.Position == 0) // Enter PIN
+            if (grdSetPin.IsVisible) // Enter PIN
             {
-                
                 if (sender is Button button && _pin1.Length < 6)
                 {
                     _pin1 += Utils.Tags.GetTag(button);
                     PaintBoxView(Color.Orange, _pin1.Length);
                     if (_pin1.Length == 6)
                     {
-                        carouselPin.Position = 1;
+                        grdSetPin.IsVisible = false;
+                        grdReSetPin.IsVisible = true;
                     }
                 }
             }
@@ -193,23 +193,24 @@ namespace HodlWallet2.Shared.Controls
                         {
                             // Shake ContentView Re-Enter PIN
                             uint timeout = 50;
-                            await carouselPin.TranslateTo(-15, 0, timeout);  
+                            await grdReSetPin.TranslateTo(-15, 0, timeout);  
   
-                            await carouselPin.TranslateTo(15, 0, timeout);  
+                            await grdReSetPin.TranslateTo(15, 0, timeout);  
   
-                            await carouselPin.TranslateTo(-10, 0, timeout);  
+                            await grdReSetPin.TranslateTo(-10, 0, timeout);  
   
-                            await carouselPin.TranslateTo(10, 0, timeout);  
+                            await grdReSetPin.TranslateTo(10, 0, timeout);  
   
-                            await carouselPin.TranslateTo(-5, 0, timeout);  
+                            await grdReSetPin.TranslateTo(-5, 0, timeout);  
   
-                            await carouselPin.TranslateTo(5, 0, timeout);  
+                            await grdReSetPin.TranslateTo(5, 0, timeout);  
   
-                            carouselPin.TranslationX = 0;  
+                            grdReSetPin.TranslationX = 0;  
                             
                             await Task.Delay(500);
                             ClearBoxViews();
-                            carouselPin.Position = 0;
+                            grdSetPin.IsVisible = true;
+                            grdReSetPin.IsVisible = false;
                         }
                         _pin1 = string.Empty;
                         _pin2 = string.Empty;
@@ -220,31 +221,27 @@ namespace HodlWallet2.Shared.Controls
 
         private void ClearBoxViews()
         {
-            var list = carouselPin.ItemsSource.Cast<ContentView>().ToList();
-            foreach (var contentView in list)
+            foreach (var element in cntViewBoxes.Children)
             {
-                foreach (Grid grid in contentView.Children)
+                if (element is Grid grid)
                 {
                     foreach (var boxView in grid.Children)
                     {
                         if (boxView.BackgroundColor != Color.Transparent)
                         {
-                            var bxView = boxView as BoxView;
-                            if (bxView != null)
+                            if (boxView is BoxView bxView)
                             {
                                 bxView.Color = Color.White;
                             }
                         }
                     }
                 }
-            }            
+            }         
         }
 
         private void PaintBoxView(Color fillColor, int boxViewNumber)
         {
-            var list = carouselPin.ItemsSource.Cast<ContentView>().ToList();
-            var grid = carouselPin.Position == 0 ? list[0].Content as Grid : list[1].Content as Grid;
-            BoxView bxView1 = new BoxView();
+            var grid = grdSetPin.IsVisible ? grdSetPin : grdReSetPin;
             foreach (var boxView in grid.Children)
             {
                 var bxView = boxView as BoxView;
@@ -262,7 +259,7 @@ namespace HodlWallet2.Shared.Controls
 
         public async void OnPrevious(object sender, EventArgs e)
         {
-            carouselPin.Position = 0;
+            //carouselPin.Position = 0;
         }
     }
 }

@@ -16,8 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
-    <PackageReference Include="MvvmCross.Forms" Version="6.2.2" />
+    <PackageReference Include="MvvmCross.Forms" Version="6.2.3" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.304370-pre8" />
     <PackageReference Include="FormsPinView" Version="2.0.0" />
@@ -152,9 +151,6 @@
     </Compile>
     <Compile Update="Views\SetPinView.xaml.cs">
       <DependentUpon>SetPinView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="ViewModels\SecurityCenterViewModel.cs">
-      <LogicalName>HodlWallet2.ViewModels.SecurityCenterViewModel.cs</LogicalName>
     </Compile>
   </ItemGroup>
   <ItemGroup>
