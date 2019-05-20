@@ -20,18 +20,14 @@ namespace HodlWallet2.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
 
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             MobileBarcodeScanner.Initialize(Application);
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
             FormsControls.Droid.Main.Init(this);
-            
-            //TODO: Replace with MvvmCross Serilog integration.
-            Wallet.Instance.Logger = new LoggerConfiguration()
-                .WriteTo.AndroidLog()
-                .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
-                .CreateLogger();
             
             base.OnCreate(savedInstanceState);
         }

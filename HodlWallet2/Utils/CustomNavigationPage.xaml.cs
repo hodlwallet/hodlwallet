@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using HodlWallet2.Core.Services;
 using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 
@@ -34,7 +35,7 @@ namespace HodlWallet2.Utils
             {
                 string articleName = GetArticleName(view.GetType().ToString());
 
-                Wallet.Instance.Logger.Information("TODO: Open help article for {articleName}", articleName);
+                WalletService.Instance.Logger.Information("TODO: Open help article for {articleName}", articleName);
             }
         }
 

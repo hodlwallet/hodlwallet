@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HodlWallet2.Shared.Controls.TransactionCollectionView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TransactionLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource ElectrolizeFont}"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="LineBreakMode" Value="MiddleTruncation" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Frame
+            HeightRequest="150"
+            BackgroundColor="Transparent"
+            CornerRadius="20"
+            Padding="0">
+            <StackLayout>
+                <CollectionView
+                    x:Name="Collection"
+                    BackgroundColor="{StaticResource GrayBackground}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Grid
+                                    Margin="10, 5, 10, 5"
+                                    Padding="10"
+                                    BackgroundColor="{StaticResource DarkGray}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition
+                                            Height="20" />
+                                        <RowDefinition
+                                            Height="20" />
+                                        <RowDefinition
+                                            Height="40" />
+                                        <RowDefinition
+                                            Height="20" />
+                                        <RowDefinition
+                                            Height="20" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition
+                                            Width="3*" />
+                                        <ColumnDefinition
+                                            Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Style="{StaticResource TransactionLabel}"
+                                        TextColor="{Binding StatusColor}"
+                                        Text="{Binding Status}" />
+                                    <Label
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource TransactionLabel}"
+                                        TextColor="{StaticResource White}"
+                                        Text="{Binding Duration}" />
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="2"
+                                        Style="{StaticResource TransactionLabel}"
+                                        TextColor="{StaticResource White}"
+                                        Text="{Binding AtAddress}" />
+                                    <Entry
+                                        Grid.Column="0"
+                                        Grid.Row="2"
+                                        BackgroundColor="Transparent"
+                                        FontFamily="{StaticResource ElectrolizeFont}"
+                                        FontSize="Small"
+                                        TextColor="{StaticResource White}"
+                                        Text="{Binding Memo}"
+                                        IsSpellCheckEnabled="false"
+                                        IsTextPredictionEnabled="false" />
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="3"
+                                        Grid.ColumnSpan="2"
+                                        Style="{StaticResource TransactionLabel}"
+                                        TextColor="{StaticResource White}"
+                                        Text="{Binding Confirmations}" />
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="4"
+                                        Grid.ColumnSpan="2"
+                                        Style="{StaticResource TransactionLabel}"
+                                        TextColor="{StaticResource SyncGradientStart}"
+                                        Text="{Binding IsAvailable}" />
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Frame>
+</ContentView>

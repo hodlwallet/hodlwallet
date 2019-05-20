@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.BackupRecoveryWordView">
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+                      xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                      xmlns:converters="clr-namespace:HodlWallet2.Converters;assembly=HodlWallet2"
+                      x:Class="HodlWallet2.Views.BackupRecoveryWordView"
+                      x:TypeArguments="viewModels:BackupRecoveryWordViewModel"
+                      bindings:Bi.nd="Title TitleText">
+    <ContentPage.Resources>
+        <converters:IndexToStringConverter x:Key="IndexToStringConverter" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
             
@@ -10,7 +21,8 @@
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
                    FlexLayout.AlignSelf="Center"
-                   FlexLayout.Grow="1" />
+                   FlexLayout.Grow="1"
+                   bindings:Bi.nd="Text HeaderText"/>
             
             <BoxView FlexLayout.Grow="3" />
             
@@ -19,14 +31,17 @@
                          Style="{DynamicResource CustomLabel}"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand"
-                         FontSize="Medium" />
+                         FontSize="Medium"
+                         bindings:Bi.nd="Text Word"/>
             </ContentView>
             
             <Label x:Name="Index"
                    FontFamily="{StaticResource ElectrolizeFont}"
                    TextColor="Gray"
                    FontSize="Micro"
-                   FlexLayout.AlignSelf="Center" />
+                   FlexLayout.AlignSelf="Center"
+                   Text="{Binding PositionText, Converter={StaticResource IndexToStringConverter}}" />
+            <!--TODO: Fix binding converter with MvvmCross binding -->
             
             <BoxView FlexLayout.Grow="3" />
             
@@ -37,8 +52,8 @@
                         CornerRadius="0"
                         FontSize="Large"
                         FlexLayout.AlignSelf="Stretch"
-                        Clicked="Previous_Clicked"
-                        FlexLayout.Grow="2" />
+                        FlexLayout.Grow="2"
+                        bindings:Bi.nd="Text PreviousText;Command PreviousWordCommand"/>
                 
                 <BoxView x:Name="Divider" BackgroundColor="Transparent" WidthRequest="2" />
                
@@ -48,10 +63,11 @@
                         CornerRadius="0"
                         FontSize="Large"
                         FlexLayout.AlignSelf="Stretch"
-                        Clicked="BackupWord_Clicked"
-                        FlexLayout.Grow="3" />
+                        FlexLayout.Grow="3"
+                        bindings:Bi.nd="Text NextText;Command NextWordCommand"
+                        />
             </FlexLayout>
             
         </FlexLayout>
     </ContentPage.Content>
-</ContentPage>
+</views:MvxContentPage>

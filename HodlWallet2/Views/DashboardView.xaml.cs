@@ -1,47 +1,27 @@
 using System;
-
+using HodlWallet2.Core.ViewModels;
 using Xamarin.Forms;
 
 using Serilog;
 
 using HodlWallet2.Locale;
-using HodlWallet2.ViewModels;
+using MvvmCross.Forms.Presenters.Attributes;
+using MvvmCross.Forms.Views;
 
 namespace HodlWallet2.Views
 {
-    public partial class DashboardView : ContentPage
+    [MvxContentPagePresentation(NoHistory = true)]
+    public partial class DashboardView : MvxContentPage<DashboardViewModel>
     {
-        Wallet _Wallet;
-        ILogger _Logger;
-
-        private DashboardViewModel _ViewModel;
-        public DashboardViewModel ViewModel { get => BindingContext as DashboardViewModel; }
-
-        public DashboardView(DashboardViewModel dashboardViewModel)
-        {
-            _Wallet = Wallet.Instance;
-            _Logger = _Wallet.Logger;
-
-            _ViewModel = dashboardViewModel;
-            BindingContext = _ViewModel;
-
+        public DashboardView()
+        {   
             InitializeComponent();
-            SetTempLabels();
-
-            Wallet.InitializeWallet();
+            
+            //TODO: Determine place to initialize wallet.
+            // Wallet.InitializeWallet();
 
             // FIXME. Figure out a way to use observable collections and update this automatically.
-            _Transactions.ItemsSource = _ViewModel.Transactions;
-        }
-
-        public async void OnSendTapped(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new SendView(new SendViewModel()));
-        }
-
-        public async void OnReceiveTapped(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new ReceiveView(new ReceiveViewModel()));
+            // _Transactions.ItemsSource = _ViewModel.Transactions;
         }
 
         public async void OnMenuTapped(object sender, EventArgs e)
@@ -51,7 +31,7 @@ namespace HodlWallet2.Views
 
             _Wallet.ReScan(new DateTimeOffset(new DateTime(2018, 11, 8))); */
 
-            await Navigation.PushModalAsync(new MenuView());
+            //await Navigation.PushModalAsync(new MenuView());
         }
 
         public void SetTempLabels()

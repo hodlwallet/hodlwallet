@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Liviano.Managers;
 using Serilog;
 
@@ -20,13 +20,14 @@ using Liviano.Behaviors;
 using Liviano.Enums;
 using Liviano.Models;
 using System.Collections.Generic;
+using HodlWallet2.Core.Interfaces;
 using Liviano.Exceptions;
+using MvvmCross.Logging;
+using MvvmCross;
 
-using HodlWallet2.Utils;
-
-namespace HodlWallet2
+namespace HodlWallet2.Core.Services
 {
-    public sealed class Wallet
+    public sealed class WalletService : IWalletService
     {
         public const int DEFAULT_NODES_TO_CONNECT = 4;
 
@@ -34,15 +35,13 @@ namespace HodlWallet2
 
         public static readonly string USER_AGENT = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
 
-        private static Wallet instance = null;
-
         private static readonly object _SingletonLock = new object();
 
         private object _Lock = new object();
 
         private int _NodesToConnect;
 
-        private NodeConnectionParameters _ConParams;
+        private NodeConnectionParameters _conParams;
 
         private Network _Network;
 
@@ -58,7 +57,7 @@ namespace HodlWallet2
 
         private string _WalletId;
 
-        public ILogger Logger { set; get; }
+        public Serilog.ILogger Logger { set; get; }
 
         public WalletManager WalletManager { get; set; }
 
@@ -80,12 +79,20 @@ namespace HodlWallet2
 
         public BlockLocator ScanLocation { get; set; }
 
-        public EventHandler OnConfigured;
-        public EventHandler OnStarted;
-        public EventHandler OnScanning;
+        public event EventHandler OnConfigured;
+        public event EventHandler OnStarted;
+        public event EventHandler OnScanning;
 
-        public bool Started = false;
-        public bool Configured = false;
+        public bool IsStarted { get; set; }
+        public bool IsConfigured { get; set; }
+
+        public static WalletService Instance
+        {
+            get
+            {
+                return (WalletService) Mvx.IoCProvider.Resolve<IWalletService>();
+            }
+        }
 
         public HdAccount CurrentAccount
         {
@@ -107,12 +114,11 @@ namespace HodlWallet2
         {
             lock (_Lock)
             {
-                if (_ConParams != null)
+                if (_conParams != null)
                 {
-                    return _ConParams.TemplateBehaviors.Find<PartialChainBehavior>().Chain as PartialConcurrentChain;
+                    return _conParams.TemplateBehaviors.Find<PartialChainBehavior>().Chain as PartialConcurrentChain;
                 }
 
-                // var chain = new PartialConcurrentChain(_Network, _Logger);
                 var chain = new PartialConcurrentChain(_Network);
 
                 using (var fs = File.Open(ChainFile(), FileMode.OpenOrCreate))
@@ -128,36 +134,36 @@ namespace HodlWallet2
         }
 
 
-        private static string GetConfigFile(string fileName)
+        private string GetConfigFile(string fileName)
         {
             string configFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), fileName);
 
-            Instance.Logger?.Information("Getting config file: {configFileName}", configFileName);
+            Logger?.Information("Getting config file: {configFileName}", configFileName);
 
             return configFileName;
         }
 
-        private static string AddrmanFile()
+        private string AddrmanFile()
         {
-            Guard.NotNull(Instance._Network, nameof(Instance._Network));
+            Guard.NotNull(_Network, nameof(_Network));
 
-            return GetConfigFile($"addrman-{Instance._Network.Name.ToLower()}.dat");
+            return GetConfigFile($"addrman-{_Network.Name.ToLower()}.dat");
         }
 
-        private static string ChainFile()
+        private string ChainFile()
         {
-            Guard.NotNull(Instance._Network, nameof(Instance._Network));
+            Guard.NotNull(_Network, nameof(_Network));
 
-            return GetConfigFile($"chain-{Instance._Network.Name.ToLower()}.dat");
+            return GetConfigFile($"chain-{_Network.Name.ToLower()}.dat");
         }
 
-        private static async Task PeriodicSave()
+        private async Task PeriodicSave()
         {
             while (true)
             {
-                await Instance.Save();
+                await Save();
 
-                Instance.Logger.Information("Saved chain file to filepath: {filepath} on {now}", ChainFile(), DateTime.Now);
+                Logger.Information("Saved chain file to filepath: {filepath} on {now}", ChainFile(), DateTime.Now);
 
                 int delay = 50_000;
 
@@ -184,9 +190,9 @@ namespace HodlWallet2
 
         private AddressManager GetAddressManager()
         {
-            if (_ConParams != null)
+            if (_conParams != null)
             {
-                return _ConParams.TemplateBehaviors.Find<AddressManagerBehavior>().AddressManager;
+                return _conParams.TemplateBehaviors.Find<AddressManagerBehavior>().AddressManager;
 
             }
 
@@ -200,70 +206,82 @@ namespace HodlWallet2
             }
         }
 
-        private static ChainedBlock GetClosestChainedBlockToDateTimeOffset(DateTimeOffset? creationDate)
+        private ChainedBlock GetClosestChainedBlockToDateTimeOffset(DateTimeOffset? creationDate)
         {
-            Guard.NotNull(Instance._Network, nameof(Instance._Network));
+            Guard.NotNull(_Network, nameof(_Network));
             long ticks = 0;
 
             if (creationDate.HasValue)
                 ticks = creationDate.Value.Ticks;
 
-            return Instance._Network.GetCheckpoints().OrderBy(chainedBlock => Math.Abs(chainedBlock.Header.BlockTime.Ticks - ticks)).FirstOrDefault();
+            return _Network.GetCheckpoints().OrderBy(chainedBlock => Math.Abs(chainedBlock.Header.BlockTime.Ticks - ticks)).FirstOrDefault();
         }
-
-        Wallet()
+        
+        public WalletService()
         {
+            
         }
 
-        public static Wallet Instance
-        {
-            get
-            {
-                lock (_SingletonLock)
-                {
-                    if (instance == null)
-                    {
-                        instance = new Wallet();
-                    }
-
-                    return instance;
-                }
-            }
-        }
-
-        public static void InitializeWallet()
+        public void InitializeWallet()
         {
             // FIXME Remove this with the removable code bellow.
             string guid = "736083c0-7f11-46c2-b3d7-e4e88dc38889";
-
+            
             // TODO Please store and run the network the user is using.
             //Wallet.Configure(walletId: "wallet_guid", network: "testnet", nodesToConnect: 4);
-            Instance.Configure(walletId: guid, network: "testnet");
+            Configure(walletId: guid, network: "testnet");
 
             // FIXME Remove this code later when we have a way to create a wallet,
             // for now, the wallet is created and hardcoded
             string mnemonic = "erase fog enforce rice coil start few hold grocery lock youth service among menu life salmon fiction diamond lyrics love key stairs toe transfer";
             string password = "123456";
 
-            if (!Instance.WalletExists())
+            if (!WalletExists())
             {
-                Instance.Logger.Information("Creating wallet ({guid}) with password: {password}", guid, password);
+                Logger.Information("Creating wallet ({guid}) with password: {password}", guid, password);
 
-                Instance.WalletManager.CreateWallet(guid, password, WalletManager.MnemonicFromString(mnemonic));
+                WalletManager.CreateWallet(guid, password, WalletManager.MnemonicFromString(mnemonic));
 
-                Instance.Logger.Information("Wallet created.");
+                Logger.Information("Wallet created.");
             }
 
             // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
             //      Also change the date, the argument should be avoided.
-            Instance.Start(password, new DateTimeOffset(new DateTime(2014, 12, 1)));
+            Start(password, new DateTimeOffset(new DateTime(2014, 12, 1)));
 
-            Instance.Logger.Information("Wallet started.");
+            Logger.Information("Wallet started.");
         }
 
-        public static string GetNewMnemonic(string wordlist="english", int wordcount=12)
+        public static string GetNewMnemonic(string wordlist = "english", int wordcount = 12)
         {
             return new Mnemonic(HdOperations.WordlistFromString(wordlist), HdOperations.WordCountFromInt(wordcount)).ToString();
+        }
+
+        public static IEnumerable<HdAddress> GetAddressesFromTransaction(TransactionData txData)
+        {
+            return WalletService.Instance.CurrentAccount.FindAddressesForTransaction(tx => tx.Id == txData.Id);
+        }
+
+        public static string GetAddressFromTranscation(TransactionData txData)
+        {
+            var addrsFromTx = GetAddressesFromTransaction(txData).Select(hdAddress => hdAddress.Address);
+
+            if (txData.IsReceive == true)
+            {
+                return WalletService.Instance.CurrentAccount.ExternalAddresses.First(
+                    externalAddress => addrsFromTx.Contains(externalAddress.Address)
+                ).Address;
+            }
+            else if (txData.IsSend == true) // For verbosity and error catching...
+            {
+                return WalletService.Instance.CurrentAccount.InternalAddresses.First(
+                    internalAddress => addrsFromTx.Contains(internalAddress.Address)
+                ).Address;
+            }
+            else
+            {
+                throw new WalletException("Tx data isn't send or receive, something is wrong...");
+            }
         }
 
         public void Configure(string walletId = null, string network = null, int? nodesToConnect = null)
@@ -273,7 +291,7 @@ namespace HodlWallet2
             _AddressManager = GetAddressManager();
             _NodesToConnect = nodesToConnect ?? DEFAULT_NODES_TO_CONNECT;
             _WalletId = walletId ?? Guid.NewGuid().ToString();
-            _ConParams = new NodeConnectionParameters();
+            _conParams = new NodeConnectionParameters();
 
             Logger.Information("Running on {network}", _Network.Name);
             Logger.Information("With wallet id: {walletId}", _WalletId);
@@ -282,7 +300,7 @@ namespace HodlWallet2
             DateTimeProvider = new DateTimeProvider();
             AsyncLoopFactory = new AsyncLoopFactory();
             ScriptAddressReader = new ScriptAddressReader();
-            StorageProvider = new StorageProvider(_WalletId);
+            StorageProvider = new WalletStorageProvider(_WalletId);
 
             if (!StorageProvider.WalletExists())
             {
@@ -294,13 +312,13 @@ namespace HodlWallet2
 
             _WalletSyncManagerBehavior = new WalletSyncManagerBehavior(Logger, WalletSyncManager, ScriptTypes.P2WPKH);
 
-            _ConParams.TemplateBehaviors.Add(new AddressManagerBehavior(_AddressManager));
-            _ConParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
-            _ConParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
+            _conParams.TemplateBehaviors.Add(new AddressManagerBehavior(_AddressManager));
+            _conParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
+            _conParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
 
-            _ConParams.UserAgent = USER_AGENT;
+            _conParams.UserAgent = USER_AGENT;
 
-            _NodesGroup = new NodesGroup(_Network, _ConParams, new NodeRequirement()
+            _NodesGroup = new NodesGroup(_Network, _conParams, new NodeRequirement()
             {
                 RequiredServices = NodeServices.Network
             });
@@ -309,9 +327,9 @@ namespace HodlWallet2
 
             BroadcastManager broadcastManager = new BroadcastManager(_NodesGroup);
 
-            _ConParams.TemplateBehaviors.Add(new TransactionBroadcastBehavior(broadcastManager));
+            _conParams.TemplateBehaviors.Add(new TransactionBroadcastBehavior(broadcastManager));
 
-            _NodesGroup.NodeConnectionParameters = _ConParams;
+            _NodesGroup.NodeConnectionParameters = _conParams;
             _NodesGroup.MaximumNodeConnection = _NodesToConnect;
 
             _DefaultCoinSelector = new DefaultCoinSelector();
@@ -325,7 +343,7 @@ namespace HodlWallet2
             Logger.Information("Configured wallet.");
 
             OnConfigured?.Invoke(this, null);
-            Configured = true;
+            IsConfigured = true;
         }
 
         public void Start(string password, DateTimeOffset? timeToStartOn = null)
@@ -341,7 +359,7 @@ namespace HodlWallet2
             _ = PeriodicSave();
 
             OnStarted?.Invoke(this, null);
-            Started = true;
+            IsStarted = true;
         }
 
         public void Scan(DateTimeOffset? timeToStartOn)
@@ -349,7 +367,7 @@ namespace HodlWallet2
             ScanLocation = new BlockLocator();
             ICollection<uint256> walletBlockLocator = WalletManager.GetWalletBlockLocator();
             ChainedBlock closestChainedBlock = GetClosestChainedBlockToDateTimeOffset(timeToStartOn);
-            
+
             // If there are block locations in the wallet
             if (walletBlockLocator != null && walletBlockLocator.Count > 0)
             {
@@ -376,7 +394,7 @@ namespace HodlWallet2
 
             string chainFile = ChainFile();
             string addrmanFile = AddrmanFile();
-            string walletFile = ((StorageProvider)StorageProvider).FilePath;
+            string walletFile = ((WalletStorageProvider)StorageProvider).FilePath;
             DateTimeOffset currentCreationTime = WalletManager.GetWallet().CreationTime;
 
             // Database cleanup

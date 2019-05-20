@@ -1,9 +1,15 @@
 using System;
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Services;
 using MvvmCross;
+using MvvmCross.Converters;
 using MvvmCross.Core;
 using MvvmCross.Forms.Platforms.Ios.Core;
+using MvvmCross.IoC;
 using MvvmCross.Logging;
 using MvvmCross.Platforms.Ios.Core;
+using Serilog;
+using Serilog.Core;
 
 namespace HodlWallet2.iOS
 {
@@ -34,6 +40,14 @@ namespace HodlWallet2.iOS
 //                Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IFoo, Foo>();
 //
 //            More info at https://www.mvvmcross.com/documentation/fundamentals/inversion-of-control-ioc
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IWalletService, WalletService>();
+            if (WalletService.Instance != null)
+            {
+                WalletService.Instance.Logger = new LoggerConfiguration()
+                    .WriteTo.NSLog()
+                    .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
+                    .CreateLogger();                
+            } 
         }
     }
 }
