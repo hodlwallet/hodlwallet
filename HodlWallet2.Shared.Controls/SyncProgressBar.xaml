@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HodlWallet2.Shared.Controls.SyncProgressBar"
+             BackgroundColor="Transparent">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ProgressLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource ElectrolizeFont}"/>
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+        <StackLayout x:Name="SyncLayout"
+                     Margin="10, 5, 10, 5"
+                     Padding="10"
+                     HeightRequest="70"
+                     BackgroundColor="{StaticResource DarkGray}">
+                    <Label Style="{StaticResource ProgressLabel}"
+                           x:Name="SBTitle" 
+                           FontSize="Large" />
+                    <ProgressBar x:Name="SBProgress"
+                                 Margin="0, 5, 0, 5"
+                                 ProgressColor="{StaticResource SyncGradientStart}"
+                                 Progress="{Binding SyncProgress}" />
+                    <Label Style="{StaticResource ProgressLabel}"
+                           x:Name="SBDate"
+                           FontSize="Small" />
+        </StackLayout>
+</ContentView>
