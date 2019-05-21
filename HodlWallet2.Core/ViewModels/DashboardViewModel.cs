@@ -20,6 +20,10 @@ namespace HodlWallet2.Core.ViewModels
 
         public string SendText => "Send";
         public string ReceiveText => "Receive";
+        public string SyncText => "SYNCING";
+        public string DateText => DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString();
+        public double Progress => 0.4;
+        public bool IsVisible => false;
 
         private ObservableCollection<Transaction> _transactions;
 
