@@ -5,12 +5,14 @@ using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 
+using HodlWallet2.Core.Utils;
+
 namespace HodlWallet2.Core.ViewModels
 {
     public class PinPadViewModel : BaseViewModel
     {
-        private IWalletService _WalletService;
-        
+        IWalletService _WalletService;
+        ILogger _Logger;
         public IMvxAsyncCommand<string> SuccessCommand { get; private set; }
         
         //TODO: Localize properties
@@ -25,15 +27,21 @@ namespace HodlWallet2.Core.ViewModels
             : base(logProvider, navigationService)
         {
             _WalletService = walletService;
-            //TODO: Change Action.
             SuccessCommand = new MvxAsyncCommand<string>(Success_Callback);
         }
 
         private async Task Success_Callback(string pin)
         {
-            Debug.WriteLine($"PIN Saved: {pin}");
+            SavePin(pin);
+
             _WalletService.InitializeWallet();
+
             await NavigationService.Navigate<BackupViewModel>();
+        }
+
+        private void SavePin(string pin)
+        {
+            SecureStorageProvider.SetPassword(pin);
         }
     }
 }
