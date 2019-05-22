@@ -6,7 +6,7 @@
 
     <ItemGroup>
         <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
-        <PackageReference Include="Xamarin.Forms" Version="4.0.0.304370-pre8" />
+        <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
     </ItemGroup>
 
     <ItemGroup>
