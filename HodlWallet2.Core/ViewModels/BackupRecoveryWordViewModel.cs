@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
+using HodlWallet2.Core.Utils;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
@@ -60,7 +61,6 @@ namespace HodlWallet2.Core.ViewModels
             {
                 PositionText++;
                 Word = _Mnemonic[PositionText];
-                //TODO: Log activity here.
             }
             else
             {
@@ -71,7 +71,7 @@ namespace HodlWallet2.Core.ViewModels
 
         public override void Prepare()
         {
-            string rawMnemonic = _WalletService.NewMnemonic(GetWordListLanguage(), GetWordCount());
+            string rawMnemonic = GetMnemonicFromWalletOrSecureStorage();
 
             _WalletService.Logger.Information($"Newly generated mnemonic is: {rawMnemonic}");
 
@@ -96,6 +96,30 @@ namespace HodlWallet2.Core.ViewModels
             _WalletService.Logger.Information($"Word count is {wordCount}");
 
             return wordCount;
+        }
+
+        private string GetMnemonicFromWalletOrSecureStorage()
+        {
+            string rawMnemonic;
+
+            if (SecureStorageProvider.HasMnemonic())
+            {
+                rawMnemonic = SecureStorageProvider.GetMnemonic();
+
+                _WalletService.Logger.Information($"Wallet got the mnemonic from secure storage, mnemonic: {rawMnemonic}");
+            }
+            else
+            {
+                rawMnemonic = _WalletService.NewMnemonic(GetWordListLanguage(), GetWordCount());
+
+                _WalletService.Logger.Information($"Wallet generated a new mnemonic, mnemonic: {rawMnemonic}");
+
+                SecureStorageProvider.SetMnemonic(rawMnemonic);
+
+                _WalletService.Logger.Information("Saved mnemonic to secure storage.");
+            }
+
+            return rawMnemonic;
         }
     }
 }
