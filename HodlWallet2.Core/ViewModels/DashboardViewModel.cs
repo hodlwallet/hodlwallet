@@ -71,6 +71,7 @@ namespace HodlWallet2.Core.ViewModels
                 _walletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
                 _walletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
                 _walletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
+                _walletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
             }
         }
         
@@ -83,6 +84,11 @@ namespace HodlWallet2.Core.ViewModels
         void WalletManager_OnWhateverTransaction(object sender, TransactionData e)
         {
             LoadTransactions();
+        }
+
+        void WalletSyncManager_OnSyncProgressUpdate(object sender, WalletPositionUpdatedEventArgs e)
+        {
+            // TODO: Update Progress During Sync
         }
         
         public void LoadTransactions()
