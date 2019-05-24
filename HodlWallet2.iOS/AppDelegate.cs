@@ -26,7 +26,6 @@ namespace HodlWallet2.iOS
         {
               global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
               Rg.Plugins.Popup.Popup.Init();
-              global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
               FormsControls.Touch.Main.Init();
 
               UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
