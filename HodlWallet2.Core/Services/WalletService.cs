@@ -25,6 +25,8 @@ using Liviano.Exceptions;
 using MvvmCross.Logging;
 using MvvmCross;
 
+using HodlWallet2.Core.Utils;
+
 namespace HodlWallet2.Core.Services
 {
     public sealed class WalletService : IWalletService
@@ -224,8 +226,17 @@ namespace HodlWallet2.Core.Services
 
         public void InitializeWallet()
         {
-            // FIXME Remove this with the removable code bellow.
-            string guid = "736083c0-7f11-46c2-b3d7-e4e88dc38889";
+            string guid;
+            if (SecureStorageProvider.HasWalletId())
+            {
+                guid = SecureStorageProvider.GetWalletId();
+            }
+            else
+            {
+                guid = Guid.NewGuid().ToString();
+
+                SecureStorageProvider.SetWalletId(guid);
+            }
             
             // TODO Please store and run the network the user is using.
             //Wallet.Configure(walletId: "wallet_guid", network: "testnet", nodesToConnect: 4);
