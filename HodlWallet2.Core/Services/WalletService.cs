@@ -233,34 +233,53 @@ namespace HodlWallet2.Core.Services
             }
             else
             {
+                // Default uses the Guid class from System in .NET
                 guid = Guid.NewGuid().ToString();
 
                 SecureStorageProvider.SetWalletId(guid);
             }
-            
-            // TODO Please store and run the network the user is using.
-            //Wallet.Configure(walletId: "wallet_guid", network: "testnet", nodesToConnect: 4);
-            Configure(walletId: guid, network: "testnet");
 
-            // FIXME Remove this code later when we have a way to create a wallet,
-            // for now, the wallet is created and hardcoded
-            string mnemonic = "erase fog enforce rice coil start few hold grocery lock youth service among menu life salmon fiction diamond lyrics love key stairs toe transfer";
-            string password = "123456";
-
-            if (!WalletExists())
+            string network;
+            if (SecureStorageProvider.HasNetwork())
             {
-                Logger.Information("Creating wallet ({guid}) with password: {password}", guid, password);
-
-                WalletManager.CreateWallet(guid, password, WalletManager.MnemonicFromString(mnemonic));
-
-                Logger.Information("Wallet created.");
+                network = SecureStorageProvider.GetNetwork();
+            }
+            else
+            {
+                // We default to Mainnet
+                network = "mainnet";
+                SecureStorageProvider.SetNetwork(network);
             }
 
-            // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
-            //      Also change the date, the argument should be avoided.
-            Start(password, new DateTimeOffset(new DateTime(2014, 12, 1)));
+            Configure(walletId: guid, network: network);
 
-            Logger.Information("Wallet started.");
+            if (SecureStorageProvider.HasMnemonic())
+            {
+                // FIXME Remove this code later when we have a way to create a wallet,
+                // for now, the wallet is created and hardcoded
+                string mnemonic = "erase fog enforce rice coil start few hold grocery lock youth service among menu life salmon fiction diamond lyrics love key stairs toe transfer";
+                string password = "123456";
+
+                if (!WalletExists())
+                {
+                    Logger.Information("Creating wallet ({guid}) with password: {password}", guid, password);
+
+                    WalletManager.CreateWallet(guid, password, WalletManager.MnemonicFromString(mnemonic));
+
+                    Logger.Information("Wallet created.");
+                }
+
+                // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
+                //      Also change the date, the argument should be avoided.
+                Start(password, new DateTimeOffset(new DateTime(2014, 12, 1)));
+
+                Logger.Information("Wallet started.");
+            }
+            else
+            {
+                // TODO ???
+            }
+
         }
 
         public static string GetNewMnemonic(string wordlist = "english", int wordcount = 12)

@@ -4,11 +4,12 @@ namespace HodlWallet2.Core.Utils
 {
     public class SecureStorageProvider
     {
-        private const string WALLET_ID_KEY = "wallet-id";
-        private const string PASSWORD_KEY = "password";
-        private const string MNEMONIC_KEY = "mnemonic";
-        private const string FINGERPRINT_KEY = "fingerprint";
-        private const string MNEMONIC_STATUS_KEY = "mnemonic-status";
+        const string WALLET_ID_KEY = "wallet-id";
+        const string PASSWORD_KEY = "password";
+        const string MNEMONIC_KEY = "mnemonic";
+        const string FINGERPRINT_KEY = "fingerprint"; // TODO Why where these 2 added? - Igor.
+        const string MNEMONIC_STATUS_KEY = "mnemonic-status";
+        const string NETWORK_KEY = "network";
 
         public static string GetWalletId()
         {
@@ -53,6 +54,21 @@ namespace HodlWallet2.Core.Utils
         public static void SetPassword(string password)
         {
             SecureStorage.SetAsync(PASSWORD_KEY, password);
+        }
+
+        public static string GetNetwork()
+        {
+            return Get(NETWORK_KEY);
+        }
+
+        public static bool HasNetwork()
+        {
+            return !string.IsNullOrEmpty(GetNetwork());
+        }
+
+        public static void SetNetwork(string network)
+        {
+            Set(NETWORK_KEY, network);
         }
 
         public static void RemoveAll()
