@@ -15,7 +15,6 @@
     <Frame
             HeightRequest="150"
             BackgroundColor="Transparent"
-            CornerRadius="20"
             Padding="0">
             <StackLayout>
                 <CollectionView

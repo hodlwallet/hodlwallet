@@ -20,6 +20,10 @@ namespace HodlWallet2.Core.ViewModels
 
         public string SendText => "Send";
         public string ReceiveText => "Receive";
+        public string SyncText => "SYNCING";
+        public string DateText => DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString() + ", Block: 478045";
+        public double Progress => 0.7;
+        public bool IsVisible => true;
 
         private ObservableCollection<Transaction> _transactions;
 
@@ -67,6 +71,7 @@ namespace HodlWallet2.Core.ViewModels
                 _walletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
                 _walletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
                 _walletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
+                _walletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
             }
         }
         
@@ -80,7 +85,14 @@ namespace HodlWallet2.Core.ViewModels
         {
             LoadTransactions();
         }
-        
+
+        void WalletSyncManager_OnSyncProgressUpdate(object sender, WalletPositionUpdatedEventArgs e)
+        {
+            // TODO: Update Progress During Sync
+            // e.g. Progress = e.NewPosition.Height / _walletService.CurrentBlockHeight
+            //      Date = e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString() + ", Block: " + e.NewPosition.Height.ToString();
+        }
+
         public void LoadTransactions()
         {
             Transactions = new ObservableCollection<Transaction>(
