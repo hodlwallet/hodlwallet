@@ -43,7 +43,7 @@ namespace HodlWallet2.Core.Services
 
         private int _NodesToConnect;
 
-        private NodeConnectionParameters _conParams;
+        private NodeConnectionParameters _ConParams;
 
         private Network _Network;
 
@@ -116,9 +116,9 @@ namespace HodlWallet2.Core.Services
         {
             lock (_Lock)
             {
-                if (_conParams != null)
+                if (_ConParams != null)
                 {
-                    return _conParams.TemplateBehaviors.Find<PartialChainBehavior>().Chain as PartialConcurrentChain;
+                    return _ConParams.TemplateBehaviors.Find<PartialChainBehavior>().Chain as PartialConcurrentChain;
                 }
 
                 var chain = new PartialConcurrentChain(_Network);
@@ -192,9 +192,9 @@ namespace HodlWallet2.Core.Services
 
         private AddressManager GetAddressManager()
         {
-            if (_conParams != null)
+            if (_ConParams != null)
             {
-                return _conParams.TemplateBehaviors.Find<AddressManagerBehavior>().AddressManager;
+                return _ConParams.TemplateBehaviors.Find<AddressManagerBehavior>().AddressManager;
 
             }
 
@@ -253,35 +253,43 @@ namespace HodlWallet2.Core.Services
 
             Configure(walletId: guid, network: network);
 
-            if (SecureStorageProvider.HasMnemonic())
+            if (SecureStorageProvider.HasMnemonic() && _WalletId != null)
             {
-                string mnemonic = SecureStorageProvider.GetMnemonic();
+                StartWalletWithWalletId();
 
-                string password = null;
-                if (SecureStorageProvider.HasPassword())
-                {
-                    password = SecureStorageProvider.GetPassword();
-                }
-
-                if (!WalletExists())
-                {
-                    Logger.Information("Creating wallet ({guid}) with password: {password}", guid, password);
-
-                    WalletManager.CreateWallet(guid, password, WalletManager.MnemonicFromString(mnemonic));
-
-                    Logger.Information("Wallet created.");
-                }
-
-                // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
-                //      Also change the date, the argument should be avoided.
-                Start(password, new DateTimeOffset(new DateTime(2014, 12, 1))); // TODO this value is hardcoded.
-
-                Logger.Information("Wallet started.");
+                Logger.Information("Since wallet has a mnemonic, then start the wallet.");
 
                 return;
             }
 
-            // TODO What do we do if we don't have a mnemonic saved?
+            Logger.Information("Wallet has been configured but not started yet due to the lack of mnemonic in the system");
+        }
+
+        public void StartWalletWithWalletId()
+        {
+            Guard.NotNull(_WalletId, nameof(_WalletId));
+
+            string mnemonic = SecureStorageProvider.GetMnemonic();
+
+            string password = null;
+            if (SecureStorageProvider.HasPassword())
+            {
+                password = SecureStorageProvider.GetPassword();
+            }
+
+            if (!WalletExists())
+            {
+                Logger.Information("Creating wallet ({guid}) with password: {password}", _WalletId, password);
+
+                WalletManager.CreateWallet(_WalletId, password, WalletManager.MnemonicFromString(mnemonic));
+
+                Logger.Information("Wallet created.");
+            }
+
+            // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
+            Start(password, WalletManager.GetWallet().CreationTime);
+
+            Logger.Information("Wallet started.");
         }
 
         public static string GetNewMnemonic(string wordlist = "english", int wordcount = 12)
@@ -323,7 +331,7 @@ namespace HodlWallet2.Core.Services
             _AddressManager = GetAddressManager();
             _NodesToConnect = nodesToConnect ?? DEFAULT_NODES_TO_CONNECT;
             _WalletId = walletId ?? Guid.NewGuid().ToString();
-            _conParams = new NodeConnectionParameters();
+            _ConParams = new NodeConnectionParameters();
 
             Logger.Information("Running on {network}", _Network.Name);
             Logger.Information("With wallet id: {walletId}", _WalletId);
@@ -344,13 +352,13 @@ namespace HodlWallet2.Core.Services
 
             _WalletSyncManagerBehavior = new WalletSyncManagerBehavior(Logger, WalletSyncManager, ScriptTypes.P2WPKH);
 
-            _conParams.TemplateBehaviors.Add(new AddressManagerBehavior(_AddressManager));
-            _conParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
-            _conParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
+            _ConParams.TemplateBehaviors.Add(new AddressManagerBehavior(_AddressManager));
+            _ConParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
+            _ConParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
 
-            _conParams.UserAgent = USER_AGENT;
+            _ConParams.UserAgent = USER_AGENT;
 
-            _NodesGroup = new NodesGroup(_Network, _conParams, new NodeRequirement()
+            _NodesGroup = new NodesGroup(_Network, _ConParams, new NodeRequirement()
             {
                 RequiredServices = NodeServices.Network
             });
@@ -359,9 +367,9 @@ namespace HodlWallet2.Core.Services
 
             BroadcastManager broadcastManager = new BroadcastManager(_NodesGroup);
 
-            _conParams.TemplateBehaviors.Add(new TransactionBroadcastBehavior(broadcastManager));
+            _ConParams.TemplateBehaviors.Add(new TransactionBroadcastBehavior(broadcastManager));
 
-            _NodesGroup.NodeConnectionParameters = _conParams;
+            _NodesGroup.NodeConnectionParameters = _ConParams;
             _NodesGroup.MaximumNodeConnection = _NodesToConnect;
 
             _DefaultCoinSelector = new DefaultCoinSelector();
