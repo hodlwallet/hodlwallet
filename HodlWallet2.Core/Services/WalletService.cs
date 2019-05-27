@@ -255,10 +255,13 @@ namespace HodlWallet2.Core.Services
 
             if (SecureStorageProvider.HasMnemonic())
             {
-                // FIXME Remove this code later when we have a way to create a wallet,
-                // for now, the wallet is created and hardcoded
-                string mnemonic = "erase fog enforce rice coil start few hold grocery lock youth service among menu life salmon fiction diamond lyrics love key stairs toe transfer";
-                string password = "123456";
+                string mnemonic = SecureStorageProvider.GetMnemonic();
+
+                string password = null;
+                if (SecureStorageProvider.HasPassword())
+                {
+                    password = SecureStorageProvider.GetPassword();
+                }
 
                 if (!WalletExists())
                 {
@@ -271,15 +274,14 @@ namespace HodlWallet2.Core.Services
 
                 // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
                 //      Also change the date, the argument should be avoided.
-                Start(password, new DateTimeOffset(new DateTime(2014, 12, 1)));
+                Start(password, new DateTimeOffset(new DateTime(2014, 12, 1))); // TODO this value is hardcoded.
 
                 Logger.Information("Wallet started.");
-            }
-            else
-            {
-                // TODO ???
+
+                return;
             }
 
+            // TODO What do we do if we don't have a mnemonic saved?
         }
 
         public static string GetNewMnemonic(string wordlist = "english", int wordcount = 12)
