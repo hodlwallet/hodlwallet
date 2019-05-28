@@ -70,7 +70,8 @@
                                                           SyncTitle SyncText; 
                                                           SyncProgress Progress;
                                                           SyncDate DateText"/>
-                <controls:TransactionCollectionView bindings:Bi.nd="ItemsSource Transactions"
+                <controls:TransactionCollectionView bindings:Bi.nd="ItemsSource Transactions;
+                                                                    SelectedItem TXSelected"
                                                     FlexLayout.Grow="1"/>
             </FlexLayout>
             
