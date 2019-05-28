@@ -277,7 +277,13 @@ namespace HodlWallet2.Core.Services
                 password = SecureStorageProvider.GetPassword();
             }
 
-            if (!WalletExists())
+            if (WalletExists())
+            {
+                Logger.Information("Loading a wallet because it exists");
+
+                WalletManager.LoadWallet(password);
+            }
+            else
             {
                 Logger.Information("Creating wallet ({guid}) with password: {password}", _WalletId, password);
 
@@ -388,7 +394,12 @@ namespace HodlWallet2.Core.Services
 
         public void Start(string password, DateTimeOffset? timeToStartOn = null)
         {
-            WalletManager.LoadWallet(password);
+            if (WalletManager.GetWallet() == null)
+            {
+                WalletManager.LoadWallet(password);
+
+                timeToStartOn = WalletManager.GetWallet().CreationTime;
+            }
 
             _NodesGroup.Connect();
 
