@@ -20,7 +20,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxCommand<int> DigitCommand { get; private set; }
         public MvxCommand BackspaceCommand { get; private set; }
 
-        protected LoginViewModel(
+        public LoginViewModel(
             IMvxLogProvider logProvider, 
             IMvxNavigationService navigationService) : base(logProvider, navigationService)
         {
