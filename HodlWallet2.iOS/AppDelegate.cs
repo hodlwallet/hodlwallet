@@ -24,6 +24,7 @@ namespace HodlWallet2.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+              global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
               global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
               Rg.Plugins.Popup.Popup.Init();
               FormsControls.Touch.Main.Init();
