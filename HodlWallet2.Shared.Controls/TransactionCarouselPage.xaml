@@ -2,14 +2,17 @@
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" 
               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
               x:Class="HodlWallet2.Shared.Controls.TransactionCarouselPage"
-              BackgroundColor="Transparent"
-              x:Name="TransactionCarousel">
+              BackgroundColor="Transparent">
     <CarouselPage.ItemTemplate>
         <DataTemplate>
             <StackLayout BackgroundColor="{StaticResource DarkGray}"
                          Margin="15"
                          Padding="10">
-                <FlexLayout Direction="Row" />
+                <BoxView BackgroundColor="Yellow" 
+                         HorizontalOptions="Start" 
+                         HeightRequest="10" 
+                         WidthRequest="10"
+                         />
                 <Label Text="{Binding LongDate}" />
                 <!-- Binding Status -->
                 <Label Text="{Binding AmountStatus}"

@@ -29,5 +29,19 @@ namespace HodlWallet2.Shared.Controls
                 Collection.ItemsSource = value;
             }
         }
+
+        public static readonly BindableProperty SelectedItemProperty =
+            BindableProperty.Create(
+                "SelectedItem",
+                typeof(object),
+                typeof(TransactionCollectionView),
+                null,
+                BindingMode.OneWayToSource
+            );
+
+        public object SelectedItem
+        {
+            get => GetValue(SelectedItemProperty);
+        }
     }
 }

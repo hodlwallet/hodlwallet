@@ -19,7 +19,8 @@
             <StackLayout>
                 <CollectionView
                     x:Name="Collection"
-                    BackgroundColor="{StaticResource GrayBackground}">
+                    BackgroundColor="{StaticResource GrayBackground}"
+                    SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>

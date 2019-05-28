@@ -13,11 +13,16 @@ namespace HodlWallet2.Core.Models
         public int? BlockHeight { get; set; }
         public Xamarin.Forms.Color StatusColor { get; set; }
         public string Duration { get; set; }
-        public string Status { get; set; }
+        public string AmountStatus { get; set; }
         public string AtAddress { get; set; }
         public string Memo { get; set; }
         public string Confirmations { get; set; }
         public string IsAvailable { get; set; }
-        public string Id { get; set; }
+        public string TXID { get; set; }
+
+        public override string ToString()
+        {
+            return TXID;
+        }
     }
 }
