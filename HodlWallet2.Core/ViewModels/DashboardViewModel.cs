@@ -1,6 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Linq;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
@@ -147,6 +148,12 @@ namespace HodlWallet2.Core.ViewModels
         public void ReScan()
         {
             _walletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
+        }
+
+        private async Task Transaction_Tapped(string TXID)
+        {
+            // Log
+            // await model navigation to Transaction Carousel
         }
 
         public IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)

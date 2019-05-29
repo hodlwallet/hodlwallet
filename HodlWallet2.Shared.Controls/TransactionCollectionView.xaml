@@ -19,11 +19,15 @@
             <StackLayout>
                 <CollectionView
                     x:Name="Collection"
-                    BackgroundColor="{StaticResource GrayBackground}"
-                    SelectionMode="Single">
+                    BackgroundColor="{StaticResource GrayBackground}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding DetailCommand}"
+                                        CommandParameter="{Binding TXID}" />
+                                </StackLayout.GestureRecognizers>
                                 <Grid
                                     Margin="10, 5, 10, 5"
                                     Padding="10"

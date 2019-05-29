@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Windows.Input;
+
+using MvvmCross.Commands;
 
 namespace HodlWallet2.Core.Models
 {
@@ -19,6 +22,7 @@ namespace HodlWallet2.Core.Models
         public string Confirmations { get; set; }
         public string IsAvailable { get; set; }
         public string TXID { get; set; }
+        public IMvxAsyncCommand<string> DetailCommand { get; set; }
 
         public override string ToString()
         {
