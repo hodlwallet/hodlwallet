@@ -15,7 +15,7 @@ namespace HodlWallet2.Views
     {
         private const string grayCheck = "Assets.circle_check_gray.svg", yellowCheck = "Assets.circle_check_yellow.svg";
 
-        public SecurityCenterView(SecurityCenterViewModel viewModel)
+        public SecurityCenterView()
         {
             InitializeComponent();
             SetLabels();

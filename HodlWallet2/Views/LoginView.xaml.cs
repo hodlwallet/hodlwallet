@@ -58,7 +58,7 @@ namespace HodlWallet2.Views
             //TODO: Reset UI colors here.
         }
 
-        public LoginView(LoginViewModel viewModel)
+        public LoginView()
         {
             InitializeComponent();
             SetLabel();
