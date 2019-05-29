@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 using HodlWallet2.Core.Utils;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
@@ -20,6 +21,9 @@ namespace HodlWallet2.Core.ViewModels
         public MvxCommand<int> DigitCommand { get; private set; }
         public MvxCommand BackspaceCommand { get; private set; }
 
+        public IMvxAsyncCommand SendCommand { get; private set; }
+        public IMvxAsyncCommand ReceiveCommand { get; private set; }
+
         public LoginViewModel(
             IMvxLogProvider logProvider, 
             IMvxNavigationService navigationService) : base(logProvider, navigationService)
@@ -29,6 +33,8 @@ namespace HodlWallet2.Core.ViewModels
             BackspaceCommand = new MvxCommand(BackspaceTapped);
             _changeDigitColorInteraction = new MvxInteraction<Tuple<int, bool>>();
             _resetDigitsColorInteraction = new MvxInteraction();
+            SendCommand = new MvxAsyncCommand(Send);
+            ReceiveCommand = new MvxAsyncCommand(Receive);
         }
 
         private void BackspaceTapped()
@@ -64,6 +70,16 @@ namespace HodlWallet2.Core.ViewModels
                     }
                 }
             }
+        }
+
+        private async Task Send()
+        {
+            await NavigationService.Navigate<SendViewModel>();
+        }
+
+        private async Task Receive()
+        {
+            await NavigationService.Navigate<ReceiveViewModel>();
         }
     }
 }
