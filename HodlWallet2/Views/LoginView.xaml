@@ -55,22 +55,22 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 
-                <BoxView Color="{Binding PinOne}"
+                <BoxView Color="Transparent"
                          Grid.Row="1"
                          Grid.Column="1" />
-                <BoxView Color="{Binding PinTwo}"
+                <BoxView Color="Transparent"
                          Grid.Row="1"
                          Grid.Column="2" />
-                <BoxView Color="{Binding PinThree}"
+                <BoxView Color="Transparent"
                          Grid.Row="1"
                          Grid.Column="3" />
-                <BoxView Color="{Binding PinFour}"
+                <BoxView Color="Transparent"
                          Grid.Row="1"
                          Grid.Column="4" />
-                <BoxView Color="{Binding PinFive}"
+                <BoxView Color="Transparent"
                          Grid.Row="1"
                          Grid.Column="5" />
-                <BoxView Color="{Binding PinSix}"
+                <BoxView Color="Transparent"
                          Grid.Row="1"
                          Grid.Column="6" />
             </Grid>
