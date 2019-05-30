@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 using HodlWallet2.Locale;
 using MvvmCross.Base;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Forms.Views;
 using MvvmCross.ViewModels;
 using MvvmCross.WeakSubscription;
@@ -67,6 +68,20 @@ namespace HodlWallet2.Views
         private void SetLabel()
         {
             Header.Text = LocaleResources.Pin_enter;
+        }
+        
+        private void CreateInteractionsBindings()
+        {
+            var set = this.CreateBindingSet<LoginView, LoginViewModel>();
+            set.Bind(this).For(v => v.ChangeDigitColorInteraction).To(vm => vm.ChangeDigitColorInteraction);
+            set.Bind(this).For(v => v.ResetDigitsColorInteraction).To(vm => vm.ResetDigitsColorInteraction);
+            set.Apply();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            CreateInteractionsBindings();
         }
     }
 }
