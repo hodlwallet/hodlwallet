@@ -18,6 +18,9 @@ namespace HodlWallet2.Core.ViewModels
         private readonly MvxInteraction _resetDigitsColorInteraction;
 
         public IMvxInteraction<Tuple<int, bool>> ChangeDigitColorInteraction => _changeDigitColorInteraction;
+
+        public MvxInteraction ResetDigitsColorInteraction => _resetDigitsColorInteraction;
+
         public MvxCommand<int> DigitCommand { get; private set; }
         public MvxCommand BackspaceCommand { get; private set; }
 
