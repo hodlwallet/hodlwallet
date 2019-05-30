@@ -25,7 +25,6 @@ namespace HodlWallet2.Core.ViewModels
         public string DateText => DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString() + ", Block: 478045";
         public double Progress => 0.7;
         public bool IsVisible => true;
-        public object TXSelected;
 
         private ObservableCollection<Transaction> _transactions;
 
@@ -150,15 +149,17 @@ namespace HodlWallet2.Core.ViewModels
             _walletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
         }
 
-        private async Task Transaction_Tapped(string TXID)
+        private async Task Transaction_Tapped(int index)
         {
             // Log
-            // await model navigation to Transaction Carousel
+            var parameter = Tuple.Create(Transactions, index);
+            await NavigationService.Navigate<TransactionCarouselViewModel, Tuple<ObservableCollection<Transaction>, int>>(parameter);
         }
 
         public IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
         {
             var result = new List<Transaction>();
+            int index = 0;
 
             foreach (var tx in txList)
             {
@@ -179,9 +180,10 @@ namespace HodlWallet2.Core.ViewModels
                     // TODO: Implement Send and Receive
                     // AtAddress = WalletService.GetAddressFromTranscation(tx),
                     Duration = DateTimeOffsetOperations.shortDate(tx.CreationTime),
-                    TXID = tx.Id.ToString()
+                    TXID = tx.Id.ToString(),
                 });
 
+                index++;
                 _walletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
             }
             return result;

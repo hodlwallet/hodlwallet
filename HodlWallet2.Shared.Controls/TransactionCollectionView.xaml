@@ -26,7 +26,7 @@
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer
                                         Command="{Binding DetailCommand}"
-                                        CommandParameter="{Binding TXID}" />
+                                        CommandParameter="{Binding Index}"/>
                                 </StackLayout.GestureRecognizers>
                                 <Grid
                                     Margin="10, 5, 10, 5"

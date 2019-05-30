@@ -6,6 +6,7 @@ using UIKit;
 
 using Serilog;
 using Serilog.Core;
+using PanCardView.iOS;
 
 namespace HodlWallet2.iOS
 {
@@ -28,6 +29,7 @@ namespace HodlWallet2.iOS
               global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
               Rg.Plugins.Popup.Popup.Init();
               FormsControls.Touch.Main.Init();
+              CardsViewRenderer.Preserve();
 
               UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
               UINavigationBar.Appearance.ShadowImage = new UIImage();

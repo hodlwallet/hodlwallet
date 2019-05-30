@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Windows.Input;
 
 using Xamarin.Forms;
 
@@ -27,6 +28,25 @@ namespace HodlWallet2.Shared.Controls
             {
                 SetValue(ItemsSourceProperty, value);
                 Collection.ItemsSource = value;
+            }
+        }
+
+        public static readonly BindableProperty SelectionChangedCommandProperty = 
+            BindableProperty.Create(
+                "SelectionChangedCommand",
+                typeof(ICommand),
+                typeof(TransactionCollectionView),
+                null,
+                BindingMode.OneWay
+            );
+            
+        public ICommand SelectionChangedCommand
+        {
+            get => (ICommand) GetValue (CollectionView.SelectionChangedCommandProperty);
+            set
+            {
+                SetValue(CollectionView.SelectionChangedCommandProperty, value);
+                Collection.SelectionChangedCommand = value;
             }
         }
     }

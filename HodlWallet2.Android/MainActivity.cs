@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using MvvmCross.Forms.Platforms.Android.Views;
+using PanCardView.Droid;
 using Serilog;
 using Serilog.Core;
 using ZXing.Mobile;
@@ -28,7 +29,8 @@ namespace HodlWallet2.Droid
             MobileBarcodeScanner.Initialize(Application);
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
             FormsControls.Droid.Main.Init(this);
-            
+            CardsViewRenderer.Preserve();
+
             base.OnCreate(savedInstanceState);
         }
 

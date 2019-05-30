@@ -71,7 +71,7 @@
                                                           SyncProgress Progress;
                                                           SyncDate DateText"/>
                 <controls:TransactionCollectionView bindings:Bi.nd="ItemsSource Transactions;
-                                                                    SelectedItem TXSelected"
+                                                                    SelectionChangedCommand NavigateToTransactionCarouselCommand"
                                                     FlexLayout.Grow="1"/>
             </FlexLayout>
             
