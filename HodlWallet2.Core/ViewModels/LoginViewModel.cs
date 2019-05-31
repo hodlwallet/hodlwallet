@@ -45,6 +45,9 @@ namespace HodlWallet2.Core.ViewModels
             if (_pin.Count - 1 >= 0)
             {
                 _pin.RemoveAt(_pin.Count - 1);
+
+                // Set the color to "off"
+                _changeDigitColorInteraction.Raise(new Tuple<int, bool>(_pin.Count + 1, false));
             }
         }
 
@@ -53,8 +56,10 @@ namespace HodlWallet2.Core.ViewModels
             if (_pin.Count < 6)
             {
                 _pin.Add(arg);
-                // Set color to specific digit.
+
+                // Set color to specific digit to "on"
                 _changeDigitColorInteraction.Raise(new Tuple<int, bool>(_pin.Count, true));
+
                 if (_pin.Count == 6)
                 {
                     // Reset colors of all digits.

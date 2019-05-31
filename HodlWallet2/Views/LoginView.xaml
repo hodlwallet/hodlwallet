@@ -55,22 +55,28 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 
-                <BoxView Color="Transparent"
+                <BoxView x:Name="Pin1"
+                         Color="Transparent"
                          Grid.Row="1"
                          Grid.Column="1" />
-                <BoxView Color="Transparent"
+                <BoxView x:Name="Pin2"
+                         Color="Transparent"
                          Grid.Row="1"
                          Grid.Column="2" />
-                <BoxView Color="Transparent"
+                <BoxView x:Name="Pin3"
+                         Color="Transparent"
                          Grid.Row="1"
                          Grid.Column="3" />
-                <BoxView Color="Transparent"
+                <BoxView x:Name="Pin4"
+                         Color="Transparent"
                          Grid.Row="1"
                          Grid.Column="4" />
-                <BoxView Color="Transparent"
+                <BoxView x:Name="Pin5"
+                         Color="Transparent"
                          Grid.Row="1"
                          Grid.Column="5" />
-                <BoxView Color="Transparent"
+                <BoxView x:Name="Pin6"
+                         Color="Transparent"
                          Grid.Row="1"
                          Grid.Column="6" />
             </Grid>

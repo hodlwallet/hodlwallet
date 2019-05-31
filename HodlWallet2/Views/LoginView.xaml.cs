@@ -9,6 +9,7 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.Forms.Views;
 using MvvmCross.ViewModels;
 using MvvmCross.WeakSubscription;
+using Liviano.Exceptions;
 
 namespace HodlWallet2.Views
 {
@@ -18,6 +19,9 @@ namespace HodlWallet2.Views
         private IMvxInteraction<Tuple<int, bool>> _changeDigitColorInteraction;
         private IDisposable _resetDigitsToken;
         private IDisposable _changeDigitColorInteractionToken;
+
+        private static readonly Color ON_COLOR = Color.Gold;
+        private static readonly Color OFF_COLOR = Color.Transparent;
 
         public IMvxInteraction ResetDigitsColorInteraction
         {
@@ -51,12 +55,34 @@ namespace HodlWallet2.Views
 
         private void ChangeDigitColor(object sender, MvxValueEventArgs<Tuple<int, bool>> e)
         {
-            //TODO: Change digit color based on argument.
+            int digit = e.Value.Item1;
+            bool on = e.Value.Item2;
+
+            BoxView pin = (BoxView) FindByName($"Pin{digit}");
+
+            TogglePinColor(pin, on);
+        }
+
+        private void TogglePinColor(BoxView pin, bool on)
+        {
+            if (on)
+            {
+                pin.Color = ON_COLOR;
+            }
+            else
+            {
+                pin.Color = OFF_COLOR;
+            }
         }
 
         private void ResetDigitColors(object sender, EventArgs e)
         {
-            //TODO: Reset UI colors here.
+            TogglePinColor(Pin1, false);
+            TogglePinColor(Pin2, false);
+            TogglePinColor(Pin3, false);
+            TogglePinColor(Pin4, false);
+            TogglePinColor(Pin5, false);
+            TogglePinColor(Pin6, false);
         }
 
         public LoginView()
