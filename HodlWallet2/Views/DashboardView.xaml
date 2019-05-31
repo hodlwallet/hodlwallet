@@ -65,8 +65,13 @@
                 </FlexLayout>
             </FlexLayout>
             
-            <FlexLayout FlexLayout.Grow="2" BackgroundColor="Red" Direction="Row">
-                <controls:TransactionCollectionView bindings:Bi.nd="ItemsSource Transactions" />
+            <FlexLayout FlexLayout.Grow="2" BackgroundColor="Transparent" Direction="Column">
+                <controls:SyncProgressBar bindings:Bi.nd="SyncVisible IsVisible; 
+                                                          SyncTitle SyncText; 
+                                                          SyncProgress Progress;
+                                                          SyncDate DateText"/>
+                <controls:TransactionCollectionView bindings:Bi.nd="ItemsSource Transactions"
+                                                    FlexLayout.Grow="1"/>
             </FlexLayout>
             
             <FlexLayout Direction="Row" FlexLayout.Grow="1" JustifyContent="SpaceAround">

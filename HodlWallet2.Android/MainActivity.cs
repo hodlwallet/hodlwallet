@@ -22,6 +22,7 @@ namespace HodlWallet2.Droid
             ToolbarResource = Resource.Layout.Toolbar;
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
 
+            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
