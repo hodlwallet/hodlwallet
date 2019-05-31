@@ -46,7 +46,7 @@
             
             <Label x:Name="Header" Style="{DynamicResource CustomLabel}" HorizontalOptions="Center" />
             
-            <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+            <Grid x:Name="InputGrid" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="5" />
                 </Grid.RowDefinitions>

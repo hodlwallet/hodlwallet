@@ -17,6 +17,10 @@ namespace HodlWallet2.Core
             // NOTE: Use this code to simulate first experience.
             //SecureStorageProvider.RemoveAll();
 
+            //// Note use this code to simulate login with a predictable stuff
+            //SecureStorageProvider.SetPassword("11111");
+            //SecureStorageProvider.SetMnemonic("abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about");
+
             if (SecureStorageProvider.HasPassword() && SecureStorageProvider.HasMnemonic())
             {
                 RegisterAppStart<LoginViewModel>();

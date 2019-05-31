@@ -10,18 +10,21 @@ using MvvmCross.Forms.Views;
 using MvvmCross.ViewModels;
 using MvvmCross.WeakSubscription;
 using Liviano.Exceptions;
+using System.Threading.Tasks;
 
 namespace HodlWallet2.Views
 {
     public partial class LoginView : MvxContentPage<LoginViewModel>
     {
-        private IMvxInteraction _resetDigitsColorInteraction;
-        private IMvxInteraction<Tuple<int, bool>> _changeDigitColorInteraction;
-        private IDisposable _resetDigitsToken;
-        private IDisposable _changeDigitColorInteractionToken;
+        IMvxInteraction _resetDigitsColorInteraction;
+        IMvxInteraction<Tuple<int, bool>> _changeDigitColorInteraction;
+        IMvxInteraction _launchIncorrectPinAnimationInteraction;
+        IDisposable _resetDigitsToken;
+        IDisposable _changeDigitColorInteractionToken;
+        IDisposable _launchIncorrectPinAnimationInteractionToken;
 
-        private static readonly Color ON_COLOR = Color.Orange;
-        private static readonly Color OFF_COLOR = Color.White;
+        static readonly Color ON_COLOR = Color.Orange;
+        static readonly Color OFF_COLOR = Color.White;
 
         public IMvxInteraction ResetDigitsColorInteraction
         {
@@ -50,6 +53,21 @@ namespace HodlWallet2.Views
 
                 _changeDigitColorInteraction = value;
                 _changeDigitColorInteractionToken = _changeDigitColorInteraction.WeakSubscribe(ChangeDigitColor);
+            }
+        }
+
+        public IMvxInteraction LaunchIncorrectPinAnimationInteraction
+        {
+            get => _launchIncorrectPinAnimationInteraction;
+            set
+            {
+                if (_launchIncorrectPinAnimationInteraction != null)
+                {
+                    _launchIncorrectPinAnimationInteractionToken.Dispose();
+                }
+
+                _launchIncorrectPinAnimationInteraction = value;
+                _launchIncorrectPinAnimationInteractionToken = _launchIncorrectPinAnimationInteraction.WeakSubscribe(LaunchIncorrectPinAnimation);
             }
         }
 
@@ -85,6 +103,29 @@ namespace HodlWallet2.Views
             TogglePinColor(Pin6, false);
         }
 
+        private async void LaunchIncorrectPinAnimation(object sender, EventArgs e)
+        {
+            // Shake ContentView Re-Enter PIN
+            uint timeout = 50;
+            await InputGrid.TranslateTo(-15, 0, timeout);
+
+            await InputGrid.TranslateTo(15, 0, timeout);
+
+            await InputGrid.TranslateTo(-10, 0, timeout);
+
+            await InputGrid.TranslateTo(10, 0, timeout);
+
+            await InputGrid.TranslateTo(-5, 0, timeout);
+
+            await InputGrid.TranslateTo(5, 0, timeout);
+
+            InputGrid.TranslationX = 0;
+
+            await Task.Delay(500);
+
+            ResetDigitColors(sender, e);
+        }
+
         public LoginView()
         {
             InitializeComponent();
@@ -101,6 +142,7 @@ namespace HodlWallet2.Views
             var set = this.CreateBindingSet<LoginView, LoginViewModel>();
             set.Bind(this).For(v => v.ChangeDigitColorInteraction).To(vm => vm.ChangeDigitColorInteraction);
             set.Bind(this).For(v => v.ResetDigitsColorInteraction).To(vm => vm.ResetDigitsColorInteraction);
+            set.Bind(this).For(v => v.LaunchIncorrectPinAnimationInteraction).To(vm => vm.LaunchIncorrectPinAnimationInteraction);
             set.Apply();
         }
 
