@@ -72,6 +72,7 @@ namespace HodlWallet2.Core.ViewModels
                     }
                     if (SecureStorageProvider.GetPassword() == string.Join(string.Empty, _pin.ToArray()))
                     {
+                        await Task.Delay(500);
                         _pin.Clear();
                         await NavigationService.Navigate<DashboardViewModel>();
                         return;

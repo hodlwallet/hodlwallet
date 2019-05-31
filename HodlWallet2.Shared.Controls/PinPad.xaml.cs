@@ -160,7 +160,28 @@ namespace HodlWallet2.Shared.Controls
             else
                 this.IsEnabledCore = true;
         }
-        
+
+        public async void OnBackspaceTapped(object sender, EventArgs e)
+        {
+            // FIXME This code should not work like this, it's kindof embarasing how poorly coded this is, for now I just gonna follow the mess that's bellow - Igor.
+            if (grdSetPin.IsVisible) // "Enter Pin" Ugg... horrible way to know where you at.
+            {
+                if (_pin1.Length == 0)
+                    return;
+
+                _pin1 = _pin1.Remove(_pin1.Length - 1);
+                PaintBoxView(Color.White, _pin1.Length + 1);
+            }
+            else // "Reenter Pin"
+            {
+                if (_pin2.Length == 0)
+                    return;
+
+                _pin2 = _pin2.Remove(_pin2.Length - 1);
+                PaintBoxView(Color.White, _pin2.Length + 1);
+            }
+        }
+
         public async void OnPinTapped(object sender, EventArgs e)
         {
             if (grdSetPin.IsVisible) // Enter PIN
@@ -250,7 +271,7 @@ namespace HodlWallet2.Shared.Controls
                     var tag = Utils.Tags.GetTag(bxView);
                     if (tag.Equals(boxViewNumber.ToString()))
                     {
-                        bxView.Color = Color.Orange;
+                        bxView.Color = fillColor;
                         break;
                     }
                 }

@@ -20,8 +20,8 @@ namespace HodlWallet2.Views
         private IDisposable _resetDigitsToken;
         private IDisposable _changeDigitColorInteractionToken;
 
-        private static readonly Color ON_COLOR = Color.Gold;
-        private static readonly Color OFF_COLOR = Color.Transparent;
+        private static readonly Color ON_COLOR = Color.Orange;
+        private static readonly Color OFF_COLOR = Color.White;
 
         public IMvxInteraction ResetDigitsColorInteraction
         {

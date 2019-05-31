@@ -56,27 +56,27 @@
                 </Grid.ColumnDefinitions>
                 
                 <BoxView x:Name="Pin1"
-                         Color="Transparent"
+                         Color="White"
                          Grid.Row="1"
                          Grid.Column="1" />
                 <BoxView x:Name="Pin2"
-                         Color="Transparent"
+                         Color="White"
                          Grid.Row="1"
                          Grid.Column="2" />
                 <BoxView x:Name="Pin3"
-                         Color="Transparent"
+                         Color="White"
                          Grid.Row="1"
                          Grid.Column="3" />
                 <BoxView x:Name="Pin4"
-                         Color="Transparent"
+                         Color="White"
                          Grid.Row="1"
                          Grid.Column="4" />
                 <BoxView x:Name="Pin5"
-                         Color="Transparent"
+                         Color="White"
                          Grid.Row="1"
                          Grid.Column="5" />
                 <BoxView x:Name="Pin6"
-                         Color="Transparent"
+                         Color="White"
                          Grid.Row="1"
                          Grid.Column="6" />
             </Grid>

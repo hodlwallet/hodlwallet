@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:HodlWallet2.Shared.Controls"
@@ -205,6 +205,7 @@
             
             <Button Text="&#x21E6;"
                     Grid.Row="4" Grid.Column="3"
+                    Clicked="OnBackspaceTapped"
                     Command="{Binding BackspaceCommand}"
                     TextColor="{StaticResource SyncGradientStart}" />
         </Grid>

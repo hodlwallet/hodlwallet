@@ -14,6 +14,9 @@ namespace HodlWallet2.Core
     {
         public override void Initialize()
         {
+            // NOTE: Use this code to simulate first experience.
+            //SecureStorageProvider.RemoveAll();
+
             if (SecureStorageProvider.HasPassword() && SecureStorageProvider.HasMnemonic())
             {
                 RegisterAppStart<LoginViewModel>();
