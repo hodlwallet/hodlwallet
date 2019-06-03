@@ -24,13 +24,9 @@ namespace HodlWallet2.Core.ViewModels
         public string SyncText => "SYNCING";
         public string DateText => DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString() + ", Block: 478045";
         public double Progress => 0.7;
-        public bool IsVisible => true;
+        public bool IsVisible => false;
 
-        object _CurrentTransaction;
-        public object CurrentTransaction
-        {
-            get => _CurrentTransaction;
-        }
+        public object CurrentTransaction { get; }
 
         ObservableCollection<Transaction> _Transactions;
 
