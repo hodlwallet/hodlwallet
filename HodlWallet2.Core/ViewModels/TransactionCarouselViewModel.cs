@@ -17,8 +17,19 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class TransactionCarouselViewModel : BaseViewModel<Tuple<ObservableCollection<Transaction>, int>>
     {
-        public ObservableCollection<Transaction> Transactions;
-        public int CurrentIndex;
+        ObservableCollection<Transaction> _Transactions;
+        public ObservableCollection<Transaction> Transactions
+        {
+            get => _Transactions;
+            set => SetProperty(ref _Transactions, value);
+        }
+
+        int _CurrentIndex;
+        public int CurrentIndex
+        {
+            get => _CurrentIndex;
+            set => SetProperty(ref _CurrentIndex, value);
+        }
 
         public TransactionCarouselViewModel(
             IMvxLogProvider logProvider,
@@ -32,7 +43,7 @@ namespace HodlWallet2.Core.ViewModels
             CurrentIndex = parameter.Item2;
         }
 
-        private async Task Close()
+        async Task Close()
         {
             await NavigationService.Close(this);
         }

@@ -31,21 +31,34 @@ namespace HodlWallet2.Shared.Controls
             }
         }
 
-        public static readonly BindableProperty SelectionChangedCommandProperty = 
+        public static readonly BindableProperty SelectedItemProperty =
             BindableProperty.Create(
-                "SelectionChangedCommand",
-                typeof(ICommand),
+                nameof(SelectedItem),
+                typeof(object),
                 typeof(TransactionCollectionView),
                 null,
-                BindingMode.OneWay
+                BindingMode.OneWayToSource
+            );
+
+        public object SelectedItem
+        {
+            get => Collection.SelectedItem;
+        }
+
+        public static readonly BindableProperty SelectionChangedCommandProperty = 
+            BindableProperty.Create(
+                nameof(SelectionChangedCommand),
+                typeof(ICommand),
+                typeof(TransactionCollectionView),
+                null
             );
             
         public ICommand SelectionChangedCommand
         {
-            get => (ICommand) GetValue (CollectionView.SelectionChangedCommandProperty);
+            get => (ICommand) GetValue (SelectionChangedCommandProperty);
             set
             {
-                SetValue(CollectionView.SelectionChangedCommandProperty, value);
+                SetValue(SelectionChangedCommandProperty, value);
                 Collection.SelectionChangedCommand = value;
             }
         }

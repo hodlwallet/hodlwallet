@@ -17,7 +17,7 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class DashboardViewModel : BaseViewModel
     {
-        private readonly IWalletService _walletService;
+        readonly IWalletService _WalletService;
 
         public string SendText => "Send";
         public string ReceiveText => "Receive";
@@ -26,27 +26,35 @@ namespace HodlWallet2.Core.ViewModels
         public double Progress => 0.7;
         public bool IsVisible => true;
 
-        private ObservableCollection<Transaction> _transactions;
+        object _CurrentTransaction;
+        public object CurrentTransaction
+        {
+            get => _CurrentTransaction;
+        }
+
+        ObservableCollection<Transaction> _Transactions;
 
         public ObservableCollection<Transaction> Transactions
         {
-            get => _transactions;
-            set => SetProperty(ref _transactions, value);
+            get => _Transactions;
+            set => SetProperty(ref _Transactions, value);
         }
 
         public MvxCommand NavigateToSendViewCommand { get; private set; }
         public MvxCommand NavigateToReceiveViewCommand { get; private set; }
         public MvxCommand NavigateToMenuViewCommand { get; private set; }
-        
+        public MvxCommand NavigateToTransactionCarouselCommand { get; private set; }
+
         public DashboardViewModel(
             IMvxLogProvider logProvider, 
             IMvxNavigationService navigationService,
             IWalletService walletService) : base(logProvider, navigationService)
         {
-            _walletService = walletService;
+            _WalletService = walletService;
             NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
+            NavigateToTransactionCarouselCommand = new MvxCommand(NavigateToTransactionCarousel);
 
             TransactionData first = JsonConvert.DeserializeObject<TransactionData>(
                 "{\"id\": \"b1e636e66ac0590cab93e96144267895f10716c51591f3507c260ab661cb6f0b\"," +
@@ -86,30 +94,37 @@ namespace HodlWallet2.Core.ViewModels
             Transactions = new ObservableCollection<Transaction>(CreateList(txList));
         }
 
-        private void NavigateToMenuView()
+        void NavigateToMenuView()
         {
             NavigationService.Navigate<MenuViewModel>();
         }
 
-        private void NavigateToReceiveView()
+        void NavigateToReceiveView()
         {
             NavigationService.Navigate<ReceiveViewModel>();
         }
 
-        private void NavigateToSendView()
+        void NavigateToSendView()
         {
             NavigationService.Navigate<SendViewModel>();
+        }
+
+        void NavigateToTransactionCarousel()
+        {
+            int index = Transactions.IndexOf(CurrentTransaction as Transaction);
+            var parameter = Tuple.Create(Transactions, index);
+            NavigationService.Navigate<TransactionCarouselViewModel, Tuple<ObservableCollection<Transaction>, int>>(parameter);
         }
 
         public override void ViewAppeared()
         {
             base.ViewAppeared();
-            if (_walletService.IsStarted)
+            if (_WalletService.IsStarted)
             {
-                _walletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
-                _walletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
-                _walletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
-                _walletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
+                _WalletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
+                _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
+                _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
+                _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
             }
         }
         
@@ -127,7 +142,7 @@ namespace HodlWallet2.Core.ViewModels
         void WalletSyncManager_OnSyncProgressUpdate(object sender, WalletPositionUpdatedEventArgs e)
         {
             // TODO: Update Progress During Sync
-            // e.g. Progress = e.NewPosition.Height / _walletService.CurrentBlockHeight
+            // e.g. Progress = e.NewPosition.Height / _WalletService.CurrentBlockHeight
             //      Date = e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString() + ", Block: " + e.NewPosition.Height.ToString();
         }
 
@@ -135,25 +150,18 @@ namespace HodlWallet2.Core.ViewModels
         {
             Transactions = new ObservableCollection<Transaction>(
                 CreateList(
-                    _walletService.GetCurrentAccountTransactions().OrderBy(
+                    _WalletService.GetCurrentAccountTransactions().OrderBy(
                         (TransactionData txData) => txData.CreationTime
                     )
                 )
             );
 
-            _walletService.Logger.Information(new string('*', 20));
+            _WalletService.Logger.Information(new string('*', 20));
         }
 
         public void ReScan()
         {
-            _walletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
-        }
-
-        private async Task Transaction_Tapped(int index)
-        {
-            // Log
-            var parameter = Tuple.Create(Transactions, index);
-            await NavigationService.Navigate<TransactionCarouselViewModel, Tuple<ObservableCollection<Transaction>, int>>(parameter);
+            _WalletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
         }
 
         public IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
@@ -184,12 +192,12 @@ namespace HodlWallet2.Core.ViewModels
                 });
 
                 index++;
-                _walletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
+                _WalletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
             }
             return result;
         }
 
-        private string GetAmountStatus(TransactionData tx)
+        string GetAmountStatus(TransactionData tx)
         {
             switch (tx.IsSend)
             {
