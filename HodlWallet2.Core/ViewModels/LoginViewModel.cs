@@ -29,7 +29,7 @@ namespace HodlWallet2.Core.ViewModels
             IMvxLogProvider logProvider, 
             IMvxNavigationService navigationService) : base(logProvider, navigationService)
         {
-            if (!SecureStorageProvider.HasPassword())
+            if (!SecureStorageProvider.HasPin())
             {
                 throw new WalletException("Error: The wallet does not have a pin setup");
             }
@@ -72,18 +72,22 @@ namespace HodlWallet2.Core.ViewModels
                     // Reset colors of all digits.
                     ResetDigitsColorInteraction.Raise();
 
-                    if (SecureStorageProvider.GetPassword() == string.Join(string.Empty, _pin.ToArray()))
+                    await Task.Delay(500);
+
+                    string input = string.Join(string.Empty, _pin.ToArray());
+                    if (SecureStorageProvider.GetPin() == input)
                     {
-                        await Task.Delay(500);
                         _pin.Clear();
+
                         await NavigationService.Navigate<DashboardViewModel>();
+
                         return;
                     }
                     else
                     {
-                        LaunchIncorrectPinAnimationInteraction.Raise();
-
                         _pin.Clear();
+
+                        LaunchIncorrectPinAnimationInteraction.Raise();
 
                         return;
                     }

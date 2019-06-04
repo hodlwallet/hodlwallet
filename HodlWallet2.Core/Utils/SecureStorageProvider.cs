@@ -1,15 +1,22 @@
+using System.Linq;
+
 using Xamarin.Essentials;
+
+using NBitcoin;
+
+using Liviano.Exceptions;
+using Liviano.Utilities;
+using Liviano;
 
 namespace HodlWallet2.Core.Utils
 {
     public class SecureStorageProvider
     {
         const string WALLET_ID_KEY = "wallet-id";
-        const string PASSWORD_KEY = "password";
+        const string PIN_KEY = "pin";
         const string MNEMONIC_KEY = "mnemonic";
-        const string FINGERPRINT_KEY = "fingerprint"; // TODO Why where these 2 added? - Igor.
-        const string MNEMONIC_STATUS_KEY = "mnemonic-status";
         const string NETWORK_KEY = "network";
+        const string SEED_BIRTHDAY = "seed-birthday";
 
         public static string GetWalletId()
         {
@@ -38,22 +45,35 @@ namespace HodlWallet2.Core.Utils
 
         public static void SetMnemonic(string mnemonic)
         {
+            Guard.NotEmpty(mnemonic, nameof(mnemonic));
+
+            if (!HdOperations.IsValidChecksum(mnemonic))
+                throw new WalletException("Invalid mnemonic the checksum wasn't validated");
+
             Set(MNEMONIC_KEY, mnemonic);
         }
 
-        public static string GetPassword()
+        public static string GetPin()
         {
-            return Get(PASSWORD_KEY);
+            return Get(PIN_KEY);
         }
 
-        public static bool HasPassword()
+        public static bool HasPin()
         {
-            return !string.IsNullOrEmpty(GetPassword());
+            return !string.IsNullOrEmpty(GetPin());
         }
 
-        public static void SetPassword(string password)
+        public static void SetPin(string pin)
         {
-            SecureStorage.SetAsync(PASSWORD_KEY, password);
+            Guard.NotEmpty(pin, nameof(pin));
+
+            if (!pin.All(char.IsDigit))
+                throw new WalletException($"Unable to set pin: '{pin}' includes charactes that aren't digits");
+
+            if (pin.Length != 6)
+                throw new WalletException($"Unable to set pin: '{pin}' it should be 6 digits long");
+
+            SecureStorage.SetAsync(PIN_KEY, pin);
         }
 
         public static string GetNetwork()

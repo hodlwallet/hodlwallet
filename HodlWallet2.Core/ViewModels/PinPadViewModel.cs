@@ -41,7 +41,7 @@ namespace HodlWallet2.Core.ViewModels
 
         private void SavePin(string pin)
         {
-            SecureStorageProvider.SetPassword(pin);
+            SecureStorageProvider.SetPin(pin);
         }
     }
 }

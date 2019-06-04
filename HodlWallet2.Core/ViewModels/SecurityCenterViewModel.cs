@@ -92,7 +92,7 @@ namespace HodlWallet2.Core.ViewModels
 
         private void InitializeChecks()
         {
-            if (SecureStorageProvider.HasPassword())
+            if (SecureStorageProvider.HasPin())
             {
                 PinCheck = YellowCheck;
             }

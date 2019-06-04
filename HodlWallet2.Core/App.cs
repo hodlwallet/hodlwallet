@@ -8,20 +8,26 @@ using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 using Xamarin.Forms;
 
+using HodlWallet2.Core.Services;
+
 namespace HodlWallet2.Core
 {
     public class App : MvxApplication
     {
+        WalletService _WalletService;
+
         public override void Initialize()
         {
             // NOTE: Use this code to simulate first experience.
             //SecureStorageProvider.RemoveAll();
 
-            //// Note use this code to simulate login with a predictable stuff
-            //SecureStorageProvider.SetPassword("11111");
+            // NOTE: Use this code to simulate login with a predictable stuff
+            //SecureStorageProvider.SetPin("111111");
             //SecureStorageProvider.SetMnemonic("abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about");
 
-            if (SecureStorageProvider.HasPassword() && SecureStorageProvider.HasMnemonic())
+            var walletService = WalletService.Instance;
+
+            if (SecureStorageProvider.HasPin() && SecureStorageProvider.HasMnemonic())
             {
                 RegisterAppStart<LoginViewModel>();
             }

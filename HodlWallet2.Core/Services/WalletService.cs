@@ -272,9 +272,9 @@ namespace HodlWallet2.Core.Services
             string mnemonic = SecureStorageProvider.GetMnemonic();
 
             string password = null;
-            if (SecureStorageProvider.HasPassword())
+            if (SecureStorageProvider.HasPin())
             {
-                password = SecureStorageProvider.GetPassword();
+                password = SecureStorageProvider.GetPin();
             }
 
             if (WalletExists())
