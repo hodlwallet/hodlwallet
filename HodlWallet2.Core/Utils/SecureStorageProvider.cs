@@ -14,6 +14,7 @@ namespace HodlWallet2.Core.Utils
     {
         const string WALLET_ID_KEY = "wallet-id";
         const string PIN_KEY = "pin";
+        const string PASSWORD_KEY = "password";
         const string MNEMONIC_KEY = "mnemonic";
         const string NETWORK_KEY = "network";
         const string SEED_BIRTHDAY = "seed-birthday";
@@ -74,6 +75,24 @@ namespace HodlWallet2.Core.Utils
                 throw new WalletException($"Unable to set pin: '{pin}' it should be 6 digits long");
 
             SecureStorage.SetAsync(PIN_KEY, pin);
+        }
+
+
+        public static string GetPassword()
+        {
+            return Get(PASSWORD_KEY);
+        }
+
+        public static bool HasPassword()
+        {
+            return !string.IsNullOrEmpty(GetPassword());
+        }
+
+        public static void SetPassword(string password)
+        {
+            Guard.NotEmpty(password, nameof(password));
+
+            SecureStorage.SetAsync(PASSWORD_KEY, password);
         }
 
         public static string GetNetwork()
