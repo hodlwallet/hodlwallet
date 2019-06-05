@@ -7,6 +7,7 @@ using NBitcoin;
 using Liviano.Exceptions;
 using Liviano.Utilities;
 using Liviano;
+using System;
 
 namespace HodlWallet2.Core.Utils
 {
@@ -108,6 +109,21 @@ namespace HodlWallet2.Core.Utils
         public static void SetNetwork(string network)
         {
             Set(NETWORK_KEY, network);
+        }
+
+        public static int GetSeedBirthday()
+        {
+            return int.Parse(Get(SEED_BIRTHDAY));
+        }
+
+        public static bool HasSeedBirthday()
+        {
+            return !string.IsNullOrEmpty(Get(SEED_BIRTHDAY)); // TODO this sucks.
+        }
+
+        public static void SetSeedBirthday(DateTimeOffset birthday)
+        {
+            Set(SEED_BIRTHDAY, birthday.ToUnixTimeSeconds().ToString());
         }
 
         public static void RemoveAll()
