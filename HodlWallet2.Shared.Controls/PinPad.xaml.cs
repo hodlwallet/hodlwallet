@@ -207,7 +207,8 @@ namespace HodlWallet2.Shared.Controls
                     {
                         if (_pin1.Equals(_pin2))
                         {
-                            await Navigation.PushPopupAsync(new SetPin());
+                            // TODO: FIX POPUP STACK ERROR
+                            // await Navigation.PushPopupAsync(new SetPin());
                             Command?.Execute(_pin1);
                         }
                         else
