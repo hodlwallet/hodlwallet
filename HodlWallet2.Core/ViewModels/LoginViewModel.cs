@@ -19,7 +19,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxInteraction ResetDigitsColorInteraction { get; }
         public MvxInteraction LaunchIncorrectPinAnimationInteraction { get; }
 
-        public MvxCommand<int> DigitCommand { get; }
+        public MvxAsyncCommand<int> DigitCommand { get; }
         public MvxCommand BackspaceCommand { get; }
 
         public IMvxAsyncCommand SendCommand { get; }
@@ -36,7 +36,7 @@ namespace HodlWallet2.Core.ViewModels
 
             _pin = new List<int>();
 
-            DigitCommand = new MvxCommand<int>(DigitTapped);
+            DigitCommand = new MvxAsyncCommand<int>(DigitTapped);
             BackspaceCommand = new MvxCommand(BackspaceTapped);
 
             SendCommand = new MvxAsyncCommand(Send);
@@ -58,7 +58,7 @@ namespace HodlWallet2.Core.ViewModels
             }
         }
 
-        private async void DigitTapped(int arg)
+        private async Task DigitTapped(int arg)
         {
             if (_pin.Count < 6)
             {
