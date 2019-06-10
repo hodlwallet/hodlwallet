@@ -2,6 +2,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Globalization;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
 using HodlWallet2.Core.Models;
@@ -33,6 +35,14 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _transactions, value);
         }
 
+        string _PriceText;
+
+        public string PriceText
+        {
+            get => _PriceText;
+            set => SetProperty(ref _PriceText, value);
+        }
+
         public MvxCommand NavigateToSendViewCommand { get; private set; }
         public MvxCommand NavigateToReceiveViewCommand { get; private set; }
         public MvxCommand NavigateToMenuViewCommand { get; private set; }
@@ -46,6 +56,8 @@ namespace HodlWallet2.Core.ViewModels
             NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
+
+            Task.Run(() => RatesAsync());
         }
 
         private void NavigateToMenuView()
@@ -72,6 +84,22 @@ namespace HodlWallet2.Core.ViewModels
                 _walletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
                 _walletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
                 _walletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
+            }
+        }
+
+        async Task RatesAsync()
+        {
+            var precio = new PrecioService();
+            var rates = await precio.GetRates();
+
+            foreach (var rate in rates)
+            {
+                if (rate.Code == "USD")
+                {
+                    var price = rate.Rate;
+                    PriceText = "1 BTC = " + price.ToString("C", CultureInfo.CurrentCulture);
+                    break;
+                }
             }
         }
         
@@ -133,7 +161,7 @@ namespace HodlWallet2.Core.ViewModels
                                     : Xamarin.Forms.Color.FromHex("#DAAB28"),
                     // TODO: Implement Send and Receive
                     // AtAddress = WalletService.GetAddressFromTranscation(tx),
-                    Duration = DateTimeOffsetOperations.shortDate(tx.CreationTime)
+                    Duration = DateTimeOffsetOperations.ShortDate(tx.CreationTime)
                 });
 
                 _walletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
