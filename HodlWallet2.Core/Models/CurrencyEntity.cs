@@ -1,17 +1,17 @@
 ﻿using System;
+using Newtonsoft.Json;
+
 namespace HodlWallet2.Core.Models
 {
     public class CurrencyEntity
     {
-        public string code;
-        public string name;
-        public float rate;
+        [JsonProperty("code")]
+        public string Code { get; set; }
 
-        public CurrencyEntity(string code, string name, float rate)
-        {
-            this.code = code;
-            this.name = name;
-            this.rate = rate;
-        }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("rate")]
+        public float Rate { get; set; }
     }
 }

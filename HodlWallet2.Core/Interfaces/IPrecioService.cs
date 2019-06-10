@@ -9,12 +9,12 @@ namespace HodlWallet2.Core.Interfaces
     public interface IPrecioService
     {
         [Get("/hodl/rates.json")]
-        Task<Dictionary<string, CurrencyEntity>> GetRates();
+        Task<List<CurrencyEntity>> GetRates();
 
         [Get("/hodl.staging/rates.json")]
-        Task<Dictionary<string, CurrencyEntity>> GetTestnetRates();
+        Task<List<CurrencyEntity>> GetTestnetRates();
 
         [Get("/hodl/fee-estimator.json")]
-        Task<>
+        Task<FeeEntity> GetFees();
     }
 }
