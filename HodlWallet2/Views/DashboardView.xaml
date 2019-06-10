@@ -46,21 +46,20 @@
                     
                 </FlexLayout>
                 
-                <FlexLayout Direction="Column" FlexLayout.Grow="1" >
-                    
-                    <BoxView FlexLayout.Grow="1" />
+                <FlexLayout Direction="Column" FlexLayout.Grow="1" AlignContent="SpaceEvenly">
                     
                     <Label x:Name="priceLabel" FlexLayout.AlignSelf="End" VerticalTextAlignment="Center"
-                           Style="{DynamicResource CustomLabel}"
-                           FlexLayout.Grow="1"  Margin="0,0,20,0" FontSize="Medium" />
-                    
-                    <BoxView FlexLayout.Grow="1" />
+                           TextColor="{StaticResource White}"
+                           FontFamily="{StaticResource ElectrolizeFont}"
+                           Margin="0, 0, 20, 0"
+                           FontSize="Small"
+                           FlexLayout.Grow="1"
+                           bindings:Bi.nd="Text PriceText" />
                     
                     <svg:Icon ResourceId="Assets.search.svg"
+                              Margin="0, 0, 20, 0"
                               FlexLayout.AlignSelf="End"
-                              FlexLayout.Grow="2" Margin="0,0,20,0" />
-                    
-                    <BoxView FlexLayout.Grow="1" />
+                              FlexLayout.Grow="1" />
                     
                 </FlexLayout>
             </FlexLayout>
