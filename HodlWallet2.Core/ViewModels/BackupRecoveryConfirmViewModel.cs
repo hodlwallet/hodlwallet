@@ -16,6 +16,7 @@ namespace HodlWallet2.Core.ViewModels
         private string _exercise;
         private string[] _mnemonic;
         private readonly IWalletService _walletService;
+        string _Prev_Word = "";
 
         public string HeaderText =>
             "To make sure everything was written down correctly, please enter the following words from your backup recovery key.";
@@ -170,8 +171,11 @@ namespace HodlWallet2.Core.ViewModels
         {
             int input = Convert.ToInt32(arg);
 
-            if (confirmWords[input] == _wordToGuess)
+            if (confirmWords[input] == _wordToGuess && confirmWords[input] != _Prev_Word)
+            {
                 _confirm++;
+                _Prev_Word = _wordToGuess;
+            }
 
             RefreshWords(_mnemonic);
         }
