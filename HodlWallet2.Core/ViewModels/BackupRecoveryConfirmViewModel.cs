@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using HodlWallet2.Core.Interfaces;
 using MvvmCross.Commands;
@@ -16,10 +17,13 @@ namespace HodlWallet2.Core.ViewModels
         private string _exercise;
         private string[] _mnemonic;
         private readonly IWalletService _walletService;
-        string _Prev_Word = "";
+        int _PrevIndex;
+        bool _WarningVisible;
 
         public string HeaderText =>
             "To make sure everything was written down correctly, please enter the following words from your backup recovery key.";
+
+        public string WarningText => "That word is not in your mnemonic.";
         
         private string[] confirmWords = new string[8], place = { "first", "second", "third", "fourth", 
             "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelveth" }; // Localize
@@ -30,6 +34,12 @@ namespace HodlWallet2.Core.ViewModels
         {
             get => _exercise;
             set => SetProperty(ref _exercise, value);
+        }
+
+        public bool WarningVisible
+        {
+            get => _WarningVisible;
+            set => SetProperty(ref _WarningVisible, value);
         }
         
         public string WordOne
@@ -164,6 +174,7 @@ namespace HodlWallet2.Core.ViewModels
         public override void Prepare(string[] parameter)
         {
             _mnemonic = parameter;
+            _PrevIndex = _mnemonic.Length;
             RefreshWords(_mnemonic);
         }
 
@@ -171,10 +182,18 @@ namespace HodlWallet2.Core.ViewModels
         {
             int input = Convert.ToInt32(arg);
 
-            if (confirmWords[input] == _wordToGuess && confirmWords[input] != _Prev_Word)
+            if (confirmWords[input] == _wordToGuess)
             {
+                if (WarningVisible)
+                    WarningVisible = false;
                 _confirm++;
-                _Prev_Word = _wordToGuess;
+                _PrevIndex = input;
+            }
+            else
+            {
+                _confirm = 0;
+                WarningVisible = true;
+                _PrevIndex = _mnemonic.Length;
             }
 
             RefreshWords(_mnemonic);
@@ -186,18 +205,17 @@ namespace HodlWallet2.Core.ViewModels
 
             if (_confirm < 2)
             {
-                int wordIndex = rng.Next(0, mnemonic.Length - 1);
+                var rangeArray = Enumerable.Range(0, mnemonic.Length - 1).Where(a => a != _PrevIndex).ToArray();
+                int wordIndex = rangeArray[rng.Next(rangeArray.Length)];
                 _wordToGuess = mnemonic[wordIndex];
                 Exercise = "Choose the " + place[wordIndex] + " word from your mnemonic:"; // Format and localize label.
-                string language = "english"; //Implement MVVMCross
-                string[] guessWords = _walletService.GenerateGuessWords(_wordToGuess, language, AMOUNT_AROUND);
+                string[] guessWords = _walletService.GenerateGuessWords(_wordToGuess, "english", AMOUNT_AROUND);
                 UpdateWords(guessWords);
             }
             else
             {
                 Preferences.Set("MnemonicStatus", true);
                 await NavigationService.Navigate<DashboardViewModel>();
-                //Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
             }
         }
         
