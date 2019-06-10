@@ -43,7 +43,14 @@
                    HorizontalTextAlignment="Center"
                    FlexLayout.AlignSelf="Center" />
             
-            <Grid FlexLayout.Grow="2" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+            <Label FontFamily="{StaticResource ElectrolizeFont}"
+                   TextColor="Red"
+                   HorizontalTextAlignment="Center"
+                   FlexLayout.AlignSelf="Center"
+                   bindings:Bi.nd="Text WarningText;
+                                   IsVisible WarningVisible"/>
+            
+            <Grid FlexLayout.Grow="3" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -60,48 +67,56 @@
                     <Button Grid.Row="1"
                             Grid.Column="1"
                             Text="{Binding WordOne}"
+                            FontSize="Small"
                             Command="{Binding WordCommand}"
                             CommandParameter="0" />
 
                     <Button Grid.Row="2"
                             Grid.Column="1"
                             Text="{Binding WordTwo}"
+                            FontSize="Small"
                             Command="{Binding WordCommand}"
                             CommandParameter="1" />
 
                     <Button Grid.Row="3"
                             Grid.Column="1"
                             Text="{Binding WordThree}"
+                            FontSize="Small"
                             Command="{Binding WordCommand}"
                             CommandParameter="2" />
                     
                     <Button Grid.Row="4"
                             Grid.Column="1"
                             Text="{Binding WordFour}"
+                            FontSize="Small"
                             Command="{Binding WordCommand}"
                             CommandParameter="3" />
                     
                     <Button Grid.Row="1"
                             Grid.Column="2"
                             Text="{Binding WordFive}"
+                            FontSize="Small"
                             Command="{Binding WordCommand}"
                             CommandParameter="4" />
 
                     <Button Grid.Row="2"
                             Grid.Column="2"
                             Text="{Binding WordSix}"
+                            FontSize="Small"
                             Command="{Binding WordCommand}"
                             CommandParameter="5" />
 
                     <Button Grid.Row="3"
                             Grid.Column="2"
                             Text="{Binding WordSeven}"
+                            FontSize="Small"
                             Command="{Binding WordCommand}"
                             CommandParameter="6" />
                     
                     <Button Grid.Row="4"
                             Grid.Column="2"
                             Text="{Binding WordEight}"
+                            FontSize="Small"
                             Command="{Binding WordCommand}"
                             CommandParameter="7" />
             </Grid>
