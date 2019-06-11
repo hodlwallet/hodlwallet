@@ -2,9 +2,10 @@
 <views:MvxContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="HodlWallet2.Views.SendView" 
-    xmlns:svg="clr-namespace:HodlWallet2.Utils" 
+    x:Class="HodlWallet2.Views.SendView"
     BackgroundColor="{StaticResource GrayBackground}"
+    xmlns:behaviors="clr-namespace:HodlWallet2.Behaviors"
+    xmlns:svg="clr-namespace:HodlWallet2.Utils"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
@@ -94,6 +95,15 @@
             <StackLayout Orientation="Vertical" FlexLayout.Grow="2">
                 <Label Text="Fee (sats/byte)" Style="{StaticResource CustomLabel}" />
                 <Entry Placeholder="0.0001" Text="{Binding Fee}" Style="{StaticResource CustomEntry}" />
+                <FlexLayout Direction="Row" AlignContent="SpaceBetween">
+                    <Slider MinimumTrackColor="{StaticResource SyncGradientStart}" 
+                            FlexLayout.Grow="1"
+                            bindings:Bi.nd="Value SliderValue">
+                        <Slider.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="DragCompleted" bindings:Bi.nd="Command OnValueChangedCommand" />
+                        </Slider.Behaviors>
+                        </Slider>
+                </FlexLayout>
             </StackLayout>
                 
             <BoxView BackgroundColor="Transparent" FlexLayout.Grow="4" />

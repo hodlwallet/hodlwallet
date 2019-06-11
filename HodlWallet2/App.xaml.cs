@@ -21,6 +21,7 @@ namespace HodlWallet2
     {
         private IWalletService _wallet;
         private IMvxLog _log;
+        IPrecioService _precio;
 
         void WalletSyncManager_OnWalletSyncedToTipOfChain(object sender, ChainedBlock e)
         {
@@ -56,6 +57,7 @@ namespace HodlWallet2
 
             _wallet = Mvx.IoCProvider.Resolve<IWalletService>();
             _log = Mvx.IoCProvider.Resolve<IMvxLog>();
+            // TODO: Setup IoCProvicer for PrecioService
             
             
             // Add event handlers

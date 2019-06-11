@@ -15,6 +15,16 @@ namespace HodlWallet2.Core.ViewModels
         private string _addressToSendTo;
         private int _fee;
         private int _amountToSend;
+        private double _SliderValue;
+
+        enum FeeType { slow, normal, fastest };
+        FeeType _CurrentFee;
+
+        public double SliderValue
+        {
+            get => _SliderValue;
+            set => SetProperty(ref _SliderValue, value);
+        }
 
         public string AddressToSendTo
         {
@@ -38,6 +48,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxAsyncCommand SendCommand { get; private set; }
         public MvxAsyncCommand CloseCommand { get; private set; }
         public MvxAsyncCommand ShowFaqCommand { get; private set; }
+        public MvxCommand OnValueChangedCommand { get; private set; }
 
         public SendViewModel(
             IMvxLogProvider logProvider, 
@@ -49,6 +60,7 @@ namespace HodlWallet2.Core.ViewModels
             SendCommand = new MvxAsyncCommand(Send);
             CloseCommand = new MvxAsyncCommand(Close);
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
+            OnValueChangedCommand = new MvxCommand(SetSliderValue);
         }
 
         private Task ShowFaq()
@@ -70,6 +82,23 @@ namespace HodlWallet2.Core.ViewModels
             var result = await scanner.Scan();
 
             AddressToSendTo = result.Text;
+        }
+
+        void SetSliderValue()
+        {
+            if (SliderValue <= .25)
+            {
+                SliderValue = 0;
+            }
+            else if (SliderValue > .25 
+                        && SliderValue < .75)
+            {
+                SliderValue = .5;
+            }
+            else
+            {
+                SliderValue = 1;
+            }
         }
 
         private async Task Send()
