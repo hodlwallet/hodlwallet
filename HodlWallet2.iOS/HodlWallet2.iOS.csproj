@@ -96,7 +96,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CustomNavigationRenderer.cs" />
+    <Compile Include="Renderers\CustomNavigationRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -201,5 +201,6 @@
   <ItemGroup>
     <Folder Include="Assets.xcassets\logo_front.png.imageset\" />
     <Folder Include="Assets.xcassets\logo.png.imageset\" />
+    <Folder Include="Renderers\" />
   </ItemGroup>
 </Project>
