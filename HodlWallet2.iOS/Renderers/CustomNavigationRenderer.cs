@@ -4,10 +4,10 @@ using Xamarin.Forms.Platform.iOS;
 using UIKit;
 using System;
 using HodlWallet2.Utils;
-using HodlWallet2.iOS;
+using HodlWallet2.iOS.Renderers;
 
 [assembly: ExportRenderer(typeof(CustomNavigationPage), typeof(CustomNavigationRenderer))]
-namespace HodlWallet2.iOS
+namespace HodlWallet2.iOS.Renderers
 {
     public class CustomNavigationRenderer : NavigationRenderer
     {

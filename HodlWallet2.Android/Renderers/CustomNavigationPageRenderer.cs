@@ -7,10 +7,10 @@ using Android.App;
 using Android.Content;
 using Android.Widget;
 using HodlWallet2.Utils;
-using HodlWallet2.Droid;
+using HodlWallet2.Droid.Renderers;
 
 [assembly: ExportRenderer(typeof(CustomNavigationPage), typeof(CustomNavigationPageRenderer))]
-namespace HodlWallet2.Droid
+namespace HodlWallet2.Droid.Renderers
 {
     public class CustomNavigationPageRenderer : NavigationPageRenderer
     {
