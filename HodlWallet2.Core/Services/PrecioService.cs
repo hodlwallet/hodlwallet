@@ -12,10 +12,20 @@ namespace HodlWallet2.Core.Services
 {
     public class PrecioService
     {
-        readonly IPrecioService _PrecioApi;
+        IPrecioService _PrecioApi;
         string HOST = "https://precio.bitstop.co";
 
-        public PrecioService() 
+        public PrecioService() { }
+
+        public static PrecioService Instance
+        {
+            get
+            {
+                return (PrecioService) Mvx.IoCProvider.Resolve<IPrecioService>();
+            }
+        }
+
+        void InitializePrecio()
         {
             _PrecioApi = RestService.For<IPrecioService>(HOST);
         }

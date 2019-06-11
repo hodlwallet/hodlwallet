@@ -46,6 +46,8 @@ namespace HodlWallet2.Droid
                     .CreateLogger();               
             }
 
+            // TODO: Setup LazyConstructor for PrecioSerivce
+
             var log = WalletService.Instance.Logger;
         }
     }

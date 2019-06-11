@@ -47,7 +47,9 @@ namespace HodlWallet2.iOS
                     .WriteTo.NSLog()
                     .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
                     .CreateLogger();                
-            } 
+            }
+
+            // TODO: Setup LazyConstructor for PrecioSerivce
         }
     }
 }
