@@ -46,7 +46,7 @@
             
             <Label x:Name="Header" Style="{DynamicResource CustomLabel}" HorizontalOptions="Center" />
             
-            <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+            <Grid x:Name="InputGrid" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="5" />
                 </Grid.RowDefinitions>
@@ -55,22 +55,28 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 
-                <BoxView Color="{Binding PinOne}"
+                <BoxView x:Name="Pin1"
+                         Color="White"
                          Grid.Row="1"
                          Grid.Column="1" />
-                <BoxView Color="{Binding PinTwo}"
+                <BoxView x:Name="Pin2"
+                         Color="White"
                          Grid.Row="1"
                          Grid.Column="2" />
-                <BoxView Color="{Binding PinThree}"
+                <BoxView x:Name="Pin3"
+                         Color="White"
                          Grid.Row="1"
                          Grid.Column="3" />
-                <BoxView Color="{Binding PinFour}"
+                <BoxView x:Name="Pin4"
+                         Color="White"
                          Grid.Row="1"
                          Grid.Column="4" />
-                <BoxView Color="{Binding PinFive}"
+                <BoxView x:Name="Pin5"
+                         Color="White"
                          Grid.Row="1"
                          Grid.Column="5" />
-                <BoxView Color="{Binding PinSix}"
+                <BoxView x:Name="Pin6"
+                         Color="White"
                          Grid.Row="1"
                          Grid.Column="6" />
             </Grid>
@@ -95,42 +101,42 @@
 
                 <Button Text="2" 
                         Grid.Row="1" Grid.Column="2"
-                        bindings:Bi.nd="Command DigitCommand, CommandParameter='1'" />
+                        bindings:Bi.nd="Command DigitCommand, CommandParameter='2'" />
 
                 <Button Text="3" 
                         Grid.Row="1" Grid.Column="3"
-                        bindings:Bi.nd="Command DigitCommand, CommandParameter='1'" />
+                        bindings:Bi.nd="Command DigitCommand, CommandParameter='3'" />
                 
                 <Button Text="4" 
                         Grid.Row="2" Grid.Column="1"
-                        bindings:Bi.nd="Command DigitCommand, CommandParameter='1'" />
+                        bindings:Bi.nd="Command DigitCommand, CommandParameter='4'" />
 
                 <Button Text="5" 
                         Grid.Row="2" Grid.Column="2"
-                        bindings:Bi.nd="Command DigitCommand, CommandParameter='1'" />
+                        bindings:Bi.nd="Command DigitCommand, CommandParameter='5'" />
 
                 <Button Text="6" 
                         Grid.Row="2" Grid.Column="3"
-                        bindings:Bi.nd="Command DigitCommand, CommandParameter='1'" />
+                        bindings:Bi.nd="Command DigitCommand, CommandParameter='6'" />
                 
                 <Button Text="7" 
                         Grid.Row="3" Grid.Column="1"
-                        bindings:Bi.nd="Command DigitCommand, CommandParameter='1'" />
+                        bindings:Bi.nd="Command DigitCommand, CommandParameter='7'" />
 
                 <Button Text="8" 
                         Grid.Row="3" Grid.Column="2"
-                        bindings:Bi.nd="Command DigitCommand, CommandParameter='1'" />
+                        bindings:Bi.nd="Command DigitCommand, CommandParameter='8'" />
 
                 <Button Text="9" 
                         Grid.Row="3" Grid.Column="3"
-                        bindings:Bi.nd="Command DigitCommand, CommandParameter='1'" />
+                        bindings:Bi.nd="Command DigitCommand, CommandParameter='9'" />
 
                 <Button Text="" 
                         Grid.Row="4" Grid.Column="1" />
 
                 <Button Text="0" 
                         Grid.Row="4" Grid.Column="2"
-                        bindings:Bi.nd="Command DigitCommand, CommandParameter='1'" />
+                        bindings:Bi.nd="Command DigitCommand, CommandParameter='0'" />
                 
                 <Button Text="&#x21E6;"
                         Grid.Row="4" Grid.Column="3"

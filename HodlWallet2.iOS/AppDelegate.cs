@@ -24,17 +24,17 @@ namespace HodlWallet2.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-              global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
-              global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
-              Rg.Plugins.Popup.Popup.Init();
-              FormsControls.Touch.Main.Init();
+            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
+            global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
+            Rg.Plugins.Popup.Popup.Init();
+            FormsControls.Touch.Main.Init();
 
-              UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
-              UINavigationBar.Appearance.ShadowImage = new UIImage();
-              UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
-              UINavigationBar.Appearance.TintColor = UIColor.White;
-              UINavigationBar.Appearance.BarTintColor = UIColor.Clear;
-              UINavigationBar.Appearance.Translucent = true;
+            UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+            UINavigationBar.Appearance.ShadowImage = new UIImage();
+            UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
+            UINavigationBar.Appearance.TintColor = UIColor.White;
+            UINavigationBar.Appearance.BarTintColor = UIColor.Clear;
+            UINavigationBar.Appearance.Translucent = true;
 
             return base.FinishedLaunching(app, options);
         }

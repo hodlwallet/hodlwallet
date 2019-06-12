@@ -12,32 +12,27 @@ using Liviano.Models;
 using HodlWallet2.Utils;
 using MvvmCross;
 using MvvmCross.Logging;
-using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HodlWallet2
 {
     public partial class App : Application
     {
-        private IWalletService _wallet;
-        private IMvxLog _log;
+        private IWalletService _Wallet;
+        private IMvxLog _Log;
 
         void WalletSyncManager_OnWalletSyncedToTipOfChain(object sender, ChainedBlock e)
         {
-            //_wallet.Logger.Information("Wallet finished syncing! Tip: {tip}", e.Height);
-            _log.Info($"Wallet finished syncing! Tip: {e.Height}");
+            _Log.Info($"Wallet finished syncing! Tip: {e.Height}");
         }
 
         void WalletSyncManager_OnWalletPositionUpdate(object sender, WalletPositionUpdatedEventArgs e)
         {
-            //_wallet.Logger.Information("Updated to: {tip}", e.NewPosition.Height);
-            _log.Info($"Updated to: {e.NewPosition.Height}");
+            _Log.Info($"Updated to: {e.NewPosition.Height}");
         }
 
         public App()
         {
-            
-
             InitializeComponent();
 
             // If the application secure storage has the mnemonic code,
@@ -54,18 +49,18 @@ namespace HodlWallet2
                 SetKeys();          
             }
 
-            _wallet = Mvx.IoCProvider.Resolve<IWalletService>();
-            _log = Mvx.IoCProvider.Resolve<IMvxLog>();
+            _Wallet = Mvx.IoCProvider.Resolve<IWalletService>();
+            _Log = Mvx.IoCProvider.Resolve<IMvxLog>();
             
             
             // Add event handlers
-            _wallet.OnStarted += (object sender, EventArgs args) =>
+            _Wallet.OnStarted += (object sender, EventArgs args) =>
             {
-                _wallet.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnWalletPositionUpdate;
-                _wallet.WalletSyncManager.OnWalletSyncedToTipOfChain += WalletSyncManager_OnWalletSyncedToTipOfChain;
+                _Wallet.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnWalletPositionUpdate;
+                _Wallet.WalletSyncManager.OnWalletSyncedToTipOfChain += WalletSyncManager_OnWalletSyncedToTipOfChain;
             };
 
-            _wallet.InitializeWallet();
+            _Wallet.InitializeWallet();
         }
 
         private void SetKeys()
@@ -76,20 +71,17 @@ namespace HodlWallet2
 
         protected override void OnStart()
         {
-            //_wallet.Logger.Information("OnStart {datetime}", DateTime.Now);
-            _log.Info($"OnStart {DateTime.Now}");
+            _Log.Info($"OnStart {DateTime.Now}");
         }
 
         protected override void OnSleep()
         {
-            //_wallet.Logger.Information("OnSleep {datetime}", DateTime.Now);
-            _log.Info($"OnSleep {DateTime.Now}");
+            _Log.Info($"OnSleep {DateTime.Now}");
         }
 
         protected override void OnResume()
         {
-            //_wallet.Logger.Information("OnResume {datetime}", DateTime.Now);
-            _log.Info($"OnResume {DateTime.Now}");
+            _Log.Info($"OnResume {DateTime.Now}");
         }
     }
 }
