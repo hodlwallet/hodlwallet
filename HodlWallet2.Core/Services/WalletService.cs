@@ -271,7 +271,8 @@ namespace HodlWallet2.Core.Services
 
             string mnemonic = SecureStorageProvider.GetMnemonic();
 
-            string password = null;
+            string password = ""; // TODO password cannot be null. but it should be
+                                  // change liviano load wallet to accept null passwords
             if (SecureStorageProvider.HasPin())
             {
                 password = SecureStorageProvider.GetPin();
