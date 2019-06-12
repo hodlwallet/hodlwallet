@@ -11,6 +11,7 @@ using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -24,6 +25,9 @@ namespace HodlWallet2.Core.ViewModels
         public string DateText => DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString() + ", Block: 478045";
         public double Progress => 0.7;
         public bool IsVisible => true;
+
+        const string SENT_COLOR = "#A3A8AD";
+        const string UNSENT_COLOR = "#DAAB28";
 
         private ObservableCollection<Transaction> _transactions;
 
@@ -128,9 +132,9 @@ namespace HodlWallet2.Core.ViewModels
                     IsAvailable = tx.IsSpendable() ? "Available to spend" : "",
                     Memo = "In Progress",
                     Status = GetStatus(tx),
-                    StatusColor = NullableOperations.Evaluate(tx.IsSend) 
-                                    ? Xamarin.Forms.Color.FromHex("#A3A8AD") 
-                                    : Xamarin.Forms.Color.FromHex("#DAAB28"),
+                    StatusColor = tx.IsSend == true
+                                    ? Color.FromHex(SENT_COLOR)
+                                    : Color.FromHex(UNSENT_COLOR),
                     // TODO: Implement Send and Receive
                     // AtAddress = WalletService.GetAddressFromTranscation(tx),
                     Duration = DateTimeOffsetOperations.shortDate(tx.CreationTime)
