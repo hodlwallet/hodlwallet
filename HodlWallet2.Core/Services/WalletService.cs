@@ -464,7 +464,7 @@ namespace HodlWallet2.Core.Services
             //        Wallet should be created but with data we already have on SecureStorageProvider for mnemonic and password.
             string guid = "736083c0-7f11-46c2-b3d7-e4e88dc38889";
             string mnemonic = "erase fog enforce rice coil start few hold grocery lock youth service among menu life salmon fiction diamond lyrics love key stairs toe transfer";
-            string password = "123456";
+            string password = "";
 
             Logger.Information("Unloaded wallet");
             WalletManager.UnloadWallet();

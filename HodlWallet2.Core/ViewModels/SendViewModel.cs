@@ -142,7 +142,7 @@ namespace HodlWallet2.Core.ViewModels
 
         private async Task Send()
         {
-            string password = "123456";
+            string password = "";
 
             var txCreateResult = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
