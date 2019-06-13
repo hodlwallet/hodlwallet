@@ -18,7 +18,8 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class DashboardViewModel : BaseViewModel
     {
-        private readonly IWalletService _walletService;
+        private readonly IWalletService _WalletService;
+        private readonly IPrecioService _PrecioService;
 
         public string SendText => "Send";
         public string ReceiveText => "Receive";
@@ -27,12 +28,12 @@ namespace HodlWallet2.Core.ViewModels
         public double Progress => 0.7;
         public bool IsVisible => true;
 
-        private ObservableCollection<Transaction> _transactions;
+        private ObservableCollection<Transaction> _Transactions;
 
         public ObservableCollection<Transaction> Transactions
         {
-            get => _transactions;
-            set => SetProperty(ref _transactions, value);
+            get => _Transactions;
+            set => SetProperty(ref _Transactions, value);
         }
 
         string _PriceText;
@@ -50,14 +51,14 @@ namespace HodlWallet2.Core.ViewModels
         public DashboardViewModel(
             IMvxLogProvider logProvider, 
             IMvxNavigationService navigationService,
-            IWalletService walletService) : base(logProvider, navigationService)
+            IWalletService walletService,
+            IPrecioService precioService) : base(logProvider, navigationService)
         {
-            _walletService = walletService;
+            _WalletService = walletService;
+            _PrecioService = precioService;
             NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
-
-            Task.Run(() => RatesAsync());
         }
 
         private void NavigateToMenuView()
@@ -78,19 +79,29 @@ namespace HodlWallet2.Core.ViewModels
         public override void ViewAppeared()
         {
             base.ViewAppeared();
-            if (_walletService.IsStarted)
+            if (_WalletService.IsStarted)
             {
-                _walletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
-                _walletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
-                _walletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
-                _walletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
+                _WalletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
+                _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
+                _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
+                _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
             }
+        }
+
+        public override void ViewAppearing()
+        {
+            base.ViewAppearing();
+
+            Xamarin.Forms.Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            {
+                Task.Run(() => RatesAsync());
+                return true;
+            });
         }
 
         async Task RatesAsync()
         {
-            var precio = new PrecioService();
-            var rates = await precio.GetRates();
+            var rates = await _PrecioService.GetRates();
 
             foreach (var rate in rates)
             {
@@ -125,18 +136,18 @@ namespace HodlWallet2.Core.ViewModels
         {
             Transactions = new ObservableCollection<Transaction>(
                 CreateList(
-                    _walletService.GetCurrentAccountTransactions().OrderBy(
+                    _WalletService.GetCurrentAccountTransactions().OrderBy(
                         (TransactionData txData) => txData.CreationTime
                     )
                 )
             );
 
-            _walletService.Logger.Information(new string('*', 20));
+            _WalletService.Logger.Information(new string('*', 20));
         }
 
         public void ReScan()
         {
-            _walletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
+            _WalletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
         }
 
         public IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
@@ -164,7 +175,7 @@ namespace HodlWallet2.Core.ViewModels
                     Duration = DateTimeOffsetOperations.ShortDate(tx.CreationTime)
                 });
 
-                _walletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
+                _WalletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
             }
             return result;
         }
