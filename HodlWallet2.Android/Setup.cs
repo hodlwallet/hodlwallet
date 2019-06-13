@@ -44,13 +44,13 @@ namespace HodlWallet2.Droid
             {
                 WalletService.Instance.Logger = new LoggerConfiguration()
                     .WriteTo.AndroidLog()
-                    .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
+                    .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
                     .CreateLogger();               
             }
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton
                 (
-                    () => RestService.For<IPrecioService>(HodlConstants.HostUrl)
+                    () => RestService.For<IPrecioService>(Core.Utils.Constants.PrecioHostUrl)
                 );
 
             var log = WalletService.Instance.Logger;

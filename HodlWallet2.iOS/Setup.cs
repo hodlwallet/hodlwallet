@@ -47,13 +47,13 @@ namespace HodlWallet2.iOS
             {
                 WalletService.Instance.Logger = new LoggerConfiguration()
                     .WriteTo.NSLog()
-                    .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
+                    .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
                     .CreateLogger();                
             }
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton
                 (
-                    () => RestService.For<IPrecioService>(HodlConstants.HostUrl)
+                    () => RestService.For<IPrecioService>(Core.Utils.Constants.PrecioHostUrl)
                 );
         }
     }

@@ -19,13 +19,13 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class DashboardViewModel : BaseViewModel
     {
-        private readonly IWalletService _WalletService;
-        private readonly IPrecioService _PrecioService;
+        readonly IWalletService _WalletService;
+        readonly IPrecioService _PrecioService;
 
         public string SendText => "Send";
         public string ReceiveText => "Receive";
         public string SyncText => "SYNCING";
-        public string DateText => DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString() + ", Block: 478045";
+        public string DateText => string.Format(CultureInfo.CurrentCulture, Constants.SyncDate, DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString(), 478045);
         public double Progress => 0.7;
         public bool IsVisible => true;
 
@@ -93,7 +93,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             base.ViewAppearing();
 
-            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(Constants.PrecioTimerInterval), () =>
             {
                 Task.Run(() => RatesAsync());
                 return true;
@@ -109,7 +109,7 @@ namespace HodlWallet2.Core.ViewModels
                 if (rate.Code == "USD")
                 {
                     var price = rate.Rate;
-                    PriceText = "1 BTC = " + price.ToString("C", CultureInfo.CurrentCulture);
+                    PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BtcUnit, price);
                     break;
                 }
             }
@@ -130,7 +130,8 @@ namespace HodlWallet2.Core.ViewModels
         {
             // TODO: Update Progress During Sync
             // e.g. Progress = e.NewPosition.Height / _walletService.CurrentBlockHeight
-            //      Date = e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString() + ", Block: " + e.NewPosition.Height.ToString();
+            //      Date = string.Format(CultureInfo.CurrentCulture, Constants.SyncDate, 
+            //          e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString(), e.NewPosition.Height.ToString());
         }
 
         public void LoadTransactions()
@@ -165,12 +166,12 @@ namespace HodlWallet2.Core.ViewModels
                     IsComfirmed = tx.IsConfirmed(),
                     IsPropagated = tx.IsPropagated,
                     BlockHeight = tx.BlockHeight,
-                    IsAvailable = tx.IsSpendable() ? HodlConstants.IsAvailable : "",
-                    Memo = HodlConstants.Memo,
+                    IsAvailable = tx.IsSpendable() ? Constants.IsAvailable : "",
+                    Memo = Constants.Memo,
                     Status = GetStatus(tx),
                     StatusColor = tx.IsSend == true
-                                    ? Color.FromHex(HodlConstants.SyncGradientStartHex)
-                                    : Color.FromHex(HodlConstants.GrayTextTintHex),
+                                    ? Color.FromHex(Constants.SyncGradientStartHex)
+                                    : Color.FromHex(Constants.GrayTextTintHex),
                     // TODO: Implement Send and Receive
                     // AtAddress = WalletService.GetAddressFromTranscation(tx),
                     Duration = DateTimeOffsetOperations.ShortDate(tx.CreationTime)
@@ -185,11 +186,11 @@ namespace HodlWallet2.Core.ViewModels
         {
             if (tx.IsSend == true)
             {
-                return HodlConstants.SentAmount + tx.Amount.ToString();
+                return string.Format(Constants.SentAmount, tx.Amount);
             }
             else
             {
-                return HodlConstants.ReceivedAmount + tx.Amount.ToString();
+                return string.Format(Constants.ReceivedAmount, tx.Amount);
             }
         }
     }

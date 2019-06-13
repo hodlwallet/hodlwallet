@@ -12,8 +12,8 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class SendViewModel : BaseViewModel
     {
-        private readonly IWalletService _WalletService;
-        private readonly IPrecioService _PrecioService;
+        readonly IWalletService _WalletService;
+        readonly IPrecioService _PrecioService;
 
         private string _AddressToSendTo;
         private int _Fee;
@@ -137,7 +137,7 @@ namespace HodlWallet2.Core.ViewModels
                 EstConfirmationText = currentFees.FastestTime;
             }
 
-            TransactionFeeText = (Fee / 1000) + HodlConstants.SatByteUnit;
+            TransactionFeeText = string.Format(Constants.SatByteUnit, (Fee / 1000));
         }
 
         private async Task Send()
