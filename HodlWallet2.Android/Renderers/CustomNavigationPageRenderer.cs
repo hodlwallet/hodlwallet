@@ -6,7 +6,7 @@ using AView = Android.Views.View;
 using Android.App;
 using Android.Content;
 using Android.Widget;
-using HodlWallet2.Utils;
+using HodlWallet2.Renderers;
 using HodlWallet2.Droid.Renderers;
 
 [assembly: ExportRenderer(typeof(CustomNavigationPage), typeof(CustomNavigationPageRenderer))]
