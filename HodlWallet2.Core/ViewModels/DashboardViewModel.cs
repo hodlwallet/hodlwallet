@@ -57,12 +57,9 @@ namespace HodlWallet2.Core.ViewModels
         {
             _WalletService = walletService;
             _PrecioService = precioService;
-
             NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
-
-            PriceText = Constants.BtcTempUnit;
         }
 
         private void NavigateToMenuView()
@@ -131,10 +128,10 @@ namespace HodlWallet2.Core.ViewModels
 
         void WalletSyncManager_OnSyncProgressUpdate(object sender, WalletPositionUpdatedEventArgs e)
         {
-            /* TODO: Update Progress During Sync
-             * e.g.  Progress = e.NewPosition.Height / _walletService.CurrentBlockHeight
-             *       Date = string.Format(CultureInfo.CurrentCulture, Constants.SyncDate, 
-             *          e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString(), e.NewPosition.Height.ToString()); */
+            // TODO: Update Progress During Sync
+            // e.g. Progress = e.NewPosition.Height / _walletService.CurrentBlockHeight
+            //      Date = string.Format(CultureInfo.CurrentCulture, Constants.SyncDate, 
+            //          e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString(), e.NewPosition.Height.ToString());
         }
 
         public void LoadTransactions()
@@ -175,8 +172,8 @@ namespace HodlWallet2.Core.ViewModels
                     StatusColor = tx.IsSend == true
                                     ? Color.FromHex(Constants.SyncGradientStartHex)
                                     : Color.FromHex(Constants.GrayTextTintHex),
-                    /* TODO: Implement Send and Receive
-                     * AtAddress = WalletService.GetAddressFromTranscation(tx), */
+                    // TODO: Implement Send and Receive
+                    // AtAddress = WalletService.GetAddressFromTranscation(tx),
                     Duration = DateTimeOffsetOperations.ShortDate(tx.CreationTime)
                 });
 

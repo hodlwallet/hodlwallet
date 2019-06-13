@@ -7,7 +7,6 @@ namespace HodlWallet2.Core.Utils
         public const string PrecioHostUrl = "https://precio.bitstop.co";
         public static readonly string[] CurrencyCodes = { "USD" };
         public const string BtcUnit = "1 BTC = {0:C}";
-        public const string BtcTempUnit = "1 BTC = 1 BTC";
         public const string SatByteUnit = "{0} sat/byte";
         public const int PrecioTimerInterval = 5;
 

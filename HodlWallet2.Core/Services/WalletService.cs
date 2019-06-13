@@ -271,30 +271,30 @@ namespace HodlWallet2.Core.Services
 
             string mnemonic = SecureStorageProvider.GetMnemonic();
 
-            string pin = ""; // TODO password cannot be null. but it should be
+            string password = ""; // TODO password cannot be null. but it should be
                                   // change liviano load wallet to accept null passwords
             if (SecureStorageProvider.HasPin())
             {
-                pin = SecureStorageProvider.GetPin();
+                password = SecureStorageProvider.GetPin();
             }
 
             if (WalletExists())
             {
                 Logger.Information("Loading a wallet because it exists");
 
-                WalletManager.LoadWallet(pin);
+                WalletManager.LoadWallet(password);
             }
             else
             {
-                Logger.Information("Creating wallet ({guid}) with pin: {pin}", _WalletId, pin);
+                Logger.Information("Creating wallet ({guid}) with password: {password}", _WalletId, password);
 
-                WalletManager.CreateWallet(_WalletId, pin, WalletManager.MnemonicFromString(mnemonic));
+                WalletManager.CreateWallet(_WalletId, password, WalletManager.MnemonicFromString(mnemonic));
 
                 Logger.Information("Wallet created.");
             }
 
             // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
-            Start(pin, WalletManager.GetWallet().CreationTime);
+            Start(password, WalletManager.GetWallet().CreationTime);
 
             Logger.Information("Wallet started.");
         }
@@ -393,11 +393,11 @@ namespace HodlWallet2.Core.Services
             IsConfigured = true;
         }
 
-        public void Start(string pin, DateTimeOffset? timeToStartOn = null)
+        public void Start(string password, DateTimeOffset? timeToStartOn = null)
         {
             if (WalletManager.GetWallet() == null)
             {
-                WalletManager.LoadWallet(pin);
+                WalletManager.LoadWallet(password);
 
                 timeToStartOn = WalletManager.GetWallet().CreationTime;
             }
@@ -461,21 +461,21 @@ namespace HodlWallet2.Core.Services
 
             // Create wallet
             // FIXME: This should not be done like this.
-            //        Wallet should be created but with data we already have on SecureStorageProvider for mnemonic and pin.
+            //        Wallet should be created but with data we already have on SecureStorageProvider for mnemonic and password.
             string guid = "736083c0-7f11-46c2-b3d7-e4e88dc38889";
             string mnemonic = "erase fog enforce rice coil start few hold grocery lock youth service among menu life salmon fiction diamond lyrics love key stairs toe transfer";
-            string pin = "";
+            string password = "123456";
 
             Logger.Information("Unloaded wallet");
             WalletManager.UnloadWallet();
 
-            Logger.Information("Creating wallet ({guid}) with pin: {pin}", guid, pin);
-            WalletManager.CreateWallet(guid, pin, WalletManager.MnemonicFromString(mnemonic));
+            Logger.Information("Creating wallet ({guid}) with password: {password}", guid, password);
+            WalletManager.CreateWallet(guid, password, WalletManager.MnemonicFromString(mnemonic));
 
             Logger.Information("Wallet created.");
 
             Logger.Information("Wallet re-loaded");
-            WalletManager.LoadWallet(pin);
+            WalletManager.LoadWallet(password);
 
             WalletManager.GetWallet().CreationTime = currentCreationTime;
 
@@ -539,7 +539,7 @@ namespace HodlWallet2.Core.Services
             return result;
         }
 
-        public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, int feeSatsPerByte, string pin)
+        public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, int feeSatsPerByte, string password)
         {
             Money btcAmount = new Money(amount, MoneyUnit.BTC);
             Transaction tx = null;
@@ -552,7 +552,7 @@ namespace HodlWallet2.Core.Services
                     btcAmount,
                     feeSatsPerByte,
                     CurrentAccount,
-                    pin,
+                    password,
                     signTransaction: true
                 );
                 fees = tx.GetVirtualSize() * feeSatsPerByte;
