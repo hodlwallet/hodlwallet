@@ -142,9 +142,14 @@ namespace HodlWallet2.Core.ViewModels
 
         private async Task Send()
         {
-            string password = "123456";
+            string pin = "";
 
-            var txCreateResult = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
+            if (SecureStorageProvider.HasPin())
+            {
+                pin = SecureStorageProvider.GetPin();
+            }
+
+            var txCreateResult = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, pin);
 
             if (txCreateResult.Success)
             {
@@ -154,11 +159,11 @@ namespace HodlWallet2.Core.ViewModels
             {
                 // TODO show error screen for now just log it.
                 LogProvider.GetLogFor<SendViewModel>().Error(
-                    "Error trying to create a transaction.\nAmount to send: {amount}, address: {address}, fee: {fee}, password: {password}.\nFull Error: {error}",
+                    "Error trying to create a transaction.\nAmount to send: {amount}, address: {address}, fee: {fee}, pin: {pin}.\nFull Error: {error}",
                     AmountToSend,
                     AddressToSendTo,
                     Fee,
-                    password,
+                    pin,
                     txCreateResult.Error
                 );
             }
