@@ -16,4 +16,9 @@
       <ProjectReference Include="..\LivianoWallet\LivianoWallet\Liviano.Utilities\Liviano.Utilities.csproj" />
       <ProjectReference Include="..\LivianoWallet\NBitcoin\NBitcoin\NBitcoin.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="Services\PrecioHttpService.cs" />
+      <Compile Remove="Services\PrecioOptions.cs" />
+      <Compile Remove="Interfaces\IPrecioHttpService.cs" />
+    </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 using System;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
+using HodlWallet2.Core.Utils;
 using MvvmCross;
 using MvvmCross.Converters;
 using MvvmCross.Core;
@@ -10,6 +11,7 @@ using MvvmCross.Logging;
 using MvvmCross.Platforms.Ios.Core;
 using Serilog;
 using Serilog.Core;
+using Refit;
 
 namespace HodlWallet2.iOS
 {
@@ -49,7 +51,10 @@ namespace HodlWallet2.iOS
                     .CreateLogger();                
             }
 
-            // TODO: Setup LazyConstructor for PrecioSerivce
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton
+                (
+                    () => RestService.For<IPrecioService>(HodlConstants.HostUrl)
+                );
         }
     }
 }
