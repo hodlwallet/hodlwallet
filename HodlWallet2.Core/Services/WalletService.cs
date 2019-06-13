@@ -25,6 +25,8 @@ using Liviano.Exceptions;
 using MvvmCross.Logging;
 using MvvmCross;
 
+using HodlWallet2.Core.Utils;
+
 namespace HodlWallet2.Core.Services
 {
     public sealed class WalletService : IWalletService
@@ -41,7 +43,7 @@ namespace HodlWallet2.Core.Services
 
         private int _NodesToConnect;
 
-        private NodeConnectionParameters _conParams;
+        private NodeConnectionParameters _ConParams;
 
         private Network _Network;
 
@@ -114,9 +116,9 @@ namespace HodlWallet2.Core.Services
         {
             lock (_Lock)
             {
-                if (_conParams != null)
+                if (_ConParams != null)
                 {
-                    return _conParams.TemplateBehaviors.Find<PartialChainBehavior>().Chain as PartialConcurrentChain;
+                    return _ConParams.TemplateBehaviors.Find<PartialChainBehavior>().Chain as PartialConcurrentChain;
                 }
 
                 var chain = new PartialConcurrentChain(_Network);
@@ -190,9 +192,9 @@ namespace HodlWallet2.Core.Services
 
         private AddressManager GetAddressManager()
         {
-            if (_conParams != null)
+            if (_ConParams != null)
             {
-                return _conParams.TemplateBehaviors.Find<AddressManagerBehavior>().AddressManager;
+                return _ConParams.TemplateBehaviors.Find<AddressManagerBehavior>().AddressManager;
 
             }
 
@@ -224,30 +226,75 @@ namespace HodlWallet2.Core.Services
 
         public void InitializeWallet()
         {
-            // FIXME Remove this with the removable code bellow.
-            string guid = "736083c0-7f11-46c2-b3d7-e4e88dc38889";
-            
-            // TODO Please store and run the network the user is using.
-            //Wallet.Configure(walletId: "wallet_guid", network: "testnet", nodesToConnect: 4);
-            Configure(walletId: guid, network: "testnet");
-
-            // FIXME Remove this code later when we have a way to create a wallet,
-            // for now, the wallet is created and hardcoded
-            string mnemonic = "erase fog enforce rice coil start few hold grocery lock youth service among menu life salmon fiction diamond lyrics love key stairs toe transfer";
-            string password = "123456";
-
-            if (!WalletExists())
+            string guid;
+            if (SecureStorageProvider.HasWalletId())
             {
-                Logger.Information("Creating wallet ({guid}) with password: {password}", guid, password);
+                guid = SecureStorageProvider.GetWalletId();
+            }
+            else
+            {
+                // Default uses the Guid class from System in .NET
+                guid = Guid.NewGuid().ToString();
 
-                WalletManager.CreateWallet(guid, password, WalletManager.MnemonicFromString(mnemonic));
+                SecureStorageProvider.SetWalletId(guid);
+            }
+
+            string network;
+            if (SecureStorageProvider.HasNetwork())
+            {
+                network = SecureStorageProvider.GetNetwork();
+            }
+            else
+            {
+                // We default to Mainnet (i.e. main)
+                network = "main";
+                SecureStorageProvider.SetNetwork(network);
+            }
+
+            Configure(walletId: guid, network: network);
+
+            if (SecureStorageProvider.HasMnemonic() && _WalletId != null)
+            {
+                StartWalletWithWalletId();
+
+                Logger.Information("Since wallet has a mnemonic, then start the wallet.");
+
+                return;
+            }
+
+            Logger.Information("Wallet has been configured but not started yet due to the lack of mnemonic in the system");
+        }
+
+        public void StartWalletWithWalletId()
+        {
+            Guard.NotNull(_WalletId, nameof(_WalletId));
+
+            string mnemonic = SecureStorageProvider.GetMnemonic();
+
+            string password = ""; // TODO password cannot be null. but it should be
+                                  // change liviano load wallet to accept null passwords
+            if (SecureStorageProvider.HasPin())
+            {
+                password = SecureStorageProvider.GetPin();
+            }
+
+            if (WalletExists())
+            {
+                Logger.Information("Loading a wallet because it exists");
+
+                WalletManager.LoadWallet(password);
+            }
+            else
+            {
+                Logger.Information("Creating wallet ({guid}) with password: {password}", _WalletId, password);
+
+                WalletManager.CreateWallet(_WalletId, password, WalletManager.MnemonicFromString(mnemonic));
 
                 Logger.Information("Wallet created.");
             }
 
             // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
-            //      Also change the date, the argument should be avoided.
-            Start(password, new DateTimeOffset(new DateTime(2014, 12, 1)));
+            Start(password, WalletManager.GetWallet().CreationTime);
 
             Logger.Information("Wallet started.");
         }
@@ -291,7 +338,7 @@ namespace HodlWallet2.Core.Services
             _AddressManager = GetAddressManager();
             _NodesToConnect = nodesToConnect ?? DEFAULT_NODES_TO_CONNECT;
             _WalletId = walletId ?? Guid.NewGuid().ToString();
-            _conParams = new NodeConnectionParameters();
+            _ConParams = new NodeConnectionParameters();
 
             Logger.Information("Running on {network}", _Network.Name);
             Logger.Information("With wallet id: {walletId}", _WalletId);
@@ -312,13 +359,13 @@ namespace HodlWallet2.Core.Services
 
             _WalletSyncManagerBehavior = new WalletSyncManagerBehavior(Logger, WalletSyncManager, ScriptTypes.P2WPKH);
 
-            _conParams.TemplateBehaviors.Add(new AddressManagerBehavior(_AddressManager));
-            _conParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
-            _conParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
+            _ConParams.TemplateBehaviors.Add(new AddressManagerBehavior(_AddressManager));
+            _ConParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
+            _ConParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
 
-            _conParams.UserAgent = USER_AGENT;
+            _ConParams.UserAgent = USER_AGENT;
 
-            _NodesGroup = new NodesGroup(_Network, _conParams, new NodeRequirement()
+            _NodesGroup = new NodesGroup(_Network, _ConParams, new NodeRequirement()
             {
                 RequiredServices = NodeServices.Network
             });
@@ -327,9 +374,9 @@ namespace HodlWallet2.Core.Services
 
             BroadcastManager broadcastManager = new BroadcastManager(_NodesGroup);
 
-            _conParams.TemplateBehaviors.Add(new TransactionBroadcastBehavior(broadcastManager));
+            _ConParams.TemplateBehaviors.Add(new TransactionBroadcastBehavior(broadcastManager));
 
-            _NodesGroup.NodeConnectionParameters = _conParams;
+            _NodesGroup.NodeConnectionParameters = _ConParams;
             _NodesGroup.MaximumNodeConnection = _NodesToConnect;
 
             _DefaultCoinSelector = new DefaultCoinSelector();
@@ -348,7 +395,12 @@ namespace HodlWallet2.Core.Services
 
         public void Start(string password, DateTimeOffset? timeToStartOn = null)
         {
-            WalletManager.LoadWallet(password);
+            if (WalletManager.GetWallet() == null)
+            {
+                WalletManager.LoadWallet(password);
+
+                timeToStartOn = WalletManager.GetWallet().CreationTime;
+            }
 
             _NodesGroup.Connect();
 

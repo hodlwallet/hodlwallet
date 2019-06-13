@@ -13,6 +13,7 @@ using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -92,7 +93,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             base.ViewAppearing();
 
-            Xamarin.Forms.Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
             {
                 Task.Run(() => RatesAsync());
                 return true;
@@ -164,12 +165,12 @@ namespace HodlWallet2.Core.ViewModels
                     IsComfirmed = tx.IsConfirmed(),
                     IsPropagated = tx.IsPropagated,
                     BlockHeight = tx.BlockHeight,
-                    IsAvailable = tx.IsSpendable() ? "Available to spend" : "",
-                    Memo = "In Progress",
+                    IsAvailable = tx.IsSpendable() ? HodlConstants.IsAvailable : "",
+                    Memo = HodlConstants.Memo,
                     Status = GetStatus(tx),
-                    StatusColor = NullableOperations.Evaluate(tx.IsSend) 
-                                    ? Xamarin.Forms.Color.FromHex("#A3A8AD") 
-                                    : Xamarin.Forms.Color.FromHex("#DAAB28"),
+                    StatusColor = tx.IsSend == true
+                                    ? Color.FromHex(HodlConstants.SyncGradientStartHex)
+                                    : Color.FromHex(HodlConstants.GrayTextTintHex),
                     // TODO: Implement Send and Receive
                     // AtAddress = WalletService.GetAddressFromTranscation(tx),
                     Duration = DateTimeOffsetOperations.ShortDate(tx.CreationTime)
@@ -182,23 +183,14 @@ namespace HodlWallet2.Core.ViewModels
 
         private string GetStatus(TransactionData tx)
         {
-            switch (tx.IsSend)
+            if (tx.IsSend == true)
             {
-                case true:
-                    return "Sent BTC " + tx.Amount.ToString();
-                case false:
-                case null:
-                    switch (tx.IsReceive)
-                    {
-                        case true:
-                            return "Received BTC " + tx.Amount.ToString();
-                        case false:
-                        case null:
-                            return "Send and Receive is NULL";
-                    }
-                    break;
+                return HodlConstants.SentAmount + tx.Amount.ToString();
             }
-            return "";
+            else
+            {
+                return HodlConstants.ReceivedAmount + tx.Amount.ToString();
+            }
         }
     }
 }

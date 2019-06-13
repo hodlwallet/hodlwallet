@@ -1,14 +1,24 @@
+using System.Linq;
+
 using Xamarin.Essentials;
+
+using NBitcoin;
+
+using Liviano.Exceptions;
+using Liviano.Utilities;
+using Liviano;
+using System;
 
 namespace HodlWallet2.Core.Utils
 {
     public class SecureStorageProvider
     {
-        private const string WALLET_ID_KEY = "wallet-id";
-        private const string PASSWORD_KEY = "password";
-        private const string MNEMONIC_KEY = "mnemonic";
-        private const string FINGERPRINT_KEY = "fingerprint";
-        private const string MNEMONIC_STATUS_KEY = "mnemonic-status";
+        const string WALLET_ID_KEY = "wallet-id";
+        const string PIN_KEY = "pin";
+        const string PASSWORD_KEY = "password";
+        const string MNEMONIC_KEY = "mnemonic";
+        const string NETWORK_KEY = "network";
+        const string SEED_BIRTHDAY = "seed-birthday";
 
         public static string GetWalletId()
         {
@@ -37,8 +47,37 @@ namespace HodlWallet2.Core.Utils
 
         public static void SetMnemonic(string mnemonic)
         {
+            Guard.NotEmpty(mnemonic, nameof(mnemonic));
+
+            if (!HdOperations.IsValidChecksum(mnemonic))
+                throw new WalletException("Invalid mnemonic the checksum wasn't validated");
+
             Set(MNEMONIC_KEY, mnemonic);
         }
+
+        public static string GetPin()
+        {
+            return Get(PIN_KEY);
+        }
+
+        public static bool HasPin()
+        {
+            return !string.IsNullOrEmpty(GetPin());
+        }
+
+        public static void SetPin(string pin)
+        {
+            Guard.NotEmpty(pin, nameof(pin));
+
+            if (!pin.All(char.IsDigit))
+                throw new WalletException($"Unable to set pin: '{pin}' includes charactes that aren't digits");
+
+            if (pin.Length != 6)
+                throw new WalletException($"Unable to set pin: '{pin}' it should be 6 digits long");
+
+            SecureStorage.SetAsync(PIN_KEY, pin);
+        }
+
 
         public static string GetPassword()
         {
@@ -52,7 +91,39 @@ namespace HodlWallet2.Core.Utils
 
         public static void SetPassword(string password)
         {
+            Guard.NotEmpty(password, nameof(password));
+
             SecureStorage.SetAsync(PASSWORD_KEY, password);
+        }
+
+        public static string GetNetwork()
+        {
+            return Get(NETWORK_KEY);
+        }
+
+        public static bool HasNetwork()
+        {
+            return !string.IsNullOrEmpty(GetNetwork());
+        }
+
+        public static void SetNetwork(string network)
+        {
+            Set(NETWORK_KEY, network);
+        }
+
+        public static int GetSeedBirthday()
+        {
+            return int.Parse(Get(SEED_BIRTHDAY));
+        }
+
+        public static bool HasSeedBirthday()
+        {
+            return !string.IsNullOrEmpty(Get(SEED_BIRTHDAY));
+        }
+
+        public static void SetSeedBirthday(DateTimeOffset birthday)
+        {
+            Set(SEED_BIRTHDAY, birthday.ToUnixTimeSeconds().ToString());
         }
 
         public static void RemoveAll()

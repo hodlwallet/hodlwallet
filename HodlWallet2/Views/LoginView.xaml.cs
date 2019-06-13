@@ -5,18 +5,26 @@ using Xamarin.Forms;
 
 using HodlWallet2.Locale;
 using MvvmCross.Base;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Forms.Views;
 using MvvmCross.ViewModels;
 using MvvmCross.WeakSubscription;
+using Liviano.Exceptions;
+using System.Threading.Tasks;
 
 namespace HodlWallet2.Views
 {
     public partial class LoginView : MvxContentPage<LoginViewModel>
     {
-        private IMvxInteraction _resetDigitsColorInteraction;
-        private IMvxInteraction<Tuple<int, bool>> _changeDigitColorInteraction;
-        private IDisposable _resetDigitsToken;
-        private IDisposable _changeDigitColorInteractionToken;
+        IMvxInteraction _resetDigitsColorInteraction;
+        IMvxInteraction<Tuple<int, bool>> _changeDigitColorInteraction;
+        IMvxInteraction _launchIncorrectPinAnimationInteraction;
+        IDisposable _resetDigitsToken;
+        IDisposable _changeDigitColorInteractionToken;
+        IDisposable _launchIncorrectPinAnimationInteractionToken;
+
+        static readonly Color ON_COLOR = Color.Orange;
+        static readonly Color OFF_COLOR = Color.White;
 
         public IMvxInteraction ResetDigitsColorInteraction
         {
@@ -48,17 +56,77 @@ namespace HodlWallet2.Views
             }
         }
 
+        public IMvxInteraction LaunchIncorrectPinAnimationInteraction
+        {
+            get => _launchIncorrectPinAnimationInteraction;
+            set
+            {
+                if (_launchIncorrectPinAnimationInteraction != null)
+                {
+                    _launchIncorrectPinAnimationInteractionToken.Dispose();
+                }
+
+                _launchIncorrectPinAnimationInteraction = value;
+                _launchIncorrectPinAnimationInteractionToken = _launchIncorrectPinAnimationInteraction.WeakSubscribe(LaunchIncorrectPinAnimation);
+            }
+        }
+
         private void ChangeDigitColor(object sender, MvxValueEventArgs<Tuple<int, bool>> e)
         {
-            //TODO: Change digit color based on argument.
+            int digit = e.Value.Item1;
+            bool on = e.Value.Item2;
+
+            BoxView pin = (BoxView) FindByName($"Pin{digit}");
+
+            TogglePinColor(pin, on);
+        }
+
+        private void TogglePinColor(BoxView pin, bool on)
+        {
+            if (on)
+            {
+                pin.Color = ON_COLOR;
+            }
+            else
+            {
+                pin.Color = OFF_COLOR;
+            }
         }
 
         private void ResetDigitColors(object sender, EventArgs e)
         {
-            //TODO: Reset UI colors here.
+            TogglePinColor(Pin1, false);
+            TogglePinColor(Pin2, false);
+            TogglePinColor(Pin3, false);
+            TogglePinColor(Pin4, false);
+            TogglePinColor(Pin5, false);
+            TogglePinColor(Pin6, false);
         }
 
-        public LoginView(LoginViewModel viewModel)
+        private async void LaunchIncorrectPinAnimation(object sender, EventArgs e)
+        {
+            // Shake ContentView Re-Enter PIN
+            uint timeout = 50;
+            await InputGrid.TranslateTo(-15, 0, timeout);
+
+            await InputGrid.TranslateTo(15, 0, timeout);
+
+            await InputGrid.TranslateTo(-10, 0, timeout);
+
+            await InputGrid.TranslateTo(10, 0, timeout);
+
+            await InputGrid.TranslateTo(-5, 0, timeout);
+
+            await InputGrid.TranslateTo(5, 0, timeout);
+
+            InputGrid.TranslationX = 0;
+
+            await Task.Delay(500);
+
+            ResetDigitColors(sender, e);
+        }
+
+        public LoginView()
         {
             InitializeComponent();
             SetLabel();
@@ -68,15 +136,20 @@ namespace HodlWallet2.Views
         {
             Header.Text = LocaleResources.Pin_enter;
         }
-
-        public async void OnSendTapped(object sender, EventArgs e)
+        
+        private void CreateInteractionsBindings()
         {
-            //await Navigation.PushModalAsync(new SendView(new SendViewModel()));
+            var set = this.CreateBindingSet<LoginView, LoginViewModel>();
+            set.Bind(this).For(v => v.ChangeDigitColorInteraction).To(vm => vm.ChangeDigitColorInteraction);
+            set.Bind(this).For(v => v.ResetDigitsColorInteraction).To(vm => vm.ResetDigitsColorInteraction);
+            set.Bind(this).For(v => v.LaunchIncorrectPinAnimationInteraction).To(vm => vm.LaunchIncorrectPinAnimationInteraction);
+            set.Apply();
         }
 
-        public async void OnReceiveTapped(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            //await Navigation.PushModalAsync(new ReceiveView(new ReceiveViewModel()));
+            base.OnAppearing();
+            CreateInteractionsBindings();
         }
     }
 }
