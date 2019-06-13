@@ -6,7 +6,7 @@ namespace HodlWallet2.Core.Models
     public class FeeEntity
     {
         [JsonProperty("fastest_sat_per_kilobyte")]
-        public long FastestSatKB { get; set; }
+        public int FastestSatKB { get; set; }
 
         [JsonProperty("fastest_time_text")]
         public string FastestTime { get; set; }
@@ -15,7 +15,7 @@ namespace HodlWallet2.Core.Models
         public int FastestBlocks { get; set; }
 
         [JsonProperty("normal_sat_per_kilobyte")]
-        public long NormalSatKB { get; set; }
+        public int NormalSatKB { get; set; }
 
         [JsonProperty("normal_time_text")]
         public string NormalTime { get; set; }
@@ -24,7 +24,7 @@ namespace HodlWallet2.Core.Models
         public int NormalBlocks { get; set; }
 
         [JsonProperty("slow_sat_per_kilobyte")]
-        public long SlowSatKB { get; set; }
+        public int SlowSatKB { get; set; }
 
         [JsonProperty("slow_time_text")]
         public string SlowTime { get; set; }
