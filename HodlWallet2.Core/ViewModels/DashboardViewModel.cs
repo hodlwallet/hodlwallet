@@ -188,13 +188,9 @@ namespace HodlWallet2.Core.ViewModels
         private string GetStatus(TransactionData tx)
         {
             if (tx.IsSend == true)
-            {
                 return string.Format(Constants.SENT_AMOUNT, tx.Amount);
-            }
-            else
-            {
-                return string.Format(Constants.RECEIVE_AMOUNT, tx.Amount);
-            }
+
+            return string.Format(Constants.RECEIVE_AMOUNT, tx.Amount);
         }
     }
 }
