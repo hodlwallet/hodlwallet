@@ -19,8 +19,8 @@ namespace HodlWallet2.Core.ViewModels
         private int _Fee;
         private int _AmountToSend;
 
+        const double MAX_SLIDER_VALUE = 500;
         double _SliderValue;
-        const double _Maximum = 500;
 
         string _TransactionFeeText;
         string _EstConfirmationText;
@@ -88,7 +88,7 @@ namespace HodlWallet2.Core.ViewModels
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
             OnValueChangedCommand = new MvxAsyncCommand(SetSliderValue);
 
-            SliderValue = _Maximum * 0.5;
+            SliderValue = MAX_SLIDER_VALUE * 0.5;
             Task.Run(() => SetSliderValue());
         }
 
@@ -117,22 +117,22 @@ namespace HodlWallet2.Core.ViewModels
         {
             var currentFees = await _PrecioService.GetFees();
 
-            if (SliderValue <= (_Maximum * 0.25))
+            if (SliderValue <= (MAX_SLIDER_VALUE * 0.25))
             {
                 SliderValue = 0;
                 Fee = currentFees.SlowSatKB;
                 EstConfirmationText = currentFees.SlowTime;
             }
-            else if (SliderValue > (_Maximum * 0.25)
-                     && SliderValue < (_Maximum * 0.75))
+            else if (SliderValue > (MAX_SLIDER_VALUE * 0.25)
+                     && SliderValue < (MAX_SLIDER_VALUE * 0.75))
             {
-                SliderValue = _Maximum * 0.5;
+                SliderValue = MAX_SLIDER_VALUE * 0.5;
                 Fee = currentFees.NormalSatKB;
                 EstConfirmationText = currentFees.NormalTime;
             }
             else
             {
-                SliderValue = _Maximum;
+                SliderValue = MAX_SLIDER_VALUE;
                 Fee = currentFees.FastestSatKB;
                 EstConfirmationText = currentFees.FastestTime;
             }
