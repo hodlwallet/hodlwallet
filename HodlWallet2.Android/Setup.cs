@@ -1,6 +1,7 @@
 using Android.Provider;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
+using HodlWallet2.Core.Utils;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Core;
 using MvvmCross.IoC;
@@ -8,6 +9,7 @@ using MvvmCross.Logging;
 using MvvmCross.Platforms.Android.Core;
 using Serilog;
 using Serilog.Core;
+using Refit;
 
 namespace HodlWallet2.Droid
 {
@@ -42,9 +44,14 @@ namespace HodlWallet2.Droid
             {
                 WalletService.Instance.Logger = new LoggerConfiguration()
                     .WriteTo.AndroidLog()
-                    .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
+                    .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
                     .CreateLogger();               
             }
+
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton
+                (
+                    () => RestService.For<IPrecioService>(Core.Utils.Constants.PRECIO_HOST_URL)
+                );
 
             var log = WalletService.Instance.Logger;
         }

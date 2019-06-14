@@ -22,7 +22,6 @@ namespace HodlWallet2.Views
         public SendView()
         {
             InitializeComponent();
-            //BindingContext = sendViewModel;
             SetLabels();
         }
 

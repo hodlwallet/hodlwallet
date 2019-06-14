@@ -36,6 +36,7 @@
     <Folder Include="Assets\" />
     <Folder Include="Locale\" />
     <Folder Include="Utils\" />
+    <Folder Include="Renderers\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\logo_front.png" />
