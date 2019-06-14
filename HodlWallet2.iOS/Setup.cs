@@ -53,7 +53,7 @@ namespace HodlWallet2.iOS
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton
                 (
-                    () => RestService.For<IPrecioService>(Core.Utils.Constants.PrecioHostUrl)
+                    () => RestService.For<IPrecioService>(Core.Utils.Constants.PRECIO_HOST_URL)
                 );
         }
     }

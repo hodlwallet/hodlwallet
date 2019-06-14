@@ -25,7 +25,7 @@ namespace HodlWallet2.Core.ViewModels
         public string SendText => "Send";
         public string ReceiveText => "Receive";
         public string SyncText => "SYNCING";
-        public string DateText => string.Format(CultureInfo.CurrentCulture, Constants.SyncDate, DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString(), 478045);
+        public string DateText => string.Format(CultureInfo.CurrentCulture, Constants.SYNC_DATE_LABEL, DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString(), 478045);
         public double Progress => 0.7;
         public bool IsVisible => true;
 
@@ -62,7 +62,7 @@ namespace HodlWallet2.Core.ViewModels
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
 
-            PriceText = Constants.BtcTempUnit;
+            PriceText = Constants.BTC_UNIT_LABEL_TMP;
         }
 
         private void NavigateToMenuView()
@@ -96,7 +96,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             base.ViewAppearing();
 
-            Device.StartTimer(TimeSpan.FromSeconds(Constants.PrecioTimerInterval), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(Constants.PRECIO_TIMER_INTERVAL), () =>
             {
                 Task.Run(() => RatesAsync());
                 return true;
@@ -112,7 +112,7 @@ namespace HodlWallet2.Core.ViewModels
                 if (rate.Code == "USD")
                 {
                     var price = rate.Rate;
-                    PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BtcUnit, price);
+                    PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BTC_UNIT_LABEL, price);
                     break;
                 }
             }
@@ -169,12 +169,12 @@ namespace HodlWallet2.Core.ViewModels
                     IsComfirmed = tx.IsConfirmed(),
                     IsPropagated = tx.IsPropagated,
                     BlockHeight = tx.BlockHeight,
-                    IsAvailable = tx.IsSpendable() ? Constants.IsAvailable : "",
-                    Memo = Constants.Memo,
+                    IsAvailable = tx.IsSpendable() ? Constants.IS_AVAILABLE : "",
+                    Memo = Constants.MEMO_LABEL,
                     Status = GetStatus(tx),
                     StatusColor = tx.IsSend == true
-                                    ? Color.FromHex(Constants.SyncGradientStartHex)
-                                    : Color.FromHex(Constants.GrayTextTintHex),
+                                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
+                                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
                     /* TODO: Implement Send and Receive
                      * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
                     Duration = DateTimeOffsetOperations.ShortDate(tx.CreationTime)
@@ -189,11 +189,11 @@ namespace HodlWallet2.Core.ViewModels
         {
             if (tx.IsSend == true)
             {
-                return string.Format(Constants.SentAmount, tx.Amount);
+                return string.Format(Constants.SENT_AMOUNT, tx.Amount);
             }
             else
             {
-                return string.Format(Constants.ReceivedAmount, tx.Amount);
+                return string.Format(Constants.RECEIVE_AMOUNT, tx.Amount);
             }
         }
     }

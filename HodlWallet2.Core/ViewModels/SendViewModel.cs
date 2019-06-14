@@ -137,7 +137,7 @@ namespace HodlWallet2.Core.ViewModels
                 EstConfirmationText = currentFees.FastestTime;
             }
 
-            TransactionFeeText = string.Format(Constants.SatByteUnit, (Fee / 1000));
+            TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, (Fee / 1000));
         }
 
         private async Task Send()
