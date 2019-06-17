@@ -8,9 +8,9 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class SyncBlockChainViewModel : BaseViewModel
     {
-        IWalletService _walletService;
+        IWalletService _WalletService;
         
-        public MvxCommand StartSyncCommand { get; private set; }
+        public MvxCommand StartSyncCommand { get; }
         
         public SyncBlockChainViewModel(
             IMvxLogProvider logProvider, 
@@ -24,7 +24,7 @@ namespace HodlWallet2.Core.ViewModels
         private void StartSync()
         {
             //TODO: ReSync wallet
-            _walletService.ReScan(DateTimeOffset.Now);
+            _WalletService.ReScan(DateTimeOffset.Now);
         }
     }
 }

@@ -8,9 +8,9 @@ namespace HodlWallet2.Core.ViewModels
     [MvxModalPresentation]
     public class MenuViewModel : BaseViewModel
     {
-        public MvxCommand CloseCommand { get; private set; }
-        public MvxCommand SecurityCommand { get; private set; }
-        public MvxCommand SettingsCommand { get; set; }
+        public MvxCommand CloseCommand { get; }
+        public MvxCommand SecurityCommand { get; }
+        public MvxCommand SettingsCommand { get; }
         
         public MenuViewModel(
             IMvxLogProvider logProvider,
