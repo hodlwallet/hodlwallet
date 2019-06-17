@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HodlWallet2.Shared.Controls.SyncProgressBar"
              BackgroundColor="Transparent">
-    <ContentPage.Resources>
+    <ContentView.Resources>
         <ResourceDictionary>
             <Style x:Key="ProgressLabel" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource ElectrolizeFont}"/>
                 <Setter Property="TextColor" Value="{StaticResource White}" />
             </Style>
         </ResourceDictionary>
-    </ContentPage.Resources>
+    </ContentView.Resources>
         <StackLayout x:Name="SyncLayout"
                      Margin="15, 5, 15, 5"
                      Padding="10"
