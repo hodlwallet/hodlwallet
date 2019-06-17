@@ -52,6 +52,7 @@
                 <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
                 
                 <Button x:Name="Settings" 
+                        bindings:Bi.nd="Command SettingsCommand"
                         Style="{DynamicResource CustomButton}"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="1"/>
