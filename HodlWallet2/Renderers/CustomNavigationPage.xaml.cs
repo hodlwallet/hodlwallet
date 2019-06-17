@@ -5,7 +5,7 @@ using HodlWallet2.Core.Services;
 using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 
-namespace HodlWallet2.Utils
+namespace HodlWallet2.Renderers
 {
     public partial class CustomNavigationPage : MvxNavigationPage
     {

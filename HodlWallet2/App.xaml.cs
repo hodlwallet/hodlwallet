@@ -52,7 +52,6 @@ namespace HodlWallet2
             _Wallet = Mvx.IoCProvider.Resolve<IWalletService>();
             _Log = Mvx.IoCProvider.Resolve<IMvxLog>();
             
-            
             // Add event handlers
             _Wallet.OnStarted += (object sender, EventArgs args) =>
             {

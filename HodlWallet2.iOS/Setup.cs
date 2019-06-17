@@ -1,6 +1,7 @@
 using System;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
+using HodlWallet2.Core.Utils;
 using MvvmCross;
 using MvvmCross.Converters;
 using MvvmCross.Core;
@@ -10,6 +11,7 @@ using MvvmCross.Logging;
 using MvvmCross.Platforms.Ios.Core;
 using Serilog;
 using Serilog.Core;
+using Refit;
 
 namespace HodlWallet2.iOS
 {
@@ -45,9 +47,13 @@ namespace HodlWallet2.iOS
             {
                 WalletService.Instance.Logger = new LoggerConfiguration()
                     .WriteTo.NSLog()
-                    .Enrich.WithProperty(Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
+                    .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
                     .CreateLogger();                
-            } 
+            }
+
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton(
+                () => RestService.For<IPrecioService>(Core.Utils.Constants.PRECIO_HOST_URL)
+            );
         }
     }
 }
