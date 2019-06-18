@@ -247,7 +247,7 @@ namespace HodlWallet2.Core.Services
             else
             {
                 // We default to Mainnet (i.e. main)
-                network = "main";
+                network = "testnet";
                 SecureStorageProvider.SetNetwork(network);
             }
 
