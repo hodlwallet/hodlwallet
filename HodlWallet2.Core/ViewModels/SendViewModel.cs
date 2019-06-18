@@ -15,9 +15,9 @@ namespace HodlWallet2.Core.ViewModels
         readonly IWalletService _WalletService;
         readonly IPrecioService _PrecioService;
 
-        private string _AddressToSendTo;
-        private int _Fee;
-        private int _AmountToSend;
+        string _AddressToSendTo;
+        int _Fee;
+        int _AmountToSend;
 
         const double MAX_SLIDER_VALUE = 500;
         double _SliderValue;
@@ -67,11 +67,11 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _AmountToSend, value);
         }
         
-        public MvxAsyncCommand ScanCommand { get; private set; }
-        public MvxAsyncCommand SendCommand { get; private set; }
-        public MvxAsyncCommand CloseCommand { get; private set; }
-        public MvxAsyncCommand ShowFaqCommand { get; private set; }
-        public MvxAsyncCommand OnValueChangedCommand { get; private set; }
+        public MvxAsyncCommand ScanCommand { get; }
+        public MvxAsyncCommand SendCommand { get; }
+        public MvxAsyncCommand CloseCommand { get; }
+        public MvxAsyncCommand ShowFaqCommand { get; }
+        public MvxAsyncCommand OnValueChangedCommand { get; }
 
         public SendViewModel(
             IMvxLogProvider logProvider, 
