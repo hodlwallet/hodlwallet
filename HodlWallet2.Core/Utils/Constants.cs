@@ -23,6 +23,6 @@ namespace HodlWallet2.Core.Utils
         public const string SYNC_DATE_LABEL = "{0}, Block: {1}";
 
         //Temporary Values
-        public const string MEMO = "In Progress";
+        public const string MEMO_LABEL = "In Progress";
     }
 }
