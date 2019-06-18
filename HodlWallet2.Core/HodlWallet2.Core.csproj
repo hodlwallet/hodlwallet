@@ -9,13 +9,14 @@
       <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
       <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
       <PackageReference Include="Refit" Version="4.7.9" />
+      <PackageReference Include="NBitcoin" Version="4.1.2.36" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\LivianoWallet\LivianoWallet\Liviano\Liviano.csproj" />
       <ProjectReference Include="..\LivianoWallet\LivianoWallet\Liviano.Utilities\Liviano.Utilities.csproj" />
-      <ProjectReference Include="..\LivianoWallet\NBitcoin\NBitcoin\NBitcoin.csproj" />
     </ItemGroup>
+
     <ItemGroup>
       <Compile Remove="Services\PrecioHttpService.cs" />
       <Compile Remove="Services\PrecioOptions.cs" />
