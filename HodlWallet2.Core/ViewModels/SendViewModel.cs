@@ -2,11 +2,17 @@ using System;
 using System.Threading.Tasks;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Models;
-using HodlWallet2.Core.Utils;
+using HodlWallet2.Core.Services;
+using Liviano;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
+using NBitcoin;
+using Serilog.Core;
+using Xamarin.Essentials;
 using ZXing.Mobile;
+using Xamarin.Forms;
+using Constants = HodlWallet2.Core.Utils.Constants;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -15,9 +21,9 @@ namespace HodlWallet2.Core.ViewModels
         readonly IWalletService _WalletService;
         readonly IPrecioService _PrecioService;
 
-        private string _AddressToSendTo;
-        private int _Fee;
-        private int _AmountToSend;
+        string _AddressToSendTo;
+        int _Fee;
+        int _AmountToSend;
 
         const double MAX_SLIDER_VALUE = 500;
         double _SliderValue;
@@ -89,7 +95,9 @@ namespace HodlWallet2.Core.ViewModels
             OnValueChangedCommand = new MvxAsyncCommand(SetSliderValue);
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
-            Task.Run(() => SetSliderValue());
+            
+            Task.Run(SetSliderValue);
+            Task.Run(SetAddressFromClipboard);
         }
 
         private Task ShowFaq()
@@ -111,6 +119,21 @@ namespace HodlWallet2.Core.ViewModels
             var result = await scanner.Scan();
 
             AddressToSendTo = result.Text;
+        }
+
+        /// <summary>
+        /// Sets address from clipboard if the address is not in your wallet
+        /// </summary>
+        async Task SetAddressFromClipboard()
+        {
+            string address = await Clipboard.GetTextAsync();
+
+            if (!address.IsBitcoinAddress()) return;
+
+            // TODO: Show a dialog telling the user what they're 'bout to do
+            AddressToSendTo = address;
+            
+            WalletService.Instance.Logger.Information("Message {0}", string.Format(Constants.USE_ADDRESS_FROM_CLIPBOARD, address));
         }
 
         async Task SetSliderValue()

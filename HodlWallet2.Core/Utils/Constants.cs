@@ -22,6 +22,9 @@ namespace HodlWallet2.Core.Utils
         public const string SENT_RECEIVED_NULL = "Send and Receive is NULL";
         public const string SYNC_DATE_LABEL = "{0}, Block: {1}";
 
+        public const string USE_ADDRESS_FROM_CLIPBOARD =
+            "The Bitcoin address '{0} is in your clipboard, would you like to send to that address?";
+
         //Temporary Values
         public const string MEMO_LABEL = "In Progress";
     }
