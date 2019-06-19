@@ -21,8 +21,13 @@ namespace HodlWallet2.Core.Utils
         public const string RECEIVE_AMOUNT = "Received BTC {0}";
         public const string SENT_RECEIVED_NULL = "Send and Receive is NULL";
         public const string SYNC_DATE_LABEL = "{0}, Block: {1}";
+        public const string SHARE_TEXT_INTENT_TITLE = "Share via";
 
-        //Temporary Values
+        // Temporary Values
         public const string MEMO_LABEL = "In Progress";
+
+        // Android Service Values
+        public const string TEXT_PLAIN_INTENT_TYPE = "text/plain";
+        public const string IMAGE_PNG_INTENT_TYPE = "image/png";
     }
 }

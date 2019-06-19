@@ -79,6 +79,7 @@
     <Compile Include="Setup.cs" />
     <Compile Include="Renderers\CustomNavigationPageRenderer.cs" />
     <Compile Include="Renderers\FeeSlider.cs" />
+    <Compile Include="Renderers\ShareIntent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
