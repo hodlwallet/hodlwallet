@@ -12,8 +12,8 @@ namespace HodlWallet2.Core.ViewModels
         readonly IWalletService _WalletService;
         string _Address;
 
-		string ShareButtonText => "Share";
-		string RequestAmountButtonText => "Request Amount";
+		public string ShareButtonText => "Share";
+		public string RequestAmountButtonText => "Request Amount";
 
         public IMvxCommand ShowFaqCommand { get; }
         public IMvxCommand ShareButtonCommand { get; }
@@ -42,9 +42,9 @@ namespace HodlWallet2.Core.ViewModels
             throw new System.NotImplementedException();
         }
 
-		Task ToClipboard()
+		async Task ToClipboard()
 		{
-			return Clipboard.SetTextAsync(Address);
+			await Clipboard.SetTextAsync(Address);
 		}
 
         void ShowShareIntent()
