@@ -13,7 +13,7 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private List<int> _pin;
+        List<int> _Pin;
 
         public MvxInteraction<Tuple<int, bool>> ChangeDigitColorInteraction { get; }
         public MvxInteraction ResetDigitsColorInteraction { get; }
@@ -34,7 +34,7 @@ namespace HodlWallet2.Core.ViewModels
                 throw new WalletException("Error: The wallet does not have a pin setup");
             }
 
-            _pin = new List<int>();
+            _Pin = new List<int>();
 
             DigitCommand = new MvxAsyncCommand<int>(DigitTapped);
             BackspaceCommand = new MvxCommand(BackspaceTapped);
@@ -49,35 +49,35 @@ namespace HodlWallet2.Core.ViewModels
 
         private void BackspaceTapped()
         {
-            if (_pin.Count - 1 >= 0)
+            if (_Pin.Count - 1 >= 0)
             {
-                _pin.RemoveAt(_pin.Count - 1);
+                _Pin.RemoveAt(_Pin.Count - 1);
 
                 // Set the color to "off"
-                ChangeDigitColorInteraction.Raise(new Tuple<int, bool>(_pin.Count + 1, false));
+                ChangeDigitColorInteraction.Raise(new Tuple<int, bool>(_Pin.Count + 1, false));
             }
         }
 
         private async Task DigitTapped(int arg)
         {
-            if (_pin.Count < 6)
+            if (_Pin.Count < 6)
             {
-                _pin.Add(arg);
+                _Pin.Add(arg);
 
                 // Set color to specific digit to "on"
-                ChangeDigitColorInteraction.Raise(new Tuple<int, bool>(_pin.Count, true));
+                ChangeDigitColorInteraction.Raise(new Tuple<int, bool>(_Pin.Count, true));
 
-                if (_pin.Count == 6)
+                if (_Pin.Count == 6)
                 {
                     // Reset colors of all digits.
                     ResetDigitsColorInteraction.Raise();
 
                     await Task.Delay(500);
 
-                    string input = string.Join(string.Empty, _pin.ToArray());
+                    string input = string.Join(string.Empty, _Pin.ToArray());
                     if (SecureStorageProvider.GetPin() == input)
                     {
-                        _pin.Clear();
+                        _Pin.Clear();
 
                         await NavigationService.Navigate<DashboardViewModel>();
 
@@ -85,7 +85,7 @@ namespace HodlWallet2.Core.ViewModels
                     }
                     else
                     {
-                        _pin.Clear();
+                        _Pin.Clear();
 
                         LaunchIncorrectPinAnimationInteraction.Raise();
 

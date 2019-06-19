@@ -7,7 +7,7 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class OnboardViewModel : BaseViewModel
     {        
-        public IMvxAsyncCommand<string> NavigateToViewCommand { get; private set; } 
+        public IMvxAsyncCommand<string> NavigateToViewCommand { get; } 
         
         public OnboardViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) 
             : base(logProvider, navigationService)

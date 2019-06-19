@@ -13,7 +13,7 @@ namespace HodlWallet2.Core.ViewModels
     {
         IWalletService _WalletService;
         ILogger _Logger;
-        public IMvxAsyncCommand<string> SuccessCommand { get; private set; }
+        public IMvxAsyncCommand<string> SuccessCommand { get; }
         
         //TODO: Localize properties
         public string PinPadTitle => "Enter PIN";

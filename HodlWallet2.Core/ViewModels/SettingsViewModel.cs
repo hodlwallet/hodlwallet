@@ -9,9 +9,9 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
-        IWalletService _walletService;
+        IWalletService _WalletService;
         
-        public MvxCommand SyncBlockChainCommand { get; private set; }
+        public MvxCommand SyncBlockChainCommand { get; }
         
         public SettingsViewModel(
             IMvxLogProvider logProvider, 
@@ -20,7 +20,7 @@ namespace HodlWallet2.Core.ViewModels
             base(logProvider, navigationService)
         {
             SyncBlockChainCommand = new MvxCommand(SyncBlockChain);
-            _walletService = walletService;
+            _WalletService = walletService;
         }
 
         private async void SyncBlockChain()

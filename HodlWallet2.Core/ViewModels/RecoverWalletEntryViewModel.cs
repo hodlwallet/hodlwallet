@@ -8,7 +8,7 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class RecoverWalletEntryViewModel : BaseViewModel
     {
-        private IWalletService _walletService;
+        IWalletService _WalletService;
         
         public RecoverWalletEntryViewModel(
             IMvxLogProvider logProvider, 
@@ -16,7 +16,7 @@ namespace HodlWallet2.Core.ViewModels
             IWalletService walletService)
             : base(logProvider, navigationService)
         {
-            _walletService = walletService;
+            _WalletService = walletService;
         }
 
         public string RecoverTitle

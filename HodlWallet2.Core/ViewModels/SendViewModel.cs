@@ -73,11 +73,11 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _AmountToSend, value);
         }
         
-        public MvxAsyncCommand ScanCommand { get; private set; }
-        public MvxAsyncCommand SendCommand { get; private set; }
-        public MvxAsyncCommand CloseCommand { get; private set; }
-        public MvxAsyncCommand ShowFaqCommand { get; private set; }
-        public MvxAsyncCommand OnValueChangedCommand { get; private set; }
+        public MvxAsyncCommand ScanCommand { get; }
+        public MvxAsyncCommand SendCommand { get; }
+        public MvxAsyncCommand CloseCommand { get; }
+        public MvxAsyncCommand ShowFaqCommand { get; }
+        public MvxAsyncCommand OnValueChangedCommand { get; }
 
         public SendViewModel(
             IMvxLogProvider logProvider, 

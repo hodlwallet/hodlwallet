@@ -12,7 +12,7 @@ namespace HodlWallet2.Core.ViewModels
         readonly IWalletService _WalletService;
         string _Address;
 
-        public IMvxCommand ShowFaqCommand { get; private set; }
+        public IMvxCommand ShowFaqCommand { get; }
 
         public string Address
         {

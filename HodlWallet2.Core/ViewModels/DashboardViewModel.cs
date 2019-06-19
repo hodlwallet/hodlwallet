@@ -45,9 +45,9 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _PriceText, value);
         }
 
-        public MvxCommand NavigateToSendViewCommand { get; private set; }
-        public MvxCommand NavigateToReceiveViewCommand { get; private set; }
-        public MvxCommand NavigateToMenuViewCommand { get; private set; }
+        public MvxCommand NavigateToSendViewCommand { get; }
+        public MvxCommand NavigateToReceiveViewCommand { get; }
+        public MvxCommand NavigateToMenuViewCommand { get; }
         
         public DashboardViewModel(
             IMvxLogProvider logProvider, 
