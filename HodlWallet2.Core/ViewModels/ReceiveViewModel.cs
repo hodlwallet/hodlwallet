@@ -13,6 +13,7 @@ namespace HodlWallet2.Core.ViewModels
         string _Address;
 
         public IMvxCommand ShowFaqCommand { get; }
+        public IMvxAsyncCommand CopyAddressCommand { get; }
 
         public string Address
         {
@@ -27,6 +28,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             _WalletService = walletService;
             ShowFaqCommand = new MvxCommand(ShowFaq);
+            CopyAddressCommand = new MvxAsyncCommand(ToClipboard);
         }
 
         private void ShowFaq()
