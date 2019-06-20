@@ -25,7 +25,6 @@ namespace HodlWallet2.Views
         {
             InitializeComponent();
             SetLabels();
-            ProcessClipboardContent();
         }
 
         async Task ProcessClipboardContent()
@@ -68,6 +67,12 @@ namespace HodlWallet2.Views
         public async void OnFaqTapped(object sender, EventArgs e)
         {
             // TODO:
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ProcessClipboardContent();
         }
     }
 }
