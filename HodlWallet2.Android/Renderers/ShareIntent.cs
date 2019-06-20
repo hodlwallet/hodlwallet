@@ -24,14 +24,22 @@ namespace HodlWallet2.Droid.Renderers
 			Forms.Context.StartActivity(intentChooser);
         }
 
-        public async void QRTextShareIntent(string address, ImageSource image)
+        public void QRTextShareIntent(string address)
 		{
 			var intent = new Intent(Intent.ActionSend);
 			intent.PutExtra(Intent.ExtraText, address);
 			intent.SetType(Constants.IMAGE_PNG_INTENT_TYPE);
 
-			ImageLoaderSourceHandler handler = new ImageLoaderSourceHandler();
-			Bitmap bitmap = await handler.LoadImageAsync(image, Android.App.Application.Context);
+			var barcodeWriter = new ZXing.Mobile.BarcodeWriter
+			{
+				Format = ZXing.BarcodeFormat.QR_CODE,
+				Options = new ZXing.Common.EncodingOptions
+				{
+					Width = 300,
+					Height = 300
+				}
+			};
+			Bitmap bitmap = barcodeWriter.Write(address);
 
 			var path = Android.OS.Environment.GetExternalStoragePublicDirectory
 			(

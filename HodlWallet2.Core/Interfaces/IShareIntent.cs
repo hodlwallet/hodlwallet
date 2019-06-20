@@ -6,6 +6,6 @@ namespace HodlWallet2.Core.Interfaces
     public interface IShareIntent
     {
         void TextShareIntent(string text);
-		void QRTextShareIntent(string address, ImageSource image);
+		void QRTextShareIntent(string address);
 	}
 }

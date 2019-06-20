@@ -4,6 +4,8 @@ using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using Xamarin.Essentials;
+using Xamarin.Forms;
+using SkiaSharp;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -32,8 +34,8 @@ namespace HodlWallet2.Core.ViewModels
         {
             _WalletService = walletService;
             ShowFaqCommand = new MvxCommand(ShowFaq);
+			CopyAddressCommand = new MvxAsyncCommand(ToClipboard);
 			ShareButtonCommand = new MvxCommand(ShowShareIntent);
-            CopyAddressCommand = new MvxAsyncCommand(ToClipboard);
         }
 
         void ShowFaq()
@@ -50,7 +52,7 @@ namespace HodlWallet2.Core.ViewModels
         void ShowShareIntent()
 		{
 			var sharer = Xamarin.Forms.DependencyService.Get<IShareIntent>();
-			sharer.TextShareIntent(Address);
+			sharer.QRTextShareIntent(Address);
 		}
 
 		public override void ViewAppeared()
