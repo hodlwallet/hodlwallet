@@ -1,9 +1,10 @@
 ﻿using System;
 using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.Interfaces;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 using Android.Content.PM;
 using Android.OS;
-using Xamarin.Forms;
 using Android.Content;
 using Android.Graphics;
 
@@ -22,5 +23,28 @@ namespace HodlWallet2.Droid.Renderers
             var intentChooser = Intent.CreateChooser(intent, Constants.SHARE_TEXT_INTENT_TITLE);
 			Forms.Context.StartActivity(intentChooser);
         }
+
+        public async void QRTextShareIntent(string address, ImageSource image)
+		{
+			var intent = new Intent(Intent.ActionSend);
+			intent.PutExtra(Intent.ExtraText, address);
+			intent.SetType(Constants.IMAGE_PNG_INTENT_TYPE);
+
+			ImageLoaderSourceHandler handler = new ImageLoaderSourceHandler();
+			Bitmap bitmap = await handler.LoadImageAsync(image, Android.App.Application.Context);
+
+			var path = Android.OS.Environment.GetExternalStoragePublicDirectory
+			(
+				Android.OS.Environment.DirectoryDownloads + Java.IO.File.Separator + Constants.IMAGE_PNG_ADDRESS_NAME
+			);
+
+            using (var os = new System.IO.FileStream(path.AbsolutePath, System.IO.FileMode.Create))
+			{
+				bitmap.Compress(Bitmap.CompressFormat.Png, 100, os);
+			}
+
+			intent.PutExtra(Intent.ExtraStream, Android.Net.Uri.FromFile(path));
+			Forms.Context.StartActivity(Intent.CreateChooser(intent, Constants.SHARE_TEXT_INTENT_TITLE));
+		}
     }
 }
