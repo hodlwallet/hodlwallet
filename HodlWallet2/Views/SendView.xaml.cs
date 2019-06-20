@@ -34,7 +34,7 @@ namespace HodlWallet2.Views
             if (!ViewModel.IsBitcoinAddressOnClipboard(content)) return;
             
             string dialogContent = string.Format(
-                LocaleResources.Send_addressDetectedOnClipboardTitle,
+                LocaleResources.Send_addressDetectedOnClipboardMessage,
                 content
             );
             string dialogTitle = LocaleResources.Send_addressDetectedOnClipboardTitle;
