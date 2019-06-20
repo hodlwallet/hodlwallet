@@ -23,5 +23,26 @@ namespace HodlWallet2.iOS
 
 			topController.PresentViewController(activityController, true, null);
 		}
+
+        public async void QRTextShareIntent(string address, ImageSource image)
+		{
+			var handler = new ImageLoaderSourceHandler();
+			var uikitImage = await handler.LoadImageAsync(image);
+
+			var img = NSObject.FromObject(uikitImage);
+			var addr = NSObject.FromObject(address);
+
+			var activityItems = new[] { img, addr };
+			var activityController = new UIActivityViewController(activityItems, null);
+
+			var topController = UIApplication.SharedApplication.KeyWindow.RootViewController;
+
+            while(topController.PresentedViewController != null)
+			{
+				topController = topController.PresentedViewController;
+			}
+
+			topController.PresentViewController(activityController, true, null);
+		}
 	}
 }
