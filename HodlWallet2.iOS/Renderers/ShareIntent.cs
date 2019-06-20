@@ -24,12 +24,20 @@ namespace HodlWallet2.iOS
 			topController.PresentViewController(activityController, true, null);
 		}
 
-        public async void QRTextShareIntent(string address, ImageSource image)
+        public async void QRTextShareIntent(string address)
 		{
-			var handler = new ImageLoaderSourceHandler();
-			var uikitImage = await handler.LoadImageAsync(image);
+			var barcodeWriter = new ZXing.Mobile.BarcodeWriter
+			{
+				Format = ZXing.BarcodeFormat.QR_CODE,
+				Options = new ZXing.Common.EncodingOptions
+				{
+					Width = 300,
+					Height = 300
+				}
+			};
+			var bitmap = barcodeWriter.Write(address);
 
-			var img = NSObject.FromObject(uikitImage);
+			var img = NSObject.FromObject(bitmap);
 			var addr = NSObject.FromObject(address);
 
 			var activityItems = new[] { img, addr };
