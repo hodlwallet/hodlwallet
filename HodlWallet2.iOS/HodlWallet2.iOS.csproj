@@ -208,6 +208,5 @@
     <Folder Include="Assets.xcassets\logo_front.png.imageset\" />
     <Folder Include="Assets.xcassets\logo.png.imageset\" />
     <Folder Include="Renderers\" />
-    <Folder Include="Services" />
   </ItemGroup>
 </Project>
