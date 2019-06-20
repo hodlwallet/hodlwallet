@@ -24,6 +24,28 @@ namespace HodlWallet2.Views
         {
             InitializeComponent();
             SetLabels();
+            ProcessClipboardContent();
+        }
+
+        async Task ProcessClipboardContent()
+        {
+            string content = await Clipboard.GetTextAsync();
+
+            if (!ViewModel.IsBitcoinAddressOnClipboard(content)) return;
+            
+            string dialogContent = string.Format(
+                LocaleResources.Send_addressDetectedOnClipboardTitle,
+                content
+            );
+            string dialogTitle = LocaleResources.Send_addressDetectedOnClipboardTitle;
+            
+            bool answer = await DisplayAlert(
+                dialogTitle, dialogContent, "Yes", cancel: "No"
+            );
+
+            if (!answer) return;
+            
+            ViewModel.AddressToSendTo = content;
         }
 
         void SetLabels()

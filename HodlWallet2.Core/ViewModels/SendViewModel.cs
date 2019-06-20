@@ -72,7 +72,12 @@ namespace HodlWallet2.Core.ViewModels
             get => _AmountToSend;
             set => SetProperty(ref _AmountToSend, value);
         }
-        
+
+        public bool IsBitcoinAddressOnClipboard(string content)
+        {
+            return content.IsBitcoinAddress();
+        }
+
         public MvxAsyncCommand ScanCommand { get; }
         public MvxAsyncCommand SendCommand { get; }
         public MvxAsyncCommand CloseCommand { get; }
@@ -97,7 +102,6 @@ namespace HodlWallet2.Core.ViewModels
             SliderValue = MAX_SLIDER_VALUE * 0.5;
             
             Task.Run(SetSliderValue);
-            Task.Run(SetAddressFromClipboard);
         }
 
         private Task ShowFaq()
@@ -119,21 +123,6 @@ namespace HodlWallet2.Core.ViewModels
             var result = await scanner.Scan();
 
             AddressToSendTo = result.Text;
-        }
-
-        /// <summary>
-        /// Sets address from clipboard if the address is not in your wallet
-        /// </summary>
-        async Task SetAddressFromClipboard()
-        {
-            string address = await Clipboard.GetTextAsync();
-
-            if (!address.IsBitcoinAddress()) return;
-
-            // TODO: Show a dialog telling the user what they're 'bout to do
-            AddressToSendTo = address;
-            
-            WalletService.Instance.Logger.Information("Message {0}", string.Format(Constants.USE_ADDRESS_FROM_CLIPBOARD, address));
         }
 
         async Task SetSliderValue()

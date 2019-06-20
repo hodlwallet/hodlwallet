@@ -10,7 +10,6 @@
 
 namespace HodlWallet2.Locale {
     using System;
-    using System.Reflection;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
@@ -30,7 +29,7 @@ namespace HodlWallet2.Locale {
         internal static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("HodlWallet2.LocaleResources", typeof(LocaleResources).Assembly);
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("HodlWallet2.Locale.LocaleResources", typeof(LocaleResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -386,6 +385,18 @@ namespace HodlWallet2.Locale {
         internal static string FingerprintAuth_limitButtonAndroid {
             get {
                 return ResourceManager.GetString("FingerprintAuth.limitButtonAndroid", resourceCulture);
+            }
+        }
+        
+        internal static string Send_addressDetectedOnClipboardTitle {
+            get {
+                return ResourceManager.GetString("Send.addressDetectedOnClipboardTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Send_addressDetectedOnClipboardMessage {
+            get {
+                return ResourceManager.GetString("Send.addressDetectedOnClipboardMessage", resourceCulture);
             }
         }
     }
