@@ -9,6 +9,7 @@ using HodlWallet2.Core.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Mobile;
+using Xamarin.Essentials;
 
 using HodlWallet2.Locale;
 using MvvmCross.Forms.Presenters.Attributes;
@@ -25,7 +26,7 @@ namespace HodlWallet2.Views
             SetLabels();
         }
 
-        private void SetLabels()
+        void SetLabels()
         {
             SendTitle.Text = LocaleResources.Send_title;
             ToLabel.Text = LocaleResources.Send_to;

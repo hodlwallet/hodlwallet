@@ -24,6 +24,8 @@ namespace HodlWallet2.Core.Utils
         public const string SHARE_TEXT_INTENT_TITLE = "Share via";
 
         // Temporary Values
+        public const string USE_ADDRESS_FROM_CLIPBOARD =
+            "The Bitcoin address '{0} is in your clipboard, would you like to send to that address?";
         public const string MEMO_LABEL = "In Progress";
 
         // Android Service Values

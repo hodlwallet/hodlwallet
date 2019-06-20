@@ -47,8 +47,8 @@
                            Style="{DynamicResource CustomLabel}" 
                            HorizontalTextAlignment="Start" />
                         
-                    <Entry x:Name="sendAddress"
-                           Placeholder="mx16baf4...."
+                    <Entry x:Name="SendAddress"
+                           Placeholder="bc1..."
                            Text="{Binding AddressToSendTo}"
                            Style="{StaticResource CustomEntry}" />
                         
