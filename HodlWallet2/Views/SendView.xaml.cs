@@ -14,6 +14,7 @@ using Xamarin.Essentials;
 using HodlWallet2.Locale;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Views
 {

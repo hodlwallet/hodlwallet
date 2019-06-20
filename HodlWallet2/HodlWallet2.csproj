@@ -153,6 +153,9 @@
     <Compile Update="Views\SetPinView.xaml.cs">
       <DependentUpon>SetPinView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Locale\LocaleResources.es.Designer.cs">
+      <DependentUpon>LocaleResources.es.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS" />
