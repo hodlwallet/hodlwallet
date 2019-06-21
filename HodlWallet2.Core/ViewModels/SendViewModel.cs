@@ -2,11 +2,17 @@ using System;
 using System.Threading.Tasks;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Models;
-using HodlWallet2.Core.Utils;
+using HodlWallet2.Core.Services;
+using Liviano;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
+using NBitcoin;
+using Serilog.Core;
+using Xamarin.Essentials;
 using ZXing.Mobile;
+using Xamarin.Forms;
+using Constants = HodlWallet2.Core.Utils.Constants;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -66,9 +72,15 @@ namespace HodlWallet2.Core.ViewModels
             get => _AmountToSend;
             set => SetProperty(ref _AmountToSend, value);
         }
-        
+
+        public bool IsBitcoinAddressOnClipboard(string content)
+        {
+            return content.IsBitcoinAddress(_WalletService.WalletManager.Network);
+        }
+
+
         public MvxAsyncCommand ScanCommand { get; }
-        public MvxAsyncCommand SendCommand { get; }
+        public MvxAsyncCommand<string> SendCommand { get; }
         public MvxAsyncCommand CloseCommand { get; }
         public MvxAsyncCommand ShowFaqCommand { get; }
         public MvxAsyncCommand OnValueChangedCommand { get; }
@@ -83,13 +95,14 @@ namespace HodlWallet2.Core.ViewModels
             _PrecioService = precioService;
 
             ScanCommand = new MvxAsyncCommand(Scan);
-            SendCommand = new MvxAsyncCommand(Send);
+            SendCommand = new MvxAsyncCommand<string>(Send);
             CloseCommand = new MvxAsyncCommand(Close);
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
             OnValueChangedCommand = new MvxAsyncCommand(SetSliderValue);
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
-            Task.Run(() => SetSliderValue());
+            
+            Task.Run(SetSliderValue);
         }
 
         private Task ShowFaq()
@@ -140,10 +153,8 @@ namespace HodlWallet2.Core.ViewModels
             TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, (Fee / 1000));
         }
 
-        private async Task Send()
+        private async Task Send(string password = "")
         {
-            string password = "";
-
             var txCreateResult = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
             if (txCreateResult.Success)

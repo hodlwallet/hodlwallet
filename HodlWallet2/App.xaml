@@ -14,7 +14,7 @@
 
       <!-- Styles -->
       <OnPlatform x:Key="ElectrolizeFont" x:TypeArguments="x:String" iOS="Electrolize" Android="Electrolize-Regular.ttf#Electrolize" />
-
+      
       <Style x:Key="GrayButton" TargetType="Button">
         <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
         <Setter Property="TextColor" Value="{StaticResource White}" />

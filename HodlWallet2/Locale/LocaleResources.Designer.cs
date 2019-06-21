@@ -388,5 +388,17 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("FingerprintAuth.limitButtonAndroid", resourceCulture);
             }
         }
+        
+        internal static string Send_addressDetectedOnClipboardTitle {
+            get {
+                return ResourceManager.GetString("Send.addressDetectedOnClipboardTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Send_addressDetectedOnClipboardMessage {
+            get {
+                return ResourceManager.GetString("Send.addressDetectedOnClipboardMessage", resourceCulture);
+            }
+        }
     }
 }

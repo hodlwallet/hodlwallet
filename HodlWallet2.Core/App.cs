@@ -22,8 +22,9 @@ namespace HodlWallet2.Core
             //SecureStorageProvider.RemoveAll();
 
             // NOTE: Use this code to simulate login with a predictable stuff
-            //SecureStorageProvider.SetPin("111111");
-            //SecureStorageProvider.SetMnemonic("abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about");
+            // SecureStorageProvider.SetPin("111111");
+            // SecureStorageProvider.SetMnemonic("abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about");
+            // SecureStorageProvider.SetNetwork("testnet");
 
             var walletService = WalletService.Instance;
 
