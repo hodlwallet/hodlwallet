@@ -78,8 +78,9 @@ namespace HodlWallet2.Core.ViewModels
             return content.IsBitcoinAddress(_WalletService.WalletManager.Network);
         }
 
+
         public MvxAsyncCommand ScanCommand { get; }
-        public MvxAsyncCommand SendCommand { get; }
+        public MvxAsyncCommand<string> SendCommand { get; }
         public MvxAsyncCommand CloseCommand { get; }
         public MvxAsyncCommand ShowFaqCommand { get; }
         public MvxAsyncCommand OnValueChangedCommand { get; }
@@ -94,7 +95,7 @@ namespace HodlWallet2.Core.ViewModels
             _PrecioService = precioService;
 
             ScanCommand = new MvxAsyncCommand(Scan);
-            SendCommand = new MvxAsyncCommand(Send);
+            SendCommand = new MvxAsyncCommand<string>(Send);
             CloseCommand = new MvxAsyncCommand(Close);
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
             OnValueChangedCommand = new MvxAsyncCommand(SetSliderValue);
@@ -152,10 +153,8 @@ namespace HodlWallet2.Core.ViewModels
             TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, (Fee / 1000));
         }
 
-        private async Task Send()
+        private async Task Send(string password = "")
         {
-            string password = "";
-
             var txCreateResult = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
             if (txCreateResult.Success)

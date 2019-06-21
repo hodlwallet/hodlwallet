@@ -72,6 +72,7 @@ namespace HodlWallet2.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
             ProcessClipboardContent();
         }
     }
