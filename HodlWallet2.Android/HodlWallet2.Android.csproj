@@ -121,6 +121,7 @@
     <AndroidResource Include="..\HodlWallet2\Assets\send_tab_icon.png">
       <Link>Resources\drawable\send_tab_icon.png</Link>
     </AndroidResource>
+    <AndroidResource Include="Resources\xml\provider_paths.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -129,6 +130,7 @@
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Resources\xml\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HodlWallet2.Core\HodlWallet2.Core.csproj">

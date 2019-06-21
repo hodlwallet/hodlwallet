@@ -7,6 +7,7 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Content;
 using Android.Graphics;
+using Android.Provider;
 
 using HodlWallet2.Droid.Renderers;
 
@@ -41,9 +42,11 @@ namespace HodlWallet2.Droid.Renderers
 			};
 			Bitmap bitmap = barcodeWriter.Write(address);
 
+			// TODO: Get Permission for HodlWallet to use external storage
+
 			var path = Android.OS.Environment.GetExternalStoragePublicDirectory
 			(
-				Android.OS.Environment.DirectoryDownloads + Java.IO.File.Separator + Constants.IMAGE_PNG_ADDRESS_NAME
+				Android.OS.Environment.DirectoryPictures + Java.IO.File.Separator + Constants.IMAGE_PNG_ADDRESS_NAME
 			);
 
             using (var os = new System.IO.FileStream(path.AbsolutePath, System.IO.FileMode.Create))
@@ -51,7 +54,9 @@ namespace HodlWallet2.Droid.Renderers
 				bitmap.Compress(Bitmap.CompressFormat.Png, 100, os);
 			}
 
-			intent.PutExtra(Intent.ExtraStream, Android.Net.Uri.FromFile(path));
+			var fileUri = Android.Support.V4.Content.FileProvider.GetUriForFile(global::Android.App.Application.Context, global::Android.App.Application.Context.PackageName + ".fileprovider", path);
+			intent.AddFlags(ActivityFlags.GrantReadUriPermission);
+			intent.PutExtra(Intent.ExtraStream, fileUri);
 			Forms.Context.StartActivity(Intent.CreateChooser(intent, Constants.SHARE_TEXT_INTENT_TITLE));
 		}
     }
