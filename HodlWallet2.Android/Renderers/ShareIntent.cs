@@ -6,8 +6,12 @@ using Xamarin.Forms.Platform.Android;
 using Android.Content.PM;
 using Android.OS;
 using Android.Content;
+using Android.App;
 using Android.Graphics;
 using Android.Provider;
+using Android.Widget;
+using Android.Support.V4.App;
+using Android.Support.Design.Widget;
 
 using HodlWallet2.Droid.Renderers;
 
@@ -49,6 +53,8 @@ namespace HodlWallet2.Droid.Renderers
 				Android.OS.Environment.DirectoryPictures + Java.IO.File.Separator + address + Constants.IMAGE_PNG_ADDRESS_NAME
 			);
 
+            
+
             using (var os = new System.IO.FileStream(path.AbsolutePath, System.IO.FileMode.Create))
 			{
 				bitmap.Compress(Bitmap.CompressFormat.Png, 100, os);
@@ -59,5 +65,22 @@ namespace HodlWallet2.Droid.Renderers
 			intent.PutExtra(Intent.ExtraStream, fileUri);
 			Forms.Context.StartActivity(Intent.CreateChooser(intent, Constants.SHARE_TEXT_INTENT_TITLE));
 		}
+
+		private bool GetStoragePermission()
+		{
+            const string permission = Manifest.Permission.WriteExternalStorage;
+
+            if (ContextCompat.CheckSelfPermission(this, permission) == (int)Permission.Granted)
+			{
+                return true;
+			}
+            else if (AppCompatActivity.ShouldShowRequestPermissionRationale(this, permission))
+			{
+                SnackBar.Make(layout, "Storage access is required to generate a QR Code.", Snackbar.LengthIndefinite).SetAction("OK", v => ActivityCompat.RequestPermissions(this, PermissionsStorage, RequestStorageId)).Show();
+				AppCompatActivity.requestPermissions(this, PermissionsStorage, RequestStorageId);
+            }
+            
+            return false;
+        }
     }
 }
