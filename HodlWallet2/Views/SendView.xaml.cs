@@ -31,7 +31,8 @@ namespace HodlWallet2.Views
         {
             string content = await Clipboard.GetTextAsync();
 
-            if (!ViewModel.IsBitcoinAddressOnClipboard(content)) return;
+            /* TODO: Merge Send Clipboard Feature
+             *      if (!ViewModel.IsBitcoinAddressOnClipboard(content)) return; */
             
             string dialogContent = string.Format(
                 LocaleResources.Send_addressDetectedOnClipboardMessage,
