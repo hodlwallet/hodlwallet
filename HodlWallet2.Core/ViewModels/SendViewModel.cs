@@ -73,13 +73,12 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _AmountToSend, value);
         }
 
-		/* TODO: Merge Send Clipboard Feature
-         * 
-		 *      public bool IsBitcoinAddressOnClipboard(string content)
-         *      {
-         *          return content.IsBitcoinAddress(_WalletService.WalletManager.Network);
-         *      }
-         */
+		
+		public bool IsBitcoinAddressOnClipboard(string content)
+        {
+            return content.IsBitcoinAddress(_WalletService.WalletManager.Network);
+        }
+        
 
 		public MvxAsyncCommand ScanCommand { get; }
         public MvxAsyncCommand<string> SendCommand { get; }
