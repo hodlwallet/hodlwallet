@@ -5,7 +5,6 @@ using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using SkiaSharp;
 
 namespace HodlWallet2.Core.ViewModels
 {

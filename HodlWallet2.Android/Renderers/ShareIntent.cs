@@ -46,7 +46,7 @@ namespace HodlWallet2.Droid.Renderers
 
 			var path = Android.OS.Environment.GetExternalStoragePublicDirectory
 			(
-				Android.OS.Environment.DirectoryPictures + Java.IO.File.Separator + Constants.IMAGE_PNG_ADDRESS_NAME
+				Android.OS.Environment.DirectoryPictures + Java.IO.File.Separator + address + Constants.IMAGE_PNG_ADDRESS_NAME
 			);
 
             using (var os = new System.IO.FileStream(path.AbsolutePath, System.IO.FileMode.Create))
