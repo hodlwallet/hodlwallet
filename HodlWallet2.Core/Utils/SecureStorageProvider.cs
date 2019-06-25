@@ -118,7 +118,7 @@ namespace HodlWallet2.Core.Utils
 
         public static bool HasSeedBirthday()
         {
-            return !string.IsNullOrEmpty(Get(SEED_BIRTHDAY)); // TODO this sucks.
+            return !string.IsNullOrEmpty(Get(SEED_BIRTHDAY));
         }
 
         public static void SetSeedBirthday(DateTimeOffset birthday)

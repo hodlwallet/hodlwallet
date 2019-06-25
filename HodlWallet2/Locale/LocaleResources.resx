@@ -297,5 +297,14 @@
         <value>Fingerprint Authentication Spending Limit Screen.</value>
         <comment>label for spending limit button on Android</comment>
     </data>
-        
+
+    <data name="Send.addressDetectedOnClipboardTitle" xml:space="preserve">
+        <value>Address Detected On Clipboard</value>
+        <comment>title of the dialog to use address on clipboard.</comment>
+    </data>
+    
+    <data name="Send.addressDetectedOnClipboardMessage" xml:space="preserve">
+        <value>Address {0} is on your clipboard would you like to use it to send Bitcoin to it?</value>
+        <comment>content of dialog to use address on clipboard</comment>
+    </data>
 </root>

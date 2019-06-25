@@ -2,9 +2,11 @@
 <views:MvxContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="HodlWallet2.Views.SendView" 
-    xmlns:svg="clr-namespace:HodlWallet2.Utils" 
+    x:Class="HodlWallet2.Views.SendView"
     BackgroundColor="{StaticResource GrayBackground}"
+    xmlns:renderers="clr-namespace:HodlWallet2.Renderers;assembly=HodlWallet2"
+    xmlns:behaviors="clr-namespace:HodlWallet2.Behaviors"
+    xmlns:svg="clr-namespace:HodlWallet2.Utils"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
@@ -38,15 +40,15 @@
                 </svg:Icon>
             </FlexLayout>
                     
-            <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" FlexLayout.Grow="2">
+            <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" FlexLayout.Grow="2" Margin="20, 0, 20, 0">
                 <StackLayout Orientation="Vertical" FlexLayout.Grow="4" FlexLayout.AlignSelf="Center">
                         
                     <Label x:Name="ToLabel" 
                            Style="{DynamicResource CustomLabel}" 
                            HorizontalTextAlignment="Start" />
                         
-                    <Entry x:Name="sendAddress"
-                           Placeholder="mx16baf4...."
+                    <Entry x:Name="SendAddress"
+                           Placeholder="bc1..."
                            Text="{Binding AddressToSendTo}"
                            Style="{StaticResource CustomEntry}" />
                         
@@ -67,7 +69,7 @@
                 </StackLayout>
             </FlexLayout>
             
-            <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" FlexLayout.Grow="2">
+            <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" FlexLayout.Grow="2" Margin="20, 0, 20, 0">
                 <StackLayout Orientation="Vertical" FlexLayout.Grow="4" FlexLayout.AlignSelf="Center">
                     <Label x:Name="AmountLabel" 
                            Style="{DynamicResource CustomLabel}"
@@ -91,7 +93,43 @@
                 <svg:Icon ResourceId="Assets.currency_switch.svg" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center" />
             </FlexLayout>
             
-            <StackLayout Orientation="Vertical" FlexLayout.Grow="2">
+            <StackLayout Orientation="Vertical" FlexLayout.Grow="2" Margin="20, 0, 20, 0">
+                
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                    <Label Style="{StaticResource CustomLabel}" 
+                           bindings:Bi.nd="Text TransactionFeeTitle" />
+                    <Label Style="{StaticResource CustomLabel}"
+                           bindings:Bi.nd="Text EstConfirmationTitle" />
+                </FlexLayout>
+                
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                    <Label FontFamily="{StaticResource ElectrolizeFont}"
+                           TextColor="{StaticResource GrayTextTint}"
+                           bindings:Bi.nd="Text TransactionFeeText" />
+                    <Label FontFamily="{StaticResource ElectrolizeFont}"
+                           TextColor="{StaticResource GrayTextTint}"
+                           bindings:Bi.nd="Text EstConfirmationText" />
+                </FlexLayout>
+                
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                    <Label Style="{StaticResource CustomLabel}"
+                           bindings:Bi.nd="Text SlowText" />
+                    <Label Style="{StaticResource CustomLabel}"
+                           bindings:Bi.nd="Text NormalText" />
+                    <Label Style="{StaticResource CustomLabel}"
+                           bindings:Bi.nd="Text FastestText" />
+                </FlexLayout>
+                
+                <renderers:FeeSlider
+                        MinimumTrackColor="{StaticResource SyncGradientStart}"
+                        MaximumTrackColor="{StaticResource White}"
+                        Maximum="500"
+                        bindings:Bi.nd="Value SliderValue">
+                    <Slider.Behaviors>
+                        <behaviors:EventToCommandBehavior EventName="DragCompleted" bindings:Bi.nd="Command OnValueChangedCommand" />
+                    </Slider.Behaviors>
+                </renderers:FeeSlider>
+                
                 <Label Text="Fee (sats/byte)" Style="{StaticResource CustomLabel}" />
                 <Entry Placeholder="0.0001" Text="{Binding Fee}" Style="{StaticResource CustomEntry}" />
             </StackLayout>

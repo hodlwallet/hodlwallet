@@ -20,6 +20,7 @@ using Liviano.Behaviors;
 using Liviano.Enums;
 using Liviano.Models;
 using System.Collections.Generic;
+using System.Security;
 using HodlWallet2.Core.Interfaces;
 using Liviano.Exceptions;
 using MvvmCross.Logging;
@@ -33,31 +34,29 @@ namespace HodlWallet2.Core.Services
     {
         public const int DEFAULT_NODES_TO_CONNECT = 4;
 
-        public const string DEFAULT_NETWORK = "main";
+        public const string DEFAULT_NETWORK = "testnet";
 
-        public static readonly string USER_AGENT = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
+        public static readonly string UserAgent = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
 
-        private static readonly object _SingletonLock = new object();
+        object _Lock = new object();
 
-        private object _Lock = new object();
+        int _NodesToConnect;
 
-        private int _NodesToConnect;
+        NodeConnectionParameters _ConParams;
 
-        private NodeConnectionParameters _ConParams;
+        Network _Network;
 
-        private Network _Network;
+        AddressManager _AddressManager;
 
-        private AddressManager _AddressManager;
+        PartialConcurrentChain _Chain;
 
-        private PartialConcurrentChain _Chain;
+        DefaultCoinSelector _DefaultCoinSelector;
 
-        private DefaultCoinSelector _DefaultCoinSelector;
+        NodesGroup _NodesGroup;
 
-        private NodesGroup _NodesGroup;
+        WalletSyncManagerBehavior _WalletSyncManagerBehavior;
 
-        private WalletSyncManagerBehavior _WalletSyncManagerBehavior;
-
-        private string _WalletId;
+        string _WalletId;
 
         public Serilog.ILogger Logger { set; get; }
 
@@ -85,16 +84,10 @@ namespace HodlWallet2.Core.Services
         public event EventHandler OnStarted;
         public event EventHandler OnScanning;
 
-        public bool IsStarted { get; set; }
-        public bool IsConfigured { get; set; }
+        public bool IsStarted { get; private set; }
+        public bool IsConfigured { get; private set; }
 
-        public static WalletService Instance
-        {
-            get
-            {
-                return (WalletService) Mvx.IoCProvider.Resolve<IWalletService>();
-            }
-        }
+        public static WalletService Instance => (WalletService) Mvx.IoCProvider.Resolve<IWalletService>();
 
         public HdAccount CurrentAccount
         {
@@ -246,8 +239,7 @@ namespace HodlWallet2.Core.Services
             }
             else
             {
-                // We default to Mainnet (i.e. main)
-                network = "main";
+                network = DEFAULT_NETWORK;
                 SecureStorageProvider.SetNetwork(network);
             }
 
@@ -270,18 +262,31 @@ namespace HodlWallet2.Core.Services
             Guard.NotNull(_WalletId, nameof(_WalletId));
 
             string mnemonic = SecureStorageProvider.GetMnemonic();
-
-            string password = null;
-            if (SecureStorageProvider.HasPin())
-            {
-                password = SecureStorageProvider.GetPin();
-            }
-
+            string password = ""; // TODO password cannot be null. but it should be
+                                  // change liviano load wallet to accept null passwords
+                                  // But, since HODLWallet 1 didn't have passwords this is okay
+            
             if (WalletExists())
             {
                 Logger.Information("Loading a wallet because it exists");
 
-                WalletManager.LoadWallet(password);
+                try
+                {
+                    WalletManager.LoadWallet(password);
+                }
+                catch (SecurityException ex)
+                {
+                    Logger.Information(ex.Message);
+
+                    // TODO: Defensive programming is a bad practice, this is a bad practice
+                    if (!HdOperations.IsMnemonicOfWallet(mnemonic, WalletManager.GetWallet()))
+                    {
+                        WalletManager.GetStorageProvider().DeleteWallet();
+                        WalletManager.CreateWallet(_WalletId, password, WalletManager.MnemonicFromString(mnemonic));
+
+                        Logger.Information("Wallet created.");
+                    }
+                }
             }
             else
             {
@@ -362,7 +367,7 @@ namespace HodlWallet2.Core.Services
             _ConParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
             _ConParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
 
-            _ConParams.UserAgent = USER_AGENT;
+            _ConParams.UserAgent = UserAgent;
 
             _NodesGroup = new NodesGroup(_Network, _ConParams, new NodeRequirement()
             {
@@ -463,7 +468,7 @@ namespace HodlWallet2.Core.Services
             //        Wallet should be created but with data we already have on SecureStorageProvider for mnemonic and password.
             string guid = "736083c0-7f11-46c2-b3d7-e4e88dc38889";
             string mnemonic = "erase fog enforce rice coil start few hold grocery lock youth service among menu life salmon fiction diamond lyrics love key stairs toe transfer";
-            string password = "123456";
+            string password = "";
 
             Logger.Information("Unloaded wallet");
             WalletManager.UnloadWallet();

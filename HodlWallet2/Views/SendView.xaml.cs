@@ -9,10 +9,12 @@ using HodlWallet2.Core.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Mobile;
+using Xamarin.Essentials;
 
 using HodlWallet2.Locale;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Views
 {
@@ -22,11 +24,31 @@ namespace HodlWallet2.Views
         public SendView()
         {
             InitializeComponent();
-            //BindingContext = sendViewModel;
             SetLabels();
         }
 
-        private void SetLabels()
+        async Task ProcessClipboardContent()
+        {
+            string content = await Clipboard.GetTextAsync();
+
+            if (!ViewModel.IsBitcoinAddressOnClipboard(content)) return;
+            
+            string dialogContent = string.Format(
+                LocaleResources.Send_addressDetectedOnClipboardMessage,
+                content
+            );
+            string dialogTitle = LocaleResources.Send_addressDetectedOnClipboardTitle;
+            
+            bool answer = await DisplayAlert(
+                dialogTitle, dialogContent, "Yes", cancel: "No"
+            );
+
+            if (!answer) return;
+            
+            ViewModel.AddressToSendTo = content;
+        }
+
+        void SetLabels()
         {
             SendTitle.Text = LocaleResources.Send_title;
             ToLabel.Text = LocaleResources.Send_to;
@@ -45,6 +67,13 @@ namespace HodlWallet2.Views
         public async void OnFaqTapped(object sender, EventArgs e)
         {
             // TODO:
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ProcessClipboardContent();
         }
     }
 }

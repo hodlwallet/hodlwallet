@@ -2,6 +2,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Globalization;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
 using HodlWallet2.Core.Models;
@@ -11,41 +13,56 @@ using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace HodlWallet2.Core.ViewModels
 {
     public class DashboardViewModel : BaseViewModel
     {
-        private readonly IWalletService _walletService;
+        readonly IWalletService _WalletService;
+        readonly IPrecioService _PrecioService;
 
         public string SendText => "Send";
         public string ReceiveText => "Receive";
         public string SyncText => "SYNCING";
-        public string DateText => DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString() + ", Block: 478045";
+        public string DateText => string.Format(CultureInfo.CurrentCulture, Constants.SYNC_DATE_LABEL, DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString(), 478045);
         public double Progress => 0.7;
         public bool IsVisible => true;
 
-        private ObservableCollection<Transaction> _transactions;
+        private ObservableCollection<Transaction> _Transactions;
 
         public ObservableCollection<Transaction> Transactions
         {
-            get => _transactions;
-            set => SetProperty(ref _transactions, value);
+            get => _Transactions;
+            set => SetProperty(ref _Transactions, value);
         }
 
-        public MvxCommand NavigateToSendViewCommand { get; private set; }
-        public MvxCommand NavigateToReceiveViewCommand { get; private set; }
-        public MvxCommand NavigateToMenuViewCommand { get; private set; }
+        string _PriceText;
+
+        public string PriceText
+        {
+            get => _PriceText;
+            set => SetProperty(ref _PriceText, value);
+        }
+
+        public MvxCommand NavigateToSendViewCommand { get; }
+        public MvxCommand NavigateToReceiveViewCommand { get; }
+        public MvxCommand NavigateToMenuViewCommand { get; }
         
         public DashboardViewModel(
             IMvxLogProvider logProvider, 
             IMvxNavigationService navigationService,
-            IWalletService walletService) : base(logProvider, navigationService)
+            IWalletService walletService,
+            IPrecioService precioService) : base(logProvider, navigationService)
         {
-            _walletService = walletService;
+            _WalletService = walletService;
+            _PrecioService = precioService;
+
             NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
+
+            PriceText = Constants.BTC_UNIT_LABEL_TMP;
         }
 
         private void NavigateToMenuView()
@@ -66,12 +83,38 @@ namespace HodlWallet2.Core.ViewModels
         public override void ViewAppeared()
         {
             base.ViewAppeared();
-            if (_walletService.IsStarted)
+            if (_WalletService.IsStarted)
             {
-                _walletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
-                _walletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
-                _walletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
-                _walletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
+                _WalletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
+                _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
+                _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
+                _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
+            }
+        }
+
+        public override void ViewAppearing()
+        {
+            base.ViewAppearing();
+
+            Device.StartTimer(TimeSpan.FromSeconds(Constants.PRECIO_TIMER_INTERVAL), () =>
+            {
+                Task.Run(() => RatesAsync());
+                return true;
+            });
+        }
+
+        async Task RatesAsync()
+        {
+            var rates = await _PrecioService.GetRates();
+
+            foreach (var rate in rates)
+            {
+                if (rate.Code == "USD")
+                {
+                    var price = rate.Rate;
+                    PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BTC_UNIT_LABEL, price);
+                    break;
+                }
             }
         }
         
@@ -88,27 +131,28 @@ namespace HodlWallet2.Core.ViewModels
 
         void WalletSyncManager_OnSyncProgressUpdate(object sender, WalletPositionUpdatedEventArgs e)
         {
-            // TODO: Update Progress During Sync
-            // e.g. Progress = e.NewPosition.Height / _walletService.CurrentBlockHeight
-            //      Date = e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString() + ", Block: " + e.NewPosition.Height.ToString();
+            /* TODO: Update Progress During Sync
+             * e.g.  Progress = e.NewPosition.Height / _walletService.CurrentBlockHeight
+             *       Date = string.Format(CultureInfo.CurrentCulture, Constants.SyncDate, 
+             *          e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString(), e.NewPosition.Height.ToString()); */
         }
 
         public void LoadTransactions()
         {
             Transactions = new ObservableCollection<Transaction>(
                 CreateList(
-                    _walletService.GetCurrentAccountTransactions().OrderBy(
+                    _WalletService.GetCurrentAccountTransactions().OrderBy(
                         (TransactionData txData) => txData.CreationTime
                     )
                 )
             );
 
-            _walletService.Logger.Information(new string('*', 20));
+            _WalletService.Logger.Information(new string('*', 20));
         }
 
         public void ReScan()
         {
-            _walletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
+            _WalletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
         }
 
         public IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
@@ -125,41 +169,28 @@ namespace HodlWallet2.Core.ViewModels
                     IsComfirmed = tx.IsConfirmed(),
                     IsPropagated = tx.IsPropagated,
                     BlockHeight = tx.BlockHeight,
-                    IsAvailable = tx.IsSpendable() ? "Available to spend" : "",
-                    Memo = "In Progress",
+                    IsAvailable = tx.IsSpendable() ? Constants.IS_AVAILABLE : "",
+                    Memo = Constants.MEMO_LABEL,
                     Status = GetStatus(tx),
-                    StatusColor = NullableOperations.Evaluate(tx.IsSend) 
-                                    ? Xamarin.Forms.Color.FromHex("#A3A8AD") 
-                                    : Xamarin.Forms.Color.FromHex("#DAAB28"),
-                    // TODO: Implement Send and Receive
-                    // AtAddress = WalletService.GetAddressFromTranscation(tx),
-                    Duration = DateTimeOffsetOperations.shortDate(tx.CreationTime)
+                    StatusColor = tx.IsSend == true
+                                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
+                                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
+                    /* TODO: Implement Send and Receive
+                     * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
+                    Duration = DateTimeOffsetOperations.ShortDate(tx.CreationTime)
                 });
 
-                _walletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
+                _WalletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
             }
             return result;
         }
 
         private string GetStatus(TransactionData tx)
         {
-            switch (tx.IsSend)
-            {
-                case true:
-                    return "Sent BTC " + tx.Amount.ToString();
-                case false:
-                case null:
-                    switch (tx.IsReceive)
-                    {
-                        case true:
-                            return "Received BTC " + tx.Amount.ToString();
-                        case false:
-                        case null:
-                            return "Send and Receive is NULL";
-                    }
-                    break;
-            }
-            return "";
+            if (tx.IsSend == true)
+                return string.Format(Constants.SENT_AMOUNT, tx.Amount);
+
+            return string.Format(Constants.RECEIVE_AMOUNT, tx.Amount);
         }
     }
 }

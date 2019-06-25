@@ -18,14 +18,14 @@
   <ItemGroup>
     <PackageReference Include="MvvmCross.Forms" Version="6.2.3" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
     <PackageReference Include="FormsPinView" Version="2.0.0" />
     <PackageReference Include="XForms.Plugin.AnimationNavigationPage" Version="1.0.6" />
     <PackageReference Include="SkiaSharp" Version="1.68.0" />
     <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
     <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
-    <PackageReference Include="Serilog" Version="2.8.0" />
+    <PackageReference Include="Serilog" Version="2.9.0-dev-01091" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
@@ -36,6 +36,7 @@
     <Folder Include="Assets\" />
     <Folder Include="Locale\" />
     <Folder Include="Utils\" />
+    <Folder Include="Renderers\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\logo_front.png" />
@@ -151,6 +152,9 @@
     </Compile>
     <Compile Update="Views\SetPinView.xaml.cs">
       <DependentUpon>SetPinView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Locale\LocaleResources.es.Designer.cs">
+      <DependentUpon>LocaleResources.es.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

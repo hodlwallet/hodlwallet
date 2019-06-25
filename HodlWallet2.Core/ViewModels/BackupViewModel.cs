@@ -19,7 +19,7 @@ namespace HodlWallet2.Core.ViewModels
         public string SubheaderText =>
             "We will show you a list of words to write down on a piece of paper and keep safe.";
         public string ButtonText => "Write Down Backup Recovery Key";
-        public IMvxAsyncCommand<string> WriteDownWordsCommand { get; private set; }
+        public IMvxAsyncCommand<string> WriteDownWordsCommand { get; }
         
         public BackupViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) : base(logProvider, navigationService)
         {

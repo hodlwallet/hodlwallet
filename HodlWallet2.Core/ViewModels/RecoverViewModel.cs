@@ -7,7 +7,7 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class RecoverViewModel : BaseViewModel
     {
-        public IMvxAsyncCommand RecoverNextCommand { get; private set; }
+        public IMvxAsyncCommand RecoverNextCommand { get; }
         
         public RecoverViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) 
             : base(logProvider, navigationService)
