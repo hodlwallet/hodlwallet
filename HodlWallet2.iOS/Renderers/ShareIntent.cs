@@ -37,10 +37,10 @@ namespace HodlWallet2.iOS
 			};
 			var bitmap = barcodeWriter.Write(address);
 
-			var img = NSObject.FromObject(bitmap);
 			var addr = NSObject.FromObject(address);
+			var img = NSObject.FromObject(bitmap);
 
-			var activityItems = new[] { img, addr };
+			var activityItems = new[] { addr, img };
 			var activityController = new UIActivityViewController(activityItems, null);
 
 			var topController = UIApplication.SharedApplication.KeyWindow.RootViewController;
