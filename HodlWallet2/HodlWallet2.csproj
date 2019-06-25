@@ -18,7 +18,7 @@
   <ItemGroup>
     <PackageReference Include="MvvmCross.Forms" Version="6.2.3" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
     <PackageReference Include="FormsPinView" Version="2.0.0" />
     <PackageReference Include="XForms.Plugin.AnimationNavigationPage" Version="1.0.6" />
     <PackageReference Include="SkiaSharp" Version="1.68.0" />
