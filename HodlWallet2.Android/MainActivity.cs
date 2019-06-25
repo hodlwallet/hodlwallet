@@ -18,6 +18,7 @@ namespace HodlWallet2.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            Instance = this;
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
@@ -39,5 +40,7 @@ namespace HodlWallet2.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        internal static MainActivity Instance { get; private set; }
     }
 }

@@ -3,54 +3,55 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
 using Foundation;
-using HodlWallet2.iOS;
+using HodlWallet2.iOS.Renderers;
 using HodlWallet2.Core.Interfaces;
 
 [assembly: Xamarin.Forms.Dependency(typeof(ShareIntent))]
-namespace HodlWallet2.iOS
+namespace HodlWallet2.iOS.Renderers
 {
-	public class ShareIntent : IShareIntent
-	{
-		public void TextShareIntent(string text)
-		{
-			var activityController = new UIActivityViewController(new NSObject[] { UIActivity.FromObject(text) }, null);
-			var topController = UIApplication.SharedApplication.KeyWindow.RootViewController;
+    public class ShareIntent : IShareIntent
+    {
+        public void TextShareIntent(string text)
+        {
+            var activityController = new UIActivityViewController(new NSObject[] { UIActivity.FromObject(text) }, null);
+            var topController = UIApplication.SharedApplication.KeyWindow.RootViewController;
 
-			while (topController.PresentedViewController != null)
-			{
-				topController = topController.PresentedViewController;
-			}
+            while (topController.PresentedViewController != null)
+            {
+                topController = topController.PresentedViewController;
+            }
 
-			topController.PresentViewController(activityController, true, null);
-		}
+            topController.PresentViewController(activityController, true, null);
+        }
 
-        public async void QRTextShareIntent(string address)
-		{
-			var barcodeWriter = new ZXing.Mobile.BarcodeWriter
-			{
-				Format = ZXing.BarcodeFormat.QR_CODE,
-				Options = new ZXing.Common.EncodingOptions
-				{
-					Width = 300,
-					Height = 300
-				}
-			};
-			var bitmap = barcodeWriter.Write(address);
+        public void QRTextShareIntent(string address)
+        {
+            var barcodeWriter = new ZXing.Mobile.BarcodeWriter
+            {
+                Format = ZXing.BarcodeFormat.QR_CODE,
+                Options = new ZXing.Common.EncodingOptions
+                {
+                    Width = 300,
+                    Height = 300
+                }
+            };
 
-			var addr = NSObject.FromObject(address);
-			var img = NSObject.FromObject(bitmap);
+            var bitmap = barcodeWriter.Write(address);
 
-			var activityItems = new[] { addr, img };
-			var activityController = new UIActivityViewController(activityItems, null);
+            var addr = NSObject.FromObject(address);
+            var img = NSObject.FromObject(bitmap);
 
-			var topController = UIApplication.SharedApplication.KeyWindow.RootViewController;
+            var activityItems = new[] { addr, img };
+            var activityController = new UIActivityViewController(activityItems, null);
+
+            var topController = UIApplication.SharedApplication.KeyWindow.RootViewController;
 
             while(topController.PresentedViewController != null)
-			{
-				topController = topController.PresentedViewController;
-			}
+            {
+                topController = topController.PresentedViewController;
+            }
 
-			topController.PresentViewController(activityController, true, null);
-		}
-	}
+            topController.PresentViewController(activityController, true, null);
+        }
+    }
 }

@@ -31,6 +31,6 @@ namespace HodlWallet2.Core.Utils
         // Android Service Values
         public const string TEXT_PLAIN_INTENT_TYPE = "text/plain";
         public const string IMAGE_PNG_INTENT_TYPE = "image/png";
-		public const string IMAGE_PNG_ADDRESS_NAME = ".png";
+        public const string IMAGE_PNG_ADDRESS_NAME = ".png";
     }
 }

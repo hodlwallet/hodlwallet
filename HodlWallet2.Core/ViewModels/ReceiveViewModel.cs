@@ -4,7 +4,6 @@ using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -13,8 +12,8 @@ namespace HodlWallet2.Core.ViewModels
         readonly IWalletService _WalletService;
         string _Address;
 
-		public string ShareButtonText => "Share";
-		public string RequestAmountButtonText => "Request Amount";
+        public string ShareButtonText => "Share";
+        public string RequestAmountButtonText => "Request Amount";
 
         public IMvxCommand ShowFaqCommand { get; }
         public IMvxCommand ShareButtonCommand { get; }
@@ -33,8 +32,8 @@ namespace HodlWallet2.Core.ViewModels
         {
             _WalletService = walletService;
             ShowFaqCommand = new MvxCommand(ShowFaq);
-			CopyAddressCommand = new MvxAsyncCommand(ToClipboard);
-			ShareButtonCommand = new MvxCommand(ShowShareIntent);
+            CopyAddressCommand = new MvxAsyncCommand(ToClipboard);
+            ShareButtonCommand = new MvxCommand(ShowShareIntent);
         }
 
         void ShowFaq()
@@ -43,18 +42,18 @@ namespace HodlWallet2.Core.ViewModels
             throw new System.NotImplementedException();
         }
 
-		async Task ToClipboard()
-		{
-			await Clipboard.SetTextAsync(Address);
-		}
+        async Task ToClipboard()
+        {
+            await Clipboard.SetTextAsync(Address);
+        }
 
         void ShowShareIntent()
-		{
-			var sharer = Xamarin.Forms.DependencyService.Get<IShareIntent>();
-			sharer.QRTextShareIntent(Address);
-		}
+        {
+            var sharer = Xamarin.Forms.DependencyService.Get<IShareIntent>();
+            sharer.QRTextShareIntent(Address);
+        }
 
-		public override void ViewAppeared()
+        public override void ViewAppeared()
         {
             base.ViewAppeared();
             Address = _WalletService.GetReceiveAddress().Address;
