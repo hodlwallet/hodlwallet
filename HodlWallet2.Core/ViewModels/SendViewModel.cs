@@ -78,7 +78,6 @@ namespace HodlWallet2.Core.ViewModels
             return content.IsBitcoinAddress(_WalletService.WalletManager.Network);
         }
 
-
         public MvxAsyncCommand ScanCommand { get; }
         public MvxAsyncCommand<string> SendCommand { get; }
         public MvxAsyncCommand CloseCommand { get; }
