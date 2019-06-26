@@ -33,15 +33,5 @@ namespace HodlWallet2.Views
         {
             await Navigation.PopModalAsync();
         }
-
-        public async void OnFaqTapped(object sender, EventArgs e)
-        {
-            // TODO:
-        }
-
-        public async void OnAddressTapped(object sender, EventArgs e)
-        {
-            await ViewModel.ToClipboard();
-        }
     }
 }
