@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
@@ -50,6 +50,8 @@
                     <Entry x:Name="SendAddress"
                            Placeholder="bc1..."
                            Text="{Binding AddressToSendTo}"
+                           TextColor="{StaticResource White}"
+                           PlaceholderColor="{StaticResource White}"
                            Style="{StaticResource CustomEntry}" />
                         
                 </StackLayout>
@@ -65,7 +67,11 @@
                 
                 <StackLayout Orientation="Vertical" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center">
                     <Label x:Name="PasteLabel" Style="{DynamicResource CustomLabel}" FontSize="Small" HorizontalTextAlignment="Center" />
-                    <svg:Icon ResourceId="Assets.paste.svg" />
+                    <svg:Icon ResourceId="Assets.paste.svg">
+                        <svg:Icon.GestureRecognizers>
+                            <TapGestureRecognizer bindings:Bi.nd="Command PasteCommand"/>
+                        </svg:Icon.GestureRecognizers>
+                    </svg:Icon>
                 </StackLayout>
             </FlexLayout>
             
@@ -131,7 +137,12 @@
                 </renderers:FeeSlider>
                 
                 <Label Text="Fee (sats/byte)" Style="{StaticResource CustomLabel}" />
-                <Entry Placeholder="0.0001" Text="{Binding Fee}" Style="{StaticResource CustomEntry}" />
+                
+                <Entry Placeholder="0.0001" 
+                       Text="{Binding Fee}" 
+                       Style="{StaticResource CustomEntry}"
+                       TextColor="{StaticResource White}"
+                       PlaceholderColor="{StaticResource White}" />
             </StackLayout>
                 
             <BoxView BackgroundColor="Transparent" FlexLayout.Grow="4" />
