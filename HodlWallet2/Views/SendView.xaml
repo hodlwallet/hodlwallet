@@ -90,7 +90,12 @@
                        FlexLayout.AlignSelf="Center" 
                        HorizontalTextAlignment="Center" />
                 
-                <svg:Icon ResourceId="Assets.currency_switch.svg" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center" />
+                <svg:Icon ResourceId="Assets.currency_switch.svg" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center">
+                    <svg:Icon.GestureRecognizers>
+                        <TapGestureRecognizer
+                            bindings:Bi.nd="Command SwitchCurrencyCommand" />
+                    </svg:Icon.GestureRecognizers>
+                </svg:Icon>
             </FlexLayout>
             
             <StackLayout Orientation="Vertical" FlexLayout.Grow="2" Margin="20, 0, 20, 0">
