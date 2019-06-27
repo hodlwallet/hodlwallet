@@ -153,8 +153,9 @@ namespace HodlWallet2.Core.ViewModels
         void WalletSyncManager_OnSyncProgressUpdate(object sender, WalletPositionUpdatedEventArgs e)
         {
             /* TODO: Update Progress During Sync
+             *       Set 'IsVisible' to true when sync starts, false when complete.
              * e.g.  Progress = e.NewPosition.Height / _walletService.CurrentBlockHeight
-             *       Date = string.Format(CultureInfo.CurrentCulture, Constants.SyncDate, 
+             *       DateText = string.Format(CultureInfo.CurrentCulture, Constants.SyncDate, 
              *          e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString(), e.NewPosition.Height.ToString()); */
         }
 
