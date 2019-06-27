@@ -1,17 +1,15 @@
+using System;
 using System.Linq;
 
 using Xamarin.Essentials;
 
-using NBitcoin;
-
+using Liviano;
 using Liviano.Exceptions;
 using Liviano.Utilities;
-using Liviano;
-using System;
 
 namespace HodlWallet2.Core.Utils
 {
-    public class SecureStorageProvider
+    public static class SecureStorageProvider
     {
         const string WALLET_ID_KEY = "wallet-id";
         const string PIN_KEY = "pin";
@@ -73,9 +71,9 @@ namespace HodlWallet2.Core.Utils
                 throw new WalletException($"Unable to set pin: '{pin}' includes charactes that aren't digits");
 
             if (pin.Length != 6)
-                throw new WalletException($"Unable to set pin: '{pin}' it should be 6 digits long");
+                throw new WalletException($"Unable to set pin: '{pin}' it must be 6 digits long");
 
-            SecureStorage.SetAsync(PIN_KEY, pin);
+            Set(PIN_KEY, pin);
         }
 
 
@@ -93,7 +91,7 @@ namespace HodlWallet2.Core.Utils
         {
             Guard.NotEmpty(password, nameof(password));
 
-            SecureStorage.SetAsync(PASSWORD_KEY, password);
+            Set(PASSWORD_KEY, password);
         }
 
         public static string GetNetwork()
@@ -113,12 +111,16 @@ namespace HodlWallet2.Core.Utils
 
         public static int GetSeedBirthday()
         {
+            var result = Get(SEED_BIRTHDAY);
+
+            if (result == null) return -1;
+
             return int.Parse(Get(SEED_BIRTHDAY));
         }
 
         public static bool HasSeedBirthday()
         {
-            return !string.IsNullOrEmpty(Get(SEED_BIRTHDAY));
+            return GetSeedBirthday() != -1;
         }
 
         public static void SetSeedBirthday(DateTimeOffset birthday)
@@ -131,12 +133,12 @@ namespace HodlWallet2.Core.Utils
             SecureStorage.RemoveAll();
         }
 
-        private static string Get(string key)
+        static string Get(string key)
         {
             return SecureStorage.GetAsync(key).Result;
         }
         
-        private static void Set(string key, string val)
+        static void Set(string key, string val)
         {
             SecureStorage.SetAsync(key, val);
         }
