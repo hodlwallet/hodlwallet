@@ -43,10 +43,18 @@ namespace HodlWallet2.Droid
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IWalletService, WalletService>();
             if (WalletService.Instance != null)
             {
+#if DEBUG
+                WalletService.Instance.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Debug()
+                    .WriteTo.AndroidLog()
+                    .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
+                    .CreateLogger();
+#else
                 WalletService.Instance.Logger = new LoggerConfiguration()
                     .WriteTo.AndroidLog()
                     .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
-                    .CreateLogger();               
+                    .CreateLogger();
+#endif
             }
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton

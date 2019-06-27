@@ -104,13 +104,30 @@ namespace HodlWallet2.Core.ViewModels
         public override void ViewAppeared()
         {
             base.ViewAppeared();
+
             if (_WalletService.IsStarted)
             {
-                _WalletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
-                _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
-                _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
-                _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
+                _WalletService_OnStarted(_WalletService, null);
             }
+            else
+            {
+                _WalletService.OnStarted += _WalletService_OnStarted;
+            }
+        }
+
+        private void _WalletService_OnStarted(object sender, EventArgs e)
+        {
+            SubscribeToWalletEvents();
+            LoadTransactions();
+        }
+
+        private void SubscribeToWalletEvents()
+        {
+            _WalletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
+            _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
+            _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
+            _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
+
         }
 
         public override void ViewAppearing()

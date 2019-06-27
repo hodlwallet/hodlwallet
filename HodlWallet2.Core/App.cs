@@ -1,21 +1,17 @@
 using System.Threading.Tasks;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Services;
+using System.Linq;
+
+using MvvmCross.ViewModels;
+
 using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.ViewModels;
-using MvvmCross;
-using MvvmCross.IoC;
-using MvvmCross.ViewModels;
-using Xamarin.Forms;
-
 using HodlWallet2.Core.Services;
+using System.Reflection;
 
 namespace HodlWallet2.Core
 {
     public class App : MvxApplication
     {
-        WalletService _WalletService;
-
         public override void Initialize()
         {
             // NOTE: Use this code to simulate first experience.
@@ -26,7 +22,7 @@ namespace HodlWallet2.Core
             // SecureStorageProvider.SetMnemonic("abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about");
             // SecureStorageProvider.SetNetwork("testnet");
 
-            var walletService = WalletService.Instance;
+            SecureStorageProvider.LogSecureStorageKeys();
 
             if (SecureStorageProvider.HasPin() && SecureStorageProvider.HasMnemonic())
             {

@@ -7,6 +7,8 @@ using Liviano;
 using Liviano.Exceptions;
 using Liviano.Utilities;
 
+using HodlWallet2.Core.Services;
+
 namespace HodlWallet2.Core.Utils
 {
     public static class SecureStorageProvider
@@ -131,6 +133,18 @@ namespace HodlWallet2.Core.Utils
         public static void RemoveAll()
         {
             SecureStorage.RemoveAll();
+        }
+
+        public static void LogSecureStorageKeys()
+        {
+            var logger = WalletService.Instance.Logger;
+
+            logger.Debug("Network: {0}", SecureStorageProvider.GetNetwork());
+            logger.Debug("Wallet ID: {0}", SecureStorageProvider.GetWalletId());
+            logger.Debug("Seed Birthday: {0}", SecureStorageProvider.GetSeedBirthday());
+            logger.Debug("Mnemonic: {0}", SecureStorageProvider.GetMnemonic());
+            logger.Debug("Password: {0}", SecureStorageProvider.GetPassword());
+            logger.Debug("Pin: {0}", SecureStorageProvider.GetPin());
         }
 
         static string Get(string key)
