@@ -13,6 +13,17 @@
     x:Name="DashboardPage"
     BackgroundColor="{StaticResource GrayBackground}">
     
+    <NavigationPage.TitleView>
+        <FlexLayout Direction="Row">
+            <BoxView FlexLayout.Grow="1" />
+            <Image Source="logo.png" HeightRequest="20" 
+                   FlexLayout.AlignSelf="Start"
+                   FlexLayout.Grow="1" />
+            <Label x:Name="amountLabel" FlexLayout.AlignSelf="Start" VerticalTextAlignment="Center"
+                   Style="{DynamicResource CustomLabel}"
+                   FlexLayout.Grow="2" Margin="20,0,0,0" FontSize="Large" />
+        </FlexLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="DashboardFooterButton" TargetType="FlexLayout">
