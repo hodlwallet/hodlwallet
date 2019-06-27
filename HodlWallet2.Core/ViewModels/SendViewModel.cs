@@ -79,6 +79,7 @@ namespace HodlWallet2.Core.ViewModels
         }
 
         public MvxAsyncCommand ScanCommand { get; }
+        public MvxAsyncCommand PasteCommand { get; }
         public MvxAsyncCommand<string> SendCommand { get; }
         public MvxAsyncCommand CloseCommand { get; }
         public MvxAsyncCommand ShowFaqCommand { get; }
@@ -94,6 +95,7 @@ namespace HodlWallet2.Core.ViewModels
             _PrecioService = precioService;
 
             ScanCommand = new MvxAsyncCommand(Scan);
+            PasteCommand = new MvxAsyncCommand(Paste);
             SendCommand = new MvxAsyncCommand<string>(Send);
             CloseCommand = new MvxAsyncCommand(Close);
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
@@ -123,6 +125,18 @@ namespace HodlWallet2.Core.ViewModels
             var result = await scanner.Scan();
 
             AddressToSendTo = result.Text;
+        }
+
+        private async Task Paste()
+        {
+            if (Clipboard.HasText)
+            {
+                var content = await Clipboard.GetTextAsync();
+                if (content.IsBitcoinAddress(_WalletService.WalletManager.Network))
+                {
+                    AddressToSendTo = content;
+                }
+            }
         }
 
         async Task SetSliderValue()
