@@ -83,6 +83,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxAsyncCommand CloseCommand { get; }
         public MvxAsyncCommand ShowFaqCommand { get; }
         public MvxAsyncCommand OnValueChangedCommand { get; }
+        public MvxAsyncCommand SwitchCurrencyCommand { get; }
 
         public SendViewModel(
             IMvxLogProvider logProvider, 
@@ -98,10 +99,16 @@ namespace HodlWallet2.Core.ViewModels
             CloseCommand = new MvxAsyncCommand(Close);
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
             OnValueChangedCommand = new MvxAsyncCommand(SetSliderValue);
+            SwitchCurrencyCommand = new MvxAsyncCommand(SwitchCurrency);
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
             
             Task.Run(SetSliderValue);
+        }
+
+        private Task SwitchCurrency()
+        {
+            //TODO: Implement logic
         }
 
         private Task ShowFaq()
