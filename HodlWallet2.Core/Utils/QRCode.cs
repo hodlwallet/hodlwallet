@@ -6,7 +6,7 @@ using QRCoder;
 using Xamarin.Forms;
 using SkiaSharp.Views.Forms;
 
-namespace HodlWallet2.Utils
+namespace HodlWallet2.Core.Utils
 {
     public class QRCode : SKCanvasView
     {

@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 
-namespace HodlWallet2.Utils
+namespace HodlWallet2.Core.Utils
 {
     public class RecoverEntry : ContentPage
     {

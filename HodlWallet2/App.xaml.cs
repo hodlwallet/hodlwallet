@@ -1,25 +1,17 @@
 using System;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Services;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.Essentials;
 
-using NBitcoin;
-
-using Liviano.Models;
-
-using HodlWallet2.Utils;
-using MvvmCross;
-using MvvmCross.Logging;
+using HodlWallet2.Core.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HodlWallet2
 {
     public partial class App : Application
     {
-        WalletService _Wallet;
-        Serilog.ILogger _Logger;
+        readonly WalletService _Wallet;
+        readonly Serilog.ILogger _Logger;
 
         public App()
         {

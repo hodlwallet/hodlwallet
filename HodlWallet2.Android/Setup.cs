@@ -57,10 +57,9 @@ namespace HodlWallet2.Droid
 #endif
             }
 
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton
-                (
-                    () => RestService.For<IPrecioService>(Core.Utils.Constants.PRECIO_HOST_URL)
-                );
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton(
+                () => RestService.For<IPrecioService>(Core.Utils.Constants.PRECIO_HOST_URL)
+            );
 
             var log = WalletService.Instance.Logger;
         }
