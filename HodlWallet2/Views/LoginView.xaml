@@ -23,26 +23,28 @@
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <FlexLayout Direction="Column" Margin="10,0,10,10" BackgroundColor="{StaticResource GrayBackground}" JustifyContent="SpaceAround">
+        <FlexLayout Direction="Column" Margin="10,0,10,10" BackgroundColor="{StaticResource GrayBackground}" JustifyContent="Center">
             
-            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Padding="10">
-                <svg:Icon ResourceId="Assets.receive_tab.svg"
-                      HorizontalOptions="Start">
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1"
+                        JustifyContent="SpaceBetween"
+                        AlignItems="Start"
+                        Padding="10" 
+                        BackgroundColor="Teal">
+                <svg:Icon ResourceId="Assets.receive_tab.svg">
                     <svg:Icon.GestureRecognizers>
                         <TapGestureRecognizer bindings:Bi.nd="Command ReceiveCommand" />
                     </svg:Icon.GestureRecognizers>
                 </svg:Icon>
             
-                <svg:Icon ResourceId="Assets.send_tab.svg"
-                      HorizontalOptions="End">
+                <svg:Icon ResourceId="Assets.send_tab.svg">
                     <svg:Icon.GestureRecognizers>
                         <TapGestureRecognizer bindings:Bi.nd="Command SendCommand" />
                     </svg:Icon.GestureRecognizers>
                 </svg:Icon>
             </FlexLayout>
             
-            <Image Source="logo_front.png"
-                   Scale="0.3" />
+            <Image Source="logo_front.png" Scale="0.2" BackgroundColor="Teal" FlexLayout.AlignSelf="Center" />
             
             <Label x:Name="Header" Style="{DynamicResource CustomLabel}" HorizontalTextAlignment="Center" />
             
@@ -50,40 +52,45 @@
                   FlexLayout.AlignSelf="Center"
                   Padding="10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="5" />
+                    <RowDefinition Height="20" />
                 </Grid.RowDefinitions>
                 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
                 
                 <BoxView x:Name="Pin1"
                          Color="White"
-                         Grid.Row="1"
-                         Grid.Column="1" />
+                         Grid.Row="0"
+                         Grid.Column="0" />
                 <BoxView x:Name="Pin2"
                          Color="White"
-                         Grid.Row="1"
-                         Grid.Column="2" />
+                         Grid.Row="0"
+                         Grid.Column="1" />
                 <BoxView x:Name="Pin3"
                          Color="White"
-                         Grid.Row="1"
-                         Grid.Column="3" />
+                         Grid.Row="0"
+                         Grid.Column="2" />
                 <BoxView x:Name="Pin4"
                          Color="White"
-                         Grid.Row="1"
-                         Grid.Column="4" />
+                         Grid.Row="0"
+                         Grid.Column="3" />
                 <BoxView x:Name="Pin5"
                          Color="White"
-                         Grid.Row="1"
-                         Grid.Column="5" />
+                         Grid.Row="0"
+                         Grid.Column="4" />
                 <BoxView x:Name="Pin6"
                          Color="White"
-                         Grid.Row="1"
-                         Grid.Column="6" />
+                         Grid.Row="0"
+                         Grid.Column="5" />
             </Grid>
                         
-            <Grid x:Name="PinGrid" FlexLayout.Grow="3" FlexLayout.AlignSelf="Center">
+            <Grid x:Name="PinGrid" FlexLayout.Grow="2" FlexLayout.AlignSelf="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
