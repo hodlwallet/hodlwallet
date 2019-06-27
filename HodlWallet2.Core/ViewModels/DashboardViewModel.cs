@@ -25,9 +25,6 @@ namespace HodlWallet2.Core.ViewModels
         public string SendText => "Send";
         public string ReceiveText => "Receive";
         public string SyncText => "SYNCING";
-        public string DateText => string.Format(CultureInfo.CurrentCulture, Constants.SYNC_DATE_LABEL, DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString(), 478045);
-        public double Progress => 0.7;
-        public bool IsVisible => true;
 
         private ObservableCollection<Transaction> _Transactions;
 
@@ -43,6 +40,30 @@ namespace HodlWallet2.Core.ViewModels
         {
             get => _PriceText;
             set => SetProperty(ref _PriceText, value);
+        }
+
+        string _DateText;
+
+        public string DateText
+        {
+            get => _DateText;
+            set => SetProperty(ref _DateText, value);
+        }
+
+        double _Progress;
+
+        public double Progress
+        {
+            get => _Progress;
+            set => SetProperty(ref _Progress, value);
+        }
+
+        bool _IsVisible;
+
+        public bool IsVisible
+        {
+            get => _IsVisible;
+            set => SetProperty(ref _IsVisible, value);
         }
 
         public MvxCommand NavigateToSendViewCommand { get; }
