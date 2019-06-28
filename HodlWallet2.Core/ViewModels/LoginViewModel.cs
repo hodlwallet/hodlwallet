@@ -69,10 +69,10 @@ namespace HodlWallet2.Core.ViewModels
 
                 if (_Pin.Count == 6)
                 {
+                    await Task.Delay(305);
+
                     // Reset colors of all digits.
                     ResetDigitsColorInteraction.Raise();
-
-                    await Task.Delay(500);
 
                     string input = string.Join(string.Empty, _Pin.ToArray());
                     if (SecureStorageProvider.GetPin() == input)
