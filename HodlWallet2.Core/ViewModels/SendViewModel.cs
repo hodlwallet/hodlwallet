@@ -126,7 +126,6 @@ namespace HodlWallet2.Core.ViewModels
         {
             base.ViewAppearing();
             ISOLabel = "USD($)";
-            IsBtcEnabled = false;
             //TODO: Create constants list for code instead of hardcoding them.
             var currencyEntity = (await _PrecioService.GetRates()).SingleOrDefault(r => r.Code == "USD"); 
             if (currencyEntity != null)
