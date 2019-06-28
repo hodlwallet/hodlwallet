@@ -1,9 +1,9 @@
 using System;
 using System.Globalization;
-using MvvmCross.Converters;
+
 using MvvmCross.Forms.Converters;
 
-namespace HodlWallet2.Converters
+namespace HodlWallet2.Core.Converters
 {
     public class IndexToStringConverter : MvxFormsValueConverter<int, string>
     {

@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.FingerprintAuthView"
-             xmlns:svg="clr-namespace:HodlWallet2.Utils" xmlns:locale="clr-namespace:HodlWallet2.Locale" 
+             xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
+             xmlns:locale="clr-namespace:HodlWallet2.Locale" 
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-             xmlns:controls="clr-namespace:HodlWallet2.Utils;assembly=HodlWallet2" ios:Page.UseSafeArea="true"
+             xmlns:controls="clr-namespace:HodlWallet2.Utils;assembly=HodlWallet2"
+             ios:Page.UseSafeArea="true"
              BackgroundColor="{StaticResource GrayBackground}">
     <FlexLayout Direction="Column" Margin="20, 0, 20, 0">
         

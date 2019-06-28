@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Linq;
+
 using System.IO;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 using SKSvg = SkiaSharp.Extended.Svg.SKSvg;
 
-namespace HodlWallet2.Utils
+namespace HodlWallet2.Core.Utils
 {
     public class Icon : Frame
     {
@@ -61,7 +63,10 @@ namespace HodlWallet2.Utils
             if (string.IsNullOrEmpty(ResourceId))
                 return;
 
-            using (Stream stream = GetType().Assembly.GetManifestResourceStream(ResourceId))
+            var assembly = AppDomain.CurrentDomain.GetAssemblies().First(
+                ass => ass.GetName().Name == "HodlWallet2"
+            );
+            using (Stream stream = assembly.GetManifestResourceStream(ResourceId))
             {
                 SKSvg svg = new SKSvg();
                 svg.Load(stream);

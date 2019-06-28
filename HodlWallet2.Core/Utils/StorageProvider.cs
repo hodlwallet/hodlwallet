@@ -2,7 +2,7 @@
 
 using Liviano;
 
-namespace HodlWallet2.Utils
+namespace HodlWallet2.Core.Utils
 {
     public class StorageProvider : FileSystemStorageProvider
     {
