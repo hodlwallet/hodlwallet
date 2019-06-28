@@ -302,21 +302,20 @@ namespace HodlWallet2.Core.Services
             return Instance.CurrentAccount.FindAddressesForTransaction(tx => tx.Id == txData.Id);
         }
 
-        public static string GetAddressFromTranscation(TransactionData txData)
+        public string GetAddressFromTransaction(TransactionData txData)
         {
             var addrsFromTx = GetAddressesFromTransaction(txData).Select(hdAddress => hdAddress.Address);
-            var currentAccount = Instance.CurrentAccount;
 
             if (txData.IsReceive == true)
             {
-                return currentAccount.ExternalAddresses.First(
+                return CurrentAccount.ExternalAddresses.First(
                     externalAddress => addrsFromTx.Contains(externalAddress.Address)
                 ).Address;
             }
 
             if (txData.IsSend == true) // For verbosity and error catching...
             {
-                return currentAccount.InternalAddresses.First(
+                return CurrentAccount.InternalAddresses.First(
                     internalAddress => addrsFromTx.Contains(internalAddress.Address)
                 ).Address;
             }

@@ -18,6 +18,7 @@ namespace HodlWallet2.Core.Utils
 
         // Localized Strings (TODO in MvvmCross)
         public const string IS_AVAILABLE = "Available to spend";
+        public const string IS_NOT_AVAILABLE = "Waiting for confirmation";
         public const string SENT_AMOUNT = "Sent BTC {0}";
         public const string RECEIVE_AMOUNT = "Received BTC {0}";
         public const string SENT_RECEIVED_NULL = "Send and Receive is NULL";

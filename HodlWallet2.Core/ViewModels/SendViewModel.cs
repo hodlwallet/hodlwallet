@@ -78,6 +78,11 @@ namespace HodlWallet2.Core.ViewModels
             return content.IsBitcoinAddress(_WalletService.WalletManager.Network) && !WalletService.Instance.IsAddressReused(content);
         }
 
+        public bool IsBitcoinAddressReused(string address)
+        {
+            return _WalletService.IsAddressReused(address);
+        }
+
         public MvxAsyncCommand ScanCommand { get; }
         public MvxAsyncCommand<string> SendCommand { get; }
         public MvxAsyncCommand CloseCommand { get; }

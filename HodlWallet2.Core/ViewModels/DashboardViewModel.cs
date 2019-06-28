@@ -208,14 +208,15 @@ namespace HodlWallet2.Core.ViewModels
                     IsComfirmed = tx.IsConfirmed(),
                     IsPropagated = tx.IsPropagated,
                     BlockHeight = tx.BlockHeight,
-                    IsAvailable = tx.IsSpendable() ? Constants.IS_AVAILABLE : "",
-                    Memo = Constants.MEMO_LABEL,
+                    IsAvailable = tx.IsSpendable()
+                        ? Constants.IS_AVAILABLE
+                        : Constants.IS_NOT_AVAILABLE,
+                    Memo = tx.Memo,
                     Status = GetStatus(tx),
                     StatusColor = tx.IsSend == true
-                                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
-                                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                    /* TODO: Implement Send and Receive
-                     * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
+                        ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
+                        : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
+                    AtAddress = _WalletService.GetAddressFromTransaction(tx),
                     Duration = DateTimeOffsetOperations.ShortDate(tx.CreationTime)
                 });
 
