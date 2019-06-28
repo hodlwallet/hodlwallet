@@ -81,7 +81,7 @@ namespace HodlWallet2.Core.Services
         public bool IsStarted { get; private set; }
         public bool IsConfigured { get; private set; }
 
-        public static WalletService Instance => (WalletService) Mvx.IoCProvider.Resolve<IWalletService>();
+        public static WalletService Instance => (WalletService)Mvx.IoCProvider.Resolve<IWalletService>();
 
         public HdAccount CurrentAccount
         {
@@ -201,7 +201,7 @@ namespace HodlWallet2.Core.Services
 
             return _Network.GetCheckpoints().OrderBy(chainedBlock => Math.Abs(chainedBlock.Header.BlockTime.Ticks - ticks)).FirstOrDefault();
         }
-        
+
         public WalletService()
         {
         }
@@ -254,7 +254,7 @@ namespace HodlWallet2.Core.Services
             string password = ""; // TODO password cannot be null. but it should be
                                   // change liviano load wallet to accept null passwords
                                   // But, since HODLWallet 1 didn't have passwords this is okay
-            
+
             if (WalletExists())
             {
                 Logger.Information("Loading a wallet because it exists");
@@ -313,16 +313,27 @@ namespace HodlWallet2.Core.Services
                     externalAddress => addrsFromTx.Contains(externalAddress.Address)
                 ).Address;
             }
-            else if (txData.IsSend == true) // For verbosity and error catching...
+
+            if (txData.IsSend == true) // For verbosity and error catching...
             {
                 return currentAccount.InternalAddresses.First(
                     internalAddress => addrsFromTx.Contains(internalAddress.Address)
                 ).Address;
             }
-            else
-            {
-                throw new WalletException("Tx data isn't send or receive, something is wrong...");
-            }
+
+            throw new WalletException("Tx data isn't send or receive, something is wrong...");
+        }
+
+        public bool IsAddressReused(string address)
+        {
+            bool inInternal = CurrentAccount.InternalAddresses.Select(
+                    (HdAddress hdAddress) => hdAddress.Address)
+                .Contains(address);
+            bool inExternal = CurrentAccount.ExternalAddresses.Select(
+                    (HdAddress hdAddress) => hdAddress.Address)
+                .Contains(address);
+
+            return inInternal || inExternal;
         }
 
         public void Configure(string walletId = null, string network = null, int? nodesToConnect = null)
