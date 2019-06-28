@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Serilog;
 
 using Xamarin.Forms;
-using HodlWallet2.Locale;
-using HodlWallet2.Core.Utils;
+
+using MvvmCross;
 using MvvmCross.Forms.Views;
+
+using HodlWallet2.Locale;
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Services;
+
 using PinPadViewModel = HodlWallet2.Core.ViewModels.PinPadViewModel;
 using RecoverWalletEntryViewModel = HodlWallet2.Core.ViewModels.RecoverWalletEntryViewModel;
 using Tags = HodlWallet2.Core.Utils.Tags;
-using HodlWallet2.Core.Interfaces;
-using MvvmCross;
 
 namespace HodlWallet2.Views
 {

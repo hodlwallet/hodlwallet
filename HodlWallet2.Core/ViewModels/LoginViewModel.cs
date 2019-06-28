@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Threading.Tasks;
-using HodlWallet2.Core.Utils;
-using Liviano.Exceptions;
+
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+
+using Liviano.Exceptions;
+
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {

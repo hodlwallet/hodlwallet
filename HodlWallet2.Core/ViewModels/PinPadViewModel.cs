@@ -1,11 +1,11 @@
-using System.Diagnostics;
 using System.Threading.Tasks;
-using HodlWallet2.Core.Interfaces;
+
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 
-using HodlWallet2.Core.Utils;
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {
