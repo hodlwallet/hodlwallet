@@ -26,6 +26,7 @@ namespace HodlWallet2.Core.ViewModels
         int _Fee;
         decimal _AmountToSend;
         float _Rate;
+        string _AmountToSendText;
 
         const double MAX_SLIDER_VALUE = 500;
         double _SliderValue;
@@ -33,8 +34,7 @@ namespace HodlWallet2.Core.ViewModels
         string _TransactionFeeText;
         string _EstConfirmationText;
         string _ISOLabel;
-        private string _AmountToSendText;
-            
+
         public string TransactionFeeTitle => "Transaction Fee";
         public string EstConfirmationTitle => "Est. Confirmation";
         public string SlowText => "Economy";
