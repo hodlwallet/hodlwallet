@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Models;
@@ -23,14 +24,17 @@ namespace HodlWallet2.Core.ViewModels
 
         string _AddressToSendTo;
         int _Fee;
-        int _AmountToSend;
+        decimal _AmountToSend;
+        float _Rate;
 
         const double MAX_SLIDER_VALUE = 500;
         double _SliderValue;
 
         string _TransactionFeeText;
         string _EstConfirmationText;
-
+        string _ISOLabel;
+        private string _AmountToSendText;
+            
         public string TransactionFeeTitle => "Transaction Fee";
         public string EstConfirmationTitle => "Est. Confirmation";
         public string SlowText => "Economy";
@@ -67,10 +71,22 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _Fee, value);
         }
 
-        public int AmountToSend
+        public decimal AmountToSend
         {
             get => _AmountToSend;
             set => SetProperty(ref _AmountToSend, value);
+        }
+        
+        public string AmountToSendText
+        {
+            get => _AmountToSendText;
+            set => SetProperty(ref _AmountToSendText, value);
+        }
+
+        public string ISOLabel
+        {
+            get => _ISOLabel;
+            set => SetProperty(ref _ISOLabel, value);
         }
 
         public bool IsBitcoinAddressOnClipboard(string content)
@@ -106,9 +122,34 @@ namespace HodlWallet2.Core.ViewModels
             Task.Run(SetSliderValue);
         }
 
+        public override async void ViewAppearing()
+        {
+            base.ViewAppearing();
+            ISOLabel = "USD($)";
+            IsBtcEnabled = false;
+            //TODO: Create constants list for code instead of hardcoding them.
+            var currencyEntity = (await _PrecioService.GetRates()).SingleOrDefault(r => r.Code == "USD"); 
+            if (currencyEntity != null)
+            {
+                _Rate = currencyEntity.Rate;
+            }
+        }
+
         private Task SwitchCurrency()
         {
-            //TODO: Implement logic
+            if (ISOLabel == "USD($)") //TODO: Refactor with more user currencies
+            {
+                AmountToSend = Convert.ToDecimal(AmountToSendText) / (decimal)_Rate;
+                AmountToSendText = AmountToSend.ToString();
+                ISOLabel = "BTC";
+            }
+            else
+            {
+                AmountToSend = Convert.ToDecimal(AmountToSend) * (decimal)_Rate;
+                AmountToSendText = $"{AmountToSend:F2}";
+                ISOLabel = "USD($)";
+            }
+            return Task.FromResult(this);
         }
 
         private Task ShowFaq()
