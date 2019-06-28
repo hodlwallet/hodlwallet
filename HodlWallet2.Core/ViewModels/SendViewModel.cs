@@ -124,7 +124,10 @@ namespace HodlWallet2.Core.ViewModels
 
             var result = await scanner.Scan();
 
-            AddressToSendTo = result.Text;
+            if (result.Text.IsBitcoinAddress())
+            {
+                AddressToSendTo = result.Text;
+            }
         }
 
         private async Task Paste()
