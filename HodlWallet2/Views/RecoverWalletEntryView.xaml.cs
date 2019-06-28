@@ -10,7 +10,7 @@ using HodlWallet2.Core.Utils;
 using MvvmCross.Forms.Views;
 using PinPadViewModel = HodlWallet2.Core.ViewModels.PinPadViewModel;
 using RecoverWalletEntryViewModel = HodlWallet2.Core.ViewModels.RecoverWalletEntryViewModel;
-using Tags = HodlWallet2.Shared.Controls.Utils.Tags;
+using Tags = HodlWallet2.Core.Utils.Tags;
 using HodlWallet2.Core.Interfaces;
 using MvvmCross;
 
