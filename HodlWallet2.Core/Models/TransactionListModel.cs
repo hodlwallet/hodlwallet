@@ -31,7 +31,7 @@ namespace HodlWallet2.Core.Models
                     BlockHeight = tx.BlockHeight,
                     IsAvailable = tx.IsSpendable() ? "Available to spend" : "",
                     Memo = "",
-                    Status = tx.Amount.ToString()
+                    Amount = tx.Amount.ToString()
 
                     // TODO: Add data for transaction model.
                 });

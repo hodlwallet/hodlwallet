@@ -212,7 +212,7 @@ namespace HodlWallet2.Core.ViewModels
                         ? Constants.IS_AVAILABLE
                         : Constants.IS_NOT_AVAILABLE,
                     Memo = tx.Memo,
-                    Status = GetStatus(tx),
+                    Amount = GetAmountLabelText(tx),
                     StatusColor = tx.IsSend == true
                         ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
                         : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
@@ -225,7 +225,7 @@ namespace HodlWallet2.Core.ViewModels
             return result;
         }
 
-        private string GetStatus(TransactionData tx)
+        private string GetAmountLabelText(TransactionData tx)
         {
             if (tx.IsSend == true)
                 return string.Format(Constants.SENT_AMOUNT, tx.Amount);
