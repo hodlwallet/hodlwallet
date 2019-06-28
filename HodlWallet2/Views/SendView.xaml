@@ -76,11 +76,13 @@
                            HorizontalTextAlignment="Start" 
                            VerticalOptions="Center" />
                         
-                    <Entry Placeholder="1.0 BTC" 
-                           Text="{Binding AmountToSend}" 
-                           TextColor="{StaticResource SyncGradientStart}" 
-                           FontFamily="{StaticResource ElectrolizeFont}" 
-                           VerticalOptions="Center" />
+                    <Entry x:Name="entryAmount"
+                        Placeholder="1.0 BTC" 
+                        bindings:Bi.nd="Text AmountToSendText"
+                        
+                        TextColor="{StaticResource SyncGradientStart}" 
+                        FontFamily="{StaticResource ElectrolizeFont}" 
+                        VerticalOptions="Center" />
                 </StackLayout>
                 
                 <Label x:Name="ISOLabel" 
@@ -88,7 +90,8 @@
                        FontSize="Small" 
                        FlexLayout.Grow="1" 
                        FlexLayout.AlignSelf="Center" 
-                       HorizontalTextAlignment="Center" />
+                       HorizontalTextAlignment="Center"
+                       bindings:Bi.nd="Text ISOLabel" />
                 
                 <svg:Icon ResourceId="Assets.currency_switch.svg" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center">
                     <svg:Icon.GestureRecognizers>
