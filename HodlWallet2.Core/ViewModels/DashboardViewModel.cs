@@ -123,9 +123,10 @@ namespace HodlWallet2.Core.ViewModels
 
         private void SubscribeToWalletEvents()
         {
-            _WalletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
-            _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
-            _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
+            _WalletService.WalletManager.OnNewTransaction += WalletManager_OnTransaction;
+            _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnTransaction;
+            _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnTransaction;
+
             _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
 
         }
@@ -157,12 +158,11 @@ namespace HodlWallet2.Core.ViewModels
         }
         
         /// <summary>
-        /// This is obviously not the final form of this... but for now,
-        /// since all im doing is realoading the transactions then this is fine.
+        /// On new transaction takes care of when the network finds a new block or new tx
         /// </summary>
         /// <param name="sender">WalleWanager.</param>
         /// <param name="e">TranscactionData.</param>
-        void WalletManager_OnWhateverTransaction(object sender, TransactionData e)
+        void WalletManager_OnTransaction(object sender, TransactionData e)
         {
             LoadTransactions();
         }
@@ -182,7 +182,7 @@ namespace HodlWallet2.Core.ViewModels
                 CreateList(
                     _WalletService.GetCurrentAccountTransactions().OrderBy(
                         (TransactionData txData) => txData.CreationTime
-                    )
+                    ).Reverse()
                 )
             );
 
