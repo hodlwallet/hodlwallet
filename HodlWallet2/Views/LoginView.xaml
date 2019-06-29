@@ -23,13 +23,15 @@
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <FlexLayout Direction="Column" Margin="10,0,10,10" BackgroundColor="{StaticResource GrayBackground}" JustifyContent="Center">
+        <FlexLayout Direction="Column" 
+                    Margin="10,0,10,10" 
+                    BackgroundColor="{StaticResource GrayBackground}" 
+                    JustifyContent="SpaceAround"
+                    AlignItems="Center">
             
             <FlexLayout Direction="Row"
                         FlexLayout.Grow="1"
                         JustifyContent="SpaceBetween"
-                        AlignItems="Start"
-                        Padding="10" 
                         BackgroundColor="Teal">
                 <svg:Icon ResourceId="Assets.receive_tab.svg">
                     <svg:Icon.GestureRecognizers>
@@ -44,12 +46,13 @@
                 </svg:Icon>
             </FlexLayout>
             
-            <Image Source="logo_front.png" Scale="0.2" BackgroundColor="Teal" FlexLayout.AlignSelf="Center" />
+            <Image Source="logo_front.png" 
+                   Scale="0.2" 
+                   BackgroundColor="Teal" />
             
             <Label x:Name="Header" Style="{DynamicResource CustomLabel}" HorizontalTextAlignment="Center" />
             
             <Grid x:Name="InputGrid"
-                  FlexLayout.AlignSelf="Center"
                   Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20" />
@@ -90,7 +93,10 @@
                          Grid.Column="5" />
             </Grid>
                         
-            <Grid x:Name="PinGrid" FlexLayout.Grow="2" FlexLayout.AlignSelf="Center">
+            <Grid x:Name="PinGrid" 
+                  HorizontalOptions="FillAndExpand" 
+                  VerticalOptions="FillAndExpand"
+                  FlexLayout.Grow="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
