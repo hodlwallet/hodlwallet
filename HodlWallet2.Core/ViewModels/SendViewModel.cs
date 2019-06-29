@@ -4,6 +4,7 @@ using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Services;
 using Liviano;
+using NBitcoin.Payment;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
@@ -20,6 +21,7 @@ namespace HodlWallet2.Core.ViewModels
     {
         readonly IWalletService _WalletService;
         readonly IPrecioService _PrecioService;
+        readonly Serilog.ILogger _Logger;
 
         string _AddressToSendTo;
         int _Fee;
@@ -119,14 +121,31 @@ namespace HodlWallet2.Core.ViewModels
 
         private async Task Scan()
         {
-            //TODO: Implement Scan
-            var scanner = new MobileBarcodeScanner();
+            var IsCameraAvailable = DependencyService.Get<IPermissions>().HasCameraPermission();
 
-            var result = await scanner.Scan();
-
-            if (result.Text.IsBitcoinAddress())
+            if (IsCameraAvailable)
             {
-                AddressToSendTo = result.Text;
+                var scanner = new MobileBarcodeScanner();
+                var result = await scanner.Scan();
+
+                if (result.Text.IsBitcoinAddress())
+                {
+                    AddressToSendTo = result.Text;
+                }
+
+                try
+                {
+                    var urlBuilder = new BitcoinUrlBuilder(result.Text);
+                    AddressToSendTo = urlBuilder.Address.ToString();
+                }
+                catch (Exception ex)
+                {
+                    LogProvider.GetLogFor<SendViewModel>().Error(
+                        "Unable to extract address from QR code: {address}, {message}",
+                        result.Text,
+                        ex.Message
+                    );
+                }
             }
         }
 
