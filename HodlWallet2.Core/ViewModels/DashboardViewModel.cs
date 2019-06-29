@@ -243,7 +243,7 @@ namespace HodlWallet2.Core.ViewModels
         void LoadTransactionsIfEmpty()
         {
             // Transactions are already loaded do something else!
-            if (Transactions.Count != 0) return;
+            if (Transactions != null && Transactions.Count != 0) return;
 
             Transactions = new ObservableCollection<Transaction>(
                 CreateList(
