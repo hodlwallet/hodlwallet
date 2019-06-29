@@ -1,19 +1,24 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Globalization;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Services;
-using HodlWallet2.Core.Models;
-using HodlWallet2.Core.Utils;
-using Liviano.Models;
+
+using Xamarin.Forms;
+
+using Newtonsoft.Json;
+
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
-using Newtonsoft.Json;
-using Xamarin.Forms;
+
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Models;
+using HodlWallet2.Core.Utils;
+
+using Liviano.Models;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -26,8 +31,7 @@ namespace HodlWallet2.Core.ViewModels
         public string ReceiveText => "Receive";
         public string SyncText => "SYNCING";
 
-        private ObservableCollection<Transaction> _Transactions;
-
+        ObservableCollection<Transaction> _Transactions;
         public ObservableCollection<Transaction> Transactions
         {
             get => _Transactions;
@@ -35,7 +39,6 @@ namespace HodlWallet2.Core.ViewModels
         }
 
         string _PriceText;
-
         public string PriceText
         {
             get => _PriceText;
@@ -43,7 +46,6 @@ namespace HodlWallet2.Core.ViewModels
         }
 
         string _DateText;
-
         public string DateText
         {
             get => _DateText;
@@ -51,7 +53,6 @@ namespace HodlWallet2.Core.ViewModels
         }
 
         double _Progress;
-
         public double Progress
         {
             get => _Progress;
@@ -59,7 +60,6 @@ namespace HodlWallet2.Core.ViewModels
         }
 
         bool _IsVisible;
-
         public bool IsVisible
         {
             get => _IsVisible;
@@ -86,21 +86,6 @@ namespace HodlWallet2.Core.ViewModels
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
         }
 
-        private void NavigateToMenuView()
-        {
-            NavigationService.Navigate<MenuViewModel>();
-        }
-
-        private void NavigateToReceiveView()
-        {
-            NavigationService.Navigate<ReceiveViewModel>();
-        }
-
-        private void NavigateToSendView()
-        {
-            NavigationService.Navigate<SendViewModel>();
-        }
-
         public override void ViewAppeared()
         {
             base.ViewAppeared();
@@ -115,31 +100,37 @@ namespace HodlWallet2.Core.ViewModels
             }
         }
 
-        private void _WalletService_OnStarted(object sender, EventArgs e)
-        {
-            SubscribeToWalletEvents();
-            LoadTransactions();
-        }
-
-        private void SubscribeToWalletEvents()
-        {
-            _WalletService.WalletManager.OnNewTransaction += WalletManager_OnTransaction;
-            _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnTransaction;
-            _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnTransaction;
-
-            _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
-
-        }
-
         public override void ViewAppearing()
         {
             base.ViewAppearing();
 
+            // Run and schedule next times precio will be called
+            Task.Run(RatesAsync);
             Device.StartTimer(TimeSpan.FromSeconds(Constants.PRECIO_TIMER_INTERVAL), () =>
             {
                 Task.Run(() => RatesAsync());
                 return true;
             });
+        }
+
+        public void ReScan()
+        {
+            _WalletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
+        }
+
+        void NavigateToMenuView()
+        {
+            NavigationService.Navigate<MenuViewModel>();
+        }
+
+        void NavigateToReceiveView()
+        {
+            NavigationService.Navigate<ReceiveViewModel>();
+        }
+
+        void NavigateToSendView()
+        {
+            NavigationService.Navigate<SendViewModel>();
         }
 
         async Task RatesAsync()
@@ -156,16 +147,6 @@ namespace HodlWallet2.Core.ViewModels
                 }
             }
         }
-        
-        /// <summary>
-        /// On new transaction takes care of when the network finds a new block or new tx
-        /// </summary>
-        /// <param name="sender">WalleWanager.</param>
-        /// <param name="e">TranscactionData.</param>
-        void WalletManager_OnTransaction(object sender, TransactionData e)
-        {
-            LoadTransactions();
-        }
 
         void WalletSyncManager_OnSyncProgressUpdate(object sender, WalletPositionUpdatedEventArgs e)
         {
@@ -176,8 +157,94 @@ namespace HodlWallet2.Core.ViewModels
              *          e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString(), e.NewPosition.Height.ToString()); */
         }
 
-        public void LoadTransactions()
+
+        void _Transactions_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            // TODO Handle change on individual.s
+            // Different kind of changes that may have occurred in collection
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                // Code...
+            }
+            if (e.Action == NotifyCollectionChangedAction.Replace)
+            {
+                // Code...
+            }
+            if (e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                // Code...
+            }
+            if (e.Action == NotifyCollectionChangedAction.Move)
+            {
+                // Code...
+            }
+        }
+
+        void _WalletService_OnStarted(object sender, EventArgs e)
+        {
+
+            _WalletService.WalletManager.OnNewTransaction += WalletManager_OnNewTransaction;
+            _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnNewSpendingTransaction;
+            _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnUpdateTransaction;
+            _WalletService.WalletManager.OnUpdateSpendingTransaction += WalletManager_OnUpdateSpendingTransaction;
+
+            _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
+
+            LoadTransactionsIfEmpty();
+
+            _Transactions.CollectionChanged += _Transactions_CollectionChanged;
+        }
+
+        void WalletManager_OnUpdateSpendingTransaction(object sender, TransactionData e)
+        {
+            LoadTransactionsIfEmpty();
+            UpdateTransactionsCollectionWith(e);
+        }
+
+        void WalletManager_OnUpdateTransaction(object sender, TransactionData e)
+        {
+            LoadTransactionsIfEmpty();
+            UpdateTransactionsCollectionWith(e);
+        }
+
+        void WalletManager_OnNewSpendingTransaction(object sender, TransactionData e)
+        {
+            LoadTransactionsIfEmpty();
+            UpdateTransactionsCollectionWith(e);
+        }
+
+        void WalletManager_OnNewTransaction(object sender, TransactionData e)
+        {
+            LoadTransactionsIfEmpty();
+            AddToTransactionsCollectionWith(e);
+        }
+
+        void AddToTransactionsCollectionWith(TransactionData txData)
+        {
+            // Double Check if the tx is there or not...
+            for (int i = 0; i < _Transactions.Count; i++)
+                if (_Transactions[i].Id == txData.Id.ToString()) return;
+
+            _Transactions.Add(CreateTransactionModelInstance(txData));
+        }
+
+        void UpdateTransactionsCollectionWith(TransactionData txData)
+        {
+            for (int i = 0; i < _Transactions.Count; i++)
+            {
+                if (!_Transactions[i].Id.Equals(txData.Id.ToString())) continue;
+
+                _Transactions[i] = CreateTransactionModelInstance(txData);
+
+                _WalletService.Logger.Debug($"Updated tx: {txData.Id.ToString()}");
+            }
+        }
+
+        void LoadTransactionsIfEmpty()
+        {
+            // Transactions are already loaded do something else!
+            if (Transactions.Count != 0) return;
+
             Transactions = new ObservableCollection<Transaction>(
                 CreateList(
                     _WalletService.GetCurrentAccountTransactions().OrderBy(
@@ -186,46 +253,45 @@ namespace HodlWallet2.Core.ViewModels
                 )
             );
 
-            _WalletService.Logger.Information(new string('*', 20));
+            _WalletService.Logger.Debug("Transactions loaded.");
         }
 
-        public void ReScan()
-        {
-            _WalletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
-        }
-
-        public IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
+        IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
         {
             var result = new List<Transaction>();
 
             foreach (var tx in txList)
             {
-                result.Add(new Transaction
-                {
-                    IsReceive = tx.IsReceive,
-                    IsSent = tx.IsSend,
-                    IsSpendable = tx.IsSpendable(),
-                    IsComfirmed = tx.IsConfirmed(),
-                    IsPropagated = tx.IsPropagated,
-                    BlockHeight = tx.BlockHeight,
-                    IsAvailable = tx.IsSpendable()
-                        ? Constants.IS_AVAILABLE
-                        : Constants.IS_NOT_AVAILABLE,
-                    Memo = tx.Memo,
-                    Amount = GetAmountLabelText(tx),
-                    StatusColor = tx.IsSend == true
-                        ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
-                        : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                    AtAddress = _WalletService.GetAddressFromTransaction(tx),
-                    Duration = DateTimeOffsetOperations.ShortDate(tx.CreationTime)
-                });
+                result.Add(CreateTransactionModelInstance(tx));
 
                 _WalletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
             }
             return result;
         }
 
-        private string GetAmountLabelText(TransactionData tx)
+        Transaction CreateTransactionModelInstance(TransactionData transactionData)
+        {
+            return new Transaction {
+                IsReceive = transactionData.IsReceive,
+                IsSent = transactionData.IsSend,
+                IsSpendable = transactionData.IsSpendable(),
+                IsComfirmed = transactionData.IsConfirmed(),
+                IsPropagated = transactionData.IsPropagated,
+                BlockHeight = transactionData.BlockHeight,
+                IsAvailable = transactionData.IsSpendable()
+                        ? Constants.IS_AVAILABLE
+                        : Constants.IS_NOT_AVAILABLE,
+                Memo = transactionData.Memo,
+                Amount = GetAmountLabelText(transactionData),
+                StatusColor = transactionData.IsSend == true
+                        ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
+                        : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
+                AtAddress = _WalletService.GetAddressFromTransaction(transactionData),
+                Duration = DateTimeOffsetOperations.ShortDate(transactionData.CreationTime)
+            };
+        }
+
+        string GetAmountLabelText(TransactionData tx)
         {
             if (tx.IsSend == true)
                 return string.Format(Constants.SENT_AMOUNT, tx.Amount);
