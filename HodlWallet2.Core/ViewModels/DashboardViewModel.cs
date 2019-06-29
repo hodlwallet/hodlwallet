@@ -286,9 +286,26 @@ namespace HodlWallet2.Core.ViewModels
                 StatusColor = transactionData.IsSend == true
                         ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
                         : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                AtAddress = _WalletService.GetAddressFromTransaction(transactionData),
+                AtAddress = FormatAtAddressText(
+                    transactionData.IsSend == true,
+                    _WalletService.GetAddressFromTransaction(transactionData)),
                 Duration = DateTimeOffsetOperations.ShortDate(transactionData.CreationTime)
             };
+        }
+
+        string FormatAtAddressText(bool isSend, string address)
+        {
+            string fmtAddressText = "{0}: {1}";
+            int addressPadding = 12;
+
+            string preposition = isSend ? Constants.TO_LABEL : Constants.AT_LABEL;
+            string choppedAddress = string.Concat(
+                new string(address.Take(addressPadding).ToArray()),
+                "...",
+                new string(address.Reverse().Take(addressPadding).ToArray())
+            );
+
+            return string.Format(fmtAddressText, preposition, choppedAddress);
         }
 
         string GetAmountLabelText(TransactionData tx)

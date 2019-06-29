@@ -24,6 +24,8 @@ namespace HodlWallet2.Core.Utils
         public const string SENT_RECEIVED_NULL = "Send and Receive is NULL";
         public const string SYNC_DATE_LABEL = "{0}, Block: {1}";
         public const string SHARE_TEXT_INTENT_TITLE = "Share via";
+        public const string TO_LABEL = "To";
+        public const string AT_LABEL = "At";
 
         // Temporary Values
         public const string USE_ADDRESS_FROM_CLIPBOARD =
