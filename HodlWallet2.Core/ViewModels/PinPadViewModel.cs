@@ -12,7 +12,6 @@ namespace HodlWallet2.Core.ViewModels
     public class PinPadViewModel : BaseViewModel
     {
         IWalletService _WalletService;
-        ILogger _Logger;
         public IMvxAsyncCommand<string> SuccessCommand { get; }
         
         //TODO: Localize properties
@@ -22,11 +21,10 @@ namespace HodlWallet2.Core.ViewModels
 
         public PinPadViewModel(
             IMvxLogProvider logProvider, 
-            IMvxNavigationService navigationService,
-            IWalletService walletService) 
+            IMvxNavigationService navigationService) 
             : base(logProvider, navigationService)
         {
-            _WalletService = walletService;
+            _WalletService = WalletService.Instance;
             SuccessCommand = new MvxAsyncCommand<string>(Success_Callback);
         }
 
