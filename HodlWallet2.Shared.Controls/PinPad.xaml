@@ -24,7 +24,7 @@
     <FlexLayout Direction="Column" 
                 JustifyContent="SpaceEvenly"
                 AlignItems="Center" 
-                Margin="10,70,10,10">
+                Margin="10">
         
         <Label x:Name="lblTitle"
                Style="{DynamicResource CustomLabel}" 
@@ -125,20 +125,10 @@
                Style="{DynamicResource CustomLabel}" 
                Text="Bindable Warning" />
         
-        <Grid x:Name="PinGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
+        <FlexLayout Direction="Row" 
+                    FlexLayout.Grow="1"
+                    JustifyContent="SpaceAround">
+            
             <Button Text="1" 
                     Grid.Row="1" Grid.Column="1"
                     Clicked="OnPinTapped"
@@ -159,6 +149,11 @@
                     utils:Tags.Tag="3"
                     Command="{Binding DigitCommand}"
                     CommandParameter="3" />
+        </FlexLayout>
+        
+        <FlexLayout Direction="Row" 
+                    FlexLayout.Grow="1"
+                    JustifyContent="SpaceAround">
             
              <Button Text="4" 
                     Grid.Row="2" Grid.Column="1"
@@ -180,6 +175,11 @@
                     utils:Tags.Tag="6"
                     Command="{Binding DigitCommand}"
                     CommandParameter="6" />
+        </FlexLayout>
+            
+        <FlexLayout Direction="Row" 
+                    FlexLayout.Grow="1"
+                    JustifyContent="SpaceAround">
             
             <Button Text="7" 
                     Grid.Row="3" Grid.Column="1"
@@ -201,6 +201,11 @@
                     utils:Tags.Tag="9"
                     Command="{Binding DigitCommand}"
                     CommandParameter="9" />
+        </FlexLayout>
+        
+        <FlexLayout Direction="Row" 
+                    FlexLayout.Grow="1"
+                    JustifyContent="SpaceAround">
 
             <Button Text="" 
                     Grid.Row="4" Grid.Column="1"
@@ -218,6 +223,6 @@
                     Clicked="OnBackspaceTapped"
                     Command="{Binding BackspaceCommand}"
                     TextColor="{StaticResource SyncGradientStart}" />
-        </Grid>
+        </FlexLayout>
     </FlexLayout>
 </ContentView>
