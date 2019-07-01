@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 using System.Globalization;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
-using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Utils;
+using Liviano;
 using Liviano.Models;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
+using NBitcoin;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Transaction = HodlWallet2.Core.Models.Transaction;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -26,7 +29,23 @@ namespace HodlWallet2.Core.ViewModels
         public string ReceiveText => "Receive";
         public string SyncText => "SYNCING";
 
-        private ObservableCollection<Transaction> _Transactions;
+        decimal _Amount;
+        float _Rate;
+        bool _IsBtcEnabled;
+        
+        ObservableCollection<Transaction> _Transactions;
+
+        public bool IsBtcEnabled
+        {
+            get => _IsBtcEnabled;
+            set => SetProperty(ref _IsBtcEnabled, value);
+        }
+
+        public decimal Amount
+        {
+            get => _Amount;
+            set => SetProperty(ref _Amount, value);
+        }
 
         public ObservableCollection<Transaction> Transactions
         {
@@ -69,6 +88,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxCommand NavigateToSendViewCommand { get; }
         public MvxCommand NavigateToReceiveViewCommand { get; }
         public MvxCommand NavigateToMenuViewCommand { get; }
+        public MvxCommand SwitchCurrencyCommand { get; }
         
         public DashboardViewModel(
             IMvxLogProvider logProvider, 
@@ -82,8 +102,27 @@ namespace HodlWallet2.Core.ViewModels
             NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
+            SwitchCurrencyCommand = new MvxCommand(SwitchCurrency);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
+        }
+
+        private void SwitchCurrency()
+        {
+            var currency = Preferences.Get("currency", "BTC");
+            if (currency == "BTC")
+            {
+                Preferences.Set("currency", "USD");
+                IsBtcEnabled = false;
+                Amount *= (decimal)_Rate;
+            }
+            else
+            {
+                Preferences.Set("currency", "BTC");
+                IsBtcEnabled = true;
+                Amount /= (decimal) _Rate;
+            }
+            LoadTransactions();
         }
 
         private void NavigateToMenuView()
@@ -111,7 +150,8 @@ namespace HodlWallet2.Core.ViewModels
             }
             else
             {
-                _WalletService.OnStarted += _WalletService_OnStarted;
+                _WalletService.OnStarted += _WalletService_OnStarted; 
+                //FIXME: Should the WalletService be started whenever the DashBoard view appears???, this will create problems on its own...
             }
         }
 
@@ -133,12 +173,14 @@ namespace HodlWallet2.Core.ViewModels
         public override void ViewAppearing()
         {
             base.ViewAppearing();
-
+            
             Device.StartTimer(TimeSpan.FromSeconds(Constants.PRECIO_TIMER_INTERVAL), () =>
             {
-                Task.Run(() => RatesAsync());
+                Task.Run(RatesAsync);
                 return true;
             });
+            Amount = 1.0276M;
+            IsBtcEnabled = true;
         }
 
         async Task RatesAsync()
@@ -149,7 +191,7 @@ namespace HodlWallet2.Core.ViewModels
             {
                 if (rate.Code == "USD")
                 {
-                    var price = rate.Rate;
+                    var price = _Rate = rate.Rate;
                     PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BTC_UNIT_LABEL, price);
                     break;
                 }
@@ -176,7 +218,7 @@ namespace HodlWallet2.Core.ViewModels
              *          e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString(), e.NewPosition.Height.ToString()); */
         }
 
-        public void LoadTransactions()
+        public async void LoadTransactions()
         {
             Transactions = new ObservableCollection<Transaction>(
                 CreateList(
@@ -185,7 +227,6 @@ namespace HodlWallet2.Core.ViewModels
                     )
                 )
             );
-
             _WalletService.Logger.Information(new string('*', 20));
         }
 
@@ -196,9 +237,10 @@ namespace HodlWallet2.Core.ViewModels
 
         public IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
         {
+            
             var result = new List<Transaction>();
 
-            foreach (var tx in txList)
+            /*foreach (var tx in txList)
             {
                 result.Add(new Transaction
                 {
@@ -214,22 +256,153 @@ namespace HodlWallet2.Core.ViewModels
                     StatusColor = tx.IsSend == true
                                     ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
                                     : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                    /* TODO: Implement Send and Receive
-                     * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
+                    
+                    AtAddress = WalletService.GetAddressFromTranscation(tx),
                     Duration = DateTimeOffsetOperations.ShortDate(tx.CreationTime)
                 });
 
                 _WalletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
-            }
+            }*/
+            var tx = new TransactionData()
+            {
+                Amount = Money.Parse("1.0276")
+            };
+            var status = GetStatus(tx);
+            result.Add(new Transaction
+            {
+                IsReceive = true,
+                IsSent = false,
+                IsSpendable = true,
+                IsComfirmed = true,
+                IsPropagated = true,
+                BlockHeight = 1343,
+                IsAvailable = "available",
+                Memo = Constants.MEMO_LABEL,
+                Status = status,
+                StatusColor = true
+                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
+                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
+                /* TODO: Implement Send and Receive
+                 * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
+                Duration = DateTimeOffsetOperations.ShortDate(DateTimeOffset.Now)
+            });
+            result.Add(new Transaction
+            {
+                IsReceive = true,
+                IsSent = false,
+                IsSpendable = true,
+                IsComfirmed = true,
+                IsPropagated = true,
+                BlockHeight = 1343,
+                IsAvailable = "available",
+                Memo = Constants.MEMO_LABEL,
+                Status = status,
+                StatusColor = true
+                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
+                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
+                /* TODO: Implement Send and Receive
+                 * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
+                Duration = DateTimeOffsetOperations.ShortDate(DateTimeOffset.Now)
+            });
+            result.Add(new Transaction
+            {
+                IsReceive = true,
+                IsSent = false,
+                IsSpendable = true,
+                IsComfirmed = true,
+                IsPropagated = true,
+                BlockHeight = 1343,
+                IsAvailable = "available",
+                Memo = Constants.MEMO_LABEL,
+                Status = status,
+                StatusColor = true
+                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
+                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
+                /* TODO: Implement Send and Receive
+                 * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
+                Duration = DateTimeOffsetOperations.ShortDate(DateTimeOffset.Now)
+            });
+            result.Add(new Transaction
+            {
+                IsReceive = true,
+                IsSent = false,
+                IsSpendable = true,
+                IsComfirmed = true,
+                IsPropagated = true,
+                BlockHeight = 1343,
+                IsAvailable = "available",
+                Memo = Constants.MEMO_LABEL,
+                Status = status,
+                StatusColor = true
+                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
+                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
+                /* TODO: Implement Send and Receive
+                 * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
+                Duration = DateTimeOffsetOperations.ShortDate(DateTimeOffset.Now)
+            });
+            result.Add(new Transaction
+            {
+                IsReceive = true,
+                IsSent = false,
+                IsSpendable = true,
+                IsComfirmed = true,
+                IsPropagated = true,
+                BlockHeight = 1343,
+                IsAvailable = "available",
+                Memo = Constants.MEMO_LABEL,
+                Status = status,
+                StatusColor = true
+                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
+                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
+                /* TODO: Implement Send and Receive
+                 * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
+                Duration = DateTimeOffsetOperations.ShortDate(DateTimeOffset.Now)
+            });
+            result.Add(new Transaction
+            {
+                IsReceive = true,
+                IsSent = false,
+                IsSpendable = true,
+                IsComfirmed = true,
+                IsPropagated = true,
+                BlockHeight = 1343,
+                IsAvailable = "available",
+                Memo = Constants.MEMO_LABEL,
+                Status = status,
+                StatusColor = true
+                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
+                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
+                /* TODO: Implement Send and Receive
+                 * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
+                Duration = DateTimeOffsetOperations.ShortDate(DateTimeOffset.Now)
+            });
+            
             return result;
         }
 
         private string GetStatus(TransactionData tx)
         {
-            if (tx.IsSend == true)
-                return string.Format(Constants.SENT_AMOUNT, tx.Amount);
+            var preferences = Preferences.Get("currency", "BTC"); 
+            if (preferences == "BTC")
+            {
+                if (tx.IsSend == true)
+                    return string.Format(Constants.SENT_AMOUNT, preferences, tx.Amount);
 
-            return string.Format(Constants.RECEIVE_AMOUNT, tx.Amount);
+                return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.Amount);                
+            }
+            else
+            {
+                if (tx.IsSend == true)
+                    return string.Format(
+                        Constants.SENT_AMOUNT, 
+                        preferences, 
+                        $"{tx.Amount.ToUsd((decimal)_Rate):F2}");
+
+                return string.Format(
+                    Constants.RECEIVE_AMOUNT, 
+                    preferences, 
+                    $"{tx.Amount.ToUsd((decimal)_Rate):F2}");
+            }
         }
     }
 }
