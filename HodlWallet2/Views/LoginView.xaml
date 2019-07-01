@@ -17,22 +17,20 @@
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
-                <Setter Property="FontSize" Value="Small" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <ContentPage.Content>
         <FlexLayout Direction="Column" 
-                    Margin="10,0,10,10" 
+                    Margin="20" 
                     BackgroundColor="{StaticResource GrayBackground}" 
                     JustifyContent="SpaceAround"
                     AlignItems="Center">
             
             <FlexLayout Direction="Row"
                         FlexLayout.Grow="1"
-                        JustifyContent="SpaceBetween"
-                        BackgroundColor="Teal">
+                        JustifyContent="SpaceBetween">
                 <svg:Icon ResourceId="Assets.receive_tab.svg">
                     <svg:Icon.GestureRecognizers>
                         <TapGestureRecognizer bindings:Bi.nd="Command ReceiveCommand" />
@@ -47,8 +45,7 @@
             </FlexLayout>
             
             <Image Source="logo_front.png" 
-                   Scale="0.2" 
-                   BackgroundColor="Teal" />
+                   Scale="0.5" />
             
             <Label x:Name="Header" Style="{DynamicResource CustomLabel}" HorizontalTextAlignment="Center" />
             
@@ -92,78 +89,63 @@
                          Grid.Row="0"
                          Grid.Column="5" />
             </Grid>
-                        
-            <Grid x:Name="PinGrid" 
-                  HorizontalOptions="FillAndExpand" 
-                  VerticalOptions="FillAndExpand"
-                  FlexLayout.Grow="3">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+                    
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1"
+                        JustifyContent="SpaceAround">
 
                 <Button Text="1" 
-                        FontSize="Small"
-                        Grid.Row="0" Grid.Column="0"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='1'" />
 
                 <Button Text="2"
-                        FontSize="Small"
-                        Grid.Row="0" Grid.Column="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='2'" />
 
                 <Button Text="3"
-                        FontSize="Small"
-                        Grid.Row="0" Grid.Column="2"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='3'" />
+            </FlexLayout>
+            
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1"
+                        JustifyContent="SpaceAround">
                 
                 <Button Text="4"
-                        FontSize="Small"
-                        Grid.Row="1" Grid.Column="0"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='4'" />
 
                 <Button Text="5" 
-                        Grid.Row="1" Grid.Column="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='5'" />
 
                 <Button Text="6"
-                        FontSize="Small"
-                        Grid.Row="1" Grid.Column="2"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='6'" />
+            
+            </FlexLayout>
+        
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1"
+                        JustifyContent="SpaceAround">
                 
                 <Button Text="7"
-                        FontSize="Small"
-                        Grid.Row="2" Grid.Column="0"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='7'" />
 
-                <Button Text="8" 
-                        Grid.Row="2" Grid.Column="1"
+                <Button Text="8"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='8'" />
 
-                <Button Text="9" 
-                        Grid.Row="2" Grid.Column="2"
+                <Button Text="9"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='9'" />
+            </FlexLayout>
+        
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1"
+                        JustifyContent="SpaceAround">
 
-                <Button Text="" 
-                        Grid.Row="3" Grid.Column="0" />
+                <Button Text="" />
 
-                <Button Text="0" 
-                        Grid.Row="3" Grid.Column="1"
+                <Button Text="0"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='0'" />
                 
                 <Button Text="&#x21E6;"
-                        Grid.Row="3" Grid.Column="2"
                         bindings:Bi.nd="Command BackspaceCommand"
                         TextColor="{StaticResource SyncGradientStart}" />
-            </Grid>
+            </FlexLayout>
         </FlexLayout>
     </ContentPage.Content>
 </views:MvxContentPage>
