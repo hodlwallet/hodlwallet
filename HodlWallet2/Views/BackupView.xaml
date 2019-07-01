@@ -7,25 +7,31 @@
              x:TypeArguments="viewModels:BackupViewModel"
              bindings:Bi.nd="Title BackupTitle">
     <ContentPage.Content>
-        <FlexLayout Direction="Column" JustifyContent="SpaceAround" BackgroundColor="{StaticResource GrayBackground}">
-            <BoxView FlexLayout.Grow="1" />
+        <FlexLayout Direction="Column" 
+                    JustifyContent="SpaceAround" 
+                    BackgroundColor="{StaticResource GrayBackground}"
+                    AlignItems="Center">
+            
             <svg:Icon ResourceId="Assets.paper_key.svg"
-                      HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="2" />
+                      HorizontalOptions="Center" 
+                      VerticalOptions="Center"
+                      FlexLayout.Grow="2" />
+            
             <Label FontFamily="{DynamicResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
-                   FlexLayout.AlignSelf="Center"
-                   FlexLayout.Grow="1"
-                   bindings:Bi.nd="Text HeaderText"/>
+                   bindings:Bi.nd="Text HeaderText"
+                   Margin="0, 0, 0, 10"/>
+            
             <Label FontFamily="{DynamicResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
-                   FlexLayout.AlignSelf="Center"
-                   FlexLayout.Grow="1"
                    bindings:Bi.nd="Text SubheaderText"/>
-            <BoxView FlexLayout.Grow="3" />
+            
+            <BoxView FlexLayout.Grow="1" />
+            
             <Button Style="{DynamicResource CustomButton}"
                     BackgroundColor="{StaticResource DarkGray}"
                     CornerRadius="0"
