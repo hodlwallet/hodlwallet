@@ -281,7 +281,8 @@ namespace HodlWallet2.Core.ViewModels
                 IsAvailable = transactionData.IsSpendable()
                         ? Constants.IS_AVAILABLE
                         : Constants.IS_NOT_AVAILABLE,
-                Memo = transactionData.Memo,
+                /* TODO: Add Memo to Transaction Data
+                   e.g.  Memo = transactionData.Memo, */
                 Amount = GetAmountLabelText(transactionData),
                 StatusColor = transactionData.IsSend == true
                         ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
