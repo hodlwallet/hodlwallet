@@ -40,5 +40,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>HodlWallet would like to use your camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>HodlWallet would like to access your photos</string>
 </dict>
 </plist>
