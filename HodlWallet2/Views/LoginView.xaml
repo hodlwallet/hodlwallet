@@ -15,8 +15,9 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="BackgroundColor" Value="Teal" />
                 <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
+                <Setter Property="FontSize" Value="Large" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -105,8 +106,9 @@
             </FlexLayout>
             
             <FlexLayout Direction="Row"
+                        Wrap="NoWrap"
                         FlexLayout.Grow="1"
-                        JustifyContent="SpaceAround">
+                        >
                 
                 <Button Text="4"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='4'" />
