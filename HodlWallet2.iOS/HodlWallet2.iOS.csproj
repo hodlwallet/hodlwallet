@@ -175,7 +175,7 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
     <PackageReference Include="Serilog">
-      <Version>2.8.0</Version>
+      <Version>2.9.0-dev-01091</Version>
     </PackageReference>
     <PackageReference Include="Serilog.Sinks.Xamarin">
       <Version>0.1.29</Version>

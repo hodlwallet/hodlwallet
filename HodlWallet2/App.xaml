@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.App">
   <Application.Resources>
     <ResourceDictionary>
+      <!-- Styles -->
 
       <!-- Colors -->
       <Color x:Key="GrayBackground">#212121</Color>
@@ -12,9 +13,10 @@
       <Color x:Key="GrayTextTint">#A3A8AD</Color>
       <Color x:Key="LightGray">#EBEBEB</Color>
 
-      <!-- Styles -->
+      <!-- Fonts -->
       <OnPlatform x:Key="ElectrolizeFont" x:TypeArguments="x:String" iOS="Electrolize" Android="Electrolize-Regular.ttf#Electrolize" />
       
+      <!-- Buttons -->
       <Style x:Key="GrayButton" TargetType="Button">
         <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
         <Setter Property="TextColor" Value="{StaticResource White}" />
@@ -27,12 +29,14 @@
         <Setter Property="TextColor" Value="{StaticResource White}" />
         <Setter Property="CornerRadius" Value="0" />
       </Style>
-
+      
+      <!-- Labels -->
       <Style x:Key="CustomLabel" TargetType="Label">
         <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
         <Setter Property="TextColor" Value="{StaticResource White}" />
       </Style>
-            
+      
+      <!-- Text entries -->
       <Style x:Key="CustomEntry" TargetType="Entry">
         <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
       </Style>

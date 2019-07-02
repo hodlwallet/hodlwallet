@@ -77,7 +77,12 @@ namespace HodlWallet2.Core.ViewModels
 
         public bool IsBitcoinAddressOnClipboard(string content)
         {
-            return content.IsBitcoinAddress(_WalletService.WalletManager.Network);
+            return content.IsBitcoinAddress(_WalletService.WalletManager.Network) && !WalletService.Instance.IsAddressReused(content);
+        }
+
+        public bool IsBitcoinAddressReused(string address)
+        {
+            return _WalletService.IsAddressReused(address);
         }
 
         public MvxAsyncCommand ScanCommand { get; }

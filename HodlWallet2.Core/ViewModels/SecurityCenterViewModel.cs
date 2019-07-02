@@ -1,12 +1,13 @@
 using System;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using HodlWallet2.Core.Utils;
+
+using Xamarin.Essentials;
+
 using MvvmCross.Commands;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
-using Xamarin.Essentials;
+
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {

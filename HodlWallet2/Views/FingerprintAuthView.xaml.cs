@@ -5,7 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 
 using HodlWallet2.Locale;
-using HodlWallet2.Utils;
+using HodlWallet2.Core.Utils;
 
 namespace HodlWallet2.Views
 {

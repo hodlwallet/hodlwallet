@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentPage 
        xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
@@ -7,7 +7,7 @@
        xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
        xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
        xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
-       xmlns:utils="clr-namespace:HodlWallet2.Utils;assembly=HodlWallet2"
+       xmlns:utils="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
        x:TypeArguments="viewModels:RecoverWalletEntryViewModel" >
     
     <ContentPage.Resources>

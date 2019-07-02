@@ -30,8 +30,8 @@ namespace HodlWallet2.Core.Models
                     IsPropagated = tx.IsPropagated,
                     BlockHeight = tx.BlockHeight,
                     IsAvailable = tx.IsSpendable() ? "Available to spend" : "",
-                    Memo = "In Progress",
-                    Status = tx.Amount.ToString()
+                    Memo = "",
+                    Amount = tx.Amount.ToString()
 
                     // TODO: Add data for transaction model.
                 });
