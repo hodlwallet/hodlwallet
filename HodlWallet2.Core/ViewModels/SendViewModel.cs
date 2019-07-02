@@ -27,7 +27,7 @@ namespace HodlWallet2.Core.ViewModels
         int _Fee;
         int _AmountToSend;
 
-        const double MAX_SLIDER_VALUE = 500;
+        const double MAX_SLIDER_VALUE = 100;
         double _SliderValue;
 
         string _TransactionFeeText;
