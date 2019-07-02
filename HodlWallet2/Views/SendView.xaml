@@ -137,7 +137,7 @@
                                        bindings:Bi.nd="Text FastestText" />
                             </FlexLayout>
                             
-                            <Slider
+                            <renderers:FeeSlider
                                     MinimumTrackColor="{StaticResource SyncGradientStart}"
                                     MaximumTrackColor="{StaticResource White}"
                                     Maximum="100"
@@ -145,7 +145,7 @@
                                 <Slider.Behaviors>
                                     <behaviors:EventToCommandBehavior EventName="DragCompleted" bindings:Bi.nd="Command OnValueChangedCommand" />
                                 </Slider.Behaviors>
-                            </Slider>
+                            </renderers:FeeSlider>
                             
                             <Label Text="Fee (sats/byte)" Style="{StaticResource CustomLabel}" />
                             
