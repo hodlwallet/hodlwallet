@@ -1,7 +1,7 @@
 using System;
 using Xamarin.Forms;
 
-namespace HodlWallet2.Behaviors
+namespace HodlWallet2.Core.Behaviors
 {
     public class PaintBoxViewBehavior : Behavior<Button>
     {

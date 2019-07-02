@@ -1,10 +1,12 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+
+using HodlWallet2.Core.Utils;
 
 namespace HodlWallet2.Shared.Controls
 {
@@ -188,7 +190,7 @@ namespace HodlWallet2.Shared.Controls
             {
                 if (sender is Button button && _pin1.Length < 6)
                 {
-                    _pin1 += Utils.Tags.GetTag(button);
+                    _pin1 += Tags.GetTag(button);
                     PaintBoxView(Color.Orange, _pin1.Length);
                     if (_pin1.Length == 6)
                     {
@@ -201,7 +203,7 @@ namespace HodlWallet2.Shared.Controls
             {
                 if (sender is Button button && _pin2.Length < 6)
                 {
-                    _pin2 += Utils.Tags.GetTag(button);
+                    _pin2 += Tags.GetTag(button);
                     PaintBoxView(Color.Orange, _pin2.Length + 6);
                     if (_pin2.Length == 6)
                     {
@@ -269,7 +271,7 @@ namespace HodlWallet2.Shared.Controls
                 var bxView = boxView as BoxView;
                 if (bxView != null)
                 {
-                    var tag = Utils.Tags.GetTag(bxView);
+                    var tag = Tags.GetTag(bxView);
                     if (tag.Equals(boxViewNumber.ToString()))
                     {
                         bxView.Color = fillColor;

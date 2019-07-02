@@ -25,9 +25,6 @@ namespace HodlWallet2.Core.ViewModels
         public string SendText => "Send";
         public string ReceiveText => "Receive";
         public string SyncText => "SYNCING";
-        public string DateText => string.Format(CultureInfo.CurrentCulture, Constants.SYNC_DATE_LABEL, DateTimeOffset.UtcNow.UtcDateTime.ToShortDateString(), 478045);
-        public double Progress => 0.7;
-        public bool IsVisible => true;
 
         private ObservableCollection<Transaction> _Transactions;
 
@@ -43,6 +40,30 @@ namespace HodlWallet2.Core.ViewModels
         {
             get => _PriceText;
             set => SetProperty(ref _PriceText, value);
+        }
+
+        string _DateText;
+
+        public string DateText
+        {
+            get => _DateText;
+            set => SetProperty(ref _DateText, value);
+        }
+
+        double _Progress;
+
+        public double Progress
+        {
+            get => _Progress;
+            set => SetProperty(ref _Progress, value);
+        }
+
+        bool _IsVisible;
+
+        public bool IsVisible
+        {
+            get => _IsVisible;
+            set => SetProperty(ref _IsVisible, value);
         }
 
         public MvxCommand NavigateToSendViewCommand { get; }
@@ -83,13 +104,30 @@ namespace HodlWallet2.Core.ViewModels
         public override void ViewAppeared()
         {
             base.ViewAppeared();
+
             if (_WalletService.IsStarted)
             {
-                _WalletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
-                _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
-                _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
-                _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
+                _WalletService_OnStarted(_WalletService, null);
             }
+            else
+            {
+                _WalletService.OnStarted += _WalletService_OnStarted;
+            }
+        }
+
+        private void _WalletService_OnStarted(object sender, EventArgs e)
+        {
+            SubscribeToWalletEvents();
+            LoadTransactions();
+        }
+
+        private void SubscribeToWalletEvents()
+        {
+            _WalletService.WalletManager.OnNewTransaction += WalletManager_OnWhateverTransaction;
+            _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnWhateverTransaction;
+            _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnWhateverTransaction;
+            _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
+
         }
 
         public override void ViewAppearing()
@@ -132,8 +170,9 @@ namespace HodlWallet2.Core.ViewModels
         void WalletSyncManager_OnSyncProgressUpdate(object sender, WalletPositionUpdatedEventArgs e)
         {
             /* TODO: Update Progress During Sync
+             *       Set 'IsVisible' to true when sync starts, false when complete.
              * e.g.  Progress = e.NewPosition.Height / _walletService.CurrentBlockHeight
-             *       Date = string.Format(CultureInfo.CurrentCulture, Constants.SyncDate, 
+             *       DateText = string.Format(CultureInfo.CurrentCulture, Constants.SyncDate, 
              *          e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString(), e.NewPosition.Height.ToString()); */
         }
 
