@@ -12,40 +12,46 @@
     <converters:IndexToStringConverter x:Key="IndexToStringConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
-        <FlexLayout Direction="Column" JustifyContent="SpaceBetween" BackgroundColor="{StaticResource GrayBackground}">
+        <FlexLayout Direction="Column" 
+                    JustifyContent="SpaceBetween"
+                    AlignItems="Center"
+                    BackgroundColor="{StaticResource GrayBackground}">
             
             <Label x:Name="Header"
                    FontFamily="{StaticResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
-                   FlexLayout.AlignSelf="Center"
                    bindings:Bi.nd="Text HeaderText"/>
             
-            <FlexLayout FlexLayout.Grow="4" AlignItems="Center">
+            <StackLayout FlexLayout.Grow="4">
                 <ContentView BackgroundColor="{StaticResource DarkGray}" 
-                             FlexLayout.AlignSelf="Stretch" 
-                             Margin="40" 
-                             HeightRequest="50">
+                             Margin="40"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             HeightRequest="50"
+                             WidthRequest="90">
                     
                     <Label x:Name="Word"
                              Style="{DynamicResource CustomLabel}"
-                             HorizontalOptions="CenterAndExpand"
-                             VerticalOptions="CenterAndExpand"
+                             HorizontalTextAlignment="Center"
+                             VerticalOptions="Center"
                              FontSize="Medium"
                              bindings:Bi.nd="Text Word"/>
                     
                 </ContentView>
                 
                 <Label x:Name="Index"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
                        FontFamily="{StaticResource ElectrolizeFont}"
                        TextColor="Gray"
                        FontSize="Micro"
-                       FlexLayout.AlignSelf="Center"
                        Text="{Binding PositionText, Converter={StaticResource IndexToStringConverter}}" />
-            </FlexLayout>
+            </StackLayout>
             <!--TODO: Fix binding converter with MvvmCross binding -->
             
-            <FlexLayout Direction="Row" FlexLayout.Grow="1">
+            <FlexLayout Direction="Row" 
+                        FlexLayout.Grow="1">
                 <Button x:Name="Previous"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{StaticResource DarkGray}"
