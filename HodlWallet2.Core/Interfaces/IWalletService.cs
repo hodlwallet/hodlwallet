@@ -41,7 +41,9 @@ namespace HodlWallet2.Core.Interfaces
         string NewMnemonic(string wordList, int wordCount);
         bool IsWordInWordlist(string word, string wordList);
         string[] GenerateGuessWords(string wordToGuess, string language, int amountAround);
+        bool IsAddressReused(string address);
         bool IsVerifyChecksum(string mnemonic, string wordList);
+        string GetAddressFromTransaction(TransactionData txData);
         HdAddress GetReceiveAddress();
         IEnumerable<TransactionData> GetCurrentAccountTransactions();
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,

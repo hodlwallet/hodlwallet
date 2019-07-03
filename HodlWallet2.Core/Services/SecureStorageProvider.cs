@@ -7,9 +7,7 @@ using Liviano;
 using Liviano.Exceptions;
 using Liviano.Utilities;
 
-using HodlWallet2.Core.Services;
-
-namespace HodlWallet2.Core.Utils
+namespace HodlWallet2.Core.Services
 {
     public static class SecureStorageProvider
     {
