@@ -15,6 +15,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
                 <Setter Property="FontSize" Value="Large" />
             </Style>
