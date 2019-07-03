@@ -24,8 +24,8 @@ namespace HodlWallet2.Droid.Renderers
             if (e.NewElement != null)
             {
                 ShapeDrawable th = new ShapeDrawable(new OvalShape());
-                th.SetIntrinsicWidth(70);
-                th.SetIntrinsicHeight(70);
+                th.SetIntrinsicWidth(50);
+                th.SetIntrinsicHeight(50);
                 th.SetColorFilter(Android.Graphics.Color.White, Android.Graphics.PorterDuff.Mode.SrcOver);
                 Control.SetThumb(th);
             }
