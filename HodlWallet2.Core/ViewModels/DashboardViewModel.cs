@@ -132,22 +132,7 @@ namespace HodlWallet2.Core.ViewModels
                 IsBtcEnabled = true;
                 Amount /= (decimal) _Rate;
             }
-            LoadTransactions();
-        }
-
-        private void NavigateToMenuView()
-        {
-            NavigationService.Navigate<MenuViewModel>();
-        }
-
-        private void NavigateToReceiveView()
-        {
-            NavigationService.Navigate<ReceiveViewModel>();
-        }
-
-        private void NavigateToSendView()
-        {
-            NavigationService.Navigate<SendViewModel>();
+            LoadTransactionsIfEmpty();
         }
 
         public override void ViewAppeared()
@@ -321,156 +306,17 @@ namespace HodlWallet2.Core.ViewModels
             );
             _WalletService.Logger.Information(new string('*', 20));
         }
-
-        public void ReScan()
-        {
-            _WalletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
-            _WalletService.Logger.Debug("Transactions loaded.");
-        }
-
+        
         IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
         {
-            
             var result = new List<Transaction>();
 
-            /*foreach (var tx in txList)
+            foreach (var tx in txList)
             {
-                result.Add(new Transaction
-                {
-                    IsReceive = tx.IsReceive,
-                    IsSent = tx.IsSend,
-                    IsSpendable = tx.IsSpendable(),
-                    IsComfirmed = tx.IsConfirmed(),
-                    IsPropagated = tx.IsPropagated,
-                    BlockHeight = tx.BlockHeight,
-                    IsAvailable = tx.IsSpendable() ? Constants.IS_AVAILABLE : "",
-                    Memo = Constants.MEMO_LABEL,
-                    Status = GetStatus(tx),
-                    StatusColor = tx.IsSend == true
-                                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
-                                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                    
-                    AtAddress = WalletService.GetAddressFromTranscation(tx),
-                    Duration = DateTimeOffsetOperations.ShortDate(tx.CreationTime)
-                });
                 result.Add(CreateTransactionModelInstance(tx));
 
                 _WalletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
-            }*/
-            var tx = new TransactionData()
-            {
-                Amount = Money.Parse("1.0276")
-            };
-            var status = GetStatus(tx);
-            result.Add(new Transaction
-            {
-                IsReceive = true,
-                IsSent = false,
-                IsSpendable = true,
-                IsComfirmed = true,
-                IsPropagated = true,
-                BlockHeight = 1343,
-                IsAvailable = "available",
-                Memo = Constants.MEMO_LABEL,
-                Status = status,
-                StatusColor = true
-                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
-                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                /* TODO: Implement Send and Receive
-                 * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
-                Duration = DateTimeOffsetOperations.ShortDate(DateTimeOffset.Now)
-            });
-            result.Add(new Transaction
-            {
-                IsReceive = true,
-                IsSent = false,
-                IsSpendable = true,
-                IsComfirmed = true,
-                IsPropagated = true,
-                BlockHeight = 1343,
-                IsAvailable = "available",
-                Memo = Constants.MEMO_LABEL,
-                Status = status,
-                StatusColor = true
-                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
-                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                /* TODO: Implement Send and Receive
-                 * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
-                Duration = DateTimeOffsetOperations.ShortDate(DateTimeOffset.Now)
-            });
-            result.Add(new Transaction
-            {
-                IsReceive = true,
-                IsSent = false,
-                IsSpendable = true,
-                IsComfirmed = true,
-                IsPropagated = true,
-                BlockHeight = 1343,
-                IsAvailable = "available",
-                Memo = Constants.MEMO_LABEL,
-                Status = status,
-                StatusColor = true
-                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
-                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                /* TODO: Implement Send and Receive
-                 * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
-                Duration = DateTimeOffsetOperations.ShortDate(DateTimeOffset.Now)
-            });
-            result.Add(new Transaction
-            {
-                IsReceive = true,
-                IsSent = false,
-                IsSpendable = true,
-                IsComfirmed = true,
-                IsPropagated = true,
-                BlockHeight = 1343,
-                IsAvailable = "available",
-                Memo = Constants.MEMO_LABEL,
-                Status = status,
-                StatusColor = true
-                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
-                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                /* TODO: Implement Send and Receive
-                 * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
-                Duration = DateTimeOffsetOperations.ShortDate(DateTimeOffset.Now)
-            });
-            result.Add(new Transaction
-            {
-                IsReceive = true,
-                IsSent = false,
-                IsSpendable = true,
-                IsComfirmed = true,
-                IsPropagated = true,
-                BlockHeight = 1343,
-                IsAvailable = "available",
-                Memo = Constants.MEMO_LABEL,
-                Status = status,
-                StatusColor = true
-                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
-                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                /* TODO: Implement Send and Receive
-                 * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
-                Duration = DateTimeOffsetOperations.ShortDate(DateTimeOffset.Now)
-            });
-            result.Add(new Transaction
-            {
-                IsReceive = true,
-                IsSent = false,
-                IsSpendable = true,
-                IsComfirmed = true,
-                IsPropagated = true,
-                BlockHeight = 1343,
-                IsAvailable = "available",
-                Memo = Constants.MEMO_LABEL,
-                Status = status,
-                StatusColor = true
-                    ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
-                    : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                /* TODO: Implement Send and Receive
-                 * e.g   AtAddress = WalletService.GetAddressFromTranscation(tx), */
-                Duration = DateTimeOffsetOperations.ShortDate(DateTimeOffset.Now)
-            });
-            
+            }
             return result;
         }
 
@@ -486,7 +332,8 @@ namespace HodlWallet2.Core.ViewModels
                 IsAvailable = transactionData.IsSpendable()
                         ? Constants.IS_AVAILABLE
                         : Constants.IS_NOT_AVAILABLE,
-                Memo = transactionData.Memo,
+                // Temporarily commented.
+                // Memo = transactionData.Memo,
                 Amount = GetAmountLabelText(transactionData),
                 StatusColor = transactionData.IsSend == true
                         ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)

@@ -21,8 +21,6 @@ namespace HodlWallet2.Core.Utils
         public const string SENT_AMOUNT = "Sent {0} {1}";
         public const string RECEIVE_AMOUNT = "Received {0} {1}";
         public const string IS_NOT_AVAILABLE = "Waiting for confirmation";
-        public const string SENT_AMOUNT = "Sent BTC {0}";
-        public const string RECEIVE_AMOUNT = "Received BTC {0}";
         public const string SENT_RECEIVED_NULL = "Send and Receive is NULL";
         public const string SYNC_DATE_LABEL = "{0}, Block: {1}";
         public const string SHARE_TEXT_INTENT_TITLE = "Share via";
