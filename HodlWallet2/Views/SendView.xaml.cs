@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HodlWallet2.Core.ViewModels;
+using HodlWallet2.Core.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Mobile;
@@ -15,12 +16,29 @@ using HodlWallet2.Locale;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using HodlWallet2.Core.Services;
+using MvvmCross.ViewModels;
+using MvvmCross.Base;
+using MvvmCross.Binding.BindingContext;
 
 namespace HodlWallet2.Views
 {
     [MvxModalPresentation]
     public partial class SendView : MvxContentPage<SendViewModel>
     {
+        IMvxInteraction<DisplayAlertContent> _DisplayAlertInteraction;
+        public IMvxInteraction<DisplayAlertContent> DisplayAlertInteraction
+        {
+            get => _DisplayAlertInteraction;
+            set
+            {
+                if (_DisplayAlertInteraction != null)
+                    _DisplayAlertInteraction.Requested -= OnDisplayAlertInteractionRequested;
+
+                _DisplayAlertInteraction = value;
+                _DisplayAlertInteraction.Requested += OnDisplayAlertInteractionRequested;
+            }
+        }
+
         public SendView()
         {
             InitializeComponent();
@@ -69,11 +87,24 @@ namespace HodlWallet2.Views
             // TODO:
         }
 
-        protected override void OnAppearing()
+        async void OnDisplayAlertInteractionRequested(object sender, MvxValueEventArgs<DisplayAlertContent> e)
+        {
+            var displayAlertContent = e.Value;
+
+            await DisplayAlert(
+                displayAlertContent.Title, displayAlertContent.Message, displayAlertContent.Buttons[0]
+            );
+        }
+
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            ProcessClipboardContent();
+            await ProcessClipboardContent();
+
+            var set = this.CreateBindingSet<SendView, SendViewModel>();
+            set.Bind(this).For(view => view.DisplayAlertInteraction).To(viewModel => viewModel.DisplayAlertInteraction).OneWay();
+            set.Apply();
         }
     }
 }

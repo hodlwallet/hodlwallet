@@ -26,6 +26,10 @@ namespace HodlWallet2.Core.Utils
         public const string SHARE_TEXT_INTENT_TITLE = "Share via";
         public const string TO_LABEL = "To";
         public const string AT_LABEL = "At";
+        public const string DISPLAY_ALERT_ERROR_TITLE = "Error";
+        public const string DISPLAY_ALERT_PASTE_MESSAGE = "Pasteboard is empty.";
+        public const string DISPLAY_ALERT_SCAN_MESSAGE = "QR Code could not be scanned.";
+        public const string DISPLAY_ALERT_ERROR_BUTTON = "OK";
 
         // Temporary Values
         public const string USE_ADDRESS_FROM_CLIPBOARD =

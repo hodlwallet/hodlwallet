@@ -14,6 +14,7 @@ using Xamarin.Essentials;
 using ZXing.Mobile;
 using Xamarin.Forms;
 using Constants = HodlWallet2.Core.Utils.Constants;
+using MvvmCross.ViewModels;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -32,6 +33,9 @@ namespace HodlWallet2.Core.ViewModels
 
         string _TransactionFeeText;
         string _EstConfirmationText;
+
+        MvxInteraction<DisplayAlertContent> _DisplayAlertInteraction = new MvxInteraction<DisplayAlertContent>();
+        public MvxInteraction<DisplayAlertContent> DisplayAlertInteraction => _DisplayAlertInteraction;
 
         public string TransactionFeeTitle => "Transaction Fee";
         public string EstConfirmationTitle => "Est. Confirmation";
@@ -136,6 +140,7 @@ namespace HodlWallet2.Core.ViewModels
                 if (result.Text.IsBitcoinAddress())
                 {
                     AddressToSendTo = result.Text;
+                    return;
                 }
 
                 try
@@ -150,6 +155,15 @@ namespace HodlWallet2.Core.ViewModels
                         result.Text,
                         ex.Message
                     );
+
+                    var request = new DisplayAlertContent
+                    {
+                        Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
+                        Message = Constants.DISPLAY_ALERT_SCAN_MESSAGE,
+                        Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+                    };
+
+                    _DisplayAlertInteraction.Raise(request);
                 }
             }
         }
@@ -162,6 +176,29 @@ namespace HodlWallet2.Core.ViewModels
                 if (content.IsBitcoinAddress(_WalletService.WalletManager.Network))
                 {
                     AddressToSendTo = content;
+                }
+
+                try
+                {
+                    var urlBuilder = new BitcoinUrlBuilder(content);
+                    AddressToSendTo = urlBuilder.Address.ToString();
+                }
+                catch (Exception ex)
+                {
+                    LogProvider.GetLogFor<SendViewModel>().Error(
+                        "Unable to extract address from clipboard: {address}, {message}",
+                        content,
+                        ex.Message
+                    );
+
+                    var request = new DisplayAlertContent
+                    {
+                        Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
+                        Message = Constants.DISPLAY_ALERT_SCAN_MESSAGE,
+                        Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+                    };
+
+                    _DisplayAlertInteraction.Raise(request);
                 }
             }
         }
