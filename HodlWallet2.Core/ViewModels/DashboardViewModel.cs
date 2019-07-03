@@ -44,7 +44,8 @@ namespace HodlWallet2.Core.ViewModels
         public string SyncText => "SYNCING";
 
         decimal _Amount;
-        float _Rate;
+        float _NewRate;
+        float _OldRate;
         bool _IsBtcEnabled;
         
         ObservableCollection<Transaction> _Transactions;
@@ -124,13 +125,13 @@ namespace HodlWallet2.Core.ViewModels
             {
                 Preferences.Set("currency", "USD");
                 IsBtcEnabled = false;
-                Amount *= (decimal)_Rate;
+                Amount *= (decimal)_NewRate;
             }
             else
             {
                 Preferences.Set("currency", "BTC");
                 IsBtcEnabled = true;
-                Amount /= (decimal) _Rate;
+                Amount /= (decimal) _NewRate;
             }
             LoadTransactionsIfEmpty();
         }
@@ -155,10 +156,36 @@ namespace HodlWallet2.Core.ViewModels
             base.ViewAppearing();
 
             // Run and schedule next times precio will be called
-            Task.Run(RatesAsync);
+            Task.Run(async () =>
+            {
+                // Gets first BTC-USD rate.
+                var rate = (await _PrecioService.GetRates()).SingleOrDefault(r => r.Code == "USD");
+                if (rate != null)
+                {
+                    // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
+                    _OldRate = _NewRate = rate.Rate;
+                }
+                return Task.FromResult(true);
+            });
+            
             Device.StartTimer(TimeSpan.FromSeconds(Constants.PRECIO_TIMER_INTERVAL), () =>
             {
                 Task.Run(RatesAsync);
+                //TODO: WIP, will polish rate comparision.
+                if (_OldRate != _NewRate && Preferences.Get("currency", "BTC") != "BTC")
+                {
+                    _OldRate = _NewRate; 
+                    //TODO: Update transactions with new rate.
+                    foreach (var transaction in Transactions)
+                    {
+                        // This was intentionally left with null as placeholder. WARNING: IT'LL EXPLODE IF RUN.
+                        // First of all, a view model should not have the responsibility to format the text for a label (this is UI's duty!).
+                        // Second and very brief, this needs to be refactored (split) into two methods and the Transaction model needs to have two properties
+                        // like Status and Amount (as float), this way it'll be flexible enough to update only one property based on current rate
+                        // without having to convert numeric and string values to return a string(?) amount.
+                        transaction.Amount = GetAmountLabelText(null);
+                    }
+                }
                 return true;
             });
             Amount = 1.0276M;
@@ -193,7 +220,7 @@ namespace HodlWallet2.Core.ViewModels
             {
                 if (rate.Code == "USD")
                 {
-                    var price = _Rate = rate.Rate;
+                    var price = _NewRate = rate.Rate;
                     PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BTC_UNIT_LABEL, price);
                     break;
                 }
@@ -376,13 +403,14 @@ namespace HodlWallet2.Core.ViewModels
                     return string.Format(
                         Constants.SENT_AMOUNT, 
                         preferences, 
-                        $"{tx.Amount.ToUsd((decimal)_Rate):F2}");
+                        $"{tx.Amount.ToUsd((decimal)_NewRate):F2}");
 
                 return string.Format(
                     Constants.RECEIVE_AMOUNT, 
                     preferences, 
-                    $"{tx.Amount.ToUsd((decimal)_Rate):F2}");
+                    $"{tx.Amount.ToUsd((decimal)_NewRate):F2}");
             }
         }
+        
     }
 }
