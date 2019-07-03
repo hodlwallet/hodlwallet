@@ -15,7 +15,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Teal" />
                 <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
                 <Setter Property="FontSize" Value="Large" />
             </Style>
@@ -96,27 +95,32 @@
                         JustifyContent="SpaceAround">
 
                 <Button Text="1" 
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='1'" />
 
                 <Button Text="2"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='2'" />
 
                 <Button Text="3"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='3'" />
             </FlexLayout>
             
             <FlexLayout Direction="Row"
-                        Wrap="NoWrap"
                         FlexLayout.Grow="1"
-                        >
+                        JustifyContent="SpaceAround">
                 
                 <Button Text="4"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='4'" />
 
                 <Button Text="5" 
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='5'" />
 
                 <Button Text="6"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='6'" />
             
             </FlexLayout>
@@ -126,12 +130,15 @@
                         JustifyContent="SpaceAround">
                 
                 <Button Text="7"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='7'" />
 
                 <Button Text="8"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='8'" />
 
                 <Button Text="9"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='9'" />
             </FlexLayout>
         
@@ -139,12 +146,15 @@
                         FlexLayout.Grow="1"
                         JustifyContent="SpaceAround">
 
-                <Button Text="" />
+                <Button Text=""
+                        FlexLayout.Grow="1" />
 
                 <Button Text="0"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='0'" />
                 
                 <Button Text="&#x21E6;"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command BackspaceCommand"
                         TextColor="{StaticResource SyncGradientStart}" />
             </FlexLayout>
