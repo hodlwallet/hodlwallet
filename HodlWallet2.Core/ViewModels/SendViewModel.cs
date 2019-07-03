@@ -34,8 +34,7 @@ namespace HodlWallet2.Core.ViewModels
         string _TransactionFeeText;
         string _EstConfirmationText;
 
-        MvxInteraction<DisplayAlertContent> _DisplayAlertInteraction = new MvxInteraction<DisplayAlertContent>();
-        public MvxInteraction<DisplayAlertContent> DisplayAlertInteraction => _DisplayAlertInteraction;
+        public MvxInteraction<DisplayAlertContent> DisplayAlertInteraction { get; } = new MvxInteraction<DisplayAlertContent>();
 
         public string TransactionFeeTitle => "Transaction Fee";
         public string EstConfirmationTitle => "Est. Confirmation";
@@ -140,30 +139,31 @@ namespace HodlWallet2.Core.ViewModels
                 if (result.Text.IsBitcoinAddress())
                 {
                     AddressToSendTo = result.Text;
-                    return;
                 }
-
-                try
+                else
                 {
-                    var urlBuilder = new BitcoinUrlBuilder(result.Text);
-                    AddressToSendTo = urlBuilder.Address.ToString();
-                }
-                catch (Exception ex)
-                {
-                    LogProvider.GetLogFor<SendViewModel>().Error(
-                        "Unable to extract address from QR code: {address}, {message}",
-                        result.Text,
-                        ex.Message
-                    );
-
-                    var request = new DisplayAlertContent
+                    try
                     {
-                        Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
-                        Message = Constants.DISPLAY_ALERT_SCAN_MESSAGE,
-                        Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
-                    };
+                        var urlBuilder = new BitcoinUrlBuilder(result.Text);
+                        AddressToSendTo = urlBuilder.Address.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        LogProvider.GetLogFor<SendViewModel>().Error(
+                            "Unable to extract address from QR code: {address}, {message}",
+                            result.Text,
+                            ex.Message
+                        );
 
-                    _DisplayAlertInteraction.Raise(request);
+                        var request = new DisplayAlertContent
+                        {
+                            Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
+                            Message = Constants.DISPLAY_ALERT_SCAN_MESSAGE,
+                            Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+                        };
+
+                        DisplayAlertInteraction.Raise(request);
+                    }
                 }
             }
         }
@@ -173,32 +173,35 @@ namespace HodlWallet2.Core.ViewModels
             if (Clipboard.HasText)
             {
                 var content = await Clipboard.GetTextAsync();
+
                 if (content.IsBitcoinAddress(_WalletService.WalletManager.Network))
                 {
                     AddressToSendTo = content;
                 }
-
-                try
+                else
                 {
-                    var urlBuilder = new BitcoinUrlBuilder(content);
-                    AddressToSendTo = urlBuilder.Address.ToString();
-                }
-                catch (Exception ex)
-                {
-                    LogProvider.GetLogFor<SendViewModel>().Error(
-                        "Unable to extract address from clipboard: {address}, {message}",
-                        content,
-                        ex.Message
-                    );
-
-                    var request = new DisplayAlertContent
+                    try
                     {
-                        Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
-                        Message = Constants.DISPLAY_ALERT_SCAN_MESSAGE,
-                        Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
-                    };
+                        var urlBuilder = new BitcoinUrlBuilder(content);
+                        AddressToSendTo = urlBuilder.Address.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        LogProvider.GetLogFor<SendViewModel>().Error(
+                            "Unable to extract address from clipboard: {address}, {message}",
+                            content,
+                            ex.Message
+                        );
 
-                    _DisplayAlertInteraction.Raise(request);
+                        var request = new DisplayAlertContent
+                        {
+                            Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
+                            Message = Constants.DISPLAY_ALERT_PASTE_MESSAGE,
+                            Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+                        };
+
+                        DisplayAlertInteraction.Raise(request);
+                    }
                 }
             }
         }
