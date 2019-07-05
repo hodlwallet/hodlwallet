@@ -37,7 +37,11 @@
                Text="Bindable Header" />
         
         <Grid x:Name="cntViewBoxes" FlexLayout.Grow="1">
-            <Grid x:Name="grdSetPin" IsVisible="True" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+            <Grid x:Name="grdSetPin" 
+                  IsVisible="True"
+                  HorizontalOptions="Center" 
+                  VerticalOptions="Center" 
+                  Padding="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20" />
                             </Grid.RowDefinitions>
@@ -51,8 +55,7 @@
                                 <ColumnDefinition Width="20" />
                             </Grid.ColumnDefinitions>
                             
-                            <BoxView x:Name="pin1"
-                                     Color="White"
+                            <BoxView x:Name="pin1" Color="White"
                                      Grid.Row="0"
                                      Grid.Column="0"
                                      utils:Tags.Tag="1"/>
@@ -77,7 +80,11 @@
                                      Grid.Column="5"
                                      utils:Tags.Tag="6" />
                         </Grid>
-                        <Grid x:Name="grdReSetPin" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                        <Grid x:Name="grdReSetPin" 
+                              IsVisible="False"
+                              HorizontalOptions="Center" 
+                              VerticalOptions="Center" 
+                              Padding="10">
                             
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20" />
@@ -125,103 +132,106 @@
                Style="{DynamicResource CustomLabel}" 
                Text="Bindable Warning" />
         
-        <FlexLayout Direction="Row" 
-                    FlexLayout.Grow="1">
+        <FlexLayout Direction="Column"
+                    FlexLayout.Grow="4"
+                    BackgroundColor="Fuchsia">
             
-            <Button Text="1" 
-                    FlexLayout.Grow="1"
-                    Clicked="OnPinTapped"
-                    utils:Tags.Tag="1"
-                    Command="{Binding DigitCommand}"
-                    CommandParameter="1" />
+            <FlexLayout Direction="Row" 
+                        FlexLayout.Grow="1"
+                        AlignItems="Stretch">
+                
+                <Button Text="1" 
+                        FlexLayout.Grow="1"
+                        Clicked="OnPinTapped"
+                        utils:Tags.Tag="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="1" />
 
-            <Button Text="2" 
-                    FlexLayout.Grow="1"
-                    Clicked="OnPinTapped"
-                    utils:Tags.Tag="2"
-                    Command="{Binding DigitCommand}"
-                    CommandParameter="2" />
+                <Button Text="2" 
+                        FlexLayout.Grow="1"
+                        Clicked="OnPinTapped"
+                        utils:Tags.Tag="2"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="2" />
 
-            <Button Text="3" 
-                    FlexLayout.Grow="1"
-                    Clicked="OnPinTapped"
-                    utils:Tags.Tag="3"
-                    Command="{Binding DigitCommand}"
-                    CommandParameter="3" />
-        </FlexLayout>
-        
-        <FlexLayout Direction="Row" 
-                    FlexLayout.Grow="1"
-                    JustifyContent="SpaceAround">
+                <Button Text="3" 
+                        FlexLayout.Grow="1"
+                        Clicked="OnPinTapped"
+                        utils:Tags.Tag="3"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="3" />
+            </FlexLayout>
             
-             <Button Text="4" 
-                    FlexLayout.Grow="1"
-                    Clicked="OnPinTapped"
-                    utils:Tags.Tag="4"
-                    Command="{Binding DigitCommand}"
-                    CommandParameter="4" />
+            <FlexLayout Direction="Row" 
+                        FlexLayout.Grow="1">
+                
+                 <Button Text="4" 
+                        FlexLayout.Grow="1"
+                        Clicked="OnPinTapped"
+                        utils:Tags.Tag="4"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="4" />
 
-            <Button Text="5" 
-                    FlexLayout.Grow="1"
-                    Clicked="OnPinTapped"
-                    utils:Tags.Tag="5"
-                    Command="{Binding DigitCommand}"
-                    CommandParameter="5" />
+                <Button Text="5" 
+                        FlexLayout.Grow="1"
+                        Clicked="OnPinTapped"
+                        utils:Tags.Tag="5"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="5" />
 
-            <Button Text="6" 
-                    FlexLayout.Grow="1"
-                    Clicked="OnPinTapped"
-                    utils:Tags.Tag="6"
-                    Command="{Binding DigitCommand}"
-                    CommandParameter="6" />
-        </FlexLayout>
+                <Button Text="6" 
+                        FlexLayout.Grow="1"
+                        Clicked="OnPinTapped"
+                        utils:Tags.Tag="6"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="6" />
+            </FlexLayout>
+                
+            <FlexLayout Direction="Row" 
+                        FlexLayout.Grow="1">
+                
+                <Button Text="7" 
+                        FlexLayout.Grow="1"
+                        Clicked="OnPinTapped"
+                        utils:Tags.Tag="7"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="7" />
+
+                <Button Text="8" 
+                        FlexLayout.Grow="1"
+                        Clicked="OnPinTapped"
+                        utils:Tags.Tag="8"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="8" />
+
+                <Button Text="9" 
+                        FlexLayout.Grow="1"
+                        Clicked="OnPinTapped"
+                        utils:Tags.Tag="9"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="9" />
+            </FlexLayout>
             
-        <FlexLayout Direction="Row" 
-                    FlexLayout.Grow="1"
-                    JustifyContent="SpaceAround">
-            
-            <Button Text="7" 
-                    FlexLayout.Grow="1"
-                    Clicked="OnPinTapped"
-                    utils:Tags.Tag="7"
-                    Command="{Binding DigitCommand}"
-                    CommandParameter="7" />
+            <FlexLayout Direction="Row" 
+                        FlexLayout.Grow="1">
 
-            <Button Text="8" 
-                    FlexLayout.Grow="1"
-                    Clicked="OnPinTapped"
-                    utils:Tags.Tag="8"
-                    Command="{Binding DigitCommand}"
-                    CommandParameter="8" />
+                <Button Text="" 
+                        FlexLayout.Grow="1"
+                        />
 
-            <Button Text="9" 
-                    FlexLayout.Grow="1"
-                    Clicked="OnPinTapped"
-                    utils:Tags.Tag="9"
-                    Command="{Binding DigitCommand}"
-                    CommandParameter="9" />
-        </FlexLayout>
-        
-        <FlexLayout Direction="Row" 
-                    FlexLayout.Grow="1"
-                    JustifyContent="SpaceAround">
-
-            <Button Text="" 
-                    FlexLayout.Grow="1"
-                    />
-
-            <Button Text="0" 
-                    FlexLayout.Grow="1"
-                    Clicked="OnPinTapped"
-                    utils:Tags.Tag="0"
-                    Command="{Binding DigitCommand}"
-                    CommandParameter="0" />
-            
-            <Button Text="&#x21E6;"
-                    FlexLayout.Grow="1"
-                    Clicked="OnBackspaceTapped"
-                    Command="{Binding BackspaceCommand}"
-                    TextColor="{StaticResource SyncGradientStart}" />
+                <Button Text="0" 
+                        FlexLayout.Grow="1"
+                        Clicked="OnPinTapped"
+                        utils:Tags.Tag="0"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="0" />
+                
+                <Button Text="&#x21E6;"
+                        FlexLayout.Grow="1"
+                        Clicked="OnBackspaceTapped"
+                        Command="{Binding BackspaceCommand}"
+                        TextColor="{StaticResource SyncGradientStart}" />
+            </FlexLayout>
         </FlexLayout>
     </FlexLayout>
 </ContentView>
