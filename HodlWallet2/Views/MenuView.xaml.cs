@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
-using Xamarin.Forms;
-
-using MvvmCross.Commands;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using MvvmCross.ViewModels;
 using MvvmCross.Base;
 
-using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.ViewModels;
 using HodlWallet2.Core.Interactions;
 using HodlWallet2.Locale;
@@ -28,14 +23,39 @@ namespace HodlWallet2.Views
             set
             {
                 if (_QuestionInteraction != null)
-                    _QuestionInteraction.Requested -= _QuestionInteraction_Requested;
+                    _QuestionInteraction.Requested -= QuestionInteraction_Requested;
 
                 _QuestionInteraction = value;
-                _QuestionInteraction.Requested += _QuestionInteraction_Requested;
+                _QuestionInteraction.Requested += QuestionInteraction_Requested;
             }
         }
 
-        private async void _QuestionInteraction_Requested(object sender, MvxValueEventArgs<YesNoQuestion> e)
+        public MenuView()
+        {
+            InitializeComponent();
+            SetLabels();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            CreateInteractionsBindings();
+        }
+
+        void CreateInteractionsBindings()
+        {
+            var set = this.CreateBindingSet<MenuView, MenuViewModel>();
+
+            set.Bind(this)
+                .For(view => view.QuestionInteraction)
+                .To(viewModel => viewModel.QuestionInteraction)
+                .OneWay();
+
+            set.Apply();
+        }
+
+        async void QuestionInteraction_Requested(object sender, MvxValueEventArgs<YesNoQuestion> e)
         {
             var yesNoQuestion = e.Value;
 
@@ -71,13 +91,7 @@ namespace HodlWallet2.Views
             yesNoQuestion.AnswerCallback(answer);
         }
 
-        public MenuView()
-        {
-            InitializeComponent();
-            SetLabels();
-        }
-
-        private void SetLabels()
+        void SetLabels()
         {
             MenuTitle.Text = LocaleResources.Menu_title;
 
@@ -90,25 +104,6 @@ namespace HodlWallet2.Views
             //Knowledge.Text = LocaleResources.Menu_knowledge;
             //Settings.Text = LocaleResources.Menu_settings;
             //LockWallet.Text = LocaleResources.Menu_lock;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            CreateInteractionsBindings();
-        }
-
-        void CreateInteractionsBindings()
-        {
-            var set = this.CreateBindingSet<MenuView, MenuViewModel>();
-
-            set.Bind(this)
-                .For(view => view.QuestionInteraction)
-                .To(viewModel => viewModel.QuestionInteraction)
-                .OneWay();
-
-            set.Apply();
         }
     }
 }
