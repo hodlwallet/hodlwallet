@@ -23,10 +23,16 @@ namespace HodlWallet2.Views
         private void SetLabels()
         {
             MenuTitle.Text = LocaleResources.Menu_title;
-            Security.Text = LocaleResources.Menu_security;
-            Knowledge.Text = LocaleResources.Menu_knowledge;
-            Settings.Text = LocaleResources.Menu_settings;
-            LockWallet.Text = LocaleResources.Menu_lock;
+
+            ResyncWallet.Text = LocaleResources.Menu_resyncWallet;
+            RestoreWallet.Text = LocaleResources.Menu_restoreWallet;
+            WipeWallet.Text = LocaleResources.Menu_wipeWallet;
+
+            // TODO Add these later once we got all the settings implemented.
+            //Security.Text = LocaleResources.Menu_security;
+            //Knowledge.Text = LocaleResources.Menu_knowledge;
+            //Settings.Text = LocaleResources.Menu_settings;
+            //LockWallet.Text = LocaleResources.Menu_lock;
         }
     }
 }

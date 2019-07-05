@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+using HodlWallet2.Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Logging;
@@ -11,30 +13,57 @@ namespace HodlWallet2.Core.ViewModels
         public MvxCommand CloseCommand { get; }
         public MvxCommand SecurityCommand { get; }
         public MvxCommand SettingsCommand { get; }
-        
+
+        public MvxCommand ResyncWalletCommand { get; }
+        public MvxCommand RestoreWalletCommand { get; }
+        public MvxCommand WipeWalletCommand { get; }
+
+        Serilog.ILogger _Logger;
+
         public MenuViewModel(
             IMvxLogProvider logProvider,
             IMvxNavigationService navigationService) 
             : base(logProvider, navigationService)
         {
+            _Logger = WalletService.Instance.Logger;
+
             CloseCommand = new MvxCommand(Close);
             SecurityCommand = new MvxCommand(SecurityTapped);
             SettingsCommand = new MvxCommand(SettingsTapped);
+            ResyncWalletCommand = new MvxCommand(ResyncWallet);
+            RestoreWalletCommand = new MvxCommand(RestoreWallet);
+            WipeWalletCommand = new MvxCommand(WipeWallet);
         }
 
-        private async void SecurityTapped()
+        // FIXME These methods should not be async...
+        async void SecurityTapped()
         {
             await NavigationService.Navigate<SecurityCenterViewModel>();
         }
 
-        private async void SettingsTapped()
+        async void SettingsTapped()
         {
             await NavigationService.Navigate<SettingsViewModel>();
         }
 
-        private async void Close()
+        async void Close()
         {
             await NavigationService.Close(this);
+        }
+
+        void ResyncWallet()
+        {
+            _Logger.Information("Doing Resync...");
+        }
+
+        void RestoreWallet()
+        {
+            _Logger.Information("Doing Restore...");
+        }
+
+        void WipeWallet()
+        {
+            _Logger.Information("Doing Wipe...");
         }
     }
 }
