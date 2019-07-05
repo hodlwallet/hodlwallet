@@ -68,8 +68,7 @@ namespace HodlWallet2.Core.ViewModels
                 QuestionKey = "resync-wallet",
                 AnswerCallback = async (yes) =>
                 {
-                    // TODO
-                    //if (yes) _WalletService.DestroyWallet(true);
+                    if (yes) _WalletService.ReScan();
 
                     await NavigationService.Close(this);
                 }
@@ -85,8 +84,7 @@ namespace HodlWallet2.Core.ViewModels
                 QuestionKey = "restore-wallet",
                 AnswerCallback = async (yes) =>
                 {
-                    // TODO
-                    //if (yes) _WalletService.DestroyWallet(true);
+                    if (yes) await NavigationService.Navigate<RecoverViewModel>();
 
                     await NavigationService.Close(this);
                 }
