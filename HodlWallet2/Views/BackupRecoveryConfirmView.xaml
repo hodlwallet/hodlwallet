@@ -53,9 +53,12 @@
                         FlexLayout.Grow="2">
                 
                 <FlexLayout Direction="Column"
+                            FlexLayout.Grow="1" />
+                
+                <FlexLayout Direction="Column"
                             FlexLayout.Grow="1"
                             JustifyContent="SpaceEvenly"
-                            AlignItems="End">
+                            AlignItems="Stretch">
                     
                     <Button Text="{Binding WordOne}"
                             Command="{Binding WordCommand}"
@@ -80,7 +83,7 @@
                 <FlexLayout Direction="Column"
                             FlexLayout.Grow="1"
                             JustifyContent="SpaceEvenly"
-                            AlignItems="Start">
+                            AlignItems="Stretch">
                     
                     <Button Text="{Binding WordFive}"
                             Command="{Binding WordCommand}"
@@ -99,6 +102,9 @@
                             CommandParameter="7" />
                     
                 </FlexLayout>
+                
+                <FlexLayout Direction="Column"
+                            FlexLayout.Grow="1" />
                 
             </FlexLayout>
             
