@@ -444,7 +444,7 @@ namespace HodlWallet2.Core.Services
         }
 
 
-        public void DestroyWallet()
+        public void DestroyWallet(bool dryRun = false)
         {
             if (_Network == null)
             {
@@ -464,14 +464,18 @@ namespace HodlWallet2.Core.Services
             string addrmanFile = AddrmanFile();
             string walletFile = ((WalletStorageProvider)StorageProvider).FilePath;
 
-            // Database cleanup
             Logger.Information("Deleting chain file: {chainFile}", chainFile);
-            File.Delete(chainFile);
-
             Logger.Information("Deleting address manager file: {addrmanFile}", addrmanFile);
-            File.Delete(addrmanFile);
-
             Logger.Information("Deleting wallet file: {walletFile}", walletFile);
+
+            if (dryRun) return;
+
+            // TODO Make sure that removing all secure storage is the right thing to do
+            SecureStorageProvider.RemoveAll();
+
+            // Database cleanup
+            File.Delete(chainFile);
+            File.Delete(addrmanFile);
             File.Delete(walletFile);
         }
 
