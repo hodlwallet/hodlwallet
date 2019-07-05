@@ -15,7 +15,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="BackgroundColor" Value="{StaticResource GrayBackground}" />
                 <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
             </Style>
         </ResourceDictionary>
@@ -91,8 +91,7 @@
             </Grid>
                     
             <FlexLayout Direction="Row"
-                        FlexLayout.Grow="1"
-                        JustifyContent="SpaceAround">
+                        FlexLayout.Grow="1">
 
                 <Button Text="1" 
                         FlexLayout.Grow="1"
@@ -108,8 +107,7 @@
             </FlexLayout>
             
             <FlexLayout Direction="Row"
-                        FlexLayout.Grow="1"
-                        JustifyContent="SpaceAround">
+                        FlexLayout.Grow="1">
                 
                 <Button Text="4"
                         FlexLayout.Grow="1"
@@ -126,8 +124,7 @@
             </FlexLayout>
         
             <FlexLayout Direction="Row"
-                        FlexLayout.Grow="1"
-                        JustifyContent="SpaceAround">
+                        FlexLayout.Grow="1">
                 
                 <Button Text="7"
                         FlexLayout.Grow="1"
@@ -143,8 +140,7 @@
             </FlexLayout>
         
             <FlexLayout Direction="Row"
-                        FlexLayout.Grow="1"
-                        JustifyContent="SpaceAround">
+                        FlexLayout.Grow="1">
 
                 <Button Text=""
                         FlexLayout.Grow="1" />
