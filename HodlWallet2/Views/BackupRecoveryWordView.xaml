@@ -21,16 +21,18 @@
                    FontFamily="{StaticResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
-                   bindings:Bi.nd="Text HeaderText"/>
+                   bindings:Bi.nd="Text HeaderText"
+                   Margin="0, 20, 0, 0"/>
             
-            <StackLayout FlexLayout.Grow="4">
+            <FlexLayout Direction="Column"
+                        FlexLayout.Grow="4"
+                        JustifyContent="Center"
+                        AlignItems="Center">
                 <ContentView BackgroundColor="{StaticResource DarkGray}" 
                              Margin="40"
-                             HorizontalOptions="Center"
-                             VerticalOptions="Center"
                              HeightRequest="50"
-                             WidthRequest="90">
-                    
+                             WidthRequest="150">
+                   
                     <Label x:Name="Word"
                              Style="{DynamicResource CustomLabel}"
                              HorizontalTextAlignment="Center"
@@ -41,13 +43,11 @@
                 </ContentView>
                 
                 <Label x:Name="Index"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
                        FontFamily="{StaticResource ElectrolizeFont}"
                        TextColor="Gray"
                        FontSize="Micro"
                        Text="{Binding PositionText, Converter={StaticResource IndexToStringConverter}}" />
-            </StackLayout>
+            </FlexLayout>
             <!--TODO: Fix binding converter with MvvmCross binding -->
             
             <FlexLayout Direction="Row" 
