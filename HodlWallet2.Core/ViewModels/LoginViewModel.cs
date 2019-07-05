@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Threading.Tasks;
-using HodlWallet2.Core.Utils;
-using Liviano.Exceptions;
+
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+
+using Liviano.Exceptions;
+
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -69,10 +71,10 @@ namespace HodlWallet2.Core.ViewModels
 
                 if (_Pin.Count == 6)
                 {
+                    await Task.Delay(305);
+
                     // Reset colors of all digits.
                     ResetDigitsColorInteraction.Raise();
-
-                    await Task.Delay(500);
 
                     string input = string.Join(string.Empty, _Pin.ToArray());
                     if (SecureStorageProvider.GetPin() == input)

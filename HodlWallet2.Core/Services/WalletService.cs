@@ -1,32 +1,26 @@
 ﻿using System;
-using Liviano.Managers;
-using Serilog;
-
+using System.Collections.Generic;
+using System.Security;
 using System.Linq;
+using System.IO;
+using System.Threading.Tasks;
+
+using MvvmCross;
 
 using NBitcoin;
 using NBitcoin.Protocol;
+using NBitcoin.Protocol.Behaviors;
 
 using Liviano;
 using Liviano.Interfaces;
 using Liviano.Utilities;
-
-using NBitcoin.Protocol.Behaviors;
-
-using System.IO;
-using System.Threading.Tasks;
-
 using Liviano.Behaviors;
 using Liviano.Enums;
 using Liviano.Models;
-using System.Collections.Generic;
-using System.Security;
-using HodlWallet2.Core.Interfaces;
+using Liviano.Managers;
 using Liviano.Exceptions;
-using MvvmCross.Logging;
-using MvvmCross;
 
-using HodlWallet2.Core.Utils;
+using HodlWallet2.Core.Interfaces;
 
 namespace HodlWallet2.Core.Services
 {
@@ -87,7 +81,7 @@ namespace HodlWallet2.Core.Services
         public bool IsStarted { get; private set; }
         public bool IsConfigured { get; private set; }
 
-        public static WalletService Instance => (WalletService) Mvx.IoCProvider.Resolve<IWalletService>();
+        public static WalletService Instance => (WalletService)Mvx.IoCProvider.Resolve<IWalletService>();
 
         public HdAccount CurrentAccount
         {
@@ -99,10 +93,7 @@ namespace HodlWallet2.Core.Services
                 return WalletManager.GetWallet().GetAccountsByCoinType(CoinType.Bitcoin).FirstOrDefault();
             }
 
-            set
-            {
-                throw new NotImplementedException("Please code this.");
-            }
+            set => throw new NotImplementedException("This should switch the current account.");
         }
 
         private PartialConcurrentChain GetChain()
@@ -127,7 +118,6 @@ namespace HodlWallet2.Core.Services
                 return chain;
             }
         }
-
 
         private string GetConfigFile(string fileName)
         {
@@ -211,10 +201,9 @@ namespace HodlWallet2.Core.Services
 
             return _Network.GetCheckpoints().OrderBy(chainedBlock => Math.Abs(chainedBlock.Header.BlockTime.Ticks - ticks)).FirstOrDefault();
         }
-        
+
         public WalletService()
         {
-            
         }
 
         public void InitializeWallet()
@@ -265,7 +254,7 @@ namespace HodlWallet2.Core.Services
             string password = ""; // TODO password cannot be null. but it should be
                                   // change liviano load wallet to accept null passwords
                                   // But, since HODLWallet 1 didn't have passwords this is okay
-            
+
             if (WalletExists())
             {
                 Logger.Information("Loading a wallet because it exists");
@@ -290,7 +279,7 @@ namespace HodlWallet2.Core.Services
             }
             else
             {
-                Logger.Information("Creating wallet ({guid}) with password: {password}", _WalletId, password);
+                Logger.Debug("Creating wallet ({guid}) with password: {password}", _WalletId, password);
 
                 WalletManager.CreateWallet(_WalletId, password, WalletManager.MnemonicFromString(mnemonic));
 
@@ -310,29 +299,40 @@ namespace HodlWallet2.Core.Services
 
         public static IEnumerable<HdAddress> GetAddressesFromTransaction(TransactionData txData)
         {
-            return WalletService.Instance.CurrentAccount.FindAddressesForTransaction(tx => tx.Id == txData.Id);
+            return Instance.CurrentAccount.FindAddressesForTransaction(tx => tx.Id == txData.Id);
         }
 
-        public static string GetAddressFromTranscation(TransactionData txData)
+        public string GetAddressFromTransaction(TransactionData txData)
         {
             var addrsFromTx = GetAddressesFromTransaction(txData).Select(hdAddress => hdAddress.Address);
 
             if (txData.IsReceive == true)
             {
-                return WalletService.Instance.CurrentAccount.ExternalAddresses.First(
+                return CurrentAccount.ExternalAddresses.First(
                     externalAddress => addrsFromTx.Contains(externalAddress.Address)
                 ).Address;
             }
-            else if (txData.IsSend == true) // For verbosity and error catching...
+
+            if (txData.IsSend == true) // For verbosity and error catching...
             {
-                return WalletService.Instance.CurrentAccount.InternalAddresses.First(
+                return CurrentAccount.InternalAddresses.First(
                     internalAddress => addrsFromTx.Contains(internalAddress.Address)
                 ).Address;
             }
-            else
-            {
-                throw new WalletException("Tx data isn't send or receive, something is wrong...");
-            }
+
+            throw new WalletException("Tx data isn't send or receive, something is wrong...");
+        }
+
+        public bool IsAddressReused(string address)
+        {
+            bool inInternal = CurrentAccount.InternalAddresses.Select(
+                    (HdAddress hdAddress) => hdAddress.Address)
+                .Contains(address);
+            bool inExternal = CurrentAccount.ExternalAddresses.Select(
+                    (HdAddress hdAddress) => hdAddress.Address)
+                .Contains(address);
+
+            return inInternal || inExternal;
         }
 
         public void Configure(string walletId = null, string network = null, int? nodesToConnect = null)
@@ -443,32 +443,58 @@ namespace HodlWallet2.Core.Services
             OnScanning?.Invoke(this, null);
         }
 
-        public void ReScan(DateTimeOffset? timeToStartOn)
+
+        public void DestroyWallet(bool dryRun = false)
         {
-            // FIXME this method dosn't work crashes on Scan.
-            throw new NotImplementedException("Please finish work here");
+            if (_Network == null)
+            {
+                string networkStr = SecureStorageProvider.GetNetwork();
+
+                _Network = Network.GetNetwork(networkStr);
+            }
+
+            if (StorageProvider == null)
+            {
+                string walletId = SecureStorageProvider.GetWalletId();
+
+                StorageProvider = new WalletStorageProvider(id: walletId);
+            }
 
             string chainFile = ChainFile();
             string addrmanFile = AddrmanFile();
             string walletFile = ((WalletStorageProvider)StorageProvider).FilePath;
-            DateTimeOffset currentCreationTime = WalletManager.GetWallet().CreationTime;
+
+            Logger.Information("Deleting chain file: {chainFile}", chainFile);
+            Logger.Information("Deleting address manager file: {addrmanFile}", addrmanFile);
+            Logger.Information("Deleting wallet file: {walletFile}", walletFile);
+
+            if (dryRun) return;
+
+            // TODO Make sure that removing all secure storage is the right thing to do
+            SecureStorageProvider.RemoveAll();
 
             // Database cleanup
-            Logger.Information("Deleting chain file: {chainFile}", chainFile);
             File.Delete(chainFile);
-
-            Logger.Information("Deleting address manager file: {addrmanFile}", addrmanFile);
             File.Delete(addrmanFile);
-
-            Logger.Information("Deleting wallet file: {walletFile}", walletFile);
             File.Delete(walletFile);
+        }
+
+        public void ReScan(DateTimeOffset? timeToStartOn = null)
+        {
+            // FIXME this method dosn't work crashes on Scan.
+            if (timeToStartOn == null)
+                timeToStartOn = _Network.GetBIP39ActivationChainedBlock().Header.BlockTime;
+
+            DateTimeOffset currentCreationTime = WalletManager.GetWallet().CreationTime;
+
+            DestroyWallet();
 
             // Create wallet
             // FIXME: This should not be done like this.
             //        Wallet should be created but with data we already have on SecureStorageProvider for mnemonic and password.
-            string guid = "736083c0-7f11-46c2-b3d7-e4e88dc38889";
-            string mnemonic = "erase fog enforce rice coil start few hold grocery lock youth service among menu life salmon fiction diamond lyrics love key stairs toe transfer";
-            string password = "";
+            string guid = SecureStorageProvider.GetWalletId();
+            string mnemonic = SecureStorageProvider.GetMnemonic();
+            string password = SecureStorageProvider.GetPassword() ?? ""; // FIXME I fear this could be null.
 
             Logger.Information("Unloaded wallet");
             WalletManager.UnloadWallet();
@@ -529,18 +555,27 @@ namespace HodlWallet2.Core.Services
             return CurrentAccount.GetFirstUnusedReceivingAddress();
         }
 
+        public IEnumerable<TransactionData> GetAllAccountsTransactions()
+        {
+            if (WalletManager == null) return new List<TransactionData>();
+
+            return WalletManager.GetAllAccountsByCoinType(CoinType.Bitcoin)
+                .SelectMany((HdAccount account) => account.GetCombinedAddresses())
+                .SelectMany((HdAddress address) => address.Transactions);
+        }
+
         public IEnumerable<TransactionData> GetCurrentAccountTransactions()
         {
-            IEnumerable<TransactionData> result = new List<TransactionData>();
+            if (CurrentAccount == null) return new List<TransactionData>();
 
-            if (WalletManager != null)
-            {
-                result = WalletManager.GetAllAccountsByCoinType(CoinType.Bitcoin)
-                        .SelectMany((HdAccount account) => account.GetCombinedAddresses())
-                        .SelectMany((HdAddress address) => address.Transactions);
-            }
+            return GetAccountTransactions(CurrentAccount);
+        }
 
-            return result;
+        public IEnumerable<TransactionData> GetAccountTransactions(HdAccount account)
+        {
+            return account.GetCombinedAddresses().SelectMany(
+                (HdAddress address) => address.Transactions
+            );
         }
 
         public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, int feeSatsPerByte, string password)

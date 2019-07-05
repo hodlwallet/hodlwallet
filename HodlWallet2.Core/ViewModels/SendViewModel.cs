@@ -1,18 +1,30 @@
 using System;
 using System.Threading.Tasks;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Models;
-using HodlWallet2.Core.Services;
-using Liviano;
+
+using Xamarin.Forms;
+using Xamarin.Essentials;
+
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
+
 using NBitcoin;
+
 using Serilog.Core;
-using Xamarin.Essentials;
+
 using ZXing.Mobile;
-using Xamarin.Forms;
+
+using Liviano;
+
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Models;
+using HodlWallet2.Core.Services;
+using HodlWallet2.Core.Interactions;
 using Constants = HodlWallet2.Core.Utils.Constants;
+
+using MvvmCross.ViewModels;
+using MvvmCross.Base;
+using MvvmCross;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -20,6 +32,9 @@ namespace HodlWallet2.Core.ViewModels
     {
         readonly IWalletService _WalletService;
         readonly IPrecioService _PrecioService;
+
+        MvxInteraction<YesNoQuestion> _QuestionInteraction = new MvxInteraction<YesNoQuestion>();
+        public IMvxInteraction<YesNoQuestion> QuestionInteraction => _QuestionInteraction;
 
         string _AddressToSendTo;
         int _Fee;
@@ -73,11 +88,6 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _AmountToSend, value);
         }
 
-        public bool IsBitcoinAddressOnClipboard(string content)
-        {
-            return content.IsBitcoinAddress(_WalletService.WalletManager.Network);
-        }
-
         public MvxAsyncCommand ScanCommand { get; }
         public MvxAsyncCommand<string> SendCommand { get; }
         public MvxAsyncCommand CloseCommand { get; }
@@ -104,18 +114,40 @@ namespace HodlWallet2.Core.ViewModels
             Task.Run(SetSliderValue);
         }
 
-        private Task ShowFaq()
+        public override void ViewAppeared()
+        {
+            base.ViewAppeared();
+        }
+
+        public async Task ProcessAddressOnClipboardToPaste()
+        {
+            string content = await Clipboard.GetTextAsync();
+
+            if (!IsBitcoinAddress(content) || IsBitcoinAddressReused(content)) return;
+
+            var request = new YesNoQuestion
+            {
+                QuestionKey = "use-address-on-clipboard",
+                AnswerCallback = (yes) =>
+                {
+                    if (yes) AddressToSendTo = content;
+                }
+            };
+            _QuestionInteraction.Raise(request);
+        }
+
+        Task ShowFaq()
         {
             //TODO: Implement FAQ
             return Task.FromResult(this);
         }
 
-        private async Task Close()    
+        async Task Close()    
         {
             await NavigationService.Close(this);
         }
 
-        private async Task Scan()
+        async Task Scan()
         {
             //TODO: Implement Scan
             var scanner = new MobileBarcodeScanner();
@@ -152,7 +184,17 @@ namespace HodlWallet2.Core.ViewModels
             TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, (Fee / 1000));
         }
 
-        private async Task Send(string password = "")
+        bool IsBitcoinAddress(string content)
+        {
+            return content.IsBitcoinAddress(_WalletService.WalletManager.Network);
+        }
+
+        bool IsBitcoinAddressReused(string address)
+        {
+            return _WalletService.IsAddressReused(address);
+        }
+
+        async Task Send(string password = "")
         {
             var txCreateResult = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 

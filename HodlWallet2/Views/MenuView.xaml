@@ -36,7 +36,35 @@
                 
                 <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
                 
-                <Button x:Name="Security"
+                <!-- TODO Remove and put in appropiate places inside sub menus, this is for alpha 1 -->
+                <!-- Buttons and separators -->
+                <Button x:Name="ResyncWallet"
+                        bindings:Bi.nd="Command ResyncWalletCommand"
+                        Style="{DynamicResource CustomButton}"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1" />
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
+                
+                <Button x:Name="RestoreWallet"
+                        bindings:Bi.nd="Command RestoreWalletCommand"
+                        Style="{DynamicResource CustomButton}"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1" />
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
+                
+                <Button x:Name="WipeWallet"
+                        bindings:Bi.nd="Command WipeWalletCommand"
+                        Style="{DynamicResource CustomButton}"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1" />
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
+                
+                <!-- Extra space -->
+                <BoxView FlexLayout.Grow="5" />
+                
+                <!-- TODO Add the rest of the menus when it make sense-->
+
+                <!--<Button x:Name="Security"
                         bindings:Bi.nd="Command SecurityCommand"
                         Style="{DynamicResource CustomButton}" 
                         FlexLayout.AlignSelf="Stretch"
@@ -66,8 +94,7 @@
                 
                 <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
                 
-                <BoxView FlexLayout.Grow="4" />
-                
+                <BoxView FlexLayout.Grow="4" />-->
             </FlexLayout>
         </ScrollView>
     </ContentPage.Content>
