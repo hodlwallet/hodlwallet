@@ -38,5 +38,6 @@
     <ItemGroup>
       <Folder Include="Behaviors\" />
       <Folder Include="Converters\" />
+      <Folder Include="Interactions\" />
     </ItemGroup>
 </Project>

@@ -1,69 +1,114 @@
 using System.Threading.Tasks;
-using HodlWallet2.Core.Services;
+
 using MvvmCross.Commands;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
+
+using Serilog;
+
+using HodlWallet2.Core.Services;
+using HodlWallet2.Core.Interactions;
 
 namespace HodlWallet2.Core.ViewModels
 {
     [MvxModalPresentation]
     public class MenuViewModel : BaseViewModel
     {
-        public MvxCommand CloseCommand { get; }
-        public MvxCommand SecurityCommand { get; }
-        public MvxCommand SettingsCommand { get; }
+        public MvxAsyncCommand CloseCommand { get; }
+        public MvxAsyncCommand SecurityCommand { get; }
+        public MvxAsyncCommand SettingsCommand { get; }
 
-        public MvxCommand ResyncWalletCommand { get; }
-        public MvxCommand RestoreWalletCommand { get; }
-        public MvxCommand WipeWalletCommand { get; }
+        public MvxAsyncCommand ResyncWalletCommand { get; }
+        public MvxAsyncCommand RestoreWalletCommand { get; }
+        public MvxAsyncCommand WipeWalletCommand { get; }
 
-        Serilog.ILogger _Logger;
+        MvxInteraction<YesNoQuestion> _QuestionInteraction = new MvxInteraction<YesNoQuestion>();
+        public IMvxInteraction<YesNoQuestion> QuestionInteraction => _QuestionInteraction;
+
+        readonly WalletService _WalletService;
+        readonly ILogger _Logger;
 
         public MenuViewModel(
             IMvxLogProvider logProvider,
             IMvxNavigationService navigationService) 
             : base(logProvider, navigationService)
         {
-            _Logger = WalletService.Instance.Logger;
+            _WalletService = WalletService.Instance;
+            _Logger = _WalletService.Logger;
 
-            CloseCommand = new MvxCommand(Close);
-            SecurityCommand = new MvxCommand(SecurityTapped);
-            SettingsCommand = new MvxCommand(SettingsTapped);
-            ResyncWalletCommand = new MvxCommand(ResyncWallet);
-            RestoreWalletCommand = new MvxCommand(RestoreWallet);
-            WipeWalletCommand = new MvxCommand(WipeWallet);
+            CloseCommand = new MvxAsyncCommand(Close);
+            SecurityCommand = new MvxAsyncCommand(SecurityTapped);
+            SettingsCommand = new MvxAsyncCommand(SettingsTapped);
+            ResyncWalletCommand = new MvxAsyncCommand(ResyncWallet);
+            RestoreWalletCommand = new MvxAsyncCommand(RestoreWallet);
+            WipeWalletCommand = new MvxAsyncCommand(WipeWallet);
         }
 
-        // FIXME These methods should not be async...
-        async void SecurityTapped()
+        async Task SecurityTapped()
         {
             await NavigationService.Navigate<SecurityCenterViewModel>();
         }
 
-        async void SettingsTapped()
+        async Task SettingsTapped()
         {
             await NavigationService.Navigate<SettingsViewModel>();
         }
 
-        async void Close()
+        async Task Close()
         {
             await NavigationService.Close(this);
         }
 
-        void ResyncWallet()
+        async Task ResyncWallet()
         {
-            _Logger.Information("Doing Resync...");
+            var request = new YesNoQuestion
+            {
+                QuestionKey = "resync-wallet",
+                AnswerCallback = async (yes) =>
+                {
+                    // TODO
+                    //if (yes) _WalletService.DestroyWallet(true);
+
+                    await NavigationService.Close(this);
+                }
+            };
+
+            _QuestionInteraction.Raise(request);
         }
 
-        void RestoreWallet()
+        async Task RestoreWallet()
         {
-            _Logger.Information("Doing Restore...");
+            var request = new YesNoQuestion
+            {
+                QuestionKey = "restore-wallet",
+                AnswerCallback = async (yes) =>
+                {
+                    // TODO
+                    //if (yes) _WalletService.DestroyWallet(true);
+
+                    await NavigationService.Close(this);
+                }
+            };
+
+            _QuestionInteraction.Raise(request);
         }
 
-        void WipeWallet()
+        async Task WipeWallet()
         {
-            _Logger.Information("Doing Wipe...");
+            var request = new YesNoQuestion
+            {
+                QuestionKey = "wipe-wallet",
+                AnswerCallback = async (yes) =>
+                {
+                    if (yes) _WalletService.DestroyWallet(true);
+
+                    await NavigationService.Close(this);
+                }
+            };
+
+             _QuestionInteraction.Raise(request);
         }
     }
 }
