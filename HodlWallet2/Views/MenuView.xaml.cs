@@ -22,7 +22,6 @@ namespace HodlWallet2.Views
 
         private void SetLabels()
         {
-            //TODO: Move localization strings to Core
             MenuTitle.Text = LocaleResources.Menu_title;
             Security.Text = LocaleResources.Menu_security;
             Knowledge.Text = LocaleResources.Menu_knowledge;
