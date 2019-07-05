@@ -25,89 +25,83 @@
         
         <!-- Add View Model Binding -->
         
-        <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}" JustifyContent="SpaceAround">
+        <FlexLayout Direction="Column" 
+                    BackgroundColor="{StaticResource GrayBackground}" 
+                    JustifyContent="SpaceAround"
+                    AlignItems="Center">
             
             <Label FontFamily="{StaticResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
-                   FlexLayout.AlignSelf="Center"
                    FlexLayout.Grow="1"
+                   Margin="0, 20, 0, 0"
                    bindings:Bi.nd="Text HeaderText"/>
             
             <Label Text="{Binding Exercise}"
                    Style="{DynamicResource CustomLabel}"
-                   HorizontalTextAlignment="Center"
-                   FlexLayout.AlignSelf="Center" />
+                   HorizontalTextAlignment="Center" />
             
             <Label FontFamily="{StaticResource ElectrolizeFont}"
                    TextColor="Red"
                    HorizontalTextAlignment="Center"
-                   FlexLayout.AlignSelf="Center"
                    bindings:Bi.nd="Text WarningText;
                                    IsVisible WarningVisible"/>
             
-            <Grid FlexLayout.Grow="2" FlexLayout.AlignSelf="Center" Padding="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+            <FlexLayout Direction="Row"
+                        JustifyContent="SpaceEvenly"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="2">
                 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+                <FlexLayout Direction="Column"
+                            FlexLayout.Grow="1"
+                            JustifyContent="SpaceEvenly"
+                            AlignItems="End">
                     
-                    <Button Grid.Row="0"
-                            Grid.Column="0"
-                            Text="{Binding WordOne}"
+                    <Button Text="{Binding WordOne}"
                             Command="{Binding WordCommand}"
                             CommandParameter="0" />
 
-                    <Button Grid.Row="1"
-                            Grid.Column="0"
-                            Text="{Binding WordTwo}"
+                    <Button Text="{Binding WordTwo}"
                             Command="{Binding WordCommand}"
                             CommandParameter="1" />
 
-                    <Button Grid.Row="2"
-                            Grid.Column="0"
-                            Text="{Binding WordThree}"
+                    <Button Text="{Binding WordThree}"
                             Command="{Binding WordCommand}"
                             CommandParameter="2" />
                     
-                    <Button Grid.Row="3"
-                            Grid.Column="0"
-                            Text="{Binding WordFour}"
+                    <Button Text="{Binding WordFour}"
                             Command="{Binding WordCommand}"
                             CommandParameter="3" />
                     
-                    <Button Grid.Row="0"
-                            Grid.Column="1"
-                            Text="{Binding WordFive}"
+                </FlexLayout>
+                
+                <BoxView WidthRequest="10" />
+                
+                <FlexLayout Direction="Column"
+                            FlexLayout.Grow="1"
+                            JustifyContent="SpaceEvenly"
+                            AlignItems="Start">
+                    
+                    <Button Text="{Binding WordFive}"
                             Command="{Binding WordCommand}"
                             CommandParameter="4" />
 
-                    <Button Grid.Row="1"
-                            Grid.Column="1"
-                            Text="{Binding WordSix}"
+                    <Button Text="{Binding WordSix}"
                             Command="{Binding WordCommand}"
                             CommandParameter="5" />
 
-                    <Button Grid.Row="2"
-                            Grid.Column="1"
-                            Text="{Binding WordSeven}"
+                    <Button Text="{Binding WordSeven}"
                             Command="{Binding WordCommand}"
                             CommandParameter="6" />
                     
-                    <Button Grid.Row="3"
-                            Grid.Column="1"
-                            Text="{Binding WordEight}"
+                    <Button Text="{Binding WordEight}"
                             Command="{Binding WordCommand}"
                             CommandParameter="7" />
-            </Grid>
-        
+                    
+                </FlexLayout>
+                
+            </FlexLayout>
+            
         </FlexLayout>
     
     </ContentPage.Content>
