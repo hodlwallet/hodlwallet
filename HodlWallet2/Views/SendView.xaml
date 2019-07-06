@@ -78,7 +78,9 @@
                                HorizontalTextAlignment="Start" 
                                VerticalOptions="Center" />
                             
-                        <Entry Placeholder="1.0 BTC" 
+                        <Entry Placeholder="0.00"
+                               Keyboard="Numeric"
+                               ReturnType="Done"
                                Text="{Binding AmountToSend}" 
                                TextColor="{StaticResource SyncGradientStart}" 
                                BackgroundColor="Transparent"
