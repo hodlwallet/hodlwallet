@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 using Newtonsoft.Json;
 
@@ -14,23 +15,12 @@ using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Services;
-using HodlWallet2.Core.Utils;
 using Liviano;
 using Liviano.Models;
-using MvvmCross.Commands;
-using MvvmCross.Logging;
-using MvvmCross.Navigation;
-using NBitcoin;
-using Newtonsoft.Json;
-using Xamarin.Essentials;
-using Xamarin.Forms;
-using Transaction = HodlWallet2.Core.Models.Transaction;
+
+using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Utils;
-
-using Liviano.Models;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -389,6 +379,12 @@ namespace HodlWallet2.Core.ViewModels
 
         string GetAmountLabelText(TransactionData tx)
         {
+            // FIXME BUG: Figure out why tx is null sometimes.
+            if (tx is null)
+            {
+                return "";
+            }
+
             var preferences = Preferences.Get("currency", "BTC"); 
             if (preferences == "BTC")
             {
