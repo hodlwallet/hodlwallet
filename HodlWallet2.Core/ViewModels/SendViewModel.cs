@@ -95,7 +95,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxAsyncCommand OnValueChangedCommand { get; }
 
         public SendViewModel(
-            IMvxLogProvider logProvider, 
+            IMvxLogProvider logProvider,
             IMvxNavigationService navigationService,
             IWalletService walletService,
             IPrecioService precioService) : base(logProvider, navigationService)
@@ -110,7 +110,7 @@ namespace HodlWallet2.Core.ViewModels
             OnValueChangedCommand = new MvxAsyncCommand(SetSliderValue);
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
-            
+
             Task.Run(SetSliderValue);
         }
 
@@ -142,7 +142,7 @@ namespace HodlWallet2.Core.ViewModels
             return Task.FromResult(this);
         }
 
-        async Task Close()    
+        async Task Close()
         {
             await NavigationService.Close(this);
         }
@@ -191,7 +191,7 @@ namespace HodlWallet2.Core.ViewModels
 
         bool IsBitcoinAddressReused(string address)
         {
-            return _WalletService.IsAddressReused(address);
+            return _WalletService.IsAddressOwn(address);
         }
 
         async Task Send(string password = "")
