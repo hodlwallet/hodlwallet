@@ -21,14 +21,15 @@ namespace HodlWallet2.Droid.Renderers
         {
             base.OnElementChanged(e);
 
-            if (e.NewElement != null)
-            {
-                ShapeDrawable th = new ShapeDrawable(new OvalShape());
-                th.SetIntrinsicWidth(50);
-                th.SetIntrinsicHeight(50);
-                th.SetColorFilter(Android.Graphics.Color.White, Android.Graphics.PorterDuff.Mode.SrcOver);
-                Control.SetThumb(th);
-            }
+            if (e.NewElement == null) return;
+
+            ShapeDrawable th = new ShapeDrawable(new OvalShape());
+
+            th.SetIntrinsicWidth(50);
+            th.SetIntrinsicHeight(50);
+            th.SetColorFilter(Android.Graphics.Color.White, Android.Graphics.PorterDuff.Mode.SrcOver);
+
+            Control.SetThumb(th);
         }
     }
 }
