@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using HodlWallet2.Core.ViewModels;
 using Xamarin.Forms;
-//using Serilog;
-
-using HodlWallet2.Locale;
-using HodlWallet2.Core.Utils;
 using MvvmCross.Forms.Views;
 using HodlWallet2.Core.Interfaces;
 
@@ -13,60 +9,9 @@ namespace HodlWallet2.Views
 {
     public partial class BackupRecoveryWordView : MvxContentPage<BackupRecoveryWordViewModel>
     {
-        int Position;
-        string[] Mnemonic;
-        IWalletService _Wallet;
-        ILogger _Logger;
-
         public BackupRecoveryWordView()
         {
-//            _Wallet = Wallet.Instance;
-//            _Logger = _Wallet.Logger;
-
             InitializeComponent();
-
-            //Position = position;
-            //Mnemonic = mnemonic;
-
-//            NavigationPage.SetHasBackButton(this, false);
-//            SetLabels();
         }
-
-        private void SetLabels()
-        {
-            Title = LocaleResources.Backup_title;
-            Header.Text = LocaleResources.Backup_wordheader;
-            Index.Text = Position + " of 12";
-            Word.Text = Mnemonic[Position - 1];
-            Next.Text = LocaleResources.Seed_next;
-            Previous.Text = LocaleResources.Backup_previous;
-            Previous.IsVisible = Divider.IsVisible = Position > 1 ? true : false;
-        }
-
-//        private void BackupWord_Clicked(object sender, EventArgs e)
-//        {
-//            if (Position < 12)
-//            {
-//                Position++;
-//                Navigation.PushAsync(new BackupRecoveryWordView(Position, Mnemonic));
-//                _Logger.Information("Backup button clicked.");
-//            }
-//            else
-//            {
-//                Navigation.PushAsync(new BackupRecoveryConfirmView(new BackupConfirmViewModel(Mnemonic)));
-//                _Logger.Information("Backup recovery confirmation initiated.");
-//            }
-//        }
-//
-//        private void Previous_Clicked(object sender, EventArgs e)
-//        {
-//            Navigation.PopAsync();
-//        }
-//
-//        protected override void OnDisappearing()
-//        {
-//            base.OnDisappearing();
-//            Position--;
-//        }
     }
 }
