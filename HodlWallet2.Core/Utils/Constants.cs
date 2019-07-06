@@ -28,7 +28,7 @@ namespace HodlWallet2.Core.Utils
         public const string AT_LABEL = "At";
         public const string DISPLAY_ALERT_ERROR_TITLE = "Error";
         public const string DISPLAY_ALERT_PASTE_MESSAGE = "Pasteboard is empty or invalid.";
-        public const string DISPLAY_ALERT_SCAN_MESSAGE = "QR Code could not be scanned.";
+        public const string DISPLAY_ALERT_SCAN_MESSAGE = "Invalid QR code.";
         public const string DISPLAY_ALERT_ERROR_BUTTON = "OK";
 
         // Temporary Values

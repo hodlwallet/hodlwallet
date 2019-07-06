@@ -17,6 +17,7 @@ using HodlWallet2.Core.Interfaces;
 using Constants = HodlWallet2.Core.Utils.Constants;
 using Liviano.Exceptions;
 using NBitcoin;
+using Liviano.Utilities;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -164,7 +165,7 @@ namespace HodlWallet2.Core.ViewModels
 
                     address = result.Text;
 
-                    TryProcessAddress(address);
+                    TryProcessAddress(address, Constants.DISPLAY_ALERT_SCAN_MESSAGE);
                 }
             };
             BarcodeScannerInteraction.Raise(request);
@@ -176,14 +177,28 @@ namespace HodlWallet2.Core.ViewModels
             
             string address = await Clipboard.GetTextAsync();
 
-            TryProcessAddress(address);
+            TryProcessAddress(address, Constants.DISPLAY_ALERT_PASTE_MESSAGE);
         }
 
-        void TryProcessAddress(string address)
+        void TryProcessAddress(string address, string errorMessage)
         {
             if (IsBitcoinAddress(address))
             {
-                AddressToSendTo = address;
+                if (!_WalletService.IsAddressOwn(address))
+                {
+                    AddressToSendTo = address;
+
+                    return;
+                }
+
+                var request = new DisplayAlertContent
+                {
+                    Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
+                    Message = errorMessage,
+                    Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+                };
+
+                DisplayAlertInteraction.Raise(request);
 
                 return;
             }
@@ -208,7 +223,7 @@ namespace HodlWallet2.Core.ViewModels
             }
             catch (Exception ex)
             {
-                _Logger.Debug(
+                _Logger.Information(
                     "Unable to extract address from QR code: {address}, {error}",
                     address,
                     ex.Message
@@ -217,7 +232,7 @@ namespace HodlWallet2.Core.ViewModels
                 var request = new DisplayAlertContent
                 {
                     Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
-                    Message = Constants.DISPLAY_ALERT_SCAN_MESSAGE,
+                    Message = errorMessage,
                     Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
                 };
 
