@@ -31,7 +31,8 @@ namespace HodlWallet2.Core.Interfaces
         event EventHandler OnConfigured;
         event EventHandler OnStarted;
         event EventHandler OnScanning;
-        
+        event EventHandler<int> OnConnectedNode;
+
         void InitializeWallet();
         void Configure(string walletId, string network, int? nodesToConnect);
         void Start(string password, DateTimeOffset? timeToStartOn);

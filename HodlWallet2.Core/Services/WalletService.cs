@@ -72,13 +72,27 @@ namespace HodlWallet2.Core.Services
 
         public NodesGroup NodesGroup { get; set; }
 
-        public int ConnectedNodes { get; set; }
+        int _ConnectedNodes;
+        public int ConnectedNodes
+        {
+            get
+            {
+                return _ConnectedNodes;
+            }
+
+            set
+            {
+                _ConnectedNodes = value;
+                OnConnectedNode.Invoke(this, _ConnectedNodes);
+            }
+        }
 
         public BlockLocator ScanLocation { get; set; }
 
         public event EventHandler OnConfigured;
         public event EventHandler OnStarted;
         public event EventHandler OnScanning;
+        public event EventHandler<int> OnConnectedNode;
 
         public bool IsStarted { get; private set; }
         public bool IsConfigured { get; private set; }
@@ -88,10 +102,7 @@ namespace HodlWallet2.Core.Services
         /// <summary>
         /// Empty constructor that MvvmCross needs to start as a service
         /// </summary>
-        public WalletService()
-        {
-            ConnectedNodes = 0;
-        }
+        public WalletService() { }
 
         public HdAccount CurrentAccount
         {
