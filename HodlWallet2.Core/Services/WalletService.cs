@@ -582,6 +582,13 @@ namespace HodlWallet2.Core.Services
             }
         }
 
+        public Network GetNetwork()
+        {
+            Guard.NotNull(WalletManager, nameof(WalletManager));
+
+            return WalletManager.Network;
+        }
+
         void AddNodesGroupEvents()
         {
             if (_NodesGroup is null) return;

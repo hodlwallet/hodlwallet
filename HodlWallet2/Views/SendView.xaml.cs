@@ -20,12 +20,15 @@ using MvvmCross.ViewModels;
 using HodlWallet2.Core.Interactions;
 using MvvmCross.Base;
 using MvvmCross.Binding.BindingContext;
+using ZXing.Net.Mobile.Forms;
 
 namespace HodlWallet2.Views
 {
     [MvxModalPresentation]
     public partial class SendView : MvxContentPage<SendViewModel>
     {
+        ZXingScannerPage _ScanPage;
+
         IMvxInteraction<DisplayAlertContent> _DisplayAlertInteraction;
         public IMvxInteraction<DisplayAlertContent> DisplayAlertInteraction
         {
@@ -55,6 +58,21 @@ namespace HodlWallet2.Views
             }
         }
 
+        IMvxInteraction<BarcodeScannerPrompt> _BarcodeScannerInteraction = new MvxInteraction<BarcodeScannerPrompt>();
+        public IMvxInteraction<BarcodeScannerPrompt> BarcodeScannerInteraction
+        {
+            get => _BarcodeScannerInteraction;
+
+            set
+            {
+                if (_BarcodeScannerInteraction != null)
+                    _BarcodeScannerInteraction.Requested -= BarcodeScannerInteraction_Requested;
+
+                _BarcodeScannerInteraction = value;
+                _BarcodeScannerInteraction.Requested += BarcodeScannerInteraction_Requested;
+            }
+        }
+
         public SendView()
         {
             InitializeComponent();
@@ -80,6 +98,13 @@ namespace HodlWallet2.Views
             ViewModel.ProcessAddressOnClipboardToPaste();
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            _ScanPage.IsScanning = false;
+        }
+
         void CreateInteractionBindings()
         {
             var set = this.CreateBindingSet<SendView, SendViewModel>();
@@ -92,6 +117,11 @@ namespace HodlWallet2.Views
             set.Bind(this)
                 .For(view => view.DisplayAlertInteraction)
                 .To(viewModel => viewModel.DisplayAlertInteraction)
+                .OneWay();
+
+            set.Bind(this)
+                .For(view => view.BarcodeScannerInteraction)
+                .To(viewModel => viewModel.BarcodeScannerInteraction)
                 .OneWay();
 
             set.Apply();
@@ -146,6 +176,63 @@ namespace HodlWallet2.Views
             await DisplayAlert(
                 displayAlertContent.Title, displayAlertContent.Message, displayAlertContent.Buttons[0]
             );
+        }
+
+        async void BarcodeScannerInteraction_Requested(object sender, MvxValueEventArgs<BarcodeScannerPrompt> e)
+        {
+            var barcodeScannerPrompt = e.Value;
+
+            // Android
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                MobileBarcodeScanner scanner = new MobileBarcodeScanner();
+                ZXing.Result resultAndroid = await scanner.Scan();
+
+                barcodeScannerPrompt.ResultCallback(resultAndroid);
+
+                return;
+            }
+
+            // iOS
+            // TODO These definitions should be moved to another place...
+            //var customOverlay = new StackLayout
+            //{
+            //    HorizontalOptions = LayoutOptions.FillAndExpand,
+            //    VerticalOptions = LayoutOptions.FillAndExpand
+            //};
+            //var torch = new Button
+            //{
+            //    Text = "Toggle Torch"
+            //};
+            //torch.Clicked += delegate {
+            //    _ScanPage.ToggleTorch();
+            //};
+            //customOverlay.Children.Add(torch);
+
+            _ScanPage = new ZXingScannerPage(
+                //customOverlay: customOverlay,
+                new MobileBarcodeScanningOptions
+                {
+                    AutoRotate = true,
+                    UseNativeScanning = true,
+                    DelayBetweenAnalyzingFrames = 5,
+                    DelayBetweenContinuousScans = 5
+                }
+            );
+
+            _ScanPage.OnScanResult += (ZXing.Result resultIOS) =>
+            {
+                _ScanPage.IsScanning = false;
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    Navigation.PopAsync();
+
+                    barcodeScannerPrompt.ResultCallback(resultIOS);
+                });
+            };
+
+            await Navigation.PushAsync(_ScanPage);
         }
     }
 }

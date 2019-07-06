@@ -47,6 +47,7 @@ namespace HodlWallet2.Core.Interfaces
         bool IsVerifyChecksum(string mnemonic, string wordList);
         string GetAddressFromTransaction(TransactionData txData);
         HdAddress GetReceiveAddress();
+        Network GetNetwork();
         IEnumerable<TransactionData> GetCurrentAccountTransactions();
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,
             int feeSatsPerByte, string password);

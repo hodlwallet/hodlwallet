@@ -1,5 +1,4 @@
-﻿using System;
-namespace HodlWallet2.Core.Models
+﻿namespace HodlWallet2.Core.Interactions
 {
     public class DisplayAlertContent
     {
