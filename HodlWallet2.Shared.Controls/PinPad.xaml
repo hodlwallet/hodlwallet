@@ -28,9 +28,9 @@
                 Margin="10">
         
         <Label x:Name="lblTitle"
-               FlexLayout.Grow="1"
                Style="{DynamicResource CustomLabel}" 
-               FontSize="Large" />
+               FontSize="Large"
+               Margin="0, 10, 0, 10" />
         
         <Label x:Name="lblHeader"
                FlexLayout.Grow="1"
