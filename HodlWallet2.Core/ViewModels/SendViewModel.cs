@@ -191,7 +191,7 @@ namespace HodlWallet2.Core.ViewModels
                     return;
                 }
 
-                DisplayProcessAddressErrorAlert(errorMessage);
+                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF);
 
                 return;
             }
@@ -214,6 +214,12 @@ namespace HodlWallet2.Core.ViewModels
                 if (bitcoinUrl.PaymentRequestUrl is Uri paymentRequestUrl)
                     throw new WalletException($"HODL Wallet does not support BIP70");
             }
+            catch (WalletException we)
+            {
+                _Logger.Information(we.Message);
+
+                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_ERROR_BIP70);
+            }
             catch (Exception ex)
             {
                 _Logger.Information(
@@ -226,11 +232,11 @@ namespace HodlWallet2.Core.ViewModels
             }
         }
 
-        void DisplayProcessAddressErrorAlert(string errorMessage)
+        void DisplayProcessAddressErrorAlert(string errorMessage, string title = null)
         {
             var request = new DisplayAlertContent
             {
-                Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
+                Title = title ?? Constants.DISPLAY_ALERT_ERROR_TITLE,
                 Message = errorMessage,
                 Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
             };
