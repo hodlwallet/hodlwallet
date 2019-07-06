@@ -1,23 +1,23 @@
 using System;
 using System.Threading.Tasks;
-using Liviano;
+
+using NBitcoin;
 using NBitcoin.Payment;
+
 using Xamarin.Forms;
 using Xamarin.Essentials;
+
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
-
-using ZXing.Mobile;
-
 using MvvmCross.ViewModels;
 
 using HodlWallet2.Core.Interactions;
 using HodlWallet2.Core.Interfaces;
-using Constants = HodlWallet2.Core.Utils.Constants;
+using HodlWallet2.Core.Utils;
+
+using Liviano;
 using Liviano.Exceptions;
-using NBitcoin;
-using Liviano.Utilities;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -191,14 +191,7 @@ namespace HodlWallet2.Core.ViewModels
                     return;
                 }
 
-                var request = new DisplayAlertContent
-                {
-                    Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
-                    Message = errorMessage,
-                    Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
-                };
-
-                DisplayAlertInteraction.Raise(request);
+                DisplayProcessAddressErrorAlert(errorMessage);
 
                 return;
             }
@@ -229,15 +222,20 @@ namespace HodlWallet2.Core.ViewModels
                     ex.Message
                 );
 
-                var request = new DisplayAlertContent
-                {
-                    Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
-                    Message = errorMessage,
-                    Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
-                };
-
-                DisplayAlertInteraction.Raise(request);
+                DisplayProcessAddressErrorAlert(errorMessage);
             }
+        }
+
+        void DisplayProcessAddressErrorAlert(string errorMessage)
+        {
+            var request = new DisplayAlertContent
+            {
+                Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
+                Message = errorMessage,
+                Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+            };
+
+            DisplayAlertInteraction.Raise(request);
         }
 
         async Task SetSliderValue()
