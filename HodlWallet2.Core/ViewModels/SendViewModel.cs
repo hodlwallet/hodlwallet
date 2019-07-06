@@ -152,14 +152,11 @@ namespace HodlWallet2.Core.ViewModels
 
             if (IsCameraAvailable)
             {
-                int n = 0;
                 string address = "";
                 var request = new BarcodeScannerPrompt
                 {
                     ResultCallback = async (ZXing.Result result) =>
                     {
-                        _Logger.Debug($"Running this for {++n} time");
-
                         // If we already scanned this we get out
                         // this is done because ZXing is weird
                         // and keeps sending scans
