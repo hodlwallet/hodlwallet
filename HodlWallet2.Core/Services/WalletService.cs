@@ -382,7 +382,10 @@ namespace HodlWallet2.Core.Services
             OnScanning?.Invoke(this, null);
         }
 
-
+        /// <summary>
+        /// Destroy wallet, deletes wallets file and disconnects from nodes
+        /// </summary>
+        /// <param name="dryRun">Do not delete anything just try</param>
         public void DestroyWallet(bool dryRun = false)
         {
             if (_Network == null)
@@ -409,13 +412,19 @@ namespace HodlWallet2.Core.Services
 
             if (dryRun) return;
 
+            // Disconnect
+            _NodesGroup.Disconnect();
+
+            lock (_Lock)
+            {
+                // Database cleanup
+                File.Delete(chainFile);
+                File.Delete(addrmanFile);
+                File.Delete(walletFile);
+            }
+
             // TODO Make sure that removing all secure storage is the right thing to do
             SecureStorageProvider.RemoveAll();
-
-            // Database cleanup
-            File.Delete(chainFile);
-            File.Delete(addrmanFile);
-            File.Delete(walletFile);
         }
 
         public void ReScan(DateTimeOffset? timeToStartOn = null)
@@ -658,6 +667,8 @@ namespace HodlWallet2.Core.Services
                 await Save();
 
                 Logger.Information("Saved chain file to filepath: {filepath} on {now}", ChainFile(), DateTime.Now);
+
+                Logger.Debug($"Chain file size: {new FileInfo(ChainFile()).Length}");
 
                 int delay = 50_000;
 
