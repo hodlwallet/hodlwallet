@@ -9,6 +9,8 @@ namespace HodlWallet2.iOS.Renderers
     {
         public bool HasCameraPermission()
         {
+            // FIXME "this cannot be correct...
+            // I thought it was doing something" - Igor.
             return true;
         }
     }
