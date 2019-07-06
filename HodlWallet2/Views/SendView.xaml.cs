@@ -98,13 +98,6 @@ namespace HodlWallet2.Views
             ViewModel.ProcessAddressOnClipboardToPaste();
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-
-            _ScanPage.IsScanning = false;
-        }
-
         void CreateInteractionBindings()
         {
             var set = this.CreateBindingSet<SendView, SendViewModel>();
