@@ -150,103 +150,78 @@ namespace HodlWallet2.Core.ViewModels
         {
             var IsCameraAvailable = DependencyService.Get<IPermissions>().HasCameraPermission();
 
-            if (IsCameraAvailable)
+            if (!IsCameraAvailable) return;
+
+            string address = "";
+            var request = new BarcodeScannerPrompt
             {
-                string address = "";
-                var request = new BarcodeScannerPrompt
+                ResultCallback = (ZXing.Result result) =>
                 {
-                    ResultCallback = async (ZXing.Result result) =>
-                    {
-                        // If we already scanned this we get out
-                        // this is done because ZXing is weird
-                        // and keeps sending scans
-                        if (result.Text == address) return;
+                    // If we already scanned this we get out
+                    // this is done because ZXing is weird
+                    // and keeps sending scans
+                    if (result.Text == address) return;
 
-                        address = result.Text;
+                    address = result.Text;
 
-                        if (IsBitcoinAddress(address))
-                        {
-                            AddressToSendTo = address;
-                        }
-                        else
-                        {
-                            try
-                            {
-                                var bitcoinUrl = new BitcoinUrlBuilder(address);
-
-                                if (bitcoinUrl.Address is BitcoinAddress addr)
-                                    AddressToSendTo = addr.ToString();
-
-                                if (bitcoinUrl.Amount is Money amount)
-                                {
-                                    // TODO This has to decide depending on the currency,
-                                    // if the user is in USD we should switch them to BTC
-                                    // once currency flip is available then we can do this
-                                    AmountToSend = amount.ToDecimal(MoneyUnit.BTC);
-                                }
-
-                                if (bitcoinUrl.PaymentRequestUrl is Uri paymentRequestUrl)
-                                    throw new WalletException($"HODL Wallet does not support BIP70");
-                            }
-                            catch (Exception ex)
-                            {
-                                _Logger.Debug(
-                                    "Unable to extract address from QR code: {address}, {error}",
-                                    address,
-                                    ex.Message
-                                );
-
-                                var req = new DisplayAlertContent
-                                {
-                                    Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
-                                    Message = Constants.DISPLAY_ALERT_SCAN_MESSAGE,
-                                    Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
-                                };
-
-                                DisplayAlertInteraction.Raise(req);
-                            }
-                        }
-                    }
-                };
-                BarcodeScannerInteraction.Raise(request);
-            }
+                    TryProcessAddress(address);
+                }
+            };
+            BarcodeScannerInteraction.Raise(request);
         }
 
-        private async Task Paste()
+        async Task Paste()
         {
-            if (Clipboard.HasText)
+            if (!Clipboard.HasText) return;
+            
+            string address = await Clipboard.GetTextAsync();
+
+            TryProcessAddress(address);
+        }
+
+        void TryProcessAddress(string address)
+        {
+            if (IsBitcoinAddress(address))
             {
-                var content = await Clipboard.GetTextAsync();
+                AddressToSendTo = address;
 
-                if (content.IsBitcoinAddress(_WalletService.GetNetwork()))
+                return;
+            }
+
+            try
+            {
+                var bitcoinUrl = new BitcoinUrlBuilder(address);
+
+                if (bitcoinUrl.Address is BitcoinAddress addr)
+                    AddressToSendTo = addr.ToString();
+
+                if (bitcoinUrl.Amount is Money amount)
                 {
-                    AddressToSendTo = content;
+                    // TODO This has to decide depending on the currency,
+                    // if the user is in USD we should switch them to BTC
+                    // once currency flip is available then we can do this
+                    AmountToSend = amount.ToDecimal(MoneyUnit.BTC);
                 }
-                else
+
+                if (bitcoinUrl.PaymentRequestUrl is Uri paymentRequestUrl)
+                    throw new WalletException($"HODL Wallet does not support BIP70");
+            }
+            catch (Exception ex)
+            {
+                _Logger.Debug(
+                    "Unable to extract address from QR code: {address}, {error}",
+                    address,
+                    ex.Message
+                );
+
+                var req = new DisplayAlertContent
                 {
-                    try
-                    {
-                        var urlBuilder = new BitcoinUrlBuilder(content);
-                        AddressToSendTo = urlBuilder.Address.ToString();
-                    }
-                    catch (Exception ex)
-                    {
-                        LogProvider.GetLogFor<SendViewModel>().Error(
-                            "Unable to extract address from clipboard: {address}, {message}",
-                            content,
-                            ex.Message
-                        );
+                    Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
+                    Message = Constants.DISPLAY_ALERT_SCAN_MESSAGE,
+                    Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+                };
 
-                        var request = new DisplayAlertContent
-                        {
-                            Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
-                            Message = Constants.DISPLAY_ALERT_PASTE_MESSAGE,
-                            Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
-                        };
-
-                        DisplayAlertInteraction.Raise(request);
-                    }
-                }
+                DisplayAlertInteraction.Raise(req);
             }
         }
 
