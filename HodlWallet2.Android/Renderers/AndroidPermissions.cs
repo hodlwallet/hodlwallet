@@ -1,6 +1,9 @@
-﻿using HodlWallet2.Core.Interfaces;
+﻿using Xamarin.Forms;
+
+using ZXing.Net.Mobile.Android;
+
+using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Droid.Renderers;
-using Xamarin.Forms;
 
 [assembly: Dependency (typeof (AndroidPermissions))]
 namespace HodlWallet2.Droid.Renderers
@@ -9,15 +12,11 @@ namespace HodlWallet2.Droid.Renderers
     {
         public bool HasCameraPermission()
         {
-            var needsPermissionRequest = ZXing.Net.Mobile.Android.PermissionsHandler.NeedsPermissionRequest(MainActivity.Instance);
+            var needsPermissionRequest = PermissionsHandler.NeedsPermissionRequest(MainActivity.Instance);
 
-            if (needsPermissionRequest)
-                ZXing.Net.Mobile.Android.PermissionsHandler.RequestPermissionsAsync(MainActivity.Instance);
+            if (needsPermissionRequest) PermissionsHandler.RequestPermissionsAsync(MainActivity.Instance);
 
-            if (!needsPermissionRequest)
-                return true;
-
-            return false;
+            return !needsPermissionRequest;
         }
     }
 }
