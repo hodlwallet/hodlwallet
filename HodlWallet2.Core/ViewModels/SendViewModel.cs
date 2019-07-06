@@ -214,14 +214,14 @@ namespace HodlWallet2.Core.ViewModels
                     ex.Message
                 );
 
-                var req = new DisplayAlertContent
+                var request = new DisplayAlertContent
                 {
                     Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
                     Message = Constants.DISPLAY_ALERT_SCAN_MESSAGE,
                     Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
                 };
 
-                DisplayAlertInteraction.Raise(req);
+                DisplayAlertInteraction.Raise(request);
             }
         }
 
