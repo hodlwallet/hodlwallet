@@ -271,7 +271,21 @@ namespace HodlWallet2.Core.Services
                     if (!HdOperations.IsMnemonicOfWallet(mnemonic, WalletManager.GetWallet()))
                     {
                         WalletManager.GetStorageProvider().DeleteWallet();
-                        WalletManager.CreateWallet(_WalletId, password, WalletManager.MnemonicFromString(mnemonic));
+
+                        string language = "english";
+                        int wordCount = 12;
+                        DateTimeOffset createdAt = SecureStorageProvider.HasSeedBirthday()
+                            ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday())
+                            : new DateTimeOffset(DateTime.UtcNow);
+
+                        WalletManager.CreateWallet(
+                            _WalletId,
+                            password,
+                            WalletManager.MnemonicFromString(mnemonic),
+                            language,
+                            wordCount,
+                            createdAt
+                        );
 
                         Logger.Information("Wallet created.");
                     }
@@ -281,7 +295,20 @@ namespace HodlWallet2.Core.Services
             {
                 Logger.Debug("Creating wallet ({guid}) with password: {password}", _WalletId, password);
 
-                WalletManager.CreateWallet(_WalletId, password, WalletManager.MnemonicFromString(mnemonic));
+                string language = "english";
+                int wordCount = 12;
+                DateTimeOffset createdAt = SecureStorageProvider.HasSeedBirthday()
+                    ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday())
+                    : new DateTimeOffset(DateTime.UtcNow);
+
+                WalletManager.CreateWallet(
+                    _WalletId,
+                    password,
+                    WalletManager.MnemonicFromString(mnemonic),
+                    language,
+                    wordCount,
+                    createdAt
+                );
 
                 Logger.Information("Wallet created.");
             }
@@ -495,12 +522,25 @@ namespace HodlWallet2.Core.Services
             string guid = SecureStorageProvider.GetWalletId();
             string mnemonic = SecureStorageProvider.GetMnemonic();
             string password = SecureStorageProvider.GetPassword() ?? ""; // FIXME I fear this could be null.
+            DateTimeOffset seedBirthday = SecureStorageProvider.HasSeedBirthday()
+                ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday())
+                : new DateTimeOffset(DateTime.UtcNow);
+            string language = "english"; // FIXME get actual language
+            int wordCount = 12; // FIXME get count from somehere else...
 
             Logger.Information("Unloaded wallet");
             WalletManager.UnloadWallet();
 
             Logger.Information("Creating wallet ({guid}) with password: {password}", guid, password);
-            WalletManager.CreateWallet(guid, password, WalletManager.MnemonicFromString(mnemonic));
+
+            WalletManager.CreateWallet(
+                guid,
+                password,
+                WalletManager.MnemonicFromString(mnemonic),
+                language,
+                wordCount,
+                seedBirthday
+            );
 
             Logger.Information("Wallet created.");
 

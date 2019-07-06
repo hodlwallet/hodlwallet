@@ -35,6 +35,7 @@ namespace HodlWallet2.Core.Interfaces
         void InitializeWallet();
         void Configure(string walletId, string network, int? nodesToConnect);
         void Start(string password, DateTimeOffset? timeToStartOn);
+        void StartWalletWithWalletId();
         void Scan(DateTimeOffset? timeToStartOn);
         void ReScan(DateTimeOffset? timeToStartOn);
         bool WalletExists();

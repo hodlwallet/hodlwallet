@@ -16,9 +16,6 @@ namespace HodlWallet2.Views
         public DashboardView()
         {   
             InitializeComponent();
-            
-            //TODO: Determine place to initialize wallet.
-            // Wallet.InitializeWallet();
 
             // FIXME. Figure out a way to use observable collections and update this automatically.
             // _Transactions.ItemsSource = _ViewModel.Transactions;

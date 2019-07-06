@@ -115,8 +115,15 @@ namespace HodlWallet2.Core.ViewModels
                 _WalletService.Logger.Information($"Wallet generated a new mnemonic, mnemonic: {rawMnemonic}");
 
                 SecureStorageProvider.SetMnemonic(rawMnemonic);
+                SecureStorageProvider.SetSeedBirthday(new DateTimeOffset(DateTime.UtcNow));
 
                 _WalletService.Logger.Information("Saved mnemonic to secure storage.");
+            }
+
+            // After this we should be able to start the wallet since we have a mnemonic
+            if (!_WalletService.IsStarted)
+            {
+                _WalletService.StartWalletWithWalletId();
             }
 
             return rawMnemonic;
