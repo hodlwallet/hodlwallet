@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 using MvvmCross.Commands;
@@ -8,8 +10,8 @@ using MvvmCross.ViewModels;
 
 using Serilog;
 
-using HodlWallet2.Core.Services;
 using HodlWallet2.Core.Interactions;
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -100,7 +102,23 @@ namespace HodlWallet2.Core.ViewModels
                 QuestionKey = "wipe-wallet",
                 AnswerCallback = async (yes) =>
                 {
-                    if (yes) _WalletService.DestroyWallet(true);
+                    if (yes)
+                    {
+                        try
+                        {
+                            _WalletService.DestroyWallet(dryRun: false);
+                        }
+                        catch (Exception e)
+                        {
+                            // This exception should never happen, in case it does though here it is
+                            _Logger.Information("Error trying to destroy wallet: {0}", e.ToString());
+                        }
+
+                        // After destroy we kill
+                        Process.GetCurrentProcess().Kill();
+
+                        return; // ... App is dad anyways, so we just do this of courtesy and correctness
+                    }
 
                     await NavigationService.Close(this);
                 }

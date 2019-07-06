@@ -9,43 +9,49 @@
                       x:TypeArguments="viewModels:BackupRecoveryWordViewModel"
                       bindings:Bi.nd="Title TitleText">
     <ContentPage.Resources>
-        <converters:IndexToStringConverter x:Key="IndexToStringConverter" />
+    <converters:IndexToStringConverter x:Key="IndexToStringConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
-        <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
-            
-            <BoxView FlexLayout.Grow="2" />
+        <FlexLayout Direction="Column" 
+                    JustifyContent="SpaceBetween"
+                    AlignItems="Center"
+                    BackgroundColor="{StaticResource GrayBackground}">
             
             <Label x:Name="Header"
                    FontFamily="{StaticResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
-                   FlexLayout.AlignSelf="Center"
-                   FlexLayout.Grow="1"
-                   bindings:Bi.nd="Text HeaderText"/>
+                   bindings:Bi.nd="Text HeaderText"
+                   Margin="0, 20, 0, 0"/>
             
-            <BoxView FlexLayout.Grow="3" />
-            
-            <ContentView BackgroundColor="{StaticResource DarkGray}" Margin="40" FlexLayout.Grow="2">
-                <Label x:Name="Word"
-                         Style="{DynamicResource CustomLabel}"
-                         HorizontalOptions="CenterAndExpand"
-                         VerticalOptions="CenterAndExpand"
-                         FontSize="Medium"
-                         bindings:Bi.nd="Text Word"/>
-            </ContentView>
-            
-            <Label x:Name="Index"
-                   FontFamily="{StaticResource ElectrolizeFont}"
-                   TextColor="Gray"
-                   FontSize="Micro"
-                   FlexLayout.AlignSelf="Center"
-                   Text="{Binding PositionText, Converter={StaticResource IndexToStringConverter}}" />
+            <FlexLayout Direction="Column"
+                        FlexLayout.Grow="4"
+                        JustifyContent="Center"
+                        AlignItems="Center">
+                <ContentView BackgroundColor="{StaticResource DarkGray}" 
+                             Margin="40"
+                             HeightRequest="50"
+                             WidthRequest="150">
+                   
+                    <Label x:Name="Word"
+                             Style="{DynamicResource CustomLabel}"
+                             HorizontalTextAlignment="Center"
+                             VerticalOptions="Center"
+                             FontSize="Medium"
+                             bindings:Bi.nd="Text Word"/>
+                    
+                </ContentView>
+                
+                <Label x:Name="Index"
+                       FontFamily="{StaticResource ElectrolizeFont}"
+                       TextColor="Gray"
+                       FontSize="Micro"
+                       Text="{Binding PositionText, Converter={StaticResource IndexToStringConverter}}" />
+            </FlexLayout>
             <!--TODO: Fix binding converter with MvvmCross binding -->
             
-            <BoxView FlexLayout.Grow="3" />
-            
-            <FlexLayout Direction="Row" FlexLayout.Grow="2">
+            <FlexLayout Direction="Row" 
+                        FlexLayout.Grow="1">
                 <Button x:Name="Previous"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{StaticResource DarkGray}"
@@ -53,7 +59,7 @@
                         FontSize="Large"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="2"
-                        bindings:Bi.nd="Text PreviousText;Command PreviousWordCommand"/>
+                        bindings:Bi.nd="Text PreviousText;Command PreviousWordCommand" />
                 
                 <BoxView x:Name="Divider" BackgroundColor="Transparent" WidthRequest="2" />
                
@@ -64,8 +70,7 @@
                         FontSize="Large"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="3"
-                        bindings:Bi.nd="Text NextText;Command NextWordCommand"
-                        />
+                        bindings:Bi.nd="Text NextText;Command NextWordCommand" />
             </FlexLayout>
             
         </FlexLayout>
