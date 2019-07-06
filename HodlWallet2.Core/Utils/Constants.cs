@@ -26,6 +26,12 @@ namespace HodlWallet2.Core.Utils
         public const string SHARE_TEXT_INTENT_TITLE = "Share via";
         public const string TO_LABEL = "To";
         public const string AT_LABEL = "At";
+        public const string DISPLAY_ALERT_ERROR_TITLE = "Error";
+        public const string DISPLAY_ALERT_PASTE_MESSAGE = "Pasteboard is empty or invalid.";
+        public const string DISPLAY_ALERT_SCAN_MESSAGE = "Invalid QR code.";
+        public const string DISPLAY_ALERT_ERROR_BUTTON = "OK";
+        public const string DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF = "Send to yourself is disabled.";
+        public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported.";
 
         // Temporary Values
         public const string USE_ADDRESS_FROM_CLIPBOARD =

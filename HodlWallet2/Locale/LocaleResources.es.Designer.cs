@@ -58,5 +58,23 @@ namespace HodlWallet2.Locale {
                 return ResourceManager.GetString("Onboard.recover", resourceCulture);
             }
         }
+        
+        internal static string Menu_resyncWallet {
+            get {
+                return ResourceManager.GetString("Menu.resyncWallet", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_restoreWallet {
+            get {
+                return ResourceManager.GetString("Menu.restoreWallet", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_wipeWallet {
+            get {
+                return ResourceManager.GetString("Menu.wipeWallet", resourceCulture);
+            }
+        }
     }
 }

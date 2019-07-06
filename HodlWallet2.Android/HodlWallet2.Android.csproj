@@ -80,6 +80,7 @@
     <Compile Include="Renderers\CustomNavigationPageRenderer.cs" />
     <Compile Include="Renderers\FeeSlider.cs" />
     <Compile Include="Renderers\ShareIntent.cs" />
+    <Compile Include="Renderers\AndroidPermissions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -15,134 +15,145 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="BackgroundColor" Value="{StaticResource GrayBackground}" />
                 <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
-                <Setter Property="FontSize" Value="Large" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <StackLayout Margin="10,0,10,10" BackgroundColor="{StaticResource GrayBackground}">
+        <FlexLayout Direction="Column" 
+                    Margin="20" 
+                    BackgroundColor="{StaticResource GrayBackground}" 
+                    JustifyContent="SpaceAround"
+                    AlignItems="Center">
             
-            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Padding="10">
-                <svg:Icon ResourceId="Assets.receive_tab.svg"
-                      HorizontalOptions="Start">
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1"
+                        JustifyContent="SpaceBetween">
+                <svg:Icon ResourceId="Assets.receive_tab.svg">
                     <svg:Icon.GestureRecognizers>
                         <TapGestureRecognizer bindings:Bi.nd="Command ReceiveCommand" />
                     </svg:Icon.GestureRecognizers>
                 </svg:Icon>
             
-                <svg:Icon ResourceId="Assets.send_tab.svg"
-                      HorizontalOptions="End">
+                <svg:Icon ResourceId="Assets.send_tab.svg">
                     <svg:Icon.GestureRecognizers>
                         <TapGestureRecognizer bindings:Bi.nd="Command SendCommand" />
                     </svg:Icon.GestureRecognizers>
                 </svg:Icon>
             </FlexLayout>
             
-            <Image Source="logo_front.png"
-               Scale="0.4" />
+            <Image Source="logo_front.png" 
+                   Scale="0.5" />
             
-            <Label x:Name="Header" Style="{DynamicResource CustomLabel}" HorizontalOptions="Center" />
+            <Label x:Name="Header" Style="{DynamicResource CustomLabel}" HorizontalTextAlignment="Center" />
             
-            <Grid x:Name="InputGrid" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+            <Grid x:Name="InputGrid"
+                  Padding="10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="5" />
+                    <RowDefinition Height="20" />
                 </Grid.RowDefinitions>
                 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
                 
                 <BoxView x:Name="Pin1"
                          Color="White"
-                         Grid.Row="1"
-                         Grid.Column="1" />
+                         Grid.Row="0"
+                         Grid.Column="0" />
                 <BoxView x:Name="Pin2"
                          Color="White"
-                         Grid.Row="1"
-                         Grid.Column="2" />
+                         Grid.Row="0"
+                         Grid.Column="1" />
                 <BoxView x:Name="Pin3"
                          Color="White"
-                         Grid.Row="1"
-                         Grid.Column="3" />
+                         Grid.Row="0"
+                         Grid.Column="2" />
                 <BoxView x:Name="Pin4"
                          Color="White"
-                         Grid.Row="1"
-                         Grid.Column="4" />
+                         Grid.Row="0"
+                         Grid.Column="3" />
                 <BoxView x:Name="Pin5"
                          Color="White"
-                         Grid.Row="1"
-                         Grid.Column="5" />
+                         Grid.Row="0"
+                         Grid.Column="4" />
                 <BoxView x:Name="Pin6"
                          Color="White"
-                         Grid.Row="1"
-                         Grid.Column="6" />
+                         Grid.Row="0"
+                         Grid.Column="5" />
             </Grid>
-                        
-            <Grid x:Name="PinGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                    
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1">
 
                 <Button Text="1" 
-                        Grid.Row="1" Grid.Column="1"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='1'" />
 
-                <Button Text="2" 
-                        Grid.Row="1" Grid.Column="2"
+                <Button Text="2"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='2'" />
 
-                <Button Text="3" 
-                        Grid.Row="1" Grid.Column="3"
+                <Button Text="3"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='3'" />
+            </FlexLayout>
+            
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1">
                 
-                <Button Text="4" 
-                        Grid.Row="2" Grid.Column="1"
+                <Button Text="4"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='4'" />
 
                 <Button Text="5" 
-                        Grid.Row="2" Grid.Column="2"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='5'" />
 
-                <Button Text="6" 
-                        Grid.Row="2" Grid.Column="3"
+                <Button Text="6"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='6'" />
+            
+            </FlexLayout>
+        
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1">
                 
-                <Button Text="7" 
-                        Grid.Row="3" Grid.Column="1"
+                <Button Text="7"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='7'" />
 
-                <Button Text="8" 
-                        Grid.Row="3" Grid.Column="2"
+                <Button Text="8"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='8'" />
 
-                <Button Text="9" 
-                        Grid.Row="3" Grid.Column="3"
+                <Button Text="9"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='9'" />
+            </FlexLayout>
+        
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1">
 
-                <Button Text="" 
-                        Grid.Row="4" Grid.Column="1" />
+                <Button Text=""
+                        FlexLayout.Grow="1" />
 
-                <Button Text="0" 
-                        Grid.Row="4" Grid.Column="2"
+                <Button Text="0"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command DigitCommand, CommandParameter='0'" />
                 
                 <Button Text="&#x21E6;"
-                        Grid.Row="4" Grid.Column="3"
+                        FlexLayout.Grow="1"
                         bindings:Bi.nd="Command BackspaceCommand"
                         TextColor="{StaticResource SyncGradientStart}" />
-            </Grid>
-        </StackLayout>
+            </FlexLayout>
+        </FlexLayout>
     </ContentPage.Content>
 </views:MvxContentPage>

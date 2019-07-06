@@ -3,6 +3,8 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using Serilog;
+
 using HodlWallet2.Core.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -10,17 +12,17 @@ namespace HodlWallet2
 {
     public partial class App : Application
     {
-        readonly WalletService _Wallet;
-        readonly Serilog.ILogger _Logger;
+        readonly WalletService _WalletService;
+        readonly ILogger _Logger;
 
         public App()
         {
             InitializeComponent();
 
-            _Wallet = WalletService.Instance;
-            _Logger = _Wallet.Logger;
+            _WalletService = WalletService.Instance;
+            _Logger = _WalletService.Logger;
 
-            _Wallet.InitializeWallet();
+            _WalletService.InitializeWallet();
         }
 
         protected override void OnStart()

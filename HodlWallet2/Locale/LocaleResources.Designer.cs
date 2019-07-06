@@ -293,6 +293,24 @@ namespace HodlWallet2.Locale {
             }
         }
         
+        internal static string Menu_resyncWallet {
+            get {
+                return ResourceManager.GetString("Menu.resyncWallet", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_restoreWallet {
+            get {
+                return ResourceManager.GetString("Menu.restoreWallet", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_wipeWallet {
+            get {
+                return ResourceManager.GetString("Menu.wipeWallet", resourceCulture);
+            }
+        }
+        
         internal static string SecurityCenter_title {
             get {
                 return ResourceManager.GetString("SecurityCenter.title", resourceCulture);

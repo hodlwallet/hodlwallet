@@ -101,6 +101,7 @@
     <Compile Include="Renderers\CustomNavigationRenderer.cs" />
     <Compile Include="Renderers\FeeSlider.cs" />
     <Compile Include="Renderers\ShareIntent.cs" />
+    <Compile Include="Renderers\iOSPermissions.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

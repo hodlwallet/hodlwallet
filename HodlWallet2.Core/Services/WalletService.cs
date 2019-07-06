@@ -72,16 +72,37 @@ namespace HodlWallet2.Core.Services
 
         public NodesGroup NodesGroup { get; set; }
 
+        int _ConnectedNodes;
+        public int ConnectedNodes
+        {
+            get
+            {
+                return _ConnectedNodes;
+            }
+
+            set
+            {
+                _ConnectedNodes = value;
+                OnConnectedNode.Invoke(this, _ConnectedNodes);
+            }
+        }
+
         public BlockLocator ScanLocation { get; set; }
 
         public event EventHandler OnConfigured;
         public event EventHandler OnStarted;
         public event EventHandler OnScanning;
+        public event EventHandler<int> OnConnectedNode;
 
         public bool IsStarted { get; private set; }
         public bool IsConfigured { get; private set; }
 
         public static WalletService Instance => (WalletService)Mvx.IoCProvider.Resolve<IWalletService>();
+
+        /// <summary>
+        /// Empty constructor that MvvmCross needs to start as a service
+        /// </summary>
+        public WalletService() { }
 
         public HdAccount CurrentAccount
         {
@@ -94,116 +115,6 @@ namespace HodlWallet2.Core.Services
             }
 
             set => throw new NotImplementedException("This should switch the current account.");
-        }
-
-        private PartialConcurrentChain GetChain()
-        {
-            lock (_Lock)
-            {
-                if (_ConParams != null)
-                {
-                    return _ConParams.TemplateBehaviors.Find<PartialChainBehavior>().Chain as PartialConcurrentChain;
-                }
-
-                var chain = new PartialConcurrentChain(_Network);
-
-                using (var fs = File.Open(ChainFile(), FileMode.OpenOrCreate))
-                {
-                    chain.Load(new BitcoinStream(fs, false));
-                }
-
-                if (chain.Tip.Height < _Network.GetBIP39ActivationChainedBlock().Height)
-                    chain.SetCustomTip(_Network.GetBIP39ActivationChainedBlock());
-
-                return chain;
-            }
-        }
-
-        private string GetConfigFile(string fileName)
-        {
-            string configFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), fileName);
-
-            Logger?.Information("Getting config file: {configFileName}", configFileName);
-
-            return configFileName;
-        }
-
-        private string AddrmanFile()
-        {
-            Guard.NotNull(_Network, nameof(_Network));
-
-            return GetConfigFile($"addrman-{_Network.Name.ToLower()}.dat");
-        }
-
-        private string ChainFile()
-        {
-            Guard.NotNull(_Network, nameof(_Network));
-
-            return GetConfigFile($"chain-{_Network.Name.ToLower()}.dat");
-        }
-
-        private async Task PeriodicSave()
-        {
-            while (true)
-            {
-                await Save();
-
-                Logger.Information("Saved chain file to filepath: {filepath} on {now}", ChainFile(), DateTime.Now);
-
-                int delay = 50_000;
-
-                await Task.Delay(delay);
-            }
-        }
-
-        private async Task Save()
-        {
-            await Task.Factory.StartNew(() =>
-            {
-                lock (_Lock)
-                {
-                    _AddressManager.SavePeerFile(AddrmanFile(), _Network);
-
-                    using (var fs = File.Open(ChainFile(), FileMode.OpenOrCreate))
-                    {
-                        PartialConcurrentChain chain = GetChain();
-                        chain.WriteTo(new BitcoinStream(fs, true));
-                    }
-                }
-            });
-        }
-
-        private AddressManager GetAddressManager()
-        {
-            if (_ConParams != null)
-            {
-                return _ConParams.TemplateBehaviors.Find<AddressManagerBehavior>().AddressManager;
-
-            }
-
-            if (File.Exists(AddrmanFile()))
-            {
-                return AddressManager.LoadPeerFile(AddrmanFile(), _Network);
-            }
-            else
-            {
-                return new AddressManager();
-            }
-        }
-
-        private ChainedBlock GetClosestChainedBlockToDateTimeOffset(DateTimeOffset? creationDate)
-        {
-            Guard.NotNull(_Network, nameof(_Network));
-            long ticks = 0;
-
-            if (creationDate.HasValue)
-                ticks = creationDate.Value.Ticks;
-
-            return _Network.GetCheckpoints().OrderBy(chainedBlock => Math.Abs(chainedBlock.Header.BlockTime.Ticks - ticks)).FirstOrDefault();
-        }
-
-        public WalletService()
-        {
         }
 
         public void InitializeWallet()
@@ -271,7 +182,21 @@ namespace HodlWallet2.Core.Services
                     if (!HdOperations.IsMnemonicOfWallet(mnemonic, WalletManager.GetWallet()))
                     {
                         WalletManager.GetStorageProvider().DeleteWallet();
-                        WalletManager.CreateWallet(_WalletId, password, WalletManager.MnemonicFromString(mnemonic));
+
+                        string language = "english";
+                        int wordCount = 12;
+                        DateTimeOffset createdAt = SecureStorageProvider.HasSeedBirthday()
+                            ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday())
+                            : new DateTimeOffset(DateTime.UtcNow);
+
+                        WalletManager.CreateWallet(
+                            _WalletId,
+                            password,
+                            WalletManager.MnemonicFromString(mnemonic),
+                            language,
+                            wordCount,
+                            createdAt
+                        );
 
                         Logger.Information("Wallet created.");
                     }
@@ -281,7 +206,20 @@ namespace HodlWallet2.Core.Services
             {
                 Logger.Debug("Creating wallet ({guid}) with password: {password}", _WalletId, password);
 
-                WalletManager.CreateWallet(_WalletId, password, WalletManager.MnemonicFromString(mnemonic));
+                string language = "english";
+                int wordCount = 12;
+                DateTimeOffset createdAt = SecureStorageProvider.HasSeedBirthday()
+                    ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday())
+                    : new DateTimeOffset(DateTime.UtcNow);
+
+                WalletManager.CreateWallet(
+                    _WalletId,
+                    password,
+                    WalletManager.MnemonicFromString(mnemonic),
+                    language,
+                    wordCount,
+                    createdAt
+                );
 
                 Logger.Information("Wallet created.");
             }
@@ -323,7 +261,7 @@ namespace HodlWallet2.Core.Services
             throw new WalletException("Tx data isn't send or receive, something is wrong...");
         }
 
-        public bool IsAddressReused(string address)
+        public bool IsAddressOwn(string address)
         {
             bool inInternal = CurrentAccount.InternalAddresses.Select(
                     (HdAddress hdAddress) => hdAddress.Address)
@@ -407,6 +345,7 @@ namespace HodlWallet2.Core.Services
             }
 
             _NodesGroup.Connect();
+            AddNodesGroupEvents();
 
             WalletManager.Start();
 
@@ -443,8 +382,11 @@ namespace HodlWallet2.Core.Services
             OnScanning?.Invoke(this, null);
         }
 
-
-        public void DestroyWallet()
+        /// <summary>
+        /// Destroy wallet, deletes wallets file and disconnects from nodes
+        /// </summary>
+        /// <param name="dryRun">Do not delete anything just try</param>
+        public void DestroyWallet(bool dryRun = false)
         {
             if (_Network == null)
             {
@@ -464,15 +406,25 @@ namespace HodlWallet2.Core.Services
             string addrmanFile = AddrmanFile();
             string walletFile = ((WalletStorageProvider)StorageProvider).FilePath;
 
-            // Database cleanup
             Logger.Information("Deleting chain file: {chainFile}", chainFile);
-            File.Delete(chainFile);
-
             Logger.Information("Deleting address manager file: {addrmanFile}", addrmanFile);
-            File.Delete(addrmanFile);
-
             Logger.Information("Deleting wallet file: {walletFile}", walletFile);
-            File.Delete(walletFile);
+
+            if (dryRun) return;
+
+            // Disconnect
+            _NodesGroup.Disconnect();
+
+            lock (_Lock)
+            {
+                // Database cleanup
+                File.Delete(chainFile);
+                File.Delete(addrmanFile);
+                File.Delete(walletFile);
+            }
+
+            // TODO Make sure that removing all secure storage is the right thing to do
+            SecureStorageProvider.RemoveAll();
         }
 
         public void ReScan(DateTimeOffset? timeToStartOn = null)
@@ -491,12 +443,25 @@ namespace HodlWallet2.Core.Services
             string guid = SecureStorageProvider.GetWalletId();
             string mnemonic = SecureStorageProvider.GetMnemonic();
             string password = SecureStorageProvider.GetPassword() ?? ""; // FIXME I fear this could be null.
+            DateTimeOffset seedBirthday = SecureStorageProvider.HasSeedBirthday()
+                ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday())
+                : new DateTimeOffset(DateTime.UtcNow);
+            string language = "english"; // FIXME get actual language
+            int wordCount = 12; // FIXME get count from somehere else...
 
             Logger.Information("Unloaded wallet");
             WalletManager.UnloadWallet();
 
             Logger.Information("Creating wallet ({guid}) with password: {password}", guid, password);
-            WalletManager.CreateWallet(guid, password, WalletManager.MnemonicFromString(mnemonic));
+
+            WalletManager.CreateWallet(
+                guid,
+                password,
+                WalletManager.MnemonicFromString(mnemonic),
+                language,
+                wordCount,
+                seedBirthday
+            );
 
             Logger.Information("Wallet created.");
 
@@ -615,6 +580,153 @@ namespace HodlWallet2.Core.Services
 
                 return (false, e.Message);
             }
+        }
+
+        public Network GetNetwork()
+        {
+            Guard.NotNull(WalletManager, nameof(WalletManager));
+
+            return WalletManager.Network;
+        }
+
+        void AddNodesGroupEvents()
+        {
+            if (_NodesGroup is null) return;
+
+            _NodesGroup.ConnectedNodes.Added += ConnectedNodes_Added;
+            _NodesGroup.ConnectedNodes.Removed += ConnectedNodes_Removed;
+        }
+
+        void ConnectedNodes_Added(object sender, NodeEventArgs e)
+        {
+            var node = e.Node;
+
+            Logger.Debug("Connected node added {0}", node.RemoteSocketAddress.ToString());
+
+            ConnectedNodes++;
+        }
+
+        void ConnectedNodes_Removed(object sender, NodeEventArgs e)
+        {
+            var node = e.Node;
+
+            Logger.Debug("Connected node removed {0}", node.RemoteSocketAddress.ToString());
+
+            if (node.IsConnected)
+            {
+                node.Disconnected += (Node n) =>
+                {
+                    ConnectedNodes--;
+                };
+            }
+        }
+
+        PartialConcurrentChain GetChain()
+        {
+            lock (_Lock)
+            {
+                if (_ConParams != null)
+                {
+                    return _ConParams.TemplateBehaviors.Find<PartialChainBehavior>().Chain as PartialConcurrentChain;
+                }
+
+                var chain = new PartialConcurrentChain(_Network);
+
+                using (var fs = File.Open(ChainFile(), FileMode.OpenOrCreate))
+                {
+                    chain.Load(new BitcoinStream(fs, false));
+                }
+
+                if (chain.Tip.Height < _Network.GetBIP39ActivationChainedBlock().Height)
+                    chain.SetCustomTip(_Network.GetBIP39ActivationChainedBlock());
+
+                return chain;
+            }
+        }
+
+        string GetConfigFile(string fileName)
+        {
+            string configFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), fileName);
+
+            Logger?.Information("Getting config file: {configFileName}", configFileName);
+
+            return configFileName;
+        }
+
+        string AddrmanFile()
+        {
+            Guard.NotNull(_Network, nameof(_Network));
+
+            return GetConfigFile($"addrman-{_Network.Name.ToLower()}.dat");
+        }
+
+        string ChainFile()
+        {
+            Guard.NotNull(_Network, nameof(_Network));
+
+            return GetConfigFile($"chain-{_Network.Name.ToLower()}.dat");
+        }
+
+        async Task PeriodicSave()
+        {
+            while (true)
+            {
+                await Save();
+
+                Logger.Information("Saved chain file to filepath: {filepath} on {now}", ChainFile(), DateTime.Now);
+
+                Logger.Debug($"Chain file size: {new FileInfo(ChainFile()).Length}");
+
+                int delay = 50_000;
+
+                await Task.Delay(delay);
+            }
+        }
+
+        async Task Save()
+        {
+            await Task.Factory.StartNew(() =>
+            {
+                lock (_Lock)
+                {
+                    _AddressManager.SavePeerFile(AddrmanFile(), _Network);
+
+                    using (var fs = File.Open(ChainFile(), FileMode.OpenOrCreate))
+                    {
+                        PartialConcurrentChain chain = GetChain();
+                        chain.WriteTo(new BitcoinStream(fs, true));
+                    }
+                }
+            });
+        }
+
+        AddressManager GetAddressManager()
+        {
+            if (_ConParams != null)
+            {
+                return _ConParams.TemplateBehaviors.Find<AddressManagerBehavior>().AddressManager;
+
+            }
+
+            if (File.Exists(AddrmanFile()))
+            {
+                return AddressManager.LoadPeerFile(AddrmanFile(), _Network);
+            }
+            else
+            {
+                return new AddressManager();
+            }
+        }
+
+        ChainedBlock GetClosestChainedBlockToDateTimeOffset(DateTimeOffset? creationDate)
+        {
+            Guard.NotNull(_Network, nameof(_Network));
+            long ticks = 0;
+
+            if (creationDate.HasValue)
+                ticks = creationDate.Value.Ticks;
+
+            return _Network.GetCheckpoints().OrderBy(chainedBlock => Math.Abs(chainedBlock.Header.BlockTime.Ticks - ticks)).FirstOrDefault();
         }
     }
 }

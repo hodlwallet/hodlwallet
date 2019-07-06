@@ -32,8 +32,6 @@ namespace HodlWallet2.Core.ViewModels
         {
             SavePin(pin);
 
-            _WalletService.InitializeWallet();
-
             await NavigationService.Navigate<BackupViewModel>();
         }
 

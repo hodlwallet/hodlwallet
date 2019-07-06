@@ -1,19 +1,24 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Models;
-using HodlWallet2.Core.Services;
-using Liviano;
+
+using NBitcoin;
+using NBitcoin.Payment;
+
+using Xamarin.Forms;
+using Xamarin.Essentials;
+
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
-using NBitcoin;
-using Serilog.Core;
-using Xamarin.Essentials;
-using ZXing.Mobile;
-using Xamarin.Forms;
-using Constants = HodlWallet2.Core.Utils.Constants;
+using MvvmCross.ViewModels;
+
+using HodlWallet2.Core.Interactions;
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Utils;
+
+using Liviano;
+using Liviano.Exceptions;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -21,6 +26,13 @@ namespace HodlWallet2.Core.ViewModels
     {
         readonly IWalletService _WalletService;
         readonly IPrecioService _PrecioService;
+        readonly Serilog.ILogger _Logger;
+
+        MvxInteraction<YesNoQuestion> _QuestionInteraction = new MvxInteraction<YesNoQuestion>();
+        public IMvxInteraction<YesNoQuestion> QuestionInteraction => _QuestionInteraction;
+
+        public MvxInteraction<BarcodeScannerPrompt> BarcodeScannerInteraction { get; } = new MvxInteraction<BarcodeScannerPrompt>();
+        public MvxInteraction<DisplayAlertContent> DisplayAlertInteraction { get; } = new MvxInteraction<DisplayAlertContent>();
 
         string _AddressToSendTo;
         int _Fee;
@@ -28,7 +40,7 @@ namespace HodlWallet2.Core.ViewModels
         float _Rate;
         string _AmountToSendText;
 
-        const double MAX_SLIDER_VALUE = 500;
+        const double MAX_SLIDER_VALUE = 100;
         double _SliderValue;
 
         string _TransactionFeeText;
@@ -76,7 +88,7 @@ namespace HodlWallet2.Core.ViewModels
             get => _AmountToSend;
             set => SetProperty(ref _AmountToSend, value);
         }
-        
+
         public string AmountToSendText
         {
             get => _AmountToSendText;
@@ -89,17 +101,8 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _ISOLabel, value);
         }
 
-        public bool IsBitcoinAddressOnClipboard(string content)
-        {
-            return content.IsBitcoinAddress(_WalletService.WalletManager.Network) && !WalletService.Instance.IsAddressReused(content);
-        }
-
-        public bool IsBitcoinAddressReused(string address)
-        {
-            return _WalletService.IsAddressReused(address);
-        }
-
         public MvxAsyncCommand ScanCommand { get; }
+        public MvxAsyncCommand PasteCommand { get; }
         public MvxAsyncCommand<string> SendCommand { get; }
         public MvxAsyncCommand CloseCommand { get; }
         public MvxAsyncCommand ShowFaqCommand { get; }
@@ -107,15 +110,17 @@ namespace HodlWallet2.Core.ViewModels
         public MvxAsyncCommand SwitchCurrencyCommand { get; }
 
         public SendViewModel(
-            IMvxLogProvider logProvider, 
+            IMvxLogProvider logProvider,
             IMvxNavigationService navigationService,
             IWalletService walletService,
             IPrecioService precioService) : base(logProvider, navigationService)
         {
             _WalletService = walletService;
+            _Logger = _WalletService.Logger;
             _PrecioService = precioService;
 
             ScanCommand = new MvxAsyncCommand(Scan);
+            PasteCommand = new MvxAsyncCommand(Paste);
             SendCommand = new MvxAsyncCommand<string>(Send);
             CloseCommand = new MvxAsyncCommand(Close);
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
@@ -123,20 +128,38 @@ namespace HodlWallet2.Core.ViewModels
             SwitchCurrencyCommand = new MvxAsyncCommand(SwitchCurrency);
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
-            
+
             Task.Run(SetSliderValue);
         }
 
         public override async void ViewAppearing()
         {
             base.ViewAppearing();
+
             ISOLabel = "USD($)";
             //TODO: Create constants list for code instead of hardcoding them.
-            var currencyEntity = (await _PrecioService.GetRates()).SingleOrDefault(r => r.Code == "USD"); 
+            var currencyEntity = (await _PrecioService.GetRates()).SingleOrDefault(r => r.Code == "USD");
             if (currencyEntity != null)
             {
                 _Rate = currencyEntity.Rate;
             }
+        }
+
+        public async Task ProcessAddressOnClipboardToPaste()
+        {
+            string content = await Clipboard.GetTextAsync();
+
+            if (!IsBitcoinAddress(content) || IsBitcoinAddressReused(content)) return;
+
+            var request = new YesNoQuestion
+            {
+                QuestionKey = "use-address-on-clipboard",
+                AnswerCallback = (yes) =>
+                {
+                    if (yes) AddressToSendTo = content;
+                }
+            };
+            _QuestionInteraction.Raise(request);
         }
 
         private Task SwitchCurrency()
@@ -156,25 +179,112 @@ namespace HodlWallet2.Core.ViewModels
             return Task.FromResult(this);
         }
 
-        private Task ShowFaq()
+        Task ShowFaq()
         {
             //TODO: Implement FAQ
             return Task.FromResult(this);
         }
 
-        private async Task Close()    
+        async Task Close()
         {
             await NavigationService.Close(this);
         }
 
-        private async Task Scan()
+        async Task Scan()
         {
-            //TODO: Implement Scan
-            var scanner = new MobileBarcodeScanner();
+            var IsCameraAvailable = DependencyService.Get<IPermissions>().HasCameraPermission();
 
-            var result = await scanner.Scan();
+            if (!IsCameraAvailable) return;
 
-            AddressToSendTo = result.Text;
+            string address = "";
+            var request = new BarcodeScannerPrompt
+            {
+                ResultCallback = (ZXing.Result result) =>
+                {
+                    // If we already scanned this we get out
+                    // this is done because ZXing is weird
+                    // and keeps sending scans
+                    if (result.Text == address) return;
+
+                    address = result.Text;
+
+                    TryProcessAddress(address, Constants.DISPLAY_ALERT_SCAN_MESSAGE);
+                }
+            };
+            BarcodeScannerInteraction.Raise(request);
+        }
+
+        async Task Paste()
+        {
+            if (!Clipboard.HasText) return;
+            
+            string address = await Clipboard.GetTextAsync();
+
+            TryProcessAddress(address, Constants.DISPLAY_ALERT_PASTE_MESSAGE);
+        }
+
+        void TryProcessAddress(string address, string errorMessage)
+        {
+            if (IsBitcoinAddress(address))
+            {
+                if (!_WalletService.IsAddressOwn(address))
+                {
+                    AddressToSendTo = address;
+
+                    return;
+                }
+
+                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF);
+
+                return;
+            }
+
+            try
+            {
+                var bitcoinUrl = new BitcoinUrlBuilder(address);
+
+                if (bitcoinUrl.Address is BitcoinAddress addr)
+                    AddressToSendTo = addr.ToString();
+
+                if (bitcoinUrl.Amount is Money amount)
+                {
+                    // TODO This has to decide depending on the currency,
+                    // if the user is in USD we should switch them to BTC
+                    // once currency flip is available then we can do this
+                    AmountToSend = amount.ToDecimal(MoneyUnit.BTC);
+                }
+
+                if (bitcoinUrl.PaymentRequestUrl is Uri paymentRequestUrl)
+                    throw new WalletException($"HODL Wallet does not support BIP70");
+            }
+            catch (WalletException we)
+            {
+                _Logger.Information(we.Message);
+
+                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_ERROR_BIP70);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Information(
+                    "Unable to extract address from QR code: {address}, {error}",
+                    address,
+                    ex.Message
+                );
+
+                DisplayProcessAddressErrorAlert(errorMessage);
+            }
+        }
+
+        void DisplayProcessAddressErrorAlert(string errorMessage, string title = null)
+        {
+            var request = new DisplayAlertContent
+            {
+                Title = title ?? Constants.DISPLAY_ALERT_ERROR_TITLE,
+                Message = errorMessage,
+                Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+            };
+
+            DisplayAlertInteraction.Raise(request);
         }
 
         async Task SetSliderValue()
@@ -204,7 +314,17 @@ namespace HodlWallet2.Core.ViewModels
             TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, (Fee / 1000));
         }
 
-        private async Task Send(string password = "")
+        bool IsBitcoinAddress(string content)
+        {
+            return content.IsBitcoinAddress(_WalletService.GetNetwork());
+        }
+
+        bool IsBitcoinAddressReused(string address)
+        {
+            return _WalletService.IsAddressOwn(address);
+        }
+
+        async Task Send(string password = "")
         {
             var txCreateResult = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
