@@ -40,4 +40,15 @@
       <Folder Include="Converters\" />
       <Folder Include="Interactions\" />
     </ItemGroup>
+    <ItemGroup>
+      <None Update="Utils\BuildInfo.tt">
+        <Generator>TextTemplatingFileGenerator</Generator>
+        <LastGenOutput>BuildInfo.cs</LastGenOutput>
+      </None>
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Utils\BuildInfo.cs">
+        <DependentUpon>BuildInfo.tt</DependentUpon>
+      </Compile>
+    </ItemGroup>
 </Project>
