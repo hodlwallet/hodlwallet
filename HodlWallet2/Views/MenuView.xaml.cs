@@ -1,14 +1,15 @@
 ﻿using System;
 
+using MvvmCross.Base;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using MvvmCross.ViewModels;
-using MvvmCross.Base;
 
 using HodlWallet2.Core.ViewModels;
 using HodlWallet2.Core.Interactions;
+using HodlWallet2.Core.Utils;
 using HodlWallet2.Locale;
-using MvvmCross.Binding.BindingContext;
 
 namespace HodlWallet2.Views
 {
@@ -99,7 +100,12 @@ namespace HodlWallet2.Views
             RestoreWallet.Text = LocaleResources.Menu_restoreWallet;
             WipeWallet.Text = LocaleResources.Menu_wipeWallet;
 
+#if DEBUG
+            BuildDate.Text = $"Built at: {BuildInfo.BuildDateText}";
+#endif
+
             // TODO Add these later once we got all the settings implemented.
+            //
             //Security.Text = LocaleResources.Menu_security;
             //Knowledge.Text = LocaleResources.Menu_knowledge;
             //Settings.Text = LocaleResources.Menu_settings;

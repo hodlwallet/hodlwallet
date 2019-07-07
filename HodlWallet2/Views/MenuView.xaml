@@ -60,7 +60,12 @@
                 <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
                 
                 <!-- Extra space -->
-                <BoxView FlexLayout.Grow="5" />
+                <BoxView FlexLayout.Grow="4" />
+                
+                <Label x:Name="BuildDate"
+                       Style="{DynamicResource CustomLabel}"
+                       FlexLayout.AlignSelf="Center"
+                       FlexLayout.Grow="1" />
                 
                 <!-- TODO Add the rest of the menus when it make sense-->
 
