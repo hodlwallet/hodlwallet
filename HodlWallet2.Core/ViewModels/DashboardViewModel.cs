@@ -187,7 +187,9 @@ namespace HodlWallet2.Core.ViewModels
 
         public void ReScan()
         {
-            _WalletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
+            var seedBirthday = DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday());
+
+            _WalletService.ReScan(seedBirthday);
         }
 
         void NavigateToMenuView()
