@@ -118,6 +118,7 @@ namespace HodlWallet2.Views
             ResyncWallet.Text = LocaleResources.Menu_resyncWallet;
             RestoreWallet.Text = LocaleResources.Menu_restoreWallet;
             WipeWallet.Text = LocaleResources.Menu_wipeWallet;
+            BackupMnemonic.Text = LocaleResources.Backup_title;
 
 #if DEBUG
             BuildDate.Text = $"Built at: {BuildInfo.BuildDateText}";

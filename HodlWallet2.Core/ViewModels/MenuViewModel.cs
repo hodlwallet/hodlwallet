@@ -24,6 +24,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxAsyncCommand SecurityCommand { get; }
         public MvxAsyncCommand SettingsCommand { get; }
 
+        public MvxAsyncCommand BackupMnemonicCommand { get; }
         public MvxAsyncCommand ResyncWalletCommand { get; }
         public MvxAsyncCommand RestoreWalletCommand { get; }
         public MvxAsyncCommand WipeWalletCommand { get; }
@@ -49,10 +50,17 @@ namespace HodlWallet2.Core.ViewModels
             CloseCommand = new MvxAsyncCommand(Close);
             SecurityCommand = new MvxAsyncCommand(SecurityTapped);
             SettingsCommand = new MvxAsyncCommand(SettingsTapped);
+
+            BackupMnemonicCommand = new MvxAsyncCommand(BackupMnemonic);
             ResyncWalletCommand = new MvxAsyncCommand(ResyncWallet);
             RestoreWalletCommand = new MvxAsyncCommand(RestoreWallet);
             WipeWalletCommand = new MvxAsyncCommand(WipeWallet);
             ShowBuildInfoCommand = new MvxAsyncCommand(ShowBuildInfo);
+        }
+
+        async Task BackupMnemonic()
+        {
+            await NavigationService.Navigate<BackupViewModel>();
         }
 
         async Task ShowBuildInfo()
