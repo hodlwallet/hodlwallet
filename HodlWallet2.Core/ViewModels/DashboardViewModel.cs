@@ -256,9 +256,6 @@ namespace HodlWallet2.Core.ViewModels
 
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
-            // XXX Set syncing to is visible
-            IsVisible = true;
-            // XXX
 
             _WalletService.WalletManager.OnNewTransaction += WalletManager_OnNewTransaction;
             _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnNewSpendingTransaction;
@@ -270,6 +267,8 @@ namespace HodlWallet2.Core.ViewModels
             LoadTransactionsIfEmpty();
 
             _Transactions.CollectionChanged += _Transactions_CollectionChanged;
+
+            IsVisible = !_WalletService.IsSyncedToTip();
         }
 
         void WalletManager_OnUpdateSpendingTransaction(object sender, TransactionData e)
