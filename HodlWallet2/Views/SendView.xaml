@@ -15,26 +15,27 @@
     bindings:Bi.nd="Title DashboardTitle"
     ios:Page.UseSafeArea="true">
     <FlexLayout Direction="Column">
-        <ScrollView FlexLayout.Grow="5">
-            <StackLayout Spacing="30" Margin="20, 0, 20, 0">
-                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center" Margin="0, 10, 0, 0">
-                    <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center">
-                        <svg:Icon.GestureRecognizers>
-                            <TapGestureRecognizer bindings:Bi.nd="Command CloseCommand"/>
-                        </svg:Icon.GestureRecognizers>
-                    </svg:Icon>
-                
-                    <Label x:Name="SendTitle" 
-                           Style="{DynamicResource CustomLabel}"
-                           FontSize="Large" />
+        <FlexLayout FlexLayout.Grow="1" Direction="Row" JustifyContent="SpaceBetween" 
+                    AlignItems="Center" Margin="20, 0, 20, 0">
+            <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center">
+                <svg:Icon.GestureRecognizers>
+                    <TapGestureRecognizer bindings:Bi.nd="Command CloseCommand"/>
+                </svg:Icon.GestureRecognizers>
+            </svg:Icon>
+        
+            <Label x:Name="SendTitle" 
+                   Style="{DynamicResource CustomLabel}"
+                   FontSize="Large" />
 
-                    <svg:Icon ResourceId="Assets.faq.svg" >
-                        <svg:Icon.GestureRecognizers>
-                            <TapGestureRecognizer bindings:Bi.nd="Command ShowFaqCommand"/>
-                        </svg:Icon.GestureRecognizers>
-                    </svg:Icon>
-                </FlexLayout>
-                    
+            <svg:Icon ResourceId="Assets.faq.svg" >
+                <svg:Icon.GestureRecognizers>
+                    <TapGestureRecognizer bindings:Bi.nd="Command ShowFaqCommand"/>
+                </svg:Icon.GestureRecognizers>
+            </svg:Icon>
+        </FlexLayout>
+        
+        <ScrollView FlexLayout.Grow="4">
+            <StackLayout Spacing="30" Margin="20, 0, 20, 0">    
                 <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" AlignItems="Center">
                     <StackLayout Orientation="Vertical" FlexLayout.Grow="4" >
                         <Label x:Name="ToLabel" 
