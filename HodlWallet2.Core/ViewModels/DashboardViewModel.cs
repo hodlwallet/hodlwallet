@@ -326,7 +326,6 @@ namespace HodlWallet2.Core.ViewModels
         IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
         {
             var result = new List<Transaction>();
-            int index = 0;
 
             foreach (var tx in txList)
             {
