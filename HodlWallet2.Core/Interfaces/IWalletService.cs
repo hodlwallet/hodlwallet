@@ -52,6 +52,8 @@ namespace HodlWallet2.Core.Interfaces
         string NewMnemonic(string wordList, int wordCount);
         string[] GenerateGuessWords(string wordToGuess, string language, int amountAround);
         string GetAddressFromTransaction(TransactionData txData);
+        decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);
+        long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed);
 
         HdAddress GetReceiveAddress();
         Network GetNetwork();

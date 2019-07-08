@@ -21,6 +21,7 @@ using Liviano.Models;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Utils;
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -136,8 +137,7 @@ namespace HodlWallet2.Core.ViewModels
             }
             else
             {
-                _WalletService.OnStarted += _WalletService_OnStarted; 
-                //FIXME: Should the WalletService be started whenever the DashBoard view appears???, this will create problems on its own...
+                _WalletService.OnStarted += _WalletService_OnStarted;
             }
         }
 
@@ -178,7 +178,10 @@ namespace HodlWallet2.Core.ViewModels
                 }
                 return true;
             });
-            Amount = 1.0276M;
+
+            // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
+            Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+
             IsBtcEnabled = true;
         }
 
