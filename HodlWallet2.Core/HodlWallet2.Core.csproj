@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
@@ -51,34 +50,6 @@
         <DependentUpon>BuildInfo.tt</DependentUpon>
       </Compile>
     </ItemGroup>
-    <!--<Target Name="GitInfo" BeforeTargets="Build">
-        <PropertyGroup>
-            <CustomAssemblyInfoFile>$(IntermediateOutputPath)CustomAssemblyInfo.cs</CustomAssemblyInfoFile>
-            <GitHeadFile>$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: ", "").Insert(0, "..\.git\"))</GitHeadFile>
-        </PropertyGroup>
-        
-        <ReadLinesFromFile File="$(GitHeadFile)">
-            <Output TaskParameter="Lines" PropertyName="GitHead" /> 
-        </ReadLinesFromFile>
- 
-        <ItemGroup>
-            <AssemblyAttributes Include="AssemblyMetadata">
-                <_Parameter1>GitHead</_Parameter1>
-                <_Parameter2>$(GitHead)</_Parameter2>
-            </AssemblyAttributes>
-        </ItemGroup>
-
-        <WriteCodeFragment Language="C#" OutputFile="$(CustomAssemblyInfoFile)" AssemblyAttributes="@(AssemblyAttributes)" />
-        <WriteCodeFragment AssemblyAttributes="@(AssemblyAttributes)" Language="C#" OutputDirectory="$(IntermediateOutputPath)" OutputFile="GitHead.cs">
-            <Output TaskParameter="OutputFile" ItemName="Compile" />
-            <Output TaskParameter="OutputFile" ItemName="FileWrites" />
-        </WriteCodeFragment>
-        <ItemGroup>
-            <Compile Include="$(CustomAssemblyInfoFile)" />
-        </ItemGroup>
-        
-        <Message Importance="High" Text="Git HEAD = '$(GitHead)'" />
-    </Target>-->
     
     <Target Name="GetGitHash" BeforeTargets="WriteGitHash" Condition="'$(GitHead)' == ''">
         <PropertyGroup>
