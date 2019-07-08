@@ -31,7 +31,7 @@ namespace HodlWallet2.Core.Services
 
         public const string DEFAULT_NETWORK = "testnet";
 
-        public static readonly string UserAgent = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
+        public static string USER_AGENT { get; } = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
 
         object _Lock = new object();
 
@@ -320,7 +320,7 @@ namespace HodlWallet2.Core.Services
             _ConParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
             _ConParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
 
-            _ConParams.UserAgent = UserAgent;
+            _ConParams.UserAgent = USER_AGENT;
 
             _NodesGroup = new NodesGroup(_Network, _ConParams, new NodeRequirement()
             {
