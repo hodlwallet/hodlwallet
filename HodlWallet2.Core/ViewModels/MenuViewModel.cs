@@ -13,6 +13,7 @@ using Serilog;
 using HodlWallet2.Core.Interactions;
 using HodlWallet2.Core.Services;
 using HodlWallet2.Core.Utils;
+using Xamarin.Essentials;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -56,19 +57,23 @@ namespace HodlWallet2.Core.ViewModels
 
         async Task ShowBuildInfo()
         {
-            string buildInfo = "";
-
-            buildInfo += GitInfo.GetOrigHead();
+            string buildInfo = string.Format(
+                Constants.BUILD_INFO_CONTENT,
+                GitInfo.Branch,
+                GitInfo.Head
+            );
 
             _Logger.Debug(buildInfo);
 
+            await Clipboard.SetTextAsync(buildInfo);
+
+            string msg = $"{buildInfo}\n\n{Constants.BUILD_INFO_COPIED_TO_CLIPBOARD}";
             var request = new DisplayAlertContent
             {
-                Title = "Build Info",
-                Message = buildInfo,
+                Title = Constants.BUILD_INFO_MESSAGE_TITLE,
+                Message = msg,
                 Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
             };
-
             DisplayAlertInteraction.Raise(request);
         }
 

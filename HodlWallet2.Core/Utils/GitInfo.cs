@@ -5,20 +5,21 @@ using System.Reflection;
 
 namespace HodlWallet2.Core.Utils
 {
-
     public static class GitInfo
     {
-        static Assembly _Assembly => typeof(GitInfo).Assembly;
-        //static IEnumerable<AssemblyMetadataAttribute> _Attrs => _Assembly.GetCustomAttributes<OrigHeadAttribute>();
+        static Assembly _Assembly { get; } = Assembly.GetExecutingAssembly();
+        static IEnumerable<CustomAttributeData> _CustomAttributes { get; } = _Assembly?.CustomAttributes ?? Enumerable.Empty<CustomAttributeData>();
 
-        public static string GetOrigHead()
+        public static string Head { get => GetValue("GitHead"); }
+        public static string Branch { get => GetValue("GitBranch"); }
+
+        static string GetValue(string key)
         {
-            //AppDomain
-            //var assembly = Assembly.Load("GitHead");
-            //var avariable = _Attrs.FirstOrDefault(a => a.Key == "GitOrigHead")?.Value;
-            //Assembly.LoadFile("");
-
-            return "";
+            return _CustomAttributes
+                // [assembly: AssemblyMetadata("GitHead", "COMMIT_HASH")]
+                .Where(c => c.ConstructorArguments.Count >= 2 && c.ConstructorArguments[0].Value as string == key)
+                .Select(c => c.ConstructorArguments[1].Value as string)
+                .FirstOrDefault() ?? "??";
         }
     }
 }
