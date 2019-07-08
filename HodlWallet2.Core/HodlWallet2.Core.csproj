@@ -40,17 +40,17 @@
       <Folder Include="Interactions\" />
     </ItemGroup>
     <ItemGroup>
-      <None Update="Utils\BuildInfo.tt">
-        <Generator>TextTemplatingFileGenerator</Generator>
-        <LastGenOutput>BuildInfo.cs</LastGenOutput>
-      </None>
-    </ItemGroup>
-    <ItemGroup>
       <Compile Update="Utils\BuildInfo.cs">
         <DependentUpon>BuildInfo.tt</DependentUpon>
       </Compile>
     </ItemGroup>
     
+    <ItemGroup>
+      <None Update="Utils\BuildInfo.tt">
+        <Generator>TextTemplatingFileGenerator</Generator>
+        <LastGenOutput>BuildInfo.cs</LastGenOutput>
+      </None>
+    </ItemGroup>
     <Target Name="GetGitHash" BeforeTargets="WriteGitHash" Condition="'$(GitHead)' == ''">
         <PropertyGroup>
             <GitBranch>$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: refs/heads/", ""))</GitBranch>
