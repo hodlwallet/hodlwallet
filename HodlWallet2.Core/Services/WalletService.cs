@@ -93,6 +93,7 @@ namespace HodlWallet2.Core.Services
         public event EventHandler OnStarted;
         public event EventHandler OnScanning;
         public event EventHandler<int> OnConnectedNode;
+        public event EventHandler OnScanningFinished;
 
         public bool IsStarted { get; private set; }
         public bool IsConfigured { get; private set; }
@@ -111,7 +112,7 @@ namespace HodlWallet2.Core.Services
                 // FIXME Please change this method once accounts are implemented.
                 //       That means people will change this manually by clicking on a
                 //       different account.
-                return WalletManager.GetWallet().GetAccountsByCoinType(CoinType.Bitcoin).FirstOrDefault();
+                return WalletManager.Wallet.GetAccountsByCoinType(CoinType.Bitcoin).FirstOrDefault();
             }
 
             set => throw new NotImplementedException("This should switch the current account.");
@@ -179,7 +180,7 @@ namespace HodlWallet2.Core.Services
                     Logger.Information(ex.Message);
 
                     // TODO: Defensive programming is a bad practice, this is a bad practice
-                    if (!HdOperations.IsMnemonicOfWallet(mnemonic, WalletManager.GetWallet()))
+                    if (!HdOperations.IsMnemonicOfWallet(mnemonic, WalletManager.Wallet))
                     {
                         WalletManager.GetStorageProvider().DeleteWallet();
 
@@ -225,7 +226,7 @@ namespace HodlWallet2.Core.Services
             }
 
             // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
-            Start(password, WalletManager.GetWallet().CreationTime);
+            Start(password, WalletManager.Wallet.CreationTime);
 
             Logger.Information("Wallet started.");
         }
@@ -337,11 +338,11 @@ namespace HodlWallet2.Core.Services
 
         public void Start(string password, DateTimeOffset? timeToStartOn = null)
         {
-            if (WalletManager.GetWallet() == null)
+            if (WalletManager.Wallet == null)
             {
                 WalletManager.LoadWallet(password);
 
-                timeToStartOn = WalletManager.GetWallet().CreationTime;
+                timeToStartOn = WalletManager.Wallet.CreationTime;
             }
 
             _NodesGroup.Connect();
@@ -434,6 +435,8 @@ namespace HodlWallet2.Core.Services
 
             if (SecureStorageProvider.HasSeedBirthday())
                 timeToStartOn = DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday());
+
+            // NOTE Should rescan handle deletion of tx database from the wallet? I don't think so
 
             // Start scanning again
             Scan(timeToStartOn);
@@ -546,6 +549,11 @@ namespace HodlWallet2.Core.Services
             Guard.NotNull(WalletManager, nameof(WalletManager));
 
             return WalletManager.Network;
+        }
+
+        public bool IsSyncedToTip()
+        {
+            return false;
         }
 
         void AddNodesGroupEvents()

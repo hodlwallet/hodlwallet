@@ -63,9 +63,15 @@
                 <BoxView FlexLayout.Grow="4" />
                 
                 <Label x:Name="BuildDate"
+                       bindings:Bi.nd="Command ShowBuildInfoCommand"
                        Style="{DynamicResource CustomLabel}"
                        FlexLayout.AlignSelf="Center"
-                       FlexLayout.Grow="1" />
+                       FlexLayout.Grow="1">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer bindings:Bi.nd="Command ShowBuildInfoCommand"
+                                              NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+                </Label>
                 
                 <!-- TODO Add the rest of the menus when it make sense-->
 

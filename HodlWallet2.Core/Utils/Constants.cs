@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HodlWallet2.Core.Utils
+﻿namespace HodlWallet2.Core.Utils
 {
     public static class Constants
     {

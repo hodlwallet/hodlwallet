@@ -31,6 +31,20 @@ namespace HodlWallet2.Views
             }
         }
 
+        IMvxInteraction<DisplayAlertContent> _DisplayAlertInteraction;
+        public IMvxInteraction<DisplayAlertContent> DisplayAlertInteraction
+        {
+            get => _DisplayAlertInteraction;
+            set
+            {
+                if (_DisplayAlertInteraction != null)
+                    _DisplayAlertInteraction.Requested -= OnDisplayAlertInteractionRequested;
+
+                _DisplayAlertInteraction = value;
+                _DisplayAlertInteraction.Requested += OnDisplayAlertInteractionRequested;
+            }
+        }
+
         public MenuView()
         {
             InitializeComponent();
@@ -51,6 +65,11 @@ namespace HodlWallet2.Views
             set.Bind(this)
                 .For(view => view.QuestionInteraction)
                 .To(viewModel => viewModel.QuestionInteraction)
+                .OneWay();
+
+            set.Bind(this)
+                .For(view => view.DisplayAlertInteraction)
+                .To(viewModel => viewModel.DisplayAlertInteraction)
                 .OneWay();
 
             set.Apply();
@@ -110,6 +129,15 @@ namespace HodlWallet2.Views
             //Knowledge.Text = LocaleResources.Menu_knowledge;
             //Settings.Text = LocaleResources.Menu_settings;
             //LockWallet.Text = LocaleResources.Menu_lock;
+        }
+
+        async void OnDisplayAlertInteractionRequested(object sender, MvxValueEventArgs<DisplayAlertContent> e)
+        {
+            var displayAlertContent = e.Value;
+
+            await DisplayAlert(
+                displayAlertContent.Title, displayAlertContent.Message, displayAlertContent.Buttons[0]
+            );
         }
     }
 }

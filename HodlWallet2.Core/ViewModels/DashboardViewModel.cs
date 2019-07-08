@@ -251,6 +251,9 @@ namespace HodlWallet2.Core.ViewModels
 
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
+            // XXX Set syncing to is visible
+            IsVisible = true;
+            // XXX
 
             _WalletService.WalletManager.OnNewTransaction += WalletManager_OnNewTransaction;
             _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnNewSpendingTransaction;

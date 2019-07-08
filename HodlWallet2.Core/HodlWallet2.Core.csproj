@@ -51,4 +51,25 @@
         <DependentUpon>BuildInfo.tt</DependentUpon>
       </Compile>
     </ItemGroup>
+
+    <Target Name="GitInfo" BeforeTargets="Build">
+        <PropertyGroup>
+            <GitHeadFile>$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: ", "").Insert(0, "..\.git\"))</GitHeadFile>
+        </PropertyGroup>
+        <ReadLinesFromFile File="$(GitHeadFile)">
+            <Output TaskParameter="Lines" PropertyName="GitHead" /> 
+        </ReadLinesFromFile>
+        
+        <ItemGroup>
+            <AssemblyAttributes Include="GitHead">
+            <_Parameter1>$(GitHead)</_Parameter1>
+            </AssemblyAttributes>
+        </ItemGroup>
+        <WriteCodeFragment AssemblyAttributes="@(AssemblyAttributes)" Language="C#" OutputDirectory="$(IntermediateOutputPath)" OutputFile="GitHead.cs">
+            <Output TaskParameter="OutputFile" ItemName="Compile" />
+            <Output TaskParameter="OutputFile" ItemName="FileWrites" />
+        </WriteCodeFragment>
+        
+        <Message Importance="High" Text="Git ORIG_HEAD = '$(GitHead)'" />
+    </Target>
 </Project>

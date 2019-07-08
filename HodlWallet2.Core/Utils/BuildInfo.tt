@@ -1,5 +1,6 @@
-﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+﻿<#@ template language="C#" #>
 <#@ import namespace="System.Globalization" #>
+<#@ import namespace="System.IO" #>
 <#@ output extension=".cs" #>
 <#
     const string DATE_DISPLAY_FORMAT = "MMMM d, yyyy h:mm:ss";
@@ -29,6 +30,6 @@ namespace HodlWallet2.Core.Utils
         ;
 
         public static string BuildDateText { get; } = "<#= _BuildDate.ToString(DATE_DISPLAY_FORMAT) #> UTC";
-        public static string DisplayText { get; } $"{ModuleText} {VersionText} (Build Date: {BuildDateText})";
+        public static string DisplayText { get; } = $"{ModuleText} {VersionText} (Build Date: {BuildDateText})";
     }
 }

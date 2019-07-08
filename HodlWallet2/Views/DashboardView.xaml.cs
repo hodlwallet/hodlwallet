@@ -16,19 +16,6 @@ namespace HodlWallet2.Views
         public DashboardView()
         {   
             InitializeComponent();
-
-            // FIXME. Figure out a way to use observable collections and update this automatically.
-            // _Transactions.ItemsSource = _ViewModel.Transactions;
-        }
-
-        public async void OnMenuTapped(object sender, EventArgs e)
-        {
-            // TODO:
-            /* _Transactions.ItemsSource = ViewModel.Transactions;
-
-            _Wallet.ReScan(new DateTimeOffset(new DateTime(2018, 11, 8))); */
-
-            //await Navigation.PushModalAsync(new MenuView());
         }
 
         public void SetTempLabels()

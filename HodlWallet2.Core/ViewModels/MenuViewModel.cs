@@ -12,6 +12,7 @@ using Serilog;
 
 using HodlWallet2.Core.Interactions;
 using HodlWallet2.Core.Services;
+using HodlWallet2.Core.Utils;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -26,8 +27,12 @@ namespace HodlWallet2.Core.ViewModels
         public MvxAsyncCommand RestoreWalletCommand { get; }
         public MvxAsyncCommand WipeWalletCommand { get; }
 
+        public MvxAsyncCommand ShowBuildInfoCommand { get; }
+
         MvxInteraction<YesNoQuestion> _QuestionInteraction = new MvxInteraction<YesNoQuestion>();
         public IMvxInteraction<YesNoQuestion> QuestionInteraction => _QuestionInteraction;
+
+        public MvxInteraction<DisplayAlertContent> DisplayAlertInteraction { get; } = new MvxInteraction<DisplayAlertContent>();
 
         readonly WalletService _WalletService;
         readonly ILogger _Logger;
@@ -46,6 +51,25 @@ namespace HodlWallet2.Core.ViewModels
             ResyncWalletCommand = new MvxAsyncCommand(ResyncWallet);
             RestoreWalletCommand = new MvxAsyncCommand(RestoreWallet);
             WipeWalletCommand = new MvxAsyncCommand(WipeWallet);
+            ShowBuildInfoCommand = new MvxAsyncCommand(ShowBuildInfo);
+        }
+
+        async Task ShowBuildInfo()
+        {
+            string buildInfo = "";
+
+            buildInfo += GitInfo.GetOrigHead();
+
+            _Logger.Debug(buildInfo);
+
+            var request = new DisplayAlertContent
+            {
+                Title = "Build Info",
+                Message = buildInfo,
+                Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+            };
+
+            DisplayAlertInteraction.Raise(request);
         }
 
         async Task SecurityTapped()
