@@ -6,7 +6,7 @@
 
     <ItemGroup>
         <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
-        <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+        <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
     </ItemGroup>
 
     <ItemGroup>
@@ -14,5 +14,9 @@
         <SubType>Designer</SubType>
         <Generator></Generator>
       </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HodlWallet2.Core\HodlWallet2.Core.csproj" />
     </ItemGroup>
 </Project>

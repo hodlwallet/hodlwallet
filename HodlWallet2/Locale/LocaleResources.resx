@@ -218,6 +218,20 @@
         <comment>label for menu lock wallet</comment>
     </data>
     
+    <data name="Menu.resyncWallet" xml:space="preserve">
+        <value>Re-Sync Wallet</value>
+   </data>
+    
+    <data name="Menu.restoreWallet" xml:space="preserve">
+        <value>Restore Wallet</value>
+        <comment>label for menu restore wallet</comment>
+    </data>
+    
+    <data name="Menu.wipeWallet" xml:space="preserve">
+        <value>Wipe Wallet</value>
+        <comment>label for menu wipe wallet</comment>
+    </data>
+    
     <data name="SecurityCenter.title" xml:space="preserve">
         <value>Security Center</value>
         <comment>label for security center title</comment>
@@ -297,5 +311,14 @@
         <value>Fingerprint Authentication Spending Limit Screen.</value>
         <comment>label for spending limit button on Android</comment>
     </data>
-        
+
+    <data name="Send.addressDetectedOnClipboardTitle" xml:space="preserve">
+        <value>Address Detected On Clipboard</value>
+        <comment>title of the dialog to use address on clipboard.</comment>
+    </data>
+    
+    <data name="Send.addressDetectedOnClipboardMessage" xml:space="preserve">
+        <value>Address {0} is on your clipboard would you like to use it to send Bitcoin to it?</value>
+        <comment>content of dialog to use address on clipboard</comment>
+    </data>
 </root>

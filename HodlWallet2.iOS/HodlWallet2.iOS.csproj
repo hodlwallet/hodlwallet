@@ -27,6 +27,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -96,7 +98,10 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CustomNavigationRenderer.cs" />
+    <Compile Include="Renderers\CustomNavigationRenderer.cs" />
+    <Compile Include="Renderers\FeeSlider.cs" />
+    <Compile Include="Renderers\ShareIntent.cs" />
+    <Compile Include="Renderers\iOSPermissions.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -168,9 +173,9 @@
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.1.5.188</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
     <PackageReference Include="Serilog">
-      <Version>2.8.0</Version>
+      <Version>2.9.0-dev-01091</Version>
     </PackageReference>
     <PackageReference Include="Serilog.Sinks.Xamarin">
       <Version>0.1.29</Version>
@@ -180,6 +185,9 @@
     </PackageReference>
     <PackageReference Include="ZXing.Net.Mobile">
       <Version>2.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="Refit">
+      <Version>4.7.9</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -201,5 +209,6 @@
   <ItemGroup>
     <Folder Include="Assets.xcassets\logo_front.png.imageset\" />
     <Folder Include="Assets.xcassets\logo.png.imageset\" />
+    <Folder Include="Renderers\" />
   </ItemGroup>
 </Project>

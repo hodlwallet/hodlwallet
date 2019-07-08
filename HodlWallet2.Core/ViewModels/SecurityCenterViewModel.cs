@@ -1,50 +1,51 @@
 using System;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using HodlWallet2.Core.Utils;
+
+using Xamarin.Essentials;
+
 using MvvmCross.Commands;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
-using Xamarin.Essentials;
+
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {
     [MvxModalPresentation]
     public class SecurityCenterViewModel : BaseViewModel
     {
-        private const string GrayCheck = "Assets.circle_check_gray.svg";
-        private const string YellowCheck = "Assets.circle_check_yellow.svg";
+        const string GrayCheck = "Assets.circle_check_gray.svg";
+        const string YellowCheck = "Assets.circle_check_yellow.svg";
         
-        private string _pinCheck;
-        private string _fingerprintCheck;
-        private string _mnemonicCheck;
+        string _PinCheck;
+        string _FingerprintCheck;
+        string _MnemonicCheck;
         
-        public MvxCommand CloseCommand { get; private set; }
-        public MvxCommand FaqCommand { get; private set; }
-        public MvxCommand PinCommand { get; private set; }
-        public MvxCommand FingerprintCommand { get; private set; }
-        public MvxCommand MnemonicCommand { get; private set; }
+        public MvxCommand CloseCommand { get; }
+        public MvxCommand FaqCommand { get; }
+        public MvxCommand PinCommand { get; }
+        public MvxCommand FingerprintCommand { get; }
+        public MvxCommand MnemonicCommand { get; }
         
         //TODO: Add string properties here
         
 
         public string PinCheck
         {
-            get => _pinCheck;
-            set => SetProperty(ref _pinCheck, value);
+            get => _PinCheck;
+            set => SetProperty(ref _PinCheck, value);
         }
 
         public string FingerprintCheck
         {
-            get => _fingerprintCheck;
-            set => SetProperty(ref _fingerprintCheck, value);
+            get => _FingerprintCheck;
+            set => SetProperty(ref _FingerprintCheck, value);
         }
 
         public string MnemonicCheck
         {
-            get => _mnemonicCheck;
-            set => SetProperty(ref _mnemonicCheck, value);
+            get => _MnemonicCheck;
+            set => SetProperty(ref _MnemonicCheck, value);
         }
 
         protected SecurityCenterViewModel(
@@ -92,7 +93,7 @@ namespace HodlWallet2.Core.ViewModels
 
         private void InitializeChecks()
         {
-            if (SecureStorageProvider.HasPassword())
+            if (SecureStorageProvider.HasPin())
             {
                 PinCheck = YellowCheck;
             }

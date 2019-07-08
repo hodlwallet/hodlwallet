@@ -25,4 +25,21 @@
         <value>Recuperar cartera</value>
         <comment>label for recover button</comment>
     </data>
+    
+    
+    <data name="Menu.resyncWallet" xml:space="preserve">
+        <value>Re-Sync Wallet</value>
+   </data>
+    
+    <data name="Menu.restoreWallet" xml:space="preserve">
+        <value>Restore Wallet</value>
+        <comment>label for menu restore wallet</comment>
+    </data>
+    
+    <data name="Menu.wipeWallet" xml:space="preserve">
+        <value>Wipe Wallet</value>
+        <comment>label for menu wipe wallet</comment>
+    </data>
+    
+    
 </root>

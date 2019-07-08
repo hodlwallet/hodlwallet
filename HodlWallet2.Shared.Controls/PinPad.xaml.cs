@@ -1,10 +1,12 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+
+using HodlWallet2.Core.Utils;
 
 namespace HodlWallet2.Shared.Controls
 {
@@ -160,14 +162,35 @@ namespace HodlWallet2.Shared.Controls
             else
                 this.IsEnabledCore = true;
         }
-        
+
+        public async void OnBackspaceTapped(object sender, EventArgs e)
+        {
+            // FIXME This code should not work like this, it's kindof embarasing how poorly coded this is, for now I just gonna follow the mess that's bellow - Igor.
+            if (grdSetPin.IsVisible) // "Enter Pin" Ugg... horrible way to know where you at.
+            {
+                if (_pin1.Length == 0)
+                    return;
+
+                _pin1 = _pin1.Remove(_pin1.Length - 1);
+                PaintBoxView(Color.White, _pin1.Length + 1);
+            }
+            else // "Reenter Pin"
+            {
+                if (_pin2.Length == 0)
+                    return;
+
+                _pin2 = _pin2.Remove(_pin2.Length - 1);
+                PaintBoxView(Color.White, _pin2.Length + 1);
+            }
+        }
+
         public async void OnPinTapped(object sender, EventArgs e)
         {
             if (grdSetPin.IsVisible) // Enter PIN
             {
                 if (sender is Button button && _pin1.Length < 6)
                 {
-                    _pin1 += Utils.Tags.GetTag(button);
+                    _pin1 += Tags.GetTag(button);
                     PaintBoxView(Color.Orange, _pin1.Length);
                     if (_pin1.Length == 6)
                     {
@@ -180,13 +203,14 @@ namespace HodlWallet2.Shared.Controls
             {
                 if (sender is Button button && _pin2.Length < 6)
                 {
-                    _pin2 += Utils.Tags.GetTag(button);
+                    _pin2 += Tags.GetTag(button);
                     PaintBoxView(Color.Orange, _pin2.Length + 6);
                     if (_pin2.Length == 6)
                     {
                         if (_pin1.Equals(_pin2))
                         {
-                            await Navigation.PushPopupAsync(new SetPin());
+                            // TODO: FIX POPUP STACK ERROR
+                            // await Navigation.PushPopupAsync(new SetPin());
                             Command?.Execute(_pin1);
                         }
                         else
@@ -247,10 +271,10 @@ namespace HodlWallet2.Shared.Controls
                 var bxView = boxView as BoxView;
                 if (bxView != null)
                 {
-                    var tag = Utils.Tags.GetTag(bxView);
+                    var tag = Tags.GetTag(bxView);
                     if (tag.Equals(boxViewNumber.ToString()))
                     {
-                        bxView.Color = Color.Orange;
+                        bxView.Color = fillColor;
                         break;
                     }
                 }

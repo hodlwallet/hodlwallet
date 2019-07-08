@@ -4,7 +4,7 @@ using HodlWallet2.Core.ViewModels;
 using Xamarin.Forms;
 
 using HodlWallet2.Locale;
-using HodlWallet2.Utils;
+using HodlWallet2.Core.Utils;
 using MvvmCross.Forms.Views;
 
 // TODO Please replace
@@ -15,7 +15,7 @@ namespace HodlWallet2.Views
     {
         private const string grayCheck = "Assets.circle_check_gray.svg", yellowCheck = "Assets.circle_check_yellow.svg";
 
-        public SecurityCenterView(SecurityCenterViewModel viewModel)
+        public SecurityCenterView()
         {
             InitializeComponent();
             SetLabels();

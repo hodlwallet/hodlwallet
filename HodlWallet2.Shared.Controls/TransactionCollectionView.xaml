@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="HodlWallet2.Shared.Controls.TransactionCollectionView">
-    <ContentPage.Resources>
+    <ContentView.Resources>
         <ResourceDictionary>
             <Style x:Key="TransactionLabel" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource ElectrolizeFont}"/>
@@ -11,7 +11,7 @@
                 <Setter Property="LineBreakMode" Value="MiddleTruncation" />
             </Style>
         </ResourceDictionary>
-    </ContentPage.Resources>
+    </ContentView.Resources>
     <Frame
             HeightRequest="150"
             BackgroundColor="Transparent"
@@ -50,7 +50,7 @@
                                         FontSize="Micro"
                                         Style="{StaticResource TransactionLabel}"
                                         TextColor="{Binding StatusColor}"
-                                        Text="{Binding Status}" />
+                                        Text="{Binding Amount}" />
                                     <Label
                                         Grid.Column="1"
                                         Grid.Row="0"

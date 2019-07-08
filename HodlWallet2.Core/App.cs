@@ -1,11 +1,12 @@
 using System.Threading.Tasks;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Services;
-using HodlWallet2.Core.ViewModels;
-using MvvmCross;
-using MvvmCross.IoC;
+using System.Linq;
+
 using MvvmCross.ViewModels;
-using Xamarin.Forms;
+
+using HodlWallet2.Core.Utils;
+using HodlWallet2.Core.ViewModels;
+using HodlWallet2.Core.Services;
+using System.Reflection;
 
 namespace HodlWallet2.Core
 {
@@ -13,10 +14,24 @@ namespace HodlWallet2.Core
     {
         public override void Initialize()
         {
-            //TODO: Construct and register ILogger for the WalletService on Android
-            
-            
-            RegisterAppStart<OnboardViewModel>();
+            // NOTE: Use this code to simulate first experience.
+            //SecureStorageProvider.RemoveAll();
+
+            // NOTE: Use this code to simulate login with a predictable stuff
+            // SecureStorageProvider.SetPin("111111");
+            // SecureStorageProvider.SetMnemonic("abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about");
+            // SecureStorageProvider.SetNetwork("testnet");
+
+            SecureStorageProvider.LogSecureStorageKeys();
+
+            if (SecureStorageProvider.HasPin() && SecureStorageProvider.HasMnemonic())
+            {
+                RegisterAppStart<LoginViewModel>();
+            }
+            else
+            {
+                RegisterAppStart<OnboardViewModel>();
+            }
         }
 
         /// <summary>

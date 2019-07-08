@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-using HodlWallet2.Utils;
+using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.ViewModels;
 using MvvmCross.Commands;
 using MvvmCross.Forms.Views;

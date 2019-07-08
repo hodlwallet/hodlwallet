@@ -293,6 +293,24 @@ namespace HodlWallet2.Locale {
             }
         }
         
+        internal static string Menu_resyncWallet {
+            get {
+                return ResourceManager.GetString("Menu.resyncWallet", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_restoreWallet {
+            get {
+                return ResourceManager.GetString("Menu.restoreWallet", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_wipeWallet {
+            get {
+                return ResourceManager.GetString("Menu.wipeWallet", resourceCulture);
+            }
+        }
+        
         internal static string SecurityCenter_title {
             get {
                 return ResourceManager.GetString("SecurityCenter.title", resourceCulture);
@@ -386,6 +404,18 @@ namespace HodlWallet2.Locale {
         internal static string FingerprintAuth_limitButtonAndroid {
             get {
                 return ResourceManager.GetString("FingerprintAuth.limitButtonAndroid", resourceCulture);
+            }
+        }
+        
+        internal static string Send_addressDetectedOnClipboardTitle {
+            get {
+                return ResourceManager.GetString("Send.addressDetectedOnClipboardTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Send_addressDetectedOnClipboardMessage {
+            get {
+                return ResourceManager.GetString("Send.addressDetectedOnClipboardMessage", resourceCulture);
             }
         }
     }

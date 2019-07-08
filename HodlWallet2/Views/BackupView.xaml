@@ -1,31 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HodlWallet2.Views.BackupView"
-             xmlns:svg="clr-namespace:HodlWallet2.Utils"
+             xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
              xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
              x:TypeArguments="viewModels:BackupViewModel"
              bindings:Bi.nd="Title BackupTitle">
     <ContentPage.Content>
-        <FlexLayout Direction="Column" BackgroundColor="{StaticResource GrayBackground}">
-            <BoxView FlexLayout.Grow="1" />
+        <FlexLayout Direction="Column" 
+                    JustifyContent="SpaceAround" 
+                    BackgroundColor="{StaticResource GrayBackground}"
+                    AlignItems="Center">
+            
             <svg:Icon ResourceId="Assets.paper_key.svg"
-                      HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="2" />
+                      HorizontalOptions="Center" 
+                      VerticalOptions="Center"
+                      FlexLayout.Grow="2" />
+            
             <Label FontFamily="{DynamicResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
-                   FlexLayout.AlignSelf="Center"
-                   FlexLayout.Grow="1"
-                   bindings:Bi.nd="Text HeaderText"/>
+                   bindings:Bi.nd="Text HeaderText"
+                   Margin="0, 0, 0, 10"/>
+            
             <Label FontFamily="{DynamicResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
-                   FlexLayout.AlignSelf="Center"
-                   FlexLayout.Grow="1"
                    bindings:Bi.nd="Text SubheaderText"/>
-            <BoxView FlexLayout.Grow="3" />
+            
+            <BoxView FlexLayout.Grow="1" />
+            
             <Button Style="{DynamicResource CustomButton}"
                     BackgroundColor="{StaticResource DarkGray}"
                     CornerRadius="0"

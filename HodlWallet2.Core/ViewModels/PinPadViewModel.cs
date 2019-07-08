@@ -1,17 +1,18 @@
-using System.Diagnostics;
 using System.Threading.Tasks;
-using HodlWallet2.Core.Interfaces;
+
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
+
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {
     public class PinPadViewModel : BaseViewModel
     {
-        private IWalletService _WalletService;
-        
-        public IMvxAsyncCommand<string> SuccessCommand { get; private set; }
+        IWalletService _WalletService;
+        public IMvxAsyncCommand<string> SuccessCommand { get; }
         
         //TODO: Localize properties
         public string PinPadTitle => "Enter PIN";
@@ -20,20 +21,23 @@ namespace HodlWallet2.Core.ViewModels
 
         public PinPadViewModel(
             IMvxLogProvider logProvider, 
-            IMvxNavigationService navigationService,
-            IWalletService walletService) 
+            IMvxNavigationService navigationService) 
             : base(logProvider, navigationService)
         {
-            _WalletService = walletService;
-            //TODO: Change Action.
+            _WalletService = WalletService.Instance;
             SuccessCommand = new MvxAsyncCommand<string>(Success_Callback);
         }
 
         private async Task Success_Callback(string pin)
         {
-            Debug.WriteLine($"PIN Saved: {pin}");
-            _WalletService.InitializeWallet();
+            SavePin(pin);
+
             await NavigationService.Navigate<BackupViewModel>();
+        }
+
+        private void SavePin(string pin)
+        {
+            SecureStorageProvider.SetPin(pin);
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
+
 namespace HodlWallet2.Core.Utils
 {
     public class DateTimeOffsetOperations
     {
-        public static string shortDate(DateTimeOffset dateTime)
+        public static string ShortDate(DateTimeOffset dateTime)
         {
             var current = DateTimeOffset.Now - dateTime;
             if (current.TotalMinutes < 60)

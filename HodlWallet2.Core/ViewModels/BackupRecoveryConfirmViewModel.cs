@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using HodlWallet2.Core.Interfaces;
 using MvvmCross.Commands;
@@ -11,24 +12,34 @@ namespace HodlWallet2.Core.ViewModels
     public class BackupRecoveryConfirmViewModel : BaseViewModel<string[]>
     {
         private const int AMOUNT_AROUND = 7;
-        private int _confirm = 0;
-        private string _wordToGuess;
-        private string _exercise;
-        private string[] _mnemonic;
-        private readonly IWalletService _walletService;
+        private int _Confirm = 0;
+        private string _WordToGuess;
+        private string _Exercise;
+        private string[] _Mnemonic;
+        private readonly IWalletService _WalletService;
+        int _PrevIndex;
+        bool _WarningVisible;
 
         public string HeaderText =>
             "To make sure everything was written down correctly, please enter the following words from your backup recovery key.";
+
+        public string WarningText => "That word is not in your mnemonic.";
         
         private string[] confirmWords = new string[8], place = { "first", "second", "third", "fourth", 
             "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelveth" }; // Localize
         
-        public MvxCommand<string> WordCommand { get; private set; }
+        public MvxCommand<string> WordCommand { get; }
         
         public string Exercise
         {
-            get => _exercise;
-            set => SetProperty(ref _exercise, value);
+            get => _Exercise;
+            set => SetProperty(ref _Exercise, value);
+        }
+
+        public bool WarningVisible
+        {
+            get => _WarningVisible;
+            set => SetProperty(ref _WarningVisible, value);
         }
         
         public string WordOne
@@ -156,44 +167,55 @@ namespace HodlWallet2.Core.ViewModels
             IMvxNavigationService navigationService,
             IWalletService walletService) : base(logProvider, navigationService)
         {
-            _walletService = walletService;
+            _WalletService = walletService;
             WordCommand = new MvxCommand<string>(RefreshConfirmWords);
         }
 
         public override void Prepare(string[] parameter)
         {
-            _mnemonic = parameter;
-            RefreshWords(_mnemonic);
+            _Mnemonic = parameter;
+            _PrevIndex = _Mnemonic.Length;
+            RefreshWords(_Mnemonic);
         }
 
         private void RefreshConfirmWords(string arg)
         {
             int input = Convert.ToInt32(arg);
 
-            if (confirmWords[input] == _wordToGuess)
-                _confirm++;
+            if (confirmWords[input] == _WordToGuess)
+            {
+                if (WarningVisible)
+                    WarningVisible = false;
+                _Confirm++;
+                _PrevIndex = input;
+            }
+            else
+            {
+                _Confirm = 0;
+                WarningVisible = true;
+                _PrevIndex = _Mnemonic.Length;
+            }
 
-            RefreshWords(_mnemonic);
+            RefreshWords(_Mnemonic);
         }
 
         public async void RefreshWords(string[] mnemonic)
         {
             Random rng = new Random();
 
-            if (_confirm < 2)
+            if (_Confirm < 2)
             {
-                int wordIndex = rng.Next(0, mnemonic.Length - 1);
-                _wordToGuess = mnemonic[wordIndex];
+                var rangeArray = Enumerable.Range(0, mnemonic.Length - 1).Where(a => a != _PrevIndex).ToArray();
+                int wordIndex = rangeArray[rng.Next(rangeArray.Length)];
+                _WordToGuess = mnemonic[wordIndex];
                 Exercise = "Choose the " + place[wordIndex] + " word from your mnemonic:"; // Format and localize label.
-                string language = "english"; //Implement MVVMCross
-                string[] guessWords = _walletService.GenerateGuessWords(_wordToGuess, language, AMOUNT_AROUND);
+                string[] guessWords = _WalletService.GenerateGuessWords(_WordToGuess, "english", AMOUNT_AROUND);
                 UpdateWords(guessWords);
             }
             else
             {
                 Preferences.Set("MnemonicStatus", true);
                 await NavigationService.Navigate<DashboardViewModel>();
-                //Application.Current.MainPage = new CustomNavigationPage(new DashboardView(new DashboardViewModel()));
             }
         }
         
