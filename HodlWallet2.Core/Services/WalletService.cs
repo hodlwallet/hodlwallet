@@ -21,6 +21,7 @@ using Liviano.Managers;
 using Liviano.Exceptions;
 
 using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Utils;
 
 namespace HodlWallet2.Core.Services
 {
@@ -71,6 +72,19 @@ namespace HodlWallet2.Core.Services
         public IWalletSyncManager WalletSyncManager { get; set; }
 
         public NodesGroup NodesGroup { get; set; }
+
+        string _SyncedStatus;
+        public string SyncingStatus
+        {
+            get => _SyncedStatus;
+            set
+            {
+                // This property was written like this for debugging purposes.
+                Logger.Debug($"Setting SyncingStatus to: {value}");
+
+                _SyncedStatus = value;
+            }
+        }
 
         int _ConnectedNodes;
         public int ConnectedNodes
@@ -553,7 +567,29 @@ namespace HodlWallet2.Core.Services
 
         public bool IsSyncedToTip()
         {
-            return false;
+            var chainTip = _Chain.Tip;
+
+            // We cannot be sure if we're synced to chain if we're not connected
+            if (_ConnectedNodes < 1)
+            {
+                SyncingStatus = Constants.SYNC_STATUS_CONNECTING;
+                return false;
+            }
+
+            // We cannot allow the last syncing tip to be less than 2 blocks of the chain tip
+            if (WalletManager.LastReceivedBlockHash() != chainTip.HashBlock)
+            {
+                var walletHeight = _Chain.FindFork(WalletManager.GetWalletBlockLocator());
+
+                SyncingStatus = string.Format(Constants.SYNC_STATUS_SYNCING, walletHeight.Height, chainTip.Height);
+                return false;
+            }
+
+            // TODO There must be other ways to figure out why a wallet isn't synced yet.
+
+            // We're synced to our last known chain tip from get headers... Doesn't mean much
+            SyncingStatus = string.Format(Constants.SYNC_STATUS_SYNCED, chainTip.Height);
+            return true;
         }
 
         public long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed = false)
