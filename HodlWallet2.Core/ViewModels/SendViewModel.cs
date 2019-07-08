@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 using NBitcoin;
@@ -36,12 +37,15 @@ namespace HodlWallet2.Core.ViewModels
         string _AddressToSendTo;
         int _Fee;
         decimal _AmountToSend;
+        float _Rate;
+        string _AmountToSendText;
 
         const double MAX_SLIDER_VALUE = 100;
         double _SliderValue;
 
         string _TransactionFeeText;
         string _EstConfirmationText;
+        string _ISOLabel;
 
         public string TransactionFeeTitle => "Transaction Fee";
         public string EstConfirmationTitle => "Est. Confirmation";
@@ -85,12 +89,25 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _AmountToSend, value);
         }
 
+        public string AmountToSendText
+        {
+            get => _AmountToSendText;
+            set => SetProperty(ref _AmountToSendText, value);
+        }
+
+        public string ISOLabel
+        {
+            get => _ISOLabel;
+            set => SetProperty(ref _ISOLabel, value);
+        }
+
         public MvxAsyncCommand ScanCommand { get; }
         public MvxAsyncCommand PasteCommand { get; }
         public MvxAsyncCommand<string> SendCommand { get; }
         public MvxAsyncCommand CloseCommand { get; }
         public MvxAsyncCommand ShowFaqCommand { get; }
-        public MvxAsyncCommand OnValueChangedCommand { get; }
+        public MvxAsyncCommand OnSliderValueChangedCommand { get; }
+        public MvxAsyncCommand SwitchCurrencyCommand { get; }
 
         public SendViewModel(
             IMvxLogProvider logProvider,
@@ -107,16 +124,25 @@ namespace HodlWallet2.Core.ViewModels
             SendCommand = new MvxAsyncCommand<string>(Send);
             CloseCommand = new MvxAsyncCommand(Close);
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
-            OnValueChangedCommand = new MvxAsyncCommand(SetSliderValue);
+            OnSliderValueChangedCommand = new MvxAsyncCommand(SetSliderValue);
+            SwitchCurrencyCommand = new MvxAsyncCommand(SwitchCurrency);
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
 
             Task.Run(SetSliderValue);
         }
 
-        public override void ViewAppeared()
+        public override async void ViewAppearing()
         {
-            base.ViewAppeared();
+            base.ViewAppearing();
+
+            ISOLabel = "USD($)";
+            //TODO: Create constants list for code instead of hardcoding them.
+            var currencyEntity = (await _PrecioService.GetRates()).SingleOrDefault(r => r.Code == "USD");
+            if (currencyEntity != null)
+            {
+                _Rate = currencyEntity.Rate;
+            }
         }
 
         public async Task ProcessAddressOnClipboardToPaste()
@@ -134,6 +160,23 @@ namespace HodlWallet2.Core.ViewModels
                 }
             };
             _QuestionInteraction.Raise(request);
+        }
+
+        private Task SwitchCurrency()
+        {
+            if (ISOLabel == "USD($)") //TODO: Refactor with more user currencies
+            {
+                AmountToSend = Convert.ToDecimal(AmountToSendText) / (decimal)_Rate;
+                AmountToSendText = AmountToSend.ToString();
+                ISOLabel = "BTC";
+            }
+            else
+            {
+                AmountToSend = Convert.ToDecimal(AmountToSend) * (decimal)_Rate;
+                AmountToSendText = $"{AmountToSend:F2}";
+                ISOLabel = "USD($)";
+            }
+            return Task.FromResult(this);
         }
 
         Task ShowFaq()

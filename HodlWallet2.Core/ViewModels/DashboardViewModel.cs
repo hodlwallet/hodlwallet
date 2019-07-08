@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 using Newtonsoft.Json;
 
@@ -14,11 +15,12 @@ using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 
+using Liviano;
+using Liviano.Models;
+
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Utils;
-
-using Liviano.Models;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -31,7 +33,25 @@ namespace HodlWallet2.Core.ViewModels
         public string ReceiveText => "Receive";
         public string SyncText => "SYNCING";
 
+        decimal _Amount;
+        float _NewRate;
+        float _OldRate;
+        bool _IsBtcEnabled;
+        
         ObservableCollection<Transaction> _Transactions;
+
+        public bool IsBtcEnabled
+        {
+            get => _IsBtcEnabled;
+            set => SetProperty(ref _IsBtcEnabled, value);
+        }
+
+        public decimal Amount
+        {
+            get => _Amount;
+            set => SetProperty(ref _Amount, value);
+        }
+
         public ObservableCollection<Transaction> Transactions
         {
             get => _Transactions;
@@ -69,6 +89,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxCommand NavigateToSendViewCommand { get; }
         public MvxCommand NavigateToReceiveViewCommand { get; }
         public MvxCommand NavigateToMenuViewCommand { get; }
+        public MvxCommand SwitchCurrencyCommand { get; }
         
         public DashboardViewModel(
             IMvxLogProvider logProvider, 
@@ -82,8 +103,27 @@ namespace HodlWallet2.Core.ViewModels
             NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
+            SwitchCurrencyCommand = new MvxCommand(SwitchCurrency);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
+        }
+
+        private void SwitchCurrency()
+        {
+            var currency = Preferences.Get("currency", "BTC");
+            if (currency == "BTC")
+            {
+                Preferences.Set("currency", "USD");
+                IsBtcEnabled = false;
+                Amount *= (decimal)_NewRate;
+            }
+            else
+            {
+                Preferences.Set("currency", "BTC");
+                IsBtcEnabled = true;
+                Amount /= (decimal) _NewRate;
+            }
+            LoadTransactionsIfEmpty();
         }
 
         public override void ViewAppeared()
@@ -96,7 +136,8 @@ namespace HodlWallet2.Core.ViewModels
             }
             else
             {
-                _WalletService.OnStarted += _WalletService_OnStarted;
+                _WalletService.OnStarted += _WalletService_OnStarted; 
+                //FIXME: Should the WalletService be started whenever the DashBoard view appears???, this will create problems on its own...
             }
         }
 
@@ -105,12 +146,40 @@ namespace HodlWallet2.Core.ViewModels
             base.ViewAppearing();
 
             // Run and schedule next times precio will be called
-            Task.Run(RatesAsync);
+            Task.Run(async () =>
+            {
+                // Gets first BTC-USD rate.
+                var rate = (await _PrecioService.GetRates()).SingleOrDefault(r => r.Code == "USD");
+                if (rate != null)
+                {
+                    // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
+                    _OldRate = _NewRate = rate.Rate;
+                }
+                return Task.FromResult(true);
+            });
+            
             Device.StartTimer(TimeSpan.FromSeconds(Constants.PRECIO_TIMER_INTERVAL), () =>
             {
-                Task.Run(() => RatesAsync());
+                Task.Run(RatesAsync);
+                //TODO: WIP, will polish rate comparision.
+                if (_OldRate != _NewRate && Preferences.Get("currency", "BTC") != "BTC")
+                {
+                    _OldRate = _NewRate; 
+                    //TODO: Update transactions with new rate.
+                    foreach (var transaction in Transactions)
+                    {
+                        // This was intentionally left with null as placeholder. WARNING: IT'LL EXPLODE IF RUN.
+                        // First of all, a view model should not have the responsibility to format the text for a label (this is UI's duty!).
+                        // Second and very brief, this needs to be refactored (split) into two methods and the Transaction model needs to have two properties
+                        // like Status and Amount (as float), this way it'll be flexible enough to update only one property based on current rate
+                        // without having to convert numeric and string values to return a string(?) amount.
+                        transaction.Amount = GetAmountLabelText(null);
+                    }
+                }
                 return true;
             });
+            Amount = 1.0276M;
+            IsBtcEnabled = true;
         }
 
         public void ReScan()
@@ -141,7 +210,7 @@ namespace HodlWallet2.Core.ViewModels
             {
                 if (rate.Code == "USD")
                 {
-                    var price = rate.Rate;
+                    var price = _NewRate = rate.Rate;
                     PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BTC_UNIT_LABEL, price);
                     break;
                 }
@@ -252,10 +321,9 @@ namespace HodlWallet2.Core.ViewModels
                     ).Reverse()
                 )
             );
-
-            _WalletService.Logger.Debug("Transactions loaded.");
+            _WalletService.Logger.Information(new string('*', 20));
         }
-
+        
         IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
         {
             var result = new List<Transaction>();
@@ -311,10 +379,34 @@ namespace HodlWallet2.Core.ViewModels
 
         string GetAmountLabelText(TransactionData tx)
         {
-            if (tx.IsSend == true)
-                return string.Format(Constants.SENT_AMOUNT, tx.Amount);
+            // FIXME BUG: Figure out why tx is null sometimes.
+            if (tx is null)
+            {
+                return "";
+            }
 
-            return string.Format(Constants.RECEIVE_AMOUNT, tx.Amount);
+            var preferences = Preferences.Get("currency", "BTC"); 
+            if (preferences == "BTC")
+            {
+                if (tx.IsSend == true)
+                    return string.Format(Constants.SENT_AMOUNT, preferences, tx.Amount);
+
+                return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.Amount);                
+            }
+            else
+            {
+                if (tx.IsSend == true)
+                    return string.Format(
+                        Constants.SENT_AMOUNT, 
+                        preferences, 
+                        $"{tx.Amount.ToUsd((decimal)_NewRate):F2}");
+
+                return string.Format(
+                    Constants.RECEIVE_AMOUNT, 
+                    preferences, 
+                    $"{tx.Amount.ToUsd((decimal)_NewRate):F2}");
+            }
         }
+        
     }
 }

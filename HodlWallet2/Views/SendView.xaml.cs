@@ -1,26 +1,20 @@
-using NBitcoin;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HodlWallet2.Core.ViewModels;
-using HodlWallet2.Core.Models;
+
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using ZXing.Mobile;
 using Xamarin.Essentials;
 
-using HodlWallet2.Locale;
+using ZXing.Mobile;
+using ZXing.Net.Mobile.Forms;
+
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
-using HodlWallet2.Core.Services;
 using MvvmCross.ViewModels;
-using HodlWallet2.Core.Interactions;
 using MvvmCross.Base;
 using MvvmCross.Binding.BindingContext;
-using ZXing.Net.Mobile.Forms;
+
+using HodlWallet2.Core.Interactions;
+using HodlWallet2.Core.ViewModels;
+using HodlWallet2.Locale;
 
 namespace HodlWallet2.Views
 {

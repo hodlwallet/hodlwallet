@@ -12,7 +12,6 @@
     bindings:Bi.nd="Title DashboardTitle"
     x:Name="DashboardPage"
     BackgroundColor="{StaticResource GrayBackground}">
-    
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="DashboardFooterButton" TargetType="FlexLayout">
@@ -40,7 +39,13 @@
                     
                     <Label x:Name="amountLabel" FlexLayout.AlignSelf="Start" VerticalTextAlignment="Center"
                            Style="{DynamicResource CustomLabel}"
-                           FlexLayout.Grow="2" Margin="20,0,0,0" FontSize="Large" />
+                           FlexLayout.Grow="2" Margin="20,0,0,0" FontSize="Large"
+                           bindings:Bi.nd="Text If(IsBtcEnabled, Format('{0:F8}', Amount), Format('{0:F2}', Amount))">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                bindings:Bi.nd="Command SwitchCurrencyCommand" />
+                        </Label.GestureRecognizers>
+                    </Label>
                     
                     <BoxView FlexLayout.Grow="1" />
                     

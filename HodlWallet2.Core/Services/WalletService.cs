@@ -429,52 +429,11 @@ namespace HodlWallet2.Core.Services
 
         public void ReScan(DateTimeOffset? timeToStartOn = null)
         {
-            // FIXME this method dosn't work crashes on Scan.
             if (timeToStartOn == null)
                 timeToStartOn = _Network.GetBIP39ActivationChainedBlock().Header.BlockTime;
 
-            DateTimeOffset currentCreationTime = WalletManager.GetWallet().CreationTime;
-
-            DestroyWallet();
-
-            // Create wallet
-            // FIXME: This should not be done like this.
-            //        Wallet should be created but with data we already have on SecureStorageProvider for mnemonic and password.
-            string guid = SecureStorageProvider.GetWalletId();
-            string mnemonic = SecureStorageProvider.GetMnemonic();
-            string password = SecureStorageProvider.GetPassword() ?? ""; // FIXME I fear this could be null.
-            DateTimeOffset seedBirthday = SecureStorageProvider.HasSeedBirthday()
-                ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday())
-                : new DateTimeOffset(DateTime.UtcNow);
-            string language = "english"; // FIXME get actual language
-            int wordCount = 12; // FIXME get count from somehere else...
-
-            Logger.Information("Unloaded wallet");
-            WalletManager.UnloadWallet();
-
-            Logger.Information("Creating wallet ({guid}) with password: {password}", guid, password);
-
-            WalletManager.CreateWallet(
-                guid,
-                password,
-                WalletManager.MnemonicFromString(mnemonic),
-                language,
-                wordCount,
-                seedBirthday
-            );
-
-            Logger.Information("Wallet created.");
-
-            Logger.Information("Wallet re-loaded");
-            WalletManager.LoadWallet(password);
-
-            WalletManager.GetWallet().CreationTime = currentCreationTime;
-
-            WalletManager.SaveWallet(WalletManager.GetWallet());
-
-            // Nodes reconnect if it's not null
-            NodesGroup?.Disconnect();
-            NodesGroup?.Connect();
+            if (SecureStorageProvider.HasSeedBirthday())
+                timeToStartOn = DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday());
 
             // Start scanning again
             Scan(timeToStartOn);
