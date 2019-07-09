@@ -32,6 +32,7 @@ namespace HodlWallet2.Core.ViewModels
 
         public string SendText => "Send";
         public string ReceiveText => "Receive";
+        public string MenuText => "Menu";
         public string SyncText => "SYNCING";
 
         decimal _Amount;

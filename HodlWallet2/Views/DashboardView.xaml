@@ -146,7 +146,8 @@
                            TextColor="{StaticResource White}"
                            Margin="0, 10, 0, 0"
                            FlexLayout.Grow="1"
-                           FlexLayout.AlignSelf="Center" />
+                           FlexLayout.AlignSelf="Center"
+                           bindings:Bi.nd="Text MenuText" />
                     
                     <BoxView FlexLayout.Grow="1" />
                     

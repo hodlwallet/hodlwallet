@@ -26,7 +26,7 @@ namespace HodlWallet2.Views
         {
             ReceiveTitle.Text = LocaleResources.Receive_title;
             Share.Text = LocaleResources.Receive_share;
-            RequestAmount.Text = LocaleResources.Receive_requestAmount;
+            //RequestAmount.Text = LocaleResources.Receive_requestAmount;
         }
 
         public async void OnCloseTapped(object sender, EventArgs e)
