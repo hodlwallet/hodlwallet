@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HodlWallet2.Views.TransactionDetailsView"
              BackgroundColor="{StaticResource DarkGray}"
@@ -7,9 +7,16 @@
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
              xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"    
-             x:TypeArguments="viewModels:SendViewModel"
+             x:TypeArguments="viewModels:TransactionDetailsViewModel"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <FlexLayout>
         <FlexLayout FlexLayout.Grow="1" Direction="Row" JustifyContent="SpaceBetween" 
                     AlignItems="Center" Margin="20, 0, 20, 0">
@@ -19,9 +26,9 @@
                 </svg:Icon.GestureRecognizers>
             </svg:Icon>
         
-            <Label x:Name="TransactionDetailTitle" 
-                   Style="{DynamicResource CustomLabel}"
+            <Label x:Name="TransactionDetailTitle"
                    FontSize="Large"
+                   Style="{DynamicResource CustomLabel}"
                    />
 
             <svg:Icon ResourceId="Assets.faq.svg" >
@@ -33,8 +40,19 @@
         
         <ScrollView>
             <StackLayout>
-                
+                <Label x:Name="DateLabel"
+                       FontSize="Small"
+                       Style="{StaticResource CustomLabel}"
+                       />
+                <Label x:Name="AmountLabel"
+                       FontSize="Large"
+                       Style="{StaticResource CustomLabel}"
+                       />
+                <Label x:Name="AddressLabel"
+                       FontSize="Large"
+                       Style="{StaticResource CustomLabel}"
+                       />
             </StackLayout>
         </ScrollView>
     </FlexLayout>
-</ContentPage>
+</views:MvxContentPage>
