@@ -16,18 +16,18 @@
                      Padding="10"
                      HeightRequest="70"
                      BackgroundColor="{StaticResource DarkGray}">
-                    <Label Style="{StaticResource ProgressLabel}"
-                           VerticalOptions="CenterAndExpand"
-                           x:Name="SBTitle" 
+                    <Label x:Name="SyncTitle"
+                           Style="{StaticResource ProgressLabel}"
+                           VerticalOptions="CenterAndExpand" 
                            FontSize="Small" />
-                    <ProgressBar x:Name="SBProgress"
+                    <ProgressBar x:Name="SyncProgress"
                                  VerticalOptions="CenterAndExpand"
                                  Margin="0, 5, 0, 5"
                                  ProgressColor="{StaticResource SyncGradientStart}"
                                  Progress="{Binding SyncProgress}" />
-                    <Label Style="{StaticResource ProgressLabel}"
+                    <Label x:Name="SyncDate"
+                           Style="{StaticResource ProgressLabel}"
                            VerticalOptions="CenterAndExpand"
-                           x:Name="SBDate"
                            FontSize="Micro" />
         </StackLayout>
 </ContentView>
