@@ -164,6 +164,10 @@ namespace HodlWallet2.Core.Services
             {
                 StartWalletWithWalletId();
 
+                SecureStorageProvider.SetSeedBirthday(
+                    WalletManager.Wallet.CreationTime
+                );
+
                 Logger.Information("Since wallet has a mnemonic, then start the wallet.");
 
                 return;
