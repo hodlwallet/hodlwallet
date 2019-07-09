@@ -37,8 +37,15 @@ namespace HodlWallet2.Core.ViewModels
         float _NewRate;
         float _OldRate;
         bool _IsBtcEnabled;
+        object _CurrentTransaction;
         
         ObservableCollection<Transaction> _Transactions;
+
+        public object CurrentTransaction
+        {
+            get => _CurrentTransaction;
+            set => SetProperty(ref _CurrentTransaction, value);
+        }
 
         public bool IsBtcEnabled
         {
@@ -90,6 +97,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxCommand NavigateToReceiveViewCommand { get; }
         public MvxCommand NavigateToMenuViewCommand { get; }
         public MvxCommand SwitchCurrencyCommand { get; }
+        public MvxCommand NavigateToTransactionDetailCommand { get; }
 
         public DashboardViewModel(
             IMvxLogProvider logProvider, 
@@ -124,6 +132,12 @@ namespace HodlWallet2.Core.ViewModels
                 Amount /= (decimal) _NewRate;
             }
             LoadTransactionsIfEmpty();
+        }
+
+        private async Task TransactionDetailNaviation()
+        {
+            var transaction = (Transaction)CurrentTransaction;
+
         }
 
         public override void ViewAppeared()
