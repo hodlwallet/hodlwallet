@@ -31,8 +31,11 @@ namespace HodlWallet2.Core.ViewModels
         MvxInteraction<YesNoQuestion> _QuestionInteraction = new MvxInteraction<YesNoQuestion>();
         public IMvxInteraction<YesNoQuestion> QuestionInteraction => _QuestionInteraction;
 
-        public MvxInteraction<BarcodeScannerPrompt> BarcodeScannerInteraction { get; } = new MvxInteraction<BarcodeScannerPrompt>();
-        public MvxInteraction<DisplayAlertContent> DisplayAlertInteraction { get; } = new MvxInteraction<DisplayAlertContent>();
+        MvxInteraction<BarcodeScannerPrompt> _BarcodeScannerInteraction = new MvxInteraction<BarcodeScannerPrompt>();
+        public IMvxInteraction<BarcodeScannerPrompt> BarcodeScannerInteraction => _BarcodeScannerInteraction;
+
+        MvxInteraction<DisplayAlertContent> _DisplayAlertInteraction = new MvxInteraction<DisplayAlertContent>();
+        public IMvxInteraction<DisplayAlertContent> DisplayAlertInteraction => _DisplayAlertInteraction;
 
         string _AddressToSendTo;
         int _Fee;
@@ -211,7 +214,7 @@ namespace HodlWallet2.Core.ViewModels
                     TryProcessAddress(address, Constants.DISPLAY_ALERT_SCAN_MESSAGE);
                 }
             };
-            BarcodeScannerInteraction.Raise(request);
+            _BarcodeScannerInteraction.Raise(request);
         }
 
         async Task Paste()
@@ -284,7 +287,7 @@ namespace HodlWallet2.Core.ViewModels
                 Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
             };
 
-            DisplayAlertInteraction.Raise(request);
+            _DisplayAlertInteraction.Raise(request);
         }
 
         async Task SetSliderValue()
