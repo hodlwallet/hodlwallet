@@ -31,8 +31,10 @@ namespace HodlWallet2.Core.ViewModels
 
         public MvxAsyncCommand ShowBuildInfoCommand { get; }
 
-        public MvxInteraction<YesNoQuestion> QuestionInteraction => new MvxInteraction<YesNoQuestion>();
-        public MvxInteraction<DisplayAlertContent> DisplayAlertInteraction => new MvxInteraction<DisplayAlertContent>();
+        MvxInteraction<YesNoQuestion> _QuestionInteraction = new MvxInteraction<YesNoQuestion>();
+        public IMvxInteraction<YesNoQuestion> QuestionInteraction => _QuestionInteraction;
+        MvxInteraction<DisplayAlertContent> _DisplayAlertInteraction = new MvxInteraction<DisplayAlertContent>();
+        public IMvxInteraction<DisplayAlertContent> DisplayAlertInteraction => _DisplayAlertInteraction;
 
         readonly WalletService _WalletService;
         readonly ILogger _Logger;
@@ -80,7 +82,7 @@ namespace HodlWallet2.Core.ViewModels
                 Message = msg,
                 Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
             };
-            DisplayAlertInteraction.Raise(request);
+            _DisplayAlertInteraction.Raise(request);
         }
 
         async Task SecurityTapped()
@@ -112,7 +114,7 @@ namespace HodlWallet2.Core.ViewModels
                 }
             };
 
-            QuestionInteraction.Raise(request);
+            _QuestionInteraction.Raise(request);
         }
 
         async Task RestoreWallet()
@@ -125,11 +127,10 @@ namespace HodlWallet2.Core.ViewModels
                     if (!yes) return;
 
                     await NavigationService.Navigate<RecoverViewModel>();
-                    await NavigationService.Close(this);
                 }
             };
 
-            QuestionInteraction.Raise(request);
+            _QuestionInteraction.Raise(request);
         }
 
         async Task WipeWallet()
@@ -156,7 +157,7 @@ namespace HodlWallet2.Core.ViewModels
                 }
             };
 
-             QuestionInteraction.Raise(request);
+             _QuestionInteraction.Raise(request);
         }
     }
 }
