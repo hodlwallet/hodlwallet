@@ -13,44 +13,105 @@
     
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Label"/>
+            <Style TargetType="Label">
+                <Style Property="Style" Value="{DynamicResource CustomLabel}" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <FlexLayout>
-        <FlexLayout FlexLayout.Grow="1" Direction="Row" JustifyContent="SpaceBetween" 
-                    AlignItems="Center" Margin="20, 0, 20, 0">
-            <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center">
+        <FlexLayout FlexLayout.Grow="1" 
+                    Direction="Row" 
+                    JustifyContent="SpaceBetween" 
+                    AlignItems="Center" 
+                    Margin="20, 0, 20, 0">
+            <svg:Icon ResourceId="Assets.close.svg" 
+                      FlexLayout.AlignSelf="Center">
                 <svg:Icon.GestureRecognizers>
-                    <TapGestureRecognizer bindings:Bi.nd="Command CloseCommand"/>
+                    <TapGestureRecognizer bindings:Bi.nd="Command CloseCommand" 
+                                          />
                 </svg:Icon.GestureRecognizers>
             </svg:Icon>
         
             <Label x:Name="TransactionDetailTitle"
                    FontSize="Large"
-                   Style="{DynamicResource CustomLabel}"
                    />
 
-            <svg:Icon ResourceId="Assets.faq.svg" >
+            <svg:Icon ResourceId="Assets.faq.svg">
                 <svg:Icon.GestureRecognizers>
-                    <TapGestureRecognizer bindings:Bi.nd="Command ShowFaqCommand"/>
+                    <TapGestureRecognizer bindings:Bi.nd="Command ShowFaqCommand" 
+                                          />
                 </svg:Icon.GestureRecognizers>
             </svg:Icon>
         </FlexLayout>
         
         <ScrollView>
             <StackLayout>
-                <Label x:Name="DateLabel"
-                       FontSize="Small"
-                       Style="{StaticResource CustomLabel}"
+                <Label x:Name="DateLabel" 
+                       FontSize="Small" 
                        />
-                <Label x:Name="AmountLabel"
-                       FontSize="Large"
-                       Style="{StaticResource CustomLabel}"
+                <Label x:Name="AmountLabel" 
+                       FontSize="Large" 
+                       />
+                <Label x:Name="AddressToFromLabel" 
+                       FontSize="Large" 
+                       />
+                <BoxView BackgroundColor="GrayTextTint"
+                         HeightRequest="2"
+                         />
+                <Label x:Name="StatusTitleLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="StatusLabel"
+                       FontSize="Small"
+                       />
+                <BoxView BackgroundColor="GrayTextTint"
+                         HeightRequest="2"
+                         />
+                <Label x:Name="MemoTitleLabel"
+                       FontSize="Small"
+                       />
+                <Entry x:Name="MemoEntry"
+                       BackgroundColor="Transparent"
+                       FontSize="Small"
+                       />
+                <BoxView BackgroundColor="GrayTextTint"
+                         HeightRequest="2"
+                         />
+                <Label x:Name="AmountTitleLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="AmountWithFeeLabel"
+                       FontSize="Small" />
+                <Label x:Name="StartingBalanceLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="EndingBalanceLabel"
+                       FontSize="Small"
+                       />
+                <BoxView BackgroundColor="GrayTextTint"
+                         HeightRequest="2"
+                         />
+                <Label x:Name="AddressTitleLabel"
+                       FontSize="Small"
                        />
                 <Label x:Name="AddressLabel"
-                       FontSize="Large"
-                       Style="{StaticResource CustomLabel}"
+                       FontSize="Small"
+                       />
+                <BoxView BackgroundColor="GrayTextTint"
+                         HeightRequest="2"
+                         />
+                <Label x:Name="IdTitleLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="IdLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="ConfirmedBlockTitleLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="ConfirmedBlockLabel"
+                       FontSize="Small"
                        />
             </StackLayout>
         </ScrollView>
