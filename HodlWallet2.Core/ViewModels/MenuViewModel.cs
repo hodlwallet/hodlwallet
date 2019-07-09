@@ -31,10 +31,8 @@ namespace HodlWallet2.Core.ViewModels
 
         public MvxAsyncCommand ShowBuildInfoCommand { get; }
 
-        MvxInteraction<YesNoQuestion> _QuestionInteraction = new MvxInteraction<YesNoQuestion>();
-        public IMvxInteraction<YesNoQuestion> QuestionInteraction => _QuestionInteraction;
-
-        public MvxInteraction<DisplayAlertContent> DisplayAlertInteraction { get; } = new MvxInteraction<DisplayAlertContent>();
+        public MvxInteraction<YesNoQuestion> QuestionInteraction => new MvxInteraction<YesNoQuestion>();
+        public MvxInteraction<DisplayAlertContent> DisplayAlertInteraction => new MvxInteraction<DisplayAlertContent>();
 
         readonly WalletService _WalletService;
         readonly ILogger _Logger;
@@ -114,7 +112,7 @@ namespace HodlWallet2.Core.ViewModels
                 }
             };
 
-            _QuestionInteraction.Raise(request);
+            QuestionInteraction.Raise(request);
         }
 
         async Task RestoreWallet()
@@ -131,7 +129,7 @@ namespace HodlWallet2.Core.ViewModels
                 }
             };
 
-            _QuestionInteraction.Raise(request);
+            QuestionInteraction.Raise(request);
         }
 
         async Task WipeWallet()
@@ -158,7 +156,7 @@ namespace HodlWallet2.Core.ViewModels
                 }
             };
 
-             _QuestionInteraction.Raise(request);
+             QuestionInteraction.Raise(request);
         }
     }
 }
