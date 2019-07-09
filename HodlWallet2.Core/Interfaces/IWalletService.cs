@@ -16,7 +16,6 @@ namespace HodlWallet2.Core.Interfaces
     {
         bool IsStarted { get; }
         bool IsConfigured { get; }
-        string SyncingStatus { get; set; }
 
         Serilog.ILogger Logger { set; get; }
 

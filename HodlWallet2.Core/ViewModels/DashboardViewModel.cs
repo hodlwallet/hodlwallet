@@ -32,6 +32,7 @@ namespace HodlWallet2.Core.ViewModels
 
         public string SendText => "Send";
         public string ReceiveText => "Receive";
+        public string MenuText => "Menu";
         public string SyncTitleText => "SYNCING";
 
         decimal _Amount;
@@ -269,6 +270,8 @@ namespace HodlWallet2.Core.ViewModels
             _Transactions.CollectionChanged += _Transactions_CollectionChanged;
 
             SyncIsVisible = !_WalletService.IsSyncedToTip();
+            SyncCurrentProgress = 10.00;
+            SyncDateText = DateTime.Now.ToString("dddd, dd MMMM yyyy");
         }
 
         void WalletManager_OnUpdateSpendingTransaction(object sender, TransactionData e)

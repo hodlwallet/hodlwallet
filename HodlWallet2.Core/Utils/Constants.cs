@@ -14,11 +14,6 @@
         public const string SYNC_GRADIENT_START_COLOR_HEX = "#DAAB28";
         public const string GRAY_TEXT_TINT_COLOR_HEX = "#A3A8AD";
 
-        // Syncing statuses
-        public const string SYNC_STATUS_SYNCED = "Synced up to block height {0}.";
-        public const string SYNC_STATUS_SYNCING = "Syncing from {0} to {1}";
-        public const string SYNC_STATUS_CONNECTING = "Connecting...";
-
         // Localized Strings (TODO in MvvmCross)
         public const string IS_AVAILABLE = "Available to spend";
         public const string SENT_AMOUNT = "Sent {0} {1}";

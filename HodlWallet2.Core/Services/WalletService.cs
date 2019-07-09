@@ -73,19 +73,6 @@ namespace HodlWallet2.Core.Services
 
         public NodesGroup NodesGroup { get; set; }
 
-        string _SyncedStatus;
-        public string SyncingStatus
-        {
-            get => _SyncedStatus;
-            set
-            {
-                // This property was written like this for debugging purposes.
-                Logger.Debug($"Setting SyncingStatus to: {value}");
-
-                _SyncedStatus = value;
-            }
-        }
-
         int _ConnectedNodes;
         public int ConnectedNodes
         {
@@ -569,32 +556,31 @@ namespace HodlWallet2.Core.Services
             return WalletManager.Network;
         }
 
+        /// <summary>
+        /// Check if synced to tip, this method will check a few things and return
+        /// false, otherwise it returns true as we assume the blockchain is synced
+        /// </summary>
+        /// <returns>A <see cref="bool"/> true if the chain is synced</returns>
         public bool IsSyncedToTip()
         {
             var chainTip = _Chain.Tip;
 
             // We cannot be sure if we're synced to chain if we're not connected
-            if (_ConnectedNodes < 1)
-            {
-                SyncingStatus = Constants.SYNC_STATUS_CONNECTING;
-                return false;
-            }
+            if (_ConnectedNodes < 1) return false;
 
-            // We cannot allow the last syncing tip to be less than 2 blocks of the chain tip
-            if (WalletManager.LastReceivedBlockHash() != chainTip.HashBlock)
-            {
-                var walletHeight = _Chain.FindFork(new List<uint256>() {
-                    WalletManager.LastReceivedBlockHash()
-                });
+            // Tip is null so we get out
+            if (chainTip is null) return false;
 
-                SyncingStatus = string.Format(Constants.SYNC_STATUS_SYNCING, walletHeight.Height, chainTip.Height);
-                return false;
-            }
+            // The headers are behind the activation block
+            if (chainTip.Height < _Network.GetBIP39ActivationChainedBlock().Height) return false;
 
-            // TODO There must be other ways to figure out why a wallet isn't synced yet.
+            // The headers are behind the last checkpoint
+            if (chainTip.Height < _Network.GetCheckpoints().Last().Height) return false;
 
-            // We're synced to our last known chain tip from get headers... Doesn't mean much
-            SyncingStatus = string.Format(Constants.SYNC_STATUS_SYNCED, chainTip.Height);
+            // We cannot allow the last syncing tip to be different than the last received block hash
+            if (chainTip.HashBlock != WalletManager.LastReceivedBlockHash()) return false;
+
+            // We're synced to our last known chain tip from get headers...
             return true;
         }
 
