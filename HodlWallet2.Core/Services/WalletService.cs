@@ -583,7 +583,9 @@ namespace HodlWallet2.Core.Services
             // We cannot allow the last syncing tip to be less than 2 blocks of the chain tip
             if (WalletManager.LastReceivedBlockHash() != chainTip.HashBlock)
             {
-                var walletHeight = _Chain.FindFork(WalletManager.GetWalletBlockLocator());
+                var walletHeight = _Chain.FindFork(new List<uint256>() {
+                    WalletManager.LastReceivedBlockHash()
+                });
 
                 SyncingStatus = string.Format(Constants.SYNC_STATUS_SYNCING, walletHeight.Height, chainTip.Height);
                 return false;
@@ -628,7 +630,7 @@ namespace HodlWallet2.Core.Services
 
             Logger.Debug("Connected node added {0}", node.RemoteSocketAddress.ToString());
 
-            ConnectedNodes++;
+            ConnectedNodes = _NodesGroup.ConnectedNodes.Count;
         }
 
         void ConnectedNodes_Removed(object sender, NodeEventArgs e)
@@ -641,7 +643,7 @@ namespace HodlWallet2.Core.Services
             {
                 node.Disconnected += (Node n) =>
                 {
-                    ConnectedNodes--;
+                    ConnectedNodes = _NodesGroup.ConnectedNodes.Count;
                 };
             }
         }
