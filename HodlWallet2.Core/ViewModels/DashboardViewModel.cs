@@ -32,8 +32,7 @@ namespace HodlWallet2.Core.ViewModels
 
         public string SendText => "Send";
         public string ReceiveText => "Receive";
-        public string MenuText => "Menu";
-        public string SyncText => "SYNCING";
+        public string SyncTitleText => "SYNCING";
 
         decimal _Amount;
         float _NewRate;
@@ -67,25 +66,25 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _PriceText, value);
         }
 
-        string _DateText;
-        public string DateText
+        string _SyncDateText;
+        public string SyncDateText
         {
-            get => _DateText;
-            set => SetProperty(ref _DateText, value);
+            get => _SyncDateText;
+            set => SetProperty(ref _SyncDateText, value);
         }
 
-        double _Progress;
-        public double Progress
+        double _SyncCurrentProgress;
+        public double SyncCurrentProgress
         {
-            get => _Progress;
-            set => SetProperty(ref _Progress, value);
+            get => _SyncCurrentProgress;
+            set => SetProperty(ref _SyncCurrentProgress, value);
         }
 
-        bool _IsVisible;
-        public bool IsVisible
+        bool _SyncIsVisible;
+        public bool SyncIsVisible
         {
-            get => _IsVisible;
-            set => SetProperty(ref _IsVisible, value);
+            get => _SyncIsVisible;
+            set => SetProperty(ref _SyncIsVisible, value);
         }
 
         public MvxCommand NavigateToSendViewCommand { get; }
@@ -269,7 +268,7 @@ namespace HodlWallet2.Core.ViewModels
 
             _Transactions.CollectionChanged += _Transactions_CollectionChanged;
 
-            IsVisible = !_WalletService.IsSyncedToTip();
+            SyncIsVisible = !_WalletService.IsSyncedToTip();
         }
 
         void WalletManager_OnUpdateSpendingTransaction(object sender, TransactionData e)

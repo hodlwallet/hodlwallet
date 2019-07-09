@@ -10,10 +10,10 @@ namespace HodlWallet2.Shared.Controls
         {
             InitializeComponent();
             IsVisible = false;
-            SetBinding(IsVisibleProperty, new Binding(nameof(SyncVisible), source: this));
-            SBTitle.SetBinding(Label.TextProperty, new Binding(nameof(SyncTitle), source: this));
-            SBProgress.SetBinding(ProgressBar.ProgressProperty, new Binding(nameof(SyncProgress), source: this));
-            SBDate.SetBinding(Label.TextProperty, new Binding(nameof(SyncDate), source: this));
+            SetBinding(IsVisibleProperty, new Binding(nameof(SyncIsVisible), source: this));
+            SyncTitle.SetBinding(Label.TextProperty, new Binding(nameof(SyncBarTitle), source: this));
+            SyncProgress.SetBinding(ProgressBar.ProgressProperty, new Binding(nameof(SyncBarProgress), source: this));
+            SyncDate.SetBinding(Label.TextProperty, new Binding(nameof(SyncBarDate), source: this));
         }
 
         public static readonly BindableProperty SyncVisibleProperty =
@@ -23,7 +23,7 @@ namespace HodlWallet2.Shared.Controls
                 typeof(SyncProgressBar)
             );
 
-        public bool SyncVisible
+        public bool SyncIsVisible
         {
             get => (bool) GetValue (SyncVisibleProperty);
             set
@@ -40,13 +40,13 @@ namespace HodlWallet2.Shared.Controls
                 typeof(SyncProgressBar)
             );
 
-        public string SyncTitle
+        public string SyncBarTitle
         {
             get => (string) GetValue (SyncTitleProperty);
             set
             {
                 SetValue(SyncTitleProperty, value);
-                SBTitle.Text = value;
+                SyncTitle.Text = value;
             }
         }
 
@@ -57,13 +57,13 @@ namespace HodlWallet2.Shared.Controls
                 typeof(SyncProgressBar)
             );
 
-        public double SyncProgress
+        public double SyncBarProgress
         {
             get => (double)GetValue(SyncProgressProperty);
             set
             {
                 SetValue(SyncTitleProperty, value);
-                SBProgress.Progress = value;
+                SyncProgress.Progress = value;
             }
         }
 
@@ -74,13 +74,13 @@ namespace HodlWallet2.Shared.Controls
                 typeof(SyncProgressBar)
             );
 
-        public string SyncDate
+        public string SyncBarDate
         {
             get => (string)GetValue(SyncDateProperty);
             set
             {
                 SetValue(SyncDateProperty, value);
-                SBDate.Text = value;
+                SyncDate.Text = value;
             }
         }
     }
