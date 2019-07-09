@@ -107,8 +107,9 @@ namespace HodlWallet2.Core.ViewModels
                 QuestionKey = "resync-wallet",
                 AnswerCallback = async (yes) =>
                 {
-                    if (yes) _WalletService.ReScan();
+                    if (!yes) return;
 
+                    _WalletService.ReScan();
                     await NavigationService.Close(this);
                 }
             };
@@ -123,8 +124,9 @@ namespace HodlWallet2.Core.ViewModels
                 QuestionKey = "restore-wallet",
                 AnswerCallback = async (yes) =>
                 {
-                    if (yes) await NavigationService.Navigate<RecoverViewModel>();
+                    if (!yes) return;
 
+                    await NavigationService.Navigate<RecoverViewModel>();
                     await NavigationService.Close(this);
                 }
             };
@@ -139,25 +141,20 @@ namespace HodlWallet2.Core.ViewModels
                 QuestionKey = "wipe-wallet",
                 AnswerCallback = async (yes) =>
                 {
-                    if (yes)
+                    if (!yes) return;
+
+                    try
                     {
-                        try
-                        {
-                            _WalletService.DestroyWallet(dryRun: false);
-                        }
-                        catch (Exception e)
-                        {
-                            // This exception should never happen, in case it does though here it is
-                            _Logger.Information("Error trying to destroy wallet: {0}", e.ToString());
-                        }
-
-                        // After destroy we kill
-                        Process.GetCurrentProcess().Kill();
-
-                        return; // ... App is dad anyways, so we just do this of courtesy and correctness
+                        _WalletService.DestroyWallet(dryRun: false);
+                    }
+                    catch (Exception e)
+                    {
+                        // This exception should never happen, in case it does though here it is
+                        _Logger.Information("Error trying to destroy wallet: {0}", e.ToString());
                     }
 
-                    await NavigationService.Close(this);
+                    // After destroy we kill
+                    Process.GetCurrentProcess().Kill();
                 }
             };
 
