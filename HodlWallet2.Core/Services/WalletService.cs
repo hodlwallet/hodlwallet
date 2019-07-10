@@ -577,11 +577,58 @@ namespace HodlWallet2.Core.Services
             // The headers are behind the last checkpoint
             if (chainTip.Height < _Network.GetCheckpoints().Last().Height) return false;
 
+            // TODO Sometimes, the next condition will be true, this is due us still syncing the headers
+            // the hard thing about this problem is knowing what's the tip of the chain before getting all
+            // the headers.
+
+            // What assumptions can I make?
+
+            // If the block time is less than 30 mins before now then it's likely okay
+            long seconds = DateTimeOffset.Now.ToUnixTimeSeconds() - chainTip.Header.BlockTime.ToUnixTimeSeconds();
+            long minutes = seconds / 60;
+
+            if (minutes > 30) return false;
+
             // We cannot allow the last syncing tip to be different than the last received block hash
             if (chainTip.HashBlock != WalletManager.LastReceivedBlockHash()) return false;
 
             // We're synced to our last known chain tip from get headers...
             return true;
+        }
+
+        public string GetLastSyncedDate()
+        {
+            var syncedTip = _Chain.FindFork(
+                new List<uint256> {
+                    WalletManager.LastReceivedBlockHash()
+                }
+            );
+
+            if (syncedTip != null)
+                return syncedTip.Header.BlockTime.ToString("dddd, dd MMMM yyyy");
+
+            if (WalletManager.GetWalletBlockLocator() != null)
+                syncedTip = _Chain.FindFork(WalletManager.GetWalletBlockLocator());
+
+            if (syncedTip != null)
+                return syncedTip.Header.BlockTime.ToString("dddd, dd MMMM yyyy");
+
+            // We can only asume on network's bip 39 activation block.
+            var blockTime = _Network.GetBIP39ActivationChainedBlock().Header.BlockTime;
+            return blockTime.ToString("dddd, dd MMMM yyyy");
+        }
+
+        public double GetSyncedProgress()
+        {
+            long seconds = DateTimeOffset.Now.ToUnixTimeSeconds() - _Chain.Tip.Header.BlockTime.ToUnixTimeSeconds();
+            long minutes = seconds / 60;
+
+            if (minutes > 30) return .99;
+
+            var rng = new Random();
+            double rndProgress = rng.Next(1, 100) * 0.01;
+
+            return rndProgress;
         }
 
         public long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed = false)

@@ -44,15 +44,22 @@ namespace HodlWallet2.Core.Interfaces
         void StartWalletWithWalletId();
         void Scan(DateTimeOffset? timeToStartOn);
         void ReScan(DateTimeOffset? timeToStartOn);
+
         bool WalletExists();
         bool IsAddressOwn(string address);
         bool IsVerifyChecksum(string mnemonic, string wordList);
         bool IsWordInWordlist(string word, string wordList);
         bool IsSyncedToTip();
+
         string NewMnemonic(string wordList, int wordCount);
-        string[] GenerateGuessWords(string wordToGuess, string language, int amountAround);
         string GetAddressFromTransaction(TransactionData txData);
+        string GetLastSyncedDate();
+        string[] GenerateGuessWords(string wordToGuess, string language, int amountAround);
+
         decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);
+
+        double GetSyncedProgress();
+
         long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed);
 
         HdAddress GetReceiveAddress();
