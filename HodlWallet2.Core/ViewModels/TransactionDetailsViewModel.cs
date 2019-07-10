@@ -119,7 +119,17 @@ namespace HodlWallet2.Core.ViewModels
         {
             await base.Initialize();
 
-            
+            DateText = _Transaction.DateAndTime;
+            AmountText = _Transaction.Amount;
+            AddressToFromText = _Transaction.AtAddress;
+            StatusText = _Transaction.Confirmations;
+            MemoText = _Transaction.Memo;
+            AddressText = _Transaction.Address;
+            TransactionIdText = _Transaction.Id;
+            ConfirmedBlockText = _Transaction.BlockHeight?.ToString();
+
+            /*  TODO: Add Setup for Amount Section
+             */
         }
 
         public override void Prepare(Transaction parameter)
