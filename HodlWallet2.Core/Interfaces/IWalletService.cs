@@ -61,6 +61,7 @@ namespace HodlWallet2.Core.Interfaces
         decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);
 
         double GetSyncedProgress();
+        string GetSyncedProgressPercentage();
 
         long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed);
 

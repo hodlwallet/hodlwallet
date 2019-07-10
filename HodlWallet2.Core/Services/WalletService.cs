@@ -618,9 +618,15 @@ namespace HodlWallet2.Core.Services
             return blockTime.ToString("dddd, dd MMMM yyyy");
         }
 
+        public string GetSyncedProgressPercentage()
+        {
+            return (GetSyncedProgress() * 100).ToString("0.##");
+        }
+
         public double GetSyncedProgress()
         {
             var tip = _Chain.FindFork(new uint256[] { WalletManager.LastReceivedBlockHash() });
+            var minutesPerBlock = _Network == Network.Main ? 10 : 8; // Based on stimates and calculations
 
             if (tip is null) tip = _Chain.FindFork(WalletManager.GetWalletBlockLocator());
             if (tip is null) tip = _Network.GetBIP39ActivationChainedBlock();
@@ -629,19 +635,19 @@ namespace HodlWallet2.Core.Services
             // In my experience I think 15 is fine.
 
             // If we are close to it, then we say we're 1.00 synced
-            long seconds = DateTimeOffset.Now.ToUnixTimeSeconds() - tip.Header.BlockTime.ToUnixTimeSeconds();
+            long seconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds() - tip.Header.BlockTime.ToUnixTimeSeconds();
             int minutes = (int)(seconds / 60);
 
             if (minutes <= 15) return 1;
             if (minutes <= 30) return .99;
 
-            int aproximateBlocksBehind = minutes / 10;
+            int aproximateBlocksBehind = minutes / minutesPerBlock;
             int currentBlockHeight = GetLastSyncedBlockHeight();
             int bip39ActivationBlockHeight = _Network.GetBIP39ActivationChainedBlock().Height;
 
             int predictedBlockHeight = currentBlockHeight + aproximateBlocksBehind;
 
-            double progress = (double)(bip39ActivationBlockHeight + currentBlockHeight) / predictedBlockHeight;
+            double progress = (double)(currentBlockHeight - bip39ActivationBlockHeight) / (double)(predictedBlockHeight - bip39ActivationBlockHeight);
 
             Logger.Debug("[{methodName}] Progress: {progress}", nameof(GetSyncedProgress), progress);
 

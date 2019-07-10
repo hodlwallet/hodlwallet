@@ -141,15 +141,15 @@ namespace HodlWallet2.Core.ViewModels
         {
             SyncIsVisible = !_WalletService.IsSyncedToTip();
             SyncCurrentProgress = _WalletService.GetSyncedProgress();
-            SyncDateText = $"{_WalletService.GetLastSyncedDate()} ({_WalletService.GetLastSyncedBlockHeight()})";
+            SyncDateText = $"{_WalletService.GetSyncedProgressPercentage()}% {_WalletService.GetLastSyncedDate()} ({_WalletService.GetLastSyncedBlockHeight()})";
 
             _Logger.Debug(
-                "[{0}] IsSyncedToTip => {1}, GetLastSyncedDate => {2}, GetLastSyncedBlockHeight => {3}, GetSyncedProgress => {4}",
+                "[{0}] IsSyncedToTip => {1}, GetLastSyncedDate => {2}, GetLastSyncedBlockHeight => {3}, GetSyncedProgressPercentage => {4}",
                 nameof(UpdateSyncingStatus),
                 _WalletService.IsSyncedToTip(),
                 _WalletService.GetLastSyncedDate(),
                 _WalletService.GetLastSyncedBlockHeight(),
-                _WalletService.GetSyncedProgress()
+                _WalletService.GetSyncedProgressPercentage()
             );
         }
 
