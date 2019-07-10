@@ -64,8 +64,12 @@
                     <svg:Icon ResourceId="Assets.search.svg"
                               Margin="0, 0, 20, 0"
                               FlexLayout.AlignSelf="End"
-                              FlexLayout.Grow="1" />
-                    
+                              FlexLayout.Grow="1">
+                        <svg:Icon.GestureRecognizers>
+                            <TapGestureRecognizer bindings:Bi.nd="Command SearchCommand"
+                                                  NumberOfTapsRequired="1" />
+                        </svg:Icon.GestureRecognizers>
+                    </svg:Icon>
                 </FlexLayout>
             </FlexLayout>
             

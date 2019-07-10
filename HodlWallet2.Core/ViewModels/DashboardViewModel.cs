@@ -27,6 +27,8 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class DashboardViewModel : BaseViewModel
     {
+        Serilog.ILogger _Logger;
+
         readonly IWalletService _WalletService;
         readonly IPrecioService _PrecioService;
 
@@ -85,14 +87,18 @@ namespace HodlWallet2.Core.ViewModels
         public bool SyncIsVisible
         {
             get => _SyncIsVisible;
-            set => SetProperty(ref _SyncIsVisible, value);
+            set
+            {
+                SetProperty(ref _SyncIsVisible, value);
+            }
         }
 
         public MvxCommand NavigateToSendViewCommand { get; }
         public MvxCommand NavigateToReceiveViewCommand { get; }
         public MvxCommand NavigateToMenuViewCommand { get; }
         public MvxCommand SwitchCurrencyCommand { get; }
-        
+        public MvxCommand SearchCommand { get; }
+
         public DashboardViewModel(
             IMvxLogProvider logProvider, 
             IMvxNavigationService navigationService,
@@ -100,14 +106,28 @@ namespace HodlWallet2.Core.ViewModels
             IPrecioService precioService) : base(logProvider, navigationService)
         {
             _WalletService = walletService;
+            _Logger = _WalletService.Logger;
             _PrecioService = precioService;
 
             NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
             SwitchCurrencyCommand = new MvxCommand(SwitchCurrency);
+            SearchCommand = new MvxCommand(StartSearch);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
+        }
+
+        private void StartSearch()
+        {
+            // TODO, this is so far just to show and hide the syncbar randomly
+            // since we're not gonna do search this is likely to be removed
+            Random rng = new Random();
+            bool res = rng.Next(1, 100) % 2 == 0;
+
+            _Logger.Debug(res ? "Show sync bar." : "Hide sync bar.");
+
+            SyncIsVisible = res;
         }
 
         private void SwitchCurrency()
@@ -270,7 +290,7 @@ namespace HodlWallet2.Core.ViewModels
             _Transactions.CollectionChanged += _Transactions_CollectionChanged;
 
             SyncIsVisible = !_WalletService.IsSyncedToTip();
-            SyncCurrentProgress = 10.00;
+            SyncCurrentProgress = .2;
             SyncDateText = DateTime.Now.ToString("dddd, dd MMMM yyyy");
         }
 
