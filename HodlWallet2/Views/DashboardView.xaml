@@ -64,12 +64,8 @@
                     <svg:Icon ResourceId="Assets.search.svg"
                               Margin="0, 0, 20, 0"
                               FlexLayout.AlignSelf="End"
-                              FlexLayout.Grow="1">
-                        <svg:Icon.GestureRecognizers>
-                            <TapGestureRecognizer bindings:Bi.nd="Command SearchCommand"
-                                                  NumberOfTapsRequired="1" />
-                        </svg:Icon.GestureRecognizers>
-                    </svg:Icon>
+                              FlexLayout.Grow="1" />
+                    
                 </FlexLayout>
             </FlexLayout>
             
@@ -152,8 +148,7 @@
                            TextColor="{StaticResource White}"
                            Margin="0, 10, 0, 0"
                            FlexLayout.Grow="1"
-                           FlexLayout.AlignSelf="Center"
-                           bindings:Bi.nd="Text MenuText" />
+                           FlexLayout.AlignSelf="Center" />
                     
                     <BoxView FlexLayout.Grow="1" />
                     

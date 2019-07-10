@@ -1,15 +1,14 @@
 ﻿using System;
 
-using MvvmCross.Base;
-using MvvmCross.Binding.BindingContext;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using MvvmCross.ViewModels;
+using MvvmCross.Base;
 
 using HodlWallet2.Core.ViewModels;
 using HodlWallet2.Core.Interactions;
-using HodlWallet2.Core.Utils;
 using HodlWallet2.Locale;
+using MvvmCross.Binding.BindingContext;
 
 namespace HodlWallet2.Views
 {
@@ -28,20 +27,6 @@ namespace HodlWallet2.Views
 
                 _QuestionInteraction = value;
                 _QuestionInteraction.Requested += QuestionInteraction_Requested;
-            }
-        }
-
-        IMvxInteraction<DisplayAlertContent> _DisplayAlertInteraction;
-        public IMvxInteraction<DisplayAlertContent> DisplayAlertInteraction
-        {
-            get => _DisplayAlertInteraction;
-            set
-            {
-                if (_DisplayAlertInteraction != null)
-                    _DisplayAlertInteraction.Requested -= OnDisplayAlertInteractionRequested;
-
-                _DisplayAlertInteraction = value;
-                _DisplayAlertInteraction.Requested += OnDisplayAlertInteractionRequested;
             }
         }
 
@@ -65,11 +50,6 @@ namespace HodlWallet2.Views
             set.Bind(this)
                 .For(view => view.QuestionInteraction)
                 .To(viewModel => viewModel.QuestionInteraction)
-                .OneWay();
-
-            set.Bind(this)
-                .For(view => view.DisplayAlertInteraction)
-                .To(viewModel => viewModel.DisplayAlertInteraction)
                 .OneWay();
 
             set.Apply();
@@ -118,27 +98,12 @@ namespace HodlWallet2.Views
             ResyncWallet.Text = LocaleResources.Menu_resyncWallet;
             RestoreWallet.Text = LocaleResources.Menu_restoreWallet;
             WipeWallet.Text = LocaleResources.Menu_wipeWallet;
-            BackupMnemonic.Text = LocaleResources.Backup_title;
-
-#if DEBUG
-            BuildDate.Text = $"Built at: {BuildInfo.BuildDateText}";
-#endif
 
             // TODO Add these later once we got all the settings implemented.
-            //
             //Security.Text = LocaleResources.Menu_security;
             //Knowledge.Text = LocaleResources.Menu_knowledge;
             //Settings.Text = LocaleResources.Menu_settings;
             //LockWallet.Text = LocaleResources.Menu_lock;
-        }
-
-        async void OnDisplayAlertInteractionRequested(object sender, MvxValueEventArgs<DisplayAlertContent> e)
-        {
-            var displayAlertContent = e.Value;
-
-            await DisplayAlert(
-                displayAlertContent.Title, displayAlertContent.Message, displayAlertContent.Buttons[0]
-            );
         }
     }
 }

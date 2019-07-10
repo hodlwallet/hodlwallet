@@ -1,15 +1,9 @@
 using System.Threading.Tasks;
-
-using Xamarin.Essentials;
-
+using HodlWallet2.Core.Interfaces;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
-using MvvmCross.ViewModels;
-
-using HodlWallet2.Core.Interactions;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Utils;
+using Xamarin.Essentials;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -25,9 +19,6 @@ namespace HodlWallet2.Core.ViewModels
         public IMvxCommand ShowFaqCommand { get; }
         public IMvxCommand ShareButtonCommand { get; }
         public IMvxAsyncCommand CopyAddressCommand { get; }
-
-        MvxInteraction<DisplayAlertContent> _CopiedToClipboardInteraction = new MvxInteraction<DisplayAlertContent>();
-        public IMvxInteraction<DisplayAlertContent> CopiedToClipboardInteraction => _CopiedToClipboardInteraction;
 
         public string Address
         {
@@ -57,15 +48,6 @@ namespace HodlWallet2.Core.ViewModels
         async Task ToClipboard()
         {
             await Clipboard.SetTextAsync(Address);
-
-            var request = new DisplayAlertContent
-            {
-                Title = Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE,
-                Message = "",
-                Buttons = new string[] { Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON }
-            };
-
-            _CopiedToClipboardInteraction.Raise(request);
         }
 
         void ShowShareIntent()

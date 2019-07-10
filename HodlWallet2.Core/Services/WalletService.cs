@@ -21,7 +21,6 @@ using Liviano.Managers;
 using Liviano.Exceptions;
 
 using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Utils;
 
 namespace HodlWallet2.Core.Services
 {
@@ -31,7 +30,7 @@ namespace HodlWallet2.Core.Services
 
         public const string DEFAULT_NETWORK = "testnet";
 
-        public static string USER_AGENT { get; } = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
+        public static readonly string UserAgent = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
 
         object _Lock = new object();
 
@@ -94,7 +93,6 @@ namespace HodlWallet2.Core.Services
         public event EventHandler OnStarted;
         public event EventHandler OnScanning;
         public event EventHandler<int> OnConnectedNode;
-        public event EventHandler OnScanningFinished;
 
         public bool IsStarted { get; private set; }
         public bool IsConfigured { get; private set; }
@@ -150,10 +148,6 @@ namespace HodlWallet2.Core.Services
             if (SecureStorageProvider.HasMnemonic() && _WalletId != null)
             {
                 StartWalletWithWalletId();
-
-                SecureStorageProvider.SetSeedBirthday(
-                    WalletManager.Wallet.CreationTime
-                );
 
                 Logger.Information("Since wallet has a mnemonic, then start the wallet.");
 
@@ -311,7 +305,7 @@ namespace HodlWallet2.Core.Services
             _ConParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
             _ConParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
 
-            _ConParams.UserAgent = USER_AGENT;
+            _ConParams.UserAgent = UserAgent;
 
             _NodesGroup = new NodesGroup(_Network, _ConParams, new NodeRequirement()
             {
@@ -441,8 +435,6 @@ namespace HodlWallet2.Core.Services
             if (SecureStorageProvider.HasSeedBirthday())
                 timeToStartOn = DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday());
 
-            // NOTE Should rescan handle deletion of tx database from the wallet? I don't think so
-
             // Start scanning again
             Scan(timeToStartOn);
         }
@@ -556,99 +548,6 @@ namespace HodlWallet2.Core.Services
             return WalletManager.Network;
         }
 
-        /// <summary>
-        /// Check if synced to tip, this method will check a few things and return
-        /// false, otherwise it returns true as we assume the blockchain is synced
-        /// </summary>
-        /// <returns>A <see cref="bool"/> true if the chain is synced</returns>
-        public bool IsSyncedToTip()
-        {
-            var chainTip = _Chain.Tip;
-
-            // We cannot be sure if we're synced to chain if we're not connected
-            if (_ConnectedNodes < 1) return false;
-
-            // Tip is null so we get out
-            if (chainTip is null) return false;
-
-            // The headers are behind the activation block
-            if (chainTip.Height < _Network.GetBIP39ActivationChainedBlock().Height) return false;
-
-            // The headers are behind the last checkpoint
-            if (chainTip.Height < _Network.GetCheckpoints().Last().Height) return false;
-
-            // TODO Sometimes, the next condition will be true, this is due us still syncing the headers
-            // the hard thing about this problem is knowing what's the tip of the chain before getting all
-            // the headers.
-
-            // What assumptions can I make?
-
-            // If the block time is less than 30 mins before now then it's likely okay
-            long seconds = DateTimeOffset.Now.ToUnixTimeSeconds() - chainTip.Header.BlockTime.ToUnixTimeSeconds();
-            long minutes = seconds / 60;
-
-            if (minutes > 30) return false;
-
-            // We cannot allow the last syncing tip to be different than the last received block hash
-            if (chainTip.HashBlock != WalletManager.LastReceivedBlockHash()) return false;
-
-            // We're synced to our last known chain tip from get headers...
-            return true;
-        }
-
-        public string GetLastSyncedDate()
-        {
-            var syncedTip = _Chain.FindFork(
-                new List<uint256> {
-                    WalletManager.LastReceivedBlockHash()
-                }
-            );
-
-            if (syncedTip != null)
-                return syncedTip.Header.BlockTime.ToString("dddd, dd MMMM yyyy");
-
-            if (WalletManager.GetWalletBlockLocator() != null)
-                syncedTip = _Chain.FindFork(WalletManager.GetWalletBlockLocator());
-
-            if (syncedTip != null)
-                return syncedTip.Header.BlockTime.ToString("dddd, dd MMMM yyyy");
-
-            // We can only asume on network's bip 39 activation block.
-            var blockTime = _Network.GetBIP39ActivationChainedBlock().Header.BlockTime;
-            return blockTime.ToString("dddd, dd MMMM yyyy");
-        }
-
-        public double GetSyncedProgress()
-        {
-            long seconds = DateTimeOffset.Now.ToUnixTimeSeconds() - _Chain.Tip.Header.BlockTime.ToUnixTimeSeconds();
-            long minutes = seconds / 60;
-
-            if (minutes > 30) return .99;
-
-            var rng = new Random();
-            double rndProgress = rng.Next(1, 100) * 0.01;
-
-            return rndProgress;
-        }
-
-        public long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed = false)
-        {
-            var balance = WalletManager.GetBalances(CurrentAccount.Name).FirstOrDefault();
-
-            if (includeUnconfirmed)
-                return balance.AmountConfirmed + balance.AmountUnconfirmed;
-
-            return balance.AmountConfirmed;
-        }
-
-        public decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed = false)
-        {
-            long sats = GetCurrentAccountBalanceInSatoshis(includeUnconfirmed);
-            decimal satsPerBtc = 100_000_000m;
-
-            return decimal.Divide(new decimal(sats), satsPerBtc);
-        }
-
         void AddNodesGroupEvents()
         {
             if (_NodesGroup is null) return;
@@ -663,7 +562,7 @@ namespace HodlWallet2.Core.Services
 
             Logger.Debug("Connected node added {0}", node.RemoteSocketAddress.ToString());
 
-            ConnectedNodes = _NodesGroup.ConnectedNodes.Count;
+            ConnectedNodes++;
         }
 
         void ConnectedNodes_Removed(object sender, NodeEventArgs e)
@@ -676,7 +575,7 @@ namespace HodlWallet2.Core.Services
             {
                 node.Disconnected += (Node n) =>
                 {
-                    ConnectedNodes = _NodesGroup.ConnectedNodes.Count;
+                    ConnectedNodes--;
                 };
             }
         }

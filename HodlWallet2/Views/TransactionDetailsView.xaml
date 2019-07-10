@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HodlWallet2.Views.TransactionDetailsView"
@@ -14,7 +14,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
-<!--                <Style Property="Style" Value="{DynamicResource CustomLabel}" />-->
+                <Style Property="Style" Value="{DynamicResource CustomLabel}" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -56,7 +56,7 @@
                 <Label x:Name="AddressToFromLabel" 
                        FontSize="Large" 
                        />
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
+                <BoxView BackgroundColor="GrayTextTint"
                          HeightRequest="2"
                          />
                 <Label x:Name="StatusTitleLabel"
@@ -65,7 +65,7 @@
                 <Label x:Name="StatusLabel"
                        FontSize="Small"
                        />
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
+                <BoxView BackgroundColor="GrayTextTint"
                          HeightRequest="2"
                          />
                 <Label x:Name="MemoTitleLabel"
@@ -75,7 +75,7 @@
                        BackgroundColor="Transparent"
                        FontSize="Small"
                        />
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
+                <BoxView BackgroundColor="GrayTextTint"
                          HeightRequest="2"
                          />
                 <Label x:Name="AmountTitleLabel"
@@ -89,7 +89,7 @@
                 <Label x:Name="EndingBalanceLabel"
                        FontSize="Small"
                        />
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
+                <BoxView BackgroundColor="GrayTextTint"
                          HeightRequest="2"
                          />
                 <Label x:Name="AddressTitleLabel"
@@ -98,7 +98,7 @@
                 <Label x:Name="AddressLabel"
                        FontSize="Small"
                        />
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
+                <BoxView BackgroundColor="GrayTextTint"
                          HeightRequest="2"
                          />
                 <Label x:Name="IdTitleLabel"

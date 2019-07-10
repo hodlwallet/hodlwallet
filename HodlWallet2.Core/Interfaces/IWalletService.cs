@@ -1,24 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
-using NBitcoin;
-using NBitcoin.Protocol;
-
-using Liviano.Models;
-using Liviano.Utilities;
 using Liviano.Interfaces;
 using Liviano.Managers;
+using Liviano.Models;
+using Liviano.Utilities;
+using NBitcoin;
+using NBitcoin.Protocol;
+using Xamarin.Forms.Xaml;
 
 namespace HodlWallet2.Core.Interfaces
 {
     public interface IWalletService
     {
+        Serilog.ILogger Logger { set; get; }
         bool IsStarted { get; }
         bool IsConfigured { get; }
-
-        Serilog.ILogger Logger { set; get; }
-
+        WalletManager WalletManager { get; set; }
         IBroadcastManager BroadcastManager { get; set; }
         ITransactionManager TransactionManager { get; set; }
         IAsyncLoopFactory AsyncLoopFactory { get; set; }
@@ -26,8 +24,6 @@ namespace HodlWallet2.Core.Interfaces
         IScriptAddressReader ScriptAddressReader { get; set; }
         IStorageProvider StorageProvider { get; set; }
         IWalletSyncManager WalletSyncManager { get; set; }
-
-        WalletManager WalletManager { get; set; }
         NodesGroup NodesGroup { get; set; }
         BlockLocator ScanLocation { get; set; }
         HdAccount CurrentAccount { get; set; }
@@ -35,7 +31,6 @@ namespace HodlWallet2.Core.Interfaces
         event EventHandler OnConfigured;
         event EventHandler OnStarted;
         event EventHandler OnScanning;
-        event EventHandler OnScanningFinished;
         event EventHandler<int> OnConnectedNode;
 
         void InitializeWallet();
@@ -44,29 +39,19 @@ namespace HodlWallet2.Core.Interfaces
         void StartWalletWithWalletId();
         void Scan(DateTimeOffset? timeToStartOn);
         void ReScan(DateTimeOffset? timeToStartOn);
-
         bool WalletExists();
+        string NewMnemonic(string wordList, int wordCount);
+        bool IsWordInWordlist(string word, string wordList);
+        string[] GenerateGuessWords(string wordToGuess, string language, int amountAround);
         bool IsAddressOwn(string address);
         bool IsVerifyChecksum(string mnemonic, string wordList);
-        bool IsWordInWordlist(string word, string wordList);
-        bool IsSyncedToTip();
-
-        string NewMnemonic(string wordList, int wordCount);
         string GetAddressFromTransaction(TransactionData txData);
-        string GetLastSyncedDate();
-        string[] GenerateGuessWords(string wordToGuess, string language, int amountAround);
-
-        decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);
-
-        double GetSyncedProgress();
-
-        long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed);
-
         HdAddress GetReceiveAddress();
         Network GetNetwork();
         IEnumerable<TransactionData> GetCurrentAccountTransactions();
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,
             int feeSatsPerByte, string password);
+
         Task<(bool Sent, string Error)> SendTransaction(Transaction tx);
     }
 }

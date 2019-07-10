@@ -12,8 +12,6 @@ using Serilog;
 
 using HodlWallet2.Core.Interactions;
 using HodlWallet2.Core.Services;
-using HodlWallet2.Core.Utils;
-using Xamarin.Essentials;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -24,17 +22,12 @@ namespace HodlWallet2.Core.ViewModels
         public MvxAsyncCommand SecurityCommand { get; }
         public MvxAsyncCommand SettingsCommand { get; }
 
-        public MvxAsyncCommand BackupMnemonicCommand { get; }
         public MvxAsyncCommand ResyncWalletCommand { get; }
         public MvxAsyncCommand RestoreWalletCommand { get; }
         public MvxAsyncCommand WipeWalletCommand { get; }
 
-        public MvxAsyncCommand ShowBuildInfoCommand { get; }
-
         MvxInteraction<YesNoQuestion> _QuestionInteraction = new MvxInteraction<YesNoQuestion>();
         public IMvxInteraction<YesNoQuestion> QuestionInteraction => _QuestionInteraction;
-        MvxInteraction<DisplayAlertContent> _DisplayAlertInteraction = new MvxInteraction<DisplayAlertContent>();
-        public IMvxInteraction<DisplayAlertContent> DisplayAlertInteraction => _DisplayAlertInteraction;
 
         readonly WalletService _WalletService;
         readonly ILogger _Logger;
@@ -50,39 +43,9 @@ namespace HodlWallet2.Core.ViewModels
             CloseCommand = new MvxAsyncCommand(Close);
             SecurityCommand = new MvxAsyncCommand(SecurityTapped);
             SettingsCommand = new MvxAsyncCommand(SettingsTapped);
-
-            BackupMnemonicCommand = new MvxAsyncCommand(BackupMnemonic);
             ResyncWalletCommand = new MvxAsyncCommand(ResyncWallet);
             RestoreWalletCommand = new MvxAsyncCommand(RestoreWallet);
             WipeWalletCommand = new MvxAsyncCommand(WipeWallet);
-            ShowBuildInfoCommand = new MvxAsyncCommand(ShowBuildInfo);
-        }
-
-        async Task BackupMnemonic()
-        {
-            await NavigationService.Navigate<BackupViewModel>();
-        }
-
-        async Task ShowBuildInfo()
-        {
-            string buildInfo = string.Format(
-                Constants.BUILD_INFO_CONTENT,
-                GitInfo.Branch,
-                GitInfo.Head
-            );
-
-            _Logger.Debug(buildInfo);
-
-            await Clipboard.SetTextAsync(buildInfo);
-
-            string msg = $"{buildInfo}\n\n{Constants.BUILD_INFO_COPIED_TO_CLIPBOARD}";
-            var request = new DisplayAlertContent
-            {
-                Title = Constants.BUILD_INFO_MESSAGE_TITLE,
-                Message = msg,
-                Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
-            };
-            _DisplayAlertInteraction.Raise(request);
         }
 
         async Task SecurityTapped()
@@ -107,9 +70,8 @@ namespace HodlWallet2.Core.ViewModels
                 QuestionKey = "resync-wallet",
                 AnswerCallback = async (yes) =>
                 {
-                    if (!yes) return;
+                    if (yes) _WalletService.ReScan();
 
-                    _WalletService.ReScan();
                     await NavigationService.Close(this);
                 }
             };
@@ -124,9 +86,9 @@ namespace HodlWallet2.Core.ViewModels
                 QuestionKey = "restore-wallet",
                 AnswerCallback = async (yes) =>
                 {
-                    if (!yes) return;
+                    if (yes) await NavigationService.Navigate<RecoverViewModel>();
 
-                    await NavigationService.Navigate<RecoverViewModel>();
+                    await NavigationService.Close(this);
                 }
             };
 
@@ -140,20 +102,25 @@ namespace HodlWallet2.Core.ViewModels
                 QuestionKey = "wipe-wallet",
                 AnswerCallback = async (yes) =>
                 {
-                    if (!yes) return;
-
-                    try
+                    if (yes)
                     {
-                        _WalletService.DestroyWallet(dryRun: false);
-                    }
-                    catch (Exception e)
-                    {
-                        // This exception should never happen, in case it does though here it is
-                        _Logger.Information("Error trying to destroy wallet: {0}", e.ToString());
+                        try
+                        {
+                            _WalletService.DestroyWallet(dryRun: false);
+                        }
+                        catch (Exception e)
+                        {
+                            // This exception should never happen, in case it does though here it is
+                            _Logger.Information("Error trying to destroy wallet: {0}", e.ToString());
+                        }
+
+                        // After destroy we kill
+                        Process.GetCurrentProcess().Kill();
+
+                        return; // ... App is dad anyways, so we just do this of courtesy and correctness
                     }
 
-                    // After destroy we kill
-                    Process.GetCurrentProcess().Kill();
+                    await NavigationService.Close(this);
                 }
             };
 

@@ -68,16 +68,16 @@
                 FlexLayout.AlignSelf="Stretch"
                 FlexLayout.Grow="1" />
         
-<!--        <BoxView HeightRequest="2" BackgroundColor="Transparent" />
--->        
-        <!--<Button x:Name="RequestAmount"
+        <BoxView HeightRequest="2" BackgroundColor="Transparent" />
+        
+        <Button x:Name="RequestAmount"
                 Style="{DynamicResource CustomButton}" 
                 BackgroundColor="{StaticResource DarkGray}"
                 FontSize="Large"
                 bindings:Bi.nd="Text RequestAmountButtonText;
                                 Command RequestAmountButtonCommand"
                 FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="1" />-->
+                FlexLayout.Grow="1" />
         
     </FlexLayout>
 </views:MvxContentPage>

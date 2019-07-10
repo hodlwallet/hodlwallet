@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
@@ -39,50 +40,4 @@
       <Folder Include="Converters\" />
       <Folder Include="Interactions\" />
     </ItemGroup>
-    <ItemGroup>
-      <Compile Update="Utils\BuildInfo.cs">
-        <DependentUpon>BuildInfo.tt</DependentUpon>
-      </Compile>
-    </ItemGroup>
-    
-    <ItemGroup>
-      <None Update="Utils\BuildInfo.tt">
-        <Generator>TextTemplatingFileGenerator</Generator>
-        <LastGenOutput>BuildInfo.cs</LastGenOutput>
-      </None>
-    </ItemGroup>
-    <Target Name="GetGitHash" BeforeTargets="WriteGitHash" Condition="'$(GitHead)' == ''">
-        <PropertyGroup>
-            <GitBranch>$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: refs/heads/", ""))</GitBranch>
-            <GitHeadFile>$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: ", "").Insert(0, "..\.git\"))</GitHeadFile>
-        </PropertyGroup>
-        
-        <ReadLinesFromFile File="$(GitHeadFile)">
-            <Output TaskParameter="Lines" PropertyName="GitHead" /> 
-        </ReadLinesFromFile>
-    </Target>
-
-    <Target Name="WriteGitHash" BeforeTargets="CoreCompile">
-        <PropertyGroup>
-            <CustomAssemblyInfoFile>$(IntermediateOutputPath)CustomAssemblyInfo.cs</CustomAssemblyInfoFile>
-        </PropertyGroup>
-
-        <ItemGroup>
-            <Compile Include="$(CustomAssemblyInfoFile)" />
-        </ItemGroup>
-
-        <ItemGroup>
-            <AssemblyAttributes Include="AssemblyMetadata">
-                <_Parameter1>GitHead</_Parameter1>
-                <_Parameter2>$(GitHead)</_Parameter2>
-            </AssemblyAttributes>
-            <AssemblyAttributes Include="AssemblyMetadata">
-                <_Parameter1>GitBranch</_Parameter1>
-                <_Parameter2>$(GitBranch)</_Parameter2>
-            </AssemblyAttributes>
-        </ItemGroup>
-
-        <WriteCodeFragment Language="C#" OutputFile="$(CustomAssemblyInfoFile)" AssemblyAttributes="@(AssemblyAttributes)" />
-        <Message Importance="High" Text="Git: '$(GitBranch)': '$(GitHead)'" />
-    </Target>
 </Project>

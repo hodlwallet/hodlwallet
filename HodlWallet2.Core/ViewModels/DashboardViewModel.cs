@@ -21,20 +21,16 @@ using Liviano.Models;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Utils;
-using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {
     public class DashboardViewModel : BaseViewModel
     {
-        Serilog.ILogger _Logger;
-
         readonly IWalletService _WalletService;
         readonly IPrecioService _PrecioService;
 
         public string SendText => "Send";
         public string ReceiveText => "Receive";
-        public string MenuText => "Menu";
         public string SyncTitleText => "SYNCING";
 
         decimal _Amount;
@@ -101,7 +97,6 @@ namespace HodlWallet2.Core.ViewModels
         public MvxCommand NavigateToReceiveViewCommand { get; }
         public MvxCommand NavigateToMenuViewCommand { get; }
         public MvxCommand SwitchCurrencyCommand { get; }
-        public MvxCommand SearchCommand { get; }
         public MvxCommand NavigateToTransactionDetailCommand { get; }
 
         public DashboardViewModel(
@@ -111,34 +106,14 @@ namespace HodlWallet2.Core.ViewModels
             IPrecioService precioService) : base(logProvider, navigationService)
         {
             _WalletService = walletService;
-            _Logger = _WalletService.Logger;
             _PrecioService = precioService;
 
             NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
             SwitchCurrencyCommand = new MvxCommand(SwitchCurrency);
-            SearchCommand = new MvxCommand(StartSearch);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
-        }
-
-        private void StartSearch()
-        {
-            // TODO, this is so far just to show and hide the syncbar randomly
-            // since we're not gonna do search this is likely to be removed
-
-            _WalletService.IsSyncedToTip();
-
-            // Get a random value section
-            Random rng = new Random();
-            bool res = rng.Next(1, 100) % 2 == 0;
-
-            _Logger.Debug(res ? "Show sync bar." : "Hide sync bar.");
-
-            SyncIsVisible = res;
-            SyncCurrentProgress = _WalletService.GetSyncedProgress();
-            SyncDateText = _WalletService.GetLastSyncedDate();
         }
 
         private void SwitchCurrency()
@@ -175,7 +150,8 @@ namespace HodlWallet2.Core.ViewModels
             }
             else
             {
-                _WalletService.OnStarted += _WalletService_OnStarted;
+                _WalletService.OnStarted += _WalletService_OnStarted; 
+                //FIXME: Should the WalletService be started whenever the DashBoard view appears???, this will create problems on its own...
             }
         }
 
@@ -216,18 +192,13 @@ namespace HodlWallet2.Core.ViewModels
                 }
                 return true;
             });
-
-            // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
-            Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-
+            Amount = 1.0276M;
             IsBtcEnabled = true;
         }
 
         public void ReScan()
         {
-            var seedBirthday = DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday());
-
-            _WalletService.ReScan(seedBirthday);
+            _WalletService.ReScan(new DateTimeOffset(new DateTime(2018, 12, 1)));
         }
 
         void NavigateToMenuView()
@@ -304,10 +275,6 @@ namespace HodlWallet2.Core.ViewModels
             LoadTransactionsIfEmpty();
 
             _Transactions.CollectionChanged += _Transactions_CollectionChanged;
-
-            SyncIsVisible = !_WalletService.IsSyncedToTip();
-            SyncCurrentProgress = _WalletService.GetSyncedProgress();
-            SyncDateText = _WalletService.GetLastSyncedDate();
         }
 
         void WalletManager_OnUpdateSpendingTransaction(object sender, TransactionData e)
