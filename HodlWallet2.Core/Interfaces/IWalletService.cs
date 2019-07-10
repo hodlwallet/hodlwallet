@@ -45,6 +45,8 @@ namespace HodlWallet2.Core.Interfaces
         void Scan(DateTimeOffset? timeToStartOn);
         void ReScan(DateTimeOffset? timeToStartOn);
 
+        int GetLastSyncedBlockHeight();
+
         bool WalletExists();
         bool IsAddressOwn(string address);
         bool IsVerifyChecksum(string mnemonic, string wordList);

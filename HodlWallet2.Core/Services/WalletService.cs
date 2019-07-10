@@ -599,7 +599,7 @@ namespace HodlWallet2.Core.Services
         public string GetLastSyncedDate()
         {
             var syncedTip = _Chain.FindFork(
-                new List<uint256> {
+                new uint256[] {
                     WalletManager.LastReceivedBlockHash()
                 }
             );
@@ -620,15 +620,36 @@ namespace HodlWallet2.Core.Services
 
         public double GetSyncedProgress()
         {
-            long seconds = DateTimeOffset.Now.ToUnixTimeSeconds() - _Chain.Tip.Header.BlockTime.ToUnixTimeSeconds();
-            long minutes = seconds / 60;
+            var tip = _Chain.FindFork(new uint256[] { WalletManager.LastReceivedBlockHash() });
 
-            if (minutes > 30) return .99;
+            if (tip is null) tip = _Chain.FindFork(WalletManager.GetWalletBlockLocator());
+            if (tip is null) tip = _Network.GetBIP39ActivationChainedBlock();
 
-            var rng = new Random();
-            double rndProgress = rng.Next(1, 100) * 0.01;
+            // Time aproximates... Based on probability of a bitcoin block being bethween 10 minutes
+            // In my experience I think 15 is fine.
 
-            return rndProgress;
+            // If we are close to it, then we say we're 1.00 synced
+            long seconds = DateTimeOffset.Now.ToUnixTimeSeconds() - tip.Header.BlockTime.ToUnixTimeSeconds();
+            int minutes = (int)(seconds / 60);
+
+            if (minutes <= 15) return 1;
+            if (minutes <= 30) return .99;
+
+            int aproximateBlocksBehind = minutes / 10;
+            int currentBlockHeight = GetLastSyncedBlockHeight();
+            int bip39ActivationBlockHeight = _Network.GetBIP39ActivationChainedBlock().Height;
+
+            int predictedBlockHeight = currentBlockHeight + aproximateBlocksBehind;
+
+            double progress = (double)(bip39ActivationBlockHeight + currentBlockHeight) / predictedBlockHeight;
+
+            Logger.Debug("[{methodName}] Progress: {progress}", nameof(GetSyncedProgress), progress);
+
+            Logger.Debug($"[{nameof(GetSyncedProgress)}] (double)(bip39ActivationBlockHeight + currentBlockHeight) / predictedBlockHeight //=> {(double)(bip39ActivationBlockHeight + currentBlockHeight) / predictedBlockHeight}");
+
+            // FIXME Figure out why this gives positive numbers sometimes...
+
+            return progress;
         }
 
         public long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed = false)
@@ -647,6 +668,17 @@ namespace HodlWallet2.Core.Services
             decimal satsPerBtc = 100_000_000m;
 
             return decimal.Divide(new decimal(sats), satsPerBtc);
+        }
+
+        public int GetLastSyncedBlockHeight()
+        {
+            var tip = _Chain.FindFork(new uint256[] { WalletManager.LastReceivedBlockHash() });
+
+            if (tip is null) tip = _Chain.FindFork(WalletManager.GetWalletBlockLocator());
+
+            if (tip is null) tip = _Network.GetBIP39ActivationChainedBlock();
+
+            return tip.Height;
         }
 
         void AddNodesGroupEvents()

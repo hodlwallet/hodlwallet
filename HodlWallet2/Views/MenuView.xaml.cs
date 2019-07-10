@@ -121,7 +121,7 @@ namespace HodlWallet2.Views
             BackupMnemonic.Text = LocaleResources.Backup_title;
 
 #if DEBUG
-            BuildDate.Text = $"Built at: {BuildInfo.BuildDateText}";
+            BuildDate.Text = $"Built on: {BuildInfo.BuildDateText}";
 #endif
 
             // TODO Add these later once we got all the settings implemented.

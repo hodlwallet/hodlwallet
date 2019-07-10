@@ -67,8 +67,8 @@ namespace HodlWallet2.Core.ViewModels
         {
             string buildInfo = string.Format(
                 Constants.BUILD_INFO_CONTENT,
-                GitInfo.Branch,
-                GitInfo.Head
+                BuildInfo.GitBranch,
+                BuildInfo.GitHead
             );
 
             _Logger.Debug(buildInfo);

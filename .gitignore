@@ -373,6 +373,3 @@ ASALocalRun/
 
 # Visual studio code
 .vscode/
-
-# Template files
-HodlWallet2.Core/Utils/BuildInfo.cs

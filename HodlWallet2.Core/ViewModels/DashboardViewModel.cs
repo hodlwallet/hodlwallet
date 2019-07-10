@@ -128,17 +128,21 @@ namespace HodlWallet2.Core.ViewModels
             // TODO, this is so far just to show and hide the syncbar randomly
             // since we're not gonna do search this is likely to be removed
 
-            _WalletService.IsSyncedToTip();
+            // Log what we supposed to show
+            _Logger.Debug(!_WalletService.IsSyncedToTip() ? "[{0}] Show sync bar." : "[{0}] Hide sync bar.", nameof(StartSearch));
 
-            // Get a random value section
-            Random rng = new Random();
-            bool res = rng.Next(1, 100) % 2 == 0;
-
-            _Logger.Debug(res ? "Show sync bar." : "Hide sync bar.");
-
-            SyncIsVisible = res;
+            SyncIsVisible = true;
             SyncCurrentProgress = _WalletService.GetSyncedProgress();
-            SyncDateText = _WalletService.GetLastSyncedDate();
+            SyncDateText = $"{_WalletService.GetLastSyncedDate()} ({_WalletService.GetLastSyncedBlockHeight()})";
+
+            _Logger.Debug(
+                "[{0}] IsSyncedToTip => {1}, GetLastSyncedDate => {2}, GetLastSyncedBlockHeight => {3}, GetSyncedProgress => {4}",
+                nameof(StartSearch),
+                _WalletService.IsSyncedToTip(),
+                _WalletService.GetLastSyncedDate(),
+                _WalletService.GetLastSyncedBlockHeight(),
+                _WalletService.GetSyncedProgress()
+            );
         }
 
         private void SwitchCurrency()
@@ -307,7 +311,7 @@ namespace HodlWallet2.Core.ViewModels
 
             SyncIsVisible = !_WalletService.IsSyncedToTip();
             SyncCurrentProgress = _WalletService.GetSyncedProgress();
-            SyncDateText = _WalletService.GetLastSyncedDate();
+            SyncDateText = $"{_WalletService.GetLastSyncedDate()} ({_WalletService.GetLastSyncedBlockHeight()})";
         }
 
         void WalletManager_OnUpdateSpendingTransaction(object sender, TransactionData e)
