@@ -123,7 +123,7 @@ namespace HodlWallet2.Core.ViewModels
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
         }
 
-        private void StartSearch()
+        void StartSearch()
         {
             // TODO, this is so far just to show and hide the syncbar randomly
             // since we're not gonna do search this is likely to be removed
@@ -137,7 +137,7 @@ namespace HodlWallet2.Core.ViewModels
             SyncIsVisible = true;
         }
 
-        private void UpdateSyncingStatus()
+        void UpdateSyncingStatus()
         {
             SyncIsVisible = !_WalletService.IsSyncedToTip();
             SyncCurrentProgress = _WalletService.GetSyncedProgress();
@@ -153,7 +153,7 @@ namespace HodlWallet2.Core.ViewModels
             );
         }
 
-        private void SwitchCurrency()
+        void SwitchCurrency()
         {
             var currency = Preferences.Get("currency", "BTC");
             if (currency == "BTC")
@@ -171,7 +171,7 @@ namespace HodlWallet2.Core.ViewModels
             LoadTransactionsIfEmpty();
         }
 
-        private async Task TransactionDetailNaviation()
+        async Task TransactionDetailNaviation()
         {
             var transaction = (Transaction)CurrentTransaction;
 
@@ -274,13 +274,15 @@ namespace HodlWallet2.Core.ViewModels
 
         void WalletSyncManager_OnSyncProgressUpdate(object sender, WalletPositionUpdatedEventArgs e)
         {
-            /* TODO: Update Progress During Sync
-             *       Set 'IsVisible' to true when sync starts, false when complete.
-             * e.g.  Progress = e.NewPosition.Height / _walletService.CurrentBlockHeight
-             *       DateText = string.Format(CultureInfo.CurrentCulture, Constants.SyncDate, 
-             *          e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString(), e.NewPosition.Height.ToString()); */
-        }
+            _Logger.Debug(
+                "[{0}] e.NewPosition.Height => {1}, e.PreviousPosition.Height => {2}",
+                nameof(WalletSyncManager_OnSyncProgressUpdate),
+                e.NewPosition.Height,
+                e.PreviousPosition.Height
+            );
 
+            UpdateSyncingStatus();
+        }
 
         void _Transactions_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
