@@ -17,6 +17,13 @@ namespace HodlWallet2.Core.ViewModels
         readonly IWalletService _WalletService;
         Transaction _Transaction;
 
+        public string TransactionDetailsTitle => "Transaction Details";
+        public string StatusTitle => "Status";
+        public string MemoTitle => "Memo";
+        public string AmountTitle => "Amount";
+        public string TransactionIdTitle => "Bitcoin Transaction ID";
+        public string ConfirmedBlockTitle => "Confirmed in Block";
+
         public MvxAsyncCommand CloseCommand { get; }
         public MvxAsyncCommand ShowFaqCommand { get; }
 
@@ -29,6 +36,13 @@ namespace HodlWallet2.Core.ViewModels
 
             CloseCommand = new MvxAsyncCommand(Close);
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
+        }
+
+        public override async Task Initialize()
+        {
+            await base.Initialize();
+
+            
         }
 
         public override void Prepare(Transaction parameter)
