@@ -1,10 +1,10 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Essentials;
@@ -41,8 +41,15 @@ namespace HodlWallet2.Core.ViewModels
         float _NewRate;
         float _OldRate;
         bool _IsBtcEnabled;
+        object _CurrentTransaction;
         
         ObservableCollection<Transaction> _Transactions;
+
+        public object CurrentTransaction
+        {
+            get => _CurrentTransaction;
+            set => SetProperty(ref _CurrentTransaction, value);
+        }
 
         public bool IsBtcEnabled
         {
@@ -87,10 +94,7 @@ namespace HodlWallet2.Core.ViewModels
         public bool SyncIsVisible
         {
             get => _SyncIsVisible;
-            set
-            {
-                SetProperty(ref _SyncIsVisible, value);
-            }
+            set => SetProperty(ref _SyncIsVisible, value);
         }
 
         public MvxCommand NavigateToSendViewCommand { get; }
@@ -98,6 +102,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxCommand NavigateToMenuViewCommand { get; }
         public MvxCommand SwitchCurrencyCommand { get; }
         public MvxCommand SearchCommand { get; }
+        public MvxCommand NavigateToTransactionDetailCommand { get; }
 
         public DashboardViewModel(
             IMvxLogProvider logProvider, 
@@ -152,6 +157,12 @@ namespace HodlWallet2.Core.ViewModels
                 Amount /= (decimal) _NewRate;
             }
             LoadTransactionsIfEmpty();
+        }
+
+        private async Task TransactionDetailNaviation()
+        {
+            var transaction = (Transaction)CurrentTransaction;
+
         }
 
         public override void ViewAppeared()
@@ -283,7 +294,6 @@ namespace HodlWallet2.Core.ViewModels
 
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
-
             _WalletService.WalletManager.OnNewTransaction += WalletManager_OnNewTransaction;
             _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnNewSpendingTransaction;
             _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnUpdateTransaction;
@@ -367,7 +377,6 @@ namespace HodlWallet2.Core.ViewModels
             foreach (var tx in txList)
             {
                 result.Add(CreateTransactionModelInstance(tx));
-
                 _WalletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
             }
             return result;

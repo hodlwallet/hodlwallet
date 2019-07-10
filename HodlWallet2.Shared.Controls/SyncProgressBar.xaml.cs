@@ -24,7 +24,7 @@ namespace HodlWallet2.Shared.Controls
                 typeof(SyncProgressBar)
             );
 
-        public bool SyncVisible
+        public bool SyncIsVisible
         {
             get => (bool) GetValue (SyncVisibleProperty);
             set
@@ -41,7 +41,7 @@ namespace HodlWallet2.Shared.Controls
                 typeof(SyncProgressBar)
             );
 
-        public string SyncTitle
+        public string SyncBarTitle
         {
             get => (string) GetValue (SyncTitleProperty);
             set
@@ -58,7 +58,7 @@ namespace HodlWallet2.Shared.Controls
                 typeof(SyncProgressBar)
             );
 
-        public double SyncProgress
+        public double SyncBarProgress
         {
             get => (double)GetValue(SyncProgressProperty);
             set
@@ -75,7 +75,7 @@ namespace HodlWallet2.Shared.Controls
                 typeof(SyncProgressBar)
             );
 
-        public string SyncDate
+        public string SyncBarDate
         {
             get => (string)GetValue(SyncDateProperty);
             set

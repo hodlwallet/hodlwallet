@@ -1,3 +1,6 @@
+using System;
+using System.Windows.Input;
+using MvvmCross.Commands;
 ﻿using Xamarin.Forms;
 
 namespace HodlWallet2.Core.Models

@@ -36,7 +36,7 @@
         
         <ScrollView FlexLayout.Grow="4">
             <StackLayout Spacing="30" Margin="20, 0, 20, 0">    
-                <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" AlignItems="Center">
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center">
                     <StackLayout Orientation="Vertical" FlexLayout.Grow="4" >
                         <Label x:Name="ToLabel" 
                                Style="{DynamicResource CustomLabel}" 
@@ -71,7 +71,7 @@
                     </StackLayout>
                 </FlexLayout>
 
-                <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" AlignItems="Center">
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center">
                     <StackLayout Orientation="Vertical" 
                                  FlexLayout.Grow="4" >
                         <Label x:Name="AmountLabel" 

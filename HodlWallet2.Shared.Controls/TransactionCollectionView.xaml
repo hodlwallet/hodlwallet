@@ -19,25 +19,24 @@
             <StackLayout>
                 <CollectionView
                     x:Name="Collection"
+                    SelectionMode="Single"
                     BackgroundColor="{StaticResource GrayBackground}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
                                 <Grid
-                                    Margin="10, 5, 10, 5"
+                                    Margin="15, 2, 15, 2"
                                     Padding="10"
                                     BackgroundColor="{StaticResource DarkGray}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition
-                                            Height="20" />
+                                            Height="15" />
                                         <RowDefinition
-                                            Height="20" />
+                                            Height="15" />
                                         <RowDefinition
-                                            Height="40" />
+                                            Height="30" />
                                         <RowDefinition
-                                            Height="20" />
-                                        <RowDefinition
-                                            Height="20" />
+                                            Height="15" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition
@@ -48,12 +47,14 @@
                                     <Label
                                         Grid.Column="0"
                                         Grid.Row="0"
+                                        FontSize="Micro"
                                         Style="{StaticResource TransactionLabel}"
                                         TextColor="{Binding StatusColor}"
                                         Text="{Binding Amount}" />
                                     <Label
                                         Grid.Column="1"
                                         Grid.Row="0"
+                                        FontSize="Micro"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource TransactionLabel}"
                                         TextColor="{StaticResource White}"
@@ -62,6 +63,7 @@
                                         Grid.Column="0"
                                         Grid.Row="1"
                                         Grid.ColumnSpan="2"
+                                        FontSize="Micro"
                                         Style="{StaticResource TransactionLabel}"
                                         TextColor="{StaticResource White}"
                                         Text="{Binding AtAddress}" />
@@ -70,22 +72,16 @@
                                         Grid.Row="2"
                                         BackgroundColor="Transparent"
                                         FontFamily="{StaticResource ElectrolizeFont}"
-                                        FontSize="Small"
+                                        FontSize="Micro"
                                         TextColor="{StaticResource White}"
                                         Text="{Binding Memo}"
                                         IsSpellCheckEnabled="false"
                                         IsTextPredictionEnabled="false" />
                                     <Label
                                         Grid.Column="0"
-                                        Grid.Row="3"
-                                        Grid.ColumnSpan="2"
-                                        Style="{StaticResource TransactionLabel}"
-                                        TextColor="{StaticResource White}"
-                                        Text="{Binding Confirmations}" />
-                                    <Label
-                                        Grid.Column="0"
                                         Grid.Row="4"
                                         Grid.ColumnSpan="2"
+                                        FontSize="Micro"
                                         Style="{StaticResource TransactionLabel}"
                                         TextColor="{StaticResource SyncGradientStart}"
                                         Text="{Binding IsAvailable}" />

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HodlWallet2.Views.TransactionDetailsView"
+             BackgroundColor="{StaticResource DarkGray}"
+             xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+             xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"    
+             x:TypeArguments="viewModels:TransactionDetailsViewModel"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Style Property="Style" Value="{DynamicResource CustomLabel}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <FlexLayout>
+        <FlexLayout FlexLayout.Grow="1" 
+                    Direction="Row" 
+                    JustifyContent="SpaceBetween" 
+                    AlignItems="Center" 
+                    Margin="20, 0, 20, 0">
+            <svg:Icon ResourceId="Assets.close.svg" 
+                      FlexLayout.AlignSelf="Center">
+                <svg:Icon.GestureRecognizers>
+                    <TapGestureRecognizer bindings:Bi.nd="Command CloseCommand" 
+                                          />
+                </svg:Icon.GestureRecognizers>
+            </svg:Icon>
+        
+            <Label x:Name="TransactionDetailTitle"
+                   FontSize="Large"
+                   />
+
+            <svg:Icon ResourceId="Assets.faq.svg">
+                <svg:Icon.GestureRecognizers>
+                    <TapGestureRecognizer bindings:Bi.nd="Command ShowFaqCommand" 
+                                          />
+                </svg:Icon.GestureRecognizers>
+            </svg:Icon>
+        </FlexLayout>
+        
+        <ScrollView>
+            <StackLayout>
+                <Label x:Name="DateLabel" 
+                       FontSize="Small" 
+                       />
+                <Label x:Name="AmountLabel" 
+                       FontSize="Large" 
+                       />
+                <Label x:Name="AddressToFromLabel" 
+                       FontSize="Large" 
+                       />
+                <BoxView BackgroundColor="GrayTextTint"
+                         HeightRequest="2"
+                         />
+                <Label x:Name="StatusTitleLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="StatusLabel"
+                       FontSize="Small"
+                       />
+                <BoxView BackgroundColor="GrayTextTint"
+                         HeightRequest="2"
+                         />
+                <Label x:Name="MemoTitleLabel"
+                       FontSize="Small"
+                       />
+                <Entry x:Name="MemoEntry"
+                       BackgroundColor="Transparent"
+                       FontSize="Small"
+                       />
+                <BoxView BackgroundColor="GrayTextTint"
+                         HeightRequest="2"
+                         />
+                <Label x:Name="AmountTitleLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="AmountWithFeeLabel"
+                       FontSize="Small" />
+                <Label x:Name="StartingBalanceLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="EndingBalanceLabel"
+                       FontSize="Small"
+                       />
+                <BoxView BackgroundColor="GrayTextTint"
+                         HeightRequest="2"
+                         />
+                <Label x:Name="AddressTitleLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="AddressLabel"
+                       FontSize="Small"
+                       />
+                <BoxView BackgroundColor="GrayTextTint"
+                         HeightRequest="2"
+                         />
+                <Label x:Name="IdTitleLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="IdLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="ConfirmedBlockTitleLabel"
+                       FontSize="Small"
+                       />
+                <Label x:Name="ConfirmedBlockLabel"
+                       FontSize="Small"
+                       />
+            </StackLayout>
+        </ScrollView>
+    </FlexLayout>
+</views:MvxContentPage>
