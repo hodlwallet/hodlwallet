@@ -12,9 +12,9 @@ namespace HodlWallet2.Shared.Controls
             IsVisible = false;
 
             SetBinding(IsVisibleProperty, new Binding(nameof(SyncVisible), source: this));
-            SyncTitle.SetBinding(Label.TextProperty, new Binding(nameof(SyncBarTitle), source: this));
-            SyncProgress.SetBinding(ProgressBar.ProgressProperty, new Binding(nameof(SyncBarProgress), source: this));
-            SyncDate.SetBinding(Label.TextProperty, new Binding(nameof(SyncBarDate), source: this));
+            TitleLabel.SetBinding(Label.TextProperty, new Binding(nameof(SyncTitle), source: this));
+            Sync_ProgressBar.SetBinding(ProgressBar.ProgressProperty, new Binding(nameof(SyncProgress), source: this));
+            DateLabel.SetBinding(Label.TextProperty, new Binding(nameof(SyncDate), source: this));
         }
 
         public static readonly BindableProperty SyncVisibleProperty =
@@ -41,13 +41,13 @@ namespace HodlWallet2.Shared.Controls
                 typeof(SyncProgressBar)
             );
 
-        public string SyncBarTitle
+        public string SyncTitle
         {
             get => (string) GetValue (SyncTitleProperty);
             set
             {
                 SetValue(SyncTitleProperty, value);
-                SyncTitle.Text = value;
+                TitleLabel.Text = value;
             }
         }
 
@@ -58,13 +58,13 @@ namespace HodlWallet2.Shared.Controls
                 typeof(SyncProgressBar)
             );
 
-        public double SyncBarProgress
+        public double SyncProgress
         {
             get => (double)GetValue(SyncProgressProperty);
             set
             {
                 SetValue(SyncTitleProperty, value);
-                SyncProgress.Progress = value;
+                Sync_ProgressBar.Progress = value;
             }
         }
 
@@ -75,13 +75,13 @@ namespace HodlWallet2.Shared.Controls
                 typeof(SyncProgressBar)
             );
 
-        public string SyncBarDate
+        public string SyncDate
         {
             get => (string)GetValue(SyncDateProperty);
             set
             {
                 SetValue(SyncDateProperty, value);
-                SyncDate.Text = value;
+                DateLabel.Text = value;
             }
         }
     }
