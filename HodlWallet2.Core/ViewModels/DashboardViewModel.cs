@@ -131,13 +131,21 @@ namespace HodlWallet2.Core.ViewModels
             // Log what we supposed to show
             _Logger.Debug(!_WalletService.IsSyncedToTip() ? "[{0}] Show sync bar." : "[{0}] Hide sync bar.", nameof(StartSearch));
 
+            UpdateSyncingStatus();
+
+            // FIXME remove this...
             SyncIsVisible = true;
+        }
+
+        private void UpdateSyncingStatus()
+        {
+            SyncIsVisible = !_WalletService.IsSyncedToTip();
             SyncCurrentProgress = _WalletService.GetSyncedProgress();
             SyncDateText = $"{_WalletService.GetLastSyncedDate()} ({_WalletService.GetLastSyncedBlockHeight()})";
 
             _Logger.Debug(
                 "[{0}] IsSyncedToTip => {1}, GetLastSyncedDate => {2}, GetLastSyncedBlockHeight => {3}, GetSyncedProgress => {4}",
-                nameof(StartSearch),
+                nameof(UpdateSyncingStatus),
                 _WalletService.IsSyncedToTip(),
                 _WalletService.GetLastSyncedDate(),
                 _WalletService.GetLastSyncedBlockHeight(),
@@ -309,9 +317,7 @@ namespace HodlWallet2.Core.ViewModels
 
             _Transactions.CollectionChanged += _Transactions_CollectionChanged;
 
-            SyncIsVisible = !_WalletService.IsSyncedToTip();
-            SyncCurrentProgress = _WalletService.GetSyncedProgress();
-            SyncDateText = $"{_WalletService.GetLastSyncedDate()} ({_WalletService.GetLastSyncedBlockHeight()})";
+            UpdateSyncingStatus();
         }
 
         void WalletManager_OnUpdateSpendingTransaction(object sender, TransactionData e)
@@ -440,7 +446,7 @@ namespace HodlWallet2.Core.ViewModels
                 if (tx.IsSend == true)
                     return string.Format(Constants.SENT_AMOUNT, preferences, tx.Amount);
 
-                return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.Amount);                
+                return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.Amount);
             }
             else
             {
