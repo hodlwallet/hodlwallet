@@ -10,7 +10,8 @@ namespace HodlWallet2.Shared.Controls
         {
             InitializeComponent();
             IsVisible = false;
-            SetBinding(IsVisibleProperty, new Binding(nameof(SyncIsVisible), source: this));
+
+            SetBinding(IsVisibleProperty, new Binding(nameof(SyncVisible), source: this));
             SyncTitle.SetBinding(Label.TextProperty, new Binding(nameof(SyncBarTitle), source: this));
             SyncProgress.SetBinding(ProgressBar.ProgressProperty, new Binding(nameof(SyncBarProgress), source: this));
             SyncDate.SetBinding(Label.TextProperty, new Binding(nameof(SyncBarDate), source: this));
@@ -23,7 +24,7 @@ namespace HodlWallet2.Shared.Controls
                 typeof(SyncProgressBar)
             );
 
-        public bool SyncIsVisible
+        public bool SyncVisible
         {
             get => (bool) GetValue (SyncVisibleProperty);
             set
