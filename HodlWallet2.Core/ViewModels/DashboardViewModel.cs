@@ -314,12 +314,20 @@ namespace HodlWallet2.Core.ViewModels
             _WalletService.WalletManager.OnUpdateSpendingTransaction += WalletManager_OnUpdateSpendingTransaction;
 
             _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
+            _WalletService.WalletSyncManager.OnWalletSyncedToTipOfChain += WalletSyncManager_OnWalletSyncedToTipOfChain;
 
             LoadTransactionsIfEmpty();
 
             _Transactions.CollectionChanged += _Transactions_CollectionChanged;
 
             UpdateSyncingStatus();
+        }
+
+        private void WalletSyncManager_OnWalletSyncedToTipOfChain(object sender, NBitcoin.ChainedBlock e)
+        {
+            UpdateSyncingStatus();
+
+            SyncIsVisible = false;
         }
 
         void WalletManager_OnUpdateSpendingTransaction(object sender, TransactionData e)
