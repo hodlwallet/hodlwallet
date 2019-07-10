@@ -14,106 +14,147 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
-                <Style Property="Style" Value="{DynamicResource CustomLabel}" />
+                <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <FlexLayout>
-        <FlexLayout FlexLayout.Grow="1" 
-                    Direction="Row" 
-                    JustifyContent="SpaceBetween" 
-                    AlignItems="Center" 
+        
+        <FlexLayout AlignItems="Center"
+                    Direction="Row"
+                    FlexLayout.Grow="1"
+                    JustifyContent="SpaceBetween"
                     Margin="20, 0, 20, 0">
+            
             <svg:Icon ResourceId="Assets.close.svg" 
                       FlexLayout.AlignSelf="Center">
+                
                 <svg:Icon.GestureRecognizers>
-                    <TapGestureRecognizer bindings:Bi.nd="Command CloseCommand" 
-                                          />
+                    <TapGestureRecognizer bindings:Bi.nd="Command CloseCommand" />
                 </svg:Icon.GestureRecognizers>
+                
             </svg:Icon>
         
             <Label x:Name="TransactionDetailTitle"
                    FontSize="Large"
+                   Text="{Binding TransactionDetailTitle}"
                    />
 
             <svg:Icon ResourceId="Assets.faq.svg">
+                
                 <svg:Icon.GestureRecognizers>
-                    <TapGestureRecognizer bindings:Bi.nd="Command ShowFaqCommand" 
-                                          />
+                    <TapGestureRecognizer bindings:Bi.nd="Command ShowFaqCommand" />
                 </svg:Icon.GestureRecognizers>
+                
             </svg:Icon>
+            
         </FlexLayout>
         
         <ScrollView>
+            
             <StackLayout>
+                
                 <Label x:Name="DateLabel" 
-                       FontSize="Small" 
+                       FontSize="Small"
+                       Text="{Binding DateText}"
                        />
                 <Label x:Name="AmountLabel" 
                        FontSize="Large" 
+                       Text="{Binding AmountText}"
                        />
                 <Label x:Name="AddressToFromLabel" 
                        FontSize="Large" 
+                       Text="{Binding AmountToFromText}"
                        />
-                <BoxView BackgroundColor="GrayTextTint"
+                
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
                          HeightRequest="2"
                          />
+                
                 <Label x:Name="StatusTitleLabel"
                        FontSize="Small"
+                       Text="{Binding StatusTitle}"
                        />
                 <Label x:Name="StatusLabel"
                        FontSize="Small"
+                       Text="{Binding StatusText}"
                        />
-                <BoxView BackgroundColor="GrayTextTint"
+                
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
                          HeightRequest="2"
                          />
+                
                 <Label x:Name="MemoTitleLabel"
                        FontSize="Small"
+                       Text="{Binding MemoTitle}"
                        />
                 <Entry x:Name="MemoEntry"
                        BackgroundColor="Transparent"
                        FontSize="Small"
+                       Text="{Binding MemoText}"
                        />
-                <BoxView BackgroundColor="GrayTextTint"
+                
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
                          HeightRequest="2"
                          />
+                
                 <Label x:Name="AmountTitleLabel"
                        FontSize="Small"
+                       Text="{Binding AmountTitle}"
                        />
                 <Label x:Name="AmountWithFeeLabel"
-                       FontSize="Small" />
+                       FontSize="Small"
+                       Text="{Binding AmountWithFeeText}"
+                       />
                 <Label x:Name="StartingBalanceLabel"
                        FontSize="Small"
+                       Text="{Binding StartingBalanceText}"
                        />
                 <Label x:Name="EndingBalanceLabel"
                        FontSize="Small"
+                       Text="{Binding EndingBalanceText}"
                        />
-                <BoxView BackgroundColor="GrayTextTint"
+                
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
                          HeightRequest="2"
                          />
+                
                 <Label x:Name="AddressTitleLabel"
                        FontSize="Small"
+                       Text="{Binding AddressTitle}"
                        />
                 <Label x:Name="AddressLabel"
                        FontSize="Small"
+                       Text="{Binding AddressText}"
                        />
-                <BoxView BackgroundColor="GrayTextTint"
+                
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
                          HeightRequest="2"
                          />
+                
                 <Label x:Name="IdTitleLabel"
                        FontSize="Small"
+                       Text="{Binding TransactionIdTitle}"
                        />
                 <Label x:Name="IdLabel"
                        FontSize="Small"
+                       Text="{Binding TransactionIdText}"
                        />
                 <Label x:Name="ConfirmedBlockTitleLabel"
                        FontSize="Small"
+                       Text="{Binding ConfirmedBlockTitle}"
                        />
                 <Label x:Name="ConfirmedBlockLabel"
                        FontSize="Small"
+                       Text="{Binding ConfirmedBlockText}"
                        />
+                
             </StackLayout>
+            
         </ScrollView>
+        
     </FlexLayout>
+    
 </views:MvxContentPage>
