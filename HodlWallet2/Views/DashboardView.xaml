@@ -76,7 +76,7 @@
                                                           SyncDate SyncDateText"/>
                 <controls:TransactionCollectionView bindings:Bi.nd="ItemsSource Transactions;
                                                                     SelectedItem CurrentTransaction;
-                                                                    SelectionChangedCommand NavigateToTransactionDetailCommand"
+                                                                    SelectionChangedCommand NavigateToTransactionDetailsCommand"
                                                                     FlexLayout.Grow="1"/>
             </FlexLayout>
             

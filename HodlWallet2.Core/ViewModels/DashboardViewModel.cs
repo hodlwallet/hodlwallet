@@ -97,7 +97,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxCommand NavigateToReceiveViewCommand { get; }
         public MvxCommand NavigateToMenuViewCommand { get; }
         public MvxCommand SwitchCurrencyCommand { get; }
-        public MvxCommand NavigateToTransactionDetailCommand { get; }
+        public MvxCommand NavigateToTransactionDetailsCommand { get; }
 
         public DashboardViewModel(
             IMvxLogProvider logProvider, 
@@ -111,6 +111,7 @@ namespace HodlWallet2.Core.ViewModels
             NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
+            NavigateToTransactionDetailsCommand = new MvxCommand(NavigateToTransactionDetails);
             SwitchCurrencyCommand = new MvxCommand(SwitchCurrency);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
@@ -214,6 +215,11 @@ namespace HodlWallet2.Core.ViewModels
         void NavigateToSendView()
         {
             NavigationService.Navigate<SendViewModel>();
+        }
+
+        void NavigateToTransactionDetails()
+        {
+            NavigationService.Navigate<TransactionDetailsViewModel, Transaction>(_CurrentTransaction as Transaction);
         }
 
         async Task RatesAsync()
