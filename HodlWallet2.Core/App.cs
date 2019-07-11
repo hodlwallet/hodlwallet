@@ -6,7 +6,8 @@ using MvvmCross.ViewModels;
 using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.ViewModels;
 using HodlWallet2.Core.Services;
-using System.Reflection;
+
+using System.Diagnostics;
 
 namespace HodlWallet2.Core
 {
@@ -21,6 +22,9 @@ namespace HodlWallet2.Core
             // SecureStorageProvider.SetPin("111111");
             // SecureStorageProvider.SetMnemonic("abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about");
             // SecureStorageProvider.SetNetwork("testnet");
+
+            //SecureStorageProvider.RemoveAll();
+            //Process.GetCurrentProcess().Kill();
 
             SecureStorageProvider.LogSecureStorageKeys();
 

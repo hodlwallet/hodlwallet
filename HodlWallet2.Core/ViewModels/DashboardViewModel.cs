@@ -145,6 +145,10 @@ namespace HodlWallet2.Core.ViewModels
 
             if (progress.Equals(0.00))
             {
+                var chainTip = _WalletService.GetChainTip();
+
+                _Logger.Debug("[{0}] chainTip => {1}", nameof(UpdateSyncingStatus), chainTip.Height);
+
                 SyncDateText = Constants.SYNC_LOADING_HEADERS;
             }
             else

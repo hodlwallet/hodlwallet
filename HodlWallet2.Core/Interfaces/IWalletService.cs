@@ -71,5 +71,6 @@ namespace HodlWallet2.Core.Interfaces
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,
             int feeSatsPerByte, string password);
         Task<(bool Sent, string Error)> SendTransaction(Transaction tx);
+        ChainedBlock GetChainTip();
     }
 }

@@ -628,7 +628,7 @@ namespace HodlWallet2.Core.Services
             var tip = _Chain.FindFork(new uint256[] { WalletManager.LastReceivedBlockHash() });
             var minutesPerBlock = _Network == Network.Main ? 10 : 8; // Based on stimates and calculations
 
-            if (tip is null) tip = _Chain.FindFork(WalletManager.GetWalletBlockLocator());
+            if (tip is null) tip = _Chain.FindFork(WalletManager.GetWalletBlockLocator() ?? new uint256[] { });
             if (tip is null) tip = _Network.GetBIP39ActivationChainedBlock();
 
             // Time aproximates... Based on probability of a bitcoin block being bethween 10 minutes
@@ -680,11 +680,16 @@ namespace HodlWallet2.Core.Services
         {
             var tip = _Chain.FindFork(new uint256[] { WalletManager.LastReceivedBlockHash() });
 
-            if (tip is null) tip = _Chain.FindFork(WalletManager.GetWalletBlockLocator());
+            if (tip is null) tip = _Chain.FindFork(WalletManager.GetWalletBlockLocator() ?? new uint256[] { });
 
             if (tip is null) tip = _Network.GetBIP39ActivationChainedBlock();
 
             return tip.Height;
+        }
+
+        public ChainedBlock GetChainTip()
+        {
+            return _Chain.Tip;
         }
 
         void AddNodesGroupEvents()
