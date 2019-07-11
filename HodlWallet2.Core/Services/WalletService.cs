@@ -647,7 +647,7 @@ namespace HodlWallet2.Core.Services
 
             int predictedBlockHeight = currentBlockHeight + aproximateBlocksBehind;
 
-            double progress = (double)(currentBlockHeight - bip39ActivationBlockHeight) / (double)(predictedBlockHeight - bip39ActivationBlockHeight);
+            double progress = (double)(currentBlockHeight - bip39ActivationBlockHeight) / (double)predictedBlockHeight;
 
             Logger.Debug("[{methodName}] Progress: {progress}", nameof(GetSyncedProgress), progress);
 
