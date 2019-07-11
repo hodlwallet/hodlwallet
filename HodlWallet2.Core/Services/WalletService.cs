@@ -651,8 +651,6 @@ namespace HodlWallet2.Core.Services
 
             Logger.Debug("[{methodName}] Progress: {progress}", nameof(GetSyncedProgress), progress);
 
-            Logger.Debug($"[{nameof(GetSyncedProgress)}] (double)(bip39ActivationBlockHeight + currentBlockHeight) / predictedBlockHeight //=> {(double)(bip39ActivationBlockHeight + currentBlockHeight) / predictedBlockHeight}");
-
             // FIXME Figure out why this gives positive numbers sometimes...
 
             return progress;
