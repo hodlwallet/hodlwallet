@@ -32,6 +32,7 @@
         public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported.";
         public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE = "Address Copied to Clipboard";
         public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON = "OK";
+        public const string SYNC_LOADING_HEADERS = "Loading headers...";
 
         // Temporary Values
         public const string USE_ADDRESS_FROM_CLIPBOARD =
