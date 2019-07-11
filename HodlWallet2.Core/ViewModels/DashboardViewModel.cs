@@ -390,7 +390,7 @@ namespace HodlWallet2.Core.ViewModels
                 (TransactionData txData) => txData.CreationTime
             ).Reverse();
 
-            foreach (var tx in txs.ToArray())
+            foreach (var tx in txs)
             {
                 _Transactions.Add(CreateTransactionModelInstance(tx));
             }
@@ -411,6 +411,7 @@ namespace HodlWallet2.Core.ViewModels
         Transaction CreateTransactionModelInstance(TransactionData transactionData)
         {
             var tx = new Transaction {
+                Id = transactionData.Id.ToString(),
                 IsReceive = transactionData.IsReceive,
                 IsSent = transactionData.IsSend,
                 IsSpendable = transactionData.IsSpendable(),
@@ -422,13 +423,19 @@ namespace HodlWallet2.Core.ViewModels
                         : Constants.IS_NOT_AVAILABLE,
                 /* TODO: Add Memo to Transaction Data
                    e.g.  Memo = transactionData.Memo, */
+                Memo = "",
+                Confirmations = "",
                 Amount = GetAmountLabelText(transactionData),
                 StatusColor = transactionData.IsSend == true
                         ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
                         : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
+                Address = FormatAtAddressText(
+                    transactionData.IsSend == true,
+                    _WalletService.GetAddressFromTransaction(transactionData)),
                 AtAddress = FormatAtAddressText(
                     transactionData.IsSend == true,
                     _WalletService.GetAddressFromTransaction(transactionData)),
+                DateAndTime = transactionData.CreationTime.ToString(),
                 Duration = DateTimeOffsetOperations.ShortDate(transactionData.CreationTime)
             };
 
