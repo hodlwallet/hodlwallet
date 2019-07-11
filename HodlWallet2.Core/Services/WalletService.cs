@@ -441,7 +441,7 @@ namespace HodlWallet2.Core.Services
             if (SecureStorageProvider.HasSeedBirthday())
                 timeToStartOn = DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday());
 
-            // NOTE Should rescan handle deletion of tx database from the wallet? I don't think so
+            // NOTE Should rescan handle deletion of tx database from the wallet? I don't think so	
 
             // Start scanning again
             Scan(timeToStartOn);
@@ -650,8 +650,6 @@ namespace HodlWallet2.Core.Services
             double progress = (double)(currentBlockHeight - bip39ActivationBlockHeight) / (double)predictedBlockHeight;
 
             Logger.Debug("[{methodName}] Progress: {progress}", nameof(GetSyncedProgress), progress);
-
-            // FIXME Figure out why this gives positive numbers sometimes...
 
             return progress;
         }

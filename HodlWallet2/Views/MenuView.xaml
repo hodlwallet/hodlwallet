@@ -38,13 +38,12 @@
                 
                 <!-- TODO Remove and put in appropiate places inside sub menus, this is for alpha 1 -->
                 <!-- Buttons and separators -->
-                <Button x:Name="BackupMnemonic"
-                        bindings:Bi.nd="Command BackupMnemonicCommand"
-                        Style="{DynamicResource CustomButton}"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1" />
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
-                
+                <Button x:Name="BackupMnemonic" 
+                        bindings:Bi.nd="Command BackupMnemonicCommand"  
+                        Style="{DynamicResource CustomButton}"  
+                        FlexLayout.AlignSelf="Stretch"  
+                        FlexLayout.Grow="1" />  
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />   
                 <Button x:Name="ResyncWallet"
                         bindings:Bi.nd="Command ResyncWalletCommand"
                         Style="{DynamicResource CustomButton}"
@@ -68,18 +67,17 @@
                 
                 <!-- Extra space -->
                 <BoxView FlexLayout.Grow="3" />
-                
-                <Label x:Name="BuildDate"
-                       bindings:Bi.nd="Command ShowBuildInfoCommand"
-                       Style="{DynamicResource CustomLabel}"
-                       FlexLayout.AlignSelf="Center"
-                       FlexLayout.Grow="1">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer bindings:Bi.nd="Command ShowBuildInfoCommand"
-                                              NumberOfTapsRequired="1" />
-                    </Label.GestureRecognizers>
+                    <Label x:Name="BuildDate"  
+                           bindings:Bi.nd="Command ShowBuildInfoCommand"    
+                           Style="{DynamicResource CustomLabel}"    
+                           FlexLayout.AlignSelf="Center"    
+                           FlexLayout.Grow="1"> 
+                        <Label.GestureRecognizers>  
+                            <TapGestureRecognizer bindings:Bi.nd="Command ShowBuildInfoCommand" 
+                                                  NumberOfTapsRequired="1" />   
+                        </Label.GestureRecognizers> 
                 </Label>
-                
+
                 <!-- TODO Add the rest of the menus when it make sense-->
 
                 <!--<Button x:Name="Security"

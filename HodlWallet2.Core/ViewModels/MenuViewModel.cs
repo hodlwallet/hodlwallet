@@ -13,6 +13,7 @@ using Serilog;
 using HodlWallet2.Core.Interactions;
 using HodlWallet2.Core.Services;
 using HodlWallet2.Core.Utils;
+
 using Xamarin.Essentials;
 
 namespace HodlWallet2.Core.ViewModels
@@ -110,6 +111,7 @@ namespace HodlWallet2.Core.ViewModels
                     if (!yes) return;
 
                     _WalletService.ReScan();
+
                     await NavigationService.Close(this);
                 }
             };
@@ -150,6 +152,8 @@ namespace HodlWallet2.Core.ViewModels
                     {
                         // This exception should never happen, in case it does though here it is
                         _Logger.Information("Error trying to destroy wallet: {0}", e.ToString());
+
+                        return; // Danger zone, we wont kill the app if there's an error destroying the wallet
                     }
 
                     // After destroy we kill

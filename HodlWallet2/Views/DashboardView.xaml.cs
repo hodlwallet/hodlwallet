@@ -14,7 +14,7 @@ namespace HodlWallet2.Views
     public partial class DashboardView : MvxContentPage<DashboardViewModel>
     {
         public DashboardView()
-        {   
+        {
             InitializeComponent();
         }
 

@@ -26,7 +26,6 @@ namespace HodlWallet2.Core.Interfaces
         IScriptAddressReader ScriptAddressReader { get; set; }
         IStorageProvider StorageProvider { get; set; }
         IWalletSyncManager WalletSyncManager { get; set; }
-
         WalletManager WalletManager { get; set; }
         NodesGroup NodesGroup { get; set; }
         BlockLocator ScanLocation { get; set; }
@@ -52,16 +51,15 @@ namespace HodlWallet2.Core.Interfaces
         bool IsVerifyChecksum(string mnemonic, string wordList);
         bool IsWordInWordlist(string word, string wordList);
         bool IsSyncedToTip();
-
         string NewMnemonic(string wordList, int wordCount);
         string GetAddressFromTransaction(TransactionData txData);
         string GetLastSyncedDate();
+        string GetSyncedProgressPercentage();
         string[] GenerateGuessWords(string wordToGuess, string language, int amountAround);
 
         decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);
 
         double GetSyncedProgress();
-        string GetSyncedProgressPercentage();
 
         long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed);
 

@@ -102,7 +102,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxCommand NavigateToMenuViewCommand { get; }
         public MvxCommand SwitchCurrencyCommand { get; }
         public MvxCommand SearchCommand { get; }
-        public MvxCommand NavigateToTransactionDetailCommand { get; }
+        public MvxCommand NavigateToTransactionDetailsCommand { get; }
 
         public DashboardViewModel(
             IMvxLogProvider logProvider, 
@@ -117,6 +117,7 @@ namespace HodlWallet2.Core.ViewModels
             NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
+            NavigateToTransactionDetailsCommand = new MvxCommand(NavigateToTransactionDetails);
             SwitchCurrencyCommand = new MvxCommand(SwitchCurrency);
             SearchCommand = new MvxCommand(StartSearch);
 
@@ -233,7 +234,7 @@ namespace HodlWallet2.Core.ViewModels
                 return true;
             });
 
-            // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
+            // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case	
             Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
 
             IsBtcEnabled = true;
@@ -259,6 +260,11 @@ namespace HodlWallet2.Core.ViewModels
         void NavigateToSendView()
         {
             NavigationService.Navigate<SendViewModel>();
+        }
+
+        void NavigateToTransactionDetails()
+        {
+            NavigationService.Navigate<TransactionDetailsViewModel, Transaction>(_CurrentTransaction as Transaction);
         }
 
         async Task RatesAsync()
