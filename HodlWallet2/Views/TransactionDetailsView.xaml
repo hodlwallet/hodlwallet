@@ -20,7 +20,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <FlexLayout>
+    <FlexLayout Direction="Column">
         
         <FlexLayout AlignItems="Center"
                     Direction="Row"
@@ -37,9 +37,9 @@
                 
             </svg:Icon>
         
-            <Label x:Name="TransactionDetailTitle"
+            <Label x:Name="TransactionDetailsTitle"
                    FontSize="Large"
-                   Text="{Binding TransactionDetailTitle}"
+                   Text="{Binding TransactionDetailsTitle}"
                    />
 
             <svg:Icon ResourceId="Assets.faq.svg">
@@ -123,7 +123,7 @@
                 
                 <Label x:Name="AddressTitleLabel"
                        FontSize="Small"
-                       Text="{Binding AddressTitle}"
+                       Text="{Binding AddressHeader}"
                        />
                 <Label x:Name="AddressLabel"
                        FontSize="Small"
