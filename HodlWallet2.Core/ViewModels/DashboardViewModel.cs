@@ -385,11 +385,11 @@ namespace HodlWallet2.Core.ViewModels
 
             RaisePropertyChanged(nameof(Transactions));
 
-            foreach (var i in Enumerable.Range(0, 10)) Console.WriteLine(new string('*', 60));
+            foreach (var i in Enumerable.Range(0, 10)) _Logger.Information(new string('*', 60));
 
-            Console.WriteLine($"\n\nTX ADDED TO THE COLLECTION: {txData.Id.ToString()}\n\n");
+            _Logger.Information($"\n\nTX ADDED TO THE COLLECTION: {txData.Id.ToString()}\n\n");
 
-            foreach (var i in Enumerable.Range(0, 10)) Console.WriteLine(new string('*', 60));
+            foreach (var i in Enumerable.Range(0, 10)) _Logger.Information(new string('*', 60));
         }
 
         void UpdateTransactionsCollectionWith(TransactionData txData)
