@@ -78,9 +78,7 @@
                                                           SyncTitle SyncTitleText; 
                                                           SyncProgress SyncCurrentProgress;
                                                           SyncDate SyncDateText"/>
-                <controls:TransactionCollectionView bindings:Bi.nd="SelectedItem CurrentTransaction;
-                                                                    SelectionChangedCommand NavigateToTransactionDetailsCommand"
-                                                                    FlexLayout.Grow="1"/>
+                <controls:TransactionCollectionView FlexLayout.Grow="1"/>
             </FlexLayout>
             
             <FlexLayout Direction="Row" FlexLayout.Grow="1" JustifyContent="SpaceAround">
