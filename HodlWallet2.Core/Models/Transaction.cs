@@ -23,5 +23,34 @@ namespace HodlWallet2.Core.Models
         public string Confirmations { get; set; }
         public string IsAvailable { get; set; }
         public string Id { get; set; }
+
+        /// FIXME probably not the right place for this...
+        /// Calculated properties... ummm prob against the protocol
+        /// <summary>
+        /// This returns the hight of the memo row
+        /// if there's a memo add space for it ("15"),
+        /// if there's not, then add no space ("0")
+        /// </summary>
+        /// <value>
+        /// A <see cref="string"/> that represents
+        /// the hight of the row that has the memo
+        /// </value>
+        public string MemoHeight
+        {
+            get
+            {
+                // Test how this works...
+                //var rng = new Random();
+
+                //bool hasAMemo = rng.Next(0, 100) % 2 == 0;
+
+                //if (hasAMemo)
+                //    Memo = "Groceries";
+
+                if (Memo.Length == 0) return "0";
+
+                return "15";
+            }
+        }
     }
 }

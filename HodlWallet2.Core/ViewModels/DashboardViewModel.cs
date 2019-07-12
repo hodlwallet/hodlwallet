@@ -437,19 +437,23 @@ namespace HodlWallet2.Core.ViewModels
             return tx;
         }
 
-        string FormatAtAddressText(bool isSend, string address)
+        string FormatAtAddressText(bool isSend, string address, bool chopAddress = false)
         {
             string fmtAddressText = "{0}: {1}";
-            int addressPadding = 12;
+            int addressPadding = 20;
 
             string preposition = isSend ? Constants.TO_LABEL : Constants.AT_LABEL;
-            string choppedAddress = string.Concat(
-                new string(address.Take(addressPadding).ToArray()),
-                "...",
-                new string(address.Reverse().Take(addressPadding).ToArray())
-            );
 
-            return string.Format(fmtAddressText, preposition, choppedAddress);
+            if (chopAddress)
+            {
+                address = string.Concat(
+                    new string(address.Take(addressPadding).ToArray()),
+                    "...",
+                    new string(address.Reverse().Take(addressPadding).ToArray())
+                );
+            }
+
+            return string.Format(fmtAddressText, preposition, address);
         }
 
         string GetAmountLabelText(TransactionData tx)
