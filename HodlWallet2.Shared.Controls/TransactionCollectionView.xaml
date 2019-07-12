@@ -20,6 +20,7 @@
                 <CollectionView
                     x:Name="Collection"
                     SelectionMode="Single"
+                    ItemsSource="{Binding Transactions}"
                     BackgroundColor="{StaticResource GrayBackground}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
