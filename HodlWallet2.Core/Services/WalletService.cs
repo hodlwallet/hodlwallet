@@ -27,8 +27,11 @@ namespace HodlWallet2.Core.Services
 {
     public sealed class WalletService : IWalletService
     {
+#if DEBUG
+        public const int DEFAULT_NODES_TO_CONNECT = 1;
+#else
         public const int DEFAULT_NODES_TO_CONNECT = 4;
-
+#endif
         public const string DEFAULT_NETWORK = "testnet";
 
         public static string USER_AGENT { get; } = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";

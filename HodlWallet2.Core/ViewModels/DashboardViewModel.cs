@@ -382,6 +382,14 @@ namespace HodlWallet2.Core.ViewModels
                 if (_Transactions[i].Id == txData.Id.ToString()) return;
 
             _Transactions.Insert(0, CreateTransactionModelInstance(txData));
+
+            RaisePropertyChanged(nameof(Transactions));
+
+            foreach (var i in Enumerable.Range(0, 10)) Console.WriteLine(new string('*', 60));
+
+            Console.WriteLine($"\n\nTX ADDED TO THE COLLECTION: {txData.Id.ToString()}\n\n");
+
+            foreach (var i in Enumerable.Range(0, 10)) Console.WriteLine(new string('*', 60));
         }
 
         void UpdateTransactionsCollectionWith(TransactionData txData)
@@ -393,6 +401,15 @@ namespace HodlWallet2.Core.ViewModels
                 _Transactions[i] = CreateTransactionModelInstance(txData);
 
                 _WalletService.Logger.Debug($"Updated tx: {txData.Id.ToString()}");
+
+                RaisePropertyChanged(nameof(Transactions));
+
+                foreach (var j in Enumerable.Range(0, 10)) Console.WriteLine(new string('*', 60));
+
+                Console.WriteLine($"\n\nTX REPLACED IN THE COLLECTION: {txData.Id.ToString()}\n\n");
+
+                foreach (var j in Enumerable.Range(0, 10)) Console.WriteLine(new string('*', 60));
+
             }
         }
 
