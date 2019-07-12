@@ -128,7 +128,6 @@ namespace HodlWallet2.Core.ViewModels
 
         void InitializeWalletServiceTransactions()
         {
-
             if (_WalletService.IsStarted)
             {
                 _WalletService_OnStarted(_WalletService, null);
