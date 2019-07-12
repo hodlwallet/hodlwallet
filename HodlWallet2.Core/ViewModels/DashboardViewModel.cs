@@ -43,7 +43,7 @@ namespace HodlWallet2.Core.ViewModels
         bool _IsBtcEnabled;
         object _CurrentTransaction;
         
-        ObservableCollection<Transaction> _Transactions;
+        ObservableCollection<Transaction> _Transactions = new ObservableCollection<Transaction>();
 
         public object CurrentTransaction
         {
@@ -123,10 +123,12 @@ namespace HodlWallet2.Core.ViewModels
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
 
-            if (_WalletService.IsStarted)
-                _WalletService_OnStarted(_WalletService, null);
-            else
-                _WalletService.OnStarted += _WalletService_OnStarted;
+            while(!_WalletService.IsStarted)
+            {
+
+            }
+
+            _WalletService_OnStarted(_WalletService, null);
         }
 
         void StartSearch()
@@ -189,11 +191,6 @@ namespace HodlWallet2.Core.ViewModels
                 IsBtcEnabled = true;
                 Amount /= (decimal) _NewRate;
             }
-        }
-
-        async Task TransactionDetailNaviation()
-        {
-            var transaction = (Transaction)CurrentTransaction;
         }
 
         public override void ViewAppearing()
@@ -318,10 +315,10 @@ namespace HodlWallet2.Core.ViewModels
 
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
-            _Transactions = new ObservableCollection<Transaction>();
+            // Try moving this initializer to the top.
+            //_Transactions.CollectionChanged += _Transactions_CollectionChanged;
 
             LoadTransactions();
-            //_Transactions.CollectionChanged += _Transactions_CollectionChanged;
 
             UpdateSyncingStatus();
 
@@ -429,9 +426,7 @@ namespace HodlWallet2.Core.ViewModels
                 StatusColor = transactionData.IsSend == true
                         ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
                         : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                Address = FormatAtAddressText(
-                    transactionData.IsSend == true,
-                    _WalletService.GetAddressFromTransaction(transactionData)),
+                Address = _WalletService.GetAddressFromTransaction(transactionData),
                 AtAddress = FormatAtAddressText(
                     transactionData.IsSend == true,
                     _WalletService.GetAddressFromTransaction(transactionData)),
