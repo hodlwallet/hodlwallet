@@ -12,22 +12,22 @@ namespace HodlWallet2.Shared.Controls
         {
             InitializeComponent();
             // FIXME this is where the code breaks, setting this binding
-            //Collection.SetBinding(ItemsView.ItemsSourceProperty, new Binding(nameof(ItemsSource), source: this));
+            Collection.SetBinding(ItemsView.ItemsSourceProperty, new Binding(nameof(TransactionsItemsSource), source: this));
         }
 
-        public static readonly BindableProperty ItemsSourceProperty =
+        public static readonly BindableProperty TransactionItemsSourceProperty =
             BindableProperty.Create(
-                "ItemsSource",
+                "TransactionsItemsSource",
                 typeof(IEnumerable),
                 typeof(TransactionCollectionView)
             );
 
-        public IEnumerable ItemsSource
+        public IEnumerable TransactionsItemsSource
         {
-            get => (IEnumerable) GetValue (ItemsSourceProperty);
+            get => (IEnumerable) GetValue (TransactionItemsSourceProperty);
             set
             {
-                SetValue(ItemsSourceProperty, value);
+                SetValue(TransactionItemsSourceProperty, value);
                 Collection.ItemsSource = value;
             }
         }
