@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using HodlWallet2.Core.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,7 +8,6 @@ using ZXing.Common;
 using Xamarin.Essentials;
 
 using HodlWallet2.Locale;
-
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using MvvmCross.ViewModels;
@@ -43,8 +42,8 @@ namespace HodlWallet2.Views
             var displayAlertContent = e.Value;
 
             await DisplayAlert(
-                displayAlertContent.Title, displayAlertContent.Message, displayAlertContent.Buttons[0]
-            );
+               displayAlertContent.Title, displayAlertContent.Message, displayAlertContent.Buttons[0]
+           );
         }
 
         public ReceiveView()
@@ -70,6 +69,8 @@ namespace HodlWallet2.Views
 
             CreateInteractionBindings();
         }
+
+
 
         void SetLabels()
         {

@@ -32,13 +32,14 @@
         public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported.";
         public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE = "Address Copied to Clipboard";
         public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON = "OK";
+        public const string SYNC_LOADING_HEADERS = "Loading headers...";
 
         // Temporary Values
         public const string USE_ADDRESS_FROM_CLIPBOARD =
             "The Bitcoin address '{0} is in your clipboard, would you like to send to that address?";
         public const string MEMO_LABEL = "In Progress";
 
-        // Build info temp values
+         // Build info temp values
         public const string BUILD_INFO_CONTENT = "Branch {0}\nCommit: {1}";
         public const string BUILD_INFO_MESSAGE_TITLE = "Build Info";
         public const string BUILD_INFO_COPIED_TO_CLIPBOARD = "Build info has been copied to the clipboard!";

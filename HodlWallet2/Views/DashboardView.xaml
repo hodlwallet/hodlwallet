@@ -65,10 +65,10 @@
                               Margin="0, 0, 20, 0"
                               FlexLayout.AlignSelf="End"
                               FlexLayout.Grow="1">
-                        <svg:Icon.GestureRecognizers>
-                            <TapGestureRecognizer bindings:Bi.nd="Command SearchCommand"
-                                                  NumberOfTapsRequired="1" />
-                        </svg:Icon.GestureRecognizers>
+                        <svg:Icon.GestureRecognizers>   
+                             <TapGestureRecognizer bindings:Bi.nd="Command SearchCommand"   
+                                                  NumberOfTapsRequired="1" />   
+                        </svg:Icon.GestureRecognizers>  
                     </svg:Icon>
                 </FlexLayout>
             </FlexLayout>
@@ -78,10 +78,7 @@
                                                           SyncTitle SyncTitleText; 
                                                           SyncProgress SyncCurrentProgress;
                                                           SyncDate SyncDateText"/>
-                <controls:TransactionCollectionView bindings:Bi.nd="ItemsSource Transactions;
-                                                                    SelectedItem CurrentTransaction;
-                                                                    SelectionChangedCommand NavigateToTransactionDetailCommand"
-                                                                    FlexLayout.Grow="1"/>
+                <controls:TransactionCollectionView FlexLayout.Grow="1"/>
             </FlexLayout>
             
             <FlexLayout Direction="Row" FlexLayout.Grow="1" JustifyContent="SpaceAround">

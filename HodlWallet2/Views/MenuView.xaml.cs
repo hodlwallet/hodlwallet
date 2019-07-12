@@ -8,8 +8,8 @@ using MvvmCross.ViewModels;
 
 using HodlWallet2.Core.ViewModels;
 using HodlWallet2.Core.Interactions;
-using HodlWallet2.Core.Utils;
 using HodlWallet2.Locale;
+using HodlWallet2.Core.Utils;
 
 namespace HodlWallet2.Views
 {
@@ -121,11 +121,10 @@ namespace HodlWallet2.Views
             BackupMnemonic.Text = LocaleResources.Backup_title;
 
 #if DEBUG
-            BuildDate.Text = $"Built at: {BuildInfo.BuildDateText}";
+            BuildDate.Text = $"Built on: {BuildInfo.BuildDateText}";
 #endif
 
             // TODO Add these later once we got all the settings implemented.
-            //
             //Security.Text = LocaleResources.Menu_security;
             //Knowledge.Text = LocaleResources.Menu_knowledge;
             //Settings.Text = LocaleResources.Menu_settings;
@@ -137,8 +136,8 @@ namespace HodlWallet2.Views
             var displayAlertContent = e.Value;
 
             await DisplayAlert(
-                displayAlertContent.Title, displayAlertContent.Message, displayAlertContent.Buttons[0]
-            );
+               displayAlertContent.Title, displayAlertContent.Message, displayAlertContent.Buttons[0]
+           );
         }
     }
 }

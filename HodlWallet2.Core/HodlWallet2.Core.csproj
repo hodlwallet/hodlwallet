@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
@@ -39,20 +40,9 @@
       <Folder Include="Converters\" />
       <Folder Include="Interactions\" />
     </ItemGroup>
-    <ItemGroup>
-      <Compile Update="Utils\BuildInfo.cs">
-        <DependentUpon>BuildInfo.tt</DependentUpon>
-      </Compile>
-    </ItemGroup>
-    
-    <ItemGroup>
-      <None Update="Utils\BuildInfo.tt">
-        <Generator>TextTemplatingFileGenerator</Generator>
-        <LastGenOutput>BuildInfo.cs</LastGenOutput>
-      </None>
-    </ItemGroup>
-    <Target Name="GetGitHash" BeforeTargets="WriteGitHash" Condition="'$(GitHead)' == ''">
+    <Target Name="GetBuildInfo" BeforeTargets="WriteBuildInfo" Condition="'$(GitHead)' == ''">
         <PropertyGroup>
+            <BuildDateTime>$([System.DateTime]::Now.ToString("MMMM d, yyyy h:mm:ss"))</BuildDateTime>
             <GitBranch>$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: refs/heads/", ""))</GitBranch>
             <GitHeadFile>$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: ", "").Insert(0, "..\.git\"))</GitHeadFile>
         </PropertyGroup>
@@ -62,7 +52,7 @@
         </ReadLinesFromFile>
     </Target>
 
-    <Target Name="WriteGitHash" BeforeTargets="CoreCompile">
+    <Target Name="WriteBuildInfo" BeforeTargets="CoreCompile">
         <PropertyGroup>
             <CustomAssemblyInfoFile>$(IntermediateOutputPath)CustomAssemblyInfo.cs</CustomAssemblyInfoFile>
         </PropertyGroup>
@@ -72,6 +62,10 @@
         </ItemGroup>
 
         <ItemGroup>
+            <AssemblyAttributes Include="AssemblyMetadata">
+                <_Parameter1>BuildDateTime</_Parameter1>
+                <_Parameter2>$(BuildDateTime)</_Parameter2>
+            </AssemblyAttributes>
             <AssemblyAttributes Include="AssemblyMetadata">
                 <_Parameter1>GitHead</_Parameter1>
                 <_Parameter2>$(GitHead)</_Parameter2>

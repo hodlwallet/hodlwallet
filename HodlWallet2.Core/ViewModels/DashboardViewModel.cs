@@ -43,7 +43,7 @@ namespace HodlWallet2.Core.ViewModels
         bool _IsBtcEnabled;
         object _CurrentTransaction;
         
-        ObservableCollection<Transaction> _Transactions;
+        ObservableCollection<Transaction> _Transactions = new ObservableCollection<Transaction>();
 
         public object CurrentTransaction
         {
@@ -102,7 +102,7 @@ namespace HodlWallet2.Core.ViewModels
         public MvxCommand NavigateToMenuViewCommand { get; }
         public MvxCommand SwitchCurrencyCommand { get; }
         public MvxCommand SearchCommand { get; }
-        public MvxCommand NavigateToTransactionDetailCommand { get; }
+        public MvxCommand NavigateToTransactionDetailsCommand { get; }
 
         public DashboardViewModel(
             IMvxLogProvider logProvider, 
@@ -117,31 +117,66 @@ namespace HodlWallet2.Core.ViewModels
             NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
             NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
             NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
+            NavigateToTransactionDetailsCommand = new MvxCommand(NavigateToTransactionDetails);
             SwitchCurrencyCommand = new MvxCommand(SwitchCurrency);
             SearchCommand = new MvxCommand(StartSearch);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
+
+            while(!_WalletService.IsStarted)
+            {
+
+            }
+
+            _WalletService_OnStarted(_WalletService, null);
         }
 
-        private void StartSearch()
+        void StartSearch()
         {
             // TODO, this is so far just to show and hide the syncbar randomly
             // since we're not gonna do search this is likely to be removed
 
-            _WalletService.IsSyncedToTip();
+            // Log what we supposed to show
+            _Logger.Debug(!_WalletService.IsSyncedToTip() ? "[{0}] Show sync bar." : "[{0}] Hide sync bar.", nameof(StartSearch));
 
-            // Get a random value section
-            Random rng = new Random();
-            bool res = rng.Next(1, 100) % 2 == 0;
+            UpdateSyncingStatus();
 
-            _Logger.Debug(res ? "Show sync bar." : "Hide sync bar.");
-
-            SyncIsVisible = res;
-            SyncCurrentProgress = _WalletService.GetSyncedProgress();
-            SyncDateText = _WalletService.GetLastSyncedDate();
+            // FIXME remove this...
+            SyncIsVisible = true;
         }
 
-        private void SwitchCurrency()
+        void UpdateSyncingStatus()
+        {
+            SyncIsVisible = !_WalletService.IsSyncedToTip();
+
+            double progress = _WalletService.GetSyncedProgress();
+
+            if (progress.Equals(0.00))
+            {
+                var chainTip = _WalletService.GetChainTip();
+
+                _Logger.Debug("[{0}] chainTip => {1}", nameof(UpdateSyncingStatus), chainTip.Height);
+
+                SyncDateText = Constants.SYNC_LOADING_HEADERS;
+            }
+            else
+            {
+                SyncDateText = $"{_WalletService.GetSyncedProgressPercentage()}% {_WalletService.GetLastSyncedDate()} ({_WalletService.GetLastSyncedBlockHeight()})";
+
+            }
+            SyncCurrentProgress = _WalletService.GetSyncedProgress();
+
+            _Logger.Debug(
+                "[{0}] IsSyncedToTip => {1}, GetLastSyncedDate => {2}, GetLastSyncedBlockHeight => {3}, GetSyncedProgressPercentage => {4}",
+                nameof(UpdateSyncingStatus),
+                _WalletService.IsSyncedToTip(),
+                _WalletService.GetLastSyncedDate(),
+                _WalletService.GetLastSyncedBlockHeight(),
+                _WalletService.GetSyncedProgressPercentage()
+            );
+        }
+
+        void SwitchCurrency()
         {
             var currency = Preferences.Get("currency", "BTC");
             if (currency == "BTC")
@@ -155,27 +190,6 @@ namespace HodlWallet2.Core.ViewModels
                 Preferences.Set("currency", "BTC");
                 IsBtcEnabled = true;
                 Amount /= (decimal) _NewRate;
-            }
-            LoadTransactionsIfEmpty();
-        }
-
-        private async Task TransactionDetailNaviation()
-        {
-            var transaction = (Transaction)CurrentTransaction;
-
-        }
-
-        public override void ViewAppeared()
-        {
-            base.ViewAppeared();
-
-            if (_WalletService.IsStarted)
-            {
-                _WalletService_OnStarted(_WalletService, null);
-            }
-            else
-            {
-                _WalletService.OnStarted += _WalletService_OnStarted;
             }
         }
 
@@ -217,7 +231,7 @@ namespace HodlWallet2.Core.ViewModels
                 return true;
             });
 
-            // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
+            // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case	
             Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
 
             IsBtcEnabled = true;
@@ -245,6 +259,13 @@ namespace HodlWallet2.Core.ViewModels
             NavigationService.Navigate<SendViewModel>();
         }
 
+        void NavigateToTransactionDetails()
+        {
+            if (CurrentTransaction == null) return;
+            NavigationService.Navigate<TransactionDetailsViewModel, Transaction>(CurrentTransaction as Transaction);
+            CurrentTransaction = null;
+        }
+
         async Task RatesAsync()
         {
             var rates = await _PrecioService.GetRates();
@@ -262,13 +283,15 @@ namespace HodlWallet2.Core.ViewModels
 
         void WalletSyncManager_OnSyncProgressUpdate(object sender, WalletPositionUpdatedEventArgs e)
         {
-            /* TODO: Update Progress During Sync
-             *       Set 'IsVisible' to true when sync starts, false when complete.
-             * e.g.  Progress = e.NewPosition.Height / _walletService.CurrentBlockHeight
-             *       DateText = string.Format(CultureInfo.CurrentCulture, Constants.SyncDate, 
-             *          e.NewPosition.GetMedianTimePast().UtcDateTime.ToShortDateString(), e.NewPosition.Height.ToString()); */
-        }
+            _Logger.Debug(
+                "[{0}] e.NewPosition.Height => {1}, e.PreviousPosition.Height => {2}",
+                nameof(WalletSyncManager_OnSyncProgressUpdate),
+                e.NewPosition.Height,
+                e.PreviousPosition.Height
+            );
 
+            UpdateSyncingStatus();
+        }
 
         void _Transactions_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -294,43 +317,46 @@ namespace HodlWallet2.Core.ViewModels
 
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
+            // Try moving this initializer to the top.
+            //_Transactions.CollectionChanged += _Transactions_CollectionChanged;
+
+            LoadTransactions();
+
+            UpdateSyncingStatus();
+
             _WalletService.WalletManager.OnNewTransaction += WalletManager_OnNewTransaction;
             _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnNewSpendingTransaction;
             _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnUpdateTransaction;
             _WalletService.WalletManager.OnUpdateSpendingTransaction += WalletManager_OnUpdateSpendingTransaction;
 
             _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
+            _WalletService.WalletSyncManager.OnWalletSyncedToTipOfChain += WalletSyncManager_OnWalletSyncedToTipOfChain;
+        }
 
-            LoadTransactionsIfEmpty();
+        private void WalletSyncManager_OnWalletSyncedToTipOfChain(object sender, NBitcoin.ChainedBlock e)
+        {
+            UpdateSyncingStatus();
 
-            _Transactions.CollectionChanged += _Transactions_CollectionChanged;
-
-            SyncIsVisible = !_WalletService.IsSyncedToTip();
-            SyncCurrentProgress = _WalletService.GetSyncedProgress();
-            SyncDateText = _WalletService.GetLastSyncedDate();
+            SyncIsVisible = false;
         }
 
         void WalletManager_OnUpdateSpendingTransaction(object sender, TransactionData e)
         {
-            LoadTransactionsIfEmpty();
             UpdateTransactionsCollectionWith(e);
         }
 
         void WalletManager_OnUpdateTransaction(object sender, TransactionData e)
         {
-            LoadTransactionsIfEmpty();
             UpdateTransactionsCollectionWith(e);
         }
 
         void WalletManager_OnNewSpendingTransaction(object sender, TransactionData e)
         {
-            LoadTransactionsIfEmpty();
             UpdateTransactionsCollectionWith(e);
         }
 
         void WalletManager_OnNewTransaction(object sender, TransactionData e)
         {
-            LoadTransactionsIfEmpty();
             AddToTransactionsCollectionWith(e);
         }
 
@@ -355,19 +381,18 @@ namespace HodlWallet2.Core.ViewModels
             }
         }
 
-        void LoadTransactionsIfEmpty()
+        void LoadTransactions()
         {
-            // Transactions are already loaded do something else!
-            if (Transactions != null && Transactions.Count != 0) return;
+            if (Transactions.Count != 0) return;
 
-            Transactions = new ObservableCollection<Transaction>(
-                CreateList(
-                    _WalletService.GetCurrentAccountTransactions().OrderBy(
-                        (TransactionData txData) => txData.CreationTime
-                    ).Reverse()
-                )
-            );
-            _WalletService.Logger.Information(new string('*', 20));
+            var txs = _WalletService.GetCurrentAccountTransactions().OrderBy(
+                (TransactionData txData) => txData.CreationTime
+            ).Reverse();
+
+            foreach (var tx in txs)
+            {
+                _Transactions.Add(CreateTransactionModelInstance(tx));
+            }
         }
         
         IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
@@ -384,7 +409,8 @@ namespace HodlWallet2.Core.ViewModels
 
         Transaction CreateTransactionModelInstance(TransactionData transactionData)
         {
-            return new Transaction {
+            var tx = new Transaction {
+                Id = transactionData.Id.ToString(),
                 IsReceive = transactionData.IsReceive,
                 IsSent = transactionData.IsSend,
                 IsSpendable = transactionData.IsSpendable(),
@@ -396,30 +422,40 @@ namespace HodlWallet2.Core.ViewModels
                         : Constants.IS_NOT_AVAILABLE,
                 /* TODO: Add Memo to Transaction Data
                    e.g.  Memo = transactionData.Memo, */
+                Memo = "",
+                Confirmations = "",
                 Amount = GetAmountLabelText(transactionData),
                 StatusColor = transactionData.IsSend == true
                         ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
                         : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
+                Address = _WalletService.GetAddressFromTransaction(transactionData),
                 AtAddress = FormatAtAddressText(
                     transactionData.IsSend == true,
                     _WalletService.GetAddressFromTransaction(transactionData)),
+                DateAndTime = transactionData.CreationTime.ToString(),
                 Duration = DateTimeOffsetOperations.ShortDate(transactionData.CreationTime)
             };
+
+            return tx;
         }
 
-        string FormatAtAddressText(bool isSend, string address)
+        string FormatAtAddressText(bool isSend, string address, bool chopAddress = false)
         {
             string fmtAddressText = "{0}: {1}";
-            int addressPadding = 12;
+            int addressPadding = 20;
 
             string preposition = isSend ? Constants.TO_LABEL : Constants.AT_LABEL;
-            string choppedAddress = string.Concat(
-                new string(address.Take(addressPadding).ToArray()),
-                "...",
-                new string(address.Reverse().Take(addressPadding).ToArray())
-            );
 
-            return string.Format(fmtAddressText, preposition, choppedAddress);
+            if (chopAddress)
+            {
+                address = string.Concat(
+                    new string(address.Take(addressPadding).ToArray()),
+                    "...",
+                    new string(address.Reverse().Take(addressPadding).ToArray())
+                );
+            }
+
+            return string.Format(fmtAddressText, preposition, address);
         }
 
         string GetAmountLabelText(TransactionData tx)
@@ -436,7 +472,7 @@ namespace HodlWallet2.Core.ViewModels
                 if (tx.IsSend == true)
                     return string.Format(Constants.SENT_AMOUNT, preferences, tx.Amount);
 
-                return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.Amount);                
+                return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.Amount);
             }
             else
             {

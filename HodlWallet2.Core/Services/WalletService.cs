@@ -441,7 +441,7 @@ namespace HodlWallet2.Core.Services
             if (SecureStorageProvider.HasSeedBirthday())
                 timeToStartOn = DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday());
 
-            // NOTE Should rescan handle deletion of tx database from the wallet? I don't think so
+            // NOTE Should rescan handle deletion of tx database from the wallet? I don't think so	
 
             // Start scanning again
             Scan(timeToStartOn);
@@ -599,7 +599,7 @@ namespace HodlWallet2.Core.Services
         public string GetLastSyncedDate()
         {
             var syncedTip = _Chain.FindFork(
-                new List<uint256> {
+                new uint256[] {
                     WalletManager.LastReceivedBlockHash()
                 }
             );
@@ -618,17 +618,40 @@ namespace HodlWallet2.Core.Services
             return blockTime.ToString("dddd, dd MMMM yyyy");
         }
 
+        public string GetSyncedProgressPercentage()
+        {
+            return (GetSyncedProgress() * 100).ToString("0.##");
+        }
+
         public double GetSyncedProgress()
         {
-            long seconds = DateTimeOffset.Now.ToUnixTimeSeconds() - _Chain.Tip.Header.BlockTime.ToUnixTimeSeconds();
-            long minutes = seconds / 60;
+            var tip = _Chain.FindFork(new uint256[] { WalletManager.LastReceivedBlockHash() });
+            var minutesPerBlock = _Network == Network.Main ? 10 : 8; // Based on stimates and calculations
 
-            if (minutes > 30) return .99;
+            if (tip is null) tip = _Chain.FindFork(WalletManager.GetWalletBlockLocator() ?? new uint256[] { });
+            if (tip is null) tip = _Network.GetBIP39ActivationChainedBlock();
 
-            var rng = new Random();
-            double rndProgress = rng.Next(1, 100) * 0.01;
+            // Time aproximates... Based on probability of a bitcoin block being bethween 10 minutes
+            // In my experience I think 15 is fine.
 
-            return rndProgress;
+            // If we are close to it, then we say we're 1.00 synced
+            long seconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds() - tip.Header.BlockTime.ToUnixTimeSeconds();
+            int minutes = (int)(seconds / 60);
+
+            if (minutes <= 15) return 1;
+            if (minutes <= 30) return .99;
+
+            int aproximateBlocksBehind = minutes / minutesPerBlock;
+            int currentBlockHeight = GetLastSyncedBlockHeight();
+            int bip39ActivationBlockHeight = _Network.GetBIP39ActivationChainedBlock().Height;
+
+            int predictedBlockHeight = currentBlockHeight + aproximateBlocksBehind;
+
+            double progress = (double)(currentBlockHeight - bip39ActivationBlockHeight) / (double)predictedBlockHeight;
+
+            Logger.Debug("[{methodName}] Progress: {progress}", nameof(GetSyncedProgress), progress);
+
+            return progress;
         }
 
         public long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed = false)
@@ -647,6 +670,22 @@ namespace HodlWallet2.Core.Services
             decimal satsPerBtc = 100_000_000m;
 
             return decimal.Divide(new decimal(sats), satsPerBtc);
+        }
+
+        public int GetLastSyncedBlockHeight()
+        {
+            var tip = _Chain.FindFork(new uint256[] { WalletManager.LastReceivedBlockHash() });
+
+            if (tip is null) tip = _Chain.FindFork(WalletManager.GetWalletBlockLocator() ?? new uint256[] { });
+
+            if (tip is null) tip = _Network.GetBIP39ActivationChainedBlock();
+
+            return tip.Height;
+        }
+
+        public ChainedBlock GetChainTip()
+        {
+            return _Chain.Tip;
         }
 
         void AddNodesGroupEvents()
@@ -747,6 +786,8 @@ namespace HodlWallet2.Core.Services
         {
             await Task.Factory.StartNew(() =>
             {
+                // FIXME DO NOT SAVE
+                return;
                 lock (_Lock)
                 {
                     _AddressManager.SavePeerFile(AddrmanFile(), _Network);
