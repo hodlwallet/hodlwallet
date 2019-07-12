@@ -35,7 +35,7 @@
                                         <RowDefinition
                                             Height="15" />
                                         <RowDefinition
-                                            Height="15" />
+                                            Height="{Binding MemoHeight}" />
                                         <RowDefinition
                                             Height="15" />
                                     </Grid.RowDefinitions>
