@@ -21,6 +21,8 @@
                     x:Name="Collection"
                     SelectionMode="Single"
                     ItemsSource="{Binding Transactions}"
+                    SelectedItem="{Binding CurrentTransaction}"
+                    SelectionChangedCommand="{Binding NavigateToTransactionDetailsCommand}"
                     BackgroundColor="{StaticResource GrayBackground}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>

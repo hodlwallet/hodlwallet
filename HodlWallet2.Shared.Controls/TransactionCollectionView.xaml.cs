@@ -12,28 +12,5 @@ namespace HodlWallet2.Shared.Controls
         {
             InitializeComponent();
         }
-
-        public object SelectedItem
-        {
-            get => Collection.SelectedItem;
-        }
-
-        public static readonly BindableProperty SelectionChangedCommandProperty = 
-            BindableProperty.Create(
-                nameof(SelectionChangedCommand),
-                typeof(ICommand),
-                typeof(TransactionCollectionView),
-                null
-            );
-            
-        public ICommand SelectionChangedCommand
-        {
-            get => (ICommand) GetValue (SelectionChangedCommandProperty);
-            set
-            {
-                SetValue(SelectionChangedCommandProperty, value);
-                Collection.SelectionChangedCommand = value;
-            }
-        }
     }
 }
