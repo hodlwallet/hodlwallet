@@ -123,12 +123,22 @@ namespace HodlWallet2.Core.ViewModels
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
 
-            while(!_WalletService.IsStarted)
+            InitializeWalletServiceTransactions();
+        }
+
+        void InitializeWalletServiceTransactions()
+        {
+
+            if (_WalletService.IsStarted)
             {
+                _WalletService_OnStarted(_WalletService, null);
 
+                AddWalletServiceEvents();
             }
-
-            _WalletService_OnStarted(_WalletService, null);
+            else
+            {
+                _WalletService.OnStarted += _WalletService_OnStarted;
+            }
         }
 
         void StartSearch()
@@ -324,6 +334,11 @@ namespace HodlWallet2.Core.ViewModels
 
             UpdateSyncingStatus();
 
+            AddWalletServiceEvents();
+        }
+
+        void AddWalletServiceEvents()
+        {
             _WalletService.WalletManager.OnNewTransaction += WalletManager_OnNewTransaction;
             _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnNewSpendingTransaction;
             _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnUpdateTransaction;
@@ -366,7 +381,7 @@ namespace HodlWallet2.Core.ViewModels
             for (int i = 0; i < _Transactions.Count; i++)
                 if (_Transactions[i].Id == txData.Id.ToString()) return;
 
-            _Transactions.Add(CreateTransactionModelInstance(txData));
+            _Transactions.Insert(0, CreateTransactionModelInstance(txData));
         }
 
         void UpdateTransactionsCollectionWith(TransactionData txData)
