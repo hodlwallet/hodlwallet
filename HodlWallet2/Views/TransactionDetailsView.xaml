@@ -2,7 +2,7 @@
 <views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HodlWallet2.Views.TransactionDetailsView"
-             BackgroundColor="{StaticResource DarkGray}"
+             BackgroundColor="{StaticResource GrayBackground}"
              xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
@@ -17,16 +17,19 @@
                 <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
                 <Setter Property="TextColor" Value="{StaticResource White}" />
             </Style>
+            <Style TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource GrayTextTint}" />
+                <Setter Property="HeightRequest" Value="2" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <FlexLayout Direction="Column">
+    <StackLayout Spacing="20"
+                 Margin="20, 20, 20, 0">
         
         <FlexLayout AlignItems="Center"
                     Direction="Row"
-                    FlexLayout.Grow="1"
-                    JustifyContent="SpaceBetween"
-                    Margin="20, 0, 20, 0">
+                    JustifyContent="SpaceBetween">
             
             <svg:Icon ResourceId="Assets.close.svg" 
                       FlexLayout.AlignSelf="Center">
@@ -69,9 +72,7 @@
                        Text="{Binding AmountToFromText}"
                        />
                 
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
-                         HeightRequest="2"
-                         />
+                <BoxView />
                 
                 <Label x:Name="StatusTitleLabel"
                        FontSize="Small"
@@ -96,9 +97,7 @@
                        Text="{Binding MemoText}"
                        />
                 
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
-                         HeightRequest="2"
-                         />
+                <BoxView />
                 
                 <Label x:Name="AmountTitleLabel"
                        FontSize="Small"
@@ -117,9 +116,7 @@
                        Text="{Binding EndingBalanceText}"
                        />
                 
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
-                         HeightRequest="2"
-                         />
+                <BoxView />
                 
                 <Label x:Name="AddressTitleLabel"
                        FontSize="Small"
@@ -130,9 +127,7 @@
                        Text="{Binding AddressText}"
                        />
                 
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
-                         HeightRequest="2"
-                         />
+                <BoxView />
                 
                 <Label x:Name="IdTitleLabel"
                        FontSize="Small"
@@ -155,6 +150,6 @@
             
         </ScrollView>
         
-    </FlexLayout>
+    </StackLayout>
     
 </views:MvxContentPage>
