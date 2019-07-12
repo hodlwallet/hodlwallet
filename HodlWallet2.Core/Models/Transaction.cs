@@ -39,6 +39,14 @@ namespace HodlWallet2.Core.Models
         {
             get
             {
+                // Test how this works...
+                //var rng = new Random();
+
+                //bool hasAMemo = rng.Next(0, 100) % 2 == 0;
+
+                //if (hasAMemo)
+                //    Memo = "Groceries";
+
                 if (Memo.Length == 0) return "0";
 
                 return "15";
