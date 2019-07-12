@@ -5,9 +5,9 @@
     x:Class="HodlWallet2.Shared.Controls.TransactionCollectionView">
     <ContentView.Resources>
         <ResourceDictionary>
-            <Style x:Key="TransactionLabel" TargetType="Label">
+            <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource ElectrolizeFont}"/>
-                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontSize" Value="Micro"/>
                 <Setter Property="LineBreakMode" Value="MiddleTruncation" />
             </Style>
         </ResourceDictionary>
@@ -34,7 +34,7 @@
                                         <RowDefinition
                                             Height="15" />
                                         <RowDefinition
-                                            Height="30" />
+                                            Height="15" />
                                         <RowDefinition
                                             Height="15" />
                                     </Grid.RowDefinitions>
@@ -47,42 +47,30 @@
                                     <Label
                                         Grid.Column="0"
                                         Grid.Row="0"
-                                        FontSize="Micro"
-                                        Style="{StaticResource TransactionLabel}"
                                         TextColor="{Binding StatusColor}"
                                         Text="{Binding Amount}" />
                                     <Label
                                         Grid.Column="1"
                                         Grid.Row="0"
-                                        FontSize="Micro"
                                         HorizontalTextAlignment="End"
-                                        Style="{StaticResource TransactionLabel}"
                                         TextColor="{StaticResource White}"
                                         Text="{Binding Duration}" />
                                     <Label
                                         Grid.Column="0"
                                         Grid.Row="1"
                                         Grid.ColumnSpan="2"
-                                        FontSize="Micro"
-                                        Style="{StaticResource TransactionLabel}"
                                         TextColor="{StaticResource White}"
                                         Text="{Binding AtAddress}" />
-                                    <Entry
-                                        Grid.Column="0"
-                                        Grid.Row="2"
-                                        BackgroundColor="Transparent"
-                                        FontFamily="{StaticResource ElectrolizeFont}"
-                                        FontSize="Micro"
-                                        TextColor="{StaticResource White}"
-                                        Text="{Binding Memo}"
-                                        IsSpellCheckEnabled="false"
-                                        IsTextPredictionEnabled="false" />
                                     <Label
                                         Grid.Column="0"
-                                        Grid.Row="4"
+                                        Grid.Row="2"
                                         Grid.ColumnSpan="2"
-                                        FontSize="Micro"
-                                        Style="{StaticResource TransactionLabel}"
+                                        TextColor="{StaticResource White}"
+                                        Text="{Binding Memo}" />
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="3"
+                                        Grid.ColumnSpan="2"
                                         TextColor="{StaticResource SyncGradientStart}"
                                         Text="{Binding IsAvailable}" />
                                 </Grid>
