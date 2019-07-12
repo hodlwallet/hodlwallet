@@ -261,7 +261,9 @@ namespace HodlWallet2.Core.ViewModels
 
         void NavigateToTransactionDetails()
         {
-            NavigationService.Navigate<TransactionDetailsViewModel, Transaction>(_CurrentTransaction as Transaction);
+            if (CurrentTransaction == null) return;
+            NavigationService.Navigate<TransactionDetailsViewModel, Transaction>(CurrentTransaction as Transaction);
+            CurrentTransaction = null;
         }
 
         async Task RatesAsync()
