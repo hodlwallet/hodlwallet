@@ -43,8 +43,6 @@ namespace HodlWallet2.Core.ViewModels
         bool _IsBtcEnabled;
         object _CurrentTransaction;
         
-        ObservableCollection<Transaction> _Transactions = new ObservableCollection<Transaction>();
-
         public object CurrentTransaction
         {
             get => _CurrentTransaction;
@@ -63,11 +61,9 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _Amount, value);
         }
 
-        public ObservableCollection<Transaction> Transactions
-        {
-            get => _Transactions;
-            set => SetProperty(ref _Transactions, value);
-        }
+        private object _Lock = new object();
+        ObservableCollection<Transaction> _Transactions = new ObservableCollection<Transaction>();
+        public ObservableCollection<Transaction> Transactions { get { return _Transactions; } }
 
         string _PriceText;
         public string PriceText
@@ -130,8 +126,8 @@ namespace HodlWallet2.Core.ViewModels
         {
             if (_WalletService.IsStarted)
             {
-                _WalletService_OnStarted(_WalletService, null);
-
+                LoadTransactions();
+                UpdateSyncingStatus();
                 AddWalletServiceEvents();
             }
             else
@@ -377,38 +373,49 @@ namespace HodlWallet2.Core.ViewModels
         void AddToTransactionsCollectionWith(TransactionData txData)
         {
             // Double Check if the tx is there or not...
-            for (int i = 0; i < _Transactions.Count; i++)
-                if (_Transactions[i].Id == txData.Id.ToString()) return;
+            for (int i = 0; i < Transactions.Count; i++)
+                if (Transactions[i].Id == txData.Id.ToString()) return;
 
-            _Transactions.Insert(0, CreateTransactionModelInstance(txData));
-
-            RaisePropertyChanged(nameof(Transactions));
 
             foreach (var i in Enumerable.Range(0, 10)) _Logger.Information(new string('*', 60));
 
             _Logger.Information($"\n\nTX ADDED TO THE COLLECTION: {txData.Id.ToString()}\n\n");
 
             foreach (var i in Enumerable.Range(0, 10)) _Logger.Information(new string('*', 60));
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+               lock (_Lock)
+                {
+                    Transactions.Insert(0, CreateTransactionModelInstance(txData));
+                }
+            });
         }
 
         void UpdateTransactionsCollectionWith(TransactionData txData)
         {
-            for (int i = 0; i < _Transactions.Count; i++)
+            for (int i = 0, txCount = Transactions.Count; i < txCount; i++)
             {
-                if (!_Transactions[i].Id.Equals(txData.Id.ToString())) continue;
+                if (!Transactions[i].Id.Equals(txData.Id.ToString())) continue;
 
-                _Transactions[i] = CreateTransactionModelInstance(txData);
+                foreach (var j in Enumerable.Range(0, 10)) _Logger.Information(new string('*', 60));
 
-                _WalletService.Logger.Debug($"Updated tx: {txData.Id.ToString()}");
+                _Logger.Information($"\n\nTX REPLACED IN THE COLLECTION: {txData.Id.ToString()}\n\n");
 
-                RaisePropertyChanged(nameof(Transactions));
+                foreach (var j in Enumerable.Range(0, 10)) _Logger.Information(new string('*', 60));
 
-                foreach (var j in Enumerable.Range(0, 10)) Console.WriteLine(new string('*', 60));
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    lock (_Lock)
+                    {
+                        var tx = Transactions.FirstOrDefault(tx1 => tx1.Id == txData.Id.ToString());
 
-                Console.WriteLine($"\n\nTX REPLACED IN THE COLLECTION: {txData.Id.ToString()}\n\n");
-
-                foreach (var j in Enumerable.Range(0, 10)) Console.WriteLine(new string('*', 60));
-
+                        // FIXME figure out a better way to do this...
+                        // Looks like I have to scroll down to see the changes to the collection?
+                        tx.Memo = "YOOO WTF??";
+                        tx.IsPropagated = txData.IsPropagated;
+                    }
+                });
             }
         }
 
@@ -422,7 +429,7 @@ namespace HodlWallet2.Core.ViewModels
 
             foreach (var tx in txs)
             {
-                _Transactions.Add(CreateTransactionModelInstance(tx));
+                Transactions.Add(CreateTransactionModelInstance(tx));
             }
         }
         
