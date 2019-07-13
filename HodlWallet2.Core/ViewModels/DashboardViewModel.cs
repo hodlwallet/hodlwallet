@@ -220,6 +220,8 @@ namespace HodlWallet2.Core.ViewModels
                         // Second and very brief, this needs to be refactored (split) into two methods and the Transaction model needs to have two properties
                         // like Status and Amount (as float), this way it'll be flexible enough to update only one property based on current rate
                         // without having to convert numeric and string values to return a string(?) amount.
+
+                        // This would also WONT work cause observable collections only allow insert and remove
                         transaction.Amount = GetAmountLabelText(null);
                     }
                 }
@@ -454,6 +456,13 @@ namespace HodlWallet2.Core.ViewModels
 
         string GetAmountLabelText(TransactionData tx)
         {
+            if (tx is null)
+            {
+                _Logger.Debug("Tx is null, because we need to figure out how to change amounts");
+
+                return "";
+            }
+
             var preferences = Preferences.Get("currency", "BTC"); 
             if (preferences == "BTC")
             {
