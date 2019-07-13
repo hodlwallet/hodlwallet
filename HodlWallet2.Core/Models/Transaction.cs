@@ -10,7 +10,7 @@ namespace HodlWallet2.Core.Models
         public bool? IsReceive { get; set; }
         public bool? IsSent { get; set; }
         public bool IsSpendable { get; set; }
-        public bool IsComfirmed { get; set; }
+        public bool IsConfirmed { get; set; }
         public bool? IsPropagated { get; set; }
         public int? BlockHeight { get; set; }
         public Color StatusColor { get; set; }
@@ -46,11 +46,51 @@ namespace HodlWallet2.Core.Models
 
                 //if (hasAMemo)
                 //    Memo = "Groceries";
-
+                if (Memo == null) return "0";
                 if (Memo.Length == 0) return "0";
 
                 return "15";
             }
         }
+
+        /// <summary>
+        /// Check if the tx is equal to another tx by value not object equality
+        /// </summary>
+        /// <param name="obj">The other tx model</param>
+        /// <returns>A <see cref="bool"/> that represents if they're equal or not</returns>
+        public override bool Equals(object obj)
+        {
+            var other = obj as Transaction;
+
+            if (other.Id != Id) return false;
+            if (other.IsReceive != IsReceive) return false;
+            if (other.IsSent != IsSent) return false;
+            if (other.IsSpendable != IsSpendable) return false;
+            if (other.IsConfirmed != IsConfirmed) return false;
+            if (other.IsPropagated != IsPropagated) return false;
+            if (other.BlockHeight != BlockHeight) return false;
+            if (other.StatusColor != StatusColor) return false;
+            if (other.Duration != Duration) return false;
+            if (other.DateAndTime != DateAndTime) return false;
+            if (other.Amount != Amount) return false;
+            if (other.Address != Address) return false;
+            if (other.AtAddress != AtAddress) return false;
+            if (other.Memo != Memo) return false;
+            if (other.Confirmations != Confirmations) return false;
+            if (other.IsAvailable != IsAvailable) return false;
+
+            return true;
+        }
+
+        public static bool operator ==(Transaction x, Transaction y)
+        {
+            return x.Equals(y);
+        }
+
+        public static bool operator !=(Transaction x, Transaction y)
+        {
+            return !(x == y);
+        }
+
     }
 }

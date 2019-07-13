@@ -62,8 +62,7 @@ namespace HodlWallet2.Core.ViewModels
         }
 
         private object _Lock = new object();
-        ObservableCollection<Transaction> _Transactions = new ObservableCollection<Transaction>();
-        public ObservableCollection<Transaction> Transactions { get { return _Transactions; } }
+        public ObservableCollection<Transaction> Transactions { get; } = new ObservableCollection<Transaction>();
 
         string _PriceText;
         public string PriceText
@@ -138,16 +137,7 @@ namespace HodlWallet2.Core.ViewModels
 
         void StartSearch()
         {
-            // TODO, this is so far just to show and hide the syncbar randomly
-            // since we're not gonna do search this is likely to be removed
-
-            // Log what we supposed to show
-            _Logger.Debug(!_WalletService.IsSyncedToTip() ? "[{0}] Show sync bar." : "[{0}] Hide sync bar.", nameof(StartSearch));
-
-            UpdateSyncingStatus();
-
-            // FIXME remove this...
-            SyncIsVisible = true;
+            _Logger.Debug("Search is not implemented yet!");
         }
 
         void UpdateSyncingStatus()
@@ -242,6 +232,13 @@ namespace HodlWallet2.Core.ViewModels
             IsBtcEnabled = true;
         }
 
+        public override void ViewAppeared()
+        {
+            base.ViewAppeared();
+
+            LoadTransactions();
+        }
+
         public void ReScan()
         {
             var seedBirthday = DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday());
@@ -298,33 +295,8 @@ namespace HodlWallet2.Core.ViewModels
             UpdateSyncingStatus();
         }
 
-        void _Transactions_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            // TODO Handle change on individual.s
-            // Different kind of changes that may have occurred in collection
-            if (e.Action == NotifyCollectionChangedAction.Add)
-            {
-                // Code...
-            }
-            if (e.Action == NotifyCollectionChangedAction.Replace)
-            {
-                // Code...
-            }
-            if (e.Action == NotifyCollectionChangedAction.Remove)
-            {
-                // Code...
-            }
-            if (e.Action == NotifyCollectionChangedAction.Move)
-            {
-                // Code...
-            }
-        }
-
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
-            // Try moving this initializer to the top.
-            //_Transactions.CollectionChanged += _Transactions_CollectionChanged;
-
             LoadTransactions();
 
             UpdateSyncingStatus();
@@ -372,21 +344,13 @@ namespace HodlWallet2.Core.ViewModels
 
         void AddToTransactionsCollectionWith(TransactionData txData)
         {
-            // Double Check if the tx is there or not...
-            for (int i = 0; i < Transactions.Count; i++)
-                if (Transactions[i].Id == txData.Id.ToString()) return;
-
-
-            foreach (var i in Enumerable.Range(0, 10)) _Logger.Information(new string('*', 60));
-
-            _Logger.Information($"\n\nTX ADDED TO THE COLLECTION: {txData.Id.ToString()}\n\n");
-
-            foreach (var i in Enumerable.Range(0, 10)) _Logger.Information(new string('*', 60));
-
             Device.BeginInvokeOnMainThread(() =>
             {
-               lock (_Lock)
+                lock (_Lock)
                 {
+                    // Double Check if the tx is there or not...
+                    if (Transactions.Any(tx => tx.Id == txData.Id.ToString())) return;
+
                     Transactions.Insert(0, CreateTransactionModelInstance(txData));
                 }
             });
@@ -394,55 +358,49 @@ namespace HodlWallet2.Core.ViewModels
 
         void UpdateTransactionsCollectionWith(TransactionData txData)
         {
-            for (int i = 0, txCount = Transactions.Count; i < txCount; i++)
+            var txModel = CreateTransactionModelInstance(txData);
+
+            Device.BeginInvokeOnMainThread(() =>
             {
-                if (!Transactions[i].Id.Equals(txData.Id.ToString())) continue;
-
-                foreach (var j in Enumerable.Range(0, 10)) _Logger.Information(new string('*', 60));
-
-                _Logger.Information($"\n\nTX REPLACED IN THE COLLECTION: {txData.Id.ToString()}\n\n");
-
-                foreach (var j in Enumerable.Range(0, 10)) _Logger.Information(new string('*', 60));
-
-                Device.BeginInvokeOnMainThread(() =>
+                lock (_Lock)
                 {
-                    lock (_Lock)
-                    {
-                        var tx = Transactions.FirstOrDefault(tx1 => tx1.Id == txData.Id.ToString());
+                    var tx = Transactions.FirstOrDefault(tx1 => tx1.Id == txModel.Id);
 
-                        // FIXME figure out a better way to do this...
-                        // Looks like I have to scroll down to see the changes to the collection?
-                        tx.Memo = "YOOO WTF??";
-                        tx.IsPropagated = txData.IsPropagated;
-                    }
-                });
-            }
+                    if (tx is null) return;
+                    if (tx == txModel) return;
+
+                    int index = Transactions.IndexOf(tx);
+
+                    Transactions.Remove(tx);
+                    Transactions.Insert(index, txModel);
+                }
+            });
         }
 
         void LoadTransactions()
         {
-            if (Transactions.Count != 0) return;
-
             var txs = _WalletService.GetCurrentAccountTransactions().OrderBy(
                 (TransactionData txData) => txData.CreationTime
-            ).Reverse();
+            );
 
             foreach (var tx in txs)
             {
-                Transactions.Add(CreateTransactionModelInstance(tx));
-            }
-        }
-        
-        IEnumerable<Transaction> CreateList(IEnumerable<TransactionData> txList)
-        {
-            var result = new List<Transaction>();
+                if (Transactions.Any(txModel => txModel.Id == tx.Id.ToString()))
+                {
+                    var item = Transactions.FirstOrDefault(txModel => txModel.Id == tx.Id.ToString());
+                    var newItem = CreateTransactionModelInstance(tx);
 
-            foreach (var tx in txList)
-            {
-                result.Add(CreateTransactionModelInstance(tx));
-                _WalletService.Logger.Information(JsonConvert.SerializeObject(tx, Formatting.Indented));
+                    if (item == newItem) continue;
+
+                    int index = Transactions.IndexOf(item);
+                    Transactions.Remove(item);
+                    Transactions.Insert(index, newItem);
+
+                    continue;
+                }
+
+                Transactions.Insert(0, CreateTransactionModelInstance(tx));
             }
-            return result;
         }
 
         Transaction CreateTransactionModelInstance(TransactionData transactionData)
@@ -452,15 +410,13 @@ namespace HodlWallet2.Core.ViewModels
                 IsReceive = transactionData.IsReceive,
                 IsSent = transactionData.IsSend,
                 IsSpendable = transactionData.IsSpendable(),
-                IsComfirmed = transactionData.IsConfirmed(),
+                IsConfirmed = transactionData.IsConfirmed(),
                 IsPropagated = transactionData.IsPropagated,
                 BlockHeight = transactionData.BlockHeight,
                 IsAvailable = transactionData.IsSpendable()
                         ? Constants.IS_AVAILABLE
                         : Constants.IS_NOT_AVAILABLE,
-                /* TODO: Add Memo to Transaction Data
-                   e.g.  Memo = transactionData.Memo, */
-                Memo = "",
+                Memo = transactionData.Memo,
                 Confirmations = "",
                 Amount = GetAmountLabelText(transactionData),
                 StatusColor = transactionData.IsSend == true
@@ -498,12 +454,6 @@ namespace HodlWallet2.Core.ViewModels
 
         string GetAmountLabelText(TransactionData tx)
         {
-            // FIXME BUG: Figure out why tx is null sometimes.
-            if (tx is null)
-            {
-                return "";
-            }
-
             var preferences = Preferences.Get("currency", "BTC"); 
             if (preferences == "BTC")
             {
