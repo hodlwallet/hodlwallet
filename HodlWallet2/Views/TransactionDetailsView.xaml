@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HodlWallet2.Views.TransactionDetailsView"
-             BackgroundColor="{StaticResource GrayBackground}"
+             BackgroundColor="{StaticResource DarkGray}"
              xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
@@ -120,12 +120,16 @@
                 
                 <Label x:Name="AddressTitleLabel"
                        FontSize="Small"
-                       Text="{Binding AddressHeader}"
+                       Text="{Binding AddressTitle}"
                        />
-                <Label x:Name="AddressLabel"
-                       FontSize="Small"
-                       Text="{Binding AddressText}"
-                       />
+                <Button x:Name="AddressLabel"
+                        BackgroundColor="{StaticResource DarkGray}"
+                        Command="{Binding CopyAddressCommand}"
+                        FontSize="Small"
+                        HorizontalOptions="Start"
+                        Text="{Binding AddressText}"
+                        TextColor="{StaticResource White}"
+                        />
                 
                 <BoxView />
                 
@@ -133,10 +137,14 @@
                        FontSize="Small"
                        Text="{Binding TransactionIdTitle}"
                        />
-                <Label x:Name="IdLabel"
-                       FontSize="Small"
-                       Text="{Binding TransactionIdText}"
-                       />
+                <Button x:Name="IdLabel"
+                        BackgroundColor="{StaticResource DarkGray}"
+                        Command="{Binding CopyTransactionIdCommand}"
+                        FontSize="Small"
+                        HorizontalOptions="Start"
+                        Text="{Binding TransactionIdText}"
+                        TextColor="{StaticResource White}"
+                        />
                 <Label x:Name="ConfirmedBlockTitleLabel"
                        FontSize="Small"
                        Text="{Binding ConfirmedBlockTitle}"
@@ -145,6 +153,8 @@
                        FontSize="Small"
                        Text="{Binding ConfirmedBlockText}"
                        />
+                
+                <BoxView />
                 
             </StackLayout>
             
