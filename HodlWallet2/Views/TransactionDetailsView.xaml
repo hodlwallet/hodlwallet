@@ -13,19 +13,31 @@
     
     <ContentPage.Resources>
         <ResourceDictionary>
+            
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
                 <Setter Property="TextColor" Value="{StaticResource White}" />
+                <Setter Property="LineBreakMode" Value="MiddleTruncation" />
             </Style>
+            
             <Style TargetType="BoxView">
                 <Setter Property="BackgroundColor" Value="{StaticResource GrayTextTint}" />
                 <Setter Property="HeightRequest" Value="2" />
             </Style>
+            
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkGray}" />
+                <Setter Property="FontFamily" Value="{StaticResource ElectrolizeFont}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Style>
+            
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <StackLayout Spacing="20"
-                 Margin="20, 20, 20, 0">
+                 Margin="40, 20, 40, 0">
         
         <FlexLayout AlignItems="Center"
                     Direction="Row"
@@ -42,6 +54,7 @@
         
             <Label x:Name="TransactionDetailsTitle"
                    FontSize="Large"
+                   HorizontalTextAlignment="Center"
                    Text="{Binding TransactionDetailsTitle}"
                    />
 
@@ -123,12 +136,8 @@
                        Text="{Binding AddressTitle}"
                        />
                 <Button x:Name="AddressLabel"
-                        BackgroundColor="{StaticResource DarkGray}"
                         Command="{Binding CopyAddressCommand}"
-                        FontSize="Small"
-                        HorizontalOptions="Start"
                         Text="{Binding AddressText}"
-                        TextColor="{StaticResource White}"
                         />
                 
                 <BoxView />
@@ -138,12 +147,8 @@
                        Text="{Binding TransactionIdTitle}"
                        />
                 <Button x:Name="IdLabel"
-                        BackgroundColor="{StaticResource DarkGray}"
                         Command="{Binding CopyTransactionIdCommand}"
-                        FontSize="Small"
-                        HorizontalOptions="Start"
                         Text="{Binding TransactionIdText}"
-                        TextColor="{StaticResource White}"
                         />
                 <Label x:Name="ConfirmedBlockTitleLabel"
                        FontSize="Small"
