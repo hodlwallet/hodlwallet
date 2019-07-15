@@ -14,11 +14,14 @@
     BackgroundColor="{StaticResource GrayBackground}">
     <ContentPage.Resources>
         <ResourceDictionary>
+            
             <Style x:Key="DashboardFooterButton" TargetType="FlexLayout">
+                <Setter Property="AlignItems" Value="Center" />
                 <Setter Property="Direction" Value="Column" />
-                <Setter Property="JustifyContent" Value="SpaceEvenly" />
+                <Setter Property="JustifyContent" Value="Center" />
                 <Setter Property="FlexLayout.Grow" Value="1" />
             </Style>
+            
         </ResourceDictionary>
     </ContentPage.Resources>
     
@@ -81,26 +84,20 @@
                 <controls:TransactionCollectionView FlexLayout.Grow="1"/>
             </FlexLayout>
             
-            <FlexLayout Direction="Row" FlexLayout.Grow="1" JustifyContent="SpaceAround">
+            <FlexLayout BackgroundColor="{StaticResource DarkGray}"
+                        Direction="Row" 
+                        FlexLayout.Grow="1" 
+                        JustifyContent="SpaceAround">
                 
-                <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="SpaceEvenly" FlexLayout.Grow="1">
+                <FlexLayout Style="{StaticResource DashboardFooterButton}">
                     
-                    <BoxView FlexLayout.Grow="1"/>
-                    
-                    <FlexLayout FlexLayout.Grow="3">
-                        <svg:Icon ResourceId="Assets.send_tab.svg"
-                                  HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="1"/>
-                    </FlexLayout>
+                    <svg:Icon ResourceId="Assets.send_tab.svg" />
                     
                     <Label x:Name="sendLabel"
                            FontFamily="{StaticResource ElectrolizeFont}"
                            TextColor="{StaticResource GrayTextTint}"
                            Margin="0, 10, 0, 0"
-                           FlexLayout.Grow="1"
-                           FlexLayout.AlignSelf="Center"
                            bindings:Bi.nd="Text SendText"/>
-                    
-                    <BoxView FlexLayout.Grow="1" />
                            
                     <FlexLayout.GestureRecognizers>
                         <TapGestureRecognizer bindings:Bi.nd="Command NavigateToSendViewCommand"
@@ -109,24 +106,15 @@
                     
                 </FlexLayout>
                 
-                <FlexLayout Direction="Column" JustifyContent="SpaceEvenly" FlexLayout.Grow="1">
+                <FlexLayout Style="{StaticResource DashboardFooterButton}">
                     
-                    <BoxView FlexLayout.Grow="1"/>
-                    
-                    <FlexLayout FlexLayout.Grow="3">
-                        <svg:Icon ResourceId="Assets.receive_tab.svg"
-                                  HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="1"/>
-                    </FlexLayout>
+                    <svg:Icon ResourceId="Assets.receive_tab.svg" />
                     
                     <Label x:Name="receiveLabel"
                            FontFamily="{StaticResource ElectrolizeFont}"
                            TextColor="{StaticResource SyncGradientStart}"
                            Margin="0, 10, 0, 0"
-                           FlexLayout.Grow="1"
-                           FlexLayout.AlignSelf="Center"
                            bindings:Bi.nd="Text ReceiveText"/>
-                    
-                    <BoxView FlexLayout.Grow="1" />
                     
                     <FlexLayout.GestureRecognizers>
                         <TapGestureRecognizer bindings:Bi.nd="Command NavigateToReceiveViewCommand"
@@ -135,24 +123,15 @@
                     
                 </FlexLayout>
                 
-                <FlexLayout Direction="Column" JustifyContent="SpaceEvenly" FlexLayout.Grow="1">
+                <FlexLayout Style="{StaticResource DashboardFooterButton}">
                     
-                    <BoxView FlexLayout.Grow="1"/>
-                    
-                    <FlexLayout FlexLayout.Grow="3">
-                        <svg:Icon ResourceId="Assets.menu_tab.svg"
-                                  HorizontalOptions="Center" VerticalOptions="Center" FlexLayout.Grow="1"/>
-                    </FlexLayout>
+                    <svg:Icon ResourceId="Assets.menu_tab.svg" />
                     
                     <Label x:Name="menuLabel"
                            FontFamily="{StaticResource ElectrolizeFont}"
                            TextColor="{StaticResource White}"
                            Margin="0, 10, 0, 0"
-                           FlexLayout.Grow="1"
-                           FlexLayout.AlignSelf="Center"
                            bindings:Bi.nd="Text MenuText" />
-                    
-                    <BoxView FlexLayout.Grow="1" />
                     
                     <FlexLayout.GestureRecognizers>
                         <TapGestureRecognizer bindings:Bi.nd="Command NavigateToMenuViewCommand"
