@@ -91,6 +91,13 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _EndingBalanceText, value);
         }
 
+        string _AddressTitle;
+        public string AddressTitle
+        {
+            get => _AddressTitle;
+            set => SetProperty(ref _AddressTitle, value);
+        }
+
         string _AddressText;
         public string AddressText
         {
@@ -135,6 +142,7 @@ namespace HodlWallet2.Core.ViewModels
             StatusText = _Transaction.Confirmations;
             MemoText = _Transaction.Memo;
             AddressText = _Transaction.Address;
+            AddressTitle = GetAddressTitleText();
             TransactionIdText = _Transaction.Id;
             ConfirmedBlockText = _Transaction.BlockHeight?.ToString();
 
@@ -184,6 +192,14 @@ namespace HodlWallet2.Core.ViewModels
             };
 
             _CopiedToClipboardInteraction.Raise(request);
+        }
+
+        string GetAddressTitleText()
+        {
+            if (_Transaction.IsSent == true)
+                return Constants.TRANSACTION_DETAILS_SENT_ADDRESS_TITLE;
+
+            return Constants.TRANSACTION_DETAILS_RECEIVED_ADDRESS_TITLE;
         }
     }
 }

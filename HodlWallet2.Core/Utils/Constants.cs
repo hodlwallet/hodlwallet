@@ -35,6 +35,8 @@
         public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_TITLE = "Transaction ID Copied to Clipboard";
         public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_BUTTON = "OK";
         public const string SYNC_LOADING_HEADERS = "Loading headers...";
+        public const string TRANSACTION_DETAILS_SENT_ADDRESS_TITLE = "Sent To This Address:";
+        public const string TRANSACTION_DETAILS_RECEIVED_ADDRESS_TITLE = "Received At This Address:";
 
         // Temporary Values
         public const string USE_ADDRESS_FROM_CLIPBOARD =
