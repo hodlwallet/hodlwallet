@@ -1,14 +1,17 @@
 using System;
 using System.Threading.Tasks;
 
+using Xamarin.Essentials;
+
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 
 using HodlWallet2.Core.Models;
-
 using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Interactions;
+using HodlWallet2.Core.Utils;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -16,6 +19,14 @@ namespace HodlWallet2.Core.ViewModels
     {
         readonly IWalletService _WalletService;
         Transaction _Transaction;
+
+        MvxInteraction<DisplayAlertContent> _CopiedToClipboardInteraction = new MvxInteraction<DisplayAlertContent>();
+        public IMvxInteraction<DisplayAlertContent> CopiedToClipboardInteraction => _CopiedToClipboardInteraction;
+
+        public MvxAsyncCommand CloseCommand { get; }
+        public MvxAsyncCommand ShowFaqCommand { get; }
+        public IMvxAsyncCommand CopyAddressCommand { get; }
+        public IMvxAsyncCommand CopyTransactionIdCommand { get; }
 
         public string TransactionDetailsTitle => "Transaction Details";
         public string StatusTitle => "Status";
@@ -101,9 +112,6 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _ConfirmedBlockText, value);
         }
 
-        public MvxAsyncCommand CloseCommand { get; }
-        public MvxAsyncCommand ShowFaqCommand { get; }
-
         public TransactionDetailsViewModel(
             IMvxLogProvider logProvider,
             IMvxNavigationService navigationService,
@@ -113,6 +121,8 @@ namespace HodlWallet2.Core.ViewModels
 
             CloseCommand = new MvxAsyncCommand(Close);
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
+            CopyAddressCommand = new MvxAsyncCommand(AddressToClipboard);
+            CopyTransactionIdCommand = new MvxAsyncCommand(IdToClipboard);
         }
 
         public override async Task Initialize()
@@ -146,6 +156,34 @@ namespace HodlWallet2.Core.ViewModels
         async Task Close()
         {
             await NavigationService.Close(this);
+        }
+
+        async Task AddressToClipboard()
+        {
+            await Clipboard.SetTextAsync(AddressText);
+
+            var request = new DisplayAlertContent
+            {
+                Title = Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE,
+                Message = "",
+                Buttons = new string[] { Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON }
+            };
+
+            _CopiedToClipboardInteraction.Raise(request);
+        }
+
+        async Task IdToClipboard()
+        {
+            await Clipboard.SetTextAsync(TransactionIdText);
+
+            var request = new DisplayAlertContent
+            {
+                Title = Constants.TRANSACTION_ID_COPIED_TO_CLIPBOARD_TITLE,
+                Message = "",
+                Buttons = new string[] { Constants.TRANSACTION_ID_COPIED_TO_CLIPBOARD_BUTTON }
+            };
+
+            _CopiedToClipboardInteraction.Raise(request);
         }
     }
 }
