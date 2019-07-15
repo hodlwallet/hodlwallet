@@ -29,12 +29,12 @@ namespace HodlWallet2.iOS
             Rg.Plugins.Popup.Popup.Init();
             FormsControls.Touch.Main.Init();
 
-            UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
-            UINavigationBar.Appearance.ShadowImage = new UIImage();
-            UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
-            UINavigationBar.Appearance.TintColor = UIColor.White;
-            UINavigationBar.Appearance.BarTintColor = UIColor.Clear;
-            UINavigationBar.Appearance.Translucent = true;
+            //UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+            //UINavigationBar.Appearance.ShadowImage = new UIImage();
+            //UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
+            //UINavigationBar.Appearance.TintColor = UIColor.White;
+            //UINavigationBar.Appearance.BarTintColor = UIColor.Clear;
+            //UINavigationBar.Appearance.Translucent = true;
 
             return base.FinishedLaunching(app, options);
         }

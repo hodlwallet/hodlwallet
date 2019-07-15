@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 using Serilog;
 
 using HodlWallet2.Core.Services;
+using System.Threading.Tasks;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HodlWallet2
@@ -21,13 +22,13 @@ namespace HodlWallet2
 
             _WalletService = WalletService.Instance;
             _Logger = _WalletService.Logger;
-
-            _WalletService.InitializeWallet();
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
             _Logger.Information($"App started at: {DateTime.Now}");
+
+            await Task.Run(() => _WalletService.InitializeWallet());
         }
 
         protected override void OnSleep()
