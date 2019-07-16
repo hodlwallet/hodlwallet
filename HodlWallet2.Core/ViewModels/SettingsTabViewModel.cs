@@ -5,9 +5,9 @@ using MvvmCross.ViewModels;
 
 namespace HodlWallet2.Core.ViewModels
 {
-    public class SendTabViewModel : BaseViewModel
+    public class SettingsTabViewModel : BaseViewModel
     {
-        public SendTabViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) : base(logProvider, navigationService)
+        public SettingsTabViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) : base(logProvider, navigationService)
         {
 
         }

@@ -7,12 +7,12 @@ using Xamarin.Forms;
 
 namespace HodlWallet2.Views
 {
-    [MvxTabbedPagePresentation(TabbedPosition.Tab, WrapInNavigationPage = false, Title = "Send")]
-    public partial class SendTabView : MvxContentPage<SendTabViewModel>
+    [MvxTabbedPagePresentation(TabbedPosition.Tab, WrapInNavigationPage = false, Title = "Settings")]
+    public partial class SettingsTabView : MvxContentPage<SettingsTabViewModel>
     {
-        public SendTabView()
+        public SettingsTabView()
         {
-            IconImageSource = "send_tab.png";
+            IconImageSource = "settings_tab.png";
 
             InitializeComponent();
         }

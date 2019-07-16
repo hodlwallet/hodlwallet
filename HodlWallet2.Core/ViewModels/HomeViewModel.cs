@@ -13,7 +13,7 @@ namespace HodlWallet2.Core.ViewModels
         public SendTabViewModel _SendTabViewModel { get; }
         public ReceiveTabViewModel _ReceiveTabViewModel { get; }
         public HomeTabViewModel _HomeTabViewModel { get; }
-        //public SettingsTabViewModel _SettingsTabViewModel { get; }
+        public SettingsTabViewModel _SettingsTabViewModel { get; }
 
         public IMvxAsyncCommand ShowInitialViewModelsCommand { get; private set; }
 
@@ -24,6 +24,7 @@ namespace HodlWallet2.Core.ViewModels
             tasks.Add(NavigationService.Navigate<SendTabViewModel>());
             tasks.Add(NavigationService.Navigate<ReceiveTabViewModel>());
             tasks.Add(NavigationService.Navigate<HomeTabViewModel>());
+            tasks.Add(NavigationService.Navigate<SettingsTabViewModel>());
 
             await Task.WhenAll(tasks);
         }
