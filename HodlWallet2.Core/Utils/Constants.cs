@@ -10,6 +10,12 @@
         public const string SAT_PER_BYTE_UNIT_LABEL = "{0} sat/byte";
         public const int PRECIO_TIMER_INTERVAL = 5;
 
+        //Block Explorer URls
+        public const string BLOCKSTREAM_ADDRESS_MAINNET_URI = "https://blockstream.info/address/";
+        public const string BLOCKSTREAM_ADDRESS_TESTNET_URI = "https://blockstream.info/testnet/address/";
+        public const string BLOCKSTREAM_TRANSACTION_MAINNET_URI = "https://blockstream.info/tx/";
+        public const string BLOCKSTREAM_TRANSACTION_TESTNET_URI = "https://blockstream.info/testnet/tx/";
+
         // Colors
         public const string SYNC_GRADIENT_START_COLOR_HEX = "#DAAB28";
         public const string GRAY_TEXT_TINT_COLOR_HEX = "#A3A8AD";
