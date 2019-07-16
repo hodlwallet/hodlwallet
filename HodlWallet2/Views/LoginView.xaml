@@ -16,7 +16,8 @@
         <ResourceDictionary>
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource GrayBackground}" />
-                <Setter Property="Style" Value="{DynamicResource CustomLabel}" />
+                <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
