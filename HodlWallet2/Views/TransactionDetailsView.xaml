@@ -122,7 +122,7 @@
                 <Label FontSize="Small"
                        Text="{Binding AddressTitle}"
                        />
-                <Button Command="{Binding CopyAddressCommand}"
+                <Button Command="{Binding BrowseAddressCommand}"
                         Text="{Binding AddressText}"
                         />
                 

@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Essentials;
 
+using Network = NBitcoin.Network;
+
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
@@ -25,8 +27,8 @@ namespace HodlWallet2.Core.ViewModels
 
         public MvxAsyncCommand CloseCommand { get; }
         public MvxAsyncCommand ShowFaqCommand { get; }
-        public IMvxAsyncCommand CopyAddressCommand { get; }
-        public IMvxAsyncCommand CopyTransactionIdCommand { get; }
+        public IMvxAsyncCommand BrowseAddressCommand { get; }
+        public IMvxAsyncCommand BrowseTransactionIdCommand { get; }
 
         public string TransactionDetailsTitle => "Transaction Details";
         public string StatusTitle => "Status";
@@ -128,8 +130,8 @@ namespace HodlWallet2.Core.ViewModels
 
             CloseCommand = new MvxAsyncCommand(Close);
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
-            CopyAddressCommand = new MvxAsyncCommand(AddressToClipboard);
-            CopyTransactionIdCommand = new MvxAsyncCommand(IdToClipboard);
+            BrowseAddressCommand = new MvxAsyncCommand(AddressToBrowser);
+            BrowseTransactionIdCommand = new MvxAsyncCommand(IdToBrowser);
         }
 
         public override async Task Initialize()
@@ -166,32 +168,36 @@ namespace HodlWallet2.Core.ViewModels
             await NavigationService.Close(this);
         }
 
-        async Task AddressToClipboard()
+        async Task AddressToBrowser()
         {
-            await Clipboard.SetTextAsync(AddressText);
+            Uri uri;
 
-            var request = new DisplayAlertContent
+            if (_WalletService.GetNetwork() == Network.Main)
             {
-                Title = Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE,
-                Message = "",
-                Buttons = new string[] { Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON }
-            };
+                uri = new Uri(Constants.BLOCKSTREAM_ADDRESS_MAINNET_URI + AddressText);
+            }
+            else
+            {
+                uri = new Uri(Constants.BLOCKSTREAM_ADDRESS_TESTNET_URI + AddressText);
+            }
 
-            _CopiedToClipboardInteraction.Raise(request);
+            await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
         }
 
-        async Task IdToClipboard()
+        async Task IdToBrowser()
         {
-            await Clipboard.SetTextAsync(TransactionIdText);
+            Uri uri;
 
-            var request = new DisplayAlertContent
+            if (_WalletService.GetNetwork() == Network.Main)
             {
-                Title = Constants.TRANSACTION_ID_COPIED_TO_CLIPBOARD_TITLE,
-                Message = "",
-                Buttons = new string[] { Constants.TRANSACTION_ID_COPIED_TO_CLIPBOARD_BUTTON }
-            };
+                uri = new Uri(Constants.BLOCKSTREAM_TRANSACTION_MAINNET_URI + TransactionIdText);
+            }
+            else
+            {
+                uri = new Uri(Constants.BLOCKSTREAM_TRANSACTION_TESTNET_URI + TransactionIdText);
+            }
 
-            _CopiedToClipboardInteraction.Raise(request);
+            await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
         }
 
         string GetAddressTitleText()
