@@ -11,7 +11,9 @@
              ios:Page.UseSafeArea="true"
              BackgroundColor="{StaticResource GrayBackground}">
     
-    <FlexLayout Direction="Column" AlignItems="Center">
+    <FlexLayout AlignItems="Center"
+                Direction="Column"
+                JustifyContent="SpaceAround">
         
         <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.Grow="1" Margin="10">
             <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center">
@@ -22,10 +24,11 @@
             
             <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
                 
-            <Label x:Name="ReceiveTitle" 
-                   Style="{DynamicResource CustomLabel}"
+            <Label bindings:Bi.nd="Text ReceiveTitle"
                    FontSize="Large"
-                   FlexLayout.AlignSelf="Center" />
+                   FlexLayout.AlignSelf="Center"
+                   Style="{DynamicResource CustomLabel}"
+                   />
             
             <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
             
@@ -36,48 +39,37 @@
             </svg:Icon>
         </FlexLayout>
         
-        <BoxView FlexLayout.Grow="1" />
+        <FlexLayout Direction="Column"
+                    FlexLayout.Grow="4"
+                    AlignItems="Center"
+                    JustifyContent="Center"
+                    BackgroundColor="Teal">
+            
+            <svg:QRCode Content="{Binding Address}"
+                        BackgroundColor="White"
+                        Level="H"
+                        WidthRequest="170"
+                        HeightRequest="170"
+                        Margin="0, 0, 0, 10"
+                        />
+            
+            <Button BackgroundColor="{StaticResource GrayBackground}"
+                    Command="{Binding CopyAddressCommand}"
+                    Style="{DynamicResource CustomLabel}" 
+                    Text="{Binding Address}"
+                    />
+            
+        </FlexLayout>
         
-        <svg:QRCode Content="{Binding Address}"
-                       BackgroundColor="White"
-                       Level="H"
-                       WidthRequest="170"
-                       HeightRequest="170"
-                       VerticalOptions="CenterAndExpand"
-                       HorizontalOptions="CenterAndExpand" />
-        
-       <ContentView FlexLayout.Grow="1">
-            <Label x:Name="_Address"
-                   Style="{DynamicResource CustomLabel}" 
-                   Text="{Binding Address}"
-                   HorizontalTextAlignment="Center"
-                   Margin="10" />
-            <ContentView.GestureRecognizers>
-                <TapGestureRecognizer bindings:Bi.nd="Command CopyAddressCommand"/>
-            </ContentView.GestureRecognizers>
-        </ContentView>
-        
-        <BoxView FlexLayout.Grow="1" />
-        
-        <Button x:Name="Share"
-                Style="{DynamicResource CustomButton}"
-                BackgroundColor="{StaticResource DarkGray}"
-                FontSize="Large"
+        <Button BackgroundColor="{StaticResource DarkGray}"
                 bindings:Bi.nd="Text ShareButtonText;
                                 Command ShareButtonCommand"
                 FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="1" />
-        
-<!--        <BoxView HeightRequest="2" BackgroundColor="Transparent" />-->
-        
-<!--        <Button x:Name="RequestAmount"
-                Style="{DynamicResource CustomButton}" 
-                BackgroundColor="{StaticResource DarkGray}"
+                FlexLayout.Grow="1"
                 FontSize="Large"
-                bindings:Bi.nd="Text RequestAmountButtonText;
-                                Command RequestAmountButtonCommand"
-                FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="1" />-->
+                Style="{DynamicResource CustomButton}"
+                />
         
     </FlexLayout>
+    
 </views:MvxContentPage>
