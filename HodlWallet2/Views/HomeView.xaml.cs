@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using HodlWallet2.Core.ViewModels;
+using System.ComponentModel;
 
 namespace HodlWallet2.Views
 {
