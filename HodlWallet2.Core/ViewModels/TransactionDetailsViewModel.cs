@@ -174,11 +174,11 @@ namespace HodlWallet2.Core.ViewModels
 
             if (_WalletService.GetNetwork() == Network.Main)
             {
-                uri = new Uri(Constants.BLOCK_EXPLORER_ADDRESS_MAINNET_URI + AddressText);
+                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_ADDRESS_MAINNET_URI, AddressText));
             }
             else
             {
-                uri = new Uri(Constants.BLOCK_EXPLORER_ADDRESS_TESTNET_URI + AddressText);
+                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_ADDRESS_TESTNET_URI, AddressText));
             }
 
             await Browser.OpenAsync(uri, BrowserLaunchMode.External);
@@ -190,11 +190,11 @@ namespace HodlWallet2.Core.ViewModels
 
             if (_WalletService.GetNetwork() == Network.Main)
             {
-                uri = new Uri(Constants.BLOCK_EXPLORER_TRANSACTION_MAINNET_URI + TransactionIdText);
+                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_TRANSACTION_MAINNET_URI, TransactionIdText));
             }
             else
             {
-                uri = new Uri(Constants.BLOCK_EXPLORER_TRANSACTION_TESTNET_URI + TransactionIdText);
+                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_TRANSACTION_TESTNET_URI, TransactionIdText));
             }
 
             await Browser.OpenAsync(uri, BrowserLaunchMode.External);
