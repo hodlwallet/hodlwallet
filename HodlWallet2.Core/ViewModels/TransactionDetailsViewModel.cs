@@ -181,7 +181,7 @@ namespace HodlWallet2.Core.ViewModels
                 uri = new Uri(Constants.BLOCKSTREAM_ADDRESS_TESTNET_URI + AddressText);
             }
 
-            await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            await Browser.OpenAsync(uri, BrowserLaunchMode.External);
         }
 
         async Task IdToBrowser()
@@ -197,7 +197,7 @@ namespace HodlWallet2.Core.ViewModels
                 uri = new Uri(Constants.BLOCKSTREAM_TRANSACTION_TESTNET_URI + TransactionIdText);
             }
 
-            await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            await Browser.OpenAsync(uri, BrowserLaunchMode.External);
         }
 
         string GetAddressTitleText()
