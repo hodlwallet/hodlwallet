@@ -16,8 +16,8 @@
             
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
-                <Setter Property="TextColor" Value="{StaticResource White}" />
                 <Setter Property="LineBreakMode" Value="MiddleTruncation" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
             </Style>
             
             <Style TargetType="BoxView">
@@ -52,8 +52,7 @@
                 
             </svg:Icon>
         
-            <Label x:Name="TransactionDetailsTitle"
-                   FontSize="Large"
+            <Label FontSize="Large"
                    HorizontalTextAlignment="Center"
                    Text="{Binding TransactionDetailsTitle}"
                    />
@@ -72,27 +71,22 @@
             
             <StackLayout>
                 
-                <Label x:Name="DateLabel" 
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding DateText}"
                        />
-                <Label x:Name="AmountLabel" 
-                       FontSize="Large" 
+                <Label FontSize="Large" 
                        Text="{Binding AmountText}"
                        />
-                <Label x:Name="AddressToFromLabel" 
-                       FontSize="Large" 
+                <Label FontSize="Large" 
                        Text="{Binding AmountToFromText}"
                        />
                 
                 <BoxView />
                 
-                <Label x:Name="StatusTitleLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding StatusTitle}"
                        />
-                <Label x:Name="StatusLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding StatusText}"
                        />
                 
@@ -100,62 +94,50 @@
                          HeightRequest="2"
                          />
                 
-                <Label x:Name="MemoTitleLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding MemoTitle}"
                        />
-                <Entry x:Name="MemoEntry"
-                       BackgroundColor="Transparent"
+                <Entry BackgroundColor="Transparent"
                        FontSize="Small"
                        Text="{Binding MemoText}"
                        />
                 
                 <BoxView />
                 
-                <Label x:Name="AmountTitleLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding AmountTitle}"
                        />
-                <Label x:Name="AmountWithFeeLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding AmountWithFeeText}"
                        />
-                <Label x:Name="StartingBalanceLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding StartingBalanceText}"
                        />
-                <Label x:Name="EndingBalanceLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding EndingBalanceText}"
                        />
                 
                 <BoxView />
                 
-                <Label x:Name="AddressTitleLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding AddressTitle}"
                        />
-                <Button x:Name="AddressLabel"
-                        Command="{Binding CopyAddressCommand}"
+                <Button Command="{Binding CopyAddressCommand}"
                         Text="{Binding AddressText}"
                         />
                 
                 <BoxView />
                 
-                <Label x:Name="IdTitleLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding TransactionIdTitle}"
                        />
-                <Button x:Name="IdLabel"
-                        Command="{Binding CopyTransactionIdCommand}"
+                <Button Command="{Binding BrowseTransactionIdCommand}"
                         Text="{Binding TransactionIdText}"
                         />
-                <Label x:Name="ConfirmedBlockTitleLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding ConfirmedBlockTitle}"
                        />
-                <Label x:Name="ConfirmedBlockLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding ConfirmedBlockText}"
                        />
                 
