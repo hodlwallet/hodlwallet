@@ -26,6 +26,7 @@ namespace HodlWallet2.Core.ViewModels
         readonly Serilog.ILogger _Logger;
 
         public string ShareButtonText => "Share";
+        public string ReceiveTitle => "Receive";
         public string RequestAmountButtonText => "Request Amount";
 
         public IMvxCommand ShowFaqCommand { get; }
