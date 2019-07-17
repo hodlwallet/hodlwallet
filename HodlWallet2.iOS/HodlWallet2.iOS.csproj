@@ -102,6 +102,7 @@
     <Compile Include="Renderers\FeeSlider.cs" />
     <Compile Include="Renderers\ShareIntent.cs" />
     <Compile Include="Renderers\iOSPermissions.cs" />
+    <Compile Include="Renderers\ExtendedTabbedPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

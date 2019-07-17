@@ -16,6 +16,8 @@ namespace HodlWallet2.Views
     [MvxTabbedPagePresentation(TabbedPosition.Root, NoHistory = false, WrapInNavigationPage = true)]
     public partial class HomeView : MvxTabbedPage<HomeViewModel>
     {
+        bool _FirstTime = true;
+
         public HomeView()
         {
             InitializeComponent();
@@ -28,14 +30,13 @@ namespace HodlWallet2.Views
             Title = CurrentPage.Title;
         }
 
-        private bool _FirstTime = true;
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
             if (_FirstTime)
             {
-                ViewModel.ShowInitialViewModelsCommand.ExecuteAsync(null);
+                ViewModel.ShowInitialViewModelsCommand.Execute(null);
 
                 _FirstTime = false;
             }

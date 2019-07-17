@@ -5,7 +5,8 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
-    x:Class="HodlWallet2.Views.HomeView" Title="Home">
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    x:Class="HodlWallet2.Views.HomeView" Title="Home" android:TabbedPage.ToolbarPlacement="Bottom">
     <ContentPage.Content>
     </ContentPage.Content>
 </views:MvxTabbedPage>
