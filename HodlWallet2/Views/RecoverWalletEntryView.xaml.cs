@@ -4,10 +4,13 @@ using Xamarin.Forms;
 
 using MvvmCross;
 using MvvmCross.Forms.Views;
+using MvvmCross.Binding.BindingContext;
+using MvvmCross.ViewModels;
+using MvvmCross.Base;
 
 using HodlWallet2.Locale;
 using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Services;
+using HodlWallet2.Core.Interactions;
 
 using PinPadViewModel = HodlWallet2.Core.ViewModels.PinPadViewModel;
 using RecoverWalletEntryViewModel = HodlWallet2.Core.ViewModels.RecoverWalletEntryViewModel;
@@ -20,20 +23,35 @@ namespace HodlWallet2.Views
         IWalletService _Wallet;
         Serilog.ILogger _Logger;
 
+        IMvxInteraction<DisplayAlertContent> _DisplayAlertInteraction;
+        public IMvxInteraction<DisplayAlertContent> DisplayAlertInteraction
+        {
+            get => _DisplayAlertInteraction;
+            set
+            {
+                if (_DisplayAlertInteraction != null)
+                    _DisplayAlertInteraction.Requested -= OnDisplayAlertInteractionRequested;
+
+                _DisplayAlertInteraction = value;
+                _DisplayAlertInteraction.Requested += OnDisplayAlertInteractionRequested;
+            }
+        }
+
         public RecoverWalletEntryView()
         {
             InitializeComponent();
 
             _Wallet = Mvx.IoCProvider.Resolve<IWalletService>();
             _Logger = _Wallet.Logger;
-            //viewModel._EntryGrid = EntryGrid;
-            //SetLabels();
         }
 
-        private void SetLabels()
+        protected override void OnAppearing()
         {
-//            Title.Text = LocaleResources.Recover_title;
-//            Header.Text = LocaleResources.Recover_entryHeader;
+            base.OnAppearing();
+
+            var set = this.CreateBindingSet<RecoverWalletEntryView, RecoverWalletEntryViewModel>();
+            set.Bind(this).For(view => view.DisplayAlertInteraction).To(viewModel => viewModel.DisplayAlertInteraction).OneWay();
+            set.Apply();
         }
 
         private void Entry_Completed(object sender, EventArgs e)
@@ -57,34 +75,13 @@ namespace HodlWallet2.Views
             NextEntry?.Focus();
         }
 
-        private void Entry_Fully_Completed(object sender, EventArgs e)
+        async void OnDisplayAlertInteractionRequested(object sender, MvxValueEventArgs<DisplayAlertContent> e)
         {
-            string mnemonic = "";
+            var displayAlertContent = e.Value;
 
-            for (int i = 1; i <= 12; i++)
-            {
-                string x_Name = "Entry" + i.ToString();
-                Entry currentEntry = this.FindByName(x_Name) as Entry;
-
-                if (_Wallet.IsWordInWordlist(currentEntry.Text, "english") == false)
-                {
-                    _Logger.Information("User input not found in wordlist.");
-                    DisplayAlert(LocaleResources.Recover_alertTitle, LocaleResources.Recover_alertHeader, LocaleResources.Recover_alertButton);
-                    return;
-                }
-
-                mnemonic += i < 12 ? currentEntry.Text + " " : currentEntry.Text;
-            }
-
-            if (_Wallet.IsVerifyChecksum(mnemonic, "english") == false)
-            {
-                DisplayAlert(LocaleResources.Recover_alertTitle, LocaleResources.Recover_alertHeader, LocaleResources.Recover_alertButton);
-                return;
-            }
-
-            // TODO: Create wallet
-            SecureStorageProvider.SetMnemonic(mnemonic);
-            //Navigation.PushAsync(new PinPadView(new PinPadViewModel(ViewType.Recover)));
+            await DisplayAlert(
+                displayAlertContent.Title, displayAlertContent.Message, displayAlertContent.Buttons[0]
+            );
         }
     }
 }
