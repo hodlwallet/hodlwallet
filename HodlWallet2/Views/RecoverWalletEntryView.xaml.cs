@@ -19,7 +19,6 @@ namespace HodlWallet2.Views
     {
         IWalletService _Wallet;
         Serilog.ILogger _Logger;
-        string mnemonic;
 
         public RecoverWalletEntryView()
         {
@@ -60,6 +59,7 @@ namespace HodlWallet2.Views
 
         private void Entry_Fully_Completed(object sender, EventArgs e)
         {
+            string mnemonic = "";
 
             for (int i = 1; i <= 12; i++)
             {
