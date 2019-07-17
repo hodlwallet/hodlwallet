@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HodlWallet2.Views.TransactionDetailsView"
-             BackgroundColor="{StaticResource GrayBackground}"
+             BackgroundColor="{StaticResource DarkGray}"
              xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
@@ -13,19 +13,31 @@
     
     <ContentPage.Resources>
         <ResourceDictionary>
+            
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
+                <Setter Property="LineBreakMode" Value="MiddleTruncation" />
                 <Setter Property="TextColor" Value="{StaticResource White}" />
             </Style>
+            
             <Style TargetType="BoxView">
                 <Setter Property="BackgroundColor" Value="{StaticResource GrayTextTint}" />
                 <Setter Property="HeightRequest" Value="2" />
             </Style>
+            
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkGray}" />
+                <Setter Property="FontFamily" Value="{StaticResource ElectrolizeFont}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Style>
+            
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <StackLayout Spacing="20"
-                 Margin="20, 20, 20, 0">
+                 Margin="40, 20, 40, 0">
         
         <FlexLayout AlignItems="Center"
                     Direction="Row"
@@ -40,8 +52,8 @@
                 
             </svg:Icon>
         
-            <Label x:Name="TransactionDetailsTitle"
-                   FontSize="Large"
+            <Label FontSize="Large"
+                   HorizontalTextAlignment="Center"
                    Text="{Binding TransactionDetailsTitle}"
                    />
 
@@ -59,27 +71,22 @@
             
             <StackLayout>
                 
-                <Label x:Name="DateLabel" 
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding DateText}"
                        />
-                <Label x:Name="AmountLabel" 
-                       FontSize="Large" 
+                <Label FontSize="Large" 
                        Text="{Binding AmountText}"
                        />
-                <Label x:Name="AddressToFromLabel" 
-                       FontSize="Large" 
+                <Label FontSize="Large" 
                        Text="{Binding AmountToFromText}"
                        />
                 
                 <BoxView />
                 
-                <Label x:Name="StatusTitleLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding StatusTitle}"
                        />
-                <Label x:Name="StatusLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding StatusText}"
                        />
                 
@@ -87,64 +94,54 @@
                          HeightRequest="2"
                          />
                 
-                <Label x:Name="MemoTitleLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding MemoTitle}"
                        />
-                <Entry x:Name="MemoEntry"
-                       BackgroundColor="Transparent"
+                <Entry BackgroundColor="Transparent"
                        FontSize="Small"
                        Text="{Binding MemoText}"
                        />
                 
                 <BoxView />
                 
-                <Label x:Name="AmountTitleLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding AmountTitle}"
                        />
-                <Label x:Name="AmountWithFeeLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding AmountWithFeeText}"
                        />
-                <Label x:Name="StartingBalanceLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding StartingBalanceText}"
                        />
-                <Label x:Name="EndingBalanceLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding EndingBalanceText}"
                        />
                 
                 <BoxView />
                 
-                <Label x:Name="AddressTitleLabel"
-                       FontSize="Small"
-                       Text="{Binding AddressHeader}"
+                <Label FontSize="Small"
+                       Text="{Binding AddressTitle}"
                        />
-                <Label x:Name="AddressLabel"
-                       FontSize="Small"
-                       Text="{Binding AddressText}"
-                       />
+                <Button Command="{Binding BrowseAddressCommand}"
+                        Text="{Binding AddressText}"
+                        />
                 
                 <BoxView />
                 
-                <Label x:Name="IdTitleLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding TransactionIdTitle}"
                        />
-                <Label x:Name="IdLabel"
-                       FontSize="Small"
-                       Text="{Binding TransactionIdText}"
-                       />
-                <Label x:Name="ConfirmedBlockTitleLabel"
-                       FontSize="Small"
+                <Button Command="{Binding BrowseTransactionIdCommand}"
+                        Text="{Binding TransactionIdText}"
+                        />
+                <Label FontSize="Small"
                        Text="{Binding ConfirmedBlockTitle}"
                        />
-                <Label x:Name="ConfirmedBlockLabel"
-                       FontSize="Small"
+                <Label FontSize="Small"
                        Text="{Binding ConfirmedBlockText}"
                        />
+                
+                <BoxView />
                 
             </StackLayout>
             

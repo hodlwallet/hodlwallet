@@ -10,6 +10,12 @@
         public const string SAT_PER_BYTE_UNIT_LABEL = "{0} sat/byte";
         public const int PRECIO_TIMER_INTERVAL = 5;
 
+        //Block Explorer URls
+        public const string BLOCK_EXPLORER_ADDRESS_MAINNET_URI = "https://blockstream.info/address/{0}";
+        public const string BLOCK_EXPLORER_ADDRESS_TESTNET_URI = "https://blockstream.info/testnet/address/{0}";
+        public const string BLOCK_EXPLORER_TRANSACTION_MAINNET_URI = "https://blockstream.info/tx/{0}";
+        public const string BLOCK_EXPLORER_TRANSACTION_TESTNET_URI = "https://blockstream.info/testnet/tx/{0}";
+
         // Colors
         public const string SYNC_GRADIENT_START_COLOR_HEX = "#DAAB28";
         public const string GRAY_TEXT_TINT_COLOR_HEX = "#A3A8AD";
@@ -32,10 +38,14 @@
         public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported.";
         public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE = "Address Copied to Clipboard";
         public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON = "OK";
+        public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_TITLE = "Transaction ID Copied to Clipboard";
+        public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_BUTTON = "OK";
         public const string SYNC_LOADING_HEADERS = "Loading headers...";
         public const string RECOVER_VIEW_ALERT_TITLE = "Invalid Mnemonic";
         public const string RECOVER_VIEW_ALERT_MESSAGE = "One or more of the words you entered are either mispelled or invalid.";
         public const string RECOVER_VIEW_ALERT_BUTTON = "Try Again";
+        public const string TRANSACTION_DETAILS_SENT_ADDRESS_TITLE = "Sent To This Address:";
+        public const string TRANSACTION_DETAILS_RECEIVED_ADDRESS_TITLE = "Received At This Address:";
 
         // Temporary Values
         public const string USE_ADDRESS_FROM_CLIPBOARD =
