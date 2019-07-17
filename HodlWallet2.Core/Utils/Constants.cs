@@ -33,6 +33,9 @@
         public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE = "Address Copied to Clipboard";
         public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON = "OK";
         public const string SYNC_LOADING_HEADERS = "Loading headers...";
+        public const string RECOVER_VIEW_ALERT_TITLE = "Invalid Mnemonic";
+        public const string RECOVER_VIEW_ALERT_MESSAGE = "One or more of the words you entered are either mispelled or invalid.";
+        public const string RECOVER_VIEW_ALERT_BUTTON = "Try Again";
 
         // Temporary Values
         public const string USE_ADDRESS_FROM_CLIPBOARD =
