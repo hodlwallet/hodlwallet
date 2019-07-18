@@ -152,6 +152,8 @@ namespace HodlWallet2.Core.ViewModels
                                               WordNine, WordTen, WordEleven, WordTwelve
                                           });
 
+            mnemonic = mnemonic.ToLower();
+
             if (CheckMnemonicHasValidChecksum(mnemonic) == false) return;
 
             SecureStorageProvider.SetMnemonic(mnemonic);
@@ -163,7 +165,7 @@ namespace HodlWallet2.Core.ViewModels
 
         bool CheckWordInWordlist(string word, string wordlist = "english")
         {
-            if (_WalletService.IsWordInWordlist(word, wordlist) == true) return true;
+            if (_WalletService.IsWordInWordlist(word.ToLower(), wordlist) == true) return true;
 
             _Logger.Information("User input not found in wordlist.");
 
