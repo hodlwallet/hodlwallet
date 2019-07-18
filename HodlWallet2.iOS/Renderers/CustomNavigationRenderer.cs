@@ -27,7 +27,7 @@ namespace HodlWallet2.iOS.Renderers
             var font = UIFont.FromName("Electrolize", 22);
             var descriptor =  font.FontDescriptor.CreateWithAttributes(new UIFontAttributes
             {
-                Traits = new UIFontTraits() { SymbolicTrait = UIFontDescriptorSymbolicTraits.Italic }
+                Traits = new UIFontTraits() { SymbolicTrait = UIFontDescriptorSymbolicTraits.Bold }
             });
             var boldFont = UIFont.FromDescriptor(descriptor, font.PointSize + 2);
 
