@@ -10,14 +10,22 @@ using HodlWallet2.iOS.Renderers;
 using System;
 using System.Threading.Tasks;
 
-[assembly: ExportRenderer(typeof(TabbedPage), typeof(ExtendedTabbedPageRenderer))]
+[assembly: ExportRenderer(typeof(TabbedPage), typeof(CustomTabbedPageRenderer))]
 namespace HodlWallet2.iOS.Renderers
 {
-    public class ExtendedTabbedPageRenderer : TabbedRenderer
+    public class CustomTabbedPageRenderer : TabbedRenderer
     {
+        UIColor GRAY_BACKGROUND { get; } = new UIColor(red: 0.13f, green: 0.13f, blue: 0.13f, alpha: 1.0f);
+
         public override void ViewWillAppear(bool animated)
         {
-            TabBar.BackgroundColor = UIColor.FromName("GrayBackground");
+            TabBar.BarTintColor = GRAY_BACKGROUND;
+
+            TabBar.Translucent = false;
+            TabBar.Layer.BorderWidth = 0.5f;
+            TabBar.Layer.BorderColor = UIColor.Clear.CGColor;
+
+            TabBar.ClipsToBounds = true;
 
             base.ViewWillAppear(animated);
         }
@@ -45,8 +53,15 @@ namespace HodlWallet2.iOS.Renderers
                 return;
 
             // Set the font for the title.
-            item.SetTitleTextAttributes(new UITextAttributes() { Font = UIFont.FromName("Electrolize", 12), TextColor = Color.FromHex("#757575").ToUIColor() }, UIControlState.Normal);
-            item.SetTitleTextAttributes(new UITextAttributes() { Font = UIFont.FromName("Electrolize", 12), TextColor = Color.FromHex("#3C9BDF").ToUIColor() }, UIControlState.Selected);
+            item.SetTitleTextAttributes(new UITextAttributes() {
+                Font = UIFont.FromName("Electrolize", 12),
+                TextColor = Color.FromHex("#757575").ToUIColor()
+            }, UIControlState.Normal);
+
+            item.SetTitleTextAttributes(new UITextAttributes() {
+                Font = UIFont.FromName("Electrolize", 12),
+                TextColor = Color.FromHex("#3C9BDF").ToUIColor()
+            }, UIControlState.Selected);
         }
 
         protected override Task<Tuple<UIImage, UIImage>> GetIcon(Page page)

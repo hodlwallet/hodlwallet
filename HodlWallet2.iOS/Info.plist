@@ -39,7 +39,7 @@
 		<string>Electrolize-Regular.ttf</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>HodlWallet would like to use your camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>

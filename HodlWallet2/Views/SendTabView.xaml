@@ -6,7 +6,7 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
-    x:Class="HodlWallet2.Views.SendTabView">
+    x:Class="HodlWallet2.Views.SendTabView" BackgroundColor="{StaticResource GrayBackground}">
     
     <StackLayout Margin="10">
         <Label Text="Send" />
