@@ -69,10 +69,5 @@ namespace HodlWallet2.Views
 
             CreateInteractionBindings();
         }
-
-        public async void OnCloseTapped(object sender, EventArgs e)
-        {
-            await Navigation.PopModalAsync();
-        }
     }
 }

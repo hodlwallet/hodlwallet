@@ -18,7 +18,7 @@
         <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.Grow="1" Margin="10">
             <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center">
                 <svg:Icon.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                    <TapGestureRecognizer bindings:Bi.nd="Command CloseCommand"/>
                 </svg:Icon.GestureRecognizers>
             </svg:Icon>
             
