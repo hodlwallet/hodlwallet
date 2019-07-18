@@ -22,7 +22,7 @@ namespace HodlWallet2.iOS
 
         protected override void InitializeFirstChance()
         {
-            base.InitializeFirstChance();          
+            base.InitializeFirstChance();
             
             // Here we can register types as singletons or multiple instances
             // 

@@ -40,7 +40,6 @@
       <Style x:Key="CustomEntry" TargetType="Entry">
         <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
       </Style>
-
     </ResourceDictionary>
   </Application.Resources>
 </Application>
