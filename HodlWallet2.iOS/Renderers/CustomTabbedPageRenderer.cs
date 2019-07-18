@@ -7,8 +7,10 @@ using MvvmCross.Forms.Views;
 using MvvmCross.Forms.Platforms.Ios.Views;
 
 using HodlWallet2.iOS.Renderers;
+using HodlWallet2.Core.Utils;
 using System;
 using System.Threading.Tasks;
+using HodlWallet2.Views;
 
 [assembly: ExportRenderer(typeof(TabbedPage), typeof(CustomTabbedPageRenderer))]
 namespace HodlWallet2.iOS.Renderers
@@ -66,6 +68,31 @@ namespace HodlWallet2.iOS.Renderers
 
         protected override Task<Tuple<UIImage, UIImage>> GetIcon(Page page)
         {
+            Icon icon;
+            Icon iconSelected;
+
+            switch (page.GetType().Name)
+            {
+                case "SendTabView":
+                    icon = new Icon { ResourceId = "Assets.send_tab.svg" };
+                    iconSelected = new Icon { ResourceId = "Assets.send_tab.svg" };
+                    break;
+                case "ReceiveTabView":
+                    break;
+                case "HomeTabView":
+                    break;
+                case "SettingsTabView":
+                    break;
+                default:
+                    throw new ArgumentException(
+                        $"Did you create a new tab of type {page.GetType().Name} Add its Icon to the iOS CustomTabbedPageRenderer?"
+                    );
+            }
+
+            //icon.get
+
+            //return Task.FromResult(new Tuple<UIImage, UIImage>(icon, iconSelected));
+
             return base.GetIcon(page);
         }
     }

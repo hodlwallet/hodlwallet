@@ -6,23 +6,17 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 using SKSvg = SkiaSharp.Extended.Svg.SKSvg;
+using System.Reflection;
 
 namespace HodlWallet2.Core.Utils
 {
     public class Icon : Frame
     {
-        #region Private Members
-
-        private readonly SKCanvasView _canvasView = new SKCanvasView();
-
-        #endregion
-
-        #region Bindable Properties
-
-        #region ResourceId
+        private readonly SKCanvasView _CanvasView = new SKCanvasView();
 
         public static readonly BindableProperty ResourceIdProperty = BindableProperty.Create(
-            nameof(ResourceId), typeof(string), typeof(Icon), default(string), propertyChanged: RedrawCanvas);
+            nameof(ResourceId), typeof(string), typeof(Icon), default(string), propertyChanged: RedrawCanvas
+        );
 
         public string ResourceId
         {
@@ -30,29 +24,30 @@ namespace HodlWallet2.Core.Utils
             set => SetValue(ResourceIdProperty, value);
         }
 
-        #endregion
-
-        #endregion
-
-        #region Constructor
-
         public Icon()
         {
             Padding = new Thickness(0);
             BackgroundColor = Color.Transparent;
             HasShadow = false;
-            Content = _canvasView;
-            _canvasView.PaintSurface += CanvasViewOnPaintSurface;
+            Content = _CanvasView;
+            _CanvasView.PaintSurface += CanvasViewOnPaintSurface;
         }
 
-        #endregion
+        public ImageSource ToImage(int width, int height)
+        {
+            using (Stream stream = GetResourceStream())
+            {
+                SKSvg svg = new SKSvg();
+                svg.Load(stream);
+            }
 
-        #region Private Methods
+            //return image;
+        }
 
         private static void RedrawCanvas(BindableObject bindable, object oldvalue, object newvalue)
         {
             Icon svgIcon = bindable as Icon;
-            svgIcon?._canvasView.InvalidateSurface();
+            svgIcon?._CanvasView.InvalidateSurface();
         }
 
         private void CanvasViewOnPaintSurface(object sender, SKPaintSurfaceEventArgs args)
@@ -63,10 +58,8 @@ namespace HodlWallet2.Core.Utils
             if (string.IsNullOrEmpty(ResourceId))
                 return;
 
-            var assembly = AppDomain.CurrentDomain.GetAssemblies().First(
-                ass => ass.GetName().Name == "HodlWallet2"
-            );
-            using (Stream stream = assembly.GetManifestResourceStream(ResourceId))
+            
+            using (Stream stream = GetResourceStream())
             {
                 SKSvg svg = new SKSvg();
                 svg.Load(stream);
@@ -87,7 +80,19 @@ namespace HodlWallet2.Core.Utils
             }
         }
 
-        #endregion
+        private Stream GetResourceStream()
+        {
+            return GetAssembly().GetManifestResourceStream(ResourceId);
+        }
+
+        private Assembly GetAssembly()
+        {
+            var assembly = AppDomain.CurrentDomain.GetAssemblies().First(
+                ass => ass.GetName().Name == "HodlWallet2"
+            );
+
+            return assembly;
+        }
     }
 }
 
