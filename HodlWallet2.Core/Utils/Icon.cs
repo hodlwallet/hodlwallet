@@ -33,17 +33,6 @@ namespace HodlWallet2.Core.Utils
             _CanvasView.PaintSurface += CanvasViewOnPaintSurface;
         }
 
-        public ImageSource ToImage(int width, int height)
-        {
-            using (Stream stream = GetResourceStream())
-            {
-                SKSvg svg = new SKSvg();
-                svg.Load(stream);
-            }
-
-            //return image;
-        }
-
         private static void RedrawCanvas(BindableObject bindable, object oldvalue, object newvalue)
         {
             Icon svgIcon = bindable as Icon;

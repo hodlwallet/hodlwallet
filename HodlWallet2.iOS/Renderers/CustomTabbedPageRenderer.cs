@@ -1,16 +1,12 @@
-﻿using UIKit;
+﻿using System;
+using System.Threading.Tasks;
+
+using UIKit;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-using MvvmCross.Forms.Views;
-using MvvmCross.Forms.Platforms.Ios.Views;
-
 using HodlWallet2.iOS.Renderers;
-using HodlWallet2.Core.Utils;
-using System;
-using System.Threading.Tasks;
-using HodlWallet2.Views;
 
 [assembly: ExportRenderer(typeof(TabbedPage), typeof(CustomTabbedPageRenderer))]
 namespace HodlWallet2.iOS.Renderers
@@ -18,16 +14,27 @@ namespace HodlWallet2.iOS.Renderers
     public class CustomTabbedPageRenderer : TabbedRenderer
     {
         UIColor GRAY_BACKGROUND { get; } = new UIColor(red: 0.13f, green: 0.13f, blue: 0.13f, alpha: 1.0f);
+        UIColor ORANGE { get; } = new UIColor(red:0.85f, green:0.67f, blue:0.16f, alpha:1.0f);
+
+        public CustomTabbedPageRenderer()
+        {
+            TabBar.TintColor = UIColor.Red;
+        }
 
         public override void ViewWillAppear(bool animated)
         {
+            // Sets tabbar background color
             TabBar.BarTintColor = GRAY_BACKGROUND;
 
+            // Removes border on top of bar
             TabBar.Translucent = false;
             TabBar.Layer.BorderWidth = 0.5f;
             TabBar.Layer.BorderColor = UIColor.Clear.CGColor;
 
             TabBar.ClipsToBounds = true;
+
+            TabBar.SelectedImageTintColor = UIColor.Red;
+            TabBar.UnselectedItemTintColor = UIColor.Green;
 
             base.ViewWillAppear(animated);
         }
@@ -54,28 +61,35 @@ namespace HodlWallet2.iOS.Renderers
             if (item == null || icon == null)
                 return;
 
-            // Set the font for the title.
-            item.SetTitleTextAttributes(new UITextAttributes() {
-                Font = UIFont.FromName("Electrolize", 12),
-                TextColor = Color.FromHex("#757575").ToUIColor()
-            }, UIControlState.Normal);
+            // Remove titles
+            item.Title = "";
 
-            item.SetTitleTextAttributes(new UITextAttributes() {
-                Font = UIFont.FromName("Electrolize", 12),
-                TextColor = Color.FromHex("#3C9BDF").ToUIColor()
-            }, UIControlState.Selected);
+            // Set the font for the title.
+            //item.SetTitleTextAttributes(new UITextAttributes()
+            //{
+            //    Font = UIFont.FromName("Electrolize", 12),
+            //    TextColor = Color.FromHex("#757575").ToUIColor()
+            //}, UIControlState.Normal);
+
+            //item.SetTitleTextAttributes(new UITextAttributes()
+            //{
+            //    Font = UIFont.FromName("Electrolize", 12),
+            //    TextColor = ORANGE
+            //}, UIControlState.Selected);
         }
 
         protected override Task<Tuple<UIImage, UIImage>> GetIcon(Page page)
         {
-            Icon icon;
-            Icon iconSelected;
+            UIImage icon;
+            UIImage iconSelected;
 
             switch (page.GetType().Name)
             {
                 case "SendTabView":
-                    icon = new Icon { ResourceId = "Assets.send_tab.svg" };
-                    iconSelected = new Icon { ResourceId = "Assets.send_tab.svg" };
+
+                    icon = UIImage.FromBundle("send_tab.png");
+                    iconSelected = UIImage.FromBundle("send_tab_selected.png");
+
                     break;
                 case "ReceiveTabView":
                     break;
@@ -91,9 +105,7 @@ namespace HodlWallet2.iOS.Renderers
 
             //icon.get
 
-            //return Task.FromResult(new Tuple<UIImage, UIImage>(icon, iconSelected));
-
-            return base.GetIcon(page);
+            return Task.FromResult(new Tuple<UIImage, UIImage>(icon, iconSelected));
         }
     }
 }
