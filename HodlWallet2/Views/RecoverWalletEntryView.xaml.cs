@@ -12,7 +12,6 @@ using HodlWallet2.Locale;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Interactions;
 
-using PinPadViewModel = HodlWallet2.Core.ViewModels.PinPadViewModel;
 using RecoverWalletEntryViewModel = HodlWallet2.Core.ViewModels.RecoverWalletEntryViewModel;
 using Tags = HodlWallet2.Core.Utils.Tags;
 

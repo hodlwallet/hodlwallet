@@ -16,7 +16,9 @@
                 <Setter Property="Style" Value="{DynamicResource CustomEntry}" />
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="MaxLength" Value="8" />
-                <Setter Property="Keyboard" Value="Plain" />
+                <Setter Property="Keyboard" Value="Text" />
+                <Setter Property="IsSpellCheckEnabled" Value="false" />
+                <Setter Property="IsTextPredictionEnabled" Value="false" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
