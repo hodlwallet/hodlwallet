@@ -30,6 +30,7 @@ namespace HodlWallet2.Core.ViewModels
         public string RequestAmountButtonText => "Request Amount";
 
         public IMvxCommand ShowFaqCommand { get; }
+        public IMvxAsyncCommand CloseCommand { get; }
         public IMvxCommand ShareButtonCommand { get; }
         public IMvxAsyncCommand CopyAddressCommand { get; }
 
@@ -51,6 +52,7 @@ namespace HodlWallet2.Core.ViewModels
             _WalletService = walletService;
 
             ShowFaqCommand = new MvxCommand(ShowFaq);
+            CloseCommand = new MvxAsyncCommand(Close);
             CopyAddressCommand = new MvxAsyncCommand(ToClipboard);
             ShareButtonCommand = new MvxCommand(ShowShareIntent);
         }
@@ -59,6 +61,11 @@ namespace HodlWallet2.Core.ViewModels
         {
             //TODO: Implement FAQ
             throw new System.NotImplementedException();
+        }
+
+        async Task Close()
+        {
+            await NavigationService.Close(this);
         }
 
         async Task ToClipboard()
