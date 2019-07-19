@@ -142,7 +142,8 @@
                     
                     <Label Text="Fee (sats/byte)" Style="{StaticResource CustomLabel}" />
                         
-                    <Entry Placeholder="0.0001" 
+                    <Entry Placeholder="0.0001"
+                           Keyboard="Numeric"
                            Text="{Binding Fee}" 
                            Style="{StaticResource CustomEntry}"
                            TextColor="{StaticResource White}"
