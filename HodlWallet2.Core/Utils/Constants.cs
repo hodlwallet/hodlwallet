@@ -41,6 +41,9 @@
         public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_TITLE = "Transaction ID Copied to Clipboard";
         public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_BUTTON = "OK";
         public const string SYNC_LOADING_HEADERS = "Loading headers...";
+        public const string RECOVER_VIEW_ALERT_TITLE = "Invalid Mnemonic";
+        public const string RECOVER_VIEW_ALERT_MESSAGE = "One or more of the words you entered are either mispelled or invalid.";
+        public const string RECOVER_VIEW_ALERT_BUTTON = "Try Again";
         public const string TRANSACTION_DETAILS_SENT_ADDRESS_TITLE = "Sent To This Address:";
         public const string TRANSACTION_DETAILS_RECEIVED_ADDRESS_TITLE = "Received At This Address:";
 
