@@ -16,7 +16,9 @@
                 <Setter Property="Style" Value="{DynamicResource CustomEntry}" />
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="MaxLength" Value="8" />
-                <Setter Property="Keyboard" Value="Plain" />
+                <Setter Property="Keyboard" Value="Text" />
+                <Setter Property="IsSpellCheckEnabled" Value="false" />
+                <Setter Property="IsTextPredictionEnabled" Value="false" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -146,9 +148,9 @@
                     <Label Text="11" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
                            FontSize="Micro" Grid.Row="8" Grid.Column="2"/>
                     
-                    <Entry x:Name="Entry12" Text="{Binding WordTwelve, Mode=OneWayToSource}" 
-                           Completed="Entry_Fully_Completed" 
-                           Grid.Row="7" Grid.Column="3" 
+                    <Entry x:Name="Entry12" Text="{Binding WordTwelve, Mode=TwoWay}" 
+                           ReturnCommand="{Binding OnRecoverEntryCompleted}"
+                           Grid.Row="7" Grid.Column="3"
                            ReturnType="Done" />
                     
                     <Label Text="12" FontFamily="{StaticResource ElectrolizeFont}" HorizontalOptions="Center" 
