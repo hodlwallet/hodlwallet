@@ -9,11 +9,13 @@
              x:TypeArguments="viewModels:ReceiveTabViewModel"
              BackgroundColor="{StaticResource GrayBackground}">
     <FlexLayout Direction="Column" AlignItems="Center">
+        <BoxView FlexLayout.Grow="1" />
+
         <svg:QRCode Content="{Binding Address}"
                        BackgroundColor="White"
                        Level="H"
-                       WidthRequest="170"
-                       HeightRequest="170"
+                       WidthRequest="200"
+                       HeightRequest="200"
                        VerticalOptions="CenterAndExpand"
                        HorizontalOptions="CenterAndExpand" />
         
@@ -22,7 +24,8 @@
                    Style="{DynamicResource CustomLabel}" 
                    Text="{Binding Address}"
                    HorizontalTextAlignment="Center"
-                   Margin="10" />
+                   Margin="10"
+                   FontSize="Small" />
             <ContentView.GestureRecognizers>
                 <TapGestureRecognizer bindings:Bi.nd="Command CopyAddressCommand"/>
             </ContentView.GestureRecognizers>
