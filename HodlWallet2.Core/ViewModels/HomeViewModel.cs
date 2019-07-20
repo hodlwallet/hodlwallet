@@ -18,6 +18,7 @@ namespace HodlWallet2.Core.ViewModels
         /// </summary>
         public enum Tabs
         {
+            NoChange,
             Send,
             Receive,
             Home,
@@ -76,6 +77,9 @@ namespace HodlWallet2.Core.ViewModels
         public override void ViewAppeared()
         {
             base.ViewAppeared();
+
+            if (_InitialTab == (int)Tabs.NoChange)
+                return;
 
             var request = new SelectCurrentTab
             {

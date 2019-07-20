@@ -14,6 +14,7 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.ViewModels;
 using HodlWallet2.Core.Interactions;
 using MvvmCross.Base;
+using Liviano.Utilities;
 
 namespace HodlWallet2.Views
 {
@@ -25,6 +26,7 @@ namespace HodlWallet2.Views
         /// </summary>
         public enum Tabs
         {
+            NoChange,
             Send,
             Receive,
             Home,
@@ -62,9 +64,14 @@ namespace HodlWallet2.Views
             {
                 ViewModel.ShowInitialViewModelsCommand.Execute(null);
 
+                _FirstTime = false;
+            }
+
+            if (ViewModel.InitialTab != (int)Tabs.NoChange)
+            {
                 ChangePageTo((Tabs)ViewModel.InitialTab);
 
-                _FirstTime = false;
+                ViewModel.InitialTab = (int)Tabs.NoChange;
             }
 
             CreateInteractionBindings();
@@ -77,7 +84,19 @@ namespace HodlWallet2.Views
 
         void ChangePageTo(Tabs tab)
         {
-            CurrentPage = Children[(int)tab];
+            var tabNumber = (int)tab;
+
+            // First tab is "NoChange" so we have to substract 1.
+            if (tabNumber > 0)
+            {
+                tabNumber = (int)tab - 1;
+            }
+            else
+            {
+                throw new ArgumentException("Tab should not be less than 1, because the pages...");
+            }
+
+            CurrentPage = Children[tabNumber];
         }
 
         void HomeView_CurrentPageChanged(object sender, EventArgs e)
@@ -101,12 +120,14 @@ namespace HodlWallet2.Views
         {
             var tab = e.Value?.Tab;
 
-            if (tab == null)
+            if (tab == null || tab == (int)Tabs.NoChange)
             {
-                tab = (int)Tabs.Home;
+                return;
             }
 
             ChangePageTo((Tabs)tab);
+
+            ViewModel.InitialTab = (int)Tabs.NoChange;
         }
     }
 }
