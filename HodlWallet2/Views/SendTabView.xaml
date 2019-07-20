@@ -1,14 +1,146 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<views:MvxContentPage x:TypeArguments="viewModels:SendTabViewModel"
+<views:MvxContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="HodlWallet2.Views.SendTabView"
+    BackgroundColor="{StaticResource GrayBackground}"
+    xmlns:renderers="clr-namespace:HodlWallet2.Renderers;assembly=HodlWallet2"
+    xmlns:behaviors="clr-namespace:HodlWallet2.Core.Behaviors;assembly=HodlWallet2.Core"
     xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
-    x:Class="HodlWallet2.Views.SendTabView" BackgroundColor="{StaticResource GrayBackground}">
+    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:SendTabViewModel"
+    bindings:Bi.nd="Title DashboardTitle"
+    ios:Page.UseSafeArea="true">
+    <FlexLayout Direction="Column">
+        <ScrollView FlexLayout.Grow="4">
+            <StackLayout Spacing="30" Margin="20, 0, 20, 0">    
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center">
+                    <StackLayout Orientation="Vertical" FlexLayout.Grow="4" >
+                        <Label x:Name="ToLabel" 
+                               Style="{DynamicResource CustomLabel}" 
+                               HorizontalTextAlignment="Start" />
+                            
+                        <Entry x:Name="SendAddress"
+                               Placeholder="bc1..."
+                               Text="{Binding AddressToSendTo}"
+                               TextColor="{StaticResource White}"
+                               BackgroundColor="Transparent"
+                               PlaceholderColor="{StaticResource White}"
+                               Style="{StaticResource CustomEntry}" />
+                            
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" FlexLayout.Grow="1">
+                        <Label x:Name="ScanLabel" Style="{DynamicResource CustomLabel}" FontSize="Small" HorizontalTextAlignment="Center" />
+                        <svg:Icon ResourceId="Assets.scan.svg">
+                            <svg:Icon.GestureRecognizers>
+                                <TapGestureRecognizer bindings:Bi.nd="Command ScanCommand"/>
+                            </svg:Icon.GestureRecognizers>
+                        </svg:Icon>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" FlexLayout.Grow="1">
+                        <Label x:Name="PasteLabel" Style="{DynamicResource CustomLabel}" FontSize="Small" HorizontalTextAlignment="Center" />
+                        <svg:Icon ResourceId="Assets.paste.svg">
+                            <svg:Icon.GestureRecognizers>
+                                <TapGestureRecognizer bindings:Bi.nd="Command PasteCommand"/>
+                            </svg:Icon.GestureRecognizers>
+                        </svg:Icon>
+                    </StackLayout>
+                </FlexLayout>
+
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center">
+                    <StackLayout Orientation="Vertical" 
+                                 FlexLayout.Grow="4" >
+                        <Label x:Name="AmountLabel" 
+                               Style="{DynamicResource CustomLabel}"
+                               HorizontalTextAlignment="Start" 
+                               VerticalOptions="Center" />
+                            
+                        <Entry Placeholder="0.00"
+                               Keyboard="Numeric"
+                               ReturnType="Done"
+                               Text="{Binding AmountToSend}" 
+                               TextColor="{StaticResource SyncGradientStart}" 
+                               BackgroundColor="Transparent"
+                               FontFamily="{StaticResource ElectrolizeFont}" 
+                               VerticalOptions="Center" />
+                    </StackLayout>
+                    
+                    <Label x:Name="ISOLabel" 
+                       Style="{DynamicResource CustomLabel}" 
+                       FontSize="Small" 
+                       FlexLayout.Grow="1" 
+                       HorizontalTextAlignment="Center"
+                       bindings:Bi.nd="Text ISOLabel" />
+                
+                    <svg:Icon ResourceId="Assets.currency_switch.svg" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center">
+                        <svg:Icon.GestureRecognizers>
+                            <TapGestureRecognizer
+                                bindings:Bi.nd="Command SwitchCurrencyCommand" />
+                        </svg:Icon.GestureRecognizers>
+                    </svg:Icon>
+                </FlexLayout>
+
+                <StackLayout Orientation="Vertical" >
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label Style="{StaticResource CustomLabel}" 
+                               bindings:Bi.nd="Text TransactionFeeTitle" />
+                        <Label Style="{StaticResource CustomLabel}"
+                               bindings:Bi.nd="Text EstConfirmationTitle" />
+                    </FlexLayout>
+                    
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label FontFamily="{StaticResource ElectrolizeFont}"
+                               TextColor="{StaticResource GrayTextTint}"
+                               bindings:Bi.nd="Text TransactionFeeText" />
+                        <Label FontFamily="{StaticResource ElectrolizeFont}"
+                               TextColor="{StaticResource GrayTextTint}"
+                               bindings:Bi.nd="Text EstConfirmationText" />
+                    </FlexLayout>
+                    
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label Style="{StaticResource CustomLabel}"
+                               bindings:Bi.nd="Text SlowText" />
+                        <Label Style="{StaticResource CustomLabel}"
+                               bindings:Bi.nd="Text NormalText" />
+                        <Label Style="{StaticResource CustomLabel}"
+                               bindings:Bi.nd="Text FastestText" />
+                    </FlexLayout>
+                        
+                    <renderers:FeeSlider
+                            MinimumTrackColor="{StaticResource SyncGradientStart}"
+                            MaximumTrackColor="{StaticResource White}"
+                            Maximum="100"
+                            bindings:Bi.nd="Value SliderValue">
+                        <Slider.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="DragCompleted" bindings:Bi.nd="Command OnSliderValueChangedCommand" />
+                        </Slider.Behaviors>
+                    </renderers:FeeSlider>
+                    
+                    <Label Text="Fee (sats/byte)" Style="{StaticResource CustomLabel}" />
+                        
+                    <Entry Placeholder="0.0001" 
+                           Text="{Binding Fee}" 
+                           Style="{StaticResource CustomEntry}"
+                           TextColor="{StaticResource White}"
+                           BackgroundColor="Transparent"
+                           PlaceholderColor="{StaticResource White}"
+                           Margin="0, 0, 0, 10"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     
-    <StackLayout Margin="10">
-        <Label Text="Send" />
-    </StackLayout>
+        <Button Text="Send Bitcoin" 
+                bindings:Bi.nd="Command SendCommand" 
+                Style="{DynamicResource CustomButton}"
+                BackgroundColor="{StaticResource DarkGray}"
+                FontSize="Large"
+                FlexLayout.AlignSelf="Stretch"
+                FlexLayout.Grow="1"/>
+            
+    </FlexLayout>
 </views:MvxContentPage>

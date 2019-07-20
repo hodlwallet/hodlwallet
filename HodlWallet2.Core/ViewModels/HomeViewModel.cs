@@ -61,7 +61,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             _WalletService = walletService;
             _PrecioService = precioService;
-            _SendTabViewModel = new SendTabViewModel(logProvider, navigationService);
+            _SendTabViewModel = new SendTabViewModel(logProvider, navigationService, walletService, precioService);
             _ReceiveTabViewModel = new ReceiveTabViewModel(logProvider, navigationService, walletService);
             _HomeTabViewModel = new HomeTabViewModel(logProvider, navigationService);
 
