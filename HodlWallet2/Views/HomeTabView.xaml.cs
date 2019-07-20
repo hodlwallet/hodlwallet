@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace HodlWallet2.Views
 {
-    [MvxTabbedPagePresentation(TabbedPosition.Tab, WrapInNavigationPage = false, Title = "HODL")]
+    [MvxTabbedPagePresentation(TabbedPosition.Tab, WrapInNavigationPage = false, Title = "")]
     public partial class HomeTabView : MvxContentPage<HomeTabViewModel>
     {
         public HomeTabView()

@@ -219,7 +219,12 @@ namespace HodlWallet2.Core.ViewModels
 
         async Task Paste()
         {
-            if (!Clipboard.HasText) return;
+            if (!Clipboard.HasText)
+            {
+                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_PASTE_MESSAGE);
+
+                return;
+            }
 
             string address = await Clipboard.GetTextAsync();
 
