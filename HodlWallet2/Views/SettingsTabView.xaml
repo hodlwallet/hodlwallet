@@ -13,17 +13,24 @@
     <ContentPage.Content>
         <ScrollView x:Name="MenuScroll">
             <FlexLayout Direction="Column">
+                <BoxView FlexLayout.Grow="2" />
+
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1"/>
+                
                 <Button x:Name="BackupMnemonic" 
                         bindings:Bi.nd="Command BackupMnemonicCommand"  
                         Style="{DynamicResource CustomButton}"  
                         FlexLayout.AlignSelf="Stretch"  
                         FlexLayout.Grow="1" />  
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />   
+                
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1"/>
+                
                 <Button x:Name="ResyncWallet"
                         bindings:Bi.nd="Command ResyncWalletCommand"
                         Style="{DynamicResource CustomButton}"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="1" />
+                
                 <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
                 
                 <Button x:Name="RestoreWallet"
@@ -31,6 +38,7 @@
                         Style="{DynamicResource CustomButton}"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="1" />
+                
                 <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
                 
                 <Button x:Name="WipeWallet"
@@ -38,19 +46,22 @@
                         Style="{DynamicResource CustomButton}"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="1" />
+                
                 <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
                 
                 <!-- Extra space -->
                 <BoxView FlexLayout.Grow="3" />
-                    <Label x:Name="BuildDate"  
-                           bindings:Bi.nd="Command ShowBuildInfoCommand"    
-                           Style="{DynamicResource CustomLabel}"    
-                           FlexLayout.AlignSelf="Center"    
-                           FlexLayout.Grow="1"> 
-                        <Label.GestureRecognizers>  
-                            <TapGestureRecognizer bindings:Bi.nd="Command ShowBuildInfoCommand" 
-                                                  NumberOfTapsRequired="1" />   
-                        </Label.GestureRecognizers> 
+                
+                <Label x:Name="BuildDate"  
+                       bindings:Bi.nd="Command ShowBuildInfoCommand"    
+                       Style="{DynamicResource CustomLabel}"
+                       FontSize="Micro"
+                       FlexLayout.AlignSelf="Center" 
+                       FlexLayout.Grow="1"> 
+                    <Label.GestureRecognizers>  
+                        <TapGestureRecognizer bindings:Bi.nd="Command ShowBuildInfoCommand" 
+                                              NumberOfTapsRequired="1" />   
+                    </Label.GestureRecognizers> 
                 </Label>    
             </FlexLayout>
         </ScrollView>

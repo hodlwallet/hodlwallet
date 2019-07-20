@@ -22,7 +22,7 @@ namespace HodlWallet2.iOS.Renderers
             NavigationBar.BackgroundColor = UIColor.White;
             NavigationBar.ShadowImage = new UIImage();
             NavigationBar.BarTintColor = GRAY_BACKGROUND;
-            NavigationBar.TintColor = GRAY_BACKGROUND;
+            NavigationBar.TintColor = UIColor.White;
 
             var font = UIFont.FromName("Electrolize", 22);
             var descriptor =  font.FontDescriptor.CreateWithAttributes(new UIFontAttributes
