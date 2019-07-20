@@ -24,7 +24,7 @@ namespace HodlWallet2.iOS.Renderers
             NavigationBar.BarTintColor = GRAY_BACKGROUND;
             NavigationBar.TintColor = UIColor.White;
 
-            var font = UIFont.FromName("Electrolize", 22);
+            var font = UIFont.FromName("Electrolize", 20);
             var descriptor =  font.FontDescriptor.CreateWithAttributes(new UIFontAttributes
             {
                 Traits = new UIFontTraits() { SymbolicTrait = UIFontDescriptorSymbolicTraits.Bold }

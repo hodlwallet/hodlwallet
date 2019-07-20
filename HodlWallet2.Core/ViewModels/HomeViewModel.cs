@@ -6,17 +6,34 @@ using MvvmCross.Logging;
 using MvvmCross.Navigation;
 
 using HodlWallet2.Core.Interfaces;
+using MvvmCross.ViewModels;
+using HodlWallet2.Core.Interactions;
 
 namespace HodlWallet2.Core.ViewModels
 {
-    public class HomeViewModel : BaseViewModel
+    public class HomeViewModel : BaseViewModel<int>
     {
+        /// <summary>
+        /// Add tabs as we add views to show on the tab view
+        /// </summary>
+        public enum Tabs
+        {
+            Send,
+            Receive,
+            Home,
+            Settings
+        }
+
         bool _IsLoading;
         public bool IsLoading
         {
             get => _IsLoading;
             set => SetProperty(ref _IsLoading, value);
         }
+
+        IWalletService _WalletService;
+
+        IPrecioService _PrecioService;
 
         public SendTabViewModel _SendTabViewModel { get; }
         public ReceiveTabViewModel _ReceiveTabViewModel { get; }
@@ -25,6 +42,9 @@ namespace HodlWallet2.Core.ViewModels
 
         public IMvxAsyncCommand ShowInitialViewModelsCommand { get; private set; }
 
+        MvxInteraction<SelectCurrentTab> _SelectTabInteraction = new MvxInteraction<SelectCurrentTab>();
+        public IMvxInteraction<SelectCurrentTab> SelectTabInteraction => _SelectTabInteraction;
+
         public HomeViewModel(
             IMvxLogProvider logProvider,
             IMvxNavigationService navigationService,
@@ -32,11 +52,23 @@ namespace HodlWallet2.Core.ViewModels
             IPrecioService precioService)
             : base(logProvider, navigationService)
         {
+            _WalletService = walletService;
+            _PrecioService = precioService;
             _SendTabViewModel = new SendTabViewModel(logProvider, navigationService);
             _ReceiveTabViewModel = new ReceiveTabViewModel(logProvider, navigationService);
             _HomeTabViewModel = new HomeTabViewModel(logProvider, navigationService);
 
             ShowInitialViewModelsCommand = new MvxAsyncCommand(ShowInitialViewModels);
+        }
+
+        public override void Prepare(int parameter)
+        {
+            var request = new SelectCurrentTab
+            {
+                Tab = parameter
+            };
+
+            _SelectTabInteraction.Raise(request);
         }
 
         async Task ShowInitialViewModels()
