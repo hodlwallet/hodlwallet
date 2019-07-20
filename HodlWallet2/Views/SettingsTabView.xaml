@@ -1,33 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<views:MvxContentPage x:TypeArguments="viewModels:SettingsTabViewModel"
+<views:MvxContentPage
+    x:TypeArguments="viewModels:SettingsTabViewModel"
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
-    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
-    xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+    x:Class="HodlWallet2.Views.SettingsTabView"
+    xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core" 
+    BackgroundColor="{StaticResource GrayBackground}"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
-    x:Class="HodlWallet2.Views.SettingsTabView" BackgroundColor="{StaticResource GrayBackground}" ios:Page.UseSafeArea="true">
-    
-        <ContentPage.Content>
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms">
+    <ContentPage.Content>
         <ScrollView x:Name="MenuScroll">
             <FlexLayout Direction="Column">
-                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.Grow="1" Margin="10">
-                    <Label x:Name="MenuTitle" 
-                           Style="{DynamicResource CustomLabel}"
-                           FontSize="Large"
-                           FlexLayout.AlignSelf="Center" />
-                    
-                    <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
-                    
-                    <svg:Icon ResourceId="Assets.faq.svg" FlexLayout.AlignSelf="Center" Opacity="0" />
-                </FlexLayout>
-                
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
-                
-                <!-- TODO Remove and put in appropiate places inside sub menus, this is for alpha 1 -->
-                <!-- Buttons and separators -->
                 <Button x:Name="BackupMnemonic" 
                         bindings:Bi.nd="Command BackupMnemonicCommand"  
                         Style="{DynamicResource CustomButton}"  
@@ -66,41 +51,7 @@
                             <TapGestureRecognizer bindings:Bi.nd="Command ShowBuildInfoCommand" 
                                                   NumberOfTapsRequired="1" />   
                         </Label.GestureRecognizers> 
-                </Label>
-
-                <!-- TODO Add the rest of the menus when it make sense-->
-
-                <!--<Button x:Name="Security"
-                        bindings:Bi.nd="Command SecurityCommand"
-                        Style="{DynamicResource CustomButton}" 
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1"/>
-                
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
-                
-                <Button x:Name="Knowledge" 
-                        Style="{DynamicResource CustomButton}"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1"/>
-                
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
-                
-                <Button x:Name="Settings" 
-                        bindings:Bi.nd="Command SettingsCommand"
-                        Style="{DynamicResource CustomButton}"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1"/>
-                
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
-                
-                <Button x:Name="LockWallet" 
-                        Style="{DynamicResource CustomButton}"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1"/>
-                
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
-                
-                <BoxView FlexLayout.Grow="4" />-->
+                </Label>    
             </FlexLayout>
         </ScrollView>
     </ContentPage.Content>
