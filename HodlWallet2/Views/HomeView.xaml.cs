@@ -17,7 +17,7 @@ using MvvmCross.Base;
 
 namespace HodlWallet2.Views
 {
-    [MvxTabbedPagePresentation(TabbedPosition.Root, NoHistory = false, WrapInNavigationPage = true)]
+    [MvxTabbedPagePresentation(TabbedPosition.Root, NoHistory = true, WrapInNavigationPage = true)]
     public partial class HomeView : MvxTabbedPage<HomeViewModel>
     {
         /// <summary>
@@ -62,8 +62,7 @@ namespace HodlWallet2.Views
             {
                 ViewModel.ShowInitialViewModelsCommand.Execute(null);
 
-                // And sets initial page to start at
-                ChangePageTo(Tabs.Home);
+                ChangePageTo((Tabs)ViewModel.InitialTab);
 
                 _FirstTime = false;
             }

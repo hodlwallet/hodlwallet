@@ -24,6 +24,13 @@ namespace HodlWallet2.Core.ViewModels
             Settings
         }
 
+        int _InitialTab = (int)Tabs.Home;
+        public int InitialTab
+        {
+            get => _InitialTab;
+            set => SetProperty(ref _InitialTab, value);
+        }
+
         bool _IsLoading;
         public bool IsLoading
         {
@@ -63,9 +70,16 @@ namespace HodlWallet2.Core.ViewModels
 
         public override void Prepare(int parameter)
         {
+            _InitialTab = parameter;
+        }
+
+        public override void ViewAppeared()
+        {
+            base.ViewAppeared();
+
             var request = new SelectCurrentTab
             {
-                Tab = parameter
+                Tab = _InitialTab
             };
 
             _SelectTabInteraction.Raise(request);
