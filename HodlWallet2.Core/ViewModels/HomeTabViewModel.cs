@@ -230,11 +230,30 @@ namespace HodlWallet2.Core.ViewModels
 
             // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
             if (_WalletService.IsStarted)
+            {
                 Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+            }
             else
+            {
                 Amount = 0.0m;
 
+                _WalletService.OnStarted += _WalletService_OnStarted_ViewAppearing;
+            }
+
             IsBtcEnabled = true;
+        }
+
+        private void _WalletService_OnStarted_ViewAppearing(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                lock (_Lock)
+                {
+                    Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+
+                    _WalletService.OnStarted -= _WalletService_OnStarted_ViewAppearing;
+                }
+            });
         }
 
         public override void ViewAppeared()
@@ -242,9 +261,27 @@ namespace HodlWallet2.Core.ViewModels
             base.ViewAppeared();
 
             // This is a hack... a loading screen should have been loaded
-            while(!_WalletService.IsStarted) { }
+            if (_WalletService.IsStarted)
+            {
+                LoadTransactions();
 
-            LoadTransactions();
+                return;
+            }
+
+            _WalletService.OnStarted += _WalletService_OnStarted_ViewAppeared;
+        }
+
+        private void _WalletService_OnStarted_ViewAppeared(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                lock (_Lock)
+                {
+                    LoadTransactions();
+
+                    _WalletService.OnStarted -= _WalletService_OnStarted_ViewAppeared;
+                }
+            });
         }
 
         public void ReScan()
@@ -305,11 +342,17 @@ namespace HodlWallet2.Core.ViewModels
 
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
-            LoadTransactions();
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                lock (_Lock)
+                {
+                    LoadTransactions();
 
-            UpdateSyncingStatus();
+                    UpdateSyncingStatus();
 
-            AddWalletServiceEvents();
+                    AddWalletServiceEvents();
+                }
+            });
         }
 
         void AddWalletServiceEvents()

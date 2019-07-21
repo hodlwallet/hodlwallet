@@ -35,11 +35,12 @@ namespace HodlWallet2.Views
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected override void OnViewModelSet()
         {
-            base.OnAppearing();
+            base.OnViewModelSet();
 
             CreateInteractionBindings();
+
         }
 
         void SetLabels()
