@@ -160,7 +160,7 @@ namespace HodlWallet2.Core.ViewModels
 
             _WalletService.StartWalletWithWalletId();
 
-            await NavigationService.Navigate<DashboardViewModel>();
+            await NavigationService.Navigate<HomeViewModel, int>((int)HomeViewModel.Tabs.Home);
         }
 
         bool CheckWordInWordlist(string word, string wordlist = "english")

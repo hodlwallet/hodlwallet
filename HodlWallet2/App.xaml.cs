@@ -20,8 +20,6 @@ namespace HodlWallet2
         {
             InitializeComponent();
 
-            if (DesignMode.IsDesignModeEnabled) return;
-
             _WalletService = WalletService.Instance;
 
             _Logger = _WalletService.Logger;
@@ -29,8 +27,6 @@ namespace HodlWallet2
 
         protected override async void OnStart()
         {
-            if (DesignMode.IsDesignModeEnabled) return;
-
             _Logger.Information($"App started at: {DateTime.Now}");
 
             if (!DesignMode.IsDesignModeEnabled)
@@ -39,15 +35,11 @@ namespace HodlWallet2
 
         protected override void OnSleep()
         {
-            if (DesignMode.IsDesignModeEnabled) return;
-
             _Logger.Information($"App sleept at: {DateTime.Now}");
         }
 
         protected override void OnResume()
         {
-            if (DesignMode.IsDesignModeEnabled) return;
-
             _Logger.Information($"App resumed at: {DateTime.Now}");
         }
     }
