@@ -6,10 +6,11 @@
     xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
     xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-    x:Class="HodlWallet2.Views.HomeView" Title="Home" android:TabbedPage.ToolbarPlacement="Bottom">
+    x:Class="HodlWallet2.Views.HomeView"
+    Title="Home"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    BackgroundColor="{StaticResource GrayBackground}">
     <TabbedPage.BackgroundColor>#212121</TabbedPage.BackgroundColor>
     <TabbedPage.SelectedTabColor>#c89e26</TabbedPage.SelectedTabColor>
     <TabbedPage.UnselectedTabColor>#b8b8b8</TabbedPage.UnselectedTabColor>
-    <ContentPage.Content>
-    </ContentPage.Content>
 </views:MvxTabbedPage>

@@ -13,58 +13,48 @@
     <ContentPage.BackgroundColor>#212121</ContentPage.BackgroundColor>
     <ContentPage.Content>
         <FlexLayout Direction="Column">
-            
             <FlexLayout Direction="Row" FlexLayout.Grow="1">
-                
-                <FlexLayout Direction="Column" FlexLayout.Grow="1">
-                    
-                    <BoxView FlexLayout.Grow="1" />
-                    
-                    <Image Source="logo.png" HeightRequest="20" 
-                           FlexLayout.AlignSelf="Start" Margin="20,0,0,0"
-                           FlexLayout.Grow="1" />
-                    
-                    <BoxView FlexLayout.Grow="1" />
-                    
-                    <Label x:Name="amountLabel" FlexLayout.AlignSelf="Start" VerticalTextAlignment="Center"
-                           Style="{DynamicResource CustomLabel}"
-                           FlexLayout.Grow="2" Margin="20,0,0,0" FontSize="Large"
-                           bindings:Bi.nd="Text If(IsBtcEnabled, Format('{0:F8}', Amount), Format('{0:F2}', Amount))">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer
-                                bindings:Bi.nd="Command SwitchCurrencyCommand" />
-                        </Label.GestureRecognizers>
-                    </Label>
-                    
-                    <BoxView FlexLayout.Grow="1" />
-                    
+                <FlexLayout FlexLayout.Grow="1">
+                    <Image x:Name="logo" Source="logo.png" HeightRequest="20" Margin="20, 0, 0, 0" />
                 </FlexLayout>
-                
-                <FlexLayout Direction="Column" FlexLayout.Grow="1" AlignContent="SpaceEvenly">
-                    
-                    <Label x:Name="priceLabel" FlexLayout.AlignSelf="End" VerticalTextAlignment="Center"
+
+                <FlexLayout FlexLayout.Grow="1" Direction="Column" AlignItems="End">
+                    <Label x:Name="priceLabel"
+                           Margin="0, 0, 20, 0"
                            TextColor="{StaticResource White}"
                            FontFamily="{StaticResource ElectrolizeFont}"
-                           Margin="0, 0, 20, 0"
                            FontSize="Small"
-                           FlexLayout.Grow="1"
                            bindings:Bi.nd="Text PriceText" />
-                    
+                </FlexLayout>
+            </FlexLayout>
+            
+            <FlexLayout Direction="Row" FlexLayout.Grow="1">
+                <FlexLayout Direction="Row" FlexLayout.Grow="1">
+                    <Label x:Name="amountLabel"
+                           Margin="20,0,0,0"
+                           Style="{DynamicResource CustomLabel}"
+                           FontSize="Large"
+                           bindings:Bi.nd="Text If(IsBtcEnabled, Format('{0:F8}', Amount), Format('{0:F2}', Amount))">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer bindings:Bi.nd="Command SwitchCurrencyCommand" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </FlexLayout>
+                
+                <FlexLayout Direction="Column" FlexLayout.Grow="1" AlignItems="End">
                     <svg:Icon ResourceId="Assets.search.svg"
                               Margin="0, 0, 20, 0"
                               WidthRequest="14"
-                              HeightRequest="14"
-                              FlexLayout.AlignSelf="End"
-                              FlexLayout.Grow="1">
+                              HeightRequest="14">
                         <svg:Icon.GestureRecognizers>   
-                             <TapGestureRecognizer bindings:Bi.nd="Command SearchCommand"   
+                            <TapGestureRecognizer bindings:Bi.nd="Command SearchCommand"   
                                                   NumberOfTapsRequired="1" />   
                         </svg:Icon.GestureRecognizers>  
                     </svg:Icon>
                 </FlexLayout>
             </FlexLayout>
             
-            <FlexLayout FlexLayout.Grow="3" BackgroundColor="Transparent" Direction="Column">
+            <FlexLayout FlexLayout.Grow="10" BackgroundColor="Transparent" Direction="Column">
                 <controls:SyncProgressBar bindings:Bi.nd="SyncVisible SyncIsVisible; 
                                                           SyncTitle SyncTitleText; 
                                                           SyncProgress SyncCurrentProgress;

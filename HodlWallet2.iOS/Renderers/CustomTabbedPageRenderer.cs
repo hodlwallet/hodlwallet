@@ -21,6 +21,7 @@ namespace HodlWallet2.iOS.Renderers
         public CustomTabbedPageRenderer()
         {
             TabBar.TintColor = UIColor.Red;
+            TabBar.BackgroundColor = UIColor.Red;
         }
 
         public override void ViewWillAppear(bool animated)

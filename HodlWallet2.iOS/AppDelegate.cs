@@ -15,6 +15,8 @@ namespace HodlWallet2.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : MvxFormsApplicationDelegate<Setup, Core.App, App>
     {
+        UIColor GRAY_BACKGROUND { get; } = new UIColor(red: 0.13f, green: 0.13f, blue: 0.13f, alpha: 1.0f);
+
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -30,12 +32,8 @@ namespace HodlWallet2.iOS
             Rg.Plugins.Popup.Popup.Init();
             FormsControls.Touch.Main.Init();
 
-            //UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
-            //UINavigationBar.Appearance.ShadowImage = new UIImage();
-            //UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
-            //UINavigationBar.Appearance.TintColor = UIColor.White;
-            //UINavigationBar.Appearance.BarTintColor = UIColor.Clear;
-            //UINavigationBar.Appearance.Translucent = true;
+            UITabBar.Appearance.BackgroundColor = GRAY_BACKGROUND;
+            app.StatusBarStyle = UIStatusBarStyle.LightContent;
 
             return base.FinishedLaunching(app, options);
         }

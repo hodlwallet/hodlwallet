@@ -20,24 +20,34 @@ namespace HodlWallet2
         {
             InitializeComponent();
 
+            if (DesignMode.IsDesignModeEnabled) return;
+
             _WalletService = WalletService.Instance;
+
             _Logger = _WalletService.Logger;
         }
 
         protected override async void OnStart()
         {
+            if (DesignMode.IsDesignModeEnabled) return;
+
             _Logger.Information($"App started at: {DateTime.Now}");
 
-            await Task.Run(() => _WalletService.InitializeWallet());
+            if (!DesignMode.IsDesignModeEnabled)
+                await Task.Run(() => _WalletService.InitializeWallet());
         }
 
         protected override void OnSleep()
         {
+            if (DesignMode.IsDesignModeEnabled) return;
+
             _Logger.Information($"App sleept at: {DateTime.Now}");
         }
 
         protected override void OnResume()
         {
+            if (DesignMode.IsDesignModeEnabled) return;
+
             _Logger.Information($"App resumed at: {DateTime.Now}");
         }
     }
