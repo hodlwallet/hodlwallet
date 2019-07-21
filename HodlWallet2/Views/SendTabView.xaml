@@ -35,7 +35,7 @@
 
                     <StackLayout Orientation="Vertical" FlexLayout.Grow="1">
                         <Label x:Name="ScanLabel" Style="{DynamicResource CustomLabel}" FontSize="Small" HorizontalTextAlignment="Center" />
-                        <svg:Icon ResourceId="Assets.scan.svg" WidthRequest="14" HeightRequest="14">
+                        <svg:Icon ResourceId="Assets.scan.svg" WidthRequest="16" HeightRequest="16">
                             <svg:Icon.GestureRecognizers>
                                 <TapGestureRecognizer bindings:Bi.nd="Command ScanCommand"/>
                             </svg:Icon.GestureRecognizers>
@@ -44,7 +44,7 @@
 
                     <StackLayout Orientation="Vertical" FlexLayout.Grow="1">
                         <Label x:Name="PasteLabel" Style="{DynamicResource CustomLabel}" FontSize="Small" HorizontalTextAlignment="Center" />
-                        <svg:Icon ResourceId="Assets.paste.svg" WidthRequest="14" HeightRequest="14">
+                        <svg:Icon ResourceId="Assets.paste.svg" WidthRequest="16" HeightRequest="16">
                             <svg:Icon.GestureRecognizers>
                                 <TapGestureRecognizer bindings:Bi.nd="Command PasteCommand"/>
                             </svg:Icon.GestureRecognizers>
@@ -77,7 +77,7 @@
                        HorizontalTextAlignment="Center"
                        bindings:Bi.nd="Text ISOLabel" />
                 
-                    <svg:Icon ResourceId="Assets.currency_switch.svg" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center"  WidthRequest="14" HeightRequest="14">
+                    <svg:Icon ResourceId="Assets.currency_switch.svg" FlexLayout.Grow="1" FlexLayout.AlignSelf="Center"  WidthRequest="16" HeightRequest="16">
                         <svg:Icon.GestureRecognizers>
                             <TapGestureRecognizer
                                 bindings:Bi.nd="Command SwitchCurrencyCommand" />

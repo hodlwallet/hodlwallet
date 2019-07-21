@@ -43,7 +43,7 @@
                     Direction="Row"
                     JustifyContent="SpaceBetween">
             
-            <svg:Icon ResourceId="Assets.close.svg" 
+            <svg:Icon ResourceId="Assets.close.svg" HeightRequest="16"
                       FlexLayout.AlignSelf="Center">
                 
                 <svg:Icon.GestureRecognizers>
@@ -57,7 +57,7 @@
                    Text="{Binding TransactionDetailsTitle}"
                    />
 
-            <svg:Icon ResourceId="Assets.faq.svg">
+            <svg:Icon ResourceId="Assets.faq.svg" HeightRequest="16">
                 
                 <svg:Icon.GestureRecognizers>
                     <TapGestureRecognizer bindings:Bi.nd="Command ShowFaqCommand" />

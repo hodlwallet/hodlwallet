@@ -44,8 +44,8 @@
                 <FlexLayout Direction="Column" FlexLayout.Grow="1" AlignItems="End">
                     <svg:Icon ResourceId="Assets.search.svg"
                               Margin="0, 4, 20, 0"
-                              WidthRequest="14"
-                              HeightRequest="14">
+                              WidthRequest="16"
+                              HeightRequest="16">
                         <svg:Icon.GestureRecognizers>   
                             <TapGestureRecognizer bindings:Bi.nd="Command SearchCommand"   
                                                   NumberOfTapsRequired="1" />   

@@ -31,13 +31,13 @@
             <FlexLayout Direction="Row"
                         FlexLayout.Grow="1"
                         JustifyContent="SpaceBetween">
-                <svg:Icon ResourceId="Assets.receive_tab.svg">
+                <svg:Icon ResourceId="Assets.receive_tab.svg" HeightRequest="20">
                     <svg:Icon.GestureRecognizers>
                         <TapGestureRecognizer bindings:Bi.nd="Command ReceiveCommand" />
                     </svg:Icon.GestureRecognizers>
                 </svg:Icon>
             
-                <svg:Icon ResourceId="Assets.send_tab.svg">
+                <svg:Icon ResourceId="Assets.send_tab.svg" HeightRequest="20">
                     <svg:Icon.GestureRecognizers>
                         <TapGestureRecognizer bindings:Bi.nd="Command SendCommand" />
                     </svg:Icon.GestureRecognizers>

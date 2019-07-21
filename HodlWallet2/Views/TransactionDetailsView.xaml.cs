@@ -14,7 +14,7 @@ using HodlWallet2.Core.Interactions;
 
 namespace HodlWallet2.Views
 {
-    [MvxModalPresentation]
+    [MvxModalPresentation(WrapInNavigationPage = false)]
     public partial class TransactionDetailsView : MvxContentPage<TransactionDetailsViewModel>
     {
         IMvxInteraction<DisplayAlertContent> _CopiedToClipboardInteraction = new MvxInteraction<DisplayAlertContent>();

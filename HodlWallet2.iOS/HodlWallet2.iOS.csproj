@@ -214,8 +214,6 @@
     <BundleResource Include="Resources\send_tab%402x.png" />
     <BundleResource Include="Resources\settings_tab.png" />
     <BundleResource Include="Resources\settings_tab%402x.png" />
-    <BundleResource Include="Resources\send_tab_selected.png" />
-    <BundleResource Include="Resources\send_tab_selected%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\logo_front.png.imageset\" />

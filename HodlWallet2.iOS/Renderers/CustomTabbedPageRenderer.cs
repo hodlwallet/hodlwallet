@@ -67,51 +67,6 @@ namespace HodlWallet2.iOS.Renderers
 
             // Remove titles
             item.Title = "";
-
-            //icon.
-
-            // Set the font for the title.
-            //item.SetTitleTextAttributes(new UITextAttributes()
-            //{
-            //    Font = UIFont.FromName("Electrolize", 12),
-            //    TextColor = Color.FromHex("#757575").ToUIColor()
-            //}, UIControlState.Normal);
-
-            //item.SetTitleTextAttributes(new UITextAttributes()
-            //{
-            //    Font = UIFont.FromName("Electrolize", 12),
-            //    TextColor = ORANGE
-            //}, UIControlState.Selected);
         }
-
-        //protected override Task<Tuple<UIImage, UIImage>> GetIcon(Page page)
-        //{
-        //    UIImage icon = new UIImage();
-        //    UIImage iconSelected = new UIImage();
-
-        //    switch (page.GetType().Name)
-        //    {
-        //        case "SendTabView":
-
-        //            icon = UIImage.FromBundle("send_tab.png");
-        //            iconSelected = UIImage.FromBundle("send_tab_selected.png");
-
-        //            break;
-        //        case "ReceiveTabView":
-        //            return base.GetIcon(page);
-        //        case "HomeTabView":
-        //            return base.GetIcon(page);
-        //        case "SettingsTabView":
-        //            return base.GetIcon(page);
-        //        default:
-        //            throw new ArgumentException(
-        //                $"Did you create a new tab of type {page.GetType().Name} Add its Icon to the iOS CustomTabbedPageRenderer?"
-        //            );
-        //    }
-
-        //    //icon.get
-
-        //    return Task.FromResult(new Tuple<UIImage, UIImage>(icon, iconSelected));
-        //}
     }
 }

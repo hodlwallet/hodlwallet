@@ -25,13 +25,13 @@
 	<key>CFBundleDisplayName</key>
 	<string>HodlWallet2</string>
 	<key>CFBundleIdentifier</key>
-	<string>co.hodlwallet.HodlWallet2Tabbed</string>
+	<string>co.hodlwallet.HodlWallet2</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
-	<string>HodlWallet2 Tabbed</string>
+	<string>HodlWallet2</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>UIAppFonts</key>

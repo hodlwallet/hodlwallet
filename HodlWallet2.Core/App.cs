@@ -28,16 +28,14 @@ namespace HodlWallet2.Core
 
             SecureStorageProvider.LogSecureStorageKeys();
 
-            RegisterAppStart<HomeViewModel>();
-
-            //if (SecureStorageProvider.HasPin() && SecureStorageProvider.HasMnemonic())
-            //{
-            //    RegisterAppStart<LoginViewModel>();
-            //}
-            //else
-            //{
-            //    RegisterAppStart<OnboardViewModel>();
-            //}
+            if (SecureStorageProvider.HasPin() && SecureStorageProvider.HasMnemonic())
+            {
+                RegisterAppStart<LoginViewModel>();
+            }
+            else
+            {
+                RegisterAppStart<OnboardViewModel>();
+            }
         }
 
         /// <summary>

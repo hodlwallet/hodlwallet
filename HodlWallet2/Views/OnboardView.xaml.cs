@@ -10,7 +10,7 @@ using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Views
 {
-    [MvxContentPagePresentation(WrapInNavigationPage = true)]
+    [MvxModalPresentation(WrapInNavigationPage = false)]
     public partial class OnboardView : MvxContentPage<OnboardViewModel>
     {
         WalletService _Wallet;
