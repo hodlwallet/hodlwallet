@@ -134,11 +134,12 @@
             </StackLayout>
         </ScrollView>
     
-        <Button Text="Send Bitcoin" 
+        <Button Text="Send" 
                 bindings:Bi.nd="Command SendCommand" 
                 Style="{DynamicResource CustomButton}"
                 BackgroundColor="{StaticResource DarkGray}"
                 FontSize="Large"
+                HeightRequest="50"
                 FlexLayout.AlignSelf="Stretch"
                 FlexLayout.Grow="1"/>
             
