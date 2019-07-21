@@ -31,7 +31,7 @@
             <FlexLayout Direction="Row" FlexLayout.Grow="1">
                 <FlexLayout Direction="Row" FlexLayout.Grow="1">
                     <Label x:Name="amountLabel"
-                           Margin="20,0,0,0"
+                           Margin="20, 0, 0, 0"
                            Style="{DynamicResource CustomLabel}"
                            FontSize="Large"
                            bindings:Bi.nd="Text If(IsBtcEnabled, Format('{0:F8}', Amount), Format('{0:F2}', Amount))">
@@ -43,7 +43,7 @@
                 
                 <FlexLayout Direction="Column" FlexLayout.Grow="1" AlignItems="End">
                     <svg:Icon ResourceId="Assets.search.svg"
-                              Margin="0, 0, 20, 0"
+                              Margin="0, 4, 20, 0"
                               WidthRequest="14"
                               HeightRequest="14">
                         <svg:Icon.GestureRecognizers>   

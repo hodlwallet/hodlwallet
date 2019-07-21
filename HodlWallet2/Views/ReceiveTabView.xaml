@@ -27,7 +27,7 @@
                    Margin="10"
                    FontSize="Small" />
             <ContentView.GestureRecognizers>
-                <TapGestureRecognizer bindings:Bi.nd="Command CopyAddressCommand"/>
+                <TapGestureRecognizer bindings:Bi.nd="Command CopyAddressCommand" NumberOfTapsRequired="1" />
             </ContentView.GestureRecognizers>
         </ContentView>
         
