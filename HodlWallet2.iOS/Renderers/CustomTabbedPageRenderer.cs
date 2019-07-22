@@ -13,10 +13,7 @@ namespace HodlWallet2.iOS.Renderers
 {
     public class CustomTabbedPageRenderer : TabbedRenderer
     {
-        string GRAY_HEX = "#212121";
-        UIColor GRAY_BACKGROUND { get; } = new UIColor(red: 0.13f, green: 0.13f, blue: 0.13f, alpha: 1.0f);
-        string ORANGE_HEX = "#c89e26";
-        UIColor ORANGE { get; } = new UIColor(red:0.85f, green:0.67f, blue:0.16f, alpha:1.0f);
+        readonly Color GRAY_BACKGROUND = Color.FromHex("#212121");
 
         public CustomTabbedPageRenderer()
         {
@@ -26,17 +23,12 @@ namespace HodlWallet2.iOS.Renderers
 
         public override void ViewWillAppear(bool animated)
         {
-            // Sets tabbar background color
-            // This is set on XAML I think is better because Android will pick it up.
-            //Tabbed.SelectedTabColor = Color.FromHex(ORANGE_HEX);
-            //Tabbed.BackgroundColor = Color.FromHex(GRAY_HEX);
-
-            TabBar.BarTintColor = GRAY_BACKGROUND;
+            TabBar.BarTintColor = GRAY_BACKGROUND.ToUIColor();
 
             // Removes border on top of bar
             TabBar.Translucent = false;
             TabBar.Layer.BorderWidth = 0.5f;
-            TabBar.Layer.BorderColor = UIColor.Clear.CGColor;
+            TabBar.Layer.BorderColor = GRAY_BACKGROUND.ToUIColor().CGColor;
 
             TabBar.ClipsToBounds = true;
 
@@ -64,6 +56,8 @@ namespace HodlWallet2.iOS.Renderers
         {
             if (item == null || icon == null)
                 return;
+
+            item.ImageInsets = new UIEdgeInsets(5, 0, -5, 0);
 
             // Remove titles
             item.Title = "";
