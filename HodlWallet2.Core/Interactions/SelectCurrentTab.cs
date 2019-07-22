@@ -1,8 +1,4 @@
-﻿using System;
-
-using ZXing;
-
-namespace HodlWallet2.Core.Interactions
+﻿namespace HodlWallet2.Core.Interactions
 {
     public class SelectCurrentTab
     {
