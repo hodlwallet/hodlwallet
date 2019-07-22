@@ -43,13 +43,6 @@ namespace HodlWallet2.Views
 
         }
 
-        void SetLabels()
-        {
-            //ReceiveTitle.Text = LocaleResources.Receive_title;
-            Share.Text = LocaleResources.Receive_share;
-            //RequestAmount.Text = LocaleResources.Receive_requestAmount;
-        }
-
         void CreateInteractionBindings()
         {
             var set = this.CreateBindingSet<ReceiveTabView, ReceiveTabViewModel>();

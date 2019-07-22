@@ -79,7 +79,7 @@
                                HorizontalTextAlignment="Start" 
                                VerticalOptions="Center" />
                             
-                        <Entry Placeholder="0.00"
+                        <Entry Placeholder="0.0001"
                                Keyboard="Numeric"
                                ReturnType="Done"
                                Text="{Binding AmountToSend}" 

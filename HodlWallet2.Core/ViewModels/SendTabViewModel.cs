@@ -106,7 +106,7 @@ namespace HodlWallet2.Core.ViewModels
 
         public MvxAsyncCommand ScanCommand { get; }
         public MvxAsyncCommand PasteCommand { get; }
-        public MvxAsyncCommand<string> SendCommand { get; }
+        public MvxAsyncCommand SendCommand { get; }
         public MvxAsyncCommand CloseCommand { get; }
         public MvxAsyncCommand ShowFaqCommand { get; }
         public MvxAsyncCommand OnSliderValueChangedCommand { get; }
@@ -124,7 +124,7 @@ namespace HodlWallet2.Core.ViewModels
 
             ScanCommand = new MvxAsyncCommand(Scan);
             PasteCommand = new MvxAsyncCommand(Paste);
-            SendCommand = new MvxAsyncCommand<string>(Send);
+            SendCommand = new MvxAsyncCommand(Send);
             CloseCommand = new MvxAsyncCommand(Close);
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
             OnSliderValueChangedCommand = new MvxAsyncCommand(SetSliderValue);
@@ -332,13 +332,15 @@ namespace HodlWallet2.Core.ViewModels
             return _WalletService.IsAddressOwn(address);
         }
 
-        async Task Send(string password = "")
+        async Task Send()
         {
-            var txCreateResult = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
+            string password = "";
+            var (Success, Tx, Fees, Error) = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
-            if (txCreateResult.Success)
+            if (Success)
             {
-                await _WalletService.BroadcastManager.BroadcastTransactionAsync(txCreateResult.Tx);
+                // TODO Show yes no dialog to broadcast it or not
+                await _WalletService.BroadcastManager.BroadcastTransactionAsync(Tx);
             }
             else
             {
@@ -349,7 +351,7 @@ namespace HodlWallet2.Core.ViewModels
                     AddressToSendTo,
                     Fee,
                     password,
-                    txCreateResult.Error
+                    Error
                 );
             }
         }
