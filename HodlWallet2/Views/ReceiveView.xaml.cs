@@ -69,19 +69,5 @@ namespace HodlWallet2.Views
 
             CreateInteractionBindings();
         }
-
-
-
-        void SetLabels()
-        {
-            ReceiveTitle.Text = LocaleResources.Receive_title;
-            Share.Text = LocaleResources.Receive_share;
-            //RequestAmount.Text = LocaleResources.Receive_requestAmount;
-        }
-
-        public async void OnCloseTapped(object sender, EventArgs e)
-        {
-            await Navigation.PopModalAsync();
-        }
     }
 }

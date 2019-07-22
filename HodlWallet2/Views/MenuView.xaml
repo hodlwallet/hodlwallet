@@ -12,6 +12,20 @@
     x:TypeArguments="viewModels:MenuViewModel"
     bindings:Bi.nd="Title DashboardTitle"
     ios:Page.UseSafeArea="true">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource GrayBackground}" />
+                <Setter Property="FlexLayout.AlignSelf" Value="Stretch" />
+                <Setter Property="FlexLayout.Grow" Value="1" />
+                <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+                
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <ScrollView x:Name="MenuScroll">
             <FlexLayout Direction="Column">
@@ -39,30 +53,26 @@
                 <!-- TODO Remove and put in appropiate places inside sub menus, this is for alpha 1 -->
                 <!-- Buttons and separators -->
                 <Button x:Name="BackupMnemonic" 
-                        bindings:Bi.nd="Command BackupMnemonicCommand"  
-                        Style="{DynamicResource CustomButton}"  
-                        FlexLayout.AlignSelf="Stretch"  
-                        FlexLayout.Grow="1" />  
-                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />   
+                        bindings:Bi.nd="Command BackupMnemonicCommand"
+                        />  
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
+                
                 <Button x:Name="ResyncWallet"
                         bindings:Bi.nd="Command ResyncWalletCommand"
-                        Style="{DynamicResource CustomButton}"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1" />
+                        />
+                
                 <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
                 
                 <Button x:Name="RestoreWallet"
                         bindings:Bi.nd="Command RestoreWalletCommand"
-                        Style="{DynamicResource CustomButton}"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1" />
+                        />
+                
                 <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
                 
                 <Button x:Name="WipeWallet"
                         bindings:Bi.nd="Command WipeWalletCommand"
-                        Style="{DynamicResource CustomButton}"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1" />
+                        />
+                
                 <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" />
                 
                 <!-- Extra space -->

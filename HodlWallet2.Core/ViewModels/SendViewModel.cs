@@ -329,6 +329,8 @@ namespace HodlWallet2.Core.ViewModels
 
         async Task Send(string password = "")
         {
+            if (password == null) password = "";
+
             var txCreateResult = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
             if (txCreateResult.Success)
