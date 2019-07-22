@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -25,7 +25,7 @@ using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {
-    public class DashboardViewModel : BaseViewModel
+    public class HomeViewModel : BaseViewModel
     {
         Serilog.ILogger _Logger;
 
@@ -42,7 +42,7 @@ namespace HodlWallet2.Core.ViewModels
         float _OldRate;
         bool _IsBtcEnabled;
         object _CurrentTransaction;
-        
+
         public object CurrentTransaction
         {
             get => _CurrentTransaction;
@@ -99,8 +99,8 @@ namespace HodlWallet2.Core.ViewModels
         public MvxCommand SearchCommand { get; }
         public MvxCommand NavigateToTransactionDetailsCommand { get; }
 
-        public DashboardViewModel(
-            IMvxLogProvider logProvider, 
+        public HomeViewModel(
+            IMvxLogProvider logProvider,
             IMvxNavigationService navigationService,
             IWalletService walletService,
             IPrecioService precioService) : base(logProvider, navigationService)
@@ -184,7 +184,7 @@ namespace HodlWallet2.Core.ViewModels
             {
                 Preferences.Set("currency", "BTC");
                 IsBtcEnabled = true;
-                Amount /= (decimal) _NewRate;
+                Amount /= (decimal)_NewRate;
             }
         }
 
@@ -204,14 +204,14 @@ namespace HodlWallet2.Core.ViewModels
                 }
                 return Task.FromResult(true);
             });
-            
+
             Device.StartTimer(TimeSpan.FromSeconds(Constants.PRECIO_TIMER_INTERVAL), () =>
             {
                 Task.Run(RatesAsync);
                 //TODO: WIP, will polish rate comparision.
                 if (_OldRate != _NewRate && Preferences.Get("currency", "BTC") != "BTC")
                 {
-                    _OldRate = _NewRate; 
+                    _OldRate = _NewRate;
                     //TODO: Update transactions with new rate.
                     foreach (var transaction in Transactions)
                     {
@@ -228,17 +228,60 @@ namespace HodlWallet2.Core.ViewModels
                 return true;
             });
 
-            // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case	
-            Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+            // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
+            if (_WalletService.IsStarted)
+            {
+                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+            }
+            else
+            {
+                Amount = 0.0m;
+
+                _WalletService.OnStarted += _WalletService_OnStarted_ViewAppearing;
+            }
 
             IsBtcEnabled = true;
+        }
+
+        private void _WalletService_OnStarted_ViewAppearing(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                lock (_Lock)
+                {
+                    Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+
+                    _WalletService.OnStarted -= _WalletService_OnStarted_ViewAppearing;
+                }
+            });
         }
 
         public override void ViewAppeared()
         {
             base.ViewAppeared();
 
-            LoadTransactions();
+            // This is a hack... a loading screen should have been loaded
+            if (_WalletService.IsStarted)
+            {
+                LoadTransactions();
+
+                return;
+            }
+
+            _WalletService.OnStarted += _WalletService_OnStarted_ViewAppeared;
+        }
+
+        private void _WalletService_OnStarted_ViewAppeared(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                lock (_Lock)
+                {
+                    LoadTransactions();
+
+                    _WalletService.OnStarted -= _WalletService_OnStarted_ViewAppeared;
+                }
+            });
         }
 
         public void ReScan()
@@ -299,11 +342,17 @@ namespace HodlWallet2.Core.ViewModels
 
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
-            LoadTransactions();
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                lock (_Lock)
+                {
+                    LoadTransactions();
 
-            UpdateSyncingStatus();
+                    UpdateSyncingStatus();
 
-            AddWalletServiceEvents();
+                    AddWalletServiceEvents();
+                }
+            });
         }
 
         void AddWalletServiceEvents()
@@ -407,7 +456,8 @@ namespace HodlWallet2.Core.ViewModels
 
         Transaction CreateTransactionModelInstance(TransactionData transactionData)
         {
-            var tx = new Transaction {
+            var tx = new Transaction
+            {
                 Id = transactionData.Id.ToString(),
                 IsReceive = transactionData.IsReceive,
                 IsSent = transactionData.IsSend,
@@ -463,7 +513,7 @@ namespace HodlWallet2.Core.ViewModels
                 return "";
             }
 
-            var preferences = Preferences.Get("currency", "BTC"); 
+            var preferences = Preferences.Get("currency", "BTC");
             if (preferences == "BTC")
             {
                 if (tx.IsSend == true)
@@ -475,16 +525,15 @@ namespace HodlWallet2.Core.ViewModels
             {
                 if (tx.IsSend == true)
                     return string.Format(
-                        Constants.SENT_AMOUNT, 
-                        preferences, 
+                        Constants.SENT_AMOUNT,
+                        preferences,
                         $"{tx.Amount.ToUsd((decimal)_NewRate):F2}");
 
                 return string.Format(
-                    Constants.RECEIVE_AMOUNT, 
-                    preferences, 
+                    Constants.RECEIVE_AMOUNT,
+                    preferences,
                     $"{tx.Amount.ToUsd((decimal)_NewRate):F2}");
             }
         }
-        
     }
 }

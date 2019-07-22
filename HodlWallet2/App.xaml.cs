@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,14 +21,15 @@ namespace HodlWallet2
             InitializeComponent();
 
             _WalletService = WalletService.Instance;
-            _Logger = _WalletService.Logger;
 
-            _WalletService.InitializeWallet();
+            _Logger = _WalletService.Logger;
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
             _Logger.Information($"App started at: {DateTime.Now}");
+
+            await Task.Run(() => _WalletService.InitializeWallet());
         }
 
         protected override void OnSleep()

@@ -11,18 +11,18 @@ namespace HodlWallet2.Core.ViewModels
     public class BaseViewModel 
         : MvxNavigationViewModel
     {
-        private string _title;
+        private string _Title;
         public string Title
         {
-            get => _title;
-            set => SetProperty(ref _title, value);
+            get => _Title;
+            set => SetProperty(ref _Title, value);
         }
 
-        private bool _isForwardNavigation;
+        private bool _IsForwardNavigation;
         public bool IsForwardNavigation
         {
-            get => _isForwardNavigation;
-            set => SetProperty(ref _isForwardNavigation, value);
+            get => _IsForwardNavigation;
+            set => SetProperty(ref _IsForwardNavigation, value);
         }
 
         protected BaseViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)

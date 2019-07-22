@@ -102,6 +102,7 @@
     <Compile Include="Renderers\FeeSlider.cs" />
     <Compile Include="Renderers\ShareIntent.cs" />
     <Compile Include="Renderers\iOSPermissions.cs" />
+    <Compile Include="Renderers\CustomTabbedPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -205,10 +206,19 @@
     <BundleResource Include="Resources\Electrolize-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\receive_tab.png" />
+    <BundleResource Include="Resources\receive_tab%402x.png" />
+    <BundleResource Include="Resources\home_tab.png" />
+    <BundleResource Include="Resources\home_tab%402x.png" />
+    <BundleResource Include="Resources\send_tab.png" />
+    <BundleResource Include="Resources\send_tab%402x.png" />
+    <BundleResource Include="Resources\settings_tab.png" />
+    <BundleResource Include="Resources\settings_tab%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\logo_front.png.imageset\" />
     <Folder Include="Assets.xcassets\logo.png.imageset\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Assets.xcassets\send.png.imageset\" />
   </ItemGroup>
 </Project>

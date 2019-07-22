@@ -215,7 +215,8 @@ namespace HodlWallet2.Core.ViewModels
             else
             {
                 Preferences.Set("MnemonicStatus", true);
-                await NavigationService.Navigate<DashboardViewModel>();
+
+                await NavigationService.Navigate<RootViewModel, int>((int)RootViewModel.Tabs.Home);
             }
         }
         

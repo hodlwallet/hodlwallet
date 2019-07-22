@@ -11,9 +11,11 @@ using MvvmCross.ViewModels;
 using MvvmCross.WeakSubscription;
 using Liviano.Exceptions;
 using System.Threading.Tasks;
+using MvvmCross.Forms.Presenters.Attributes;
 
 namespace HodlWallet2.Views
 {
+    [MvxModalPresentation(WrapInNavigationPage = false)]
     public partial class LoginView : MvxContentPage<LoginViewModel>
     {
         IMvxInteraction _resetDigitsColorInteraction;

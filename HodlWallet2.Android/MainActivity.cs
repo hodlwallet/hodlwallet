@@ -1,15 +1,15 @@
-using System;
 
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+
+using Xamarin.Forms;
+
 using MvvmCross.Forms.Platforms.Android.Views;
-using Serilog;
-using Serilog.Core;
 using ZXing.Mobile;
+
+[assembly: ResolutionGroupName("AppEffects")]
 
 namespace HodlWallet2.Droid
 {

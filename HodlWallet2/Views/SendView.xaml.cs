@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 using Xamarin.Forms;
 using Xamarin.Essentials;
@@ -18,7 +18,7 @@ using HodlWallet2.Locale;
 
 namespace HodlWallet2.Views
 {
-    [MvxModalPresentation]
+    [MvxTabbedPagePresentation(TabbedPosition.Tab, WrapInNavigationPage = false, Title = "Send")]
     public partial class SendView : MvxContentPage<SendViewModel>
     {
         ZXingScannerPage _ScanPage;
@@ -69,9 +69,13 @@ namespace HodlWallet2.Views
 
         public SendView()
         {
+            IconImageSource = "send_tab.png";
+
             InitializeComponent();
+
             SetLabels();
         }
+
 
         public async void OnCloseTapped(object sender, EventArgs e)
         {
@@ -116,7 +120,6 @@ namespace HodlWallet2.Views
 
         void SetLabels()
         {
-            SendTitle.Text = LocaleResources.Send_title;
             ToLabel.Text = LocaleResources.Send_to;
             ScanLabel.Text = LocaleResources.Send_scan;
             PasteLabel.Text = LocaleResources.Send_paste;

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -106,7 +106,7 @@ namespace HodlWallet2.Core.ViewModels
 
         public MvxAsyncCommand ScanCommand { get; }
         public MvxAsyncCommand PasteCommand { get; }
-        public MvxAsyncCommand<string> SendCommand { get; }
+        public MvxAsyncCommand SendCommand { get; }
         public MvxAsyncCommand CloseCommand { get; }
         public MvxAsyncCommand ShowFaqCommand { get; }
         public MvxAsyncCommand OnSliderValueChangedCommand { get; }
@@ -124,7 +124,7 @@ namespace HodlWallet2.Core.ViewModels
 
             ScanCommand = new MvxAsyncCommand(Scan);
             PasteCommand = new MvxAsyncCommand(Paste);
-            SendCommand = new MvxAsyncCommand<string>(Send);
+            SendCommand = new MvxAsyncCommand(Send);
             CloseCommand = new MvxAsyncCommand(Close);
             ShowFaqCommand = new MvxAsyncCommand(ShowFaq);
             OnSliderValueChangedCommand = new MvxAsyncCommand(SetSliderValue);
@@ -150,6 +150,8 @@ namespace HodlWallet2.Core.ViewModels
 
         public async Task ProcessAddressOnClipboardToPaste()
         {
+            if (!_WalletService.IsStarted) return;
+
             string content = await Clipboard.GetTextAsync();
 
             if (!IsBitcoinAddress(content) || IsBitcoinAddressReused(content)) return;
@@ -219,11 +221,33 @@ namespace HodlWallet2.Core.ViewModels
 
         async Task Paste()
         {
-            if (!Clipboard.HasText) return;
-            
-            string address = await Clipboard.GetTextAsync();
+            if (!Clipboard.HasText)
+            {
+                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_PASTE_MESSAGE);
 
-            TryProcessAddress(address, Constants.DISPLAY_ALERT_PASTE_MESSAGE);
+                return;
+            }
+
+            if (_WalletService.IsStarted)
+            {
+                string address = await Clipboard.GetTextAsync();
+
+                TryProcessAddress(address, Constants.DISPLAY_ALERT_PASTE_MESSAGE);
+
+                return;
+            }
+
+            _WalletService.OnStarted += _WalletService_OnStarted_PasteAddress;
+        }
+
+        private void _WalletService_OnStarted_PasteAddress(object sender, EventArgs e)
+        {
+            Device.InvokeOnMainThreadAsync(async () =>
+            {
+                string address = await Clipboard.GetTextAsync();
+
+                TryProcessAddress(address, Constants.DISPLAY_ALERT_PASTE_MESSAGE);
+            });
         }
 
         void TryProcessAddress(string address, string errorMessage)
@@ -327,24 +351,59 @@ namespace HodlWallet2.Core.ViewModels
             return _WalletService.IsAddressOwn(address);
         }
 
-        async Task Send(string password = "")
+        async Task Send()
         {
-            var txCreateResult = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
+            string password = "";
 
-            if (txCreateResult.Success)
+            if (AmountToSend <= 0.00m || string.IsNullOrEmpty(AddressToSendTo) || Fee <= 0)
             {
-                await _WalletService.BroadcastManager.BroadcastTransactionAsync(txCreateResult.Tx);
+                var validationErrorRequest = new DisplayAlertContent
+                {
+                    Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
+                    Message = "Unable to send, check your amount, address and fee",
+                    Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+                };
+
+                _DisplayAlertInteraction.Raise(validationErrorRequest);
+
+                return;
+            }
+
+            var (Success, Tx, Fees, Error) = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
+
+            _Logger.Debug($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
+            if (Success)
+            {
+                // TODO Show yes no dialog to broadcast it or not
+                await _WalletService.BroadcastManager.BroadcastTransactionAsync(Tx);
+
+                return;
             }
             else
             {
+                string errorMsg = string.Format("Error trying to create a transaction.\nAmount to send: {0}, address: {1}, fee: {2}, password: {3}.\nFull Error: {4}",
+                    AmountToSend,
+                    AddressToSendTo,
+                    Fee,
+                    password,
+                    Error);
+                var transactionErrorRequest = new DisplayAlertContent
+                {
+                    Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
+                    Message = errorMsg,
+                    Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+                };
+
+                _DisplayAlertInteraction.Raise(transactionErrorRequest);
+
                 // TODO show error screen for now just log it.
-                LogProvider.GetLogFor<SendViewModel>().Error(
+                _Logger.Error(
                     "Error trying to create a transaction.\nAmount to send: {amount}, address: {address}, fee: {fee}, password: {password}.\nFull Error: {error}",
                     AmountToSend,
                     AddressToSendTo,
                     Fee,
                     password,
-                    txCreateResult.Error
+                    Error
                 );
             }
         }

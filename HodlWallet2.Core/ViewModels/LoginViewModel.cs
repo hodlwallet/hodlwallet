@@ -81,7 +81,7 @@ namespace HodlWallet2.Core.ViewModels
                     {
                         _Pin.Clear();
 
-                        await NavigationService.Navigate<DashboardViewModel>();
+                        await NavigationService.Navigate<RootViewModel, int>((int)RootViewModel.Tabs.Home);
 
                         return;
                     }

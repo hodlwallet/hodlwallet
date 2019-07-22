@@ -1,25 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using HodlWallet2.Core.ViewModels;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using ZXing.Common;
-using Xamarin.Essentials;
-
-using HodlWallet2.Locale;
+﻿using MvvmCross.Base;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using MvvmCross.ViewModels;
 
-using HodlWallet2.Core.ViewModels;
 using HodlWallet2.Core.Interactions;
-using MvvmCross.Base;
-using MvvmCross.Binding.BindingContext;
+using HodlWallet2.Core.ViewModels;
+using HodlWallet2.Locale;
 
 namespace HodlWallet2.Views
 {
-    [MvxModalPresentation]
+    [MvxTabbedPagePresentation(TabbedPosition.Tab, WrapInNavigationPage = false, Title = "Receive")]
     public partial class ReceiveView : MvxContentPage<ReceiveViewModel>
     {
         IMvxInteraction<DisplayAlertContent> _CopiedToClipboardInteraction = new MvxInteraction<DisplayAlertContent>();
@@ -37,18 +28,19 @@ namespace HodlWallet2.Views
             }
         }
 
-        private async void CopiedToClipboardInteraction_Requested(object sender, MvxValueEventArgs<DisplayAlertContent> e)
-        {
-            var displayAlertContent = e.Value;
-
-            await DisplayAlert(
-               displayAlertContent.Title, displayAlertContent.Message, displayAlertContent.Buttons[0]
-           );
-        }
-
         public ReceiveView()
         {
+            IconImageSource = "receive_tab.png";
+
             InitializeComponent();
+        }
+
+        protected override void OnViewModelSet()
+        {
+            base.OnViewModelSet();
+
+            CreateInteractionBindings();
+
         }
 
         void CreateInteractionBindings()
@@ -63,25 +55,13 @@ namespace HodlWallet2.Views
             set.Apply();
         }
 
-        protected override void OnAppearing()
+        async void CopiedToClipboardInteraction_Requested(object sender, MvxValueEventArgs<DisplayAlertContent> e)
         {
-            base.OnAppearing();
+            var displayAlertContent = e.Value;
 
-            CreateInteractionBindings();
-        }
-
-
-
-        void SetLabels()
-        {
-            ReceiveTitle.Text = LocaleResources.Receive_title;
-            Share.Text = LocaleResources.Receive_share;
-            //RequestAmount.Text = LocaleResources.Receive_requestAmount;
-        }
-
-        public async void OnCloseTapped(object sender, EventArgs e)
-        {
-            await Navigation.PopModalAsync();
+            await DisplayAlert(
+               displayAlertContent.Title, displayAlertContent.Message, displayAlertContent.Buttons[0]
+           );
         }
     }
 }
