@@ -1,16 +1,66 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<views:MvxTabbedPage x:TypeArguments="viewModels:HomeViewModel"
+<views:MvxContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HodlWallet2.Views.HomeView" 
+    xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
-    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-    x:Class="HodlWallet2.Views.HomeView"
-    Title="Home"
-    android:TabbedPage.ToolbarPlacement="Bottom"
+    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:controls="clr-namespace:HodlWallet2.Shared.Controls;assembly=HodlWallet2.Shared.Controls"
+    x:TypeArguments="viewModels:HomeViewModel"
     BackgroundColor="{StaticResource GrayBackground}">
-    <TabbedPage.BackgroundColor>#212121</TabbedPage.BackgroundColor>
-    <TabbedPage.SelectedTabColor>#c89e26</TabbedPage.SelectedTabColor>
-    <TabbedPage.UnselectedTabColor>#b8b8b8</TabbedPage.UnselectedTabColor>
-</views:MvxTabbedPage>
+    <ContentPage.BackgroundColor>#212121</ContentPage.BackgroundColor>
+    <ContentPage.Content>
+        <FlexLayout Direction="Column">
+            <FlexLayout Direction="Row" FlexLayout.Grow="1">
+                <FlexLayout FlexLayout.Grow="1">
+                    <Image x:Name="logo" Source="logo.png" HeightRequest="20" Margin="20, 0, 0, 0" />
+                </FlexLayout>
+
+                <FlexLayout FlexLayout.Grow="1" Direction="Column" AlignItems="End">
+                    <Label x:Name="priceLabel"
+                           Margin="0, 0, 20, 0"
+                           TextColor="{StaticResource White}"
+                           FontFamily="{StaticResource ElectrolizeFont}"
+                           FontSize="Small"
+                           bindings:Bi.nd="Text PriceText" />
+                </FlexLayout>
+            </FlexLayout>
+            
+            <FlexLayout Direction="Row" FlexLayout.Grow="1">
+                <FlexLayout Direction="Row" FlexLayout.Grow="1">
+                    <Label x:Name="amountLabel"
+                           Margin="20, 0, 0, 0"
+                           Style="{DynamicResource CustomLabel}"
+                           FontSize="Large"
+                           bindings:Bi.nd="Text If(IsBtcEnabled, Format('{0:F8}', Amount), Format('{0:F2}', Amount))">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer bindings:Bi.nd="Command SwitchCurrencyCommand" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </FlexLayout>
+                
+                <FlexLayout Direction="Column" FlexLayout.Grow="1" AlignItems="End">
+                    <svg:Icon ResourceId="Assets.search.svg"
+                              Margin="0, 4, 20, 0"
+                              WidthRequest="16"
+                              HeightRequest="16">
+                        <svg:Icon.GestureRecognizers>   
+                            <TapGestureRecognizer bindings:Bi.nd="Command SearchCommand"   
+                                                  NumberOfTapsRequired="1" />   
+                        </svg:Icon.GestureRecognizers>  
+                    </svg:Icon>
+                </FlexLayout>
+            </FlexLayout>
+            
+            <FlexLayout FlexLayout.Grow="10" BackgroundColor="Transparent" Direction="Column">
+                <controls:SyncProgressBar bindings:Bi.nd="SyncVisible SyncIsVisible; 
+                                                          SyncTitle SyncTitleText; 
+                                                          SyncProgress SyncCurrentProgress;
+                                                          SyncDate SyncDateText"/>
+                <controls:TransactionCollectionView FlexLayout.Grow="1"/>
+            </FlexLayout>
+        </FlexLayout>
+    </ContentPage.Content>
+</views:MvxContentPage>

@@ -29,6 +29,7 @@
                     JustifyContent="SpaceAround"
                     AlignItems="Center">
             
+            <!-- FIXME For now this buttons are disabled!
             <FlexLayout Direction="Row"
                         FlexLayout.Grow="1"
                         JustifyContent="SpaceBetween">
@@ -43,7 +44,7 @@
                         <TapGestureRecognizer bindings:Bi.nd="Command SendCommand" />
                     </svg:Icon.GestureRecognizers>
                 </svg:Icon>
-            </FlexLayout>
+            </FlexLayout>-->
             
             <Image Source="logo_front.png" 
                    Scale="0.5" />
