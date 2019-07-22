@@ -335,8 +335,13 @@ namespace HodlWallet2.Core.ViewModels
         async Task Send()
         {
             string password = "";
+
+            if (AmountToSend <= 0.00m) return;
+            if (string.IsNullOrEmpty(AddressToSendTo)) return;
+
             var (Success, Tx, Fees, Error) = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
+            _Logger.Debug($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
             if (Success)
             {
                 // TODO Show yes no dialog to broadcast it or not
@@ -345,7 +350,7 @@ namespace HodlWallet2.Core.ViewModels
             else
             {
                 // TODO show error screen for now just log it.
-                LogProvider.GetLogFor<SendViewModel>().Error(
+                _Logger.Error(
                     "Error trying to create a transaction.\nAmount to send: {amount}, address: {address}, fee: {fee}, password: {password}.\nFull Error: {error}",
                     AmountToSend,
                     AddressToSendTo,
