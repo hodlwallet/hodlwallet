@@ -336,8 +336,19 @@ namespace HodlWallet2.Core.ViewModels
         {
             string password = "";
 
-            if (AmountToSend <= 0.00m) return;
-            if (string.IsNullOrEmpty(AddressToSendTo)) return;
+            if (AmountToSend <= 0.00m || string.IsNullOrEmpty(AddressToSendTo) || Fee <= 0)
+            {
+                var validationErrorRequest = new DisplayAlertContent
+                {
+                    Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
+                    Message = "Unable to send, check your amount, address and fee",
+                    Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+                };
+
+                _DisplayAlertInteraction.Raise(validationErrorRequest);
+
+                return;
+            }
 
             var (Success, Tx, Fees, Error) = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
@@ -346,9 +357,27 @@ namespace HodlWallet2.Core.ViewModels
             {
                 // TODO Show yes no dialog to broadcast it or not
                 await _WalletService.BroadcastManager.BroadcastTransactionAsync(Tx);
+
+
+                return;
             }
             else
             {
+                string errorMsg = string.Format("Error trying to create a transaction.\nAmount to send: {0}, address: {1}, fee: {2}, password: {3}.\nFull Error: {4}",
+                    AmountToSend,
+                    AddressToSendTo,
+                    Fee,
+                    password,
+                    Error);
+                var transactionErrorRequest = new DisplayAlertContent
+                {
+                    Title = Constants.DISPLAY_ALERT_ERROR_TITLE,
+                    Message = errorMsg,
+                    Buttons = new string[] { Constants.DISPLAY_ALERT_ERROR_BUTTON }
+                };
+
+                _DisplayAlertInteraction.Raise(transactionErrorRequest);
+
                 // TODO show error screen for now just log it.
                 _Logger.Error(
                     "Error trying to create a transaction.\nAmount to send: {amount}, address: {address}, fee: {fee}, password: {password}.\nFull Error: {error}",
