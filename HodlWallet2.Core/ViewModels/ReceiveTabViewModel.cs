@@ -10,6 +10,7 @@ using MvvmCross.ViewModels;
 using HodlWallet2.Core.Interactions;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Utils;
+using Xamarin.Forms;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -18,6 +19,8 @@ namespace HodlWallet2.Core.ViewModels
         readonly IWalletService _WalletService;
         string _Address;
         readonly Serilog.ILogger _Logger;
+
+        object _Lock = new object();
 
         public string ShareButtonText => "Share";
         public string RequestAmountButtonText => "Request Amount";
@@ -70,6 +73,8 @@ namespace HodlWallet2.Core.ViewModels
 
         void ShowShareIntent()
         {
+            if (string.IsNullOrEmpty(Address)) return;
+
             var sharer = Xamarin.Forms.DependencyService.Get<IShareIntent>();
             sharer.QRTextShareIntent(Address);
         }
@@ -78,9 +83,29 @@ namespace HodlWallet2.Core.ViewModels
         {
             base.ViewAppeared();
 
-            Address = _WalletService.GetReceiveAddress().Address;
+            if (!_WalletService.IsStarted)
+            {
+                _WalletService.OnStarted += _WalletService_OnStarted;
 
-            _Logger.Debug("New Receive Address: {0}", Address);
+                return;
+            }
+
+            Address = _WalletService.GetReceiveAddress().Address;
+            _Logger.Debug("New Receive Address: {0}", Address);            
+        }
+
+        private void _WalletService_OnStarted(object sender, System.EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                lock (_Lock)
+                {
+                    Address = _WalletService.GetReceiveAddress().Address;
+                    _Logger.Debug("New Receive Address: {0}", Address);
+                }
+            });
+
+            _WalletService.OnStarted -= _WalletService_OnStarted;
         }
     }
 }
