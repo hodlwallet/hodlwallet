@@ -81,6 +81,8 @@
     <Compile Include="Renderers\FeeSlider.cs" />
     <Compile Include="Renderers\ShareIntent.cs" />
     <Compile Include="Renderers\AndroidPermissions.cs" />
+    <Compile Include="Renderers\HideTabLabelsEffect.cs" />
+    <Compile Include="Renderers\ViewExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
