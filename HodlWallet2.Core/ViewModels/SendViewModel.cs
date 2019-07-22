@@ -150,6 +150,8 @@ namespace HodlWallet2.Core.ViewModels
 
         public async Task ProcessAddressOnClipboardToPaste()
         {
+            if (!_WalletService.IsStarted) return;
+
             string content = await Clipboard.GetTextAsync();
 
             if (!IsBitcoinAddress(content) || IsBitcoinAddressReused(content)) return;
@@ -226,9 +228,26 @@ namespace HodlWallet2.Core.ViewModels
                 return;
             }
 
-            string address = await Clipboard.GetTextAsync();
+            if (_WalletService.IsStarted)
+            {
+                string address = await Clipboard.GetTextAsync();
 
-            TryProcessAddress(address, Constants.DISPLAY_ALERT_PASTE_MESSAGE);
+                TryProcessAddress(address, Constants.DISPLAY_ALERT_PASTE_MESSAGE);
+
+                return;
+            }
+
+            _WalletService.OnStarted += _WalletService_OnStarted_PasteAddress;
+        }
+
+        private void _WalletService_OnStarted_PasteAddress(object sender, EventArgs e)
+        {
+            Device.InvokeOnMainThreadAsync(async () =>
+            {
+                string address = await Clipboard.GetTextAsync();
+
+                TryProcessAddress(address, Constants.DISPLAY_ALERT_PASTE_MESSAGE);
+            });
         }
 
         void TryProcessAddress(string address, string errorMessage)
@@ -357,7 +376,6 @@ namespace HodlWallet2.Core.ViewModels
             {
                 // TODO Show yes no dialog to broadcast it or not
                 await _WalletService.BroadcastManager.BroadcastTransactionAsync(Tx);
-
 
                 return;
             }
