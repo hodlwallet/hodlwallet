@@ -320,9 +320,9 @@ namespace HodlWallet2.Core.Services
 
             Logger.Information("Requiring service 'NETWORK' for SPV");
 
-            BroadcastManager broadcastManager = new BroadcastManager(_NodesGroup);
+            BroadcastManager = new BroadcastManager(_NodesGroup);
 
-            _ConParams.TemplateBehaviors.Add(new TransactionBroadcastBehavior(broadcastManager));
+            _ConParams.TemplateBehaviors.Add(new TransactionBroadcastBehavior(BroadcastManager));
 
             _NodesGroup.NodeConnectionParameters = _ConParams;
             _NodesGroup.MaximumNodeConnection = _NodesToConnect;
@@ -331,7 +331,7 @@ namespace HodlWallet2.Core.Services
 
             Logger.Information("Coin selector: {coinSelector}", _DefaultCoinSelector.GetType().ToString());
 
-            TransactionManager = new TransactionManager(broadcastManager, WalletManager, _DefaultCoinSelector, _Chain);
+            TransactionManager = new TransactionManager(BroadcastManager, WalletManager, _DefaultCoinSelector, _Chain);
 
             Logger.Information("Add transaction manager.");
 
