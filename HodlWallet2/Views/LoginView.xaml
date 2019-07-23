@@ -51,7 +51,8 @@
             
             <Label x:Name="Header" Style="{DynamicResource CustomLabel}" HorizontalTextAlignment="Center" />
             
-            <ActivityIndicator bindings:Bi.nd="IsRunning IsLoading" Color="{StaticResource SyncGradientStart}" />
+            <ActivityIndicator bindings:Bi.nd="IsRunning IsLoading" 
+                               Color="{StaticResource SyncGradientStart}" />
             
             <Grid x:Name="InputGrid"
                   Padding="10">

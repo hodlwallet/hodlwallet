@@ -90,7 +90,7 @@ namespace HodlWallet2.Core.ViewModels
 
                         IsLoading = true;
 
-                        await Task.Delay(5000);
+                        await Task.Delay(1);
 
                         await NavigationService.Navigate<RootViewModel, int>((int)RootViewModel.Tabs.Home);
 
