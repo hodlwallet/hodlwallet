@@ -786,8 +786,6 @@ namespace HodlWallet2.Core.Services
         {
             await Task.Factory.StartNew(() =>
             {
-                // FIXME DO NOT SAVE
-                return;
                 lock (_Lock)
                 {
                     _AddressManager.SavePeerFile(AddrmanFile(), _Network);
