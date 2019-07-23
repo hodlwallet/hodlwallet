@@ -161,6 +161,13 @@ namespace HodlWallet2.Core.ViewModels
                 return confirmWords[7];
             }
         }
+
+        bool _IsLoading;
+        public bool IsLoading
+        {
+            get => _IsLoading;
+            set => SetProperty(ref _IsLoading, value);
+        }
         
         public BackupRecoveryConfirmViewModel(
             IMvxLogProvider logProvider, 
@@ -216,10 +223,21 @@ namespace HodlWallet2.Core.ViewModels
             {
                 Preferences.Set("MnemonicStatus", true);
 
+                IsLoading = true;
+
+                await Task.Delay(1);
+
                 await NavigationService.Navigate<RootViewModel, int>((int)RootViewModel.Tabs.Home);
             }
         }
-        
+
+        public override void ViewDisappeared()
+        {
+            base.ViewDisappeared();
+
+            IsLoading = false;
+        }
+
         private void UpdateWords(string[] guessWords)
         {
             WordOne = guessWords[0];

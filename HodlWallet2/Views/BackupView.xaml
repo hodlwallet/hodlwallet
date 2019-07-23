@@ -17,6 +17,9 @@
                       VerticalOptions="Center"
                       FlexLayout.Grow="2" />
             
+            <ActivityIndicator bindings:Bi.nd="IsRunning IsLoading" 
+                               Color="{StaticResource SyncGradientStart}" />
+            
             <Label FontFamily="{DynamicResource ElectrolizeFont}"
                    TextColor="{StaticResource SyncGradientStart}"
                    HorizontalTextAlignment="Center"
