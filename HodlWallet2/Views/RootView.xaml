@@ -8,7 +8,6 @@
     xmlns:effects="clr-namespace:HodlWallet2.Renderers;assembly=HodlWallet2"
     xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
     x:Class="HodlWallet2.Views.RootView"
-    Title="Home"
     android:TabbedPage.ToolbarPlacement="Bottom"
     BackgroundColor="{StaticResource GrayBackground}">
     <TabbedPage.BackgroundColor>#212121</TabbedPage.BackgroundColor>

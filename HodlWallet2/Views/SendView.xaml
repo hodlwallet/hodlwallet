@@ -121,7 +121,7 @@
                         </Slider.Behaviors>
                     </renderers:FeeSlider>
                     
-                    <Label Text="Fee (sats/byte)" Style="{StaticResource CustomLabel}" />
+                    <Label Text="Fee (sats/kb)" Style="{StaticResource CustomLabel}" />
                         
                     <Entry Placeholder="0.0001" 
                            Text="{Binding Fee}" 
