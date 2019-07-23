@@ -96,14 +96,12 @@ namespace HodlWallet2.Core.ViewModels
 
                         return;
                     }
-                    else
-                    {
-                        _Pin.Clear();
 
-                        LaunchIncorrectPinAnimationInteraction.Raise();
+                    _Pin.Clear();
 
-                        return;
-                    }
+                    LaunchIncorrectPinAnimationInteraction.Raise();
+
+                    return;
                 }
             }
         }
