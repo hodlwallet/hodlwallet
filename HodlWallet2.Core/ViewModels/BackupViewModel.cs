@@ -19,17 +19,35 @@ namespace HodlWallet2.Core.ViewModels
         public string SubheaderText =>
             "We will show you a list of words to write down on a piece of paper and keep safe.";
         public string ButtonText => "Write Down Backup Recovery Key";
-        public IMvxAsyncCommand<string> WriteDownWordsCommand { get; }
+
+        bool _IsLoading;
+        public bool IsLoading
+        {
+            get => _IsLoading;
+            set => SetProperty(ref _IsLoading, value);
+        }
+
+        public IMvxAsyncCommand WriteDownWordsCommand { get; }
         
         public BackupViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) : base(logProvider, navigationService)
         {
-            WriteDownWordsCommand = new MvxAsyncCommand<string>(NavigateToView);
+            WriteDownWordsCommand = new MvxAsyncCommand(NavigateToView);
         }
 
-        private async Task NavigateToView(string arg)
+        private async Task NavigateToView()
         {
-            //TODO: WIP - Add logic for BAckupRecoveryWordViewModel.
+            IsLoading = true;
+
+            await Task.Delay(1);
+
             await NavigationService.Navigate<BackupRecoveryWordViewModel>();
+        }
+
+        public override void ViewDisappeared()
+        {
+            base.ViewDisappeared();
+
+            IsLoading = false;
         }
     }
 }
