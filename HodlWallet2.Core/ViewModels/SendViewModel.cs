@@ -385,7 +385,11 @@ namespace HodlWallet2.Core.ViewModels
                     {
                         // TODO this code does not do anything about error catching when broadcasting.
                         // in fact, liviano does not do anything about that either...
-                        if (yes) await _WalletService.TransactionManager.BroadcastTransaction(Tx);
+                        if (yes)
+                        {
+                            await _WalletService.TransactionManager.BroadcastTransaction(Tx);
+                            await NavigationService.Navigate<RootViewModel, int>((int)RootViewModel.Tabs.Home);
+                        }
                     }
                 };
 

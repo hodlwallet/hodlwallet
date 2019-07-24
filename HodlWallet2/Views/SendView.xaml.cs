@@ -205,6 +205,7 @@ namespace HodlWallet2.Views
             var total = amount + fees;
 
             string title = "Send Transaction?";
+            // Bug... total is wrong... and fees is wrong wtf...
             string content = $"Do you want to send {total} ({amount} + {fees} in fees) to {addressTo}.\nTx id will be {tx.GetHash().ToString()}";
             string yes = "Yes";
             string no = "No";
