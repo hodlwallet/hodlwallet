@@ -40,6 +40,13 @@
       <Style x:Key="CustomEntry" TargetType="Entry">
         <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
       </Style>
+            
+      <!-- Styles -->
+      <Style TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor" Value="{StaticResource GrayBackground}"/>
+        <Setter Property="BarTextColor" Value="{StaticResource White}"/>
+      </Style>
+      
     </ResourceDictionary>
   </Application.Resources>
 </Application>

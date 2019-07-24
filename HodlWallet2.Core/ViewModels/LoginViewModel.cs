@@ -17,6 +17,13 @@ namespace HodlWallet2.Core.ViewModels
     {
         List<int> _Pin;
 
+        bool _IsLoading;
+        public bool IsLoading
+        {
+            get => _IsLoading;
+            set => SetProperty(ref _IsLoading, value);
+        }
+
         public MvxInteraction<Tuple<int, bool>> ChangeDigitColorInteraction { get; }
         public MvxInteraction ResetDigitsColorInteraction { get; }
         public MvxInteraction LaunchIncorrectPinAnimationInteraction { get; }
@@ -81,20 +88,29 @@ namespace HodlWallet2.Core.ViewModels
                     {
                         _Pin.Clear();
 
+                        IsLoading = true;
+
+                        await Task.Delay(1);
+
                         await NavigationService.Navigate<RootViewModel, int>((int)RootViewModel.Tabs.Home);
 
                         return;
                     }
-                    else
-                    {
-                        _Pin.Clear();
 
-                        LaunchIncorrectPinAnimationInteraction.Raise();
+                    _Pin.Clear();
 
-                        return;
-                    }
+                    LaunchIncorrectPinAnimationInteraction.Raise();
+
+                    return;
                 }
             }
+        }
+
+        public override void ViewDisappeared()
+        {
+            base.ViewDisappeared();
+
+            IsLoading = false;
         }
 
         private async Task Send()

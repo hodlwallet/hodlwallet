@@ -47,6 +47,9 @@
                    bindings:Bi.nd="Text WarningText;
                                    IsVisible WarningVisible"/>
             
+            <ActivityIndicator bindings:Bi.nd="IsRunning IsLoading" 
+                               Color="{StaticResource SyncGradientStart}" />
+            
             <FlexLayout Direction="Row"
                         JustifyContent="SpaceEvenly"
                         FlexLayout.AlignSelf="Stretch"
