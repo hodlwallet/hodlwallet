@@ -197,8 +197,11 @@ namespace HodlWallet2.Views
 
             var tx = sendTransactionQuestion.TransactionToSend;
             var fees = sendTransactionQuestion.Fees;
+
             var addressTo = ViewModel.AddressToSendTo;
-            var amount = new Money(ViewModel.AmountToSend, MoneyUnit.BTC); // TODO this could be in USD should be a problem...
+            // TODO this could be in USD should be a problem...
+            var amount = new Money(ViewModel.AmountToSend, MoneyUnit.BTC);
+
             var total = amount + fees;
 
             string title = "Send Transaction?";
