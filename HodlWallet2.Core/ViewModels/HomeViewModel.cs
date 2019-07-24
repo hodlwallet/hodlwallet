@@ -517,7 +517,7 @@ namespace HodlWallet2.Core.ViewModels
             if (preferences == "BTC")
             {
                 if (tx.IsSend == true)
-                    return string.Format(Constants.SENT_AMOUNT, preferences, tx.Amount);
+                    return string.Format(Constants.SENT_AMOUNT, preferences, $"-{tx.AmountSent}");
 
                 return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.Amount);
             }
@@ -527,7 +527,7 @@ namespace HodlWallet2.Core.ViewModels
                     return string.Format(
                         Constants.SENT_AMOUNT,
                         preferences,
-                        $"{tx.Amount.ToUsd((decimal)_NewRate):F2}");
+                        $"-{tx.AmountSent.ToUsd((decimal)_NewRate):F2}");
 
                 return string.Format(
                     Constants.RECEIVE_AMOUNT,

@@ -31,6 +31,9 @@ namespace HodlWallet2.Core.ViewModels
         MvxInteraction<YesNoQuestion> _QuestionInteraction = new MvxInteraction<YesNoQuestion>();
         public IMvxInteraction<YesNoQuestion> QuestionInteraction => _QuestionInteraction;
 
+        MvxInteraction<SendTransactionQuestion> _SendTransactionQuestionInteraction = new MvxInteraction<SendTransactionQuestion>();
+        public IMvxInteraction<SendTransactionQuestion> SendTransactionQuestionInteraction => _SendTransactionQuestionInteraction;
+
         MvxInteraction<BarcodeScannerPrompt> _BarcodeScannerInteraction = new MvxInteraction<BarcodeScannerPrompt>();
         public IMvxInteraction<BarcodeScannerPrompt> BarcodeScannerInteraction => _BarcodeScannerInteraction;
 
@@ -374,19 +377,27 @@ namespace HodlWallet2.Core.ViewModels
             _Logger.Debug($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
             if (Success)
             {
-                // TODO Show yes no dialog to broadcast it or not
-                await _WalletService.BroadcastManager.BroadcastTransactionAsync(Tx);
+                var request = new SendTransactionQuestion
+                {
+                    TransactionToSend = Tx,
+                    AnswerCallback = async (yes) =>
+                    {
+                        // TODO this code does not do anything about error catching when broadcasting.
+                        // in fact, liviano does not do anything about that either...
+                        if (yes) await _WalletService.TransactionManager.BroadcastTransaction(Tx);
+                    }
+                };
 
-                return;
+                _SendTransactionQuestionInteraction.Raise(request);
             }
             else
             {
                 string errorMsg = string.Format("Error trying to create a transaction.\nAmount to send: {0}, address: {1}, fee: {2}, password: {3}.\nFull Error: {4}",
-                    AmountToSend,
-                    AddressToSendTo,
-                    Fee,
-                    password,
-                    Error);
+                AmountToSend,
+                AddressToSendTo,
+                Fee,
+                password,
+                Error);
                 var transactionErrorRequest = new DisplayAlertContent
                 {
                     Title = Constants.DISPLAY_ALERT_ERROR_TITLE,

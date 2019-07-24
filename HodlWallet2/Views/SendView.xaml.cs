@@ -15,6 +15,9 @@ using MvvmCross.Binding.BindingContext;
 using HodlWallet2.Core.Interactions;
 using HodlWallet2.Core.ViewModels;
 using HodlWallet2.Locale;
+using HodlWallet2.Core.Models;
+using HodlWallet2.Renderers;
+using NBitcoin;
 
 namespace HodlWallet2.Views
 {
@@ -67,6 +70,21 @@ namespace HodlWallet2.Views
             }
         }
 
+        IMvxInteraction<SendTransactionQuestion> _SendTransactionQuestionInteraction = new MvxInteraction<SendTransactionQuestion>();
+        public IMvxInteraction<SendTransactionQuestion> SendTransactionQuestionInteraction
+        {
+            get => _SendTransactionQuestionInteraction;
+
+            set
+            {
+                if (_SendTransactionQuestionInteraction != null)
+                    _SendTransactionQuestionInteraction.Requested -= SendTransactionQuestionInteraction_Requested;
+
+                _SendTransactionQuestionInteraction = value;
+                _SendTransactionQuestionInteraction.Requested += SendTransactionQuestionInteraction_Requested;
+            }
+        }
+
         public SendView()
         {
             IconImageSource = "send_tab.png";
@@ -113,6 +131,11 @@ namespace HodlWallet2.Views
             set.Bind(this)
                 .For(view => view.BarcodeScannerInteraction)
                 .To(viewModel => viewModel.BarcodeScannerInteraction)
+                .OneWay();
+
+            set.Bind(this)
+                .For(view => view.SendTransactionQuestionInteraction)
+                .To(viewModel => viewModel.SendTransactionQuestionInteraction)
                 .OneWay();
 
             set.Apply();
@@ -166,6 +189,28 @@ namespace HodlWallet2.Views
             await DisplayAlert(
                 displayAlertContent.Title, displayAlertContent.Message, displayAlertContent.Buttons[0]
             );
+        }
+
+        async void SendTransactionQuestionInteraction_Requested(object sender, MvxValueEventArgs<SendTransactionQuestion> e)
+        {
+            var sendTransactionQuestion = e.Value;
+
+            var tx = sendTransactionQuestion.TransactionToSend;
+            var fees = sendTransactionQuestion.Fees;
+            var addressTo = ViewModel.AddressToSendTo;
+            var amount = new Money(ViewModel.AmountToSend, MoneyUnit.BTC); // TODO this could be in USD should be a problem...
+            var total = amount + fees;
+
+            string title = "Send Transaction?";
+            string content = $"Do you want to send {total} ({amount} + {fees} in fees) to {addressTo}.\nTx id will be {tx.GetHash().ToString()}";
+            string yes = "Yes";
+            string no = "No";
+
+            bool answer = await DisplayAlert(
+                title, content, yes, cancel: no
+            );
+
+            sendTransactionQuestion.AnswerCallback(answer);
         }
 
         async void BarcodeScannerInteraction_Requested(object sender, MvxValueEventArgs<BarcodeScannerPrompt> e)
