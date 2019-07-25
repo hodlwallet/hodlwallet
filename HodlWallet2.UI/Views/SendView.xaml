@@ -25,6 +25,7 @@
                             
                         <Entry x:Name="SendAddress"
                                Placeholder="bc1..."
+                               ReturnType="Done"
                                Text="{Binding AddressToSendTo}"
                                TextColor="{StaticResource White}"
                                BackgroundColor="Transparent"
@@ -62,7 +63,6 @@
                             
                         <Entry Placeholder="0.00"
                                Keyboard="Numeric"
-                               ReturnType="Done"
                                Text="{Binding AmountToSend}" 
                                TextColor="{StaticResource SyncGradientStart}" 
                                BackgroundColor="Transparent"
@@ -123,7 +123,8 @@
                     
                     <Label Text="Fee (sats/kb)" Style="{StaticResource CustomLabel}" />
                         
-                    <Entry Placeholder="0.0001" 
+                    <Entry Placeholder="0.0001"
+                           Keyboard="Numeric"
                            Text="{Binding Fee}" 
                            Style="{StaticResource CustomEntry}"
                            TextColor="{StaticResource White}"
