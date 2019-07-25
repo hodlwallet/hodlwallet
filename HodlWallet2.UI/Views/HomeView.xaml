@@ -7,7 +7,7 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
     xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
-    xmlns:controls="clr-namespace:HodlWallet2.Shared.Controls;assembly=HodlWallet2.Shared.Controls"
+    xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
     x:TypeArguments="viewModels:HomeViewModel"
     BackgroundColor="{StaticResource GrayBackground}">
     <ContentPage.BackgroundColor>#212121</ContentPage.BackgroundColor>

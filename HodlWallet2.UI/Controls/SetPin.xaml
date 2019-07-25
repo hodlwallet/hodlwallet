@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-             x:Class="HodlWallet2.Shared.Controls.SetPin">
+             x:Class="HodlWallet2.UI.Controls.SetPin">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">

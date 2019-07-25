@@ -8,7 +8,7 @@
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:system="clr-namespace:System;assembly=netstandard"
     xmlns:utils="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
-    xmlns:customControls="clr-namespace:HodlWallet2.Shared.Controls;assembly=HodlWallet2.Shared.Controls"
+    xmlns:customControls="clr-namespace:HodlWallet2.UI.Controls"
     x:TypeArguments="viewModels:PinPadViewModel"
     BackgroundColor="{StaticResource GrayBackground}">
     

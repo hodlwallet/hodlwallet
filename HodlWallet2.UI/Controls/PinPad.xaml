@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:HodlWallet2.Shared.Controls"
+             xmlns:local="clr-namespace:HodlWallet2.UI.Controls"
              xmlns:utils="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
-             x:Class="HodlWallet2.Shared.Controls.PinPad">
+             x:Class="HodlWallet2.UI.Controls.PinPad">
              
     <ContentView.Resources>
         <ResourceDictionary>

@@ -8,7 +8,7 @@ using Xamarin.Forms.Internals;
 
 using HodlWallet2.Core.Utils;
 
-namespace HodlWallet2.Shared.Controls
+namespace HodlWallet2.UI.Controls
 {
     public partial class PinPad : ContentView
     {

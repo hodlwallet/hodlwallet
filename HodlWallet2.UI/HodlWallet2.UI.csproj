@@ -11,7 +11,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HodlWallet2.Core\HodlWallet2.Core.csproj" />
-    <ProjectReference Include="..\HodlWallet2.Shared.Controls\HodlWallet2.Shared.Controls.csproj" />
     <ProjectReference Include="..\LivianoWallet\LivianoWallet\Liviano\Liviano.csproj" />
   </ItemGroup>
 

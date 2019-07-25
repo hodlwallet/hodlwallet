@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 
-namespace HodlWallet2.Shared.Controls
+namespace HodlWallet2.UI.Controls
 {
     public partial class TransactionCollectionView : ContentView
     {
