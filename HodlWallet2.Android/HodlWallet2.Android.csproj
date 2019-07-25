@@ -111,14 +111,8 @@
     <AndroidResource Include="Resources\drawable\receive_tab.png" />
     <AndroidResource Include="Resources\drawable\send_tab.png" />
     <AndroidResource Include="Resources\drawable\settings_tab.png" />
-    <AndroidResource Include="Resources\drawable\logo.png">
-      <SubType></SubType>
-      <Generator></Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\logo_front.png">
-      <SubType></SubType>
-      <Generator></Generator>
-    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\logo.png"/>
+    <AndroidResource Include="Resources\drawable\logo_front.png"/>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
