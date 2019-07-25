@@ -25,6 +25,7 @@
     <Folder Include="Assets\" />
     <Folder Include="Locale\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\logo_front.png" />

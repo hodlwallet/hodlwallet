@@ -3,24 +3,24 @@ using System.Threading.Tasks;
 
 using Xamarin.Essentials;
 
-using Network = NBitcoin.Network;
+using NBitcoin;
 
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 
-using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Interactions;
 using HodlWallet2.Core.Utils;
+using HodlWallet2.Core.Models;
 
 namespace HodlWallet2.Core.ViewModels
 {
-    public class TransactionDetailsViewModel : BaseViewModel<Transaction>
+    public class TransactionDetailsViewModel : BaseViewModel<TransactionModel>
     {
         readonly IWalletService _WalletService;
-        Transaction _Transaction;
+        TransactionModel _TransactionModel;
 
         MvxInteraction<DisplayAlertContent> _CopiedToClipboardInteraction = new MvxInteraction<DisplayAlertContent>();
         public IMvxInteraction<DisplayAlertContent> CopiedToClipboardInteraction => _CopiedToClipboardInteraction;
@@ -37,11 +37,25 @@ namespace HodlWallet2.Core.ViewModels
         public string TransactionIdTitle => "Bitcoin Transaction ID";
         public string ConfirmedBlockTitle => "Confirmed in Block";
 
-        string _DateText;
-        public string DateText
+        DateTimeOffset _CreationTime;
+        public DateTimeOffset CreationTime
         {
-            get => _DateText;
-            set => SetProperty(ref _DateText, value);
+            get => _CreationTime;
+            set => SetProperty(ref _CreationTime, value);
+        }
+
+        string _CreationTimeText;
+        public string CreationTimeText
+        {
+            get => _CreationTimeText;
+            set => SetProperty(ref _CreationTimeText, value);
+        }
+
+        Money _Amount;
+        public Money Amount
+        {
+            get => _Amount;
+            set => SetProperty(ref _Amount, value);
         }
 
         string _AmountText;
@@ -51,11 +65,25 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _AmountText, value);
         }
 
-        string _AddressToFromText;
-        public string AddressToFromText
+        string _Address;
+        public string Address
         {
-            get => _AddressToFromText;
-            set => SetProperty(ref _AmountText, value);
+            get => _Address;
+            set => SetProperty(ref _Address, value);
+        }
+
+        string _AddressText;
+        public string AddressText
+        {
+            get => _AddressText;
+            set => SetProperty(ref _AddressText, value);
+        }
+
+        string _AddressTitle;
+        public string AddressTitle
+        {
+            get => _AddressTitle;
+            set => SetProperty(ref _AddressTitle, value);
         }
 
         string _StatusText;
@@ -93,25 +121,18 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _EndingBalanceText, value);
         }
 
-        string _AddressTitle;
-        public string AddressTitle
+        string _IdText;
+        public string IdText
         {
-            get => _AddressTitle;
-            set => SetProperty(ref _AddressTitle, value);
+            get => _IdText;
+            set => SetProperty(ref _IdText, value);
         }
 
-        string _AddressText;
-        public string AddressText
+        uint256 _Id;
+        public uint256 Id
         {
-            get => _AddressText;
-            set => SetProperty(ref _AddressText, value);
-        }
-
-        string _TransactionIdText;
-        public string TransactionIdText
-        {
-            get => _TransactionIdText;
-            set => SetProperty(ref _TransactionIdText, value);
+            get => _Id;
+            set => SetProperty(ref _Id, value);
         }
 
         string _ConfirmedBlockText;
@@ -138,23 +159,26 @@ namespace HodlWallet2.Core.ViewModels
         {
             await base.Initialize();
 
-            DateText = _Transaction.DateAndTime;
-            AmountText = _Transaction.Amount;
-            AddressToFromText = _Transaction.Address;
-            StatusText = _Transaction.Confirmations;
-            MemoText = _Transaction.Memo;
-            AddressText = _Transaction.Address;
-            AddressTitle = GetAddressTitleText();
-            TransactionIdText = _Transaction.Id;
-            ConfirmedBlockText = _Transaction.BlockHeight?.ToString();
-
-            /*  TODO: Add Setup for Amount Section
-             */
+            GetTransactionModelData();
         }
 
-        public override void Prepare(Transaction parameter)
+        public override void Prepare(TransactionModel parameter)
         {
-            _Transaction = parameter;
+            _TransactionModel = parameter;
+        }
+
+        void GetTransactionModelData()
+        {
+            AddressText = _TransactionModel.AddressText;
+            CreationTimeText = _TransactionModel.CreationTimeText;
+            AmountText = _TransactionModel.AmountText;
+            StatusText = _TransactionModel.StatusText;
+            MemoText = _TransactionModel.MemoText;
+            AmountWithFeeText = _TransactionModel.AmountWithFeeText;
+            Address = _TransactionModel.Address;
+            Id = _TransactionModel.Id;
+            IdText = _TransactionModel.IdText;
+            ConfirmedBlockText = _TransactionModel.ConfirmedBlockText;
         }
 
         Task ShowFaq()
@@ -174,11 +198,11 @@ namespace HodlWallet2.Core.ViewModels
 
             if (_WalletService.GetNetwork() == Network.Main)
             {
-                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_ADDRESS_MAINNET_URI, AddressText));
+                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_ADDRESS_MAINNET_URI, Address));
             }
             else
             {
-                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_ADDRESS_TESTNET_URI, AddressText));
+                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_ADDRESS_TESTNET_URI, Address));
             }
 
             await Browser.OpenAsync(uri, BrowserLaunchMode.External);
@@ -190,22 +214,14 @@ namespace HodlWallet2.Core.ViewModels
 
             if (_WalletService.GetNetwork() == Network.Main)
             {
-                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_TRANSACTION_MAINNET_URI, TransactionIdText));
+                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_TRANSACTION_MAINNET_URI, IdText));
             }
             else
             {
-                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_TRANSACTION_TESTNET_URI, TransactionIdText));
+                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_TRANSACTION_TESTNET_URI, IdText));
             }
 
             await Browser.OpenAsync(uri, BrowserLaunchMode.External);
-        }
-
-        string GetAddressTitleText()
-        {
-            if (_Transaction.IsSent == true)
-                return Constants.TRANSACTION_DETAILS_SENT_ADDRESS_TITLE;
-
-            return Constants.TRANSACTION_DETAILS_RECEIVED_ADDRESS_TITLE;
         }
     }
 }

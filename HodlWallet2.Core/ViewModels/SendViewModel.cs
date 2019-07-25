@@ -379,7 +379,7 @@ namespace HodlWallet2.Core.ViewModels
             {
                 var request = new SendTransactionQuestion
                 {
-                    Fees = new Money(Fees, MoneyUnit.BTC),
+                    Fees = new Money(Fees, MoneyUnit.Satoshi),
                     TransactionToSend = Tx,
                     AnswerCallback = async (yes) =>
                     {

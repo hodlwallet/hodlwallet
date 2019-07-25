@@ -72,13 +72,13 @@
             <StackLayout>
                 
                 <Label FontSize="Small"
-                       Text="{Binding DateText}"
+                       Text="{Binding CreationTimeText}"
                        />
                 <Label FontSize="Large" 
                        Text="{Binding AmountText}"
                        />
                 <Label FontSize="Large" 
-                       Text="{Binding AmountToFromText}"
+                       Text="{Binding AddressText}"
                        />
                 
                 <BoxView />
@@ -110,12 +110,12 @@
                 <Label FontSize="Small"
                        Text="{Binding AmountWithFeeText}"
                        />
-                <Label FontSize="Small"
+                <!--<Label FontSize="Small"
                        Text="{Binding StartingBalanceText}"
                        />
                 <Label FontSize="Small"
                        Text="{Binding EndingBalanceText}"
-                       />
+                       />-->
                 
                 <BoxView />
                 
@@ -123,7 +123,7 @@
                        Text="{Binding AddressTitle}"
                        />
                 <Button Command="{Binding BrowseAddressCommand}"
-                        Text="{Binding AddressText}"
+                        Text="{Binding Address}"
                         />
                 
                 <BoxView />
@@ -132,7 +132,7 @@
                        Text="{Binding TransactionIdTitle}"
                        />
                 <Button Command="{Binding BrowseTransactionIdCommand}"
-                        Text="{Binding TransactionIdText}"
+                        Text="{Binding IdText}"
                         />
                 <Label FontSize="Small"
                        Text="{Binding ConfirmedBlockTitle}"

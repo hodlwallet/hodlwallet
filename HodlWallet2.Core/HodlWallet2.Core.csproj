@@ -39,6 +39,7 @@
       <Folder Include="Behaviors\" />
       <Folder Include="Converters\" />
       <Folder Include="Interactions\" />
+      <Folder Include="Extensions\" />
     </ItemGroup>
     <Target Name="GetBuildInfo" BeforeTargets="WriteBuildInfo" Condition="'$(GitHead)' == ''">
         <PropertyGroup>

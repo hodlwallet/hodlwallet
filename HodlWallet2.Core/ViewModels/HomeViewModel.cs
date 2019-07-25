@@ -22,6 +22,7 @@ using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.Services;
+using NBitcoin;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -62,7 +63,7 @@ namespace HodlWallet2.Core.ViewModels
         }
 
         private object _Lock = new object();
-        public ObservableCollection<Transaction> Transactions { get; } = new ObservableCollection<Transaction>();
+        public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
 
         string _PriceText;
         public string PriceText
@@ -222,7 +223,7 @@ namespace HodlWallet2.Core.ViewModels
                         // without having to convert numeric and string values to return a string(?) amount.
 
                         // This would also WONT work cause observable collections only allow insert and remove
-                        transaction.Amount = GetAmountLabelText(null);
+                        // transaction.Amount = GetAmountLabelText(null);
                     }
                 }
                 return true;
@@ -309,7 +310,8 @@ namespace HodlWallet2.Core.ViewModels
         void NavigateToTransactionDetails()
         {
             if (CurrentTransaction == null) return;
-            NavigationService.Navigate<TransactionDetailsViewModel, Transaction>(CurrentTransaction as Transaction);
+
+            NavigationService.Navigate<TransactionDetailsViewModel, TransactionModel>(CurrentTransaction as TransactionModel);
             CurrentTransaction = null;
         }
 
@@ -400,22 +402,21 @@ namespace HodlWallet2.Core.ViewModels
                 lock (_Lock)
                 {
                     // Double Check if the tx is there or not...
-                    if (Transactions.Any(tx => tx.Id == txData.Id.ToString())) return;
+                    if (Transactions.Any(tx => tx.Id == txData.Id)) return;
 
-                    Transactions.Insert(0, CreateTransactionModelInstance(txData));
+                    Transactions.Insert(0, TransactionModel.FromTransactionData(txData));
                 }
             });
         }
 
         void UpdateTransactionsCollectionWith(TransactionData txData)
         {
-            var txModel = CreateTransactionModelInstance(txData);
-
             Device.BeginInvokeOnMainThread(() =>
             {
                 lock (_Lock)
                 {
-                    var tx = Transactions.FirstOrDefault(tx1 => tx1.Id == txModel.Id);
+                    var txModel = TransactionModel.FromTransactionData(txData);
+                    var tx = Transactions.FirstOrDefault(tx1 => tx1.Id == txData.Id);
 
                     if (tx is null) return;
                     if (tx == txModel) return;
@@ -436,10 +437,10 @@ namespace HodlWallet2.Core.ViewModels
 
             foreach (var tx in txs)
             {
-                if (Transactions.Any(txModel => txModel.Id == tx.Id.ToString()))
+                if (Transactions.Any(txModel => txModel.Id == tx.Id))
                 {
-                    var item = Transactions.FirstOrDefault(txModel => txModel.Id == tx.Id.ToString());
-                    var newItem = CreateTransactionModelInstance(tx);
+                    var item = Transactions.FirstOrDefault(txModel => txModel.Id == tx.Id);
+                    var newItem = TransactionModel.FromTransactionData(tx);
 
                     if (item == newItem) continue;
 
@@ -450,44 +451,8 @@ namespace HodlWallet2.Core.ViewModels
                     continue;
                 }
 
-                Transactions.Insert(0, CreateTransactionModelInstance(tx));
+                Transactions.Insert(0, TransactionModel.FromTransactionData(tx));
             }
-        }
-
-        Transaction CreateTransactionModelInstance(TransactionData transactionData)
-        {
-            var network = _WalletService.GetNetwork();
-
-            var script = transactionData.IsSend == true
-                ? transactionData.SentToScriptPubKey
-                : transactionData.ScriptPubKey;
-
-            string address = script.GetDestinationAddress(network).ToString();
-
-            var tx = new Transaction
-            {
-                Id = transactionData.Id.ToString(),
-                IsReceive = transactionData.IsReceive,
-                IsSent = transactionData.IsSend,
-                IsSpendable = transactionData.IsSpendable(),
-                IsConfirmed = transactionData.IsConfirmed(),
-                IsPropagated = transactionData.IsPropagated,
-                BlockHeight = transactionData.BlockHeight,
-                IsAvailable = transactionData.IsSpendable()
-                        ? Constants.IS_AVAILABLE
-                        : Constants.IS_NOT_AVAILABLE,
-                Memo = transactionData.Memo,
-                Confirmations = "",
-                Amount = GetAmountLabelText(transactionData),
-                StatusColor = transactionData.IsSend == true
-                        ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
-                        : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                Address = FormatAtAddressText(transactionData.IsSend == true, address),
-                DateAndTime = transactionData.CreationTime.ToString(),
-                Duration = DateTimeOffsetOperations.ShortDate(transactionData.CreationTime)
-            };
-
-            return tx;
         }
 
         string FormatAtAddressText(bool isSend, string address, bool chopAddress = false)

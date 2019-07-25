@@ -8,8 +8,6 @@ namespace HodlWallet2.Core.Interfaces
 {
     public interface IPrecioService
     {
-        void InitializePrecio();
-
         [Get("/hodl/rates.json")]
         Task<List<CurrencyEntity>> GetRates();
 

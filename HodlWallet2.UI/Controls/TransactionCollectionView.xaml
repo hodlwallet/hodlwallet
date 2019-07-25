@@ -2,7 +2,8 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="HodlWallet2.UI.Controls.TransactionCollectionView">
+    x:Class="HodlWallet2.UI.Controls.TransactionCollectionView"
+    xmlns:converters="clr-namespace:HodlWallet2.UI.Converters">
     <ContentView.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
@@ -10,6 +11,10 @@
                 <Setter Property="FontSize" Value="Micro"/>
                 <Setter Property="LineBreakMode" Value="MiddleTruncation" />
             </Style>
+
+            <converters:MemoToHeightConverter x:Key="MemoToHeightConverter"></converters:MemoToHeightConverter>
+            <converters:IsSendToStatusColorConverter x:Key="IsSendToStatusColorConverter"></converters:IsSendToStatusColorConverter>
+            <converters:CreationTimeToDurationConverter x:Key="CreationTimeToDurationConverter"></converters:CreationTimeToDurationConverter>
         </ResourceDictionary>
     </ContentView.Resources>
     <Frame
@@ -37,7 +42,7 @@
                                         <RowDefinition
                                             Height="15" />
                                         <RowDefinition
-                                            Height="{Binding MemoHeight}" />
+                                            Height="{Binding MemoText, Converter={StaticResource MemoToHeightConverter}}" />
                                         <RowDefinition
                                             Height="15" />
                                     </Grid.RowDefinitions>
@@ -50,32 +55,32 @@
                                     <Label
                                         Grid.Column="0"
                                         Grid.Row="0"
-                                        TextColor="{Binding StatusColor}"
-                                        Text="{Binding Amount}" />
+                                        TextColor="{Binding IsSend, Converter={StaticResource IsSendToStatusColorConverter}}"
+                                        Text="{Binding AmountText}" />
                                     <Label
                                         Grid.Column="1"
                                         Grid.Row="0"
                                         HorizontalTextAlignment="End"
                                         TextColor="{StaticResource White}"
-                                        Text="{Binding Duration}" />
+                                        Text="{Binding CreationTime, Converter={StaticResource CreationTimeToDurationConverter}}" />
                                     <Label
                                         Grid.Column="0"
                                         Grid.Row="1"
                                         Grid.ColumnSpan="2"
                                         TextColor="{StaticResource White}"
-                                        Text="{Binding Address}" />
+                                        Text="{Binding AddressText}" />
                                     <Label
                                         Grid.Column="0"
                                         Grid.Row="2"
                                         Grid.ColumnSpan="2"
                                         TextColor="{StaticResource White}"
-                                        Text="{Binding Memo}" />
+                                        Text="{Binding MemoText}" />
                                     <Label
                                         Grid.Column="0"
                                         Grid.Row="3"
                                         Grid.ColumnSpan="2"
                                         TextColor="{StaticResource SyncGradientStart}"
-                                        Text="{Binding IsAvailable}" />
+                                        Text="{Binding StatusText}" />
                                 </Grid>
                             </StackLayout>
                         </DataTemplate>
