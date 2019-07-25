@@ -13,7 +13,7 @@ using Refit;
 
 namespace HodlWallet2.Droid
 {
-    public class Setup : MvxFormsAndroidSetup<Core.App, App>
+    public class Setup : MvxFormsAndroidSetup<Core.App, UI.App>
     {
         public override MvxLogProviderType GetDefaultLogProviderType() => MvxLogProviderType.Serilog;
 

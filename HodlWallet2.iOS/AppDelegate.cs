@@ -7,16 +7,16 @@ using UIKit;
 using Serilog;
 using Serilog.Core;
 
+using HodlWallet2;
+
 namespace HodlWallet2.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : MvxFormsApplicationDelegate<Setup, Core.App, App>
+    public partial class AppDelegate : MvxFormsApplicationDelegate<Setup, Core.App, UI.App>
     {
-        UIColor GRAY_BACKGROUND { get; } = new UIColor(red: 0.13f, green: 0.13f, blue: 0.13f, alpha: 1.0f);
-
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window

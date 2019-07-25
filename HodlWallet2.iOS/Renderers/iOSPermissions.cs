@@ -2,7 +2,7 @@
 using HodlWallet2.iOS.Renderers;
 using Xamarin.Forms;
 
-[assembly: Dependency (typeof (iOSPermissions))]
+[assembly: Dependency(typeof (iOSPermissions))]
 namespace HodlWallet2.iOS.Renderers
 {
     public class iOSPermissions : IPermissions

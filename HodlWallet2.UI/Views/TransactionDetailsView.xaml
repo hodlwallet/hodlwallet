@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HodlWallet2.UI.Views.TransactionDetailsView"
+             BackgroundColor="{StaticResource DarkGray}"
+             xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+             xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"    
+             x:TypeArguments="viewModels:TransactionDetailsViewModel"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{DynamicResource ElectrolizeFont}" />
+                <Setter Property="LineBreakMode" Value="MiddleTruncation" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Style>
+            
+            <Style TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource GrayTextTint}" />
+                <Setter Property="HeightRequest" Value="2" />
+            </Style>
+            
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkGray}" />
+                <Setter Property="FontFamily" Value="{StaticResource ElectrolizeFont}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout Spacing="15"
+                 Margin="15, 15, 15, 0">
+        
+        <FlexLayout AlignItems="Center"
+                    Direction="Row"
+                    JustifyContent="SpaceBetween">
+            
+            <svg:Icon ResourceId="Assets.close.svg" HeightRequest="16"
+                      FlexLayout.AlignSelf="Center">
+                
+                <svg:Icon.GestureRecognizers>
+                    <TapGestureRecognizer bindings:Bi.nd="Command CloseCommand" />
+                </svg:Icon.GestureRecognizers>
+                
+            </svg:Icon>
+        
+            <Label FontSize="Large"
+                   HorizontalTextAlignment="Center"
+                   Text="{Binding TransactionDetailsTitle}"
+                   />
+
+            <svg:Icon ResourceId="Assets.faq.svg" HeightRequest="16">
+                
+                <svg:Icon.GestureRecognizers>
+                    <TapGestureRecognizer bindings:Bi.nd="Command ShowFaqCommand" />
+                </svg:Icon.GestureRecognizers>
+                
+            </svg:Icon>
+            
+        </FlexLayout>
+        
+        <ScrollView>
+            
+            <StackLayout>
+                
+                <Label FontSize="Small"
+                       Text="{Binding DateText}"
+                       />
+                <Label FontSize="Large" 
+                       Text="{Binding AmountText}"
+                       />
+                <Label FontSize="Large" 
+                       Text="{Binding AmountToFromText}"
+                       />
+                
+                <BoxView />
+                
+                <Label FontSize="Small"
+                       Text="{Binding StatusTitle}"
+                       />
+                <Label FontSize="Small"
+                       Text="{Binding StatusText}"
+                       />
+                
+                <BoxView BackgroundColor="{StaticResource GrayTextTint}"
+                         HeightRequest="2"
+                         />
+                
+                <Label FontSize="Small"
+                       Text="{Binding MemoTitle}"
+                       />
+                <Entry BackgroundColor="Transparent"
+                       FontSize="Small"
+                       Text="{Binding MemoText}"
+                       />
+                
+                <BoxView />
+                
+                <Label FontSize="Small"
+                       Text="{Binding AmountTitle}"
+                       />
+                <Label FontSize="Small"
+                       Text="{Binding AmountWithFeeText}"
+                       />
+                <Label FontSize="Small"
+                       Text="{Binding StartingBalanceText}"
+                       />
+                <Label FontSize="Small"
+                       Text="{Binding EndingBalanceText}"
+                       />
+                
+                <BoxView />
+                
+                <Label FontSize="Small"
+                       Text="{Binding AddressTitle}"
+                       />
+                <Button Command="{Binding BrowseAddressCommand}"
+                        Text="{Binding AddressText}"
+                        />
+                
+                <BoxView />
+                
+                <Label FontSize="Small"
+                       Text="{Binding TransactionIdTitle}"
+                       />
+                <Button Command="{Binding BrowseTransactionIdCommand}"
+                        Text="{Binding TransactionIdText}"
+                        />
+                <Label FontSize="Small"
+                       Text="{Binding ConfirmedBlockTitle}"
+                       />
+                <Label FontSize="Small"
+                       Text="{Binding ConfirmedBlockText}"
+                       />
+                
+                <BoxView />
+                
+            </StackLayout>
+            
+        </ScrollView>
+        
+    </StackLayout>
+    
+</views:MvxContentPage>

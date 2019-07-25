@@ -197,9 +197,9 @@
       <Project>{014986bb-69a9-4a7f-b45d-94a4da28a047}</Project>
       <Name>HodlWallet2.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HodlWallet2\HodlWallet2.csproj">
+    <ProjectReference Include="..\HodlWallet2.UI\HodlWallet2.UI.csproj">
       <Project>{BB2AB7ED-FBE3-4F4D-80AD-1A9CB54EC734}</Project>
-      <Name>HodlWallet2</Name>
+      <Name>HodlWallet2.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

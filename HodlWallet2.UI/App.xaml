@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HodlWallet2.UI.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Styles -->
+
+            <!-- Colors -->
+            <Color x:Key="GrayBackground">#212121</Color>
+            <Color x:Key="White">#F5F7FA</Color>
+            <Color x:Key="DarkGray">#161616</Color>
+            <Color x:Key="SyncGradientStart">#DAAB28</Color>
+            <Color x:Key="SyncGradientEnd">#DBAC29</Color>
+            <Color x:Key="GrayTextTint">#A3A8AD</Color>
+            <Color x:Key="LightGray">#EBEBEB</Color>
+
+            <!-- Fonts -->
+            <OnPlatform x:Key="ElectrolizeFont"
+                        x:TypeArguments="x:String"
+                        iOS="Electrolize"
+                        Android="Electrolize-Regular.ttf#Electrolize" />
+
+            <!-- Buttons -->
+            <Style x:Key="GrayButton"
+                   TargetType="Button">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource ElectrolizeFont}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource White}" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource GrayBackground}" />
+                <Setter Property="CornerRadius"
+                        Value="0" />
+            </Style>
+
+            <Style x:Key="CustomButton"
+                   TargetType="Button">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource ElectrolizeFont}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource White}" />
+                <Setter Property="CornerRadius"
+                        Value="0" />
+            </Style>
+
+            <!-- Labels -->
+            <Style x:Key="CustomLabel"
+                   TargetType="Label">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource ElectrolizeFont}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource White}" />
+            </Style>
+
+            <!-- Text entries -->
+            <Style x:Key="CustomEntry"
+                   TargetType="Entry">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource ElectrolizeFont}" />
+            </Style>
+
+            <!-- Styles -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor"
+                        Value="{StaticResource GrayBackground}" />
+                <Setter Property="BarTextColor"
+                        Value="{StaticResource White}" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

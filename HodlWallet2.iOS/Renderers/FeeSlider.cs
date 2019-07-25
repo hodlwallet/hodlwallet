@@ -1,5 +1,5 @@
 ﻿using System;
-using HodlWallet2.Renderers;
+using HodlWallet2.UI.Renderers;
 using HodlWallet2.iOS.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;

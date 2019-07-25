@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HodlWallet2.Android", "Hodl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HodlWallet2.iOS", "HodlWallet2.iOS\HodlWallet2.iOS.csproj", "{9D65E0BF-3315-4EE4-BFB9-3AD77FCA8124}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HodlWallet2", "HodlWallet2\HodlWallet2.csproj", "{BB2AB7ED-FBE3-4F4D-80AD-1A9CB54EC734}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HodlWallet2.UI", "HodlWallet2.UI\HodlWallet2.UI.csproj", "{BB2AB7ED-FBE3-4F4D-80AD-1A9CB54EC734}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Liviano", "LivianoWallet\LivianoWallet\Liviano\Liviano.csproj", "{6994B467-DA54-4C66-848D-6EB660D834BF}"
 EndProject

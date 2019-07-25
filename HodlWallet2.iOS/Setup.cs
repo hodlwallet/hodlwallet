@@ -15,7 +15,7 @@ using Refit;
 
 namespace HodlWallet2.iOS
 {
-    public class Setup : MvxFormsIosSetup<Core.App, App>
+    public class Setup : MvxFormsIosSetup<Core.App, UI.App>
     {
         
         public override MvxLogProviderType GetDefaultLogProviderType() => MvxLogProviderType.Serilog;

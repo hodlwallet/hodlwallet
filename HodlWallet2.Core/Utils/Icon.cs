@@ -77,7 +77,7 @@ namespace HodlWallet2.Core.Utils
         private Assembly GetAssembly()
         {
             var assembly = AppDomain.CurrentDomain.GetAssemblies().First(
-                ass => ass.GetName().Name == "HodlWallet2"
+                ass => ass.GetName().Name == "HodlWallet2.UI"
             );
 
             return assembly;

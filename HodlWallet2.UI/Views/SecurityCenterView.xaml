@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="HodlWallet2.UI.Views.SecurityCenterView"
+    xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core" 
+    BackgroundColor="{StaticResource GrayBackground}"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+    xmlns:controls="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:SecurityCenterViewModel"
+    ios:Page.UseSafeArea="true">
+    <FlexLayout Direction="Column" Margin="20, 0, 20, 0">
+        
+        <FlexLayout Direction="Row" JustifyContent="SpaceBetween" FlexLayout.AlignSelf="Start" FlexLayout.Grow="1">
+            <svg:Icon ResourceId="Assets.close.svg" FlexLayout.AlignSelf="Center">
+                <svg:Icon.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                </svg:Icon.GestureRecognizers>
+            </svg:Icon>
+                
+            <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
+                
+            <Label x:Name="SecurityCenterTitle" 
+                   Style="{DynamicResource CustomLabel}"
+                   FontSize="Medium"
+                   LineBreakMode="MiddleTruncation"
+                   FlexLayout.AlignSelf="Center" />
+            
+            <BoxView FlexLayout.AlignSelf="Center" FlexLayout.Grow="1" />
+            
+            <svg:Icon ResourceId="Assets.faq.svg" FlexLayout.AlignSelf="Center">
+                <svg:Icon.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnFaqTapped"/>
+                </svg:Icon.GestureRecognizers>
+            </svg:Icon>
+        </FlexLayout>
+        
+        <svg:Icon ResourceId="Assets.shield.svg" 
+                  HorizontalOptions="CenterAndExpand" 
+                  VerticalOptions="CenterAndExpand"
+                  FlexLayout.Grow="2"
+                  Margin="0, 15, 0, 15"/>
+        
+        <Label x:Name="ShieldHeader" Style="{DynamicResource CustomLabel}" />
+        
+        <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" Margin="0, 10, 0, 10" />
+        
+        <AbsoluteLayout FlexLayout.Grow="2">
+            <svg:Icon ResourceId="{Binding PinCheck}"
+                      AbsoluteLayout.LayoutBounds="0, 0, 50, 50" />
+            <Label x:Name="PinCheckHeader" 
+                   Style="{DynamicResource CustomLabel}"
+                   AbsoluteLayout.LayoutBounds="50, 0, 1, 30"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"/>
+            <Label x:Name="PinCheckDetail" 
+                   Style="{DynamicResource CustomLabel}"
+                   AbsoluteLayout.LayoutBounds="50, 30, 0.7, 50"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"
+                   FontSize="Small" />
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnPinTapped" />
+            </AbsoluteLayout.GestureRecognizers>
+        </AbsoluteLayout>
+        
+        <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" Margin="0, 5, 0, 5" />
+        
+        <AbsoluteLayout FlexLayout.Grow="2">
+            <svg:Icon ResourceId="{Binding FingerprintCheck}"
+                      AbsoluteLayout.LayoutBounds="0, 0, 50, 50"/>
+            <Label x:Name="FingerprintCheckHeader" 
+                   Style="{DynamicResource CustomLabel}"
+                   AbsoluteLayout.LayoutBounds="50, 0, 1, 30"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"/>
+            <Label x:Name="FingerprintCheckDetail" 
+                   Style="{DynamicResource CustomLabel}"
+                   AbsoluteLayout.LayoutBounds="50, 30, 0.7, 50"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"
+                   FontSize="Small"/>
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnFingerprintTapped" />
+            </AbsoluteLayout.GestureRecognizers>
+        </AbsoluteLayout>
+        
+        <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" Margin="0, 5, 0, 5" />
+        
+        <AbsoluteLayout FlexLayout.Grow="2">
+            <svg:Icon ResourceId="{Binding MnemonicCheck}"
+                      AbsoluteLayout.LayoutBounds="0, 0, 50, 50"/>
+            <Label x:Name="MnemonicCheckHeader" 
+                   Style="{DynamicResource CustomLabel}"
+                   AbsoluteLayout.LayoutBounds="50, 0, 1, 30"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"/>
+            <Label x:Name="MnemonicCheckDetail" 
+                   Style="{DynamicResource CustomLabel}"
+                   FontSize="Small"
+                   LineBreakMode="WordWrap"
+                   AbsoluteLayout.LayoutBounds="50, 30, 0.7, 50"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"/>
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnMnemonicTapped" />
+            </AbsoluteLayout.GestureRecognizers>
+        </AbsoluteLayout>
+        
+        <BoxView BackgroundColor="{StaticResource GrayTextTint}" HeightRequest="1" Margin="0, 5, 0, 5" />
+        
+    </FlexLayout>
+</views:MvxContentPage>

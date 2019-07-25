@@ -1,6 +1,6 @@
 ﻿using System;
 using HodlWallet2.Droid.Renderers;
-using HodlWallet2.Renderers;
+using HodlWallet2.UI.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Android.Content;

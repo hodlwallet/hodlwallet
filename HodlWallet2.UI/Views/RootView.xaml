@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxTabbedPage x:TypeArguments="viewModels:RootViewModel"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
+    xmlns:effects="clr-namespace:HodlWallet2.UI.Renderers;assembly=HodlWallet2.UI"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    x:Class="HodlWallet2.UI.Views.RootView"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    BackgroundColor="{StaticResource GrayBackground}">
+    <TabbedPage.BackgroundColor>#212121</TabbedPage.BackgroundColor>
+    <TabbedPage.SelectedTabColor>#c89e26</TabbedPage.SelectedTabColor>
+    <TabbedPage.UnselectedTabColor>#b8b8b8</TabbedPage.UnselectedTabColor>
+    <TabbedPage.Effects>
+        <effects:HideTabLabelsEffect />
+    </TabbedPage.Effects>
+</views:MvxTabbedPage>
