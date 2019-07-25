@@ -3,7 +3,7 @@ using System.Globalization;
 
 using MvvmCross.Forms.Converters;
 
-namespace HodlWallet2.Core.Converters
+namespace HodlWallet2.UI.Converters
 {
     public class IndexToStringConverter : MvxFormsValueConverter<int, string>
     {

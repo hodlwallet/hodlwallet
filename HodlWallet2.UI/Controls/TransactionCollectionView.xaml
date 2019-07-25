@@ -12,9 +12,9 @@
                 <Setter Property="LineBreakMode" Value="MiddleTruncation" />
             </Style>
 
-            <converters:MemoToHeightConverter x:Key="MemoToHeightConverter"></converters:MemoToHeightConverter>
-            <converters:IsSendToStatusColorConverter x:Key="IsSendToStatusColorConverter"></converters:IsSendToStatusColorConverter>
-            <converters:CreationTimeToDurationConverter x:Key="CreationTimeToDurationConverter"></converters:CreationTimeToDurationConverter>
+            <converters:MemoToHeightConverter x:Key="MemoToHeightConverter" />
+            <converters:IsSendToStatusColorConverter x:Key="IsSendToStatusColorConverter" />
+            <converters:CreationTimeToDurationConverter x:Key="CreationTimeToDurationConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
     <Frame

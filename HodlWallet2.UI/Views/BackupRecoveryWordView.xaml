@@ -4,7 +4,7 @@
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
                       xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
-                      xmlns:converters="clr-namespace:HodlWallet2.Core.Converters;assembly=HodlWallet2.Core"
+                      xmlns:converters="clr-namespace:HodlWallet2.UI.Converters"
                       x:Class="HodlWallet2.UI.Views.BackupRecoveryWordView"
                       x:TypeArguments="viewModels:BackupRecoveryWordViewModel"
                       bindings:Bi.nd="Title TitleText">

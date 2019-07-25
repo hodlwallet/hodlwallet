@@ -37,7 +37,6 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Behaviors\" />
-      <Folder Include="Converters\" />
       <Folder Include="Interactions\" />
       <Folder Include="Extensions\" />
     </ItemGroup>
