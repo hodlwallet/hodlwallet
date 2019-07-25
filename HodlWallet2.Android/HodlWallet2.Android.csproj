@@ -106,17 +106,13 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
-    <AndroidResource Include="..\HodlWallet2\Assets\logo_front.png">
-      <Link>Resources\drawable\logo_front.png</Link>
-    </AndroidResource>
-    <AndroidResource Include="..\HodlWallet2\Assets\logo.png">
-      <Link>Resources\drawable\logo.png</Link>
-    </AndroidResource>
     <AndroidResource Include="Resources\xml\provider_paths.xml" />
     <AndroidResource Include="Resources\drawable\home_tab.png" />
     <AndroidResource Include="Resources\drawable\receive_tab.png" />
     <AndroidResource Include="Resources\drawable\send_tab.png" />
     <AndroidResource Include="Resources\drawable\settings_tab.png" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
+    <AndroidResource Include="Resources\drawable\logo_front.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
