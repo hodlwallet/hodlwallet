@@ -18,7 +18,6 @@ namespace HodlWallet2.Core.Models
         public string DateAndTime { get; set; }
         public string Amount { get; set; }
         public string Address { get; set; }
-        public string AtAddress { get; set; }
         public string Memo { get; set; }
         public string Confirmations { get; set; }
         public string IsAvailable { get; set; }
@@ -74,7 +73,6 @@ namespace HodlWallet2.Core.Models
             if (other.DateAndTime != DateAndTime) return false;
             if (other.Amount != Amount) return false;
             if (other.Address != Address) return false;
-            if (other.AtAddress != AtAddress) return false;
             if (other.Memo != Memo) return false;
             if (other.Confirmations != Confirmations) return false;
             if (other.IsAvailable != IsAvailable) return false;

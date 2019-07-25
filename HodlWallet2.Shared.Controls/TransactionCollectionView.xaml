@@ -63,7 +63,7 @@
                                         Grid.Row="1"
                                         Grid.ColumnSpan="2"
                                         TextColor="{StaticResource White}"
-                                        Text="{Binding AtAddress}" />
+                                        Text="{Binding Address}" />
                                     <Label
                                         Grid.Column="0"
                                         Grid.Row="2"

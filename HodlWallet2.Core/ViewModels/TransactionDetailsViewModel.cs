@@ -140,7 +140,7 @@ namespace HodlWallet2.Core.ViewModels
 
             DateText = _Transaction.DateAndTime;
             AmountText = _Transaction.Amount;
-            AddressToFromText = _Transaction.AtAddress;
+            AddressToFromText = _Transaction.Address;
             StatusText = _Transaction.Confirmations;
             MemoText = _Transaction.Memo;
             AddressText = _Transaction.Address;

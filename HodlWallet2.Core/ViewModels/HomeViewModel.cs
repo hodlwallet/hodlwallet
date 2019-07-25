@@ -456,6 +456,14 @@ namespace HodlWallet2.Core.ViewModels
 
         Transaction CreateTransactionModelInstance(TransactionData transactionData)
         {
+            var network = _WalletService.GetNetwork();
+
+            var script = transactionData.IsSend == true
+                ? transactionData.SentToScriptPubKey
+                : transactionData.ScriptPubKey;
+
+            string address = script.GetDestinationAddress(network).ToString();
+
             var tx = new Transaction
             {
                 Id = transactionData.Id.ToString(),
@@ -474,10 +482,7 @@ namespace HodlWallet2.Core.ViewModels
                 StatusColor = transactionData.IsSend == true
                         ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
                         : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX),
-                Address = _WalletService.GetAddressFromTransaction(transactionData),
-                AtAddress = FormatAtAddressText(
-                    transactionData.IsSend == true,
-                    _WalletService.GetAddressFromTransaction(transactionData)),
+                Address = FormatAtAddressText(transactionData.IsSend == true, address),
                 DateAndTime = transactionData.CreationTime.ToString(),
                 Duration = DateTimeOffsetOperations.ShortDate(transactionData.CreationTime)
             };
