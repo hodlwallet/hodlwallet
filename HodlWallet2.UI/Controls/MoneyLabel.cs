@@ -18,6 +18,8 @@ namespace HodlWallet2.UI.Controls
 
         const uint ANIMATION_DURATION_PER_CHARACTER = 250;
 
+        const double FONT_WIDTH_FACTOR = 0.75;
+
         [TypeConverter(typeof(FontAttributesConverter))]
         public FontAttributes FontAttributes
         {
@@ -168,6 +170,7 @@ namespace HodlWallet2.UI.Controls
                 var moneyDigit = (MoneyDigit)child;
 
                 moneyDigit.HeightRequest = FontSize;
+                moneyDigit.WidthRequest = FontSize * FONT_WIDTH_FACTOR; // FIXME remove this when we get a good font
 
                 foreach (var digit in ((StackLayout)moneyDigit.Content).Children)
                 {
@@ -360,6 +363,7 @@ namespace HodlWallet2.UI.Controls
             var scroll = new MoneyDigit
             {
                 HeightRequest = FontSize,
+                WidthRequest = FontSize * FONT_WIDTH_FACTOR, // FIXME remove this when we get a good font
                 HorizontalScrollBarVisibility = ScrollBarVisibility.Never,
                 VerticalScrollBarVisibility = ScrollBarVisibility.Never,
                 IsEnabled = false,

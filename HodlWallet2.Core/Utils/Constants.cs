@@ -6,7 +6,7 @@
         public const string PRECIO_HOST_URL = "https://precio.bitstop.co";
         public static readonly string[] CURRENCY_CODES = { "USD" };
         public const string BTC_UNIT_LABEL = "1 BTC = {0:C}";
-        public const string BTC_UNIT_LABEL_TMP = "1 BTC = 1 BTC";
+        public const string BTC_UNIT_LABEL_TMP = "";
         public const string SAT_PER_BYTE_UNIT_LABEL = "{0} sat/byte";
         public const int PRECIO_TIMER_INTERVAL = 5;
 

@@ -9,6 +9,7 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
     xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
     x:TypeArguments="viewModels:LoginViewModel"
     ios:Page.UseSafeArea="true">
     
@@ -28,7 +29,6 @@
                     BackgroundColor="{StaticResource GrayBackground}" 
                     JustifyContent="SpaceAround"
                     AlignItems="Center">
-            
             <!-- FIXME For now this buttons are disabled!
             <FlexLayout Direction="Row"
                         FlexLayout.Grow="1"
