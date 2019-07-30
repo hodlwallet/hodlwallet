@@ -93,9 +93,6 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _SyncIsVisible, value);
         }
 
-        public MvxCommand NavigateToSendViewCommand { get; }
-        public MvxCommand NavigateToReceiveViewCommand { get; }
-        public MvxCommand NavigateToMenuViewCommand { get; }
         public MvxCommand SwitchCurrencyCommand { get; }
         public MvxCommand SearchCommand { get; }
         public MvxCommand NavigateToTransactionDetailsCommand { get; }
@@ -110,9 +107,6 @@ namespace HodlWallet2.Core.ViewModels
             _Logger = _WalletService.Logger;
             _PrecioService = precioService;
 
-            NavigateToSendViewCommand = new MvxCommand(NavigateToSendView);
-            NavigateToReceiveViewCommand = new MvxCommand(NavigateToReceiveView);
-            NavigateToMenuViewCommand = new MvxCommand(NavigateToMenuView);
             NavigateToTransactionDetailsCommand = new MvxCommand(NavigateToTransactionDetails);
             SwitchCurrencyCommand = new MvxCommand(SwitchCurrency);
             SearchCommand = new MvxCommand(StartSearch);
@@ -290,21 +284,6 @@ namespace HodlWallet2.Core.ViewModels
             var seedBirthday = DateTimeOffset.FromUnixTimeSeconds(SecureStorageProvider.GetSeedBirthday());
 
             _WalletService.ReScan(seedBirthday);
-        }
-
-        void NavigateToMenuView()
-        {
-            NavigationService.Navigate<MenuViewModel>();
-        }
-
-        void NavigateToReceiveView()
-        {
-            NavigationService.Navigate<ReceiveViewModel>();
-        }
-
-        void NavigateToSendView()
-        {
-            NavigationService.Navigate<SendViewModel>();
         }
 
         void NavigateToTransactionDetails()

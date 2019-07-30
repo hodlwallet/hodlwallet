@@ -9,10 +9,12 @@
     xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
     x:TypeArguments="viewModels:HomeViewModel"
+    NavigationPage.HasNavigationBar="False"
     BackgroundColor="{StaticResource GrayBackground}">
     <ContentPage.BackgroundColor>#212121</ContentPage.BackgroundColor>
     <ContentPage.Content>
         <FlexLayout Direction="Column">
+            <BoxView FlexLayout.Grow="1" />
             <FlexLayout Direction="Row" FlexLayout.Grow="1">
                 <FlexLayout FlexLayout.Grow="1">
                     <Image x:Name="logo" Source="logo.png" HeightRequest="20" Margin="20, 0, 0, 0" />
@@ -25,27 +27,32 @@
                            FontFamily="{StaticResource ElectrolizeFont}"
                            FontSize="Small" />
                         <controls:MoneyLabel x:Name="priceLabel"
-                           Margin="0, 0, 20, 0"
-                           TextColor="{StaticResource White}"
-                           FontFamily="{StaticResource ElectrolizeFont}"
-                           FontSize="Small"
-                           bindings:Bi.nd="Text PriceText" />
+                                             Margin="0, 0, 20, 0"
+                                             TextColor="{StaticResource White}"
+                                             FontSize="Small"
+                                             FontFamily="Menlo"
+                                             bindings:Bi.nd="Text PriceText" />
                     </StackLayout>
                 </FlexLayout>
             </FlexLayout>
             
             <FlexLayout Direction="Row" FlexLayout.Grow="1">
-                <FlexLayout Direction="Row" FlexLayout.Grow="1">
-                    <!--<controls:MoneyLabel x:Name="amountLabel"
-                           Margin="20, 0, 0, 0"
-                           Style="{DynamicResource CustomLabel}"
-                           FontSize="Large"
-                           bindings:Bi.nd="Text If(IsBtcEnabled, Format('{0:F8}', Amount), Format('{0:F2}', Amount))">
-                        <controls:MoneyLabel.GestureRecognizers>
-                            <TapGestureRecognizer bindings:Bi.nd="Command SwitchCurrencyCommand" />
-                        </controls:MoneyLabel.GestureRecognizers>
-                    </controls:MoneyLabel>-->
-                    <Label x:Name="amountLabel"
+                <FlexLayout Direction="Row"
+                            FlexLayout.Grow="1">
+                    <StackLayout Orientation="Horizontal" HeightRequest="30">
+
+                        <controls:MoneyLabel x:Name="amountLabel"
+                                             Margin="20, 0, 0, 0"
+                                             FontSize="Large"
+                                             FontFamily="Menlo"
+                                             TextColor="{StaticResource White}"
+                                             bindings:Bi.nd="Text If(IsBtcEnabled, Format('{0:F8}', Amount), Format('{0:F2}', Amount))">
+                            <controls:MoneyLabel.GestureRecognizers>
+                                <TapGestureRecognizer bindings:Bi.nd="Command SwitchCurrencyCommand" />
+                            </controls:MoneyLabel.GestureRecognizers>
+                        </controls:MoneyLabel>
+                    </StackLayout>
+                    <!--<Label x:Name="amountLabel"
                            Margin="20, 0, 0, 0"
                            Style="{DynamicResource CustomLabel}"
                            FontSize="Large"
@@ -53,9 +60,9 @@
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer bindings:Bi.nd="Command SwitchCurrencyCommand" />
                         </Label.GestureRecognizers>
-                    </Label>
+                    </Label>-->
                 </FlexLayout>
-                
+
                 <FlexLayout Direction="Column" FlexLayout.Grow="1" AlignItems="End">
                     <svg:Icon ResourceId="Assets.search.svg"
                               Margin="0, 4, 20, 0"

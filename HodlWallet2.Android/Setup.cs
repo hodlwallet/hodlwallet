@@ -19,7 +19,7 @@ namespace HodlWallet2.Droid
 
         protected override void InitializeFirstChance()
         {
-            base.InitializeFirstChance();          
+            base.InitializeFirstChance();         
             
             // Here we can register types as singletons or multiple instances
             // 

@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Reflection;
 using System.Threading.Tasks;
 
 using MvvmCross.Logging;
@@ -39,7 +40,6 @@ namespace HodlWallet2.Core.ViewModels
             }
 
             Debug.WriteLine(ex.StackTrace);
-            //TODO insert logging framework here
         }
     }
 

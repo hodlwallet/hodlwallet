@@ -13,12 +13,13 @@ namespace HodlWallet2.UI.Controls
         Animation _Animation = new Animation();
 
         const string ALLOWED_DIGITS = "9876543210";
-        const string ALLOWED_SYMBOLS = ",.-";
-        const string ALLOWED_CHARACTERS = ALLOWED_DIGITS + ALLOWED_SYMBOLS;
+        const string ALLOWED_SYMBOLS = ",.-$";
+        const string ALLOWED_EXTRA = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const string ALLOWED_CHARACTERS = ALLOWED_DIGITS + ALLOWED_SYMBOLS + ALLOWED_EXTRA;
 
         const uint ANIMATION_DURATION_PER_CHARACTER = 250;
 
-        const double FONT_WIDTH_FACTOR = 0.75;
+        const double FONT_WIDTH_FACTOR = 1.00;
 
         [TypeConverter(typeof(FontAttributesConverter))]
         public FontAttributes FontAttributes
@@ -129,6 +130,21 @@ namespace HodlWallet2.UI.Controls
 
         void ChangeTextColor()
         {
+            if (Children.Count == 0)
+            {
+                LayoutChanged += (object s, EventArgs e) =>
+                {
+                    _ChangeTextColor();
+                };
+
+                return;
+            }
+
+            _ChangeTextColor();
+        }
+
+        void _ChangeTextColor()
+        {
             foreach (var child in Children)
             {
                 var moneyDigit = (MoneyDigit)child;
@@ -143,9 +159,25 @@ namespace HodlWallet2.UI.Controls
                     label.TextColor = TextColor;
                 }
             }
+
         }
 
         void ChangeFontFamily()
+        {
+            if (Children.Count == 0)
+            {
+                LayoutChanged += (object s, EventArgs e) =>
+                {
+                    _ChangeFontFamily();
+                };
+
+                return;
+            }
+
+            _ChangeFontFamily();
+        }
+
+        void _ChangeFontFamily()
         {
             foreach (var child in Children)
             {
@@ -165,12 +197,27 @@ namespace HodlWallet2.UI.Controls
 
         void ChangeFontSize()
         {
+            if (Children.Count == 0)
+            {
+                LayoutChanged += (object s, EventArgs e) =>
+                {
+                    _ChangeFontSize();
+                };
+
+                return;
+            }
+
+            _ChangeFontSize();
+        }
+
+        void _ChangeFontSize()
+        {
             foreach (var child in Children)
             {
                 var moneyDigit = (MoneyDigit)child;
 
                 moneyDigit.HeightRequest = FontSize;
-                moneyDigit.WidthRequest = FontSize * FONT_WIDTH_FACTOR; // FIXME remove this when we get a good font
+                //moneyDigit.WidthRequest = FontSize * FONT_WIDTH_FACTOR; // FIXME remove this when we get a good font
 
                 foreach (var digit in ((StackLayout)moneyDigit.Content).Children)
                 {
@@ -363,7 +410,7 @@ namespace HodlWallet2.UI.Controls
             var scroll = new MoneyDigit
             {
                 HeightRequest = FontSize,
-                WidthRequest = FontSize * FONT_WIDTH_FACTOR, // FIXME remove this when we get a good font
+                //WidthRequest = FontSize * FONT_WIDTH_FACTOR, // FIXME remove this when we get a good font
                 HorizontalScrollBarVisibility = ScrollBarVisibility.Never,
                 VerticalScrollBarVisibility = ScrollBarVisibility.Never,
                 IsEnabled = false,

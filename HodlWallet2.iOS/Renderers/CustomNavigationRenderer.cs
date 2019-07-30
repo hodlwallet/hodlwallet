@@ -6,7 +6,7 @@ using System;
 using HodlWallet2.UI.Renderers;
 using HodlWallet2.iOS.Renderers;
 
-[assembly: ExportRenderer(typeof(NavigationPage), typeof(CustomNavigationRenderer))]
+//[assembly: ExportRenderer(typeof(NavigationPage), typeof(CustomNavigationRenderer))]
 namespace HodlWallet2.iOS.Renderers
 {
     public class CustomNavigationRenderer : NavigationRenderer

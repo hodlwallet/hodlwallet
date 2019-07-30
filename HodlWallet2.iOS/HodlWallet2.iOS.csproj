@@ -151,15 +151,13 @@
     <ImageAsset Include="Assets.xcassets\logo_front.png.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\logo_front.png.imageset\logo_front.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\logo.png.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\logo.png.imageset\logo.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo_front.png.imageset\logo_front.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
