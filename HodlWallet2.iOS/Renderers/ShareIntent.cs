@@ -1,8 +1,6 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
-using UIKit;
+﻿using UIKit;
 using Foundation;
+
 using HodlWallet2.iOS.Renderers;
 using HodlWallet2.Core.Interfaces;
 
@@ -11,6 +9,8 @@ namespace HodlWallet2.iOS.Renderers
 {
     public class ShareIntent : IShareIntent
     {
+        const int QR_CODE_SIZE = 300;
+
         public void TextShareIntent(string text)
         {
             var activityController = new UIActivityViewController(new NSObject[] { UIActivity.FromObject(text) }, null);
@@ -31,8 +31,8 @@ namespace HodlWallet2.iOS.Renderers
                 Format = ZXing.BarcodeFormat.QR_CODE,
                 Options = new ZXing.Common.EncodingOptions
                 {
-                    Width = 300,
-                    Height = 300
+                    Width = QR_CODE_SIZE,
+                    Height = QR_CODE_SIZE
                 }
             };
 

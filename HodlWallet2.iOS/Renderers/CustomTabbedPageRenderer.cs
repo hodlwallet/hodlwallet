@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 
 using UIKit;
 
@@ -7,7 +6,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 using HodlWallet2.iOS.Renderers;
-using Foundation;
 
 [assembly: ExportRenderer(typeof(TabbedPage), typeof(CustomTabbedPageRenderer))]
 namespace HodlWallet2.iOS.Renderers

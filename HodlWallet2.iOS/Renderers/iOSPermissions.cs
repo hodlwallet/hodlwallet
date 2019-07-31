@@ -1,6 +1,7 @@
-﻿using HodlWallet2.Core.Interfaces;
+﻿using Xamarin.Forms;
+
+using HodlWallet2.Core.Interfaces;
 using HodlWallet2.iOS.Renderers;
-using Xamarin.Forms;
 
 [assembly: Dependency(typeof (iOSPermissions))]
 namespace HodlWallet2.iOS.Renderers
