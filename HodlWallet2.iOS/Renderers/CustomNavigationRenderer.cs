@@ -19,9 +19,6 @@ namespace HodlWallet2.iOS.Renderers
             // Removes top border
             NavigationBar.Translucent = false;
             NavigationBar.ShadowImage = null;
-            NavigationBar.ClipsToBounds = true;
-
-            NavigationBar.TintColor = UIColor.White;
 
             // Sets fonts to "bold" in this case of this font is pointsize + 2
             // But we should find a font that has a bold version
@@ -34,6 +31,7 @@ namespace HodlWallet2.iOS.Renderers
 
             NavigationBar.TitleTextAttributes = new UIStringAttributes()
             {
+                ForegroundColor = UIColor.White,
                 Font = boldFont
             };
         }

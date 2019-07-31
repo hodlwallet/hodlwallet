@@ -27,8 +27,6 @@ namespace HodlWallet2.UI
         protected override async void OnStart()
         {
             _Logger.Information($"App started at: {DateTime.Now}");
-
-            await Task.Run(() => _WalletService.InitializeWallet());
         }
 
         protected override void OnSleep()

@@ -43,6 +43,8 @@ namespace HodlWallet2.Core
         /// </summary>
         public override Task Startup()
         {
+            _ = Task.Run(() => WalletService.Instance.InitializeWallet());
+
             return base.Startup();
         }
 
