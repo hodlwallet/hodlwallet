@@ -12,7 +12,6 @@
     xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
     x:TypeArguments="viewModels:LoginViewModel"
     ios:Page.UseSafeArea="true">
-
     <views:MvxContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">

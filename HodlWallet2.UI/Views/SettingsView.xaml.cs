@@ -13,7 +13,7 @@ using HodlWallet2.Core.Utils;
 
 namespace HodlWallet2.UI.Views
 {
-    [MvxTabbedPagePresentation(TabbedPosition.Tab)]
+    [MvxTabbedPagePresentation(TabbedPosition.Tab, WrapInNavigationPage = false)]
     public partial class SettingsView : MvxContentPage<SettingsViewModel>
     {
         IMvxInteraction<YesNoQuestion> _QuestionInteraction = new MvxInteraction<YesNoQuestion>();

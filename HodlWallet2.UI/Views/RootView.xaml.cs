@@ -1,24 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using MvvmCross.Base;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using HodlWallet2.Core.ViewModels;
-using System.ComponentModel;
-using MvvmCross.Binding.BindingContext;
 using MvvmCross.ViewModels;
+
 using HodlWallet2.Core.Interactions;
-using MvvmCross.Base;
-using Liviano.Utilities;
+using HodlWallet2.Core.ViewModels;
 
 namespace HodlWallet2.UI.Views
 {
-    [MvxTabbedPagePresentation(TabbedPosition.Root, WrapInNavigationPage = false)]
+    [MvxTabbedPagePresentation(TabbedPosition.Root, NoHistory = true, WrapInNavigationPage = true)]
     public partial class RootView : MvxTabbedPage<RootViewModel>
     {
         /// <summary>

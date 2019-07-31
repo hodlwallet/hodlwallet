@@ -10,6 +10,8 @@ namespace HodlWallet2.iOS.Renderers
 {
     public class CustomNavigationRenderer : NavigationRenderer
     {
+        UIColor GRAY_BACKGROUND { get; } = new UIColor(red: 0.13f, green: 0.13f, blue: 0.13f, alpha: 1.0f);
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -18,6 +20,8 @@ namespace HodlWallet2.iOS.Renderers
             NavigationBar.Translucent = false;
             NavigationBar.ShadowImage = null;
             NavigationBar.ClipsToBounds = true;
+
+            NavigationBar.TintColor = UIColor.White;
 
             // Sets fonts to "bold" in this case of this font is pointsize + 2
             // But we should find a font that has a bold version

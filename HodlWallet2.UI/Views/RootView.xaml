@@ -6,12 +6,15 @@
                      xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
                      xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
                      xmlns:effects="clr-namespace:HodlWallet2.UI.Renderers;assembly=HodlWallet2.UI"
+                     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
                      xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
                      x:Class="HodlWallet2.UI.Views.RootView"
                      NavigationPage.HasNavigationBar="False"
+                     BackgroundColor="{StaticResource GrayBackground}"
                      BarBackgroundColor="{DynamicResource GrayBackground}"
                      SelectedTabColor="{DynamicResource Gold}"
                      UnselectedTabColor="{DynamicResource LightGray}"
+                     ios:Page.UseSafeArea="True"
                      android:TabbedPage.ToolbarPlacement="Bottom">
     <TabbedPage.Effects>
         <effects:HideTabLabelsEffect />
