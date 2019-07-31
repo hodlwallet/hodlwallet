@@ -15,15 +15,10 @@ namespace HodlWallet2.iOS.Renderers
     {
         readonly Color GRAY_BACKGROUND = Color.FromHex("#212121");
 
-        public CustomTabbedPageRenderer()
-        {
-            TabBar.TintColor = UIColor.Red;
-            TabBar.BackgroundColor = UIColor.Red;
-        }
-
         public override void ViewWillAppear(bool animated)
         {
-            TabBar.BarTintColor = GRAY_BACKGROUND.ToUIColor();
+            // This is the actual background color of the bar, cannot be
+            //TabBar.BarTintColor = GRAY_BACKGROUND.ToUIColor();
 
             // Removes border on top of bar
             TabBar.Translucent = false;
@@ -32,7 +27,29 @@ namespace HodlWallet2.iOS.Renderers
 
             TabBar.ClipsToBounds = true;
 
+            Tabbed.ChildAdded += Tabbed_ChildAdded;
+
+            Tabbed.LayoutChanged += Tabbed_LayoutChanged;
+            Tabbed.
+
             base.ViewWillAppear(animated);
+        }
+
+        private void Tabbed_LayoutChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Tabbed_ChildAdded(object sender, ElementEventArgs e)
+        {
+            var tabs = Element as TabbedPage;
+            if (tabs != null)
+            {
+                for (int i = 0; i < TabBar.Items.Length; i++)
+                {
+                    UpdateTabBarItem(TabBar.Items[i], tabs.Children[i].IconImageSource);
+                }
+            }
         }
 
         public override void ViewDidAppear(bool animated)
@@ -57,7 +74,7 @@ namespace HodlWallet2.iOS.Renderers
             if (item == null || icon == null)
                 return;
 
-            item.ImageInsets = new UIEdgeInsets(5, 0, -5, 0);
+            item.ImageInsets = new UIEdgeInsets(6, 0, -6, 0);
 
             // Remove titles
             item.Title = "";

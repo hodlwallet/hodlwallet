@@ -10,7 +10,7 @@ using HodlWallet2.Locale;
 
 namespace HodlWallet2.UI.Views
 {
-    [MvxTabbedPagePresentation(TabbedPosition.Tab, WrapInNavigationPage = false, Title = "Receive")]
+    [MvxTabbedPagePresentation(TabbedPosition.Tab)]
     public partial class ReceiveView : MvxContentPage<ReceiveViewModel>
     {
         IMvxInteraction<DisplayAlertContent> _CopiedToClipboardInteraction = new MvxInteraction<DisplayAlertContent>();

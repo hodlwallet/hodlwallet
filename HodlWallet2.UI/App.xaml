@@ -14,6 +14,7 @@
             <Color x:Key="SyncGradientEnd">#DBAC29</Color>
             <Color x:Key="GrayTextTint">#A3A8AD</Color>
             <Color x:Key="LightGray">#EBEBEB</Color>
+            <Color x:Key="Gold">#C89E26</Color>
 
             <!-- Fonts -->
             <OnPlatform x:Key="ElectrolizeFont"

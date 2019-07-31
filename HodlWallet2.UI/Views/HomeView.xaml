@@ -9,7 +9,6 @@
     xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
     x:TypeArguments="viewModels:HomeViewModel"
-    NavigationPage.HasNavigationBar="False"
     BackgroundColor="{StaticResource GrayBackground}">
     <ContentPage.BackgroundColor>#212121</ContentPage.BackgroundColor>
     <ContentPage.Content>

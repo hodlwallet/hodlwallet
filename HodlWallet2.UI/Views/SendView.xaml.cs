@@ -21,7 +21,7 @@ using NBitcoin;
 
 namespace HodlWallet2.UI.Views
 {
-    [MvxTabbedPagePresentation(TabbedPosition.Tab, WrapInNavigationPage = false, Title = "Send")]
+    [MvxTabbedPagePresentation(TabbedPosition.Tab)]
     public partial class SendView : MvxContentPage<SendViewModel>
     {
         ZXingScannerPage _ScanPage;

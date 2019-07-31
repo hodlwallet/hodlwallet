@@ -16,8 +16,8 @@
 
   <ItemGroup>
     <PackageReference Include="MvvmCross.Forms" Version="6.3.1" />
-    <PackageReference Include="Xamarin.Forms" Version="4.1.0.581479" />
-    <PackageReference Include="Serilog" Version="2.9.0-dev-01102" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.618606" />
+    <PackageReference Include="Serilog" Version="2.9.0-dev-01119" />
     <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
   </ItemGroup>

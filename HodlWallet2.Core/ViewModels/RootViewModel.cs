@@ -39,9 +39,8 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _IsLoading, value);
         }
 
-        IWalletService _WalletService;
-
-        IPrecioService _PrecioService;
+        readonly IWalletService _WalletService;
+        readonly IPrecioService _PrecioService;
 
         public SendViewModel _SendViewModel { get; }
         public ReceiveViewModel _ReceiveViewModel { get; }
@@ -53,6 +52,8 @@ namespace HodlWallet2.Core.ViewModels
         MvxInteraction<SelectCurrentTab> _SelectTabInteraction = new MvxInteraction<SelectCurrentTab>();
         public IMvxInteraction<SelectCurrentTab> SelectTabInteraction => _SelectTabInteraction;
 
+        IMvxNavigationService _NavigationService;
+
         public RootViewModel(
             IMvxLogProvider logProvider,
             IMvxNavigationService navigationService,
@@ -62,22 +63,15 @@ namespace HodlWallet2.Core.ViewModels
         {
             _WalletService = walletService;
             _PrecioService = precioService;
+            _NavigationService = navigationService;
 
-            _SendViewModel = new SendViewModel(logProvider, navigationService, walletService, precioService);
-            _ReceiveViewModel = new ReceiveViewModel(logProvider, navigationService, walletService);
-            _HomeViewModel = new HomeViewModel(logProvider, navigationService, walletService, precioService);
-            _SettingsViewModel = new SettingsViewModel(logProvider, navigationService);
+            _SendViewModel = new SendViewModel(logProvider, _NavigationService, _WalletService, _PrecioService);
+            _ReceiveViewModel = new ReceiveViewModel(logProvider, _NavigationService, _WalletService);
+            _HomeViewModel = new HomeViewModel(logProvider, _NavigationService, _WalletService, _PrecioService);
+            _SettingsViewModel = new SettingsViewModel(logProvider, _NavigationService);
 
             ShowInitialViewModelsCommand = new MvxAsyncCommand(ShowInitialViewModels);
         }
-
-        //public RootViewModel(
-        //    IMvxLogProvider logProvider,
-        //    IMvxNavigationService navigationService)
-        //    : base(logProvider, navigationService)
-        //{
-        //    ShowInitialViewModelsCommand = new MvxAsyncCommand(ShowInitialViewModels);
-        //}
 
         public override void Prepare(int parameter)
         {
@@ -103,10 +97,10 @@ namespace HodlWallet2.Core.ViewModels
         {
             var tasks = new List<Task>();
 
-            tasks.Add(NavigationService.Navigate<SendViewModel>());
-            tasks.Add(NavigationService.Navigate<ReceiveViewModel>());
-            tasks.Add(NavigationService.Navigate<HomeViewModel>());
-            tasks.Add(NavigationService.Navigate<SettingsViewModel>());
+            tasks.Add(_NavigationService.Navigate<SendViewModel>());
+            tasks.Add(_NavigationService.Navigate<ReceiveViewModel>());
+            tasks.Add(_NavigationService.Navigate<HomeViewModel>());
+            tasks.Add(_NavigationService.Navigate<SettingsViewModel>());
 
             await Task.WhenAll(tasks);
         }

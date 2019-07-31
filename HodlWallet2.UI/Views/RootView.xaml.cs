@@ -18,7 +18,7 @@ using Liviano.Utilities;
 
 namespace HodlWallet2.UI.Views
 {
-    [MvxTabbedPagePresentation(TabbedPosition.Root, NoHistory = true, WrapInNavigationPage = true)]
+    [MvxTabbedPagePresentation(TabbedPosition.Root, WrapInNavigationPage = false)]
     public partial class RootView : MvxTabbedPage<RootViewModel>
     {
         /// <summary>
@@ -62,7 +62,7 @@ namespace HodlWallet2.UI.Views
 
             if (_FirstTime)
             {
-                ViewModel.ShowInitialViewModelsCommand.Execute(null);
+                ViewModel.ShowInitialViewModelsCommand.ExecuteAsync(null);
 
                 _FirstTime = false;
             }

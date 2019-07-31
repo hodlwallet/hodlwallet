@@ -172,9 +172,9 @@
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.1.5.188</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.1.0.581479" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.618606" />
     <PackageReference Include="Serilog">
-      <Version>2.9.0-dev-01102</Version>
+      <Version>2.9.0-dev-01119</Version>
     </PackageReference>
     <PackageReference Include="Serilog.Sinks.Xamarin">
       <Version>0.1.29</Version>

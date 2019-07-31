@@ -6,7 +6,7 @@ using System;
 using HodlWallet2.UI.Renderers;
 using HodlWallet2.iOS.Renderers;
 
-//[assembly: ExportRenderer(typeof(NavigationPage), typeof(CustomNavigationRenderer))]
+[assembly: ExportRenderer(typeof(NavigationPage), typeof(CustomNavigationRenderer))]
 namespace HodlWallet2.iOS.Renderers
 {
     public class CustomNavigationRenderer : NavigationRenderer
@@ -17,12 +17,12 @@ namespace HodlWallet2.iOS.Renderers
         {
             base.ViewDidLoad();
 
-            NavigationBar.Translucent = false;
+            //NavigationBar.Translucent = false;
 
-            NavigationBar.BackgroundColor = UIColor.White;
+            //NavigationBar.BackgroundColor = GRAY_BACKGROUND;
             NavigationBar.ShadowImage = new UIImage();
-            NavigationBar.BarTintColor = GRAY_BACKGROUND;
-            NavigationBar.TintColor = UIColor.White;
+            //NavigationBar.BarTintColor = GRAY_BACKGROUND;
+            //NavigationBar.TintColor = UIColor.White;
 
             var font = UIFont.FromName("Electrolize", 20);
             var descriptor =  font.FontDescriptor.CreateWithAttributes(new UIFontAttributes
@@ -33,14 +33,8 @@ namespace HodlWallet2.iOS.Renderers
 
             NavigationBar.TitleTextAttributes = new UIStringAttributes()
             {
-                Font = boldFont,
-                ForegroundColor = UIColor.White
+                Font = boldFont
             };
-        }
-
-        public override UIStatusBarStyle PreferredStatusBarStyle()
-        {
-            return UIStatusBarStyle.LightContent;
         }
 
         protected override void Dispose(bool disposing)
