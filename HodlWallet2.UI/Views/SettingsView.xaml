@@ -5,12 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="HodlWallet2.UI.Views.SettingsView"
     xmlns:svg="clr-namespace:HodlWallet2.Core.Utils;assembly=HodlWallet2.Core" 
-    BackgroundColor="Red"
+    BackgroundColor="{StaticResource GrayBackground}"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:HodlWallet2.Core.ViewModels;assembly=HodlWallet2.Core"
     xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms">
-    
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">

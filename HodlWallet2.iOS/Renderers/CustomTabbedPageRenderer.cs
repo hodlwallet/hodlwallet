@@ -7,76 +7,51 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 using HodlWallet2.iOS.Renderers;
+using Foundation;
 
 [assembly: ExportRenderer(typeof(TabbedPage), typeof(CustomTabbedPageRenderer))]
 namespace HodlWallet2.iOS.Renderers
 {
     public class CustomTabbedPageRenderer : TabbedRenderer
     {
-        readonly Color GRAY_BACKGROUND = Color.FromHex("#212121");
-
         public override void ViewWillAppear(bool animated)
         {
-            // This is the actual background color of the bar, cannot be
-            //TabBar.BarTintColor = GRAY_BACKGROUND.ToUIColor();
-
-            // Removes border on top of bar
+            // Remove color decoloring by iOS
             TabBar.Translucent = false;
-            TabBar.Layer.BorderWidth = 0.5f;
-            TabBar.Layer.BorderColor = GRAY_BACKGROUND.ToUIColor().CGColor;
 
+            // Removes border on top of the tabbed bar
+            TabBar.ShadowImage = null;
             TabBar.ClipsToBounds = true;
+            TabBar.Layer.BorderWidth = 0.0f;
 
-            Tabbed.ChildAdded += Tabbed_ChildAdded;
-
-            Tabbed.LayoutChanged += Tabbed_LayoutChanged;
-            Tabbed.
+            // Since we add item after the tabbed appears, we subscribe to this method
+            // this is very important since here the icons get moved a little bit to the top
+            Tabbed.Appearing += Tabbed_Appearing;
 
             base.ViewWillAppear(animated);
         }
 
-        private void Tabbed_LayoutChanged(object sender, EventArgs e)
+        private void Tabbed_Appearing(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        private void Tabbed_ChildAdded(object sender, ElementEventArgs e)
-        {
-            var tabs = Element as TabbedPage;
-            if (tabs != null)
+            if (Element is TabbedPage)
             {
-                for (int i = 0; i < TabBar.Items.Length; i++)
+                for (int i = 0, count = TabBar.Items.Length; i < count; i++)
                 {
-                    UpdateTabBarItem(TabBar.Items[i], tabs.Children[i].IconImageSource);
+                    UpdateTabBarItem(TabBar.Items[i]);
                 }
             }
         }
 
-        public override void ViewDidAppear(bool animated)
+        private void UpdateTabBarItem(UITabBarItem item)
         {
-            if (TabBar?.Items == null)
+            if (item == null)
                 return;
 
-            var tabs = Element as TabbedPage;
-            if (tabs != null)
-            {
-                for (int i = 0; i < TabBar.Items.Length; i++)
-                {
-                    UpdateTabBarItem(TabBar.Items[i], tabs.Children[i].IconImageSource);
-                }
-            }
+            // Move icons to the center by moving the view a little down
+            // And then, we remove the titles!
+            item.ImageInsets = new UIEdgeInsets(5, 0, -5, 0);
 
-            base.ViewDidAppear(animated);
-        }
-
-        private void UpdateTabBarItem(UITabBarItem item, ImageSource icon)
-        {
-            if (item == null || icon == null)
-                return;
-
-            item.ImageInsets = new UIEdgeInsets(6, 0, -6, 0);
-
-            // Remove titles
+            // Remove titles from being visible
             item.Title = "";
         }
     }
