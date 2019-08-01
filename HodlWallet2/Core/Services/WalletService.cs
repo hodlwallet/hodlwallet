@@ -26,7 +26,7 @@ namespace HodlWallet2.Core.Services
 {
     public sealed class WalletService : IWalletService
     {
-        public static WalletService Instance => DependencyService.Get<WalletService>();
+        public static WalletService Instance => DependencyService.Get<WalletService>() ?? new WalletService();
 
         public const int DEFAULT_NODES_TO_CONNECT = 4;
 

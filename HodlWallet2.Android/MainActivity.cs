@@ -6,6 +6,8 @@ using Android.OS;
 using Xamarin.Forms;
 
 using ZXing.Mobile;
+using HodlWallet2.Core.Services;
+using Serilog;
 
 [assembly: ResolutionGroupName("AppEffects")]
 
@@ -24,10 +26,21 @@ namespace HodlWallet2.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
-            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             MobileBarcodeScanner.Initialize(Application);
-            FormsControls.Droid.Main.Init(this);
+
+#if DEBUG
+            WalletService.Instance.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.AndroidLog()
+                .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
+                .CreateLogger();
+#else
+                WalletService.Instance.Logger = new LoggerConfiguration()
+                    .WriteTo.AndroidLog()
+                    .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
+                    .CreateLogger();
+#endif
 
             base.OnCreate(savedInstanceState);
         }

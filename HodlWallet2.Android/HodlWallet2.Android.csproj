@@ -49,7 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.1" />
-    <PackageReference Include="MvvmCross.Forms" Version="6.3.1" />
     <PackageReference Include="Serilog.Sinks.Xamarin">
       <Version>0.1.29</Version>
     </PackageReference>
@@ -76,8 +75,6 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Setup.cs" />
-    <Compile Include="Renderers\CustomNavigationPageRenderer.cs" />
     <Compile Include="Renderers\FeeSlider.cs" />
     <Compile Include="Renderers\ShareIntent.cs" />
     <Compile Include="Renderers\AndroidPermissions.cs" />
@@ -124,17 +121,24 @@
     <Folder Include="Resources\xml\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HodlWallet2.Core\HodlWallet2.Core.csproj">
-      <Project>{014986bb-69a9-4a7f-b45d-94a4da28a047}</Project>
-      <Name>HodlWallet2.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HodlWallet2.UI\HodlWallet2.UI.csproj">
-      <Project>{BB2AB7ED-FBE3-4F4D-80AD-1A9CB54EC734}</Project>
-      <Name>HodlWallet2.UI</Name>
+    <ProjectReference Include="..\HodlWallet2\HodlWallet2.csproj">
+      <Project>{4AF4A11A-3D4A-433C-BB67-17FEBA8AE4F9}</Project>
+      <Name>HodlWallet2</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Electrolize-Regular.ttf" />
+    <AndroidAsset Include="Assets\LiberationSans-Bold.ttf" />
+    <AndroidAsset Include="Assets\LiberationSans-BoldItalic.ttf" />
+    <AndroidAsset Include="Assets\LiberationMono-Regular.ttf" />
+    <AndroidAsset Include="Assets\LiberationSerif-BoldItalic.ttf" />
+    <AndroidAsset Include="Assets\LiberationSerif-Italic.ttf" />
+    <AndroidAsset Include="Assets\LiberationSerif-Regular.ttf" />
+    <AndroidAsset Include="Assets\LiberationMono-BoldItalic.ttf" />
+    <AndroidAsset Include="Assets\LiberationSerif-Bold.ttf" />
+    <AndroidAsset Include="Assets\LiberationSans-Italic.ttf" />
+    <AndroidAsset Include="Assets\LiberationMono-Italic.ttf" />
+    <AndroidAsset Include="Assets\LiberationMono-Bold.ttf" />
+    <AndroidAsset Include="Assets\LiberationSans-Regular.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
