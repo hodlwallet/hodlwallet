@@ -5,7 +5,6 @@ using Android.OS;
 
 using Xamarin.Forms;
 
-using MvvmCross.Forms.Platforms.Android.Views;
 using ZXing.Mobile;
 
 [assembly: ResolutionGroupName("AppEffects")]
@@ -13,7 +12,7 @@ using ZXing.Mobile;
 namespace HodlWallet2.Droid
 {
     [Activity(Label = "HodlWallet2", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : MvxFormsAppCompatActivity
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {

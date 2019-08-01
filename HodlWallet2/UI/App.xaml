@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HodlWallet2.UI.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Constants -->
+            <x:String x:Key="LoginBackButtonText">&#x21E6;</x:String>
+
+            <!-- Colors -->
+            <!-- Named after the purpose they served, by this a color cannot be named
+                 "White" should be named TextPrimary
+                 "Primary" means the first color, then we could define
+                 TextSecondary and that could be "LightGray".
+
+                 Tip to keep this going: Repeating colors is fine. -->
+            <Color x:Key="BackgroundPrimary">#212121</Color>
+            <Color x:Key="BackgroundSecondary">#161616</Color>
+            <Color x:Key="TextPrimary">#F5F7FA</Color>
+            <Color x:Key="TextSecondary">#A3A8AD</Color>
+            <Color x:Key="TextSuccess">#C89E26</Color>
+            <Color x:Key="TextError">Red</Color>
+            <Color x:Key="SelectedTab">#C89E26</Color>
+            <Color x:Key="InputPinOn">#C89E26</Color>
+            <Color x:Key="InputPinOff">#F5F7FA</Color>
+            <Color x:Key="UnselectedTab">#EBEBEB</Color>
+            <Color x:Key="SyncGradientStart">#DAAB28</Color>
+            <Color x:Key="SyncGradientEnd">#DBAC29</Color>
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+
+            <!-- Fonts -->
+            <!-- All fonts are here, all that you ever need, they're named like this:
+                {FontType-{FontAttribute}
+                Then for a number you'd do:
+
+                FontFamily="Mono-Regular"
+            -->
+            <!-- Monospaced -->
+            <OnPlatform x:Key="Mono-Bold"
+                        x:TypeArguments="x:String"
+                        iOS="LiberationMono-Bold"
+                        Android="LiberationMono-Bold.ttf#LiberationMono-Bold" />
+            <OnPlatform x:Key="Mono-BoldItalic"
+                        x:TypeArguments="x:String"
+                        iOS="LiberationMono-BoldItalic"
+                        Android="LiberationMono-BoldItalic#LiberationMono-BoldItalic" />
+            <OnPlatform x:Key="Mono-Italic"
+                        x:TypeArguments="x:String"
+                        iOS="LiberationMono-Italic"
+                        Android="LiberationMono-Italic.ttf#LiberationMono-Italic" />
+            <OnPlatform x:Key="Mono-Regular"
+                        x:TypeArguments="x:String"
+                        iOS="LiberationMono-Regular"
+                        Android="LiberationMono-Regular.ttf#LiberationMono-Regular" />
+
+            <!-- Sans -->
+            <OnPlatform x:Key="Sans-Bold"
+                        x:TypeArguments="x:String"
+                        iOS="LiberationSans-Bold"
+                        Android="LiberationSans-Bold.ttf#LiberationSans-Bold" />
+            <OnPlatform x:Key="Sans-BoldItalic"
+                        x:TypeArguments="x:String"
+                        iOS="LiberationSans-BoldItalic"
+                        Android="LiberationSans-BoldItalic#LiberationSans-BoldItalic" />
+            <OnPlatform x:Key="Sans-Italic"
+                        x:TypeArguments="x:String"
+                        iOS="LiberationSans-Italic"
+                        Android="LiberationSans-Italic.ttf#LiberationSans-Italic" />
+            <OnPlatform x:Key="Sans-Regular"
+                        x:TypeArguments="x:String"
+                        iOS="LiberationSans-Regular"
+                        Android="LiberationSans-Regular.ttf#LiberationSans-Regular" />
+
+            <!-- Serif -->
+            <OnPlatform x:Key="Serif-Bold"
+                        x:TypeArguments="x:String"
+                        iOS="LiberationSerif-Bold"
+                        Android="LiberationSerif-Bold.ttf#LiberationSerif-Bold" />
+            <OnPlatform x:Key="Serif-BoldItalic"
+                        x:TypeArguments="x:String"
+                        iOS="LiberationSerif-BoldItalic"
+                        Android="LiberationSerif-BoldItalic#LiberationSerif-BoldItalic" />
+            <OnPlatform x:Key="Serif-Italic"
+                        x:TypeArguments="x:String"
+                        iOS="LiberationSerif-Italic"
+                        Android="LiberationSerif-Italic.ttf#LiberationSerif-Italic" />
+            <OnPlatform x:Key="Serif-Regular"
+                        x:TypeArguments="x:String"
+                        iOS="LiberationSerif-Regular"
+                        Android="LiberationSerif-Regular.ttf#LiberationSerif-Regular" />
+
+            <!-- Custom Styles -->
+            <!-- Use these custom items as much as possible, as usual avoid naming things
+                 by the color they are e.g.:
+
+                 GrayButton -> WRONG!
+                 LoginButton -> OK!
+            -->
+            <!-- Buttons -->
+            <Style x:Key="CustomButton"
+                   TargetType="Button">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Regular}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+            </Style>
+
+            <Style x:Key="NoBorderButton"
+                   TargetType="Button"
+                   BasedOn="{StaticResource CustomButton}">
+                <Setter Property="CornerRadius"
+                        Value="0" />
+            </Style>
+
+            <Style x:Key="RecoveryWordButton"
+                   TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundSecondary}" />
+                <Setter Property="CornerRadius"
+                        Value="0" />
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource Sans-Regular}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource TextPrimary}" />
+                <Setter Property="FontSize"
+                        Value="Small" />
+            </Style>
+
+            <Style x:Key="LoginDigitButton"
+                   TargetType="Button"
+                   BasedOn="{StaticResource CustomButton}">
+                <Setter Property="FontSize"
+                        Value="Medium" />
+            </Style>
+
+            <Style x:Name="SettingsButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="FlexLayout.AlignSelf" Value="Stretch" />
+                <Setter Property="FlexLayout.Grow" Value="1" />
+                <Setter Property="FontFamily" Value="{DynamicResource Sans-Regular}" />
+                <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
+             </Style>
+
+            <Style x:Key="TransactionDetailsButton" TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Regular}" />
+                <Setter Property="FontSize"
+                        Value="Small" />
+                <Setter Property="HorizontalOptions"
+                        Value="Start" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <!-- Labels -->
+            <Style x:Key="CustomLabel"
+                   TargetType="Label">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Regular}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <Style x:Key="TransactionInfoLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource Sans-Regular}"/>
+                <Setter Property="FontSize" Value="Micro"/>
+                <Setter Property="LineBreakMode" Value="MiddleTruncation" />
+            </Style>
+
+            <Style x:Key="TransactionDetailLabel" TargetType="Label">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Regular}" />
+                <Setter Property="LineBreakMode"
+                        Value="MiddleTruncation" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <!-- Text entries -->
+            <Style x:Key="CustomEntry"
+                   TargetType="Entry">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource Sans-Regular}" />
+            </Style>
+
+            <Style x:Key="RecoveryWordEntry"
+                   TargetType="Entry"
+                   BasedOn="{StaticResource CustomEntry}">
+                <Setter Property="FontSize"
+                        Value="Large" />
+                <Setter Property="MaxLength"
+                        Value="8" />
+                <Setter Property="Keyboard"
+                        Value="Text" />
+                <Setter Property="IsSpellCheckEnabled"
+                        Value="false" />
+                <Setter Property="IsTextPredictionEnabled"
+                        Value="false" />
+            </Style>
+
+            <!-- Box views -->
+            <Style x:Key="TransactionDetailsBoxView" TargetType="BoxView">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundSecondary}" />
+                <Setter Property="HeightRequest"
+                        Value="2" />
+            </Style>
+
+            <!-- Global Styles -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="BarTextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <Style TargetType="TabbedPage">
+                <Setter Property="BarBackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="BarTextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

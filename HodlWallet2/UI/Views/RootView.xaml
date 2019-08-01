@@ -1,0 +1,47 @@
+﻿<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
+            xmlns:effects="clr-namespace:HodlWallet2.UI.Renderers"
+            xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:views="clr-namespace:HodlWallet2.UI.Views"
+            x:Class="HodlWallet2.UI.Views.RootView"
+            NavigationPage.HasNavigationBar="False"
+            BackgroundColor="{DynamicResource BackgroundPrimary}"
+            BarBackgroundColor="{DynamicResource BackgroundPrimary}"
+            SelectedTabColor="{DynamicResource SelectedTab}"
+            UnselectedTabColor="{DynamicResource UnselectedTab}"
+            ios:Page.UseSafeArea="True"
+            android:TabbedPage.ToolbarPlacement="Bottom">
+    <TabbedPage.BindingContext>
+        <vm:RootViewModel />
+    </TabbedPage.BindingContext>
+    <TabbedPage.Effects>
+        <effects:HideTabLabelsEffect />
+    </TabbedPage.Effects>
+
+    <views:SendView IconImageSource="send_tab.png" />
+    <views:ReceiveView IconImageSource="receive_tab.png" />
+    <views:HomeView IconImageSource="home_tab.png" />
+    <views:SettingsView IconImageSource="settings_tab.png" />
+
+    <!--<NavigationPage IconImageSource="send_tab.png">
+        <x:Arguments>
+            <views:SendView />
+        </x:Arguments>
+    </NavigationPage>
+
+    <views:ReceiveView />
+    <NavigationPage IconImageSource="receive_tab.png">
+        <x:Arguments>
+            <views:ReceiveView />
+        </x:Arguments>
+    </NavigationPage>
+
+    <views:SettingsView />
+    <NavigationPage IconImageSource="settings_tab.png">
+        <x:Arguments>
+            <views:SettingsView />
+        </x:Arguments>
+    </NavigationPage>-->
+</TabbedPage>

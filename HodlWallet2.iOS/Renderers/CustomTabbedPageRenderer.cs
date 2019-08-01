@@ -24,12 +24,20 @@ namespace HodlWallet2.iOS.Renderers
 
             // Since we add item after the tabbed appears, we subscribe to this method
             // this is very important since here the icons get moved a little bit to the top
-            Tabbed.Appearing += Tabbed_Appearing;
+            // Add these next time we dynamically add items to the tabbar
+            //Tabbed.Appearing += Tabbed_Appearing;
+
+            UpdateAllTabBarItems();
 
             base.ViewWillAppear(animated);
         }
 
-        private void Tabbed_Appearing(object sender, EventArgs e)
+        void Tabbed_Appearing(object sender, EventArgs e)
+        {
+            UpdateAllTabBarItems();
+        }
+
+        void UpdateAllTabBarItems()
         {
             if (Element is TabbedPage)
             {
@@ -40,7 +48,7 @@ namespace HodlWallet2.iOS.Renderers
             }
         }
 
-        private void UpdateTabBarItem(UITabBarItem item)
+        void UpdateTabBarItem(UITabBarItem item)
         {
             if (item == null)
                 return;
