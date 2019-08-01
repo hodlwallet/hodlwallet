@@ -1,9 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Security;
 using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
+
+using Xamarin.Forms;
 
 using NBitcoin;
 using NBitcoin.Protocol;
@@ -19,9 +21,6 @@ using Liviano.Managers;
 using Liviano.Exceptions;
 
 using HodlWallet2.Core.Interfaces;
-
-using Xamarin.Forms;
-
 using HodlWallet2.Core.Services;
 
 [assembly: Dependency(typeof(WalletService))]
