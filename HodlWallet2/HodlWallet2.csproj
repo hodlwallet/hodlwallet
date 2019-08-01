@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -8,7 +8,7 @@
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
+        <PackageReference Include="Xamarin.Forms" Version="4.1.0.618606" />
         <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
         <PackageReference Include="SkiaSharp" Version="1.68.0" />
         <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
