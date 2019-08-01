@@ -22,6 +22,9 @@ using HodlWallet2.Core.Interfaces;
 
 using Xamarin.Forms;
 
+using HodlWallet2.Core.Services;
+
+[assembly: Dependency(typeof(WalletService))]
 namespace HodlWallet2.Core.Services
 {
     public sealed class WalletService : IWalletService

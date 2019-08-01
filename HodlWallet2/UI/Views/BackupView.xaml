@@ -4,6 +4,7 @@
              xmlns:svg="clr-namespace:HodlWallet2.Core.Utils"
              xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
              x:Class="HodlWallet2.UI.Views.BackupView"
+             Title="{Binding BackupTitle}"
              NavigationPage.HasBackButton="False">
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="CloseToolbarItem"

@@ -43,10 +43,13 @@ namespace HodlWallet2.UI.Views
             // Android
             if (Device.RuntimePlatform == Device.Android)
             {
-                MobileBarcodeScanner scanner = new MobileBarcodeScanner();
-                ZXing.Result resultAndroid = await scanner.Scan();
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    MobileBarcodeScanner scanner = new MobileBarcodeScanner();
+                    ZXing.Result resultAndroid = await scanner.Scan();
 
-                MessagingCenter.Send(this, "BarcodeScannerResult", resultAndroid.Text);
+                    MessagingCenter.Send(this, "BarcodeScannerResult", resultAndroid.Text);
+                });
             }
             else if (Device.RuntimePlatform == Device.iOS)
             {
@@ -80,13 +83,15 @@ namespace HodlWallet2.UI.Views
                 {
                     scanPage.IsScanning = false;
 
-                    Device.BeginInvokeOnMainThread(() =>
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        Navigation.PopAsync();
-
                         MessagingCenter.Send(this, "BarcodeScannerResult", resultIOS.Text);
+
+                        await Navigation.PopAsync();
                     });
                 };
+
+                await Navigation.PushAsync(scanPage);
             }
             else
             {
