@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using ZXing.Mobile;
 using HodlWallet2.Core.Services;
 using Serilog;
+using HodlWallet2.UI;
 
 [assembly: ResolutionGroupName("AppEffects")]
 
@@ -43,6 +44,8 @@ namespace HodlWallet2.Droid
 #endif
 
             base.OnCreate(savedInstanceState);
+
+            LoadApplication(new App());
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
