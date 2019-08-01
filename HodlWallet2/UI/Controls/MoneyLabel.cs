@@ -281,17 +281,12 @@ namespace HodlWallet2.UI.Controls
                 return;
             }
 
-            // We add the new ones
-            bool weAdded = false;
-
             int childrenCount = Children.Count();
             if (Text.Length > childrenCount)
             {
                 for (int i = childrenCount, count = Text.Length; i < count; i++)
                 {
                     AddNewChar(Text[i]);
-
-                    if (!weAdded) weAdded = true;
                 }
             }
             else
@@ -304,16 +299,6 @@ namespace HodlWallet2.UI.Controls
                         Children.Remove(child);
                     }
                 }
-            }
-
-            if (weAdded)
-            {
-                LayoutChanged += async (object sender, EventArgs args) =>
-                {
-                    if (weAdded) await _ModifyText();
-                };
-
-                return;
             }
 
             await _ModifyText();
