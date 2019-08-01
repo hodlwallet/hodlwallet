@@ -20,8 +20,10 @@ using Liviano.Exceptions;
 
 using HodlWallet2.Core.Interfaces;
 
+using HodlWallet2.Core.Services;
 using Xamarin.Forms;
 
+[assembly: Dependency(typeof(WalletService))]
 namespace HodlWallet2.Core.Services
 {
     public sealed class WalletService : IWalletService
