@@ -224,23 +224,24 @@ namespace HodlWallet2.Core.ViewModels
                 {
                     Amount = _AmountBTC * (decimal)_NewRate;
                     
-                    if (_OldRate != _NewRate)
+                    if (!_OldRate.Equals(_NewRate))
                     {
                         _OldRate = _NewRate;
                         //TODO: Update transactions with new rate.
                         for (int i = 0; i < Transactions.Count; i++) // DO NOT convert this into a foreach loop or LINQ statement.
                         {
                             //TODO: Update currency
+                            Transactions[i].AmountText = (Transactions[i].Amount.ToDecimal(MoneyUnit.BTC) * (decimal)_NewRate).ToString();
                         }
                     }
                 }
                 else
                 {
-                    // TODO: Convert Fiat to BTC
+                    for (int i = 0; i < Transactions.Count; i++)
+                    {
+                        Transactions[i].AmountText = Transactions[i].Amount.ToDecimal(MoneyUnit.BTC).ToString();
+                    }
                 }
-
-                //TODO: WIP, will polish rate comparision.
-                
                 return true;
             });
         }
