@@ -208,7 +208,7 @@ namespace HodlWallet2.Core.ViewModels
                     // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
                     _OldRate = _NewRate = rate.Rate;
 
-                    if (Preferences.Get("currency", "BTC") != null)
+                    if (Preferences.Get("currency", "BTC") != "BTC")
                     {
                         Amount *= (decimal)_NewRate;
                     }
