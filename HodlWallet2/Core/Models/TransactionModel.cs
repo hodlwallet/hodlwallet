@@ -2,19 +2,18 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using NBitcoin;
-
+using Xamarin.Forms;
 using Liviano.Models;
-
 using HodlWallet2.Core.Extensions;
 using HodlWallet2.Core.Utils;
-using HodlWallet2.Core.Services;
+using HodlWallet2.Core.Interfaces;
 
 namespace HodlWallet2.Core.Models
 {
     public class TransactionModel : INotifyPropertyChanged
     {
         string _AmountText;
-        Network _Network => WalletService.Instance.GetNetwork();
+        Network _Network => DependencyService.Get<IWalletService>().GetNetwork();
 
         public uint256 Id { get; set; }
         public string IdText { get; set; }

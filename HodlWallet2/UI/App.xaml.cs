@@ -10,12 +10,14 @@ namespace HodlWallet2.UI
 {
     public partial class App : Application
     {
+        IWalletService _WalletService => DependencyService.Get<IWalletService>();
+
         public App()
         {
             InitializeComponent();
 
             // Register services
-            DependencyService.Register<WalletService>();
+            DependencyService.Register<IWalletService>();
             DependencyService.Register<IShareIntent>();
             DependencyService.Register<IPermissions>();
 
@@ -31,7 +33,11 @@ namespace HodlWallet2.UI
 
         protected override void OnStart()
         {
-            Task.Run(WalletService.Instance.InitializeWallet);
+            // NOTE You might think, why not move this forward?
+            // the init code that inserts the logger into
+            // WalletService is only run after the custructor
+            // and only after all the platforms init
+            Task.Run(_WalletService.InitializeWallet);
         }
 
         protected override void OnSleep()

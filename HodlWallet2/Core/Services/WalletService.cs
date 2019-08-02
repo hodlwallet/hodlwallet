@@ -28,8 +28,6 @@ namespace HodlWallet2.Core.Services
 {
     public sealed class WalletService : IWalletService
     {
-        public static WalletService Instance => DependencyService.Get<WalletService>() ?? new WalletService();
-
         public const int DEFAULT_NODES_TO_CONNECT = 4;
 
         public const string DEFAULT_NETWORK = "testnet";
@@ -244,7 +242,9 @@ namespace HodlWallet2.Core.Services
 
         public static IEnumerable<HdAddress> GetAddressesFromTransaction(TransactionData txData)
         {
-            return Instance.CurrentAccount.FindAddressesForTransaction(tx => tx.Id == txData.Id);
+            var instance = DependencyService.Get<IWalletService>();
+
+            return instance.CurrentAccount.FindAddressesForTransaction(tx => tx.Id == txData.Id);
         }
 
         public string GetAddressFromTransaction(TransactionData txData)

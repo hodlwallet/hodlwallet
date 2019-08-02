@@ -12,13 +12,12 @@ namespace HodlWallet2.UI.Views
 {
     public partial class RecoverWalletEntryView : ContentPage
     {
-        IWalletService _WalletService;
+        // TODO This should be on the view model, and should be prevented to use wallet fuctions in views
+        IWalletService _WalletService => DependencyService.Get<IWalletService>();
 
         public RecoverWalletEntryView()
         {
             InitializeComponent();
-
-            _WalletService = WalletService.Instance;
 
             SubscribeToMessages();
         }

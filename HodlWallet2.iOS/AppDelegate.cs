@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
 using UIKit;
 
-using HodlWallet2.UI;
-using HodlWallet2.Core.Services;
 using Serilog;
+
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.UI;
 
 namespace HodlWallet2.iOS
 {
@@ -17,6 +14,8 @@ namespace HodlWallet2.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
+        IWalletService _WalletService => global::Xamarin.Forms.DependencyService.Get<IWalletService>();
+
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -33,16 +32,16 @@ namespace HodlWallet2.iOS
             LoadApplication(new App());
 
 #if DEBUG
-            WalletService.Instance.Logger = new LoggerConfiguration()
+            _WalletService.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .WriteTo.NSLog()
                 .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
                 .CreateLogger();
 #else
-                WalletService.Instance.Logger = new LoggerConfiguration()
-                    .WriteTo.NSLog()
-                    .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
-                    .CreateLogger();
+            _WalletService.Logger = new LoggerConfiguration()
+                .WriteTo.NSLog()
+                .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
+                .CreateLogger();
 #endif
 
             return base.FinishedLaunching(app, options);
