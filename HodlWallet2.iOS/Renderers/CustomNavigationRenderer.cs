@@ -16,9 +16,10 @@ namespace HodlWallet2.iOS.Renderers
         {
             base.ViewDidLoad();
 
-            // Removes top border
+            // Removes bottom border of the bar
             NavigationBar.Translucent = false;
-            NavigationBar.ShadowImage = null;
+            NavigationBar.ShadowImage = new UIImage();
+            NavigationBar.SetBackgroundImage(new UIImage(), UIBarPosition.Any, UIBarMetrics.Default);
 
             // Add bold font
             var font = UIFont.FromName("Sans-Bold", 20);
