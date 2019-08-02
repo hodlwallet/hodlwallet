@@ -31,6 +31,14 @@ namespace HodlWallet2.iOS
 
             LoadApplication(new App());
 
+            SetupLogging();
+
+            return base.FinishedLaunching(app, options);
+        }
+
+        void SetupLogging()
+        {
+            // Call after LoadApplication
 #if DEBUG
             _WalletService.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
@@ -43,8 +51,6 @@ namespace HodlWallet2.iOS
                 .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the tag fields
                 .CreateLogger();
 #endif
-
-            return base.FinishedLaunching(app, options);
         }
     }
 }
