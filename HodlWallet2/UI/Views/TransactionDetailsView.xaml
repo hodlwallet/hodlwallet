@@ -59,7 +59,7 @@
                            Style="{StaticResource TransactionDetailLabel}"
                            Text="{Binding AddressText}" />
 
-                    <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
+                    <BoxView BackgroundColor="{DynamicResource TextSecondary}" Style="{StaticResource TransactionDetailsBoxView}" />
 
                     <Label FontSize="Small"
                            Style="{StaticResource TransactionDetailLabel}"
@@ -80,7 +80,7 @@
                            TextColor="{DynamicResource TextPrimary}"
                            Text="{Binding MemoText}" />
 
-                    <BoxView Style="{StaticResource TransactionDetailsBoxView}"  />
+                    <BoxView BackgroundColor="{DynamicResource TextSecondary}" Style="{StaticResource TransactionDetailsBoxView}"  />
 
                     <Label FontSize="Small"
                            Style="{StaticResource TransactionDetailLabel}"
@@ -95,7 +95,7 @@
                        Text="{Binding EndingBalanceText}"
                        />-->
 
-                    <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
+                    <BoxView BackgroundColor="{DynamicResource TextSecondary}" Style="{StaticResource TransactionDetailsBoxView}" />
 
                     <Label FontSize="Small"
                            Style="{StaticResource TransactionDetailLabel}"
@@ -104,7 +104,7 @@
                             Style="{StaticResource TransactionDetailsButton}"
                             Text="{Binding Address}" />
 
-                    <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
+                    <BoxView BackgroundColor="{DynamicResource TextSecondary}" Style="{StaticResource TransactionDetailsBoxView}" />
 
                     <Label FontSize="Small"
                            Style="{StaticResource TransactionDetailLabel}"
@@ -119,7 +119,7 @@
                            Style="{StaticResource TransactionDetailLabel}"
                            Text="{Binding ConfirmedBlockText}" />
 
-                    <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
+                    <BoxView BackgroundColor="{DynamicResource TextSecondary}" Style="{StaticResource TransactionDetailsBoxView}" />
 
                 </StackLayout>
 
