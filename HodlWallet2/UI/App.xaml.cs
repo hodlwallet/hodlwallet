@@ -10,7 +10,7 @@ namespace HodlWallet2.UI
 {
     public partial class App : Application
     {
-        WalletService _WalletService => (WalletService)DependencyService.Get<IWalletService>();
+        IWalletService _WalletService => DependencyService.Get<IWalletService>();
 
         public App()
         {
