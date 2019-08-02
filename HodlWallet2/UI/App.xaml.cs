@@ -33,6 +33,10 @@ namespace HodlWallet2.UI
 
         protected override void OnStart()
         {
+            // NOTE You might think, why not move this forward?
+            // the init code that inserts the logger into
+            // WalletService is only run after the custructor
+            // and only after all the platforms init
             Task.Run(_WalletService.InitializeWallet);
         }
 

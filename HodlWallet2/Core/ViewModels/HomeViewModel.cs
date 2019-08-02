@@ -102,8 +102,9 @@ namespace HodlWallet2.Core.ViewModels
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
 
-            InitializeWalletServiceTransactions();
             InitializePrecioAndWalletTimers();
+
+            InitializeWalletServiceTransactions();
         }
 
         void InitializeWalletServiceTransactions()
