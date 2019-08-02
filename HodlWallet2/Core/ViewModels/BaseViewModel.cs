@@ -16,7 +16,7 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IWalletService _WalletService => WalletService.Instance;
+        public IWalletService _WalletService => DependencyService.Get<IWalletService>();
         public IShareIntent _ShareIntent => DependencyService.Get<IShareIntent>();
         public IPrecioService _PrecioService => RestService.For<IPrecioService>(Constants.PRECIO_HOST_URL);
         public IPermissions _PermissionsService => DependencyService.Get<IPermissions>();

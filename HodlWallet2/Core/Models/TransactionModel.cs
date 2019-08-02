@@ -7,12 +7,13 @@ using Liviano.Models;
 using HodlWallet2.Core.Extensions;
 using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.Services;
+using Xamarin.Forms;
 
 namespace HodlWallet2.Core.Models
 {
     public class TransactionModel
     {
-        Network _Network => WalletService.Instance.GetNetwork();
+        Network _Network => DependencyService.Get<WalletService>().GetNetwork();
 
         public uint256 Id { get; set; }
         public string IdText { get; set; }

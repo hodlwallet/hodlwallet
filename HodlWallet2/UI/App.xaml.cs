@@ -10,12 +10,14 @@ namespace HodlWallet2.UI
 {
     public partial class App : Application
     {
+        WalletService _WalletService => (WalletService)DependencyService.Get<IWalletService>();
+
         public App()
         {
             InitializeComponent();
 
             // Register services
-            DependencyService.Register<WalletService>();
+            DependencyService.Register<IWalletService>();
             DependencyService.Register<IShareIntent>();
             DependencyService.Register<IPermissions>();
 
@@ -31,7 +33,7 @@ namespace HodlWallet2.UI
 
         protected override void OnStart()
         {
-            Task.Run(WalletService.Instance.InitializeWallet);
+            Task.Run(_WalletService.InitializeWallet);
         }
 
         protected override void OnSleep()
