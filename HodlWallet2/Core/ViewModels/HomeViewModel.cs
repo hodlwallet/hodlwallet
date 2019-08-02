@@ -104,15 +104,6 @@ namespace HodlWallet2.Core.ViewModels
 
             InitializeWalletServiceTransactions();
             InitializePrecioAndWalletTimers();
-
-            if (_WalletService.IsStarted)
-            {
-                LoadTransactions();
-
-                return;
-            }
-
-            _WalletService.OnStarted += _WalletService_OnStarted_ViewAppeared;
         }
 
         void InitializeWalletServiceTransactions()
@@ -127,6 +118,20 @@ namespace HodlWallet2.Core.ViewModels
             {
                 _WalletService.OnStarted += _WalletService_OnStarted;
             }
+
+            // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
+            if (_WalletService.IsStarted)
+            {
+                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+            }
+            else
+            {
+                Amount = 0.0m;
+
+                _WalletService.OnStarted += _WalletService_OnStarted_ViewAppearing;
+            }
+
+            IsBtcEnabled = true;
         }
 
         void StartSearch()
@@ -219,20 +224,6 @@ namespace HodlWallet2.Core.ViewModels
                 }
                 return true;
             });
-
-            // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
-            if (_WalletService.IsStarted)
-            {
-                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-            }
-            else
-            {
-                Amount = 0.0m;
-
-                _WalletService.OnStarted += _WalletService_OnStarted_ViewAppearing;
-            }
-
-            IsBtcEnabled = true;
         }
 
         private void _WalletService_OnStarted_ViewAppearing(object sender, EventArgs e)
@@ -244,17 +235,6 @@ namespace HodlWallet2.Core.ViewModels
                     Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
 
                     _WalletService.OnStarted -= _WalletService_OnStarted_ViewAppearing;
-                }
-            });
-        }
-
-        private void _WalletService_OnStarted_ViewAppeared(object sender, EventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                lock (_Lock)
-                {
-                    LoadTransactions();
                 }
             });
         }
