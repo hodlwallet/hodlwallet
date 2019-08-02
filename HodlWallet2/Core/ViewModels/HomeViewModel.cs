@@ -124,6 +124,14 @@ namespace HodlWallet2.Core.ViewModels
             if (_WalletService.IsStarted)
             {
                 Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                
+                _AmountBTC = Amount; // A copy of the Amount in BTC is saved to switch currencies quicker
+                // and to not affect the original amount.
+                
+                if(Preferences.Get("currency", "BTC") != "BTC")
+                {
+                    Amount *= (decimal) _NewRate;
+                }
             }
             else
             {
