@@ -12,6 +12,11 @@
                      Text="Close"
                      Priority="0"
                      Clicked="CloseToolbarItem_Clicked" />
+        <ToolbarItem x:Name="SkipToolbarItem"
+                     Order="Primary"
+                     Text="Skip"
+                     Priority="0"
+                     Clicked="SkipToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.BindingContext>
         <vm:BackupViewModel />

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using HodlWallet2.Core.Services;
 using HodlWallet2.UI.Views;
+using Liviano.Exceptions;
 using Xamarin.Forms;
 
 namespace HodlWallet2.Core.ViewModels
@@ -63,60 +64,19 @@ namespace HodlWallet2.Core.ViewModels
 
         void InitMnemonic()
         {
-            string rawMnemonic = GetMnemonicFromWalletOrSecureStorage();
+            string rawMnemonic = GetMnemonic();
 
-            _WalletService.Logger.Information($"Newly generated mnemonic is: {rawMnemonic}");
+            _WalletService.Logger.Information($"Mnemonic is: {rawMnemonic}");
 
             _Mnemonic = rawMnemonic.Split(' ');
         }
 
-        private string GetWordListLanguage()
+        private string GetMnemonic()
         {
-            // TODO This should read from the user's language.
-            string language = "english";
+            if (!SecureStorageService.HasMnemonic())
+                throw new WalletException("This wallet doesn't have a mnemonic, we cannot do anything without that one");
 
-            _WalletService.Logger.Information($"Wordlist is on {language}");
-
-            return language;
-        }
-
-        private int GetWordCount()
-        {
-            // TODO This should read from the user's preference eventually.
-            int wordCount = 12;
-
-            _WalletService.Logger.Information($"Word count is {wordCount}");
-
-            return wordCount;
-        }
-
-        private string GetMnemonicFromWalletOrSecureStorage()
-        {
-            string rawMnemonic;
-
-            if (SecureStorageService.HasMnemonic())
-            {
-                rawMnemonic = SecureStorageService.GetMnemonic();
-
-                _WalletService.Logger.Information($"Wallet got the mnemonic from secure storage, mnemonic: {rawMnemonic}");
-            }
-            else
-            {
-                rawMnemonic = _WalletService.NewMnemonic(GetWordListLanguage(), GetWordCount());
-
-                _WalletService.Logger.Information($"Wallet generated a new mnemonic, mnemonic: {rawMnemonic}");
-
-                SecureStorageService.SetMnemonic(rawMnemonic);
-                SecureStorageService.SetSeedBirthday(new DateTimeOffset(DateTime.UtcNow));
-
-                _WalletService.Logger.Information("Saved mnemonic to secure storage.");
-            }
-
-            // After this we should be able to start the wallet since we have a mnemonic
-            if (!_WalletService.IsStarted)
-                Task.Run(_WalletService.StartWalletWithWalletId);
-
-            return rawMnemonic;
+            return SecureStorageService.GetMnemonic();
         }
     }
 }

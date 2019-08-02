@@ -26,7 +26,7 @@ namespace HodlWallet2.UI.Views
 
         void BackupMnemonic_Clicked(object sender, EventArgs e)
         {
-            var view = new BackupView(closable: true);
+            var view = new BackupView(action: "close");
             var nav = new NavigationPage(view);
 
             Navigation.PushModalAsync(nav);
