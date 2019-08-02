@@ -33,6 +33,8 @@ namespace HodlWallet2.Core.ViewModels
         public string MenuText => "Menu";
         public string SyncTitleText => "SYNCING";
 
+        bool _AttachedWalletListeners = false;
+
         decimal _Amount;
         float _NewRate;
         float _OldRate;
@@ -101,10 +103,17 @@ namespace HodlWallet2.Core.ViewModels
             SearchCommand = new Command(StartSearch);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
+        }
+
+        public void InitializeWalletAndPrecio()
+        {
+            if (_AttachedWalletListeners) return;
 
             InitializePrecioAndWalletTimers();
 
             InitializeWalletServiceTransactions();
+
+            _AttachedWalletListeners = true;
         }
 
         void InitializeWalletServiceTransactions()
@@ -229,6 +238,8 @@ namespace HodlWallet2.Core.ViewModels
 
         private void _WalletService_OnStarted_ViewAppearing(object sender, EventArgs e)
         {
+            _Logger = _WalletService.Logger;
+
             Device.BeginInvokeOnMainThread(() =>
             {
                 lock (_Lock)
@@ -286,6 +297,8 @@ namespace HodlWallet2.Core.ViewModels
 
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
+            _Logger = _WalletService.Logger;
+
             Device.BeginInvokeOnMainThread(() =>
             {
                 lock (_Lock)
