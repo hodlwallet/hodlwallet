@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HodlWallet2.UI.Views.HomeView"
+             xmlns:svg="clr-namespace:HodlWallet2.Core.Utils"
+             xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
+             xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
+             BackgroundColor="{DynamicResource BackgroundPrimary}">
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <FlexLayout Direction="Column">
+            <BoxView FlexLayout.Grow="1" />
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1">
+                <FlexLayout FlexLayout.Grow="1">
+                    <Image x:Name="logo"
+                           Source="logo.png"
+                           HeightRequest="20"
+                           Margin="20, 0, 0, 0" />
+                </FlexLayout>
+
+                <FlexLayout FlexLayout.Grow="1"
+                            Direction="Column"
+                            AlignItems="End">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="1 BTC = $"
+                               Margin="0, 0, 0, 0"
+                               TextColor="{DynamicResource TextPrimary}"
+                               FontFamily="{StaticResource Sans-Regular}"
+                               FontSize="Small" />
+                        <controls:MoneyLabel x:Name="priceLabel"
+                                             Margin="0, 0, 20, 0"
+                                             TextColor="{DynamicResource TextPrimary}"
+                                             FontSize="Small"
+                                             FontFamily="{StaticResource Mono-Regular}"
+                                             Text="{Binding PriceText}" />
+                    </StackLayout>
+                </FlexLayout>
+            </FlexLayout>
+
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1">
+                <FlexLayout Direction="Row"
+                            FlexLayout.Grow="1">
+                    <StackLayout Orientation="Horizontal"
+                                 HeightRequest="30">
+
+                        <controls:MoneyLabel x:Name="amountLabel"
+                                             Margin="20, 0, 0, 0"
+                                             FontSize="Large"
+                                             FontFamily="Menlo"
+                                             TextColor="{StaticResource TextPrimary}"
+                                             Text="{Binding Amount}">
+                            <controls:MoneyLabel.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}" />
+                            </controls:MoneyLabel.GestureRecognizers>
+                        </controls:MoneyLabel>
+                    </StackLayout>
+                    <!--<Label x:Name="amountLabel"
+                           Margin="20, 0, 0, 0"
+                           Style="{DynamicResource CustomLabel}"
+                           FontSize="Large"
+                           bindings:Bi.nd="Text If(IsBtcEnabled, Format('{0:F8}', Amount), Format('{0:F2}', Amount))">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer bindings:Bi.nd="Command SwitchCurrencyCommand" />
+                        </Label.GestureRecognizers>
+                    </Label>-->
+                </FlexLayout>
+
+                <FlexLayout Direction="Column"
+                            FlexLayout.Grow="1"
+                            AlignItems="End">
+                    <svg:Icon ResourceId="HodlWallet2.UI.Assets.search.svg"
+                              Margin="0, 4, 20, 0"
+                              WidthRequest="16"
+                              HeightRequest="16">
+                        <svg:Icon.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SearchCommand}"
+                                                  NumberOfTapsRequired="1" />
+                        </svg:Icon.GestureRecognizers>
+                    </svg:Icon>
+                </FlexLayout>
+            </FlexLayout>
+
+            <FlexLayout FlexLayout.Grow="10"
+                        BackgroundColor="Transparent"
+                        Direction="Column">
+                <controls:SyncProgressBar SyncVisible="{Binding SyncIsVisible}"
+                                          SyncTitle="{Binding SyncTitleText}"
+                                          SyncProgress="{Binding SyncCurrentProgress}"
+                                          SyncDate="{Binding SyncDateText}" />
+                <controls:TransactionCollectionView FlexLayout.Grow="1" />
+            </FlexLayout>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

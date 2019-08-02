@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HodlWallet2.UI.Views.OnboardView"
+             BackgroundColor="{DynamicResource BackgroundSecondary}"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <FlexLayout Direction="Column"
+                    JustifyContent="SpaceAround">
+
+            <Frame FlexLayout.Grow="5"
+                   BackgroundColor="Transparent">
+                <Image Source="logo_front.png"
+                       Scale="0.5"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center" />
+            </Frame>
+
+            <Button x:Name="CreateButton"
+                    Style="{DynamicResource CustomButton}"
+                    FlexLayout.AlignSelf="Stretch"
+                    Text="CREATE NEW WALLET"
+                    FontSize="Medium"
+                    Clicked="CreateButton_Clicked"
+                    FlexLayout.Grow="1" />
+
+            <BoxView HeightRequest="2"
+                     BackgroundColor="Transparent" />
+
+            <Button x:Name="RecoverButton"
+                    Style="{DynamicResource CustomButton}"
+                    FlexLayout.AlignSelf="Stretch"
+                    Text="RECOVER WALLET"
+                    FontSize="Medium"
+                    Clicked="RecoverButton_Clicked"
+                    FlexLayout.Grow="1" />
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utils="clr-namespace:HodlWallet2.Core.Utils"
+             x:Class="HodlWallet2.UI.Views.RecoverView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="CloseToolbarItem"
+                     Order="Primary"
+                     Text="Close"
+                     Priority="0"
+                     Clicked="CloseToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <FlexLayout Direction="Column"
+                    BackgroundColor="{DynamicResource BackgroundPrimary}">
+            <BoxView FlexLayout.Grow="1" />
+            <utils:Icon ResourceId="HodlWallet2.UI.Assets.recover_wallet_illustration.svg"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        FlexLayout.Grow="2" />
+            <Label x:Name="Header"
+                   FontFamily="{StaticResource Sans-Regular}"
+                   TextColor="{DynamicResource SyncGradientStart}"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   FlexLayout.AlignSelf="Center"
+                   FlexLayout.Grow="1" />
+            <BoxView FlexLayout.Grow="3" />
+            <Button x:Name="Next"
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                    CornerRadius="0"
+                    FontSize="Large"
+                    Clicked="Next_Clicked"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="1" />
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

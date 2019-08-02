@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
+             x:Class="HodlWallet2.UI.Views.LoginView"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             ios:Page.UseSafeArea="True">
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <FlexLayout Direction="Column"
+                    Margin="20"
+                    BackgroundColor="{DynamicResource BackgroundPrimary}"
+                    JustifyContent="SpaceAround"
+                    AlignItems="Center">
+            <Frame FlexLayout.Grow="4"
+                   BackgroundColor="Transparent">
+                <Image Source="logo_front.png"
+                       Scale="0.5"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center" />
+            </Frame>
+
+            <Label x:Name="Header"
+                   Text="{Binding Header}"
+                   Style="{DynamicResource CustomLabel}"
+                   HorizontalTextAlignment="Center" />
+
+            <ActivityIndicator IsRunning="{Binding IsLoading}"
+                               Color="{DynamicResource SyncGradientStart}" />
+
+            <Grid x:Name="InputGrid"
+                  Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+
+                <BoxView x:Name="Pin1"
+                         Color="{DynamicResource TextPrimary}"
+                         Grid.Row="0"
+                         Grid.Column="0" />
+                <BoxView x:Name="Pin2"
+                         Color="{DynamicResource TextPrimary}"
+                         Grid.Row="0"
+                         Grid.Column="1" />
+                <BoxView x:Name="Pin3"
+                         Color="{DynamicResource TextPrimary}"
+                         Grid.Row="0"
+                         Grid.Column="2" />
+                <BoxView x:Name="Pin4"
+                         Color="{DynamicResource TextPrimary}"
+                         Grid.Row="0"
+                         Grid.Column="3" />
+                <BoxView x:Name="Pin5"
+                         Color="{DynamicResource TextPrimary}"
+                         Grid.Row="0"
+                         Grid.Column="4" />
+                <BoxView x:Name="Pin6"
+                         Color="{DynamicResource TextPrimary}"
+                         Grid.Row="0"
+                         Grid.Column="5" />
+            </Grid>
+
+            <BoxView FlexLayout.Grow="1" />
+
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1">
+
+                <Button Text="1"
+                        FlexLayout.Grow="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="1"
+                        Style="{DynamicResource LoginDigitButton}" />
+
+                <Button Text="2"
+                        FlexLayout.Grow="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="2"
+                        Style="{DynamicResource LoginDigitButton}" />
+
+                <Button Text="3"
+                        FlexLayout.Grow="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="3"
+                        Style="{DynamicResource LoginDigitButton}" />
+            </FlexLayout>
+
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1">
+
+                <Button Text="4"
+                        FlexLayout.Grow="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="4"
+                        Style="{DynamicResource LoginDigitButton}" />
+
+                <Button Text="5"
+                        FlexLayout.Grow="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="5"
+                        Style="{DynamicResource LoginDigitButton}" />
+
+                <Button Text="6"
+                        FlexLayout.Grow="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="6"
+                        Style="{DynamicResource LoginDigitButton}" />
+
+            </FlexLayout>
+
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1">
+
+                <Button Text="7"
+                        FlexLayout.Grow="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="7"
+                        Style="{DynamicResource LoginDigitButton}" />
+
+                <Button Text="8"
+                        FlexLayout.Grow="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="8"
+                        Style="{DynamicResource LoginDigitButton}" />
+
+                <Button Text="9"
+                        FlexLayout.Grow="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="9"
+                        Style="{DynamicResource LoginDigitButton}" />
+            </FlexLayout>
+
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1">
+
+                <Button Text=""
+                        FlexLayout.Grow="1"
+                        Style="{DynamicResource LoginDigitButton}" />
+
+                <Button Text="0"
+                        FlexLayout.Grow="1"
+                        Command="{Binding DigitCommand}"
+                        CommandParameter="0"
+                        Style="{DynamicResource LoginDigitButton}" />
+
+                <Button Text="{DynamicResource LoginBackButtonText}"
+                        FlexLayout.Grow="1"
+                        Command="{Binding BackspaceCommand}"
+                        TextColor="{StaticResource SyncGradientStart}"
+                        Style="{DynamicResource LoginDigitButton}" />
+            </FlexLayout>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

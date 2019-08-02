@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utils="clr-namespace:HodlWallet2.Core.Utils"
+             xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
+             x:Class="HodlWallet2.UI.Views.RecoverWalletEntryView"
+             BackgroundColor="{DynamicResource BackgroundPrimary}">
+    <ContentPage.BindingContext>
+        <vm:RecoverWalletEntryViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Margin="10,70,10,10"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+            <Label
+                x:Name="Title"
+                Text="{Binding RecoverTitle}"
+                Style="{DynamicResource CustomLabel}"
+                FontSize="Large"
+                Margin="10, 0, 0, 0" />
+            <Label
+                x:Name="Header"
+                Text="{Binding RecoverHeader}"
+                Style="{DynamicResource CustomLabel}"
+                Margin="10, 0, 10, 20" />
+
+            <ScrollView>
+                <Grid x:Name="EntryGrid"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      BackgroundColor="{DynamicResource BackgroundSecondary}"
+                      Padding="10"
+                      Margin="10">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <!-- Work in progress -->
+                    <Entry x:Name="Entry1"
+                           Style="{StaticResource RecoveryWordEntry}"
+                           Text="{Binding WordOne, Mode=OneWayToSource}"
+                           TextChanged="LowercaseEntry"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Completed="Entry_Completed"
+                           ReturnType="Next"
+                           utils:Tags.Tag="Entry2" />
+
+                    <Label Text="1"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           HorizontalOptions="Center"
+                           FontSize="Micro"
+                           Grid.Row="2"
+                           Grid.Column="1" />
+
+                    <Entry x:Name="Entry2"
+                           Style="{StaticResource RecoveryWordEntry}"
+                           Text="{Binding WordTwo, Mode=OneWayToSource}"
+                           TextChanged="LowercaseEntry"
+                           Grid.Row="1"
+                           Grid.Column="2"
+                           Completed="Entry_Completed"
+                           ReturnType="Next"
+                           utils:Tags.Tag="Entry3" />
+
+                    <Label Text="2"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           HorizontalOptions="Center"
+                           FontSize="Micro"
+                           Grid.Row="2"
+                           Grid.Column="2" />
+
+                    <Entry x:Name="Entry3"
+                           Style="{StaticResource RecoveryWordEntry}"
+                           Text="{Binding WordThree, Mode=OneWayToSource}"
+                           TextChanged="LowercaseEntry"
+                           Grid.Row="1"
+                           Grid.Column="3"
+                           Completed="Entry_Completed"
+                           ReturnType="Next"
+                           utils:Tags.Tag="Entry4" />
+
+                    <Label Text="3"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           HorizontalOptions="Center"
+                           FontSize="Micro"
+                           Grid.Row="2"
+                           Grid.Column="3" />
+
+                    <Entry x:Name="Entry4"
+                           Style="{StaticResource RecoveryWordEntry}"
+                           Text="{Binding WordFour, Mode=OneWayToSource}"
+                           TextChanged="LowercaseEntry"
+                           Grid.Row="3"
+                           Grid.Column="1"
+                           Completed="Entry_Completed"
+                           ReturnType="Next"
+                           utils:Tags.Tag="Entry5" />
+
+                    <Label Text="4"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           HorizontalOptions="Center"
+                           FontSize="Micro"
+                           Grid.Row="4"
+                           Grid.Column="1" />
+
+                    <Entry x:Name="Entry5"
+                           Style="{StaticResource RecoveryWordEntry}"
+                           Text="{Binding WordFive, Mode=OneWayToSource}"
+                           TextChanged="LowercaseEntry"
+                           Grid.Row="3"
+                           Grid.Column="2"
+                           Completed="Entry_Completed"
+                           ReturnType="Next"
+                           utils:Tags.Tag="Entry6" />
+
+                    <Label Text="5"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           HorizontalOptions="Center"
+                           FontSize="Micro"
+                           Grid.Row="4"
+                           Grid.Column="2" />
+
+                    <Entry x:Name="Entry6"
+                           Style="{StaticResource RecoveryWordEntry}"
+                           Text="{Binding WordSix, Mode=OneWayToSource}"
+                           TextChanged="LowercaseEntry"
+                           Grid.Row="3"
+                           Grid.Column="3"
+                           Completed="Entry_Completed"
+                           ReturnType="Next"
+                           utils:Tags.Tag="Entry7" />
+
+                    <Label Text="6"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           HorizontalOptions="Center"
+                           FontSize="Micro"
+                           Grid.Row="4"
+                           Grid.Column="3" />
+
+                    <Entry x:Name="Entry7"
+                           Style="{StaticResource RecoveryWordEntry}"
+                           Text="{Binding WordSeven, Mode=OneWayToSource}"
+                           TextChanged="LowercaseEntry"
+                           Grid.Row="5"
+                           Grid.Column="1"
+                           Completed="Entry_Completed"
+                           ReturnType="Next"
+                           utils:Tags.Tag="Entry8" />
+
+                    <Label Text="7"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           HorizontalOptions="Center"
+                           FontSize="Micro"
+                           Grid.Row="6"
+                           Grid.Column="1" />
+
+                    <Entry x:Name="Entry8"
+                           Style="{StaticResource RecoveryWordEntry}"
+                           Text="{Binding WordEight, Mode=OneWayToSource}"
+                           TextChanged="LowercaseEntry"
+                           Grid.Row="5"
+                           Grid.Column="2"
+                           Completed="Entry_Completed"
+                           ReturnType="Next"
+                           utils:Tags.Tag="Entry9" />
+
+                    <Label Text="8"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           HorizontalOptions="Center"
+                           FontSize="Micro"
+                           Grid.Row="6"
+                           Grid.Column="2" />
+
+                    <Entry x:Name="Entry9"
+                           Style="{StaticResource RecoveryWordEntry}"
+                           Text="{Binding WordNine, Mode=OneWayToSource}"
+                           TextChanged="LowercaseEntry"
+                           Grid.Row="5"
+                           Grid.Column="3"
+                           Completed="Entry_Completed"
+                           ReturnType="Next"
+                           utils:Tags.Tag="Entry10" />
+
+                    <Label Text="9"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           HorizontalOptions="Center"
+                           FontSize="Micro"
+                           Grid.Row="6"
+                           Grid.Column="3" />
+
+                    <Entry x:Name="Entry10"
+                           Style="{StaticResource RecoveryWordEntry}"
+                           Text="{Binding WordTen, Mode=OneWayToSource}"
+                           TextChanged="LowercaseEntry"
+                           Grid.Row="7"
+                           Grid.Column="1"
+                           Completed="Entry_Completed"
+                           ReturnType="Next"
+                           utils:Tags.Tag="Entry11" />
+
+                    <Label Text="10"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           HorizontalOptions="Center"
+                           FontSize="Micro"
+                           Grid.Row="8"
+                           Grid.Column="1" />
+
+                    <Entry x:Name="Entry11"
+                           Style="{StaticResource RecoveryWordEntry}"
+                           Text="{Binding WordEleven, Mode=OneWayToSource}"
+                           TextChanged="LowercaseEntry"
+                           Grid.Row="7"
+                           Grid.Column="2"
+                           Completed="Entry_Completed"
+                           ReturnType="Next"
+                           utils:Tags.Tag="Entry12" />
+
+                    <Label Text="11"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           HorizontalOptions="Center"
+                           FontSize="Micro"
+                           Grid.Row="8"
+                           Grid.Column="2" />
+
+                    <Entry x:Name="Entry12"
+                           Style="{StaticResource RecoveryWordEntry}"
+                           Text="{Binding WordTwelve, Mode=TwoWay}"
+                           TextChanged="LowercaseEntry"
+                           ReturnCommand="{Binding OnRecoverEntryCompleted}"
+                           Grid.Row="7"
+                           Grid.Column="3"
+                           ReturnType="Done" />
+
+                    <Label Text="12"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           HorizontalOptions="Center"
+                           FontSize="Micro"
+                           Grid.Row="8"
+                           Grid.Column="3" />
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

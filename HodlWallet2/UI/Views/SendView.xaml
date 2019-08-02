@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
+             xmlns:svg="clr-namespace:HodlWallet2.Core.Utils"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:renderers="clr-namespace:HodlWallet2.UI.Renderers"
+             xmlns:behaviors="clr-namespace:HodlWallet2.Core.Behaviors"
+             x:Class="HodlWallet2.UI.Views.SendView"
+             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             ios:Page.UseSafeArea="True">
+    <ContentPage.BindingContext>
+        <vm:SendViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <FlexLayout Direction="Column">
+            <ScrollView FlexLayout.Grow="4">
+                <StackLayout Spacing="30"
+                             Margin="20, 0, 20, 0">
+                    <FlexLayout Direction="Row"
+                                JustifyContent="SpaceBetween"
+                                AlignItems="Center">
+                        <StackLayout Orientation="Vertical"
+                                     FlexLayout.Grow="4">
+                            <Label x:Name="ToLabel"
+                                   Style="{DynamicResource CustomLabel}"
+                                   HorizontalTextAlignment="Start" />
+
+                            <Entry x:Name="SendAddress"
+                                   Placeholder="bc1..."
+                                   Text="{Binding AddressToSendTo}"
+                                   TextColor="{DynamicResource TextPrimary}"
+                                   BackgroundColor="Transparent"
+                                   PlaceholderColor="{DynamicResource TextPrimary}"
+                                   Style="{StaticResource CustomEntry}" />
+
+                        </StackLayout>
+
+                        <StackLayout Orientation="Vertical"
+                                     FlexLayout.Grow="1">
+                            <Label x:Name="ScanLabel"
+                                   Style="{DynamicResource CustomLabel}"
+                                   FontSize="Small"
+                                   HorizontalTextAlignment="Center" />
+                            <svg:Icon ResourceId="HodlWallet2.UI.Assets.scan.svg"
+                                      WidthRequest="16"
+                                      HeightRequest="16">
+                                <svg:Icon.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ScanCommand}" />
+                                </svg:Icon.GestureRecognizers>
+                            </svg:Icon>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Vertical"
+                                     FlexLayout.Grow="1">
+                            <Label x:Name="PasteLabel"
+                                   Style="{DynamicResource CustomLabel}"
+                                   FontSize="Small"
+                                   HorizontalTextAlignment="Center" />
+                            <svg:Icon ResourceId="HodlWallet2.UI.Assets.paste.svg"
+                                      WidthRequest="16"
+                                      HeightRequest="16">
+                                <svg:Icon.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PasteCommand}" />
+                                </svg:Icon.GestureRecognizers>
+                            </svg:Icon>
+                        </StackLayout>
+                    </FlexLayout>
+
+                    <FlexLayout Direction="Row"
+                                JustifyContent="SpaceBetween"
+                                AlignItems="Center">
+                        <StackLayout Orientation="Vertical"
+                                     FlexLayout.Grow="4">
+                            <Label x:Name="AmountLabel"
+                                   Style="{DynamicResource CustomLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalOptions="Center" />
+
+                            <Entry Placeholder="0.00"
+                                   Keyboard="Numeric"
+                                   ReturnType="Done"
+                                   Text="{Binding AmountToSend}"
+                                   TextColor="{DynamicResource SyncGradientStart}"
+                                   BackgroundColor="Transparent"
+                                   FontFamily="{StaticResource Mono-Regular}"
+                                   VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <Label x:Name="ISOLabel"
+                               Style="{DynamicResource CustomLabel}"
+                               FontSize="Small"
+                               FlexLayout.Grow="1"
+                               HorizontalTextAlignment="Center"
+                               Text="{Binding ISOLabel}" />
+
+                        <svg:Icon ResourceId="HodlWallet2.UI.Assets.currency_switch.svg"
+                                  FlexLayout.Grow="1"
+                                  FlexLayout.AlignSelf="Center"
+                                  WidthRequest="16"
+                                  HeightRequest="16">
+                            <svg:Icon.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding SwitchCurrencyCommand}" />
+                            </svg:Icon.GestureRecognizers>
+                        </svg:Icon>
+                    </FlexLayout>
+
+                    <StackLayout Orientation="Vertical">
+                        <FlexLayout Direction="Row"
+                                    JustifyContent="SpaceBetween">
+                            <Label Style="{StaticResource CustomLabel}"
+                                   Text="{Binding TransactionFeeTitle}" />
+                            <Label Style="{StaticResource CustomLabel}"
+                                   Text="{Binding EstConfirmationTitle}" />
+                        </FlexLayout>
+
+                        <FlexLayout Direction="Row"
+                                    JustifyContent="SpaceBetween">
+                            <Label FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSecondary}"
+                                   Text="{Binding TransactionFeeText}" />
+                            <Label FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{StaticResource TextSecondary}"
+                                   Text="{Binding EstConfirmationText}" />
+                        </FlexLayout>
+
+                        <FlexLayout Direction="Row"
+                                    JustifyContent="SpaceBetween">
+                            <Label Style="{StaticResource CustomLabel}"
+                                   Text="{Binding SlowText}" />
+                            <Label Style="{StaticResource CustomLabel}"
+                                   Text="{Binding NormalText}" />
+                            <Label Style="{StaticResource CustomLabel}"
+                                   Text="{Binding FastestText}" />
+                        </FlexLayout>
+
+                        <renderers:FeeSlider MinimumTrackColor="{DynamicResource SyncGradientStart}"
+                                             MaximumTrackColor="{DynamicResource TextPrimary}"
+                                             Maximum="100"
+                                             Value="{Binding SliderValue}">
+                            <Slider.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="DragCompleted"
+                                                                  Command="{Binding OnSliderValueChangedCommand}" />
+                            </Slider.Behaviors>
+                        </renderers:FeeSlider>
+
+                        <Label Text="Fee (sats/byte)"
+                               Style="{StaticResource CustomLabel}" />
+
+                        <Entry Placeholder="0.0001"
+                               Text="{Binding Fee}"
+                               Style="{StaticResource CustomEntry}"
+                               TextColor="{DynamicResource TextPrimary}"
+                               BackgroundColor="Transparent"
+                               PlaceholderColor="{DynamicResource TextPrimary}"
+                               Margin="0, 0, 0, 10" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+
+            <Button Text="Send"
+                    Command="{Binding SendCommand}"
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                    FontSize="Large"
+                    HeightRequest="50"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="1" />
+
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

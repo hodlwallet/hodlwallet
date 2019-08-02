@@ -10,7 +10,7 @@ namespace HodlWallet2.iOS.Renderers
 {
     public class CustomNavigationRenderer : NavigationRenderer
     {
-        UIColor GRAY_BACKGROUND { get; } = new UIColor(red: 0.13f, green: 0.13f, blue: 0.13f, alpha: 1.0f);
+        UIColor _TextPrimary = Color.FromHex("#F5F7FA").ToUIColor();
 
         public override void ViewDidLoad()
         {
@@ -20,20 +20,27 @@ namespace HodlWallet2.iOS.Renderers
             NavigationBar.Translucent = false;
             NavigationBar.ShadowImage = null;
 
-            // Sets fonts to "bold" in this case of this font is pointsize + 2
-            // But we should find a font that has a bold version
-            var font = UIFont.FromName("Electrolize", 20);
-            var descriptor =  font.FontDescriptor.CreateWithAttributes(new UIFontAttributes
+            // Add bold font
+            var font = UIFont.FromName("Sans-Bold", 20);
+            var attrs = new UIStringAttributes()
             {
-                Traits = new UIFontTraits() { SymbolicTrait = UIFontDescriptorSymbolicTraits.Bold }
-            });
-            var boldFont = UIFont.FromDescriptor(descriptor, font.PointSize + 2);
-
-            NavigationBar.TitleTextAttributes = new UIStringAttributes()
-            {
-                ForegroundColor = UIColor.White,
-                Font = boldFont
+                ForegroundColor = _TextPrimary,
+                Font = font
             };
+
+            NavigationBar.TitleTextAttributes = attrs;
+
+            if (Toolbar.Items is null) return;
+
+            // TODO this doesn't work
+            var attrsItem = new UITextAttributes()
+            {
+                TextColor = _TextPrimary,
+                Font = font
+            };
+
+            foreach (var item in Toolbar.Items)
+                item.SetTitleTextAttributes(attrsItem, UIControlState.Normal);
         }
     }
 }
