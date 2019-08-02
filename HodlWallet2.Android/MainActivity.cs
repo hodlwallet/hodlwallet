@@ -34,7 +34,7 @@ namespace HodlWallet2.Droid
             MobileBarcodeScanner.Initialize(Application);
 
 #if DEBUG
-            _WalletService.Logger = new LoggerConfiguration()
+            _WalletService.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .WriteTo.AndroidLog()
                 .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet2") // Sets the Tag field.
