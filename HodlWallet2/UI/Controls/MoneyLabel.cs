@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using NBitcoin;
 using Serilog.Parsing;
 using Xamarin.Forms;
 
@@ -13,9 +14,10 @@ namespace HodlWallet2.UI.Controls
         Animation _Animation = new Animation();
 
         const string ALLOWED_DIGITS = "9876543210";
-        const string ALLOWED_SYMBOLS = " ,.-$=≈";
+        const string ALLOWED_SYMBOLS_SMALL = " ,.-";
+        const string ALLOWED_SYMBOLS_LARGE = "$=≈";
         const string ALLOWED_EXTRA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const string ALLOWED_CHARACTERS = ALLOWED_DIGITS + ALLOWED_SYMBOLS + ALLOWED_EXTRA;
+        const string ALLOWED_CHARACTERS = ALLOWED_DIGITS + ALLOWED_SYMBOLS_SMALL + ALLOWED_SYMBOLS_LARGE + ALLOWED_EXTRA;
 
         const uint ANIMATION_DURATION_PER_CHARACTER = 250;
 
@@ -270,9 +272,11 @@ namespace HodlWallet2.UI.Controls
                 if (child is Label) continue;
 
                 var moneyDigit = (MoneyDigit)child;
+                bool isSmall = ALLOWED_SYMBOLS_SMALL.Contains(moneyDigit.CurrentLabel.Text[0]);
+                double fontWidthFactor = (isSmall ? FONT_WIDTH_FACTOR / 2.0f : FONT_WIDTH_FACTOR);
 
                 moneyDigit.HeightRequest = FontSize;
-                moneyDigit.WidthRequest = FontSize * FONT_WIDTH_FACTOR;
+                moneyDigit.WidthRequest = FontSize * fontWidthFactor;
 
                 foreach (var digit in ((StackLayout)moneyDigit.Content).Children)
                 {
@@ -290,9 +294,7 @@ namespace HodlWallet2.UI.Controls
         {
             var lbl = new Label
             {
-                FontFamily = fontFamily,
-                HeightRequest = FontSize,
-                WidthRequest = FontSize * FONT_WIDTH_FACTOR
+                FontFamily = fontFamily
             };
 
             return lbl.FontFamily;
@@ -453,16 +455,19 @@ namespace HodlWallet2.UI.Controls
 
         MoneyDigit CreateNewChar(char newChar)
         {
+            bool isSmall = ALLOWED_SYMBOLS_SMALL.Contains(newChar);
+            double fontWidthFactor = (isSmall ? FONT_WIDTH_FACTOR / 2.0f : FONT_WIDTH_FACTOR);
+
             var scroll = new MoneyDigit
             {
                 HeightRequest = FontSize,
-                WidthRequest = FontSize * FONT_WIDTH_FACTOR,
+                WidthRequest = FontSize * fontWidthFactor,
                 Padding = 0,
                 Margin = 0,
                 HorizontalScrollBarVisibility = ScrollBarVisibility.Never,
                 VerticalScrollBarVisibility = ScrollBarVisibility.Never,
-                //HorizontalOptions = LayoutOptions.StartAndExpand,
-                //VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
                 IsEnabled = false,
                 Digit = newChar
             };
@@ -475,7 +480,7 @@ namespace HodlWallet2.UI.Controls
                     FontFamily = FontFamily,
                     FontSize = FontSize,
                     HeightRequest = FontSize,
-                    WidthRequest = FontSize * FONT_WIDTH_FACTOR,
+                    WidthRequest = FontSize * fontWidthFactor,
                     FontAttributes = FontAttributes,
                     TextColor = TextColor,
                     Text = chr.ToString()
