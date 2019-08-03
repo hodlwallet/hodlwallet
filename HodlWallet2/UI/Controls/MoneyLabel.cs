@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Serilog.Parsing;
 using Xamarin.Forms;
 
 namespace HodlWallet2.UI.Controls
@@ -19,7 +19,7 @@ namespace HodlWallet2.UI.Controls
 
         const uint ANIMATION_DURATION_PER_CHARACTER = 250;
 
-        const double FONT_WIDTH_FACTOR = 1.00;
+        const double FONT_WIDTH_FACTOR = 0.60;
 
         [TypeConverter(typeof(FontAttributesConverter))]
         public FontAttributes FontAttributes
@@ -69,6 +69,45 @@ namespace HodlWallet2.UI.Controls
             set => SetValue(TextProperty, value);
         }
 
+        public static readonly BindableProperty StartTextProperty = BindableProperty.CreateAttached(
+                nameof(StartText),
+                typeof(string),
+                typeof(MoneyLabel),
+                default(string)
+        );
+
+        public string StartText
+        {
+            get => (string)GetValue(StartTextProperty);
+            set => SetValue(StartTextProperty, value);
+        }
+
+        public static readonly BindableProperty EndTextProperty = BindableProperty.CreateAttached(
+                nameof(EndText),
+                typeof(string),
+                typeof(MoneyLabel),
+                default(string)
+        );
+
+        public string EndText
+        {
+            get => (string)GetValue(StartTextProperty);
+            set => SetValue(StartTextProperty, value);
+        }
+
+        public static readonly BindableProperty AmountOfDecimalsProperty = BindableProperty.CreateAttached(
+                nameof(AmountOfDecimals),
+                typeof(int),
+                typeof(MoneyLabel),
+                default(int)
+        );
+
+        public int AmountOfDecimals
+        {
+            get => (int)GetValue(AmountOfDecimalsProperty);
+            set => SetValue(AmountOfDecimalsProperty, value);
+        }
+
         public MoneyLabel()
         {
             Orientation = StackOrientation.Horizontal;
@@ -108,6 +147,17 @@ namespace HodlWallet2.UI.Controls
             {
                 ChangeTextFontAttributes();
             }
+
+            if (propertyName == nameof(StartText))
+            {
+                //ChangeStartText();
+            }
+        }
+
+        void ChangeStartText()
+        {
+            // TODO figure this out...
+            Children.Insert(0, new Label() { Text = StartText });
         }
 
         void ChangeTextFontAttributes()
@@ -181,6 +231,8 @@ namespace HodlWallet2.UI.Controls
         {
             foreach (var child in Children)
             {
+                if (child is Label) continue;
+
                 var moneyDigit = (MoneyDigit)child;
 
                 foreach (var digit in ((StackLayout)moneyDigit.Content).Children)
@@ -214,9 +266,12 @@ namespace HodlWallet2.UI.Controls
         {
             foreach (var child in Children)
             {
+                if (child is Label) continue;
+
                 var moneyDigit = (MoneyDigit)child;
 
                 moneyDigit.HeightRequest = FontSize;
+                moneyDigit.WidthRequest = FontSize * FONT_WIDTH_FACTOR;
 
                 foreach (var digit in ((StackLayout)moneyDigit.Content).Children)
                 {
@@ -234,7 +289,9 @@ namespace HodlWallet2.UI.Controls
         {
             var lbl = new Label
             {
-                FontFamily = fontFamily
+                FontFamily = fontFamily,
+                HeightRequest = FontSize,
+                WidthRequest = FontSize * FONT_WIDTH_FACTOR
             };
 
             return lbl.FontFamily;
@@ -395,8 +452,11 @@ namespace HodlWallet2.UI.Controls
             var scroll = new MoneyDigit
             {
                 HeightRequest = FontSize,
+                WidthRequest = FontSize * FONT_WIDTH_FACTOR,
                 HorizontalScrollBarVisibility = ScrollBarVisibility.Never,
                 VerticalScrollBarVisibility = ScrollBarVisibility.Never,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
                 IsEnabled = false,
                 Digit = newChar
             };
@@ -408,6 +468,8 @@ namespace HodlWallet2.UI.Controls
                 {
                     FontFamily = FontFamily,
                     FontSize = FontSize,
+                    HeightRequest = FontSize,
+                    WidthRequest = FontSize * FONT_WIDTH_FACTOR,
                     FontAttributes = FontAttributes,
                     TextColor = TextColor,
                     Text = chr.ToString()

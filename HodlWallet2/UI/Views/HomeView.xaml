@@ -33,6 +33,7 @@
                         <controls:MoneyLabel x:Name="priceLabel"
                                              Margin="0, 0, 20, 0"
                                              TextColor="{DynamicResource TextPrimary}"
+                                             StartText="1 BTC = $"
                                              FontSize="Small"
                                              FontFamily="{StaticResource Mono-Regular}"
                                              Text="{Binding PriceText}" />
