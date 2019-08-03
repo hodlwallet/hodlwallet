@@ -272,7 +272,11 @@ namespace HodlWallet2.UI.Controls
                 if (child is Label) continue;
 
                 var moneyDigit = (MoneyDigit)child;
-                bool isSmall = ALLOWED_SYMBOLS_SMALL.Contains(moneyDigit.CurrentLabel.Text[0]);
+
+                bool isSmall = moneyDigit.CurrentLabel != null
+                    && moneyDigit.CurrentLabel.Text.Length != 0
+                    && ALLOWED_SYMBOLS_SMALL.Contains(moneyDigit.CurrentLabel.Text[0]);
+
                 double fontWidthFactor = (isSmall ? FONT_WIDTH_FACTOR / 2.0f : FONT_WIDTH_FACTOR);
 
                 moneyDigit.HeightRequest = FontSize;

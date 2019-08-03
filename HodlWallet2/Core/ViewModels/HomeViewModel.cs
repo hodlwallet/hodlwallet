@@ -276,7 +276,8 @@ namespace HodlWallet2.Core.ViewModels
                 if (rate.Code == "USD")
                 {
                     var price = _NewRate = rate.Rate;
-                    PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BTC_UNIT_LABEL, price);
+                    //PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BTC_UNIT_LABEL, price);
+                    PriceText = string.Format(CultureInfo.CurrentCulture, "{0:C}", price);
                     //PriceText = price.ToString("0.00");
                     break;
                 }
