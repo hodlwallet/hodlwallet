@@ -25,11 +25,6 @@
                             Direction="Column"
                             AlignItems="End">
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="1 BTC = $"
-                               Margin="0, 0, 0, 0"
-                               TextColor="{DynamicResource TextPrimary}"
-                               FontFamily="{StaticResource Sans-Regular}"
-                               FontSize="Small" />
                         <controls:MoneyLabel x:Name="priceLabel"
                                              Margin="0, 0, 20, 0"
                                              TextColor="{DynamicResource TextPrimary}"

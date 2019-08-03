@@ -13,8 +13,8 @@ namespace HodlWallet2.UI.Controls
         Animation _Animation = new Animation();
 
         const string ALLOWED_DIGITS = "9876543210";
-        const string ALLOWED_SYMBOLS = ",.-$";
-        const string ALLOWED_EXTRA = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const string ALLOWED_SYMBOLS = " ,.-$=≈";
+        const string ALLOWED_EXTRA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const string ALLOWED_CHARACTERS = ALLOWED_DIGITS + ALLOWED_SYMBOLS + ALLOWED_EXTRA;
 
         const uint ANIMATION_DURATION_PER_CHARACTER = 250;
@@ -111,6 +111,7 @@ namespace HodlWallet2.UI.Controls
         public MoneyLabel()
         {
             Orientation = StackOrientation.Horizontal;
+            Spacing = 0.00;
         }
 
         protected override void OnPropertyChanged(string propertyName = null)
@@ -302,6 +303,9 @@ namespace HodlWallet2.UI.Controls
         /// </summary>
         void ValidateText()
         {
+            // FIXME this method should avoid the part of the text that isn't a number...
+            return;
+
             // This will fire a format exception
             if (!string.IsNullOrEmpty(Text)) decimal.Parse(Text);
         }
@@ -453,10 +457,12 @@ namespace HodlWallet2.UI.Controls
             {
                 HeightRequest = FontSize,
                 WidthRequest = FontSize * FONT_WIDTH_FACTOR,
+                Padding = 0,
+                Margin = 0,
                 HorizontalScrollBarVisibility = ScrollBarVisibility.Never,
                 VerticalScrollBarVisibility = ScrollBarVisibility.Never,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
+                //HorizontalOptions = LayoutOptions.StartAndExpand,
+                //VerticalOptions = LayoutOptions.CenterAndExpand,
                 IsEnabled = false,
                 Digit = newChar
             };
