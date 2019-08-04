@@ -1,19 +1,18 @@
 using System;
-
-using Xamarin.Forms;
-
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using NBitcoin;
-
+using Xamarin.Forms;
 using Liviano.Models;
-
 using HodlWallet2.Core.Extensions;
 using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.Interfaces;
 
 namespace HodlWallet2.Core.Models
 {
-    public class TransactionModel
+    public class TransactionModel : INotifyPropertyChanged
     {
+        string _AmountText;
         Network _Network => DependencyService.Get<IWalletService>().GetNetwork();
 
         public uint256 Id { get; set; }
@@ -23,7 +22,17 @@ namespace HodlWallet2.Core.Models
         public string CreationTimeText { get; set; }
 
         public Money Amount { get; set; }
-        public string AmountText { get; set; }
+
+        public string AmountText
+        {
+            get => _AmountText;
+            set
+            {
+                _AmountText = value;
+                OnPropertyChanged(nameof(AmountText));
+            }
+        }
+
         public string AmountWithFeeText { get; set; }
 
         public string Address { get; set; }
@@ -198,6 +207,13 @@ namespace HodlWallet2.Core.Models
                 return Constants.TRANSACTION_DETAILS_SENT_ADDRESS_TITLE;
 
             return Constants.TRANSACTION_DETAILS_RECEIVED_ADDRESS_TITLE;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

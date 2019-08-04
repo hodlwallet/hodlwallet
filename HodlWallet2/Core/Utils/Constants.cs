@@ -8,7 +8,7 @@
 		public const string BTC_UNIT_LABEL = "1 BTC ≈ {0:C}";
 		public const string BTC_UNIT_LABEL_TMP = "";
 		public const string SAT_PER_BYTE_UNIT_LABEL = "{0} sat/byte";
-		public const int PRECIO_TIMER_INTERVAL = 5;
+		public const int PRECIO_TIMER_INTERVAL = 5; // seconds
 
 		//Block Explorer URls
 		public const string BLOCK_EXPLORER_ADDRESS_MAINNET_URI = "https://blockstream.info/address/{0}";
@@ -20,7 +20,7 @@
 		public const string SYNC_GRADIENT_START_COLOR_HEX = "#DAAB28";
 		public const string GRAY_TEXT_TINT_COLOR_HEX = "#A3A8AD";
 
-		// Localized Strings (TODO in MvvmCross)
+		// Localized Strings
 		public const string IS_AVAILABLE = "Available to spend";
 		public const string SENT_AMOUNT = "Sent {0} {1}";
 		public const string RECEIVE_AMOUNT = "Received {0} {1}";

@@ -34,7 +34,6 @@ namespace HodlWallet2.Core.ViewModels
         public string SyncTitleText => "SYNCING";
 
         bool _AttachedWalletListeners = false;
-
         decimal _Amount;
         decimal _AmountFiat;
         float _NewRate;
@@ -143,6 +142,11 @@ namespace HodlWallet2.Core.ViewModels
             {
                 Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 AmountFiat = Amount * (decimal)_NewRate;
+                
+                if(Preferences.Get("currency", "BTC") != "BTC")
+                {
+                    Amount *= (decimal) _NewRate;
+                }
             }
             else
             {
@@ -218,6 +222,11 @@ namespace HodlWallet2.Core.ViewModels
                 {
                     // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
                     _OldRate = _NewRate = rate.Rate;
+
+                    if (Preferences.Get("currency", "BTC") != "BTC")
+                    {
+                        Amount *= (decimal)_NewRate;
+                    }
                 }
                 return Task.FromResult(true);
             });
@@ -225,21 +234,27 @@ namespace HodlWallet2.Core.ViewModels
             Device.StartTimer(TimeSpan.FromSeconds(Constants.PRECIO_TIMER_INTERVAL), () =>
             {
                 Task.Run(RatesAsync);
-                //TODO: WIP, will polish rate comparision.
-                if (_OldRate != _NewRate && Preferences.Get("currency", "BTC") != "BTC")
-                {
-                    _OldRate = _NewRate;
-                    //TODO: Update transactions with new rate.
-                    foreach (var transaction in Transactions)
-                    {
-                        // This was intentionally left with null as placeholder. WARNING: IT'LL EXPLODE IF RUN.
-                        // First of all, a view model should not have the responsibility to format the text for a label (this is UI's duty!).
-                        // Second and very brief, this needs to be refactored (split) into two methods and the Transaction model needs to have two properties
-                        // like Status and Amount (as float), this way it'll be flexible enough to update only one property based on current rate
-                        // without having to convert numeric and string values to return a string(?) amount.
 
-                        // This would also WONT work cause observable collections only allow insert and remove
-                        // transaction.Amount = GetAmountLabelText(null);
+                if (Preferences.Get("currency", "BTC") != "BTC")
+                {
+                    Amount = Amount * (decimal)_NewRate;
+                    
+                    if (!_OldRate.Equals(_NewRate))
+                    {
+                        _OldRate = _NewRate;
+                        //TODO: Update transactions with new rate.
+                        for (int i = 0; i < Transactions.Count; i++) // DO NOT convert this into a foreach loop or LINQ statement.
+                        {
+                            //TODO: Update currency
+                            Transactions[i].AmountText = (Transactions[i].Amount.ToDecimal(MoneyUnit.BTC) * (decimal)_NewRate).ToString();
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < Transactions.Count; i++)
+                    {
+                        Transactions[i].AmountText = Transactions[i].Amount.ToDecimal(MoneyUnit.BTC).ToString();
                     }
                 }
                 return true;
