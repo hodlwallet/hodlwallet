@@ -9,7 +9,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Xamarin.Forms" Version="4.1.0.618606" />
-        <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
         <PackageReference Include="SkiaSharp" Version="1.68.0" />
         <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
         <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
