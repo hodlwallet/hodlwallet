@@ -179,6 +179,12 @@
     <BundleResource Include="Resources\schedule%401x.png" />
     <BundleResource Include="Resources\schedule%402x.png" />
     <BundleResource Include="Resources\schedule%403x.png" />
+    <BundleResource Include="Resources\received%401x.png" />
+    <BundleResource Include="Resources\sent%401x.png" />
+    <BundleResource Include="Resources\received%402x.png" />
+    <BundleResource Include="Resources\sent%402x.png" />
+    <BundleResource Include="Resources\received%403x.png" />
+    <BundleResource Include="Resources\sent%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
