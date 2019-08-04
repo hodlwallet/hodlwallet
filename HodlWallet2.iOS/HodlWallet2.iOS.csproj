@@ -163,8 +163,6 @@
     <BundleResource Include="Resources\home_tab%402x.png" />
     <BundleResource Include="Resources\receive_tab.png" />
     <BundleResource Include="Resources\receive_tab%402x.png" />
-    <BundleResource Include="Resources\send_tab.png" />
-    <BundleResource Include="Resources\send_tab%402x.png" />
     <BundleResource Include="Resources\settings_tab.png" />
     <BundleResource Include="Resources\settings_tab%402x.png" />
     <ImageAsset Include="Assets.xcassets\logo.png.imageset\logo.png" />
@@ -185,6 +183,12 @@
     <BundleResource Include="Resources\sent%402x.png" />
     <BundleResource Include="Resources\received%403x.png" />
     <BundleResource Include="Resources\sent%403x.png" />
+    <BundleResource Include="Resources\send_tab.png" />
+    <BundleResource Include="Resources\send_tab%402x.png" />
+    <BundleResource Include="Resources\home_tab%401x.png" />
+    <BundleResource Include="Resources\receive_tab%401x.png" />
+    <BundleResource Include="Resources\send_tab%401x.png" />
+    <BundleResource Include="Resources\settings_tab%401x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
