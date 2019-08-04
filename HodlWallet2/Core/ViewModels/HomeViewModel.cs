@@ -36,6 +36,7 @@ namespace HodlWallet2.Core.ViewModels
         bool _AttachedWalletListeners = false;
 
         decimal _Amount;
+        decimal _AmountFiat;
         float _NewRate;
         float _OldRate;
         bool _IsBtcEnabled;
@@ -57,6 +58,12 @@ namespace HodlWallet2.Core.ViewModels
         {
             get => _Amount;
             set => SetProperty(ref _Amount, value);
+        }
+
+        public decimal AmountFiat
+        {
+            get => _AmountFiat;
+            set => SetProperty(ref _AmountFiat, value);
         }
 
         private object _Lock = new object();
@@ -133,11 +140,10 @@ namespace HodlWallet2.Core.ViewModels
             if (_WalletService.IsStarted)
             {
                 Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                AmountFiat = Amount * (decimal)_NewRate;
             }
             else
             {
-                Amount = 0.0m;
-
                 _WalletService.OnStarted += _WalletService_OnStarted_ViewAppearing;
             }
 
@@ -147,6 +153,8 @@ namespace HodlWallet2.Core.ViewModels
         void StartSearch()
         {
             _Logger.Debug("Search is not implemented yet!");
+
+            MessagingCenter.Send(this, "DisplaySearchNotImplementedAlert");
         }
 
         void UpdateSyncingStatus()
@@ -187,14 +195,14 @@ namespace HodlWallet2.Core.ViewModels
             {
                 Preferences.Set("currency", "USD");
                 IsBtcEnabled = false;
-                Amount *= (decimal)_NewRate;
             }
             else
             {
                 Preferences.Set("currency", "BTC");
                 IsBtcEnabled = true;
-                Amount /= (decimal)_NewRate;
             }
+
+            MessagingCenter.Send(this, "SwitchCurrency");
         }
 
         void InitializePrecioAndWalletTimers()
@@ -245,6 +253,7 @@ namespace HodlWallet2.Core.ViewModels
                 lock (_Lock)
                 {
                     Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                    AmountFiat = Amount * (decimal)_NewRate;
 
                     _WalletService.OnStarted -= _WalletService_OnStarted_ViewAppearing;
                 }

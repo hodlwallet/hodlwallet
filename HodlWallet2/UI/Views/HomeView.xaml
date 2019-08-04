@@ -35,15 +35,15 @@
                 <StackLayout Orientation="Vertical"
                              Spacing="0"
                              FlexLayout.Grow="2">
-                    <ScrollView x:Name="BalanceAndPriceScrollView"
+                    <ScrollView x:Name="BalanceScrollView"
                                 Orientation="Vertical"
                                 IsEnabled="False"
                                 VerticalScrollBarVisibility="Never"
                                 HorizontalScrollBarVisibility="Never"
                                 HeightRequest="50">
                         <StackLayout Orientation="Vertical">
-                            <controls:MoneyLabel x:Name="BalanceAmount"
-                                                 Text="0.50341173"
+                            <controls:MoneyLabel x:Name="BalanceAmountBTC"
+                                                 Text="{Binding Amount, StringFormat='{0:0.00}'}"
                                                  FontSize="Large"
                                                  TextColor="{DynamicResource TextPrimary}"
                                                  FontFamily="{DynamicResource Mono-Bold}"
@@ -53,13 +53,13 @@
                                    HorizontalOptions="Center"
                                    FontFamily="{StaticResource Mono-Bold}"
                                    TextColor="{DynamicResource TextPrimary}" />
-                            <controls:MoneyLabel x:Name="PriceLabel"
-                                                 TextColor="{DynamicResource TextPrimary}"
+                            <controls:MoneyLabel x:Name="BalanceAmountUSD"
+                                                 Text="{Binding AmountFiat, StringFormat='{0:C}'}"
                                                  FontSize="Large"
-                                                 FontFamily="{StaticResource Mono-Bold}"
-                                                 Text="{Binding PriceText}"
+                                                 TextColor="{DynamicResource TextPrimary}"
+                                                 FontFamily="{DynamicResource Mono-Bold}"
                                                  HorizontalOptions="Center" />
-                            <Label Text="price"
+                            <Label Text="usd"
                                    HorizontalOptions="Center"
                                    FontFamily="{StaticResource Mono-Bold}"
                                    TextColor="{DynamicResource TextPrimary}" />
@@ -67,7 +67,7 @@
                     </ScrollView>
 
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Balance_Tapped"
+                        <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}"
                                               NumberOfTapsRequired="1" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
@@ -92,9 +92,14 @@
                 </StackLayout>
             </FlexLayout>
 
-            <FlexLayout Direction="Row"
+            <FlexLayout Direction="Column"
                         FlexLayout.Grow="19"
                         BackgroundColor="{DynamicResource BackgroundPrimary}">
+                <controls:SyncProgressBar SyncVisible="{Binding SyncIsVisible}"
+                                          SyncTitle="{Binding SyncTitleText}"
+                                          SyncProgress="{Binding SyncCurrentProgress}"
+                                          SyncDate="{Binding SyncDateText}" />
+                <controls:TransactionCollectionView FlexLayout.Grow="1" />
             </FlexLayout>
         </FlexLayout>
         <!--<FlexLayout Direction="Column">
