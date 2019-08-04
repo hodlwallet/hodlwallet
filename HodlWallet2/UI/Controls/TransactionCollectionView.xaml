@@ -13,6 +13,7 @@
     </ContentView.Resources>
     <Frame
         HeightRequest="150"
+        HasShadow="False"
         BackgroundColor="Transparent"
         Padding="0">
         <StackLayout>
@@ -29,7 +30,7 @@
                             <Grid
                                 Margin="15, 2, 15, 2"
                                 Padding="10"
-                                BackgroundColor="{DynamicResource BackgroundSecondary}">
+                                BackgroundColor="{DynamicResource BackgroundPrimary}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition
                                         Height="15" />
@@ -52,13 +53,25 @@
                                     Grid.Row="0"
                                     TextColor="{Binding IsSend, Converter={StaticResource IsSendToStatusColorConverter}}"
                                     Text="{Binding AmountText}" />
-                                <Label
-                                    Style="{StaticResource TransactionInfoLabel}"
-                                    Grid.Column="1"
-                                    Grid.Row="0"
-                                    HorizontalTextAlignment="End"
-                                    TextColor="{DynamicResource TextPrimary}"
-                                    Text="{Binding CreationTime, Converter={StaticResource CreationTimeToDurationConverter}}" />
+                                <StackLayout Orientation="Horizontal"
+                                             
+                                             Grid.Column="1"
+                                             Grid.Row="0">
+                                    <Image Source="schedule.png"
+                                           HeightRequest="16"
+                                           WidthRequest="16" />
+                                    <Label Style="{StaticResource TransactionInfoLabel}"
+                                           HorizontalTextAlignment="End"
+                                           TextColor="{DynamicResource TextPrimary}"
+                                           Text="{Binding CreationTime, Converter={StaticResource CreationTimeToDurationConverter}}" />
+                                </StackLayout>
+                                <!--<Label Grid.Column="1"
+                                       Grid.Row="0"
+                                       Style="{StaticResource TransactionInfoLabel}"
+                                       HorizontalTextAlignment="End"
+                                       TextColor="{DynamicResource TextPrimary}"
+                                       Text="{Binding CreationTime, Converter={StaticResource CreationTimeToDurationConverter}}" />-->
+
                                 <Label
                                     Style="{StaticResource TransactionInfoLabel}"
                                     Grid.Column="0"

@@ -110,6 +110,8 @@ namespace HodlWallet2.Core.ViewModels
             SearchCommand = new Command(StartSearch);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
+
+            //InitializeWalletAndPrecio();
         }
 
         public void InitializeWalletAndPrecio()

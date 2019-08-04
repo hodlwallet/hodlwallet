@@ -122,7 +122,7 @@
                                              TextColor="{DynamicResource TextPrimary}"
                                              StartText="1 BTC = $"
                                              FontSize="Small"
-                                             FontFamily="{StaticResource Mono-Regular}"
+                                             FontFamily="{StaticResource Mono-Bold}"
                                              Text="{Binding PriceText}" />
                     </StackLayout>
                 </FlexLayout>

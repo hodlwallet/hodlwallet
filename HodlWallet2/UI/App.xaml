@@ -43,10 +43,6 @@
                         x:TypeArguments="x:String"
                         iOS="LiberationMono-Bold"
                         Android="LiberationMono-Bold.ttf#LiberationMono-Bold" />
-            <OnPlatform x:Key="Mono-BoldItalic"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationMono-BoldItalic"
-                        Android="LiberationMono-BoldItalic#LiberationMono-BoldItalic" />
             <OnPlatform x:Key="Mono-Italic"
                         x:TypeArguments="x:String"
                         iOS="LiberationMono-Italic"
@@ -136,6 +132,8 @@
                    BasedOn="{StaticResource CustomButton}">
                 <Setter Property="FontSize"
                         Value="Medium" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Mono-Bold}" />
             </Style>
 
             <Style x:Name="SettingsButton" TargetType="Button">

@@ -12,7 +12,7 @@
             <Setter Property="WidthRequest" Value="14" />
         </Style>
         <Style TargetType="Label">
-            <Setter Property="FontFamily" Value="{StaticResource Mono-Regular}" />
+            <Setter Property="FontFamily" Value="{StaticResource Mono-Bold}" />
             <Setter Property="BackgroundColor" Value="Red" />
             <Setter Property="FontSize" Value="Title" />
             <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.ViewModels;
 using NBitcoin;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -24,9 +25,24 @@ namespace HodlWallet2.UI.Views
         {
             base.OnAppearing();
 
-            _ViewModel.InitializeWalletAndPrecio();
-
             PriceButton.Source = "price-tag-3-line.png";
+
+            _ViewModel.InitializeWalletAndPrecio();
+            InitializeDisplayedCurrency();
+        }
+
+        void InitializeDisplayedCurrency()
+        {
+            var currency = Preferences.Get("currency", "BTC");
+
+            if (currency == "BTC")
+            {
+                BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.AnchorY, true);
+            }
+            else
+            {
+                BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.AnchorY, true);
+            }
         }
 
         void SubscribeToMessages()

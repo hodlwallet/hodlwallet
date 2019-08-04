@@ -176,6 +176,9 @@
     <BundleResource Include="Resources\price-tag-3-fill%401x.png" />
     <BundleResource Include="Resources\price-tag-3-fill%402x.png" />
     <BundleResource Include="Resources\price-tag-3-fill%403x.png" />
+    <BundleResource Include="Resources\schedule%401x.png" />
+    <BundleResource Include="Resources\schedule%402x.png" />
+    <BundleResource Include="Resources\schedule%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

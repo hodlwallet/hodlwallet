@@ -83,7 +83,7 @@
                                    Text="{Binding AmountToSend}"
                                    TextColor="{DynamicResource SyncGradientStart}"
                                    BackgroundColor="Transparent"
-                                   FontFamily="{StaticResource Mono-Regular}"
+                                   FontFamily="{StaticResource Mono-Bold}"
                                    VerticalOptions="Center" />
                         </StackLayout>
 

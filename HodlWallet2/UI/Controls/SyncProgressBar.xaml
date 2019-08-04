@@ -14,9 +14,9 @@
         <StackLayout x:Name="SyncLayout"
                      Margin="15, 5, 15, 5"
                      Padding="10"
-                     HeightRequest="70"
-                     BackgroundColor="{DynamicResource BackgroundSecondary}">
+                     BackgroundColor="{DynamicResource BackgroundPrimary}">
                     <Label x:Name="TitleLabel"
+                           IsVisible="False"
                            Style="{DynamicResource ProgressLabel}"
                            VerticalOptions="CenterAndExpand" 
                            FontSize="Small" />
