@@ -38,6 +38,23 @@ namespace HodlWallet2.UI.Converters
         }
     }
 
+    public class IsSendToIconConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            bool isSend = (bool)value;
+
+            return isSend
+                ? "sent.png"
+                : "received.png";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class CreationTimeToDurationConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

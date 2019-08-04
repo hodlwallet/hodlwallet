@@ -9,6 +9,7 @@
             <converters:MemoToHeightConverter x:Key="MemoToHeightConverter" />
             <converters:IsSendToStatusColorConverter x:Key="IsSendToStatusColorConverter" />
             <converters:CreationTimeToDurationConverter x:Key="CreationTimeToDurationConverter" />
+            <converters:IsSendToIconConverter x:Key="IsSendToIconConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
     <Frame
@@ -26,11 +27,13 @@
                 BackgroundColor="{DynamicResource BackgroundPrimary}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding IsSend, Converter={StaticResource IsSendToIconConverter}}" Opacity="0.3" Margin="15, 2, 0, 2" HeightRequest="30" WidthRequest="30" />
                             <Grid
-                                Margin="15, 2, 15, 2"
+                                Margin="0, 2, 15, 2"
                                 Padding="10"
-                                BackgroundColor="{DynamicResource BackgroundPrimary}">
+                                BackgroundColor="{DynamicResource BackgroundPrimary}"
+                                HorizontalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
                                     <RowDefinition
                                         Height="15" />
