@@ -51,12 +51,13 @@
                                     Style="{StaticResource TransactionInfoLabel}"
                                     Grid.Column="0"
                                     Grid.Row="0"
+                                    FontFamily="{StaticResource Mono-Bold}"
                                     TextColor="{Binding IsSend, Converter={StaticResource IsSendToStatusColorConverter}}"
                                     Text="{Binding AmountText}" />
                                 <StackLayout Orientation="Horizontal"
-                                             
                                              Grid.Column="1"
-                                             Grid.Row="0">
+                                             Grid.Row="0"
+                                             HorizontalOptions="End">
                                     <Image Source="schedule.png"
                                            HeightRequest="16"
                                            WidthRequest="16" />

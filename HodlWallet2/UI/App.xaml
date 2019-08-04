@@ -168,7 +168,7 @@
 
             <Style x:Key="TransactionInfoLabel" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource Sans-Regular}"/>
-                <Setter Property="FontSize" Value="Micro"/>
+                <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="LineBreakMode" Value="MiddleTruncation" />
             </Style>
 
