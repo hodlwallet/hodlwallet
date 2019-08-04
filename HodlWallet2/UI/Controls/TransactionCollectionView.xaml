@@ -59,20 +59,14 @@
                                              Grid.Row="0"
                                              HorizontalOptions="End">
                                     <Image Source="schedule.png"
-                                           HeightRequest="16"
-                                           WidthRequest="16" />
+                                           HeightRequest="11"
+                                           WidthRequest="11" />
                                     <Label Style="{StaticResource TransactionInfoLabel}"
+                                           FontFamily="{StaticResource Sans-Regular}"
                                            HorizontalTextAlignment="End"
-                                           TextColor="{DynamicResource TextPrimary}"
+                                           TextColor="{DynamicResource TextSecondary}"
                                            Text="{Binding CreationTime, Converter={StaticResource CreationTimeToDurationConverter}}" />
                                 </StackLayout>
-                                <!--<Label Grid.Column="1"
-                                       Grid.Row="0"
-                                       Style="{StaticResource TransactionInfoLabel}"
-                                       HorizontalTextAlignment="End"
-                                       TextColor="{DynamicResource TextPrimary}"
-                                       Text="{Binding CreationTime, Converter={StaticResource CreationTimeToDurationConverter}}" />-->
-
                                 <Label
                                     Style="{StaticResource TransactionInfoLabel}"
                                     Grid.Column="0"

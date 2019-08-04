@@ -109,8 +109,6 @@ namespace HodlWallet2.Core.ViewModels
             SearchCommand = new Command(StartSearch);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
-
-            //InitializeWalletAndPrecio();
         }
 
         public void InitializeWalletAndPrecio()
@@ -142,11 +140,6 @@ namespace HodlWallet2.Core.ViewModels
             {
                 Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 AmountFiat = Amount * (decimal)_NewRate;
-                
-                if(Preferences.Get("currency", "BTC") != "BTC")
-                {
-                    Amount *= (decimal) _NewRate;
-                }
             }
             else
             {
@@ -223,10 +216,7 @@ namespace HodlWallet2.Core.ViewModels
                     // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
                     _OldRate = _NewRate = rate.Rate;
 
-                    if (Preferences.Get("currency", "BTC") != "BTC")
-                    {
-                        Amount *= (decimal)_NewRate;
-                    }
+                    AmountFiat = Amount * (decimal)_NewRate;
                 }
                 return Task.FromResult(true);
             });
@@ -237,16 +227,16 @@ namespace HodlWallet2.Core.ViewModels
 
                 if (Preferences.Get("currency", "BTC") != "BTC")
                 {
-                    Amount = Amount * (decimal)_NewRate;
+                    AmountFiat = Amount * (decimal)_NewRate;
                     
                     if (!_OldRate.Equals(_NewRate))
                     {
                         _OldRate = _NewRate;
-                        //TODO: Update transactions with new rate.
-                        for (int i = 0; i < Transactions.Count; i++) // DO NOT convert this into a foreach loop or LINQ statement.
+                        
+                        // DO NOT convert this into a foreach loop or LINQ statement.
+                        for (int i = 0; i < Transactions.Count; i++) 
                         {
-                            //TODO: Update currency
-                            Transactions[i].AmountText = (Transactions[i].Amount.ToDecimal(MoneyUnit.BTC) * (decimal)_NewRate).ToString();
+                            Transactions[i].AmountText = (Transactions[i].Amount.ToDecimal(MoneyUnit.BTC) * (decimal)_NewRate).ToString("C");
                         }
                     }
                 }

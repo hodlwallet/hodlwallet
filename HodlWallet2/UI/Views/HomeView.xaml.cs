@@ -37,11 +37,11 @@ namespace HodlWallet2.UI.Views
 
             if (currency == "BTC")
             {
-                BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.AnchorY, true);
+                BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
             }
             else
             {
-                BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.AnchorY, true);
+                BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
             }
         }
 
