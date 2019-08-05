@@ -193,11 +193,23 @@ namespace HodlWallet2.Core.ViewModels
             if (currency == "BTC")
             {
                 Preferences.Set("currency", "USD");
+
+                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                AmountFiat = Amount * (decimal)_NewRate;
+
+                UpdateTransanctions();
+
                 IsBtcEnabled = false;
             }
             else
             {
                 Preferences.Set("currency", "BTC");
+
+                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                AmountFiat = Amount * (decimal)_NewRate;
+
+                UpdateTransanctions();
+
                 IsBtcEnabled = true;
             }
 
@@ -217,7 +229,10 @@ namespace HodlWallet2.Core.ViewModels
                     _OldRate = _NewRate = rate.Rate;
 
                     AmountFiat = Amount * (decimal)_NewRate;
+
+                    UpdateTransanctions();
                 }
+
                 return Task.FromResult(true);
             });
 
@@ -225,30 +240,36 @@ namespace HodlWallet2.Core.ViewModels
             {
                 Task.Run(RatesAsync);
 
-                if (Preferences.Get("currency", "BTC") != "BTC")
-                {
-                    AmountFiat = Amount * (decimal)_NewRate;
-                    
-                    if (!_OldRate.Equals(_NewRate))
-                    {
-                        _OldRate = _NewRate;
-                        
-                        // DO NOT convert this into a foreach loop or LINQ statement.
-                        for (int i = 0; i < Transactions.Count; i++) 
-                        {
-                            Transactions[i].AmountText = (Transactions[i].Amount.ToDecimal(MoneyUnit.BTC) * (decimal)_NewRate).ToString("C");
-                        }
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < Transactions.Count; i++)
-                    {
-                        Transactions[i].AmountText = Transactions[i].Amount.ToDecimal(MoneyUnit.BTC).ToString();
-                    }
-                }
+                UpdateTransanctions();
+
                 return true;
             });
+        }
+
+        void UpdateTransanctions()
+        {
+            if (Preferences.Get("currency", "BTC") != "BTC")
+            {
+                AmountFiat = Amount * (decimal)_NewRate;
+
+                if (!_OldRate.Equals(_NewRate))
+                {
+                    _OldRate = _NewRate;
+
+                    // DO NOT convert this into a foreach loop or LINQ statement.
+                    for (int i = 0; i < Transactions.Count; i++)
+                    {
+                        Transactions[i].AmountText = (Transactions[i].Amount.ToDecimal(MoneyUnit.BTC) * (decimal)_NewRate).ToString("C");
+                    }
+                }
+
+                return;
+            }
+
+            for (int i = 0; i < Transactions.Count; i++)
+            {
+                Transactions[i].AmountText = Transactions[i].Amount.ToDecimal(MoneyUnit.BTC).ToString();
+            }
         }
 
         private void _WalletService_OnStarted_ViewAppearing(object sender, EventArgs e)

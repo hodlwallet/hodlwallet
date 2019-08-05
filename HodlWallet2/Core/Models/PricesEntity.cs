@@ -1,5 +1,5 @@
 ﻿//
-// PriceView.xaml.cs
+// PricesEntity.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -24,21 +24,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
-using Xamarin.Forms;
-
-namespace HodlWallet2.UI.Views
+namespace HodlWallet2.Core.Models
 {
-    public partial class PriceView : ContentPage
+    public class Meta
     {
-        public PriceView()
-        {
-            InitializeComponent();
-        }
+        [JsonProperty("high")]
+        public High high { get; set; }
 
-        void Close_Tapped(object sender, EventArgs e)
-        {
-            Navigation.PopModalAsync();
-        }
+        [JsonProperty("low")]
+        public Low low { get; set; }
+    }
+
+    public class Price
+    {
+        [JsonProperty("price")]
+        public double price { get; set; }
+
+        [JsonProperty("time")]
+        public DateTime time { get; set; }
+    }
+
+    public class Low : Price { }
+    public class High : Price { }
+
+    public class PricesEntity
+    {
+        [JsonProperty("meta")]
+        public Meta meta { get; set; }
+
+        [JsonProperty("prices")]
+        public List<Price> prices { get; set; }
     }
 }

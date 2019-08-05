@@ -16,5 +16,8 @@ namespace HodlWallet2.Core.Interfaces
 
         [Get("/hodl/fee-estimator.json")]
         Task<FeeEntity> GetFees();
+
+        [Get("/precio.json?period=1d")]
+        Task<PricesEntity> GetPrices();
     }
 }
