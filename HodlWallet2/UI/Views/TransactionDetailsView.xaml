@@ -54,7 +54,8 @@
                            Text="{Binding CreationTimeText}" />
                     <Label FontSize="Large"
                            Style="{StaticResource TransactionDetailLabel}"
-                           Text="{Binding AmountText}" />
+                           Text="{Binding AmountText}"
+                           FontFamily="{StaticResource Mono-Bold}" />
                     <Label FontSize="Large"
                            Style="{StaticResource TransactionDetailLabel}"
                            Text="{Binding AddressText}" />
@@ -87,7 +88,8 @@
                            Text="{Binding AmountTitle}" />
                     <Label FontSize="Small"
                            Style="{StaticResource TransactionDetailLabel}"
-                           Text="{Binding AmountWithFeeText}" />
+                           Text="{Binding AmountWithFeeText}"
+                           FontFamily="{StaticResource Mono-Bold}" />
                     <!--<Label FontSize="Small"
                        Text="{Binding StartingBalanceText}"
                        />

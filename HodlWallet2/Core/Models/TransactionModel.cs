@@ -197,7 +197,7 @@ namespace HodlWallet2.Core.Models
 
             string totalWithFees = (totalAmount + totalFees).Normalize().ToString();
 
-            return $"${totalWithFees} ({Amount.Normalize().ToString()} + {totalFees})";
+            return $"{totalWithFees} ({Amount.Normalize().ToString()} + {totalFees})";
         }
 
 
