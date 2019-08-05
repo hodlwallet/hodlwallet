@@ -36,6 +36,8 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class PriceViewModel : BaseViewModel
     {
+        bool _IsViewVisible = true;
+
         string _PriceText;
         public string PriceText
         {
@@ -66,13 +68,26 @@ namespace HodlWallet2.Core.ViewModels
             Task.Run(Initialize);
         }
 
+        public void View_OnDisappearing()
+        {
+            _IsViewVisible = false;
+        }
+
         void Initialize()
         {
             UpdatePrice();
+            UpdateChartData();
             DrawPricesChart();
 
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            Device.StartTimer(TimeSpan.FromMilliseconds(2500), () =>
             {
+                if (!_IsViewVisible)
+                {
+                    Debug.WriteLine("[Initialize][StartTimerCallback] No longer getting price every second");
+
+                    return false;
+                }
+
                 UpdatePrice();
 
                 Debug.WriteLine($"[Initialize][StartTimerCallback] Timer new price is: {_PriceText}");
@@ -98,6 +113,10 @@ namespace HodlWallet2.Core.ViewModels
                 Debug.WriteLine("[UpdatePrice] Unable to get price");
             }
 
+        }
+
+        void UpdateChartData()
+        {
             // TODO Prices also only works on USD price...
             var prices = _PrecioService.GetPrices().Result;
 

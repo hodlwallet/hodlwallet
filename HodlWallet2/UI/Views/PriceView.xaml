@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
+             xmlns:microchartsForms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:microcharts="clr-namespace:Microcharts;assembly=Microcharts"
              xmlns:svg="clr-namespace:HodlWallet2.Core.Utils"
              xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
@@ -34,7 +35,7 @@
                                     FlexLayout.Grow="1"
                                     FlexLayout.AlignSelf="Center">
                             <svg:Icon ResourceId="HodlWallet2.UI.Assets.close.svg"
-                                      Margin="0, 10, 35, 0"
+                                      Margin="0, 10, 20, 0"
                                       HeightRequest="16"
                                       WidthRequest="16"
                                       VerticalOptions="Center"
@@ -59,13 +60,15 @@
                                                  FontFamily="{StaticResource Mono-Bold}" />
                         </ScrollView>
                     </FlexLayout>
+
                     <FlexLayout Direction="Row"
                                 FlexLayout.Grow="20"
                                 VerticalOptions="CenterAndExpand"
                                 HorizontalOptions="CenterAndExpand">
-                        <microcharts:ChartView x:Name="PricesChartView"
+                        <microchartsForms:ChartView x:Name="PricesChartView"
                                                BackgroundColor="{DynamicResource BackgroundPrimary}"
-                                               WidthRequest="500" />
+                                               WidthRequest="500"
+                                               HeightRequest="250" />
                     </FlexLayout>
                 </FlexLayout>
             </ScrollView>

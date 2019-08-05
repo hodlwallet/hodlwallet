@@ -43,7 +43,7 @@
                                 HeightRequest="50">
                         <StackLayout Orientation="Vertical">
                             <controls:MoneyLabel x:Name="BalanceAmountBTC"
-                                                 Text="{Binding Amount, StringFormat='{0:0.00}'}"
+                                                 Text="{Binding Amount, StringFormat='{0:0.00000000}'}"
                                                  FontSize="Large"
                                                  TextColor="{DynamicResource TextPrimary}"
                                                  FontFamily="{DynamicResource Mono-Bold}"
@@ -102,76 +102,5 @@
                 <controls:TransactionCollectionView FlexLayout.Grow="1" />
             </FlexLayout>
         </FlexLayout>
-        <!--<FlexLayout Direction="Column">
-            <BoxView FlexLayout.Grow="1" />
-            <FlexLayout Direction="Row"
-                        FlexLayout.Grow="1">
-                <FlexLayout FlexLayout.Grow="1">
-                    <Image x:Name="logo"
-                           Source="logo.png"
-                           HeightRequest="20"
-                           Margin="20, 0, 0, 0" />
-                </FlexLayout>
-
-                <FlexLayout FlexLayout.Grow="1"
-                            Direction="Column"
-                            AlignItems="End">
-                    <StackLayout Orientation="Horizontal">
-                        <controls:MoneyLabel x:Name="priceLabel"
-                                             Margin="0, 0, 20, 0"
-                                             TextColor="{DynamicResource TextPrimary}"
-                                             StartText="1 BTC = $"
-                                             FontSize="Small"
-                                             FontFamily="{StaticResource Mono-Bold}"
-                                             Text="{Binding PriceText}" />
-                    </StackLayout>
-                </FlexLayout>
-            </FlexLayout>
-
-            <FlexLayout Direction="Row"
-                        FlexLayout.Grow="1">
-                <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1">
-                    <StackLayout Orientation="Horizontal"
-                                 HeightRequest="30">
-
-                        <controls:MoneyLabel x:Name="amountLabel"
-                                             Margin="20, 0, 0, 0"
-                                             FontSize="Large"
-                                             FontFamily="Menlo"
-                                             TextColor="{StaticResource TextPrimary}"
-                                             Text="{Binding Amount}">
-                            <controls:MoneyLabel.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}" />
-                            </controls:MoneyLabel.GestureRecognizers>
-                        </controls:MoneyLabel>
-                    </StackLayout>
-                </FlexLayout>
-
-                <FlexLayout Direction="Column"
-                            FlexLayout.Grow="1"
-                            AlignItems="End">
-                    <svg:Icon ResourceId="HodlWallet2.UI.Assets.search.svg"
-                              Margin="0, 4, 20, 0"
-                              WidthRequest="16"
-                              HeightRequest="16">
-                        <svg:Icon.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SearchCommand}"
-                                                  NumberOfTapsRequired="1" />
-                        </svg:Icon.GestureRecognizers>
-                    </svg:Icon>
-                </FlexLayout>
-            </FlexLayout>
-
-            <FlexLayout FlexLayout.Grow="10"
-                        BackgroundColor="Transparent"
-                        Direction="Column">
-                <controls:SyncProgressBar SyncVisible="{Binding SyncIsVisible}"
-                                          SyncTitle="{Binding SyncTitleText}"
-                                          SyncProgress="{Binding SyncCurrentProgress}"
-                                          SyncDate="{Binding SyncDateText}" />
-                <controls:TransactionCollectionView FlexLayout.Grow="1" />
-            </FlexLayout>
-        </FlexLayout>-->
     </ContentPage.Content>
 </ContentPage>

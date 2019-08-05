@@ -30,6 +30,9 @@ using Newtonsoft.Json;
 
 using Microcharts;
 using SkiaSharp;
+using System.Runtime.InteropServices.ComTypes;
+using Xamarin.Forms;
+using SkiaSharp.Views.Forms;
 
 namespace HodlWallet2.Core.Models
 {
@@ -56,42 +59,47 @@ namespace HodlWallet2.Core.Models
 
     public class PricesEntity
     {
+        SKColor _Color => ((Color)Application.Current.Resources["TextSuccess"]).ToSKColor();
+
         [JsonProperty("meta")]
         public MetaEntity Meta { get; set; }
 
         [JsonProperty("prices")]
         public List<PriceEntity> Prices { get; set; }
 
-        //public IEnumerable<ChartEntry> ToEntries()
-        //{
-        //    float initValue = 0.0f;
-        //    foreach (PriceEntity price in Prices)
-        //    {
-        //        yield return new ChartEntry(initValue)
-        //        {
-        //            ValueLabel = initValue.ToString("C")
-        //        };
-
-        //        initValue += 1.0f;
-        //    }
-        //}
-        public List<ChartEntry> ToEntries()
+        public IEnumerable<ChartEntry> ToEntries()
         {
-            var chartEntries = new List<ChartEntry> { };
+            // Add first item
+            yield return GetChartEntry(Prices[0], withValueLabel: true);
 
-            foreach (PriceEntity price in Prices)
+            if (Prices.Count <= 100)
             {
-                var entry = new ChartEntry((float)price.Price)
-                {
-                    Label = null,
-                    Color = SKColor.Parse("#C89E26"),
-                    ValueLabel = null
-                };
+                for (int i = 1, count = Prices.Count - 2; i <= count; i++)
+                    yield return GetChartEntry(Prices[i]);
+            }
+            else
+            {
+                int inc = Prices.Count > 500
+                    ? 50
+                    : 25;
 
-                chartEntries.Add(entry);
+                for (int i = inc, count = Prices.Count - 2; i <= count; i += inc)
+                    yield return GetChartEntry(Prices[i]);
             }
 
-            return chartEntries;
+            // Add last item
+            yield return GetChartEntry(Prices[Prices.Count - 1], withValueLabel: true);
+        }
+
+        ChartEntry GetChartEntry(PriceEntity priceEntity, bool withValueLabel = false)
+        {
+            var price = priceEntity.Price;
+            return new ChartEntry((float)price)
+            {
+                //Label = withValueLabel ? price.ToString("C") : null,
+                Color = _Color,
+                //ValueLabel = withValueLabel ? price.ToString("C") : null,
+            };
         }
     }
 }

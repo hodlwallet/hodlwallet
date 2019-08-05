@@ -29,6 +29,7 @@ using System.Linq;
 using Xamarin.Forms;
 
 using SkiaSharp;
+using SkiaSharp.Views.Forms;
 
 using Microcharts;
 
@@ -39,12 +40,20 @@ namespace HodlWallet2.UI.Views
     public partial class PriceView : ContentPage
     {
         PriceViewModel _ViewModel => (PriceViewModel)BindingContext;
+        SKColor _ChartBackgroundColor => ((Color)Application.Current.Resources["BackgroundPrimary"]).ToSKColor();
 
         public PriceView()
         {
             InitializeComponent();
 
             SubscribeToMessages();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            _ViewModel.View_OnDisappearing();
         }
 
         void SubscribeToMessages()
@@ -54,16 +63,21 @@ namespace HodlWallet2.UI.Views
 
         private void DrawPricesChart(PriceViewModel vm)
         {
+            var chart = new LineChart
+            {
+                IsAnimated = false,
+                PointMode = PointMode.None,
+                LineMode = LineMode.Spline,
+                LineAreaAlpha = 0,
+                Entries = _ViewModel.PricesList.ToEntries(),
+                MinValue = (float)vm.PricesList.Meta.Low.Price + 100.0f,
+                MaxValue = (float)vm.PricesList.Meta.High.Price + 100.0f,
+                BackgroundColor = _ChartBackgroundColor
+            };
+
             Device.BeginInvokeOnMainThread(() =>
             {
-                PricesChartView.Chart = new LineChart
-                {
-                    IsAnimated = true,
-                    MinValue = (float) vm.PricesList.Meta.Low.Price + 100.0f,
-                    MaxValue = (float) vm.PricesList.Meta.High.Price + 100.0f,
-                    BackgroundColor = SKColor.Parse("#212121"),
-                    Entries = _ViewModel.PricesList.ToEntries()
-                };
+                PricesChartView.Chart = chart;
             });
         }
 

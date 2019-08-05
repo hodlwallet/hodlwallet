@@ -71,10 +71,7 @@ namespace HodlWallet2.UI.Views
         {
             PriceButton.Source = "price-tag-3-fill.png";
 
-            Device.InvokeOnMainThreadAsync(() =>
-            {
-                Navigation.PushModalAsync(new PriceView());
-            });
+            Navigation.PushModalAsync(new PriceView());
         }
 
         void SwitchCurrency(HomeViewModel _)
