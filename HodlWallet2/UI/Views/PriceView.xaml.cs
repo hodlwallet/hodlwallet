@@ -24,16 +24,47 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
 
 using Xamarin.Forms;
+
+using SkiaSharp;
+
+using Microcharts;
+
+using HodlWallet2.Core.ViewModels;
 
 namespace HodlWallet2.UI.Views
 {
     public partial class PriceView : ContentPage
     {
+        PriceViewModel _ViewModel => (PriceViewModel)BindingContext;
+
         public PriceView()
         {
             InitializeComponent();
+
+            SubscribeToMessages();
+        }
+
+        void SubscribeToMessages()
+        {
+            MessagingCenter.Subscribe<PriceViewModel>(this, "DrawPricesChart", DrawPricesChart);
+        }
+
+        private void DrawPricesChart(PriceViewModel vm)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                PricesChartView.Chart = new LineChart
+                {
+                    IsAnimated = true,
+                    MinValue = (float) vm.PricesList.Meta.Low.Price + 100.0f,
+                    MaxValue = (float) vm.PricesList.Meta.High.Price + 100.0f,
+                    BackgroundColor = SKColor.Parse("#212121"),
+                    Entries = _ViewModel.PricesList.ToEntries()
+                };
+            });
         }
 
         void Close_Tapped(object sender, EventArgs e)

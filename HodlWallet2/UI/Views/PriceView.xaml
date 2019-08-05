@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
              xmlns:svg="clr-namespace:HodlWallet2.Core.Utils"
              xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
@@ -14,7 +15,9 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid>
-            <ScrollView Orientation="Vertical">
+            <ScrollView Orientation="Vertical"
+                        VerticalScrollBarVisibility="Never"
+                        HorizontalScrollBarVisibility="Never">
                 <FlexLayout Direction="Column">
                     <FlexLayout Direction="Row"
                                 FlexLayout.Grow="1">
@@ -57,7 +60,12 @@
                         </ScrollView>
                     </FlexLayout>
                     <FlexLayout Direction="Row"
-                                FlexLayout.Grow="20">
+                                FlexLayout.Grow="20"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand">
+                        <microcharts:ChartView x:Name="PricesChartView"
+                                               BackgroundColor="{DynamicResource BackgroundPrimary}"
+                                               WidthRequest="500" />
                     </FlexLayout>
                 </FlexLayout>
             </ScrollView>

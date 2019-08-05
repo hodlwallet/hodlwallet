@@ -27,8 +27,10 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using HodlWallet2.Core.Models;
+
 using Xamarin.Forms;
+
+using HodlWallet2.Core.Models;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -67,6 +69,7 @@ namespace HodlWallet2.Core.ViewModels
         void Initialize()
         {
             UpdatePrice();
+            DrawPricesChart();
 
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
@@ -82,7 +85,7 @@ namespace HodlWallet2.Core.ViewModels
 
         void UpdatePrice()
         {
-            // TODO For now hardcoded to usd price.
+            // TODO For now hardcoded to USD price.
             var price = _PrecioService.GetRates().Result.SingleOrDefault(r => r.Code == "USD");
 
             if (price != null)
@@ -95,6 +98,7 @@ namespace HodlWallet2.Core.ViewModels
                 Debug.WriteLine("[UpdatePrice] Unable to get price");
             }
 
+            // TODO Prices also only works on USD price...
             var prices = _PrecioService.GetPrices().Result;
 
             if (prices != null)
@@ -105,6 +109,11 @@ namespace HodlWallet2.Core.ViewModels
             {
                 Debug.WriteLine("[UpdatePrice] Unable to get prices");
             }
+        }
+
+        void DrawPricesChart()
+        {
+            MessagingCenter.Send(this, "DrawPricesChart");
         }
     }
 }

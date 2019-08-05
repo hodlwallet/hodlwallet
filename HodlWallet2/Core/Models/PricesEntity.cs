@@ -25,37 +25,73 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+
 using Newtonsoft.Json;
+
+using Microcharts;
+using SkiaSharp;
 
 namespace HodlWallet2.Core.Models
 {
-    public class Meta
+    public class MetaEntity
     {
         [JsonProperty("high")]
-        public High high { get; set; }
+        public HighEntity High { get; set; }
 
         [JsonProperty("low")]
-        public Low low { get; set; }
+        public LowEntity Low { get; set; }
     }
 
-    public class Price
+    public class PriceEntity
     {
         [JsonProperty("price")]
-        public double price { get; set; }
+        public double Price { get; set; }
 
         [JsonProperty("time")]
-        public DateTime time { get; set; }
+        public DateTime Time { get; set; }
     }
 
-    public class Low : Price { }
-    public class High : Price { }
+    public class LowEntity : PriceEntity { }
+    public class HighEntity : PriceEntity { }
 
     public class PricesEntity
     {
         [JsonProperty("meta")]
-        public Meta meta { get; set; }
+        public MetaEntity Meta { get; set; }
 
         [JsonProperty("prices")]
-        public List<Price> prices { get; set; }
+        public List<PriceEntity> Prices { get; set; }
+
+        //public IEnumerable<ChartEntry> ToEntries()
+        //{
+        //    float initValue = 0.0f;
+        //    foreach (PriceEntity price in Prices)
+        //    {
+        //        yield return new ChartEntry(initValue)
+        //        {
+        //            ValueLabel = initValue.ToString("C")
+        //        };
+
+        //        initValue += 1.0f;
+        //    }
+        //}
+        public List<ChartEntry> ToEntries()
+        {
+            var chartEntries = new List<ChartEntry> { };
+
+            foreach (PriceEntity price in Prices)
+            {
+                var entry = new ChartEntry((float)price.Price)
+                {
+                    Label = null,
+                    Color = SKColor.Parse("#C89E26"),
+                    ValueLabel = null
+                };
+
+                chartEntries.Add(entry);
+            }
+
+            return chartEntries;
+        }
     }
 }
