@@ -127,7 +127,7 @@ namespace HodlWallet2.Core.ViewModels
 
         async Task SetSliderValue()
         {
-            var currentFees = await _PrecioService.GetFees();
+            var currentFees = await _PrecioHttpService.GetFeeEstimator();
 
             if (SliderValue <= (MAX_SLIDER_VALUE * 0.25))
             {

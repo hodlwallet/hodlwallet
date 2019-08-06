@@ -21,12 +21,15 @@ using HodlWallet2.Core.Services;
 using NBitcoin;
 using System.Windows.Input;
 using NBitcoin.Protocol;
+using System.Diagnostics;
 
 namespace HodlWallet2.Core.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
         Serilog.ILogger _Logger;
+
+        bool _IsViewVisible = true;
 
         public string SendText => "Send";
         public string ReceiveText => "Receive";
@@ -111,8 +114,22 @@ namespace HodlWallet2.Core.ViewModels
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
         }
 
+        public void View_OnDisappearing()
+        {
+            _IsViewVisible = false;
+        }
+
+        public void View_OnAppearing()
+        {
+            _IsViewVisible = true;
+
+            InitializeWalletAndPrecio();
+            InitializePrecioAndWalletTimers(); // TODO see bellow
+        }
+
         public void InitializeWalletAndPrecio()
         {
+            // FIXME This logic needs to change...
             if (_AttachedWalletListeners) return;
 
             InitializePrecioAndWalletTimers();
@@ -222,7 +239,7 @@ namespace HodlWallet2.Core.ViewModels
             Task.Run(async () =>
             {
                 // Gets first BTC-USD rate.
-                var rate = (await _PrecioService.GetRates()).SingleOrDefault(r => r.Code == "USD");
+                var rate = (await _PrecioHttpService.GetRates()).SingleOrDefault(r => r.Code == "USD");
                 if (rate != null)
                 {
                     // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
@@ -238,6 +255,14 @@ namespace HodlWallet2.Core.ViewModels
 
             Device.StartTimer(TimeSpan.FromSeconds(Constants.PRECIO_TIMER_INTERVAL), () =>
             {
+                if (!_IsViewVisible)
+                {
+                    Debug.WriteLine("[InitializePrecioAndWalletTimers] Stopped timer.");
+                    return false;
+                }
+
+                Debug.WriteLine($"[InitializePrecioAndWalletTimers] Timer ran at {DateTime.Now.ToString()}");
+
                 Task.Run(RatesAsync);
 
                 UpdateTransanctions();
@@ -306,7 +331,7 @@ namespace HodlWallet2.Core.ViewModels
 
         async Task RatesAsync()
         {
-            var rates = await _PrecioService.GetRates();
+            var rates = await _PrecioHttpService.GetRates();
 
             foreach (var rate in rates)
             {

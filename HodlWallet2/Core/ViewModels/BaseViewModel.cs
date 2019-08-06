@@ -7,7 +7,6 @@ using Xamarin.Forms;
 
 using Refit;
 
-using HodlWallet2.Core.Services;
 using HodlWallet2.Core.Interfaces;
 
 using HodlWallet2.Core.Utils;
@@ -18,7 +17,8 @@ namespace HodlWallet2.Core.ViewModels
     {
         public IWalletService _WalletService => DependencyService.Get<IWalletService>();
         public IShareIntent _ShareIntent => DependencyService.Get<IShareIntent>();
-        public IPrecioService _PrecioService => RestService.For<IPrecioService>(Constants.PRECIO_HOST_URL);
+        public IPrecioHttpService _PrecioHttpService => RestService.For<IPrecioHttpService>(Constants.PRECIO_HOST_URL);
+        public IPrecioService _PrecioService => DependencyService.Get<IPrecioService>();
         public IPermissions _PermissionsService => DependencyService.Get<IPermissions>();
 
         bool _IsLoading;

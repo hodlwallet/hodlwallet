@@ -11,6 +11,7 @@ namespace HodlWallet2.UI
     public partial class App : Application
     {
         IWalletService _WalletService => DependencyService.Get<IWalletService>();
+        IPrecioService _PrecioService => DependencyService.Get<IPrecioService>();
 
         public App()
         {
@@ -18,6 +19,7 @@ namespace HodlWallet2.UI
 
             // Register services
             DependencyService.Register<IWalletService>();
+            DependencyService.Register<IPrecioService>();
             DependencyService.Register<IShareIntent>();
             DependencyService.Register<IPermissions>();
 
@@ -38,6 +40,7 @@ namespace HodlWallet2.UI
             // WalletService is only run after the custructor
             // and only after all the platforms init
             Task.Run(_WalletService.InitializeWallet);
+            Task.Run(_PrecioService.Init);
         }
 
         protected override void OnSleep()

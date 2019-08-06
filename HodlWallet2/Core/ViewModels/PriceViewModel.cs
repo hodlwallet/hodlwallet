@@ -101,7 +101,7 @@ namespace HodlWallet2.Core.ViewModels
         void UpdatePrice()
         {
             // TODO For now hardcoded to USD price.
-            var price = _PrecioService.GetRates().Result.SingleOrDefault(r => r.Code == "USD");
+            var price = _PrecioHttpService.GetRates().Result.SingleOrDefault(r => r.Code == "USD");
 
             if (price != null)
             {
@@ -118,7 +118,7 @@ namespace HodlWallet2.Core.ViewModels
         void UpdateChartData()
         {
             // TODO Prices also only works on USD price...
-            var prices = _PrecioService.GetPrices("1d").Result;
+            var prices = _PrecioHttpService.GetPrecioByPeriod("1d").Result;
 
             if (prices != null)
             {
