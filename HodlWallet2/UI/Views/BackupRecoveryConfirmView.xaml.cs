@@ -7,13 +7,12 @@ namespace HodlWallet2.UI.Views
 {
     public partial class BackupRecoveryConfirmView : ContentPage
     {
+        BackupRecoveryConfirmViewModel _ViewModel => (BackupRecoveryConfirmViewModel)BindingContext;
         public BackupRecoveryConfirmView(string[] mnemonic)
         {
             InitializeComponent();
 
-            var vm = (BackupRecoveryConfirmViewModel)BindingContext;
-
-            vm.Mnemonic = mnemonic;
+            _ViewModel.Mnemonic = mnemonic;
 
             SubscribeToMessages();
         }

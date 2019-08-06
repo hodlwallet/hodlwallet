@@ -147,6 +147,8 @@
             <Style x:Key="TransactionDetailsButton" TargetType="Button">
                 <Setter Property="BackgroundColor"
                         Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="HeightRequest"
+                        Value="20" />
                 <Setter Property="FontFamily"
                         Value="{StaticResource Sans-Regular}" />
                 <Setter Property="FontSize"
@@ -181,6 +183,15 @@
                         Value="{DynamicResource TextPrimary}" />
             </Style>
 
+            <Style x:Key="TransactionDetailTitle" TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="Small" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextSecondary}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Bold}" />
+            </Style>
+
             <!-- Text entries -->
             <Style x:Key="CustomEntry"
                    TargetType="Entry">
@@ -206,7 +217,7 @@
             <!-- Box views -->
             <Style x:Key="TransactionDetailsBoxView" TargetType="BoxView">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundSecondary}" />
+                        Value="{DynamicResource BackgroundPrimary}" />
                 <Setter Property="HeightRequest"
                         Value="2" />
             </Style>

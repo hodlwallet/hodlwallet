@@ -1,5 +1,5 @@
 ﻿//
-// DemoView.xaml.cs
+// StringConverters.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -24,17 +24,24 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-
+using System.Globalization;
 using Xamarin.Forms;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet2.UI.Converters
 {
-    public partial class DemoView : ContentPage
+    public class UpperCaseConverter : IValueConverter
     {
-        public DemoView()
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            InitializeComponent();
+            if (value is null)
+                return "";
+
+            return value.ToString().ToUpper();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 }

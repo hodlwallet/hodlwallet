@@ -13,15 +13,13 @@ namespace HodlWallet2.UI.Views
 {
     public partial class SettingsView : ContentPage
     {
-        SettingsViewModel _ViewModel;
+        SettingsViewModel _ViewModel => (SettingsViewModel)BindingContext;
 
         public SettingsView()
         {
             InitializeComponent();
 
             SetLabels();
-
-            _ViewModel = (SettingsViewModel)BindingContext;
         }
 
         void BackupMnemonic_Clicked(object sender, EventArgs e)

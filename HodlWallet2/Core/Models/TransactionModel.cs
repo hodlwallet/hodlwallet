@@ -200,7 +200,6 @@ namespace HodlWallet2.Core.Models
             return $"{totalWithFees} ({Amount.Normalize().ToString()} + {totalFees})";
         }
 
-
         string GetAddressTitleText()
         {
             if (TransactionData.IsSend == true)

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:svg="clr-namespace:HodlWallet2.Core.Utils"
+             xmlns:converters="clr-namespace:HodlWallet2.UI.Converters"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
              x:Class="HodlWallet2.UI.Views.TransactionDetailsView"
@@ -11,81 +12,78 @@
     <ContentPage.BindingContext>
         <vm:TransactionDetailsViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <converters:UpperCaseConverter x:Key="UpperCaseConverter" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Spacing="15"
                      Margin="15, 15, 15, 0">
 
-            <FlexLayout AlignItems="Center"
-                        Direction="Row"
-                        JustifyContent="SpaceBetween">
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1">
+                <Label x:Name="TitleLabel"
+                       Text="{Binding TransactionDetailsTitle}"
+                       FlexLayout.Grow="1"
+                       FontSize="Title"
+                       FlexLayout.AlignSelf="Center"
+                       FontFamily="{StaticResource Sans-Bold}"
+                       TextColor="{DynamicResource TextPrimary}" />
 
-                <svg:Icon ResourceId="HodlWallet2.UI.Assets.close.svg"
-                          HeightRequest="16"
-                          FlexLayout.AlignSelf="Center">
-
-                    <svg:Icon.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Close_Tapped" />
-                    </svg:Icon.GestureRecognizers>
-
-                </svg:Icon>
-
-                <Label FontSize="Large"
-                       Style="{StaticResource TransactionDetailLabel}"
-                       HorizontalTextAlignment="Center"
-                       Text="{Binding TransactionDetailsTitle}" />
-
-                <svg:Icon ResourceId="HodlWallet2.UI.Assets.faq.svg"
-                          HeightRequest="16">
-
-                    <svg:Icon.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ShowFaqCommand}" />
-                    </svg:Icon.GestureRecognizers>
-
-                </svg:Icon>
-
+                <FlexLayout Direction="Column"
+                            FlexLayout.Grow="1"
+                            FlexLayout.AlignSelf="Center">
+                    <svg:Icon ResourceId="HodlWallet2.UI.Assets.close.svg"
+                              Margin="0, 5, 0, 0"
+                              HeightRequest="16"
+                              WidthRequest="16"
+                              VerticalOptions="Center"
+                              FlexLayout.AlignSelf="End">
+                        <svg:Icon.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Close_Tapped" />
+                        </svg:Icon.GestureRecognizers>
+                    </svg:Icon>
+                </FlexLayout>
             </FlexLayout>
 
             <ScrollView>
 
                 <StackLayout>
 
-                    <Label FontSize="Small"
-                           Style="{StaticResource TransactionDetailLabel}"
-                           Text="{Binding CreationTimeText}" />
-                    <Label FontSize="Large"
-                           Style="{StaticResource TransactionDetailLabel}"
-                           Text="{Binding AmountText}"
-                           FontFamily="{StaticResource Mono-Bold}" />
+                    <!-- Main details -->
                     <Label FontSize="Large"
                            Style="{StaticResource TransactionDetailLabel}"
                            Text="{Binding AddressText}" />
-
-                    <BoxView BackgroundColor="{DynamicResource TextSecondary}" Style="{StaticResource TransactionDetailsBoxView}" />
-
                     <Label FontSize="Small"
                            Style="{StaticResource TransactionDetailLabel}"
-                           Text="{Binding StatusTitle}" />
+                           Text="{Binding CreationTimeText}" />
+                    <Label FontSize="Medium"
+                           Style="{StaticResource TransactionDetailLabel}"
+                           Text="{Binding AmountText}"
+                           FontFamily="{StaticResource Mono-Regular}" />
+                    
+
+                    <!-- Item details -->
+                    <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
+
+                    <Label Style="{StaticResource TransactionDetailTitle}"
+                           Text="{Binding StatusTitle, Converter={StaticResource UpperCaseConverter}}" />
                     <Label FontSize="Small"
                            Style="{StaticResource TransactionDetailLabel}"
                            Text="{Binding StatusText}" />
 
-                    <BoxView BackgroundColor="{DynamicResource TextSecondary}"
-                             Style="{StaticResource TransactionDetailsBoxView}" 
-                             HeightRequest="2" />
+                    <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
 
-                    <Label FontSize="Small"
-                           Style="{StaticResource TransactionDetailLabel}"
-                           Text="{Binding MemoTitle}" />
+                    <Label Style="{StaticResource TransactionDetailTitle}"
+                           Text="{Binding MemoTitle, Converter={StaticResource UpperCaseConverter}}" />
                     <Entry BackgroundColor="Transparent"
                            FontSize="Small"
                            TextColor="{DynamicResource TextPrimary}"
                            Text="{Binding MemoText}" />
 
-                    <BoxView BackgroundColor="{DynamicResource TextSecondary}" Style="{StaticResource TransactionDetailsBoxView}"  />
+                    <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
 
-                    <Label FontSize="Small"
-                           Style="{StaticResource TransactionDetailLabel}"
-                           Text="{Binding AmountTitle}" />
+                    <Label Style="{StaticResource TransactionDetailTitle}"
+                           Text="{Binding AmountTitle, Converter={StaticResource UpperCaseConverter}}" />
                     <Label FontSize="Small"
                            Style="{StaticResource TransactionDetailLabel}"
                            Text="{Binding AmountWithFeeText}"
@@ -97,36 +95,31 @@
                        Text="{Binding EndingBalanceText}"
                        />-->
 
-                    <BoxView BackgroundColor="{DynamicResource TextSecondary}" Style="{StaticResource TransactionDetailsBoxView}" />
+                    <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
 
-                    <Label FontSize="Small"
-                           Style="{StaticResource TransactionDetailLabel}"
-                           Text="{Binding AddressTitle}" />
+                    <Label Style="{StaticResource TransactionDetailTitle}"
+                           Text="{Binding AddressTitle, Converter={StaticResource UpperCaseConverter}}" />
                     <Button Command="{Binding BrowseAddressCommand}"
                             Style="{StaticResource TransactionDetailsButton}"
                             Text="{Binding Address}" />
 
-                    <BoxView BackgroundColor="{DynamicResource TextSecondary}" Style="{StaticResource TransactionDetailsBoxView}" />
+                    <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
 
-                    <Label FontSize="Small"
-                           Style="{StaticResource TransactionDetailLabel}"
-                           Text="{Binding TransactionIdTitle}" />
+                    <Label Style="{StaticResource TransactionDetailTitle}"
+                           Text="{Binding TransactionIdTitle, Converter={StaticResource UpperCaseConverter}}" />
                     <Button Command="{Binding BrowseTransactionIdCommand}"
                             Style="{StaticResource TransactionDetailsButton}"
                             Text="{Binding IdText}" />
-                    <Label FontSize="Small"
-                           Style="{StaticResource TransactionDetailLabel}"
-                           Text="{Binding ConfirmedBlockTitle}" />
+
+                    <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
+
+                    <Label Style="{StaticResource TransactionDetailTitle}"
+                           Text="{Binding ConfirmedBlockTitle, Converter={StaticResource UpperCaseConverter}}" />
                     <Label FontSize="Small"
                            Style="{StaticResource TransactionDetailLabel}"
                            Text="{Binding ConfirmedBlockText}" />
-
-                    <BoxView BackgroundColor="{DynamicResource TextSecondary}" Style="{StaticResource TransactionDetailsBoxView}" />
-
                 </StackLayout>
-
             </ScrollView>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
