@@ -118,7 +118,7 @@ namespace HodlWallet2.Core.ViewModels
         void UpdateChartData()
         {
             // TODO Prices also only works on USD price...
-            var prices = _PrecioService.GetPrices().Result;
+            var prices = _PrecioService.GetPrices("1d").Result;
 
             if (prices != null)
             {

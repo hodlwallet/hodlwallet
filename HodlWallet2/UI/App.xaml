@@ -136,15 +136,22 @@
                         Value="{StaticResource Mono-Bold}" />
             </Style>
 
-            <Style x:Name="SettingsButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundPrimary}" />
-                <Setter Property="FlexLayout.AlignSelf" Value="Stretch" />
-                <Setter Property="FlexLayout.Grow" Value="1" />
-                <Setter Property="FontFamily" Value="{DynamicResource Sans-Regular}" />
-                <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-             </Style>
+            <Style x:Name="SettingsButton"
+                   TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="FlexLayout.AlignSelf"
+                        Value="Stretch" />
+                <Setter Property="FlexLayout.Grow"
+                        Value="1" />
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource Sans-Regular}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
 
-            <Style x:Key="TransactionDetailsButton" TargetType="Button">
+            <Style x:Key="TransactionDetailsButton"
+                   TargetType="Button">
                 <Setter Property="BackgroundColor"
                         Value="{DynamicResource BackgroundPrimary}" />
                 <Setter Property="HeightRequest"
@@ -168,13 +175,18 @@
                         Value="{DynamicResource TextPrimary}" />
             </Style>
 
-            <Style x:Key="TransactionInfoLabel" TargetType="Label">
-                <Setter Property="FontFamily" Value="{StaticResource Sans-Regular}"/>
-                <Setter Property="FontSize" Value="Small"/>
-                <Setter Property="LineBreakMode" Value="MiddleTruncation" />
+            <Style x:Key="TransactionInfoLabel"
+                   TargetType="Label">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Regular}" />
+                <Setter Property="FontSize"
+                        Value="Small" />
+                <Setter Property="LineBreakMode"
+                        Value="MiddleTruncation" />
             </Style>
 
-            <Style x:Key="TransactionDetailLabel" TargetType="Label">
+            <Style x:Key="TransactionDetailLabel"
+                   TargetType="Label">
                 <Setter Property="FontFamily"
                         Value="{StaticResource Sans-Regular}" />
                 <Setter Property="LineBreakMode"
@@ -183,7 +195,8 @@
                         Value="{DynamicResource TextPrimary}" />
             </Style>
 
-            <Style x:Key="TransactionDetailTitle" TargetType="Label">
+            <Style x:Key="TransactionDetailTitle"
+                   TargetType="Label">
                 <Setter Property="FontSize"
                         Value="Small" />
                 <Setter Property="TextColor"
@@ -215,7 +228,8 @@
             </Style>
 
             <!-- Box views -->
-            <Style x:Key="TransactionDetailsBoxView" TargetType="BoxView">
+            <Style x:Key="TransactionDetailsBoxView"
+                   TargetType="BoxView">
                 <Setter Property="BackgroundColor"
                         Value="{DynamicResource BackgroundPrimary}" />
                 <Setter Property="HeightRequest"
