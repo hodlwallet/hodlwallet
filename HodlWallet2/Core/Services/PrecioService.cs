@@ -24,23 +24,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-
-using Xamarin.Forms;
-
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Services;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
-using Liviano.Utilities;
-using System.Collections;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Runtime.InteropServices.ComTypes;
-using ZXing;
+
+using Xamarin.Forms;
+
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Core.Services;
+using HodlWallet2.Core.Models;
+using Newtonsoft.Json;
 
 [assembly: Dependency(typeof(PrecioService))]
 namespace HodlWallet2.Core.Services
@@ -68,6 +66,15 @@ namespace HodlWallet2.Core.Services
             get => _RunningTimers;
             set => SetProperty(ref _RunningTimers, value);
         }
+        public BtcPriceEntity BtcPrice { get; private set; }
+        public List<List<object>> ExchangesLeaderboard { get; private set; }
+        public MarketCapEntity MarketCap { get; private set; }
+        public BtcPriceChangeEntity Btc1hChange { get; private set; }
+        public BtcPriceChangeEntity Btc1dChange { get; private set; }
+        public BtcPriceChangeEntity Btc1wChange { get; private set; }
+        public BtcPriceChangeEntity Btc1mChange { get; private set; }
+        public BtcPriceChangeEntity Btc1yChange { get; private set; }
+        public BtcPriceChangeEntity BtcAllChange { get; private set; }
 
         public PrecioService()
         {
@@ -78,6 +85,29 @@ namespace HodlWallet2.Core.Services
         public void Init()
         {
             Task.Run(WebSocketConnect);
+            Task.Run(HttpDataFetchConnect);
+        }
+
+        protected bool SetProperty<T>(ref T backingStore, T value, string propertyName = "",
+            Action onChanged = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(backingStore, value))
+                return false;
+
+            backingStore = value;
+            onChanged?.Invoke();
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName = "")
+        {
+            var changed = PropertyChanged;
+            if (changed == null)
+                return;
+
+            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         void InitWebSocketList()
@@ -85,6 +115,11 @@ namespace HodlWallet2.Core.Services
             // Insert each channel with each web socket
             foreach (var channel in _Channels)
                 _WebSockets[channel] = new ClientWebSocket();
+        }
+
+        async Task HttpDataFetchConnect()
+        {
+
         }
 
         async Task WebSocketConnect()
@@ -126,7 +161,8 @@ namespace HodlWallet2.Core.Services
                                 {
                                     string result = await ReadMessage(entry.Value, cts.Token);
 
-                                    Debug.WriteLine($"[GetConnectionTasks][ReadMessage] Message from {entry.Key}: {result}");
+                                    if (!string.IsNullOrEmpty(result))
+                                        UpdateDataFrom(entry.Key, result);
                                 }
                                 catch (Exception e)
                                 {
@@ -164,26 +200,45 @@ namespace HodlWallet2.Core.Services
             return msgString;
         }
 
-        protected bool SetProperty<T>(ref T backingStore, T value, string propertyName = "",
-            Action onChanged = null)
+        void UpdateDataFrom(string key, string data)
         {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
+            Debug.WriteLine($"[UpdateDataFrom] {key} with: {data}");
 
-            backingStore = value;
-            onChanged?.Invoke();
-            OnPropertyChanged(propertyName);
-            return true;
+            switch (key)
+            {
+                case "btc-price":
+                    BtcPrice = JsonConvert.DeserializeObject<BtcPriceEntity>(data);
+                    break;
+                case "exchanges-leaderboard":
+                    ExchangesLeaderboard = JsonConvert.DeserializeObject<List<List<object>>>(data);
+                    break;
+                case "btc-marketcap":
+                    MarketCap = JsonConvert.DeserializeObject<MarketCapEntity>(data);
+                    break;
+                case "btc-1h-change":
+                    Btc1hChange = JsonConvert.DeserializeObject<BtcPriceChangeEntity>(data);
+                    break;
+                case "btc-1d-change":
+                    Btc1dChange = JsonConvert.DeserializeObject<BtcPriceChangeEntity>(data);
+                    break;
+                case "btc-1w-change":
+                    Btc1wChange = JsonConvert.DeserializeObject<BtcPriceChangeEntity>(data);
+                    break;
+                case "btc-1m-change":
+                    Btc1mChange = JsonConvert.DeserializeObject<BtcPriceChangeEntity>(data);
+                    break;
+                case "btc-1y-change":
+                    Btc1yChange = JsonConvert.DeserializeObject<BtcPriceChangeEntity>(data);
+                    break;
+                case "btc-all-change":
+                    BtcAllChange = JsonConvert.DeserializeObject<BtcPriceChangeEntity>(data);
+                    break;
+                default:
+                    var err = $"Cannot parse data from {key}";
+
+                    Debug.WriteLine(err);
+                    throw new ArgumentException(err);
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName = "")
-        {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
-
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
