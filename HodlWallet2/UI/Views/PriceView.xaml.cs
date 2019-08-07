@@ -44,9 +44,10 @@ namespace HodlWallet2.UI.Views
 
         public PriceView()
         {
-            InitializeComponent();
-
+            // TODO fix this... sub should be after init
             SubscribeToMessages();
+
+            InitializeComponent();
         }
 
         protected override void OnDisappearing()

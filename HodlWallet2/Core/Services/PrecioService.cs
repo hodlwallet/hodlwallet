@@ -39,13 +39,17 @@ using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
 using HodlWallet2.Core.Models;
 using Newtonsoft.Json;
+using Refit;
+using HodlWallet2.Core.Utils;
+using SkiaSharp.Views.Forms;
 
 [assembly: Dependency(typeof(PrecioService))]
 namespace HodlWallet2.Core.Services
 {
     public class PrecioService : IPrecioService, INotifyPropertyChanged
     {
-        string _WebSocketServerBaseUrl = "wss://precio.bitstop.co/{0}";
+        public IPrecioHttpService _PrecioHttpService => RestService.For<IPrecioHttpService>(Constants.PRECIO_HOST_URL);
+        string _WebSocketServerBaseUrl = Constants.PRECIO_WS_HOST_URL + "/{0}";
         string[] _Channels => new string[]
         {
             "btc-price",
@@ -60,24 +64,124 @@ namespace HodlWallet2.Core.Services
         };
         Dictionary<string, ClientWebSocket> _WebSockets;
 
+        TimeSpan _TimersInterval = TimeSpan.FromSeconds(10); // TODO Pick appropiate to fetch chart
+
         bool _RunningTimers;
         public bool RunningTimers
         {
             get => _RunningTimers;
-            set => SetProperty(ref _RunningTimers, value);
+            set => SetProperty(ref _RunningTimers, value, nameof(RunningTimers));
         }
-        public BtcPriceEntity BtcPrice { get; private set; }
-        public List<List<object>> ExchangesLeaderboard { get; private set; }
-        public MarketCapEntity MarketCap { get; private set; }
-        public BtcPriceChangeEntity Btc1hChange { get; private set; }
-        public BtcPriceChangeEntity Btc1dChange { get; private set; }
-        public BtcPriceChangeEntity Btc1wChange { get; private set; }
-        public BtcPriceChangeEntity Btc1mChange { get; private set; }
-        public BtcPriceChangeEntity Btc1yChange { get; private set; }
-        public BtcPriceChangeEntity BtcAllChange { get; private set; }
+
+        BtcPriceEntity _BtcPrice;
+        public BtcPriceEntity BtcPrice
+        {
+            get => _BtcPrice;
+            set => SetProperty(ref _BtcPrice, value, nameof(BtcPrice));
+        }
+
+        List<List<object>> _ExchangesLeaderboard;
+        public List<List<object>> ExchangesLeaderboard
+        {
+            get => _ExchangesLeaderboard;
+            set => SetProperty(ref _ExchangesLeaderboard, value, nameof(ExchangesLeaderboard));
+        }
+
+        MarketCapEntity _MarketCap;
+        public MarketCapEntity MarketCap
+        {
+            get => _MarketCap;
+            set => SetProperty(ref _MarketCap, value, nameof(MarketCap));
+        }
+
+        BtcPriceChangeEntity _Btc1hChange;
+        public BtcPriceChangeEntity Btc1hChange
+        {
+            get => _Btc1hChange;
+            set => SetProperty(ref _Btc1hChange, value, nameof(Btc1hChange));
+        }
+
+        BtcPriceChangeEntity _Btc1dChange;
+        public BtcPriceChangeEntity Btc1dChange
+        {
+            get => _Btc1dChange;
+            set => SetProperty(ref _Btc1dChange, value, nameof(Btc1dChange));
+        }
+
+        BtcPriceChangeEntity _Btc1wChange;
+        public BtcPriceChangeEntity Btc1wChange
+        {
+            get => _Btc1wChange;
+            set => SetProperty(ref _Btc1wChange, value, nameof(Btc1wChange));
+        }
+
+        BtcPriceChangeEntity _Btc1mChange;
+        public BtcPriceChangeEntity Btc1mChange
+        {
+            get => _Btc1mChange;
+            set => SetProperty(ref _Btc1mChange, value, nameof(Btc1mChange));
+        }
+
+        BtcPriceChangeEntity _Btc1yChange;
+        public BtcPriceChangeEntity Btc1yChange
+        {
+            get => _Btc1yChange;
+            set => SetProperty(ref _Btc1yChange, value, nameof(Btc1yChange));
+        }
+
+        BtcPriceChangeEntity _BtcAllChange;
+        public BtcPriceChangeEntity BtcAllChange
+        {
+            get => _BtcAllChange;
+            set => SetProperty(ref _BtcAllChange, value, nameof(BtcAllChange));
+        }
+
+        PricesEntity _Prices1h;
+        public PricesEntity Prices1h
+        {
+            get => _Prices1h;
+            set => SetProperty(ref _Prices1h, value, nameof(Prices1h));
+        }
+
+        PricesEntity _Prices1d;
+        public PricesEntity Prices1d
+        {
+            get => _Prices1d;
+            set => SetProperty(ref _Prices1d, value, nameof(Prices1d));
+        }
+
+        PricesEntity _Prices1w;
+        public PricesEntity Prices1w
+        {
+            get => _Prices1w;
+            set => SetProperty(ref _Prices1w, value, nameof(Prices1w));
+        }
+
+        PricesEntity _Prices1m;
+        public PricesEntity Prices1m
+        {
+            get => _Prices1m;
+            set => SetProperty(ref _Prices1m, value, nameof(Prices1m));
+        }
+
+        PricesEntity _Prices1y;
+        public PricesEntity Prices1y
+        {
+            get => _Prices1y;
+            set => SetProperty(ref _Prices1y, value, nameof(Prices1y));
+        }
+
+        PricesEntity _PricesAll;
+        public PricesEntity PricesAll
+        {
+            get => _PricesAll;
+            set => SetProperty(ref _PricesAll, value, nameof(PricesAll));
+        }
 
         public PrecioService()
         {
+            PropertyChanged += delegate { };
+
             _WebSockets = new Dictionary<string, ClientWebSocket>();
             _RunningTimers = false;
         }
@@ -107,7 +211,18 @@ namespace HodlWallet2.Core.Services
             if (changed == null)
                 return;
 
+            SendMessageOnPropertyUpdate(propertyName);
+
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        void SendMessageOnPropertyUpdate(string propertyName)
+        {
+            var msg = $"{propertyName}Changed";
+            var val = GetType().GetProperty(propertyName);
+
+            if (val != null)
+                MessagingCenter.Send(this, msg, val);
         }
 
         void InitWebSocketList()
@@ -119,7 +234,56 @@ namespace HodlWallet2.Core.Services
 
         async Task HttpDataFetchConnect()
         {
+            await StartHttpTimers();
+        }
 
+        public async Task StartHttpTimers()
+        {
+            RunningTimers = true;
+
+            Debug.WriteLine("[StartHttpTimers] Started");
+
+            await Task.Factory.StartNew((s) =>
+            {
+                FetchPricesForAllPeriods();
+            }, TaskCreationOptions.LongRunning, CancellationToken.None);
+        }
+
+        void FetchPricesForAllPeriods()
+        {
+            foreach (var period in new string[] { "1h", "1d", "1m", "1y", "all" })
+            {
+                var prices = _PrecioHttpService.GetPrecioByPeriod(period).Result;
+
+                if (prices != null)
+                {
+                    switch (period)
+                    {
+                        case "1h":
+                            Prices1h = prices;
+                            break;
+                        case "1d":
+                            Prices1d = prices;
+                            break;
+                        case "1w":
+                            Prices1w = prices;
+                            break;
+                        case "1m":
+                            Prices1m = prices;
+                            break;
+                        case "1y":
+                            Prices1y = prices;
+                            break;
+                        case "all":
+                            PricesAll = prices;
+                            break;
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine("[UpdatePrice] Unable to get prices");
+                }
+            }
         }
 
         async Task WebSocketConnect()
@@ -194,6 +358,8 @@ namespace HodlWallet2.Core.Services
 
                 byte[] msgBytes = buffer.Skip(buffer.Offset).Take(result.Count).ToArray();
                 msgString = Encoding.UTF8.GetString(msgBytes);
+
+                await Task.Delay(5000);
             }
             while (!result.EndOfMessage);
 

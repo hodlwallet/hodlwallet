@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using HodlWallet2.Core.Services;
 using HodlWallet2.UI.Views;
 using HodlWallet2.Core.Interfaces;
+using System.Diagnostics;
 
 namespace HodlWallet2.UI
 {

@@ -4,6 +4,7 @@
 	{
 		// Precio API
 		public const string PRECIO_HOST_URL = "https://precio.bitstop.co";
+        public const string PRECIO_WS_HOST_URL = "wss://precio.bitstop.co";
 		public static readonly string[] CURRENCY_CODES = { "USD" };
 		public const string BTC_UNIT_LABEL = "1 BTC ≈ {0:C}";
 		public const string BTC_UNIT_LABEL_TMP = "";
