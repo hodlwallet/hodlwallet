@@ -47,7 +47,6 @@ namespace HodlWallet2.Core.Services
 {
     public class PrecioService : IPrecioService, INotifyPropertyChanged
     {
-        const int CONNECTION_TIMEOUT = 5000;
         string _WebSocketServerBaseUrl = "wss://precio.bitstop.co/{0}";
         string[] _Channels => new string[]
         {
@@ -85,10 +84,7 @@ namespace HodlWallet2.Core.Services
         {
             // Insert each channel with each web socket
             foreach (var channel in _Channels)
-            {
-                Debug.WriteLine($"[WebSocketConnect] Adding channel {channel} to websocket list");
                 _WebSockets[channel] = new ClientWebSocket();
-            }
         }
 
         async Task WebSocketConnect()
@@ -97,14 +93,9 @@ namespace HodlWallet2.Core.Services
 
             // Connect to each websocket
             List<Task> connectionTasks = GetConnectionTasks();
-
-            Debug.WriteLine("[WebSocketConnect] Connecting to channels");
             await Task.WhenAll(connectionTasks);
 
             PrintStatuses();
-
-            // Do something when all connected!
-            Debug.WriteLine("[WebSocketConnect] Connected!");
         }
 
         void PrintStatuses()
@@ -121,28 +112,32 @@ namespace HodlWallet2.Core.Services
             {
                 var webSocketUrl = new Uri(string.Format(_WebSocketServerBaseUrl, entry.Key));
 
-                Debug.WriteLine($"[GetConnectionTasks] Connecting to: {webSocketUrl.ToString()}");
-
                 connectionTasks.Add(
                     Task.Run(async () =>
                     {
                         var cts = new CancellationTokenSource();
 
                         await entry.Value.ConnectAsync(webSocketUrl, cts.Token);
-                        await Task.Factory.StartNew(async () =>
+                        _ = Task.Run(async () =>
                         {
                             while (true)
                             {
                                 try
                                 {
-                                    await ReadMessage(entry.Value, cts.Token);
+                                    string result = await ReadMessage(entry.Value, cts.Token);
+
+                                    Debug.WriteLine($"[GetConnectionTasks][ReadMessage] Message from {entry.Key}: {result}");
                                 }
                                 catch (Exception e)
                                 {
-                                    Debug.WriteLine(e);
+                                    Debug.WriteLine($"Error {e.ToString()}");
+                                    Debug.WriteLine($"Reconnecting to {entry.Key}'s channel");
+
+                                    cts = new CancellationTokenSource();
+                                    await entry.Value.ConnectAsync(webSocketUrl, cts.Token);
                                 }
                             }
-                        }, cts.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+                        });
                     })
                 );
             }
@@ -150,27 +145,23 @@ namespace HodlWallet2.Core.Services
             return connectionTasks;
         }
 
-        async Task ReadMessage(ClientWebSocket socket, CancellationToken token)
+        async Task<string> ReadMessage(ClientWebSocket socket, CancellationToken token)
         {
-            Debug.WriteLine("[ReadMessage] Start");
-
             var bytes = new byte[4096];
             var buffer = new ArraySegment<byte>(bytes);
 
             WebSocketReceiveResult result;
+            string msgString;
             do
             {
-                Debug.WriteLine($"[ReadMessage] Socket state {socket.State}");
                 result = await socket.ReceiveAsync(buffer, token);
 
                 byte[] msgBytes = buffer.Skip(buffer.Offset).Take(result.Count).ToArray();
-                string msgString = Encoding.UTF8.GetString(msgBytes);
-
-                Debug.WriteLine($"[ReadMessage] Received: {msgString}");
+                msgString = Encoding.UTF8.GetString(msgBytes);
             }
             while (!result.EndOfMessage);
 
-            Debug.WriteLine("[ReadMessage] End");
+            return msgString;
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value, string propertyName = "",
