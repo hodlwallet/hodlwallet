@@ -64,7 +64,9 @@ namespace HodlWallet2.Core.Services
         };
         Dictionary<string, ClientWebSocket> _WebSockets;
 
-        TimeSpan _TimersInterval = TimeSpan.FromSeconds(10); // TODO Pick appropiate to fetch chart
+        int _BtcPriceDelay = 2_500; // 2.5 seconds, time of the animation as well
+        int _WebSocketMessageDelay = 300_000; // 5 minutes
+        int _HttpRequestsDelay = 300_000; // 5 minutes
 
         bool _RunningTimers;
         public bool RunningTimers
@@ -243,9 +245,14 @@ namespace HodlWallet2.Core.Services
 
             Debug.WriteLine("[StartHttpTimers] Started");
 
-            await Task.Factory.StartNew((s) =>
+            await Task.Factory.StartNew(async (options) =>
             {
-                FetchPricesForAllPeriods();
+                while (true)
+                {
+                    FetchPricesForAllPeriods();
+
+                    await Task.Delay(_WebSocketMessageDelay);
+                }
             }, TaskCreationOptions.LongRunning, CancellationToken.None);
         }
 
@@ -317,7 +324,7 @@ namespace HodlWallet2.Core.Services
                         var cts = new CancellationTokenSource();
 
                         await entry.Value.ConnectAsync(webSocketUrl, cts.Token);
-                        _ = Task.Run(async () =>
+                        _ = Task.Factory.StartNew(async (options) =>
                         {
                             while (true)
                             {
@@ -336,8 +343,14 @@ namespace HodlWallet2.Core.Services
                                     cts = new CancellationTokenSource();
                                     await entry.Value.ConnectAsync(webSocketUrl, cts.Token);
                                 }
+
+                                int amountToWaitInMilliseconds = _BtcPriceDelay; // 2.5 Seconds for btc-price
+                                if (entry.Key != "btc-price")
+                                    amountToWaitInMilliseconds = _WebSocketMessageDelay; // 5 Minutes for everything else
+
+                                await Task.Delay(amountToWaitInMilliseconds);
                             }
-                        });
+                        }, TaskCreationOptions.LongRunning, CancellationToken.None);
                     })
                 );
             }
@@ -358,8 +371,6 @@ namespace HodlWallet2.Core.Services
 
                 byte[] msgBytes = buffer.Skip(buffer.Offset).Take(result.Count).ToArray();
                 msgString = Encoding.UTF8.GetString(msgBytes);
-
-                await Task.Delay(5000);
             }
             while (!result.EndOfMessage);
 
