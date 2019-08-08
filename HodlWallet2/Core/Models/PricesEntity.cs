@@ -60,12 +60,28 @@ namespace HodlWallet2.Core.Models
     public class PricesEntity
     {
         SKColor _Color => ((Color)Application.Current.Resources["TextSuccess"]).ToSKColor();
+        SKColor _ChartBackgroundColor => ((Color)Application.Current.Resources["BackgroundPrimary"]).ToSKColor();
 
         [JsonProperty("meta")]
         public MetaEntity Meta { get; set; }
 
         [JsonProperty("prices")]
         public List<PriceEntity> Prices { get; set; }
+
+        public LineChart GetLineChart()
+        {
+            return new LineChart
+            {
+                IsAnimated = false,
+                PointMode = PointMode.None,
+                LineMode = LineMode.Spline,
+                LineAreaAlpha = 0,
+                Entries = ToEntries(),
+                MinValue = (float)Meta.Low.Price + 100.0f,
+                MaxValue = (float)Meta.High.Price + 100.0f,
+                BackgroundColor = _ChartBackgroundColor
+            };
+        }
 
         public IEnumerable<ChartEntry> ToEntries()
         {

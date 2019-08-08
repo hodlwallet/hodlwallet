@@ -266,7 +266,7 @@ namespace HodlWallet2.Core.Services
 
         void FetchPricesForAllPeriods()
         {
-            foreach (var period in new string[] { "1h", "1d", "1m", "1y", "all" })
+            foreach (var period in new string[] { "1h", "1d", "1w", "1m", "1y", "all" })
             {
                 var prices = _PrecioHttpService.GetPrecioByPeriod(period).Result;
 

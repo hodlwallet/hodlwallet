@@ -34,13 +34,14 @@ using SkiaSharp.Views.Forms;
 using Microcharts;
 
 using HodlWallet2.Core.ViewModels;
+using HodlWallet2.Core.Models;
+using Microcharts.Forms;
 
 namespace HodlWallet2.UI.Views
 {
     public partial class PriceView : ContentPage
     {
         PriceViewModel _ViewModel => (PriceViewModel)BindingContext;
-        SKColor _ChartBackgroundColor => ((Color)Application.Current.Resources["BackgroundPrimary"]).ToSKColor();
 
         public PriceView()
         {
@@ -70,21 +71,30 @@ namespace HodlWallet2.UI.Views
 
         private void DrawPricesChart(PriceViewModel vm)
         {
-            var chart = new LineChart
+            // TODO work on the Prices1h chart, right now it only show 1 dot!
+            //var pricesList = new string[] { "Prices1h", "Prices1d", "Prices1w", "Prices1m", "Prices1y", "PricesAll" };
+            var pricesList = new string[] { "Prices1d", "Prices1w", "Prices1m", "Prices1y", "PricesAll" };
+            foreach (var key in pricesList)
             {
-                IsAnimated = false,
-                PointMode = PointMode.None,
-                LineMode = LineMode.Spline,
-                LineAreaAlpha = 0,
-                Entries = _ViewModel.PricesList.ToEntries(),
-                MinValue = (float)vm.PricesList.Meta.Low.Price + 100.0f,
-                MaxValue = (float)vm.PricesList.Meta.High.Price + 100.0f,
-                BackgroundColor = _ChartBackgroundColor
-            };
+                var prices = (PricesEntity)vm.GetType().GetProperty(key).GetValue(vm);
+
+                if (prices is null) continue;
+
+                UpdateChartView(key, prices);
+            }
+        }
+
+        void UpdateChartView(string key, PricesEntity prices)
+        {
+            var chartView = (ChartView)FindByName($"{key}ChartView");
+
+            if (chartView is null) return;
+
+            var chart = prices.GetLineChart();
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                PricesChartView.Chart = chart;
+                chartView.Chart = chart;
             });
         }
 

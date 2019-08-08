@@ -54,12 +54,46 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _Price, value);
         }
 
-        PricesEntity _PricesList;
-
-        public PricesEntity PricesList
+        PricesEntity _Prices1h;
+        public PricesEntity Prices1h
         {
-            get => _PricesList;
-            set => SetProperty(ref _PricesList, value);
+            get => _Prices1h;
+            set => SetProperty(ref _Prices1h, value);
+        }
+
+        PricesEntity _Prices1d;
+        public PricesEntity Prices1d
+        {
+            get => _Prices1d;
+            set => SetProperty(ref _Prices1d, value);
+        }
+
+        PricesEntity _Prices1w;
+        public PricesEntity Prices1w
+        {
+            get => _Prices1w;
+            set => SetProperty(ref _Prices1w, value);
+        }
+
+        PricesEntity _Prices1m;
+        public PricesEntity Prices1m
+        {
+            get => _Prices1m;
+            set => SetProperty(ref _Prices1m, value);
+        }
+
+        PricesEntity _Prices1y;
+        public PricesEntity Prices1y
+        {
+            get => _Prices1y;
+            set => SetProperty(ref _Prices1y, value);
+        }
+
+        PricesEntity _PricesAll;
+        public PricesEntity PricesAll
+        {
+            get => _PricesAll;
+            set => SetProperty(ref _PricesAll, value);
         }
 
         public PriceViewModel()
@@ -85,11 +119,10 @@ namespace HodlWallet2.Core.ViewModels
         {
             UpdatePrice();
             UpdateChartData();
-            DrawPricesChart();
-
-            SubscribeToPrecioServiceMessages();
 
             IsLoading = false;
+
+            SubscribeToPrecioServiceMessages();
         }
 
         void SubscribeToPrecioServiceMessages()
@@ -110,7 +143,14 @@ namespace HodlWallet2.Core.ViewModels
 
         void UpdateChartData()
         {
-            PricesList = _PrecioService.Prices1d;
+            Prices1h = _PrecioService.Prices1h;
+            Prices1d = _PrecioService.Prices1d;
+            Prices1w = _PrecioService.Prices1w;
+            Prices1m = _PrecioService.Prices1m;
+            Prices1y = _PrecioService.Prices1y;
+            PricesAll = _PrecioService.PricesAll;
+
+            DrawPricesChart();
         }
 
         void DrawPricesChart()
