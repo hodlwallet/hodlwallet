@@ -166,6 +166,38 @@
                         Value="{DynamicResource TextPrimary}" />
             </Style>
 
+            <Style x:Key="PriceChartSwitchButtonDisabled"
+                   TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="HeightRequest"
+                        Value="30" />
+                <Setter Property="WidthRequest"
+                        Value="50" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Regular}" />
+                <Setter Property="FontSize"
+                        Value="Body" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <Style x:Key="PriceChartSwitchButtonEnabled"
+                   TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource TextSuccess}" />
+                <Setter Property="HeightRequest"
+                        Value="30" />
+                <Setter Property="WidthRequest"
+                        Value="50" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Bold}" />
+                <Setter Property="FontSize"
+                        Value="Body" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
             <!-- Labels -->
             <Style x:Key="CustomLabel"
                    TargetType="Label">

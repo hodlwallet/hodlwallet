@@ -62,13 +62,13 @@
                     </FlexLayout>
 
                     <FlexLayout Direction="Row"
-                                FlexLayout.Grow="20"
+                                FlexLayout.Grow="10"
                                 VerticalOptions="CenterAndExpand"
                                 HorizontalOptions="CenterAndExpand">
                         <ScrollView x:Name="PricesChartsScrollView"
                                     HorizontalScrollBarVisibility="Never"
                                     VerticalScrollBarVisibility="Never"
-                                    HeightRequest="250">
+                                    HeightRequest="270">
                             <StackLayout Orientation="Horizontal">
                                 <!--<microchartsForms:ChartView x:Name="Prices1hChartView"
                                                BackgroundColor="{DynamicResource BackgroundPrimary}"
@@ -76,22 +76,58 @@
                                                HeightRequest="250" />-->
                                 <microchartsForms:ChartView x:Name="Prices1dChartView"
                                                BackgroundColor="{DynamicResource BackgroundPrimary}"
-                                               WidthRequest="500"
+                                               WidthRequest="420"
                                                HeightRequest="250" />
                                 <microchartsForms:ChartView x:Name="Prices1wChartView"
                                                BackgroundColor="{DynamicResource BackgroundPrimary}"
-                                               WidthRequest="500"
+                                               WidthRequest="420"
+                                               HeightRequest="250" />
+                                <microchartsForms:ChartView x:Name="Prices1mChartView"
+                                               BackgroundColor="{DynamicResource BackgroundPrimary}"
+                                               WidthRequest="420"
                                                HeightRequest="250" />
                                 <microchartsForms:ChartView x:Name="Prices1yChartView"
                                                BackgroundColor="{DynamicResource BackgroundPrimary}"
-                                               WidthRequest="500"
+                                               WidthRequest="420"
                                                HeightRequest="250" />
                                 <microchartsForms:ChartView x:Name="PricesAllChartView"
                                                BackgroundColor="{DynamicResource BackgroundPrimary}"
-                                               WidthRequest="500"
+                                               WidthRequest="420"
                                                HeightRequest="250" />
                             </StackLayout>
                         </ScrollView>
+                    </FlexLayout>
+                    
+                    <FlexLayout x:Name="GoToChartButtonsLayout"
+                                Direction="Row"
+                                FlexLayout.Grow="1"
+                                IsVisible="False">
+                        <BoxView WidthRequest="50" />
+                        <Button x:Name="GoTo1dChartButton"
+                                Style="{DynamicResource PriceChartSwitchButtonDisabled}"
+                                Clicked="GoTo1dChartButton_Clicked"
+                                Text="1d" />
+                        <Button x:Name="GoTo1wChartButton"
+                                Style="{DynamicResource PriceChartSwitchButtonDisabled}"
+                                Clicked="GoTo1wChartButton_Clicked"
+                                Text="1w" />
+                        <Button x:Name="GoTo1mChartButton"
+                                Style="{DynamicResource PriceChartSwitchButtonDisabled}"
+                                Clicked="GoTo1mChartButton_Clicked"
+                                Text="1m" />
+                        <Button x:Name="GoTo1yChartButton"
+                                Style="{DynamicResource PriceChartSwitchButtonDisabled}"
+                                Clicked="GoTo1yChartButton_Clicked"
+                                Text="1y" />
+                        <Button x:Name="GoToAllChartButton"
+                                Style="{DynamicResource PriceChartSwitchButtonDisabled}"
+                                Clicked="GoToAllChartButton_Clicked"
+                                Text="All" />
+                        <BoxView WidthRequest="50" />
+                    </FlexLayout>
+                    <FlexLayout Direction="Row"
+                                FlexLayout.Grow="9">
+                        <!-- TODO Put more content here -->
                     </FlexLayout>
                 </FlexLayout>
             </ScrollView>

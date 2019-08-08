@@ -81,7 +81,14 @@ namespace HodlWallet2.UI.Views
                 if (prices is null) continue;
 
                 UpdateChartView(key, prices);
+
             }
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                GoToChartButtonsLayout.IsVisible = true;
+                EnableGoToChartButton(GoTo1dChartButton);
+            });
         }
 
         void UpdateChartView(string key, PricesEntity prices)
@@ -101,6 +108,77 @@ namespace HodlWallet2.UI.Views
         void Close_Tapped(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
+        }
+
+        void GoTo1dChartButton_Clicked(object sender, EventArgs e)
+        {
+            ScrollToChartView(Prices1dChartView);
+
+            var button = (Button)sender;
+            EnableGoToChartButton(button);
+            DisableGoToChartButtonsBut(button);
+        }
+
+        void GoTo1wChartButton_Clicked(object sender, EventArgs e)
+        {
+            ScrollToChartView(Prices1wChartView);
+
+            var button = (Button)sender;
+            EnableGoToChartButton(button);
+            DisableGoToChartButtonsBut(button);
+        }
+
+        void GoTo1mChartButton_Clicked(object sender, EventArgs e)
+        {
+            ScrollToChartView(Prices1mChartView);
+
+            var button = (Button)sender;
+            EnableGoToChartButton(button);
+            DisableGoToChartButtonsBut(button);
+        }
+
+        void GoTo1yChartButton_Clicked(object sender, EventArgs e)
+        {
+            ScrollToChartView(Prices1yChartView);
+
+            var button = (Button)sender;
+            EnableGoToChartButton(button);
+            DisableGoToChartButtonsBut(button);
+        }
+
+        void GoToAllChartButton_Clicked(object sender, EventArgs e)
+        {
+            ScrollToChartView(PricesAllChartView);
+
+            var button = (Button)sender;
+            EnableGoToChartButton(button);
+            DisableGoToChartButtonsBut(button);
+        }
+
+        void EnableGoToChartButton(Button goToChartButton)
+        {
+            goToChartButton.Style = (Style)Application.Current.Resources["PriceChartSwitchButtonEnabled"];
+        }
+
+        void DisableGoToChartButtonsBut(Button goToChartButton)
+        {
+            foreach (var key in new string[] { "1d", "1w", "1m", "1y", "All" })
+            {
+                var elemKey = $"GoTo{key}ChartButton";
+                var button = (Button)FindByName(elemKey);
+
+                if (button.Id == goToChartButton.Id) continue;
+
+                button.Style = (Style)Application.Current.Resources["PriceChartSwitchButtonDisabled"];
+            }
+        }
+
+        void ScrollToChartView(ChartView chartView)
+        {
+            PricesChartsScrollView.ScrollToAsync(
+                chartView.X,
+                PricesChartsScrollView.Y,
+                animated: true);
         }
     }
 }
