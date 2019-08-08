@@ -37,7 +37,7 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class PriceViewModel : BaseViewModel
     {
-        bool _IsViewVisible = true;
+        bool _IsViewVisible;
 
         string _PriceText;
         public string PriceText
@@ -54,6 +54,7 @@ namespace HodlWallet2.Core.ViewModels
         }
 
         PricesEntity _PricesList;
+
         public PricesEntity PricesList
         {
             get => _PricesList;
@@ -65,13 +66,18 @@ namespace HodlWallet2.Core.ViewModels
             Title = "Price";
 
             IsLoading = true;
-
-            Task.Run(Initialize);
         }
 
         public void View_OnDisappearing()
         {
             _IsViewVisible = false;
+        }
+
+        internal void View_OnAppearing()
+        {
+            Task.Run(Initialize);
+
+            _IsViewVisible = true;
         }
 
         void Initialize()
