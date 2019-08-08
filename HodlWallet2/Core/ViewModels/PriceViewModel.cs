@@ -33,6 +33,7 @@ using Xamarin.Forms;
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Services;
 using Newtonsoft.Json;
+using NBitcoin.Protocol;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -52,6 +53,20 @@ namespace HodlWallet2.Core.ViewModels
         {
             get => _Price;
             set => SetProperty(ref _Price, value);
+        }
+
+        string _MarketcapText;
+        public string MarketcapText
+        {
+            get => _MarketcapText;
+            set => SetProperty(ref _MarketcapText, value);
+        }
+
+        string _PriceChangeText;
+        public string PriceChangeText
+        {
+            get => _PriceChangeText;
+            set => SetProperty(ref _PriceChangeText, value);
         }
 
         PricesEntity _Prices1h;
@@ -108,6 +123,31 @@ namespace HodlWallet2.Core.ViewModels
             _IsViewVisible = false;
         }
 
+        public void UpdatePriceChangeWithBtcChange(BtcPriceChangeEntity btcPriceChange)
+        {
+            string increase = btcPriceChange.Type == "increase" ? "+" : "-";
+            string valueUsd = btcPriceChange.UsdChange;
+            string valuePct = btcPriceChange.PctChange;
+
+            PriceChangeText = $"{increase} {valueUsd} ({valuePct})";
+        }
+
+        public void UpdatePriceChangeWithPeriod(string periodKey)
+        {
+            var key = $"Btc{periodKey}Change";
+            var btcPriceChange = (BtcPriceChangeEntity)_PrecioService.GetType().GetProperty(key).GetValue(_PrecioService);
+
+            if (btcPriceChange is null) return;
+
+            string polarity = btcPriceChange.Type == "increase" ? "+" : "-";
+            string valueUsd = btcPriceChange.UsdChange;
+            string valuePct = btcPriceChange.PctChange;
+
+            PriceChangeText = $"{polarity} {valueUsd} ({valuePct})";
+
+            MessagingCenter.Send(this, "ColorChangeLabelFor", polarity);
+        }
+
         internal void View_OnAppearing()
         {
             Task.Run(Initialize);
@@ -118,6 +158,8 @@ namespace HodlWallet2.Core.ViewModels
         void Initialize()
         {
             UpdatePrice();
+            UpdateMarketcap();
+            UpdatePriceChange1d();
             UpdateChartData();
 
             IsLoading = false;
@@ -128,6 +170,22 @@ namespace HodlWallet2.Core.ViewModels
         void SubscribeToPrecioServiceMessages()
         {
             MessagingCenter.Subscribe<PrecioService>(this, "BtcPriceChanged", PrecioService_BtcPriceChanged);
+            MessagingCenter.Subscribe<PrecioService>(this, "MarketCapChanged", PrecioService_MarketCapChanged);
+            MessagingCenter.Subscribe<PrecioService>(this, "Btc1hChangeChanged", PrecioService_Btc1hChangeChanged);
+            MessagingCenter.Subscribe<PrecioService>(this, "Btc1dChangeChanged", PrecioService_Btc1dChangeChanged);
+            MessagingCenter.Subscribe<PrecioService>(this, "Btc1wChangeChanged", PrecioService_Btc1wChangeChanged);
+            MessagingCenter.Subscribe<PrecioService>(this, "Btc1mChangeChanged", PrecioService_Btc1mChangeChanged);
+            MessagingCenter.Subscribe<PrecioService>(this, "Btc1yChangeChanged", PrecioService_Btc1yChangeChanged);
+            MessagingCenter.Subscribe<PrecioService>(this, "BtcAllChangeChanged", PrecioService_BtcAllChangeChanged);
+        }
+
+        void UpdatePriceChange1d()
+        {
+            var priceChange = _PrecioService.Btc1dChange;
+
+            if (priceChange is null) return;
+
+            UpdatePriceChangeWithBtcChange(priceChange);
         }
 
         void PrecioService_BtcPriceChanged(PrecioService _)
@@ -135,10 +193,55 @@ namespace HodlWallet2.Core.ViewModels
             UpdatePrice();
         }
 
+        void PrecioService_MarketCapChanged(PrecioService _)
+        {
+            UpdateMarketcap();
+        }
+
+        void PrecioService_Btc1hChangeChanged(PrecioService ps)
+        {
+            UpdateChangedWith(ps.Btc1hChange, "1h");
+        }
+
+        void PrecioService_Btc1dChangeChanged(PrecioService ps)
+        {
+            UpdateChangedWith(ps.Btc1dChange, "1d");
+        }
+
+        void PrecioService_Btc1wChangeChanged(PrecioService ps)
+        {
+            UpdateChangedWith(ps.Btc1wChange, "1w");
+        }
+
+        void PrecioService_Btc1mChangeChanged(PrecioService ps)
+        {
+            UpdateChangedWith(ps.Btc1mChange, "1m");
+        }
+
+        void PrecioService_Btc1yChangeChanged(PrecioService ps)
+        {
+            UpdateChangedWith(ps.Btc1yChange, "1y");
+        }
+
+        void PrecioService_BtcAllChangeChanged(PrecioService ps)
+        {
+            UpdateChangedWith(ps.BtcAllChange, "All");
+        }
+
+        void UpdateChangedWith(BtcPriceChangeEntity btcPriceChange, string period)
+        {
+            MessagingCenter.Send(this, "UpdatePriceChangeWith", (btcPriceChange, period));
+        }
+
         void UpdatePrice()
         {
             Price = decimal.Parse(_PrecioService.BtcPrice.CRaw);
             PriceText = Price.ToString("C");
+        }
+
+        void UpdateMarketcap()
+        {
+            MarketcapText = _PrecioService.MarketCap.Marketcap;
         }
 
         void UpdateChartData()

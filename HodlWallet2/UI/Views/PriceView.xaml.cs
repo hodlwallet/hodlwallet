@@ -41,6 +41,10 @@ namespace HodlWallet2.UI.Views
 {
     public partial class PriceView : ContentPage
     {
+        string _CurrentPeriod = "1d";
+        Color _IncreaseColor = (Color)Application.Current.Resources["IncreasePriceChange"];
+        Color _DecreaseColor = (Color)Application.Current.Resources["DecreasePriceChange"];
+
         PriceViewModel _ViewModel => (PriceViewModel)BindingContext;
 
         public PriceView()
@@ -67,13 +71,28 @@ namespace HodlWallet2.UI.Views
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<PriceViewModel>(this, "DrawPricesChart", DrawPricesChart);
+            MessagingCenter.Subscribe<PriceViewModel, ValueTuple<BtcPriceChangeEntity, string>>(this, "UpdatePriceChangeWith", UpdatePriceChangeWith);
+            MessagingCenter.Subscribe<PriceViewModel, string>(this, "ColorChangeLabelFor", ColorChangeLabelFor);
         }
 
-        private void DrawPricesChart(PriceViewModel vm)
+        void ColorChangeLabelFor(PriceViewModel _, string polarity)
         {
-            // TODO work on the Prices1h chart, right now it only show 1 dot!
+            if (polarity == "+")
+            {
+                PriceChangeLabel.TextColor = _IncreaseColor;
+            }
+            else
+            {
+                PriceChangeLabel.TextColor = _DecreaseColor;
+            }
+        }
+
+        void DrawPricesChart(PriceViewModel vm)
+        {
+            // TODO work on the Prices1h and PricesAll chart, right now it only show 1 dot!
             //var pricesList = new string[] { "Prices1h", "Prices1d", "Prices1w", "Prices1m", "Prices1y", "PricesAll" };
-            var pricesList = new string[] { "Prices1d", "Prices1w", "Prices1m", "Prices1y", "PricesAll" };
+            //var pricesList = new string[] { "Prices1d", "Prices1w", "Prices1m", "Prices1y", "PricesAll" };
+            var pricesList = new string[] { "Prices1d", "Prices1w", "Prices1m", "Prices1y" };
             foreach (var key in pricesList)
             {
                 var prices = (PricesEntity)vm.GetType().GetProperty(key).GetValue(vm);
@@ -88,7 +107,27 @@ namespace HodlWallet2.UI.Views
             {
                 GoToChartButtonsLayout.IsVisible = true;
                 EnableGoToChartButton(GoTo1dChartButton);
+                _CurrentPeriod = "1d";
             });
+        }
+
+        void UpdatePriceChangeWith(PriceViewModel vm, ValueTuple<BtcPriceChangeEntity, string> values)
+        {
+            BtcPriceChangeEntity btcChange = values.Item1;
+            string period = values.Item2;
+
+            if (period != _CurrentPeriod) return;
+
+            vm.UpdatePriceChangeWithBtcChange(btcChange);
+
+            if (btcChange.Type == "increase")
+            {
+                PriceChangeLabel.TextColor = _IncreaseColor;
+            }
+            else
+            {
+                PriceChangeLabel.TextColor = _DecreaseColor;
+            }
         }
 
         void UpdateChartView(string key, PricesEntity prices)
@@ -117,6 +156,7 @@ namespace HodlWallet2.UI.Views
             var button = (Button)sender;
             EnableGoToChartButton(button);
             DisableGoToChartButtonsBut(button);
+            _ViewModel.UpdatePriceChangeWithPeriod("1d");
         }
 
         void GoTo1wChartButton_Clicked(object sender, EventArgs e)
@@ -126,6 +166,7 @@ namespace HodlWallet2.UI.Views
             var button = (Button)sender;
             EnableGoToChartButton(button);
             DisableGoToChartButtonsBut(button);
+            _ViewModel.UpdatePriceChangeWithPeriod("1w");
         }
 
         void GoTo1mChartButton_Clicked(object sender, EventArgs e)
@@ -135,6 +176,7 @@ namespace HodlWallet2.UI.Views
             var button = (Button)sender;
             EnableGoToChartButton(button);
             DisableGoToChartButtonsBut(button);
+            _ViewModel.UpdatePriceChangeWithPeriod("1m");
         }
 
         void GoTo1yChartButton_Clicked(object sender, EventArgs e)
@@ -144,15 +186,17 @@ namespace HodlWallet2.UI.Views
             var button = (Button)sender;
             EnableGoToChartButton(button);
             DisableGoToChartButtonsBut(button);
+            _ViewModel.UpdatePriceChangeWithPeriod("1y");
         }
 
         void GoToAllChartButton_Clicked(object sender, EventArgs e)
         {
-            ScrollToChartView(PricesAllChartView);
+            //ScrollToChartView(PricesAllChartView);
 
             var button = (Button)sender;
             EnableGoToChartButton(button);
             DisableGoToChartButtonsBut(button);
+            _ViewModel.UpdatePriceChangeWithPeriod("All");
         }
 
         void EnableGoToChartButton(Button goToChartButton)
@@ -162,7 +206,9 @@ namespace HodlWallet2.UI.Views
 
         void DisableGoToChartButtonsBut(Button goToChartButton)
         {
-            foreach (var key in new string[] { "1d", "1w", "1m", "1y", "All" })
+            // TODO figure out why the all chart doens't work
+            //foreach (var key in new string[] { "1d", "1w", "1m", "1y", "All" })
+            foreach (var key in new string[] { "1d", "1w", "1m", "1y" })
             {
                 var elemKey = $"GoTo{key}ChartButton";
                 var button = (Button)FindByName(elemKey);

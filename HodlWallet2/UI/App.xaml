@@ -30,6 +30,8 @@
             <Color x:Key="SyncGradientStart">#DAAB28</Color>
             <Color x:Key="SyncGradientEnd">#DBAC29</Color>
             <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Color x:Key="IncreasePriceChange">#C89E26</Color>
+            <Color x:Key="DecreasePriceChange">Red</Color>
 
             <!-- Fonts -->
             <!-- All fonts are here, all that you ever need, they're named like this:

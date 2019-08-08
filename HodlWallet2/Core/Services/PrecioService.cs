@@ -266,7 +266,7 @@ namespace HodlWallet2.Core.Services
 
         void FetchPricesForAllPeriods()
         {
-            foreach (var period in new string[] { "1h", "1d", "1w", "1m", "1y", "all" })
+            foreach (var period in new string[] { "1h", "1d", "1w", "1m", "1y", "All" })
             {
                 var prices = _PrecioHttpService.GetPrecioByPeriod(period).Result;
 
@@ -289,7 +289,7 @@ namespace HodlWallet2.Core.Services
                         case "1y":
                             Prices1y = prices;
                             break;
-                        case "all":
+                        case "All":
                             PricesAll = prices;
                             break;
                     }
@@ -360,8 +360,8 @@ namespace HodlWallet2.Core.Services
                                 }
 
                                 int amountToWaitInMilliseconds = _BtcPriceDelay; // 2.5 Seconds for btc-price
-                                if (entry.Key != "btc-price")
-                                    amountToWaitInMilliseconds = _WebSocketMessageDelay; // 5 Minutes for everything else
+                                //if (entry.Key != "btc-price")
+                                //    amountToWaitInMilliseconds = _WebSocketMessageDelay; // 5 Minutes for everything else
 
                                 await Task.Delay(amountToWaitInMilliseconds);
                             }
