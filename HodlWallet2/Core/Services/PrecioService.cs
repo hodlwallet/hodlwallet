@@ -41,7 +41,6 @@ using HodlWallet2.Core.Models;
 using Newtonsoft.Json;
 using Refit;
 using HodlWallet2.Core.Utils;
-using SkiaSharp.Views.Forms;
 
 [assembly: Dependency(typeof(PrecioService))]
 namespace HodlWallet2.Core.Services
@@ -67,13 +66,6 @@ namespace HodlWallet2.Core.Services
         int _BtcPriceDelay = 2_500; // 2.5 seconds, time of the animation as well
         int _WebSocketMessageDelay = 300_000; // 5 minutes
         int _HttpRequestsDelay = 300_000; // 5 minutes
-
-        bool _RunningTimers;
-        public bool RunningTimers
-        {
-            get => _RunningTimers;
-            set => SetProperty(ref _RunningTimers, value, nameof(RunningTimers));
-        }
 
         BtcPriceEntity _BtcPrice;
         public BtcPriceEntity BtcPrice
@@ -180,12 +172,18 @@ namespace HodlWallet2.Core.Services
             set => SetProperty(ref _PricesAll, value, nameof(PricesAll));
         }
 
+        CurrencyEntity _Rate;
+        public CurrencyEntity Rate
+        {
+            get => _Rate;
+            set => SetProperty(ref _Rate, value, nameof(Rate));
+        }
+
         public PrecioService()
         {
             PropertyChanged += delegate { };
 
             _WebSockets = new Dictionary<string, ClientWebSocket>();
-            _RunningTimers = false;
         }
 
         public void Init()
@@ -220,11 +218,13 @@ namespace HodlWallet2.Core.Services
 
         void SendMessageOnPropertyUpdate(string propertyName)
         {
-            var msg = $"{propertyName}Changed";
             var val = GetType().GetProperty(propertyName);
 
             if (val != null)
-                MessagingCenter.Send(this, msg, val);
+            {
+                var msg = $"{propertyName}Changed";
+                MessagingCenter.Send(this, msg);
+            }
         }
 
         void InitWebSocketList()
@@ -234,24 +234,32 @@ namespace HodlWallet2.Core.Services
                 _WebSockets[channel] = new ClientWebSocket();
         }
 
-        async Task HttpDataFetchConnect()
+        void HttpDataFetchConnect()
         {
-            await StartHttpTimers();
+            StartHttpTimers();
         }
 
-        public async Task StartHttpTimers()
+        public void StartHttpTimers()
         {
-            RunningTimers = true;
-
             Debug.WriteLine("[StartHttpTimers] Started");
 
-            await Task.Factory.StartNew(async (options) =>
+            Task.Factory.StartNew(async (options) =>
             {
                 while (true)
                 {
                     FetchPricesForAllPeriods();
 
-                    await Task.Delay(_WebSocketMessageDelay);
+                    await Task.Delay(_HttpRequestsDelay);
+                }
+            }, TaskCreationOptions.LongRunning, CancellationToken.None);
+
+            Task.Factory.StartNew(async (options) =>
+            {
+                while (true)
+                {
+                    await FetchRate();
+
+                    await Task.Delay(_BtcPriceDelay);
                 }
             }, TaskCreationOptions.LongRunning, CancellationToken.None);
         }
@@ -291,6 +299,13 @@ namespace HodlWallet2.Core.Services
                     Debug.WriteLine("[UpdatePrice] Unable to get prices");
                 }
             }
+        }
+
+        async Task FetchRate()
+        {
+            Rate = (await _PrecioHttpService.GetRates()).SingleOrDefault(r => r.Code == "USD");
+
+            Debug.WriteLine($"[FetchRate] Got rate {Rate.Rate.ToString("C")}");
         }
 
         async Task WebSocketConnect()

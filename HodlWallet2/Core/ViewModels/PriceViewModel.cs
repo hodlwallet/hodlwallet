@@ -32,6 +32,7 @@ using Xamarin.Forms;
 
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Services;
+using Newtonsoft.Json;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -86,58 +87,30 @@ namespace HodlWallet2.Core.ViewModels
             UpdateChartData();
             DrawPricesChart();
 
-            //Device.StartTimer(TimeSpan.FromMilliseconds(2500), () =>
-            //{
-            //    if (!_IsViewVisible)
-            //    {
-            //        Debug.WriteLine("[Initialize][StartTimerCallback] No longer getting price every second");
-
-            //        return false;
-            //    }
-
-            //    UpdatePrice();
-
-            //    Debug.WriteLine($"[Initialize][StartTimerCallback] Timer new price is: {_PriceText}");
-
-            //    return true;
-            //});
+            SubscribeToPrecioServiceMessages();
 
             IsLoading = false;
+        }
+
+        void SubscribeToPrecioServiceMessages()
+        {
+            MessagingCenter.Subscribe<PrecioService>(this, "BtcPriceChanged", PrecioService_BtcPriceChanged);
+        }
+
+        void PrecioService_BtcPriceChanged(PrecioService _)
+        {
+            UpdatePrice();
         }
 
         void UpdatePrice()
         {
             Price = decimal.Parse(_PrecioService.BtcPrice.CRaw);
             PriceText = Price.ToString("C");
-            // TODO For now hardcoded to USD price.
-            //var price = _PrecioHttpService.GetRates().Result.SingleOrDefault(r => r.Code == "USD");
-
-            //if (price != null)
-            //{
-            //    Price = (decimal)price.Rate;
-            //    PriceText = _Price.ToString("C");
-            //}
-            //else
-            //{
-            //    Debug.WriteLine("[UpdatePrice] Unable to get price");
-            //}
-
         }
 
         void UpdateChartData()
         {
             PricesList = _PrecioService.Prices1d;
-            // TODO Prices also only works on USD price...
-            //var prices = _PrecioHttpService.GetPrecioByPeriod("1d").Result;
-
-            //if (prices != null)
-            //{
-            //    PricesList = prices;
-            //}
-            //else
-            //{
-            //    Debug.WriteLine("[UpdatePrice] Unable to get prices");
-            //}
         }
 
         void DrawPricesChart()

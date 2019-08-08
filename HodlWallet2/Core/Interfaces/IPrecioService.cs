@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Threading.Tasks;
 
 using HodlWallet2.Core.Models;
 
@@ -33,24 +32,31 @@ namespace HodlWallet2.Core.Interfaces
 {
     public interface IPrecioService
     {
-        bool RunningTimers { get; set; }
         BtcPriceChangeEntity Btc1dChange { get; set; }
         BtcPriceChangeEntity Btc1hChange { get; set; }
         BtcPriceChangeEntity Btc1mChange { get; set; }
         BtcPriceChangeEntity Btc1wChange { get; set; }
         BtcPriceChangeEntity Btc1yChange { get; set; }
         BtcPriceChangeEntity BtcAllChange { get; set; }
+
         BtcPriceEntity BtcPrice { get; set; }
+
         List<List<object>> ExchangesLeaderboard { get; set; }
+
         MarketCapEntity MarketCap { get; set; }
+
+        CurrencyEntity Rate { get; set; }
+
         PricesEntity Prices1d { get; set; }
         PricesEntity Prices1h { get; set; }
         PricesEntity Prices1m { get; set; }
         PricesEntity Prices1w { get; set; }
         PricesEntity Prices1y { get; set; }
         PricesEntity PricesAll { get; set; }
-        Task StartHttpTimers();
-        event PropertyChangedEventHandler PropertyChanged;
+
+        void StartHttpTimers();
         void Init();
+
+        event PropertyChangedEventHandler PropertyChanged;
     }
 }

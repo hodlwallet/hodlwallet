@@ -22,6 +22,7 @@ using NBitcoin;
 using System.Windows.Input;
 using NBitcoin.Protocol;
 using System.Diagnostics;
+using System.Threading;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -43,6 +44,8 @@ namespace HodlWallet2.Core.ViewModels
         float _OldRate;
         bool _IsBtcEnabled;
         object _CurrentTransaction;
+
+        int _PriceUpdateDelay = 2_500; // 2.5 seconds
 
         public object CurrentTransaction
         {
@@ -236,39 +239,36 @@ namespace HodlWallet2.Core.ViewModels
         void InitializePrecioAndWalletTimers()
         {
             // Run and schedule next times precio will be called
-            Task.Run(async () =>
+            using (var cts = new CancellationTokenSource())
             {
-                // Gets first BTC-USD rate.
-                var rate = (await _PrecioHttpService.GetRates()).SingleOrDefault(r => r.Code == "USD");
-                if (rate != null)
+                Task.Factory.StartNew(async (options) =>
                 {
-                    // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
-                    _OldRate = _NewRate = rate.Rate;
+                    while (true)
+                    {
+                        if (!_IsViewVisible)
+                        {
+                            Debug.WriteLine("[InitializePrecioAndWalletTimers] Stopped timer.");
 
-                    AmountFiat = Amount * (decimal)_NewRate;
+                            cts.Cancel();
+                            break;
+                        }
 
-                    UpdateTransanctions();
-                }
+                        // Gets first BTC-USD rate.
+                        var rate = _PrecioService.Rate;
+                        if (rate != null)
+                        {
+                            // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
+                            _OldRate = _NewRate = rate.Rate;
 
-                return Task.FromResult(true);
-            });
+                            AmountFiat = Amount * (decimal)_NewRate;
 
-            Device.StartTimer(TimeSpan.FromSeconds(Constants.PRECIO_TIMER_INTERVAL), () =>
-            {
-                if (!_IsViewVisible)
-                {
-                    Debug.WriteLine("[InitializePrecioAndWalletTimers] Stopped timer.");
-                    return false;
-                }
+                            UpdateTransanctions();
+                        }
 
-                Debug.WriteLine($"[InitializePrecioAndWalletTimers] Timer ran at {DateTime.Now.ToString()}");
-
-                Task.Run(RatesAsync);
-
-                UpdateTransanctions();
-
-                return true;
-            });
+                        await Task.Delay(_PriceUpdateDelay);
+                    }
+                }, TaskCreationOptions.LongRunning, cts.Token);
+            }
         }
 
         void UpdateTransanctions()
