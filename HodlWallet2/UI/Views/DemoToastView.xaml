@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HodlWallet2.UI.Views.DemoToastView"
+    BackgroundColor="{StaticResource BackgroundPrimary}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <FlexLayout Direction="Column">
+            <StackLayout Orientation="Horizontal"
+                         FlexLayout.Grow="1"
+                         FlexLayout.AlignSelf="Center">
+                <Button x:Name="ToastButton"
+                        Text="Toast🥂"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        VerticalOptions="Center"
+                        Style="{DynamicResource PriceChartSwitchButtonEnabled}"
+                        Clicked="ToastButton_Clicked" />
+            </StackLayout>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>
