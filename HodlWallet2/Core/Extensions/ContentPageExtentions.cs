@@ -29,7 +29,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using HodlWallet2.Core.Utils;
-using System.Collections.ObjectModel;
 
 namespace HodlWallet2.Core.Extensions
 {
@@ -37,20 +36,9 @@ namespace HodlWallet2.Core.Extensions
     {
         public static async Task DisplayToast(this ContentPage view, string title)
         {
-            if (HasChildren(view))
+            if (CanAttachToView(view))
             {
-                var children = GetChildren(view);
-                var label = new Label
-                {
-                    Text = "Toast Clicked!",
-                    TextColor = Color.Red
-                };
-
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    children.Add(label);
-                    //view.DisplayAlert(title, "", Constants.DISPLAY_ALERT_ERROR_BUTTON);
-                });
+                CreateToastFor(view);
             }
             else
             {
@@ -63,16 +51,47 @@ namespace HodlWallet2.Core.Extensions
             await Task.FromResult(true);
         }
 
-        static bool HasChildren(ContentPage view)
+        static bool CanAttachToView(ContentPage view)
         {
-            var didHaveChildren = view.Content.GetType().GetProperty("Children") != null;
+            // Supported layouts that we can add a view to.
+            if (view.Content.GetType() == typeof(FlexLayout)) return true;
+            if (view.Content.GetType() == typeof(StackLayout)) return true;
+            if (view.Content.GetType() == typeof(AbsoluteLayout)) return true;
+            if (view.Content.GetType() == typeof(RelativeLayout)) return true;
+            if (view.Content.GetType() == typeof(Grid)) return true;
 
-            return didHaveChildren;
+            return false;
         }
 
-        static ObservableCollection<Element> GetChildren(ContentPage view)
+        static void CreateToastFor(ContentPage view)
         {
-            return (ObservableCollection<Element>)view.Content.GetType().GetProperty("Children").GetValue(view.Content);
+            var label = new Label
+            {
+                Text = "Toast Clicked!",
+                TextColor = Color.Red
+            };
+
+            switch(GetContentType(view))
+            {
+                case "FlexLayout":
+                    var flexLayout = (FlexLayout)view.Content;
+
+                    flexLayout.Children.Add(label);
+                    break;
+                default:
+                    throw new ArgumentException("Should not be called without knowing it can be used");
+            }
+        }
+
+        static string GetContentType(ContentPage view)
+        {
+            if (view.Content.GetType() == typeof(FlexLayout)) return "FlexLayout";
+            if (view.Content.GetType() == typeof(StackLayout)) return "StackLayout";
+            if (view.Content.GetType() == typeof(AbsoluteLayout)) return "AbsoluteLayout";
+            if (view.Content.GetType() == typeof(RelativeLayout)) return "RelativeLayout";
+            if (view.Content.GetType() == typeof(Grid)) return "Grid";
+
+            throw new ArgumentException("This function should not be called if we don't have a valid layout");
         }
     }
 }
