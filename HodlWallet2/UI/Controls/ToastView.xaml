@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="HodlWallet2.UI.Controls.ToastView"
+       BackgroundColor="{DynamicResource BackgroundSecondary}"
+       HasShadow="True"
+       Padding="5"
+       Opacity="0"
+       IsVisible="False"
+       AbsoluteLayout.LayoutBounds="0.5, 0.75, 0.75, 0.1"
+       AbsoluteLayout.LayoutFlags="All">
+    <Label x:Name="ToastContent"
+           Text="{Binding ToastText}"
+           FontSize="Small"
+           HeightRequest="25"
+           FontFamily="{StaticResource Sans-Bold}"
+           VerticalTextAlignment="Center"
+           HorizontalTextAlignment="Center"
+           TextColor="{DynamicResource TextPrimary}" />
+</Frame>
+
+<!--AbsoluteLayout.LayoutBounds=".5,-5,.4,.5"-->

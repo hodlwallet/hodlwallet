@@ -24,27 +24,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
 using HodlWallet2.Core.Utils;
+using HodlWallet2.UI.Controls;
 
-namespace HodlWallet2.Core.Extensions
+namespace HodlWallet2.UI.Extensions
 {
     public static class ContentPageExtentions
     {
-        public static async Task DisplayToast(this ContentPage view, string title)
+        public static async Task DisplayToast(this ContentPage view, string content)
         {
             if (CanAttachToView(view))
             {
-                CreateToastFor(view);
+                CreateToastFor(view, content);
             }
             else
             {
+                Debug.WriteLine("[DisplayToast] Cannot attach toast to view, your layout must be a AbsoluteLayout");
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    view.DisplayAlert(title, "", Constants.DISPLAY_ALERT_ERROR_BUTTON);
+                    view.DisplayAlert(content, null, Constants.DISPLAY_ALERT_ERROR_BUTTON);
                 });
             }
 
@@ -54,44 +58,42 @@ namespace HodlWallet2.Core.Extensions
         static bool CanAttachToView(ContentPage view)
         {
             // Supported layouts that we can add a view to.
-            if (view.Content.GetType() == typeof(FlexLayout)) return true;
-            if (view.Content.GetType() == typeof(StackLayout)) return true;
             if (view.Content.GetType() == typeof(AbsoluteLayout)) return true;
-            if (view.Content.GetType() == typeof(RelativeLayout)) return true;
-            if (view.Content.GetType() == typeof(Grid)) return true;
 
             return false;
         }
 
-        static void CreateToastFor(ContentPage view)
+        static void CreateToastFor(ContentPage view, string content)
         {
-            var label = new Label
+            var toast = new ToastView
             {
-                Text = "Toast Clicked!",
-                TextColor = Color.Red
+                ToastText = content,
+                IsVisible = false
             };
 
-            switch(GetContentType(view))
+            switch (GetContentType(view))
             {
-                case "FlexLayout":
-                    var flexLayout = (FlexLayout)view.Content;
+                case "AbsoluteLayout":
+                    var flexLayout = (AbsoluteLayout)view.Content;
 
-                    flexLayout.Children.Add(label);
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        flexLayout.Children.Add(toast);
+
+                        toast.IsVisible = true;
+                    });
+
                     break;
                 default:
-                    throw new ArgumentException("Should not be called without knowing it can be used");
+                    throw new ArgumentException("Should not be called without an AbsoluteLayout");
             }
         }
 
         static string GetContentType(ContentPage view)
         {
-            if (view.Content.GetType() == typeof(FlexLayout)) return "FlexLayout";
-            if (view.Content.GetType() == typeof(StackLayout)) return "StackLayout";
             if (view.Content.GetType() == typeof(AbsoluteLayout)) return "AbsoluteLayout";
-            if (view.Content.GetType() == typeof(RelativeLayout)) return "RelativeLayout";
-            if (view.Content.GetType() == typeof(Grid)) return "Grid";
 
-            throw new ArgumentException("This function should not be called if we don't have a valid layout");
+            throw new ArgumentException("This function should not be called if we don't have a valid layout, right now that means AbsoluteLayout");
         }
     }
 }

@@ -4,6 +4,7 @@
              xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
              xmlns:svg="clr-namespace:HodlWallet2.Core.Utils"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
              x:Class="HodlWallet2.UI.Views.ReceiveView"
              BackgroundColor="{DynamicResource BackgroundPrimary}"
              NavigationPage.HasNavigationBar="False"
@@ -12,47 +13,49 @@
         <vm:ReceiveViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <FlexLayout Direction="Column"
-                    AlignItems="Center">
+        <AbsoluteLayout>
             <FlexLayout Direction="Column"
-                        FlexLayout.Grow="4"
                         AlignItems="Center">
-                <BoxView FlexLayout.Grow="1" />
+                <FlexLayout Direction="Column"
+                            FlexLayout.Grow="4"
+                            AlignItems="Center">
+                    <BoxView FlexLayout.Grow="1" />
 
-                <svg:QRCode Content="{Binding Address}"
-                            BackgroundColor="{DynamicResource TextPrimary}"
-                            Level="H"
-                            WidthRequest="170"
-                            HeightRequest="170"
-                            Margin="0, 0, 0, 0"
-                            VerticalOptions="CenterAndExpand"
-                            HorizontalOptions="CenterAndExpand" />
+                    <svg:QRCode Content="{Binding Address}"
+                                BackgroundColor="{DynamicResource TextPrimary}"
+                                Level="H"
+                                WidthRequest="170"
+                                HeightRequest="170"
+                                Margin="0, 0, 0, 0"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand" />
 
-                <ContentView FlexLayout.Grow="1">
-                    <Label x:Name="_Address"
-                           Style="{DynamicResource CustomLabel}"
-                           Text="{Binding Address}"
-                           HorizontalTextAlignment="Center"
-                           Margin="10"
-                           FontSize="Small" />
-                    <ContentView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Address_Tapped"
-                                              NumberOfTapsRequired="1" />
-                    </ContentView.GestureRecognizers>
-                </ContentView>
+                    <ContentView FlexLayout.Grow="1">
+                        <Label x:Name="_Address"
+                               Style="{DynamicResource CustomLabel}"
+                               Text="{Binding Address}"
+                               HorizontalTextAlignment="Center"
+                               Margin="10"
+                               FontSize="Small" />
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Address_Tapped"
+                                                  NumberOfTapsRequired="1" />
+                        </ContentView.GestureRecognizers>
+                    </ContentView>
 
-                <BoxView FlexLayout.Grow="1" />
+                    <BoxView FlexLayout.Grow="1" />
+                </FlexLayout>
+
+                <Button x:Name="Share"
+                        Style="{DynamicResource CustomButton}"
+                        BackgroundColor="{DynamicResource BackgroundSecondary}"
+                        FontSize="Large"
+                        HeightRequest="50"
+                        Text="{Binding ShareButtonText}"
+                        Command="{Binding ShowShareIntentCommand}"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1" />
             </FlexLayout>
-
-            <Button x:Name="Share"
-                    Style="{DynamicResource CustomButton}"
-                    BackgroundColor="{DynamicResource BackgroundSecondary}"
-                    FontSize="Large"
-                    HeightRequest="50"
-                    Text="{Binding ShareButtonText}"
-                    Command="{Binding ShowShareIntentCommand}"
-                    FlexLayout.AlignSelf="Stretch"
-                    FlexLayout.Grow="1" />
-        </FlexLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

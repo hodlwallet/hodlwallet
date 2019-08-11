@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 using HodlWallet2.Core.ViewModels;
 using HodlWallet2.Core.Utils;
+using HodlWallet2.UI.Extensions;
 
 namespace HodlWallet2.UI.Views
 {
@@ -23,11 +24,13 @@ namespace HodlWallet2.UI.Views
         {
             Clipboard.SetTextAsync(_ViewModel.Address);
 
-            DisplayAlert(
-                Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE,
-                "",
-                Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON
-            );
+            _ = this.DisplayToast(Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE);
+
+            //DisplayAlert(
+            //    Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE,
+            //    "",
+            //    Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON
+            //);
         }
     }
 }

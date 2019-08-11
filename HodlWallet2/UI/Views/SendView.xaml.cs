@@ -10,6 +10,8 @@ using Xamarin.Forms;
 using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 
+using HodlWallet2.UI.Extensions;
+
 namespace HodlWallet2.UI.Views
 {
     public partial class SendView : ContentPage
@@ -104,11 +106,7 @@ namespace HodlWallet2.UI.Views
             string title = messageAndTitle[0] ?? Constants.DISPLAY_ALERT_ERROR_TITLE;
             string message = messageAndTitle[1];
 
-            DisplayAlert(
-                title,
-                message,
-                Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON
-            );
+            Task.Run(async () => await this.DisplayToast(message ?? string.Join("", messageAndTitle)));
         }
     }
 }
