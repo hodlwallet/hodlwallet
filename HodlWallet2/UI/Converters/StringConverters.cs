@@ -1,5 +1,5 @@
 ﻿//
-// PrecioService.cs
+// StringConverters.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -23,40 +23,25 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System.Collections.Generic;
-using System.ComponentModel;
+using System;
+using System.Globalization;
+using Xamarin.Forms;
 
-using HodlWallet2.Core.Models;
-
-namespace HodlWallet2.Core.Interfaces
+namespace HodlWallet2.UI.Converters
 {
-    public interface IPrecioService
+    public class UpperCaseConverter : IValueConverter
     {
-        BtcPriceChangeEntity Btc1dChange { get; set; }
-        BtcPriceChangeEntity Btc1hChange { get; set; }
-        BtcPriceChangeEntity Btc1mChange { get; set; }
-        BtcPriceChangeEntity Btc1wChange { get; set; }
-        BtcPriceChangeEntity Btc1yChange { get; set; }
-        BtcPriceChangeEntity BtcAllChange { get; set; }
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is null)
+                return "";
 
-        BtcPriceEntity BtcPrice { get; set; }
+            return value.ToString().ToUpper();
+        }
 
-        List<List<object>> ExchangesLeaderboard { get; set; }
-
-        MarketCapEntity MarketCap { get; set; }
-
-        CurrencyEntity Rate { get; set; }
-
-        PricesEntity Prices1d { get; set; }
-        PricesEntity Prices1h { get; set; }
-        PricesEntity Prices1m { get; set; }
-        PricesEntity Prices1w { get; set; }
-        PricesEntity Prices1y { get; set; }
-        PricesEntity PricesAll { get; set; }
-
-        void StartHttpTimers();
-        void Init();
-
-        event PropertyChangedEventHandler PropertyChanged;
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

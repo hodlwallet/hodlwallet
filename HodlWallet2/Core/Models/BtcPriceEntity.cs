@@ -1,5 +1,5 @@
 ﻿//
-// PrecioService.cs
+// BtcPriceEntity.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -23,40 +23,31 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System.Collections.Generic;
-using System.ComponentModel;
+using Newtonsoft.Json;
 
-using HodlWallet2.Core.Models;
-
-namespace HodlWallet2.Core.Interfaces
+namespace HodlWallet2.Core.Models
 {
-    public interface IPrecioService
+    public class BtcPriceEntity
     {
-        BtcPriceChangeEntity Btc1dChange { get; set; }
-        BtcPriceChangeEntity Btc1hChange { get; set; }
-        BtcPriceChangeEntity Btc1mChange { get; set; }
-        BtcPriceChangeEntity Btc1wChange { get; set; }
-        BtcPriceChangeEntity Btc1yChange { get; set; }
-        BtcPriceChangeEntity BtcAllChange { get; set; }
+        [JsonProperty("L")]
+        public string L { get; set; }
 
-        BtcPriceEntity BtcPrice { get; set; }
+        [JsonProperty("O")]
+        public string O { get; set; }
 
-        List<List<object>> ExchangesLeaderboard { get; set; }
+        [JsonProperty("T")]
+        public int T { get; set; }
 
-        MarketCapEntity MarketCap { get; set; }
+        [JsonProperty("H")]
+        public string H { get; set; }
 
-        CurrencyEntity Rate { get; set; }
+        [JsonProperty("C_RAW")]
+        public string CRaw { get; set; }
 
-        PricesEntity Prices1d { get; set; }
-        PricesEntity Prices1h { get; set; }
-        PricesEntity Prices1m { get; set; }
-        PricesEntity Prices1w { get; set; }
-        PricesEntity Prices1y { get; set; }
-        PricesEntity PricesAll { get; set; }
+        [JsonProperty("C")]
+        public string C { get; set; }
 
-        void StartHttpTimers();
-        void Init();
-
-        event PropertyChangedEventHandler PropertyChanged;
+        [JsonProperty("EX")]
+        public string Ex { get; set; }
     }
 }

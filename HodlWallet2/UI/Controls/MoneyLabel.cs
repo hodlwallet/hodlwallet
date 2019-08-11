@@ -272,11 +272,15 @@ namespace HodlWallet2.UI.Controls
                 if (child is Label) continue;
 
                 var moneyDigit = (MoneyDigit)child;
-                bool isSmall = ALLOWED_SYMBOLS_SMALL.Contains(moneyDigit.CurrentLabel.Text[0]);
+
+                bool isSmall = moneyDigit.CurrentLabel != null
+                    && moneyDigit.CurrentLabel.Text.Length != 0
+                    && ALLOWED_SYMBOLS_SMALL.Contains(moneyDigit.CurrentLabel.Text[0]);
+
                 double fontWidthFactor = (isSmall ? FONT_WIDTH_FACTOR / 2.0f : FONT_WIDTH_FACTOR);
 
                 moneyDigit.HeightRequest = FontSize;
-                moneyDigit.WidthRequest = FontSize * fontWidthFactor;
+                //moneyDigit.WidthRequest = FontSize * fontWidthFactor;
 
                 foreach (var digit in ((StackLayout)moneyDigit.Content).Children)
                 {
@@ -461,7 +465,7 @@ namespace HodlWallet2.UI.Controls
             var scroll = new MoneyDigit
             {
                 HeightRequest = FontSize,
-                WidthRequest = FontSize * fontWidthFactor,
+                //WidthRequest = FontSize * fontWidthFactor,
                 Padding = 0,
                 Margin = 0,
                 HorizontalScrollBarVisibility = ScrollBarVisibility.Never,
@@ -480,7 +484,7 @@ namespace HodlWallet2.UI.Controls
                     FontFamily = FontFamily,
                     FontSize = FontSize,
                     HeightRequest = FontSize,
-                    WidthRequest = FontSize * fontWidthFactor,
+                    //WidthRequest = FontSize * fontWidthFactor,
                     FontAttributes = FontAttributes,
                     TextColor = TextColor,
                     Text = chr.ToString()

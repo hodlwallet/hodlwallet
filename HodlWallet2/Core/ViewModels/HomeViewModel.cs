@@ -21,6 +21,8 @@ using HodlWallet2.Core.Services;
 using NBitcoin;
 using System.Windows.Input;
 using NBitcoin.Protocol;
+using System.Diagnostics;
+using System.Threading;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -28,18 +30,22 @@ namespace HodlWallet2.Core.ViewModels
     {
         Serilog.ILogger _Logger;
 
+        bool _IsViewVisible = true;
+
         public string SendText => "Send";
         public string ReceiveText => "Receive";
         public string MenuText => "Menu";
         public string SyncTitleText => "SYNCING";
 
         bool _AttachedWalletListeners = false;
-
         decimal _Amount;
+        decimal _AmountFiat;
         float _NewRate;
         float _OldRate;
         bool _IsBtcEnabled;
         object _CurrentTransaction;
+
+        int _PriceUpdateDelay = 2_500; // 2.5 seconds
 
         public object CurrentTransaction
         {
@@ -57,6 +63,12 @@ namespace HodlWallet2.Core.ViewModels
         {
             get => _Amount;
             set => SetProperty(ref _Amount, value);
+        }
+
+        public decimal AmountFiat
+        {
+            get => _AmountFiat;
+            set => SetProperty(ref _AmountFiat, value);
         }
 
         private object _Lock = new object();
@@ -105,8 +117,22 @@ namespace HodlWallet2.Core.ViewModels
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
         }
 
+        public void View_OnDisappearing()
+        {
+            _IsViewVisible = false;
+        }
+
+        public void View_OnAppearing()
+        {
+            _IsViewVisible = true;
+
+            InitializeWalletAndPrecio();
+            InitializePrecioAndWalletTimers(); // TODO see bellow
+        }
+
         public void InitializeWalletAndPrecio()
         {
+            // FIXME This logic needs to change...
             if (_AttachedWalletListeners) return;
 
             InitializePrecioAndWalletTimers();
@@ -133,11 +159,10 @@ namespace HodlWallet2.Core.ViewModels
             if (_WalletService.IsStarted)
             {
                 Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                AmountFiat = Amount * (decimal)_NewRate;
             }
             else
             {
-                Amount = 0.0m;
-
                 _WalletService.OnStarted += _WalletService_OnStarted_ViewAppearing;
             }
 
@@ -147,6 +172,8 @@ namespace HodlWallet2.Core.ViewModels
         void StartSearch()
         {
             _Logger.Debug("Search is not implemented yet!");
+
+            MessagingCenter.Send(this, "DisplaySearchNotImplementedAlert");
         }
 
         void UpdateSyncingStatus()
@@ -186,54 +213,88 @@ namespace HodlWallet2.Core.ViewModels
             if (currency == "BTC")
             {
                 Preferences.Set("currency", "USD");
+
+                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                AmountFiat = Amount * (decimal)_NewRate;
+
+                UpdateTransanctions();
+
                 IsBtcEnabled = false;
-                Amount *= (decimal)_NewRate;
             }
             else
             {
                 Preferences.Set("currency", "BTC");
+
+                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                AmountFiat = Amount * (decimal)_NewRate;
+
+                UpdateTransanctions();
+
                 IsBtcEnabled = true;
-                Amount /= (decimal)_NewRate;
             }
+
+            MessagingCenter.Send(this, "SwitchCurrency");
         }
 
         void InitializePrecioAndWalletTimers()
         {
             // Run and schedule next times precio will be called
-            Task.Run(async () =>
+            using (var cts = new CancellationTokenSource())
             {
-                // Gets first BTC-USD rate.
-                var rate = (await _PrecioService.GetRates()).SingleOrDefault(r => r.Code == "USD");
-                if (rate != null)
+                Task.Factory.StartNew(async (options) =>
                 {
-                    // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
-                    _OldRate = _NewRate = rate.Rate;
-                }
-                return Task.FromResult(true);
-            });
+                    while (true)
+                    {
+                        if (!_IsViewVisible)
+                        {
+                            Debug.WriteLine("[InitializePrecioAndWalletTimers] Stopped timer.");
 
-            Device.StartTimer(TimeSpan.FromSeconds(Constants.PRECIO_TIMER_INTERVAL), () =>
+                            cts.Cancel();
+                            break;
+                        }
+
+                        // Gets first BTC-USD rate.
+                        var rate = _PrecioService.Rate;
+                        if (rate != null)
+                        {
+                            // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
+                            _OldRate = _NewRate = rate.Rate;
+
+                            AmountFiat = Amount * (decimal)_NewRate;
+
+                            UpdateTransanctions();
+                        }
+
+                        await Task.Delay(_PriceUpdateDelay);
+                    }
+                }, TaskCreationOptions.LongRunning, cts.Token);
+            }
+        }
+
+        void UpdateTransanctions()
+        {
+            if (Preferences.Get("currency", "BTC") != "BTC")
             {
-                Task.Run(RatesAsync);
-                //TODO: WIP, will polish rate comparision.
-                if (_OldRate != _NewRate && Preferences.Get("currency", "BTC") != "BTC")
+                AmountFiat = Amount * (decimal)_NewRate;
+
+                if (!_OldRate.Equals(_NewRate))
                 {
                     _OldRate = _NewRate;
-                    //TODO: Update transactions with new rate.
-                    foreach (var transaction in Transactions)
-                    {
-                        // This was intentionally left with null as placeholder. WARNING: IT'LL EXPLODE IF RUN.
-                        // First of all, a view model should not have the responsibility to format the text for a label (this is UI's duty!).
-                        // Second and very brief, this needs to be refactored (split) into two methods and the Transaction model needs to have two properties
-                        // like Status and Amount (as float), this way it'll be flexible enough to update only one property based on current rate
-                        // without having to convert numeric and string values to return a string(?) amount.
 
-                        // This would also WONT work cause observable collections only allow insert and remove
-                        // transaction.Amount = GetAmountLabelText(null);
+                    // DO NOT convert this into a foreach loop or LINQ statement.
+                    for (int i = 0; i < Transactions.Count; i++)
+                    {
+                        Transactions[i].AmountText = (Transactions[i].Amount.ToDecimal(MoneyUnit.BTC) * (decimal)_NewRate).ToString("C");
                     }
                 }
-                return true;
-            });
+
+                return;
+            }
+
+            for (int i = 0; i < Transactions.Count; i++)
+            {
+                Transactions[i].AmountText = Transactions[i].Amount.ToDecimal(MoneyUnit.BTC).ToString();
+            }
         }
 
         private void _WalletService_OnStarted_ViewAppearing(object sender, EventArgs e)
@@ -245,6 +306,7 @@ namespace HodlWallet2.Core.ViewModels
                 lock (_Lock)
                 {
                     Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                    AmountFiat = Amount * (decimal)_NewRate;
 
                     _WalletService.OnStarted -= _WalletService_OnStarted_ViewAppearing;
                 }
@@ -269,14 +331,15 @@ namespace HodlWallet2.Core.ViewModels
 
         async Task RatesAsync()
         {
-            var rates = await _PrecioService.GetRates();
+            var rates = await _PrecioHttpService.GetRates();
 
             foreach (var rate in rates)
             {
                 if (rate.Code == "USD")
                 {
                     var price = _NewRate = rate.Rate;
-                    PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BTC_UNIT_LABEL, price);
+                    //PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BTC_UNIT_LABEL, price);
+                    PriceText = string.Format(CultureInfo.CurrentCulture, "{0:C}", price);
                     //PriceText = price.ToString("0.00");
                     break;
                 }

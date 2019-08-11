@@ -150,6 +150,7 @@ namespace HodlWallet2.Core.ViewModels
         void GetTransactionModelData()
         {
             AddressText = _TransactionModel.AddressText;
+            AddressTitle = _TransactionModel.AddressTitle;
             CreationTimeText = _TransactionModel.CreationTimeText;
             AmountText = _TransactionModel.AmountText;
             StatusText = _TransactionModel.StatusText;

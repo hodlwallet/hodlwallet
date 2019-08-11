@@ -30,6 +30,8 @@
             <Color x:Key="SyncGradientStart">#DAAB28</Color>
             <Color x:Key="SyncGradientEnd">#DBAC29</Color>
             <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Color x:Key="IncreasePriceChange">#C89E26</Color>
+            <Color x:Key="DecreasePriceChange">Red</Color>
 
             <!-- Fonts -->
             <!-- All fonts are here, all that you ever need, they're named like this:
@@ -43,10 +45,6 @@
                         x:TypeArguments="x:String"
                         iOS="LiberationMono-Bold"
                         Android="LiberationMono-Bold.ttf#LiberationMono-Bold" />
-            <OnPlatform x:Key="Mono-BoldItalic"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationMono-BoldItalic"
-                        Android="LiberationMono-BoldItalic#LiberationMono-BoldItalic" />
             <OnPlatform x:Key="Mono-Italic"
                         x:TypeArguments="x:String"
                         iOS="LiberationMono-Italic"
@@ -136,25 +134,68 @@
                    BasedOn="{StaticResource CustomButton}">
                 <Setter Property="FontSize"
                         Value="Medium" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Mono-Bold}" />
             </Style>
 
-            <Style x:Name="SettingsButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundPrimary}" />
-                <Setter Property="FlexLayout.AlignSelf" Value="Stretch" />
-                <Setter Property="FlexLayout.Grow" Value="1" />
-                <Setter Property="FontFamily" Value="{DynamicResource Sans-Regular}" />
-                <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-             </Style>
-
-            <Style x:Key="TransactionDetailsButton" TargetType="Button">
+            <Style x:Name="SettingsButton"
+                   TargetType="Button">
                 <Setter Property="BackgroundColor"
                         Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="FlexLayout.AlignSelf"
+                        Value="Stretch" />
+                <Setter Property="FlexLayout.Grow"
+                        Value="1" />
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource Sans-Regular}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <Style x:Key="TransactionDetailsButton"
+                   TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="HeightRequest"
+                        Value="20" />
                 <Setter Property="FontFamily"
                         Value="{StaticResource Sans-Regular}" />
                 <Setter Property="FontSize"
                         Value="Small" />
                 <Setter Property="HorizontalOptions"
                         Value="Start" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <Style x:Key="PriceChartSwitchButtonDisabled"
+                   TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="HeightRequest"
+                        Value="30" />
+                <Setter Property="WidthRequest"
+                        Value="50" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Regular}" />
+                <Setter Property="FontSize"
+                        Value="Body" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <Style x:Key="PriceChartSwitchButtonEnabled"
+                   TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource TextSuccess}" />
+                <Setter Property="HeightRequest"
+                        Value="30" />
+                <Setter Property="WidthRequest"
+                        Value="50" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Bold}" />
+                <Setter Property="FontSize"
+                        Value="Body" />
                 <Setter Property="TextColor"
                         Value="{DynamicResource TextPrimary}" />
             </Style>
@@ -168,19 +209,34 @@
                         Value="{DynamicResource TextPrimary}" />
             </Style>
 
-            <Style x:Key="TransactionInfoLabel" TargetType="Label">
-                <Setter Property="FontFamily" Value="{StaticResource Sans-Regular}"/>
-                <Setter Property="FontSize" Value="Micro"/>
-                <Setter Property="LineBreakMode" Value="MiddleTruncation" />
+            <Style x:Key="TransactionInfoLabel"
+                   TargetType="Label">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Regular}" />
+                <Setter Property="FontSize"
+                        Value="Small" />
+                <Setter Property="LineBreakMode"
+                        Value="MiddleTruncation" />
             </Style>
 
-            <Style x:Key="TransactionDetailLabel" TargetType="Label">
+            <Style x:Key="TransactionDetailLabel"
+                   TargetType="Label">
                 <Setter Property="FontFamily"
                         Value="{StaticResource Sans-Regular}" />
                 <Setter Property="LineBreakMode"
                         Value="MiddleTruncation" />
                 <Setter Property="TextColor"
                         Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <Style x:Key="TransactionDetailTitle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="Small" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextSecondary}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Bold}" />
             </Style>
 
             <!-- Text entries -->
@@ -206,9 +262,10 @@
             </Style>
 
             <!-- Box views -->
-            <Style x:Key="TransactionDetailsBoxView" TargetType="BoxView">
+            <Style x:Key="TransactionDetailsBoxView"
+                   TargetType="BoxView">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundSecondary}" />
+                        Value="{DynamicResource BackgroundPrimary}" />
                 <Setter Property="HeightRequest"
                         Value="2" />
             </Style>

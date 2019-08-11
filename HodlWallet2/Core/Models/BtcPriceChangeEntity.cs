@@ -1,5 +1,5 @@
 ﻿//
-// DemoView.xaml.cs
+// BtcPriceChangeEntity.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -24,17 +24,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 
-using Xamarin.Forms;
-
-namespace HodlWallet2.UI.Views
+namespace HodlWallet2.Core.Models
 {
-    public partial class DemoView : ContentPage
+    public class BtcPriceChangeEntity
     {
-        public DemoView()
-        {
-            InitializeComponent();
-        }
+        [JsonProperty("price")]
+        public string Price { get; set; }
+
+        [JsonProperty("price_raw")]
+        public double PriceRaw { get; set; }
+
+        [JsonProperty("pct_change")]
+        public string PctChange { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("usd_change")]
+        public string UsdChange { get; set; }
     }
 }

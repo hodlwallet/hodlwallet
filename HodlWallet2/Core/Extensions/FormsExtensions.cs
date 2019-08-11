@@ -1,5 +1,5 @@
 ﻿//
-// PrecioService.cs
+// FormsExtensions.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -23,40 +23,21 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System.Collections.Generic;
-using System.ComponentModel;
 
-using HodlWallet2.Core.Models;
-
-namespace HodlWallet2.Core.Interfaces
+namespace HodlWallet2.Core.Extensions
 {
-    public interface IPrecioService
+    public static class FormsExtensions
     {
-        BtcPriceChangeEntity Btc1dChange { get; set; }
-        BtcPriceChangeEntity Btc1hChange { get; set; }
-        BtcPriceChangeEntity Btc1mChange { get; set; }
-        BtcPriceChangeEntity Btc1wChange { get; set; }
-        BtcPriceChangeEntity Btc1yChange { get; set; }
-        BtcPriceChangeEntity BtcAllChange { get; set; }
+        public static string GetHex(this Xamarin.Forms.Color color)
+        {
+            var red = (int)(color.R * 255);
+            var green = (int)(color.G * 255);
+            var blue = (int)(color.B * 255);
+            var alpha = (int)(color.A * 255);
 
-        BtcPriceEntity BtcPrice { get; set; }
+            var hex = $"#{alpha:X2}{red:X2}{green:X2}{blue:X2}";
 
-        List<List<object>> ExchangesLeaderboard { get; set; }
-
-        MarketCapEntity MarketCap { get; set; }
-
-        CurrencyEntity Rate { get; set; }
-
-        PricesEntity Prices1d { get; set; }
-        PricesEntity Prices1h { get; set; }
-        PricesEntity Prices1m { get; set; }
-        PricesEntity Prices1w { get; set; }
-        PricesEntity Prices1y { get; set; }
-        PricesEntity PricesAll { get; set; }
-
-        void StartHttpTimers();
-        void Init();
-
-        event PropertyChangedEventHandler PropertyChanged;
+            return hex;
+        }
     }
 }

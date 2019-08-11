@@ -145,14 +145,10 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <BundleResource Include="Resources\xamarin_logo.png" />
-    <BundleResource Include="Resources\xamarin_logo%402x.png" />
-    <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <BundleResource Include="Resources\LiberationMono-Bold.ttf" />
     <BundleResource Include="Resources\LiberationMono-BoldItalic.ttf" />
     <BundleResource Include="Resources\LiberationMono-Italic.ttf" />
-    <BundleResource Include="Resources\LiberationMono-Regular.ttf" />
     <BundleResource Include="Resources\LiberationSans-Bold.ttf" />
     <BundleResource Include="Resources\LiberationSans-BoldItalic.ttf" />
     <BundleResource Include="Resources\LiberationSans-Italic.ttf" />
@@ -163,16 +159,27 @@
     <BundleResource Include="Resources\LiberationSerif-Regular.ttf" />
     <ImageAsset Include="Assets.xcassets\logo_front.png.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\logo_front.png.imageset\logo_front.png" />
-    <BundleResource Include="Resources\home_tab.png" />
-    <BundleResource Include="Resources\home_tab%402x.png" />
-    <BundleResource Include="Resources\receive_tab.png" />
-    <BundleResource Include="Resources\receive_tab%402x.png" />
-    <BundleResource Include="Resources\send_tab.png" />
-    <BundleResource Include="Resources\send_tab%402x.png" />
-    <BundleResource Include="Resources\settings_tab.png" />
-    <BundleResource Include="Resources\settings_tab%402x.png" />
     <ImageAsset Include="Assets.xcassets\logo.png.imageset\logo.png" />
     <ImageAsset Include="Assets.xcassets\logo.png.imageset\Contents.json" />
+    <BundleResource Include="Resources\LiberationMono-Regular.ttf" />
+    <BundleResource Include="Resources\receive_tab.png" />
+    <BundleResource Include="Resources\receive_tab%402x.png" />
+    <BundleResource Include="Resources\received%402x.png" />
+    <BundleResource Include="Resources\send_tab.png" />
+    <BundleResource Include="Resources\received.png" />
+    <BundleResource Include="Resources\settings_tab.png" />
+    <BundleResource Include="Resources\schedule%402x.png" />
+    <BundleResource Include="Resources\price-tag-3-fill%402x.png" />
+    <BundleResource Include="Resources\home_tab%402x.png" />
+    <BundleResource Include="Resources\sent%402x.png" />
+    <BundleResource Include="Resources\price-tag-3-line%402x.png" />
+    <BundleResource Include="Resources\home_tab.png" />
+    <BundleResource Include="Resources\price-tag-3-line.png" />
+    <BundleResource Include="Resources\schedule.png" />
+    <BundleResource Include="Resources\send_tab%402x.png" />
+    <BundleResource Include="Resources\settings_tab%402x.png" />
+    <BundleResource Include="Resources\sent.png" />
+    <BundleResource Include="Resources\price-tag-3-fill.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -193,6 +200,12 @@
     </PackageReference>
     <PackageReference Include="ZXing.Net.Mobile">
       <Version>2.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microcharts">
+      <Version>0.8.5-pre</Version>
+    </PackageReference>
+    <PackageReference Include="Microcharts.Forms">
+      <Version>0.8.5-pre</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
