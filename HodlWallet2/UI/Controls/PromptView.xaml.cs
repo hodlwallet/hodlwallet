@@ -149,7 +149,7 @@ namespace HodlWallet2.UI.Controls
 
         async Task ShowPromptAnimated()
         {
-            PromptControl.IsVisible = true;
+            IsVisible = true;
 
             await Task.WhenAll(
                 TransparentBackgroundBoxView.FadeTo(0.9, 500),
@@ -163,10 +163,12 @@ namespace HodlWallet2.UI.Controls
 
             await Task.WhenAll(
                 TransparentBackgroundBoxView.FadeTo(0.0, 150),
-                QuestionFrame.FadeTo(0.0, 100)
+                QuestionFrame.FadeTo(0.0, 150)
             );
 
-            PromptControl.IsVisible = false;
+            IsVisible = false;
+
+            RemoveYourself();
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -219,7 +221,6 @@ namespace HodlWallet2.UI.Controls
             PromptResponse = PromptResponses.Cancel;
 
             Hide();
-            RemoveYourself();
         }
 
         void OkButton_Clicked(object sender, EventArgs e)
@@ -227,7 +228,6 @@ namespace HodlWallet2.UI.Controls
             PromptResponse = PromptResponses.Ok;
 
             Hide();
-            RemoveYourself();
         }
 
         void RemoveYourself()

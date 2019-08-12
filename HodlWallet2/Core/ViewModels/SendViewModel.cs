@@ -174,7 +174,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             if (!Clipboard.HasText)
             {
-                //DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_PASTE_MESSAGE);
+                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_PASTE_MESSAGE);
 
                 return;
             }
