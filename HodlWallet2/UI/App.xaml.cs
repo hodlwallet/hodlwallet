@@ -26,7 +26,8 @@ namespace HodlWallet2.UI
 
             if (UserDidSetup())
             {
-                MainPage = new NavigationPage(new LoginView());
+                //MainPage = new NavigationPage(new LoginView());
+                MainPage = new NavigationPage(new DemoView());
             }
             else
             {

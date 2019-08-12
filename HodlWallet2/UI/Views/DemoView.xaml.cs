@@ -25,13 +25,21 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace HodlWallet2.UI.Views
 {
     public partial class DemoView : ContentPage
     {
+        enum PromptAnswer
+        {
+            Ok,
+            Cancel
+        };
+
+        PromptAnswer _PromptAnswer;
+
         public DemoView()
         {
             InitializeComponent();
@@ -39,7 +47,43 @@ namespace HodlWallet2.UI.Views
 
         void ShowPromptButton_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException("[ShowPromptButton_Clicked]");
+            _ = ShowPromptAnimated();
+        }
+
+        void OkButton_Clicked(object sender, EventArgs e)
+        {
+            _PromptAnswer = PromptAnswer.Ok;
+
+            _ = HidePromptAnimated();
+        }
+
+        void CancelButton_Clicked(object sender, EventArgs e)
+        {
+            _PromptAnswer = PromptAnswer.Cancel;
+
+            _ = HidePromptAnimated();
+        }
+
+        async Task ShowPromptAnimated()
+        {
+            PromptControl.IsVisible = true;
+
+            await Task.WhenAll(
+                TransparentBackgroundBoxView.FadeTo(0.9, 500),
+                QuestionFrame.FadeTo(1.0, 150)
+            );
+        }
+
+        async Task HidePromptAnimated()
+        {
+            await Task.Delay(10);
+
+            await Task.WhenAll(
+                TransparentBackgroundBoxView.FadeTo(0.0, 150),
+                QuestionFrame.FadeTo(0.0, 100)
+            );
+
+            PromptControl.IsVisible = false;
         }
     }
 }
