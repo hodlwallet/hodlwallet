@@ -31,6 +31,7 @@ using Xamarin.Forms;
 
 using HodlWallet2.Core.Utils;
 using HodlWallet2.UI.Controls;
+using Liviano.Utilities;
 
 namespace HodlWallet2.UI.Extensions
 {
@@ -53,6 +54,16 @@ namespace HodlWallet2.UI.Extensions
             }
 
             await Task.FromResult(true);
+        }
+
+        public static async Task<bool> DisplayPrompt(this ContentPage view, string title, string message = null, string okButton = null, string cancelButton = null)
+        {
+            Guard.NotNull(title, nameof(title));
+            Guard.NotEmpty(title, nameof(title));
+
+            // TODO display dialog
+
+            return true;
         }
 
         static bool CanAttachToView(ContentPage view)
