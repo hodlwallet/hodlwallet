@@ -50,7 +50,10 @@ namespace HodlWallet2.UI.Controls
         public ToastView()
         {
             InitializeComponent();
+        }
 
+        public void Init()
+        {
             IsVisible = true;
 
             this.FadeTo(0.65);

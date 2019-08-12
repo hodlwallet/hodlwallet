@@ -13,54 +13,57 @@
                      AbsoluteLayout.LayoutFlags="All"
                      BackgroundColor="{DynamicResource BackgroundPrimary}"
                      Opacity="0" />
-            <Frame x:Name="QuestionFrame"
-                   BackgroundColor="{DynamicResource BackgroundPrimary}"
-                   AbsoluteLayout.LayoutBounds=".5,.5,.8,.2"
-                   AbsoluteLayout.LayoutFlags="All"
-                   Opacity="0"
-                   Padding="0">
-                <FlexLayout Direction="Column">
-                    <StackLayout Orientation="Horizontal"
-                                 Padding="10">
-                        <Label x:Name="TitleLabel"
-                               Text="{Binding Title}"
-                               FontSize="Title"
-                               FontFamily="{StaticResource Sans-Bold}"
-                               TextColor="{DynamicResource TextPrimary}" />
+            <FlexLayout Direction="Column">
+                <BoxView FlexLayout.Grow="1" />
+                <Frame x:Name="QuestionFrame"
+                       FlexLayout.AlignSelf="Center"
+                       WidthRequest="380"
+                       BackgroundColor="{DynamicResource BackgroundPrimary}"
+                       Opacity="0"
+                       Padding="0">
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal"
+                                     Padding="10">
+                            <Label x:Name="TitleLabel"
+                                   Text="{Binding Title}"
+                                   FontSize="Title"
+                                   FontFamily="{StaticResource Sans-Bold}"
+                                   TextColor="{DynamicResource TextPrimary}" />
+                        </StackLayout>
+
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="{DynamicResource BackgroundSecondary}" />
+
+                        <FlexLayout Direction="Row"
+                                    FlexLayout.Grow="1"
+                                    Margin="10">
+                            <Label x:Name="MessageLabel"
+                                   Text="{Binding Message}"
+                                   LineBreakMode="WordWrap"
+                                   FlexLayout.AlignSelf="Center"
+                                   TextColor="{DynamicResource TextSecondary}" />
+                        </FlexLayout>
+
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="0">
+                            <Button x:Name="CancelButton"
+                                    IsVisible="False"
+                                    Style="{StaticResource NoBorderButton}"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                                    Text="{Binding CancelText}"
+                                    Clicked="CancelButton_Clicked" />
+                            <Button x:Name="OkButton"
+                                    Style="{StaticResource NoBorderButton}"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                                    Text="{Binding OkText}"
+                                    Clicked="OkButton_Clicked" />
+                        </StackLayout>
                     </StackLayout>
-
-                    <BoxView HeightRequest="1"
-                             BackgroundColor="{DynamicResource BackgroundSecondary}" />
-
-                    <FlexLayout Direction="Row"
-                                FlexLayout.Grow="1"
-                                Margin="10">
-                        <Label x:Name="MessageLabel"
-                               Text="{Binding Message}"
-                               LineBreakMode="WordWrap"
-                               FlexLayout.AlignSelf="Center"
-                               TextColor="{DynamicResource TextSecondary}" />
-                    </FlexLayout>
-
-                    <StackLayout Orientation="Horizontal"
-                                 Spacing="0">
-                        <Button x:Name="CancelButton"
-                                IsVisible="False"
-                                Style="{StaticResource NoBorderButton}"
-                                HorizontalOptions="FillAndExpand"
-                                BackgroundColor="{DynamicResource BackgroundSecondary}"
-                                Text="{Binding CancelText}"
-                                Clicked="CancelButton_Clicked" />
-                        <Button x:Name="OkButton"
-                                IsVisible="True"
-                                Style="{StaticResource NoBorderButton}"
-                                HorizontalOptions="FillAndExpand"
-                                BackgroundColor="{DynamicResource BackgroundSecondary}"
-                                Text="{Binding OkText}"
-                                Clicked="OkButton_Clicked" />
-                    </StackLayout>
-                </FlexLayout>
-            </Frame>
+                </Frame>
+                <BoxView FlexLayout.Grow="1" />
+            </FlexLayout>
         </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>

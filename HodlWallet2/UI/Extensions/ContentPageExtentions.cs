@@ -56,14 +56,61 @@ namespace HodlWallet2.UI.Extensions
             await Task.FromResult(true);
         }
 
-        public static async Task<bool> DisplayPrompt(this ContentPage view, string title, string message = null, string okButton = null, string cancelButton = null)
+        public static async Task DisplayPrompt(this ContentPage view, string title, string message = null, string okButton = null, string cancelButton = null, Action<bool> action = null)
         {
             Guard.NotNull(title, nameof(title));
             Guard.NotEmpty(title, nameof(title));
 
-            // TODO display dialog
+            if (CanAttachToView(view))
+            {
+                var prompt = CreatePromptFor(view, title, message, okButton, cancelButton);
 
-            return true;
+                if (action is null) return;
+
+                //prompt.Responded += (object s, bool res) =>
+                //{
+                //    action.Invoke(res);
+                //};
+
+                // FIXME This could should work better... like above!
+                while (true)
+                {
+                    if (prompt.PromptResponse == PromptView.PromptResponses.Ok)
+                    {
+                        action.Invoke(true);
+                        return;
+                    }
+                    if (prompt.PromptResponse == PromptView.PromptResponses.Cancel)
+                    {
+                        action.Invoke(false);
+                        return;
+                    }
+
+                    await Task.Delay(250);
+                }
+            }
+            else
+            {
+                Debug.WriteLine("[DisplayToast] Cannot attach toast to view, your layout must be a AbsoluteLayout");
+
+                bool invoked = false;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var result = await view.DisplayAlert(title, message, okButton, cancelButton);
+
+                    if (action != null) action.Invoke(result);
+
+                    invoked = true;
+                });
+
+                // FIXME Loop to make the function wait... again, this shouldn't be like this...
+                while(true)
+                {
+                    if (invoked) return;
+
+                    await Task.Delay(250);
+                }
+            }
         }
 
         static bool CanAttachToView(ContentPage view)
@@ -74,30 +121,38 @@ namespace HodlWallet2.UI.Extensions
             return false;
         }
 
+        static PromptView CreatePromptFor(ContentPage view, string title, string message = null, string okButton = null, string cancelButton = null)
+        {
+            if (!(GetContentType(view) == "AbsoluteLayout"))
+                throw new ArgumentException("Should not be called without an AbsoluteLayout");
+
+            var prompt = new PromptView(title, message, okButton, cancelButton);
+            var layout = (AbsoluteLayout)view.Content;
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                layout.Children.Add(prompt);
+
+                prompt.Init();
+            });
+
+            return prompt;
+        }
+
         static void CreateToastFor(ContentPage view, string content)
         {
-            var toast = new ToastView
+            if (!(GetContentType(view) == "AbsoluteLayout"))
+                throw new ArgumentException("Should not be called without an AbsoluteLayout");
+
+            var toast = new ToastView { ToastText = content };
+            var layout = (AbsoluteLayout)view.Content;
+
+            Device.BeginInvokeOnMainThread(() =>
             {
-                ToastText = content,
-                IsVisible = false
-            };
+                layout.Children.Add(toast);
 
-            switch (GetContentType(view))
-            {
-                case "AbsoluteLayout":
-                    var flexLayout = (AbsoluteLayout)view.Content;
-
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        flexLayout.Children.Add(toast);
-
-                        toast.IsVisible = true;
-                    });
-
-                    break;
-                default:
-                    throw new ArgumentException("Should not be called without an AbsoluteLayout");
-            }
+                toast.Init();
+            });
         }
 
         static string GetContentType(ContentPage view)

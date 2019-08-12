@@ -24,14 +24,42 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 
 namespace HodlWallet2.UI.Controls
 {
     public partial class PromptView : ContentView
     {
+        public enum PromptResponses
+        {
+            NoReponse,
+            Ok,
+            Cancel
+        }
+
+        public PromptResponses PromptResponse;
+        //{
+        //    get
+        //    {
+        //        return PromptResponse;
+        //    }
+        //    set
+        //    {
+        //        PromptResponse = value;
+
+        //        if (PromptResponse == PromptResponses.Ok)
+        //            Responded.Invoke(this, true);
+
+        //        if (PromptResponse == PromptResponses.Cancel)
+        //            Responded.Invoke(this, false);
+        //    }
+        //}
+
+        //public event EventHandler<bool> Responded;
+
         public static readonly BindableProperty TitleProperty = BindableProperty.CreateAttached(
             nameof(Title),
             typeof(string),
@@ -84,9 +112,61 @@ namespace HodlWallet2.UI.Controls
             set => SetValue(OkTextProperty, value);
         }
 
-        public PromptView()
+        public PromptView(string title, string message = null, string okButton = null, string cancelButton = null)
         {
             InitializeComponent();
+
+            Title = title;
+            Message = message ?? "";
+
+            if (string.IsNullOrEmpty(okButton)) OkText = "Ok";
+            else OkText = okButton;
+
+            if (string.IsNullOrEmpty(cancelButton)) CancelButton.IsVisible = false;
+            else
+            {
+                CancelText = cancelButton;
+                CancelButton.IsVisible = true;
+            }
+        }
+
+        public void Init()
+        {
+            PromptResponse = PromptResponses.NoReponse;
+
+            Show();
+        }
+
+        public void Show()
+        {
+            _ = ShowPromptAnimated();
+        }
+
+        public void Hide()
+        {
+            _ = HidePromptAnimated();
+        }
+
+        async Task ShowPromptAnimated()
+        {
+            PromptControl.IsVisible = true;
+
+            await Task.WhenAll(
+                TransparentBackgroundBoxView.FadeTo(0.9, 500),
+                QuestionFrame.FadeTo(1.0, 150)
+            );
+        }
+
+        async Task HidePromptAnimated()
+        {
+            await Task.Delay(10);
+
+            await Task.WhenAll(
+                TransparentBackgroundBoxView.FadeTo(0.0, 150),
+                QuestionFrame.FadeTo(0.0, 100)
+            );
+
+            PromptControl.IsVisible = false;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -132,6 +212,27 @@ namespace HodlWallet2.UI.Controls
         void ChangeOkTextTo(string okText)
         {
             OkButton.Text = okText;
+        }
+
+        void CancelButton_Clicked(object sender, EventArgs e)
+        {
+            PromptResponse = PromptResponses.Cancel;
+
+            Hide();
+            RemoveYourself();
+        }
+
+        void OkButton_Clicked(object sender, EventArgs e)
+        {
+            PromptResponse = PromptResponses.Ok;
+
+            Hide();
+            RemoveYourself();
+        }
+
+        void RemoveYourself()
+        {
+            ((AbsoluteLayout)Parent).Children.Remove(this);
         }
     }
 }
