@@ -23,6 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -86,6 +87,18 @@ namespace HodlWallet2.UI.Controls
             Debug.WriteLine($"[ChangeToastText] Changing toast text to: {toastText}");
 
             ToastContent.Text = toastText;
+        }
+
+        void Toast_Tapped(object sender, EventArgs e)
+        {
+            Task.Run(async () =>
+            {
+                await this.FadeTo(0.0, 100);
+
+                IsVisible = false;
+
+                ((AbsoluteLayout)Parent).Children.Remove(this);
+            });
         }
     }
 }

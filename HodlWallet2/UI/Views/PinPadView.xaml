@@ -9,7 +9,11 @@
         <vm:PinPadViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <customControls:PinPad x:Name="PinPadControl"
-                               Command="{Binding SuccessCommand}" />
+        <AbsoluteLayout>
+            <FlexLayout>
+                <customControls:PinPad x:Name="PinPadControl"
+                                       Command="{Binding SuccessCommand}" />
+            </FlexLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

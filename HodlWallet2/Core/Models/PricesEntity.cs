@@ -96,8 +96,8 @@ namespace HodlWallet2.Core.Models
             else
             {
                 int inc = Prices.Count > 500
-                    ? 50
-                    : 25;
+                    ? 200
+                    : 100;
 
                 for (int i = inc, count = Prices.Count - 2; i <= count; i += inc)
                     yield return GetChartEntry(Prices[i]);

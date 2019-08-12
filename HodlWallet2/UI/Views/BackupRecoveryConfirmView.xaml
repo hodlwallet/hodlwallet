@@ -10,109 +10,111 @@
         <vm:BackupRecoveryConfirmViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <FlexLayout Direction="Column"
-                    BackgroundColor="{DynamicResource BackgroundPrimary}"
-                    JustifyContent="SpaceAround"
-                    AlignItems="Center">
+        <AbsoluteLayout>
+            <FlexLayout Direction="Column"
+                        BackgroundColor="{DynamicResource BackgroundPrimary}"
+                        JustifyContent="SpaceAround"
+                        AlignItems="Center">
 
-            <Label FontFamily="{StaticResource Sans-Regular}"
-                   TextColor="{DynamicResource SyncGradientStart}"
-                   HorizontalTextAlignment="Center"
-                   FlexLayout.Grow="1"
-                   Margin="0, 20, 0, 0"
-                   Text="{Binding HeaderText}" />
+                <Label FontFamily="{StaticResource Sans-Regular}"
+                       TextColor="{DynamicResource SyncGradientStart}"
+                       HorizontalTextAlignment="Center"
+                       FlexLayout.Grow="1"
+                       Margin="0, 20, 0, 0"
+                       Text="{Binding HeaderText}" />
 
-            <Label Text="{Binding Exercise}"
-                   Style="{DynamicResource CustomLabel}"
-                   HorizontalTextAlignment="Center" />
+                <Label Text="{Binding Exercise}"
+                       Style="{DynamicResource CustomLabel}"
+                       HorizontalTextAlignment="Center" />
 
-            <Label FontFamily="{StaticResource Sans-Regular}"
-                   TextColor="{DynamicResource TextError}"
-                   HorizontalTextAlignment="Center"
-                   Text="{Binding WarningText}"
-                   IsVisible="{Binding WarningVisible}" />
+                <Label FontFamily="{StaticResource Sans-Regular}"
+                       TextColor="{DynamicResource TextError}"
+                       HorizontalTextAlignment="Center"
+                       Text="{Binding WarningText}"
+                       IsVisible="{Binding WarningVisible}" />
 
-            <ActivityIndicator IsRunning="{Binding IsLoading}"
-                               Color="{DynamicResource SyncGradientStart}" />
+                <ActivityIndicator IsRunning="{Binding IsLoading}"
+                                   Color="{DynamicResource SyncGradientStart}" />
 
-            <FlexLayout Direction="Row"
-                        JustifyContent="SpaceEvenly"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="2">
-
-                <FlexLayout Direction="Column"
-                            FlexLayout.Grow="1" />
-
-                <FlexLayout Direction="Column"
-                            FlexLayout.Grow="1"
+                <FlexLayout Direction="Row"
                             JustifyContent="SpaceEvenly"
-                            AlignItems="Stretch">
+                            FlexLayout.AlignSelf="Stretch"
+                            FlexLayout.Grow="2">
 
-                    <Button Text="{Binding WordOne}"
-                            Style="{StaticResource RecoveryWordButton}"
-                            Command="{Binding WordCommand}"
-                            CommandParameter="0" />
-                    <BoxView />
+                    <FlexLayout Direction="Column"
+                                FlexLayout.Grow="1" />
 
-                    <Button Text="{Binding WordTwo}"
-                            Style="{StaticResource RecoveryWordButton}"
-                            Command="{Binding WordCommand}"
-                            CommandParameter="1" />
-                    <BoxView />
+                    <FlexLayout Direction="Column"
+                                FlexLayout.Grow="1"
+                                JustifyContent="SpaceEvenly"
+                                AlignItems="Stretch">
 
-                    <Button Text="{Binding WordThree}"
-                            Style="{StaticResource RecoveryWordButton}"
-                            Command="{Binding WordCommand}"
-                            CommandParameter="2" />
-                    <BoxView />
+                        <Button Text="{Binding WordOne}"
+                                Style="{StaticResource RecoveryWordButton}"
+                                Command="{Binding WordCommand}"
+                                CommandParameter="0" />
+                        <BoxView />
+
+                        <Button Text="{Binding WordTwo}"
+                                Style="{StaticResource RecoveryWordButton}"
+                                Command="{Binding WordCommand}"
+                                CommandParameter="1" />
+                        <BoxView />
+
+                        <Button Text="{Binding WordThree}"
+                                Style="{StaticResource RecoveryWordButton}"
+                                Command="{Binding WordCommand}"
+                                CommandParameter="2" />
+                        <BoxView />
 
 
-                    <Button Text="{Binding WordFour}"
-                            Style="{StaticResource RecoveryWordButton}"
-                            Command="{Binding WordCommand}"
-                            CommandParameter="3" />
-                    <BoxView />
+                        <Button Text="{Binding WordFour}"
+                                Style="{StaticResource RecoveryWordButton}"
+                                Command="{Binding WordCommand}"
+                                CommandParameter="3" />
+                        <BoxView />
 
 
+                    </FlexLayout>
+
+                    <BoxView WidthRequest="10" />
+
+                    <FlexLayout Direction="Column"
+                                FlexLayout.Grow="1"
+                                JustifyContent="SpaceEvenly"
+                                AlignItems="Stretch">
+
+                        <Button Text="{Binding WordFive}"
+                                Style="{StaticResource RecoveryWordButton}"
+                                Command="{Binding WordCommand}"
+                                CommandParameter="4" />
+
+                        <BoxView />
+
+                        <Button Text="{Binding WordSix}"
+                                Style="{StaticResource RecoveryWordButton}"
+                                Command="{Binding WordCommand}"
+                                CommandParameter="5" />
+
+                        <BoxView />
+                        <Button Text="{Binding WordSeven}"
+                                Style="{StaticResource RecoveryWordButton}"
+                                Command="{Binding WordCommand}"
+                                CommandParameter="6" />
+
+                        <BoxView />
+                        <Button Text="{Binding WordEight}"
+                                Style="{StaticResource RecoveryWordButton}"
+                                Command="{Binding WordCommand}"
+                                CommandParameter="7" />
+
+                        <BoxView />
+                    </FlexLayout>
+
+                    <FlexLayout Direction="Column"
+                                FlexLayout.Grow="1" />
                 </FlexLayout>
-
-                <BoxView WidthRequest="10" />
-
-                <FlexLayout Direction="Column"
-                            FlexLayout.Grow="1"
-                            JustifyContent="SpaceEvenly"
-                            AlignItems="Stretch">
-
-                    <Button Text="{Binding WordFive}"
-                            Style="{StaticResource RecoveryWordButton}"
-                            Command="{Binding WordCommand}"
-                            CommandParameter="4" />
-
-                    <BoxView />
-
-                    <Button Text="{Binding WordSix}"
-                            Style="{StaticResource RecoveryWordButton}"
-                            Command="{Binding WordCommand}"
-                            CommandParameter="5" />
-
-                    <BoxView />
-                    <Button Text="{Binding WordSeven}"
-                            Style="{StaticResource RecoveryWordButton}"
-                            Command="{Binding WordCommand}"
-                            CommandParameter="6" />
-
-                    <BoxView />
-                    <Button Text="{Binding WordEight}"
-                            Style="{StaticResource RecoveryWordButton}"
-                            Command="{Binding WordCommand}"
-                            CommandParameter="7" />
-
-                    <BoxView />
-                </FlexLayout>
-
-                <FlexLayout Direction="Column"
-                            FlexLayout.Grow="1" />
             </FlexLayout>
-        </FlexLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

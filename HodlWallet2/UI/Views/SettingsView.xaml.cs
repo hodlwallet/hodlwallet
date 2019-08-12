@@ -66,6 +66,8 @@ namespace HodlWallet2.UI.Views
                 if (!answer) return;
 
                 _ViewModel.WipeWallet();
+
+                Process.GetCurrentProcess().Kill(); // die
             });
         }
 
