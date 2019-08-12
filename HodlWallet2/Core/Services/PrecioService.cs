@@ -64,8 +64,7 @@ namespace HodlWallet2.Core.Services
         Dictionary<string, ClientWebSocket> _WebSockets;
 
         int _BtcPriceDelay = 2_500; // 2.5 seconds, time of the animation as well
-        int _WebSocketMessageDelay = 300_000; // 5 minutes
-        int _HttpRequestsDelay = 300_000; // 5 minutes
+        int _HttpRequestsDelay = 30_000; // 30 seconds
 
         BtcPriceEntity _BtcPrice;
         public BtcPriceEntity BtcPrice
@@ -266,7 +265,8 @@ namespace HodlWallet2.Core.Services
 
         void FetchPricesForAllPeriods()
         {
-            foreach (var period in new string[] { "1h", "1d", "1w", "1m", "1y", "All" })
+            //foreach (var period in new string[] { "1h", "1d", "1w", "1m", "1y", "All" })
+            foreach (var period in new string[] { "1d", "1w", "1m", "1y" })
             {
                 var prices = _PrecioHttpService.GetPrecioByPeriod(period).Result;
 

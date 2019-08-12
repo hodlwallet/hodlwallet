@@ -8,6 +8,8 @@ using HodlWallet2.Core.Services;
 using HodlWallet2.Core.ViewModels;
 using System.Threading.Tasks;
 
+using HodlWallet2.UI.Extensions;
+
 namespace HodlWallet2.UI.Views
 {
     public partial class RecoverWalletEntryView : ContentPage
@@ -58,7 +60,7 @@ namespace HodlWallet2.UI.Views
 
         void ShowRecoverSeedError(RecoverWalletEntryViewModel _)
         {
-            DisplayAlert(
+            this.DisplayPrompt(
                 Constants.RECOVER_VIEW_ALERT_TITLE,
                 Constants.RECOVER_VIEW_ALERT_MESSAGE,
                 Constants.RECOVER_VIEW_ALERT_BUTTON

@@ -9,55 +9,59 @@
         <vm:SettingsViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <ScrollView x:Name="MenuScroll">
-            <FlexLayout Direction="Column">
-                <BoxView FlexLayout.Grow="2" />
+        <AbsoluteLayout>
+            <FlexLayout>
+                <ScrollView x:Name="MenuScroll">
+                    <FlexLayout Direction="Column">
+                        <BoxView FlexLayout.Grow="2" />
 
-                <BoxView BackgroundColor="{DynamicResource TextSecondary}"
-                         HeightRequest="1" />
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
 
-                <Button x:Name="BackupMnemonic"
-                        Style="{DynamicResource SettingsButton}"
-                        Clicked="BackupMnemonic_Clicked" />
+                        <Button x:Name="BackupMnemonic"
+                                Style="{DynamicResource SettingsButton}"
+                                Clicked="BackupMnemonic_Clicked" />
 
-                <BoxView BackgroundColor="{DynamicResource TextSecondary}"
-                         HeightRequest="1" />
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
 
-                <Button x:Name="ResyncWallet"
-                        Style="{DynamicResource SettingsButton}"
-                        Clicked="ResyncWallet_Clicked" />
+                        <Button x:Name="ResyncWallet"
+                                Style="{DynamicResource SettingsButton}"
+                                Clicked="ResyncWallet_Clicked" />
 
-                <BoxView BackgroundColor="{DynamicResource TextSecondary}"
-                         HeightRequest="1" />
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
 
-                <Button x:Name="RestoreWallet"
-                        Style="{DynamicResource SettingsButton}"
-                        Clicked="RestoreWallet_Clicked" />
+                        <Button x:Name="RestoreWallet"
+                                Style="{DynamicResource SettingsButton}"
+                                Clicked="RestoreWallet_Clicked" />
 
-                <BoxView BackgroundColor="{DynamicResource TextSecondary}"
-                         HeightRequest="1" />
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
 
-                <Button x:Name="WipeWallet"
-                        Style="{DynamicResource SettingsButton}"
-                        Clicked="WipeWallet_Clicked" />
+                        <Button x:Name="WipeWallet"
+                                Style="{DynamicResource SettingsButton}"
+                                Clicked="WipeWallet_Clicked" />
 
-                <BoxView BackgroundColor="{DynamicResource TextSecondary}"
-                         HeightRequest="1" />
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
 
-                <!-- Extra space -->
-                <BoxView FlexLayout.Grow="3" />
+                        <!-- Extra space -->
+                        <BoxView FlexLayout.Grow="3" />
 
-                <Label x:Name="BuildDate"
-                       Style="{StaticResource CustomLabel}"
-                       FontSize="Micro"
-                       FlexLayout.AlignSelf="Center"
-                       FlexLayout.Grow="1">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="BuildDate_Tapped"
-                                              NumberOfTapsRequired="1" />
-                    </Label.GestureRecognizers>
-                </Label>
+                        <Label x:Name="BuildDate"
+                               Style="{StaticResource CustomLabel}"
+                               FontSize="Micro"
+                               FlexLayout.AlignSelf="Center"
+                               FlexLayout.Grow="1">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BuildDate_Tapped"
+                                                      NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </FlexLayout>
+                </ScrollView>
             </FlexLayout>
-        </ScrollView>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

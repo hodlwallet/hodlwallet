@@ -8,6 +8,8 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
+using HodlWallet2.UI.Extensions;
+
 namespace HodlWallet2.UI.Views
 {
     public partial class HomeView : ContentPage
@@ -73,7 +75,7 @@ namespace HodlWallet2.UI.Views
 
         void DisplaySearchNotImplementedAlert(HomeViewModel _)
         {
-            DisplayAlert("Search Not Implemented", null, "OK");
+            Task.Run(async () => await this.DisplayToast("Search Not Implemented"));
         }
 
         void PriceButton_Tapped(object sender, EventArgs e)
