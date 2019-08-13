@@ -25,17 +25,35 @@ namespace HodlWallet2.UI.Views
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<SendViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
-            MessagingCenter.Subscribe<ReceiveViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
-            MessagingCenter.Subscribe<SettingsViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
-            MessagingCenter.Subscribe<HomeViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
+            // Views (this is unused, but could be an example
+            //MessagingCenter.Subscribe<SendView, Tabs>(this, "ChangeCurrentPageTo", ViewModelChangeCurrentPageTo);
+
+            // View Models
+            MessagingCenter.Subscribe<SendViewModel, Tabs>(this, "ChangeCurrentPageTo", ViewModelChangeCurrentPageTo);
+            MessagingCenter.Subscribe<ReceiveViewModel, Tabs>(this, "ChangeCurrentPageTo", ViewModelChangeCurrentPageTo);
+            MessagingCenter.Subscribe<SettingsViewModel, Tabs>(this, "ChangeCurrentPageTo", ViewModelChangeCurrentPageTo);
+            MessagingCenter.Subscribe<HomeViewModel, Tabs>(this, "ChangeCurrentPageTo", ViewModelChangeCurrentPageTo);
+            // Add more view models, as needed though
 
             // Add yours here.
         }
 
-        void ChangeCurrentPageTo(BaseViewModel _, Tabs tab)
+        void ViewModelChangeCurrentPageTo(BaseViewModel _, Tabs tab)
         {
-            CurrentPage = Children[(int)tab];
+            ChangeTabTo(tab);
+        }
+
+        void ViewModelChangeCurrentPageTo(ContentPage _, Tabs tab)
+        {
+            ChangeTabTo(tab);
+        }
+
+        void ChangeTabTo(Tabs tab)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                CurrentPage = Children[(int)tab];
+            });
         }
     }
 }

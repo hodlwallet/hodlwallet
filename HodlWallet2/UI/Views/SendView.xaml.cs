@@ -31,12 +31,6 @@ namespace HodlWallet2.UI.Views
             MessagingCenter.Subscribe<SendViewModel>(this, "OpenBarcodeScanner", async (vm) => await OpenBarcodeScanner(vm));
             MessagingCenter.Subscribe<SendViewModel, string[]>(this, "DisplayProcessAlertError", DisplayProcessAlertError);
             MessagingCenter.Subscribe<SendViewModel, ValueTuple<decimal, decimal>>(this, "AskToBroadcastTransaction", AskToBroadcastTransaction);
-            MessagingCenter.Subscribe<SendViewModel>(this, "NavigateToHome", NavigateToHome);
-        }
-
-        void NavigateToHome(SendViewModel _)
-        {
-
         }
 
         void AskToBroadcastTransaction(SendViewModel vm, (decimal, decimal) values)
