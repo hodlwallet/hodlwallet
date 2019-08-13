@@ -116,7 +116,7 @@
                         Value="{StaticResource Mono-Bold}" />
             </Style>
 
-            <Style x:Name="SettingsButton"
+            <Style x:Key="SettingsButton"
                    TargetType="Button">
                 <Setter Property="BackgroundColor"
                         Value="{DynamicResource BackgroundPrimary}" />
