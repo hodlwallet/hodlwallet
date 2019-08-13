@@ -29,6 +29,8 @@ namespace HodlWallet2.UI.Views
             MessagingCenter.Subscribe<ReceiveViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
             MessagingCenter.Subscribe<SettingsViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
             MessagingCenter.Subscribe<HomeViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
+
+            // Add yours here.
         }
 
         void ChangeCurrentPageTo(BaseViewModel _, Tabs tab)
