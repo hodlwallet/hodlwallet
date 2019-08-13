@@ -73,9 +73,9 @@ namespace HodlWallet2.UI.Views
             Navigation.PushModalAsync(nav);
         }
 
-        void DisplaySearchNotImplementedAlert(HomeViewModel _)
+        void DisplaySearchNotImplementedAlert(HomeViewModel vm)
         {
-            Task.Run(async () => await this.DisplayToast("Search Not Implemented"));
+            _ = this.DisplayToast("Search Not Implemented");
         }
 
         void PriceButton_Tapped(object sender, EventArgs e)

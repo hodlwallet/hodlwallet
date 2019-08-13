@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HodlWallet2.UI.Views.DemoView"
-             BackgroundColor="{DynamicResource BackgroundPrimary}">
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             x:Class="HodlWallet2.UI.Views.FontsDemoView"
+             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             ios:Page.UseSafeArea="True">
     <ContentPage.Content>
         <FlexLayout Direction="Column">
             <FlexLayout Direction="Row"
@@ -26,20 +28,19 @@
                 <BoxView FlexLayout.Grow="1" />
             </FlexLayout>
             <FlexLayout Direction="Column"
-                        FlexLayout.Grow="3">
+                        FlexLayout.Grow="1">
                 <Button Text="Change Font Up"
-                        FontSize="30"
-                        FontFamily="{StaticResource Sans-Regular}"
+                        FontSize="Subtitle"
+                        FontFamily="{StaticResource Sans-Bold}"
                         TextColor="{DynamicResource TextPrimary}"
                         BackgroundColor="{DynamicResource TextSuccess}"
                         Clicked="ChangeFontUp" />
                 <Button Text="Change Font Down"
-                        FontSize="30"
-                        FontFamily="{StaticResource Sans-Regular}"
+                        FontSize="Subtitle"
+                        FontFamily="{StaticResource Sans-Bold}"
                         TextColor="{DynamicResource TextPrimary}"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
                         Clicked="ChangeFontDown" />
-                <BoxView HeightRequest="10" BackgroundColor="{DynamicResource BackgroundSecondary}" />
             </FlexLayout>
         </FlexLayout>
     </ContentPage.Content>

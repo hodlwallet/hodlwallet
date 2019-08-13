@@ -172,10 +172,9 @@ namespace HodlWallet2.Core.ViewModels
 
         void StartSearch()
         {
-            _Logger.Debug("Search is not implemented yet!");
+            Debug.WriteLine("[StartSearch] Search is not implemented yet!");
 
             MessagingCenter.Send(this, "DisplaySearchNotImplementedAlert");
-            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Send);
         }
 
         void UpdateSyncingStatus()

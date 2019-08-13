@@ -17,18 +17,20 @@
                         BackgroundColor="{DynamicResource BackgroundPrimary}"
                         JustifyContent="SpaceAround"
                         AlignItems="Center">
-                <Frame FlexLayout.Grow="4"
+                <Frame FlexLayout.Grow="2"
                        BackgroundColor="Transparent">
                     <Image Source="logo_front.png"
-                           Scale="0.5"
+                           Scale="0.9"
                            VerticalOptions="Center"
                            HorizontalOptions="Center" />
                 </Frame>
+                <BoxView FlexLayout.Grow="1" />
 
                 <Label x:Name="Header"
                        Text="{Binding Header}"
-                       Style="{DynamicResource CustomLabel}"
                        HorizontalTextAlignment="Center" />
+                <BoxView FlexLayout.Grow="1" />
+
 
                 <ActivityIndicator IsRunning="{Binding IsLoading}"
                                    Color="{DynamicResource SyncGradientStart}" />
@@ -36,16 +38,16 @@
                 <Grid x:Name="InputGrid"
                       Padding="10">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="20" />
+                        <RowDefinition Height="35" />
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
                     </Grid.ColumnDefinitions>
 
                     <BoxView x:Name="Pin1"
@@ -77,7 +79,8 @@
                 <BoxView FlexLayout.Grow="1" />
 
                 <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1">
+                            FlexLayout.Grow="1"
+                            Margin="20,0,20,0">
 
                     <Button Text="1"
                             FlexLayout.Grow="1"
@@ -99,7 +102,8 @@
                 </FlexLayout>
 
                 <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1">
+                            FlexLayout.Grow="1"
+                            Margin="20,0,20,0">
 
                     <Button Text="4"
                             FlexLayout.Grow="1"
@@ -122,7 +126,8 @@
                 </FlexLayout>
 
                 <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1">
+                            FlexLayout.Grow="1"
+                            Margin="20,0,20,0">
 
                     <Button Text="7"
                             FlexLayout.Grow="1"
@@ -144,7 +149,8 @@
                 </FlexLayout>
 
                 <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1">
+                            FlexLayout.Grow="1"
+                            Margin="20,0,20,0">
 
                     <Button Text=""
                             FlexLayout.Grow="1"

@@ -128,7 +128,10 @@ namespace HodlWallet2.UI.Views
             string title = messageAndTitle[0] ?? Constants.DISPLAY_ALERT_ERROR_TITLE;
             string message = messageAndTitle[1];
 
-            Task.Run(async () => await this.DisplayToast(message ?? string.Join("", messageAndTitle)));
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await this.DisplayToast(message ?? string.Join("", messageAndTitle));
+            });
         }
     }
 }

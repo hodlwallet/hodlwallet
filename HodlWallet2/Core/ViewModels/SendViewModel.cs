@@ -16,12 +16,12 @@ using Liviano;
 using Liviano.Exceptions;
 using HodlWallet2.UI.Views;
 using NBitcoin.Protocol;
+using System.Diagnostics;
 
 namespace HodlWallet2.Core.ViewModels
 {
     public class SendViewModel : BaseViewModel
     {
-        Serilog.ILogger _Logger;
         string _AddressToSendTo;
         int _Fee;
         decimal _AmountToSend;
@@ -104,8 +104,6 @@ namespace HodlWallet2.Core.ViewModels
             SwitchCurrencyCommand = new Command(async () => await SwitchCurrency());
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
-
-            _Logger = _WalletService.Logger;
 
             Task.Run(SetSliderValue);
 
@@ -260,17 +258,13 @@ namespace HodlWallet2.Core.ViewModels
             }
             catch (WalletException we)
             {
-                _Logger.Information(we.Message);
+                Debug.WriteLine(we.Message);
 
                 DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_ERROR_BIP70);
             }
             catch (Exception ex)
             {
-                _Logger.Information(
-                    "Unable to extract address from QR code: {address}, {error}",
-                    address,
-                    ex.Message
-                );
+                Debug.WriteLine($"Unable to extract address from QR code: {address}, {ex.Message}");
 
                 DisplayProcessAddressErrorAlert(errorMessage);
             }
@@ -300,7 +294,7 @@ namespace HodlWallet2.Core.ViewModels
 
             var (Success, Tx, Fees, Error) = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
-            _Logger.Debug($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
+            Debug.WriteLine($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
             if (Success)
             {
                 var totalOut = Tx.TotalOut.ToDecimal(MoneyUnit.BTC);
@@ -322,14 +316,7 @@ namespace HodlWallet2.Core.ViewModels
                 DisplayProcessAddressErrorAlert(errorMsg, Constants.DISPLAY_ALERT_ERROR_TITLE);
 
                 // TODO show error screen for now just log it.
-                _Logger.Error(
-                    "Error trying to create a transaction.\nAmount to send: {amount}, address: {address}, fee: {fee}, password: {password}.\nFull Error: {error}",
-                    AmountToSend,
-                    AddressToSendTo,
-                    Fee,
-                    password,
-                    Error
-                );
+                Debug.WriteLine($"Error trying to create a transaction.\nAmount to send: {AmountToSend}, address: {AddressToSendTo}, fee: {Fee}, password: {password}.\nFull Error: {Error}");
             }
         }
     }

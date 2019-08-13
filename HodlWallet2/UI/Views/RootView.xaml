@@ -6,10 +6,6 @@
             xmlns:views="clr-namespace:HodlWallet2.UI.Views"
             x:Class="HodlWallet2.UI.Views.RootView"
             NavigationPage.HasNavigationBar="False"
-            BackgroundColor="{DynamicResource BackgroundPrimary}"
-            BarBackgroundColor="{DynamicResource BackgroundPrimary}"
-            SelectedTabColor="{DynamicResource SelectedTab}"
-            UnselectedTabColor="{DynamicResource UnselectedTab}"
             ios:Page.UseSafeArea="True"
             android:TabbedPage.ToolbarPlacement="Bottom">
     <TabbedPage.Effects>

@@ -30,7 +30,7 @@ using Xamarin.Forms;
 
 namespace HodlWallet2.UI.Views
 {
-    public partial class DemoView : ContentPage
+    public partial class FontsDemoView : ContentPage
     {
         string[] _FontNames = {
             "Sans-Regular",
@@ -54,7 +54,7 @@ namespace HodlWallet2.UI.Views
         public static readonly BindableProperty CurrentFontTitleProperty = BindableProperty.CreateAttached(
                  nameof(CurrentFontTitle),
                  typeof(string),
-                 typeof(DemoView),
+                 typeof(FontsDemoView),
                  default(string)
          );
 
@@ -64,7 +64,7 @@ namespace HodlWallet2.UI.Views
             set => SetValue(CurrentFontTitleProperty, value);
         }
 
-        public DemoView()
+        public FontsDemoView()
         {
             InitializeComponent();
         }
