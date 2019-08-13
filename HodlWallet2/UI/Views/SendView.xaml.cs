@@ -11,6 +11,7 @@ using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 
 using HodlWallet2.UI.Extensions;
+using NBitcoin;
 
 namespace HodlWallet2.UI.Views
 {
@@ -29,6 +30,33 @@ namespace HodlWallet2.UI.Views
         {
             MessagingCenter.Subscribe<SendViewModel>(this, "OpenBarcodeScanner", async (vm) => await OpenBarcodeScanner(vm));
             MessagingCenter.Subscribe<SendViewModel, string[]>(this, "DisplayProcessAlertError", DisplayProcessAlertError);
+            MessagingCenter.Subscribe<SendViewModel, ValueTuple<decimal, decimal>>(this, "AskToBroadcastTransaction", AskToBroadcastTransaction);
+            MessagingCenter.Subscribe<SendViewModel>(this, "NavigateToHome", NavigateToHome);
+        }
+
+        void NavigateToHome(SendViewModel _)
+        {
+
+        }
+
+        void AskToBroadcastTransaction(SendViewModel vm, (decimal, decimal) values)
+        {
+            decimal totalOut = values.Item1;
+            decimal fees = values.Item2;
+            var total = totalOut + fees;
+
+            string title = "Send Transaction?";
+
+            string message = $"Would you like to send {total} ({totalOut} + {fees}) BTC to {SendAddress}?";
+            string okButton = "Yes";
+            string cancelButton = "No";
+
+            _ = this.DisplayPrompt(title, message, okButton, cancelButton, (res) =>
+            {
+                if (!res) return;
+
+                MessagingCenter.Send(this, "BroadcastTransaction");
+            });
         }
 
         void SetLabels()

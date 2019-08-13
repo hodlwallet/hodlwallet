@@ -25,7 +25,7 @@
                                      Padding="10">
                             <Label x:Name="TitleLabel"
                                    Text="{Binding Title}"
-                                   FontSize="Title"
+                                   FontSize="Large"
                                    FontFamily="{StaticResource Sans-Bold}"
                                    TextColor="{DynamicResource TextPrimary}" />
                         </StackLayout>
@@ -57,6 +57,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     BackgroundColor="{DynamicResource BackgroundSecondary}"
                                     Text="{Binding OkText}"
+                                    TextColor="{DynamicResource TextSuccess}"
                                     Clicked="OkButton_Clicked" />
                         </StackLayout>
                     </StackLayout>

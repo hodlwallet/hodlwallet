@@ -33,6 +33,8 @@ namespace HodlWallet2.UI.Controls
 {
     public partial class PromptView : ContentView
     {
+        Color _TextPrimary = (Color)Application.Current.Resources["TextPrimary"];
+
         public enum PromptResponses
         {
             NoReponse,
@@ -122,7 +124,11 @@ namespace HodlWallet2.UI.Controls
             if (string.IsNullOrEmpty(okButton)) OkText = "Ok";
             else OkText = okButton;
 
-            if (string.IsNullOrEmpty(cancelButton)) CancelButton.IsVisible = false;
+            if (string.IsNullOrEmpty(cancelButton))
+            {
+                OkButton.TextColor = _TextPrimary;
+                CancelButton.IsVisible = false;
+            }
             else
             {
                 CancelText = cancelButton;

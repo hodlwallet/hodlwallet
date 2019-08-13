@@ -10,6 +10,7 @@ using Xamarin.Essentials;
 
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Utils;
+using HodlWallet2.UI.Extensions;
 
 using Liviano;
 using Liviano.Exceptions;
@@ -26,6 +27,7 @@ namespace HodlWallet2.Core.ViewModels
         decimal _AmountToSend;
         float _Rate;
         string _AmountToSendText;
+        Transaction _TransactionToBroadcast = null;
 
         const double MAX_SLIDER_VALUE = 100;
         double _SliderValue;
@@ -106,9 +108,25 @@ namespace HodlWallet2.Core.ViewModels
             _Logger = _WalletService.Logger;
 
             Task.Run(SetSliderValue);
+
+            SubscribeToMessages();
         }
 
-        private Task SwitchCurrency()
+        void SubscribeToMessages()
+        {
+            MessagingCenter.Subscribe<SendView>(this, "BroadcastTransaction", BroadcastTransaction);
+        }
+
+        void BroadcastTransaction(SendView _)
+        {
+            if (_TransactionToBroadcast is null) return;
+
+            _WalletService.BroadcastManager.BroadcastTransactionAsync(_TransactionToBroadcast);
+
+            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
+        }
+
+        Task SwitchCurrency()
         {
             if (ISOLabel == "USD($)") //TODO: Refactor with more user currencies
             {
@@ -191,7 +209,7 @@ namespace HodlWallet2.Core.ViewModels
             _WalletService.OnStarted += _WalletService_OnStarted_PasteAddress;
         }
 
-        private void _WalletService_OnStarted_PasteAddress(object sender, EventArgs e)
+        void _WalletService_OnStarted_PasteAddress(object sender, EventArgs e)
         {
             Device.InvokeOnMainThreadAsync(async () =>
             {
@@ -285,8 +303,10 @@ namespace HodlWallet2.Core.ViewModels
             _Logger.Debug($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
             if (Success)
             {
-                // TODO Show yes no dialog to broadcast it or not
-                await _WalletService.BroadcastManager.BroadcastTransactionAsync(Tx);
+                var totalOut = Tx.TotalOut.ToDecimal(MoneyUnit.BTC);
+                _TransactionToBroadcast = Tx;
+
+                MessagingCenter.Send(this, "AskToBroadcastTransaction", (totalOut, Fees));
 
                 return;
             }

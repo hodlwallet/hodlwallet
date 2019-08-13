@@ -23,6 +23,7 @@ using System.Windows.Input;
 using NBitcoin.Protocol;
 using System.Diagnostics;
 using System.Threading;
+using HodlWallet2.UI.Views;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -174,6 +175,7 @@ namespace HodlWallet2.Core.ViewModels
             _Logger.Debug("Search is not implemented yet!");
 
             MessagingCenter.Send(this, "DisplaySearchNotImplementedAlert");
+            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Send);
         }
 
         void UpdateSyncingStatus()
