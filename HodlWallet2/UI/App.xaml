@@ -41,54 +41,32 @@
                 FontFamily="Mono-Regular"
             -->
             <!-- Monospaced -->
-            <OnPlatform x:Key="Mono-Bold"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationMono-Bold"
-                        Android="LiberationMono-Bold.ttf#LiberationMono-Bold" />
-            <OnPlatform x:Key="Mono-Italic"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationMono-Italic"
-                        Android="LiberationMono-Italic.ttf#LiberationMono-Italic" />
             <OnPlatform x:Key="Mono-Regular"
                         x:TypeArguments="x:String"
-                        iOS="LiberationMono-Regular"
-                        Android="LiberationMono-Regular.ttf#LiberationMono-Regular" />
+                        iOS="FiraMono-Regular"
+                        Android="FiraMono-Regular.ttf#FiraMono-Regular" />
+            <OnPlatform x:Key="Mono-Bold"
+                        x:TypeArguments="x:String"
+                        iOS="FiraMono-Bold"
+                        Android="FiraMono-Bold.ttf#FiraMono-Bold" />
 
             <!-- Sans -->
-            <OnPlatform x:Key="Sans-Bold"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationSans-Bold"
-                        Android="LiberationSans-Bold.ttf#LiberationSans-Bold" />
-            <OnPlatform x:Key="Sans-BoldItalic"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationSans-BoldItalic"
-                        Android="LiberationSans-BoldItalic#LiberationSans-BoldItalic" />
-            <OnPlatform x:Key="Sans-Italic"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationSans-Italic"
-                        Android="LiberationSans-Italic.ttf#LiberationSans-Italic" />
             <OnPlatform x:Key="Sans-Regular"
                         x:TypeArguments="x:String"
-                        iOS="LiberationSans-Regular"
-                        Android="LiberationSans-Regular.ttf#LiberationSans-Regular" />
-
-            <!-- Serif -->
-            <OnPlatform x:Key="Serif-Bold"
+                        iOS="FiraSans-Regular"
+                        Android="FiraSans-Regular.ttf#FiraSans-Regular" />
+            <OnPlatform x:Key="Sans-Bold"
                         x:TypeArguments="x:String"
-                        iOS="LiberationSerif-Bold"
-                        Android="LiberationSerif-Bold.ttf#LiberationSerif-Bold" />
-            <OnPlatform x:Key="Serif-BoldItalic"
+                        iOS="FiraSans-Bold"
+                        Android="FiraSans-Bold.ttf#FiraSans-Bold" />
+            <OnPlatform x:Key="Sans-Italic"
                         x:TypeArguments="x:String"
-                        iOS="LiberationSerif-BoldItalic"
-                        Android="LiberationSerif-BoldItalic#LiberationSerif-BoldItalic" />
-            <OnPlatform x:Key="Serif-Italic"
+                        iOS="FiraSans-LightItalic"
+                        Android="FiraSans-LightItalic.ttf#FiraSans-LightItalic" />
+            <OnPlatform x:Key="Sans-BoldItalic"
                         x:TypeArguments="x:String"
-                        iOS="LiberationSerif-Italic"
-                        Android="LiberationSerif-Italic.ttf#LiberationSerif-Italic" />
-            <OnPlatform x:Key="Serif-Regular"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationSerif-Regular"
-                        Android="LiberationSerif-Regular.ttf#LiberationSerif-Regular" />
+                        iOS="FiraSans-BoldItalic"
+                        Android="FiraSans-BoldItalic.ttf#FiraSans-BoldItalic" />
 
             <!-- Custom Styles -->
             <!-- Use these custom items as much as possible, as usual avoid naming things
