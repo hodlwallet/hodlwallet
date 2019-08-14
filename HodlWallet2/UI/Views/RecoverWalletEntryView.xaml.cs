@@ -17,6 +17,9 @@ namespace HodlWallet2.UI.Views
         // TODO This should be on the view model, and should be prevented to use wallet fuctions in views
         IWalletService _WalletService => DependencyService.Get<IWalletService>();
 
+        Color _TextPrimary = (Color)Application.Current.Resources["TextPrimary"];
+        Color _TextError = (Color)Application.Current.Resources["TextError"];
+
         public RecoverWalletEntryView()
         {
             InitializeComponent();
@@ -35,20 +38,18 @@ namespace HodlWallet2.UI.Views
             Entry completed = sender as Entry;
             if (completed.Text != null)
             {
-                string word = completed.Text.ToLower();
-
-                if (_WalletService.IsWordInWordlist(word, "english") == false)
-                {
-                    completed.TextColor = Color.Red;
-                }
-                else
-                {
-                    completed.TextColor = Color.Black;
-                }
+                ValidateEntry(completed);
             }
 
             Entry NextEntry = this.FindByName(Tags.GetTag(completed)) as Entry;
             NextEntry?.Focus();
+        }
+
+        void Entry_Unfocused(object sender, EventArgs e)
+        {
+            ValidateEntry(sender as Entry);
+
+            TryShowDoneButton();
         }
 
         void LowercaseEntry(object sender, EventArgs e)
@@ -56,6 +57,24 @@ namespace HodlWallet2.UI.Views
             var entry = (Entry)sender;
 
             entry.Text = entry.Text.ToLower();
+
+            ValidateEntry(entry);
+        }
+
+        void ValidateEntry(Entry entry)
+        {
+            if (entry.Text == null) return;
+
+            string word = entry.Text.ToLower();
+
+            if (_WalletService.IsWordInWordlist(word, "english"))
+            {
+                entry.TextColor = _TextPrimary;
+            }
+            else
+            {
+                entry.TextColor = _TextError;
+            }
         }
 
         void ShowRecoverSeedError(RecoverWalletEntryViewModel _)
@@ -65,6 +84,20 @@ namespace HodlWallet2.UI.Views
                 Constants.RECOVER_VIEW_ALERT_MESSAGE,
                 Constants.RECOVER_VIEW_ALERT_BUTTON
             );
+        }
+
+        void TryShowDoneButton()
+        {
+            for (int i = 1; i < 13; i++)
+            {
+                var entry = (Entry)FindByName($"Entry{i}");
+
+                if (entry is null) throw new ArgumentException("Something's wrong with this...");
+
+                if (string.IsNullOrEmpty(entry.Text)) return;
+            }
+
+            DoneButton.IsVisible = true;
         }
 
         async Task NavigateToRootView(RecoverWalletEntryViewModel _)

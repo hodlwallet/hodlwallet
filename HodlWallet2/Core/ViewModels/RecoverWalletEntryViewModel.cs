@@ -104,7 +104,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             _Logger = _WalletService.Logger;
 
-            OnRecoverEntryCompleted = new Command(async () => await CheckMnemonic());
+            OnRecoverEntryCompleted = new Command(TrySaveMnemonic);
         }
 
         public string RecoverTitle
@@ -119,31 +119,13 @@ namespace HodlWallet2.Core.ViewModels
             get => "Enter Backup Recovery Key";
         }
 
-        async Task CheckMnemonic()
+        void TrySaveMnemonic()
         {
-            if (CheckWordInWordlist(WordOne) == false) return;
-            if (CheckWordInWordlist(WordTwo) == false) return;
-            if (CheckWordInWordlist(WordThree) == false) return;
-            if (CheckWordInWordlist(WordFour) == false) return;
-            if (CheckWordInWordlist(WordFive) == false) return;
-            if (CheckWordInWordlist(WordSix) == false) return;
-            if (CheckWordInWordlist(WordSeven) == false) return;
-            if (CheckWordInWordlist(WordEight) == false) return;
-            if (CheckWordInWordlist(WordNine) == false) return;
-            if (CheckWordInWordlist(WordTen) == false) return;
-            if (CheckWordInWordlist(WordEleven) == false) return;
-            if (CheckWordInWordlist(WordTwelve) == false) return;
+            if (!MnemonicInWordList()) return;
 
-            string mnemonic = string.Join(" ", new string[]
-                                          {
-                                              WordOne, WordTwo, WordThree, WordFour,
-                                              WordFive, WordSix, WordSeven, WordEight,
-                                              WordNine, WordTen, WordEleven, WordTwelve
-                                          });
+            string mnemonic = GetMnemonic();
 
-            mnemonic = mnemonic.ToLower();
-
-            if (CheckMnemonicHasValidChecksum(mnemonic) == false) return;
+            if (!CheckMnemonicHasValidChecksum(mnemonic)) return;
 
             SecureStorageService.SetMnemonic(mnemonic);
 
@@ -163,6 +145,24 @@ namespace HodlWallet2.Core.ViewModels
             return false;
         }
 
+        bool MnemonicInWordList()
+        {
+            if (!CheckWordInWordlist(WordOne)) return false;
+            if (!CheckWordInWordlist(WordTwo)) return false;
+            if (!CheckWordInWordlist(WordThree)) return false;
+            if (!CheckWordInWordlist(WordFour)) return false;
+            if (!CheckWordInWordlist(WordFive)) return false;
+            if (!CheckWordInWordlist(WordSix)) return false;
+            if (!CheckWordInWordlist(WordSeven)) return false;
+            if (!CheckWordInWordlist(WordEight)) return false;
+            if (!CheckWordInWordlist(WordNine)) return false;
+            if (!CheckWordInWordlist(WordTen)) return false;
+            if (!CheckWordInWordlist(WordEleven)) return false;
+            if (!CheckWordInWordlist(WordTwelve)) return false;
+
+            return true;
+        }
+
         bool CheckMnemonicHasValidChecksum(string mnemonic, string wordlist = "english")
         {
             if (_WalletService.IsVerifyChecksum(mnemonic, wordlist) == true) return true;
@@ -172,6 +172,17 @@ namespace HodlWallet2.Core.ViewModels
             DisplayRecoverAlert();
 
             return false;
+        }
+
+        string GetMnemonic()
+        {
+            return string.Join(" ", new string[]
+            {
+                WordOne, WordTwo, WordThree,
+                WordFour, WordFive, WordSix,
+                WordSeven, WordEight, WordNine,
+                WordTen, WordEleven, WordTwelve
+            }).ToLower();
         }
 
         void DisplayRecoverAlert()

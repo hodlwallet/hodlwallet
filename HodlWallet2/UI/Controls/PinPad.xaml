@@ -53,16 +53,16 @@
                   VerticalOptions="Center"
                   Padding="10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
+                    <RowDefinition Height="35" />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="35" />
+                    <ColumnDefinition Width="35" />
+                    <ColumnDefinition Width="35" />
+                    <ColumnDefinition Width="35" />
+                    <ColumnDefinition Width="35" />
+                    <ColumnDefinition Width="35" />
                 </Grid.ColumnDefinitions>
 
                 <BoxView x:Name="pin1"

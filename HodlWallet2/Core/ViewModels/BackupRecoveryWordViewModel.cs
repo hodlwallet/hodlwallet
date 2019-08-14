@@ -37,6 +37,8 @@ namespace HodlWallet2.Core.ViewModels
             NextWordCommand = new Command(NextWord);
             PreviousWordCommand = new Command(PreviousWord);
 
+            if (DesignMode.IsDesignModeEnabled) return;
+
             InitMnemonic();
         }
 
