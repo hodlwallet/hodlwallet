@@ -44,9 +44,9 @@ namespace HodlWallet2.iOS.Renderers
         {
             foreach (var navBarItem in NavigationBar.Items)
             {
-                foreach (var backButtonItem in new UIBarButtonItem[] { navBarItem.RightBarButtonItem, navBarItem.LeftBarButtonItem })
+                foreach (var buttonItem in new UIBarButtonItem[] { navBarItem.RightBarButtonItem, navBarItem.LeftBarButtonItem })
                 {
-                    if (backButtonItem is null) continue;
+                    if (buttonItem is null) continue;
 
                     var backButtonFont = UIFont.FromName(_SansFontName, 16);
                     var textAttrs = new UITextAttributes()
@@ -55,11 +55,11 @@ namespace HodlWallet2.iOS.Renderers
                         Font = backButtonFont
                     };
 
-                    backButtonItem.SetTitleTextAttributes(textAttrs, UIControlState.Normal);
-                    backButtonItem.SetTitleTextAttributes(textAttrs, UIControlState.Focused);
-                    backButtonItem.SetTitleTextAttributes(textAttrs, UIControlState.Highlighted);
-                    backButtonItem.SetTitleTextAttributes(textAttrs, UIControlState.Selected);
-                    backButtonItem.SetTitleTextAttributes(textAttrs, UIControlState.Disabled);
+                    buttonItem.SetTitleTextAttributes(textAttrs, UIControlState.Normal);
+                    buttonItem.SetTitleTextAttributes(textAttrs, UIControlState.Focused);
+                    buttonItem.SetTitleTextAttributes(textAttrs, UIControlState.Highlighted);
+                    buttonItem.SetTitleTextAttributes(textAttrs, UIControlState.Selected);
+                    buttonItem.SetTitleTextAttributes(textAttrs, UIControlState.Disabled);
                 }
             }
         }
