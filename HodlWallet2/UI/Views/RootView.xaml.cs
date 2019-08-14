@@ -3,7 +3,6 @@
 using Xamarin.Forms;
 
 using HodlWallet2.Core.ViewModels;
-using System;
 
 namespace HodlWallet2.UI.Views
 {
@@ -17,33 +16,32 @@ namespace HodlWallet2.UI.Views
         public RootView()
         {
             InitializeComponent();
-
-            CurrentPage = Children[(int)Tabs.Home];
-
             SubscribeToMessages();
+
+            ChangeTabTo(Tabs.Home);
         }
 
         void SubscribeToMessages()
         {
-            // Views (this is unused, but could be an example
-            //MessagingCenter.Subscribe<SendView, Tabs>(this, "ChangeCurrentPageTo", ViewModelChangeCurrentPageTo);
+            // Views (this is unused, but could be an example)
+            MessagingCenter.Subscribe<SendView, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
 
             // View Models
-            MessagingCenter.Subscribe<SendViewModel, Tabs>(this, "ChangeCurrentPageTo", ViewModelChangeCurrentPageTo);
-            MessagingCenter.Subscribe<ReceiveViewModel, Tabs>(this, "ChangeCurrentPageTo", ViewModelChangeCurrentPageTo);
-            MessagingCenter.Subscribe<SettingsViewModel, Tabs>(this, "ChangeCurrentPageTo", ViewModelChangeCurrentPageTo);
-            MessagingCenter.Subscribe<HomeViewModel, Tabs>(this, "ChangeCurrentPageTo", ViewModelChangeCurrentPageTo);
+            MessagingCenter.Subscribe<SendViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
+            MessagingCenter.Subscribe<ReceiveViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
+            MessagingCenter.Subscribe<SettingsViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
+            MessagingCenter.Subscribe<HomeViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
             // Add more view models, as needed though
 
             // Add yours here.
         }
 
-        void ViewModelChangeCurrentPageTo(BaseViewModel _, Tabs tab)
+        void ChangeCurrentPageTo(BaseViewModel _, Tabs tab)
         {
             ChangeTabTo(tab);
         }
 
-        void ViewModelChangeCurrentPageTo(ContentPage _, Tabs tab)
+        void ChangeCurrentPageTo(ContentPage _, Tabs tab)
         {
             ChangeTabTo(tab);
         }

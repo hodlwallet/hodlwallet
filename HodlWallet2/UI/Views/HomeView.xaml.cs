@@ -29,8 +29,9 @@ namespace HodlWallet2.UI.Views
 
             PriceButton.Source = "price-tag-3-line.png";
 
-            _ViewModel.InitializeWalletAndPrecio();
             _ViewModel.View_OnAppearing();
+
+            _ViewModel.InitializeWalletAndPrecio();
 
             InitializeDisplayedCurrency();
         }

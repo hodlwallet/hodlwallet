@@ -11,13 +11,11 @@ namespace HodlWallet2.UI.Views
 {
     public partial class ReceiveView : ContentPage
     {
-        ReceiveViewModel _ViewModel;
+        ReceiveViewModel _ViewModel => (ReceiveViewModel)BindingContext;
 
         public ReceiveView()
         {
             InitializeComponent();
-
-            _ViewModel = (ReceiveViewModel)BindingContext;
         }
 
         void Address_Tapped(object sender, EventArgs e)

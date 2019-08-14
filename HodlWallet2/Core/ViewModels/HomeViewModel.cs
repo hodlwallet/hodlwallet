@@ -127,6 +127,8 @@ namespace HodlWallet2.Core.ViewModels
         {
             _IsViewVisible = true;
 
+            _Logger = _WalletService.Logger;
+
             InitializeWalletAndPrecio();
             InitializePrecioAndWalletTimers(); // TODO see bellow
         }
@@ -210,6 +212,8 @@ namespace HodlWallet2.Core.ViewModels
 
         void SwitchCurrency()
         {
+            if (!_WalletService.IsStarted) return;
+
             var currency = Preferences.Get("currency", "BTC");
             if (currency == "BTC")
             {
