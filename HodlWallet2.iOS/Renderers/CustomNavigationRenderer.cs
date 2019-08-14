@@ -14,12 +14,59 @@ namespace HodlWallet2.iOS.Renderers
         string _SansFontName => (OnPlatform<string>)Xamarin.Forms.Application.Current.Resources["Sans-Regular"];
         string _SansBoldFontName => (OnPlatform<string>)Xamarin.Forms.Application.Current.Resources["Sans-Bold"];
 
+        UIControlState[] _ControlStates =
+        {
+            UIControlState.Normal,
+            UIControlState.Focused,
+            UIControlState.Highlighted,
+            UIControlState.Selected,
+            UIControlState.Disabled
+        };
+
+        UIFont _TitleFont => UIFont.FromName(_SansBoldFontName, 20);
+        UIStringAttributes _TitleStringAttributes => new UIStringAttributes()
+        {
+            ForegroundColor = _TextPrimary,
+            Font = _TitleFont
+        };
+
+        UIFont _ItemFont => UIFont.FromName(_SansFontName, 16);
+        UITextAttributes _ItemTextAttributes => new UITextAttributes()
+        {
+            TextColor = _TextPrimary,
+            Font = _ItemFont
+        };
+
+        public CustomNavigationRenderer()
+        {
+            UpdateNavBarStyles();
+            UpdateNavBarItemStyles();
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
+            UpdateNavBarStyles();
+            UpdateNavBarItemStyles();
+
             UpdateNavBar();
             UpdateNavBarItems();
+        }
+
+        void UpdateNavBarStyles()
+        {
+            UINavigationBar.Appearance.Translucent = false;
+            UINavigationBar.Appearance.ShadowImage = new UIImage();
+            UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarPosition.Any, UIBarMetrics.Default);
+
+            UINavigationBar.Appearance.TitleTextAttributes = _TitleStringAttributes;
+        }
+
+        void UpdateNavBarItemStyles()
+        {
+            foreach (var controlState in _ControlStates)
+                UIBarButtonItem.Appearance.SetTitleTextAttributes(_ItemTextAttributes, controlState);
         }
 
         void UpdateNavBar()
@@ -29,37 +76,19 @@ namespace HodlWallet2.iOS.Renderers
             NavigationBar.ShadowImage = new UIImage();
             NavigationBar.SetBackgroundImage(new UIImage(), UIBarPosition.Any, UIBarMetrics.Default);
 
-            // Add bold font
-            var font = UIFont.FromName(_SansBoldFontName, 20);
-            var attrs = new UIStringAttributes()
-            {
-                ForegroundColor = _TextPrimary,
-                Font = font
-            };
-
-            NavigationBar.TitleTextAttributes = attrs;
+            NavigationBar.TitleTextAttributes = _TitleStringAttributes;
         }
 
         void UpdateNavBarItems()
         {
             foreach (var navBarItem in NavigationBar.Items)
             {
-                foreach (var buttonItem in new UIBarButtonItem[] { navBarItem.RightBarButtonItem, navBarItem.LeftBarButtonItem })
+                foreach (var buttonItem in new UIBarButtonItem[] { navBarItem.BackBarButtonItem, navBarItem.RightBarButtonItem, navBarItem.LeftBarButtonItem })
                 {
                     if (buttonItem is null) continue;
 
-                    var backButtonFont = UIFont.FromName(_SansFontName, 16);
-                    var textAttrs = new UITextAttributes()
-                    {
-                        TextColor = _TextPrimary,
-                        Font = backButtonFont
-                    };
-
-                    buttonItem.SetTitleTextAttributes(textAttrs, UIControlState.Normal);
-                    buttonItem.SetTitleTextAttributes(textAttrs, UIControlState.Focused);
-                    buttonItem.SetTitleTextAttributes(textAttrs, UIControlState.Highlighted);
-                    buttonItem.SetTitleTextAttributes(textAttrs, UIControlState.Selected);
-                    buttonItem.SetTitleTextAttributes(textAttrs, UIControlState.Disabled);
+                    foreach (var controlState in _ControlStates)
+                        buttonItem.SetTitleTextAttributes(_ItemTextAttributes, controlState);
                 }
             }
         }
