@@ -12,7 +12,7 @@ namespace HodlWallet2.iOS.Renderers
     {
         UIColor _TextPrimary => ((Color)Xamarin.Forms.Application.Current.Resources["TextPrimary"]).ToUIColor();
         string _SansFontName => (OnPlatform<string>)Xamarin.Forms.Application.Current.Resources["Sans-Regular"];
-        string _SansBoldFontName => (OnPlatform<string>)Xamarin.Forms.Application.Current.Resources["Sans-Bold"];
+        //string _SansBoldFontName => (OnPlatform<string>)Xamarin.Forms.Application.Current.Resources["Sans-Bold"];
 
         UIControlState[] _ControlStates =
         {
@@ -23,7 +23,7 @@ namespace HodlWallet2.iOS.Renderers
             UIControlState.Disabled
         };
 
-        UIFont _TitleFont => UIFont.FromName(_SansBoldFontName, 20);
+        UIFont _TitleFont => UIFont.FromName(_SansFontName, 20);
         UIStringAttributes _TitleStringAttributes => new UIStringAttributes()
         {
             ForegroundColor = _TextPrimary,
