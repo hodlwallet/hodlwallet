@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using HodlWallet2.Core.Utils;
-using HodlWallet2.Core.ViewModels;
-using HodlWallet2.UI.Locale;
-using NBitcoin.Protocol;
+
 using Xamarin.Forms;
 
 using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 
+using HodlWallet2.Core.Utils;
+using HodlWallet2.Core.ViewModels;
 using HodlWallet2.UI.Extensions;
-using NBitcoin;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.UI.Views
 {
@@ -45,12 +43,11 @@ namespace HodlWallet2.UI.Views
             string okButton = "Yes";
             string cancelButton = "No";
 
-            _ = this.DisplayPrompt(title, message, okButton, cancelButton, (res) =>
-            {
-                if (!res) return;
+            var res = this.DisplayPrompt(title, message, okButton, cancelButton).Result;
 
-                MessagingCenter.Send(this, "BroadcastTransaction");
-            });
+            if (!res) return;
+
+            MessagingCenter.Send(this, "BroadcastTransaction");
         }
 
         void SetLabels()

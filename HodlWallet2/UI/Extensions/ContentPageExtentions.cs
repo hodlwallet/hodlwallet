@@ -40,9 +40,11 @@ namespace HodlWallet2.UI.Extensions
     {
         public static async Task DisplayToast(this ContentPage view, string content)
         {
+            var promptTaskSource = new TaskCompletionSource<bool>();
+
             if (CanAttachToView(view))
             {
-                CreateToastFor(view, content);
+                promptTaskSource = CreateToastFor(view, content);
             }
             else
             {
@@ -51,13 +53,14 @@ namespace HodlWallet2.UI.Extensions
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     view.DisplayAlert(content, null, Constants.DISPLAY_ALERT_ERROR_BUTTON);
+                    promptTaskSource.SetResult(true);
                 });
             }
 
-            await Task.FromResult(true);
+            await promptTaskSource.Task;
         }
 
-        public static async Task DisplayPrompt(this ContentPage view, string title, string message = null, string okButton = null, string cancelButton = null, Action<bool> action = null)
+        public static async Task<bool> DisplayPrompt(this ContentPage view, string title, string message = null, string okButton = null, string cancelButton = null)
         {
             Guard.NotNull(title, nameof(title));
             Guard.NotEmpty(title, nameof(title));
@@ -66,51 +69,51 @@ namespace HodlWallet2.UI.Extensions
             {
                 var prompt = CreatePromptFor(view, title, message, okButton, cancelButton);
 
-                if (action is null) return;
-
                 //prompt.Responded += (object s, bool res) =>
                 //{
                 //    action.Invoke(res);
                 //};
 
                 // FIXME This could should work better... like above!
-                while (true)
+                var promptTaskSource = new TaskCompletionSource<bool>();
+                Func<Task<bool>> checkResponse = () =>
                 {
-                    if (prompt.PromptResponse == PromptView.PromptResponses.Ok)
+                    while (true)
                     {
-                        action.Invoke(true);
-                        return;
-                    }
-                    if (prompt.PromptResponse == PromptView.PromptResponses.Cancel)
-                    {
-                        action.Invoke(false);
-                        return;
-                    }
+                        if (prompt.PromptResponse == PromptView.PromptResponses.Ok)
+                        {
+                            promptTaskSource.SetResult(true);
 
-                    await Task.Delay(250);
-                }
+                            return promptTaskSource.Task;
+                        }
+                        if (prompt.PromptResponse == PromptView.PromptResponses.Cancel)
+                        {
+                            promptTaskSource.SetResult(false);
+
+                            return promptTaskSource.Task;
+                        }
+
+                        Task.Delay(250).Wait();
+                    }
+                };
+
+                _ = Task.Run(checkResponse);
+
+                return await promptTaskSource.Task;
             }
             else
             {
                 Debug.WriteLine("[DisplayToast] Cannot attach toast to view, your layout must be a AbsoluteLayout");
 
-                bool invoked = false;
+                var promptTaskSource = new TaskCompletionSource<bool>();
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     var result = await view.DisplayAlert(title, message, okButton, cancelButton);
 
-                    if (action != null) action.Invoke(result);
-
-                    invoked = true;
+                    promptTaskSource.SetResult(true);
                 });
 
-                // FIXME Loop to make the function wait... again, this shouldn't be like this...
-                while(true)
-                {
-                    if (invoked) return;
-
-                    await Task.Delay(250);
-                }
+                return await promptTaskSource.Task;
             }
         }
 
@@ -146,11 +149,12 @@ namespace HodlWallet2.UI.Extensions
             return prompt;
         }
 
-        static void CreateToastFor(ContentPage view, string content)
+        static TaskCompletionSource<bool> CreateToastFor(ContentPage view, string content)
         {
             if (!(GetContentType(view) == "AbsoluteLayout"))
                 throw new ArgumentException("Should not be called without an AbsoluteLayout");
 
+            var taskSource = new TaskCompletionSource<bool>();
             var toast = new ToastView { ToastText = content };
             var layout = (AbsoluteLayout)view.Content;
 
@@ -158,14 +162,23 @@ namespace HodlWallet2.UI.Extensions
                 (View child) => child.GetType() == typeof(ToastView)
             );
 
-            if (prevToast != null) return;
+            if (prevToast != null)
+            {
+                taskSource.SetResult(true);
+
+                return taskSource;
+            }
 
             Device.BeginInvokeOnMainThread(() =>
             {
                 layout.Children.Add(toast);
 
                 toast.Init();
+
+                taskSource.SetResult(true);
             });
+
+            return taskSource;
         }
 
         static string GetContentType(ContentPage view)

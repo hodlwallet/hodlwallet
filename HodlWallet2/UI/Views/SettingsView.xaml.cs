@@ -35,12 +35,11 @@ namespace HodlWallet2.UI.Views
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await AskThisIsIrreversibleQuestion("resync-wallet", (bool answer) =>
-                {
-                    if (!answer) return;
+                var answer = await AskThisIsIrreversibleQuestion("resync-wallet");
 
-                    _ViewModel.ResyncWallet();
-                });
+                if (!answer) return;
+
+                _ViewModel.ResyncWallet();
             });
         }
 
@@ -48,15 +47,14 @@ namespace HodlWallet2.UI.Views
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await AskThisIsIrreversibleQuestion("restore-wallet", async (bool answer) =>
-                {
-                    if (!answer) return;
+                var answer = await AskThisIsIrreversibleQuestion("restore-wallet");
 
-                    var view = new RecoverView(closeable: true);
-                    var nav = new NavigationPage(view);
+                if (!answer) return;
 
-                    await Navigation.PushModalAsync(nav);
-                });
+                var view = new RecoverView(closeable: true);
+                var nav = new NavigationPage(view);
+
+                await Navigation.PushModalAsync(nav);
             });
         }
 
@@ -64,13 +62,12 @@ namespace HodlWallet2.UI.Views
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await AskThisIsIrreversibleQuestion("wipe-wallet", (bool answer) =>
-                {
-                    if (!answer) return;
+                var answer = await AskThisIsIrreversibleQuestion("wipe-wallet");
 
-                    _ViewModel.WipeWallet();
-                    Process.GetCurrentProcess().Kill(); // die
-                });
+                if (!answer) return;
+
+                _ViewModel.WipeWallet();
+                Process.GetCurrentProcess().Kill(); // die
             });
         }
 
@@ -107,7 +104,7 @@ namespace HodlWallet2.UI.Views
 #endif
         }
 
-        async Task AskThisIsIrreversibleQuestion(string key, Action<bool> action)
+        async Task<bool> AskThisIsIrreversibleQuestion(string key)
         {
             string title;
             switch (key)
@@ -125,12 +122,11 @@ namespace HodlWallet2.UI.Views
                     throw new ArgumentException($"Invalid question sent, key: {key}");
             }
 
-            await this.DisplayPrompt(
+            return await this.DisplayPrompt(
                 title,
                 Constants.ACTION_IRREVERSIBLE,
                 Constants.YES_BUTTON,
-                Constants.NO_BUTTON,
-                action
+                Constants.NO_BUTTON
             );
         }
     }
