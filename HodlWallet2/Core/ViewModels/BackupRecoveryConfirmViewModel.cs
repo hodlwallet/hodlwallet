@@ -39,7 +39,7 @@ namespace HodlWallet2.Core.ViewModels
                 SetProperty(ref _Mnemonic, value);
 
                 _PrevIndex = _Mnemonic.Length;
-                RefreshWords(_Mnemonic);
+                _ = RefreshWords(_Mnemonic);
             }
         }
 
@@ -198,10 +198,10 @@ namespace HodlWallet2.Core.ViewModels
                 _PrevIndex = _Mnemonic.Length;
             }
 
-            RefreshWords(_Mnemonic);
+            _ = RefreshWords(_Mnemonic);
         }
 
-        public async void RefreshWords(string[] mnemonic)
+        public async Task RefreshWords(string[] mnemonic)
         {
             Random rng = new Random();
 
