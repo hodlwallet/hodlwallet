@@ -20,7 +20,6 @@
                     <Frame x:Name="QuestionFrame"
                            FlexLayout.AlignSelf="Center"
                            BackgroundColor="{DynamicResource BackgroundPrimary}"
-                           Opacity="0"
                            Padding="0">
                         <StackLayout Orientation="Vertical">
                             <StackLayout Orientation="Horizontal"

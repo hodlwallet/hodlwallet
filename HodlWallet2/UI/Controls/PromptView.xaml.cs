@@ -28,12 +28,14 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace HodlWallet2.UI.Controls
 {
     public partial class PromptView : ContentView
     {
         Color _TextPrimary = (Color)Application.Current.Resources["TextPrimary"];
+        double _QuestionFrameTopMargin => (DeviceDisplay.MainDisplayInfo.Height / 2) - (QuestionFrame.Height * 2);
 
         public enum PromptResponses
         {
@@ -118,6 +120,8 @@ namespace HodlWallet2.UI.Controls
         {
             InitializeComponent();
 
+            QuestionFrame.Margin = new Thickness(0, _QuestionFrameTopMargin, 0, 0);
+
             Title = title;
             Message = message ?? "";
 
@@ -155,11 +159,22 @@ namespace HodlWallet2.UI.Controls
 
         async Task ShowPromptAnimated()
         {
+            await Task.Delay(10);
+
             IsVisible = true;
 
+            var animationTaskSource = new TaskCompletionSource<bool>();
+
+            var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, 0);
+            animation.Commit(this, "OpenQuestionAnimation", 16, 250, Easing.CubicInOut, (v, c) => QuestionFrame.Margin = new Thickness(0, 0, 0, 0), () =>
+            {
+                animationTaskSource.SetResult(false);
+                return false;
+            });
+
             await Task.WhenAll(
-                TransparentBackgroundBoxView.FadeTo(0.9, 500),
-                QuestionFrame.FadeTo(1.0, 150)
+                animationTaskSource.Task,
+                TransparentBackgroundBoxView.FadeTo(0.9, 500)
             );
         }
 
@@ -167,9 +182,18 @@ namespace HodlWallet2.UI.Controls
         {
             await Task.Delay(10);
 
+            var animationTaskSource = new TaskCompletionSource<bool>();
+
+            var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, _QuestionFrameTopMargin);
+            animation.Commit(this, "OpenQuestionAnimation", 16, 250, Easing.CubicInOut, (v, c) => QuestionFrame.Margin = new Thickness(0, _QuestionFrameTopMargin, 0, 0), () =>
+            {
+                animationTaskSource.SetResult(false);
+                return false;
+            });
+
             await Task.WhenAll(
-                TransparentBackgroundBoxView.FadeTo(0.0, 150),
-                QuestionFrame.FadeTo(0.0, 150)
+                animationTaskSource.Task,
+                TransparentBackgroundBoxView.FadeTo(0.0, 150)
             );
 
             IsVisible = false;
