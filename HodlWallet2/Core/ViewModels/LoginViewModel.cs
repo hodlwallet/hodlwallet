@@ -69,7 +69,6 @@ namespace HodlWallet2.Core.ViewModels
 
             // _Pin.Count == 6 now...
             // We're done inputting our PIN
-            //await Task.Delay(305);
 
             string input = string.Join(string.Empty, _Pin.ToArray());
 
