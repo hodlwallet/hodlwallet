@@ -10,21 +10,17 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <AbsoluteLayout>
-            <FlexLayout>
+            <FlexLayout Direction="Column">
                 <StackLayout Margin="10,70,10,10"
                              HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand">
-                    <Label
-                        x:Name="Title"
-                        Text="{Binding RecoverTitle}"
-                        Style="{DynamicResource CustomLabel}"
-                        FontSize="Large"
-                        Margin="10, 0, 0, 0" />
-                    <Label
-                        x:Name="Header"
-                        Text="{Binding RecoverHeader}"
-                        Style="{DynamicResource CustomLabel}"
-                        Margin="10, 0, 10, 20" />
+                    <Label Text="{Binding RecoverTitle}"
+                           Style="{DynamicResource CustomLabel}"
+                           FontSize="Large"
+                           Margin="10, 0, 0, 0" />
+                    <Label Text="{Binding RecoverHeader}"
+                           Style="{DynamicResource CustomLabel}"
+                           Margin="10, 0, 10, 20" />
 
                     <ScrollView>
                         <Grid x:Name="EntryGrid"
@@ -51,16 +47,15 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
-
-                            <!-- Work in progress -->
                             <Entry x:Name="Entry1"
                                    Style="{StaticResource RecoveryWordEntry}"
                                    Text="{Binding WordOne, Mode=OneWayToSource}"
                                    TextChanged="LowercaseEntry"
                                    Grid.Row="1"
                                    Grid.Column="1"
-                                   Completed="Entry_Completed"
                                    ReturnType="Next"
+                                   Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
                                    utils:Tags.Tag="Entry2" />
 
                             <Label Text="1"
@@ -78,6 +73,7 @@
                                    Grid.Row="1"
                                    Grid.Column="2"
                                    Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
                                    ReturnType="Next"
                                    utils:Tags.Tag="Entry3" />
 
@@ -96,6 +92,7 @@
                                    Grid.Row="1"
                                    Grid.Column="3"
                                    Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
                                    ReturnType="Next"
                                    utils:Tags.Tag="Entry4" />
 
@@ -114,6 +111,7 @@
                                    Grid.Row="3"
                                    Grid.Column="1"
                                    Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
                                    ReturnType="Next"
                                    utils:Tags.Tag="Entry5" />
 
@@ -132,6 +130,7 @@
                                    Grid.Row="3"
                                    Grid.Column="2"
                                    Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
                                    ReturnType="Next"
                                    utils:Tags.Tag="Entry6" />
 
@@ -147,6 +146,7 @@
                                    Style="{StaticResource RecoveryWordEntry}"
                                    Text="{Binding WordSix, Mode=OneWayToSource}"
                                    TextChanged="LowercaseEntry"
+                                   Unfocused="Entry_Unfocused"
                                    Grid.Row="3"
                                    Grid.Column="3"
                                    Completed="Entry_Completed"
@@ -168,6 +168,7 @@
                                    Grid.Row="5"
                                    Grid.Column="1"
                                    Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
                                    ReturnType="Next"
                                    utils:Tags.Tag="Entry8" />
 
@@ -186,6 +187,7 @@
                                    Grid.Row="5"
                                    Grid.Column="2"
                                    Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
                                    ReturnType="Next"
                                    utils:Tags.Tag="Entry9" />
 
@@ -204,6 +206,7 @@
                                    Grid.Row="5"
                                    Grid.Column="3"
                                    Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
                                    ReturnType="Next"
                                    utils:Tags.Tag="Entry10" />
 
@@ -222,6 +225,7 @@
                                    Grid.Row="7"
                                    Grid.Column="1"
                                    Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
                                    ReturnType="Next"
                                    utils:Tags.Tag="Entry11" />
 
@@ -240,6 +244,7 @@
                                    Grid.Row="7"
                                    Grid.Column="2"
                                    Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
                                    ReturnType="Next"
                                    utils:Tags.Tag="Entry12" />
 
@@ -255,6 +260,7 @@
                                    Style="{StaticResource RecoveryWordEntry}"
                                    Text="{Binding WordTwelve, Mode=TwoWay}"
                                    TextChanged="LowercaseEntry"
+                                   Unfocused="Entry_Unfocused"
                                    ReturnCommand="{Binding OnRecoverEntryCompleted}"
                                    Grid.Row="7"
                                    Grid.Column="3"
@@ -269,7 +275,20 @@
                                    Grid.Column="3" />
                         </Grid>
                     </ScrollView>
+
                 </StackLayout>
+
+                <FlexLayout Direction="Column"
+                            FlexLayout.Grow="1">
+                    <BoxView FlexLayout.Grow="2" />
+
+                    <Button x:Name="DoneButton"
+                            FlexLayout.Grow="1"
+                            IsVisible="False"
+                            Text="Done"
+                            FontSize="Large"
+                            Command="{Binding OnRecoverEntryCompleted}" />
+                </FlexLayout>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

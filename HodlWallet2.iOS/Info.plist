@@ -36,18 +36,12 @@
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>LiberationMono-Bold.ttf</string>
-		<string>LiberationMono-BoldItalic.ttf</string>
-		<string>LiberationMono-Italic.ttf</string>
-		<string>LiberationMono-Regular.ttf</string>
-		<string>LiberationSans-Bold.ttf</string>
-		<string>LiberationSans-BoldItalic.ttf</string>
-		<string>LiberationSans-Italic.ttf</string>
-		<string>LiberationSans-Regular.ttf</string>
-		<string>LiberationSerif-Bold.ttf</string>
-		<string>LiberationSerif-BoldItalic.ttf</string>
-		<string>LiberationSerif-Italic.ttf</string>
-		<string>LiberationSerif-Regular.ttf</string>
+		<string>FiraMono-Regular.ttf</string>
+		<string>FiraMono-Bold.ttf</string>
+		<string>FiraSans-Regular.ttf</string>
+		<string>FiraSans-LightItalic.ttf</string>
+		<string>FiraSans-Bold.ttf</string>
+		<string>FiraSans-BoldItalic.ttf</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

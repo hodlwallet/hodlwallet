@@ -1,4 +1,26 @@
-﻿using System;
+﻿//
+// SendViewModel.cs
+//
+// Copyright (c) 2019 HODL Wallet
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -10,22 +32,24 @@ using Xamarin.Essentials;
 
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Utils;
+using HodlWallet2.UI.Extensions;
 
 using Liviano;
 using Liviano.Exceptions;
 using HodlWallet2.UI.Views;
 using NBitcoin.Protocol;
+using System.Diagnostics;
 
 namespace HodlWallet2.Core.ViewModels
 {
     public class SendViewModel : BaseViewModel
     {
-        Serilog.ILogger _Logger;
         string _AddressToSendTo;
         int _Fee;
         decimal _AmountToSend;
-        float _Rate;
+        float _Rate => _PrecioService.Rate.Rate;
         string _AmountToSendText;
+        Transaction _TransactionToBroadcast;
 
         const double MAX_SLIDER_VALUE = 100;
         double _SliderValue;
@@ -95,20 +119,34 @@ namespace HodlWallet2.Core.ViewModels
 
         public SendViewModel()
         {
-            ScanCommand = new Command(async () => await Scan());
-            PasteCommand = new Command(async () => await Paste());
-            SendCommand = new Command(async () => await Send());
-            OnSliderValueChangedCommand = new Command(async () => await SetSliderValue());
-            SwitchCurrencyCommand = new Command(async () => await SwitchCurrency());
+            ScanCommand = new Command(Scan);
+            PasteCommand = new Command(() => _ = Paste());
+            SendCommand = new Command(Send);
+            OnSliderValueChangedCommand = new Command(() => _ = SetSliderValue());
+            SwitchCurrencyCommand = new Command(SwitchCurrency);
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
 
-            _Logger = _WalletService.Logger;
-
             Task.Run(SetSliderValue);
+
+            SubscribeToMessages();
         }
 
-        private Task SwitchCurrency()
+        void SubscribeToMessages()
+        {
+            MessagingCenter.Subscribe<SendView>(this, "BroadcastTransaction", BroadcastTransaction);
+        }
+
+        void BroadcastTransaction(SendView _)
+        {
+            if (_TransactionToBroadcast is null) return;
+
+            _WalletService.BroadcastManager.BroadcastTransactionAsync(_TransactionToBroadcast);
+
+            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
+        }
+
+        void SwitchCurrency()
         {
             if (ISOLabel == "USD($)") //TODO: Refactor with more user currencies
             {
@@ -122,7 +160,6 @@ namespace HodlWallet2.Core.ViewModels
                 AmountToSendText = $"{AmountToSend:F2}";
                 ISOLabel = "USD($)";
             }
-            return Task.FromResult(this);
         }
 
         async Task SetSliderValue()
@@ -152,13 +189,11 @@ namespace HodlWallet2.Core.ViewModels
             TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, (Fee / 1000));
         }
 
-        async Task Scan()
+        void Scan()
         {
             var IsCameraAvailable = _PermissionsService.HasCameraPermission();
 
             if (!IsCameraAvailable) return;
-
-            string address = "";
 
             MessagingCenter.Send(this, "OpenBarcodeScanner");
 
@@ -174,7 +209,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             if (!Clipboard.HasText)
             {
-                //DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_PASTE_MESSAGE);
+                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_PASTE_MESSAGE);
 
                 return;
             }
@@ -191,7 +226,7 @@ namespace HodlWallet2.Core.ViewModels
             _WalletService.OnStarted += _WalletService_OnStarted_PasteAddress;
         }
 
-        private void _WalletService_OnStarted_PasteAddress(object sender, EventArgs e)
+        void _WalletService_OnStarted_PasteAddress(object sender, EventArgs e)
         {
             Device.InvokeOnMainThreadAsync(async () =>
             {
@@ -237,22 +272,20 @@ namespace HodlWallet2.Core.ViewModels
                     AmountToSend = amount.ToDecimal(MoneyUnit.BTC);
                 }
 
+#pragma warning disable CS0618 // Type or member is obsolete
                 if (bitcoinUrl.PaymentRequestUrl is Uri paymentRequestUrl)
+#pragma warning restore CS0618 // Type or member is obsolete
                     throw new WalletException($"HODL Wallet does not support BIP70");
             }
             catch (WalletException we)
             {
-                _Logger.Information(we.Message);
+                Debug.WriteLine(we.Message);
 
                 DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_ERROR_BIP70);
             }
             catch (Exception ex)
             {
-                _Logger.Information(
-                    "Unable to extract address from QR code: {address}, {error}",
-                    address,
-                    ex.Message
-                );
+                Debug.WriteLine($"Unable to extract address from QR code: {address}, {ex.Message}");
 
                 DisplayProcessAddressErrorAlert(errorMessage);
             }
@@ -268,7 +301,7 @@ namespace HodlWallet2.Core.ViewModels
             return _WalletService.IsAddressOwn(address);
         }
 
-        async Task Send()
+        void Send()
         {
             string password = "";
 
@@ -282,11 +315,13 @@ namespace HodlWallet2.Core.ViewModels
 
             var (Success, Tx, Fees, Error) = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
-            _Logger.Debug($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
+            Debug.WriteLine($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
             if (Success)
             {
-                // TODO Show yes no dialog to broadcast it or not
-                await _WalletService.BroadcastManager.BroadcastTransactionAsync(Tx);
+                var totalOut = Tx.TotalOut.ToDecimal(MoneyUnit.BTC);
+                _TransactionToBroadcast = Tx;
+
+                MessagingCenter.Send(this, "AskToBroadcastTransaction", (totalOut, Fees));
 
                 return;
             }
@@ -302,14 +337,7 @@ namespace HodlWallet2.Core.ViewModels
                 DisplayProcessAddressErrorAlert(errorMsg, Constants.DISPLAY_ALERT_ERROR_TITLE);
 
                 // TODO show error screen for now just log it.
-                _Logger.Error(
-                    "Error trying to create a transaction.\nAmount to send: {amount}, address: {address}, fee: {fee}, password: {password}.\nFull Error: {error}",
-                    AmountToSend,
-                    AddressToSendTo,
-                    Fee,
-                    password,
-                    Error
-                );
+                Debug.WriteLine($"Error trying to create a transaction.\nAmount to send: {AmountToSend}, address: {AddressToSendTo}, fee: {Fee}, password: {password}.\nFull Error: {Error}");
             }
         }
     }

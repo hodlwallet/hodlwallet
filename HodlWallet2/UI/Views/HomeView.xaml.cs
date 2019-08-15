@@ -1,4 +1,26 @@
-﻿using System;
+﻿//
+// HomeView.xaml.cs
+//
+// Copyright (c) 2019 HODL Wallet
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HodlWallet2.Core.Models;
@@ -29,8 +51,9 @@ namespace HodlWallet2.UI.Views
 
             PriceButton.Source = "price-tag-3-line.png";
 
-            _ViewModel.InitializeWalletAndPrecio();
             _ViewModel.View_OnAppearing();
+
+            _ViewModel.InitializeWalletAndPrecio();
 
             InitializeDisplayedCurrency();
         }
@@ -73,9 +96,9 @@ namespace HodlWallet2.UI.Views
             Navigation.PushModalAsync(nav);
         }
 
-        void DisplaySearchNotImplementedAlert(HomeViewModel _)
+        void DisplaySearchNotImplementedAlert(HomeViewModel vm)
         {
-            Task.Run(async () => await this.DisplayToast("Search Not Implemented"));
+            _ = this.DisplayToast("Search Not Implemented");
         }
 
         void PriceButton_Tapped(object sender, EventArgs e)

@@ -1,4 +1,26 @@
-﻿using System;
+﻿//
+// SettingsView.xaml.cs
+//
+// Copyright (c) 2019 HODL Wallet
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -35,12 +57,11 @@ namespace HodlWallet2.UI.Views
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await AskThisIsIrreversibleQuestion("resync-wallet", (bool answer) =>
-                {
-                    if (!answer) return;
+                var answer = await AskThisIsIrreversibleQuestion("resync-wallet");
 
-                    _ViewModel.ResyncWallet();
-                });
+                if (!answer) return;
+
+                _ViewModel.ResyncWallet();
             });
         }
 
@@ -48,15 +69,14 @@ namespace HodlWallet2.UI.Views
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await AskThisIsIrreversibleQuestion("restore-wallet", async (bool answer) =>
-                {
-                    if (!answer) return;
+                var answer = await AskThisIsIrreversibleQuestion("restore-wallet");
 
-                    var view = new RecoverView(closeable: true);
-                    var nav = new NavigationPage(view);
+                if (!answer) return;
 
-                    await Navigation.PushModalAsync(nav);
-                });
+                var view = new RecoverView(closeable: true);
+                var nav = new NavigationPage(view);
+
+                await Navigation.PushModalAsync(nav);
             });
         }
 
@@ -64,13 +84,12 @@ namespace HodlWallet2.UI.Views
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await AskThisIsIrreversibleQuestion("wipe-wallet", (bool answer) =>
-                {
-                    if (!answer) return;
+                var answer = await AskThisIsIrreversibleQuestion("wipe-wallet");
 
-                    _ViewModel.WipeWallet();
-                    Process.GetCurrentProcess().Kill(); // die
-                });
+                if (!answer) return;
+
+                _ViewModel.WipeWallet();
+                Process.GetCurrentProcess().Kill(); // die
             });
         }
 
@@ -107,7 +126,7 @@ namespace HodlWallet2.UI.Views
 #endif
         }
 
-        async Task AskThisIsIrreversibleQuestion(string key, Action<bool> action)
+        async Task<bool> AskThisIsIrreversibleQuestion(string key)
         {
             string title;
             switch (key)
@@ -125,12 +144,11 @@ namespace HodlWallet2.UI.Views
                     throw new ArgumentException($"Invalid question sent, key: {key}");
             }
 
-            await this.DisplayPrompt(
+            return await this.DisplayPrompt(
                 title,
                 Constants.ACTION_IRREVERSIBLE,
                 Constants.YES_BUTTON,
-                Constants.NO_BUTTON,
-                action
+                Constants.NO_BUTTON
             );
         }
     }

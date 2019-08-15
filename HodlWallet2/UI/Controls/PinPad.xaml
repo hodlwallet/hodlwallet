@@ -53,16 +53,16 @@
                   VerticalOptions="Center"
                   Padding="10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
+                    <RowDefinition Height="25" />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="25" />
                 </Grid.ColumnDefinitions>
 
                 <BoxView x:Name="pin1"
@@ -161,6 +161,7 @@
                         FlexLayout.Grow="1">
 
                 <Button Text="1"
+                        FontFamily="{StaticResource Mono-Regular}"
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="1"
@@ -168,6 +169,7 @@
                         CommandParameter="1" />
 
                 <Button Text="2"
+                        FontFamily="{StaticResource Mono-Regular}"
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="2"
@@ -175,6 +177,7 @@
                         CommandParameter="2" />
 
                 <Button Text="3"
+                        FontFamily="{StaticResource Mono-Regular}"
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="3"
@@ -186,6 +189,7 @@
                         FlexLayout.Grow="1">
 
                 <Button Text="4"
+                        FontFamily="{StaticResource Mono-Regular}"
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="4"
@@ -193,6 +197,7 @@
                         CommandParameter="4" />
 
                 <Button Text="5"
+                        FontFamily="{StaticResource Mono-Regular}"
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="5"
@@ -200,6 +205,7 @@
                         CommandParameter="5" />
 
                 <Button Text="6"
+                        FontFamily="{StaticResource Mono-Regular}"
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="6"
@@ -211,6 +217,7 @@
                         FlexLayout.Grow="1">
 
                 <Button Text="7"
+                        FontFamily="{StaticResource Mono-Regular}"
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="7"
@@ -218,6 +225,7 @@
                         CommandParameter="7" />
 
                 <Button Text="8"
+                        FontFamily="{StaticResource Mono-Regular}"
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="8"
@@ -225,6 +233,7 @@
                         CommandParameter="8" />
 
                 <Button Text="9"
+                        FontFamily="{StaticResource Mono-Regular}"
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="9"
@@ -239,6 +248,7 @@
                         FlexLayout.Grow="1" />
 
                 <Button Text="0"
+                        FontFamily="{StaticResource Mono-Regular}"
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="0"
@@ -247,6 +257,7 @@
 
                 <Button Text="&#x21E6;"
                         FlexLayout.Grow="1"
+                        FontFamily="{StaticResource Mono-Regular}"
                         Clicked="OnBackspaceTapped"
                         Command="{Binding BackspaceCommand}"
                         TextColor="{StaticResource SyncGradientStart}" />

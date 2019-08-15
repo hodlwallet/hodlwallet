@@ -65,7 +65,7 @@
       <Version>2.4.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>4.1.0.618606</Version>
+      <Version>4.1.0.673156</Version>
     </PackageReference>
     <PackageReference Include="Refit">
       <Version>4.7.9</Version>
@@ -133,18 +133,24 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\LiberationSans-Bold.ttf" />
-    <AndroidAsset Include="Assets\LiberationSans-BoldItalic.ttf" />
-    <AndroidAsset Include="Assets\LiberationMono-Regular.ttf" />
-    <AndroidAsset Include="Assets\LiberationSerif-BoldItalic.ttf" />
-    <AndroidAsset Include="Assets\LiberationSerif-Italic.ttf" />
-    <AndroidAsset Include="Assets\LiberationSerif-Regular.ttf" />
-    <AndroidAsset Include="Assets\LiberationMono-BoldItalic.ttf" />
-    <AndroidAsset Include="Assets\LiberationSerif-Bold.ttf" />
-    <AndroidAsset Include="Assets\LiberationSans-Italic.ttf" />
-    <AndroidAsset Include="Assets\LiberationMono-Italic.ttf" />
-    <AndroidAsset Include="Assets\LiberationMono-Bold.ttf" />
-    <AndroidAsset Include="Assets\LiberationSans-Regular.ttf" />
+    <AndroidAsset Include="Assets\FiraMono-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\FiraMono-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\FiraSans-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\FiraSans-BoldItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\FiraSans-LightItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\FiraSans-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

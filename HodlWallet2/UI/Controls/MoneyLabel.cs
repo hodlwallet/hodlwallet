@@ -1,4 +1,29 @@
-﻿using System;
+﻿//
+// MoneyLabel.cs
+//
+// Author:
+//       Igor Guerrero <igorgue@protonmail.com>
+//
+// Copyright (c) 2019
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using NBitcoin;
@@ -313,7 +338,7 @@ namespace HodlWallet2.UI.Controls
             return;
 
             // This will fire a format exception
-            if (!string.IsNullOrEmpty(Text)) decimal.Parse(Text);
+            // if (!string.IsNullOrEmpty(Text)) decimal.Parse(Text);
         }
 
         async Task ChangeTextAsync()
@@ -321,7 +346,7 @@ namespace HodlWallet2.UI.Controls
             if (Children.Count == 0)
                 AddNewText();
             else
-                await ModifyText();
+                await Task.Run(ModifyText);
         }
 
         void AddNewText()
@@ -335,7 +360,7 @@ namespace HodlWallet2.UI.Controls
             }
         }
 
-        async Task ModifyText()
+        void ModifyText()
         {
             if (string.IsNullOrWhiteSpace(Text))
             {
@@ -367,10 +392,10 @@ namespace HodlWallet2.UI.Controls
                 }
             }
 
-            await _ModifyText();
+            _ModifyText();
         }
 
-        async Task _ModifyText()
+        void _ModifyText()
         {
             // Now we replace the old chars
             for (int i = 0, count = Text.Length; i < count; i++)
@@ -384,7 +409,7 @@ namespace HodlWallet2.UI.Controls
                 char newChar = Text[i];
 
                 if (oldChar != newChar)
-                    await FlipChars(oldChar, newChar, i);
+                    FlipChars(oldChar, newChar, i);
             }
         }
 
@@ -428,7 +453,7 @@ namespace HodlWallet2.UI.Controls
             }
         }
 
-        async Task FlipChars(char oldChar, char newChar, int index)
+        void FlipChars(char oldChar, char newChar, int index)
         {
             if (oldChar == newChar) return;
 

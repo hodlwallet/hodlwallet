@@ -1,5 +1,5 @@
 ﻿//
-// PrecioService.cs
+// IPrecioService.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>

@@ -41,54 +41,32 @@
                 FontFamily="Mono-Regular"
             -->
             <!-- Monospaced -->
-            <OnPlatform x:Key="Mono-Bold"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationMono-Bold"
-                        Android="LiberationMono-Bold.ttf#LiberationMono-Bold" />
-            <OnPlatform x:Key="Mono-Italic"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationMono-Italic"
-                        Android="LiberationMono-Italic.ttf#LiberationMono-Italic" />
             <OnPlatform x:Key="Mono-Regular"
                         x:TypeArguments="x:String"
-                        iOS="LiberationMono-Regular"
-                        Android="LiberationMono-Regular.ttf#LiberationMono-Regular" />
+                        iOS="FiraMono-Regular"
+                        Android="FiraMono-Regular.ttf#FiraMono-Regular" />
+            <OnPlatform x:Key="Mono-Bold"
+                        x:TypeArguments="x:String"
+                        iOS="FiraMono-Bold"
+                        Android="FiraMono-Bold.ttf#FiraMono-Bold" />
 
             <!-- Sans -->
-            <OnPlatform x:Key="Sans-Bold"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationSans-Bold"
-                        Android="LiberationSans-Bold.ttf#LiberationSans-Bold" />
-            <OnPlatform x:Key="Sans-BoldItalic"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationSans-BoldItalic"
-                        Android="LiberationSans-BoldItalic#LiberationSans-BoldItalic" />
-            <OnPlatform x:Key="Sans-Italic"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationSans-Italic"
-                        Android="LiberationSans-Italic.ttf#LiberationSans-Italic" />
             <OnPlatform x:Key="Sans-Regular"
                         x:TypeArguments="x:String"
-                        iOS="LiberationSans-Regular"
-                        Android="LiberationSans-Regular.ttf#LiberationSans-Regular" />
-
-            <!-- Serif -->
-            <OnPlatform x:Key="Serif-Bold"
+                        iOS="FiraSans-Regular"
+                        Android="FiraSans-Regular.ttf#FiraSans-Regular" />
+            <OnPlatform x:Key="Sans-Bold"
                         x:TypeArguments="x:String"
-                        iOS="LiberationSerif-Bold"
-                        Android="LiberationSerif-Bold.ttf#LiberationSerif-Bold" />
-            <OnPlatform x:Key="Serif-BoldItalic"
+                        iOS="FiraSans-Bold"
+                        Android="FiraSans-Bold.ttf#FiraSans-Bold" />
+            <OnPlatform x:Key="Sans-Italic"
                         x:TypeArguments="x:String"
-                        iOS="LiberationSerif-BoldItalic"
-                        Android="LiberationSerif-BoldItalic#LiberationSerif-BoldItalic" />
-            <OnPlatform x:Key="Serif-Italic"
+                        iOS="FiraSans-LightItalic"
+                        Android="FiraSans-LightItalic.ttf#FiraSans-LightItalic" />
+            <OnPlatform x:Key="Sans-BoldItalic"
                         x:TypeArguments="x:String"
-                        iOS="LiberationSerif-Italic"
-                        Android="LiberationSerif-Italic.ttf#LiberationSerif-Italic" />
-            <OnPlatform x:Key="Serif-Regular"
-                        x:TypeArguments="x:String"
-                        iOS="LiberationSerif-Regular"
-                        Android="LiberationSerif-Regular.ttf#LiberationSerif-Regular" />
+                        iOS="FiraSans-BoldItalic"
+                        Android="FiraSans-BoldItalic.ttf#FiraSans-BoldItalic" />
 
             <!-- Custom Styles -->
             <!-- Use these custom items as much as possible, as usual avoid naming things
@@ -135,10 +113,10 @@
                 <Setter Property="FontSize"
                         Value="Medium" />
                 <Setter Property="FontFamily"
-                        Value="{StaticResource Mono-Bold}" />
+                        Value="{StaticResource Mono-Regular}" />
             </Style>
 
-            <Style x:Name="SettingsButton"
+            <Style x:Key="SettingsButton"
                    TargetType="Button">
                 <Setter Property="BackgroundColor"
                         Value="{DynamicResource BackgroundPrimary}" />
@@ -271,18 +249,158 @@
             </Style>
 
             <!-- Global Styles -->
-            <Style TargetType="NavigationPage">
+            <Style TargetType="ContentPage"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+            </Style>
+
+            <Style TargetType="NavigationPage"
+                   ApplyToDerivedTypes="True">
                 <Setter Property="BarBackgroundColor"
                         Value="{DynamicResource BackgroundPrimary}" />
                 <Setter Property="BarTextColor"
                         Value="{DynamicResource TextPrimary}" />
             </Style>
 
-            <Style TargetType="TabbedPage">
+            <Style TargetType="TabbedPage"
+                   ApplyToDerivedTypes="True">
                 <Setter Property="BarBackgroundColor"
                         Value="{DynamicResource BackgroundPrimary}" />
                 <Setter Property="BarTextColor"
                         Value="{DynamicResource TextPrimary}" />
+                <Setter Property="SelectedTabColor"
+                        Value="{DynamicResource SelectedTab}" />
+                <Setter Property="UnselectedTabColor"
+                        Value="{DynamicResource UnselectedTab}" />
+            </Style>
+
+            <Style TargetType="Frame"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+            </Style>
+
+            <Style TargetType="WebView"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+            </Style>
+
+            <Style TargetType="Label"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource Sans-Regular}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <Style TargetType="Button"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource Sans-Regular}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundSecondary}" />
+            </Style>
+
+            <Style TargetType="Entry"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource Sans-Regular}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="PlaceholderColor"
+                        Value="{DynamicResource TextSecondary}" />
+            </Style>
+
+            <Style TargetType="Editor"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource Sans-Regular}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="PlaceholderColor"
+                        Value="{DynamicResource TextSecondary}" />
+            </Style>
+
+            <Style TargetType="SearchBar"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource Sans-Regular}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource BackgroundSecondary}" />
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="PlaceholderColor"
+                        Value="{DynamicResource TextSecondary}" />
+                <Setter Property="CancelButtonColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <Style TargetType="CheckBox"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="Color"
+                        Value="{DynamicResource TextSuccess}" />
+            </Style>
+
+            <Style TargetType="Slider"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="MinimumTrackColor"
+                        Value="{DynamicResource TextSuccess}" />
+            </Style>
+
+            <Style TargetType="Switch"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="OnColor"
+                        Value="{DynamicResource TextSuccess}" />
+            </Style>
+
+            <Style TargetType="Picker"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource Sans-Regular}" />
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <Style TargetType="DatePicker"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource Sans-Regular}" />
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <Style TargetType="TimePicker"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource Sans-Regular}" />
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+            </Style>
+
+            <Style TargetType="ProgressBar"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="ProgressColor"
+                        Value="{DynamicResource TextSuccess}" />
+            </Style>
+
+            <Style TargetType="ActivityIndicator"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="Color"
+                        Value="{DynamicResource TextSuccess}" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

@@ -1,5 +1,5 @@
 ﻿//
-// DialogView.xaml.cs
+// PromptView.xaml.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -28,11 +28,15 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace HodlWallet2.UI.Controls
 {
     public partial class PromptView : ContentView
     {
+        Color _TextPrimary = (Color)Application.Current.Resources["TextPrimary"];
+        double _QuestionFrameTopMargin => (DeviceDisplay.MainDisplayInfo.Height / 2) - (QuestionFrame.Height * 2);
+
         public enum PromptResponses
         {
             NoReponse,
@@ -116,13 +120,19 @@ namespace HodlWallet2.UI.Controls
         {
             InitializeComponent();
 
+            QuestionFrame.Margin = new Thickness(0, _QuestionFrameTopMargin, 0, 0);
+
             Title = title;
             Message = message ?? "";
 
             if (string.IsNullOrEmpty(okButton)) OkText = "Ok";
             else OkText = okButton;
 
-            if (string.IsNullOrEmpty(cancelButton)) CancelButton.IsVisible = false;
+            if (string.IsNullOrEmpty(cancelButton))
+            {
+                OkButton.TextColor = _TextPrimary;
+                CancelButton.IsVisible = false;
+            }
             else
             {
                 CancelText = cancelButton;
@@ -149,11 +159,22 @@ namespace HodlWallet2.UI.Controls
 
         async Task ShowPromptAnimated()
         {
-            PromptControl.IsVisible = true;
+            await Task.Delay(10);
+
+            IsVisible = true;
+
+            var animationTaskSource = new TaskCompletionSource<bool>();
+
+            var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, 0);
+            animation.Commit(this, "OpenQuestionAnimation", 16, 250, Easing.CubicInOut, (v, c) => QuestionFrame.Margin = new Thickness(0, 0, 0, 0), () =>
+            {
+                animationTaskSource.SetResult(false);
+                return false;
+            });
 
             await Task.WhenAll(
-                TransparentBackgroundBoxView.FadeTo(0.9, 500),
-                QuestionFrame.FadeTo(1.0, 150)
+                animationTaskSource.Task,
+                TransparentBackgroundBoxView.FadeTo(0.9, 500)
             );
         }
 
@@ -161,12 +182,23 @@ namespace HodlWallet2.UI.Controls
         {
             await Task.Delay(10);
 
+            var animationTaskSource = new TaskCompletionSource<bool>();
+
+            var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, _QuestionFrameTopMargin);
+            animation.Commit(this, "OpenQuestionAnimation", 16, 250, Easing.CubicInOut, (v, c) => QuestionFrame.Margin = new Thickness(0, _QuestionFrameTopMargin, 0, 0), () =>
+            {
+                animationTaskSource.SetResult(false);
+                return false;
+            });
+
             await Task.WhenAll(
-                TransparentBackgroundBoxView.FadeTo(0.0, 150),
-                QuestionFrame.FadeTo(0.0, 100)
+                animationTaskSource.Task,
+                TransparentBackgroundBoxView.FadeTo(0.0, 150)
             );
 
-            PromptControl.IsVisible = false;
+            IsVisible = false;
+
+            RemoveYourself();
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -219,7 +251,6 @@ namespace HodlWallet2.UI.Controls
             PromptResponse = PromptResponses.Cancel;
 
             Hide();
-            RemoveYourself();
         }
 
         void OkButton_Clicked(object sender, EventArgs e)
@@ -227,7 +258,6 @@ namespace HodlWallet2.UI.Controls
             PromptResponse = PromptResponses.Ok;
 
             Hide();
-            RemoveYourself();
         }
 
         void RemoveYourself()

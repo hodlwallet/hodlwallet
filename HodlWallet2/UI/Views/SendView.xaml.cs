@@ -1,16 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//
+// SendView.xaml.cs
+//
+// Copyright (c) 2019 HODL Wallet
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+using System;
 using System.Threading.Tasks;
-using HodlWallet2.Core.Utils;
-using HodlWallet2.Core.ViewModels;
-using HodlWallet2.UI.Locale;
-using NBitcoin.Protocol;
+
 using Xamarin.Forms;
 
 using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 
+using HodlWallet2.Core.Utils;
+using HodlWallet2.Core.ViewModels;
 using HodlWallet2.UI.Extensions;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.UI.Views
 {
@@ -29,6 +50,26 @@ namespace HodlWallet2.UI.Views
         {
             MessagingCenter.Subscribe<SendViewModel>(this, "OpenBarcodeScanner", async (vm) => await OpenBarcodeScanner(vm));
             MessagingCenter.Subscribe<SendViewModel, string[]>(this, "DisplayProcessAlertError", DisplayProcessAlertError);
+            MessagingCenter.Subscribe<SendViewModel, ValueTuple<decimal, decimal>>(this, "AskToBroadcastTransaction", AskToBroadcastTransaction);
+        }
+
+        void AskToBroadcastTransaction(SendViewModel vm, (decimal, decimal) values)
+        {
+            decimal totalOut = values.Item1;
+            decimal fees = values.Item2;
+            var total = totalOut + fees;
+
+            string title = "Send Transaction?";
+
+            string message = $"Would you like to send {total} ({totalOut} + {fees}) BTC to {SendAddress}?";
+            string okButton = "Yes";
+            string cancelButton = "No";
+
+            var res = this.DisplayPrompt(title, message, okButton, cancelButton).Result;
+
+            if (!res) return;
+
+            MessagingCenter.Send(this, "BroadcastTransaction");
         }
 
         void SetLabels()
@@ -106,7 +147,10 @@ namespace HodlWallet2.UI.Views
             string title = messageAndTitle[0] ?? Constants.DISPLAY_ALERT_ERROR_TITLE;
             string message = messageAndTitle[1];
 
-            Task.Run(async () => await this.DisplayToast(message ?? string.Join("", messageAndTitle)));
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await this.DisplayToast(message ?? string.Join("", messageAndTitle));
+            });
         }
     }
 }

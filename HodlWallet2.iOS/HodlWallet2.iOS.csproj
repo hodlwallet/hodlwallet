@@ -146,22 +146,10 @@
       <Visible>false</Visible>
     </ImageAsset>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <BundleResource Include="Resources\LiberationMono-Bold.ttf" />
-    <BundleResource Include="Resources\LiberationMono-BoldItalic.ttf" />
-    <BundleResource Include="Resources\LiberationMono-Italic.ttf" />
-    <BundleResource Include="Resources\LiberationSans-Bold.ttf" />
-    <BundleResource Include="Resources\LiberationSans-BoldItalic.ttf" />
-    <BundleResource Include="Resources\LiberationSans-Italic.ttf" />
-    <BundleResource Include="Resources\LiberationSans-Regular.ttf" />
-    <BundleResource Include="Resources\LiberationSerif-Bold.ttf" />
-    <BundleResource Include="Resources\LiberationSerif-BoldItalic.ttf" />
-    <BundleResource Include="Resources\LiberationSerif-Italic.ttf" />
-    <BundleResource Include="Resources\LiberationSerif-Regular.ttf" />
     <ImageAsset Include="Assets.xcassets\logo_front.png.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\logo_front.png.imageset\logo_front.png" />
     <ImageAsset Include="Assets.xcassets\logo.png.imageset\logo.png" />
     <ImageAsset Include="Assets.xcassets\logo.png.imageset\Contents.json" />
-    <BundleResource Include="Resources\LiberationMono-Regular.ttf" />
     <BundleResource Include="Resources\receive_tab.png" />
     <BundleResource Include="Resources\receive_tab%402x.png" />
     <BundleResource Include="Resources\received%402x.png" />
@@ -180,6 +168,24 @@
     <BundleResource Include="Resources\settings_tab%402x.png" />
     <BundleResource Include="Resources\sent.png" />
     <BundleResource Include="Resources\price-tag-3-fill.png" />
+    <BundleResource Include="Resources\FiraSans-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\FiraSans-BoldItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\FiraSans-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\FiraMono-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\FiraMono-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\FiraSans-LightItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -190,7 +196,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.1.0.618606" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.673156" />
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
     <PackageReference Include="Serilog.Sinks.Xamarin">
       <Version>0.1.29</Version>
