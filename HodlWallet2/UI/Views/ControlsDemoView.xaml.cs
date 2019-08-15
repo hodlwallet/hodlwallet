@@ -1,5 +1,5 @@
 ﻿//
-// DemoView.xaml.cs
+// ControlsDemoView.xaml.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>

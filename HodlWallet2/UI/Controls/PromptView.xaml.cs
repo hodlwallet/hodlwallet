@@ -1,5 +1,5 @@
 ﻿//
-// DialogView.xaml.cs
+// PromptView.xaml.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
