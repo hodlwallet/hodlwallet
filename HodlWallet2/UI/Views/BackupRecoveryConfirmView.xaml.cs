@@ -1,13 +1,13 @@
 ﻿using Xamarin.Forms;
 
 using HodlWallet2.Core.ViewModels;
-using System.Threading.Tasks;
 
 namespace HodlWallet2.UI.Views
 {
     public partial class BackupRecoveryConfirmView : ContentPage
     {
-        BackupRecoveryConfirmViewModel _ViewModel => (BackupRecoveryConfirmViewModel)BindingContext;
+        BackupRecoveryConfirmViewModel _ViewModel => (BackupRecoveryConfirmViewModel) BindingContext;
+
         public BackupRecoveryConfirmView(string[] mnemonic)
         {
             InitializeComponent();
@@ -19,12 +19,24 @@ namespace HodlWallet2.UI.Views
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "NavigateToRootView", async (vm) => await NavigateToRootView(vm));
+            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "NavigateToRootView", NavigateToRootView);
         }
 
-        async Task NavigateToRootView(BackupRecoveryConfirmViewModel _)
+        void NavigateToRootView(BackupRecoveryConfirmViewModel _)
         {
-            await Navigation.PushAsync(new RootView());
+            // If the recovery was launched later...
+            if (Navigation.ModalStack.Count > 0)
+            {
+                Navigation.PopModalAsync();
+
+                // NOTE if we want to go to home we can add this line.
+                // MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
+
+                return;
+            }
+
+            // First time launching recovery we finish the account creation!
+            Navigation.PushAsync(new RootView());
         }
     }
 }
