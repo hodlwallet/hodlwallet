@@ -593,6 +593,8 @@ namespace HodlWallet2.Core.Services
             // We cannot allow the last syncing tip to be different than the last received block hash
             if (chainTip.HashBlock != WalletManager.LastReceivedBlockHash()) return false;
 
+            OnScanningFinished.Invoke(this, null);
+
             // We're synced to our last known chain tip from get headers...
             return true;
         }

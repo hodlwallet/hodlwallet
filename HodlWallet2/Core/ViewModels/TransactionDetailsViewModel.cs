@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Models;
-using HodlWallet2.Core.Utils;
-using NBitcoin;
+
 using Xamarin.Essentials;
 using Xamarin.Forms;
+
+using NBitcoin;
+
+using HodlWallet2.Core.Models;
+using HodlWallet2.Core.Utils;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -142,9 +144,9 @@ namespace HodlWallet2.Core.ViewModels
 
         public TransactionDetailsViewModel()
         {
-            ShowFaqCommand = new Command(async () => await ShowFaq());
-            BrowseAddressCommand = new Command(async () => await AddressToBrowser());
-            BrowseTransactionIdCommand = new Command(async () => await IdToBrowser());
+            ShowFaqCommand = new Command(() => _ = ShowFaq());
+            BrowseAddressCommand = new Command(() => _ = AddressToBrowser());
+            BrowseTransactionIdCommand = new Command(() => _ = IdToBrowser());
         }
 
         void GetTransactionModelData()

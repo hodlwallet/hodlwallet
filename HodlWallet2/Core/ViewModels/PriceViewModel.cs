@@ -39,8 +39,6 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class PriceViewModel : BaseViewModel
     {
-        bool _IsViewVisible;
-
         string _PriceText;
         public string PriceText
         {
@@ -118,11 +116,6 @@ namespace HodlWallet2.Core.ViewModels
             IsLoading = true;
         }
 
-        public void View_OnDisappearing()
-        {
-            _IsViewVisible = false;
-        }
-
         public void UpdatePriceChangeWithBtcChange(BtcPriceChangeEntity btcPriceChange)
         {
             string increase = btcPriceChange.Type == "increase" ? "+" : "-";
@@ -151,8 +144,6 @@ namespace HodlWallet2.Core.ViewModels
         internal void View_OnAppearing()
         {
             Task.Run(Initialize);
-
-            _IsViewVisible = true;
         }
 
         void Initialize()

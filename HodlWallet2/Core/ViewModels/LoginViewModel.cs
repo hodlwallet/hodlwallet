@@ -22,7 +22,7 @@ namespace HodlWallet2.Core.ViewModels
 
         public LoginViewModel()
         {
-            DigitCommand = new Command<string>(async (s) => await AddDigit(int.Parse(s)));
+            DigitCommand = new Command<string>((s) => _ = AddDigit(int.Parse(s)));
             BackspaceCommand = new Command(RemoveDigit);
         }
 

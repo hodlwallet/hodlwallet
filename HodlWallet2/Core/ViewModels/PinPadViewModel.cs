@@ -19,10 +19,10 @@ namespace HodlWallet2.Core.ViewModels
 
         public PinPadViewModel()
         {
-            SuccessCommand = new Command<string>(async (s) => await Success_Callback(s));
+            SuccessCommand = new Command<string>(Success_Callback);
         }
 
-        async Task Success_Callback(string pin)
+        void Success_Callback(string pin)
         {
             SavePin(pin);
 

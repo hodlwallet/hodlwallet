@@ -30,7 +30,7 @@ namespace HodlWallet2.UI.Views
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<RecoverWalletEntryViewModel>(this, "RecoverySeedError", ShowRecoverSeedError);
-            MessagingCenter.Subscribe<RecoverWalletEntryViewModel>(this, "NavigateToRootView", async (vm) => await NavigateToRootView(vm));
+            MessagingCenter.Subscribe<RecoverWalletEntryViewModel>(this, "NavigateToRootView", NavigateToRootView);
         }
 
         void Entry_Completed(object sender, EventArgs e)
@@ -77,9 +77,9 @@ namespace HodlWallet2.UI.Views
             }
         }
 
-        void ShowRecoverSeedError(RecoverWalletEntryViewModel _)
+        void ShowRecoverSeedError(RecoverWalletEntryViewModel vm)
         {
-            this.DisplayPrompt(
+            _ = this.DisplayPrompt(
                 Constants.RECOVER_VIEW_ALERT_TITLE,
                 Constants.RECOVER_VIEW_ALERT_MESSAGE,
                 Constants.RECOVER_VIEW_ALERT_BUTTON
@@ -100,9 +100,9 @@ namespace HodlWallet2.UI.Views
             DoneButton.IsVisible = true;
         }
 
-        async Task NavigateToRootView(RecoverWalletEntryViewModel _)
+        void NavigateToRootView(RecoverWalletEntryViewModel _)
         {
-            await Navigation.PushAsync(new RootView());
+            Navigation.PushAsync(new RootView());
         }
     }
 }

@@ -313,7 +313,7 @@ namespace HodlWallet2.UI.Controls
             return;
 
             // This will fire a format exception
-            if (!string.IsNullOrEmpty(Text)) decimal.Parse(Text);
+            // if (!string.IsNullOrEmpty(Text)) decimal.Parse(Text);
         }
 
         async Task ChangeTextAsync()
@@ -321,7 +321,7 @@ namespace HodlWallet2.UI.Controls
             if (Children.Count == 0)
                 AddNewText();
             else
-                await ModifyText();
+                await Task.Run(ModifyText);
         }
 
         void AddNewText()
@@ -335,7 +335,7 @@ namespace HodlWallet2.UI.Controls
             }
         }
 
-        async Task ModifyText()
+        void ModifyText()
         {
             if (string.IsNullOrWhiteSpace(Text))
             {
@@ -367,10 +367,10 @@ namespace HodlWallet2.UI.Controls
                 }
             }
 
-            await _ModifyText();
+            _ModifyText();
         }
 
-        async Task _ModifyText()
+        void _ModifyText()
         {
             // Now we replace the old chars
             for (int i = 0, count = Text.Length; i < count; i++)
@@ -384,7 +384,7 @@ namespace HodlWallet2.UI.Controls
                 char newChar = Text[i];
 
                 if (oldChar != newChar)
-                    await FlipChars(oldChar, newChar, i);
+                    FlipChars(oldChar, newChar, i);
             }
         }
 
@@ -428,7 +428,7 @@ namespace HodlWallet2.UI.Controls
             }
         }
 
-        async Task FlipChars(char oldChar, char newChar, int index)
+        void FlipChars(char oldChar, char newChar, int index)
         {
             if (oldChar == newChar) return;
 

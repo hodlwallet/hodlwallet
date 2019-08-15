@@ -14,17 +14,13 @@
                 <StackLayout Margin="10,70,10,10"
                              HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand">
-                    <Label
-                        x:Name="Title"
-                        Text="{Binding RecoverTitle}"
-                        Style="{DynamicResource CustomLabel}"
-                        FontSize="Large"
-                        Margin="10, 0, 0, 0" />
-                    <Label
-                        x:Name="Header"
-                        Text="{Binding RecoverHeader}"
-                        Style="{DynamicResource CustomLabel}"
-                        Margin="10, 0, 10, 20" />
+                    <Label Text="{Binding RecoverTitle}"
+                           Style="{DynamicResource CustomLabel}"
+                           FontSize="Large"
+                           Margin="10, 0, 0, 0" />
+                    <Label Text="{Binding RecoverHeader}"
+                           Style="{DynamicResource CustomLabel}"
+                           Margin="10, 0, 10, 20" />
 
                     <ScrollView>
                         <Grid x:Name="EntryGrid"

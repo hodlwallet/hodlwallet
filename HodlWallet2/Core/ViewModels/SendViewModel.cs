@@ -25,9 +25,9 @@ namespace HodlWallet2.Core.ViewModels
         string _AddressToSendTo;
         int _Fee;
         decimal _AmountToSend;
-        float _Rate;
+        float _Rate => _PrecioService.Rate.Rate;
         string _AmountToSendText;
-        Transaction _TransactionToBroadcast = null;
+        Transaction _TransactionToBroadcast;
 
         const double MAX_SLIDER_VALUE = 100;
         double _SliderValue;
@@ -97,11 +97,11 @@ namespace HodlWallet2.Core.ViewModels
 
         public SendViewModel()
         {
-            ScanCommand = new Command(async () => await Scan());
-            PasteCommand = new Command(async () => await Paste());
-            SendCommand = new Command(async () => await Send());
-            OnSliderValueChangedCommand = new Command(async () => await SetSliderValue());
-            SwitchCurrencyCommand = new Command(async () => await SwitchCurrency());
+            ScanCommand = new Command(Scan);
+            PasteCommand = new Command(() => _ = Paste());
+            SendCommand = new Command(Send);
+            OnSliderValueChangedCommand = new Command(() => _ = SetSliderValue());
+            SwitchCurrencyCommand = new Command(SwitchCurrency);
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
 
@@ -124,7 +124,7 @@ namespace HodlWallet2.Core.ViewModels
             MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
         }
 
-        Task SwitchCurrency()
+        void SwitchCurrency()
         {
             if (ISOLabel == "USD($)") //TODO: Refactor with more user currencies
             {
@@ -138,7 +138,6 @@ namespace HodlWallet2.Core.ViewModels
                 AmountToSendText = $"{AmountToSend:F2}";
                 ISOLabel = "USD($)";
             }
-            return Task.FromResult(this);
         }
 
         async Task SetSliderValue()
@@ -168,13 +167,11 @@ namespace HodlWallet2.Core.ViewModels
             TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, (Fee / 1000));
         }
 
-        async Task Scan()
+        void Scan()
         {
             var IsCameraAvailable = _PermissionsService.HasCameraPermission();
 
             if (!IsCameraAvailable) return;
-
-            string address = "";
 
             MessagingCenter.Send(this, "OpenBarcodeScanner");
 
@@ -253,7 +250,9 @@ namespace HodlWallet2.Core.ViewModels
                     AmountToSend = amount.ToDecimal(MoneyUnit.BTC);
                 }
 
+#pragma warning disable CS0618 // Type or member is obsolete
                 if (bitcoinUrl.PaymentRequestUrl is Uri paymentRequestUrl)
+#pragma warning restore CS0618 // Type or member is obsolete
                     throw new WalletException($"HODL Wallet does not support BIP70");
             }
             catch (WalletException we)
@@ -280,7 +279,7 @@ namespace HodlWallet2.Core.ViewModels
             return _WalletService.IsAddressOwn(address);
         }
 
-        async Task Send()
+        void Send()
         {
             string password = "";
 

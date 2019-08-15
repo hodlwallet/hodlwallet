@@ -61,13 +61,6 @@ namespace HodlWallet2.UI.Views
             _ViewModel.View_OnAppearing();
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-
-            _ViewModel.View_OnDisappearing();
-        }
-
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<PriceViewModel>(this, "DrawPricesChart", DrawPricesChart);

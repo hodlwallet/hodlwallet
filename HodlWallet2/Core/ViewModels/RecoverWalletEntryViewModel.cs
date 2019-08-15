@@ -1,19 +1,14 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows.Input;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Services;
-using HodlWallet2.Core.Utils;
-using Liviano.Models;
-using NBitcoin.Protocol;
+
 using Xamarin.Forms;
+
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {
     public class RecoverWalletEntryViewModel : BaseViewModel
     {
-        Serilog.ILogger _Logger;
-
         public ICommand OnRecoverEntryCompleted { get; }
 
         string _WordOne;
@@ -102,8 +97,6 @@ namespace HodlWallet2.Core.ViewModels
 
         public RecoverWalletEntryViewModel()
         {
-            _Logger = _WalletService.Logger;
-
             OnRecoverEntryCompleted = new Command(TrySaveMnemonic);
         }
 
@@ -138,7 +131,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             if (_WalletService.IsWordInWordlist(word.ToLower(), wordlist) == true) return true;
 
-            _Logger.Information("User input not found in wordlist.");
+            Debug.WriteLine("User input not found in wordlist.");
 
             DisplayRecoverAlert();
 
@@ -167,7 +160,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             if (_WalletService.IsVerifyChecksum(mnemonic, wordlist) == true) return true;
 
-            _Logger.Information("Mnemonic returned invalid checksum.");
+            Debug.WriteLine("Mnemonic returned invalid checksum.");
 
             DisplayRecoverAlert();
 

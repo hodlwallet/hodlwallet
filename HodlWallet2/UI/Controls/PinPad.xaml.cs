@@ -162,7 +162,7 @@ namespace HodlWallet2.UI.Controls
                 this.IsEnabledCore = true;
         }
 
-        public async void OnBackspaceTapped(object sender, EventArgs e)
+        void OnBackspaceTapped(object sender, EventArgs e)
         {
             // FIXME This code should not work like this, it's kindof embarasing how poorly coded this is, for now I just gonna follow the mess that's bellow - Igor.
             if (grdSetPin.IsVisible) // "Enter Pin" Ugg... horrible way to know where you at.
