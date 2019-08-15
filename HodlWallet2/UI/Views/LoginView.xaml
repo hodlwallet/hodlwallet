@@ -38,16 +38,16 @@
                 <Grid x:Name="InputGrid"
                       Padding="10">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="35" />
+                        <RowDefinition Height="25" />
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35" />
-                        <ColumnDefinition Width="35" />
-                        <ColumnDefinition Width="35" />
-                        <ColumnDefinition Width="35" />
-                        <ColumnDefinition Width="35" />
-                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="25" />
                     </Grid.ColumnDefinitions>
 
                     <BoxView x:Name="Pin1"
@@ -79,8 +79,7 @@
                 <BoxView FlexLayout.Grow="1" />
 
                 <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1"
-                            Margin="20,0,20,0">
+                            FlexLayout.Grow="1">
 
                     <Button Text="1"
                             FlexLayout.Grow="1"
@@ -102,8 +101,7 @@
                 </FlexLayout>
 
                 <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1"
-                            Margin="20,0,20,0">
+                            FlexLayout.Grow="1">
 
                     <Button Text="4"
                             FlexLayout.Grow="1"
@@ -126,8 +124,7 @@
                 </FlexLayout>
 
                 <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1"
-                            Margin="20,0,20,0">
+                            FlexLayout.Grow="1">
 
                     <Button Text="7"
                             FlexLayout.Grow="1"
@@ -149,8 +146,7 @@
                 </FlexLayout>
 
                 <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1"
-                            Margin="20,0,20,0">
+                            FlexLayout.Grow="1">
 
                     <Button Text=""
                             FlexLayout.Grow="1"
