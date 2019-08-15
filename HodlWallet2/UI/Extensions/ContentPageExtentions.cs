@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -129,6 +130,12 @@ namespace HodlWallet2.UI.Extensions
             var prompt = new PromptView(title, message, okButton, cancelButton);
             var layout = (AbsoluteLayout)view.Content;
 
+            var prevPrompt = layout.Children.FirstOrDefault((View child) =>
+                child.GetType() == typeof(PromptView)
+            );
+
+            if (prevPrompt != null) return (PromptView)prevPrompt;
+
             Device.BeginInvokeOnMainThread(() =>
             {
                 layout.Children.Add(prompt);
@@ -146,6 +153,12 @@ namespace HodlWallet2.UI.Extensions
 
             var toast = new ToastView { ToastText = content };
             var layout = (AbsoluteLayout)view.Content;
+
+            var prevToast = layout.Children.FirstOrDefault(
+                (View child) => child.GetType() == typeof(ToastView)
+            );
+
+            if (prevToast != null) return;
 
             Device.BeginInvokeOnMainThread(() =>
             {
