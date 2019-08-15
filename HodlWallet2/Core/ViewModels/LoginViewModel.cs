@@ -65,25 +65,31 @@ namespace HodlWallet2.Core.ViewModels
             // Digit is not complete, input more
             if (_Pin.Count != 6) return;
 
+            await Task.Delay(350);
+
             // _Pin.Count == 6 now...
             // We're done inputting our PIN
-            await Task.Delay(305);
-
-            MessagingCenter.Send(this, "ResetPin");
+            //await Task.Delay(305);
 
             string input = string.Join(string.Empty, _Pin.ToArray());
 
             // Check if it's the pin
             if (SecureStorageService.GetPin() == input)
             {
-                _Pin.Clear();
-
                 Debug.WriteLine("[AddDigit] Logged in!");
 
-                // DONE! We navigate to the root view model
-                MessagingCenter.Send(this, "NavigateToRootView");
+                IsLoading = true;
 
+                // DONE! We navigate to the root view
+                await Task.Delay(65);
+                MessagingCenter.Send(this, "NavigateToRootView");
+                
                 return;
+            }
+            else
+            {
+                await Task.Delay(65);
+                MessagingCenter.Send(this, "ResetPin");
             }
 
             Debug.WriteLine($"[AddDigit] Incorrect PIN: {input}");

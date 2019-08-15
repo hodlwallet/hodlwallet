@@ -38,9 +38,10 @@ namespace HodlWallet2.UI.Views
 
         RootView _RootView;
 
+        LoginViewModel _ViewModel => (LoginViewModel)BindingContext;
+
         public LoginView()
         {
-
             InitializeComponent();
 
             SubscribeToMessages();
@@ -54,11 +55,18 @@ namespace HodlWallet2.UI.Views
             );
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            if (_ViewModel.IsLoading) _ViewModel.IsLoading = false;
+        }
+
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitAdded", DigitAdded);
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitRemoved", DigitRemoved);
-            MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", async (obj) => await IncorrectPinAnimation(obj));
+            MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", (vm) => _ = IncorrectPinAnimation(vm));
             MessagingCenter.Subscribe<LoginViewModel>(this, "NavigateToRootView", NavigateToRootView);
             MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
         }

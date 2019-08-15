@@ -401,6 +401,8 @@
                    ApplyToDerivedTypes="True">
                 <Setter Property="Color"
                         Value="{DynamicResource TextSuccess}" />
+                <Setter Property="Opacity"
+                        Value="0.8" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>
