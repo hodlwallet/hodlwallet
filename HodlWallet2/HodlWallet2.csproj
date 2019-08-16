@@ -84,8 +84,8 @@
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Update="UI\Locale\LocaleResources.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>
+            <Generator>PublicResXFileCodeGenerator</Generator>
         </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
@@ -104,7 +104,7 @@
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Update="UI\Locale\LocaleResources.es.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
+            <Generator>PublicResXFileCodeGenerator</Generator>
             <LastGenOutput>LocaleResources.es.Designer.cs</LastGenOutput>
         </EmbeddedResource>
     </ItemGroup>

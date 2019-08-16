@@ -25,8 +25,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using HodlWallet2.Core.Services;
-using HodlWallet2.UI.Views;
 using HodlWallet2.Core.Interfaces;
+using HodlWallet2.UI.Views;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.UI
 {
@@ -34,16 +35,15 @@ namespace HodlWallet2.UI
     {
         IWalletService _WalletService => DependencyService.Get<IWalletService>();
         IPrecioService _PrecioService => DependencyService.Get<IPrecioService>();
+        ILocalize _Localize => DependencyService.Get<ILocalize>();
 
         public App()
         {
+            SetupCultureInfo();
+
             InitializeComponent();
 
-            // Register services
-            DependencyService.Register<IWalletService>();
-            DependencyService.Register<IPrecioService>();
-            DependencyService.Register<IShareIntent>();
-            DependencyService.Register<IPermissions>();
+            RegisterServices();
 
             if (UserDidSetup())
             {
@@ -73,6 +73,22 @@ namespace HodlWallet2.UI
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        void RegisterServices()
+        {
+            DependencyService.Register<IWalletService>();
+            DependencyService.Register<IPrecioService>();
+            DependencyService.Register<IShareIntent>();
+            DependencyService.Register<IPermissions>();
+        }
+
+        void SetupCultureInfo()
+        {
+            var ci = _Localize.GetCurrentCultureInfo();
+
+            LocaleResources.Culture = ci; // set the RESX for resource localization
+            _Localize.SetLocale(ci); // set the Thread for locale-aware methods
         }
 
         bool UserDidSetup()

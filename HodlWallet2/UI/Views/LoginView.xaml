@@ -4,6 +4,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
+             xmlns:i18n="clr-namespace:HodlWallet2.UI.Extensions"
              x:Class="HodlWallet2.UI.Views.LoginView"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{DynamicResource BackgroundPrimary}"
@@ -29,7 +30,7 @@
 
                 <Label x:Name="Header"
                        FlexLayout.Grow="1"
-                       Text="{Binding Header}"
+                       Text="{i18n:Translate Text=Pin.enter}"
                        FontSize="Subtitle"
                        HorizontalTextAlignment="Center" />
 

@@ -51,5 +51,19 @@
 	<string>HodlWallet would like to use your camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>HodlWallet would like to access your photos</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>es</string>
+		<string>fr</string>
+		<string>ja</string>
+		<string>pt</string>
+		<string>pt-PT</string>
+		<string>ru</string>
+		<string>zh-Hans</string>
+		<string>zh-Hant</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
 </dict>
 </plist>
