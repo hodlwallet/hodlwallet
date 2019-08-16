@@ -103,16 +103,16 @@
                   Padding="10">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
+                    <RowDefinition Height="25" />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="25" />
                 </Grid.ColumnDefinitions>
 
                 <BoxView x:Name="pin7"
