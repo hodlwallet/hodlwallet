@@ -30,7 +30,7 @@
                 <Label x:Name="Header"
                        FlexLayout.Grow="1"
                        Text="{Binding Header}"
-                       FontSize="Title"
+                       FontSize="Subtitle"
                        HorizontalTextAlignment="Center" />
 
                 <Grid x:Name="InputGrid"

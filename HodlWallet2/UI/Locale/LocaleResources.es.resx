@@ -40,4 +40,9 @@
         <value>Wipe Wallet</value>
         <comment>label for menu wipe wallet</comment>
     </data>
+    
+    <data name="NowLoading.text" xml:space="preserve">
+        <value>Cargando...</value>
+        <comment>texto que muestra el indicador de actividad</comment>
+    </data>
 </root>

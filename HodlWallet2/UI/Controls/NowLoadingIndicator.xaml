@@ -11,12 +11,13 @@
              AbsoluteLayout.LayoutFlags="All" />
 
     <ActivityIndicator IsRunning="{Binding IsLoading}"
-                       Scale="1.7"
+                       Scale="1.5"
                        BackgroundColor="{DynamicResource BackgroundPrimary}"
                        AbsoluteLayout.LayoutBounds="0.5,0.42,-1,-1"
                        AbsoluteLayout.LayoutFlags="PositionProportional" />
-    <Label Text="Loading..."
-           FontSize="Title"
+    <Label x:Name="NowLoadingLabel"
+           Text="{Binding Text}"
+           FontSize="Subtitle"
            HorizontalTextAlignment="Center"
            AbsoluteLayout.LayoutBounds="0.5,0.36,-1,-1"
            AbsoluteLayout.LayoutFlags="PositionProportional" />

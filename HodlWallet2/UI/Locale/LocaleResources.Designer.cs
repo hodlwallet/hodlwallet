@@ -418,5 +418,11 @@ namespace HodlWallet2.UI.Locale {
                 return ResourceManager.GetString("Send.addressDetectedOnClipboardMessage", resourceCulture);
             }
         }
+        
+        internal static string NowLoading_text {
+            get {
+                return ResourceManager.GetString("NowLoading.text", resourceCulture);
+            }
+        }
     }
 }

@@ -27,13 +27,45 @@ using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
+using HodlWallet2.UI.Locale;
+
 namespace HodlWallet2.UI.Controls
 {
     public partial class NowLoadingIndicator : AbsoluteLayout
     {
+        public static readonly BindableProperty TextProperty = BindableProperty.CreateAttached(
+                 nameof(Text),
+                 typeof(string),
+                 typeof(NowLoadingIndicator),
+                 default(string)
+         );
+
+        public string Text
+        {
+            get => (string)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
+        }
+
         public NowLoadingIndicator()
         {
             InitializeComponent();
+
+            Text = LocaleResources.NowLoading_text;
+        }
+
+        protected override void OnPropertyChanged(string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+
+            if (propertyName == nameof(Text))
+            {
+                ChangeText(Text);
+            }
+        }
+
+        void ChangeText(string text)
+        {
+            NowLoadingLabel.Text = text;
         }
     }
 }

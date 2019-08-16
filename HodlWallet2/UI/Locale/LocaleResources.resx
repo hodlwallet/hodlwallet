@@ -320,4 +320,9 @@
         <value>Address {0} is on your clipboard would you like to use it to send Bitcoin to it?</value>
         <comment>content of dialog to use address on clipboard</comment>
     </data>
+    
+    <data name="NowLoading.text" xml:space="preserve">
+        <value>Now Loading...</value>
+        <comment>text that shows with the activity indicator</comment>
+    </data>
 </root>
