@@ -1,5 +1,5 @@
 ﻿//
-// FeeSlider.cs
+// iOSPermissions.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -21,19 +21,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
 
-using HodlWallet2.UI.Renderers;
-using HodlWallet2.iOS.Renderers;
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.iOS.Services;
 
-[assembly: ExportRenderer(typeof(FeeSlider), typeof(FeeSliderRenderer))]
-namespace HodlWallet2.iOS.Renderers
+[assembly: Dependency(typeof (iOSPermissions))]
+namespace HodlWallet2.iOS.Services
 {
-    public class FeeSliderRenderer : SliderRenderer
+    public class iOSPermissions : IPermissions
     {
-        protected override void OnElementChanged(ElementChangedEventArgs<Slider> e)
+        public bool HasCameraPermission()
         {
-            base.OnElementChanged(e);
+            // FIXME "this cannot be correct...
+            // I thought it was doing something" - Igor.
+            return true;
         }
     }
 }

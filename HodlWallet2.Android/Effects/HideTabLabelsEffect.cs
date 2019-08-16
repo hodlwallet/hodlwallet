@@ -1,5 +1,5 @@
 ﻿//
-// AndroidPermissions.cs
+// HideTabLabelsEffect.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -20,25 +20,36 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System.Linq;
+
+using Android.Support.Design.BottomNavigation;
+using Android.Support.Design.Widget;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+using Xamarin.Forms.Platform.Android.AppCompat;
 
-using ZXing.Net.Mobile.Android;
+using HodlWallet2.Droid.Effects;
+using HodlWallet2.Droid.Extensions;
 
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Droid.Renderers;
-
-[assembly: Dependency (typeof (AndroidPermissions))]
-namespace HodlWallet2.Droid.Renderers
+[assembly: ExportEffect(typeof(HideTabLabelsEffect), nameof(HideTabLabelsEffect))]
+namespace HodlWallet2.Droid.Effects
 {
-    public class AndroidPermissions : IPermissions
+    public class HideTabLabelsEffect : PlatformEffect
     {
-        public bool HasCameraPermission()
+        protected override void OnAttached()
         {
-            var needsPermissionRequest = PermissionsHandler.NeedsPermissionRequest(MainActivity.Instance);
+            var renderer = (Control ?? Container) as TabbedPageRenderer;
 
-            if (needsPermissionRequest) PermissionsHandler.RequestPermissionsAsync(MainActivity.Instance);
+            var children = renderer?.ViewGroup?.RetrieveAllChildViews();
+            if (children?.FirstOrDefault(x => x is BottomNavigationView) is BottomNavigationView bottomNav)
+            {
+                bottomNav.LabelVisibilityMode = LabelVisibilityMode.LabelVisibilityUnlabeled;
+            }
+        }
 
-            return !needsPermissionRequest;
+        protected override void OnDetached()
+        {
         }
     }
 }

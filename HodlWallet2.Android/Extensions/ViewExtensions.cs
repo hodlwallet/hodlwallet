@@ -1,5 +1,5 @@
 ﻿//
-// HideTabLabelsEffect.cs
+// ViewExtensions.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -20,35 +20,34 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System.Collections.Generic;
 using System.Linq;
+using Android.Views;
 
-using Android.Support.Design.BottomNavigation;
-using Android.Support.Design.Widget;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
-using Xamarin.Forms.Platform.Android.AppCompat;
-
-using HodlWallet2.Droid.Renderers;
-
-[assembly: ExportEffect(typeof(HideTabLabelsEffect), nameof(HideTabLabelsEffect))]
-namespace HodlWallet2.Droid.Renderers
+namespace HodlWallet2.Droid.Extensions
 {
-    public class HideTabLabelsEffect : PlatformEffect
+    public static class ViewExtensions
     {
-        protected override void OnAttached()
+        public static List<View> RetrieveAllChildViews(this View view)
         {
-            var renderer = (Control ?? Container) as TabbedPageRenderer;
-
-            var children = renderer?.ViewGroup?.RetrieveAllChildViews();
-            if (children?.FirstOrDefault(x => x is BottomNavigationView) is BottomNavigationView bottomNav)
+            if (!(view is ViewGroup group))
             {
-                bottomNav.LabelVisibilityMode = LabelVisibilityMode.LabelVisibilityUnlabeled;
+                return new List<View> { view };
             }
-        }
 
-        protected override void OnDetached()
-        {
+            var result = new List<View>();
+
+            for (var i = 0; i < group.ChildCount; i++)
+            {
+                var child = group.GetChildAt(i);
+
+                var childList = new List<View> { child };
+                childList.AddRange(RetrieveAllChildViews(child));
+
+                result.AddRange(childList);
+            }
+
+            return result.Distinct().ToList();
         }
     }
 }

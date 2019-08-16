@@ -1,5 +1,5 @@
 ﻿//
-// ViewExtensions.cs
+// FeeSliderRenderer.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -20,34 +20,20 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System.Collections.Generic;
-using System.Linq;
-using Android.Views;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
-namespace HodlWallet2.Droid.Renderers
+using HodlWallet2.UI.Renderers;
+using HodlWallet2.iOS.Renderers;
+
+[assembly: ExportRenderer(typeof(FeeSlider), typeof(FeeSliderRenderer))]
+namespace HodlWallet2.iOS.Renderers
 {
-    public static class ViewExtensions
+    public class FeeSliderRenderer : SliderRenderer
     {
-        public static List<View> RetrieveAllChildViews(this View view)
+        protected override void OnElementChanged(ElementChangedEventArgs<Slider> e)
         {
-            if (!(view is ViewGroup group))
-            {
-                return new List<View> { view };
-            }
-
-            var result = new List<View>();
-
-            for (var i = 0; i < group.ChildCount; i++)
-            {
-                var child = group.GetChildAt(i);
-
-                var childList = new List<View> { child };
-                childList.AddRange(RetrieveAllChildViews(child));
-
-                result.AddRange(childList);
-            }
-
-            return result.Distinct().ToList();
+            base.OnElementChanged(e);
         }
     }
 }

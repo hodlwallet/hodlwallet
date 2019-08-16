@@ -35,10 +35,10 @@ using Android.Provider;
 using Android.Widget;
 using Android.Support.V4.App;
 using Android.Support.Design.Widget;
-using HodlWallet2.Droid.Renderers;
+using HodlWallet2.Droid.Services;
 
 [assembly: Xamarin.Forms.Dependency (typeof(ShareIntent))]
-namespace HodlWallet2.Droid.Renderers
+namespace HodlWallet2.Droid.Services
 {
     public class ShareIntent : IShareIntent
     {

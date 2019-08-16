@@ -1,5 +1,5 @@
 ﻿//
-// iOSPermissions.cs
+// AndroidPermissions.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -22,19 +22,23 @@
 // THE SOFTWARE.
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.iOS.Renderers;
+using ZXing.Net.Mobile.Android;
 
-[assembly: Dependency(typeof (iOSPermissions))]
-namespace HodlWallet2.iOS.Renderers
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Droid.Services;
+
+[assembly: Dependency (typeof (AndroidPermissions))]
+namespace HodlWallet2.Droid.Services
 {
-    public class iOSPermissions : IPermissions
+    public class AndroidPermissions : IPermissions
     {
         public bool HasCameraPermission()
         {
-            // FIXME "this cannot be correct...
-            // I thought it was doing something" - Igor.
-            return true;
+            var needsPermissionRequest = PermissionsHandler.NeedsPermissionRequest(MainActivity.Instance);
+
+            if (needsPermissionRequest) PermissionsHandler.RequestPermissionsAsync(MainActivity.Instance);
+
+            return !needsPermissionRequest;
         }
     }
 }
