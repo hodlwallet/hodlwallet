@@ -41,10 +41,10 @@
                                           WidthRequest="16"
                                           VerticalOptions="Center"
                                           FlexLayout.AlignSelf="End">
-                                    <svg:Icon.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="Close_Tapped" />
-                                    </svg:Icon.GestureRecognizers>
                                 </svg:Icon>
+                                <FlexLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Close_Tapped" />
+                                </FlexLayout.GestureRecognizers>
                             </FlexLayout>
                         </FlexLayout>
 
@@ -103,7 +103,7 @@
                                     Direction="Row"
                                     FlexLayout.Grow="1"
                                     IsVisible="False">
-                            <BoxView WidthRequest="50" />
+                            <BoxView FlexLayout.Grow="1" />
                             <Button x:Name="GoTo1dChartButton"
                                     Style="{DynamicResource PriceChartSwitchButtonDisabled}"
                                     Clicked="GoTo1dChartButton_Clicked"
@@ -124,7 +124,7 @@
                                 Style="{DynamicResource PriceChartSwitchButtonDisabled}"
                                 Clicked="GoToAllChartButton_Clicked"
                                 Text="All" />-->
-                            <BoxView WidthRequest="50" />
+                            <BoxView FlexLayout.Grow="1" />
                         </FlexLayout>
                         <BoxView FlexLayout.Grow="1" />
                         <FlexLayout Direction="Row"
