@@ -176,6 +176,8 @@ namespace HodlWallet2.UI.Controls
                 animationTaskSource.Task,
                 TransparentBackgroundBoxView.FadeTo(0.9, 500)
             );
+
+            MessagingCenter.Send(this, "HideTabbar");
         }
 
         async Task HidePromptAnimated()
@@ -197,6 +199,8 @@ namespace HodlWallet2.UI.Controls
             );
 
             IsVisible = false;
+
+            MessagingCenter.Send(this, "ShowTabbar");
 
             RemoveYourself();
         }

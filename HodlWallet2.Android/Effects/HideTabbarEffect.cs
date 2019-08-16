@@ -1,7 +1,10 @@
 ﻿//
-// HideTabLabelsEffect.cs
+// HideTabbarEffect.cs
 //
-// Copyright (c) 2019 HODL Wallet
+// Author:
+//       Igor Guerrero <igorgue@protonmail.com>
+//
+// Copyright (c) 2019 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +25,6 @@
 // THE SOFTWARE.
 using System.Linq;
 
-using Android.Support.Design.BottomNavigation;
 using Android.Support.Design.Widget;
 
 using Xamarin.Forms;
@@ -32,10 +34,10 @@ using Xamarin.Forms.Platform.Android.AppCompat;
 using HodlWallet2.Droid.Effects;
 using HodlWallet2.Droid.Extensions;
 
-[assembly: ExportEffect(typeof(HideTabLabelsEffect), nameof(HideTabLabelsEffect))]
+[assembly: ExportEffect(typeof(HideTabbarEffect), nameof(HideTabbarEffect))]
 namespace HodlWallet2.Droid.Effects
 {
-    public class HideTabLabelsEffect : PlatformEffect
+    public class HideTabbarEffect : PlatformEffect
     {
         TabbedPageRenderer _TabbedPageRenderer => (Control ?? Container) as TabbedPageRenderer;
 
@@ -51,13 +53,14 @@ namespace HodlWallet2.Droid.Effects
 
         void ToggleTo(bool hidden)
         {
-            var children = _TabbedPageRenderer?.ViewGroup?.RetrieveAllChildViews();
+            var renderer = (Control ?? Container) as TabbedPageRenderer;
 
+            var children = renderer?.ViewGroup?.RetrieveAllChildViews();
             if (children?.FirstOrDefault(x => x is BottomNavigationView) is BottomNavigationView bottomNav)
             {
-                bottomNav.LabelVisibilityMode = hidden
-                    ? LabelVisibilityMode.LabelVisibilityUnlabeled
-                    : LabelVisibilityMode.LabelVisibilityLabeled;
+                bottomNav.Visibility = hidden
+                    ? Android.Views.ViewStates.Invisible
+                    : Android.Views.ViewStates.Visible;
             }
         }
     }

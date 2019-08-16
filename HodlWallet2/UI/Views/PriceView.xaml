@@ -166,13 +166,7 @@
                 </ScrollView>
             </FlexLayout>
 
-            <ActivityIndicator x:Name="ActivityIndicator"
-                               AbsoluteLayout.LayoutBounds="0,0,1,1"
-                               AbsoluteLayout.LayoutFlags="All"
-                               Color="{DynamicResource TextSuccess}"
-                               IsRunning="{Binding IsLoading}"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Center" />
+            <controls:NowLoadingIndicator />
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

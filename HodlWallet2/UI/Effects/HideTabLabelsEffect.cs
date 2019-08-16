@@ -20,45 +20,14 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System.Linq;
-
-using Android.Support.Design.BottomNavigation;
-using Android.Support.Design.Widget;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
-using Xamarin.Forms.Platform.Android.AppCompat;
 
-using HodlWallet2.Droid.Effects;
-using HodlWallet2.Droid.Extensions;
-
-[assembly: ExportEffect(typeof(HideTabLabelsEffect), nameof(HideTabLabelsEffect))]
-namespace HodlWallet2.Droid.Effects
+namespace HodlWallet2.UI.Effects
 {
-    public class HideTabLabelsEffect : PlatformEffect
+    public class HideTabLabelsEffect : RoutingEffect
     {
-        TabbedPageRenderer _TabbedPageRenderer => (Control ?? Container) as TabbedPageRenderer;
-
-        protected override void OnAttached()
+        public HideTabLabelsEffect() : base($"HodlWallet2.{nameof(HideTabLabelsEffect)}")
         {
-            ToggleTo(hidden: true);
-        }
-
-        protected override void OnDetached()
-        {
-            ToggleTo(hidden: false);
-        }
-
-        void ToggleTo(bool hidden)
-        {
-            var children = _TabbedPageRenderer?.ViewGroup?.RetrieveAllChildViews();
-
-            if (children?.FirstOrDefault(x => x is BottomNavigationView) is BottomNavigationView bottomNav)
-            {
-                bottomNav.LabelVisibilityMode = hidden
-                    ? LabelVisibilityMode.LabelVisibilityUnlabeled
-                    : LabelVisibilityMode.LabelVisibilityLabeled;
-            }
         }
     }
 }

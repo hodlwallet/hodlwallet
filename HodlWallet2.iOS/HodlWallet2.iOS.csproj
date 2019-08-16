@@ -105,6 +105,7 @@
     <Compile Include="Renderers\FeeSliderRenderer.cs" />
     <Compile Include="Services\ShareIntent.cs" />
     <Compile Include="Services\iOSPermissions.cs" />
+    <Compile Include="Effects\HideTabbarEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -207,5 +208,6 @@
   <ItemGroup>
     <Folder Include="Assets.xcassets\logo_front.png.imageset\" />
     <Folder Include="Services\" />
+    <Folder Include="Effects\" />
   </ItemGroup>
 </Project>

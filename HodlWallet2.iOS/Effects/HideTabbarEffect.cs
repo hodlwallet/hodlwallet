@@ -1,7 +1,10 @@
 ﻿//
-// HideTabLabelsEffect.cs
+// HideTabbarEffect.cs
 //
-// Copyright (c) 2019 HODL Wallet
+// Author:
+//       Igor Guerrero <igorgue@protonmail.com>
+//
+// Copyright (c) 2019 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,14 +24,40 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
-namespace HodlWallet2.UI.Renderers
+using HodlWallet2.iOS.Effects;
+using System.Linq;
+using UIKit;
+
+[assembly: ResolutionGroupName("HodlWallet2")]
+[assembly: ExportEffect(typeof(HideTabbarEffect), nameof(HideTabbarEffect))]
+namespace HodlWallet2.iOS.Effects
 {
-    public class HideTabLabelsEffect : RoutingEffect
+    public class HideTabbarEffect : PlatformEffect
     {
-        public HideTabLabelsEffect()
-            : base($"AppEffects.{nameof(HideTabLabelsEffect)}")
+        UIView _TabBar => Container.Subviews.FirstOrDefault((sv) => sv.GetType() == typeof(UITabBar));
+
+        protected override void OnAttached()
         {
+            ToggleTo(hidden: true);
+        }
+
+        protected override void OnDetached()
+        {
+            ToggleTo(hidden: false);
+        }
+
+        void ToggleTo(bool hidden)
+        {
+            foreach (var sv in _TabBar.Subviews)
+            {
+                if (sv.GetType() == typeof(UIView)) continue;
+
+                var ctrl = (UIControl)sv;
+
+                ctrl.Hidden = hidden;
+            }
         }
     }
 }

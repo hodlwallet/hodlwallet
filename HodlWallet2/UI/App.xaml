@@ -265,6 +265,8 @@
 
             <Style TargetType="TabbedPage"
                    ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundPrimary}" />
                 <Setter Property="BarBackgroundColor"
                         Value="{DynamicResource BackgroundPrimary}" />
                 <Setter Property="BarTextColor"

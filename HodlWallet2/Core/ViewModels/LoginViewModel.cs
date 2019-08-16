@@ -40,10 +40,17 @@ namespace HodlWallet2.Core.ViewModels
         public ICommand DigitCommand { get; }
         public ICommand BackspaceCommand { get; }
 
-        public string Header { get; } = LocaleResources.Pin_enter;
+        string _Header;
+        public string Header
+        {
+            get => _Header;
+            set => SetProperty(ref _Header, value);
+        }
 
         public LoginViewModel()
         {
+            Header = LocaleResources.Pin_enter;
+
             DigitCommand = new Command<string>((s) => _ = AddDigit(int.Parse(s)));
             BackspaceCommand = new Command(RemoveDigit);
         }
@@ -77,6 +84,7 @@ namespace HodlWallet2.Core.ViewModels
             {
                 Debug.WriteLine("[AddDigit] Logged in!");
 
+                Header = string.Empty;
                 IsLoading = true;
 
                 // DONE! We navigate to the root view

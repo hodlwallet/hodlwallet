@@ -25,6 +25,8 @@ using System.ComponentModel;
 using Xamarin.Forms;
 
 using HodlWallet2.Core.ViewModels;
+using HodlWallet2.UI.Controls;
+using HodlWallet2.UI.Effects;
 
 namespace HodlWallet2.UI.Views
 {
@@ -47,6 +49,8 @@ namespace HodlWallet2.UI.Views
         {
             // Views (this is unused, but could be an example)
             MessagingCenter.Subscribe<SendView, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
+            MessagingCenter.Subscribe<PromptView>(this, "HideTabbar", HideTabbar);
+            MessagingCenter.Subscribe<PromptView>(this, "ShowTabbar", ShowTabbar);
 
             // View Models
             MessagingCenter.Subscribe<SendViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
@@ -74,6 +78,18 @@ namespace HodlWallet2.UI.Views
             {
                 CurrentPage = Children[(int)tab];
             });
+        }
+
+        void HideTabbar(PromptView _)
+        {
+            Effects.Add(Effect.Resolve($"HodlWallet2.{nameof(HideTabbarEffect)}"));
+        }
+
+        void ShowTabbar(PromptView _)
+        {
+            // TODO this obviously has issues when we add more effects to it...
+            // if we ever do!
+            Effects.Clear();
         }
     }
 }

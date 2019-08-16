@@ -30,7 +30,7 @@ using Serilog;
 using HodlWallet2.UI;
 using HodlWallet2.Core.Interfaces;
 
-[assembly: global::Xamarin.Forms.ResolutionGroupName("AppEffects")]
+[assembly: global::Xamarin.Forms.ResolutionGroupName("HodlWallet2")]
 
 namespace HodlWallet2.Droid
 {
