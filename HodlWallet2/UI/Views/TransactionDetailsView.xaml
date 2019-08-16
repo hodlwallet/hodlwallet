@@ -52,10 +52,10 @@
                         <StackLayout>
 
                             <!-- Main details -->
-                            <Label FontSize="Large"
+                            <Label FontSize="Medium"
                                    Style="{StaticResource TransactionDetailLabel}"
                                    Text="{Binding AddressText}" />
-                            <Label FontSize="Small"
+                            <Label FontSize="Medium"
                                    Style="{StaticResource TransactionDetailLabel}"
                                    Text="{Binding CreationTimeText}" />
                             <Label FontSize="Medium"

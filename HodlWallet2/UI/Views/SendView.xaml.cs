@@ -122,6 +122,8 @@ namespace HodlWallet2.UI.Views
                     }
                 );
 
+                scanPage.Title = "Scan Bitcoin Address";
+
                 scanPage.OnScanResult += (ZXing.Result resultIOS) =>
                 {
                     scanPage.IsScanning = false;
