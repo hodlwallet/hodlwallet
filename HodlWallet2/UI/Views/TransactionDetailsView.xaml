@@ -40,10 +40,11 @@
                                       WidthRequest="16"
                                       VerticalOptions="Center"
                                       FlexLayout.AlignSelf="End">
-                                <svg:Icon.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Close_Tapped" />
-                                </svg:Icon.GestureRecognizers>
+                                
                             </svg:Icon>
+                            <FlexLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Close_Tapped" />
+                            </FlexLayout.GestureRecognizers>
                         </FlexLayout>
                     </FlexLayout>
 
