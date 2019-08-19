@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Android.Security.Keystore;
 using Android.Content;
 using Android.Util;
+using Android.App;
 
 using Java.Util.Concurrent.Locks;
 using Java.IO;
@@ -148,16 +149,24 @@ namespace HodlWallet2.Droid.Services
                         throw new NullPointerException("iv is null!");
 
                     // Store the iv
-                    _StoreEncryptedData(context, iv, aliasiv);
+                    StoreEncryptedData(context, iv, aliasiv);
                     byte[] encryptedData = inCipher.DoFinal(data);
                     // Store the encrypted data
-                    _StoreEncryptedData(context, encryptedData, alias);
+                    StoreEncryptedData(context, encryptedData, alias);
                     return true;
                 }
             }
             catch (UserNotAuthenticatedException e)
             {
-
+                ShowAuthenticationScreen(context, requestCode, alias);
+                throw e;
+            }
+            catch (InvalidKeyException ex)
+            {
+                if (ex is KeyPermanentlyInvalidatedException)
+                {
+                    //
+                }
             }
         }
 
@@ -201,13 +210,49 @@ namespace HodlWallet2.Droid.Services
             return keyGenerator.GenerateKey();
         }
 
-        public static void _StoreEncryptedData(Context context, byte[] data, string name)
+        public static void StoreEncryptedData(Context context, byte[] data, string name)
         {
             ISharedPreferences pref = context.GetSharedPreferences(KEY_STORE_PREFS_NAME, FileCreationMode.Private);
             string base64 = Base64.EncodeToString(data, Base64Flags.Default);
             ISharedPreferencesEditor edit = pref.Edit();
             edit.PutString(name, base64);
             edit.Apply();
+        }
+
+        public static void ShowAuthenticationScreen(Context context, int requestCode, string alias)
+        {
+            // Create the Confirm Credentials screen. You can customize the title and description.
+            // Or we will provide a generic one for you if you leave it null.
+            if (!alias.Equals(PHRASE_ALIAS) && !alias.Equals(CANARY_ALIAS))
+            {
+                throw new IllegalArgumentException(string.Format("requesting auth for: {0}", alias));
+            }
+
+            if (context is Activity)
+            {
+                Activity app = (Activity)context;
+                KeyguardManager keyguardManager = (KeyguardManager)app.GetSystemService(Context.KeyguardService);
+                if (keyguardManager == null)
+                {
+                    throw new NullPointerException("KeyguardManager is null in showAuthenticationScreen");
+                }
+                string message = "Please unlock your Android device to continue."; // Localize
+                string title = "Authentication required"; // Localize
+                Intent intent = keyguardManager.CreateConfirmDeviceCredentialIntent(title, message);
+                if (intent != null)
+                {
+                    app.StartActivityForResult(intent, requestCode);
+                }
+                else
+                {
+                    // Log("showAuthenticationScreen: failed to create intent for auth");
+                    app.Finish();
+                }
+            }
+            else
+            {
+                // Log("showAuthenticationScreen: context is not activity!");
+            }
         }
     }
 
