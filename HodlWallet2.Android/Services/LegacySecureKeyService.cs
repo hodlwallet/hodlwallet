@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
-
 using System.Collections.Generic;
+
 using Android.Security.Keystore;
+using Android.Content;
 
 using Java.Util.Concurrent.Locks;
 using Java.IO;
@@ -93,6 +94,36 @@ namespace HodlWallet2.Droid.Services
                 { PASS_TIME_ALIAS, new AliasObject(PASS_TIME_ALIAS, PASS_TIME_FILENAME, PASS_TIME_IV) },
                 { TOTAL_LIMIT_ALIAS, new AliasObject(TOTAL_LIMIT_ALIAS, TOTAL_LIMIT_FILENAME, TOTAL_LIMIT_IV) }
             };
+
+        static bool _setData(Context context, byte[] data, string alias, string aliasFile, string aliasiv,
+                                int requestCode, bool authRequired)
+        {
+            _validateSet(data, alias, aliasFile, aliasiv, authRequired);
+        }
+
+        static void _validateSet(byte[] data, string alias, string aliasFile, string aliasiv, bool authRequired)
+        {
+            if (data == null)
+            {
+                throw new IllegalArgumentException("keystore insert data is null");
+            }
+
+            AliasObject obj = AliasObjectMap[alias];
+
+            if (!obj.Alias.Equals(alias) || !obj.DataFileName.Equals(aliasFile) || !obj.IVFileName.Equals(aliasiv))
+            {
+                string err = string.Format("keystore insert inconsistency in names: {0}|{1}|{2}, obj: {3}|{4}|{5}", alias, aliasFile, aliasiv, obj.Alias, obj.DataFileName, obj.IVFileName);
+                throw new IllegalArgumentException(err);
+            }
+
+            if (authRequired)
+            {
+                if (!alias.Equals(PHRASE_ALIAS) && !alias.Equals(CANARY_ALIAS))
+                    throw new IllegalArgumentException(string.Format("keystore auth_required is true but alias is: {0}", alias));
+            }
+        }
+
+
     }
 
     public class AliasObject
