@@ -2,12 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:HodlWallet2.UI.Converters"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
              x:Class="HodlWallet2.UI.Views.BackupRecoveryWordView"
              Title="{Binding Title}"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
-             ios:Page.UseSafeArea="True">
+             BackgroundColor="{DynamicResource BackgroundPrimary}">
     <ContentPage.BindingContext>
         <vm:BackupRecoveryWordViewModel />
     </ContentPage.BindingContext>
