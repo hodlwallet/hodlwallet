@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout Direction="Column">
-                <StackLayout Margin="10,70,10,10"
+                <StackLayout Margin="10,20,10,10"
                              HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand">
                     <Label Text="{Binding RecoverTitle}"
@@ -275,20 +275,14 @@
                                    Grid.Column="3" />
                         </Grid>
                     </ScrollView>
-
                 </StackLayout>
 
-                <FlexLayout Direction="Column"
-                            FlexLayout.Grow="1">
-                    <BoxView FlexLayout.Grow="2" />
-
-                    <Button x:Name="DoneButton"
-                            FlexLayout.Grow="1"
-                            IsVisible="False"
-                            Text="Done"
-                            FontSize="Large"
-                            Command="{Binding OnRecoverEntryCompleted}" />
-                </FlexLayout>
+                <Button x:Name="DoneButton"
+                        FlexLayout.Grow="1"
+                        IsVisible="False"
+                        Text="Done"
+                        FontSize="Large"
+                        Command="{Binding OnRecoverEntryCompleted}" />
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>
