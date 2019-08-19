@@ -9,6 +9,7 @@ using Java.Util.Concurrent.Locks;
 using Java.IO;
 using Java.Lang;
 using Javax.Crypto;
+using Java.Security;
 
 namespace HodlWallet2.Droid.Services
 {
@@ -76,7 +77,7 @@ namespace HodlWallet2.Droid.Services
         bool _BugMessageShowing;
 
         public const int AUTH_DURATION_SEC = 300;
-        ReentrantLock _Lock = new ReentrantLock();
+        static ReentrantLock _Lock = new ReentrantLock();
 
         public static IDictionary<string, AliasObject> AliasObjectMap =
             new Dictionary<string, AliasObject>
@@ -99,6 +100,55 @@ namespace HodlWallet2.Droid.Services
                                 int requestCode, bool authRequired)
         {
             _validateSet(data, alias, aliasFile, aliasiv, authRequired);
+
+            KeyStore keyStore = null;
+
+            try
+            {
+                lock(_Lock)
+                {
+                    keyStore = KeyStore.GetInstance(ANDROID_KEY_STORE);
+                    keyStore.Load(null);
+
+                    IKey secretKey = (ISecretKey)keyStore.GetKey(alias, null);
+                    Cipher inCipher = Cipher.GetInstance(NEW_CIPHER_ALGORITHM);
+
+                    if (secretKey == null)
+                    {
+                        secretKey = createKeys(alias, authRequired);
+                        inCipher.Init(CipherMode.EncryptMode, secretKey);
+                    }
+                    else
+                    {
+                        try
+                        {
+                            inCipher.Init(CipherMode.EncryptMode, secretKey);
+                        }
+                        catch (InvalidKeyException ignored)
+                        {
+                            if (ignored is UserNotAuthenticatedException)
+                                throw ignored;
+
+                            // Log(string.Format("_setData: OLD KEY PRESENT: {0}", alias));
+                            secretKey = createKeys(alias, authRequired);
+                            inCipher.Init(CipherMode.EncryptMode, secretKey);
+                        }
+                    }
+
+                    // The key cannot still be null
+                    if (secretKey == null)
+                    {
+                        // Log(new KeyStoreException(string.Format("secret is null on _setData: {0}", alias)).toString());
+                        return false;
+                    }
+
+                    byte[] iv = inCipher.GetIV();
+                    if (iv == null)
+                        throw new NullPointerException("iv is null!");
+
+                    // Store the iv
+                }
+            }
         }
 
         static void _validateSet(byte[] data, string alias, string aliasFile, string aliasiv, bool authRequired)
@@ -121,6 +171,24 @@ namespace HodlWallet2.Droid.Services
                 if (!alias.Equals(PHRASE_ALIAS) && !alias.Equals(CANARY_ALIAS))
                     throw new IllegalArgumentException(string.Format("keystore auth_required is true but alias is: {0}", alias));
             }
+        }
+
+        static ISecretKey createKeys(string alias, bool authRequired)
+        {
+            KeyGenerator keyGenerator = KeyGenerator.GetInstance(KeyProperties.KeyAlgorithmAes, ANDROID_KEY_STORE);
+
+            // Set the alias of the entry in Android KeyStore where the key will appear
+            // and the constrains (purposes) in the constructor of the Builder
+            keyGenerator.Init(new KeyGenParameterSpec.Builder(alias,
+                            KeyStorePurpose.Encrypt | KeyStorePurpose.Decrypt)
+                        .SetBlockModes(NEW_BLOCK_MODE)
+                        .SetUserAuthenticationRequired(authRequired)
+                        .SetUserAuthenticationValidityDurationSeconds(AUTH_DURATION_SEC)
+                        .SetRandomizedEncryptionRequired(false)
+                        .SetEncryptionPaddings(NEW_PADDING)
+                        .Build());
+
+            return keyGenerator.GenerateKey();
         }
 
 
