@@ -159,14 +159,12 @@ namespace HodlWallet2.UI.Controls
 
         async Task ShowPromptAnimated()
         {
-            await Task.Delay(10);
-
             IsVisible = true;
 
             var animationTaskSource = new TaskCompletionSource<bool>();
 
             var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, 0);
-            animation.Commit(this, "OpenQuestionAnimation", 16, 250, Easing.CubicInOut, (v, c) => QuestionFrame.Margin = new Thickness(0, 0, 0, 0), () =>
+            animation.Commit(this, "OpenPromptAnimation", 16, 350, Easing.SinOut, (v, c) => QuestionFrame.Margin = new Thickness(0, 0, 0, 0), () =>
             {
                 animationTaskSource.SetResult(false);
                 return false;
@@ -174,7 +172,7 @@ namespace HodlWallet2.UI.Controls
 
             await Task.WhenAll(
                 animationTaskSource.Task,
-                TransparentBackgroundBoxView.FadeTo(0.9, 500)
+                TransparentBackgroundBoxView.FadeTo(0.9)
             );
 
             MessagingCenter.Send(this, "HideTabbar");
@@ -182,12 +180,12 @@ namespace HodlWallet2.UI.Controls
 
         async Task HidePromptAnimated()
         {
-            await Task.Delay(10);
-
             var animationTaskSource = new TaskCompletionSource<bool>();
 
+            MessagingCenter.Send(this, "ShowTabbar");
+
             var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, _QuestionFrameTopMargin);
-            animation.Commit(this, "OpenQuestionAnimation", 16, 250, Easing.CubicInOut, (v, c) => QuestionFrame.Margin = new Thickness(0, _QuestionFrameTopMargin, 0, 0), () =>
+            animation.Commit(this, "ClosePromptAnimation", 16, 350, Easing.SinOut, (v, c) => QuestionFrame.Margin = new Thickness(0, _QuestionFrameTopMargin, 0, 0), () =>
             {
                 animationTaskSource.SetResult(false);
                 return false;
@@ -195,12 +193,10 @@ namespace HodlWallet2.UI.Controls
 
             await Task.WhenAll(
                 animationTaskSource.Task,
-                TransparentBackgroundBoxView.FadeTo(0.0, 150)
+                TransparentBackgroundBoxView.FadeTo(0.0)
             );
 
             IsVisible = false;
-
-            MessagingCenter.Send(this, "ShowTabbar");
 
             RemoveYourself();
         }
