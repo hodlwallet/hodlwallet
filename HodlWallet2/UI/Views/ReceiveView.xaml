@@ -24,11 +24,16 @@
                     <svg:QRCode Content="{Binding Address}"
                                 BackgroundColor="{DynamicResource TextPrimary}"
                                 Level="H"
-                                WidthRequest="170"
-                                HeightRequest="170"
+                                WidthRequest="320"
+                                HeightRequest="320"
                                 Margin="0, 0, 0, 0"
                                 VerticalOptions="CenterAndExpand"
-                                HorizontalOptions="CenterAndExpand" />
+                                HorizontalOptions="CenterAndExpand">
+                        <svg:QRCode.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Address_Tapped"
+                                                  NumberOfTapsRequired="1" />
+                        </svg:QRCode.GestureRecognizers>
+                    </svg:QRCode>
 
                     <ContentView FlexLayout.Grow="1">
                         <Label x:Name="_Address"
