@@ -63,17 +63,13 @@
                             Text="{Binding PreviousText}"
                             Command="{Binding PreviousWordCommand}" />
 
-                    <BoxView x:Name="Divider"
-                             BackgroundColor="Transparent"
-                             WidthRequest="2" />
-
                     <Button x:Name="Next"
                             Style="{DynamicResource CustomButton}"
                             BackgroundColor="{DynamicResource BackgroundSecondary}"
                             CornerRadius="0"
                             FontSize="Large"
                             FlexLayout.AlignSelf="Stretch"
-                            FlexLayout.Grow="3"
+                            FlexLayout.Grow="2"
                             Text="{Binding NextText}"
                             Command="{Binding NextWordCommand}" />
                 </FlexLayout>

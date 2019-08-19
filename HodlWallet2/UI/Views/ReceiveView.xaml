@@ -41,7 +41,7 @@
                                Text="{Binding Address}"
                                HorizontalTextAlignment="Center"
                                Margin="10"
-                               FontSize="Small" />
+                               FontSize="Body" />
                         <ContentView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Address_Tapped"
                                                   NumberOfTapsRequired="1" />
