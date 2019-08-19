@@ -27,9 +27,13 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 
+using Xamarin.Forms;
+
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Utils;
+using HodlWallet2.Droid.Services;
 
+[assembly: Dependency(typeof(Localize))]
 namespace HodlWallet2.Droid.Services
 {
     public class Localize : ILocalize
@@ -39,6 +43,7 @@ namespace HodlWallet2.Droid.Services
             Thread.CurrentThread.CurrentCulture = ci;
             Thread.CurrentThread.CurrentUICulture = ci;
         }
+
         public CultureInfo GetCurrentCultureInfo()
         {
             string netLanguage = "en";
@@ -71,6 +76,7 @@ namespace HodlWallet2.Droid.Services
             }
             return ci;
         }
+
         string AndroidToDotnetLanguage(string androidLanguage)
         {
             var netLanguage = androidLanguage;
@@ -93,6 +99,7 @@ namespace HodlWallet2.Droid.Services
             }
             return netLanguage;
         }
+
         string ToDotnetFallbackLanguage(PlatformCulture platCulture)
         {
             var netLanguage = platCulture.LanguageCode; // use the first part of the identifier (two chars, usually);
