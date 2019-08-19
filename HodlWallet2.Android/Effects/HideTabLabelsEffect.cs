@@ -32,7 +32,6 @@ using Xamarin.Forms.Platform.Android.AppCompat;
 using HodlWallet2.Droid.Effects;
 using HodlWallet2.Droid.Extensions;
 
-[assembly: ResolutionGroupName("HodlWallet2")]
 [assembly: ExportEffect(typeof(HideTabLabelsEffect), nameof(HideTabLabelsEffect))]
 namespace HodlWallet2.Droid.Effects
 {

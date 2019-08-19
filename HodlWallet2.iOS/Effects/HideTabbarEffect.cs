@@ -30,7 +30,6 @@ using HodlWallet2.iOS.Effects;
 using System.Linq;
 using UIKit;
 
-[assembly: ResolutionGroupName("HodlWallet2")]
 [assembly: ExportEffect(typeof(HideTabbarEffect), nameof(HideTabbarEffect))]
 namespace HodlWallet2.iOS.Effects
 {
