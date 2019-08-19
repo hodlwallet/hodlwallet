@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using Android.Security.Keystore;
 using Android.Content;
+using Android.Util;
 
 using Java.Util.Concurrent.Locks;
 using Java.IO;
@@ -99,13 +100,13 @@ namespace HodlWallet2.Droid.Services
         static bool _setData(Context context, byte[] data, string alias, string aliasFile, string aliasiv,
                                 int requestCode, bool authRequired)
         {
-            _validateSet(data, alias, aliasFile, aliasiv, authRequired);
+            _ValidateSet(data, alias, aliasFile, aliasiv, authRequired);
 
             KeyStore keyStore = null;
 
             try
             {
-                lock(_Lock)
+                lock (_Lock)
                 {
                     keyStore = KeyStore.GetInstance(ANDROID_KEY_STORE);
                     keyStore.Load(null);
@@ -115,7 +116,7 @@ namespace HodlWallet2.Droid.Services
 
                     if (secretKey == null)
                     {
-                        secretKey = createKeys(alias, authRequired);
+                        secretKey = _CreateKeys(alias, authRequired);
                         inCipher.Init(CipherMode.EncryptMode, secretKey);
                     }
                     else
@@ -130,7 +131,7 @@ namespace HodlWallet2.Droid.Services
                                 throw ignored;
 
                             // Log(string.Format("_setData: OLD KEY PRESENT: {0}", alias));
-                            secretKey = createKeys(alias, authRequired);
+                            secretKey = _CreateKeys(alias, authRequired);
                             inCipher.Init(CipherMode.EncryptMode, secretKey);
                         }
                     }
@@ -147,11 +148,20 @@ namespace HodlWallet2.Droid.Services
                         throw new NullPointerException("iv is null!");
 
                     // Store the iv
+                    _StoreEncryptedData(context, iv, aliasiv);
+                    byte[] encryptedData = inCipher.DoFinal(data);
+                    // Store the encrypted data
+                    _StoreEncryptedData(context, encryptedData, alias);
+                    return true;
                 }
+            }
+            catch (UserNotAuthenticatedException e)
+            {
+
             }
         }
 
-        static void _validateSet(byte[] data, string alias, string aliasFile, string aliasiv, bool authRequired)
+        static void _ValidateSet(byte[] data, string alias, string aliasFile, string aliasiv, bool authRequired)
         {
             if (data == null)
             {
@@ -173,7 +183,7 @@ namespace HodlWallet2.Droid.Services
             }
         }
 
-        static ISecretKey createKeys(string alias, bool authRequired)
+        static ISecretKey _CreateKeys(string alias, bool authRequired)
         {
             KeyGenerator keyGenerator = KeyGenerator.GetInstance(KeyProperties.KeyAlgorithmAes, ANDROID_KEY_STORE);
 
@@ -191,7 +201,14 @@ namespace HodlWallet2.Droid.Services
             return keyGenerator.GenerateKey();
         }
 
-
+        public static void _StoreEncryptedData(Context context, byte[] data, string name)
+        {
+            ISharedPreferences pref = context.GetSharedPreferences(KEY_STORE_PREFS_NAME, FileCreationMode.Private);
+            string base64 = Base64.EncodeToString(data, Base64Flags.Default);
+            ISharedPreferencesEditor edit = pref.Edit();
+            edit.PutString(name, base64);
+            edit.Apply();
+        }
     }
 
     public class AliasObject
