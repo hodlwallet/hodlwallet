@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using Android.Security.Keystore;
 using Android.Content;
@@ -12,6 +10,8 @@ using Java.IO;
 using Java.Lang;
 using Javax.Crypto;
 using Java.Security;
+using Android.Widget;
+using Javax.Security.Cert;
 
 namespace HodlWallet2.Droid.Services
 {
@@ -165,7 +165,62 @@ namespace HodlWallet2.Droid.Services
             {
                 if (ex is KeyPermanentlyInvalidatedException)
                 {
-                    //
+                    ShowKeyInvalidated(context);
+                    throw new UserNotAuthenticatedException(); // Just to make the flow stop
+                }
+                // Log(ex.toString())
+                return false;
+            }
+            catch (Exception e)
+            {
+                // Log(ex.toString());
+                e.PrintStackTrace();
+                return false;
+            }
+        }
+
+        static byte[] _GetData(Context context, string alias, string aliasFile, string aliasiv, int requestCode)
+        {
+            try
+            {
+                lock(_Lock)
+                {
+                    // TODO
+                }
+            }
+            catch (InvalidKeyException ex)
+            {
+                if (ex is KeyPermanentlyInvalidatedException)
+                {
+                    ShowKeyInvalidated(context);
+                    throw new UserNotAuthenticatedException(); // Just to not go any further
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is IOException || ex is CertificateException || ex is KeyStoreException)
+                {
+                    // Log("_getData: keyStore.load(null) threw the Exception, meaning the keystore is unavailable")
+                    if (ex is FileNotFoundException)
+                    {
+                        // Log("_getData: File not found exception\nThe key is present but the phrase on the disk is not");
+                        throw new RuntimeException(ex.Message);
+                    }
+                    else
+                    {
+                        // Log(ex.toString())
+                        throw new RuntimeException(ex.Message);
+                    }
+                }
+                if (ex is UnrecoverableKeyException || ex is NoSuchAlgorithmException || ex is NoSuchPaddingException || ex is InvalidAlgorithmParameterException)
+                {
+                    /** if for any other reason the keystore fails, crash! */
+                    throw new RuntimeException(ex.Message);
+                }
+                if (ex is BadPaddingException || ex is IllegalBlockSizeException || ex is NoSuchProviderException)
+                {
+                    ex.PrintStackTrace();
+                    throw new RuntimeException(ex.Message);
                 }
             }
         }
@@ -253,6 +308,20 @@ namespace HodlWallet2.Droid.Services
             {
                 // Log("showAuthenticationScreen: context is not activity!");
             }
+        }
+
+        public static void ShowKeyInvalidated(Context app)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(app);
+            builder.SetTitle("Android KeyStore Error"); // Localize
+            builder.SetMessage("Your wallet encrypted data was recently invalidated because your Android lock screen was disabled."); // Localize
+            builder.SetPositiveButton("OK", (senderAlert, args) => {
+                Toast.MakeText(app, "Bye Bye", ToastLength.Short).Show();
+                // wipeWalletButKeystore
+                // wipeKeyStore
+                }); // Localize
+            Dialog dialog = builder.Create();
+            dialog.Show();
         }
     }
 
