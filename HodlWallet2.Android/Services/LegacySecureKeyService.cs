@@ -20,7 +20,7 @@ using Xamarin.Essentials;
 
 namespace HodlWallet2.Droid.Services
 {
-    class LegacySecureKeyUtils
+    class AndroidSecureKeyUtils
     {
         internal static Context AppContext => Application.Context;
 
@@ -75,18 +75,21 @@ namespace HodlWallet2.Droid.Services
         }
     }
 
-    public static partial class LegacySecureKeyService
+    public static class AndroidLegacyKeyService
     {
-        internal static readonly string Alias = $"{AppInfo.PackageName}.xamarinessentials";
+        internal static readonly string KEY_STORE_PREFS_NAME = "keyStorePrefs";
 
         static readonly object locker = new object();
 
-        static Task<string> PlatformGetAsync(string key)
+        public static Task<string> LegacyGetAsync(string key)
         {
-            var context = LegacySecureKeyUtils.AppContext;
+            if (string.IsNullOrWhiteSpace(key))
+                throw new ArgumentNullException(nameof(key));
+
+            var context = AndroidSecureKeyUtils.AppContext;
 
             string defaultEncStr = null;
-            var encStr = Preferences.Get(LegacySecureKeyUtils.Md5Hash(key), defaultEncStr, Alias);
+            var encStr = Preferences.Get(AndroidSecureKeyUtils.Md5Hash(key), defaultEncStr, KEY_STORE_PREFS_NAME);
 
             string decryptedData = null;
             if (!string.IsNullOrEmpty(encStr))
@@ -103,16 +106,22 @@ namespace HodlWallet2.Droid.Services
                 catch (AEADBadTagException)
                 {
                     System.Diagnostics.Debug.WriteLine($"Unable to decrypt key, {key}, which is likely due to an app uninstall. Removing old key and returning null.");
-                    PlatformRemove(key);
+                    LegacyRemove(key);
                 }
             }
 
             return Task.FromResult(decryptedData);
         }
 
-        static Task PlatformSetAsync(string key, string data)
+        public static Task LegacySetAsync(string key, string data)
         {
-            var context = LegacySecureKeyUtils.AppContext;
+            if (string.IsNullOrWhiteSpace(key))
+                throw new ArgumentNullException(nameof(key));
+
+            if (data == null)
+                throw new ArgumentNullException(nameof(data));
+
+            var context = AndroidSecureKeyUtils.AppContext;
 
             byte[] encryptedData = null;
             lock (locker)
@@ -122,22 +131,22 @@ namespace HodlWallet2.Droid.Services
             }
 
             var encStr = Convert.ToBase64String(encryptedData);
-            Preferences.Set(LegacySecureKeyUtils.Md5Hash(key), encStr, Alias);
+            Preferences.Set(AndroidSecureKeyUtils.Md5Hash(key), encStr, Alias);
 
             return Task.CompletedTask;
         }
 
-        static bool PlatformRemove(string key)
+        public static bool LegacyRemove(string key)
         {
-            var context = LegacySecureKeyUtils.AppContext;
+            var context = AndroidSecureKeyUtils.AppContext;
 
-            key = LegacySecureKeyUtils.Md5Hash(key);
+            key = AndroidSecureKeyUtils.Md5Hash(key);
             Preferences.Remove(key, Alias);
 
             return true;
         }
 
-        static void PlatformRemoveAll() =>
+        public static void LegacyRemoveAll() =>
             Preferences.Clear(Alias);
 
         internal static bool AlwaysUseAsymmetricKeyStorage { get; set; } = false;
@@ -175,7 +184,7 @@ namespace HodlWallet2.Droid.Services
             // check to see if we need to get our key from past-versions or newer versions.
             // we want to use symmetric if we are >= 23 or we didn't set it previously.
 
-            useSymmetric = Preferences.Get(useSymmetricPreferenceKey, LegacySecureKeyUtils.HasApiLevel(BuildVersionCodes.M), LegacySecureKeyService.Alias);
+            useSymmetric = Preferences.Get(useSymmetricPreferenceKey, AndroidSecureKeyUtils.HasApiLevel(BuildVersionCodes.M), AndroidLegacyKeyService.Alias);
 
             // If >= API 23 we can use the KeyStore's symmetric key
             if (useSymmetric && !alwaysUseAsymmetricKey)
@@ -233,7 +242,7 @@ namespace HodlWallet2.Droid.Services
         // API 23+ Only
         ISecretKey GetSymmetricKey()
         {
-            Preferences.Set(useSymmetricPreferenceKey, true, LegacySecureKeyService.Alias);
+            Preferences.Set(useSymmetricPreferenceKey, true, AndroidLegacyKeyService.Alias);
 
             var existingKey = keyStore.GetKey(alias, null);
 
@@ -257,7 +266,7 @@ namespace HodlWallet2.Droid.Services
         KeyPair GetAsymmetricKeyPair()
         {
             // set that we generated keys on pre-m device.
-            Preferences.Set(useSymmetricPreferenceKey, false, LegacySecureKeyService.Alias);
+            Preferences.Set(useSymmetricPreferenceKey, false, AndroidLegacyKeyService.Alias);
 
             var asymmetricAlias = $"{alias}.asymmetric";
 
@@ -268,12 +277,12 @@ namespace HodlWallet2.Droid.Services
             if (privateKey != null && publicKey != null)
                 return new KeyPair(publicKey, privateKey);
 
-            var originalLocale = LegacySecureKeyUtils.GetLocale();
+            var originalLocale = AndroidSecureKeyUtils.GetLocale();
             try
             {
                 // Force to english for known bug in date parsing:
                 // https://issuetracker.google.com/issues/37095309
-                LegacySecureKeyUtils.SetLocale(Java.Util.Locale.English);
+                AndroidSecureKeyUtils.SetLocale(Java.Util.Locale.English);
 
                 // Otherwise we create a new key
                 var generator = KeyPairGenerator.GetInstance(KeyProperties.KeyAlgorithmRsa, androidKeyStore);
@@ -285,7 +294,7 @@ namespace HodlWallet2.Droid.Services
 #pragma warning restore CS0618 // Type or member is obsolete
 
 #pragma warning disable CS0618
-                var builder = new KeyPairGeneratorSpec.Builder(LegacySecureKeyUtils.AppContext)
+                var builder = new KeyPairGeneratorSpec.Builder(AndroidSecureKeyUtils.AppContext)
                     .SetAlias(asymmetricAlias)
                     .SetSerialNumber(Java.Math.BigInteger.One)
                     .SetSubject(new Javax.Security.Auth.X500.X500Principal($"CN={asymmetricAlias} CA Certificate"))
@@ -299,7 +308,7 @@ namespace HodlWallet2.Droid.Services
             }
             finally
             {
-                LegacySecureKeyUtils.SetLocale(originalLocale);
+                AndroidSecureKeyUtils.SetLocale(originalLocale);
             }
         }
 
