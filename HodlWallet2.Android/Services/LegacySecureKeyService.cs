@@ -131,7 +131,7 @@ namespace HodlWallet2.Droid.Services
             }
 
             var encStr = Convert.ToBase64String(encryptedData);
-            Preferences.Set(AndroidSecureKeyUtils.Md5Hash(key), encStr, Alias);
+            Preferences.Set(key, encStr, KEY_STORE_PREFS_NAME);
 
             return Task.CompletedTask;
         }
@@ -141,13 +141,13 @@ namespace HodlWallet2.Droid.Services
             var context = AndroidSecureKeyUtils.AppContext;
 
             key = AndroidSecureKeyUtils.Md5Hash(key);
-            Preferences.Remove(key, Alias);
+            Preferences.Remove(key, KEY_STORE_PREFS_NAME);
 
             return true;
         }
 
         public static void LegacyRemoveAll() =>
-            Preferences.Clear(Alias);
+            Preferences.Clear(KEY_STORE_PREFS_NAME);
 
         internal static bool AlwaysUseAsymmetricKeyStorage { get; set; } = false;
     }
@@ -177,67 +177,6 @@ namespace HodlWallet2.Droid.Services
         readonly string useSymmetricPreferenceKey = "essentials_use_symmetric";
 
         KeyStore keyStore;
-        bool useSymmetric = false;
-
-        ISecretKey GetKey()
-        {
-            // check to see if we need to get our key from past-versions or newer versions.
-            // we want to use symmetric if we are >= 23 or we didn't set it previously.
-
-            useSymmetric = Preferences.Get(useSymmetricPreferenceKey, AndroidSecureKeyUtils.HasApiLevel(BuildVersionCodes.M), AndroidLegacyKeyService.Alias);
-
-            // If >= API 23 we can use the KeyStore's symmetric key
-            if (useSymmetric && !alwaysUseAsymmetricKey)
-                return GetSymmetricKey();
-
-            // NOTE: KeyStore in < API 23 can only store asymmetric keys
-            // specifically, only RSA/ECB/PKCS1Padding
-            // So we will wrap our symmetric AES key we just generated
-            // with this and save the encrypted/wrapped key out to
-            // preferences for future use.
-            // ECB should be fine in this case as the AES key should be
-            // contained in one block.
-
-            // Get the asymmetric key pair
-            var keyPair = GetAsymmetricKeyPair();
-
-            var existingKeyStr = Preferences.Get(prefsMasterKey, null, alias);
-
-            if (!string.IsNullOrEmpty(existingKeyStr))
-            {
-                try
-                {
-                    var wrappedKey = Convert.FromBase64String(existingKeyStr);
-
-                    var unwrappedKey = UnwrapKey(wrappedKey, keyPair.Private);
-                    var kp = unwrappedKey.JavaCast<ISecretKey>();
-
-                    return kp;
-                }
-                catch (InvalidKeyException ikEx)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Unable to unwrap key: Invalid Key. This may be caused by system backup or upgrades. All secure storage items will now be removed. {ikEx.Message}");
-                }
-                catch (IllegalBlockSizeException ibsEx)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Unable to unwrap key: Illegal Block Size. This may be caused by system backup or upgrades. All secure storage items will now be removed. {ibsEx.Message}");
-                }
-                catch (BadPaddingException paddingEx)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Unable to unwrap key: Bad Padding. This may be caused by system backup or upgrades. All secure storage items will now be removed. {paddingEx.Message}");
-                }
-                SecureStorage.RemoveAll();
-            }
-
-            var keyGenerator = KeyGenerator.GetInstance(aesAlgorithm);
-            var defSymmetricKey = keyGenerator.GenerateKey();
-
-            var newWrappedKey = WrapKey(defSymmetricKey, keyPair.Public);
-
-            Preferences.Set(prefsMasterKey, Convert.ToBase64String(newWrappedKey), alias);
-
-            return defSymmetricKey;
-        }
 
         // API 23+ Only
         ISecretKey GetSymmetricKey()
@@ -263,55 +202,6 @@ namespace HodlWallet2.Droid.Services
             return keyGenerator.GenerateKey();
         }
 
-        KeyPair GetAsymmetricKeyPair()
-        {
-            // set that we generated keys on pre-m device.
-            Preferences.Set(useSymmetricPreferenceKey, false, AndroidLegacyKeyService.Alias);
-
-            var asymmetricAlias = $"{alias}.asymmetric";
-
-            var privateKey = keyStore.GetKey(asymmetricAlias, null)?.JavaCast<IPrivateKey>();
-            var publicKey = keyStore.GetCertificate(asymmetricAlias)?.PublicKey;
-
-            // Return the existing key if found
-            if (privateKey != null && publicKey != null)
-                return new KeyPair(publicKey, privateKey);
-
-            var originalLocale = AndroidSecureKeyUtils.GetLocale();
-            try
-            {
-                // Force to english for known bug in date parsing:
-                // https://issuetracker.google.com/issues/37095309
-                AndroidSecureKeyUtils.SetLocale(Java.Util.Locale.English);
-
-                // Otherwise we create a new key
-                var generator = KeyPairGenerator.GetInstance(KeyProperties.KeyAlgorithmRsa, androidKeyStore);
-
-                var end = DateTime.UtcNow.AddYears(20);
-                var startDate = new Java.Util.Date();
-#pragma warning disable CS0618 // Type or member is obsolete
-                var endDate = new Java.Util.Date(end.Year, end.Month, end.Day);
-#pragma warning restore CS0618 // Type or member is obsolete
-
-#pragma warning disable CS0618
-                var builder = new KeyPairGeneratorSpec.Builder(AndroidSecureKeyUtils.AppContext)
-                    .SetAlias(asymmetricAlias)
-                    .SetSerialNumber(Java.Math.BigInteger.One)
-                    .SetSubject(new Javax.Security.Auth.X500.X500Principal($"CN={asymmetricAlias} CA Certificate"))
-                    .SetStartDate(startDate)
-                    .SetEndDate(endDate);
-
-                generator.Initialize(builder.Build());
-#pragma warning restore CS0618
-
-                return generator.GenerateKeyPair();
-            }
-            finally
-            {
-                AndroidSecureKeyUtils.SetLocale(originalLocale);
-            }
-        }
-
         byte[] WrapKey(IKey keyToWrap, IKey withKey)
         {
             var cipher = Cipher.GetInstance(cipherTransformationAsymmetric);
@@ -329,7 +219,7 @@ namespace HodlWallet2.Droid.Services
 
         internal byte[] Encrypt(string data)
         {
-            var key = GetKey();
+            var key = GetSymmetricKey();
 
             // Generate initialization vector
             var iv = new byte[initializationVectorLen];
@@ -372,7 +262,7 @@ namespace HodlWallet2.Droid.Services
             if (data.Length < initializationVectorLen)
                 return null;
 
-            var key = GetKey();
+            var key = GetSymmetricKey();
 
             // IV will be the first 16 bytes of the encrypted data
             var iv = new byte[initializationVectorLen];
