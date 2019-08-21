@@ -1,30 +1,403 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 
-using Android.Security.Keystore;
-using Android.Content;
-using Android.Util;
 using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Security;
+using Android.Security.Keystore;
 
-using Java.Util.Concurrent.Locks;
-using Java.IO;
-using Java.Lang;
-using Javax.Crypto;
 using Java.Security;
-using Android.Widget;
-using Javax.Security.Cert;
+using Java.Util.Concurrent.Locks;
+using Javax.Crypto;
+using Javax.Crypto.Spec;
+
+using Xamarin.Essentials;
 
 namespace HodlWallet2.Droid.Services
 {
-    public class LegacySecureKeyService
+    class LegacySecureKeyUtils
     {
-        public LegacySecureKeyService()
+        internal static Context AppContext => Application.Context;
+
+        internal static bool HasApiLevel(BuildVersionCodes versionCode) =>
+            (int)Build.VERSION.SdkInt >= (int)versionCode;
+
+        internal static bool HasApiLevelN =>
+#if __ANDROID_24__
+            HasApiLevel(BuildVersionCodes.N);
+#else
+            false;
+#endif
+
+        internal static string Md5Hash(string input)
         {
+            var hash = new System.Text.StringBuilder();
+            var md5provider = new MD5CryptoServiceProvider();
+            var bytes = md5provider.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            for (var i = 0; i < bytes.Length; i++)
+                hash.Append(bytes[i].ToString("x2"));
+
+            return hash.ToString();
+        }
+
+        internal static void SetLocale(Java.Util.Locale locale)
+        {
+            Java.Util.Locale.Default = locale;
+            var resources = AppContext.Resources;
+            var config = resources.Configuration;
+
+            if (HasApiLevelN)
+                config.SetLocale(locale);
+            else
+                config.Locale = locale;
+
+#pragma warning disable CS0618 // Type or member is obsolete
+            resources.UpdateConfiguration(config, resources.DisplayMetrics);
+#pragma warning restore CS0618 // Type or member is obsolete
+        }
+
+        internal static Java.Util.Locale GetLocale()
+        {
+            var resources = AppContext.Resources;
+            var config = resources.Configuration;
+#if __ANDROID_24__
+            if (HasApiLevelN)
+                return config.Locales.Get(0);
+#endif
+
+            return config.Locale;
         }
     }
 
-    public class BRKeyStore
+    public static partial class LegacySecureKeyService
     {
-        const string TAG = nameof(BRKeyStore);
+        internal static readonly string Alias = $"{AppInfo.PackageName}.xamarinessentials";
+
+        static readonly object locker = new object();
+
+        static Task<string> PlatformGetAsync(string key)
+        {
+            var context = LegacySecureKeyUtils.AppContext;
+
+            string defaultEncStr = null;
+            var encStr = Preferences.Get(LegacySecureKeyUtils.Md5Hash(key), defaultEncStr, Alias);
+
+            string decryptedData = null;
+            if (!string.IsNullOrEmpty(encStr))
+            {
+                try
+                {
+                    var encData = Convert.FromBase64String(encStr);
+                    lock (locker)
+                    {
+                        var ks = new AndroidKeyStore(context, Alias, AlwaysUseAsymmetricKeyStorage);
+                        decryptedData = ks.Decrypt(encData);
+                    }
+                }
+                catch (AEADBadTagException)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Unable to decrypt key, {key}, which is likely due to an app uninstall. Removing old key and returning null.");
+                    PlatformRemove(key);
+                }
+            }
+
+            return Task.FromResult(decryptedData);
+        }
+
+        static Task PlatformSetAsync(string key, string data)
+        {
+            var context = LegacySecureKeyUtils.AppContext;
+
+            byte[] encryptedData = null;
+            lock (locker)
+            {
+                var ks = new AndroidKeyStore(context, Alias, AlwaysUseAsymmetricKeyStorage);
+                encryptedData = ks.Encrypt(data);
+            }
+
+            var encStr = Convert.ToBase64String(encryptedData);
+            Preferences.Set(LegacySecureKeyUtils.Md5Hash(key), encStr, Alias);
+
+            return Task.CompletedTask;
+        }
+
+        static bool PlatformRemove(string key)
+        {
+            var context = LegacySecureKeyUtils.AppContext;
+
+            key = LegacySecureKeyUtils.Md5Hash(key);
+            Preferences.Remove(key, Alias);
+
+            return true;
+        }
+
+        static void PlatformRemoveAll() =>
+            Preferences.Clear(Alias);
+
+        internal static bool AlwaysUseAsymmetricKeyStorage { get; set; } = false;
+    }
+
+    class AndroidKeyStore
+    {
+        const string androidKeyStore = "AndroidKeyStore"; // this is an Android const value
+        const string aesAlgorithm = "AES";
+        const string cipherTransformationAsymmetric = "RSA/ECB/PKCS1Padding";
+        const string cipherTransformationSymmetric = "AES/GCM/NoPadding";
+        const string prefsMasterKey = "SecureStorageKey";
+        const int initializationVectorLen = 12; // Android supports an IV of 12 for AES/GCM
+
+        internal AndroidKeyStore(Context context, string keystoreAlias, bool alwaysUseAsymmetricKeyStorage)
+        {
+            alwaysUseAsymmetricKey = alwaysUseAsymmetricKeyStorage;
+            appContext = context;
+            alias = keystoreAlias;
+
+            keyStore = KeyStore.GetInstance(androidKeyStore);
+            keyStore.Load(null);
+        }
+
+        readonly Context appContext;
+        readonly string alias;
+        readonly bool alwaysUseAsymmetricKey;
+        readonly string useSymmetricPreferenceKey = "essentials_use_symmetric";
+
+        KeyStore keyStore;
+        bool useSymmetric = false;
+
+        ISecretKey GetKey()
+        {
+            // check to see if we need to get our key from past-versions or newer versions.
+            // we want to use symmetric if we are >= 23 or we didn't set it previously.
+
+            useSymmetric = Preferences.Get(useSymmetricPreferenceKey, LegacySecureKeyUtils.HasApiLevel(BuildVersionCodes.M), LegacySecureKeyService.Alias);
+
+            // If >= API 23 we can use the KeyStore's symmetric key
+            if (useSymmetric && !alwaysUseAsymmetricKey)
+                return GetSymmetricKey();
+
+            // NOTE: KeyStore in < API 23 can only store asymmetric keys
+            // specifically, only RSA/ECB/PKCS1Padding
+            // So we will wrap our symmetric AES key we just generated
+            // with this and save the encrypted/wrapped key out to
+            // preferences for future use.
+            // ECB should be fine in this case as the AES key should be
+            // contained in one block.
+
+            // Get the asymmetric key pair
+            var keyPair = GetAsymmetricKeyPair();
+
+            var existingKeyStr = Preferences.Get(prefsMasterKey, null, alias);
+
+            if (!string.IsNullOrEmpty(existingKeyStr))
+            {
+                try
+                {
+                    var wrappedKey = Convert.FromBase64String(existingKeyStr);
+
+                    var unwrappedKey = UnwrapKey(wrappedKey, keyPair.Private);
+                    var kp = unwrappedKey.JavaCast<ISecretKey>();
+
+                    return kp;
+                }
+                catch (InvalidKeyException ikEx)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Unable to unwrap key: Invalid Key. This may be caused by system backup or upgrades. All secure storage items will now be removed. {ikEx.Message}");
+                }
+                catch (IllegalBlockSizeException ibsEx)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Unable to unwrap key: Illegal Block Size. This may be caused by system backup or upgrades. All secure storage items will now be removed. {ibsEx.Message}");
+                }
+                catch (BadPaddingException paddingEx)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Unable to unwrap key: Bad Padding. This may be caused by system backup or upgrades. All secure storage items will now be removed. {paddingEx.Message}");
+                }
+                SecureStorage.RemoveAll();
+            }
+
+            var keyGenerator = KeyGenerator.GetInstance(aesAlgorithm);
+            var defSymmetricKey = keyGenerator.GenerateKey();
+
+            var newWrappedKey = WrapKey(defSymmetricKey, keyPair.Public);
+
+            Preferences.Set(prefsMasterKey, Convert.ToBase64String(newWrappedKey), alias);
+
+            return defSymmetricKey;
+        }
+
+        // API 23+ Only
+        ISecretKey GetSymmetricKey()
+        {
+            Preferences.Set(useSymmetricPreferenceKey, true, LegacySecureKeyService.Alias);
+
+            var existingKey = keyStore.GetKey(alias, null);
+
+            if (existingKey != null)
+            {
+                var existingSecretKey = existingKey.JavaCast<ISecretKey>();
+                return existingSecretKey;
+            }
+
+            var keyGenerator = KeyGenerator.GetInstance(KeyProperties.KeyAlgorithmAes, androidKeyStore);
+            var builder = new KeyGenParameterSpec.Builder(alias, KeyStorePurpose.Encrypt | KeyStorePurpose.Decrypt)
+                .SetBlockModes(KeyProperties.BlockModeGcm)
+                .SetEncryptionPaddings(KeyProperties.EncryptionPaddingNone)
+                .SetRandomizedEncryptionRequired(false);
+
+            keyGenerator.Init(builder.Build());
+
+            return keyGenerator.GenerateKey();
+        }
+
+        KeyPair GetAsymmetricKeyPair()
+        {
+            // set that we generated keys on pre-m device.
+            Preferences.Set(useSymmetricPreferenceKey, false, LegacySecureKeyService.Alias);
+
+            var asymmetricAlias = $"{alias}.asymmetric";
+
+            var privateKey = keyStore.GetKey(asymmetricAlias, null)?.JavaCast<IPrivateKey>();
+            var publicKey = keyStore.GetCertificate(asymmetricAlias)?.PublicKey;
+
+            // Return the existing key if found
+            if (privateKey != null && publicKey != null)
+                return new KeyPair(publicKey, privateKey);
+
+            var originalLocale = LegacySecureKeyUtils.GetLocale();
+            try
+            {
+                // Force to english for known bug in date parsing:
+                // https://issuetracker.google.com/issues/37095309
+                LegacySecureKeyUtils.SetLocale(Java.Util.Locale.English);
+
+                // Otherwise we create a new key
+                var generator = KeyPairGenerator.GetInstance(KeyProperties.KeyAlgorithmRsa, androidKeyStore);
+
+                var end = DateTime.UtcNow.AddYears(20);
+                var startDate = new Java.Util.Date();
+#pragma warning disable CS0618 // Type or member is obsolete
+                var endDate = new Java.Util.Date(end.Year, end.Month, end.Day);
+#pragma warning restore CS0618 // Type or member is obsolete
+
+#pragma warning disable CS0618
+                var builder = new KeyPairGeneratorSpec.Builder(LegacySecureKeyUtils.AppContext)
+                    .SetAlias(asymmetricAlias)
+                    .SetSerialNumber(Java.Math.BigInteger.One)
+                    .SetSubject(new Javax.Security.Auth.X500.X500Principal($"CN={asymmetricAlias} CA Certificate"))
+                    .SetStartDate(startDate)
+                    .SetEndDate(endDate);
+
+                generator.Initialize(builder.Build());
+#pragma warning restore CS0618
+
+                return generator.GenerateKeyPair();
+            }
+            finally
+            {
+                LegacySecureKeyUtils.SetLocale(originalLocale);
+            }
+        }
+
+        byte[] WrapKey(IKey keyToWrap, IKey withKey)
+        {
+            var cipher = Cipher.GetInstance(cipherTransformationAsymmetric);
+            cipher.Init(Javax.Crypto.CipherMode.WrapMode, withKey);
+            return cipher.Wrap(keyToWrap);
+        }
+
+        IKey UnwrapKey(byte[] wrappedData, IKey withKey)
+        {
+            var cipher = Cipher.GetInstance(cipherTransformationAsymmetric);
+            cipher.Init(Javax.Crypto.CipherMode.UnwrapMode, withKey);
+            var unwrapped = cipher.Unwrap(wrappedData, KeyProperties.KeyAlgorithmAes, KeyType.SecretKey);
+            return unwrapped;
+        }
+
+        internal byte[] Encrypt(string data)
+        {
+            var key = GetKey();
+
+            // Generate initialization vector
+            var iv = new byte[initializationVectorLen];
+
+            var sr = new SecureRandom();
+            sr.NextBytes(iv);
+
+            Cipher cipher;
+
+            // Attempt to use GCMParameterSpec by default
+            try
+            {
+                cipher = Cipher.GetInstance(cipherTransformationSymmetric);
+                cipher.Init(Javax.Crypto.CipherMode.EncryptMode, key, new GCMParameterSpec(128, iv));
+            }
+            catch (InvalidAlgorithmParameterException)
+            {
+                // If we encounter this error, it's likely an old bouncycastle provider version
+                // is being used which does not recognize GCMParameterSpec, but should work
+                // with IvParameterSpec, however we only do this as a last effort since other
+                // implementations will error if you use IvParameterSpec when GCMParameterSpec
+                // is recognized and expected.
+                cipher = Cipher.GetInstance(cipherTransformationSymmetric);
+                cipher.Init(Javax.Crypto.CipherMode.EncryptMode, key, new IvParameterSpec(iv));
+            }
+
+            var decryptedData = Encoding.UTF8.GetBytes(data);
+            var encryptedBytes = cipher.DoFinal(decryptedData);
+
+            // Combine the IV and the encrypted data into one array
+            var r = new byte[iv.Length + encryptedBytes.Length];
+            Buffer.BlockCopy(iv, 0, r, 0, iv.Length);
+            Buffer.BlockCopy(encryptedBytes, 0, r, iv.Length, encryptedBytes.Length);
+
+            return r;
+        }
+
+        internal string Decrypt(byte[] data)
+        {
+            if (data.Length < initializationVectorLen)
+                return null;
+
+            var key = GetKey();
+
+            // IV will be the first 16 bytes of the encrypted data
+            var iv = new byte[initializationVectorLen];
+            Buffer.BlockCopy(data, 0, iv, 0, initializationVectorLen);
+
+            Cipher cipher;
+
+            // Attempt to use GCMParameterSpec by default
+            try
+            {
+                cipher = Cipher.GetInstance(cipherTransformationSymmetric);
+                cipher.Init(Javax.Crypto.CipherMode.DecryptMode, key, new GCMParameterSpec(128, iv));
+            }
+            catch (InvalidAlgorithmParameterException)
+            {
+                // If we encounter this error, it's likely an old bouncycastle provider version
+                // is being used which does not recognize GCMParameterSpec, but should work
+                // with IvParameterSpec, however we only do this as a last effort since other
+                // implementations will error if you use IvParameterSpec when GCMParameterSpec
+                // is recognized and expected.
+                cipher = Cipher.GetInstance(cipherTransformationSymmetric);
+                cipher.Init(Javax.Crypto.CipherMode.DecryptMode, key, new IvParameterSpec(iv));
+            }
+
+            // Decrypt starting after the first 16 bytes from the IV
+            var decryptedData = cipher.DoFinal(data, initializationVectorLen, data.Length - initializationVectorLen);
+
+            return Encoding.UTF8.GetString(decryptedData);
+        }
+    }
+
+    public class BRKeyStoreAliases
+    {
+        const string TAG = nameof(BRKeyStoreAliases);
 
         const string KEY_STORE_PREFS_NAME = "keyStorePrefs";
 
@@ -97,232 +470,6 @@ namespace HodlWallet2.Droid.Services
                 { PASS_TIME_ALIAS, new AliasObject(PASS_TIME_ALIAS, PASS_TIME_FILENAME, PASS_TIME_IV) },
                 { TOTAL_LIMIT_ALIAS, new AliasObject(TOTAL_LIMIT_ALIAS, TOTAL_LIMIT_FILENAME, TOTAL_LIMIT_IV) }
             };
-
-        static bool _setData(Context context, byte[] data, string alias, string aliasFile, string aliasiv,
-                                int requestCode, bool authRequired)
-        {
-            _ValidateSet(data, alias, aliasFile, aliasiv, authRequired);
-
-            KeyStore keyStore = null;
-
-            try
-            {
-                lock (_Lock)
-                {
-                    keyStore = KeyStore.GetInstance(ANDROID_KEY_STORE);
-                    keyStore.Load(null);
-
-                    IKey secretKey = (ISecretKey)keyStore.GetKey(alias, null);
-                    Cipher inCipher = Cipher.GetInstance(NEW_CIPHER_ALGORITHM);
-
-                    if (secretKey == null)
-                    {
-                        secretKey = _CreateKeys(alias, authRequired);
-                        inCipher.Init(CipherMode.EncryptMode, secretKey);
-                    }
-                    else
-                    {
-                        try
-                        {
-                            inCipher.Init(CipherMode.EncryptMode, secretKey);
-                        }
-                        catch (InvalidKeyException ignored)
-                        {
-                            if (ignored is UserNotAuthenticatedException)
-                                throw ignored;
-
-                            // Log(string.Format("_setData: OLD KEY PRESENT: {0}", alias));
-                            secretKey = _CreateKeys(alias, authRequired);
-                            inCipher.Init(CipherMode.EncryptMode, secretKey);
-                        }
-                    }
-
-                    // The key cannot still be null
-                    if (secretKey == null)
-                    {
-                        // Log(new KeyStoreException(string.Format("secret is null on _setData: {0}", alias)).toString());
-                        return false;
-                    }
-
-                    byte[] iv = inCipher.GetIV();
-                    if (iv == null)
-                        throw new NullPointerException("iv is null!");
-
-                    // Store the iv
-                    StoreEncryptedData(context, iv, aliasiv);
-                    byte[] encryptedData = inCipher.DoFinal(data);
-                    // Store the encrypted data
-                    StoreEncryptedData(context, encryptedData, alias);
-                    return true;
-                }
-            }
-            catch (UserNotAuthenticatedException e)
-            {
-                ShowAuthenticationScreen(context, requestCode, alias);
-                throw e;
-            }
-            catch (InvalidKeyException ex)
-            {
-                if (ex is KeyPermanentlyInvalidatedException)
-                {
-                    ShowKeyInvalidated(context);
-                    throw new UserNotAuthenticatedException(); // Just to make the flow stop
-                }
-                // Log(ex.toString())
-                return false;
-            }
-            catch (Exception e)
-            {
-                // Log(ex.toString());
-                e.PrintStackTrace();
-                return false;
-            }
-        }
-
-        static byte[] _GetData(Context context, string alias, string aliasFile, string aliasiv, int requestCode)
-        {
-            try
-            {
-                lock(_Lock)
-                {
-                    // TODO
-                }
-            }
-            catch (InvalidKeyException ex)
-            {
-                if (ex is KeyPermanentlyInvalidatedException)
-                {
-                    ShowKeyInvalidated(context);
-                    throw new UserNotAuthenticatedException(); // Just to not go any further
-                }
-            }
-            catch (Exception ex)
-            {
-                if (ex is IOException || ex is CertificateException || ex is KeyStoreException)
-                {
-                    // Log("_getData: keyStore.load(null) threw the Exception, meaning the keystore is unavailable")
-                    if (ex is FileNotFoundException)
-                    {
-                        // Log("_getData: File not found exception\nThe key is present but the phrase on the disk is not");
-                        throw new RuntimeException(ex.Message);
-                    }
-                    else
-                    {
-                        // Log(ex.toString())
-                        throw new RuntimeException(ex.Message);
-                    }
-                }
-                if (ex is UnrecoverableKeyException || ex is NoSuchAlgorithmException || ex is NoSuchPaddingException || ex is InvalidAlgorithmParameterException)
-                {
-                    /** if for any other reason the keystore fails, crash! */
-                    throw new RuntimeException(ex.Message);
-                }
-                if (ex is BadPaddingException || ex is IllegalBlockSizeException || ex is NoSuchProviderException)
-                {
-                    ex.PrintStackTrace();
-                    throw new RuntimeException(ex.Message);
-                }
-            }
-        }
-
-        static void _ValidateSet(byte[] data, string alias, string aliasFile, string aliasiv, bool authRequired)
-        {
-            if (data == null)
-            {
-                throw new IllegalArgumentException("keystore insert data is null");
-            }
-
-            AliasObject obj = AliasObjectMap[alias];
-
-            if (!obj.Alias.Equals(alias) || !obj.DataFileName.Equals(aliasFile) || !obj.IVFileName.Equals(aliasiv))
-            {
-                string err = string.Format("keystore insert inconsistency in names: {0}|{1}|{2}, obj: {3}|{4}|{5}", alias, aliasFile, aliasiv, obj.Alias, obj.DataFileName, obj.IVFileName);
-                throw new IllegalArgumentException(err);
-            }
-
-            if (authRequired)
-            {
-                if (!alias.Equals(PHRASE_ALIAS) && !alias.Equals(CANARY_ALIAS))
-                    throw new IllegalArgumentException(string.Format("keystore auth_required is true but alias is: {0}", alias));
-            }
-        }
-
-        static ISecretKey _CreateKeys(string alias, bool authRequired)
-        {
-            KeyGenerator keyGenerator = KeyGenerator.GetInstance(KeyProperties.KeyAlgorithmAes, ANDROID_KEY_STORE);
-
-            // Set the alias of the entry in Android KeyStore where the key will appear
-            // and the constrains (purposes) in the constructor of the Builder
-            keyGenerator.Init(new KeyGenParameterSpec.Builder(alias,
-                            KeyStorePurpose.Encrypt | KeyStorePurpose.Decrypt)
-                        .SetBlockModes(NEW_BLOCK_MODE)
-                        .SetUserAuthenticationRequired(authRequired)
-                        .SetUserAuthenticationValidityDurationSeconds(AUTH_DURATION_SEC)
-                        .SetRandomizedEncryptionRequired(false)
-                        .SetEncryptionPaddings(NEW_PADDING)
-                        .Build());
-
-            return keyGenerator.GenerateKey();
-        }
-
-        public static void StoreEncryptedData(Context context, byte[] data, string name)
-        {
-            ISharedPreferences pref = context.GetSharedPreferences(KEY_STORE_PREFS_NAME, FileCreationMode.Private);
-            string base64 = Base64.EncodeToString(data, Base64Flags.Default);
-            ISharedPreferencesEditor edit = pref.Edit();
-            edit.PutString(name, base64);
-            edit.Apply();
-        }
-
-        public static void ShowAuthenticationScreen(Context context, int requestCode, string alias)
-        {
-            // Create the Confirm Credentials screen. You can customize the title and description.
-            // Or we will provide a generic one for you if you leave it null.
-            if (!alias.Equals(PHRASE_ALIAS) && !alias.Equals(CANARY_ALIAS))
-            {
-                throw new IllegalArgumentException(string.Format("requesting auth for: {0}", alias));
-            }
-
-            if (context is Activity)
-            {
-                Activity app = (Activity)context;
-                KeyguardManager keyguardManager = (KeyguardManager)app.GetSystemService(Context.KeyguardService);
-                if (keyguardManager == null)
-                {
-                    throw new NullPointerException("KeyguardManager is null in showAuthenticationScreen");
-                }
-                string message = "Please unlock your Android device to continue."; // Localize
-                string title = "Authentication required"; // Localize
-                Intent intent = keyguardManager.CreateConfirmDeviceCredentialIntent(title, message);
-                if (intent != null)
-                {
-                    app.StartActivityForResult(intent, requestCode);
-                }
-                else
-                {
-                    // Log("showAuthenticationScreen: failed to create intent for auth");
-                    app.Finish();
-                }
-            }
-            else
-            {
-                // Log("showAuthenticationScreen: context is not activity!");
-            }
-        }
-
-        public static void ShowKeyInvalidated(Context app)
-        {
-            AlertDialog.Builder builder = new AlertDialog.Builder(app);
-            builder.SetTitle("Android KeyStore Error"); // Localize
-            builder.SetMessage("Your wallet encrypted data was recently invalidated because your Android lock screen was disabled."); // Localize
-            builder.SetPositiveButton("OK", (senderAlert, args) => {
-                Toast.MakeText(app, "Bye Bye", ToastLength.Short).Show();
-                // wipeWalletButKeystore
-                // wipeKeyStore
-                }); // Localize
-            Dialog dialog = builder.Create();
-            dialog.Show();
-        }
     }
 
     public class AliasObject
