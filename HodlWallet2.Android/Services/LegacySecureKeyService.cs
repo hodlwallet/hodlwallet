@@ -21,61 +21,6 @@ using Xamarin.Essentials;
 
 namespace HodlWallet2.Droid.Services
 {
-    class AndroidSecureKeyUtils
-    {
-        internal static Context AppContext => Application.Context;
-
-        internal static bool HasApiLevel(BuildVersionCodes versionCode) =>
-            (int)Build.VERSION.SdkInt >= (int)versionCode;
-
-        internal static bool HasApiLevelN =>
-#if __ANDROID_24__
-            HasApiLevel(BuildVersionCodes.N);
-#else
-            false;
-#endif
-
-        internal static string Md5Hash(string input)
-        {
-            var hash = new System.Text.StringBuilder();
-            var md5provider = new MD5CryptoServiceProvider();
-            var bytes = md5provider.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-            for (var i = 0; i < bytes.Length; i++)
-                hash.Append(bytes[i].ToString("x2"));
-
-            return hash.ToString();
-        }
-
-        internal static void SetLocale(Java.Util.Locale locale)
-        {
-            Java.Util.Locale.Default = locale;
-            var resources = AppContext.Resources;
-            var config = resources.Configuration;
-
-            if (HasApiLevelN)
-                config.SetLocale(locale);
-            else
-                config.Locale = locale;
-
-#pragma warning disable CS0618 // Type or member is obsolete
-            resources.UpdateConfiguration(config, resources.DisplayMetrics);
-#pragma warning restore CS0618 // Type or member is obsolete
-        }
-
-        internal static Java.Util.Locale GetLocale()
-        {
-            var resources = AppContext.Resources;
-            var config = resources.Configuration;
-#if __ANDROID_24__
-            if (HasApiLevelN)
-                return config.Locales.Get(0);
-#endif
-
-            return config.Locale;
-        }
-    }
-
     public static class AndroidLegacyKeyService
     {
         static readonly object locker = new object();
@@ -138,7 +83,7 @@ namespace HodlWallet2.Droid.Services
 
     }
 
-    public class BRKeyStoreAliases
+    public static class BRKeyStoreAliases
     {
         public const string KEY_STORE_PREFS_NAME = "keyStorePrefs";
 
