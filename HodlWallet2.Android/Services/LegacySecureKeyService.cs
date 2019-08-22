@@ -1,23 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Security;
 using Android.Security.Keystore;
 using Android.Util;
 
 using Java.Security;
-using Java.Util.Concurrent.Locks;
 using Javax.Crypto;
 using Javax.Crypto.Spec;
-
-using Xamarin.Essentials;
 
 namespace HodlWallet2.Droid.Services
 {
@@ -27,7 +20,7 @@ namespace HodlWallet2.Droid.Services
 
         internal static Context AppContext => Application.Context;
 
-        static Task<byte[]> LegacyGetAsync(string key)
+        static Task<byte[]> _LegacyGetAsync(string key)
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentNullException(nameof(key));
@@ -44,10 +37,10 @@ namespace HodlWallet2.Droid.Services
                 ks.Load(null);
                 ISecretKey secret = (ISecretKey)ks.GetKey(obj.Alias, null);
 
-                var encryptedData = retrieveEncryptedData(context, obj.Alias);
+                var encryptedData = _RetrieveEncryptedData(context, obj.Alias);
                 if (encryptedData != null)
                 {
-                    var iv = retrieveEncryptedData(context, obj.IVFileName);
+                    var iv = _RetrieveEncryptedData(context, obj.IVFileName);
                     if (iv == null)
                     {
                         throw new ArgumentNullException(string.Format("iv is missing when data is not: {0}", obj.Alias));
@@ -73,7 +66,7 @@ namespace HodlWallet2.Droid.Services
             }
         }
 
-        static byte[] retrieveEncryptedData(Context context, string name)
+        static byte[] _RetrieveEncryptedData(Context context, string name)
         {
             ISharedPreferences pref = context.GetSharedPreferences(BRKeyStoreAliases.KEY_STORE_PREFS_NAME, FileCreationMode.Private);
             string base64 = pref.GetString(name, null);
@@ -81,6 +74,114 @@ namespace HodlWallet2.Droid.Services
             return Base64.Decode(base64, Base64Flags.Default);
         }
 
+        static Task<int> _GetIntFromBytes(byte[] data)
+        {
+            if (BitConverter.IsLittleEndian)
+                Array.Reverse(data);
+
+            return Task.FromResult(BitConverter.ToInt32(data));
+        }
+
+        static Task<long> _GetLongFromBytes(byte[] data)
+        {
+            if (BitConverter.IsLittleEndian)
+                Array.Reverse(data);
+
+            return Task.FromResult(BitConverter.ToInt64(data));
+        }
+
+        public static Task<byte[]> GetPhrase()
+        {
+            return _LegacyGetAsync(BRKeyStoreAliases.PHRASE_ALIAS);
+        }
+
+        public static Task<string> GetCanary()
+        {
+            var data = _LegacyGetAsync(BRKeyStoreAliases.CANARY_ALIAS).Result;
+
+            return Task.FromResult(Encoding.UTF8.GetString(data));
+        }
+
+        public static Task<byte[]> GetMasterPublicKey()
+        {
+            return _LegacyGetAsync(BRKeyStoreAliases.PUB_KEY_ALIAS);
+        }
+
+        public static Task<byte[]> GetAuthKey()
+        {
+            return _LegacyGetAsync(BRKeyStoreAliases.AUTH_KEY_ALIAS);
+        }
+
+        public static Task<byte[]> GetToken()
+        {
+            return _LegacyGetAsync(BRKeyStoreAliases.TOKEN_ALIAS);
+        }
+
+        public static Task<int> GetWalletCreationTime()
+        {
+            var data = _LegacyGetAsync(BRKeyStoreAliases.WALLET_CREATION_TIME_ALIAS).Result;
+
+            return _GetIntFromBytes(data);
+        }
+
+        public static Task<string> GetPinCode()
+        {
+            var data = _LegacyGetAsync(BRKeyStoreAliases.PASS_CODE_ALIAS).Result;
+            var pinCode = Encoding.UTF8.GetString(data);
+
+            try
+            {
+                int.Parse(pinCode);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("GetPinCode: WARNING passcode isn't a number: {0}\n{1}", pinCode, ex.Message));
+                return Task.FromResult("");
+            }
+
+            if (pinCode.Length != 6 && pinCode.Length != 4)
+            {
+                Console.WriteLine(string.Format("GetPinCode: WARNING passcode has invalid length: {0}", pinCode));
+                return Task.FromResult("");
+            }
+
+            return Task.FromResult(pinCode);
+        }
+
+        public static Task<int> GetFailCount()
+        {
+            var data = _LegacyGetAsync(BRKeyStoreAliases.FAIL_COUNT_ALIAS).Result;
+
+            return _GetIntFromBytes(data);
+        }
+
+        public static Task<long> GetSpendLimit()
+        {
+            var data = _LegacyGetAsync(BRKeyStoreAliases.SPEND_LIMIT_ALIAS).Result;
+
+            return _GetLongFromBytes(data);
+        }
+
+        public static Task<long> GetFailTimeStamp()
+        {
+            var data = _LegacyGetAsync(BRKeyStoreAliases.FAIL_TIMESTAMP_ALIAS).Result;
+
+            return _GetLongFromBytes(data);
+        }
+
+        public static Task<long> GetTotalLimit()
+        {
+            var data = _LegacyGetAsync(BRKeyStoreAliases.TOTAL_LIMIT_ALIAS).Result;
+
+            return _GetLongFromBytes(data);
+        }
+
+        public static Task<long> GetLastPinUsedTimt()
+        {
+            var data = _LegacyGetAsync(BRKeyStoreAliases.PASS_TIME_ALIAS).Result;
+
+            return _GetLongFromBytes(data);
+        }
     }
 
     public static class BRKeyStoreAliases
