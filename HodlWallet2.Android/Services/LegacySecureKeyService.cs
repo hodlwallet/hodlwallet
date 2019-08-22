@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Security;
 using Android.Security.Keystore;
+using Android.Util;
 
 using Java.Security;
 using Java.Util.Concurrent.Locks;
@@ -77,234 +78,71 @@ namespace HodlWallet2.Droid.Services
 
     public static class AndroidLegacyKeyService
     {
-        internal static readonly string KEY_STORE_PREFS_NAME = "keyStorePrefs";
-
         static readonly object locker = new object();
 
-        public static Task<string> LegacyGetAsync(string key)
+        internal static Context AppContext => Application.Context;
+
+        static Task<byte[]> LegacyGetAsync(string key)
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentNullException(nameof(key));
 
-            var context = AndroidSecureKeyUtils.AppContext;
+            var context = AppContext;
 
-            string defaultEncStr = null;
-            var encStr = Preferences.Get(AndroidSecureKeyUtils.Md5Hash(key), defaultEncStr, KEY_STORE_PREFS_NAME);
+            var obj = BRKeyStoreAliases.AliasObjectMap[key];
 
-            string decryptedData = null;
-            if (!string.IsNullOrEmpty(encStr))
-            {
-                try
-                {
-                    var encData = Convert.FromBase64String(encStr);
-                    lock (locker)
-                    {
-                        var ks = new AndroidKeyStore(context, Alias, AlwaysUseAsymmetricKeyStorage);
-                        decryptedData = ks.Decrypt(encData);
-                    }
-                }
-                catch (AEADBadTagException)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Unable to decrypt key, {key}, which is likely due to an app uninstall. Removing old key and returning null.");
-                    LegacyRemove(key);
-                }
-            }
+            if (obj == null) throw new KeyNotFoundException(string.Format("Key does not return an Alias Object: {0}", key));
 
-            return Task.FromResult(decryptedData);
-        }
-
-        public static Task LegacySetAsync(string key, string data)
-        {
-            if (string.IsNullOrWhiteSpace(key))
-                throw new ArgumentNullException(nameof(key));
-
-            if (data == null)
-                throw new ArgumentNullException(nameof(data));
-
-            var context = AndroidSecureKeyUtils.AppContext;
-
-            byte[] encryptedData = null;
             lock (locker)
             {
-                var ks = new AndroidKeyStore(context, Alias, AlwaysUseAsymmetricKeyStorage);
-                encryptedData = ks.Encrypt(data);
+                var ks = KeyStore.GetInstance(BRKeyStoreAliases.ANDROID_KEY_STORE);
+                ks.Load(null);
+                ISecretKey secret = (ISecretKey)ks.GetKey(obj.Alias, null);
+
+                var encryptedData = retrieveEncryptedData(context, obj.Alias);
+                if (encryptedData != null)
+                {
+                    var iv = retrieveEncryptedData(context, obj.IVFileName);
+                    if (iv == null)
+                    {
+                        throw new ArgumentNullException(string.Format("iv is missing when data is not: {0}", obj.Alias));
+                    }
+
+                    Cipher outCipher = Cipher.GetInstance(BRKeyStoreAliases.NEW_CIPHER_ALGORITHM);
+                    outCipher.Init(Javax.Crypto.CipherMode.DecryptMode, secret, new GCMParameterSpec(128, iv));
+
+                    try
+                    {
+                        byte[] decryptedData = outCipher.DoFinal(encryptedData);
+                        if (decryptedData != null)
+                        {
+                            return Task.FromResult(decryptedData);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new AndroidRuntimeException(string.Format("failed to decrypt data: {0}", ex.Message));
+                    }
+                }
+                throw new KeyNotFoundException(string.Format("Alias did not return any data: {0}", obj.Alias));
             }
-
-            var encStr = Convert.ToBase64String(encryptedData);
-            Preferences.Set(key, encStr, KEY_STORE_PREFS_NAME);
-
-            return Task.CompletedTask;
         }
 
-        public static bool LegacyRemove(string key)
+        static byte[] retrieveEncryptedData(Context context, string name)
         {
-            var context = AndroidSecureKeyUtils.AppContext;
-
-            key = AndroidSecureKeyUtils.Md5Hash(key);
-            Preferences.Remove(key, KEY_STORE_PREFS_NAME);
-
-            return true;
+            ISharedPreferences pref = context.GetSharedPreferences(BRKeyStoreAliases.KEY_STORE_PREFS_NAME, FileCreationMode.Private);
+            string base64 = pref.GetString(name, null);
+            if (base64 == null) return null;
+            return Base64.Decode(base64, Base64Flags.Default);
         }
 
-        public static void LegacyRemoveAll() =>
-            Preferences.Clear(KEY_STORE_PREFS_NAME);
-
-        internal static bool AlwaysUseAsymmetricKeyStorage { get; set; } = false;
-    }
-
-    class AndroidKeyStore
-    {
-        const string androidKeyStore = "AndroidKeyStore"; // this is an Android const value
-        const string aesAlgorithm = "AES";
-        const string cipherTransformationAsymmetric = "RSA/ECB/PKCS1Padding";
-        const string cipherTransformationSymmetric = "AES/GCM/NoPadding";
-        const string prefsMasterKey = "SecureStorageKey";
-        const int initializationVectorLen = 12; // Android supports an IV of 12 for AES/GCM
-
-        internal AndroidKeyStore(Context context, string keystoreAlias, bool alwaysUseAsymmetricKeyStorage)
-        {
-            alwaysUseAsymmetricKey = alwaysUseAsymmetricKeyStorage;
-            appContext = context;
-            alias = keystoreAlias;
-
-            keyStore = KeyStore.GetInstance(androidKeyStore);
-            keyStore.Load(null);
-        }
-
-        readonly Context appContext;
-        readonly string alias;
-        readonly bool alwaysUseAsymmetricKey;
-        readonly string useSymmetricPreferenceKey = "essentials_use_symmetric";
-
-        KeyStore keyStore;
-
-        // API 23+ Only
-        ISecretKey GetSymmetricKey()
-        {
-            Preferences.Set(useSymmetricPreferenceKey, true, AndroidLegacyKeyService.Alias);
-
-            var existingKey = keyStore.GetKey(alias, null);
-
-            if (existingKey != null)
-            {
-                var existingSecretKey = existingKey.JavaCast<ISecretKey>();
-                return existingSecretKey;
-            }
-
-            var keyGenerator = KeyGenerator.GetInstance(KeyProperties.KeyAlgorithmAes, androidKeyStore);
-            var builder = new KeyGenParameterSpec.Builder(alias, KeyStorePurpose.Encrypt | KeyStorePurpose.Decrypt)
-                .SetBlockModes(KeyProperties.BlockModeGcm)
-                .SetEncryptionPaddings(KeyProperties.EncryptionPaddingNone)
-                .SetRandomizedEncryptionRequired(false);
-
-            keyGenerator.Init(builder.Build());
-
-            return keyGenerator.GenerateKey();
-        }
-
-        byte[] WrapKey(IKey keyToWrap, IKey withKey)
-        {
-            var cipher = Cipher.GetInstance(cipherTransformationAsymmetric);
-            cipher.Init(Javax.Crypto.CipherMode.WrapMode, withKey);
-            return cipher.Wrap(keyToWrap);
-        }
-
-        IKey UnwrapKey(byte[] wrappedData, IKey withKey)
-        {
-            var cipher = Cipher.GetInstance(cipherTransformationAsymmetric);
-            cipher.Init(Javax.Crypto.CipherMode.UnwrapMode, withKey);
-            var unwrapped = cipher.Unwrap(wrappedData, KeyProperties.KeyAlgorithmAes, KeyType.SecretKey);
-            return unwrapped;
-        }
-
-        internal byte[] Encrypt(string data)
-        {
-            var key = GetSymmetricKey();
-
-            // Generate initialization vector
-            var iv = new byte[initializationVectorLen];
-
-            var sr = new SecureRandom();
-            sr.NextBytes(iv);
-
-            Cipher cipher;
-
-            // Attempt to use GCMParameterSpec by default
-            try
-            {
-                cipher = Cipher.GetInstance(cipherTransformationSymmetric);
-                cipher.Init(Javax.Crypto.CipherMode.EncryptMode, key, new GCMParameterSpec(128, iv));
-            }
-            catch (InvalidAlgorithmParameterException)
-            {
-                // If we encounter this error, it's likely an old bouncycastle provider version
-                // is being used which does not recognize GCMParameterSpec, but should work
-                // with IvParameterSpec, however we only do this as a last effort since other
-                // implementations will error if you use IvParameterSpec when GCMParameterSpec
-                // is recognized and expected.
-                cipher = Cipher.GetInstance(cipherTransformationSymmetric);
-                cipher.Init(Javax.Crypto.CipherMode.EncryptMode, key, new IvParameterSpec(iv));
-            }
-
-            var decryptedData = Encoding.UTF8.GetBytes(data);
-            var encryptedBytes = cipher.DoFinal(decryptedData);
-
-            // Combine the IV and the encrypted data into one array
-            var r = new byte[iv.Length + encryptedBytes.Length];
-            Buffer.BlockCopy(iv, 0, r, 0, iv.Length);
-            Buffer.BlockCopy(encryptedBytes, 0, r, iv.Length, encryptedBytes.Length);
-
-            return r;
-        }
-
-        internal string Decrypt(byte[] data)
-        {
-            if (data.Length < initializationVectorLen)
-                return null;
-
-            var key = GetSymmetricKey();
-
-            // IV will be the first 16 bytes of the encrypted data
-            var iv = new byte[initializationVectorLen];
-            Buffer.BlockCopy(data, 0, iv, 0, initializationVectorLen);
-
-            Cipher cipher;
-
-            // Attempt to use GCMParameterSpec by default
-            try
-            {
-                cipher = Cipher.GetInstance(cipherTransformationSymmetric);
-                cipher.Init(Javax.Crypto.CipherMode.DecryptMode, key, new GCMParameterSpec(128, iv));
-            }
-            catch (InvalidAlgorithmParameterException)
-            {
-                // If we encounter this error, it's likely an old bouncycastle provider version
-                // is being used which does not recognize GCMParameterSpec, but should work
-                // with IvParameterSpec, however we only do this as a last effort since other
-                // implementations will error if you use IvParameterSpec when GCMParameterSpec
-                // is recognized and expected.
-                cipher = Cipher.GetInstance(cipherTransformationSymmetric);
-                cipher.Init(Javax.Crypto.CipherMode.DecryptMode, key, new IvParameterSpec(iv));
-            }
-
-            // Decrypt starting after the first 16 bytes from the IV
-            var decryptedData = cipher.DoFinal(data, initializationVectorLen, data.Length - initializationVectorLen);
-
-            return Encoding.UTF8.GetString(decryptedData);
-        }
     }
 
     public class BRKeyStoreAliases
     {
-        const string TAG = nameof(BRKeyStoreAliases);
-
-        const string KEY_STORE_PREFS_NAME = "keyStorePrefs";
+        public const string KEY_STORE_PREFS_NAME = "keyStorePrefs";
 
         public const string ANDROID_KEY_STORE = "AndroidKeyStore";
-
-        public const string CIPHER_ALGORITHM = "AES/CBC/PKCS7Padding";
-        public const string PADDING = KeyProperties.EncryptionPaddingPkcs7;
-        public const string BLOCK_MODE = KeyProperties.BlockModeCbc;
 
         public const string NEW_CIPHER_ALGORITHM = "AES/GCM/NoPadding";
         public const string NEW_PADDING = KeyProperties.EncryptionPaddingNone;
@@ -336,51 +174,34 @@ namespace HodlWallet2.Droid.Services
         public const string TOKEN_ALIAS = "token";
         public const string PASS_TIME_ALIAS = "passTime";
 
-        const string PHRASE_FILENAME = "my_phrase";
-        const string CANARY_FILENAME = "my_canary";
-        const string PUB_KEY_FILENAME = "my_pub_key";
-        const string WALLET_CREATION_TIME_FILENAME = "my_creation_time";
-        const string PASS_CODE_FILENAME = "my_pass_code";
-        const string FAIL_COUNT_FILENAME = "my_fail_count";
-        const string SPEND_LIMIT_FILENAME = "my_spend_limit";
-        const string TOTAL_LIMIT_FILENAME = "my_total_limit";
-        const string FAIL_TIMESTAMP_FILENAME = "my_fail_timestamp";
-        const string AUTH_KEY_FILENAME = "my_auth_key";
-        const string TOKEN_FILENAME = "my_token";
-        const string PASS_TIME_FILENAME = "my_pass_time";
-        bool _BugMessageShowing;
-
         public const int AUTH_DURATION_SEC = 300;
-        static ReentrantLock _Lock = new ReentrantLock();
 
         public static IDictionary<string, AliasObject> AliasObjectMap =
             new Dictionary<string, AliasObject>
             {
-                { PHRASE_ALIAS, new AliasObject(PHRASE_ALIAS, PHRASE_FILENAME, PHRASE_IV) },
-                { CANARY_ALIAS, new AliasObject(CANARY_ALIAS, CANARY_FILENAME, CANARY_IV) },
-                { PUB_KEY_ALIAS, new AliasObject(PUB_KEY_ALIAS, PUB_KEY_FILENAME, PUB_KEY_IV) },
-                { WALLET_CREATION_TIME_ALIAS, new AliasObject(WALLET_CREATION_TIME_ALIAS, WALLET_CREATION_TIME_FILENAME, WALLET_CREATION_TIME_IV) },
-                { PASS_CODE_ALIAS, new AliasObject(PASS_CODE_ALIAS, PASS_CODE_FILENAME, PASS_CODE_IV) },
-                { FAIL_COUNT_ALIAS, new AliasObject(FAIL_COUNT_ALIAS, FAIL_COUNT_FILENAME, FAIL_COUNT_IV) },
-                { SPEND_LIMIT_ALIAS, new AliasObject(SPEND_LIMIT_ALIAS, SPEND_LIMIT_FILENAME, SPEND_LIMIT_IV) },
-                { FAIL_TIMESTAMP_ALIAS, new AliasObject(FAIL_TIMESTAMP_ALIAS, FAIL_TIMESTAMP_FILENAME, FAIL_TIMESTAMP_IV) },
-                { AUTH_KEY_ALIAS, new AliasObject(AUTH_KEY_ALIAS, AUTH_KEY_FILENAME, AUTH_KEY_IV) },
-                { TOKEN_ALIAS, new AliasObject(TOKEN_ALIAS, TOKEN_FILENAME, TOKEN_IV) },
-                { PASS_TIME_ALIAS, new AliasObject(PASS_TIME_ALIAS, PASS_TIME_FILENAME, PASS_TIME_IV) },
-                { TOTAL_LIMIT_ALIAS, new AliasObject(TOTAL_LIMIT_ALIAS, TOTAL_LIMIT_FILENAME, TOTAL_LIMIT_IV) }
+                { PHRASE_ALIAS, new AliasObject(PHRASE_ALIAS, PHRASE_IV) },
+                { CANARY_ALIAS, new AliasObject(CANARY_ALIAS, CANARY_IV) },
+                { PUB_KEY_ALIAS, new AliasObject(PUB_KEY_ALIAS, PUB_KEY_IV) },
+                { WALLET_CREATION_TIME_ALIAS, new AliasObject(WALLET_CREATION_TIME_ALIAS, WALLET_CREATION_TIME_IV) },
+                { PASS_CODE_ALIAS, new AliasObject(PASS_CODE_ALIAS, PASS_CODE_IV) },
+                { FAIL_COUNT_ALIAS, new AliasObject(FAIL_COUNT_ALIAS, FAIL_COUNT_IV) },
+                { SPEND_LIMIT_ALIAS, new AliasObject(SPEND_LIMIT_ALIAS, SPEND_LIMIT_IV) },
+                { FAIL_TIMESTAMP_ALIAS, new AliasObject(FAIL_TIMESTAMP_ALIAS, FAIL_TIMESTAMP_IV) },
+                { AUTH_KEY_ALIAS, new AliasObject(AUTH_KEY_ALIAS, AUTH_KEY_IV) },
+                { TOKEN_ALIAS, new AliasObject(TOKEN_ALIAS, TOKEN_IV) },
+                { PASS_TIME_ALIAS, new AliasObject(PASS_TIME_ALIAS, PASS_TIME_IV) },
+                { TOTAL_LIMIT_ALIAS, new AliasObject(TOTAL_LIMIT_ALIAS, TOTAL_LIMIT_IV) }
             };
     }
 
     public class AliasObject
     {
         public string Alias;
-        public string DataFileName;
         public string IVFileName;
 
-        public AliasObject(string alias, string datafileName, string ivFileName)
+        public AliasObject(string alias, string ivFileName)
         {
             Alias = alias;
-            DataFileName = datafileName;
             IVFileName = ivFileName;
         }
     }
