@@ -3,9 +3,9 @@
 
 namespace HodlWallet2.iOS.Services
 {
-    public class LegacySecureKeyService
+    public class iOSLegacySecureKeyService
     {
-        public LegacySecureKeyService()
+        public iOSLegacySecureKeyService()
         {
         }
     }

@@ -14,7 +14,7 @@ using Javax.Crypto.Spec;
 
 namespace HodlWallet2.Droid.Services
 {
-    public static class AndroidLegacyKeyService
+    public static class AndroidLegacySecureKeyService
     {
         static readonly object locker = new object();
 
