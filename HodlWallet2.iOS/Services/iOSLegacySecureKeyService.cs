@@ -7,9 +7,9 @@ namespace HodlWalstring2.iOS.Services
 {
     public class iOSLegacySecureKeyService
     {
-        const string WAllET_SEC_ATTR_SERVICE = "co.hodlwalstring";
+        const string WAllET_SEC_ATTR_SERVICE = "co.hodlwallet";
         
-        static T GetKeychainItem<T>(string key)
+        static T _LegacyGetKeychainItem<T>(string key)
         {
             var record = new SecRecord(SecKind.GenericPassword)
             {
