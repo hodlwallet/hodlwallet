@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
 using Android.App;
 using Android.Content;
@@ -20,7 +19,7 @@ namespace HodlWallet2.Droid.Services
 
         internal static Context AppContext => Application.Context;
 
-        static Task<byte[]> _LegacyGetAsync(string key)
+        static byte[] _LegacyGetAsync(string key)
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentNullException(nameof(key));
@@ -54,7 +53,7 @@ namespace HodlWallet2.Droid.Services
                         byte[] decryptedData = outCipher.DoFinal(encryptedData);
                         if (decryptedData != null)
                         {
-                            return Task.FromResult(decryptedData);
+                            return decryptedData;
                         }
                     }
                     catch (Exception ex)
@@ -74,59 +73,59 @@ namespace HodlWallet2.Droid.Services
             return Base64.Decode(base64, Base64Flags.Default);
         }
 
-        static Task<int> _GetIntFromBytes(byte[] data)
+        static int _GetIntFromBytes(byte[] data)
         {
             if (BitConverter.IsLittleEndian)
                 Array.Reverse(data);
 
-            return Task.FromResult(BitConverter.ToInt32(data));
+            return BitConverter.ToInt32(data);
         }
 
-        static Task<long> _GetLongFromBytes(byte[] data)
+        static long _GetLongFromBytes(byte[] data)
         {
             if (BitConverter.IsLittleEndian)
                 Array.Reverse(data);
 
-            return Task.FromResult(BitConverter.ToInt64(data));
+            return BitConverter.ToInt64(data);
         }
 
-        public static Task<byte[]> GetPhrase()
+        public static byte[] GetPhrase()
         {
             return _LegacyGetAsync(BRKeyStoreAliases.PHRASE_ALIAS);
         }
 
-        public static Task<string> GetCanary()
+        public static string GetCanary()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.CANARY_ALIAS).Result;
+            var data = _LegacyGetAsync(BRKeyStoreAliases.CANARY_ALIAS);
 
-            return Task.FromResult(Encoding.UTF8.GetString(data));
+            return Encoding.UTF8.GetString(data);
         }
 
-        public static Task<byte[]> GetMasterPublicKey()
+        public static byte[] GetMasterPublicKey()
         {
             return _LegacyGetAsync(BRKeyStoreAliases.PUB_KEY_ALIAS);
         }
 
-        public static Task<byte[]> GetAuthKey()
+        public static byte[] GetAuthKey()
         {
             return _LegacyGetAsync(BRKeyStoreAliases.AUTH_KEY_ALIAS);
         }
 
-        public static Task<byte[]> GetToken()
+        public static byte[] GetToken()
         {
             return _LegacyGetAsync(BRKeyStoreAliases.TOKEN_ALIAS);
         }
 
-        public static Task<int> GetWalletCreationTime()
+        public static int GetWalletCreationTime()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.WALLET_CREATION_TIME_ALIAS).Result;
+            var data = _LegacyGetAsync(BRKeyStoreAliases.WALLET_CREATION_TIME_ALIAS);
 
             return _GetIntFromBytes(data);
         }
 
-        public static Task<string> GetPinCode()
+        public static string GetPinCode()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.PASS_CODE_ALIAS).Result;
+            var data = _LegacyGetAsync(BRKeyStoreAliases.PASS_CODE_ALIAS);
             var pinCode = Encoding.UTF8.GetString(data);
 
             try
@@ -136,49 +135,49 @@ namespace HodlWallet2.Droid.Services
             catch (Exception ex)
             {
                 Console.WriteLine(string.Format("GetPinCode: WARNING passcode isn't a number: {0}\n{1}", pinCode, ex.Message));
-                return Task.FromResult("");
+                return "";
             }
 
             if (pinCode.Length != 6 && pinCode.Length != 4)
             {
                 Console.WriteLine(string.Format("GetPinCode: WARNING passcode has invalid length: {0}", pinCode));
-                return Task.FromResult("");
+                return "";
             }
 
-            return Task.FromResult(pinCode);
+            return pinCode;
         }
 
-        public static Task<int> GetFailCount()
+        public static int GetFailCount()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.FAIL_COUNT_ALIAS).Result;
+            var data = _LegacyGetAsync(BRKeyStoreAliases.FAIL_COUNT_ALIAS);
 
             return _GetIntFromBytes(data);
         }
 
-        public static Task<long> GetSpendLimit()
+        public static long GetSpendLimit()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.SPEND_LIMIT_ALIAS).Result;
+            var data = _LegacyGetAsync(BRKeyStoreAliases.SPEND_LIMIT_ALIAS);
 
             return _GetLongFromBytes(data);
         }
 
-        public static Task<long> GetFailTimeStamp()
+        public static long GetFailTimeStamp()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.FAIL_TIMESTAMP_ALIAS).Result;
+            var data = _LegacyGetAsync(BRKeyStoreAliases.FAIL_TIMESTAMP_ALIAS);
 
             return _GetLongFromBytes(data);
         }
 
-        public static Task<long> GetTotalLimit()
+        public static long GetTotalLimit()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.TOTAL_LIMIT_ALIAS).Result;
+            var data = _LegacyGetAsync(BRKeyStoreAliases.TOTAL_LIMIT_ALIAS);
 
             return _GetLongFromBytes(data);
         }
 
-        public static Task<long> GetLastPinUsedTimt()
+        public static long GetLastPinUsedTimt()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.PASS_TIME_ALIAS).Result;
+            var data = _LegacyGetAsync(BRKeyStoreAliases.PASS_TIME_ALIAS);
 
             return _GetLongFromBytes(data);
         }
