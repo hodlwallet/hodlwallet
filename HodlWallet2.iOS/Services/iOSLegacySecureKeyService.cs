@@ -1,19 +1,42 @@
 ﻿using System;
-using Foundation;
-using UIKit;
-using LocalAuthentication;
+using System.Text;
+
 using Security;
 
 namespace HodlWalstring2.iOS.Services
 {
     public class iOSLegacySecureKeyService
     {
-        const string WALstring_SEC_ATTR_SERVICE = "co.hodlwalstring";
+        const string WAllET_SEC_ATTR_SERVICE = "co.hodlwalstring";
         
         static T GetKeychainItem<T>(string key)
         {
-            // var query =
-            // SecItemCop
+            var record = new SecRecord(SecKind.GenericPassword)
+            {
+                Service = WAllET_SEC_ATTR_SERVICE,
+                Account = key
+            };
+
+            var data = SecKeyChain.QueryAsData(record).ToArray();
+            var generic = typeof(T);
+
+            if (generic == typeof(byte[]))
+            {
+                return (T)Convert.ChangeType(data, typeof(T));
+            }
+            if (generic == typeof(string))
+            {
+                return (T)Convert.ChangeType(Encoding.UTF8.GetString(data), typeof(T));
+            }
+            if (generic == typeof(long))
+            {
+                if (BitConverter.IsLittleEndian)
+                    Array.Reverse(data);
+
+                return (T)Convert.ChangeType(BitConverter.ToInt64(data), typeof(T));
+            }
+
+            throw new ArgumentException("GetKeychainItem: Invalid type '{0}' was passed", typeof(T).ToString());
         }
 
         struct KeychainKey
