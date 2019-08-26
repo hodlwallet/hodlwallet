@@ -55,6 +55,41 @@ namespace HodlWalstring2.iOS.Services
             return _LegacyGetKeychainItem<byte[]>(KeychainKey.SEED);
         }
 
+        public static byte[] GetMasterPubKey()
+        {
+            return _LegacyGetKeychainItem<byte[]>(KeychainKey.MASTER_PUB_KEY);
+        }
+
+        public static string GetPin()
+        {
+            return _LegacyGetKeychainItem<string>(KeychainKey.PIN);
+        }
+
+        public static long GetPinFailCount()
+        {
+            return _LegacyGetKeychainItem<long>(KeychainKey.PIN_FAIL_COUNT);
+        }
+
+        public static long GetPinFailTime()
+        {
+            return _LegacyGetKeychainItem<long>(KeychainKey.PIN_FAIL_TIME);
+        }
+
+        public static byte[] GetCreationTime()
+        {
+            return _LegacyGetKeychainItem<byte[]>(KeychainKey.CREATION_TIME);
+        }
+
+        public static long GetSpendLimit()
+        {
+            return _LegacyGetKeychainItem<long>(KeychainKey.SPEND_LIMIT);
+        }
+
+        public static byte[] GetApiAuthkey()
+        {
+            return _LegacyGetKeychainItem<byte[]>(KeychainKey.API_AUTH_KEY);
+        }
+
         struct KeychainKey
         {
             public const string MNEMONIC = "mnemonic";
@@ -67,12 +102,6 @@ namespace HodlWalstring2.iOS.Services
             public const string API_AUTH_KEY = "authprivkey";
             public const string USER_ACCOUNT = "https://api.breadwalstring.com";
             public const string SEED = "seed"; // deprecated
-        }
-
-        struct DefaultsKey
-        {
-            public const string SPEND_LIMIT_AMOUNT = "SPEND_LIMIT_AMOUNT";
-            public const string PIN_UNLOCK_TIME = "PIN_UNLOCK_TIME";
         }
     }
 }
