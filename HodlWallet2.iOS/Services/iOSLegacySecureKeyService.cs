@@ -3,9 +3,15 @@ using System.Text;
 
 using Security;
 
-namespace HodlWalstring2.iOS.Services
+using Xamarin.Forms;
+
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.iOS.Services;
+
+[assembly: Dependency(typeof(iOSLegacySecureKeyService))]
+namespace HodlWallet2.iOS.Services
 {
-    public class iOSLegacySecureKeyService
+    public class iOSLegacySecureKeyService : ILegacySecureKeyService
     {
         const string WAllET_SEC_ATTR_SERVICE = "co.hodlwallet";
         
@@ -45,47 +51,48 @@ namespace HodlWalstring2.iOS.Services
             throw new ArgumentException("GetKeychainItem: Invalid type '{0}' was passed", typeof(T).ToString());
         }
 
-        public static string GetMnemonic()
+        public string GetMnemonic()
         {
             return _LegacyGetKeychainItem<string>(KeychainKey.MNEMONIC);
         }
 
+        // Depricated
         public static byte[] GetSeed()
         {
             return _LegacyGetKeychainItem<byte[]>(KeychainKey.SEED);
         }
 
-        public static byte[] GetMasterPubKey()
+        public byte[] GetMasterPublicKey()
         {
             return _LegacyGetKeychainItem<byte[]>(KeychainKey.MASTER_PUB_KEY);
         }
 
-        public static string GetPin()
+        public string GetPin()
         {
             return _LegacyGetKeychainItem<string>(KeychainKey.PIN);
         }
 
-        public static long GetPinFailCount()
+        public long GetPinFailCount()
         {
             return _LegacyGetKeychainItem<long>(KeychainKey.PIN_FAIL_COUNT);
         }
 
-        public static long GetPinFailTime()
+        public long GetPinFailTime()
         {
             return _LegacyGetKeychainItem<long>(KeychainKey.PIN_FAIL_TIME);
         }
 
-        public static byte[] GetCreationTime()
+        public long GetWalletCreationTime()
         {
-            return _LegacyGetKeychainItem<byte[]>(KeychainKey.CREATION_TIME);
+            return _LegacyGetKeychainItem<long>(KeychainKey.CREATION_TIME);
         }
 
-        public static long GetSpendLimit()
+        public long GetSpendLimit()
         {
             return _LegacyGetKeychainItem<long>(KeychainKey.SPEND_LIMIT);
         }
 
-        public static byte[] GetApiAuthkey()
+        public byte[] GetApiAuthKey()
         {
             return _LegacyGetKeychainItem<byte[]>(KeychainKey.API_AUTH_KEY);
         }
@@ -100,7 +107,6 @@ namespace HodlWalstring2.iOS.Services
             public const string PIN_FAIL_COUNT = "pinfailcount";
             public const string PIN_FAIL_TIME = "pinfailheight";
             public const string API_AUTH_KEY = "authprivkey";
-            public const string USER_ACCOUNT = "https://api.breadwalstring.com";
             public const string SEED = "seed"; // deprecated
         }
     }

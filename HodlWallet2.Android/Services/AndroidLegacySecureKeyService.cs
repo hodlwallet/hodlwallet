@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 
-using Android.App;
 using Android.Content;
 using Android.Security.Keystore;
 using Android.Util;
@@ -11,13 +10,19 @@ using Java.Security;
 using Javax.Crypto;
 using Javax.Crypto.Spec;
 
+using Xamarin.Forms;
+
+using HodlWallet2.Core.Interfaces;
+using HodlWallet2.Droid.Services;
+
+[assembly: Dependency(typeof(AndroidLegacySecureKeyService))]
 namespace HodlWallet2.Droid.Services
 {
-    public static class AndroidLegacySecureKeyService
+    public class AndroidLegacySecureKeyService : ILegacySecureKeyService
     {
         static readonly object locker = new object();
 
-        internal static Context AppContext => Application.Context;
+        internal static Context AppContext => Android.App.Application.Context;
 
         static byte[] _LegacyGetAsync(string key)
         {
@@ -89,41 +94,31 @@ namespace HodlWallet2.Droid.Services
             return BitConverter.ToInt64(data);
         }
 
-        public static byte[] GetPhrase()
+        public string GetMnemonic()
         {
-            return _LegacyGetAsync(BRKeyStoreAliases.PHRASE_ALIAS);
-        }
-
-        public static string GetCanary()
-        {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.CANARY_ALIAS);
+            var data = _LegacyGetAsync(BRKeyStoreAliases.PHRASE_ALIAS);
 
             return Encoding.UTF8.GetString(data);
         }
 
-        public static byte[] GetMasterPublicKey()
+        public byte[] GetMasterPublicKey()
         {
             return _LegacyGetAsync(BRKeyStoreAliases.PUB_KEY_ALIAS);
         }
 
-        public static byte[] GetAuthKey()
+        public byte[] GetApiAuthKey()
         {
             return _LegacyGetAsync(BRKeyStoreAliases.AUTH_KEY_ALIAS);
         }
 
-        public static byte[] GetToken()
-        {
-            return _LegacyGetAsync(BRKeyStoreAliases.TOKEN_ALIAS);
-        }
-
-        public static int GetWalletCreationTime()
+        public long GetWalletCreationTime()
         {
             var data = _LegacyGetAsync(BRKeyStoreAliases.WALLET_CREATION_TIME_ALIAS);
 
-            return _GetIntFromBytes(data);
+            return _GetLongFromBytes(data);
         }
 
-        public static string GetPinCode()
+        public string GetPin()
         {
             var data = _LegacyGetAsync(BRKeyStoreAliases.PASS_CODE_ALIAS);
             var pinCode = Encoding.UTF8.GetString(data);
@@ -147,21 +142,21 @@ namespace HodlWallet2.Droid.Services
             return pinCode;
         }
 
-        public static int GetFailCount()
+        public long GetPinFailCount()
         {
             var data = _LegacyGetAsync(BRKeyStoreAliases.FAIL_COUNT_ALIAS);
 
-            return _GetIntFromBytes(data);
+            return _GetLongFromBytes(data);
         }
 
-        public static long GetSpendLimit()
+        public long GetSpendLimit()
         {
             var data = _LegacyGetAsync(BRKeyStoreAliases.SPEND_LIMIT_ALIAS);
 
             return _GetLongFromBytes(data);
         }
 
-        public static long GetFailTimeStamp()
+        public long GetPinFailTime()
         {
             var data = _LegacyGetAsync(BRKeyStoreAliases.FAIL_TIMESTAMP_ALIAS);
 
@@ -175,11 +170,23 @@ namespace HodlWallet2.Droid.Services
             return _GetLongFromBytes(data);
         }
 
-        public static long GetLastPinUsedTimt()
+        public static long GetLastPinUsedTime()
         {
             var data = _LegacyGetAsync(BRKeyStoreAliases.PASS_TIME_ALIAS);
 
             return _GetLongFromBytes(data);
+        }
+
+        public static byte[] GetToken()
+        {
+            return _LegacyGetAsync(BRKeyStoreAliases.TOKEN_ALIAS);
+        }
+
+        public static string GetCanary()
+        {
+            var data = _LegacyGetAsync(BRKeyStoreAliases.CANARY_ALIAS);
+
+            return Encoding.UTF8.GetString(data);
         }
     }
 
