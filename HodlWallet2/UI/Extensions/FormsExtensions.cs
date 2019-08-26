@@ -1,5 +1,5 @@
 ﻿//
-// HideTabbarEffect.cs
+// FormsExtensions.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -23,40 +23,20 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
-
-using HodlWallet2.iOS.Effects;
-using System.Linq;
-using UIKit;
-
-[assembly: ExportEffect(typeof(HideTabbarEffect), nameof(HideTabbarEffect))]
-namespace HodlWallet2.iOS.Effects
+namespace HodlWallet2.UI.Extensions
 {
-    public class HideTabbarEffect : PlatformEffect
+    public static class FormsExtensions
     {
-        UIView _TabBar => Container.Subviews.FirstOrDefault((sv) => sv.GetType() == typeof(UITabBar));
-
-        protected override void OnAttached()
+        public static string GetHex(this Xamarin.Forms.Color color)
         {
-            ToggleTo(hidden: true);
-        }
+            var red = (int)(color.R * 255);
+            var green = (int)(color.G * 255);
+            var blue = (int)(color.B * 255);
+            var alpha = (int)(color.A * 255);
 
-        protected override void OnDetached()
-        {
-            ToggleTo(hidden: false);
-        }
+            var hex = $"#{alpha:X2}{red:X2}{green:X2}{blue:X2}";
 
-        void ToggleTo(bool hidden)
-        {
-            foreach (var sv in _TabBar.Subviews)
-            {
-                if (sv.GetType() == typeof(UIView)) continue;
-
-                var ctrl = (UIControl)sv;
-
-                ctrl.Hidden = hidden;
-            }
+            return hex;
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿//
-// FormsExtensions.cs
+// ILocalize.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -23,20 +23,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-namespace HodlWallet2.Core.Extensions
+using System.Globalization;
+
+namespace HodlWallet2.Core.Interfaces
 {
-    public static class FormsExtensions
+    public interface ILocalize
     {
-        public static string GetHex(this Xamarin.Forms.Color color)
-        {
-            var red = (int)(color.R * 255);
-            var green = (int)(color.G * 255);
-            var blue = (int)(color.B * 255);
-            var alpha = (int)(color.A * 255);
-
-            var hex = $"#{alpha:X2}{red:X2}{green:X2}{blue:X2}";
-
-            return hex;
-        }
+        CultureInfo GetCurrentCultureInfo();
+        void SetLocale(CultureInfo ci);
     }
 }

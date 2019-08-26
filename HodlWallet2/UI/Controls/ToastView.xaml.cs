@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -47,6 +48,22 @@ namespace HodlWallet2.UI.Controls
             set => SetValue(ToastTextProperty, value);
         }
 
+        bool _Closed;
+        public bool Closed
+        {
+            get => _Closed;
+            set
+            {
+                _Closed = value;
+
+                if (_Closed) IsClosed.Invoke(this, true);
+            }
+        }
+
+        public event EventHandler<bool> IsClosed;
+
+        CancellationTokenSource _Cts = new CancellationTokenSource();
+
         public ToastView()
         {
             InitializeComponent();
@@ -57,6 +74,15 @@ namespace HodlWallet2.UI.Controls
             IsVisible = true;
 
             this.FadeTo(0.65);
+        }
+
+        public void UpdateContent(string content)
+        {
+            ToastText = content;
+
+            _Cts.Cancel();
+
+            StartTimerToClose(retry: true);
         }
 
         protected override void OnPropertyChanged(string propertyName = null)
@@ -73,16 +99,20 @@ namespace HodlWallet2.UI.Controls
         {
             base.OnParentSet();
 
+            if (Parent != null) StartTimerToClose();
+        }
+
+        void StartTimerToClose(bool retry = false)
+        {
+            if (retry) _Cts = new CancellationTokenSource();
+
             Task.Run(async () =>
             {
                 await Task.Delay(TIME_DELAY_MILLISECONDS);
 
-                await this.FadeTo(0.0);
-
-                IsVisible = false;
-
-                ((AbsoluteLayout)Parent).Children.Remove(this);
-            });
+                if (!_Cts.IsCancellationRequested)
+                    Close();
+            }, _Cts.Token);
         }
 
         void ChangeToastText(string toastText)
@@ -94,14 +124,17 @@ namespace HodlWallet2.UI.Controls
 
         void Toast_Tapped(object sender, EventArgs e)
         {
-            Task.Run(async () =>
-            {
-                await this.FadeTo(0.0, 100);
+            _Cts.Cancel();
 
-                IsVisible = false;
+            Close();
+        }
 
-                ((AbsoluteLayout)Parent).Children.Remove(this);
-            });
+        void Close(uint animationTime = 250)
+        {
+            this.FadeTo(0.0, animationTime);
+
+            IsVisible = false;
+            Closed = true;
         }
     }
 }

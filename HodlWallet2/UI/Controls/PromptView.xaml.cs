@@ -29,6 +29,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using HodlWallet2.Core.Utils;
 
 namespace HodlWallet2.UI.Controls
 {
@@ -44,32 +45,30 @@ namespace HodlWallet2.UI.Controls
             Cancel
         }
 
-        public PromptResponses PromptResponse;
-        //{
-        //    get
-        //    {
-        //        return PromptResponse;
-        //    }
-        //    set
-        //    {
-        //        PromptResponse = value;
+        PromptResponses _PromptResponse = PromptResponses.NoReponse;
+        public PromptResponses PromptResponse
+        {
+            get => _PromptResponse;
+            set
+            {
+                _PromptResponse = value;
 
-        //        if (PromptResponse == PromptResponses.Ok)
-        //            Responded.Invoke(this, true);
+                if (_PromptResponse == PromptResponses.Ok)
+                    Responded.Invoke(this, true);
 
-        //        if (PromptResponse == PromptResponses.Cancel)
-        //            Responded.Invoke(this, false);
-        //    }
-        //}
+                if (_PromptResponse == PromptResponses.Cancel)
+                    Responded.Invoke(this, false);
+            }
+        }
 
-        //public event EventHandler<bool> Responded;
+        public event EventHandler<bool> Responded;
 
         public static readonly BindableProperty TitleProperty = BindableProperty.CreateAttached(
-            nameof(Title),
-            typeof(string),
-            typeof(PromptView),
-            default(string)
-        );
+                    nameof(Title),
+                    typeof(string),
+                    typeof(PromptView),
+                    default(string)
+                );
 
         public string Title
         {
@@ -123,9 +122,9 @@ namespace HodlWallet2.UI.Controls
             QuestionFrame.Margin = new Thickness(0, _QuestionFrameTopMargin, 0, 0);
 
             Title = title;
-            Message = message ?? "";
+            Message = message ?? string.Empty;
 
-            if (string.IsNullOrEmpty(okButton)) OkText = "Ok";
+            if (string.IsNullOrEmpty(okButton)) OkText = Constants.DISPLAY_ALERT_ERROR_BUTTON;
             else OkText = okButton;
 
             if (string.IsNullOrEmpty(cancelButton))
@@ -142,67 +141,7 @@ namespace HodlWallet2.UI.Controls
 
         public void Init()
         {
-            PromptResponse = PromptResponses.NoReponse;
-
             Show();
-        }
-
-        public void Show()
-        {
-            _ = ShowPromptAnimated();
-        }
-
-        public void Hide()
-        {
-            _ = HidePromptAnimated();
-        }
-
-        async Task ShowPromptAnimated()
-        {
-            await Task.Delay(10);
-
-            IsVisible = true;
-
-            var animationTaskSource = new TaskCompletionSource<bool>();
-
-            var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, 0);
-            animation.Commit(this, "OpenQuestionAnimation", 16, 250, Easing.CubicInOut, (v, c) => QuestionFrame.Margin = new Thickness(0, 0, 0, 0), () =>
-            {
-                animationTaskSource.SetResult(false);
-                return false;
-            });
-
-            await Task.WhenAll(
-                animationTaskSource.Task,
-                TransparentBackgroundBoxView.FadeTo(0.9, 500)
-            );
-
-            MessagingCenter.Send(this, "HideTabbar");
-        }
-
-        async Task HidePromptAnimated()
-        {
-            await Task.Delay(10);
-
-            var animationTaskSource = new TaskCompletionSource<bool>();
-
-            var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, _QuestionFrameTopMargin);
-            animation.Commit(this, "OpenQuestionAnimation", 16, 250, Easing.CubicInOut, (v, c) => QuestionFrame.Margin = new Thickness(0, _QuestionFrameTopMargin, 0, 0), () =>
-            {
-                animationTaskSource.SetResult(false);
-                return false;
-            });
-
-            await Task.WhenAll(
-                animationTaskSource.Task,
-                TransparentBackgroundBoxView.FadeTo(0.0, 150)
-            );
-
-            IsVisible = false;
-
-            MessagingCenter.Send(this, "ShowTabbar");
-
-            RemoveYourself();
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -228,6 +167,60 @@ namespace HodlWallet2.UI.Controls
             {
                 ChangeOkTextTo(OkText);
             }
+        }
+
+        async Task ShowPromptAnimated()
+        {
+            IsVisible = true;
+
+            var animationTaskSource = new TaskCompletionSource<bool>();
+
+            var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, 0);
+            animation.Commit(this, "OpenPromptAnimation", 16, 350, Easing.SinOut, (v, c) => QuestionFrame.Margin = new Thickness(0, 0, 0, 0), () =>
+            {
+                animationTaskSource.SetResult(false);
+                return false;
+            });
+
+            await Task.WhenAll(
+                animationTaskSource.Task,
+                TransparentBackgroundBoxView.FadeTo(0.9)
+            );
+
+            MessagingCenter.Send(this, "HideTabbar");
+        }
+
+        async Task HidePromptAnimated()
+        {
+            var animationTaskSource = new TaskCompletionSource<bool>();
+
+            MessagingCenter.Send(this, "ShowTabbar");
+
+            var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, _QuestionFrameTopMargin);
+            animation.Commit(this, "ClosePromptAnimation", 16, 350, Easing.SinOut, (v, c) => QuestionFrame.Margin = new Thickness(0, _QuestionFrameTopMargin, 0, 0), () =>
+            {
+                animationTaskSource.SetResult(false);
+                return false;
+            });
+
+            await Task.WhenAll(
+                animationTaskSource.Task,
+                TransparentBackgroundBoxView.FadeTo(0.0)
+            );
+
+            IsVisible = false;
+
+            RemoveYourself();
+        }
+
+        void Show()
+        {
+            _ = ShowPromptAnimated();
+        }
+
+        void Hide()
+        {
+            _ = HidePromptAnimated();
         }
 
         void ChangeTitleTo(string title)

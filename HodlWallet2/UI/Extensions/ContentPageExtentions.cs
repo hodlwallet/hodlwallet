@@ -50,11 +50,9 @@ namespace HodlWallet2.UI.Extensions
             {
                 Debug.WriteLine("[DisplayToast] Cannot attach toast to view, your layout must be a AbsoluteLayout");
 
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    view.DisplayAlert(content, null, Constants.DISPLAY_ALERT_ERROR_BUTTON);
-                    promptTaskSource.SetResult(true);
-                });
+                _ = view.DisplayAlert(Constants.HODL_WALLET, content, Constants.DISPLAY_ALERT_ERROR_BUTTON);
+
+                promptTaskSource.SetResult(true);
             }
 
             await promptTaskSource.Task;
@@ -65,56 +63,26 @@ namespace HodlWallet2.UI.Extensions
             Guard.NotNull(title, nameof(title));
             Guard.NotEmpty(title, nameof(title));
 
+            var promptTaskSource = new TaskCompletionSource<bool>();
             if (CanAttachToView(view))
             {
                 var prompt = CreatePromptFor(view, title, message, okButton, cancelButton);
 
-                //prompt.Responded += (object s, bool res) =>
-                //{
-                //    action.Invoke(res);
-                //};
-
-                // FIXME This could should work better... like above!
-                var promptTaskSource = new TaskCompletionSource<bool>();
-                Func<Task<bool>> checkResponse = () =>
+                prompt.Responded += (object sender, bool res) =>
                 {
-                    while (true)
-                    {
-                        if (prompt.PromptResponse == PromptView.PromptResponses.Ok)
-                        {
-                            promptTaskSource.SetResult(true);
-
-                            return promptTaskSource.Task;
-                        }
-                        if (prompt.PromptResponse == PromptView.PromptResponses.Cancel)
-                        {
-                            promptTaskSource.SetResult(false);
-
-                            return promptTaskSource.Task;
-                        }
-
-                        Task.Delay(250).Wait();
-                    }
+                    promptTaskSource.SetResult(res);
                 };
-
-                _ = Task.Run(checkResponse);
-
-                return await promptTaskSource.Task;
             }
             else
             {
                 Debug.WriteLine("[DisplayToast] Cannot attach toast to view, your layout must be a AbsoluteLayout");
 
-                var promptTaskSource = new TaskCompletionSource<bool>();
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var result = await view.DisplayAlert(title, message, okButton, cancelButton);
+                var res = view.DisplayAlert(title, message, okButton, cancelButton).Result;
 
-                    promptTaskSource.SetResult(true);
-                });
-
-                return await promptTaskSource.Task;
+                promptTaskSource.SetResult(res);    
             }
+
+            return await promptTaskSource.Task;
         }
 
         static bool CanAttachToView(ContentPage view)
@@ -139,13 +107,10 @@ namespace HodlWallet2.UI.Extensions
 
             if (prevPrompt != null) return (PromptView)prevPrompt;
 
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                layout.Children.Add(prompt);
+            layout.Children.Add(prompt);
 
-                prompt.Init();
-            });
-
+            prompt.Init();
+            
             return prompt;
         }
 
@@ -164,20 +129,22 @@ namespace HodlWallet2.UI.Extensions
 
             if (prevToast != null)
             {
-                taskSource.SetResult(true);
+                ((ToastView)prevToast).UpdateContent(content);
 
+                taskSource.SetResult(true);
                 return taskSource;
             }
 
-            Device.BeginInvokeOnMainThread(() =>
+            layout.Children.Add(toast);
+
+            toast.Init();
+
+            toast.IsClosed += (object sender, bool res) =>
             {
-                layout.Children.Add(toast);
+                layout.Children.Remove(toast);
+            };
 
-                toast.Init();
-
-                taskSource.SetResult(true);
-            });
-
+            taskSource.SetResult(true);
             return taskSource;
         }
 

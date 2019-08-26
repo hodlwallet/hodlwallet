@@ -41,6 +41,11 @@
         <comment>label for menu wipe wallet</comment>
     </data>
     
+    <data name="Pin.enter" xml:space="preserve">
+        <value>Ingrese su PIN</value>
+        <comment>label for current wallet pin</comment>
+    </data>
+    
     <data name="NowLoading.text" xml:space="preserve">
         <value>Cargando...</value>
         <comment>texto que muestra el indicador de actividad</comment>

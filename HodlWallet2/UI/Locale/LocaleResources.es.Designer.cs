@@ -16,7 +16,7 @@ namespace HodlWallet2.UI.Locale {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class LocaleResources_es {
+    public class LocaleResources_es {
         
         private static System.Resources.ResourceManager resourceMan;
         
@@ -27,7 +27,7 @@ namespace HodlWallet2.UI.Locale {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static System.Resources.ResourceManager ResourceManager {
+        public static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
                     System.Resources.ResourceManager temp = new System.Resources.ResourceManager("HodlWallet2.UI.Locale.LocaleResources.es", typeof(LocaleResources_es).Assembly);
@@ -38,7 +38,7 @@ namespace HodlWallet2.UI.Locale {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static System.Globalization.CultureInfo Culture {
+        public static System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -47,37 +47,43 @@ namespace HodlWallet2.UI.Locale {
             }
         }
         
-        internal static string Onboard_create {
+        public static string Onboard_create {
             get {
                 return ResourceManager.GetString("Onboard.create", resourceCulture);
             }
         }
         
-        internal static string Onboard_recover {
+        public static string Onboard_recover {
             get {
                 return ResourceManager.GetString("Onboard.recover", resourceCulture);
             }
         }
         
-        internal static string Menu_resyncWallet {
+        public static string Menu_resyncWallet {
             get {
                 return ResourceManager.GetString("Menu.resyncWallet", resourceCulture);
             }
         }
         
-        internal static string Menu_restoreWallet {
+        public static string Menu_restoreWallet {
             get {
                 return ResourceManager.GetString("Menu.restoreWallet", resourceCulture);
             }
         }
         
-        internal static string Menu_wipeWallet {
+        public static string Menu_wipeWallet {
             get {
                 return ResourceManager.GetString("Menu.wipeWallet", resourceCulture);
             }
         }
         
-        internal static string NowLoading_text {
+        public static string Pin_enter {
+            get {
+                return ResourceManager.GetString("Pin.enter", resourceCulture);
+            }
+        }
+        
+        public static string NowLoading_text {
             get {
                 return ResourceManager.GetString("NowLoading.text", resourceCulture);
             }

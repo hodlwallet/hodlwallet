@@ -1,5 +1,5 @@
 ﻿//
-// HideTabbarEffect.cs
+// PlatformCulture.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -23,40 +23,42 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
+using System;
 
-using HodlWallet2.iOS.Effects;
-using System.Linq;
-using UIKit;
-
-[assembly: ExportEffect(typeof(HideTabbarEffect), nameof(HideTabbarEffect))]
-namespace HodlWallet2.iOS.Effects
+namespace HodlWallet2.Core.Utils
 {
-    public class HideTabbarEffect : PlatformEffect
+    public class PlatformCulture
     {
-        UIView _TabBar => Container.Subviews.FirstOrDefault((sv) => sv.GetType() == typeof(UITabBar));
-
-        protected override void OnAttached()
+        public PlatformCulture(string platformCultureString)
         {
-            ToggleTo(hidden: true);
-        }
+            if (string.IsNullOrEmpty(platformCultureString))
+                throw new ArgumentException("Expected culture identifier", nameof(platformCultureString));
 
-        protected override void OnDetached()
-        {
-            ToggleTo(hidden: false);
-        }
+            PlatformString = platformCultureString.Replace("_", "-"); // .NET expects dash, not underscore
 
-        void ToggleTo(bool hidden)
-        {
-            foreach (var sv in _TabBar.Subviews)
+            var dashIndex = PlatformString.IndexOf("-", StringComparison.Ordinal);
+            if (dashIndex > 0)
             {
-                if (sv.GetType() == typeof(UIView)) continue;
-
-                var ctrl = (UIControl)sv;
-
-                ctrl.Hidden = hidden;
+                var parts = PlatformString.Split('-');
+                LanguageCode = parts[0];
+                LocaleCode = parts[1];
             }
+            else
+            {
+                LanguageCode = PlatformString;
+                LocaleCode = "";
+            }
+        }
+
+        public string PlatformString { get; private set; }
+
+        public string LanguageCode { get; private set; }
+
+        public string LocaleCode { get; private set; }
+
+        public override string ToString()
+        {
+            return PlatformString;
         }
     }
 }

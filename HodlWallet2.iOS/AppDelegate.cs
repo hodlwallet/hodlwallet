@@ -28,6 +28,7 @@ using Serilog;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.UI;
 
+[assembly: global::Xamarin.Forms.ResolutionGroupName("HodlWallet2")]
 namespace HodlWallet2.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 

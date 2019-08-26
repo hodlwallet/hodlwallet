@@ -589,6 +589,8 @@ namespace HodlWallet2.Core.Services
         /// <returns>A <see cref="bool"/> true if the chain is synced</returns>
         public bool IsSyncedToTip()
         {
+            if (_Chain is null) return false;
+
             var chainTip = _Chain.Tip;
 
             // We cannot be sure if we're synced to chain if we're not connected
