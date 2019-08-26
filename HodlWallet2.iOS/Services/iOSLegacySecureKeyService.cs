@@ -18,6 +18,12 @@ namespace HodlWalstring2.iOS.Services
             };
 
             var data = SecKeyChain.QueryAsData(record).ToArray();
+
+            if (data == null)
+            {
+                throw new InvalidOperationException(string.Format("GetKeychainItem: data was null: {0}", data));
+            }
+
             var generic = typeof(T);
 
             if (generic == typeof(byte[]))
@@ -39,24 +45,34 @@ namespace HodlWalstring2.iOS.Services
             throw new ArgumentException("GetKeychainItem: Invalid type '{0}' was passed", typeof(T).ToString());
         }
 
+        public static string GetMnemonic()
+        {
+            return _LegacyGetKeychainItem<string>(KeychainKey.MNEMONIC);
+        }
+
+        public static byte[] GetSeed()
+        {
+            return _LegacyGetKeychainItem<byte[]>(KeychainKey.SEED);
+        }
+
         struct KeychainKey
         {
-            const string MNEMONIC = "mnemonic";
-            const string CREATION_TIME = "creationtime";
-            const string MASTER_PUB_KEY = "masterpubkey";
-            const string SPEND_LIMIT = "spendlimit";
-            const string PIN = "pin";
-            const string PIN_FAIL_COUNT = "pinfailcount";
-            const string PIN_FAIL_TIME = "pinfailheight";
-            const string API_AUTH_KEY = "authprivkey";
-            const string USER_ACCOUNT = "https://api.breadwalstring.com";
-            const string SEED = "seed"; // deprecated
+            public const string MNEMONIC = "mnemonic";
+            public const string CREATION_TIME = "creationtime";
+            public const string MASTER_PUB_KEY = "masterpubkey";
+            public const string SPEND_LIMIT = "spendlimit";
+            public const string PIN = "pin";
+            public const string PIN_FAIL_COUNT = "pinfailcount";
+            public const string PIN_FAIL_TIME = "pinfailheight";
+            public const string API_AUTH_KEY = "authprivkey";
+            public const string USER_ACCOUNT = "https://api.breadwalstring.com";
+            public const string SEED = "seed"; // deprecated
         }
 
         struct DefaultsKey
         {
-            const string SPEND_LIMIT_AMOUNT = "SPEND_LIMIT_AMOUNT";
-            const string PIN_UNLOCK_TIME = "PIN_UNLOCK_TIME";
+            public const string SPEND_LIMIT_AMOUNT = "SPEND_LIMIT_AMOUNT";
+            public const string PIN_UNLOCK_TIME = "PIN_UNLOCK_TIME";
         }
     }
 }
