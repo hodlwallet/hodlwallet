@@ -23,6 +23,8 @@
 using System;
 using System.Diagnostics;
 
+using HodlWallet2.Core.Interfaces;
+
 using Xamarin.Forms;
 
 namespace HodlWallet2.UI.Views
@@ -44,6 +46,19 @@ namespace HodlWallet2.UI.Views
         void RecoverButton_Clicked(object sender, EventArgs e)
         {
             Debug.WriteLine("[RecoverButton_Clicked]");
+
+            // Test for Key Service
+            try
+            {
+                var secureKey = DependencyService.Get<ILegacySecureKeyService>();
+                var mnemonic = secureKey.GetMnemonic();
+                var pin = secureKey.GetPin();
+                Debug.WriteLine(string.Format("Key Service Mnemonic: {0}\nKey Service Pin {1}", mnemonic, pin));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(string.Format("Error during Key Service: {0}", ex.Message));
+            }
 
             Navigation.PushAsync(new RecoverView());
         }

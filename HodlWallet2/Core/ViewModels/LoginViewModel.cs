@@ -27,10 +27,8 @@ using System.Windows.Input;
 
 using HodlWallet2.Core.Services;
 using HodlWallet2.UI.Locale;
-using HodlWallet2.Core.Interfaces;
 
 using Xamarin.Forms;
-using System;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -83,19 +81,6 @@ namespace HodlWallet2.Core.ViewModels
             if (SecureStorageService.GetPin() == input)
             {
                 Debug.WriteLine("[AddDigit] Logged in!");
-
-                // Test for Key Service
-                try
-                {
-                    var secureKey = DependencyService.Get<ILegacySecureKeyService>();
-                    var mnemonic = secureKey.GetMnemonic();
-                    var pin = secureKey.GetPin();
-                    Debug.WriteLine(string.Format("Key Service Mnemonic: {0}\nKey Service Pin {1}", mnemonic, pin));
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(string.Format("Error during Key Service: {0}", ex.Message));
-                }
 
                 IsLoading = true;
 
