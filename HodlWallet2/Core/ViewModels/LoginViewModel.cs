@@ -20,11 +20,12 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
 using HodlWallet2.UI.Locale;
 
@@ -81,6 +82,18 @@ namespace HodlWallet2.Core.ViewModels
             if (SecureStorageService.GetPin() == input)
             {
                 Debug.WriteLine("[AddDigit] Logged in!");
+
+                try
+                {
+                    var secureKey = DependencyService.Get<ILegacySecureKeyService>();
+                    var mnemonic = secureKey.GetMnemonic();
+                    var pin = secureKey.GetPin();
+                    Debug.WriteLine(string.Format("Key Service Mnemonic: {0}\nKey Service Pin {1}", mnemonic, pin));
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(string.Format("Error during Key Service: {0}", ex.Message));
+                }
 
                 IsLoading = true;
 

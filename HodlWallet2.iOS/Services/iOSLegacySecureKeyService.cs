@@ -17,17 +17,20 @@ namespace HodlWallet2.iOS.Services
         
         static T _LegacyGetKeychainItem<T>(string key)
         {
-            var record = new SecRecord(SecKind.GenericPassword)
-            {
-                Service = WAllET_SEC_ATTR_SERVICE,
-                Account = key
-            };
+            byte[] data = null;
 
-            var data = SecKeyChain.QueryAsData(record).ToArray();
+            using (var record = ExistingRecordForKey(key))
+            using (var match = SecKeyChain.QueryAsRecord(record, out var resultCode))
+            {
+                if (resultCode == SecStatusCode.Success)
+                {
+                    data = match.ValueData.ToArray();
+                }
+            }
 
             if (data == null)
             {
-                throw new InvalidOperationException(string.Format("GetKeychainItem: data was null: {0}", data));
+                throw new InvalidOperationException(string.Format("GetKeychainItem: data was null for key: {0}", key));
             }
 
             var generic = typeof(T);
@@ -49,6 +52,15 @@ namespace HodlWallet2.iOS.Services
             }
 
             throw new ArgumentException("GetKeychainItem: Invalid type '{0}' was passed", typeof(T).ToString());
+        }
+
+        static SecRecord ExistingRecordForKey(string key)
+        {
+            return new SecRecord(SecKind.GenericPassword)
+            {
+                Account = key,
+                Service = WAllET_SEC_ATTR_SERVICE
+            };
         }
 
         public string GetMnemonic()
