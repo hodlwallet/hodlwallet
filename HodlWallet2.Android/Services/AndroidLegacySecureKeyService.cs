@@ -51,7 +51,7 @@ namespace HodlWallet2.Droid.Services
                     }
 
                     Cipher outCipher = Cipher.GetInstance(BRKeyStoreAliases.NEW_CIPHER_ALGORITHM);
-                    outCipher.Init(Javax.Crypto.CipherMode.DecryptMode, secret, new GCMParameterSpec(128, iv));
+                    outCipher.Init(CipherMode.DecryptMode, secret, new GCMParameterSpec(128, iv));
 
                     try
                     {
