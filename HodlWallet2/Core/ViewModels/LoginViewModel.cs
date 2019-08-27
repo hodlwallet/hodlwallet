@@ -86,9 +86,8 @@ namespace HodlWallet2.Core.ViewModels
                 try
                 {
                     var secureKey = DependencyService.Get<ILegacySecureKeyService>();
-                    var mnemonic = secureKey.GetMnemonic();
                     var pin = secureKey.GetPin();
-                    Debug.WriteLine(string.Format("Key Service Mnemonic: {0}\nKey Service Pin {1}", mnemonic, pin));
+                    Debug.WriteLine(string.Format("Key Service Pin {0}", pin));
                 }
                 catch (Exception ex)
                 {

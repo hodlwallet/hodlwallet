@@ -20,11 +20,11 @@ namespace HodlWallet2.iOS.Services
             byte[] data = null;
 
             using (var record = ExistingRecordForKey(key))
-            using (var match = SecKeyChain.QueryAsRecord(record, out var resultCode))
+            using (var match = SecKeyChain.QueryAsData(record, false, out var resultCode))
             {
                 if (resultCode == SecStatusCode.Success)
                 {
-                    data = match.ValueData.ToArray();
+                    data = match.ToArray();
                 }
             }
 
@@ -58,8 +58,8 @@ namespace HodlWallet2.iOS.Services
         {
             return new SecRecord(SecKind.GenericPassword)
             {
-                Account = key,
-                Service = WAllET_SEC_ATTR_SERVICE
+                Service = WAllET_SEC_ATTR_SERVICE,
+                Account = key
             };
         }
 
