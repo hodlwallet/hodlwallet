@@ -53,6 +53,15 @@ namespace HodlWallet2.UI
             }
             else
             {
+                CollectExistingKeys();
+
+                if (UserDidSetup())
+                {
+                    // TODO: Add WalletID
+                    //       Add Network
+                    MainPage = new NavigationPage(new LoginView());
+                }
+
                 MainPage = new NavigationPage(new OnboardView());
             }
         }
