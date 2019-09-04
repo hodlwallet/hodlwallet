@@ -47,18 +47,6 @@ namespace HodlWallet2.UI.Views
         {
             Debug.WriteLine("[RecoverButton_Clicked]");
 
-            // Test for Key Service
-            try
-            {
-                var secureKey = DependencyService.Get<ILegacySecureKeyService>();
-                var mnemonic = secureKey.GetMnemonic();
-                Debug.WriteLine(string.Format("Key Service Mnemonic: {0}", mnemonic));
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(string.Format("Error during Key Service: {0}", ex.Message));
-            }
-
             Navigation.PushAsync(new RecoverView());
         }
     }

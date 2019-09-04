@@ -83,17 +83,6 @@ namespace HodlWallet2.Core.ViewModels
             {
                 Debug.WriteLine("[AddDigit] Logged in!");
 
-                try
-                {
-                    var secureKey = DependencyService.Get<ILegacySecureKeyService>();
-                    var pin = secureKey.GetPin();
-                    Debug.WriteLine(string.Format("Key Service Pin {0}", pin));
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(string.Format("Error during Key Service: {0}", ex.Message));
-                }
-
                 IsLoading = true;
 
                 // DONE! We navigate to the root view
