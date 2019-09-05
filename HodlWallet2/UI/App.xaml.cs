@@ -57,8 +57,6 @@ namespace HodlWallet2.UI
 
                 if (UserDidSetup())
                 {
-                    // TODO: Add WalletID
-                    //       Add Network
                     MainPage = new NavigationPage(new LoginView());
                 }
 
@@ -122,6 +120,8 @@ namespace HodlWallet2.UI
                 SecureStorageService.SetMnemonic(mnemonic);
                 SecureStorageService.SetPin(pin);
                 SecureStorageService.SetSeedBirthday(new DateTimeOffset(new DateTime(birthday)));
+
+                _WalletService.InitializeLegacyWallet();
             }
             catch (Exception ex)
             {
