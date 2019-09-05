@@ -187,6 +187,46 @@ namespace HodlWallet2.Core.Services
             Logger.Information("Wallet has been configured but not started yet due to the lack of mnemonic in the system");
         }
 
+        public void InitializeLegacyWallet()
+        {
+            string guid;
+            if (SecureStorageService.HasWalletId())
+            {
+                guid = SecureStorageService.GetWalletId();
+            }
+            else
+            {
+                // Default uses the Guid class from System in .NET
+                guid = Guid.NewGuid().ToString();
+
+                SecureStorageService.SetWalletId(guid);
+            }
+
+            string network;
+            if (SecureStorageService.HasNetwork())
+            {
+                network = SecureStorageService.GetNetwork();
+            }
+            else
+            {
+                network = DEFAULT_NETWORK;
+                SecureStorageService.SetNetwork(network);
+            }
+
+            Configure(walletId: guid, network: network);
+
+            if (SecureStorageService.HasMnemonic() && SecureStorageService.HasSeedBirthday() && _WalletId != null)
+            {
+                StartWalletWithWalletId();
+
+                Logger.Information("Since wallet has a mnemonic, then start the wallet.");
+
+                return;
+            }
+
+            Logger.Information("Wallet has been configured but not started yet due to the lack of mnemonic or birthday in the system");
+        }
+
         public void StartWalletWithWalletId()
         {
             Guard.NotNull(_WalletId, nameof(_WalletId));
