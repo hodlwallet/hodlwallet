@@ -22,6 +22,7 @@
         <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
         <PackageReference Include="Microcharts.Forms" Version="0.8.5-pre" />
         <PackageReference Include="Microcharts" Version="0.8.5-pre" />
+        <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.1.8" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Core\" />
