@@ -2,7 +2,7 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:pc="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     x:Class="HodlWallet2.UI.Controls.AccountCollectionView">
     <Frame
         HeightRequest="150"
@@ -19,7 +19,20 @@
                 BackgroundColor="{DynamicResource BackgroundPrimary}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <pancake:PancakeView />
+                        <pc:PancakeView
+                            BackgroundGradientAngle="315"
+                            BackgroundGradientStartColor="{Binding GradientStart}"
+                            BackgroundGradientEndColor="{Binding GradientEnd}"
+                            CornerRadius="20"
+                            HeightRequest="100"
+                            WidthRequest="200"
+                            Padding="10">
+                            <FlexLayout Direction="Column" JustifyContent="SpaceEvenly" AlignItems="Start">
+                                <!-- These are temporary fields. -->
+                                <Label Text="{Binding AccountName}" TextColor="White" />
+                                <Label Text="{Binding Balance}" TextColor="White" />
+                            </FlexLayout>
+                        </pc:PancakeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
