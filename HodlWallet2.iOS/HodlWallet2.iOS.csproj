@@ -113,6 +113,7 @@
     <Compile Include="Services\ShareIntent.cs" />
     <Compile Include="Services\iOSPermissions.cs" />
     <Compile Include="Effects\HideTabbarEffect.cs" />
+    <Compile Include="Services\iOSLegacySecureKeyService.cs" />
     <Compile Include="Services\Localize.cs" />
   </ItemGroup>
   <ItemGroup>

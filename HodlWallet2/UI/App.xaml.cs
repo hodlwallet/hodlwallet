@@ -20,6 +20,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -36,6 +37,7 @@ namespace HodlWallet2.UI
         IWalletService _WalletService => DependencyService.Get<IWalletService>();
         IPrecioService _PrecioService => DependencyService.Get<IPrecioService>();
         ILocalize _Localize => DependencyService.Get<ILocalize>();
+        ILegacySecureKeyService _LegacySecureKeyService => DependencyService.Get<ILegacySecureKeyService>();
 
         public App()
         {
@@ -51,6 +53,13 @@ namespace HodlWallet2.UI
             }
             else
             {
+                CollectExistingKeys();
+
+                if (UserDidSetup())
+                {
+                    MainPage = new NavigationPage(new LoginView());
+                }
+
                 MainPage = new NavigationPage(new OnboardView());
             }
         }
@@ -98,6 +107,26 @@ namespace HodlWallet2.UI
                 && SecureStorageService.HasSeedBirthday()
                 && SecureStorageService.HasWalletId()
                 && SecureStorageService.HasNetwork();
+        }
+
+        void CollectExistingKeys()
+        {
+            try
+            {
+                var mnemonic = _LegacySecureKeyService.GetMnemonic();
+                var pin = _LegacySecureKeyService.GetPin();
+                var birthday = _LegacySecureKeyService.GetWalletCreationTime();
+
+                SecureStorageService.SetMnemonic(mnemonic);
+                SecureStorageService.SetPin(pin);
+                SecureStorageService.SetSeedBirthday(new DateTimeOffset(new DateTime(birthday)));
+
+                _WalletService.InitializeLegacyWallet();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("There was an error while collecting depricated keys: {0}", ex.Message));
+            }
         }
     }
 }

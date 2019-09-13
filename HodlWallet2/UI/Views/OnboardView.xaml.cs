@@ -23,6 +23,8 @@
 using System;
 using System.Diagnostics;
 
+using HodlWallet2.Core.Interfaces;
+
 using Xamarin.Forms;
 
 namespace HodlWallet2.UI.Views
