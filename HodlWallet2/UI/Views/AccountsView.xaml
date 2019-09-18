@@ -2,6 +2,28 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
+    xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
     x:Class="HodlWallet2.UI.Views.AccountsView">
-    
+    <ContentPage.BindingContext>
+        <vm:AccountsViewModel />
+    </ContentPage.BindingContext>
+    <FlexLayout Direction="Column"
+                JustifyContent="SpaceAround">
+        <FlexLayout Direction="Row"
+                    FlexLayout.Grow="1"
+                    JustifyContent="SpaceAround">
+            <Label Text="Accounts" />
+            <Label Text="{Binding PriceText}" />
+        </FlexLayout>
+        <controls:AccountCollectionView FlexLayout.Grow="3" />
+        <Button Command="{Binding AddAccountCommand}"
+                BackgroundColor="{DynamicResource BackgroundSecondary}"
+                FlexLayout.AlignSelf="Stretch"
+                FlexLayout.Grow="1"
+                FontAttributes="Bold"
+                FontSize="Large"
+                Style="{DynamicResource CustomButton}"
+                Text="+"/>
+    </FlexLayout>
 </ContentPage>
