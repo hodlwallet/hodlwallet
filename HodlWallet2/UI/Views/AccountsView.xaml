@@ -11,16 +11,16 @@
     <FlexLayout Direction="Column"
                 JustifyContent="SpaceAround">
         <FlexLayout Direction="Row"
-                    FlexLayout.Grow="1"
+                    FlexLayout.Grow="2"
                     JustifyContent="SpaceAround">
             <Label Text="Accounts" />
             <Label Text="{Binding PriceText}" />
         </FlexLayout>
-        <controls:AccountCollectionView FlexLayout.Grow="3" />
+        <controls:AccountCollectionView FlexLayout.Grow="16" />
         <Button Command="{Binding AddAccountCommand}"
                 BackgroundColor="{DynamicResource BackgroundSecondary}"
                 FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="1"
+                FlexLayout.Grow="4"
                 FontAttributes="Bold"
                 FontSize="Large"
                 Style="{DynamicResource CustomButton}"

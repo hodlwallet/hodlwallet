@@ -79,11 +79,11 @@ namespace HodlWallet2.Core.Models
         public string ConfirmationsText { get; set; }
         public string IsAvailableText { get; set; }
 
-        public TransactionData TransactionData { get; set; }
+        public Tx TransactionData { get; set; }
 
         public TransactionModel() { }
 
-        public TransactionModel(TransactionData transactionData)
+        public TransactionModel(Tx transactionData)
         {
             TransactionData = transactionData;
 
@@ -117,7 +117,7 @@ namespace HodlWallet2.Core.Models
             ConfirmedBlockText = GetConfirmedBlockText();
         }
 
-        public static TransactionModel FromTransactionData(TransactionData transactionData)
+        public static TransactionModel FromTransactionData(Tx transactionData)
         {
             return new TransactionModel(transactionData);
         }
