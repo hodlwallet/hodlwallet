@@ -73,17 +73,13 @@ namespace HodlWallet2.Core.Interfaces
         string GetSyncedProgressPercentage();
         string[] GenerateGuessWords(string wordToGuess, string language, int amountAround);
 
-        decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);
-
         double GetSyncedProgress();
-
-        long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed);
 
         BitcoinAddress GetReceiveAddress();
         Network GetNetwork();
         IEnumerable<Tx> GetCurrentAccountTransactions();
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,
-            int feeSatsPerByte, string password);
+            long feeSatsPerByte, string password, IAccount account);
         Task<(bool Sent, string Error)> SendTransaction(Transaction tx);
         ChainedBlock GetChainTip();
     }

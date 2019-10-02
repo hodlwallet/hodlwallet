@@ -233,14 +233,14 @@ namespace HodlWallet2.Core.Services
             return new Mnemonic(Hd.WordlistFromString(wordlist), Hd.WordCountFromInt(wordcount)).ToString();
         }
 
-        public static IEnumerable<BitcoinAddress> GetAddressesFromTransaction(TransactionData txData)
+        public static IEnumerable<BitcoinAddress> GetAddressesFromTransaction(Tx txData)
         {
             var instance = DependencyService.Get<IWalletService>();
 
             return instance.CurrentAccount.FindAddressesForTransaction(tx => tx.Id == txData.Id);
         }
 
-        public string GetAddressFromTransaction(TransactionData txData)
+        public string GetAddressFromTransaction(Tx txData)
         {
             var addrsFromTx = GetAddressesFromTransaction(txData).Select(hdAddress => hdAddress.Address);
 
@@ -275,8 +275,7 @@ namespace HodlWallet2.Core.Services
 
         public void Configure(string walletId = null, string network = null, int? nodesToConnect = null)
         {
-            _Network = HdOperations.GetNetwork(network ?? DEFAULT_NETWORK);
-            _Chain = GetChain();
+            _Network = Hd.GetNetwork(network ?? DEFAULT_NETWORK);
             _AddressManager = GetAddressManager();
             _NodesToConnect = nodesToConnect ?? DEFAULT_NODES_TO_CONNECT;
             _WalletId = walletId ?? Guid.NewGuid().ToString();
@@ -654,24 +653,6 @@ namespace HodlWallet2.Core.Services
             return progress;
         }
 
-        public long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed = false)
-        {
-            var balance = WalletManager.GetBalances(CurrentAccount.Name).FirstOrDefault();
-
-            if (includeUnconfirmed)
-                return balance.AmountConfirmed + balance.AmountUnconfirmed;
-
-            return balance.AmountConfirmed;
-        }
-
-        public decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed = false)
-        {
-            long sats = GetCurrentAccountBalanceInSatoshis(includeUnconfirmed);
-            decimal satsPerBtc = 100_000_000m;
-
-            return decimal.Divide(new decimal(sats), satsPerBtc);
-        }
-
         public int GetLastSyncedBlockHeight()
         {
             var tip = _Chain.FindFork(new uint256[] { WalletManager.LastReceivedBlockHash() });
@@ -717,29 +698,6 @@ namespace HodlWallet2.Core.Services
                 {
                     ConnectedNodes = _NodesGroup.ConnectedNodes.Count;
                 };
-            }
-        }
-
-        PartialConcurrentChain GetChain()
-        {
-            lock (_Lock)
-            {
-                if (_ConParams != null)
-                {
-                    return _ConParams.TemplateBehaviors.Find<PartialChainBehavior>().Chain as PartialConcurrentChain;
-                }
-
-                var chain = new PartialConcurrentChain(_Network);
-
-                using (var fs = File.Open(ChainFile(), FileMode.OpenOrCreate))
-                {
-                    chain.Load(new BitcoinStream(fs, false));
-                }
-
-                if (chain.Tip.Height < _Network.GetBIP39ActivationChainedBlock().Height)
-                    chain.SetCustomTip(_Network.GetBIP39ActivationChainedBlock());
-
-                return chain;
             }
         }
 
