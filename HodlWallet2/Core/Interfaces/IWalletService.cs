@@ -33,7 +33,6 @@ using NBitcoin.Protocol;
 using Liviano.Models;
 using Liviano.Utilities;
 using Liviano.Interfaces;
-using Liviano.Managers;
 
 namespace HodlWallet2.Core.Interfaces
 {
@@ -46,7 +45,6 @@ namespace HodlWallet2.Core.Interfaces
 
         NodesGroup NodesGroup { get; set; }
         BlockLocator ScanLocation { get; set; }
-        IAccount CurrentAccount { get; set; }
 
         event EventHandler OnConfigured;
         event EventHandler OnStarted;
@@ -70,7 +68,7 @@ namespace HodlWallet2.Core.Interfaces
         bool IsWordInWordlist(string word, string wordList);
         bool IsSyncedToTip();
         string NewMnemonic(string wordList, int wordCount);
-        string GetAddressFromTransaction(TransactionData txData);
+        string GetAddressFromTransaction(Tx txData);
         string GetLastSyncedDate();
         string GetSyncedProgressPercentage();
         string[] GenerateGuessWords(string wordToGuess, string language, int amountAround);
@@ -81,9 +79,9 @@ namespace HodlWallet2.Core.Interfaces
 
         long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed);
 
-        HdAddress GetReceiveAddress();
+        BitcoinAddress GetReceiveAddress();
         Network GetNetwork();
-        IEnumerable<TransactionData> GetCurrentAccountTransactions();
+        IEnumerable<Tx> GetCurrentAccountTransactions();
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,
             int feeSatsPerByte, string password);
         Task<(bool Sent, string Error)> SendTransaction(Transaction tx);
