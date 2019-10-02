@@ -144,7 +144,7 @@ namespace HodlWallet2.Core.Services
                 StartWalletWithWalletId();
 
                 SecureStorageService.SetSeedBirthday(
-                    WalletManager.Wallet.CreationTime
+                    _Wallet.CreatedAt ?? DateTimeOffset.UtcNow
                 );
 
                 Logger.Information("Since wallet has a mnemonic, then start the wallet.");
