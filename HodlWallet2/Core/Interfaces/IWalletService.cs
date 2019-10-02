@@ -44,17 +44,9 @@ namespace HodlWallet2.Core.Interfaces
 
         Serilog.ILogger Logger { set; get; }
 
-        IBroadcastManager BroadcastManager { get; set; }
-        ITransactionManager TransactionManager { get; set; }
-        IAsyncLoopFactory AsyncLoopFactory { get; set; }
-        IDateTimeProvider DateTimeProvider { get; set; }
-        IScriptAddressReader ScriptAddressReader { get; set; }
-        IStorageProvider StorageProvider { get; set; }
-        IWalletSyncManager WalletSyncManager { get; set; }
-        WalletManager WalletManager { get; set; }
         NodesGroup NodesGroup { get; set; }
         BlockLocator ScanLocation { get; set; }
-        HdAccount CurrentAccount { get; set; }
+        IAccount CurrentAccount { get; set; }
 
         event EventHandler OnConfigured;
         event EventHandler OnStarted;

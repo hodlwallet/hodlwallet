@@ -39,10 +39,8 @@ using NBitcoin.Protocol.Behaviors;
 using Liviano;
 using Liviano.Interfaces;
 using Liviano.Utilities;
-using Liviano.Behaviors;
-using Liviano.Enums;
+using Liviano.Extensions;
 using Liviano.Models;
-using Liviano.Managers;
 using Liviano.Exceptions;
 
 using HodlWallet2.Core.Interfaces;
@@ -67,35 +65,17 @@ namespace HodlWallet2.Core.Services
 
         Network _Network;
 
-        AddressManager _AddressManager;
+        IWallet _Wallet;
 
-        PartialConcurrentChain _Chain;
+        AddressManager _AddressManager;
 
         DefaultCoinSelector _DefaultCoinSelector;
 
         NodesGroup _NodesGroup;
 
-        WalletSyncManagerBehavior _WalletSyncManagerBehavior;
-
         string _WalletId;
 
         public Serilog.ILogger Logger { set; get; }
-
-        public WalletManager WalletManager { get; set; }
-
-        public IBroadcastManager BroadcastManager { get; set; }
-
-        public ITransactionManager TransactionManager { get; set; }
-
-        public IAsyncLoopFactory AsyncLoopFactory { get; set; }
-
-        public IDateTimeProvider DateTimeProvider { get; set; }
-
-        public IScriptAddressReader ScriptAddressReader { get; set; }
-
-        public IStorageProvider StorageProvider { get; set; }
-
-        public IWalletSyncManager WalletSyncManager { get; set; }
 
         public NodesGroup NodesGroup { get; set; }
 
@@ -130,14 +110,16 @@ namespace HodlWallet2.Core.Services
         /// </summary>
         public WalletService() { }
 
-        public HdAccount CurrentAccount
+        private IAccount _CurrentAccount;
+
+        public IAccount CurrentAccount
         {
             get
             {
                 // FIXME Please change this method once accounts are implemented.
                 //       That means people will change this manually by clicking on a
                 //       different account.
-                return WalletManager.Wallet.GetAccountsByCoinType(CoinType.Bitcoin).FirstOrDefault();
+                return _CurrentAccount;
             }
 
             set => throw new NotImplementedException("This should switch the current account.");
@@ -532,23 +514,25 @@ namespace HodlWallet2.Core.Services
             );
         }
 
-        public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, int feeSatsPerKB, string password)
+        public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, long feeSatsPerByte, string password, IAccount account)
         {
+            // TODO
             Money btcAmount = new Money(amount, MoneyUnit.BTC);
             Transaction tx = null;
             decimal fees = 0.0m;
 
             try
             {
-                tx = TransactionManager.CreateTransaction(
+                tx = TransactionExtensions.CreateTransaction(
+                    password,
                     addressTo,
                     btcAmount,
-                    feeSatsPerKB,
-                    CurrentAccount,
-                    password,
-                    signTransaction: true
+                    feeSatsPerByte,
+                    _Wallet,
+                    account,
+                    _Network
                 );
-                fees = tx.GetVirtualSize() * (feeSatsPerKB / 1000);
+                fees = tx.GetVirtualSize() * feeSatsPerByte;
 
                 return (true, tx, fees, null);
             }
