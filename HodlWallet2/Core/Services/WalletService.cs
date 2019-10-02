@@ -37,6 +37,7 @@ using NBitcoin.Protocol;
 using NBitcoin.Protocol.Behaviors;
 
 using Liviano;
+using Liviano.Bips;
 using Liviano.Interfaces;
 using Liviano.Utilities;
 using Liviano.Extensions;
@@ -109,21 +110,6 @@ namespace HodlWallet2.Core.Services
         /// Empty constructor that MvvmCross needs to start as a service
         /// </summary>
         public WalletService() { }
-
-        private IAccount _CurrentAccount;
-
-        public IAccount CurrentAccount
-        {
-            get
-            {
-                // FIXME Please change this method once accounts are implemented.
-                //       That means people will change this manually by clicking on a
-                //       different account.
-                return _CurrentAccount;
-            }
-
-            set => throw new NotImplementedException("This should switch the current account.");
-        }
 
         public void InitializeWallet()
         {
@@ -244,10 +230,10 @@ namespace HodlWallet2.Core.Services
 
         public static string GetNewMnemonic(string wordlist = "english", int wordcount = 12)
         {
-            return new Mnemonic(HdOperations.WordlistFromString(wordlist), HdOperations.WordCountFromInt(wordcount)).ToString();
+            return new Mnemonic(Hd.WordlistFromString(wordlist), Hd.WordCountFromInt(wordcount)).ToString();
         }
 
-        public static IEnumerable<HdAddress> GetAddressesFromTransaction(TransactionData txData)
+        public static IEnumerable<BitcoinAddress> GetAddressesFromTransaction(TransactionData txData)
         {
             var instance = DependencyService.Get<IWalletService>();
 
@@ -473,41 +459,41 @@ namespace HodlWallet2.Core.Services
             if (string.IsNullOrEmpty(word))
                 return false;
 
-            return HdOperations.IsWordInWordlist(word, wordList);
+            return Hd.IsWordInWordlist(word, wordList);
         }
 
         public string[] GenerateGuessWords(string wordToGuess, string language = "english", int amountAround = 9)
         {
-            return HdOperations.GenerateGuessWords(wordToGuess, language, amountAround);
+            return Hd.GenerateGuessWords(wordToGuess, language, amountAround);
         }
 
         public bool IsVerifyChecksum(string mnemonic, string wordList = "english")
         {
-            return HdOperations.IsValidChecksum(mnemonic, wordList);
+            return Hd.IsValidChecksum(mnemonic, wordList);
         }
 
-        public HdAddress GetReceiveAddress()
+        public BitcoinAddress GetReceiveAddress()
         {
-            return CurrentAccount.GetFirstUnusedReceivingAddress();
+            return _Wallet.CurrentAccount.GetReceiveAddress();
         }
 
-        public IEnumerable<TransactionData> GetAllAccountsTransactions()
+        public IEnumerable<Tx> GetAllAccountsTransactions()
         {
-            if (WalletManager == null) return new List<TransactionData>();
+            if (WalletManager == null) return new List<Tx>();
 
             return WalletManager.GetAllAccountsByCoinType(CoinType.Bitcoin)
                 .SelectMany((HdAccount account) => account.GetCombinedAddresses())
                 .SelectMany((HdAddress address) => address.Transactions);
         }
 
-        public IEnumerable<TransactionData> GetCurrentAccountTransactions()
+        public IEnumerable<Tx> GetCurrentAccountTransactions()
         {
-            if (CurrentAccount == null) return new List<TransactionData>();
+            if (_Wallet.CurrentAccount == null) return new List<Tx>();
 
-            return GetAccountTransactions(CurrentAccount);
+            return GetAccountTransactions();
         }
 
-        public IEnumerable<TransactionData> GetAccountTransactions(HdAccount account)
+        public IEnumerable<Tx> GetAccountTransactions(HdAccount account)
         {
             return account.GetCombinedAddresses().SelectMany(
                 (HdAddress address) => address.Transactions
