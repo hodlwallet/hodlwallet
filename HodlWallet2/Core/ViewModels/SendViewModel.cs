@@ -30,14 +30,12 @@ using NBitcoin.Payment;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 
-using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Utils;
-using HodlWallet2.UI.Extensions;
 
 using Liviano;
 using Liviano.Exceptions;
+using Liviano.Extensions;
 using HodlWallet2.UI.Views;
-using NBitcoin.Protocol;
 using System.Diagnostics;
 
 namespace HodlWallet2.Core.ViewModels

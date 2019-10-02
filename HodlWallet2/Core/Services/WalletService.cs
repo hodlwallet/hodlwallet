@@ -499,7 +499,7 @@ namespace HodlWallet2.Core.Services
             );
         }
 
-        public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, long feeSatsPerByte, string password, IAccount account)
+        public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, long feeSatsPerByte, string password)
         {
             // TODO
             Money btcAmount = new Money(amount, MoneyUnit.BTC);
@@ -514,7 +514,7 @@ namespace HodlWallet2.Core.Services
                     btcAmount,
                     feeSatsPerByte,
                     _Wallet,
-                    account,
+                    _Wallet.CurrentAccount,
                     _Network
                 );
                 fees = tx.GetVirtualSize() * feeSatsPerByte;

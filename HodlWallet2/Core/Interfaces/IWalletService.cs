@@ -79,7 +79,7 @@ namespace HodlWallet2.Core.Interfaces
         Network GetNetwork();
         IEnumerable<Tx> GetCurrentAccountTransactions();
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,
-            long feeSatsPerByte, string password, IAccount account);
+            long feeSatsPerByte, string password);
         Task<(bool Sent, string Error)> SendTransaction(Transaction tx);
         ChainedBlock GetChainTip();
     }
