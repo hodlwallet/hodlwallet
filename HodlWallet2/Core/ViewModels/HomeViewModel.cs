@@ -22,6 +22,9 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+using System.Diagnostics;
+using System.Threading;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Collections.Specialized;
@@ -31,7 +34,7 @@ using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 
-using Newtonsoft.Json;
+using NBitcoin;
 
 using Liviano;
 using Liviano.Models;
@@ -40,12 +43,7 @@ using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.Services;
-using NBitcoin;
-using System.Windows.Input;
-using NBitcoin.Protocol;
-using System.Diagnostics;
-using System.Threading;
-using HodlWallet2.UI.Views;
+using HodlWallet2.Core.Extensions;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -510,6 +508,7 @@ namespace HodlWallet2.Core.ViewModels
             }
 
             var preferences = Preferences.Get("currency", "BTC");
+
             if (preferences == "BTC")
             {
                 if (tx.IsSend == true)
@@ -517,19 +516,17 @@ namespace HodlWallet2.Core.ViewModels
 
                 return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.SpendableAmount(false));
             }
-            else
-            {
-                if (tx.IsSend == true)
-                    return string.Format(
-                        Constants.SENT_AMOUNT,
-                        preferences,
-                        $"-{tx.AmountSent.ToUsd((decimal)_NewRate):F2}");
 
+            if (tx.IsSend == true)
                 return string.Format(
-                    Constants.RECEIVE_AMOUNT,
-                    preferences,
-                    $"{tx.SpendableAmount(false).ToUsd((decimal)_NewRate):F2}");
-            }
+                Constants.SENT_AMOUNT,
+                preferences,
+                $"-{tx.AmountSent.ToUsd((decimal)_NewRate):F2}");
+
+            return string.Format(
+                Constants.RECEIVE_AMOUNT,
+                preferences,
+                $"{tx.SpendableAmount(false).ToUsd((decimal)_NewRate):F2}");
         }
     }
 }
