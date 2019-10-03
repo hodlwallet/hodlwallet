@@ -268,12 +268,14 @@ namespace HodlWallet2.Core.Services
 
         public bool IsAddressOwn(string address)
         {
-            bool inInternal = CurrentAccount.InternalAddresses.Select(
-                    (HdAddress hdAddress) => hdAddress.Address)
-                .Contains(address);
-            bool inExternal = CurrentAccount.ExternalAddresses.Select(
-                    (HdAddress hdAddress) => hdAddress.Address)
-                .Contains(address);
+            var parsedAddress = BitcoinAddress.Create(address, _Network);
+
+            bool inInternal = _Wallet.CurrentAccount.UsedInternalAddresses
+                              .Contains(parsedAddress) ||
+                              parsedAddress == _Wallet.CurrentAccount.GetReceiveAddress();
+
+            bool inExternal = _Wallet.CurrentAccount.UsedExternalAddresses
+                              .Contains(parsedAddress);
 
             return inInternal || inExternal;
         }
