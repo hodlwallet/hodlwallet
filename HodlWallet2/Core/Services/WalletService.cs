@@ -64,6 +64,8 @@ namespace HodlWallet2.Core.Services
 
         NodeConnectionParameters _ConParams;
 
+        IStorage _StorageProvider;
+
         Network _Network;
 
         IWallet _Wallet;
@@ -177,7 +179,7 @@ namespace HodlWallet2.Core.Services
                     Logger.Information(ex.Message);
 
                     // TODO: Defensive programming is a bad practice, this is a bad practice
-                    if (!HdOperations.IsMnemonicOfWallet(mnemonic, WalletManager.Wallet))
+                    if (!Hd.IsMnemonicOfWallet(new Mnemonic(mnemonic), _Wallet, _Network))
                     {
                         WalletManager.GetStorageProvider().DeleteWallet();
 
@@ -288,21 +290,14 @@ namespace HodlWallet2.Core.Services
             DateTimeProvider = new DateTimeProvider();
             AsyncLoopFactory = new AsyncLoopFactory();
             ScriptAddressReader = new ScriptAddressReader();
-            StorageProvider = new WalletStorageProvider(_WalletId);
+            _StorageProvider = new WalletStorageProvider(_WalletId, _Network);
 
-            if (!StorageProvider.WalletExists())
+            if (!_StorageProvider.Exists())
             {
                 Logger.Information("Will create a new wallet {walletId} since it doesn't exists", _WalletId);
             }
 
-            WalletManager = new WalletManager(Logger, _Network, _Chain, AsyncLoopFactory, DateTimeProvider, ScriptAddressReader, StorageProvider);
-            WalletSyncManager = new WalletSyncManager(Logger, WalletManager, _Chain);
-
-            _WalletSyncManagerBehavior = new WalletSyncManagerBehavior(Logger, WalletSyncManager, ScriptTypes.P2WPKH);
-
             _ConParams.TemplateBehaviors.Add(new AddressManagerBehavior(_AddressManager));
-            _ConParams.TemplateBehaviors.Add(new PartialChainBehavior(_Chain, _Network) { CanRespondToGetHeaders = false, SkipPoWCheck = true });
-            _ConParams.TemplateBehaviors.Add(_WalletSyncManagerBehavior);
 
             _ConParams.UserAgent = USER_AGENT;
 
@@ -313,8 +308,6 @@ namespace HodlWallet2.Core.Services
 
             Logger.Information("Requiring service 'NETWORK' for SPV");
 
-            BroadcastManager = new BroadcastManager(_NodesGroup);
-
             _ConParams.TemplateBehaviors.Add(new TransactionBroadcastBehavior(BroadcastManager));
 
             _NodesGroup.NodeConnectionParameters = _ConParams;
@@ -323,8 +316,6 @@ namespace HodlWallet2.Core.Services
             _DefaultCoinSelector = new DefaultCoinSelector();
 
             Logger.Information("Coin selector: {coinSelector}", _DefaultCoinSelector.GetType().ToString());
-
-            TransactionManager = new TransactionManager(BroadcastManager, WalletManager, _DefaultCoinSelector, _Chain);
 
             Logger.Information("Add transaction manager.");
 

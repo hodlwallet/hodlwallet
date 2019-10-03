@@ -25,13 +25,15 @@
 // THE SOFTWARE.
 using System;
 
-using Liviano;
+using NBitcoin;
+
+using Liviano.Storages;
 
 namespace HodlWallet2.Core
 {
-    public class WalletStorageProvider : FileSystemStorageProvider
+    public class WalletStorageProvider : FileSystemStorage
     {
-        public WalletStorageProvider(string id = null) : base(id, Environment.GetFolderPath(Environment.SpecialFolder.Personal))
+        public WalletStorageProvider(string id = null, Network network = null) : base(id, network, Environment.GetFolderPath(Environment.SpecialFolder.Personal))
         {
         }
     }
