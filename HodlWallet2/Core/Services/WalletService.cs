@@ -43,6 +43,9 @@ using Liviano.Utilities;
 using Liviano.Extensions;
 using Liviano.Models;
 using Liviano.Exceptions;
+using Liviano.Electrum;
+
+using static Liviano.Electrum.ElectrumClient;
 
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
@@ -287,9 +290,6 @@ namespace HodlWallet2.Core.Services
             Logger.Information("With wallet id: {walletId}", _WalletId);
             Logger.Information("Will try to connect to {nodesToConnect}", _NodesToConnect);
 
-            DateTimeProvider = new DateTimeProvider();
-            AsyncLoopFactory = new AsyncLoopFactory();
-            ScriptAddressReader = new ScriptAddressReader();
             _StorageProvider = new WalletStorageProvider(_WalletId, _Network);
 
             if (!_StorageProvider.Exists())
@@ -524,8 +524,13 @@ namespace HodlWallet2.Core.Services
         {
             try
             {
-                await TransactionManager.BroadcastTransaction(tx);
-                return (true, null);
+                var electrumClient = new ElectrumClient(GetRecentlyConnectedServers());
+                var broadcast = await electrumClient.BlockchainTransactionBroadcast(tx.ToHex());
+
+                if (broadcast.Result != tx.GetHash().ToString())
+                {
+                    throw new ElectrumException($"Transaction Broadcast failed for tx: {tx.ToHex()}\n{broadcast.Result}");
+                }
             }
             catch (Exception e)
             {
@@ -533,13 +538,15 @@ namespace HodlWallet2.Core.Services
 
                 return (false, e.Message);
             }
+
+            return (true, null);
         }
 
         public Network GetNetwork()
         {
-            Guard.NotNull(WalletManager, nameof(WalletManager));
+            Guard.NotNull(_Network, nameof(_Network));
 
-            return WalletManager.Network;
+            return _Network;
         }
 
         /// <summary>
