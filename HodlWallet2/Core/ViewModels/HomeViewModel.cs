@@ -477,7 +477,7 @@ namespace HodlWallet2.Core.ViewModels
         void LoadTransactions()
         {
             var txs = _WalletService.GetCurrentAccountTransactions().OrderBy(
-                (TransactionData txData) => txData.CreationTime
+                (Tx txData) => txData.CreatedAt
             );
 
             foreach (var tx in txs)
@@ -500,7 +500,7 @@ namespace HodlWallet2.Core.ViewModels
             }
         }
 
-        string GetAmountLabelText(TransactionData tx)
+        string GetAmountLabelText(Tx tx)
         {
             if (tx is null)
             {
@@ -515,7 +515,7 @@ namespace HodlWallet2.Core.ViewModels
                 if (tx.IsSend == true)
                     return string.Format(Constants.SENT_AMOUNT, preferences, $"-{tx.AmountSent}");
 
-                return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.Amount);
+                return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.SpendableAmount(false));
             }
             else
             {
@@ -528,7 +528,7 @@ namespace HodlWallet2.Core.ViewModels
                 return string.Format(
                     Constants.RECEIVE_AMOUNT,
                     preferences,
-                    $"{tx.Amount.ToUsd((decimal)_NewRate):F2}");
+                    $"{tx.SpendableAmount(false).ToUsd((decimal)_NewRate):F2}");
             }
         }
     }

@@ -329,7 +329,7 @@ namespace HodlWallet2.Core.Services
 
         public void Start(string password, DateTimeOffset? timeToStartOn = null)
         {
-            if (WalletManager.Wallet == null)
+            if (_Wallet == null)
             {
                 WalletManager.LoadWallet(password);
 
@@ -387,16 +387,16 @@ namespace HodlWallet2.Core.Services
                 _Network = Network.GetNetwork(networkStr);
             }
 
-            if (StorageProvider == null)
+            if (_StorageProvider == null)
             {
                 string walletId = SecureStorageService.GetWalletId();
 
-                StorageProvider = new WalletStorageProvider(id: walletId);
+                _StorageProvider = new WalletStorageProvider(id: walletId);
             }
 
             string chainFile = ChainFile();
             string addrmanFile = AddrmanFile();
-            string walletFile = ((WalletStorageProvider)StorageProvider).FilePath;
+            string walletFile = ((WalletStorageProvider)_StorageProvider).FilePath;
 
             Logger.Information("Deleting chain file: {chainFile}", chainFile);
             Logger.Information("Deleting address manager file: {addrmanFile}", addrmanFile);
@@ -438,12 +438,12 @@ namespace HodlWallet2.Core.Services
             if (_WalletId == null)
                 return false;
 
-            return StorageProvider.WalletExists();
+            return _StorageProvider.Exists();
         }
 
         public string NewMnemonic(string wordList = "english", int wordCount = 12)
         {
-            return WalletManager.NewMnemonic(wordList, wordCount).ToString();
+            return Hd.NewMnemonic(wordList, wordCount).ToString();
         }
 
         public bool IsWordInWordlist(string word, string wordList = "english")
@@ -469,27 +469,11 @@ namespace HodlWallet2.Core.Services
             return _Wallet.CurrentAccount.GetReceiveAddress();
         }
 
-        public IEnumerable<Tx> GetAllAccountsTransactions()
-        {
-            if (WalletManager == null) return new List<Tx>();
-
-            return WalletManager.GetAllAccountsByCoinType(CoinType.Bitcoin)
-                .SelectMany((HdAccount account) => account.GetCombinedAddresses())
-                .SelectMany((HdAddress address) => address.Transactions);
-        }
-
         public IEnumerable<Tx> GetCurrentAccountTransactions()
         {
             if (_Wallet.CurrentAccount == null) return new List<Tx>();
 
-            return GetAccountTransactions();
-        }
-
-        public IEnumerable<Tx> GetAccountTransactions(HdAccount account)
-        {
-            return account.GetCombinedAddresses().SelectMany(
-                (HdAddress address) => address.Transactions
-            );
+            return _Wallet.CurrentAccount.Txs;
         }
 
         public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, long feeSatsPerByte, string password)
