@@ -139,9 +139,16 @@ namespace HodlWallet2.Core.ViewModels
         {
             if (_TransactionToBroadcast is null) return;
 
-            _WalletService.BroadcastManager.BroadcastTransactionAsync(_TransactionToBroadcast);
+            var result = _WalletService.SendTransaction(_TransactionToBroadcast).Result;
 
-            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
+            if (result.Sent == true)
+            {
+                MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
+            }
+            else
+            {
+                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_TRANSACTION_MESSAGE);
+            }
         }
 
         void SwitchCurrency()
@@ -305,23 +312,20 @@ namespace HodlWallet2.Core.ViewModels
 
             if (AmountToSend <= 0.00m || string.IsNullOrEmpty(AddressToSendTo) || Fee <= 0)
             {
-                string message = "Unable to send, check your amount, address and fee";
-
-                DisplayProcessAddressErrorAlert(message, Constants.DISPLAY_ALERT_ERROR_TITLE);
+                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_AMOUNT_MESSAGE);
                 return;
             }
 
             var (Success, Tx, Fees, Error) = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
             Debug.WriteLine($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
+
             if (Success)
             {
                 var totalOut = Tx.TotalOut.ToDecimal(MoneyUnit.BTC);
                 _TransactionToBroadcast = Tx;
 
                 MessagingCenter.Send(this, "AskToBroadcastTransaction", (totalOut, Fees));
-
-                return;
             }
             else
             {
