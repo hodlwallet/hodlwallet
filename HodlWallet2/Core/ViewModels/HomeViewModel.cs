@@ -418,27 +418,27 @@ namespace HodlWallet2.Core.ViewModels
             SyncIsVisible = false;
         }
 
-        void WalletManager_OnUpdateSpendingTransaction(object sender, TransactionData e)
+        void WalletManager_OnUpdateSpendingTransaction(object sender, Tx e)
         {
             UpdateTransactionsCollectionWith(e);
         }
 
-        void WalletManager_OnUpdateTransaction(object sender, TransactionData e)
+        void WalletManager_OnUpdateTransaction(object sender, Tx e)
         {
             UpdateTransactionsCollectionWith(e);
         }
 
-        void WalletManager_OnNewSpendingTransaction(object sender, TransactionData e)
+        void WalletManager_OnNewSpendingTransaction(object sender, Tx e)
         {
             UpdateTransactionsCollectionWith(e);
         }
 
-        void WalletManager_OnNewTransaction(object sender, TransactionData e)
+        void WalletManager_OnNewTransaction(object sender, Tx e)
         {
             AddToTransactionsCollectionWith(e);
         }
 
-        void AddToTransactionsCollectionWith(TransactionData txData)
+        void AddToTransactionsCollectionWith(Tx txData)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -452,7 +452,7 @@ namespace HodlWallet2.Core.ViewModels
             });
         }
 
-        void UpdateTransactionsCollectionWith(TransactionData txData)
+        void UpdateTransactionsCollectionWith(Tx txData)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
