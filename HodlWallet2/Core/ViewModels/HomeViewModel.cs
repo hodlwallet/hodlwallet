@@ -170,7 +170,6 @@ namespace HodlWallet2.Core.ViewModels
             if (_WalletService.IsStarted)
             {
                 LoadTransactions();
-                UpdateSyncingStatus();
                 AddWalletServiceEvents();
             }
             else
@@ -197,37 +196,6 @@ namespace HodlWallet2.Core.ViewModels
             Debug.WriteLine("[StartSearch] Search is not implemented yet!");
 
             MessagingCenter.Send(this, "DisplaySearchNotImplementedAlert");
-        }
-
-        void UpdateSyncingStatus()
-        {
-            SyncIsVisible = !_WalletService.IsSyncedToTip();
-
-            double progress = _WalletService.GetSyncedProgress();
-
-            if (progress.Equals(0.00))
-            {
-                var chainTip = _WalletService.GetChainTip();
-
-                _Logger.Debug("[{0}] chainTip => {1}", nameof(UpdateSyncingStatus), chainTip.Height);
-
-                SyncDateText = Constants.SYNC_LOADING_HEADERS;
-            }
-            else
-            {
-                SyncDateText = $"{_WalletService.GetSyncedProgressPercentage()}% {_WalletService.GetLastSyncedDate()} ({_WalletService.GetLastSyncedBlockHeight()})";
-
-            }
-            SyncCurrentProgress = _WalletService.GetSyncedProgress();
-
-            _Logger.Debug(
-                "[{0}] IsSyncedToTip => {1}, GetLastSyncedDate => {2}, GetLastSyncedBlockHeight => {3}, GetSyncedProgressPercentage => {4}",
-                nameof(UpdateSyncingStatus),
-                _WalletService.IsSyncedToTip(),
-                _WalletService.GetLastSyncedDate(),
-                _WalletService.GetLastSyncedBlockHeight(),
-                _WalletService.GetSyncedProgressPercentage()
-            );
         }
 
         void SwitchCurrency()
@@ -338,13 +306,6 @@ namespace HodlWallet2.Core.ViewModels
             });
         }
 
-        public void ReScan()
-        {
-            var seedBirthday = DateTimeOffset.FromUnixTimeSeconds(SecureStorageService.GetSeedBirthday());
-
-            _WalletService.ReScan(seedBirthday);
-        }
-
         void NavigateToTransactionDetails()
         {
             if (CurrentTransaction == null) return;
@@ -379,8 +340,6 @@ namespace HodlWallet2.Core.ViewModels
                 e.NewPosition.Height,
                 e.PreviousPosition.Height
             );
-
-            UpdateSyncingStatus();
         }
 
         void _WalletService_OnStarted(object sender, EventArgs e)
@@ -393,8 +352,6 @@ namespace HodlWallet2.Core.ViewModels
                 {
                     LoadTransactions();
 
-                    UpdateSyncingStatus();
-
                     AddWalletServiceEvents();
                 }
             });
@@ -406,16 +363,6 @@ namespace HodlWallet2.Core.ViewModels
             _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnNewSpendingTransaction;
             _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnUpdateTransaction;
             _WalletService.WalletManager.OnUpdateSpendingTransaction += WalletManager_OnUpdateSpendingTransaction;
-
-            _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
-            _WalletService.WalletSyncManager.OnWalletSyncedToTipOfChain += WalletSyncManager_OnWalletSyncedToTipOfChain;
-        }
-
-        private void WalletSyncManager_OnWalletSyncedToTipOfChain(object sender, NBitcoin.ChainedBlock e)
-        {
-            UpdateSyncingStatus();
-
-            SyncIsVisible = false;
         }
 
         void WalletManager_OnUpdateSpendingTransaction(object sender, Tx e)
