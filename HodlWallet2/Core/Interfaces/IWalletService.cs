@@ -28,10 +28,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using NBitcoin;
-using NBitcoin.Protocol;
 
 using Liviano.Models;
-using Liviano.Utilities;
 using Liviano.Interfaces;
 
 namespace HodlWallet2.Core.Interfaces
@@ -41,10 +39,9 @@ namespace HodlWallet2.Core.Interfaces
         bool IsStarted { get; }
         bool IsConfigured { get; }
 
-        Serilog.ILogger Logger { set; get; }
+        IWallet Wallet { get; }
 
-        NodesGroup NodesGroup { get; set; }
-        BlockLocator ScanLocation { get; set; }
+        Serilog.ILogger Logger { set; get; }
 
         event EventHandler OnConfigured;
         event EventHandler OnStarted;
@@ -56,26 +53,17 @@ namespace HodlWallet2.Core.Interfaces
         void Configure(string walletId, string network, int? nodesToConnect);
         void Start(string password, DateTimeOffset? timeToStartOn);
         void StartWalletWithWalletId();
-        void Scan(DateTimeOffset? timeToStartOn);
-        void ReScan(DateTimeOffset? timeToStartOn);
         void DestroyWallet(bool dryRun = false);
-
-        int GetLastSyncedBlockHeight();
 
         bool WalletExists();
         bool IsAddressOwn(string address);
         bool IsVerifyChecksum(string mnemonic, string wordList);
         bool IsWordInWordlist(string word, string wordList);
-        bool IsSyncedToTip();
         string NewMnemonic(string wordList, int wordCount);
         string GetAddressFromTransaction(Tx txData);
-        string GetLastSyncedDate();
-        string GetSyncedProgressPercentage();
         string[] GenerateGuessWords(string wordToGuess, string language, int amountAround);
 
         decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);
-
-        double GetSyncedProgress();
 
         long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed);
 
@@ -86,6 +74,5 @@ namespace HodlWallet2.Core.Interfaces
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,
             long feeSatsPerByte, string password);
         Task<(bool Sent, string Error)> SendTransaction(Transaction tx);
-        ChainedBlock GetChainTip();
     }
 }
