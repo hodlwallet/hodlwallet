@@ -148,16 +148,27 @@ namespace HodlWallet2.Core.Services
 
                 try
                 {
-                    WalletManager.LoadWallet(password);
+                    _Network = Hd.GetNetwork(/* Determine Network for Wallet */);
+
+                    var storage = new WalletStorageProvider(_WalletId, _Network);
+
+                    if (!storage.Exists())
+                    {
+                        Logger.Debug($"Wallet {_WalletId} doesn't exist.");
+
+                        throw new WalletException("Invalid wallet ID.");
+                    }
+
+                    Wallet = storage.Load();
                 }
-                catch (SecurityException ex)
+                catch (WalletException ex)
                 {
                     Logger.Information(ex.Message);
 
                     // TODO: Defensive programming is a bad practice, this is a bad practice
                     if (!Hd.IsMnemonicOfWallet(new Mnemonic(mnemonic), Wallet, _Network))
                     {
-                        WalletManager.GetStorageProvider().DeleteWallet();
+                        // Delete Wallet
 
                         string language = "english";
                         int wordCount = 12;
@@ -165,14 +176,7 @@ namespace HodlWallet2.Core.Services
                             ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageService.GetSeedBirthday())
                             : new DateTimeOffset(DateTime.UtcNow);
 
-                        WalletManager.CreateWallet(
-                            _WalletId,
-                            password,
-                            WalletManager.MnemonicFromString(mnemonic),
-                            language,
-                            wordCount,
-                            createdAt
-                        );
+                        // Create Wallet
 
                         Logger.Information("Wallet created.");
                     }
