@@ -188,20 +188,31 @@ namespace HodlWallet2.Core.Services
                     ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageService.GetSeedBirthday())
                     : new DateTimeOffset(DateTime.UtcNow);
 
-                WalletManager.CreateWallet(
-                    _WalletId,
-                    password,
-                    WalletManager.MnemonicFromString(mnemonic),
-                    language,
-                    wordCount,
-                    createdAt
-                );
+                Wallet = new Wallet();
+
+                Wallet.Init(mnemonic, password, "", _Network, createdAt, _StorageProvider);
+
+                Wallet.AddAccount("bip141");
+
+                if (Wallet.Accounts[0] == null)
+                {
+                    throw new WalletException("Account was unable to be initialized.");
+                }
+
+                var account = Wallet.Accounts[0].CastToAccountType();
+
+                Logger.Debug($"Account Type: {account.GetType()}");
+                Logger.Debug($"Added account with path: {account.HdPath}");
+
+                Wallet.Storage.Save();
+
+                // Sync
 
                 Logger.Information("Wallet created.");
             }
 
             // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
-            Start(password, WalletManager.Wallet.CreationTime);
+            Start(password, Wallet.CreatedAt);
 
             Logger.Information("Wallet started.");
         }
@@ -326,6 +337,7 @@ namespace HodlWallet2.Core.Services
             lock (_Lock)
             {
                 // Database cleanup
+                // Delete method in FileSystemStorage
                 File.Delete(walletFile);
             }
 
