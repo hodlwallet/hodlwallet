@@ -182,8 +182,11 @@ namespace HodlWallet2.Core.Services
             {
                 Logger.Debug("Creating wallet ({guid}) with password: {password}", _WalletId, password);
 
-                string language = "english";
+                string wordlist = "english";
                 int wordCount = 12;
+
+                mnemonic = string.Join(" ", Hd.NewMnemonic(wordlist, wordCount).Words);
+
                 DateTimeOffset createdAt = SecureStorageService.HasSeedBirthday()
                     ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageService.GetSeedBirthday())
                     : new DateTimeOffset(DateTime.UtcNow);
@@ -206,7 +209,31 @@ namespace HodlWallet2.Core.Services
 
                 Wallet.Storage.Save();
 
-                // Sync
+                var start = new DateTimeOffset();
+                var end = new DateTimeOffset();
+
+                Wallet.SyncStarted += (obj, _) =>
+                {
+                    start = DateTimeOffset.Now;
+
+                    Logger.Debug($"Syncing started at {start.LocalDateTime.ToLongTimeString()}");
+                };
+
+                Wallet.SyncFinished += async (obj, _) =>
+                {
+                    end = DateTimeOffset.UtcNow;
+
+                    Logger.Debug($"Syncing ended at {end.LocalDateTime.ToLongTimeString()}");
+                    Logger.Debug($"Syncing time: {(end - start).TotalSeconds}");
+
+                    Wallet.Storage.Save();
+
+                    await Wallet.Start();
+                };
+
+                _ = Wallet.Sync();
+
+                // Listen to transactions
 
                 Logger.Information("Wallet created.");
             }
