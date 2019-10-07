@@ -166,7 +166,7 @@ namespace HodlWallet2.Core.Services
                     Logger.Information(ex.Message);
 
                     // TODO: Defensive programming is a bad practice, this is a bad practice
-                    if (!Hd.IsMnemonicOfWallet(new Mnemonic(mnemonic), Wallet, _Network))
+                    if (!Hd.IsMnemonicOfWallet(new Mnemonic(mnemonic), (Wallet)Wallet, _Network))
                     {
                         // Delete Wallet
 
