@@ -55,7 +55,6 @@ namespace HodlWallet2.Core.Interfaces
         void StartWalletWithWalletId();
         void DestroyWallet(bool dryRun = false);
 
-        bool WalletExists();
         bool IsAddressOwn(string address);
         bool IsVerifyChecksum(string mnemonic, string wordList);
         bool IsWordInWordlist(string word, string wordList);

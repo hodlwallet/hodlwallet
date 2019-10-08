@@ -61,8 +61,6 @@ namespace HodlWallet2.Core.Services
 
         object _Lock = new object();
 
-        IStorage _StorageProvider;
-
         Network _Network;
 
         DefaultCoinSelector _DefaultCoinSelector;
@@ -142,105 +140,91 @@ namespace HodlWallet2.Core.Services
                                   // change liviano load wallet to accept null passwords
                                   // But, since HODLWallet 1 didn't have passwords this is okay
 
-            if (WalletExists())
+            _Network = Hd.GetNetwork(/* Determine Network for Wallet */);
+
+            var storage = new WalletStorageProvider(_WalletId, _Network);
+
+            if (storage.Exists())
             {
                 Logger.Information("Loading a wallet because it exists");
 
                 try
                 {
-                    _Network = Hd.GetNetwork(/* Determine Network for Wallet */);
-
-                    var storage = new WalletStorageProvider(_WalletId, _Network);
-
-                    if (!storage.Exists())
-                    {
-                        Logger.Debug($"Wallet {_WalletId} doesn't exist.");
-
-                        throw new WalletException("Invalid wallet ID.");
-                    }
-
                     Wallet = storage.Load();
+
+                    Start(password, Wallet.CreatedAt);
+                    Logger.Information("Wallet started.");
+
+                    return;
                 }
-                catch (WalletException ex)
+                catch (Exception ex)
                 {
                     Logger.Information(ex.Message);
 
                     // TODO: Defensive programming is a bad practice, this is a bad practice
                     if (!Hd.IsMnemonicOfWallet(new Mnemonic(mnemonic), (Wallet)Wallet, _Network))
                     {
-                        // Delete Wallet
+                        storage.Remove();
 
-                        string language = "english";
+                        string wordlist = "english";
                         int wordCount = 12;
-                        DateTimeOffset createdAt = SecureStorageService.HasSeedBirthday()
-                            ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageService.GetSeedBirthday())
-                            : new DateTimeOffset(DateTime.UtcNow);
 
-                        // Create Wallet
-
-                        Logger.Information("Wallet created.");
+                        mnemonic = string.Join(" ", Hd.NewMnemonic(wordlist, wordCount).Words);
                     }
                 }
             }
-            else
+
+            Logger.Debug("Creating wallet ({guid}) with password: {password}", _WalletId, password);
+
+            DateTimeOffset createdAt = SecureStorageService.HasSeedBirthday()
+                ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageService.GetSeedBirthday())
+                : new DateTimeOffset(DateTime.UtcNow);
+
+            Wallet = new Wallet();
+
+            Wallet.Init(mnemonic, password, network: _Network, createdAt: createdAt);
+
+            Wallet.AddAccount("bip141");
+
+            if (Wallet.Accounts[0] == null)
             {
-                Logger.Debug("Creating wallet ({guid}) with password: {password}", _WalletId, password);
+                throw new WalletException("Account was unable to be initialized.");
+            }
 
-                string wordlist = "english";
-                int wordCount = 12;
+            var account = Wallet.Accounts[0].CastToAccountType();
 
-                mnemonic = string.Join(" ", Hd.NewMnemonic(wordlist, wordCount).Words);
+            Logger.Debug($"Account Type: {account.GetType()}");
+            Logger.Debug($"Added account with path: {account.HdPath}");
 
-                DateTimeOffset createdAt = SecureStorageService.HasSeedBirthday()
-                    ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageService.GetSeedBirthday())
-                    : new DateTimeOffset(DateTime.UtcNow);
+            Wallet.Storage.Save();
 
-                Wallet = new Wallet();
+            var start = new DateTimeOffset();
+            var end = new DateTimeOffset();
 
-                Wallet.Init(mnemonic, password, "", _Network, createdAt, _StorageProvider);
+            Wallet.SyncStarted += (obj, _) =>
+            {
+                start = DateTimeOffset.Now;
 
-                Wallet.AddAccount("bip141");
+                Logger.Debug($"Syncing started at {start.LocalDateTime.ToLongTimeString()}");
+            };
 
-                if (Wallet.Accounts[0] == null)
-                {
-                    throw new WalletException("Account was unable to be initialized.");
-                }
+            Wallet.SyncFinished += async (obj, _) =>
+            {
+                end = DateTimeOffset.UtcNow;
 
-                var account = Wallet.Accounts[0].CastToAccountType();
-
-                Logger.Debug($"Account Type: {account.GetType()}");
-                Logger.Debug($"Added account with path: {account.HdPath}");
+                Logger.Debug($"Syncing ended at {end.LocalDateTime.ToLongTimeString()}");
+                Logger.Debug($"Syncing time: {(end - start).TotalSeconds}");
 
                 Wallet.Storage.Save();
 
-                var start = new DateTimeOffset();
-                var end = new DateTimeOffset();
+                await Wallet.Start();
+            };
 
-                Wallet.SyncStarted += (obj, _) =>
-                {
-                    start = DateTimeOffset.Now;
+            _ = Wallet.Sync();
 
-                    Logger.Debug($"Syncing started at {start.LocalDateTime.ToLongTimeString()}");
-                };
+            // Listen to transactions
 
-                Wallet.SyncFinished += async (obj, _) =>
-                {
-                    end = DateTimeOffset.UtcNow;
-
-                    Logger.Debug($"Syncing ended at {end.LocalDateTime.ToLongTimeString()}");
-                    Logger.Debug($"Syncing time: {(end - start).TotalSeconds}");
-
-                    Wallet.Storage.Save();
-
-                    await Wallet.Start();
-                };
-
-                _ = Wallet.Sync();
-
-                // Listen to transactions
-
-                Logger.Information("Wallet created.");
-            }
+            Logger.Information("Wallet created.");
 
             // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
             Start(password, Wallet.CreatedAt);
@@ -352,36 +336,17 @@ namespace HodlWallet2.Core.Services
                 _Network = Network.GetNetwork(networkStr);
             }
 
-            if (_StorageProvider == null)
-            {
-                string walletId = SecureStorageService.GetWalletId();
-
-                _StorageProvider = new WalletStorageProvider(id: walletId);
-            }
-
-            string walletFile = ((WalletStorageProvider)_StorageProvider).FilePath;
-
-            Logger.Information("Deleting wallet file: {walletFile}", walletFile);
-
             if (dryRun) return;
 
             lock (_Lock)
             {
                 // Database cleanup
                 // Delete method in FileSystemStorage
-                File.Delete(walletFile);
+                Wallet.Storage.Remove();
             }
 
             // TODO Make sure that removing all secure storage is the right thing to do
             SecureStorageService.RemoveAll();
-        }
-
-        public bool WalletExists()
-        {
-            if (_WalletId == null)
-                return false;
-
-            return _StorageProvider.Exists();
         }
 
         public string NewMnemonic(string wordList = "english", int wordCount = 12)
