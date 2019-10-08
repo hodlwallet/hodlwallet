@@ -113,7 +113,8 @@ namespace HodlWallet2.Core.Services
                 SecureStorageService.SetNetwork(network);
             }
 
-            Configure(walletId: guid, network: network);
+            _Network = Hd.GetNetwork(network ?? DEFAULT_NETWORK);
+            _WalletId = guid ?? Guid.NewGuid().ToString();
 
             if (SecureStorageService.HasMnemonic() && _WalletId != null)
             {
@@ -124,6 +125,11 @@ namespace HodlWallet2.Core.Services
                 );
 
                 Logger.Information("Since wallet has a mnemonic, then start the wallet.");
+
+                OnConfigured?.Invoke(this, null);
+                IsConfigured = true;
+
+                Logger.Information("Configured wallet.");
 
                 return;
             }
@@ -277,35 +283,6 @@ namespace HodlWallet2.Core.Services
                               .Contains(parsedAddress);
 
             return inInternal || inExternal;
-        }
-
-        public void Configure(string walletId = null, string network = null, int? nodesToConnect = null)
-        {
-            _Network = Hd.GetNetwork(network ?? DEFAULT_NETWORK);
-            _WalletId = walletId ?? Guid.NewGuid().ToString();
-
-            Logger.Information("Running on {network}", _Network.Name);
-            Logger.Information("With wallet id: {walletId}", _WalletId);
-
-            _StorageProvider = new WalletStorageProvider(_WalletId, _Network);
-
-            if (!_StorageProvider.Exists())
-            {
-                Logger.Information("Will create a new wallet {walletId} since it doesn't exists", _WalletId);
-            }
-
-            // Add Broadcast Behavior?
-
-            _DefaultCoinSelector = new DefaultCoinSelector();
-
-            Logger.Information("Coin selector: {coinSelector}", _DefaultCoinSelector.GetType().ToString());
-
-            Logger.Information("Add transaction manager.");
-
-            Logger.Information("Configured wallet.");
-
-            OnConfigured?.Invoke(this, null);
-            IsConfigured = true;
         }
 
         public void Start(string password, DateTimeOffset? timeToStartOn = null)
