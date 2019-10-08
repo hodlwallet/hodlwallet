@@ -170,7 +170,10 @@ namespace HodlWallet2.Core.Services
                     // TODO: Defensive programming is a bad practice, this is a bad practice
                     if (!Hd.IsMnemonicOfWallet(new Mnemonic(mnemonic), (Wallet)Wallet, _Network))
                     {
-                        storage.Remove();
+                        lock (_Lock)
+                        {
+                            storage.Remove();
+                        }
 
                         string wordlist = "english";
                         int wordCount = 12;
