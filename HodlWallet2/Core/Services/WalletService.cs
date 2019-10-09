@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using System.Security;
 using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
@@ -178,7 +177,7 @@ namespace HodlWallet2.Core.Services
                         string wordlist = "english";
                         int wordCount = 12;
 
-                        mnemonic = string.Join(" ", Hd.NewMnemonic(wordlist, wordCount).Words);
+                        mnemonic = GetNewMnemonic(wordlist, wordCount);
                     }
                 }
             }
@@ -241,9 +240,24 @@ namespace HodlWallet2.Core.Services
             Logger.Information("Wallet started.");
         }
 
-        public static string GetNewMnemonic(string wordlist = "english", int wordcount = 12)
+        public void Start(string password, DateTimeOffset? timeToStartOn = null)
         {
-            return new Mnemonic(Hd.WordlistFromString(wordlist), Hd.WordCountFromInt(wordcount)).ToString();
+            if (Wallet == null)
+            {
+                WalletManager.LoadWallet(password);
+
+                timeToStartOn = WalletManager.Wallet.CreationTime;
+            }
+
+            _ = PeriodicSave();
+
+            OnStarted?.Invoke(this, null);
+            IsStarted = true;
+        }
+
+        public static string GetNewMnemonic(string wordList = "english", int wordCount = 12)
+        {
+            return Hd.NewMnemonic(wordList, wordCount).ToString();
         }
 
         public static IEnumerable<BitcoinAddress> GetAddressesFromTransaction(Tx txData)
@@ -288,21 +302,6 @@ namespace HodlWallet2.Core.Services
             return inInternal || inExternal;
         }
 
-        public void Start(string password, DateTimeOffset? timeToStartOn = null)
-        {
-            if (Wallet == null)
-            {
-                WalletManager.LoadWallet(password);
-
-                timeToStartOn = WalletManager.Wallet.CreationTime;
-            }
-
-            _ = PeriodicSave();
-
-            OnStarted?.Invoke(this, null);
-            IsStarted = true;
-        }
-
         /// <summary>
         /// Destroy wallet, deletes wallets file and disconnects from nodes
         /// </summary>
@@ -327,11 +326,6 @@ namespace HodlWallet2.Core.Services
 
             // TODO Make sure that removing all secure storage is the right thing to do
             SecureStorageService.RemoveAll();
-        }
-
-        public string NewMnemonic(string wordList = "english", int wordCount = 12)
-        {
-            return Hd.NewMnemonic(wordList, wordCount).ToString();
         }
 
         public bool IsWordInWordlist(string word, string wordList = "english")

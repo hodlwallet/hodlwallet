@@ -57,7 +57,7 @@ namespace HodlWallet2.Core.ViewModels
                 return;
             }
 
-            string rawMnemonic = _WalletService.NewMnemonic(GetWordListLanguage(), GetWordCount());
+            string rawMnemonic = WalletService.GetNewMnemonic(GetWordListLanguage(), GetWordCount());
 
             _WalletService.Logger.Information($"Wallet generated a new mnemonic, mnemonic: {rawMnemonic}");
 
