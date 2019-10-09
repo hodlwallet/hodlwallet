@@ -157,7 +157,7 @@ namespace HodlWallet2.Core.Services
                 {
                     Wallet = storage.Load();
 
-                    Start(password, Wallet.CreatedAt);
+                    Start();
                     Logger.Information("Wallet started.");
 
                     return;
@@ -165,6 +165,8 @@ namespace HodlWallet2.Core.Services
                 catch (Exception ex)
                 {
                     Logger.Information(ex.Message);
+
+                    // What would lead to this?
 
                     // TODO: Defensive programming is a bad practice, this is a bad practice
                     if (!Hd.IsMnemonicOfWallet(new Mnemonic(mnemonic), (Wallet)Wallet, _Network))
@@ -206,6 +208,20 @@ namespace HodlWallet2.Core.Services
 
             Wallet.Storage.Save();
 
+            // Add paper wallet clause
+
+            // Listen to transactions
+
+            Logger.Information("Wallet created.");
+
+            // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
+            Start();
+
+            Logger.Information("Wallet started.");
+        }
+
+        public void Start()
+        {
             var start = new DateTimeOffset();
             var end = new DateTimeOffset();
 
@@ -229,27 +245,6 @@ namespace HodlWallet2.Core.Services
             };
 
             _ = Wallet.Sync();
-
-            // Listen to transactions
-
-            Logger.Information("Wallet created.");
-
-            // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
-            Start(password, Wallet.CreatedAt);
-
-            Logger.Information("Wallet started.");
-        }
-
-        public void Start(string password, DateTimeOffset? timeToStartOn = null)
-        {
-            if (Wallet == null)
-            {
-                WalletManager.LoadWallet(password);
-
-                timeToStartOn = WalletManager.Wallet.CreationTime;
-            }
-
-            _ = PeriodicSave();
 
             OnStarted?.Invoke(this, null);
             IsStarted = true;

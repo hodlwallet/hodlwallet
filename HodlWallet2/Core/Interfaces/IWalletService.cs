@@ -50,7 +50,7 @@ namespace HodlWallet2.Core.Interfaces
         event EventHandler<int> OnConnectedNode;
 
         void InitializeWallet();
-        void Start(string password, DateTimeOffset? timeToStartOn);
+        void Start();
         void StartWalletWithWalletId();
         void DestroyWallet(bool dryRun = false);
 
