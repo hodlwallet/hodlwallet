@@ -336,7 +336,7 @@ namespace HodlWallet2.Core.Services
             return Hd.IsWordInWordlist(word, wordList);
         }
 
-        public string[] GenerateGuessWords(string wordToGuess, string language = "english", int amountAround = 9)
+        public static string[] GenerateGuessWords(string wordToGuess, string language = "english", int amountAround = 9)
         {
             return Hd.GenerateGuessWords(wordToGuess, language, amountAround);
         }

@@ -57,7 +57,6 @@ namespace HodlWallet2.Core.Interfaces
         bool IsAddressOwn(string address);
         bool IsVerifyChecksum(string mnemonic, string wordList);
         string GetAddressFromTransaction(Tx txData);
-        string[] GenerateGuessWords(string wordToGuess, string language, int amountAround);
 
         decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);
 
