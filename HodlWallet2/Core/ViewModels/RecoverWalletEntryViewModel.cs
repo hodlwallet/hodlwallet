@@ -180,7 +180,7 @@ namespace HodlWallet2.Core.ViewModels
 
         bool CheckMnemonicHasValidChecksum(string mnemonic, string wordlist = "english")
         {
-            if (_WalletService.IsVerifyChecksum(mnemonic, wordlist) == true) return true;
+            if (WalletService.IsVerifyChecksum(mnemonic, wordlist) == true) return true;
 
             Debug.WriteLine("Mnemonic returned invalid checksum.");
 

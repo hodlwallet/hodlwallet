@@ -55,7 +55,6 @@ namespace HodlWallet2.Core.Interfaces
         void DestroyWallet(bool dryRun = false);
 
         bool IsAddressOwn(string address);
-        bool IsVerifyChecksum(string mnemonic, string wordList);
         string GetAddressFromTransaction(Tx txData);
 
         decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);

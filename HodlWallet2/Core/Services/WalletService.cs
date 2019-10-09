@@ -341,7 +341,7 @@ namespace HodlWallet2.Core.Services
             return Hd.GenerateGuessWords(wordToGuess, language, amountAround);
         }
 
-        public bool IsVerifyChecksum(string mnemonic, string wordList = "english")
+        public static bool IsVerifyChecksum(string mnemonic, string wordList = "english")
         {
             return Hd.IsValidChecksum(mnemonic, wordList);
         }
