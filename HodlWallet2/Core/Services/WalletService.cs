@@ -328,7 +328,7 @@ namespace HodlWallet2.Core.Services
             SecureStorageService.RemoveAll();
         }
 
-        public bool IsWordInWordlist(string word, string wordList = "english")
+        public static bool IsWordInWordlist(string word, string wordList = "english")
         {
             if (string.IsNullOrEmpty(word))
                 return false;

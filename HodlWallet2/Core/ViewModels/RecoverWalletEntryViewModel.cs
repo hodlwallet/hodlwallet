@@ -151,7 +151,7 @@ namespace HodlWallet2.Core.ViewModels
 
         bool CheckWordInWordlist(string word, string wordlist = "english")
         {
-            if (_WalletService.IsWordInWordlist(word.ToLower(), wordlist) == true) return true;
+            if (WalletService.IsWordInWordlist(word.ToLower(), wordlist) == true) return true;
 
             Debug.WriteLine("User input not found in wordlist.");
 
