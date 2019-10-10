@@ -13,7 +13,7 @@
         <FlexLayout Direction="Row"
                     FlexLayout.Grow="2"
                     JustifyContent="SpaceAround">
-            <Label Text="Accounts" />
+            <Label Text="{Binding AccountsTitle}" />
             <Label Text="{Binding PriceText}" />
         </FlexLayout>
         <controls:AccountCollectionView FlexLayout.Grow="16" />
