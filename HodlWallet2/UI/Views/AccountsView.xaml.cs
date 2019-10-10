@@ -21,7 +21,7 @@ namespace HodlWallet2.UI.Views
 
         void NavigateToAddAccount(AccountsViewModel _)
         {
-
+            // TODO
         }
     }
 }

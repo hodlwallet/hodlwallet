@@ -60,7 +60,7 @@ namespace HodlWallet2.Core.ViewModels
 
         void GetAddressFromWallet()
         {
-            Address = _WalletService.GetReceiveAddress().Address;
+            Address = _WalletService.GetReceiveAddress().ToString();
 
             Debug.WriteLine($"[GetAddressFromWallet] New address: {Address}");
         }

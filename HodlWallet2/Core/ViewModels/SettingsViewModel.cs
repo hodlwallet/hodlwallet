@@ -33,7 +33,7 @@ namespace HodlWallet2.Core.ViewModels
                 SecureStorageService.GetSeedBirthday()
             );
 
-            _WalletService.ReScan(timeToStartOn);
+            // TODO Add ReSync Functionality in WalletService
         }
 
         public void WipeWallet()

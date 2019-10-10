@@ -170,7 +170,7 @@ namespace HodlWallet2.Core.ViewModels
             if (_WalletService.IsStarted)
             {
                 LoadTransactions();
-                AddWalletServiceEvents();
+                // AddWalletServiceEvents();
             }
             else
             {
@@ -332,6 +332,7 @@ namespace HodlWallet2.Core.ViewModels
             }
         }
 
+        /*
         void WalletSyncManager_OnSyncProgressUpdate(object sender, WalletPositionUpdatedEventArgs e)
         {
             _Logger.Debug(
@@ -341,6 +342,7 @@ namespace HodlWallet2.Core.ViewModels
                 e.PreviousPosition.Height
             );
         }
+        */
 
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
@@ -352,11 +354,12 @@ namespace HodlWallet2.Core.ViewModels
                 {
                     LoadTransactions();
 
-                    AddWalletServiceEvents();
+                    // AddWalletServiceEvents();
                 }
             });
         }
 
+        /*
         void AddWalletServiceEvents()
         {
             _WalletService.WalletManager.OnNewTransaction += WalletManager_OnNewTransaction;
@@ -364,6 +367,7 @@ namespace HodlWallet2.Core.ViewModels
             _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnUpdateTransaction;
             _WalletService.WalletManager.OnUpdateSpendingTransaction += WalletManager_OnUpdateSpendingTransaction;
         }
+        */
 
         void WalletManager_OnUpdateSpendingTransaction(object sender, Tx e)
         {

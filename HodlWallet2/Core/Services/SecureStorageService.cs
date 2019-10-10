@@ -29,6 +29,7 @@ using System.Linq;
 using Xamarin.Essentials;
 
 using Liviano;
+using Liviano.Bips;
 using Liviano.Exceptions;
 using Liviano.Utilities;
 
@@ -72,7 +73,7 @@ namespace HodlWallet2.Core.Services
         {
             Guard.NotEmpty(mnemonic, nameof(mnemonic));
 
-            if (!HdOperations.IsValidChecksum(mnemonic))
+            if (! Hd.IsValidChecksum(mnemonic))
                 throw new WalletException("Invalid mnemonic the checksum wasn't validated");
 
             Set(MNEMONIC_KEY, mnemonic);
