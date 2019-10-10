@@ -18,5 +18,7 @@ namespace HodlWallet2.Core.Models
         {
             Account = account;
         }
+
+        // TODO Generate Gradients
     }
 }

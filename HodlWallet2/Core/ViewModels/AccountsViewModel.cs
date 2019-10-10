@@ -1,7 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
+using Xamarin.Forms;
+
 using HodlWallet2.Core.Models;
+using HodlWallet2.UI.Views;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -31,9 +35,28 @@ namespace HodlWallet2.Core.ViewModels
 
         public AccountsViewModel()
         {
-            //Commands
+            NavigateToHomeCommand = new Command(NavigateToHome);
         }
 
-        // Methods
+        void NavigateToHome()
+        {
+            if (CurrentAccount == null) return;
+
+            var account = CurrentAccount as AccountModel;
+
+            _WalletService.Wallet.CurrentAccount = account.Account;
+
+            CurrentAccount = null;
+
+            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
+        }
+
+        void NavigateToAddAccount()
+        {
+            // NOTE Add this line when Add Accounts page is implemented:
+            // MessagingCenter.Send(this, "NavigateToAddAccount");
+
+            throw new NotImplementedException();
+        }
     }
 }
