@@ -255,34 +255,6 @@ namespace HodlWallet2.Core.Services
             return Hd.NewMnemonic(wordList, wordCount).ToString();
         }
 
-        public static IEnumerable<BitcoinAddress> GetAddressesFromTransaction(Tx txData)
-        {
-            var instance = DependencyService.Get<IWalletService>();
-
-            return instance.Wallet.CurrentAccount.FindAddressesForTransaction(tx => tx.Id == txData.Id);
-        }
-
-        public string GetAddressFromTransaction(Tx txData)
-        {
-            var addrsFromTx = GetAddressesFromTransaction(txData).Select(hdAddress => hdAddress.Address);
-
-            if (txData.IsReceive == true)
-            {
-                return CurrentAccount.ExternalAddresses.First(
-                    externalAddress => addrsFromTx.Contains(externalAddress.Address)
-                ).Address;
-            }
-
-            if (txData.IsSend == true) // For verbosity and error catching...
-            {
-                return CurrentAccount.InternalAddresses.First(
-                    internalAddress => addrsFromTx.Contains(internalAddress.Address)
-                ).Address;
-            }
-
-            throw new WalletException("Tx data isn't send or receive, something is wrong...");
-        }
-
         public bool IsAddressOwn(string address)
         {
             var parsedAddress = BitcoinAddress.Create(address, _Network);
