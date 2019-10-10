@@ -93,8 +93,8 @@ namespace HodlWallet2.Core.Models
             IsSend = (bool)TransactionData.IsSend;
             IsReceive = (bool)TransactionData.IsReceive;
 
-            CreationTime = TransactionData.CreationTime;
-            CreationTimeText = TransactionData.CreationTime.ToString();
+            CreationTime = TransactionData.CreatedAt;
+            CreationTimeText = TransactionData.CreatedAt.ToString();
 
             Amount = GetAmount();
             AmountText = GetAmountText();
@@ -107,7 +107,7 @@ namespace HodlWallet2.Core.Models
 
             AddressTitle = GetAddressTitleText();
 
-            BlockHeight = TransactionData.BlockHeight ?? -1;
+            BlockHeight = (int)(TransactionData.BlockHeight ?? -1);
 
             IsPropagated = (bool)TransactionData.IsPropagated;
             IsSpendable = TransactionData.IsSpendable();
@@ -177,7 +177,7 @@ namespace HodlWallet2.Core.Models
         string GetAddress()
         {
             return TransactionData.IsSend == true
-                ? TransactionData.SentToScriptPubKey.GetDestinationAddress(_Network).ToString()
+                ? TransactionData.SentScriptPubKey.GetDestinationAddress(_Network).ToString()
                 : TransactionData.ScriptPubKey.GetDestinationAddress(_Network).ToString();
         }
 
@@ -192,7 +192,7 @@ namespace HodlWallet2.Core.Models
         {
             return TransactionData.IsSend == true
                 ? TransactionData.AmountSent
-                : TransactionData.Amount;
+                : TransactionData.AmountReceived;
         }
 
         string GetAmountText()
