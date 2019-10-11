@@ -12,9 +12,9 @@
         <effects:HideTabLabelsEffect />
     </TabbedPage.Effects>
 
-    <views:SendView IconImageSource="send_tab.png" />
-    <views:ReceiveView IconImageSource="receive_tab.png" />
-    <views:HomeView IconImageSource="home_tab.png" />
-    <views:SettingsView IconImageSource="settings_tab.png" />
     <views:AccountsView IconImageSource="settings_tab.png" />
+    <views:SendView IconImageSource="send_tab.png" />
+    <views:HomeView IconImageSource="home_tab.png" />
+    <views:ReceiveView IconImageSource="receive_tab.png" />
+    <views:SettingsView IconImageSource="settings_tab.png" />
 </TabbedPage>
