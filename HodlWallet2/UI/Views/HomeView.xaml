@@ -94,7 +94,7 @@
                 </FlexLayout>
 
                 <FlexLayout Direction="Column"
-                            FlexLayout.Grow="16"
+                            FlexLayout.Grow="14"
                             BackgroundColor="{DynamicResource BackgroundPrimary}">
                     <controls:SyncProgressBar SyncVisible="{Binding SyncIsVisible}"
                                               SyncTitle="{Binding SyncTitleText}"
@@ -107,14 +107,14 @@
                             Direction="Row"
                             FlexLayout.Grow="4">
                     <Button Text="Send"
-                            Command="{Binding SendCommand}"
+                            Command="{Binding NavigateToSendCommand}"
                             Style="{DynamicResource CustomButton}"
                             BackgroundColor="{DynamicResource BackgroundSecondary}"
                             FontSize="Large"
                             FlexLayout.Grow="1" />
                     <BoxView WidthRequest="5" />
                     <Button Text="Receive"
-                            Command="{Binding ReceiveCommand}"
+                            Command="{Binding NavigateToReceiveCommand}"
                             Style="{DynamicResource CustomButton}"
                             BackgroundColor="{DynamicResource BackgroundSecondary}"
                             FontSize="Large"

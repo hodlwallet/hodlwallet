@@ -44,6 +44,7 @@ using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.Services;
 using HodlWallet2.Core.Extensions;
+using HodlWallet2.UI.Views;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -126,6 +127,8 @@ namespace HodlWallet2.Core.ViewModels
         public ICommand SwitchCurrencyCommand { get; }
         public ICommand SearchCommand { get; }
         public ICommand NavigateToTransactionDetailsCommand { get; }
+        public ICommand NavigateToSendCommand { get; }
+        public ICommand NavigateToReceiveCommand { get; }
 
         public HomeViewModel()
         {
@@ -134,6 +137,8 @@ namespace HodlWallet2.Core.ViewModels
             NavigateToTransactionDetailsCommand = new Command(NavigateToTransactionDetails);
             SwitchCurrencyCommand = new Command(SwitchCurrency);
             SearchCommand = new Command(StartSearch);
+            NavigateToSendCommand = new Command(NavigateToSend);
+            NavigateToReceiveCommand = new Command(NavigateToReceive);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
         }
@@ -304,6 +309,16 @@ namespace HodlWallet2.Core.ViewModels
                     _WalletService.OnStarted -= _WalletService_OnStarted_ViewAppearing;
                 }
             });
+        }
+
+        void NavigateToSend()
+        {
+            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Send);
+        }
+
+        void NavigateToReceive()
+        {
+            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Receive);
         }
 
         void NavigateToTransactionDetails()
