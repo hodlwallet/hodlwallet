@@ -16,7 +16,7 @@
             <Label Text="{Binding AccountsTitle}" />
             <Label Text="{Binding PriceText}" />
         </FlexLayout>
-        <controls:AccountCollectionView FlexLayout.Grow="16" />
+        <controls:AccountCollectionView FlexLayout.Grow="14" />
         <Button Command="{Binding AddAccountCommand}"
                 BackgroundColor="{DynamicResource BackgroundSecondary}"
                 FlexLayout.AlignSelf="Stretch"
