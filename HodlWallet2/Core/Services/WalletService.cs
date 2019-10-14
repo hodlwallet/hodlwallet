@@ -145,7 +145,11 @@ namespace HodlWallet2.Core.Services
                                   // change liviano load wallet to accept null passwords
                                   // But, since HODLWallet 1 didn't have passwords this is okay
 
+#if DEBUG
+            _Network = Hd.GetNetwork("testnet");
+#else
             _Network = Hd.GetNetwork(/* Determine Network for Wallet */);
+#endif
 
             var storage = new WalletStorageProvider(_WalletId, _Network);
 
@@ -175,11 +179,6 @@ namespace HodlWallet2.Core.Services
                         {
                             storage.Remove();
                         }
-
-                        string wordlist = "english";
-                        int wordCount = 12;
-
-                        mnemonic = GetNewMnemonic(wordlist, wordCount);
                     }
                 }
             }
@@ -192,7 +191,7 @@ namespace HodlWallet2.Core.Services
 
             Wallet = new Wallet();
 
-            Wallet.Init(mnemonic, password, network: _Network, createdAt: createdAt);
+            Wallet.Init(mnemonic, password, null, _Network, createdAt);
 
             Wallet.AddAccount("bip141");
 

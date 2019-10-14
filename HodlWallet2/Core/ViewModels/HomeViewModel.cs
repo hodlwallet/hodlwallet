@@ -369,39 +369,25 @@ namespace HodlWallet2.Core.ViewModels
                 {
                     LoadTransactions();
 
-                    // AddWalletServiceEvents();
+                    AddWalletServiceEvents();
                 }
             });
         }
 
-        /*
         void AddWalletServiceEvents()
         {
-            _WalletService.WalletManager.OnNewTransaction += WalletManager_OnNewTransaction;
-            _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnNewSpendingTransaction;
-            _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnUpdateTransaction;
-            _WalletService.WalletManager.OnUpdateSpendingTransaction += WalletManager_OnUpdateSpendingTransaction;
-        }
-        */
-
-        void WalletManager_OnUpdateSpendingTransaction(object sender, Tx e)
-        {
-            UpdateTransactionsCollectionWith(e);
+            _WalletService.Wallet.OnNewTransaction += Wallet_OnNewTransaction;
+            _WalletService.Wallet.OnUpdateTransaction += Wallet_OnUpdateTransaction;
         }
 
-        void WalletManager_OnUpdateTransaction(object sender, Tx e)
-        {
-            UpdateTransactionsCollectionWith(e);
-        }
-
-        void WalletManager_OnNewSpendingTransaction(object sender, Tx e)
-        {
-            UpdateTransactionsCollectionWith(e);
-        }
-
-        void WalletManager_OnNewTransaction(object sender, Tx e)
+        void Wallet_OnNewTransaction(object sender, Tx e)
         {
             AddToTransactionsCollectionWith(e);
+        }
+
+        void Wallet_OnUpdateTransaction(object sender, Tx e)
+        {
+            UpdateTransactionsCollectionWith(e);
         }
 
         void AddToTransactionsCollectionWith(Tx txData)
