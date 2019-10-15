@@ -8,7 +8,11 @@ namespace HodlWallet2.Core.Models
 {
     public class AccountModel
     {
-        public IAccount Account { get; private set; }
+        public IAccount AccountData { get; private set; }
+
+        public string AccountName { get; private set; }
+
+        public string Balance { get; private set; }
 
         public Color GradientStart { get; set; }
 
@@ -16,10 +20,11 @@ namespace HodlWallet2.Core.Models
 
         public static AccountModel FromAccountData(IAccount account)
         {
-
             return new AccountModel
             {
-                Account = account,
+                AccountData = account,
+                AccountName = account.Name,
+                Balance = account.GetBalance().ToString(),
                 GradientStart = Color.FromHex(RandomHex()),
                 GradientEnd = Color.FromHex(RandomHex())
             };
@@ -27,7 +32,8 @@ namespace HodlWallet2.Core.Models
 
         static string RandomHex()
         {
-            // TODO Add option for light or dark preference.
+            // TODO Generate and store hex in wallet.
+            //      Add option for light or dark preference.
 
             var rng = new Random();
 

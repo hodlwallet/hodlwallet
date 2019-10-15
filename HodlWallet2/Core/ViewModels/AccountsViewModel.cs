@@ -57,7 +57,7 @@ namespace HodlWallet2.Core.ViewModels
 
             var account = CurrentAccount as AccountModel;
 
-            _WalletService.Wallet.CurrentAccount = account.Account;
+            _WalletService.Wallet.CurrentAccount = account.AccountData;
 
             CurrentAccount = null;
 
