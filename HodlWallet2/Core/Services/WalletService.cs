@@ -146,9 +146,9 @@ namespace HodlWallet2.Core.Services
                                   // But, since HODLWallet 1 didn't have passwords this is okay
 
 #if DEBUG
-            _Network = Hd.GetNetwork("testnet");
+            _Network = Hd.GetNetwork(DEFAULT_NETWORK);
 #else
-            _Network = Hd.GetNetwork(/* Determine Network for Wallet */);
+            _Network = Hd.GetNetwork();
 #endif
 
             var storage = new WalletStorageProvider(_WalletId, _Network);

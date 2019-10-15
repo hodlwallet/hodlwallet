@@ -175,7 +175,7 @@ namespace HodlWallet2.Core.ViewModels
             if (_WalletService.IsStarted)
             {
                 LoadTransactions();
-                // AddWalletServiceEvents();
+                AddWalletServiceEvents();
             }
             else
             {
