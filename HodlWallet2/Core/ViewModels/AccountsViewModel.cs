@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System.Linq;
 
 using Xamarin.Forms;
 
@@ -36,6 +37,18 @@ namespace HodlWallet2.Core.ViewModels
         public AccountsViewModel()
         {
             NavigateToHomeCommand = new Command(NavigateToHome);
+
+            LoadAccounts();
+        }
+
+        void LoadAccounts()
+        {
+            var accounts = _WalletService.Wallet.Accounts;
+
+            foreach(var account in accounts)
+            {
+                Accounts.Add(AccountModel.FromAccountData(account));
+            }
         }
 
         void NavigateToHome()
