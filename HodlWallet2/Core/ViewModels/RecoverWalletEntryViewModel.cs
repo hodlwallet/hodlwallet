@@ -151,9 +151,12 @@ namespace HodlWallet2.Core.ViewModels
 
         bool CheckWordInWordlist(string word, string wordlist = "english")
         {
-            if (WalletService.IsWordInWordlist(word.ToLower(), wordlist) == true) return true;
+            if (!string.IsNullOrEmpty(word) && WalletService.IsWordInWordlist(word.ToLower(), wordlist) == true)
+            {
+                return true;
+            }
 
-            Debug.WriteLine("User input not found in wordlist.");
+            Debug.WriteLine($"User input not found in wordlist: {word}");
 
             DisplayRecoverAlert();
 
@@ -182,7 +185,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             if (WalletService.IsVerifyChecksum(mnemonic, wordlist) == true) return true;
 
-            Debug.WriteLine("Mnemonic returned invalid checksum.");
+            Debug.WriteLine($"Mnemonic returned invalid checksum: {mnemonic}");
 
             DisplayRecoverAlert();
 
