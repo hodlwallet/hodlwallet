@@ -23,6 +23,7 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _PriceText, value);
         }
 
+        object _Lock = new object();
         public ObservableCollection<AccountModel> Accounts { get; } = new ObservableCollection<AccountModel>();
 
         public object CurrentAccount
@@ -38,7 +39,30 @@ namespace HodlWallet2.Core.ViewModels
         {
             NavigateToHomeCommand = new Command(NavigateToHome);
 
-            LoadAccounts();
+            InitializeWalletServiceAccounts();
+        }
+
+        void InitializeWalletServiceAccounts()
+        {
+            if (_WalletService.IsStarted)
+            {
+                LoadAccounts();
+            }
+            else
+            {
+                _WalletService.OnStarted += _WalletService_OnStarted;
+            }
+        }
+
+        void _WalletService_OnStarted(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                lock (_Lock)
+                {
+                    LoadAccounts();
+                }
+            });
         }
 
         void LoadAccounts()
