@@ -49,7 +49,7 @@ namespace HodlWallet2.Core.Interfaces
         event EventHandler OnScanningFinished;
         event EventHandler<int> OnConnectedNode;
 
-        void InitializeWallet();
+        void InitializeWallet(bool isLegacy = false);
         void Start();
         void StartWalletWithWalletId();
         void DestroyWallet(bool dryRun = false);

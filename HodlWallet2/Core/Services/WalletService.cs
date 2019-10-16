@@ -86,7 +86,7 @@ namespace HodlWallet2.Core.Services
         /// </summary>
         public WalletService() { }
 
-        public void InitializeWallet()
+        public void InitializeWallet(bool isLegacy = false)
         {
             string guid;
             if (SecureStorageService.HasWalletId())
@@ -115,25 +115,30 @@ namespace HodlWallet2.Core.Services
             _Network = Hd.GetNetwork(network ?? DEFAULT_NETWORK);
             _WalletId = guid ?? Guid.NewGuid().ToString();
 
-            if (SecureStorageService.HasMnemonic() && _WalletId != null)
+            if (!SecureStorageService.HasMnemonic() || _WalletId == null)
             {
-                StartWalletWithWalletId();
-
-                SecureStorageService.SetSeedBirthday(
-                    Wallet.CreatedAt ?? DateTimeOffset.UtcNow
-                );
-
-                Logger.Information("Since wallet has a mnemonic, then start the wallet.");
-
-                OnConfigured?.Invoke(this, null);
-                IsConfigured = true;
-
-                Logger.Information("Configured wallet.");
-
+                Logger.Information("Wallet has been configured but not started yet due to the lack of mnemonic in the system");
                 return;
             }
 
-            Logger.Information("Wallet has been configured but not started yet due to the lack of mnemonic in the system");
+            if (isLegacy == true && !SecureStorageService.HasSeedBirthday())
+            {
+                Logger.Information("Legacy wallet has been configured but not started yet due to the lack of seed birthday in the system");
+                return;
+            }
+
+            StartWalletWithWalletId();
+
+            SecureStorageService.SetSeedBirthday(
+                Wallet.CreatedAt ?? DateTimeOffset.UtcNow
+            );
+
+            Logger.Information("Since wallet has a mnemonic, then start the wallet.");
+
+            OnConfigured?.Invoke(this, null);
+            IsConfigured = true;
+
+            Logger.Information("Configured wallet.");
         }
 
         public void StartWalletWithWalletId()
