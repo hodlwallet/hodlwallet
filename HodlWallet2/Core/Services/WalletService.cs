@@ -86,7 +86,7 @@ namespace HodlWallet2.Core.Services
         /// </summary>
         public WalletService() { }
 
-        async void PeriodicSave()
+        async Task PeriodicSave()
         {
             while (true)
             {
@@ -258,19 +258,17 @@ namespace HodlWallet2.Core.Services
                 Logger.Debug($"Syncing started at {start.LocalDateTime.ToLongTimeString()}");
             };
 
-            Wallet.SyncFinished += async (obj, _) =>
+            Wallet.SyncFinished += (obj, _) =>
             {
                 end = DateTimeOffset.UtcNow;
 
                 Logger.Debug($"Syncing ended at {end.LocalDateTime.ToLongTimeString()}");
                 Logger.Debug($"Syncing time: {(end - start).TotalSeconds}");
-
-                Wallet.Storage.Save();
-
-                PeriodicSave();
             };
 
             _ = Wallet.Sync();
+
+            _ = PeriodicSave();
 
             OnStarted?.Invoke(this, null);
             IsStarted = true;
