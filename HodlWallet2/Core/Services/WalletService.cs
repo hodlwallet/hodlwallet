@@ -86,6 +86,28 @@ namespace HodlWallet2.Core.Services
         /// </summary>
         public WalletService() { }
 
+        async void PeriodicSave()
+        {
+            while (true)
+            {
+                await Save();
+
+                await Task.Delay(30_000);
+            }
+        }
+
+        async Task Save()
+        {
+            await Task.Factory.StartNew(() =>
+            {
+                lock (_Lock)
+                {
+                    Wallet.Start();
+                    Wallet.Storage.Save();
+                }
+            });
+        }
+
         public void InitializeWallet(bool isLegacy = false)
         {
             string guid;
@@ -245,7 +267,7 @@ namespace HodlWallet2.Core.Services
 
                 Wallet.Storage.Save();
 
-                await Wallet.Start();
+                PeriodicSave();
             };
 
             _ = Wallet.Sync();
