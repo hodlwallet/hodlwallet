@@ -218,15 +218,5 @@
     <Folder Include="Assets.xcassets\logo_front.png.imageset\" />
     <Folder Include="Services\" />
     <Folder Include="Effects\" />
-    <Folder Include="Electrum\" />
-    <Folder Include="Electrum\servers\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Electrum\servers\regtest.json" />
-    <EmbeddedResource Include="Electrum\servers\testnet.json" />
-    <EmbeddedResource Include="Electrum\servers\main.json">
-      <LogicalName>Electrum.servers.main.json</LogicalName>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

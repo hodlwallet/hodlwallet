@@ -40,6 +40,8 @@
         <Folder Include="Core\Interfaces\" />
         <Folder Include="UI\Renderers\" />
         <Folder Include="UI\Effects\" />
+        <Folder Include="UI\Resources\Electrum\" />
+        <Folder Include="UI\Resources\Electrum\servers\" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="UI\Assets\circle_check_gray.svg" />
@@ -59,6 +61,9 @@
         <None Remove="UI\Assets\search.svg" />
         <None Remove="UI\Assets\send_tab.svg" />
         <None Remove="UI\Assets\shield.svg" />
+        <None Remove="UI\Resources\Electrum\servers\main.json" />
+        <None Remove="UI\Resources\Electrum\servers\regtest.json" />
+        <None Remove="UI\Resources\Electrum\servers\testnet.json" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\LivianoWallet\LivianoWallet\Liviano\Liviano.csproj" />
@@ -82,6 +87,15 @@
         <EmbeddedResource Include="UI\Assets\search.svg" />
         <EmbeddedResource Include="UI\Assets\send_tab.svg" />
         <EmbeddedResource Include="UI\Assets\shield.svg" />
+        <EmbeddedResource Include="UI\Resources\Electrum\servers\main.json">
+          <LogicalName>Resources.Electrum.servers.main.json</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="UI\Resources\Electrum\servers\regtest.json">
+          <LogicalName>Resources.Electrum.servers.regtest.json</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="UI\Resources\Electrum\servers\testnet.json">
+          <LogicalName>Resources.Electrum.servers.testnet.json</LogicalName>
+        </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Update="UI\Locale\LocaleResources.resx">

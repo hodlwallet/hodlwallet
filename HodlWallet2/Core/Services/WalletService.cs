@@ -25,8 +25,8 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -218,7 +218,9 @@ namespace HodlWallet2.Core.Services
 
             Wallet = new Wallet();
 
-            Wallet.Init(mnemonic, password, null, _Network, createdAt, storage);
+            Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(WalletService)).Assembly;
+
+            Wallet.Init(mnemonic, password, null, _Network, createdAt, storage, assembly);
 
             Wallet.AddAccount("bip141");
 
