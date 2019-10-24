@@ -92,7 +92,7 @@ namespace HodlWallet2.Core.Services
             {
                 await Save();
 
-                await Task.Delay(30_000);
+                await Task.Delay(60_000);
             }
         }
 
