@@ -216,7 +216,7 @@ namespace HodlWallet2.Core.Services
                 ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageService.GetSeedBirthday())
                 : new DateTimeOffset(DateTime.UtcNow);
 
-            Wallet = new Wallet();
+            Wallet = new Wallet { Id = _WalletId };
 
             Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(WalletService)).Assembly;
 
