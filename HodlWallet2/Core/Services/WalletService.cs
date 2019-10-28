@@ -187,6 +187,7 @@ namespace HodlWallet2.Core.Services
                 try
                 {
                     Wallet = storage.Load();
+                    Wallet.CurrentAssembly = IntrospectionExtensions.GetTypeInfo(typeof(WalletService)).Assembly;
 
                     Start();
                     Logger.Information("Wallet started.");
