@@ -53,7 +53,7 @@ namespace HodlWallet2.UI.Views
             MessagingCenter.Subscribe<SendViewModel, ValueTuple<decimal, decimal>>(this, "AskToBroadcastTransaction", AskToBroadcastTransaction);
         }
 
-        void AskToBroadcastTransaction(SendViewModel vm, (decimal, decimal) values)
+        async void AskToBroadcastTransaction(SendViewModel vm, (decimal, decimal) values)
         {
             decimal totalOut = values.Item1;
             decimal fees = values.Item2;
@@ -61,11 +61,11 @@ namespace HodlWallet2.UI.Views
 
             string title = "Send Transaction?";
 
-            string message = $"Would you like to send {total} ({totalOut} + {fees}) BTC to {SendAddress}?";
+            string message = $"Would you like to send {total} ({totalOut} + {fees}) BTC to {SendAddress.Text}?";
             string okButton = "Yes";
             string cancelButton = "No";
 
-            var res = this.DisplayPrompt(title, message, okButton, cancelButton).Result;
+            var res = await this.DisplayPrompt(title, message, okButton, cancelButton);
 
             if (!res) return;
 

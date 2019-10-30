@@ -135,11 +135,11 @@ namespace HodlWallet2.Core.ViewModels
             MessagingCenter.Subscribe<SendView>(this, "BroadcastTransaction", BroadcastTransaction);
         }
 
-        void BroadcastTransaction(SendView _)
+        async void BroadcastTransaction(SendView _)
         {
             if (_TransactionToBroadcast is null) return;
 
-            var result = _WalletService.SendTransaction(_TransactionToBroadcast).Result;
+            var result = await _WalletService.SendTransaction(_TransactionToBroadcast);
 
             if (result.Sent == true)
             {
