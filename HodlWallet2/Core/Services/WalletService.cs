@@ -269,9 +269,9 @@ namespace HodlWallet2.Core.Services
                 Logger.Debug($"Syncing time: {(end - start).TotalSeconds}");
             };
 
-            _ = Wallet.Sync();
-
             _ = PeriodicSave();
+
+            _ = Wallet.Sync();
 
             OnStarted?.Invoke(this, null);
             IsStarted = true;
