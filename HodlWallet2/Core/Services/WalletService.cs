@@ -401,24 +401,7 @@ namespace HodlWallet2.Core.Services
 
         public async Task<(bool Sent, string Error)> SendTransaction(Transaction tx)
         {
-            try
-            {
-                var electrumClient = new ElectrumClient(GetRecentlyConnectedServers());
-                var broadcast = await electrumClient.BlockchainTransactionBroadcast(tx.ToHex());
-
-                if (broadcast.Result != tx.GetHash().ToString())
-                {
-                    throw new ElectrumException($"Transaction Broadcast failed for tx: {tx.ToHex()}\n{broadcast.Result}");
-                }
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e.Message);
-
-                return (false, e.Message);
-            }
-
-            return (true, null);
+            return await Wallet.SendTransaction(tx);
         }
 
         public Network GetNetwork()
