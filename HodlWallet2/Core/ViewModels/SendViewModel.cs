@@ -43,7 +43,7 @@ namespace HodlWallet2.Core.ViewModels
     public class SendViewModel : BaseViewModel
     {
         string _AddressToSendTo;
-        int _Fee;
+        long _Fee;
         decimal _AmountToSend;
         float _Rate => _PrecioService.Rate.Rate;
         string _AmountToSendText;
@@ -85,7 +85,7 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _AddressToSendTo, value);
         }
 
-        public int Fee
+        public long Fee
         {
             get => _Fee;
             set => SetProperty(ref _Fee, value);
@@ -174,24 +174,24 @@ namespace HodlWallet2.Core.ViewModels
             if (SliderValue <= (MAX_SLIDER_VALUE * 0.25))
             {
                 SliderValue = 0;
-                Fee = currentFees.SlowSatKB;
+                Fee = currentFees.SlowSatKB / 1000;
                 EstConfirmationText = currentFees.SlowTime;
             }
             else if (SliderValue > (MAX_SLIDER_VALUE * 0.25)
                      && SliderValue < (MAX_SLIDER_VALUE * 0.75))
             {
                 SliderValue = MAX_SLIDER_VALUE * 0.5;
-                Fee = currentFees.NormalSatKB;
+                Fee = currentFees.NormalSatKB / 1000;
                 EstConfirmationText = currentFees.NormalTime;
             }
             else
             {
                 SliderValue = MAX_SLIDER_VALUE;
-                Fee = currentFees.FastestSatKB;
+                Fee = currentFees.FastestSatKB / 1000;
                 EstConfirmationText = currentFees.FastestTime;
             }
 
-            TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, (Fee / 1000));
+            TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, Fee);
         }
 
         void Scan()
