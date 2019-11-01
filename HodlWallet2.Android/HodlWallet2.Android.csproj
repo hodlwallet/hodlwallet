@@ -90,6 +90,7 @@
     <Compile Include="Services\AndroidPermissions.cs" />
     <Compile Include="Services\ShareIntent.cs" />
     <Compile Include="Effects\HideTabbarEffect.cs" />
+    <Compile Include="Services\AndroidLegacySecureKeyService.cs" />
     <Compile Include="Services\Localize.cs" />
     <Compile Include="Services\AndroidLegacySecureKeyService.cs" />
   </ItemGroup>

@@ -14,7 +14,7 @@ namespace HodlWallet2.iOS.Services
     public class iOSLegacySecureKeyService : ILegacySecureKeyService
     {
         const string WAllET_SEC_ATTR_SERVICE = "co.hodlwallet";
-
+        
         static T _LegacyGetKeychainItem<T>(string key)
         {
             byte[] data = null;
