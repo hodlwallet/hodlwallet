@@ -8,7 +8,7 @@
         HeightRequest="150"
         HasShadow="False"
         BackgroundColor="Transparent"
-        Padding="0">
+        Padding="10">
         <StackLayout>
             <CollectionView
                 x:Name="Collection"

@@ -62,8 +62,6 @@ namespace HodlWallet2.Core.Services
 
         Network _Network;
 
-        DefaultCoinSelector _DefaultCoinSelector;
-
         string _WalletId;
 
         public Serilog.ILogger Logger { set; get; }
