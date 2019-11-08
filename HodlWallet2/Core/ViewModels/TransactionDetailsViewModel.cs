@@ -119,7 +119,13 @@ namespace HodlWallet2.Core.ViewModels
         public string MemoText
         {
             get => _MemoText;
-            set => SetProperty(ref _MemoText, value);
+            set
+            {
+                if (value != null)
+                {
+                    SetProperty(ref _MemoText, value);
+                }
+            }
         }
 
         string _AmountWithFeeText;
@@ -169,6 +175,16 @@ namespace HodlWallet2.Core.ViewModels
             ShowFaqCommand = new Command(() => _ = ShowFaq());
             BrowseAddressCommand = new Command(() => _ = AddressToBrowser());
             BrowseTransactionIdCommand = new Command(() => _ = IdToBrowser());
+        }
+
+        public void StoreMemo()
+        {
+            if (MemoText != null)
+            {
+                TransactionModel.TransactionData.Memo = MemoText;
+                TransactionModel.MemoText = TransactionModel.TransactionData.Memo;
+                _WalletService.Wallet.CurrentAccount.UpdateTx(TransactionModel.TransactionData);
+            }
         }
 
         void GetTransactionModelData()

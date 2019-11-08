@@ -81,7 +81,8 @@
                             <Entry BackgroundColor="Transparent"
                                    FontSize="Small"
                                    TextColor="{DynamicResource TextPrimary}"
-                                   Text="{Binding MemoText}" />
+                                   Text="{Binding MemoText}"
+                                   Completed="Memo_Completed"/>
 
                             <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
 

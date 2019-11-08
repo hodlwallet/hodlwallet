@@ -44,5 +44,12 @@ namespace HodlWallet2.UI.Views
         {
             Navigation.PopModalAsync();
         }
+
+        void Memo_Completed(object sender, EventArgs e)
+        {
+            var vm = (TransactionDetailsViewModel)BindingContext;
+
+            vm.StoreMemo();
+        }
     }
 }
