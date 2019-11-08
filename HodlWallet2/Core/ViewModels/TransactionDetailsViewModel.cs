@@ -29,6 +29,8 @@ using Xamarin.Forms;
 
 using NBitcoin;
 
+using Liviano.Models;
+
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Utils;
 
@@ -179,12 +181,8 @@ namespace HodlWallet2.Core.ViewModels
 
         public void StoreMemo()
         {
-            if (MemoText != null)
-            {
-                TransactionModel.TransactionData.Memo = MemoText;
-                TransactionModel.MemoText = TransactionModel.TransactionData.Memo;
-                _WalletService.Wallet.CurrentAccount.UpdateTx(TransactionModel.TransactionData);
-            }
+            var tx = new Tx(TransactionModel.TransactionData) { Memo = MemoText };
+            _WalletService.Wallet.UpdateCurrentTransaction(tx);
         }
 
         void GetTransactionModelData()
