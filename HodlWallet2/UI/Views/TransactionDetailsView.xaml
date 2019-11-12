@@ -82,7 +82,8 @@
                                    FontSize="Small"
                                    TextColor="{DynamicResource TextPrimary}"
                                    Text="{Binding MemoText}"
-                                   Completed="Memo_Completed"/>
+                                   Completed="Memo_Completed"
+                                   ReturnType="Done"/>
 
                             <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
 
