@@ -5,7 +5,7 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class AddAccountViewModel : BaseViewModel
     {
-        public string BackupTitle => "Add an Account";
+        public string AddAccountTitle => "Add an Account";
 
         public string HeaderText =>
             "[Update Image]";

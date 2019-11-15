@@ -18,8 +18,8 @@
                 <Label Text="{Binding PriceText}" />
             </FlexLayout>
             <controls:AccountCollectionView FlexLayout.Grow="14" />
-            <Button Command="{Binding AddAccountCommand}"
-                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+            <Button BackgroundColor="{DynamicResource BackgroundSecondary}"
+                    Clicked="AddAccountButton_Clicked"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="4"
                     FontAttributes="Bold"

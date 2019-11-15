@@ -9,24 +9,11 @@ namespace HodlWallet2.UI.Views
         public AddAccountView(string action = null)
         {
             InitializeComponent();
-            EnableToolBarItems(action);
         }
 
-        void EnableToolBarItems(string action = null)
+        void CreateAccountButton_Clicked(object sender, EventArgs e)
         {
-            switch (action)
-            {
-                case "close":
-                    ToolbarItems.RemoveAt(1); // Remove Skip
-                    break;
-                default:
-                    ToolbarItems.Clear();
-                    break;
-            }
-        }
-        void AddAccountButton_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new BackupRecoveryWordView());
+            // Navigation.PushAsync(new AccountSelectionView());
         }
 
         void CloseToolbarItem_Clicked(object sender, EventArgs e)

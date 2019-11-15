@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HodlWallet2.UI.Views.AddAccountView"
              xmlns:svg="clr-namespace:HodlWallet2.Core.Utils"
-             xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels">
+             xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
+             Title="{Binding AddAccountTitle}">
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="CloseToolbarItem"
                      Order="Primary"
@@ -46,7 +47,7 @@
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="1"
                         Text="{Binding ButtonText}"
-                        Clicked="AddAccountButton_Clicked" />
+                        Clicked="CreateAccountButton_Clicked" />
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>
