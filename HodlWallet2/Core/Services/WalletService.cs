@@ -239,8 +239,6 @@ namespace HodlWallet2.Core.Services
 
             // Add paper wallet clause
 
-            // Listen to transactions
-
             Logger.Information("Wallet created.");
 
             // NOTE Do not delete this, this is correct, the wallet should start after it being configured.
