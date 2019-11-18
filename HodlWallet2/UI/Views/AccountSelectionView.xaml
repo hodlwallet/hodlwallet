@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HodlWallet2.UI.Views.AccountSelectionView"
+             Title="{Binding AddSelectionTitle}">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <FlexLayout Direction="Column" JustifyContent="SpaceAround">
+                <Label FontFamily="{StaticResource Sans-Regular}"
+                       TextColor="{DynamicResource SyncGradientStart}"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"
+                       Text="{Binding HeaderText}"
+                       Margin="0, 0, 0, 10" />
+                <Entry BackgroundColor="Transparent"
+                       TextColor="{DynamicResource TextPrimary}"
+                       Text="{Binding MemoText}"
+                       Completed="Memo_Completed"
+                       ReturnType="Done"/>
+                <Label FontFamily="{StaticResource Sans-Regular}"
+                       TextColor="{DynamicResource SyncGradientStart}"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"
+                       Text="{Binding HeaderText}"
+                       Margin="0, 0, 0, 10" />
+                <FlexLayout Direction="Row">
+                    <FlexLayout Direction="Column"
+                                AlignItems="Start"
+                                FlexLayout.Grow="1"
+                                JustifyContent="SpaceAround">
+                        <Button Text="BIP44"
+                            FontFamily="{StaticResource Mono-Regular}"
+                            FlexLayout.Grow="1"
+                            Clicked="Account_Clicked"
+                            Command="{Binding AccountCommand}"
+                            CommandParameter="bip44" />
+                        <Button Text="BIP49"
+                            FontFamily="{StaticResource Mono-Regular}"
+                            FlexLayout.Grow="1"
+                            Clicked="Account_Clicked"
+                            Command="{Binding AccountCommand}"
+                            CommandParameter="bip49" />
+                        <Button Text="BIP84"
+                            FontFamily="{StaticResource Mono-Regular}"
+                            FlexLayout.Grow="1"
+                            Clicked="Account_Clicked"
+                            Command="{Binding AccountCommand}"
+                            CommandParameter="bip84" />
+                    </FlexLayout>
+                    <FlexLayout Direction="Column"
+                                AlignItems="End"
+                                FlexLayout.Grow="1"
+                                JustifyContent="SpaceAround">
+                        <Button Text="BIP141"
+                            FontFamily="{StaticResource Mono-Regular}"
+                            FlexLayout.Grow="1"
+                            Clicked="Account_Clicked"
+                            Command="{Binding AccountCommand}"
+                            CommandParameter="bip141" />
+                        <Button Text="Wasabi"
+                            FontFamily="{StaticResource Mono-Regular}"
+                            FlexLayout.Grow="1"
+                            Clicked="Account_Clicked"
+                            Command="{Binding AccountCommand}"
+                            CommandParameter="wasabi" />
+                        <Button Text="BIP44"
+                            FontFamily="{StaticResource Mono-Regular}"
+                            FlexLayout.Grow="1"
+                            Clicked="Account_Clicked"
+                            Command="{Binding AccountCommand}"
+                            CommandParameter="paper" />
+                    </FlexLayout>
+                </FlexLayout>
+            </FlexLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

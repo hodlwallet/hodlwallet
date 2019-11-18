@@ -15,12 +15,12 @@ namespace HodlWallet2.UI.Views
             InitializeComponent();
         }
 
-        void AddAccountButton_Clicked(object sender, EventArgs e)
+        async void AddAccountButton_Clicked(object sender, EventArgs e)
         {
             var view = new AddAccountView();
             var nav = new NavigationPage(view);
 
-            Navigation.PushModalAsync(nav);
+            await Navigation.PushModalAsync(nav);
         }
     }
 }
