@@ -37,10 +37,10 @@ namespace HodlWallet2.Core.ViewModels
                         case "bip141":
                         case "wasabi":
                         case "paper":
-                            _WalletService.Wallet.AddAccount(arg, Name);
+                            _WalletService.Wallet.AddAccount(arg, Name ?? "Bitcoin Account");
                             break;
                         default:
-                            _WalletService.Wallet.AddAccount("bip141", Name);
+                            _WalletService.Wallet.AddAccount("bip141", Name ?? "Bitcoin Account");
                             break;
                     }
                 });
