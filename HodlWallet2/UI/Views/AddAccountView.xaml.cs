@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -11,14 +12,14 @@ namespace HodlWallet2.UI.Views
             InitializeComponent();
         }
 
-        void CreateAccountButton_Clicked(object sender, EventArgs e)
+        async Task CreateAccountButton_Clicked(object sender, EventArgs e)
         {
-            // Navigation.PushAsync(new AccountSelectionView());
+            await Navigation.PushAsync(new AccountSelectionView());
         }
 
-        void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        async Task CloseToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         }
     }
 }
