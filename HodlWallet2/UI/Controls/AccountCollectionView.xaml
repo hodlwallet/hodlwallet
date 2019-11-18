@@ -25,7 +25,8 @@
                             BackgroundGradientEndColor="{Binding GradientEnd}"
                             CornerRadius="10"
                             HeightRequest="100"
-                            WidthRequest="200">
+                            WidthRequest="200"
+                            Margin="5">
                             <FlexLayout Direction="Row" JustifyContent="SpaceAround" AlignItems="Center">
                                 <Label FontAttributes="Bold"
                                        FlexLayout.Grow="1"
