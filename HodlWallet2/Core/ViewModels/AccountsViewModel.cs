@@ -65,6 +65,9 @@ namespace HodlWallet2.Core.ViewModels
 
         void LoadAccounts()
         {
+            if (Accounts != null)
+                Accounts.Clear();
+
             var accounts = _WalletService.Wallet.Accounts;
 
             foreach(var account in accounts)
@@ -82,6 +85,8 @@ namespace HodlWallet2.Core.ViewModels
             _WalletService.Wallet.CurrentAccount = account.AccountData;
 
             CurrentAccount = null;
+
+            _WalletService.Start();
 
             MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
         }

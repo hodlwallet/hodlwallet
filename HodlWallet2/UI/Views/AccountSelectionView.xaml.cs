@@ -14,14 +14,14 @@ namespace HodlWallet2.UI.Views
             InitializeComponent();
         }
 
-        public void Account_Clicked(object sender, EventArgs e)
+        async void Account_Clicked(object sender, EventArgs e)
         {
             var button = sender as Button;
 
             var vm = (AccountSelectionViewModel)BindingContext;
             vm.AccountCommand?.Execute(button.CommandParameter);
 
-            Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         }
     }
 }
