@@ -43,6 +43,8 @@ namespace HodlWallet2.Core.ViewModels
                             _WalletService.Wallet.AddAccount("bip141", Name ?? "Bitcoin Account");
                             break;
                     }
+
+                    _WalletService.Start();
                 });
         }
     }
