@@ -96,6 +96,20 @@ namespace HodlWallet2.Core.ViewModels
         private object _Lock = new object();
         public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
 
+        Color _GradientStart;
+        public Color GradientStart
+        {
+            get => _GradientStart;
+            set => SetProperty(ref _GradientStart, value);
+        }
+
+        Color _GradientEnd;
+        public Color GradientEnd
+        {
+            get => _GradientEnd;
+            set => SetProperty(ref _GradientEnd, value);
+        }
+
         string _PriceText;
         public string PriceText
         {
@@ -141,6 +155,9 @@ namespace HodlWallet2.Core.ViewModels
             NavigateToReceiveCommand = new Command(NavigateToReceive);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
+
+            GradientStart = Color.FromHex(_WalletService.Wallet.CurrentAccount.StartHex);
+            GradientEnd = Color.FromHex(_WalletService.Wallet.CurrentAccount.EndHex);
         }
 
         public void View_OnDisappearing()
