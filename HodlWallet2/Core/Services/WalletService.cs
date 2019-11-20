@@ -225,7 +225,7 @@ namespace HodlWallet2.Core.Services
 
             Wallet.AddAccount("bip141");
 
-            if (Wallet.Accounts[0] == null)
+            if (Wallet.Accounts.Count == 0)
             {
                 throw new WalletException("Account was unable to be initialized.");
             }
@@ -338,6 +338,16 @@ namespace HodlWallet2.Core.Services
         public static bool IsVerifyChecksum(string mnemonic, string wordList = "english")
         {
             return Hd.IsValidChecksum(mnemonic, wordList);
+        }
+
+        public string GetWordListLanguage()
+        {
+            // TODO This should read from the user's language.
+            string language = "english";
+
+            Logger.Information($"Wordlist is on {language}");
+
+            return language;
         }
 
         public BitcoinAddress GetReceiveAddress()
