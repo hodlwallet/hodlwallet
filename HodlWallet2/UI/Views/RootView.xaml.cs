@@ -35,7 +35,7 @@ namespace HodlWallet2.UI.Views
     [DesignTimeVisible(false)]
     public partial class RootView : TabbedPage
     {
-        public enum Tabs { Account, Send, Home, Receive, Settings };
+        public enum Tabs { Accounts, Send, Home, Receive, Settings };
 
         public RootView()
         {
