@@ -205,7 +205,7 @@ namespace HodlWallet2.Core.Services
                     {
                         lock (_Lock)
                         {
-                            storage.Remove();
+                            storage.Delete();
                         }
                     }
                 }
@@ -315,7 +315,7 @@ namespace HodlWallet2.Core.Services
             {
                 // Database cleanup
                 // Delete method in FileSystemStorage
-                Wallet.Storage.Remove();
+                Wallet.Storage.Delete();
             }
 
             // TODO Make sure that removing all secure storage is the right thing to do
