@@ -59,7 +59,7 @@ namespace HodlWallet2.UI.Views
             decimal fees = values.Item2;
             var total = totalOut + fees;
 
-            string title = "Send Transaction?";
+            string title = LocaleResources.Send_transaction;
 
             string message = string.Format(LocaleResources.Send_transactionMessage, total, totalOut, fees, SendAddress.Text);
             string okButton = LocaleResources.Send_transactionOk;
