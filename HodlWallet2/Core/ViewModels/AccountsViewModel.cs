@@ -15,7 +15,7 @@ namespace HodlWallet2.Core.ViewModels
         public string AccountTitle => "Accounts";
 
         string _PriceText;
-        object _CurrentAccount;
+        AccountModel _CurrentAccount;
 
         public string PriceText
         {
@@ -26,7 +26,7 @@ namespace HodlWallet2.Core.ViewModels
         object _Lock = new object();
         public ObservableCollection<AccountModel> Accounts { get; } = new ObservableCollection<AccountModel>();
 
-        public object CurrentAccount
+        public AccountModel CurrentAccount
         {
             get => _CurrentAccount;
             set => SetProperty(ref _CurrentAccount, value);
@@ -79,9 +79,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             if (CurrentAccount == null) return;
 
-            var account = CurrentAccount as AccountModel;
-
-            _WalletService.Wallet.CurrentAccount = account.AccountData;
+            _WalletService.Wallet.CurrentAccount = CurrentAccount.AccountData;
 
             CurrentAccount = null;
 

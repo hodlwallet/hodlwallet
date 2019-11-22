@@ -149,10 +149,6 @@ namespace HodlWallet2.Core.Services
 
             StartWalletWithWalletId();
 
-            SecureStorageService.SetSeedBirthday(
-                Wallet.CreatedAt ?? DateTimeOffset.UtcNow
-            );
-
             Logger.Information("Since wallet has a mnemonic, then start the wallet.");
 
             OnConfigured?.Invoke(this, null);
@@ -203,7 +199,7 @@ namespace HodlWallet2.Core.Services
                     {
                         lock (_Lock)
                         {
-                            storage.Remove();
+                            storage.Delete();
                         }
                     }
                 }
@@ -223,7 +219,7 @@ namespace HodlWallet2.Core.Services
 
             Wallet.AddAccount("bip141");
 
-            if (Wallet.Accounts[0] == null)
+            if (Wallet.Accounts.Count == 0)
             {
                 throw new WalletException("Account was unable to be initialized.");
             }
@@ -313,7 +309,7 @@ namespace HodlWallet2.Core.Services
             {
                 // Database cleanup
                 // Delete method in FileSystemStorage
-                Wallet.Storage.Remove();
+                Wallet.Storage.Delete();
             }
 
             // TODO Make sure that removing all secure storage is the right thing to do
@@ -336,6 +332,16 @@ namespace HodlWallet2.Core.Services
         public static bool IsVerifyChecksum(string mnemonic, string wordList = "english")
         {
             return Hd.IsValidChecksum(mnemonic, wordList);
+        }
+
+        public string GetWordListLanguage()
+        {
+            // TODO This should read from the user's language.
+            string language = "english";
+
+            Logger.Information($"Wordlist is on {language}");
+
+            return language;
         }
 
         public BitcoinAddress GetReceiveAddress()
