@@ -61,9 +61,9 @@ namespace HodlWallet2.UI.Views
 
             string title = "Send Transaction?";
 
-            string message = $"Would you like to send {total} ({totalOut} + {fees}) BTC to {SendAddress.Text}?";
-            string okButton = "Yes";
-            string cancelButton = "No";
+            string message = string.Format(LocaleResources.Send_transactionMessage, total, totalOut, fees, SendAddress.Text);
+            string okButton = LocaleResources.Send_transactionOk;
+            string cancelButton = LocaleResources.Send_transactionCancel;
 
             var res = await this.DisplayPrompt(title, message, okButton, cancelButton);
 
