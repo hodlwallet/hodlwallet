@@ -57,7 +57,7 @@ namespace HodlWallet2.Core.ViewModels
                 return;
             }
 
-            string rawMnemonic = WalletService.GetNewMnemonic(GetWordListLanguage(), GetWordCount());
+            string rawMnemonic = WalletService.GetNewMnemonic(_WalletService.GetWordListLanguage(), GetWordCount());
 
             _WalletService.Logger.Information($"Wallet generated a new mnemonic, mnemonic: {rawMnemonic}");
 
@@ -69,16 +69,6 @@ namespace HodlWallet2.Core.ViewModels
             // After this we should be able to start the wallet if it's not started since we have a mnemonic
             if (!_WalletService.IsStarted)
                 Task.Run(_WalletService.StartWalletWithWalletId);
-        }
-
-        private string GetWordListLanguage()
-        {
-            // TODO This should read from the user's language.
-            string language = "english";
-
-            _WalletService.Logger.Information($"Wordlist is on {language}");
-
-            return language;
         }
 
         private int GetWordCount()

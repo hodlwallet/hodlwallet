@@ -65,11 +65,11 @@ namespace HodlWallet2.Core.ViewModels
         float _NewRate;
         float _OldRate;
         bool _IsBtcEnabled;
-        object _CurrentTransaction;
+        TransactionModel _CurrentTransaction;
 
         int _PriceUpdateDelay = 2_500; // 2.5 seconds
 
-        public object CurrentTransaction
+        public TransactionModel CurrentTransaction
         {
             get => _CurrentTransaction;
             set => SetProperty(ref _CurrentTransaction, value);
@@ -342,7 +342,7 @@ namespace HodlWallet2.Core.ViewModels
         {
             if (CurrentTransaction == null) return;
 
-            MessagingCenter.Send(this, "NavigateToTransactionDetail", CurrentTransaction as TransactionModel);
+            MessagingCenter.Send(this, "NavigateToTransactionDetail", CurrentTransaction);
 
             CurrentTransaction = null;
         }

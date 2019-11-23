@@ -177,6 +177,26 @@
         <comment>label for send amount entry</comment>
     </data>
     
+    <data name="Send.transaction" xml:space="preserve">
+        <value>Send Transaction?</value>
+        <comment>label for send transaction popup</comment>
+    </data>
+    
+    <data name="Send.transactionMessage" xml:space="preserve">
+        <value>Would you like to send {0} ({1} + {2}) BTC to {3}?</value>
+        <comment>label for send transaction popup message</comment>
+    </data>
+    
+    <data name="Send.transactionOk" xml:space="preserve">
+        <value>Yes</value>
+        <comment>label for send transaction popup ok button</comment>
+    </data>
+    
+    <data name="Send.transactionCancel" xml:space="preserve">
+        <value>No</value>
+        <comment>label for send transaction popup cancel button</comment>
+    </data>
+    
     <data name="Receive.title" xml:space="preserve">
         <value>Receive</value>
         <comment>label for receive title</comment>
