@@ -233,7 +233,7 @@ namespace HodlWallet2.Core.ViewModels
                 int wordIndex = rangeArray[rng.Next(rangeArray.Length)];
                 _WordToGuess = mnemonic[wordIndex];
                 Exercise = "Choose the " + place[wordIndex] + " word from your mnemonic:"; // Format and localize label.
-                string[] guessWords = _WalletService.GenerateGuessWords(_WordToGuess, "english", AMOUNT_AROUND);
+                string[] guessWords = WalletService.GenerateGuessWords(_WordToGuess, _WalletService.GetWordListLanguage(), AMOUNT_AROUND);
                 UpdateWords(guessWords);
             }
             else

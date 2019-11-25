@@ -89,7 +89,7 @@ namespace HodlWallet2.UI.Views
 
             string word = entry.Text.ToLower();
 
-            if (_WalletService.IsWordInWordlist(word, "english"))
+            if (WalletService.IsWordInWordlist(word, _WalletService.GetWordListLanguage()))
             {
                 entry.TextColor = _TextPrimary;
             }

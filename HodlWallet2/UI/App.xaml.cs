@@ -70,7 +70,7 @@ namespace HodlWallet2.UI
             // the init code that inserts the logger into
             // WalletService is only run after the custructor
             // and only after all the platforms init
-            Task.Run(_WalletService.InitializeWallet);
+            Task.Run(() => _WalletService.InitializeWallet());
             Task.Run(_PrecioService.Init);
         }
 
@@ -121,7 +121,7 @@ namespace HodlWallet2.UI
                 SecureStorageService.SetPin(pin);
                 SecureStorageService.SetSeedBirthday(new DateTimeOffset(new DateTime(birthday)));
 
-                _WalletService.InitializeLegacyWallet();
+                _WalletService.InitializeWallet(true);
             }
             catch (Exception ex)
             {

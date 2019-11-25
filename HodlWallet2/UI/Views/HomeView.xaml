@@ -94,13 +94,31 @@
                 </FlexLayout>
 
                 <FlexLayout Direction="Column"
-                            FlexLayout.Grow="19"
+                            FlexLayout.Grow="14"
                             BackgroundColor="{DynamicResource BackgroundPrimary}">
                     <controls:SyncProgressBar SyncVisible="{Binding SyncIsVisible}"
                                               SyncTitle="{Binding SyncTitleText}"
                                               SyncProgress="{Binding SyncCurrentProgress}"
                                               SyncDate="{Binding SyncDateText}" />
                     <controls:TransactionCollectionView FlexLayout.Grow="1" />
+                </FlexLayout>
+
+                <FlexLayout AlignItems="Stretch"
+                            Direction="Row"
+                            FlexLayout.Grow="4">
+                    <Button Text="Send"
+                            Command="{Binding NavigateToSendCommand}"
+                            Style="{DynamicResource CustomButton}"
+                            BackgroundColor="{DynamicResource BackgroundSecondary}"
+                            FontSize="Large"
+                            FlexLayout.Grow="1" />
+                    <BoxView WidthRequest="5" />
+                    <Button Text="Receive"
+                            Command="{Binding NavigateToReceiveCommand}"
+                            Style="{DynamicResource CustomButton}"
+                            BackgroundColor="{DynamicResource BackgroundSecondary}"
+                            FontSize="Large"
+                            FlexLayout.Grow="1" />
                 </FlexLayout>
             </FlexLayout>
         </AbsoluteLayout>

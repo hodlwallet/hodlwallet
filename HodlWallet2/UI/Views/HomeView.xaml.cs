@@ -88,12 +88,12 @@ namespace HodlWallet2.UI.Views
             MessagingCenter.Subscribe<HomeViewModel>(this, "SwitchCurrency", SwitchCurrency);
         }
 
-        void NavigateToTransactionDetail(HomeViewModel _, TransactionModel txModel)
+        async void NavigateToTransactionDetail(HomeViewModel _, TransactionModel txModel)
         {
             var view = new TransactionDetailsView(txModel);
             var nav = new NavigationPage(view);
 
-            Navigation.PushModalAsync(nav);
+            await Navigation.PushModalAsync(nav);
         }
 
         void DisplaySearchNotImplementedAlert(HomeViewModel vm)

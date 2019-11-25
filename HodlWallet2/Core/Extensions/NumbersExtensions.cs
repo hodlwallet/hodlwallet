@@ -38,5 +38,10 @@ namespace HodlWallet2.Core.Extensions
         {
             return value / 1.000000000000000000000000000000000m;
         }
+
+        public static decimal ToUsd(this Money me, decimal btcExchangeRate)
+        {
+            return me.ToDecimal(MoneyUnit.BTC) * btcExchangeRate;
+        }
     }
 }

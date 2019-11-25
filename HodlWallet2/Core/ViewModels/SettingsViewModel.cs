@@ -21,19 +21,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Threading.Tasks;
+
 using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
-        public void ResyncWallet()
+        public async Task ResyncWallet()
         {
-            var timeToStartOn = DateTimeOffset.FromUnixTimeSeconds(
-                SecureStorageService.GetSeedBirthday()
-            );
-
-            _WalletService.ReScan(timeToStartOn);
+            await _WalletService.Wallet.Resync();
         }
 
         public void WipeWallet()

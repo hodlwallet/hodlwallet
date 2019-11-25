@@ -35,7 +35,7 @@ namespace HodlWallet2.UI.Views
     [DesignTimeVisible(false)]
     public partial class RootView : TabbedPage
     {
-        public enum Tabs { Send, Receive, Home, Settings };
+        public enum Tabs { Accounts, Send, Home, Receive, Settings };
 
         public RootView()
         {
@@ -57,6 +57,7 @@ namespace HodlWallet2.UI.Views
             MessagingCenter.Subscribe<ReceiveViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
             MessagingCenter.Subscribe<SettingsViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
             MessagingCenter.Subscribe<HomeViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
+            MessagingCenter.Subscribe<AccountsViewModel, Tabs>(this, "ChangeCurrentPageTo", ChangeCurrentPageTo);
             // Add more view models, as needed though
 
             // Add yours here.

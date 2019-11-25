@@ -22,6 +22,9 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+using System.Diagnostics;
+using System.Threading;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Collections.Specialized;
@@ -31,7 +34,7 @@ using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 
-using Newtonsoft.Json;
+using NBitcoin;
 
 using Liviano;
 using Liviano.Models;
@@ -40,11 +43,7 @@ using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.Services;
-using NBitcoin;
-using System.Windows.Input;
-using NBitcoin.Protocol;
-using System.Diagnostics;
-using System.Threading;
+using HodlWallet2.Core.Extensions;
 using HodlWallet2.UI.Views;
 
 namespace HodlWallet2.Core.ViewModels
@@ -66,11 +65,11 @@ namespace HodlWallet2.Core.ViewModels
         float _NewRate;
         float _OldRate;
         bool _IsBtcEnabled;
-        object _CurrentTransaction;
+        TransactionModel _CurrentTransaction;
 
         int _PriceUpdateDelay = 2_500; // 2.5 seconds
 
-        public object CurrentTransaction
+        public TransactionModel CurrentTransaction
         {
             get => _CurrentTransaction;
             set => SetProperty(ref _CurrentTransaction, value);
@@ -128,6 +127,8 @@ namespace HodlWallet2.Core.ViewModels
         public ICommand SwitchCurrencyCommand { get; }
         public ICommand SearchCommand { get; }
         public ICommand NavigateToTransactionDetailsCommand { get; }
+        public ICommand NavigateToSendCommand { get; }
+        public ICommand NavigateToReceiveCommand { get; }
 
         public HomeViewModel()
         {
@@ -136,6 +137,8 @@ namespace HodlWallet2.Core.ViewModels
             NavigateToTransactionDetailsCommand = new Command(NavigateToTransactionDetails);
             SwitchCurrencyCommand = new Command(SwitchCurrency);
             SearchCommand = new Command(StartSearch);
+            NavigateToSendCommand = new Command(NavigateToSend);
+            NavigateToReceiveCommand = new Command(NavigateToReceive);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
         }
@@ -172,7 +175,6 @@ namespace HodlWallet2.Core.ViewModels
             if (_WalletService.IsStarted)
             {
                 LoadTransactions();
-                UpdateSyncingStatus();
                 AddWalletServiceEvents();
             }
             else
@@ -199,37 +201,6 @@ namespace HodlWallet2.Core.ViewModels
             Debug.WriteLine("[StartSearch] Search is not implemented yet!");
 
             MessagingCenter.Send(this, "DisplaySearchNotImplementedAlert");
-        }
-
-        void UpdateSyncingStatus()
-        {
-            SyncIsVisible = !_WalletService.IsSyncedToTip();
-
-            double progress = _WalletService.GetSyncedProgress();
-
-            if (progress.Equals(0.00))
-            {
-                var chainTip = _WalletService.GetChainTip();
-
-                _Logger.Debug("[{0}] chainTip => {1}", nameof(UpdateSyncingStatus), chainTip.Height);
-
-                SyncDateText = Constants.SYNC_LOADING_HEADERS;
-            }
-            else
-            {
-                SyncDateText = $"{_WalletService.GetSyncedProgressPercentage()}% {_WalletService.GetLastSyncedDate()} ({_WalletService.GetLastSyncedBlockHeight()})";
-
-            }
-            SyncCurrentProgress = _WalletService.GetSyncedProgress();
-
-            _Logger.Debug(
-                "[{0}] IsSyncedToTip => {1}, GetLastSyncedDate => {2}, GetLastSyncedBlockHeight => {3}, GetSyncedProgressPercentage => {4}",
-                nameof(UpdateSyncingStatus),
-                _WalletService.IsSyncedToTip(),
-                _WalletService.GetLastSyncedDate(),
-                _WalletService.GetLastSyncedBlockHeight(),
-                _WalletService.GetSyncedProgressPercentage()
-            );
         }
 
         void SwitchCurrency()
@@ -340,18 +311,21 @@ namespace HodlWallet2.Core.ViewModels
             });
         }
 
-        public void ReScan()
+        void NavigateToSend()
         {
-            var seedBirthday = DateTimeOffset.FromUnixTimeSeconds(SecureStorageService.GetSeedBirthday());
+            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Send);
+        }
 
-            _WalletService.ReScan(seedBirthday);
+        void NavigateToReceive()
+        {
+            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Receive);
         }
 
         void NavigateToTransactionDetails()
         {
             if (CurrentTransaction == null) return;
 
-            MessagingCenter.Send(this, "NavigateToTransactionDetail", CurrentTransaction as TransactionModel);
+            MessagingCenter.Send(this, "NavigateToTransactionDetail", CurrentTransaction);
 
             CurrentTransaction = null;
         }
@@ -373,6 +347,7 @@ namespace HodlWallet2.Core.ViewModels
             }
         }
 
+        /*
         void WalletSyncManager_OnSyncProgressUpdate(object sender, WalletPositionUpdatedEventArgs e)
         {
             _Logger.Debug(
@@ -381,9 +356,8 @@ namespace HodlWallet2.Core.ViewModels
                 e.NewPosition.Height,
                 e.PreviousPosition.Height
             );
-
-            UpdateSyncingStatus();
         }
+        */
 
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
@@ -395,8 +369,6 @@ namespace HodlWallet2.Core.ViewModels
                 {
                     LoadTransactions();
 
-                    UpdateSyncingStatus();
-
                     AddWalletServiceEvents();
                 }
             });
@@ -404,43 +376,21 @@ namespace HodlWallet2.Core.ViewModels
 
         void AddWalletServiceEvents()
         {
-            _WalletService.WalletManager.OnNewTransaction += WalletManager_OnNewTransaction;
-            _WalletService.WalletManager.OnNewSpendingTransaction += WalletManager_OnNewSpendingTransaction;
-            _WalletService.WalletManager.OnUpdateTransaction += WalletManager_OnUpdateTransaction;
-            _WalletService.WalletManager.OnUpdateSpendingTransaction += WalletManager_OnUpdateSpendingTransaction;
-
-            _WalletService.WalletSyncManager.OnWalletPositionUpdate += WalletSyncManager_OnSyncProgressUpdate;
-            _WalletService.WalletSyncManager.OnWalletSyncedToTipOfChain += WalletSyncManager_OnWalletSyncedToTipOfChain;
+            _WalletService.Wallet.OnNewTransaction += Wallet_OnNewTransaction;
+            _WalletService.Wallet.OnUpdateTransaction += Wallet_OnUpdateTransaction;
         }
 
-        private void WalletSyncManager_OnWalletSyncedToTipOfChain(object sender, NBitcoin.ChainedBlock e)
-        {
-            UpdateSyncingStatus();
-
-            SyncIsVisible = false;
-        }
-
-        void WalletManager_OnUpdateSpendingTransaction(object sender, TransactionData e)
-        {
-            UpdateTransactionsCollectionWith(e);
-        }
-
-        void WalletManager_OnUpdateTransaction(object sender, TransactionData e)
-        {
-            UpdateTransactionsCollectionWith(e);
-        }
-
-        void WalletManager_OnNewSpendingTransaction(object sender, TransactionData e)
-        {
-            UpdateTransactionsCollectionWith(e);
-        }
-
-        void WalletManager_OnNewTransaction(object sender, TransactionData e)
+        void Wallet_OnNewTransaction(object sender, Tx e)
         {
             AddToTransactionsCollectionWith(e);
         }
 
-        void AddToTransactionsCollectionWith(TransactionData txData)
+        void Wallet_OnUpdateTransaction(object sender, Tx e)
+        {
+            UpdateTransactionsCollectionWith(e);
+        }
+
+        void AddToTransactionsCollectionWith(Tx txData)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -454,7 +404,7 @@ namespace HodlWallet2.Core.ViewModels
             });
         }
 
-        void UpdateTransactionsCollectionWith(TransactionData txData)
+        void UpdateTransactionsCollectionWith(Tx txData)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -477,7 +427,7 @@ namespace HodlWallet2.Core.ViewModels
         void LoadTransactions()
         {
             var txs = _WalletService.GetCurrentAccountTransactions().OrderBy(
-                (TransactionData txData) => txData.CreationTime
+                (Tx txData) => txData.CreatedAt
             );
 
             foreach (var tx in txs)
@@ -500,7 +450,7 @@ namespace HodlWallet2.Core.ViewModels
             }
         }
 
-        string GetAmountLabelText(TransactionData tx)
+        string GetAmountLabelText(Tx tx)
         {
             if (tx is null)
             {
@@ -510,26 +460,25 @@ namespace HodlWallet2.Core.ViewModels
             }
 
             var preferences = Preferences.Get("currency", "BTC");
+
             if (preferences == "BTC")
             {
                 if (tx.IsSend == true)
                     return string.Format(Constants.SENT_AMOUNT, preferences, $"-{tx.AmountSent}");
 
-                return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.Amount);
+                return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.SpendableAmount(false));
             }
-            else
-            {
-                if (tx.IsSend == true)
-                    return string.Format(
-                        Constants.SENT_AMOUNT,
-                        preferences,
-                        $"-{tx.AmountSent.ToUsd((decimal)_NewRate):F2}");
 
+            if (tx.IsSend == true)
                 return string.Format(
-                    Constants.RECEIVE_AMOUNT,
-                    preferences,
-                    $"{tx.Amount.ToUsd((decimal)_NewRate):F2}");
-            }
+                Constants.SENT_AMOUNT,
+                preferences,
+                $"-{tx.AmountSent.ToUsd((decimal)_NewRate):F2}");
+
+            return string.Format(
+                Constants.RECEIVE_AMOUNT,
+                preferences,
+                $"{tx.SpendableAmount(false).ToUsd((decimal)_NewRate):F2}");
         }
     }
 }

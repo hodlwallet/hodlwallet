@@ -53,19 +53,19 @@ namespace HodlWallet2.UI.Views
             MessagingCenter.Subscribe<SendViewModel, ValueTuple<decimal, decimal>>(this, "AskToBroadcastTransaction", AskToBroadcastTransaction);
         }
 
-        void AskToBroadcastTransaction(SendViewModel vm, (decimal, decimal) values)
+        async void AskToBroadcastTransaction(SendViewModel vm, (decimal, decimal) values)
         {
             decimal totalOut = values.Item1;
             decimal fees = values.Item2;
             var total = totalOut + fees;
 
-            string title = "Send Transaction?";
+            string title = LocaleResources.Send_transaction;
 
-            string message = $"Would you like to send {total} ({totalOut} + {fees}) BTC to {SendAddress}?";
-            string okButton = "Yes";
-            string cancelButton = "No";
+            string message = string.Format(LocaleResources.Send_transactionMessage, total, totalOut, fees, SendAddress.Text);
+            string okButton = LocaleResources.Send_transactionOk;
+            string cancelButton = LocaleResources.Send_transactionCancel;
 
-            var res = this.DisplayPrompt(title, message, okButton, cancelButton).Result;
+            var res = await this.DisplayPrompt(title, message, okButton, cancelButton);
 
             if (!res) return;
 

@@ -53,16 +53,16 @@ namespace HodlWallet2.UI.Views
             Navigation.PushModalAsync(nav);
         }
 
-        void ResyncWallet_Clicked(object sender, EventArgs e)
+        async void ResyncWallet_Clicked(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
                 var answer = await AskThisIsIrreversibleQuestion("resync-wallet");
 
                 if (!answer) return;
-
-                _ViewModel.ResyncWallet();
             });
+
+            await _ViewModel.ResyncWallet();
         }
 
         void RestoreWallet_Clicked(object sender, EventArgs e)

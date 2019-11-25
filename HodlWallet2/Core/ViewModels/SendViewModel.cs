@@ -30,14 +30,12 @@ using NBitcoin.Payment;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 
-using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Utils;
-using HodlWallet2.UI.Extensions;
 
 using Liviano;
 using Liviano.Exceptions;
+using Liviano.Extensions;
 using HodlWallet2.UI.Views;
-using NBitcoin.Protocol;
 using System.Diagnostics;
 
 namespace HodlWallet2.Core.ViewModels
@@ -45,7 +43,7 @@ namespace HodlWallet2.Core.ViewModels
     public class SendViewModel : BaseViewModel
     {
         string _AddressToSendTo;
-        int _Fee;
+        long _Fee;
         decimal _AmountToSend;
         float _Rate => _PrecioService.Rate.Rate;
         string _AmountToSendText;
@@ -87,7 +85,7 @@ namespace HodlWallet2.Core.ViewModels
             set => SetProperty(ref _AddressToSendTo, value);
         }
 
-        public int Fee
+        public long Fee
         {
             get => _Fee;
             set => SetProperty(ref _Fee, value);
@@ -137,13 +135,20 @@ namespace HodlWallet2.Core.ViewModels
             MessagingCenter.Subscribe<SendView>(this, "BroadcastTransaction", BroadcastTransaction);
         }
 
-        void BroadcastTransaction(SendView _)
+        async void BroadcastTransaction(SendView _)
         {
             if (_TransactionToBroadcast is null) return;
 
-            _WalletService.BroadcastManager.BroadcastTransactionAsync(_TransactionToBroadcast);
+            var result = await _WalletService.SendTransaction(_TransactionToBroadcast);
 
-            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
+            if (result.Sent == true)
+            {
+                MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
+            }
+            else
+            {
+                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_TRANSACTION_MESSAGE);
+            }
         }
 
         void SwitchCurrency()
@@ -169,24 +174,24 @@ namespace HodlWallet2.Core.ViewModels
             if (SliderValue <= (MAX_SLIDER_VALUE * 0.25))
             {
                 SliderValue = 0;
-                Fee = currentFees.SlowSatKB;
+                Fee = currentFees.SlowSatKB / 1000;
                 EstConfirmationText = currentFees.SlowTime;
             }
             else if (SliderValue > (MAX_SLIDER_VALUE * 0.25)
                      && SliderValue < (MAX_SLIDER_VALUE * 0.75))
             {
                 SliderValue = MAX_SLIDER_VALUE * 0.5;
-                Fee = currentFees.NormalSatKB;
+                Fee = currentFees.NormalSatKB / 1000;
                 EstConfirmationText = currentFees.NormalTime;
             }
             else
             {
                 SliderValue = MAX_SLIDER_VALUE;
-                Fee = currentFees.FastestSatKB;
+                Fee = currentFees.FastestSatKB / 1000;
                 EstConfirmationText = currentFees.FastestTime;
             }
 
-            TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, (Fee / 1000));
+            TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, Fee);
         }
 
         void Scan()
@@ -307,23 +312,20 @@ namespace HodlWallet2.Core.ViewModels
 
             if (AmountToSend <= 0.00m || string.IsNullOrEmpty(AddressToSendTo) || Fee <= 0)
             {
-                string message = "Unable to send, check your amount, address and fee";
-
-                DisplayProcessAddressErrorAlert(message, Constants.DISPLAY_ALERT_ERROR_TITLE);
+                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_AMOUNT_MESSAGE);
                 return;
             }
 
             var (Success, Tx, Fees, Error) = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
             Debug.WriteLine($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
+
             if (Success)
             {
                 var totalOut = Tx.TotalOut.ToDecimal(MoneyUnit.BTC);
                 _TransactionToBroadcast = Tx;
 
                 MessagingCenter.Send(this, "AskToBroadcastTransaction", (totalOut, Fees));
-
-                return;
             }
             else
             {
