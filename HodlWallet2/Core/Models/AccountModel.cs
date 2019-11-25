@@ -25,21 +25,9 @@ namespace HodlWallet2.Core.Models
                 AccountData = account,
                 AccountName = account.Name,
                 Balance = account.GetBalance().ToString(),
-                GradientStart = Color.FromHex(RandomHex()),
-                GradientEnd = Color.FromHex(RandomHex())
+                GradientStart = Color.FromHex(account.StartHex),
+                GradientEnd = Color.FromHex(account.EndHex)
             };
-        }
-
-        static string RandomHex()
-        {
-            // TODO Generate and store hex in wallet.
-            //      Add option for light or dark preference.
-
-            var rng = new Random();
-
-            var rgb = (rng.Next(255), rng.Next(255), rng.Next(255));
-
-            return $"{rgb.Item1:X2}{rgb.Item2:X2}{rgb.Item3:X2}";
         }
     }
 }
