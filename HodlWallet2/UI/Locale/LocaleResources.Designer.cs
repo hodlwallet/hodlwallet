@@ -448,5 +448,53 @@ namespace HodlWallet2.UI.Locale {
                 return ResourceManager.GetString("NowLoading.text", resourceCulture);
             }
         }
+        
+        public static string Accounts_title {
+            get {
+                return ResourceManager.GetString("Accounts.title", resourceCulture);
+            }
+        }
+        
+        public static string AccountSelection_title {
+            get {
+                return ResourceManager.GetString("AccountSelection.title", resourceCulture);
+            }
+        }
+        
+        public static string AccountSelection_header {
+            get {
+                return ResourceManager.GetString("AccountSelection.header", resourceCulture);
+            }
+        }
+        
+        public static string AccountSelection_subheader {
+            get {
+                return ResourceManager.GetString("AccountSelection.subheader", resourceCulture);
+            }
+        }
+        
+        public static string AddAccount_title {
+            get {
+                return ResourceManager.GetString("AddAccount.title", resourceCulture);
+            }
+        }
+        
+        public static string AddAccount_header {
+            get {
+                return ResourceManager.GetString("AddAccount.header", resourceCulture);
+            }
+        }
+        
+        public static string AddAccount_subheader {
+            get {
+                return ResourceManager.GetString("AddAccount.subheader", resourceCulture);
+            }
+        }
+        
+        public static string AddAccount_button {
+            get {
+                return ResourceManager.GetString("AddAccount.button", resourceCulture);
+            }
+        }
     }
 }

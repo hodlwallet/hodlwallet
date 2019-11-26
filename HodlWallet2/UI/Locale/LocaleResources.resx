@@ -345,4 +345,44 @@
         <value>Now Loading...</value>
         <comment>text that shows with the activity indicator</comment>
     </data>
+    
+    <data name="Accounts.title" xml:space="preserve">
+        <value>Accounts</value>
+        <comment>label for accounts view title</comment>
+    </data>
+    
+    <data name="AccountSelection.title" xml:space="preserve">
+        <value>Select an Account</value>
+        <comment>label for account selection view title</comment>
+    </data>
+    
+    <data name="AccountSelection.header" xml:space="preserve">
+        <value>Please enter a name for this account.</value>
+        <comment>label for account selection header.</comment>
+    </data>
+    
+    <data name="AccountSelection.subheader" xml:space="preserve">
+        <value>Choose from the options below which type of account you want to create.</value>
+        <comment>label for account selection subheader</comment>
+    </data>
+    
+    <data name="AddAccount.title">
+        <value>Add an Account</value>
+        <comment>label for add account title</comment>
+    </data>
+    
+    <data name="AddAccount.header">
+        <value>[Update Image]</value>
+        <comment>label for add account header</comment>
+    </data>
+    
+    <data name="AddAccount.subheader">
+        <value>Select from a variety of account types.</value>
+        <comment>label for add account subheader</comment>
+    </data>
+    
+    <data name="AddAccount.button">
+        <value>Create an Account</value>
+        <comment>label for add account button</comment>
+    </data>
 </root>
