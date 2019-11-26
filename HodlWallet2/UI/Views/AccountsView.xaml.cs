@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using HodlWallet2.Core.ViewModels;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.UI.Views
 {
@@ -13,6 +14,12 @@ namespace HodlWallet2.UI.Views
         public AccountsView()
         {
             InitializeComponent();
+            SetLabels();
+        }
+
+        void SetLabels()
+        {
+            Title = LocaleResources.Accounts_title;
         }
 
         async void AddAccountButton_Clicked(object sender, EventArgs e)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 
 using HodlWallet2.Core.ViewModels;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.UI.Views
 {
@@ -12,6 +13,14 @@ namespace HodlWallet2.UI.Views
         public AccountSelectionView()
         {
             InitializeComponent();
+            SetLabels();
+        }
+
+        void SetLabels()
+        {
+            Title = LocaleResources.AccountSelection_title;
+            Header.Text = LocaleResources.AccountSelection_header;
+            Subheader.Text = LocaleResources.AccountSelection_subheader;
         }
 
         async void Account_Clicked(object sender, EventArgs e)

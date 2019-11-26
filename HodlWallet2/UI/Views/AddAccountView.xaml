@@ -27,26 +27,25 @@
                           FlexLayout.Grow="2" />
                 <ActivityIndicator IsRunning="False"
                                    Color="{DynamicResource SyncGradientStart}" />
-                <Label FontFamily="{StaticResource Sans-Regular}"
+                <Label x:Name="Header"
+                       FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        HorizontalTextAlignment="Center"
                        FontSize="Medium"
-                       Text="{Binding HeaderText}"
                        Margin="0, 0, 0, 10" />
-                <Label FontFamily="{StaticResource Sans-Regular}"
+                <Label x:Name="Subheader"
+                       FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        HorizontalTextAlignment="Center"
-                       FontSize="Medium"
-                       Text="{Binding SubheaderText}" />
+                       FontSize="Medium" />
                 <BoxView FlexLayout.Grow="1" />
-                <Button x:Name="AddAccountButton"
+                <Button x:Name="Button"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
                         CornerRadius="0"
                         FontSize="Large"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="1"
-                        Text="{Binding ButtonText}"
                         Clicked="CreateAccountButton_Clicked" />
             </FlexLayout>
         </AbsoluteLayout>

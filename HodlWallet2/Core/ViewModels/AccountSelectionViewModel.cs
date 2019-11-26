@@ -7,12 +7,6 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class AccountSelectionViewModel : BaseViewModel
     {
-        public string AccountSelectionTitle => "Select an Account";
-
-        public string HeaderText => "Please enter a name for this account.";
-
-        public string SubheaderText => "Choose from the options below which type of account you want to create.";
-
         string _Name;
         public string Name
         {

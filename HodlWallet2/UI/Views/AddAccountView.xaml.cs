@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
+using HodlWallet2.UI.Locale;
+
 namespace HodlWallet2.UI.Views
 {
     public partial class AddAccountView : ContentPage
@@ -10,6 +12,15 @@ namespace HodlWallet2.UI.Views
         public AddAccountView()
         {
             InitializeComponent();
+            SetLabels();
+        }
+
+        void SetLabels()
+        {
+            Title = LocaleResources.AddAccount_title;
+            Header.Text = LocaleResources.AddAccount_header;
+            Subheader.Text = LocaleResources.AddAccount_subheader;
+            Button.Text = LocaleResources.AddAccount_button;
         }
 
         async void CreateAccountButton_Clicked(object sender, EventArgs e)

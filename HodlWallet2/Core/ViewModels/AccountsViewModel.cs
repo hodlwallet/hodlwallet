@@ -11,8 +11,6 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class AccountsViewModel : BaseViewModel
     {
-        public string AccountTitle => "Accounts";
-
         string _PriceText;
         AccountModel _CurrentAccount;
 
