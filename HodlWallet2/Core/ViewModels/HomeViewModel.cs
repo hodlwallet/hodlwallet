@@ -155,9 +155,6 @@ namespace HodlWallet2.Core.ViewModels
             NavigateToReceiveCommand = new Command(NavigateToReceive);
 
             PriceText = Constants.BTC_UNIT_LABEL_TMP;
-
-            GradientStart = Color.FromHex(_WalletService.Wallet.CurrentAccount.StartHex);
-            GradientEnd = Color.FromHex(_WalletService.Wallet.CurrentAccount.EndHex);
         }
 
         public void View_OnDisappearing()
@@ -193,6 +190,8 @@ namespace HodlWallet2.Core.ViewModels
             {
                 LoadTransactions();
                 AddWalletServiceEvents();
+                GradientStart = Color.FromHex(_WalletService.Wallet.CurrentAccount.StartHex);
+                GradientEnd = Color.FromHex(_WalletService.Wallet.CurrentAccount.EndHex);
             }
             else
             {
@@ -387,6 +386,9 @@ namespace HodlWallet2.Core.ViewModels
                     LoadTransactions();
 
                     AddWalletServiceEvents();
+
+                    GradientStart = Color.FromHex(_WalletService.Wallet.CurrentAccount.StartHex);
+                    GradientEnd = Color.FromHex(_WalletService.Wallet.CurrentAccount.EndHex);
                 }
             });
         }

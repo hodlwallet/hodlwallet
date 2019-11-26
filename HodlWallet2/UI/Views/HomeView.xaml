@@ -28,16 +28,13 @@
                                          Spacing="0"
                                          FlexLayout.Grow="1">
                                 <BoxView WidthRequest="35" />
-                                <Image x:Name="PriceButton"
+                                <ImageButton x:Name="PriceButton"
+                                       Clicked="PriceButton_Tapped"
                                        Source="price-tag-3-line"
                                        Margin="0, 10, 0, 0"
                                        WidthRequest="24"
                                        HeightRequest="24"
                                        VerticalOptions="Start" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="PriceButton_Tapped"
-                                                          NumberOfTapsRequired="1" />
-                                </StackLayout.GestureRecognizers>
                             </StackLayout>
 
                             <StackLayout Orientation="Vertical"
