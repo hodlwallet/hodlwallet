@@ -23,6 +23,7 @@
 using Xamarin.Forms;
 
 using HodlWallet2.Core.ViewModels;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.UI.Views
 {
@@ -37,6 +38,14 @@ namespace HodlWallet2.UI.Views
             _ViewModel.Mnemonic = mnemonic;
 
             SubscribeToMessages();
+
+            SetLabels();
+        }
+
+        void SetLabels()
+        {
+            Header.Text = LocaleResources.BackupConfirm_header;
+            Warning.Text = LocaleResources.BackupConfirm_warning;
         }
 
         void SubscribeToMessages()

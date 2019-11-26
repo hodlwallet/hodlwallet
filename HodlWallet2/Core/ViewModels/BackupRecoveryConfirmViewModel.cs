@@ -23,13 +23,13 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 using Xamarin.Essentials;
-
-using HodlWallet2.Core.Interfaces;
-using System.Windows.Input;
 using Xamarin.Forms;
+
 using HodlWallet2.Core.Services;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -42,11 +42,6 @@ namespace HodlWallet2.Core.ViewModels
         private string[] _Mnemonic;
         int _PrevIndex;
         bool _WarningVisible;
-
-        public string HeaderText =>
-            "To make sure everything was written down correctly, please enter the following words from your backup recovery key.";
-
-        public string WarningText => "That word is not in your mnemonic.";
 
         private string[] confirmWords = new string[8], place = { "first", "second", "third", "fourth",
             "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelveth" }; // Localize
@@ -232,8 +227,10 @@ namespace HodlWallet2.Core.ViewModels
                 var rangeArray = Enumerable.Range(0, mnemonic.Length - 1).Where(a => a != _PrevIndex).ToArray();
                 int wordIndex = rangeArray[rng.Next(rangeArray.Length)];
                 _WordToGuess = mnemonic[wordIndex];
-                Exercise = "Choose the " + place[wordIndex] + " word from your mnemonic:"; // Format and localize label.
+
+                Exercise = string.Format(LocaleResources.BackupConfirm_exercise, place[wordIndex]);
                 string[] guessWords = WalletService.GenerateGuessWords(_WordToGuess, _WalletService.GetWordListLanguage(), AMOUNT_AROUND);
+
                 UpdateWords(guessWords);
             }
             else
