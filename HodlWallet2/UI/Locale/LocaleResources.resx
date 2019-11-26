@@ -54,12 +54,7 @@
     
     <data name="Backup.title" xml:space="preserve">
         <value>Backup Recovery Key</value>
-        <comment>label for backup view title</comment>
-    </data>
-    
-    <data name="Backup.subheader" xml:space="preserve">
-        <value>Your backup recovery key is the only way to restore your wallet if your phone is lost, stolen, broken, or upgraded. We will show you a list of words to write down on paper and keep safe.</value>
-        <comment>label for backup subheader</comment>
+        <comment>label for backup recovery title</comment>
     </data>
     
     <data name="Backup.button" xml:space="preserve">
@@ -67,19 +62,49 @@
         <comment>label for backup recovery button</comment>
     </data>
     
-    <data name="Backup.wordheader" xml:space="preserve">
+    <data name="Backup.header" xml:space="preserve">
+        <value>Your backup recovery key is the only way to restore your wallet if your phone is lost, stolen, broken or upgraded.</value>
+        <comment>label for backup recovery header</comment>
+    </data>
+    
+    <data name="Backup.subheader" xml:space="preserve">
+        <value>We will show you a list of words to write down on a piece of paper and keep safe.</value>
+        <comment>label for backup recovery subheader</comment>
+    </data>
+    
+    <data name="BackupConfirm.header" xml:space="preserve">
+        <value>To make sure everything was written down correctly, please enter the following words from your backup recovery key.</value>
+        <comment>label for backup confirmation</comment>
+    </data>
+    
+    <data name="BackupConfirm.warning" xml:space="preserve">
+        <value>That word is not in your mnemonic.</value>
+        <comment>label for backup confirmation warning</comment>
+    </data>
+    
+    <data name="BackupConfirm.exercise" xml:space="preserve">
+        <value>Choose the {0} word from your mnemonic:</value>
+        <comment>label for backup confirmation exercise</comment>
+    </data>
+    
+    <data name="BackupWord.title" xml:space="preserve">
+        <value>Backup Recovery Key</value>
+        <comment>label for backup word title</comment>
+    </data>
+    
+    <data name="BackupWord.next" xml:space="preserve">
+        <value>Next Word</value>
+        <comment>label for backup word next button</comment>
+    </data>
+    
+    <data name="BackupWord.previous" xml:space="preserve">
+        <value>Previous</value>
+        <comment>label for backup word previous button</comment>
+    </data>
+    
+    <data name="BackupWord.header" xml:space="preserve">
         <value>Write down each word in order and store it in a safe place.</value>
         <comment>label for backup word header</comment>
-    </data>
-    
-    <data name="Backup.previous" xml:space="preserve">
-        <value>Previous</value>
-        <comment>label for previous backup word</comment>
-    </data>
-    
-    <data name="ConfirmBackup.header" xml:space="preserve">
-        <value>To make sure everything was written down correctly, please choose from the following words the correct backup recovery key.</value>
-        <comment>label for backup confirmation</comment>
     </data>
     
     <data name="Pin.setTitle" xml:space="preserve">
