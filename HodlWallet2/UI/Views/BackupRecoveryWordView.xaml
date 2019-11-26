@@ -4,7 +4,6 @@
              xmlns:converters="clr-namespace:HodlWallet2.UI.Converters"
              xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
              x:Class="HodlWallet2.UI.Views.BackupRecoveryWordView"
-             Title="{Binding Title}"
              BackgroundColor="{DynamicResource BackgroundPrimary}">
     <ContentPage.BindingContext>
         <vm:BackupRecoveryWordViewModel />
@@ -23,7 +22,6 @@
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        HorizontalTextAlignment="Center"
-                       Text="{Binding HeaderText}"
                        Margin="0, 20, 0, 0" />
 
                 <FlexLayout Direction="Column"
@@ -60,7 +58,6 @@
                             FontSize="Large"
                             FlexLayout.AlignSelf="Stretch"
                             FlexLayout.Grow="2"
-                            Text="{Binding PreviousText}"
                             Command="{Binding PreviousWordCommand}" />
 
                     <Button x:Name="Next"
@@ -70,7 +67,6 @@
                             FontSize="Large"
                             FlexLayout.AlignSelf="Stretch"
                             FlexLayout.Grow="2"
-                            Text="{Binding NextText}"
                             Command="{Binding NextWordCommand}" />
                 </FlexLayout>
             </FlexLayout>
