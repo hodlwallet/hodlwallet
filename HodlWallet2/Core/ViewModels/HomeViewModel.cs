@@ -54,9 +54,6 @@ namespace HodlWallet2.Core.ViewModels
 
         bool _IsViewVisible = true;
 
-        public string SendText => "Send";
-        public string ReceiveText => "Receive";
-        public string MenuText => "Menu";
         public string SyncTitleText => "SYNCING";
 
         bool _AttachedWalletListeners = false;
