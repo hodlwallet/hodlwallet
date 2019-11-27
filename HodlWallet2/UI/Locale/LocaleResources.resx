@@ -13,12 +13,12 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="Onboard_create" xml:space="preserve">
-        <value>Create new wallet</value>
+        <value>CREATE NEW WALLET</value>
         <comment>label for create button</comment>
     </data>
     
     <data name="Onboard_recover" xml:space="preserve">
-        <value>Recover wallet</value>
+        <value>RECOVER WALLET</value>
         <comment>label for recover button</comment>
     </data>
     
@@ -157,9 +157,14 @@
         <comment>label for recover wallet button</comment>
     </data>
     
-    <data name="Recover.entryHeader" xml:space="preserve">
+    <data name="RecoverEntry.header" xml:space="preserve">
+        <value>Enter Backup Recovery Key</value>
+        <comment>label for recover wallet entry header</comment>
+    </data>
+    
+    <data name="RecoverEntry.title" xml:space="preserve">
         <value>Enter the backup recovery key for the wallet you want to recover.</value>
-        <comment>label for recover wallet entry</comment>
+        <comment>label for recover wallet entry title</comment>
     </data>
     
     <data name="Recover.alertTitle" xml:space="preserve">
@@ -175,6 +180,11 @@
     <data name="Recover.alertButton" xml:space="preserve">
         <value>Try Again</value>
         <comment>label for recover wallet entry alert button</comment>
+    </data>
+    
+    <data name="Done.button" xml:space="preserve">
+        <value>Done</value>
+        <comment>label for done button</comment>
     </data>
     
     <data name="Send.title" xml:space="preserve">

@@ -23,13 +23,13 @@
 using System;
 using System.Diagnostics;
 using System.Windows.Input;
+
 using Xamarin.Forms;
 
 namespace HodlWallet2.Core.ViewModels
 {
     public class ReceiveViewModel : BaseViewModel
     {
-        public string ShareButtonText => "Share";
         public ICommand ShowShareIntentCommand { get; }
 
         string _Address;

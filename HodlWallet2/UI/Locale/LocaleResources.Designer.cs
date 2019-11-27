@@ -221,9 +221,15 @@ namespace HodlWallet2.UI.Locale {
             }
         }
         
-        public static string Recover_entryHeader {
+        public static string RecoverEntry_header {
             get {
-                return ResourceManager.GetString("Recover.entryHeader", resourceCulture);
+                return ResourceManager.GetString("RecoverEntry.header", resourceCulture);
+            }
+        }
+        
+        public static string RecoverEntry_title {
+            get {
+                return ResourceManager.GetString("RecoverEntry.title", resourceCulture);
             }
         }
         
@@ -242,6 +248,12 @@ namespace HodlWallet2.UI.Locale {
         public static string Recover_alertButton {
             get {
                 return ResourceManager.GetString("Recover.alertButton", resourceCulture);
+            }
+        }
+        
+        public static string Done_button {
+            get {
+                return ResourceManager.GetString("Done.button", resourceCulture);
             }
         }
         
