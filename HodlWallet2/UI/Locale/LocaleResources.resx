@@ -384,27 +384,27 @@
     <data name="TransactionDetails.statusTitle" xml:space="preserve">
         <value>Status</value>
         <comment>label for transaction status title</comment>
-        </data>
+    </data>
     
     <data name="TransactionDetails.memoTitle" xml:space="preserve">
         <value>Memo</value>
         <comment>label for transaction memo title</comment>
-        </data>
+    </data>
     
     <data name="TransactionDetails.amountTitle" xml:space="preserve">
         <value>Amount</value>
         <comment>label for transaction amount title</comment>
-        </data>
+    </data>
     
     <data name="TransactionDetails.transactionIdTitle" xml:space="preserve">
         <value>Bitcoin Transaction ID</value>
         <comment>label for transaction ID title</comment>
-        </data>
+    </data>
     
     <data name="TransactionDetails.confirmedBlockTitle" xml:space="preserve">
         <value>Confirmed in Block</value>
         <comment>label for transaction confirmed in block title</comment>
-        </data>
+    </data>
     
     <data name="NowLoading.text" xml:space="preserve">
         <value>Now Loading...</value>

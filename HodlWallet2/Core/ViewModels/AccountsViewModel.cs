@@ -76,7 +76,7 @@ namespace HodlWallet2.Core.ViewModels
 
         void NavigateToHome()
         {
-            if (CurrentAccount == null) return;
+            if (CurrentAccount is null) return;
 
             _WalletService.Wallet.CurrentAccount = CurrentAccount.AccountData;
 
