@@ -336,7 +336,7 @@ namespace HodlWallet2.Core.ViewModels
 
         void NavigateToTransactionDetails()
         {
-            if (CurrentTransaction == null) return;
+            if ((object)CurrentTransaction == null) return;
 
             MessagingCenter.Send(this, "NavigateToTransactionDetail", CurrentTransaction);
 

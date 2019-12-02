@@ -485,6 +485,42 @@ namespace HodlWallet2.UI.Locale {
             }
         }
         
+        public static string TransactionDetails_title {
+            get {
+                return ResourceManager.GetString("TransactionDetails.title", resourceCulture);
+            }
+        }
+        
+        public static string TransactionDetails_statusTitle {
+            get {
+                return ResourceManager.GetString("TransactionDetails.statusTitle", resourceCulture);
+            }
+        }
+        
+        public static string TransactionDetails_memoTitle {
+            get {
+                return ResourceManager.GetString("TransactionDetails.memoTitle", resourceCulture);
+            }
+        }
+        
+        public static string TransactionDetails_amountTitle {
+            get {
+                return ResourceManager.GetString("TransactionDetails.amountTitle", resourceCulture);
+            }
+        }
+        
+        public static string TransactionDetails_transactionIdTitle {
+            get {
+                return ResourceManager.GetString("TransactionDetails.transactionIdTitle", resourceCulture);
+            }
+        }
+        
+        public static string TransactionDetails_confirmedBlockTitle {
+            get {
+                return ResourceManager.GetString("TransactionDetails.confirmedBlockTitle", resourceCulture);
+            }
+        }
+        
         public static string NowLoading_text {
             get {
                 return ResourceManager.GetString("NowLoading.text", resourceCulture);

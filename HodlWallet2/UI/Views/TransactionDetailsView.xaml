@@ -23,8 +23,7 @@
 
                     <FlexLayout Direction="Row"
                                 FlexLayout.Grow="1">
-                        <Label x:Name="TitleLabel"
-                               Text="{Binding TransactionDetailsTitle}"
+                        <Label x:Name="TransactionTitle"
                                FlexLayout.Grow="1"
                                FontSize="Title"
                                FlexLayout.AlignSelf="Center"

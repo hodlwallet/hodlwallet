@@ -26,6 +26,7 @@ using Xamarin.Forms;
 
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.ViewModels;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.UI.Views
 {
@@ -38,6 +39,13 @@ namespace HodlWallet2.UI.Views
             var vm = (TransactionDetailsViewModel)BindingContext;
 
             vm.TransactionModel = txModel;
+
+            SetLabels();
+        }
+
+        void SetLabels()
+        {
+            TransactionTitle.Text = LocaleResources.TransactionDetails_title;
         }
 
         void Close_Tapped(object sender, EventArgs e)

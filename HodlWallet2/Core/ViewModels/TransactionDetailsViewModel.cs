@@ -33,6 +33,7 @@ using Liviano.Models;
 
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Utils;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -42,12 +43,11 @@ namespace HodlWallet2.Core.ViewModels
         public ICommand BrowseAddressCommand { get; }
         public ICommand BrowseTransactionIdCommand { get; }
 
-        public string TransactionDetailsTitle => "Transaction Details";
-        public string StatusTitle => "Status";
-        public string MemoTitle => "Memo";
-        public string AmountTitle => "Amount";
-        public string TransactionIdTitle => "Bitcoin Transaction ID";
-        public string ConfirmedBlockTitle => "Confirmed in Block";
+        public string StatusTitle => LocaleResources.TransactionDetails_statusTitle;
+        public string MemoTitle => LocaleResources.TransactionDetails_memoTitle;
+        public string AmountTitle => LocaleResources.TransactionDetails_amountTitle;
+        public string TransactionIdTitle => LocaleResources.TransactionDetails_transactionIdTitle;
+        public string ConfirmedBlockTitle => LocaleResources.TransactionDetails_confirmedBlockTitle;
 
         TransactionModel _TransactionModel;
         public TransactionModel TransactionModel
