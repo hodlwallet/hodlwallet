@@ -70,9 +70,6 @@ namespace HodlWallet2.Core.Services
 
         public event EventHandler OnConfigured;
         public event EventHandler OnStarted;
-        public event EventHandler OnScanning;
-        public event EventHandler<int> OnConnectedNode;
-        public event EventHandler OnScanningFinished;
 
         public bool IsStarted { get; private set; }
         public bool IsConfigured { get; private set; }
