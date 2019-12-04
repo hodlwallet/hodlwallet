@@ -3,6 +3,8 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 
+using HodlWallet2.Core.Services;
+
 namespace HodlWallet2.Core.ViewModels
 {
     public class AccountSelectionViewModel : BaseViewModel
@@ -29,13 +31,10 @@ namespace HodlWallet2.Core.ViewModels
                         case "bip49":
                         case "bip84":
                         case "bip141":
-                        case "wasabi":
-                        case "paper":
                             _WalletService.Wallet.AddAccount(arg, Name ?? "Bitcoin Account");
                             break;
                         default:
-                            _WalletService.Wallet.AddAccount("bip141", Name ?? "Bitcoin Account");
-                            break;
+                            throw new NotImplementedException();
                     }
 
                     _WalletService.Start();
