@@ -167,6 +167,7 @@ namespace HodlWallet2.Core.ViewModels
 
             InitializeWalletAndPrecio();
             InitializePrecioAndWalletTimers(); // TODO see bellow
+            InitializeWalletServiceTransactions();
         }
 
         public void InitializeWalletAndPrecio()
@@ -445,6 +446,8 @@ namespace HodlWallet2.Core.ViewModels
             var txs = _WalletService.GetCurrentAccountTransactions().OrderBy(
                 (Tx txData) => txData.CreatedAt
             );
+
+            Transactions.Clear();
 
             foreach (var tx in txs)
             {

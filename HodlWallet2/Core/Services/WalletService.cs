@@ -26,6 +26,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -218,7 +219,7 @@ namespace HodlWallet2.Core.Services
 
             Wallet.AddAccount("bip141");
 
-            if (Wallet.Accounts.Count == 0)
+            if (!Wallet.Accounts.Any())
             {
                 throw new WalletException("Account was unable to be initialized.");
             }
