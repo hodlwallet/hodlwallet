@@ -23,8 +23,7 @@
 
                     <FlexLayout Direction="Row"
                                 FlexLayout.Grow="1">
-                        <Label x:Name="TitleLabel"
-                               Text="{Binding TransactionDetailsTitle}"
+                        <Label x:Name="TransactionTitle"
                                FlexLayout.Grow="1"
                                FontSize="Title"
                                FlexLayout.AlignSelf="Center"
@@ -81,7 +80,9 @@
                             <Entry BackgroundColor="Transparent"
                                    FontSize="Small"
                                    TextColor="{DynamicResource TextPrimary}"
-                                   Text="{Binding MemoText}" />
+                                   Text="{Binding MemoText}"
+                                   Completed="Memo_Completed"
+                                   ReturnType="Done"/>
 
                             <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
 

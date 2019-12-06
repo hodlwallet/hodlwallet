@@ -24,8 +24,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using HodlWallet2.Core.ViewModels;
+
 using Xamarin.Forms;
+
+using HodlWallet2.Core.ViewModels;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.UI.Views
 {
@@ -36,6 +39,16 @@ namespace HodlWallet2.UI.Views
             InitializeComponent();
 
             SubscribeToMessages();
+
+            SetLabels();
+        }
+
+        void SetLabels()
+        {
+            Title = LocaleResources.BackupWord_title;
+            Header.Text = LocaleResources.BackupWord_header;
+            Next.Text = LocaleResources.BackupWord_next;
+            Previous.Text = LocaleResources.BackupWord_previous;
         }
 
         void SubscribeToMessages()

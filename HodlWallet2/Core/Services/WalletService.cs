@@ -26,6 +26,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -70,9 +71,6 @@ namespace HodlWallet2.Core.Services
 
         public event EventHandler OnConfigured;
         public event EventHandler OnStarted;
-        public event EventHandler OnScanning;
-        public event EventHandler<int> OnConnectedNode;
-        public event EventHandler OnScanningFinished;
 
         public bool IsStarted { get; private set; }
         public bool IsConfigured { get; private set; }
@@ -134,6 +132,8 @@ namespace HodlWallet2.Core.Services
 
             _Network = Hd.GetNetwork(network ?? DEFAULT_NETWORK);
             _WalletId = guid ?? Guid.NewGuid().ToString();
+
+            ElectrumClient.OverwriteRecentlyConnectedServers(_Network);
 
             if (!SecureStorageService.HasMnemonic() || _WalletId == null)
             {
@@ -219,7 +219,7 @@ namespace HodlWallet2.Core.Services
 
             Wallet.AddAccount("bip141");
 
-            if (Wallet.Accounts.Count == 0)
+            if (!Wallet.Accounts.Any())
             {
                 throw new WalletException("Account was unable to be initialized.");
             }
@@ -232,8 +232,6 @@ namespace HodlWallet2.Core.Services
             Wallet.Storage.Save();
 
             // Add paper wallet clause
-
-            // Listen to transactions
 
             Logger.Information("Wallet created.");
 

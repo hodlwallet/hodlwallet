@@ -21,12 +21,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using HodlWallet2.Core.Services;
-using HodlWallet2.UI.Views;
-using Liviano.Exceptions;
+
 using Xamarin.Forms;
+
+using Liviano.Exceptions;
+
+using HodlWallet2.Core.Services;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -47,10 +48,7 @@ namespace HodlWallet2.Core.ViewModels
             get => _Position;
             private set => SetProperty(ref _Position, value);
         }
-        public string NextText => "Next Word";
-        public string PreviousText => "Previous";
-        public string HeaderText => "Write down each word in order and store it in a safe place.";
-        public string TitleText => "Backup Recovery Key";
+
         public ICommand NextWordCommand { get; }
         public ICommand PreviousWordCommand { get; }
 

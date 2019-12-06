@@ -14,11 +14,11 @@
                 <StackLayout Margin="10,20,10,10"
                              HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand">
-                    <Label Text="{Binding RecoverTitle}"
+                    <Label x:Name="RecoverTitle"
                            Style="{DynamicResource CustomLabel}"
                            FontSize="Large"
                            Margin="10, 0, 0, 0" />
-                    <Label Text="{Binding RecoverHeader}"
+                    <Label x:Name="Header"
                            Style="{DynamicResource CustomLabel}"
                            Margin="10, 0, 10, 20" />
 

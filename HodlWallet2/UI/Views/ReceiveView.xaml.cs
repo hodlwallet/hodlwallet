@@ -28,6 +28,7 @@ using Xamarin.Forms;
 using HodlWallet2.Core.ViewModels;
 using HodlWallet2.Core.Utils;
 using HodlWallet2.UI.Extensions;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.UI.Views
 {
@@ -38,6 +39,13 @@ namespace HodlWallet2.UI.Views
         public ReceiveView()
         {
             InitializeComponent();
+
+            SetLabels();
+        }
+
+        void SetLabels()
+        {
+            ShareButton.Text = LocaleResources.Receive_share;
         }
 
         void Address_Tapped(object sender, EventArgs e)

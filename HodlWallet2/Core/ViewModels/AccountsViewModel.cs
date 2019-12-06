@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using System.Linq;
 
 using Xamarin.Forms;
 
@@ -12,8 +11,6 @@ namespace HodlWallet2.Core.ViewModels
 {
     public class AccountsViewModel : BaseViewModel
     {
-        public string AccountTitle => "Accounts";
-
         string _PriceText;
         AccountModel _CurrentAccount;
 
@@ -33,7 +30,6 @@ namespace HodlWallet2.Core.ViewModels
         }
 
         public ICommand NavigateToHomeCommand { get; }
-        public ICommand AddAccountCommand { get; }
 
         public AccountsViewModel()
         {
@@ -67,6 +63,9 @@ namespace HodlWallet2.Core.ViewModels
 
         void LoadAccounts()
         {
+            if (Accounts != null)
+                Accounts.Clear();
+
             var accounts = _WalletService.Wallet.Accounts;
 
             foreach(var account in accounts)
@@ -77,21 +76,15 @@ namespace HodlWallet2.Core.ViewModels
 
         void NavigateToHome()
         {
-            if (CurrentAccount == null) return;
+            if (CurrentAccount is null) return;
 
             _WalletService.Wallet.CurrentAccount = CurrentAccount.AccountData;
 
             CurrentAccount = null;
 
+            _WalletService.Start();
+
             MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
-        }
-
-        void NavigateToAddAccount()
-        {
-            // NOTE Add this line when Add Accounts page is implemented:
-            // MessagingCenter.Send(this, "NavigateToAddAccount");
-
-            throw new NotImplementedException();
         }
     }
 }

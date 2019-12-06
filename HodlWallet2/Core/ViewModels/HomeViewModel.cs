@@ -54,9 +54,6 @@ namespace HodlWallet2.Core.ViewModels
 
         bool _IsViewVisible = true;
 
-        public string SendText => "Send";
-        public string ReceiveText => "Receive";
-        public string MenuText => "Menu";
         public string SyncTitleText => "SYNCING";
 
         bool _AttachedWalletListeners = false;
@@ -95,6 +92,20 @@ namespace HodlWallet2.Core.ViewModels
 
         private object _Lock = new object();
         public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
+
+        Color _GradientStart;
+        public Color GradientStart
+        {
+            get => _GradientStart;
+            set => SetProperty(ref _GradientStart, value);
+        }
+
+        Color _GradientEnd;
+        public Color GradientEnd
+        {
+            get => _GradientEnd;
+            set => SetProperty(ref _GradientEnd, value);
+        }
 
         string _PriceText;
         public string PriceText
@@ -156,6 +167,7 @@ namespace HodlWallet2.Core.ViewModels
 
             InitializeWalletAndPrecio();
             InitializePrecioAndWalletTimers(); // TODO see bellow
+            InitializeWalletServiceTransactions();
         }
 
         public void InitializeWalletAndPrecio()
@@ -176,6 +188,8 @@ namespace HodlWallet2.Core.ViewModels
             {
                 LoadTransactions();
                 AddWalletServiceEvents();
+                GradientStart = Color.FromHex(_WalletService.Wallet.CurrentAccount.StartHex);
+                GradientEnd = Color.FromHex(_WalletService.Wallet.CurrentAccount.EndHex);
             }
             else
             {
@@ -323,7 +337,7 @@ namespace HodlWallet2.Core.ViewModels
 
         void NavigateToTransactionDetails()
         {
-            if (CurrentTransaction == null) return;
+            if (CurrentTransaction is null) return;
 
             MessagingCenter.Send(this, "NavigateToTransactionDetail", CurrentTransaction);
 
@@ -370,6 +384,9 @@ namespace HodlWallet2.Core.ViewModels
                     LoadTransactions();
 
                     AddWalletServiceEvents();
+
+                    GradientStart = Color.FromHex(_WalletService.Wallet.CurrentAccount.StartHex);
+                    GradientEnd = Color.FromHex(_WalletService.Wallet.CurrentAccount.EndHex);
                 }
             });
         }
@@ -429,6 +446,8 @@ namespace HodlWallet2.Core.ViewModels
             var txs = _WalletService.GetCurrentAccountTransactions().OrderBy(
                 (Tx txData) => txData.CreatedAt
             );
+
+            Transactions.Clear();
 
             foreach (var tx in txs)
             {

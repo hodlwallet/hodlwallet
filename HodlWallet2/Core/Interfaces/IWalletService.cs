@@ -45,9 +45,6 @@ namespace HodlWallet2.Core.Interfaces
 
         event EventHandler OnConfigured;
         event EventHandler OnStarted;
-        event EventHandler OnScanning;
-        event EventHandler OnScanningFinished;
-        event EventHandler<int> OnConnectedNode;
 
         void InitializeWallet(bool isLegacy = false);
         void Start();

@@ -101,33 +101,63 @@ namespace HodlWallet2.UI.Locale {
             }
         }
         
-        public static string Backup_subheader {
-            get {
-                return ResourceManager.GetString("Backup.subheader", resourceCulture);
-            }
-        }
-        
         public static string Backup_button {
             get {
                 return ResourceManager.GetString("Backup.button", resourceCulture);
             }
         }
         
-        public static string Backup_wordheader {
+        public static string Backup_header {
             get {
-                return ResourceManager.GetString("Backup.wordheader", resourceCulture);
+                return ResourceManager.GetString("Backup.header", resourceCulture);
             }
         }
         
-        public static string Backup_previous {
+        public static string Backup_subheader {
             get {
-                return ResourceManager.GetString("Backup.previous", resourceCulture);
+                return ResourceManager.GetString("Backup.subheader", resourceCulture);
             }
         }
         
-        public static string ConfirmBackup_header {
+        public static string BackupConfirm_header {
             get {
-                return ResourceManager.GetString("ConfirmBackup.header", resourceCulture);
+                return ResourceManager.GetString("BackupConfirm.header", resourceCulture);
+            }
+        }
+        
+        public static string BackupConfirm_warning {
+            get {
+                return ResourceManager.GetString("BackupConfirm.warning", resourceCulture);
+            }
+        }
+        
+        public static string BackupConfirm_exercise {
+            get {
+                return ResourceManager.GetString("BackupConfirm.exercise", resourceCulture);
+            }
+        }
+        
+        public static string BackupWord_title {
+            get {
+                return ResourceManager.GetString("BackupWord.title", resourceCulture);
+            }
+        }
+        
+        public static string BackupWord_next {
+            get {
+                return ResourceManager.GetString("BackupWord.next", resourceCulture);
+            }
+        }
+        
+        public static string BackupWord_previous {
+            get {
+                return ResourceManager.GetString("BackupWord.previous", resourceCulture);
+            }
+        }
+        
+        public static string BackupWord_header {
+            get {
+                return ResourceManager.GetString("BackupWord.header", resourceCulture);
             }
         }
         
@@ -191,9 +221,15 @@ namespace HodlWallet2.UI.Locale {
             }
         }
         
-        public static string Recover_entryHeader {
+        public static string RecoverEntry_header {
             get {
-                return ResourceManager.GetString("Recover.entryHeader", resourceCulture);
+                return ResourceManager.GetString("RecoverEntry.header", resourceCulture);
+            }
+        }
+        
+        public static string RecoverEntry_title {
+            get {
+                return ResourceManager.GetString("RecoverEntry.title", resourceCulture);
             }
         }
         
@@ -212,6 +248,12 @@ namespace HodlWallet2.UI.Locale {
         public static string Recover_alertButton {
             get {
                 return ResourceManager.GetString("Recover.alertButton", resourceCulture);
+            }
+        }
+        
+        public static string Done_button {
+            get {
+                return ResourceManager.GetString("Done.button", resourceCulture);
             }
         }
         
@@ -443,9 +485,93 @@ namespace HodlWallet2.UI.Locale {
             }
         }
         
+        public static string TransactionDetails_title {
+            get {
+                return ResourceManager.GetString("TransactionDetails.title", resourceCulture);
+            }
+        }
+        
+        public static string TransactionDetails_statusTitle {
+            get {
+                return ResourceManager.GetString("TransactionDetails.statusTitle", resourceCulture);
+            }
+        }
+        
+        public static string TransactionDetails_memoTitle {
+            get {
+                return ResourceManager.GetString("TransactionDetails.memoTitle", resourceCulture);
+            }
+        }
+        
+        public static string TransactionDetails_amountTitle {
+            get {
+                return ResourceManager.GetString("TransactionDetails.amountTitle", resourceCulture);
+            }
+        }
+        
+        public static string TransactionDetails_transactionIdTitle {
+            get {
+                return ResourceManager.GetString("TransactionDetails.transactionIdTitle", resourceCulture);
+            }
+        }
+        
+        public static string TransactionDetails_confirmedBlockTitle {
+            get {
+                return ResourceManager.GetString("TransactionDetails.confirmedBlockTitle", resourceCulture);
+            }
+        }
+        
         public static string NowLoading_text {
             get {
                 return ResourceManager.GetString("NowLoading.text", resourceCulture);
+            }
+        }
+        
+        public static string Accounts_title {
+            get {
+                return ResourceManager.GetString("Accounts.title", resourceCulture);
+            }
+        }
+        
+        public static string AccountSelection_title {
+            get {
+                return ResourceManager.GetString("AccountSelection.title", resourceCulture);
+            }
+        }
+        
+        public static string AccountSelection_header {
+            get {
+                return ResourceManager.GetString("AccountSelection.header", resourceCulture);
+            }
+        }
+        
+        public static string AccountSelection_subheader {
+            get {
+                return ResourceManager.GetString("AccountSelection.subheader", resourceCulture);
+            }
+        }
+        
+        public static string AddAccount_title {
+            get {
+                return ResourceManager.GetString("AddAccount.title", resourceCulture);
+            }
+        }
+        
+        public static string AddAccount_header {
+            get {
+                return ResourceManager.GetString("AddAccount.header", resourceCulture);
+            }
+        }
+        
+        public static string AddAccount_subheader {
+            get {
+                return ResourceManager.GetString("AddAccount.subheader", resourceCulture);
+            }
+        }
+        
+        public static string AddAccount_button {
+            get {
+                return ResourceManager.GetString("AddAccount.button", resourceCulture);
             }
         }
     }

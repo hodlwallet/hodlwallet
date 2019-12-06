@@ -29,8 +29,11 @@ using Xamarin.Forms;
 
 using NBitcoin;
 
+using Liviano.Models;
+
 using HodlWallet2.Core.Models;
 using HodlWallet2.Core.Utils;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -40,12 +43,11 @@ namespace HodlWallet2.Core.ViewModels
         public ICommand BrowseAddressCommand { get; }
         public ICommand BrowseTransactionIdCommand { get; }
 
-        public string TransactionDetailsTitle => "Transaction Details";
-        public string StatusTitle => "Status";
-        public string MemoTitle => "Memo";
-        public string AmountTitle => "Amount";
-        public string TransactionIdTitle => "Bitcoin Transaction ID";
-        public string ConfirmedBlockTitle => "Confirmed in Block";
+        public string StatusTitle => LocaleResources.TransactionDetails_statusTitle;
+        public string MemoTitle => LocaleResources.TransactionDetails_memoTitle;
+        public string AmountTitle => LocaleResources.TransactionDetails_amountTitle;
+        public string TransactionIdTitle => LocaleResources.TransactionDetails_transactionIdTitle;
+        public string ConfirmedBlockTitle => LocaleResources.TransactionDetails_confirmedBlockTitle;
 
         TransactionModel _TransactionModel;
         public TransactionModel TransactionModel
@@ -119,7 +121,13 @@ namespace HodlWallet2.Core.ViewModels
         public string MemoText
         {
             get => _MemoText;
-            set => SetProperty(ref _MemoText, value);
+            set
+            {
+                if (value != null)
+                {
+                    SetProperty(ref _MemoText, value);
+                }
+            }
         }
 
         string _AmountWithFeeText;
@@ -169,6 +177,12 @@ namespace HodlWallet2.Core.ViewModels
             ShowFaqCommand = new Command(() => _ = ShowFaq());
             BrowseAddressCommand = new Command(() => _ = AddressToBrowser());
             BrowseTransactionIdCommand = new Command(() => _ = IdToBrowser());
+        }
+
+        public void StoreMemo()
+        {
+            var tx = new Tx(TransactionModel.TransactionData) { Memo = MemoText };
+            _WalletService.Wallet.UpdateCurrentTransaction(tx);
         }
 
         void GetTransactionModelData()

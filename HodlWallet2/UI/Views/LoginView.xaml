@@ -22,9 +22,9 @@
  
                 <Image Source="logo_front.png"
                        FlexLayout.Grow="2"
-                        HeightRequest="120"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center" />
+                       HeightRequest="120"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center" />
 
                 <BoxView FlexLayout.Grow="1" />
 

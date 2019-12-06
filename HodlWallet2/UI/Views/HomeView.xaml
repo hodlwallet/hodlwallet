@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:Class="HodlWallet2.UI.Views.HomeView"
+             xmlns:pc="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:svg="clr-namespace:HodlWallet2.Core.Utils"
              xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
@@ -15,82 +16,87 @@
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
                         Margin="0, 5, 0, 0">
-                <FlexLayout Direction="Row"
-                            FlexLayout.Grow="2">
-                    <StackLayout Orientation="Horizontal"
-                                 Spacing="0"
-                                 FlexLayout.Grow="1">
-                        <BoxView WidthRequest="35" />
-                        <Image x:Name="PriceButton"
-                               Source="price-tag-3-line"
-                               Margin="0, 10, 0, 0"
-                               WidthRequest="24"
-                               HeightRequest="24"
-                               VerticalOptions="Start" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="PriceButton_Tapped"
-                                                  NumberOfTapsRequired="1" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-
-                    <StackLayout Orientation="Vertical"
-                                 Spacing="0"
-                                 FlexLayout.Grow="2">
-                        <ScrollView x:Name="BalanceScrollView"
-                                    Orientation="Vertical"
-                                    IsEnabled="False"
-                                    VerticalScrollBarVisibility="Never"
-                                    HorizontalScrollBarVisibility="Never"
-                                    HeightRequest="50">
-                            <StackLayout Orientation="Vertical">
-                                <controls:MoneyLabel x:Name="BalanceAmountBTC"
-                                                     Text="{Binding Amount, StringFormat='{0:0.00000000}'}"
-                                                     FontSize="Large"
-                                                     TextColor="{DynamicResource TextPrimary}"
-                                                     FontFamily="{DynamicResource Mono-Bold}"
-                                                     HorizontalOptions="Center" />
-                                <Label x:Name="BalanceLabel"
-                                       Text="btc"
-                                       HorizontalOptions="Center"
-                                       FontFamily="{StaticResource Mono-Bold}"
-                                       TextColor="{DynamicResource TextPrimary}" />
-                                <controls:MoneyLabel x:Name="BalanceAmountUSD"
-                                                     Text="{Binding AmountFiat, StringFormat='{0:C}'}"
-                                                     FontSize="Large"
-                                                     TextColor="{DynamicResource TextPrimary}"
-                                                     FontFamily="{DynamicResource Mono-Bold}"
-                                                     HorizontalOptions="Center" />
-                                <Label Text="usd"
-                                       HorizontalOptions="Center"
-                                       FontFamily="{StaticResource Mono-Bold}"
-                                       TextColor="{DynamicResource TextPrimary}" />
+                <FlexLayout FlexLayout.Grow="2">
+                    <pc:PancakeView BackgroundGradientAngle="315"
+                                    BackgroundGradientStartColor="{Binding GradientStart}"
+                                    BackgroundGradientEndColor="{Binding GradientEnd}"
+                                    CornerRadius="5"
+                                    FlexLayout.Grow="2">
+                        <FlexLayout Direction="Row"
+                                    AlignItems="Center">
+                            <StackLayout Orientation="Horizontal"
+                                         Spacing="0"
+                                         FlexLayout.Grow="1">
+                                <BoxView WidthRequest="35" />
+                                <ImageButton x:Name="PriceButton"
+                                       Clicked="PriceButton_Tapped"
+                                       Source="price-tag-3-line"
+                                       Margin="0, 10, 0, 0"
+                                       WidthRequest="24"
+                                       HeightRequest="24"
+                                       VerticalOptions="Start" />
                             </StackLayout>
-                        </ScrollView>
 
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}"
-                                                  NumberOfTapsRequired="1" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                            <StackLayout Orientation="Vertical"
+                                         Spacing="0"
+                                         FlexLayout.Grow="2">
+                                <ScrollView x:Name="BalanceScrollView"
+                                            Orientation="Vertical"
+                                            IsEnabled="False"
+                                            VerticalScrollBarVisibility="Never"
+                                            HorizontalScrollBarVisibility="Never"
+                                            HeightRequest="50">
+                                    <StackLayout Orientation="Vertical">
+                                        <controls:MoneyLabel x:Name="BalanceAmountBTC"
+                                                             Text="{Binding Amount, StringFormat='{0:0.00000000}'}"
+                                                             FontSize="Large"
+                                                             TextColor="{DynamicResource TextPrimary}"
+                                                             FontFamily="{DynamicResource Mono-Bold}"
+                                                             HorizontalOptions="Center" />
+                                        <Label x:Name="BalanceLabel"
+                                               Text="btc"
+                                               HorizontalOptions="Center"
+                                               FontFamily="{StaticResource Mono-Bold}"
+                                               TextColor="{DynamicResource TextPrimary}" />
+                                        <controls:MoneyLabel x:Name="BalanceAmountUSD"
+                                                             Text="{Binding AmountFiat, StringFormat='{0:C}'}"
+                                                             FontSize="Large"
+                                                             TextColor="{DynamicResource TextPrimary}"
+                                                             FontFamily="{DynamicResource Mono-Bold}"
+                                                             HorizontalOptions="Center" />
+                                        <Label Text="usd"
+                                               HorizontalOptions="Center"
+                                               FontFamily="{StaticResource Mono-Bold}"
+                                               TextColor="{DynamicResource TextPrimary}" />
+                                    </StackLayout>
+                                </ScrollView>
 
-                    <StackLayout FlowDirection="RightToLeft"
-                                 Spacing="0"
-                                 Orientation="Horizontal"
-                                 FlexLayout.Grow="1">
-                        <BoxView WidthRequest="35"
-                                 FlexLayout.Grow="1" />
-                        <svg:Icon ResourceId="HodlWallet2.UI.Assets.search.svg"
-                                  Margin="0, 10, 0, 0"
-                                  VerticalOptions="Start"
-                                  FlexLayout.AlignSelf="Center"
-                                  FlexLayout.Grow="1"
-                                  WidthRequest="24"
-                                  HeightRequest="24" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SearchCommand}"
-                                                  NumberOfTapsRequired="1" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}"
+                                                          NumberOfTapsRequired="1" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+
+                            <StackLayout FlowDirection="RightToLeft"
+                                         Spacing="0"
+                                         Orientation="Horizontal"
+                                         FlexLayout.Grow="1">
+                                <BoxView WidthRequest="35"
+                                         FlexLayout.Grow="1" />
+                                <svg:Icon ResourceId="HodlWallet2.UI.Assets.search.svg"
+                                          Margin="0, 10, 0, 0"
+                                          VerticalOptions="Start"
+                                          FlexLayout.AlignSelf="Center"
+                                          FlexLayout.Grow="1"
+                                          WidthRequest="24"
+                                          HeightRequest="24" />
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SearchCommand}"
+                                                          NumberOfTapsRequired="1" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </FlexLayout>
+                    </pc:PancakeView>
                 </FlexLayout>
 
                 <FlexLayout Direction="Column"
@@ -106,14 +112,14 @@
                 <FlexLayout AlignItems="Stretch"
                             Direction="Row"
                             FlexLayout.Grow="4">
-                    <Button Text="Send"
+                    <Button x:Name="Send"
                             Command="{Binding NavigateToSendCommand}"
                             Style="{DynamicResource CustomButton}"
                             BackgroundColor="{DynamicResource BackgroundSecondary}"
                             FontSize="Large"
                             FlexLayout.Grow="1" />
                     <BoxView WidthRequest="5" />
-                    <Button Text="Receive"
+                    <Button x:Name="Receive"
                             Command="{Binding NavigateToReceiveCommand}"
                             Style="{DynamicResource CustomButton}"
                             BackgroundColor="{DynamicResource BackgroundSecondary}"

@@ -24,6 +24,8 @@ using System;
 
 using Xamarin.Forms;
 
+using HodlWallet2.UI.Locale;
+
 namespace HodlWallet2.UI.Views
 {
     public partial class BackupView : ContentPage
@@ -32,6 +34,15 @@ namespace HodlWallet2.UI.Views
         {
             InitializeComponent();
             EnableToolBarItems(action);
+            SetLabels();
+        }
+
+        void SetLabels()
+        {
+            Title = LocaleResources.Backup_title;
+            Header.Text = LocaleResources.Backup_header;
+            Subheader.Text = LocaleResources.Backup_subheader;
+            Button.Text = LocaleResources.Backup_button;
         }
 
         void EnableToolBarItems(string action = null)

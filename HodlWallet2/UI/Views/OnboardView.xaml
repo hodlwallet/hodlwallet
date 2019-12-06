@@ -20,7 +20,6 @@
                 <Button x:Name="CreateButton"
                         Style="{DynamicResource CustomButton}"
                         FlexLayout.AlignSelf="Stretch"
-                        Text="CREATE NEW WALLET"
                         FontSize="Medium"
                         Clicked="CreateButton_Clicked"
                         FlexLayout.Grow="1" />
@@ -31,7 +30,6 @@
                 <Button x:Name="RecoverButton"
                         Style="{DynamicResource CustomButton}"
                         FlexLayout.AlignSelf="Stretch"
-                        Text="RECOVER WALLET"
                         FontSize="Medium"
                         Clicked="RecoverButton_Clicked"
                         FlexLayout.Grow="1" />

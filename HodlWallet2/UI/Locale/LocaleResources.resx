@@ -13,12 +13,12 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="Onboard_create" xml:space="preserve">
-        <value>Create new wallet</value>
+        <value>CREATE NEW WALLET</value>
         <comment>label for create button</comment>
     </data>
     
     <data name="Onboard_recover" xml:space="preserve">
-        <value>Recover wallet</value>
+        <value>RECOVER WALLET</value>
         <comment>label for recover button</comment>
     </data>
     
@@ -54,12 +54,7 @@
     
     <data name="Backup.title" xml:space="preserve">
         <value>Backup Recovery Key</value>
-        <comment>label for backup view title</comment>
-    </data>
-    
-    <data name="Backup.subheader" xml:space="preserve">
-        <value>Your backup recovery key is the only way to restore your wallet if your phone is lost, stolen, broken, or upgraded. We will show you a list of words to write down on paper and keep safe.</value>
-        <comment>label for backup subheader</comment>
+        <comment>label for backup recovery title</comment>
     </data>
     
     <data name="Backup.button" xml:space="preserve">
@@ -67,19 +62,49 @@
         <comment>label for backup recovery button</comment>
     </data>
     
-    <data name="Backup.wordheader" xml:space="preserve">
+    <data name="Backup.header" xml:space="preserve">
+        <value>Your backup recovery key is the only way to restore your wallet if your phone is lost, stolen, broken or upgraded.</value>
+        <comment>label for backup recovery header</comment>
+    </data>
+    
+    <data name="Backup.subheader" xml:space="preserve">
+        <value>We will show you a list of words to write down on a piece of paper and keep safe.</value>
+        <comment>label for backup recovery subheader</comment>
+    </data>
+    
+    <data name="BackupConfirm.header" xml:space="preserve">
+        <value>To make sure everything was written down correctly, please enter the following words from your backup recovery key.</value>
+        <comment>label for backup confirmation</comment>
+    </data>
+    
+    <data name="BackupConfirm.warning" xml:space="preserve">
+        <value>That word is not in your mnemonic.</value>
+        <comment>label for backup confirmation warning</comment>
+    </data>
+    
+    <data name="BackupConfirm.exercise" xml:space="preserve">
+        <value>Choose the {0} word from your mnemonic:</value>
+        <comment>label for backup confirmation exercise</comment>
+    </data>
+    
+    <data name="BackupWord.title" xml:space="preserve">
+        <value>Backup Recovery Key</value>
+        <comment>label for backup word title</comment>
+    </data>
+    
+    <data name="BackupWord.next" xml:space="preserve">
+        <value>Next Word</value>
+        <comment>label for backup word next button</comment>
+    </data>
+    
+    <data name="BackupWord.previous" xml:space="preserve">
+        <value>Previous</value>
+        <comment>label for backup word previous button</comment>
+    </data>
+    
+    <data name="BackupWord.header" xml:space="preserve">
         <value>Write down each word in order and store it in a safe place.</value>
         <comment>label for backup word header</comment>
-    </data>
-    
-    <data name="Backup.previous" xml:space="preserve">
-        <value>Previous</value>
-        <comment>label for previous backup word</comment>
-    </data>
-    
-    <data name="ConfirmBackup.header" xml:space="preserve">
-        <value>To make sure everything was written down correctly, please choose from the following words the correct backup recovery key.</value>
-        <comment>label for backup confirmation</comment>
     </data>
     
     <data name="Pin.setTitle" xml:space="preserve">
@@ -132,9 +157,14 @@
         <comment>label for recover wallet button</comment>
     </data>
     
-    <data name="Recover.entryHeader" xml:space="preserve">
+    <data name="RecoverEntry.header" xml:space="preserve">
+        <value>Enter Backup Recovery Key</value>
+        <comment>label for recover wallet entry header</comment>
+    </data>
+    
+    <data name="RecoverEntry.title" xml:space="preserve">
         <value>Enter the backup recovery key for the wallet you want to recover.</value>
-        <comment>label for recover wallet entry</comment>
+        <comment>label for recover wallet entry title</comment>
     </data>
     
     <data name="Recover.alertTitle" xml:space="preserve">
@@ -150,6 +180,11 @@
     <data name="Recover.alertButton" xml:space="preserve">
         <value>Try Again</value>
         <comment>label for recover wallet entry alert button</comment>
+    </data>
+    
+    <data name="Done.button" xml:space="preserve">
+        <value>Done</value>
+        <comment>label for done button</comment>
     </data>
     
     <data name="Send.title" xml:space="preserve">
@@ -341,8 +376,78 @@
         <comment>content of dialog to use address on clipboard</comment>
     </data>
     
+    <data name="TransactionDetails.title" xml:space="preserve">
+        <value>Transaction Details</value>
+        <comment>label for transaction details title</comment>
+    </data>
+    
+    <data name="TransactionDetails.statusTitle" xml:space="preserve">
+        <value>Status</value>
+        <comment>label for transaction status title</comment>
+    </data>
+    
+    <data name="TransactionDetails.memoTitle" xml:space="preserve">
+        <value>Memo</value>
+        <comment>label for transaction memo title</comment>
+    </data>
+    
+    <data name="TransactionDetails.amountTitle" xml:space="preserve">
+        <value>Amount</value>
+        <comment>label for transaction amount title</comment>
+    </data>
+    
+    <data name="TransactionDetails.transactionIdTitle" xml:space="preserve">
+        <value>Bitcoin Transaction ID</value>
+        <comment>label for transaction ID title</comment>
+    </data>
+    
+    <data name="TransactionDetails.confirmedBlockTitle" xml:space="preserve">
+        <value>Confirmed in Block</value>
+        <comment>label for transaction confirmed in block title</comment>
+    </data>
+    
     <data name="NowLoading.text" xml:space="preserve">
         <value>Now Loading...</value>
         <comment>text that shows with the activity indicator</comment>
+    </data>
+    
+    <data name="Accounts.title" xml:space="preserve">
+        <value>Accounts</value>
+        <comment>label for accounts view title</comment>
+    </data>
+    
+    <data name="AccountSelection.title" xml:space="preserve">
+        <value>Select an Account</value>
+        <comment>label for account selection view title</comment>
+    </data>
+    
+    <data name="AccountSelection.header" xml:space="preserve">
+        <value>Please enter a name for this account.</value>
+        <comment>label for account selection header.</comment>
+    </data>
+    
+    <data name="AccountSelection.subheader" xml:space="preserve">
+        <value>Choose from the options below which type of account you want to create.</value>
+        <comment>label for account selection subheader</comment>
+    </data>
+    
+    <data name="AddAccount.title">
+        <value>Add an Account</value>
+        <comment>label for add account title</comment>
+    </data>
+    
+    <data name="AddAccount.header">
+        <value>[Update Image]</value>
+        <comment>label for add account header</comment>
+    </data>
+    
+    <data name="AddAccount.subheader">
+        <value>Select from a variety of account types.</value>
+        <comment>label for add account subheader</comment>
+    </data>
+    
+    <data name="AddAccount.button">
+        <value>Create an Account</value>
+        <comment>label for add account button</comment>
     </data>
 </root>

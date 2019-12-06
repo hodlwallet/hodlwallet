@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
 using HodlWallet2.Core.ViewModels;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.UI.Views
 {
@@ -12,16 +14,20 @@ namespace HodlWallet2.UI.Views
         public AccountsView()
         {
             InitializeComponent();
+            SetLabels();
         }
 
-        void SubscribeToMessages()
+        void SetLabels()
         {
-            MessagingCenter.Subscribe<AccountsViewModel>(this, "NavigateToAddAccount", NavigateToAddAccount);
+            Title = LocaleResources.Accounts_title;
         }
 
-        void NavigateToAddAccount(AccountsViewModel _)
+        async void AddAccountButton_Clicked(object sender, EventArgs e)
         {
-            // TODO
+            var view = new AddAccountView();
+            var nav = new NavigationPage(view);
+
+            await Navigation.PushModalAsync(nav);
         }
     }
 }

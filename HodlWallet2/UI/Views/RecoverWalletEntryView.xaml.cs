@@ -28,8 +28,8 @@ using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.Interfaces;
 using HodlWallet2.Core.Services;
 using HodlWallet2.Core.ViewModels;
-using System.Threading.Tasks;
 
+using HodlWallet2.UI.Locale;
 using HodlWallet2.UI.Extensions;
 
 namespace HodlWallet2.UI.Views
@@ -47,6 +47,15 @@ namespace HodlWallet2.UI.Views
             InitializeComponent();
 
             SubscribeToMessages();
+
+            SetLabels();
+        }
+
+        void SetLabels()
+        {
+            RecoverTitle.Text = LocaleResources.RecoverEntry_title;
+            Header.Text = LocaleResources.RecoverEntry_header;
+            DoneButton.Text = LocaleResources.Done_button;
         }
 
         void SubscribeToMessages()

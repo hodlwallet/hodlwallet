@@ -23,9 +23,9 @@
 using System;
 using System.Diagnostics;
 
-using HodlWallet2.Core.Interfaces;
-
 using Xamarin.Forms;
+
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.UI.Views
 {
@@ -34,6 +34,14 @@ namespace HodlWallet2.UI.Views
         public OnboardView()
         {
             InitializeComponent();
+
+            SetLabels();
+        }
+
+        void SetLabels()
+        {
+            CreateButton.Text = LocaleResources.Onboard_create;
+            RecoverButton.Text = LocaleResources.Onboard_recover;
         }
 
         void CreateButton_Clicked(object sender, EventArgs e)

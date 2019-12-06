@@ -4,7 +4,6 @@
              xmlns:vm="clr-namespace:HodlWallet2.Core.ViewModels"
              xmlns:svg="clr-namespace:HodlWallet2.Core.Utils"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:controls="clr-namespace:HodlWallet2.UI.Controls"
              x:Class="HodlWallet2.UI.Views.ReceiveView"
              BackgroundColor="{DynamicResource BackgroundPrimary}"
              NavigationPage.HasNavigationBar="False"
@@ -51,15 +50,14 @@
                     <BoxView FlexLayout.Grow="1" />
                 </FlexLayout>
 
-                <Button x:Name="Share"
-                        Style="{DynamicResource CustomButton}"
+                <Button x:Name="ShareButton"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
-                        FontSize="Large"
-                        HeightRequest="50"
-                        Text="{Binding ShareButtonText}"
                         Command="{Binding ShowShareIntentCommand}"
                         FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1" />
+                        FlexLayout.Grow="1"
+                        FontSize="Large"
+                        HeightRequest="50"
+                        Style="{DynamicResource CustomButton}"/>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

@@ -21,16 +21,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using HodlWallet2.Core.Models;
-using HodlWallet2.Core.ViewModels;
-using NBitcoin;
+
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 
+using HodlWallet2.Core.Models;
+using HodlWallet2.Core.ViewModels;
 using HodlWallet2.UI.Extensions;
+using HodlWallet2.UI.Locale;
 
 namespace HodlWallet2.UI.Views
 {
@@ -43,6 +41,8 @@ namespace HodlWallet2.UI.Views
             InitializeComponent();
 
             SubscribeToMessages();
+
+            SetLabels();
         }
 
         protected override void OnAppearing()
@@ -63,6 +63,12 @@ namespace HodlWallet2.UI.Views
             base.OnDisappearing();
 
             _ViewModel.View_OnDisappearing();
+        }
+
+        void SetLabels()
+        {
+            Send.Text = LocaleResources.Send_title;
+            Receive.Text = LocaleResources.Receive_title;
         }
 
         void InitializeDisplayedCurrency()
