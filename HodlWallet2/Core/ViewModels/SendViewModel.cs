@@ -264,7 +264,7 @@ namespace HodlWallet2.Core.ViewModels
 
             try
             {
-                var bitcoinUrl = new BitcoinUrlBuilder(address);
+                var bitcoinUrl = new BitcoinUrlBuilder(address, _WalletService.GetNetwork());
 
                 if (bitcoinUrl.Address is BitcoinAddress addr)
                     AddressToSendTo = addr.ToString();
