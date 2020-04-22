@@ -50,18 +50,20 @@ namespace HodlWallet2.UI
             if (UserDidSetup())
             {
                 MainPage = new NavigationPage(new LoginView());
+
+                return;
             }
-            else
+
+            CollectExistingKeys();
+
+            if (UserDidSetup())
             {
-                CollectExistingKeys();
+                MainPage = new NavigationPage(new LoginView());
 
-                if (UserDidSetup())
-                {
-                    MainPage = new NavigationPage(new LoginView());
-                }
-
-                MainPage = new NavigationPage(new OnboardView());
+                return;
             }
+
+            MainPage = new NavigationPage(new OnboardView());
         }
 
         protected override void OnStart()
