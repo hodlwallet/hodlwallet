@@ -1,3 +1,6 @@
 [submodule "LivianoWallet"]
 	path = LivianoWallet
 	url = git@github.com:bitstopco/LivianoWallet.git
+[submodule "liviano"]
+	path = liviano
+	url = git@github.com:bitstopco/liviano.git
