@@ -31,7 +31,7 @@ using Liviano.Storages;
 
 namespace HodlWallet2.Core
 {
-    public class WalletStorageProvider : FileSystemStorage
+    public class WalletStorageProvider : FileSystemWalletStorage
     {
         public WalletStorageProvider(string id = null, Network network = null) : base(id, network, Environment.GetFolderPath(Environment.SpecialFolder.Personal))
         {

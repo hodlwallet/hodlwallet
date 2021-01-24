@@ -25,8 +25,8 @@ namespace HodlWallet2.Core.Models
                 AccountData = account,
                 AccountName = account.Name,
                 Balance = account.GetBalance().ToString(),
-                GradientStart = Color.FromHex(account.StartHex),
-                GradientEnd = Color.FromHex(account.EndHex)
+                GradientStart = Color.Purple,
+                GradientEnd = Color.Black
             };
         }
     }

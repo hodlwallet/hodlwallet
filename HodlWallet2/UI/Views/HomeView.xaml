@@ -17,10 +17,7 @@
             <FlexLayout Direction="Column"
                         Margin="0, 5, 0, 0">
                 <FlexLayout FlexLayout.Grow="2">
-                    <pc:PancakeView BackgroundGradientAngle="315"
-                                    BackgroundGradientStartColor="{Binding GradientStart}"
-                                    BackgroundGradientEndColor="{Binding GradientEnd}"
-                                    CornerRadius="5"
+                    <pc:PancakeView CornerRadius="5"
                                     FlexLayout.Grow="2">
                         <FlexLayout Direction="Row"
                                     AlignItems="Center">

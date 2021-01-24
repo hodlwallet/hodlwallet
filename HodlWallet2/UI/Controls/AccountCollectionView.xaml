@@ -20,9 +20,6 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <pc:PancakeView
-                            BackgroundGradientAngle="315"
-                            BackgroundGradientStartColor="{Binding GradientStart}"
-                            BackgroundGradientEndColor="{Binding GradientEnd}"
                             CornerRadius="10"
                             HeightRequest="100"
                             WidthRequest="200"

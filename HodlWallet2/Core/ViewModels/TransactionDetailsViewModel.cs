@@ -182,7 +182,7 @@ namespace HodlWallet2.Core.ViewModels
         public void StoreMemo()
         {
             var tx = new Tx(TransactionModel.TransactionData) { Memo = MemoText };
-            _WalletService.Wallet.UpdateCurrentTransaction(tx);
+            //_WalletService.Wallet.UpdateCurrentTransaction(tx);
         }
 
         void GetTransactionModelData()

@@ -98,7 +98,7 @@ namespace HodlWallet2.Core.Services
             {
                 lock (_Lock)
                 {
-                    Wallet.Start();
+                    Wallet.Watch();
                     Wallet.Storage.Save();
                 }
             });
@@ -133,7 +133,7 @@ namespace HodlWallet2.Core.Services
             _Network = Hd.GetNetwork(network ?? DEFAULT_NETWORK);
             _WalletId = guid ?? Guid.NewGuid().ToString();
 
-            ElectrumClient.OverwriteRecentlyConnectedServers(_Network);
+            //ElectrumClient.OverwriteRecentlyConnectedServers(_Network);
 
             if (!SecureStorageService.HasMnemonic() || _WalletId == null)
             {
@@ -180,8 +180,9 @@ namespace HodlWallet2.Core.Services
 
                 try
                 {
-                    Wallet = storage.Load();
-                    Wallet.CurrentAssembly = IntrospectionExtensions.GetTypeInfo(typeof(WalletService)).Assembly;
+                    var err = new WalletException("error");
+                    Wallet = storage.Load("", out err);
+                    //Wallet.CurrentAssembly = IntrospectionExtensions.GetTypeInfo(typeof(WalletService)).Assembly;
 
                     Start();
                     Logger.Information("Wallet started.");
@@ -215,7 +216,7 @@ namespace HodlWallet2.Core.Services
 
             Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(WalletService)).Assembly;
 
-            Wallet.Init(mnemonic, password, null, _Network, createdAt, storage, assembly);
+            Wallet.Init(mnemonic, password, null, _Network, createdAt, storage);
 
             Wallet.AddAccount("bip141");
 
@@ -246,14 +247,14 @@ namespace HodlWallet2.Core.Services
             var start = new DateTimeOffset();
             var end = new DateTimeOffset();
 
-            Wallet.SyncStarted += (obj, _) =>
+            Wallet.ElectrumPool.OnSyncStarted += (obj, _) =>
             {
                 start = DateTimeOffset.Now;
 
                 Logger.Debug($"Syncing started at {start.LocalDateTime.ToLongTimeString()}");
             };
 
-            Wallet.SyncFinished += (obj, _) =>
+            Wallet.ElectrumPool.OnSyncFinished += (obj, _) =>
             {
                 end = DateTimeOffset.UtcNow;
 
@@ -354,7 +355,7 @@ namespace HodlWallet2.Core.Services
             // TODO Implement includeUnconfirmed condition
 
             return balance.Satoshi;
-        } 
+        }
 
         public decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed = false)
         {
@@ -381,13 +382,10 @@ namespace HodlWallet2.Core.Services
             try
             {
                 tx = TransactionExtensions.CreateTransaction(
-                    password,
                     addressTo,
                     btcAmount,
                     feeSatsPerByte,
-                    Wallet,
-                    Wallet.CurrentAccount,
-                    _Network
+                    Wallet.CurrentAccount
                 );
                 fees = tx.GetVirtualSize() * feeSatsPerByte;
 

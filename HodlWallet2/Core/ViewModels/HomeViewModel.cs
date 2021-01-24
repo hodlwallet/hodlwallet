@@ -45,6 +45,7 @@ using HodlWallet2.Core.Utils;
 using HodlWallet2.Core.Services;
 using HodlWallet2.Core.Extensions;
 using HodlWallet2.UI.Views;
+using Liviano.Events;
 
 namespace HodlWallet2.Core.ViewModels
 {
@@ -188,8 +189,8 @@ namespace HodlWallet2.Core.ViewModels
             {
                 LoadTransactions();
                 AddWalletServiceEvents();
-                GradientStart = Color.FromHex(_WalletService.Wallet.CurrentAccount.StartHex);
-                GradientEnd = Color.FromHex(_WalletService.Wallet.CurrentAccount.EndHex);
+                GradientStart = Color.Purple;
+                GradientEnd = Color.Black;
             }
             else
             {
@@ -385,50 +386,50 @@ namespace HodlWallet2.Core.ViewModels
 
                     AddWalletServiceEvents();
 
-                    GradientStart = Color.FromHex(_WalletService.Wallet.CurrentAccount.StartHex);
-                    GradientEnd = Color.FromHex(_WalletService.Wallet.CurrentAccount.EndHex);
+                    GradientStart = Color.Purple;
+                    GradientEnd = Color.Black;
                 }
             });
         }
 
         void AddWalletServiceEvents()
         {
-            _WalletService.Wallet.OnNewTransaction += Wallet_OnNewTransaction;
-            _WalletService.Wallet.OnUpdateTransaction += Wallet_OnUpdateTransaction;
+            _WalletService.Wallet.ElectrumPool.OnNewTransaction += Wallet_OnNewTransaction;
+            _WalletService.Wallet.ElectrumPool.OnUpdateTransaction += Wallet_OnUpdateTransaction;
         }
 
-        void Wallet_OnNewTransaction(object sender, Tx e)
+        void Wallet_OnNewTransaction(object sender, TxEventArgs e)
         {
             AddToTransactionsCollectionWith(e);
         }
 
-        void Wallet_OnUpdateTransaction(object sender, Tx e)
+        void Wallet_OnUpdateTransaction(object sender, TxEventArgs e)
         {
             UpdateTransactionsCollectionWith(e);
         }
 
-        void AddToTransactionsCollectionWith(Tx txData)
+        void AddToTransactionsCollectionWith(TxEventArgs txEventArgs)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
                 lock (_Lock)
                 {
                     // Double Check if the tx is there or not...
-                    if (Transactions.Any(tx => tx.Id == txData.Id)) return;
+                    if (Transactions.Any(tx => tx.Id == txEventArgs.Tx.Id)) return;
 
-                    Transactions.Insert(0, TransactionModel.FromTransactionData(txData));
+                    Transactions.Insert(0, TransactionModel.FromTransactionData(txEventArgs.Tx));
                 }
             });
         }
 
-        void UpdateTransactionsCollectionWith(Tx txData)
+        void UpdateTransactionsCollectionWith(TxEventArgs txEventArgs)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
                 lock (_Lock)
                 {
-                    var txModel = TransactionModel.FromTransactionData(txData);
-                    var tx = Transactions.FirstOrDefault(tx1 => tx1.Id == txData.Id);
+                    var txModel = TransactionModel.FromTransactionData(txEventArgs.Tx);
+                    var tx = Transactions.FirstOrDefault(tx1 => tx1.Id == txEventArgs.Tx.Id);
 
                     if (tx is null) return;
                     if (tx == txModel) return;
