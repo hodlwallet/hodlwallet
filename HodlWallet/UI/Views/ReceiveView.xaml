@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             x:Class="HodlWallet.UI.Views.ReceiveView"
+             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             NavigationPage.HasNavigationBar="False"
+             ios:Page.UseSafeArea="True">
+    <ContentPage.BindingContext>
+        <vm:ReceiveViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <FlexLayout Direction="Column"
+                        AlignItems="Center">
+                <FlexLayout Direction="Column"
+                            FlexLayout.Grow="4"
+                            AlignItems="Center">
+                    <BoxView FlexLayout.Grow="1" />
+
+                    <svg:QRCode Content="{Binding Address}"
+                                BackgroundColor="{DynamicResource TextPrimary}"
+                                Level="H"
+                                WidthRequest="320"
+                                HeightRequest="320"
+                                Margin="0, 0, 0, 0"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand">
+                        <svg:QRCode.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Address_Tapped"
+                                                  NumberOfTapsRequired="1" />
+                        </svg:QRCode.GestureRecognizers>
+                    </svg:QRCode>
+
+                    <ContentView FlexLayout.Grow="1">
+                        <Label x:Name="_Address"
+                               Style="{DynamicResource CustomLabel}"
+                               Text="{Binding Address}"
+                               HorizontalTextAlignment="Center"
+                               Margin="10"
+                               FontSize="Body" />
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Address_Tapped"
+                                                  NumberOfTapsRequired="1" />
+                        </ContentView.GestureRecognizers>
+                    </ContentView>
+
+                    <BoxView FlexLayout.Grow="1" />
+                </FlexLayout>
+
+                <Button x:Name="ShareButton"
+                        BackgroundColor="{DynamicResource BackgroundSecondary}"
+                        Command="{Binding ShowShareIntentCommand}"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1"
+                        FontSize="Large"
+                        HeightRequest="50"
+                        Style="{DynamicResource CustomButton}"/>
+            </FlexLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
