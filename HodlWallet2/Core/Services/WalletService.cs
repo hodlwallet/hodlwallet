@@ -45,11 +45,11 @@ using Liviano.Electrum;
 
 using static Liviano.Electrum.ElectrumClient;
 
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Services;
+using HodlWallet.Core.Interfaces;
+using HodlWallet.Core.Services;
 
 [assembly: Dependency(typeof(WalletService))]
-namespace HodlWallet2.Core.Services
+namespace HodlWallet.Core.Services
 {
     public sealed class WalletService : IWalletService
     {

@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 using System.Globalization;
 
-namespace HodlWallet2.Core.Interfaces
+namespace HodlWallet.Core.Interfaces
 {
     public interface ILocalize
     {

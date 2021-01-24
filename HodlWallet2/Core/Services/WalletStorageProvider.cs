@@ -29,7 +29,7 @@ using NBitcoin;
 
 using Liviano.Storages;
 
-namespace HodlWallet2.Core
+namespace HodlWallet.Core
 {
     public class WalletStorageProvider : FileSystemWalletStorage
     {

@@ -23,11 +23,11 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-using HodlWallet2.UI.Renderers;
-using HodlWallet2.iOS.Renderers;
+using HodlWallet.UI.Renderers;
+using HodlWallet.iOS.Renderers;
 
 [assembly: ExportRenderer(typeof(FeeSlider), typeof(FeeSliderRenderer))]
-namespace HodlWallet2.iOS.Renderers
+namespace HodlWallet.iOS.Renderers
 {
     public class FeeSliderRenderer : SliderRenderer
     {

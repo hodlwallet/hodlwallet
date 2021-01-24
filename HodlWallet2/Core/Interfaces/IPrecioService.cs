@@ -26,9 +26,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-using HodlWallet2.Core.Models;
+using HodlWallet.Core.Models;
 
-namespace HodlWallet2.Core.Interfaces
+namespace HodlWallet.Core.Interfaces
 {
     public interface IPrecioService
     {

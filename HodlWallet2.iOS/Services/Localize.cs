@@ -30,13 +30,13 @@ using Foundation;
 
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Utils;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.iOS.Services;
+using HodlWallet.Core.Utils;
+using HodlWallet.Core.Interfaces;
+using HodlWallet.iOS.Services;
 using System.Diagnostics;
 
 [assembly: Dependency(typeof(Localize))]
-namespace HodlWallet2.iOS.Services
+namespace HodlWallet.iOS.Services
 {
     public class Localize : ILocalize
     {

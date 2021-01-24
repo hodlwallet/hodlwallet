@@ -33,7 +33,7 @@ using Liviano.Bips;
 using Liviano.Exceptions;
 using Liviano.Utilities;
 
-namespace HodlWallet2.Core.Services
+namespace HodlWallet.Core.Services
 {
     public static class SecureStorageService
     {

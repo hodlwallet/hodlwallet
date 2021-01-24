@@ -29,11 +29,11 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Platform.Android.AppCompat;
 
-using HodlWallet2.Droid.Effects;
-using HodlWallet2.Droid.Extensions;
+using HodlWallet.Droid.Effects;
+using HodlWallet.Droid.Extensions;
 
 [assembly: ExportEffect(typeof(HideTabLabelsEffect), nameof(HideTabLabelsEffect))]
-namespace HodlWallet2.Droid.Effects
+namespace HodlWallet.Droid.Effects
 {
     public class HideTabLabelsEffect : PlatformEffect
     {

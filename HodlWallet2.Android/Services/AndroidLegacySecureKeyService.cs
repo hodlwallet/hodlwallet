@@ -12,11 +12,11 @@ using Javax.Crypto.Spec;
 
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Droid.Services;
+using HodlWallet.Core.Interfaces;
+using HodlWallet.Droid.Services;
 
 [assembly: Dependency(typeof(AndroidLegacySecureKeyService))]
-namespace HodlWallet2.Droid.Services
+namespace HodlWallet.Droid.Services
 {
     public class AndroidLegacySecureKeyService : ILegacySecureKeyService
     {

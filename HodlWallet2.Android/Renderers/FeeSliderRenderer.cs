@@ -21,8 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using HodlWallet2.Droid.Renderers;
-using HodlWallet2.UI.Renderers;
+using HodlWallet.Droid.Renderers;
+using HodlWallet.UI.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Android.Content;
@@ -31,7 +31,7 @@ using Android.Graphics.Drawables.Shapes;
 using Android.Widget;
 
 [assembly: ExportRenderer(typeof(FeeSlider), typeof(FeeSliderRenderer))]
-namespace HodlWallet2.Droid.Renderers
+namespace HodlWallet.Droid.Renderers
 {
     public class FeeSliderRenderer : SliderRenderer
     {

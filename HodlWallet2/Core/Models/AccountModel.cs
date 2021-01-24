@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 using Liviano.Interfaces;
 
-namespace HodlWallet2.Core.Models
+namespace HodlWallet.Core.Models
 {
     public class AccountModel
     {

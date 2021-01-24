@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 using Xamarin.Forms;
 
-namespace HodlWallet2.Core.Utils
+namespace HodlWallet.Core.Utils
 {
     public class Tags
     {

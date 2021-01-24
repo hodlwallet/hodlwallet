@@ -27,12 +27,12 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Utils;
-using HodlWallet2.UI.Locale;
-using HodlWallet2.UI.Extensions;
-using HodlWallet2.Core.ViewModels;
+using HodlWallet.Core.Utils;
+using HodlWallet.UI.Locale;
+using HodlWallet.UI.Extensions;
+using HodlWallet.Core.ViewModels;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet.UI.Views
 {
     public partial class SettingsView : ContentPage
     {

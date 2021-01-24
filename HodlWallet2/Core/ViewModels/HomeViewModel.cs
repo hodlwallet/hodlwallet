@@ -39,15 +39,15 @@ using NBitcoin;
 using Liviano;
 using Liviano.Models;
 
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Models;
-using HodlWallet2.Core.Utils;
-using HodlWallet2.Core.Services;
-using HodlWallet2.Core.Extensions;
-using HodlWallet2.UI.Views;
+using HodlWallet.Core.Interfaces;
+using HodlWallet.Core.Models;
+using HodlWallet.Core.Utils;
+using HodlWallet.Core.Services;
+using HodlWallet.Core.Extensions;
+using HodlWallet.UI.Views;
 using Liviano.Events;
 
-namespace HodlWallet2.Core.ViewModels
+namespace HodlWallet.Core.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {

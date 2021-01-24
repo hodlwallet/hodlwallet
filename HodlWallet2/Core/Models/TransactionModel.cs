@@ -26,11 +26,11 @@ using System.Runtime.CompilerServices;
 using NBitcoin;
 using Xamarin.Forms;
 using Liviano.Models;
-using HodlWallet2.Core.Extensions;
-using HodlWallet2.Core.Utils;
-using HodlWallet2.Core.Interfaces;
+using HodlWallet.Core.Extensions;
+using HodlWallet.Core.Utils;
+using HodlWallet.Core.Interfaces;
 
-namespace HodlWallet2.Core.Models
+namespace HodlWallet.Core.Models
 {
     public class TransactionModel : INotifyPropertyChanged
     {

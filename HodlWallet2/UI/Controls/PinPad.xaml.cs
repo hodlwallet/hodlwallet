@@ -27,9 +27,9 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
-using HodlWallet2.Core.Utils;
+using HodlWallet.Core.Utils;
 
-namespace HodlWallet2.UI.Controls
+namespace HodlWallet.UI.Controls
 {
     public partial class PinPad : ContentView
     {

@@ -136,12 +136,6 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HodlWallet2\HodlWallet2.csproj">
-      <Project>{4AF4A11A-3D4A-433C-BB67-17FEBA8AE4F9}</Project>
-      <Name>HodlWallet2</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="Assets\FiraMono-Bold.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AndroidAsset>
@@ -160,6 +154,12 @@
     <AndroidAsset Include="Assets\FiraSans-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AndroidAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HodlWallet2\HodlWallet.csproj">
+      <Project>{2CBD7B3E-E15A-459E-AB62-119149A31E69}</Project>
+      <Name>HodlWallet</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

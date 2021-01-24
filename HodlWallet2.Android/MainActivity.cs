@@ -27,11 +27,11 @@ using Android.OS;
 
 using Serilog;
 
-using HodlWallet2.UI;
-using HodlWallet2.Core.Interfaces;
+using HodlWallet.UI;
+using HodlWallet.Core.Interfaces;
 
 [assembly: global::Xamarin.Forms.ResolutionGroupName("HodlWallet2")]
-namespace HodlWallet2.Droid
+namespace HodlWallet.Droid
 {
     [Activity(Label = "HodlWallet2", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity

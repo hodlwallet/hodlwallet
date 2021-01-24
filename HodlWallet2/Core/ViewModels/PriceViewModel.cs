@@ -30,12 +30,12 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Models;
-using HodlWallet2.Core.Services;
+using HodlWallet.Core.Models;
+using HodlWallet.Core.Services;
 using Newtonsoft.Json;
 using NBitcoin.Protocol;
 
-namespace HodlWallet2.Core.ViewModels
+namespace HodlWallet.Core.ViewModels
 {
     public class PriceViewModel : BaseViewModel
     {

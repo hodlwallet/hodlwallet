@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 using NBitcoin;
 
-namespace HodlWallet2.Core.Extensions
+namespace HodlWallet.Core.Extensions
 {
     public static class NumbersExtensions
     {

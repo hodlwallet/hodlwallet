@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HodlWallet2.Core.Interfaces
+namespace HodlWallet.Core.Interfaces
 {
     public interface ILegacySecureKeyService
     {

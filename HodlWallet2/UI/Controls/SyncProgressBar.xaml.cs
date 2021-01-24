@@ -24,7 +24,7 @@ using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace HodlWallet2.UI.Controls
+namespace HodlWallet.UI.Controls
 {
     public partial class SyncProgressBar : ContentView
     {

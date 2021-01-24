@@ -4,10 +4,10 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Models;
-using HodlWallet2.UI.Views;
+using HodlWallet.Core.Models;
+using HodlWallet.UI.Views;
 
-namespace HodlWallet2.Core.ViewModels
+namespace HodlWallet.Core.ViewModels
 {
     public class AccountsViewModel : BaseViewModel
     {

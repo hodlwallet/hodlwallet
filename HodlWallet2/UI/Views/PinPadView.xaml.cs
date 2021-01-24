@@ -23,11 +23,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HodlWallet2.Core.ViewModels;
-using HodlWallet2.UI.Controls;
+using HodlWallet.Core.ViewModels;
+using HodlWallet.UI.Controls;
 using Xamarin.Forms;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet.UI.Views
 {
     public partial class PinPadView : ContentPage
     {

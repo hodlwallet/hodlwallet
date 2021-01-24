@@ -25,7 +25,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace HodlWallet2.UI.Extensions
+namespace HodlWallet.UI.Extensions
 {
     [ContentProperty("Source")]
     public class ImageResourceExtension : IMarkupExtension

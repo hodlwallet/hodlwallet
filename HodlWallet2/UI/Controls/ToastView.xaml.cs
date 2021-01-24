@@ -29,7 +29,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace HodlWallet2.UI.Controls
+namespace HodlWallet.UI.Controls
 {
     public partial class ToastView : Frame
     {

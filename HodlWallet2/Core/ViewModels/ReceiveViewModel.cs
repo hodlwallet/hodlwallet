@@ -26,7 +26,7 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 
-namespace HodlWallet2.Core.ViewModels
+namespace HodlWallet.Core.ViewModels
 {
     public class ReceiveViewModel : BaseViewModel
     {

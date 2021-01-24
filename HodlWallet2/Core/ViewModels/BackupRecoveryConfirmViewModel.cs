@@ -28,10 +28,10 @@ using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Services;
-using HodlWallet2.UI.Locale;
+using HodlWallet.Core.Services;
+using HodlWallet.UI.Locale;
 
-namespace HodlWallet2.Core.ViewModels
+namespace HodlWallet.Core.ViewModels
 {
     public class BackupRecoveryConfirmViewModel : BaseViewModel
     {

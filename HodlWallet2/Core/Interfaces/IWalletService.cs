@@ -32,7 +32,7 @@ using NBitcoin;
 using Liviano.Models;
 using Liviano.Interfaces;
 
-namespace HodlWallet2.Core.Interfaces
+namespace HodlWallet.Core.Interfaces
 {
     public interface IWalletService
     {

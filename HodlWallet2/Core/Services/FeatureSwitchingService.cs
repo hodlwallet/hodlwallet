@@ -22,11 +22,11 @@
 // THE SOFTWARE.
 using System.Collections.Generic;
 using System.Linq;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Models;
+using HodlWallet.Core.Interfaces;
+using HodlWallet.Core.Models;
 using Xamarin.Forms;
 
-namespace HodlWallet2.Core.Services
+namespace HodlWallet.Core.Services
 {
     public enum Release
     {

@@ -25,12 +25,12 @@ using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-using HodlWallet2.Core.ViewModels;
-using HodlWallet2.Core.Utils;
-using HodlWallet2.UI.Extensions;
-using HodlWallet2.UI.Locale;
+using HodlWallet.Core.ViewModels;
+using HodlWallet.Core.Utils;
+using HodlWallet.UI.Extensions;
+using HodlWallet.UI.Locale;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet.UI.Views
 {
     public partial class ReceiveView : ContentPage
     {

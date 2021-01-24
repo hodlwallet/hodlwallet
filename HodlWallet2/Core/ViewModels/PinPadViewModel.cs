@@ -26,10 +26,10 @@ using System.Windows.Input;
 using NBitcoin.RPC;
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Services;
-using HodlWallet2.UI.Views;
+using HodlWallet.Core.Services;
+using HodlWallet.UI.Views;
 
-namespace HodlWallet2.Core.ViewModels
+namespace HodlWallet.Core.ViewModels
 {
     public class PinPadViewModel : BaseViewModel
     {

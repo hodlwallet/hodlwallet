@@ -29,11 +29,11 @@ using Xamarin.Forms;
 
 using Refit;
 
-using HodlWallet2.Core.Interfaces;
+using HodlWallet.Core.Interfaces;
 
-using HodlWallet2.Core.Utils;
+using HodlWallet.Core.Utils;
 
-namespace HodlWallet2.Core.ViewModels
+namespace HodlWallet.Core.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 using System;
 
-namespace HodlWallet2.Core.Utils
+namespace HodlWallet.Core.Utils
 {
     public class PlatformCulture
     {

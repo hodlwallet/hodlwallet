@@ -23,7 +23,7 @@
 using System;
 using Xamarin.Forms;
 
-namespace HodlWallet2.Core.Behaviors
+namespace HodlWallet.Core.Behaviors
 {
     public class PaintBoxViewBehavior : Behavior<Button>
     {

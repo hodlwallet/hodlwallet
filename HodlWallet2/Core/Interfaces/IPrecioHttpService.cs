@@ -24,9 +24,9 @@ using System;
 using System.Collections.Generic;
 using Refit;
 using System.Threading.Tasks;
-using HodlWallet2.Core.Models;
+using HodlWallet.Core.Models;
 
-namespace HodlWallet2.Core.Interfaces
+namespace HodlWallet.Core.Interfaces
 {
     public interface IPrecioHttpService
     {

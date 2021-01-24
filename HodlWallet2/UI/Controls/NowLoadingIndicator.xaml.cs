@@ -27,9 +27,9 @@ using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-using HodlWallet2.UI.Locale;
+using HodlWallet.UI.Locale;
 
-namespace HodlWallet2.UI.Controls
+namespace HodlWallet.UI.Controls
 {
     public partial class NowLoadingIndicator : AbsoluteLayout
     {

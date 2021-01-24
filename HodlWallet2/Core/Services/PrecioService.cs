@@ -35,15 +35,15 @@ using System.Text;
 
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Services;
-using HodlWallet2.Core.Models;
+using HodlWallet.Core.Interfaces;
+using HodlWallet.Core.Services;
+using HodlWallet.Core.Models;
 using Newtonsoft.Json;
 using Refit;
-using HodlWallet2.Core.Utils;
+using HodlWallet.Core.Utils;
 
 [assembly: Dependency(typeof(PrecioService))]
-namespace HodlWallet2.Core.Services
+namespace HodlWallet.Core.Services
 {
     public class PrecioService : IPrecioService, INotifyPropertyChanged
     {

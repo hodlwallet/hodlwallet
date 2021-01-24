@@ -24,11 +24,11 @@ using System.ComponentModel;
 
 using Xamarin.Forms;
 
-using HodlWallet2.Core.ViewModels;
-using HodlWallet2.UI.Controls;
-using HodlWallet2.UI.Effects;
+using HodlWallet.Core.ViewModels;
+using HodlWallet.UI.Controls;
+using HodlWallet.UI.Effects;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet.UI.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer

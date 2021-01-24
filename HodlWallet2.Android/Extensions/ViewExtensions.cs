@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Android.Views;
 
-namespace HodlWallet2.Droid.Extensions
+namespace HodlWallet.Droid.Extensions
 {
     public static class ViewExtensions
     {

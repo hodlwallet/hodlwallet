@@ -28,7 +28,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet.UI.Views
 {
     public partial class FontsDemoView : ContentPage
     {

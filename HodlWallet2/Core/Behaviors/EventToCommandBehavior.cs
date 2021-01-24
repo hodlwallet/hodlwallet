@@ -7,7 +7,7 @@ using Xamarin.Forms;
     Author: David Birch
     Source: https://developer.xamarin.com/samples/xamarin-forms/Behaviors/EventToCommandBehavior/*/
 
-namespace HodlWallet2.Core.Behaviors
+namespace HodlWallet.Core.Behaviors
 {
     public class EventToCommandBehavior : BehaviorBase<View>
     {

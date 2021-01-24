@@ -27,10 +27,10 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-using HodlWallet2.iOS.Renderers;
+using HodlWallet.iOS.Renderers;
 
 [assembly: ExportRenderer(typeof(TabbedPage), typeof(CustomTabbedPageRenderer))]
-namespace HodlWallet2.iOS.Renderers
+namespace HodlWallet.iOS.Renderers
 {
     public class CustomTabbedPageRenderer : TabbedRenderer
     {

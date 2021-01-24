@@ -30,7 +30,7 @@ using NBitcoin;
 using Serilog.Parsing;
 using Xamarin.Forms;
 
-namespace HodlWallet2.UI.Controls
+namespace HodlWallet.UI.Controls
 {
     public class MoneyLabel : StackLayout
     {

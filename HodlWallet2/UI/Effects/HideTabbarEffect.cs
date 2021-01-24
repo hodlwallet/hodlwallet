@@ -26,7 +26,7 @@
 using System;
 using Xamarin.Forms;
 
-namespace HodlWallet2.UI.Effects
+namespace HodlWallet.UI.Effects
 {
     public class HideTabbarEffect : RoutingEffect
     {

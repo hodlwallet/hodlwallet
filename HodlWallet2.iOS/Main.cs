@@ -27,7 +27,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace HodlWallet2.iOS
+namespace HodlWallet.iOS
 {
     public class Application
     {

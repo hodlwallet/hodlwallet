@@ -24,11 +24,11 @@ using Xamarin.Forms;
 
 using ZXing.Net.Mobile.Android;
 
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Droid.Services;
+using HodlWallet.Core.Interfaces;
+using HodlWallet.Droid.Services;
 
 [assembly: Dependency (typeof (AndroidPermissions))]
-namespace HodlWallet2.Droid.Services
+namespace HodlWallet.Droid.Services
 {
     public class AndroidPermissions : IPermissions
     {

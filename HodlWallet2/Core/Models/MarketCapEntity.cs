@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 using Newtonsoft.Json;
 
-namespace HodlWallet2.Core.Models
+namespace HodlWallet.Core.Models
 {
     public class MarketCapEntity
     {

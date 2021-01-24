@@ -26,12 +26,12 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-using HodlWallet2.iOS.Effects;
+using HodlWallet.iOS.Effects;
 using System.Linq;
 using UIKit;
 
 [assembly: ExportEffect(typeof(HideTabbarEffect), nameof(HideTabbarEffect))]
-namespace HodlWallet2.iOS.Effects
+namespace HodlWallet.iOS.Effects
 {
     public class HideTabbarEffect : PlatformEffect
     {

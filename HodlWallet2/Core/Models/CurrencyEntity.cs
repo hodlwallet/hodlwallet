@@ -23,7 +23,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace HodlWallet2.Core.Models
+namespace HodlWallet.Core.Models
 {
     public class CurrencyEntity
     {

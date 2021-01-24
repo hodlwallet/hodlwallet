@@ -23,7 +23,7 @@
 using System;
 using Xamarin.Forms;
 
-namespace HodlWallet2.Core.Interfaces
+namespace HodlWallet.Core.Interfaces
 {
     public interface IShareIntent
     {

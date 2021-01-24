@@ -22,11 +22,11 @@
 // THE SOFTWARE.
 using System;
 
-using HodlWallet2.UI.Locale;
+using HodlWallet.UI.Locale;
 
 using Xamarin.Forms;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet.UI.Views
 {
     public partial class RecoverView : ContentPage
     {

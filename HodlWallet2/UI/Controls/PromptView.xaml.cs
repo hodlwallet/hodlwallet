@@ -29,9 +29,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Essentials;
-using HodlWallet2.Core.Utils;
+using HodlWallet.Core.Utils;
 
-namespace HodlWallet2.UI.Controls
+namespace HodlWallet.UI.Controls
 {
     public partial class PromptView : ContentView
     {

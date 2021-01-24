@@ -24,15 +24,15 @@ using System;
 
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Utils;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Services;
-using HodlWallet2.Core.ViewModels;
+using HodlWallet.Core.Utils;
+using HodlWallet.Core.Interfaces;
+using HodlWallet.Core.Services;
+using HodlWallet.Core.ViewModels;
 
-using HodlWallet2.UI.Locale;
-using HodlWallet2.UI.Extensions;
+using HodlWallet.UI.Locale;
+using HodlWallet.UI.Extensions;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet.UI.Views
 {
     public partial class RecoverWalletEntryView : ContentPage
     {

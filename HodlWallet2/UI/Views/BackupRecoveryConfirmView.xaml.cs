@@ -22,10 +22,10 @@
 // THE SOFTWARE.
 using Xamarin.Forms;
 
-using HodlWallet2.Core.ViewModels;
-using HodlWallet2.UI.Locale;
+using HodlWallet.Core.ViewModels;
+using HodlWallet.UI.Locale;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet.UI.Views
 {
     public partial class BackupRecoveryConfirmView : ContentPage
     {

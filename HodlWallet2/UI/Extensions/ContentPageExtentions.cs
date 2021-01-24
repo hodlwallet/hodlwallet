@@ -30,11 +30,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Utils;
-using HodlWallet2.UI.Controls;
+using HodlWallet.Core.Utils;
+using HodlWallet.UI.Controls;
 using Liviano.Utilities;
 
-namespace HodlWallet2.UI.Extensions
+namespace HodlWallet.UI.Extensions
 {
     public static class ContentPageExtentions
     {

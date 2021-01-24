@@ -30,15 +30,15 @@ using NBitcoin.Payment;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 
-using HodlWallet2.Core.Utils;
+using HodlWallet.Core.Utils;
 
 using Liviano;
 using Liviano.Exceptions;
 using Liviano.Extensions;
-using HodlWallet2.UI.Views;
+using HodlWallet.UI.Views;
 using System.Diagnostics;
 
-namespace HodlWallet2.Core.ViewModels
+namespace HodlWallet.Core.ViewModels
 {
     public class SendViewModel : BaseViewModel
     {

@@ -25,9 +25,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-using HodlWallet2.Core.ViewModels;
+using HodlWallet.Core.ViewModels;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet.UI.Views
 {
     public partial class LoginView : ContentPage
     {

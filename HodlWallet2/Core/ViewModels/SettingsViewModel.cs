@@ -23,9 +23,9 @@
 using System;
 using System.Threading.Tasks;
 
-using HodlWallet2.Core.Services;
+using HodlWallet.Core.Services;
 
-namespace HodlWallet2.Core.ViewModels
+namespace HodlWallet.Core.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {

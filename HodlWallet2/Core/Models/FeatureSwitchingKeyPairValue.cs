@@ -20,7 +20,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-namespace HodlWallet2.Core.Models
+namespace HodlWallet.Core.Models
 {
     public class FeatureSwitchingKeyPairValue<T>
     {

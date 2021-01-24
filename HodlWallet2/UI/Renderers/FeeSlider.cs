@@ -23,7 +23,7 @@
 using System;
 using Xamarin.Forms;
 
-namespace HodlWallet2.UI.Renderers
+namespace HodlWallet.UI.Renderers
 {
     public class FeeSlider : Slider
     {

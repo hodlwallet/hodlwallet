@@ -24,7 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>Full</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
@@ -57,6 +57,7 @@
     <MtouchFastDev>true</MtouchFastDev>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -68,6 +69,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchUseLlvm>true</MtouchUseLlvm>
+    <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -100,6 +102,7 @@
     <MtouchUseLlvm>true</MtouchUseLlvm>
     <MtouchUseThumb>true</MtouchUseThumb>
     <MtouchArch>ARMv7</MtouchArch>
+    <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -209,14 +212,14 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\HodlWallet2\HodlWallet2.csproj">
-      <Project>{4AF4A11A-3D4A-433C-BB67-17FEBA8AE4F9}</Project>
-      <Name>HodlWallet2</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Assets.xcassets\logo_front.png.imageset\" />
     <Folder Include="Services\" />
     <Folder Include="Effects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HodlWallet2\HodlWallet.csproj">
+      <Project>{2CBD7B3E-E15A-459E-AB62-119149A31E69}</Project>
+      <Name>HodlWallet</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

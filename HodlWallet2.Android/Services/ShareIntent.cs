@@ -21,8 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using HodlWallet2.Core.Utils;
-using HodlWallet2.Core.Interfaces;
+using HodlWallet.Core.Utils;
+using HodlWallet.Core.Interfaces;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Android.Content.PM;
@@ -35,10 +35,10 @@ using Android.Provider;
 using Android.Widget;
 using Android.Support.V4.App;
 using Android.Support.Design.Widget;
-using HodlWallet2.Droid.Services;
+using HodlWallet.Droid.Services;
 
 [assembly: Xamarin.Forms.Dependency (typeof(ShareIntent))]
-namespace HodlWallet2.Droid.Services
+namespace HodlWallet.Droid.Services
 {
     public class ShareIntent : IShareIntent
     {

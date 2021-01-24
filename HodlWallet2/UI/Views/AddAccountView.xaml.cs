@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-using HodlWallet2.UI.Locale;
+using HodlWallet.UI.Locale;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet.UI.Views
 {
     public partial class AddAccountView : ContentPage
     {

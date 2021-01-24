@@ -33,11 +33,11 @@ using SkiaSharp.Views.Forms;
 
 using Microcharts;
 
-using HodlWallet2.Core.ViewModels;
-using HodlWallet2.Core.Models;
+using HodlWallet.Core.ViewModels;
+using HodlWallet.Core.Models;
 using Microcharts.Forms;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet.UI.Views
 {
     public partial class PriceView : ContentPage
     {

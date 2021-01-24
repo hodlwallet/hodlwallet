@@ -31,9 +31,9 @@ using System.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using HodlWallet2.Core.Interfaces;
+using HodlWallet.Core.Interfaces;
 
-namespace HodlWallet2.UI.Extensions
+namespace HodlWallet.UI.Extensions
 {
     // You exclude the 'Extension' suffix when using in XAML
     [ContentProperty("Text")]

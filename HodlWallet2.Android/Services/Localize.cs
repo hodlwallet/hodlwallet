@@ -29,12 +29,12 @@ using System.Threading;
 
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.Core.Utils;
-using HodlWallet2.Droid.Services;
+using HodlWallet.Core.Interfaces;
+using HodlWallet.Core.Utils;
+using HodlWallet.Droid.Services;
 
 [assembly: Dependency(typeof(Localize))]
-namespace HodlWallet2.Droid.Services
+namespace HodlWallet.Droid.Services
 {
     public class Localize : ILocalize
     {

@@ -22,11 +22,11 @@
 // THE SOFTWARE.
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.iOS.Services;
+using HodlWallet.Core.Interfaces;
+using HodlWallet.iOS.Services;
 
 [assembly: Dependency(typeof (iOSPermissions))]
-namespace HodlWallet2.iOS.Services
+namespace HodlWallet.iOS.Services
 {
     public class iOSPermissions : IPermissions
     {

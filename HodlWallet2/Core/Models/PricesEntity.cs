@@ -34,7 +34,7 @@ using System.Runtime.InteropServices.ComTypes;
 using Xamarin.Forms;
 using SkiaSharp.Views.Forms;
 
-namespace HodlWallet2.Core.Models
+namespace HodlWallet.Core.Models
 {
     public class MetaEntity
     {

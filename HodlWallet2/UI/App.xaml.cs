@@ -25,12 +25,12 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-using HodlWallet2.Core.Services;
-using HodlWallet2.Core.Interfaces;
-using HodlWallet2.UI.Views;
-using HodlWallet2.UI.Locale;
+using HodlWallet.Core.Services;
+using HodlWallet.Core.Interfaces;
+using HodlWallet.UI.Views;
+using HodlWallet.UI.Locale;
 
-namespace HodlWallet2.UI
+namespace HodlWallet.UI
 {
     public partial class App : Application
     {

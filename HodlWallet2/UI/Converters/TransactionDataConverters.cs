@@ -22,10 +22,10 @@
 // THE SOFTWARE.
 using System;
 using System.Globalization;
-using HodlWallet2.Core.Utils;
+using HodlWallet.Core.Utils;
 using Xamarin.Forms;
 
-namespace HodlWallet2.UI.Converters
+namespace HodlWallet.UI.Converters
 {
     public class MemoToHeightConverter : IValueConverter
     {

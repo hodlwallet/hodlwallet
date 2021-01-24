@@ -31,11 +31,11 @@ using NBitcoin;
 
 using Liviano.Models;
 
-using HodlWallet2.Core.Models;
-using HodlWallet2.Core.Utils;
-using HodlWallet2.UI.Locale;
+using HodlWallet.Core.Models;
+using HodlWallet.Core.Utils;
+using HodlWallet.UI.Locale;
 
-namespace HodlWallet2.Core.ViewModels
+namespace HodlWallet.Core.ViewModels
 {
     public class TransactionDetailsViewModel : BaseViewModel
     {

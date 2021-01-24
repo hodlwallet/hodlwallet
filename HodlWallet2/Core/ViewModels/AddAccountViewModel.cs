@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace HodlWallet2.Core.ViewModels
+namespace HodlWallet.Core.ViewModels
 {
     public class AddAccountViewModel : BaseViewModel
     {

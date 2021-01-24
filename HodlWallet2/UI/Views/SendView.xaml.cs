@@ -28,12 +28,12 @@ using Xamarin.Forms;
 using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 
-using HodlWallet2.Core.Utils;
-using HodlWallet2.Core.ViewModels;
-using HodlWallet2.UI.Extensions;
-using HodlWallet2.UI.Locale;
+using HodlWallet.Core.Utils;
+using HodlWallet.Core.ViewModels;
+using HodlWallet.UI.Extensions;
+using HodlWallet.UI.Locale;
 
-namespace HodlWallet2.UI.Views
+namespace HodlWallet.UI.Views
 {
     public partial class SendView : ContentPage
     {

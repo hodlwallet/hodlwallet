@@ -23,11 +23,11 @@
 using UIKit;
 using Foundation;
 
-using HodlWallet2.iOS.Services;
-using HodlWallet2.Core.Interfaces;
+using HodlWallet.iOS.Services;
+using HodlWallet.Core.Interfaces;
 
 [assembly: Xamarin.Forms.Dependency(typeof(ShareIntent))]
-namespace HodlWallet2.iOS.Services
+namespace HodlWallet.iOS.Services
 {
     public class ShareIntent : IShareIntent
     {

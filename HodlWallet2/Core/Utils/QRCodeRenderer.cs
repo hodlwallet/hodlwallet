@@ -27,7 +27,7 @@ using SkiaSharp;
 
 using QRCoder;
 
-namespace HodlWallet2.Core.Utils
+namespace HodlWallet.Core.Utils
 {
     public class QRCodeRenderer : IDisposable
     {

@@ -25,7 +25,7 @@ using System.Globalization;
 
 using Xamarin.Forms;
 
-namespace HodlWallet2.UI.Converters
+namespace HodlWallet.UI.Converters
 {
     public class IndexToStringConverter : IValueConverter
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HodlWallet2.UI.Locale {
+namespace HodlWallet.UI.Locale {
     using System;
     using System.Reflection;
     
