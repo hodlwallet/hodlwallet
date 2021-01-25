@@ -9,7 +9,6 @@
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="5.0.0.1905" />
         <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
         <PackageReference Include="SkiaSharp" Version="2.80.2" />
         <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
@@ -23,6 +22,7 @@
         <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
         <PackageReference Include="Microcharts" Version="0.9.5.9" />
         <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+        <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Core\" />

@@ -36,7 +36,7 @@ namespace HodlWallet.Droid.Renderers
     public class FeeSliderRenderer : SliderRenderer
     {
         public FeeSliderRenderer(Context context) : base(context)
-        { 
+        {
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Slider> e)
