@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -84,13 +84,13 @@
         <EmbeddedResource Include="UI\Assets\send_tab.svg" />
         <EmbeddedResource Include="UI\Assets\shield.svg" />
         <EmbeddedResource Include="UI\Resources\Electrum\servers\main.json">
-          <LogicalName>Resources.Electrum.servers.main.json</LogicalName>
+            <LogicalName>Resources.Electrum.servers.main.json</LogicalName>
         </EmbeddedResource>
         <EmbeddedResource Include="UI\Resources\Electrum\servers\regtest.json">
-          <LogicalName>Resources.Electrum.servers.regtest.json</LogicalName>
+            <LogicalName>Resources.Electrum.servers.regtest.json</LogicalName>
         </EmbeddedResource>
         <EmbeddedResource Include="UI\Resources\Electrum\servers\testnet.json">
-          <LogicalName>Resources.Electrum.servers.testnet.json</LogicalName>
+            <LogicalName>Resources.Electrum.servers.testnet.json</LogicalName>
         </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
@@ -125,8 +125,8 @@
         </Compile>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\liviano\Liviano\Liviano.csproj" />
-      <ProjectReference Include="..\liviano\Liviano.Utilities\Liviano.Utilities.csproj" />
+        <ProjectReference Include="..\liviano\Liviano\Liviano.csproj" />
+        <ProjectReference Include="..\liviano\Liviano.Utilities\Liviano.Utilities.csproj" />
     </ItemGroup>
     <Target Name="GetBuildInfo" BeforeTargets="WriteBuildInfo" Condition="'$(GitHead)' == ''">
         <PropertyGroup>
