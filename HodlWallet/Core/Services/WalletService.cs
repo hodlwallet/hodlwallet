@@ -55,15 +55,15 @@ namespace HodlWallet.Core.Services
     {
         public const int DEFAULT_NODES_TO_CONNECT = 4;
 
-        public const string DEFAULT_NETWORK = "testnet";
+        public const string DEFAULT_TESTING_NETWORK = "testnet";
 
         public static string USER_AGENT { get; } = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
 
-        object _Lock = new object();
+        readonly object @lock = new();
 
-        Network _Network;
+        Network network;
 
-        string _WalletId;
+        string walletId;
 
         public Serilog.ILogger Logger { set; get; }
 
@@ -96,7 +96,7 @@ namespace HodlWallet.Core.Services
         {
             await Task.Factory.StartNew(() =>
             {
-                lock (_Lock)
+                lock (@lock)
                 {
                     Wallet.Watch();
                     Wallet.Storage.Save();
@@ -119,23 +119,23 @@ namespace HodlWallet.Core.Services
                 SecureStorageService.SetWalletId(guid);
             }
 
-            string network;
+            string networkStr;
             if (SecureStorageService.HasNetwork())
             {
-                network = SecureStorageService.GetNetwork();
+                networkStr = SecureStorageService.GetNetwork();
             }
             else
             {
-                network = DEFAULT_NETWORK;
-                SecureStorageService.SetNetwork(network);
+                networkStr = DEFAULT_TESTING_NETWORK;
+                SecureStorageService.SetNetwork(networkStr);
             }
 
-            _Network = Hd.GetNetwork(network ?? DEFAULT_NETWORK);
-            _WalletId = guid ?? Guid.NewGuid().ToString();
+            network = Hd.GetNetwork(networkStr ?? DEFAULT_TESTING_NETWORK);
+            walletId = guid ?? Guid.NewGuid().ToString();
 
             //ElectrumClient.OverwriteRecentlyConnectedServers(_Network);
 
-            if (!SecureStorageService.HasMnemonic() || _WalletId == null)
+            if (!SecureStorageService.HasMnemonic() || walletId == null)
             {
                 Logger.Information("Wallet has been configured but not started yet due to the lack of mnemonic in the system");
                 return;
@@ -159,7 +159,7 @@ namespace HodlWallet.Core.Services
 
         public void StartWalletWithWalletId()
         {
-            Guard.NotNull(_WalletId, nameof(_WalletId));
+            Guard.NotNull(walletId, nameof(walletId));
 
             string mnemonic = SecureStorageService.GetMnemonic();
             string password = ""; // TODO password cannot be null. but it should be
@@ -167,12 +167,12 @@ namespace HodlWallet.Core.Services
                                   // But, since HODLWallet 1 didn't have passwords this is okay
 
 #if DEBUG
-            _Network = Hd.GetNetwork(DEFAULT_NETWORK);
+            network = Hd.GetNetwork(DEFAULT_TESTING_NETWORK);
 #else
-            _Network = Hd.GetNetwork();
+            network = Hd.GetNetwork();
 #endif
 
-            var storage = new WalletStorageProvider(_WalletId, _Network);
+            var storage = new WalletStorageProvider(walletId, network);
 
             if (storage.Exists())
             {
@@ -182,7 +182,6 @@ namespace HodlWallet.Core.Services
                 {
                     var err = new WalletException("error");
                     Wallet = storage.Load("", out err);
-                    //Wallet.CurrentAssembly = IntrospectionExtensions.GetTypeInfo(typeof(WalletService)).Assembly;
 
                     Start();
                     Logger.Information("Wallet started.");
@@ -196,9 +195,9 @@ namespace HodlWallet.Core.Services
                     // What would lead to this?
 
                     // TODO: Defensive programming is a bad practice, this is a bad practice
-                    if (!Hd.IsMnemonicOfWallet(new Mnemonic(mnemonic), (Wallet)Wallet, _Network))
+                    if (!Hd.IsMnemonicOfWallet(new Mnemonic(mnemonic), Wallet, network))
                     {
-                        lock (_Lock)
+                        lock (@lock)
                         {
                             storage.Delete();
                         }
@@ -206,17 +205,17 @@ namespace HodlWallet.Core.Services
                 }
             }
 
-            Logger.Debug("Creating wallet ({guid}) with password: {password}", _WalletId, password);
+            Logger.Debug("Creating wallet ({guid}) with password: {password}", walletId, password);
 
             DateTimeOffset createdAt = SecureStorageService.HasSeedBirthday()
                 ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageService.GetSeedBirthday())
                 : new DateTimeOffset(DateTime.UtcNow);
 
-            Wallet = new Wallet { Id = _WalletId };
+            Wallet = new Wallet { Id = walletId };
 
             Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(WalletService)).Assembly;
 
-            Wallet.Init(mnemonic, password, null, _Network, createdAt, storage);
+            Wallet.Init(mnemonic, password, null, network, createdAt, storage);
 
             Wallet.AddAccount("bip141");
 
@@ -277,7 +276,7 @@ namespace HodlWallet.Core.Services
 
         public bool IsAddressOwn(string address)
         {
-            var parsedAddress = BitcoinAddress.Create(address, _Network);
+            var parsedAddress = BitcoinAddress.Create(address, network);
 
             bool inInternal = Wallet.CurrentAccount.UsedInternalAddresses
                               .Contains(parsedAddress) ||
@@ -295,16 +294,16 @@ namespace HodlWallet.Core.Services
         /// <param name="dryRun">Do not delete anything just try</param>
         public void DestroyWallet(bool dryRun = false)
         {
-            if (_Network == null)
+            if (network == null)
             {
                 string networkStr = SecureStorageService.GetNetwork();
 
-                _Network = Network.GetNetwork(networkStr);
+                network = Network.GetNetwork(networkStr);
             }
 
             if (dryRun) return;
 
-            lock (_Lock)
+            lock (@lock)
             {
                 // Database cleanup
                 // Delete method in FileSystemStorage
@@ -406,9 +405,9 @@ namespace HodlWallet.Core.Services
 
         public Network GetNetwork()
         {
-            Guard.NotNull(_Network, nameof(_Network));
+            Guard.NotNull(network, nameof(network));
 
-            return _Network;
+            return network;
         }
 
         string GetConfigFile(string fileName)
