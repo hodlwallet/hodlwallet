@@ -34,10 +34,10 @@ namespace HodlWallet.UI
 {
     public partial class App : Application
     {
-        IWalletService _WalletService => DependencyService.Get<IWalletService>();
-        IPrecioService _PrecioService => DependencyService.Get<IPrecioService>();
-        ILocalize _Localize => DependencyService.Get<ILocalize>();
-        ILegacySecureKeyService _LegacySecureKeyService => DependencyService.Get<ILegacySecureKeyService>();
+        IWalletService WalletService => DependencyService.Get<IWalletService>();
+        IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
+        ILocalize Localize => DependencyService.Get<ILocalize>();
+        ILegacySecureKeyService LegacySecureKeyService => DependencyService.Get<ILegacySecureKeyService>();
 
         public App()
         {
@@ -72,8 +72,8 @@ namespace HodlWallet.UI
             // the init code that inserts the logger into
             // WalletService is only run after the custructor
             // and only after all the platforms init
-            Task.Run(() => _WalletService.InitializeWallet());
-            Task.Run(_PrecioService.Init);
+            Task.Run(() => WalletService.InitializeWallet());
+            Task.Run(PrecioService.Init);
         }
 
         protected override void OnSleep()
@@ -96,10 +96,10 @@ namespace HodlWallet.UI
 
         void SetupCultureInfo()
         {
-            var ci = _Localize.GetCurrentCultureInfo();
+            var ci = Localize.GetCurrentCultureInfo();
 
             LocaleResources.Culture = ci; // set the RESX for resource localization
-            _Localize.SetLocale(ci); // set the Thread for locale-aware methods
+            Localize.SetLocale(ci); // set the Thread for locale-aware methods
         }
 
         bool UserDidSetup()
@@ -115,15 +115,15 @@ namespace HodlWallet.UI
         {
             try
             {
-                var mnemonic = _LegacySecureKeyService.GetMnemonic();
-                var pin = _LegacySecureKeyService.GetPin();
-                var birthday = _LegacySecureKeyService.GetWalletCreationTime();
+                var mnemonic = LegacySecureKeyService.GetMnemonic();
+                var pin = LegacySecureKeyService.GetPin();
+                var birthday = LegacySecureKeyService.GetWalletCreationTime();
 
                 SecureStorageService.SetMnemonic(mnemonic);
                 SecureStorageService.SetPin(pin);
                 SecureStorageService.SetSeedBirthday(new DateTimeOffset(new DateTime(birthday)));
 
-                _WalletService.InitializeWallet(true);
+                WalletService.InitializeWallet(true);
             }
             catch (Exception ex)
             {
