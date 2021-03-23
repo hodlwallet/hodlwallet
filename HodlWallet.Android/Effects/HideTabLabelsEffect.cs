@@ -22,8 +22,7 @@
 // THE SOFTWARE.
 using System.Linq;
 
-//using Android.Support.Design.BottomNavigation;
-using Android.Support.Design.Widget;
+using Google.Android.Material.BottomNavigation;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -53,12 +52,12 @@ namespace HodlWallet.Droid.Effects
         {
             var children = _TabbedPageRenderer?.ViewGroup?.RetrieveAllChildViews();
 
-            //if (children?.FirstOrDefault(x => x is BottomNavigationView) is BottomNavigationView bottomNav)
-            //{
-            //    bottomNav.LabelVisibilityMode = hidden
-            //        ? LabelVisibilityMode.LabelVisibilityUnlabeled
-            //        : LabelVisibilityMode.LabelVisibilityLabeled;
-            //}
+            if (children?.FirstOrDefault(x => x is BottomNavigationView) is BottomNavigationView bottomNav)
+            {
+                bottomNav.LabelVisibilityMode = hidden
+                    ? LabelVisibilityMode.LabelVisibilityUnlabeled
+                    : LabelVisibilityMode.LabelVisibilityLabeled;
+            }
         }
     }
 }
