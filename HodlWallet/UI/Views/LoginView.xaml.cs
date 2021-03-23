@@ -31,14 +31,14 @@ namespace HodlWallet.UI.Views
 {
     public partial class LoginView : ContentPage
     {
-        uint _AnimationTimeput = 50;
+        readonly uint animationTimeput = 50;
 
-        Color _DigitOnColor => (Color)Application.Current.Resources["InputPinOn"];
-        Color _DigitOffColor => (Color)Application.Current.Resources["InputPinOff"];
+        Color DigitOnColor => (Color)Application.Current.Resources["InputPinOn"];
+        Color DigitOffColor => (Color)Application.Current.Resources["InputPinOff"];
 
-        RootView _RootView;
+        RootView rootView;
 
-        LoginViewModel _ViewModel => (LoginViewModel)BindingContext;
+        LoginViewModel ViewModel => (LoginViewModel)BindingContext;
 
         public LoginView()
         {
@@ -51,7 +51,7 @@ namespace HodlWallet.UI.Views
             // DOES NOT solve all performance issue, that's related to the
             // HomeView's layout being too complex (tm)
             Task.Run(() =>
-                _RootView = new RootView()
+                rootView = new RootView()
             );
         }
 
@@ -59,7 +59,7 @@ namespace HodlWallet.UI.Views
         {
             base.OnDisappearing();
 
-            if (_ViewModel.IsLoading) _ViewModel.IsLoading = false;
+            if (ViewModel.IsLoading) ViewModel.IsLoading = false;
         }
 
         void SubscribeToMessages()
@@ -75,14 +75,14 @@ namespace HodlWallet.UI.Views
         {
             Debug.WriteLine($"[SubscribeToMessage][DigitAdded] Add digit: {index}");
 
-            ColorDigitTo(index, _DigitOnColor);
+            ColorDigitTo(index, DigitOnColor);
         }
 
         void DigitRemoved(LoginViewModel _, int index)
         {
             Debug.WriteLine($"[SubscribeToMessage][DigitRemoved] Remove digit: {index}");
 
-            ColorDigitTo(index, _DigitOffColor);
+            ColorDigitTo(index, DigitOffColor);
         }
 
         async Task IncorrectPinAnimation(LoginViewModel _)
@@ -90,12 +90,12 @@ namespace HodlWallet.UI.Views
             Debug.WriteLine($"[SubscribeToMessage][IncorrectPinAnimation]");
 
             // Shake ContentView Re-Enter PIN
-            await InputGrid.TranslateTo(-15, 0, _AnimationTimeput);
-            await InputGrid.TranslateTo(15, 0, _AnimationTimeput);
-            await InputGrid.TranslateTo(-10, 0, _AnimationTimeput);
-            await InputGrid.TranslateTo(10, 0, _AnimationTimeput);
-            await InputGrid.TranslateTo(-5, 0, _AnimationTimeput);
-            await InputGrid.TranslateTo(5, 0, _AnimationTimeput);
+            await InputGrid.TranslateTo(-15, 0, animationTimeput);
+            await InputGrid.TranslateTo(15, 0, animationTimeput);
+            await InputGrid.TranslateTo(-10, 0, animationTimeput);
+            await InputGrid.TranslateTo(10, 0, animationTimeput);
+            await InputGrid.TranslateTo(-5, 0, animationTimeput);
+            await InputGrid.TranslateTo(5, 0, animationTimeput);
 
             InputGrid.TranslationX = 0;
 
@@ -107,19 +107,19 @@ namespace HodlWallet.UI.Views
             Debug.WriteLine($"[SubscribeToMessage][NavigateToRootView]");
 
             // Incase we're faster than light, we call the constructor anyways.
-            Navigation.PushAsync(_RootView ?? new RootView());
+            Navigation.PushAsync(rootView ?? new RootView());
         }
 
         void ResetPin(LoginViewModel _)
         {
             Debug.WriteLine($"[SubscribeToMessage][ResetPin]");
 
-            ColorDigitTo(Pin1, _DigitOffColor);
-            ColorDigitTo(Pin2, _DigitOffColor);
-            ColorDigitTo(Pin3, _DigitOffColor);
-            ColorDigitTo(Pin4, _DigitOffColor);
-            ColorDigitTo(Pin5, _DigitOffColor);
-            ColorDigitTo(Pin6, _DigitOffColor);
+            ColorDigitTo(Pin1, DigitOffColor);
+            ColorDigitTo(Pin2, DigitOffColor);
+            ColorDigitTo(Pin3, DigitOffColor);
+            ColorDigitTo(Pin4, DigitOffColor);
+            ColorDigitTo(Pin5, DigitOffColor);
+            ColorDigitTo(Pin6, DigitOffColor);
         }
 
         void ColorDigitTo(int index, Color color)
