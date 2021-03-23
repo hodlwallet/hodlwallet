@@ -31,7 +31,7 @@ namespace HodlWallet.UI.Views
 {
     public partial class LoginView : ContentPage
     {
-        readonly uint animationTimeput = 50;
+        readonly uint animationTimeout = 50;
 
         Color DigitOnColor => (Color)Application.Current.Resources["InputPinOn"];
         Color DigitOffColor => (Color)Application.Current.Resources["InputPinOff"];
@@ -90,12 +90,12 @@ namespace HodlWallet.UI.Views
             Debug.WriteLine($"[SubscribeToMessage][IncorrectPinAnimation]");
 
             // Shake ContentView Re-Enter PIN
-            await InputGrid.TranslateTo(-15, 0, animationTimeput);
-            await InputGrid.TranslateTo(15, 0, animationTimeput);
-            await InputGrid.TranslateTo(-10, 0, animationTimeput);
-            await InputGrid.TranslateTo(10, 0, animationTimeput);
-            await InputGrid.TranslateTo(-5, 0, animationTimeput);
-            await InputGrid.TranslateTo(5, 0, animationTimeput);
+            await InputGrid.TranslateTo(-15, 0, animationTimeout);
+            await InputGrid.TranslateTo(15, 0, animationTimeout);
+            await InputGrid.TranslateTo(-10, 0, animationTimeout);
+            await InputGrid.TranslateTo(10, 0, animationTimeout);
+            await InputGrid.TranslateTo(-5, 0, animationTimeout);
+            await InputGrid.TranslateTo(5, 0, animationTimeout);
 
             InputGrid.TranslationX = 0;
 
