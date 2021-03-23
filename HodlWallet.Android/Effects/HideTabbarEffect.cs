@@ -56,12 +56,12 @@ namespace HodlWallet.Droid.Effects
             var renderer = (Control ?? Container) as TabbedPageRenderer;
 
             var children = renderer?.ViewGroup?.RetrieveAllChildViews();
-            if (children?.FirstOrDefault(x => x is BottomNavigationView) is BottomNavigationView bottomNav)
-            {
-                bottomNav.Visibility = hidden
-                    ? Android.Views.ViewStates.Invisible
-                    : Android.Views.ViewStates.Visible;
-            }
+            //if (children?.FirstOrDefault(x => x is BottomNavigationView) is BottomNavigationView bottomNav)
+            //{
+            //    bottomNav.Visibility = hidden
+            //        ? Android.Views.ViewStates.Invisible
+            //        : Android.Views.ViewStates.Visible;
+            //}
         }
     }
 }
