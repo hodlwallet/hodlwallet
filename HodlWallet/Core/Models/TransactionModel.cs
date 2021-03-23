@@ -73,7 +73,6 @@ namespace HodlWallet.Core.Models
         public bool IsSpendable { get; set; }
         public bool IsConfirmed { get; set; }
 
-        public bool IsPropagated { get; set; }
         public int BlockHeight { get; set; }
 
         public string ConfirmationsText { get; set; }
@@ -109,7 +108,6 @@ namespace HodlWallet.Core.Models
 
             BlockHeight = (int)(TransactionData.BlockHeight ?? -1);
 
-            IsPropagated = (bool)TransactionData.IsPropagated;
             IsSpendable = TransactionData.IsSpendable();
 
             StatusText = GetStatusText();
@@ -137,7 +135,6 @@ namespace HodlWallet.Core.Models
             if (other.CreationTime != CreationTime) return false;
             if (other.IsSpendable != IsSpendable) return false;
             if (other.IsConfirmed != IsConfirmed) return false;
-            if (other.IsPropagated != IsPropagated) return false;
             if (other.BlockHeight != BlockHeight) return false;
             if (other.Amount != Amount) return false;
             if (other.Address != Address) return false;
