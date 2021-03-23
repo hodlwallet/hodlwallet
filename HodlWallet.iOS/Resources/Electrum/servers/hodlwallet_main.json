@@ -1,0 +1,8 @@
+{
+    "electrumx.hodlwallet.com": {
+        "pruning": "-",
+        "s": "50002",
+        "t": "50001",
+        "version": "1.4"
+    }
+}
