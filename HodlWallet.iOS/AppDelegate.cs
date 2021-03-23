@@ -37,7 +37,7 @@ namespace HodlWallet.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
-        IWalletService _WalletService => global::Xamarin.Forms.DependencyService.Get<IWalletService>();
+        IWalletService WalletService => global::Xamarin.Forms.DependencyService.Get<IWalletService>();
 
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -63,7 +63,7 @@ namespace HodlWallet.iOS
         {
             // Call after LoadApplication
 #if DEBUG
-            _WalletService.Logger = new LoggerConfiguration()
+            WalletService.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .WriteTo.NSLog()
                 .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet") // Sets the tag fields
