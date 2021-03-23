@@ -375,4 +375,4 @@ ASALocalRun/
 .vscode/
 
 # Add annoying file
-HodlWallet2.Android/Resources/Resource.designer.cs
+HodlWallet.Android/Resources/Resource.Designer.cs
