@@ -29,6 +29,7 @@ using HodlWallet.Core.Services;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
 using HodlWallet.UI.Locale;
+using System.Threading;
 
 namespace HodlWallet.UI
 {
@@ -72,8 +73,17 @@ namespace HodlWallet.UI
             // the init code that inserts the logger into
             // WalletService is only run after the custructor
             // and only after all the platforms init
-            Task.Run(() => WalletService.InitializeWallet());
-            Task.Run(PrecioService.Init);
+            var cts = new CancellationTokenSource();
+            var ct = cts.Token;
+
+            Task.Factory.StartNew(
+                () => WalletService.InitializeWallet(),
+                ct,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
+            //Task.Run(() => WalletService.InitializeWallet());
+            //Task.Run(PrecioService.Init);
         }
 
         protected override void OnSleep()

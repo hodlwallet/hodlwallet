@@ -37,7 +37,8 @@ namespace HodlWallet.Core.ViewModels
                             throw new NotImplementedException();
                     }
 
-                    _WalletService.Start();
+                    // FIXME I got a hunch this is wrong
+                    //_WalletService.Start();
                 });
         }
     }

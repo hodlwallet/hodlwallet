@@ -82,7 +82,8 @@ namespace HodlWallet.Core.ViewModels
 
             CurrentAccount = null;
 
-            _WalletService.Start();
+            // FIXME this is probably wrong
+            //_WalletService.Start();
 
             MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
         }

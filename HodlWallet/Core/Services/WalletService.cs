@@ -98,7 +98,6 @@ namespace HodlWallet.Core.Services
             {
                 lock (@lock)
                 {
-                    Wallet.Watch(); // TODO this Wallet.Watch shouldn't be there...
                     Wallet.Storage.Save();
                 }
             });
@@ -247,7 +246,6 @@ namespace HodlWallet.Core.Services
             var end = new DateTimeOffset();
 
             Wallet.InitElectrumPool();
-            Wallet.Watch();
 
             // TODO There's an error here, ElectrumPool is null, we need to call the connect code.
             Wallet.ElectrumPool.OnSyncStarted += (obj, _) =>
@@ -268,6 +266,7 @@ namespace HodlWallet.Core.Services
             _ = PeriodicSave();
 
             _ = Wallet.Sync();
+            _ = Wallet.Watch();
 
             OnStarted?.Invoke(this, null);
             IsStarted = true;
