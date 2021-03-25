@@ -122,21 +122,6 @@
     <Compile Include="Effects\HideTabbarEffect.cs" />
     <Compile Include="Services\Localize.cs" />
     <Compile Include="Services\iOSLegacySecureKeyService.cs" />
-    <BundleResource Include="Resources\Electrum\servers\hodlwallet_main.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Electrum\servers\hodlwallet_testnet.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Electrum\servers\main.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Electrum\servers\regtest.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Electrum\servers\testnet.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

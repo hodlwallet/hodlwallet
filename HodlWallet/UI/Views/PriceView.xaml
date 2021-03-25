@@ -53,12 +53,18 @@
                             <ScrollView Orientation="Vertical"
                                         VerticalScrollBarVisibility="Never"
                                         HorizontalScrollBarVisibility="Never">
-                                <controls:MoneyLabel x:Name="PriceLabel"
+                                <Label x:Name="PriceLabel"
                                                      Margin="20, 10, 0, 0"
                                                      Text="{Binding PriceText}"
                                                      FontSize="Large"
                                                      TextColor="{DynamicResource TextPrimary}"
                                                      FontFamily="{StaticResource Mono-Bold}" />
+                                <!--<controls:MoneyLabel x:Name="PriceLabel"
+                                                     Margin="20, 10, 0, 0"
+                                                     Text="{Binding PriceText}"
+                                                     FontSize="Large"
+                                                     TextColor="{DynamicResource TextPrimary}"
+                                                     FontFamily="{StaticResource Mono-Bold}" />-->
                             </ScrollView>
                         </FlexLayout>
 

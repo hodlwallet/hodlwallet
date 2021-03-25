@@ -44,18 +44,30 @@
                                             HorizontalScrollBarVisibility="Never"
                                             HeightRequest="50">
                                     <StackLayout Orientation="Vertical">
-                                        <controls:MoneyLabel x:Name="BalanceAmountBTC"
+                                        <!--<controls:MoneyLabel x:Name="BalanceAmountBTC"
                                                              Text="{Binding Amount, StringFormat='{0:0.00000000}'}"
                                                              FontSize="Large"
                                                              TextColor="{DynamicResource TextPrimary}"
                                                              FontFamily="{DynamicResource Mono-Bold}"
-                                                             HorizontalOptions="Center" />
+                                                             HorizontalOptions="Center" />-->
+                                        <Label x:Name="BalanceAmountBTC"
+                                               Text="{Binding Amount, StringFormat='{0:0.00000000}'}"
+                                               FontSize="Large"
+                                               TextColor="{DynamicResource TextPrimary}"
+                                               FontFamily="{DynamicResource Mono-Bold}"
+                                               HorizontalOptions="Center" />
                                         <Label x:Name="BalanceLabel"
                                                Text="btc"
                                                HorizontalOptions="Center"
                                                FontFamily="{StaticResource Mono-Bold}"
                                                TextColor="{DynamicResource TextPrimary}" />
-                                        <controls:MoneyLabel x:Name="BalanceAmountUSD"
+                                        <!--<controls:MoneyLabel x:Name="BalanceAmountUSD"
+                                                             Text="{Binding AmountFiat, StringFormat='{0:C}'}"
+                                                             FontSize="Large"
+                                                             TextColor="{DynamicResource TextPrimary}"
+                                                             FontFamily="{DynamicResource Mono-Bold}"
+                                                             HorizontalOptions="Center" />-->
+                                        <Label x:Name="BalanceAmountUSD"
                                                              Text="{Binding AmountFiat, StringFormat='{0:C}'}"
                                                              FontSize="Large"
                                                              TextColor="{DynamicResource TextPrimary}"
