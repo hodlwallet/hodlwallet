@@ -137,7 +137,7 @@ namespace HodlWallet.UI
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("There was an error while collecting depricated keys: {0}", ex.Message));
+                Console.WriteLine(string.Format("There was an error while collecting deprecated keys: {0}", ex.Message));
             }
         }
     }

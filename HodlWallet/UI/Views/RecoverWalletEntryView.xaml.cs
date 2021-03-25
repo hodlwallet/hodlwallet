@@ -37,10 +37,10 @@ namespace HodlWallet.UI.Views
     public partial class RecoverWalletEntryView : ContentPage
     {
         // TODO This should be on the view model, and should be prevented to use wallet fuctions in views
-        IWalletService _WalletService => DependencyService.Get<IWalletService>();
+        IWalletService WalletService => DependencyService.Get<IWalletService>();
 
-        Color _TextPrimary = (Color)Application.Current.Resources["TextPrimary"];
-        Color _TextError = (Color)Application.Current.Resources["TextError"];
+        readonly Color textPrimary = (Color)Application.Current.Resources["TextPrimary"];
+        readonly Color textError = (Color)Application.Current.Resources["TextError"];
 
         public RecoverWalletEntryView()
         {
@@ -98,13 +98,13 @@ namespace HodlWallet.UI.Views
 
             string word = entry.Text.ToLower();
 
-            if (WalletService.IsWordInWordlist(word, _WalletService.GetWordListLanguage()))
+            if (Core.Services.WalletService.IsWordInWordlist(word, WalletService.GetWordListLanguage()))
             {
-                entry.TextColor = _TextPrimary;
+                entry.TextColor = textPrimary;
             }
             else
             {
-                entry.TextColor = _TextError;
+                entry.TextColor = textError;
             }
         }
 
