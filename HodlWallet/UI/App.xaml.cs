@@ -76,19 +76,22 @@ namespace HodlWallet.UI
             var cts = new CancellationTokenSource();
             var ct = cts.Token;
 
-            Task.Factory.StartNew(
-                () => WalletService.InitializeWallet(),
-                ct,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
+            ThreadPool.QueueUserWorkItem(o => WalletService.InitializeWallet());
+            ThreadPool.QueueUserWorkItem(o => PrecioService.Init());
 
-            Task.Factory.StartNew(
-                () => PrecioService.Init(),
-                ct,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
+            //Task.Factory.StartNew(
+            //    () => WalletService.InitializeWallet(),
+            //    ct,
+            //    TaskCreationOptions.LongRunning,
+            //    TaskScheduler.Default
+            //).ConfigureAwait(false);
+
+            //Task.Factory.StartNew(
+            //    () => PrecioService.Init(),
+            //    ct,
+            //    TaskCreationOptions.LongRunning,
+            //    TaskScheduler.Default
+            //).ConfigureAwait(false);
         }
 
         protected override void OnSleep()
