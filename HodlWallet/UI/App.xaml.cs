@@ -82,8 +82,13 @@ namespace HodlWallet.UI
                 TaskCreationOptions.LongRunning,
                 TaskScheduler.Default
             );
-            //Task.Run(() => WalletService.InitializeWallet());
-            //Task.Run(PrecioService.Init);
+
+            Task.Factory.StartNew(
+                () => PrecioService.Init(),
+                ct,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
         }
 
         protected override void OnSleep()

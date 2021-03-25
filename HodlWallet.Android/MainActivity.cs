@@ -36,7 +36,7 @@ namespace HodlWallet.Droid
     [Activity(Label = "HodlWallet", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        IWalletService _WalletService => global::Xamarin.Forms.DependencyService.Get<IWalletService>();
+        IWalletService WalletService => global::Xamarin.Forms.DependencyService.Get<IWalletService>();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -71,13 +71,13 @@ namespace HodlWallet.Droid
         {
             // Please call after LoadApplication
 #if DEBUG
-            _WalletService.Logger = new LoggerConfiguration()
+            WalletService.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .WriteTo.AndroidLog()
                 .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet") // Sets the Tag field.
                 .CreateLogger();
 #else
-            _WalletService.Logger = new LoggerConfiguration()
+            WalletService.Logger = new LoggerConfiguration()
                 .WriteTo.AndroidLog()
                 .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet") // Sets the Tag field.
                 .CreateLogger();
