@@ -33,8 +33,8 @@ namespace HodlWallet.Core
 {
     public class WalletStorageProvider : FileSystemWalletStorage
     {
-        public WalletStorageProvider(string id = null, Network network = null) : base(id, network, Environment.GetFolderPath(Environment.SpecialFolder.Personal))
-        {
-        }
+        static readonly string WalletsDirectory = $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/wallets";
+
+        public WalletStorageProvider(string id = null, Network network = null) : base(id, network, WalletsDirectory) { }
     }
 }
