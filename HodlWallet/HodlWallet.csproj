@@ -7,6 +7,7 @@
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <DebugType>pdbonly</DebugType>
         <DebugSymbols>true</DebugSymbols>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
@@ -78,6 +79,9 @@
         <EmbeddedResource Include="UI\Assets\shield.svg" />
     </ItemGroup>
     <ItemGroup>
+        <EmbeddedResource Update="UI\AppShell.xaml">
+          <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
         <EmbeddedResource Update="UI\Locale\LocaleResources.resx">
             <LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>
             <Generator>PublicResXFileCodeGenerator</Generator>

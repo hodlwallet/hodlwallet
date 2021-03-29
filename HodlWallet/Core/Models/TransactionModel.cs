@@ -40,7 +40,7 @@ namespace HodlWallet.Core.Models
         public uint256 Id { get; set; }
         public string IdText { get; set; }
 
-        public DateTimeOffset CreationTime { get; set; }
+        public DateTimeOffset? CreationTime { get; set; }
         public string CreationTimeText { get; set; }
 
         public Money Amount { get; set; }

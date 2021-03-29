@@ -46,6 +46,8 @@ namespace HodlWallet.UI
 
             InitializeComponent();
 
+            //MainPage = new AppShell();
+
             RegisterServices();
 
             if (UserDidSetup())
@@ -67,7 +69,7 @@ namespace HodlWallet.UI
             MainPage = new NavigationPage(new OnboardView());
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
             // NOTE You might think, why not move this forward?
             // the init code that inserts the logger into
@@ -76,22 +78,27 @@ namespace HodlWallet.UI
             var cts = new CancellationTokenSource();
             var ct = cts.Token;
 
-            ThreadPool.QueueUserWorkItem(o => WalletService.InitializeWallet());
-            ThreadPool.QueueUserWorkItem(o => PrecioService.Init());
+            //ThreadPool.QueueUserWorkItem(o => WalletService.InitializeWallet());
+            //ThreadPool.QueueUserWorkItem(o => PrecioService.Init());
 
-            //Task.Factory.StartNew(
-            //    () => WalletService.InitializeWallet(),
-            //    ct,
-            //    TaskCreationOptions.LongRunning,
-            //    TaskScheduler.Default
-            //).ConfigureAwait(false);
+            //ThreadPool.QueueUserWorkItem((o) => WalletService.InitializeWallet());
+            //ThreadPool.QueueUserWorkItem((o) => PrecioService.Init());
 
-            //Task.Factory.StartNew(
-            //    () => PrecioService.Init(),
-            //    ct,
-            //    TaskCreationOptions.LongRunning,
-            //    TaskScheduler.Default
-            //).ConfigureAwait(false);
+            _ =Task.Factory.StartNew(
+                () => WalletService.InitializeWallet(),
+                ct,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Current
+            );
+
+            _ = Task.Factory.StartNew(
+                () => PrecioService.Init(),
+                ct,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Current
+            );
+
+            await Task.Delay(10);
         }
 
         protected override void OnSleep()
