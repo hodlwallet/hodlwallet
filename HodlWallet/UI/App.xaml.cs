@@ -88,14 +88,14 @@ namespace HodlWallet.UI
                 () => WalletService.InitializeWallet(),
                 ct,
                 TaskCreationOptions.LongRunning,
-                TaskScheduler.Current
+                TaskScheduler.Default
             );
 
             _ = Task.Factory.StartNew(
                 () => PrecioService.Init(),
                 ct,
                 TaskCreationOptions.LongRunning,
-                TaskScheduler.Current
+                TaskScheduler.Default
             );
 
             await Task.Delay(10);
