@@ -39,8 +39,6 @@ namespace HodlWallet.Droid.Effects
 {
     public class HideTabbarEffect : PlatformEffect
     {
-        TabbedPageRenderer _TabbedPageRenderer => (Control ?? Container) as TabbedPageRenderer;
-
         protected override void OnAttached()
         {
             ToggleTo(hidden: true);

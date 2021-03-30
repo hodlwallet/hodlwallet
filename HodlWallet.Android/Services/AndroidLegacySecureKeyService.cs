@@ -24,7 +24,7 @@ namespace HodlWallet.Droid.Services
 
         internal static Context AppContext => Android.App.Application.Context;
 
-        static byte[] _LegacyGetAsync(string key)
+        static byte[] LegacyGetAsync(string key)
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentNullException(nameof(key));
@@ -41,10 +41,10 @@ namespace HodlWallet.Droid.Services
                 ks.Load(null);
                 ISecretKey secret = (ISecretKey)ks.GetKey(obj.Alias, null);
 
-                var encryptedData = _RetrieveEncryptedData(context, obj.Alias);
+                var encryptedData = RetrieveEncryptedData(context, obj.Alias);
                 if (encryptedData != null)
                 {
-                    var iv = _RetrieveEncryptedData(context, obj.IVFileName);
+                    var iv = RetrieveEncryptedData(context, obj.IVFileName);
                     if (iv == null)
                     {
                         throw new ArgumentNullException(string.Format("iv is missing when data is not: {0}", obj.Alias));
@@ -70,7 +70,7 @@ namespace HodlWallet.Droid.Services
             }
         }
 
-        static byte[] _RetrieveEncryptedData(Context context, string name)
+        static byte[] RetrieveEncryptedData(Context context, string name)
         {
             ISharedPreferences pref = context.GetSharedPreferences(BRKeyStoreAliases.KEY_STORE_PREFS_NAME, FileCreationMode.Private);
             string base64 = pref.GetString(name, null);
@@ -78,15 +78,7 @@ namespace HodlWallet.Droid.Services
             return Base64.Decode(base64, Base64Flags.Default);
         }
 
-        static int _GetIntFromBytes(byte[] data)
-        {
-            if (BitConverter.IsLittleEndian)
-                Array.Reverse(data);
-
-            return BitConverter.ToInt32(data);
-        }
-
-        static long _GetLongFromBytes(byte[] data)
+        static long GetLongFromBytes(byte[] data)
         {
             if (BitConverter.IsLittleEndian)
                 Array.Reverse(data);
@@ -96,31 +88,31 @@ namespace HodlWallet.Droid.Services
 
         public string GetMnemonic()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.PHRASE_ALIAS);
+            var data = LegacyGetAsync(BRKeyStoreAliases.PHRASE_ALIAS);
 
             return Encoding.UTF8.GetString(data);
         }
 
         public byte[] GetMasterPublicKey()
         {
-            return _LegacyGetAsync(BRKeyStoreAliases.PUB_KEY_ALIAS);
+            return LegacyGetAsync(BRKeyStoreAliases.PUB_KEY_ALIAS);
         }
 
         public byte[] GetApiAuthKey()
         {
-            return _LegacyGetAsync(BRKeyStoreAliases.AUTH_KEY_ALIAS);
+            return LegacyGetAsync(BRKeyStoreAliases.AUTH_KEY_ALIAS);
         }
 
         public long GetWalletCreationTime()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.WALLET_CREATION_TIME_ALIAS);
+            var data = LegacyGetAsync(BRKeyStoreAliases.WALLET_CREATION_TIME_ALIAS);
 
-            return _GetLongFromBytes(data);
+            return GetLongFromBytes(data);
         }
 
         public string GetPin()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.PASS_CODE_ALIAS);
+            var data = LegacyGetAsync(BRKeyStoreAliases.PASS_CODE_ALIAS);
             var pinCode = Encoding.UTF8.GetString(data);
 
             try
@@ -144,47 +136,47 @@ namespace HodlWallet.Droid.Services
 
         public long GetPinFailCount()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.FAIL_COUNT_ALIAS);
+            var data = LegacyGetAsync(BRKeyStoreAliases.FAIL_COUNT_ALIAS);
 
-            return _GetLongFromBytes(data);
+            return GetLongFromBytes(data);
         }
 
         public long GetSpendLimit()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.SPEND_LIMIT_ALIAS);
+            var data = LegacyGetAsync(BRKeyStoreAliases.SPEND_LIMIT_ALIAS);
 
-            return _GetLongFromBytes(data);
+            return GetLongFromBytes(data);
         }
 
         public long GetPinFailTime()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.FAIL_TIMESTAMP_ALIAS);
+            var data = LegacyGetAsync(BRKeyStoreAliases.FAIL_TIMESTAMP_ALIAS);
 
-            return _GetLongFromBytes(data);
+            return GetLongFromBytes(data);
         }
 
         public static long GetTotalLimit()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.TOTAL_LIMIT_ALIAS);
+            var data = LegacyGetAsync(BRKeyStoreAliases.TOTAL_LIMIT_ALIAS);
 
-            return _GetLongFromBytes(data);
+            return GetLongFromBytes(data);
         }
 
         public static long GetLastPinUsedTime()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.PASS_TIME_ALIAS);
+            var data = LegacyGetAsync(BRKeyStoreAliases.PASS_TIME_ALIAS);
 
-            return _GetLongFromBytes(data);
+            return GetLongFromBytes(data);
         }
 
         public static byte[] GetToken()
         {
-            return _LegacyGetAsync(BRKeyStoreAliases.TOKEN_ALIAS);
+            return LegacyGetAsync(BRKeyStoreAliases.TOKEN_ALIAS);
         }
 
         public static string GetCanary()
         {
-            var data = _LegacyGetAsync(BRKeyStoreAliases.CANARY_ALIAS);
+            var data = LegacyGetAsync(BRKeyStoreAliases.CANARY_ALIAS);
 
             return Encoding.UTF8.GetString(data);
         }

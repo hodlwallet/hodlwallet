@@ -20,21 +20,10 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+using Android.Content;
+
 using HodlWallet.Core.Utils;
 using HodlWallet.Core.Interfaces;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
-using Android.Content.PM;
-using Android.OS;
-using Android;
-using Android.Content;
-using Android.App;
-using Android.Graphics;
-using Android.Provider;
-using Android.Widget;
-using Android.Support.V4.App;
-using Android.Support.Design.Widget;
 using HodlWallet.Droid.Services;
 
 [assembly: Xamarin.Forms.Dependency (typeof(ShareIntent))]

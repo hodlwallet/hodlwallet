@@ -46,9 +46,9 @@ namespace HodlWallet.Droid.Services
 
         public CultureInfo GetCurrentCultureInfo()
         {
-            string netLanguage = "en";
             var androidLocale = Java.Util.Locale.Default;
-            netLanguage = AndroidToDotnetLanguage(androidLocale.ToString().Replace("_", "-"));
+            var netLanguage = AndroidToDotnetLanguage(androidLocale.ToString().Replace("_", "-"));
+            
             // this gets called a lot - try/catch can be expensive so consider caching or something
             CultureInfo ci;
             try
@@ -57,7 +57,7 @@ namespace HodlWallet.Droid.Services
             }
             catch (CultureNotFoundException e1)
             {
-                Debug.WriteLine($"[GetCurrentCultureInfo] {e1.ToString()}");
+                Debug.WriteLine($"[GetCurrentCultureInfo] {e1}");
 
                 // iOS locale not valid .NET culture (eg. "en-ES" : English in Spain)
                 // fallback to first characters, in this case "en"
@@ -68,7 +68,7 @@ namespace HodlWallet.Droid.Services
                 }
                 catch (CultureNotFoundException e2)
                 {
-                    Debug.WriteLine($"[GetCurrentCultureInfo] {e2.ToString()}");
+                    Debug.WriteLine($"[GetCurrentCultureInfo] {e2}");
 
                     // iOS language not valid .NET culture, falling back to English
                     ci = new CultureInfo("en");

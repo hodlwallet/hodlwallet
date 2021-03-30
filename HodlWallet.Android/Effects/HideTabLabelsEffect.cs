@@ -36,7 +36,7 @@ namespace HodlWallet.Droid.Effects
 {
     public class HideTabLabelsEffect : PlatformEffect
     {
-        TabbedPageRenderer _TabbedPageRenderer => (Control ?? Container) as TabbedPageRenderer;
+        TabbedPageRenderer TabbedPageRenderer => (Control ?? Container) as TabbedPageRenderer;
 
         protected override void OnAttached()
         {
@@ -50,7 +50,7 @@ namespace HodlWallet.Droid.Effects
 
         void ToggleTo(bool hidden)
         {
-            var children = _TabbedPageRenderer?.ViewGroup?.RetrieveAllChildViews();
+            var children = TabbedPageRenderer?.ViewGroup?.RetrieveAllChildViews();
 
             if (children?.FirstOrDefault(x => x is BottomNavigationView) is BottomNavigationView bottomNav)
             {
