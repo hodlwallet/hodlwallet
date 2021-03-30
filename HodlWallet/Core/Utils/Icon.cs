@@ -34,7 +34,7 @@ namespace HodlWallet.Core.Utils
 {
     public class Icon : Frame
     {
-        private readonly SKCanvasView _CanvasView = new SKCanvasView();
+        private readonly SKCanvasView canvasView = new();
 
         public static readonly BindableProperty ResourceIdProperty = BindableProperty.Create(
             nameof(ResourceId), typeof(string), typeof(Icon), default(string), propertyChanged: RedrawCanvas
@@ -51,14 +51,14 @@ namespace HodlWallet.Core.Utils
             Padding = new Thickness(0);
             BackgroundColor = Color.Transparent;
             HasShadow = false;
-            Content = _CanvasView;
-            _CanvasView.PaintSurface += CanvasViewOnPaintSurface;
+            Content = canvasView;
+            canvasView.PaintSurface += CanvasViewOnPaintSurface;
         }
 
         private static void RedrawCanvas(BindableObject bindable, object oldvalue, object newvalue)
         {
             Icon svgIcon = bindable as Icon;
-            svgIcon?._CanvasView.InvalidateSurface();
+            svgIcon?.canvasView.InvalidateSurface();
         }
 
         private void CanvasViewOnPaintSurface(object sender, SKPaintSurfaceEventArgs args)
@@ -70,25 +70,23 @@ namespace HodlWallet.Core.Utils
                 return;
 
 
-            using (Stream stream = GetResourceStream())
-            {
-                SKSvg svg = new SKSvg();
-                svg.Load(stream);
+            using Stream stream = GetResourceStream();
+            SKSvg svg = new();
+            svg.Load(stream);
 
-                SKImageInfo info = args.Info;
-                canvas.Translate(info.Width / 2f, info.Height / 2f);
+            SKImageInfo info = args.Info;
+            canvas.Translate(info.Width / 2f, info.Height / 2f);
 
-                SKRect bounds = svg.ViewBox;
-                float xRatio = info.Width / bounds.Width;
-                float yRatio = info.Height / bounds.Height;
+            SKRect bounds = svg.ViewBox;
+            float xRatio = info.Width / bounds.Width;
+            float yRatio = info.Height / bounds.Height;
 
-                float ratio = Math.Min(xRatio, yRatio);
+            float ratio = Math.Min(xRatio, yRatio);
 
-                canvas.Scale(ratio);
-                canvas.Translate(-bounds.MidX, -bounds.MidY);
+            canvas.Scale(ratio);
+            canvas.Translate(-bounds.MidX, -bounds.MidY);
 
-                canvas.DrawPicture(svg.Picture);
-            }
+            canvas.DrawPicture(svg.Picture);
         }
 
         private Stream GetResourceStream()
