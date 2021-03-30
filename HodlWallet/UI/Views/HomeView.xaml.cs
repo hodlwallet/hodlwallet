@@ -49,7 +49,7 @@ namespace HodlWallet.UI.Views
         {
             base.OnAppearing();
 
-            PriceButton.Source = "price-tag-3-line.png";
+            PriceButton.Source = "price_tag_3_line.png";
 
             _ViewModel.View_OnAppearing();
 
@@ -109,7 +109,7 @@ namespace HodlWallet.UI.Views
 
         void PriceButton_Tapped(object sender, EventArgs e)
         {
-            PriceButton.Source = "price-tag-3-fill.png";
+            PriceButton.Source = "price_tag_3_fill.png";
 
             Navigation.PushModalAsync(new PriceView());
         }

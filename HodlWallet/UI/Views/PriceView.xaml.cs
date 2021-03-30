@@ -41,11 +41,11 @@ namespace HodlWallet.UI.Views
 {
     public partial class PriceView : ContentPage
     {
-        string _CurrentPeriod = "1d";
-        Color _IncreaseColor = (Color)Application.Current.Resources["IncreasePriceChange"];
-        Color _DecreaseColor = (Color)Application.Current.Resources["DecreasePriceChange"];
+        string currentPeriod = "1d";
+        readonly Color increaseColor = (Color)Application.Current.Resources["IncreasePriceChange"];
+        readonly Color decreaseColor = (Color)Application.Current.Resources["DecreasePriceChange"];
 
-        PriceViewModel _ViewModel => (PriceViewModel)BindingContext;
+        PriceViewModel ViewModel => (PriceViewModel)BindingContext;
 
         public PriceView()
         {
@@ -58,7 +58,7 @@ namespace HodlWallet.UI.Views
         {
             base.OnAppearing();
 
-            _ViewModel.View_OnAppearing();
+            ViewModel.View_OnAppearing();
         }
 
         void SubscribeToMessages()
@@ -72,11 +72,11 @@ namespace HodlWallet.UI.Views
         {
             if (polarity == "+")
             {
-                PriceChangeLabel.TextColor = _IncreaseColor;
+                PriceChangeLabel.TextColor = increaseColor;
             }
             else
             {
-                PriceChangeLabel.TextColor = _DecreaseColor;
+                PriceChangeLabel.TextColor = decreaseColor;
             }
         }
 
@@ -100,7 +100,7 @@ namespace HodlWallet.UI.Views
             {
                 GoToChartButtonsLayout.IsVisible = true;
                 EnableGoToChartButton(GoTo1dChartButton);
-                _CurrentPeriod = "1d";
+                currentPeriod = "1d";
             });
         }
 
@@ -109,17 +109,17 @@ namespace HodlWallet.UI.Views
             BtcPriceChangeEntity btcChange = values.Item1;
             string period = values.Item2;
 
-            if (period != _CurrentPeriod) return;
+            if (period != currentPeriod) return;
 
             vm.UpdatePriceChangeWithBtcChange(btcChange);
 
             if (btcChange.Type == "increase")
             {
-                PriceChangeLabel.TextColor = _IncreaseColor;
+                PriceChangeLabel.TextColor = increaseColor;
             }
             else
             {
-                PriceChangeLabel.TextColor = _DecreaseColor;
+                PriceChangeLabel.TextColor = decreaseColor;
             }
         }
 
@@ -149,7 +149,7 @@ namespace HodlWallet.UI.Views
             var button = (Button)sender;
             EnableGoToChartButton(button);
             DisableGoToChartButtonsBut(button);
-            _ViewModel.UpdatePriceChangeWithPeriod("1d");
+            ViewModel.UpdatePriceChangeWithPeriod("1d");
         }
 
         void GoTo1wChartButton_Clicked(object sender, EventArgs e)
@@ -159,7 +159,7 @@ namespace HodlWallet.UI.Views
             var button = (Button)sender;
             EnableGoToChartButton(button);
             DisableGoToChartButtonsBut(button);
-            _ViewModel.UpdatePriceChangeWithPeriod("1w");
+            ViewModel.UpdatePriceChangeWithPeriod("1w");
         }
 
         void GoTo1mChartButton_Clicked(object sender, EventArgs e)
@@ -169,7 +169,7 @@ namespace HodlWallet.UI.Views
             var button = (Button)sender;
             EnableGoToChartButton(button);
             DisableGoToChartButtonsBut(button);
-            _ViewModel.UpdatePriceChangeWithPeriod("1m");
+            ViewModel.UpdatePriceChangeWithPeriod("1m");
         }
 
         void GoTo1yChartButton_Clicked(object sender, EventArgs e)
@@ -179,7 +179,7 @@ namespace HodlWallet.UI.Views
             var button = (Button)sender;
             EnableGoToChartButton(button);
             DisableGoToChartButtonsBut(button);
-            _ViewModel.UpdatePriceChangeWithPeriod("1y");
+            ViewModel.UpdatePriceChangeWithPeriod("1y");
         }
 
         void GoToAllChartButton_Clicked(object sender, EventArgs e)
@@ -189,7 +189,7 @@ namespace HodlWallet.UI.Views
             var button = (Button)sender;
             EnableGoToChartButton(button);
             DisableGoToChartButtonsBut(button);
-            _ViewModel.UpdatePriceChangeWithPeriod("All");
+            ViewModel.UpdatePriceChangeWithPeriod("All");
         }
 
         void EnableGoToChartButton(Button goToChartButton)

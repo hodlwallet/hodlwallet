@@ -150,17 +150,17 @@
     <BundleResource Include="Resources\received.png" />
     <BundleResource Include="Resources\settings_tab.png" />
     <BundleResource Include="Resources\schedule%402x.png" />
-    <BundleResource Include="Resources\price-tag-3-fill%402x.png" />
+    <BundleResource Include="Resources\price_tag_3_fill%402x.png" />
     <BundleResource Include="Resources\home_tab%402x.png" />
     <BundleResource Include="Resources\sent%402x.png" />
-    <BundleResource Include="Resources\price-tag-3-line%402x.png" />
+    <BundleResource Include="Resources\price_tag_3_line%402x.png" />
     <BundleResource Include="Resources\home_tab.png" />
-    <BundleResource Include="Resources\price-tag-3-line.png" />
+    <BundleResource Include="Resources\price_tag_3_line.png" />
     <BundleResource Include="Resources\schedule.png" />
     <BundleResource Include="Resources\send_tab%402x.png" />
     <BundleResource Include="Resources\settings_tab%402x.png" />
     <BundleResource Include="Resources\sent.png" />
-    <BundleResource Include="Resources\price-tag-3-fill.png" />
+    <BundleResource Include="Resources\price_tag_3_fill.png" />
     <BundleResource Include="Resources\FiraSans-Bold.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
