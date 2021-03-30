@@ -29,12 +29,13 @@ using HodlWallet.Core.ViewModels;
 using HodlWallet.Core.Utils;
 using HodlWallet.UI.Extensions;
 using HodlWallet.UI.Locale;
+using System.Diagnostics;
 
 namespace HodlWallet.UI.Views
 {
     public partial class ReceiveView : ContentPage
     {
-        ReceiveViewModel _ViewModel => (ReceiveViewModel)BindingContext;
+        ReceiveViewModel ViewModel => (ReceiveViewModel)BindingContext;
 
         public ReceiveView()
         {
@@ -50,9 +51,16 @@ namespace HodlWallet.UI.Views
 
         void Address_Tapped(object sender, EventArgs e)
         {
-            Clipboard.SetTextAsync(_ViewModel.Address);
+            Clipboard.SetTextAsync(ViewModel.Address);
 
             _ = this.DisplayToast(Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE);
+        }
+
+        protected override void OnAppearing()
+        {
+            Debug.WriteLine($"[ReceiveView][OnAppearing] Showing Address: {ViewModel.Address}");
+
+            base.OnAppearing();
         }
     }
 }
