@@ -88,7 +88,7 @@ namespace HodlWallet.UI.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    MobileBarcodeScanner scanner = new MobileBarcodeScanner();
+                    MobileBarcodeScanner scanner = new();
                     ZXing.Result resultAndroid = await scanner.Scan();
 
                     MessagingCenter.Send(this, "BarcodeScannerResult", resultAndroid.Text);
@@ -111,7 +111,7 @@ namespace HodlWallet.UI.Views
                 //};
                 //customOverlay.Children.Add(torch);
 
-                ZXingScannerPage scanPage = new ZXingScannerPage(
+                ZXingScannerPage scanPage = new(
                     //customOverlay: customOverlay,
                     new MobileBarcodeScanningOptions
                     {
