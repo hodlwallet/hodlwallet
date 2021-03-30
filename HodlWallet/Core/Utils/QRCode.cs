@@ -101,14 +101,10 @@ namespace HodlWallet.Core.Utils
         {
             if (bindable is QRCode qrcode)
             {
-                var content = newValue as string;
-
-                if (content != null)
+                if (newValue is string content)
                 {
-                    using (var generator = new QRCodeGenerator())
-                    {
-                        qrcode.data = generator.CreateQrCode(content, qrcode.Level);
-                    }
+                    using var generator = new QRCodeGenerator();
+                    qrcode.data = generator.CreateQrCode(content, qrcode.Level);
                 }
                 else
                 {
@@ -125,12 +121,10 @@ namespace HodlWallet.Core.Utils
 
             if (this.data != null)
             {
-                using (var renderer = new QRCodeRenderer())
-                {
-                    renderer.Paint.Color = this.Color.ToSKColor();
-                    var area = SKRect.Create(0, 0, e.Info.Width, e.Info.Height);
-                    renderer.Render(e.Surface.Canvas, area, this.data);
-                }
+                using var renderer = new QRCodeRenderer();
+                renderer.Paint.Color = this.Color.ToSKColor();
+                var area = SKRect.Create(0, 0, e.Info.Width, e.Info.Height);
+                renderer.Render(e.Surface.Canvas, area, this.data);
             }
         }
 

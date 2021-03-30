@@ -31,8 +31,8 @@ namespace HodlWallet.Core.Utils
 {
 	public static class BuildInfo
 	{
-		static Assembly _Assembly { get; } = Assembly.GetExecutingAssembly();
-		static IEnumerable<CustomAttributeData> _CustomAttributes { get; } = _Assembly?.CustomAttributes ?? Enumerable.Empty<CustomAttributeData>();
+		static Assembly Assembly { get; } = Assembly.GetExecutingAssembly();
+		static IEnumerable<CustomAttributeData> CustomAttributes { get; } = Assembly?.CustomAttributes ?? Enumerable.Empty<CustomAttributeData>();
 
 		public static string GitHead { get => GetValue("GitHead"); }
 		public static string GitBranch { get => GetValue("GitBranch"); }
@@ -40,7 +40,7 @@ namespace HodlWallet.Core.Utils
 
 		static string GetValue(string key)
 		{
-			return _CustomAttributes
+			return CustomAttributes
 				// [assembly: AssemblyMetadata("GitHead", "COMMIT_HASH")]
 				.Where(c => c.ConstructorArguments.Count >= 2 && c.ConstructorArguments[0].Value as string == key)
 				.Select(c => c.ConstructorArguments[1].Value as string)

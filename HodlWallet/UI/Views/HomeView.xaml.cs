@@ -34,7 +34,7 @@ namespace HodlWallet.UI.Views
 {
     public partial class HomeView : ContentPage
     {
-        HomeViewModel _ViewModel => (HomeViewModel)BindingContext;
+        HomeViewModel ViewModel => (HomeViewModel)BindingContext;
 
         public HomeView()
         {
@@ -51,9 +51,9 @@ namespace HodlWallet.UI.Views
 
             PriceButton.Source = "price_tag_3_line.png";
 
-            _ViewModel.View_OnAppearing();
+            ViewModel.View_OnAppearing();
 
-            _ViewModel.InitializeWalletAndPrecio();
+            ViewModel.InitializeWalletAndPrecio();
 
             InitializeDisplayedCurrency();
         }
@@ -62,7 +62,7 @@ namespace HodlWallet.UI.Views
         {
             base.OnDisappearing();
 
-            _ViewModel.View_OnDisappearing();
+            ViewModel.View_OnDisappearing();
         }
 
         void SetLabels()
@@ -116,7 +116,7 @@ namespace HodlWallet.UI.Views
 
         void SwitchCurrency(HomeViewModel _)
         {
-            if (_ViewModel.IsBtcEnabled)
+            if (ViewModel.IsBtcEnabled)
             {
                 BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
             }
