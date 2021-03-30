@@ -20,15 +20,16 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using HodlWallet.Droid.Renderers;
-using HodlWallet.UI.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+
 using Android.Content;
+using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Graphics.Drawables.Shapes;
-using Android.Widget;
+
+using HodlWallet.Droid.Renderers;
+using HodlWallet.UI.Renderers;
 
 [assembly: ExportRenderer(typeof(FeeSlider), typeof(FeeSliderRenderer))]
 namespace HodlWallet.Droid.Renderers
@@ -49,7 +50,7 @@ namespace HodlWallet.Droid.Renderers
 
             th.SetIntrinsicWidth(50);
             th.SetIntrinsicHeight(50);
-            th.SetColorFilter(Android.Graphics.Color.White, Android.Graphics.PorterDuff.Mode.SrcOver);
+            th.SetColorFilter(new PorterDuffColorFilter(Android.Graphics.Color.White, PorterDuff.Mode.SrcOver));
 
             Control.SetThumb(th);
         }
