@@ -8,14 +8,14 @@ using Xamarin.Forms;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.iOS.Services;
 
-[assembly: Dependency(typeof(iOSLegacySecureKeyService))]
+[assembly: Dependency(typeof(IOSLegacySecureKeyService))]
 namespace HodlWallet.iOS.Services
 {
-    public class iOSLegacySecureKeyService : ILegacySecureKeyService
+    public class IOSLegacySecureKeyService : ILegacySecureKeyService
     {
         const string WAllET_SEC_ATTR_SERVICE = "co.hodlwallet";
         
-        static T _LegacyGetKeychainItem<T>(string key)
+        static T LegacyGetKeychainItem<T>(string key)
         {
             byte[] data = null;
 
@@ -65,48 +65,48 @@ namespace HodlWallet.iOS.Services
 
         public string GetMnemonic()
         {
-            return _LegacyGetKeychainItem<string>(KeychainKey.MNEMONIC);
+            return LegacyGetKeychainItem<string>(KeychainKey.MNEMONIC);
         }
 
         // Depricated
         public static byte[] GetSeed()
         {
-            return _LegacyGetKeychainItem<byte[]>(KeychainKey.SEED);
+            return LegacyGetKeychainItem<byte[]>(KeychainKey.SEED);
         }
 
         public byte[] GetMasterPublicKey()
         {
-            return _LegacyGetKeychainItem<byte[]>(KeychainKey.MASTER_PUB_KEY);
+            return LegacyGetKeychainItem<byte[]>(KeychainKey.MASTER_PUB_KEY);
         }
 
         public string GetPin()
         {
-            return _LegacyGetKeychainItem<string>(KeychainKey.PIN);
+            return LegacyGetKeychainItem<string>(KeychainKey.PIN);
         }
 
         public long GetPinFailCount()
         {
-            return _LegacyGetKeychainItem<long>(KeychainKey.PIN_FAIL_COUNT);
+            return LegacyGetKeychainItem<long>(KeychainKey.PIN_FAIL_COUNT);
         }
 
         public long GetPinFailTime()
         {
-            return _LegacyGetKeychainItem<long>(KeychainKey.PIN_FAIL_TIME);
+            return LegacyGetKeychainItem<long>(KeychainKey.PIN_FAIL_TIME);
         }
 
         public long GetWalletCreationTime()
         {
-            return _LegacyGetKeychainItem<long>(KeychainKey.CREATION_TIME);
+            return LegacyGetKeychainItem<long>(KeychainKey.CREATION_TIME);
         }
 
         public long GetSpendLimit()
         {
-            return _LegacyGetKeychainItem<long>(KeychainKey.SPEND_LIMIT);
+            return LegacyGetKeychainItem<long>(KeychainKey.SPEND_LIMIT);
         }
 
         public byte[] GetApiAuthKey()
         {
-            return _LegacyGetKeychainItem<byte[]>(KeychainKey.API_AUTH_KEY);
+            return LegacyGetKeychainItem<byte[]>(KeychainKey.API_AUTH_KEY);
         }
 
         struct KeychainKey

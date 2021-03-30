@@ -25,10 +25,10 @@ using Xamarin.Forms;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.iOS.Services;
 
-[assembly: Dependency(typeof (iOSPermissions))]
+[assembly: Dependency(typeof (IOSPermissions))]
 namespace HodlWallet.iOS.Services
 {
-    public class iOSPermissions : IPermissions
+    public class IOSPermissions : IPermissions
     {
         public bool HasCameraPermission()
         {

@@ -35,7 +35,7 @@ namespace HodlWallet.iOS.Effects
 {
     public class HideTabbarEffect : PlatformEffect
     {
-        UIView _TabBar => Container.Subviews.FirstOrDefault((sv) => sv.GetType() == typeof(UITabBar));
+        UIView TabBar => Container.Subviews.FirstOrDefault((sv) => sv.GetType() == typeof(UITabBar));
 
         protected override void OnAttached()
         {
@@ -49,7 +49,7 @@ namespace HodlWallet.iOS.Effects
 
         void ToggleTo(bool hidden)
         {
-            foreach (var sv in _TabBar.Subviews)
+            foreach (var sv in TabBar.Subviews)
             {
                 if (sv.GetType() == typeof(UIView)) continue;
 

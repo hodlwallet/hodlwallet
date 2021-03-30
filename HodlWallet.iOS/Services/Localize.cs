@@ -52,7 +52,7 @@ namespace HodlWallet.iOS.Services
             if (NSLocale.PreferredLanguages.Length > 0)
             {
                 var pref = NSLocale.PreferredLanguages[0];
-                netLanguage = iOSToDotnetLanguage(pref);
+                netLanguage = IOSToDotnetLanguage(pref);
             }
             // this gets called a lot - try/catch can be expensive so consider caching or something
             CultureInfo ci;
@@ -62,7 +62,7 @@ namespace HodlWallet.iOS.Services
             }
             catch (CultureNotFoundException e1)
             {
-                Debug.WriteLine($"[GetCurrentCultureInfo] {e1.ToString()}");
+                Debug.WriteLine($"[GetCurrentCultureInfo] {e1}");
 
                 // iOS locale not valid .NET culture (eg. "en-ES" : English in Spain)
                 // fallback to first characters, in this case "en"
@@ -73,7 +73,7 @@ namespace HodlWallet.iOS.Services
                 }
                 catch (CultureNotFoundException e2)
                 {
-                    Debug.WriteLine($"[GetCurrentCultureInfo] {e2.ToString()}");
+                    Debug.WriteLine($"[GetCurrentCultureInfo] {e2}");
 
                     // iOS language not valid .NET culture, falling back to English
                     ci = new CultureInfo("en");
@@ -82,7 +82,7 @@ namespace HodlWallet.iOS.Services
             return ci;
         }
 
-        string iOSToDotnetLanguage(string iOSLanguage)
+        string IOSToDotnetLanguage(string iOSLanguage)
         {
             // .NET cultures don't support underscores
             string netLanguage = iOSLanguage.Replace("_", "-");
