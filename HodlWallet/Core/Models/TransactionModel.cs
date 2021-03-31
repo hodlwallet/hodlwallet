@@ -35,7 +35,7 @@ namespace HodlWallet.Core.Models
     public class TransactionModel : INotifyPropertyChanged
     {
         string _AmountText;
-        Network _Network => DependencyService.Get<IWalletService>().GetNetwork();
+        Network Network => DependencyService.Get<IWalletService>().GetNetwork();
 
         public uint256 Id { get; set; }
         public string IdText { get; set; }
@@ -174,8 +174,8 @@ namespace HodlWallet.Core.Models
         string GetAddress()
         {
             return TransactionData.IsSend == true
-                ? TransactionData.SentScriptPubKey.GetDestinationAddress(_Network).ToString()
-                : TransactionData.ScriptPubKey.GetDestinationAddress(_Network).ToString();
+                ? TransactionData.SentScriptPubKey.GetDestinationAddress(Network).ToString()
+                : TransactionData.ScriptPubKey.GetDestinationAddress(Network).ToString();
         }
 
         string GetAddressText()
@@ -216,7 +216,7 @@ namespace HodlWallet.Core.Models
 
             string totalWithFees = (totalAmount + totalFees).Normalize().ToString();
 
-            return $"{totalWithFees} ({Amount.Normalize().ToString()} + {totalFees})";
+            return $"{totalWithFees} ({Amount.Normalize()} + {totalFees})";
         }
 
         string GetAddressTitleText()

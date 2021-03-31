@@ -47,9 +47,10 @@ namespace HodlWallet.Core.Services
 {
     public class PrecioService : IPrecioService, INotifyPropertyChanged
     {
-        public IPrecioHttpService _PrecioHttpService => RestService.For<IPrecioHttpService>(Constants.PRECIO_HOST_URL);
-        string _WebSocketServerBaseUrl = Constants.PRECIO_WS_HOST_URL + "/{0}";
-        string[] _Channels => new string[]
+        public IPrecioHttpService PrecioHttpService => RestService.For<IPrecioHttpService>(Constants.PRECIO_HOST_URL);
+
+        readonly string webSocketServerBaseUrl = Constants.PRECIO_WS_HOST_URL + "/{0}";
+        string[] Channels => new string[]
         {
             "btc-price",
             "exchanges-leaderboard",
@@ -61,10 +62,11 @@ namespace HodlWallet.Core.Services
             "btc-1y-change",
             "btc-all-change"
         };
-        Dictionary<string, ClientWebSocket> _WebSockets;
 
-        int _BtcPriceDelay = 2_500; // 2.5 seconds, time of the animation as well
-        int _HttpRequestsDelay = 30_000; // 30 seconds
+        readonly Dictionary<string, ClientWebSocket> webSockets;
+
+        readonly int btcPriceDelay = 2_500; // 2.5 seconds, time of the animation as well
+        readonly int httpRequestsDelay = 30_000; // 30 seconds
 
         BtcPriceEntity _BtcPrice;
         public BtcPriceEntity BtcPrice
@@ -182,7 +184,7 @@ namespace HodlWallet.Core.Services
         {
             PropertyChanged += delegate { };
 
-            _WebSockets = new Dictionary<string, ClientWebSocket>();
+            webSockets = new Dictionary<string, ClientWebSocket>();
         }
 
         public void Init()
@@ -229,8 +231,8 @@ namespace HodlWallet.Core.Services
         void InitWebSocketList()
         {
             // Insert each channel with each web socket
-            foreach (var channel in _Channels)
-                _WebSockets[channel] = new ClientWebSocket();
+            foreach (var channel in Channels)
+                webSockets[channel] = new ClientWebSocket();
         }
 
         void HttpDataFetchConnect()
@@ -248,7 +250,7 @@ namespace HodlWallet.Core.Services
                 {
                     FetchPricesForAllPeriods();
 
-                    await Task.Delay(_HttpRequestsDelay);
+                    await Task.Delay(httpRequestsDelay);
                 }
             }, TaskCreationOptions.LongRunning, CancellationToken.None);
 
@@ -258,7 +260,7 @@ namespace HodlWallet.Core.Services
                 {
                     await FetchRate();
 
-                    await Task.Delay(_BtcPriceDelay);
+                    await Task.Delay(btcPriceDelay);
                 }
             }, TaskCreationOptions.LongRunning, CancellationToken.None);
         }
@@ -268,7 +270,7 @@ namespace HodlWallet.Core.Services
             //foreach (var period in new string[] { "1h", "1d", "1w", "1m", "1y", "All" })
             foreach (var period in new string[] { "1d", "1w", "1m", "1y" })
             {
-                var prices = _PrecioHttpService.GetPrecioByPeriod(period).Result;
+                var prices = PrecioHttpService.GetPrecioByPeriod(period).Result;
 
                 if (prices != null)
                 {
@@ -303,14 +305,14 @@ namespace HodlWallet.Core.Services
 
         async Task FetchRate()
         {
-            Rate = (await _PrecioHttpService.GetRates()).SingleOrDefault(r => r.Code == "USD");
+            Rate = (await PrecioHttpService.GetRates()).SingleOrDefault(r => r.Code == "USD");
 
-            Debug.WriteLine($"[FetchRate] Got rate {Rate.Rate.ToString("C")}");
+            Debug.WriteLine($"[FetchRate] Got rate {Rate.Rate:C}");
         }
 
         async Task WebSocketConnect()
         {
-            if (_WebSockets.Count == 0) InitWebSocketList();
+            if (webSockets.Count == 0) InitWebSocketList();
 
             // Connect to each websocket
             List<Task> connectionTasks = GetConnectionTasks();
@@ -321,17 +323,17 @@ namespace HodlWallet.Core.Services
 
         void PrintStatuses()
         {
-            foreach (KeyValuePair<string, ClientWebSocket> entry in _WebSockets)
-                Debug.WriteLine($"[WebSocketConnect] Channel ({entry.Key}) status {entry.Value.State.ToString()}");
+            foreach (KeyValuePair<string, ClientWebSocket> entry in webSockets)
+                Debug.WriteLine($"[WebSocketConnect] Channel ({entry.Key}) status {entry.Value.State}");
         }
 
         List<Task> GetConnectionTasks()
         {
             // Connect to each websocket
-            List<Task> connectionTasks = new List<Task> { };
-            foreach (KeyValuePair<string, ClientWebSocket> entry in _WebSockets)
+            List<Task> connectionTasks = new() { };
+            foreach (KeyValuePair<string, ClientWebSocket> entry in webSockets)
             {
-                var webSocketUrl = new Uri(string.Format(_WebSocketServerBaseUrl, entry.Key));
+                var webSocketUrl = new Uri(string.Format(webSocketServerBaseUrl, entry.Key));
 
                 connectionTasks.Add(
                     Task.Run(async () =>
@@ -352,14 +354,14 @@ namespace HodlWallet.Core.Services
                                 }
                                 catch (Exception e)
                                 {
-                                    Debug.WriteLine($"Error {e.ToString()}");
+                                    Debug.WriteLine($"Error {e}");
                                     Debug.WriteLine($"Reconnecting to {entry.Key}'s channel");
 
                                     cts = new CancellationTokenSource();
                                     await entry.Value.ConnectAsync(webSocketUrl, cts.Token);
                                 }
 
-                                int amountToWaitInMilliseconds = _BtcPriceDelay; // 2.5 Seconds for btc-price
+                                int amountToWaitInMilliseconds = btcPriceDelay; // 2.5 Seconds for btc-price
                                 //if (entry.Key != "btc-price")
                                 //    amountToWaitInMilliseconds = _WebSocketMessageDelay; // 5 Minutes for everything else
 

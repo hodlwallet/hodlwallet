@@ -59,8 +59,8 @@ namespace HodlWallet.Core.Models
 
     public class PricesEntity
     {
-        SKColor _Color => ((Color)Application.Current.Resources["TextSuccess"]).ToSKColor();
-        SKColor _ChartBackgroundColor => ((Color)Application.Current.Resources["BackgroundPrimary"]).ToSKColor();
+        SKColor Color => ((Color)Application.Current.Resources["TextSuccess"]).ToSKColor();
+        SKColor ChartBackgroundColor => ((Color)Application.Current.Resources["BackgroundPrimary"]).ToSKColor();
 
         [JsonProperty("meta")]
         public MetaEntity Meta { get; set; }
@@ -79,14 +79,14 @@ namespace HodlWallet.Core.Models
                 Entries = ToEntries(),
                 MinValue = (float)Meta.Low.Price + 100.0f,
                 MaxValue = (float)Meta.High.Price + 100.0f,
-                BackgroundColor = _ChartBackgroundColor
+                BackgroundColor = ChartBackgroundColor
             };
         }
 
         public IEnumerable<ChartEntry> ToEntries()
         {
             // Add first item
-            yield return GetChartEntry(Prices[0], withValueLabel: true);
+            yield return GetChartEntry(Prices[0]);
 
             if (Prices.Count <= 100)
             {
@@ -104,17 +104,15 @@ namespace HodlWallet.Core.Models
             }
 
             // Add last item
-            yield return GetChartEntry(Prices[Prices.Count - 1], withValueLabel: true);
+            yield return GetChartEntry(Prices[^1]);
         }
 
-        ChartEntry GetChartEntry(PriceEntity priceEntity, bool withValueLabel = false)
+        ChartEntry GetChartEntry(PriceEntity priceEntity)
         {
             var price = priceEntity.Price;
             return new ChartEntry((float)price)
             {
-                //Label = withValueLabel ? price.ToString("C") : null,
-                Color = _Color,
-                //ValueLabel = withValueLabel ? price.ToString("C") : null,
+                Color = Color
             };
         }
     }

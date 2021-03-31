@@ -377,7 +377,7 @@ namespace HodlWallet.Core.Services
         public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, long feeSatsPerByte, string password)
         {
             // TODO
-            Money btcAmount = new Money(amount, MoneyUnit.BTC);
+            Money btcAmount = new(amount, MoneyUnit.BTC);
             Transaction tx = null;
             decimal fees = 0.0m;
 
@@ -413,13 +413,13 @@ namespace HodlWallet.Core.Services
             return network;
         }
 
-        string GetConfigFile(string fileName)
-        {
-            string configFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), fileName);
+        //string GetConfigFile(string fileName)
+        //{
+        //    string configFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), fileName);
 
-            Logger?.Information("Getting config file: {configFileName}", configFileName);
+        //    Logger?.Information("Getting config file: {configFileName}", configFileName);
 
-            return configFileName;
-        }
+        //    return configFileName;
+        //}
     }
 }

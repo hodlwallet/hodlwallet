@@ -75,20 +75,12 @@ namespace HodlWallet.Core.Services
 
         public void ChangeRelease(Release release)
         {
-            CurrentRelease = release;
-
-            switch (release)
+            CurrentFeatures = release switch
             {
-                case Release.AllFeatures:
-                    CurrentFeatures = GetAllFeatures();
-                    break;
-                case Release.Release1:
-                    CurrentFeatures = RELEASE1_FEATURES;
-                    break;
-                default:
-                    CurrentFeatures = GetAllFeatures();
-                    break;
-            }
+                Release.AllFeatures => GetAllFeatures(),
+                Release.Release1 => RELEASE1_FEATURES,
+                _ => GetAllFeatures(),
+            };
         }
 
         public bool IsFeatureEnabled(Feature feature)
@@ -118,13 +110,12 @@ namespace HodlWallet.Core.Services
 
         public string FriendlyReleaseName(Release release)
         {
-            switch (release)
+            return release switch
             {
-                case Release.AllFeatures: return "All Features";
-                case Release.Release1: return "Release 1";
-                
-                default: return release.ToString();
-            }
+                Release.AllFeatures => "All Features",
+                Release.Release1 => "Release 1",
+                _ => release.ToString(),
+            };
         }
 
         private FeatureSwitchingKeyPairValue<Feature>[] GetAllFeatures()
