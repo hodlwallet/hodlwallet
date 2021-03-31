@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             x:Class="HodlWallet.UI.Views.AccountSettingsView"
+             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <vm:SettingsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <FlexLayout>
+                <ScrollView x:Name="MenuScroll">
+                    <FlexLayout Direction="Column">
+                        <BoxView FlexLayout.Grow="2" />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <Button x:Name="BackupMnemonic"
+                                Style="{DynamicResource SettingsButton}"
+                                Clicked="BackupMnemonic_Clicked" />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <Button x:Name="ResyncWallet"
+                                Style="{DynamicResource SettingsButton}"
+                                Clicked="ResyncWallet_Clicked" />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <Button x:Name="RestoreWallet"
+                                Style="{DynamicResource SettingsButton}"
+                                Clicked="RestoreWallet_Clicked" />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <Button x:Name="WipeWallet"
+                                Style="{DynamicResource SettingsButton}"
+                                Clicked="WipeWallet_Clicked" />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <!-- Extra space -->
+                        <BoxView FlexLayout.Grow="3" />
+
+                        <Label x:Name="BuildDate"
+                               Style="{StaticResource CustomLabel}"
+                               FontSize="Micro"
+                               FlexLayout.AlignSelf="Center"
+                               FlexLayout.Grow="1">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BuildDate_Tapped"
+                                                      NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </FlexLayout>
+                </ScrollView>
+            </FlexLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -30,10 +30,8 @@
         <Folder Include="Core\Models\" />
         <Folder Include="Core\Services\" />
         <Folder Include="Core\ViewModels\" />
-        <Folder Include="UI\Views\" />
         <Folder Include="UI\Extensions\" />
         <Folder Include="UI\Locale\" />
-        <Folder Include="UI\Controls\" />
         <Folder Include="Core\Utils\" />
         <Folder Include="UI\Converters\" />
         <Folder Include="Core\Interfaces\" />
@@ -82,6 +80,9 @@
         <EmbeddedResource Update="UI\AppShell.xaml">
           <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
+        <EmbeddedResource Update="UI\Controls\FlyoutHeader.xaml">
+          <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
         <EmbeddedResource Update="UI\Locale\LocaleResources.resx">
             <LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>
             <Generator>PublicResXFileCodeGenerator</Generator>
@@ -97,6 +98,9 @@
         <Compile Update="UI\Views\RecoverWalletEntryView.xaml.cs">
             <DependentUpon>RecoverWalletEntryView.xaml</DependentUpon>
         </Compile>
+        <Compile Update="UI\Views\AccountSettingsView.xaml.cs">
+          <DependentUpon>AccountSettingsView.xaml</DependentUpon>
+        </Compile>
         <Compile Update="UI\Views\SettingsView.xaml.cs">
             <DependentUpon>SettingsView.xaml</DependentUpon>
         </Compile>
@@ -105,6 +109,9 @@
         <EmbeddedResource Update="UI\Locale\LocaleResources.es.resx">
             <Generator>PublicResXFileCodeGenerator</Generator>
             <LastGenOutput>LocaleResources.es.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="UI\Views\Page1.xaml">
+          <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>

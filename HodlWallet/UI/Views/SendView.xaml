@@ -140,10 +140,11 @@
                                                  MaximumTrackColor="{DynamicResource TextPrimary}"
                                                  Maximum="100"
                                                  Value="{Binding SliderValue}">
+                                <!--TODO This doesn't work with AppShell:
                                 <Slider.Behaviors>
                                     <behaviors:EventToCommandBehavior EventName="DragCompleted"
                                                                       Command="{Binding OnSliderValueChangedCommand}" />
-                                </Slider.Behaviors>
+                                </Slider.Behaviors>-->
                             </renderers:FeeSlider>
 
                             <Label Text="Fee (sats/byte)"

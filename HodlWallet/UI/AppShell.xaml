@@ -1,5 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       x:Class="HodlWallet.UI.AppShell">
+       x:Class="HodlWallet.UI.AppShell"
+       xmlns:views="clr-namespace:HodlWallet.UI.Views"
+       xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
+       xmlns:ui="clr-namespace:HodlWallet.UI"
+       x:DataType="ui:AppShell">
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <ShellContent Route="page1"
+                    Title="Page1"
+                    Icon="send_tab.png">
+        <ShellContent.Content>
+            <views:Page1 />
+        </ShellContent.Content>
+    </ShellContent>
+
+    <ShellContent Route="send"
+                  Title="Send"
+                  TabIndex="1"
+                  Icon="send_tab.png">
+        <ShellContent.Content>
+            <views:SendView />
+        </ShellContent.Content>
+    </ShellContent>
+
+    <!--<ShellContent Route="send" Title="Send" Icon="send.png" ContentTemplate="{DataTemplate views:SendView}" />-->
 </Shell>

@@ -46,27 +46,27 @@ namespace HodlWallet.UI
 
             InitializeComponent();
 
-            //MainPage = new AppShell();
+            MainPage = new AppShell();
 
-            RegisterServices();
+            //RegisterServices();
 
-            if (UserDidSetup())
-            {
-                MainPage = new NavigationPage(new LoginView());
+            //if (UserDidSetup())
+            //{
+            //    MainPage = new NavigationPage(new LoginView());
 
-                return;
-            }
+            //    return;
+            //}
 
-            CollectExistingKeys();
+            //CollectExistingKeys();
 
-            if (UserDidSetup())
-            {
-                MainPage = new NavigationPage(new LoginView());
+            //if (UserDidSetup())
+            //{
+            //    MainPage = new NavigationPage(new LoginView());
 
-                return;
-            }
+            //    return;
+            //}
 
-            MainPage = new NavigationPage(new OnboardView());
+            //MainPage = new NavigationPage(new OnboardView());
         }
 
         protected override async void OnStart()
@@ -98,13 +98,13 @@ namespace HodlWallet.UI
             //    TaskScheduler.Default
             //);
 
-            new Thread(new ThreadStart(() => {
-                WalletService.InitializeWallet();
-            })).Start();
+            //new Thread(new ThreadStart(() => {
+            //    WalletService.InitializeWallet();
+            //})).Start();
 
-            new Thread(new ThreadStart(() => {
-                PrecioService.Init();
-            })).Start();
+            //new Thread(new ThreadStart(() => {
+            //    PrecioService.Init();
+            //})).Start();
 
             await Task.Delay(10);
         }

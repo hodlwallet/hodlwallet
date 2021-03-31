@@ -35,8 +35,8 @@ namespace HodlWallet.UI.Controls
 {
     public partial class PromptView : ContentView
     {
-        Color _TextPrimary = (Color)Application.Current.Resources["TextPrimary"];
-        double _QuestionFrameTopMargin => (DeviceDisplay.MainDisplayInfo.Height / 2) - (QuestionFrame.Height * 2);
+        readonly Color textPrimary = (Color)Application.Current.Resources["TextPrimary"];
+        double QuestionFrameTopMargin => (DeviceDisplay.MainDisplayInfo.Height / 2) - (QuestionFrame.Height * 2);
 
         public enum PromptResponses
         {
@@ -45,18 +45,18 @@ namespace HodlWallet.UI.Controls
             Cancel
         }
 
-        PromptResponses _PromptResponse = PromptResponses.NoReponse;
+        PromptResponses promptResponse = PromptResponses.NoReponse;
         public PromptResponses PromptResponse
         {
-            get => _PromptResponse;
+            get => promptResponse;
             set
             {
-                _PromptResponse = value;
+                promptResponse = value;
 
-                if (_PromptResponse == PromptResponses.Ok)
+                if (promptResponse == PromptResponses.Ok)
                     Responded.Invoke(this, true);
 
-                if (_PromptResponse == PromptResponses.Cancel)
+                if (promptResponse == PromptResponses.Cancel)
                     Responded.Invoke(this, false);
             }
         }
@@ -119,7 +119,7 @@ namespace HodlWallet.UI.Controls
         {
             InitializeComponent();
 
-            QuestionFrame.Margin = new Thickness(0, _QuestionFrameTopMargin, 0, 0);
+            QuestionFrame.Margin = new Thickness(0, QuestionFrameTopMargin, 0, 0);
 
             Title = title;
             Message = message ?? string.Empty;
@@ -129,7 +129,7 @@ namespace HodlWallet.UI.Controls
 
             if (string.IsNullOrEmpty(cancelButton))
             {
-                OkButton.TextColor = _TextPrimary;
+                OkButton.TextColor = textPrimary;
                 CancelButton.IsVisible = false;
             }
             else
@@ -196,8 +196,8 @@ namespace HodlWallet.UI.Controls
 
             MessagingCenter.Send(this, "ShowTabbar");
 
-            var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, _QuestionFrameTopMargin);
-            animation.Commit(this, "ClosePromptAnimation", 16, 350, Easing.SinOut, (v, c) => QuestionFrame.Margin = new Thickness(0, _QuestionFrameTopMargin, 0, 0), () =>
+            var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, QuestionFrameTopMargin);
+            animation.Commit(this, "ClosePromptAnimation", 16, 350, Easing.SinOut, (v, c) => QuestionFrame.Margin = new Thickness(0, QuestionFrameTopMargin, 0, 0), () =>
             {
                 animationTaskSource.SetResult(false);
                 return false;
