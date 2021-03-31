@@ -110,9 +110,6 @@
             <Generator>PublicResXFileCodeGenerator</Generator>
             <LastGenOutput>LocaleResources.es.Designer.cs</LastGenOutput>
         </EmbeddedResource>
-        <EmbeddedResource Update="UI\Views\Page1.xaml">
-          <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-        </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
         <Compile Update="UI\Locale\LocaleResources.es.Designer.cs">

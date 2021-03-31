@@ -81,8 +81,6 @@ namespace HodlWallet.UI
             Routes.Add("receive", typeof(ReceiveView));
             Routes.Add("account-settings", typeof(AccountSettingsView));
 
-            Routes.Add("page1", typeof(Page1));
-
             foreach (var item in Routes)
                 Routing.RegisterRoute(item.Key, item.Value);
         }
