@@ -52,23 +52,36 @@ namespace HodlWallet.UI
             InitializeComponent();
             RegisterRoutes();
             SetupAccounts();
+            SetupDefaultTab();
+        }
+
+        void SetupDefaultTab()
+        {
+            ChangeTabsTo("homeTab");
+        }
+
+        void ChangeTabsTo(string tabName)
+        {
+            Tab tab = tabName switch
+            {
+                "homeTab" => homeTab,
+                "receiveTab" => receiveTab,
+                "sendTab" => sendTab,
+                "accountSettingsTab" => accountSettingsTab,
+                _ => homeTab,
+            };
+
+            CurrentItem.CurrentItem = tab;
         }
 
         void SetupAccounts()
         {
-            //ShellSection accountsShellSection = new()
-            //{
-            //    Title = "Accounts"
-            //};
-
             foreach (var item in Accounts)
             {
                 MenuItem mi = new() { Text = item, Command = GoToAccountCommand, CommandParameter = item };
 
                 Items.Add(mi);
             }
-
-            //Items.Add(accountsShellSection);
         }
 
         void RegisterRoutes()

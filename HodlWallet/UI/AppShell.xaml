@@ -11,7 +11,8 @@
     </Shell.FlyoutHeader>
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <Tab Route="send"
+        <Tab x:Name="sendTab"
+             Route="send"
              Icon="send_tab.png"
              FlyoutItemIsVisible="False">
             <ShellContent>
@@ -19,7 +20,8 @@
             </ShellContent>
         </Tab>
 
-        <Tab Route="home"
+        <Tab x:Name="homeTab"
+             Route="home"
              Icon="home_tab.png"
              FlyoutItemIsVisible="False">
             <ShellContent>
@@ -27,7 +29,8 @@
             </ShellContent>
         </Tab>
 
-        <Tab Route="receive"
+        <Tab x:Name="receiveTab"
+             Route="receive"
              Icon="receive_tab.png"
              FlyoutItemIsVisible="False">
             <ShellContent>
@@ -35,7 +38,8 @@
             </ShellContent>
         </Tab>
 
-        <Tab Route="account-settings"
+        <Tab x:Name="accountSettingsTab"
+             Route="account-settings"
              Icon="settings_tab.png"
              FlyoutItemIsVisible="False">
             <ShellContent>
@@ -43,30 +47,4 @@
             </ShellContent>
         </Tab>
     </FlyoutItem>
-
-    <!--<ShellContent Route="send"
-                  Title="Send"
-                  Icon="send_tab.png">
-        <views:SendView />
-    </ShellContent>
-
-    <ShellContent Route="home"
-                  Title="Home"
-                  Icon="home_tab.png">
-        <views:HomeView />
-    </ShellContent>
-
-    <ShellContent Route="receive"
-                  Title="Receive"
-                  Icon="receive_tab.png">
-        <views:ReceiveView />
-    </ShellContent>
-
-    <ShellContent Route="account-settings"
-                  Title="Settings"
-                  Icon="settings_tab.png">
-        <views:AccountSettingsView />
-    </ShellContent>-->
-
-    <!--<ShellContent Route="send" Title="Send" Icon="send.png" ContentTemplate="{DataTemplate views:SendView}" />-->
 </Shell>
