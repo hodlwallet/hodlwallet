@@ -11,37 +11,33 @@
     </Shell.FlyoutHeader>
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <Tab Title="Send"
-            Route="send"
-            Icon="send_tab.png"
-            FlyoutItemIsVisible="False">
+        <Tab Route="send"
+             Icon="send_tab.png"
+             FlyoutItemIsVisible="False">
             <ShellContent>
                 <views:SendView />
             </ShellContent>
         </Tab>
 
-        <Tab Title="Home"
-            Route="home"
-            Icon="home_tab.png"
-            FlyoutItemIsVisible="False">
+        <Tab Route="home"
+             Icon="home_tab.png"
+             FlyoutItemIsVisible="False">
             <ShellContent>
                 <views:HomeView />
             </ShellContent>
         </Tab>
 
-        <Tab Title="Receive"
-            Route="receive"
-            Icon="receive_tab.png"
-            FlyoutItemIsVisible="False">
+        <Tab Route="receive"
+             Icon="receive_tab.png"
+             FlyoutItemIsVisible="False">
             <ShellContent>
                 <views:ReceiveView />
             </ShellContent>
         </Tab>
 
-        <Tab Title="Settings"
-            Route="account-settings"
-            Icon="settings_tab.png"
-            FlyoutItemIsVisible="False">
+        <Tab Route="account-settings"
+             Icon="settings_tab.png"
+             FlyoutItemIsVisible="False">
             <ShellContent>
                 <views:AccountSettingsView />
             </ShellContent>
