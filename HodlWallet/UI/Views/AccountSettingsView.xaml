@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              x:Class="HodlWallet.UI.Views.AccountSettingsView"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
-             NavigationPage.HasNavigationBar="False">
+             Title="Account Settings"
+             BackgroundColor="{DynamicResource BackgroundPrimary}">
     <ContentPage.BindingContext>
         <vm:SettingsViewModel />
     </ContentPage.BindingContext>

@@ -3,11 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:Class="HodlWallet.UI.Views.ReceiveView"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
-             NavigationPage.HasNavigationBar="False"
-             ios:Page.UseSafeArea="True">
+             Title="Receive"
+             BackgroundColor="{DynamicResource BackgroundPrimary}">
     <ContentPage.BindingContext>
         <vm:ReceiveViewModel />
     </ContentPage.BindingContext>

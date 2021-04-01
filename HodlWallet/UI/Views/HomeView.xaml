@@ -1,17 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:Class="HodlWallet.UI.Views.HomeView"
              xmlns:pc="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
-             ios:Page.UseSafeArea="True">
+             BackgroundColor="{DynamicResource BackgroundPrimary}">
+    <ContentPage.Resources>
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="White"/>
+            <Setter Property="BarTextColor" Value="OrangeRed" />
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
+    <Shell.TitleView>
+        <Label Text="Home" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+    </Shell.TitleView>
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
@@ -118,7 +125,7 @@
                     <controls:TransactionCollectionView FlexLayout.Grow="1" />
                 </FlexLayout>
 
-                <!--<FlexLayout AlignItems="Stretch"
+                <FlexLayout AlignItems="Stretch"
                             Direction="Row"
                             FlexLayout.Grow="4">
                     <Button x:Name="Send"
@@ -134,7 +141,7 @@
                             BackgroundColor="{DynamicResource BackgroundSecondary}"
                             FontSize="Large"
                             FlexLayout.Grow="1" />
-                </FlexLayout>-->
+                </FlexLayout>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

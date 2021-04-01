@@ -78,7 +78,13 @@ namespace HodlWallet.UI
         {
             foreach (var item in Accounts)
             {
-                MenuItem mi = new() { Text = item, Command = GoToAccountCommand, CommandParameter = item };
+                MenuItem mi = new()
+                {
+                    Text = item,
+                    Command = GoToAccountCommand,
+                    CommandParameter = item,
+                    StyleClass = new List<string> { "MenuItemLabelClass" },
+                };
 
                 Items.Add(mi);
             }

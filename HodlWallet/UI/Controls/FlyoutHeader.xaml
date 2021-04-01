@@ -4,8 +4,8 @@
              x:Class="HodlWallet.UI.Controls.FlyoutHeader">
     <ContentView.Content>
         <Grid HeightRequest="30">
-            <Label Text="Accounts"
-                   TextColor="Black"
+            <Label Text="ACCOUNTS"
+                   TextColor="{DynamicResource TextSecondary}"
                    VerticalTextAlignment="Center"
                    HorizontalTextAlignment="Center" />
         </Grid>

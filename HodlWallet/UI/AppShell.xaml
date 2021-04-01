@@ -13,7 +13,7 @@
         <Style x:Key="BaseStyle" TargetType="Element">
             <Setter Property="Shell.BackgroundColor" Value="{StaticResource BackgroundPrimary}" />
             <Setter Property="Shell.ForegroundColor" Value="{ DynamicResource TextSecondary}" />
-            <Setter Property="Shell.TitleColor" Value="{DynamicResource SelectedTab}" />
+            <Setter Property="Shell.TitleColor" Value="{DynamicResource TextPrimary}" />
             <Setter Property="Shell.DisabledColor" Value="{DynamicResource TextSecondary}" />
             <Setter Property="Shell.UnselectedColor" Value="{DynamicResource TextSecondary}" />
             <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource BackgroundPrimary}" />
@@ -22,6 +22,11 @@
             <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource SelectedTab}"/>
         </Style>
         <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+
+        <Style TargetType="Label" Class="MenuItemLabelClass">
+            <Setter Property="TextColor"
+                    Value="{DynamicResource TextPrimary}" />
+        </Style>
     </Shell.Resources>
 
     <Shell.FlyoutHeader>

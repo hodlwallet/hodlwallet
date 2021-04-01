@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:renderers="clr-namespace:HodlWallet.UI.Renderers"
              xmlns:behaviors="clr-namespace:HodlWallet.Core.Behaviors"
+             Title="Send"
              x:Class="HodlWallet.UI.Views.SendView"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
-             ios:Page.UseSafeArea="True">
+             BackgroundColor="{DynamicResource BackgroundPrimary}">
     <ContentPage.BindingContext>
         <vm:SendViewModel />
     </ContentPage.BindingContext>
