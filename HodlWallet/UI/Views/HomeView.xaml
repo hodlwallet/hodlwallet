@@ -118,7 +118,7 @@
                     <controls:TransactionCollectionView FlexLayout.Grow="1" />
                 </FlexLayout>
 
-                <FlexLayout AlignItems="Stretch"
+                <!--<FlexLayout AlignItems="Stretch"
                             Direction="Row"
                             FlexLayout.Grow="4">
                     <Button x:Name="Send"
@@ -134,7 +134,7 @@
                             BackgroundColor="{DynamicResource BackgroundSecondary}"
                             FontSize="Large"
                             FlexLayout.Grow="1" />
-                </FlexLayout>
+                </FlexLayout>-->
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

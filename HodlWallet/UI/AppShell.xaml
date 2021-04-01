@@ -2,10 +2,28 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="HodlWallet.UI.AppShell"
+       BackgroundColor="{DynamicResource BackgroundSecondary}"
+       FlyoutBackgroundColor="{DynamicResource BackgroundSecondary}"
+       Shell.NavBarHasShadow="False"
        xmlns:views="clr-namespace:HodlWallet.UI.Views"
        xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
        xmlns:ui="clr-namespace:HodlWallet.UI"
        x:DataType="ui:AppShell">
+    <Shell.Resources>
+        <Style x:Key="BaseStyle" TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="{StaticResource BackgroundPrimary}" />
+            <Setter Property="Shell.ForegroundColor" Value="{ DynamicResource TextSecondary}" />
+            <Setter Property="Shell.TitleColor" Value="{DynamicResource SelectedTab}" />
+            <Setter Property="Shell.DisabledColor" Value="{DynamicResource TextSecondary}" />
+            <Setter Property="Shell.UnselectedColor" Value="{DynamicResource TextSecondary}" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource BackgroundPrimary}" />
+            <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource TextPrimary}"/>
+            <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource TextSecondary}"/>
+            <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource SelectedTab}"/>
+        </Style>
+        <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+    </Shell.Resources>
+
     <Shell.FlyoutHeader>
         <controls:FlyoutHeader />
     </Shell.FlyoutHeader>

@@ -67,8 +67,8 @@ namespace HodlWallet.UI.Views
 
         void SetLabels()
         {
-            Send.Text = LocaleResources.Send_title;
-            Receive.Text = LocaleResources.Receive_title;
+            //Send.Text = LocaleResources.Send_title;
+            //Receive.Text = LocaleResources.Receive_title;
         }
 
         void InitializeDisplayedCurrency()
