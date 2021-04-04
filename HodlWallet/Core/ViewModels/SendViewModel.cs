@@ -112,7 +112,6 @@ namespace HodlWallet.Core.ViewModels
         public ICommand ScanCommand { get; }
         public ICommand PasteCommand { get; }
         public ICommand SendCommand { get; }
-        public ICommand OnSliderValueChangedCommand { get; }
         public ICommand SwitchCurrencyCommand { get; }
 
         public SendViewModel()
@@ -120,7 +119,6 @@ namespace HodlWallet.Core.ViewModels
             ScanCommand = new Command(Scan);
             PasteCommand = new Command(() => _ = Paste());
             SendCommand = new Command(Send);
-            OnSliderValueChangedCommand = new Command(() => _ = SetSliderValue());
             SwitchCurrencyCommand = new Command(SwitchCurrency);
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
@@ -128,6 +126,33 @@ namespace HodlWallet.Core.ViewModels
             Task.Run(SetSliderValue);
 
             SubscribeToMessages();
+        }
+
+        public async Task SetSliderValue()
+        {
+            var currentFees = await _PrecioHttpService.GetFeeEstimator();
+
+            if (SliderValue <= (MAX_SLIDER_VALUE * 0.25))
+            {
+                SliderValue = 0;
+                Fee = currentFees.SlowSatKB / 1000;
+                EstConfirmationText = currentFees.SlowTime;
+            }
+            else if (SliderValue > (MAX_SLIDER_VALUE * 0.25)
+                     && SliderValue < (MAX_SLIDER_VALUE * 0.75))
+            {
+                SliderValue = MAX_SLIDER_VALUE * 0.5;
+                Fee = currentFees.NormalSatKB / 1000;
+                EstConfirmationText = currentFees.NormalTime;
+            }
+            else
+            {
+                SliderValue = MAX_SLIDER_VALUE;
+                Fee = currentFees.FastestSatKB / 1000;
+                EstConfirmationText = currentFees.FastestTime;
+            }
+
+            TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, Fee);
         }
 
         void SubscribeToMessages()
@@ -165,33 +190,6 @@ namespace HodlWallet.Core.ViewModels
                 AmountToSendText = $"{AmountToSend:F2}";
                 ISOLabel = "USD($)";
             }
-        }
-
-        async Task SetSliderValue()
-        {
-            var currentFees = await _PrecioHttpService.GetFeeEstimator();
-
-            if (SliderValue <= (MAX_SLIDER_VALUE * 0.25))
-            {
-                SliderValue = 0;
-                Fee = currentFees.SlowSatKB / 1000;
-                EstConfirmationText = currentFees.SlowTime;
-            }
-            else if (SliderValue > (MAX_SLIDER_VALUE * 0.25)
-                     && SliderValue < (MAX_SLIDER_VALUE * 0.75))
-            {
-                SliderValue = MAX_SLIDER_VALUE * 0.5;
-                Fee = currentFees.NormalSatKB / 1000;
-                EstConfirmationText = currentFees.NormalTime;
-            }
-            else
-            {
-                SliderValue = MAX_SLIDER_VALUE;
-                Fee = currentFees.FastestSatKB / 1000;
-                EstConfirmationText = currentFees.FastestTime;
-            }
-
-            TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, Fee);
         }
 
         void Scan()

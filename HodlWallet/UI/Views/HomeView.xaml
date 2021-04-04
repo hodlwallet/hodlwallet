@@ -7,17 +7,15 @@
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              BackgroundColor="{DynamicResource BackgroundPrimary}">
-    <ContentPage.Resources>
-        <Style TargetType="NavigationPage">
-            <Setter Property="BarBackgroundColor" Value="White"/>
-            <Setter Property="BarTextColor" Value="OrangeRed" />
-        </Style>
-    </ContentPage.Resources>
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="price_tag_3_line">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <Shell.TitleView>
-        <Label Text="Home" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+        <Label Text="0.02454691 BTC" VerticalOptions="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource Mono-Bold}" FontSize="Large" />
     </Shell.TitleView>
     <ContentPage.Content>
         <AbsoluteLayout>
@@ -125,7 +123,7 @@
                     <controls:TransactionCollectionView FlexLayout.Grow="1" />
                 </FlexLayout>
 
-                <FlexLayout AlignItems="Stretch"
+                <!--<FlexLayout AlignItems="Stretch"
                             Direction="Row"
                             FlexLayout.Grow="4">
                     <Button x:Name="Send"
@@ -141,7 +139,7 @@
                             BackgroundColor="{DynamicResource BackgroundSecondary}"
                             FontSize="Large"
                             FlexLayout.Grow="1" />
-                </FlexLayout>
+                </FlexLayout>-->
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

@@ -66,7 +66,7 @@ namespace HodlWallet.UI.Views
         {
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitAdded", DigitAdded);
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitRemoved", DigitRemoved);
-            MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", (vm) => _ = IncorrectPinAnimation(vm));
+            MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", IncorrectPinAnimation);
             MessagingCenter.Subscribe<LoginViewModel>(this, "NavigateToRootView", NavigateToRootView);
             MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
         }
@@ -85,7 +85,7 @@ namespace HodlWallet.UI.Views
             ColorDigitTo(index, DigitOffColor);
         }
 
-        async Task IncorrectPinAnimation(LoginViewModel _)
+        async void IncorrectPinAnimation(LoginViewModel _)
         {
             Debug.WriteLine($"[SubscribeToMessage][IncorrectPinAnimation]");
 

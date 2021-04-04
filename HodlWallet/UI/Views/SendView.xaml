@@ -138,12 +138,8 @@
                             <renderers:FeeSlider MinimumTrackColor="{DynamicResource SyncGradientStart}"
                                                  MaximumTrackColor="{DynamicResource TextPrimary}"
                                                  Maximum="100"
+                                                 DragCompleted="FeeSlider_DragCompleted"
                                                  Value="{Binding SliderValue}">
-                                <!--TODO This doesn't work with AppShell:
-                                <Slider.Behaviors>
-                                    <behaviors:EventToCommandBehavior EventName="DragCompleted"
-                                                                      Command="{Binding OnSliderValueChangedCommand}" />
-                                </Slider.Behaviors>-->
                             </renderers:FeeSlider>
 
                             <Label Text="Fee (sats/byte)"
