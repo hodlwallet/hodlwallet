@@ -29,6 +29,8 @@ using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
 using HodlWallet.UI.Locale;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace HodlWallet.UI.Views
 {
@@ -88,9 +90,7 @@ namespace HodlWallet.UI.Views
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<HomeViewModel, TransactionModel>(this, "NavigateToTransactionDetail", NavigateToTransactionDetail);
-
             MessagingCenter.Subscribe<HomeViewModel>(this, "DisplaySearchNotImplementedAlert", DisplaySearchNotImplementedAlert);
-
             MessagingCenter.Subscribe<HomeViewModel>(this, "SwitchCurrency", SwitchCurrency);
         }
 
@@ -102,9 +102,9 @@ namespace HodlWallet.UI.Views
             await Navigation.PushModalAsync(nav);
         }
 
-        void DisplaySearchNotImplementedAlert(HomeViewModel vm)
+        async void DisplaySearchNotImplementedAlert(HomeViewModel vm)
         {
-            _ = this.DisplayToast("Search Not Implemented");
+            await this.DisplayToast("Search Not Implemented");
         }
 
         void PriceButton_Tapped(object sender, EventArgs e)
@@ -124,6 +124,11 @@ namespace HodlWallet.UI.Views
             {
                 BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
             }
+        }
+
+        void Search_Clicked(object sender, EventArgs e)
+        {
+            DisplaySearchNotImplementedAlert(ViewModel);
         }
     }
 }

@@ -225,6 +225,9 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\large-icon.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <BundleResource Include="Resources\search.png" />
+    <BundleResource Include="Resources\search%402x.png" />
+    <BundleResource Include="Resources\search%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

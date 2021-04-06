@@ -11,11 +11,10 @@
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="price_tag_3_line">
-        </ToolbarItem>
+        <ToolbarItem IconImageSource="search" Clicked="Search_Clicked" />
     </ContentPage.ToolbarItems>
     <Shell.TitleView>
-        <Label Text="0.02454691 BTC" VerticalOptions="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource Mono-Bold}" FontSize="Large" />
+        <Label Text="0.02454691 BTC" VerticalOptions="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource Mono-Bold}" FontSize="Large" IsVisible="False" />
     </Shell.TitleView>
     <ContentPage.Content>
         <AbsoluteLayout>
