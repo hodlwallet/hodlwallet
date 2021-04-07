@@ -25,16 +25,24 @@ using System;
 using Xamarin.Forms;
 
 using HodlWallet.UI.Locale;
+using System.Threading.Tasks;
 
 namespace HodlWallet.UI.Views
 {
     public partial class BackupView : ContentPage
     {
+        AppShell appShell;
+
         public BackupView(string action = null)
         {
             InitializeComponent();
             EnableToolBarItems(action);
             SetLabels();
+
+            Task.Run(() =>
+            {
+                appShell = new AppShell();
+            });
         }
 
         void SetLabels()
@@ -73,7 +81,7 @@ namespace HodlWallet.UI.Views
 
         void SkipToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new RootView());
+            Application.Current.MainPage = appShell ?? new AppShell();
         }
     }
 }

@@ -46,15 +46,11 @@ namespace HodlWallet.UI.Views
 
         void CreateButton_Clicked(object sender, EventArgs e)
         {
-            Debug.WriteLine("[CreateButton_Clicked]");
-
             Navigation.PushAsync(new PinPadView());
         }
 
         void RecoverButton_Clicked(object sender, EventArgs e)
         {
-            Debug.WriteLine("[RecoverButton_Clicked]");
-
             Navigation.PushAsync(new RecoverView());
         }
     }

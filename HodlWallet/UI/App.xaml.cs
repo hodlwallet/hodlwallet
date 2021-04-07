@@ -46,13 +46,13 @@ namespace HodlWallet.UI
 
             InitializeComponent();
 
-            //MainPage = new AppShell();
+            SecureStorageService.RemoveAll();
 
             RegisterServices();
 
             if (UserDidSetup())
             {
-                MainPage = new NavigationPage(new LoginView());
+                MainPage = new LoginView();
 
                 return;
             }
@@ -61,12 +61,12 @@ namespace HodlWallet.UI
 
             if (UserDidSetup())
             {
-                MainPage = new NavigationPage(new LoginView());
+                MainPage = new LoginView();
 
                 return;
             }
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new OnboardView());
         }
 
         protected override async void OnStart()

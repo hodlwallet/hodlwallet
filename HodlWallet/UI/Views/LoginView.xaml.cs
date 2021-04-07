@@ -36,7 +36,7 @@ namespace HodlWallet.UI.Views
         Color DigitOnColor => (Color)Application.Current.Resources["InputPinOn"];
         Color DigitOffColor => (Color)Application.Current.Resources["InputPinOff"];
 
-        RootView rootView;
+        AppShell appShell;
 
         LoginViewModel ViewModel => (LoginViewModel)BindingContext;
 
@@ -51,7 +51,7 @@ namespace HodlWallet.UI.Views
             // DOES NOT solve all performance issue, that's related to the
             // HomeView's layout being too complex (tm)
             Task.Run(() =>
-                rootView = new RootView()
+                appShell = new AppShell()
             );
         }
 
@@ -107,7 +107,7 @@ namespace HodlWallet.UI.Views
             Debug.WriteLine($"[SubscribeToMessage][NavigateToRootView]");
 
             // Incase we're faster than light, we call the constructor anyways.
-            Navigation.PushAsync(rootView ?? new RootView());
+            Application.Current.MainPage = appShell ?? new AppShell();
         }
 
         void ResetPin(LoginViewModel _)

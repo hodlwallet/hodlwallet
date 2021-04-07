@@ -252,8 +252,7 @@ namespace HodlWallet.UI.Controls
 
                             grdReSetPin.TranslationX = 0;
 
-                            await Task.Delay(500);
-                            ClearBoxViews();
+                            await ClearBoxViews();
                             grdSetPin.IsVisible = true;
                             grdReSetPin.IsVisible = false;
                         }
@@ -264,8 +263,10 @@ namespace HodlWallet.UI.Controls
             }
         }
 
-        private void ClearBoxViews()
+        private async Task ClearBoxViews()
         {
+            await Task.Delay(500);
+
             foreach (var element in cntViewBoxes.Children)
             {
                 if (element is Grid grid)
