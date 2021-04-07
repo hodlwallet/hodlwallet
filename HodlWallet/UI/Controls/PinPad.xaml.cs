@@ -215,6 +215,7 @@ namespace HodlWallet.UI.Controls
                     PaintBoxView(Color.Orange, _pin1.Length);
                     if (_pin1.Length == 6)
                     {
+                        await Task.Delay(300);
                         grdSetPin.IsVisible = false;
                         grdReSetPin.IsVisible = true;
                     }
@@ -232,6 +233,7 @@ namespace HodlWallet.UI.Controls
                         {
                             // TODO: FIX POPUP STACK ERROR
                             // await Navigation.PushPopupAsync(new SetPin());
+
                             Command?.Execute(_pin1);
                         }
                         else
