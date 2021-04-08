@@ -133,7 +133,7 @@ namespace HodlWallet.UI.Views
 
         void NavigateToRootView(RecoverWalletEntryViewModel _)
         {
-            Navigation.PushAsync(new RootView());
+            Application.Current.MainPage = new AppShell();
         }
     }
 }
