@@ -44,7 +44,7 @@ namespace HodlWallet.UI
         public Dictionary<string, Type> Routes { get; private set; } = new();
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand CreateCommand => new Command(async () => await Launcher.OpenAsync("//create"));
-        public ICommand GoToAccountCommand => new Command<string>((account_id) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{account_id}"));
+        public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
 
 
         public AppShell()

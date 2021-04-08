@@ -73,7 +73,7 @@ namespace HodlWallet.Core.Services
         {
             Guard.NotEmpty(mnemonic, nameof(mnemonic));
 
-            if (! Hd.IsValidChecksum(mnemonic))
+            if (!Hd.IsValidChecksum(mnemonic))
                 throw new WalletException("Invalid mnemonic the checksum wasn't validated");
 
             Set(MNEMONIC_KEY, mnemonic);
