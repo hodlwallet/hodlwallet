@@ -29,24 +29,31 @@ namespace HodlWallet.Core.Models
 {
     public class BtcPriceEntity
     {
+        // Lowest price in interval
         [JsonProperty("L")]
         public string L { get; set; }
 
+        // Open price in interval
         [JsonProperty("O")]
         public string O { get; set; }
 
+        // Last price time
         [JsonProperty("T")]
         public int T { get; set; }
 
+        // Highest price in interval
         [JsonProperty("H")]
         public string H { get; set; }
 
+        // Current price unformatted
         [JsonProperty("C_RAW")]
         public string CRaw { get; set; }
 
+        // Current price formatted
         [JsonProperty("C")]
         public string C { get; set; }
 
+        // Bitcoin Exchange of the price source
         [JsonProperty("EX")]
         public string Ex { get; set; }
     }
