@@ -14,132 +14,229 @@
         <ToolbarItem IconImageSource="search" Clicked="Search_Clicked" />
     </ContentPage.ToolbarItems>
     <Shell.TitleView>
-        <Label Text="0.02454691 BTC" VerticalOptions="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource Mono-Bold}" FontSize="Large" IsVisible="False" />
+        <Label x:Name="BalanceNavigationTitleLabel" Text="0.02454691 BTC" VerticalOptions="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource Mono-Regular}" FontSize="Medium" Opacity="0.00" />
     </Shell.TitleView>
     <ContentPage.Content>
         <AbsoluteLayout>
-            <FlexLayout Direction="Column"
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="10,0,10,0">
+                <ScrollView x:Name="TransactionsScrollView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Scrolled="TransactionsScrollView_Scrolled">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <FlexLayout Direction="Row">
+                            <StackLayout Orientation="Vertical">
+                                <Label x:Name="AccountNameLabel"
+                                       Text="Account 1"
+                                       Style="{DynamicResource CustomLabel}"
+                                       FontSize="Small"
+                                       TextColor="{DynamicResource TextSecondary}" />
+                                <Label x:Name="BalanceLabel"
+                                       Text="0.02454691 BTC"
+                                       Style="{DynamicResource CustomLabel}"
+                                       FontFamily="{StaticResource Mono-Regular}" />
+                            </StackLayout>
+                            <Label Text="1 BTC = $58,010"
+                                   FlexLayout.Grow="1"
+                                   HorizontalTextAlignment="End"
+                                   Style="{DynamicResource CustomLabel}"
+                                   FontSize="Micro"
+                                   TextColor="{DynamicResource TextSecondary}"
+                                   FontFamily="{DynamicResource Mono-Regular}" />
+                        </FlexLayout>
+
+                        <BoxView HeightRequest="5" />
+
+                        <Label Text="TRANSACTIONS" Style="{DynamicResource CustomLabel}" TextColor="{DynamicResource TextSecondary}" FontSize="Small" />
+
+                        <BoxView HeightRequest="5" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                        <Label Text="TRANSACTIONS" />
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+
+            <!--<FlexLayout Direction="Column"
                         Margin="0, 5, 0, 0">
-                <FlexLayout FlexLayout.Grow="2">
-                    <pc:PancakeView CornerRadius="5"
-                                    FlexLayout.Grow="2">
-                        <FlexLayout Direction="Row"
+                            <FlexLayout FlexLayout.Grow="2">
+                                <FlexLayout Direction="Row"
                                     AlignItems="Center">
-                            <StackLayout Orientation="Horizontal"
+                                    <StackLayout Orientation="Horizontal"
                                          Spacing="0"
                                          FlexLayout.Grow="1">
-                                <BoxView WidthRequest="35" />
-                                <ImageButton x:Name="PriceButton"
+                                        <BoxView WidthRequest="35" />
+                                        <ImageButton x:Name="PriceButton"
                                        Clicked="PriceButton_Tapped"
                                        Source="price_tag_3_line"
                                        Margin="0, 10, 0, 0"
                                        WidthRequest="24"
                                        HeightRequest="24"
                                        VerticalOptions="Start" />
-                            </StackLayout>
+                                    </StackLayout>
 
-                            <StackLayout Orientation="Vertical"
+                                    <StackLayout Orientation="Vertical"
                                          Spacing="0"
                                          FlexLayout.Grow="2">
-                                <ScrollView x:Name="BalanceScrollView"
+                                        <ScrollView x:Name="BalanceScrollView"
                                             Orientation="Vertical"
                                             IsEnabled="False"
                                             VerticalScrollBarVisibility="Never"
                                             HorizontalScrollBarVisibility="Never"
                                             HeightRequest="50">
-                                    <StackLayout Orientation="Vertical">
-                                        <!--<controls:MoneyLabel x:Name="BalanceAmountBTC"
-                                                             Text="{Binding Amount, StringFormat='{0:0.00000000}'}"
-                                                             FontSize="Large"
-                                                             TextColor="{DynamicResource TextPrimary}"
-                                                             FontFamily="{DynamicResource Mono-Bold}"
-                                                             HorizontalOptions="Center" />-->
-                                        <Label x:Name="BalanceAmountBTC"
+                                            <StackLayout Orientation="Vertical">
+                                                <Label x:Name="BalanceAmountBTC"
                                                Text="{Binding Amount, StringFormat='{0:0.00000000}'}"
                                                FontSize="Large"
                                                TextColor="{DynamicResource TextPrimary}"
                                                FontFamily="{DynamicResource Mono-Bold}"
                                                HorizontalOptions="Center" />
-                                        <Label x:Name="BalanceLabel"
+                                                <Label x:Name="BalanceLabel"
                                                Text="btc"
                                                HorizontalOptions="Center"
                                                FontFamily="{StaticResource Mono-Bold}"
                                                TextColor="{DynamicResource TextPrimary}" />
-                                        <!--<controls:MoneyLabel x:Name="BalanceAmountUSD"
-                                                             Text="{Binding AmountFiat, StringFormat='{0:C}'}"
-                                                             FontSize="Large"
-                                                             TextColor="{DynamicResource TextPrimary}"
-                                                             FontFamily="{DynamicResource Mono-Bold}"
-                                                             HorizontalOptions="Center" />-->
-                                        <Label x:Name="BalanceAmountUSD"
+                                                <Label x:Name="BalanceAmountUSD"
                                                              Text="{Binding AmountFiat, StringFormat='{0:C}'}"
                                                              FontSize="Large"
                                                              TextColor="{DynamicResource TextPrimary}"
                                                              FontFamily="{DynamicResource Mono-Bold}"
                                                              HorizontalOptions="Center" />
-                                        <Label Text="usd"
+                                                <Label Text="usd"
                                                HorizontalOptions="Center"
                                                FontFamily="{StaticResource Mono-Bold}"
                                                TextColor="{DynamicResource TextPrimary}" />
-                                    </StackLayout>
-                                </ScrollView>
+                                            </StackLayout>
+                                        </ScrollView>
 
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}"
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}"
                                                           NumberOfTapsRequired="1" />
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
 
-                            <StackLayout FlowDirection="RightToLeft"
+                                    <StackLayout FlowDirection="RightToLeft"
                                          Spacing="0"
                                          Orientation="Horizontal"
                                          FlexLayout.Grow="1">
-                                <BoxView WidthRequest="35"
+                                        <BoxView WidthRequest="35"
                                          FlexLayout.Grow="1" />
-                                <svg:Icon ResourceId="HodlWallet.UI.Assets.search.svg"
+                                        <svg:Icon ResourceId="HodlWallet.UI.Assets.search.svg"
                                           Margin="0, 10, 0, 0"
                                           VerticalOptions="Start"
                                           FlexLayout.AlignSelf="Center"
                                           FlexLayout.Grow="1"
                                           WidthRequest="24"
                                           HeightRequest="24" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SearchCommand}"
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SearchCommand}"
                                                           NumberOfTapsRequired="1" />
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                        </FlexLayout>
-                    </pc:PancakeView>
-                </FlexLayout>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </FlexLayout>
+                            </FlexLayout>
 
-                <FlexLayout Direction="Column"
+                            <FlexLayout Direction="Column"
                             FlexLayout.Grow="14"
                             BackgroundColor="{DynamicResource BackgroundPrimary}">
-                    <controls:SyncProgressBar SyncVisible="{Binding SyncIsVisible}"
+                                <controls:SyncProgressBar SyncVisible="{Binding SyncIsVisible}"
                                               SyncTitle="{Binding SyncTitleText}"
                                               SyncProgress="{Binding SyncCurrentProgress}"
                                               SyncDate="{Binding SyncDateText}" />
-                    <controls:TransactionCollectionView FlexLayout.Grow="1" />
-                </FlexLayout>
-
-                <!--<FlexLayout AlignItems="Stretch"
-                            Direction="Row"
-                            FlexLayout.Grow="4">
-                    <Button x:Name="Send"
-                            Command="{Binding NavigateToSendCommand}"
-                            Style="{DynamicResource CustomButton}"
-                            BackgroundColor="{DynamicResource BackgroundSecondary}"
-                            FontSize="Large"
-                            FlexLayout.Grow="1" />
-                    <BoxView WidthRequest="5" />
-                    <Button x:Name="Receive"
-                            Command="{Binding NavigateToReceiveCommand}"
-                            Style="{DynamicResource CustomButton}"
-                            BackgroundColor="{DynamicResource BackgroundSecondary}"
-                            FontSize="Large"
-                            FlexLayout.Grow="1" />
-                </FlexLayout>-->
-            </FlexLayout>
+                                <controls:TransactionCollectionView FlexLayout.Grow="1" />
+                            </FlexLayout>
+                            </FlexLayout> -->
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

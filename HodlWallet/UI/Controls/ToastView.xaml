@@ -21,5 +21,3 @@
         <TapGestureRecognizer Tapped="Toast_Tapped" NumberOfTapsRequired="1" />
     </Frame.GestureRecognizers>
 </Frame>
-
-<!--AbsoluteLayout.LayoutBounds=".5,-5,.4,.5"-->

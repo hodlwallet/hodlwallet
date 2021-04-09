@@ -68,7 +68,7 @@ namespace HodlWallet.Core.ViewModels
 
             var accounts = _WalletService.Wallet.Accounts;
 
-            foreach(var account in accounts)
+            foreach (var account in accounts)
             {
                 Accounts.Add(AccountModel.FromAccountData(account));
             }
@@ -85,7 +85,7 @@ namespace HodlWallet.Core.ViewModels
             // FIXME this is probably wrong
             //_WalletService.Start();
 
-            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
+            Shell.Current.GoToAsync("home");
         }
     }
 }

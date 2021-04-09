@@ -164,15 +164,15 @@ namespace HodlWallet.Core.ViewModels
         {
             if (_TransactionToBroadcast is null) return;
 
-            var result = await _WalletService.SendTransaction(_TransactionToBroadcast);
+            var (sent, error) = await _WalletService.SendTransaction(_TransactionToBroadcast);
 
-            if (result.Sent == true)
+            if (sent == true)
             {
-                MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
+                await Shell.Current.GoToAsync("home");
             }
             else
             {
-                DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_TRANSACTION_MESSAGE);
+                DisplayProcessAddressErrorAlert($"{Constants.DISPLAY_ALERT_TRANSACTION_MESSAGE}\n{error}");
             }
         }
 

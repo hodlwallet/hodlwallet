@@ -40,8 +40,7 @@ namespace HodlWallet.UI
     public partial class AppShell : Shell
     {
         // XXX
-        public IEnumerable<string> Accounts = new List<string>() { "Account 1", "Account 2" };
-        public Dictionary<string, Type> Routes { get; private set; } = new();
+        public IEnumerable<string> Accounts = new List<string>() { "Account 1", "Account 2", "Account 3" };
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand CreateCommand => new Command(async () => await Launcher.OpenAsync("//create"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
@@ -92,16 +91,12 @@ namespace HodlWallet.UI
 
         void RegisterRoutes()
         {
-            Routes.Add("settings", typeof(SettingsView));
-            Routes.Add("create", typeof(AddAccountView));
-
-            Routes.Add("send", typeof(SendView));
-            Routes.Add("home", typeof(HomeView));
-            Routes.Add("receive", typeof(ReceiveView));
-            Routes.Add("account-settings", typeof(AccountSettingsView));
-
-            foreach (var item in Routes)
-                Routing.RegisterRoute(item.Key, item.Value);
+            Routing.RegisterRoute("settings", typeof(SettingsView));
+            Routing.RegisterRoute("create", typeof(AddAccountView));
+            Routing.RegisterRoute("send", typeof(SendView));
+            Routing.RegisterRoute("home", typeof(HomeView));
+            Routing.RegisterRoute("receive", typeof(ReceiveView));
+            Routing.RegisterRoute("account-settings", typeof(AccountSettingsView));
         }
     }
 }

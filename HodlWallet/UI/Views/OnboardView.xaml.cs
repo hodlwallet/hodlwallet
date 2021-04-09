@@ -26,6 +26,7 @@ using System.Diagnostics;
 using Xamarin.Forms;
 
 using HodlWallet.UI.Locale;
+using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.UI.Views
 {
@@ -52,6 +53,11 @@ namespace HodlWallet.UI.Views
         void RecoverButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new RecoverView());
+        }
+
+        async void Logo_Tapped(object sender, EventArgs e)
+        {
+            await this.DisplayToast("Test");
         }
     }
 }

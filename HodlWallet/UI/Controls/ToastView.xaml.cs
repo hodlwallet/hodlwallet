@@ -56,7 +56,7 @@ namespace HodlWallet.UI.Controls
             {
                 closed = value;
 
-                if (closed) OnClosed.Invoke(this, true);
+                if (closed) OnClosed.Invoke(this, closed);
             }
         }
 

@@ -19,7 +19,7 @@
                         BackgroundColor="{DynamicResource BackgroundPrimary}"
                         JustifyContent="SpaceAround"
                         AlignItems="Center">
- 
+
                 <Image Source="logo_front.png"
                        FlexLayout.Grow="2"
                        HeightRequest="120"

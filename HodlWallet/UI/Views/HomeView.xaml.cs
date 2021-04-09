@@ -31,6 +31,7 @@ using HodlWallet.UI.Extensions;
 using HodlWallet.UI.Locale;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace HodlWallet.UI.Views
 {
@@ -51,7 +52,7 @@ namespace HodlWallet.UI.Views
         {
             base.OnAppearing();
 
-            PriceButton.Source = "price_tag_3_line.png";
+            //PriceButton.Source = "price_tag_3_line.png";
 
             ViewModel.View_OnAppearing();
 
@@ -79,11 +80,11 @@ namespace HodlWallet.UI.Views
 
             if (currency == "BTC")
             {
-                BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
+                //BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
             }
             else
             {
-                BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
+                //BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
             }
         }
 
@@ -107,28 +108,40 @@ namespace HodlWallet.UI.Views
             await this.DisplayToast("Search Not Implemented");
         }
 
-        void PriceButton_Tapped(object sender, EventArgs e)
-        {
-            PriceButton.Source = "price_tag_3_fill.png";
+        //void PriceButton_Tapped(object sender, EventArgs e)
+        //{
+        //    PriceButton.Source = "price_tag_3_fill.png";
 
-            Navigation.PushModalAsync(new PriceView());
-        }
+        //    Navigation.PushModalAsync(new PriceView());
+        //}
 
         void SwitchCurrency(HomeViewModel _)
         {
             if (ViewModel.IsBtcEnabled)
             {
-                BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
+                //BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
             }
             else
             {
-                BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
+                //BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
             }
         }
 
         void Search_Clicked(object sender, EventArgs e)
         {
             DisplaySearchNotImplementedAlert(ViewModel);
+        }
+
+        void TransactionsScrollView_Scrolled(object sender, ScrolledEventArgs e)
+        {
+            if (BalanceLabel.Bounds.Bottom < e.ScrollY)
+            {
+                BalanceNavigationTitleLabel.FadeTo(1, 100);
+            }
+            else
+            {
+                BalanceNavigationTitleLabel.FadeTo(0, 50);
+            }
         }
     }
 }

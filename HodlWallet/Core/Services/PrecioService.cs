@@ -306,8 +306,6 @@ namespace HodlWallet.Core.Services
         async Task FetchRate()
         {
             Rate = (await PrecioHttpService.GetRates()).SingleOrDefault(r => r.Code == "USD");
-
-            Debug.WriteLine($"[FetchRate] Got rate {Rate.Rate:C}");
         }
 
         async Task WebSocketConnect()
@@ -396,8 +394,6 @@ namespace HodlWallet.Core.Services
 
         void UpdateDataFrom(string key, string data)
         {
-            Debug.WriteLine($"[UpdateDataFrom] {key} with: {data}");
-
             switch (key)
             {
                 case "btc-price":
@@ -432,7 +428,7 @@ namespace HodlWallet.Core.Services
 
                     Debug.WriteLine(err);
                     throw new ArgumentException(err);
-        }
+            }
         }
     }
 }

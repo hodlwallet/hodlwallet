@@ -46,7 +46,8 @@ namespace HodlWallet.UI
 
             InitializeComponent();
 
-            SecureStorageService.RemoveAll();
+            // DEBUG
+            //SecureStorageService.RemoveAll();
 
             RegisterServices();
 
@@ -69,14 +70,14 @@ namespace HodlWallet.UI
             MainPage = new NavigationPage(new OnboardView());
         }
 
-        protected override async void OnStart()
+        protected override void OnStart()
         {
             // NOTE You might think, why not move this forward?
             // the init code that inserts the logger into
             // WalletService is only run after the custructor
             // and only after all the platforms init
-            //var cts = new CancellationTokenSource();
-            //var ct = cts.Token;
+            var cts = new CancellationTokenSource();
+            var ct = cts.Token;
 
             //ThreadPool.QueueUserWorkItem(o => WalletService.InitializeWallet());
             //ThreadPool.QueueUserWorkItem(o => PrecioService.Init());
@@ -84,31 +85,31 @@ namespace HodlWallet.UI
             //ThreadPool.QueueUserWorkItem((o) => WalletService.InitializeWallet());
             //ThreadPool.QueueUserWorkItem((o) => PrecioService.Init());
 
-            //_ =Task.Factory.StartNew(
-            //    () => WalletService.InitializeWallet(),
-            //    ct,
-            //    TaskCreationOptions.LongRunning,
-            //    TaskScheduler.Default
-            //);
+            _ = Task.Factory.StartNew(
+                () => WalletService.InitializeWallet(),
+                ct,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
 
-            //_ = Task.Factory.StartNew(
-            //    () => PrecioService.Init(),
-            //    ct,
-            //    TaskCreationOptions.LongRunning,
-            //    TaskScheduler.Default
-            //);
+            _ = Task.Factory.StartNew(
+                () => PrecioService.Init(),
+                ct,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
 
-            new Thread(new ThreadStart(() =>
-            {
-                WalletService.InitializeWallet();
-            })).Start();
+            //new Thread(new ThreadStart(() =>
+            //{
+            //    WalletService.InitializeWallet();
+            //})).Start();
 
-            new Thread(new ThreadStart(() =>
-            {
-                PrecioService.Init();
-            })).Start();
+            //new Thread(new ThreadStart(() =>
+            //{
+            //    PrecioService.Init();
+            //})).Start();
 
-            await Task.Delay(10);
+            //await Task.Delay(10);
         }
 
         protected override void OnSleep()

@@ -326,14 +326,14 @@ namespace HodlWallet.Core.ViewModels
             });
         }
 
-        void NavigateToSend()
+        async void NavigateToSend()
         {
-            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Send);
+            await Shell.Current.GoToAsync("send");
         }
 
-        void NavigateToReceive()
+        async void NavigateToReceive()
         {
-            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Receive);
+            await Shell.Current.GoToAsync("receive");
         }
 
         void NavigateToTransactionDetails()
