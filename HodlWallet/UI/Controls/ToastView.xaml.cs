@@ -48,21 +48,21 @@ namespace HodlWallet.UI.Controls
             set => SetValue(ToastTextProperty, value);
         }
 
-        bool _Closed;
+        bool closed;
         public bool Closed
         {
-            get => _Closed;
+            get => closed;
             set
             {
-                _Closed = value;
+                closed = value;
 
-                if (_Closed) IsClosed.Invoke(this, true);
+                if (closed) OnClosed.Invoke(this, true);
             }
         }
 
-        public event EventHandler<bool> IsClosed;
+        public event EventHandler<bool> OnClosed;
 
-        CancellationTokenSource _Cts = new CancellationTokenSource();
+        CancellationTokenSource cts = new();
 
         public ToastView()
         {
@@ -79,8 +79,6 @@ namespace HodlWallet.UI.Controls
         public void UpdateContent(string content)
         {
             ToastText = content;
-
-            _Cts.Cancel();
 
             StartTimerToClose(retry: true);
         }
@@ -104,15 +102,19 @@ namespace HodlWallet.UI.Controls
 
         void StartTimerToClose(bool retry = false)
         {
-            if (retry) _Cts = new CancellationTokenSource();
+            if (retry) cts = new CancellationTokenSource();
 
             Task.Run(async () =>
             {
                 await Task.Delay(TIME_DELAY_MILLISECONDS);
 
-                if (!_Cts.IsCancellationRequested)
+                if (!cts.IsCancellationRequested)
+                {
+                    cts.Cancel();
+
                     Close();
-            }, _Cts.Token);
+                }
+            }, cts.Token);
         }
 
         void ChangeToastText(string toastText)
@@ -124,7 +126,7 @@ namespace HodlWallet.UI.Controls
 
         void Toast_Tapped(object sender, EventArgs e)
         {
-            _Cts.Cancel();
+            cts.Cancel();
 
             Close();
         }
