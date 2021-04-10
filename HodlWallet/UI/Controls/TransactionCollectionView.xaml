@@ -13,11 +13,10 @@
             <converters:IsSendToIconConverter x:Key="IsSendToIconConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
-    <Frame
-        HeightRequest="150"
-        HasShadow="False"
-        BackgroundColor="Transparent"
-        Padding="0">
+    <Frame HasShadow="False"
+           HeightRequest="450"
+           BackgroundColor="Transparent"
+           Padding="0">
         <StackLayout>
             <CollectionView
                 x:Name="Collection"
@@ -34,6 +33,7 @@
                                    Margin="10,25,10,10"
                                    FontAttributes="Bold"
                                    FontSize="18"
+                                   Style="{DynamicResource CustomLabel}"
                                    TextColor="{DynamicResource TextSecondary}"
                                    HorizontalOptions="Fill"
                                    HorizontalTextAlignment="Center" />

@@ -42,6 +42,10 @@
         <value>Cargando...</value>
         <comment>texto que muestra el indicador de actividad</comment>
     </data>
+	<data name="Transactions.title" xml:space="preserve">
+        <value>TRANSACCIONES</value>
+        <comment>label for transactions list empty button</comment>
+    </data>
 	<data name="Transactions.empty" xml:space="preserve">
         <value>No hay transacciones recibidas</value>
         <comment>label for transactions list empty button</comment>

@@ -303,6 +303,10 @@
         <value>Address {0} is on your clipboard would you like to use it to send Bitcoin to it?</value>
         <comment>content of dialog to use address on clipboard</comment>
     </data>
+	<data name="Transactions.title" xml:space="preserve">
+        <value>TRANSACTIONS</value>
+        <comment>label for transactions list empty button</comment>
+    </data>
 	<data name="Transactions.empty" xml:space="preserve">
         <value>No transactions received yet</value>
         <comment>label for transactions list empty button</comment>
