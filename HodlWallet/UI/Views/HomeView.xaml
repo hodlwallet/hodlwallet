@@ -1,12 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HodlWallet.UI.Views.HomeView"
-             xmlns:pc="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
-             BackgroundColor="{DynamicResource BackgroundPrimary}">
+             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             x:Class="HodlWallet.UI.Views.HomeView">
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
@@ -47,196 +45,11 @@
                         <Label Text="TRANSACTIONS" Style="{DynamicResource CustomLabel}" TextColor="{DynamicResource TextSecondary}" FontSize="Small" />
 
                         <BoxView HeightRequest="5" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
-                        <Label Text="TRANSACTIONS" />
+
+                        <controls:TransactionCollectionView />
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
-
-            <!--<FlexLayout Direction="Column"
-                        Margin="0, 5, 0, 0">
-                            <FlexLayout FlexLayout.Grow="2">
-                                <FlexLayout Direction="Row"
-                                    AlignItems="Center">
-                                    <StackLayout Orientation="Horizontal"
-                                         Spacing="0"
-                                         FlexLayout.Grow="1">
-                                        <BoxView WidthRequest="35" />
-                                        <ImageButton x:Name="PriceButton"
-                                       Clicked="PriceButton_Tapped"
-                                       Source="price_tag_3_line"
-                                       Margin="0, 10, 0, 0"
-                                       WidthRequest="24"
-                                       HeightRequest="24"
-                                       VerticalOptions="Start" />
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Vertical"
-                                         Spacing="0"
-                                         FlexLayout.Grow="2">
-                                        <ScrollView x:Name="BalanceScrollView"
-                                            Orientation="Vertical"
-                                            IsEnabled="False"
-                                            VerticalScrollBarVisibility="Never"
-                                            HorizontalScrollBarVisibility="Never"
-                                            HeightRequest="50">
-                                            <StackLayout Orientation="Vertical">
-                                                <Label x:Name="BalanceAmountBTC"
-                                               Text="{Binding Amount, StringFormat='{0:0.00000000}'}"
-                                               FontSize="Large"
-                                               TextColor="{DynamicResource TextPrimary}"
-                                               FontFamily="{DynamicResource Mono-Bold}"
-                                               HorizontalOptions="Center" />
-                                                <Label x:Name="BalanceLabel"
-                                               Text="btc"
-                                               HorizontalOptions="Center"
-                                               FontFamily="{StaticResource Mono-Bold}"
-                                               TextColor="{DynamicResource TextPrimary}" />
-                                                <Label x:Name="BalanceAmountUSD"
-                                                             Text="{Binding AmountFiat, StringFormat='{0:C}'}"
-                                                             FontSize="Large"
-                                                             TextColor="{DynamicResource TextPrimary}"
-                                                             FontFamily="{DynamicResource Mono-Bold}"
-                                                             HorizontalOptions="Center" />
-                                                <Label Text="usd"
-                                               HorizontalOptions="Center"
-                                               FontFamily="{StaticResource Mono-Bold}"
-                                               TextColor="{DynamicResource TextPrimary}" />
-                                            </StackLayout>
-                                        </ScrollView>
-
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}"
-                                                          NumberOfTapsRequired="1" />
-                                        </StackLayout.GestureRecognizers>
-                                    </StackLayout>
-
-                                    <StackLayout FlowDirection="RightToLeft"
-                                         Spacing="0"
-                                         Orientation="Horizontal"
-                                         FlexLayout.Grow="1">
-                                        <BoxView WidthRequest="35"
-                                         FlexLayout.Grow="1" />
-                                        <svg:Icon ResourceId="HodlWallet.UI.Assets.search.svg"
-                                          Margin="0, 10, 0, 0"
-                                          VerticalOptions="Start"
-                                          FlexLayout.AlignSelf="Center"
-                                          FlexLayout.Grow="1"
-                                          WidthRequest="24"
-                                          HeightRequest="24" />
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding SearchCommand}"
-                                                          NumberOfTapsRequired="1" />
-                                        </StackLayout.GestureRecognizers>
-                                    </StackLayout>
-                                </FlexLayout>
-                            </FlexLayout>
-
-                            <FlexLayout Direction="Column"
-                            FlexLayout.Grow="14"
-                            BackgroundColor="{DynamicResource BackgroundPrimary}">
-                                <controls:SyncProgressBar SyncVisible="{Binding SyncIsVisible}"
-                                              SyncTitle="{Binding SyncTitleText}"
-                                              SyncProgress="{Binding SyncCurrentProgress}"
-                                              SyncDate="{Binding SyncDateText}" />
-                                <controls:TransactionCollectionView FlexLayout.Grow="1" />
-                            </FlexLayout>
-                            </FlexLayout> -->
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

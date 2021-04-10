@@ -485,6 +485,18 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
+        public static string Transactions_empty {
+            get {
+                return ResourceManager.GetString("Transactions.empty", resourceCulture);
+            }
+        }
+        
+        public static string Transactions_empty_button {
+            get {
+                return ResourceManager.GetString("Transactions.empty.button", resourceCulture);
+            }
+        }
+        
         public static string TransactionDetails_title {
             get {
                 return ResourceManager.GetString("TransactionDetails.title", resourceCulture);

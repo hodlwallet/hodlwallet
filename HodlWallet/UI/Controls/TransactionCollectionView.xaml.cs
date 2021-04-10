@@ -21,8 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections;
-using System.Windows.Input;
 
 using Xamarin.Forms;
 
@@ -33,6 +31,11 @@ namespace HodlWallet.UI.Controls
         public TransactionCollectionView()
         {
             InitializeComponent();
+        }
+
+        void EmptyGetAddressButton_Clicked(object sender, EventArgs e)
+        {
+            (Shell.Current as AppShell).ChangeTabsTo("receive");
         }
     }
 }

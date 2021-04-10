@@ -33,6 +33,7 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 
 using HodlWallet.UI.Views;
+using HodlWallet.UI.Controls;
 
 namespace HodlWallet.UI
 {
@@ -54,23 +55,23 @@ namespace HodlWallet.UI
             SetupDefaultTab();
         }
 
-        void SetupDefaultTab()
-        {
-            ChangeTabsTo("homeTab");
-        }
-
-        void ChangeTabsTo(string tabName)
+        public void ChangeTabsTo(string tabName)
         {
             Tab tab = tabName switch
             {
-                "homeTab" => homeTab,
-                "receiveTab" => receiveTab,
-                "sendTab" => sendTab,
-                "accountSettingsTab" => accountSettingsTab,
+                "home" => homeTab,
+                "receive" => receiveTab,
+                "send" => sendTab,
+                "accountSettings" => accountSettingsTab,
                 _ => homeTab,
             };
 
             CurrentItem.CurrentItem = tab;
+        }
+
+        void SetupDefaultTab()
+        {
+            ChangeTabsTo("homeTab");
         }
 
         void SetupAccounts()

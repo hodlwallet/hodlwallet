@@ -4,7 +4,6 @@
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              xmlns:renderers="clr-namespace:HodlWallet.UI.Renderers"
-             xmlns:behaviors="clr-namespace:HodlWallet.Core.Behaviors"
              Title="Send"
              x:Class="HodlWallet.UI.Views.SendView"
              BackgroundColor="{DynamicResource BackgroundPrimary}">

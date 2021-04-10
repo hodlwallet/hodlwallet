@@ -88,5 +88,17 @@ namespace HodlWallet.UI.Locale {
                 return ResourceManager.GetString("NowLoading.text", resourceCulture);
             }
         }
+        
+        public static string Transactions_empty {
+            get {
+                return ResourceManager.GetString("Transactions.empty", resourceCulture);
+            }
+        }
+        
+        public static string Transactions_empty_button {
+            get {
+                return ResourceManager.GetString("Transactions.empty.button", resourceCulture);
+            }
+        }
     }
 }

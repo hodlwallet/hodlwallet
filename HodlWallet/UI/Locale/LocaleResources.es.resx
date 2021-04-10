@@ -1,53 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-    <resheader name="resmimetype">
-        <value>text/microsoft-resx</value>
-    </resheader>
-    <resheader name="version">
-        <value>2.0</value>
-    </resheader>
-    <resheader name="reader">
-        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-    </resheader>
-    <resheader name="writer">
-        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-    </resheader>
-    <resheader name="source-language">
-        <value>en</value>
-    </resheader>
-    
-    <data name="Onboard.create" xml:space="preserve">
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="source-language">
+		<value>en</value>
+	</resheader>
+	<data name="Onboard.create" xml:space="preserve">
         <value>Crear nueva cartera</value>
         <comment>label for create button</comment>
     </data>
-    
-    <data name="Onboard.recover" xml:space="preserve">
+	<data name="Onboard.recover" xml:space="preserve">
         <value>Recuperar cartera</value>
         <comment>label for recover button</comment>
     </data>
-    
-    
-    <data name="Menu.resyncWallet" xml:space="preserve">
+	<data name="Menu.resyncWallet" xml:space="preserve">
         <value>Re-Sync Wallet</value>
    </data>
-    
-    <data name="Menu.restoreWallet" xml:space="preserve">
+	<data name="Menu.restoreWallet" xml:space="preserve">
         <value>Restore Wallet</value>
         <comment>label for menu restore wallet</comment>
     </data>
-    
-    <data name="Menu.wipeWallet" xml:space="preserve">
+	<data name="Menu.wipeWallet" xml:space="preserve">
         <value>Wipe Wallet</value>
         <comment>label for menu wipe wallet</comment>
     </data>
-    
-    <data name="Pin.enter" xml:space="preserve">
+	<data name="Pin.enter" xml:space="preserve">
         <value>Ingrese su PIN</value>
         <comment>label for current wallet pin</comment>
     </data>
-    
-    <data name="NowLoading.text" xml:space="preserve">
+	<data name="NowLoading.text" xml:space="preserve">
         <value>Cargando...</value>
         <comment>texto que muestra el indicador de actividad</comment>
+    </data>
+	<data name="Transactions.empty" xml:space="preserve">
+        <value>No hay transacciones recibidas</value>
+        <comment>label for transactions list empty button</comment>
+    </data>
+	<data name="Transactions.empty.button" xml:space="preserve">
+        <value>Obtiene Una Dirección</value>
+        <comment>label for transactions list empty button</comment>
     </data>
 </root>

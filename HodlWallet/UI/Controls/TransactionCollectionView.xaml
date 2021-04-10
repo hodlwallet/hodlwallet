@@ -2,6 +2,7 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions"
     x:Class="HodlWallet.UI.Controls.TransactionCollectionView"
     xmlns:converters="clr-namespace:HodlWallet.UI.Converters">
     <ContentView.Resources>
@@ -25,6 +26,29 @@
                 SelectedItem="{Binding CurrentTransaction}"
                 SelectionChangedCommand="{Binding NavigateToTransactionDetailsCommand}"
                 BackgroundColor="{DynamicResource BackgroundPrimary}">
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="CenterAndExpand"
+                                     VerticalOptions="CenterAndExpand">
+                            <Label Text="{i18n:Translate Text=Transactions.empty}"
+                                   Margin="10,25,10,10"
+                                   FontAttributes="Bold"
+                                   FontSize="18"
+                                   TextColor="{DynamicResource TextSecondary}"
+                                   HorizontalOptions="Fill"
+                                   HorizontalTextAlignment="Center" />
+                            <Button Text="{i18n:Translate Text=Transactions.empty.button}"
+                                    Style="{DynamicResource CustomButton}"
+                                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                                    Clicked="EmptyGetAddressButton_Clicked"
+                                    FontSize="Medium"
+                                    HeightRequest="50"
+                                    FlexLayout.AlignSelf="Stretch"
+                                    FlexLayout.Grow="1" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Orientation="Horizontal">
