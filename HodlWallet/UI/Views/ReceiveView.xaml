@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
-             xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
              x:Class="HodlWallet.UI.Views.ReceiveView"
              Title="Receive"
              BackgroundColor="{DynamicResource BackgroundPrimary}">
@@ -11,46 +13,44 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <AbsoluteLayout>
-            <FlexLayout Direction="Column"
-                        AlignItems="Center">
-                <FlexLayout Direction="Column"
-                            FlexLayout.Grow="4"
-                            AlignItems="Center">
-                    <BoxView FlexLayout.Grow="1" />
+            <FlexLayout Direction="Column">
+                <ContentView FlexLayout.Grow="2">
+                    <!-- Use this for debuging due to a break on Hot Reaload for ZXingBarcodeImageView -->
+                    <!--<Image Source="logo.png" WidthRequest="320" HeightRequest="320"/>-->
+                    <zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
+                                                 BarcodeFormat="QR_CODE"
+                                                 WidthRequest="320"
+                                                 HeightRequest="320"
+                                                 BarcodeValue="{Binding Address}">
+                        <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                            <zxcm:EncodingOptions Width="320" Height="320" Margin="1" PureBarcode="True" />
+                        </zxing:ZXingBarcodeImageView.BarcodeOptions>
+                    </zxing:ZXingBarcodeImageView>
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Address_Tapped"
+                                              NumberOfTapsRequired="1" />
+                    </ContentView.GestureRecognizers>
+                </ContentView>
 
-                    <svg:QRCode Content="{Binding Address}"
-                                BackgroundColor="{DynamicResource TextPrimary}"
-                                Level="H"
-                                WidthRequest="320"
-                                HeightRequest="320"
-                                Margin="0, 0, 0, 0"
-                                VerticalOptions="CenterAndExpand"
-                                HorizontalOptions="CenterAndExpand">
-                        <svg:QRCode.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Address_Tapped"
-                                                  NumberOfTapsRequired="1" />
-                        </svg:QRCode.GestureRecognizers>
-                    </svg:QRCode>
+                <ContentView FlexLayout.Grow="1">
+                    <Label Style="{DynamicResource CustomLabel}"
+                           Text="{Binding Address}"
+                           HorizontalTextAlignment="Center"
+                           Margin="10"
+                           FontFamily="{DynamicResource Mono-Regular}"
+                           FontSize="Small" />
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Address_Tapped"
+                                              NumberOfTapsRequired="1" />
+                    </ContentView.GestureRecognizers>
+                </ContentView>
 
-                    <ContentView FlexLayout.Grow="1">
-                        <Label x:Name="_Address"
-                               Style="{DynamicResource CustomLabel}"
-                               Text="{Binding Address}"
-                               HorizontalTextAlignment="Center"
-                               Margin="10"
-                               FontSize="Body" />
-                        <ContentView.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Address_Tapped"
-                                                  NumberOfTapsRequired="1" />
-                        </ContentView.GestureRecognizers>
-                    </ContentView>
-
-                    <BoxView FlexLayout.Grow="1" />
-                </FlexLayout>
+                <BoxView FlexLayout.Grow="1" />
 
                 <Button x:Name="ShareButton"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
                         Command="{Binding ShowShareIntentCommand}"
+                        Text="{i18n:Translate Text=Receive.share}"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="1"
                         FontSize="Large"

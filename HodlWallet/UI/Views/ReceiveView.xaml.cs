@@ -40,13 +40,6 @@ namespace HodlWallet.UI.Views
         public ReceiveView()
         {
             InitializeComponent();
-
-            SetLabels();
-        }
-
-        void SetLabels()
-        {
-            ShareButton.Text = LocaleResources.Receive_share;
         }
 
         void Address_Tapped(object sender, EventArgs e)

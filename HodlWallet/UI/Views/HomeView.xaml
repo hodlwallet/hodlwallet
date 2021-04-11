@@ -32,7 +32,7 @@
                                        Style="{DynamicResource CustomLabel}"
                                        FontFamily="{StaticResource Mono-Regular}" />
                             </StackLayout>
-                            <Label Text="1 BTC = $58,010"
+                            <Label Text="1 BTC = $58,010.48"
                                    FlexLayout.Grow="1"
                                    HorizontalTextAlignment="End"
                                    Style="{DynamicResource CustomLabel}"

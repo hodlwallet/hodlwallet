@@ -68,9 +68,6 @@
     <PackageReference Include="ZXing.Net.Mobile.Forms">
       <Version>2.4.1</Version>
     </PackageReference>
-    <PackageReference Include="ZXing.Net.Mobile">
-      <Version>2.4.1</Version>
-    </PackageReference>
     <PackageReference Include="Refit">
       <Version>6.0.38</Version>
     </PackageReference>
