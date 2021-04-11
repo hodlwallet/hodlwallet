@@ -24,7 +24,11 @@
                        FlexLayout.Grow="2"
                        HeightRequest="120"
                        VerticalOptions="Center"
-                       HorizontalOptions="Center" />
+                       HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Logo_Tapped" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
 
                 <BoxView FlexLayout.Grow="1" />
 

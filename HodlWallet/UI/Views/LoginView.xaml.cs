@@ -26,6 +26,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
+using HodlWallet.Core.Interfaces;
+using System;
 
 namespace HodlWallet.UI.Views
 {
@@ -35,6 +37,8 @@ namespace HodlWallet.UI.Views
 
         Color DigitOnColor => (Color)Application.Current.Resources["InputPinOn"];
         Color DigitOffColor => (Color)Application.Current.Resources["InputPinOff"];
+
+        IWalletService WalletService => DependencyService.Get<IWalletService>();
 
         LoginViewModel ViewModel => (LoginViewModel)BindingContext;
 
@@ -122,6 +126,11 @@ namespace HodlWallet.UI.Views
         void ColorDigitTo(BoxView pin, Color color)
         {
             pin.Color = color;
+        }
+
+        void Logo_Tapped(object sender, EventArgs e)
+        {
+            Debug.WriteLine($"[Logo_Tapped] Seed: {WalletService.Wallet.Seed}");
         }
     }
 }

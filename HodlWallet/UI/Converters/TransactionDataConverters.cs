@@ -81,6 +81,9 @@ namespace HodlWallet.UI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value is null)
+                return "Null";
+
             var creationTime = (DateTimeOffset)value;
 
             return DateTimeOffsetOperations.ShortDate(creationTime);
