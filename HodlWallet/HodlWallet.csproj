@@ -36,6 +36,7 @@
         <Folder Include="Core\Interfaces\" />
         <Folder Include="UI\Renderers\" />
         <Folder Include="UI\Effects\" />
+        <Folder Include="UI\Extensions\I18n\" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="UI\Assets\circle_check_gray.svg" />
