@@ -209,7 +209,7 @@ namespace HodlWallet.Core.ViewModels
         {
             Uri uri;
 
-            if (_WalletService.GetNetwork() == Network.Main)
+            if (WalletService.GetNetwork() == Network.Main)
             {
                 uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_ADDRESS_MAINNET_URI, Address));
             }
@@ -225,7 +225,7 @@ namespace HodlWallet.Core.ViewModels
         {
             Uri uri;
 
-            if (_WalletService.GetNetwork() == Network.Main)
+            if (WalletService.GetNetwork() == Network.Main)
             {
                 uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_TRANSACTION_MAINNET_URI, IdText));
             }

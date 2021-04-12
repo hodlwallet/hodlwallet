@@ -163,7 +163,7 @@ namespace HodlWallet.Core.ViewModels
 
         public HomeViewModel()
         {
-            logger = _WalletService.Logger;
+            logger = WalletService.Logger;
 
             NavigateToTransactionDetailsCommand = new Command(NavigateToTransactionDetails);
             SwitchCurrencyCommand = new Command(SwitchCurrency);
@@ -202,7 +202,7 @@ namespace HodlWallet.Core.ViewModels
 
         void InitializeWalletServiceTransactions()
         {
-            if (_WalletService.IsStarted)
+            if (WalletService.IsStarted)
             {
                 LoadTransactions();
                 AddWalletServiceEvents();
@@ -211,18 +211,18 @@ namespace HodlWallet.Core.ViewModels
             }
             else
             {
-                _WalletService.OnStarted += _WalletService_OnStarted;
+                WalletService.OnStarted += _WalletService_OnStarted;
             }
 
             // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
-            if (_WalletService.IsStarted)
+            if (WalletService.IsStarted)
             {
-                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                Amount = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 AmountFiat = Amount * (decimal)newRate;
             }
             else
             {
-                _WalletService.OnStarted += _WalletService_OnStarted_ViewAppearing;
+                WalletService.OnStarted += _WalletService_OnStarted_ViewAppearing;
             }
 
             IsBtcEnabled = true;
@@ -237,12 +237,12 @@ namespace HodlWallet.Core.ViewModels
 
         public void SwitchCurrency()
         {
-            if (!_WalletService.IsStarted) return;
+            if (!WalletService.IsStarted) return;
 
             if (Currency == "BTC")
             {
                 Currency = "USD";
-                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                Amount = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 AmountFiat = Amount * (decimal)newRate;
 
                 UpdateTransanctions();
@@ -252,7 +252,7 @@ namespace HodlWallet.Core.ViewModels
             else
             {
                 Currency = "BTC";
-                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                Amount = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 AmountFiat = Amount * (decimal)newRate;
 
                 UpdateTransanctions();
@@ -281,7 +281,7 @@ namespace HodlWallet.Core.ViewModels
                         }
 
                         // Gets first BTC-USD rate.
-                        var rate = _PrecioService.Rate;
+                        var rate = PrecioService.Rate;
                         if (rate != null)
                         {
                             // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
@@ -326,16 +326,16 @@ namespace HodlWallet.Core.ViewModels
 
         private void _WalletService_OnStarted_ViewAppearing(object sender, EventArgs e)
         {
-            logger = _WalletService.Logger;
+            logger = WalletService.Logger;
 
             Device.BeginInvokeOnMainThread(() =>
             {
                 lock (@lock)
                 {
-                    Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                    Amount = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                     AmountFiat = Amount * (decimal)newRate;
 
-                    _WalletService.OnStarted -= _WalletService_OnStarted_ViewAppearing;
+                    WalletService.OnStarted -= _WalletService_OnStarted_ViewAppearing;
                 }
             });
         }
@@ -361,7 +361,7 @@ namespace HodlWallet.Core.ViewModels
 
         async Task RatesAsync()
         {
-            var rates = await _PrecioHttpService.GetRates();
+            var rates = await PrecioHttpService.GetRates();
 
             foreach (var rate in rates)
             {
@@ -390,7 +390,7 @@ namespace HodlWallet.Core.ViewModels
 
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
-            logger = _WalletService.Logger;
+            logger = WalletService.Logger;
 
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -408,8 +408,8 @@ namespace HodlWallet.Core.ViewModels
 
         void AddWalletServiceEvents()
         {
-            _WalletService.Wallet.ElectrumPool.OnNewTransaction += Wallet_OnNewTransaction;
-            _WalletService.Wallet.ElectrumPool.OnUpdateTransaction += Wallet_OnUpdateTransaction;
+            WalletService.Wallet.ElectrumPool.OnNewTransaction += Wallet_OnNewTransaction;
+            WalletService.Wallet.ElectrumPool.OnUpdateTransaction += Wallet_OnUpdateTransaction;
         }
 
         void Wallet_OnNewTransaction(object sender, TxEventArgs e)
@@ -458,7 +458,7 @@ namespace HodlWallet.Core.ViewModels
 
         void LoadTransactions()
         {
-            var txs = _WalletService.GetCurrentAccountTransactions().OrderBy(
+            var txs = WalletService.GetCurrentAccountTransactions().OrderBy(
                 (Tx txData) => txData.CreatedAt
             );
 

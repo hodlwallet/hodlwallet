@@ -45,7 +45,7 @@ namespace HodlWallet.Core.ViewModels
         string _AddressToSendTo;
         long _Fee;
         decimal _AmountToSend;
-        float _Rate => _PrecioService.Rate.Rate;
+        float _Rate => PrecioService.Rate.Rate;
         string _AmountToSendText;
         Transaction _TransactionToBroadcast;
 
@@ -130,7 +130,7 @@ namespace HodlWallet.Core.ViewModels
 
         public async Task SetSliderValue()
         {
-            var currentFees = await _PrecioHttpService.GetFeeEstimator();
+            var currentFees = await PrecioHttpService.GetFeeEstimator();
 
             if (SliderValue <= (MAX_SLIDER_VALUE * 0.25))
             {
@@ -164,7 +164,7 @@ namespace HodlWallet.Core.ViewModels
         {
             if (_TransactionToBroadcast is null) return;
 
-            var (sent, error) = await _WalletService.SendTransaction(_TransactionToBroadcast);
+            var (sent, error) = await WalletService.SendTransaction(_TransactionToBroadcast);
 
             if (sent == true)
             {
@@ -194,7 +194,7 @@ namespace HodlWallet.Core.ViewModels
 
         void Scan()
         {
-            var IsCameraAvailable = _PermissionsService.HasCameraPermission();
+            var IsCameraAvailable = PermissionsService.HasCameraPermission();
 
             if (!IsCameraAvailable) return;
 
@@ -217,7 +217,7 @@ namespace HodlWallet.Core.ViewModels
                 return;
             }
 
-            if (_WalletService.IsStarted)
+            if (WalletService.IsStarted)
             {
                 string address = await Clipboard.GetTextAsync();
 
@@ -226,7 +226,7 @@ namespace HodlWallet.Core.ViewModels
                 return;
             }
 
-            _WalletService.OnStarted += _WalletService_OnStarted_PasteAddress;
+            WalletService.OnStarted += _WalletService_OnStarted_PasteAddress;
         }
 
         void _WalletService_OnStarted_PasteAddress(object sender, EventArgs e)
@@ -248,7 +248,7 @@ namespace HodlWallet.Core.ViewModels
         {
             if (IsBitcoinAddress(address))
             {
-                if (!_WalletService.IsAddressOwn(address))
+                if (!WalletService.IsAddressOwn(address))
                 {
                     AddressToSendTo = address;
 
@@ -262,7 +262,7 @@ namespace HodlWallet.Core.ViewModels
 
             try
             {
-                var bitcoinUrl = new BitcoinUrlBuilder(address, _WalletService.GetNetwork());
+                var bitcoinUrl = new BitcoinUrlBuilder(address, WalletService.GetNetwork());
 
                 if (bitcoinUrl.Address is BitcoinAddress addr)
                     AddressToSendTo = addr.ToString();
@@ -296,12 +296,12 @@ namespace HodlWallet.Core.ViewModels
 
         bool IsBitcoinAddress(string content)
         {
-            return content.IsBitcoinAddress(_WalletService.GetNetwork());
+            return content.IsBitcoinAddress(WalletService.GetNetwork());
         }
 
         bool IsBitcoinAddressReused(string address)
         {
-            return _WalletService.IsAddressOwn(address);
+            return WalletService.IsAddressOwn(address);
         }
 
         void Send()
@@ -314,7 +314,7 @@ namespace HodlWallet.Core.ViewModels
                 return;
             }
 
-            var (Success, Tx, Fees, Error) = _WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
+            var (Success, Tx, Fees, Error) = WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
 
             Debug.WriteLine($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
 

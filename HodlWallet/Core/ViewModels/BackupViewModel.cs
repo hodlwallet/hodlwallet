@@ -41,24 +41,24 @@ namespace HodlWallet.Core.ViewModels
         {
             if (SecureStorageService.HasMnemonic())
             {
-                if (!_WalletService.IsStarted)
-                    Task.Run(_WalletService.StartWalletWithWalletId);
+                if (!WalletService.IsStarted)
+                    Task.Run(WalletService.StartWalletWithWalletId);
 
                 return;
             }
 
-            string rawMnemonic = WalletService.GetNewMnemonic(_WalletService.GetWordListLanguage(), GetWordCount());
+            string rawMnemonic = Services.WalletService.GetNewMnemonic(WalletService.GetWordListLanguage(), GetWordCount());
 
-            _WalletService.Logger.Information($"Wallet generated a new mnemonic, mnemonic: {rawMnemonic}");
+            WalletService.Logger.Information($"Wallet generated a new mnemonic, mnemonic: {rawMnemonic}");
 
             SecureStorageService.SetMnemonic(rawMnemonic);
             SecureStorageService.SetSeedBirthday(new DateTimeOffset(DateTime.UtcNow));
 
-            _WalletService.Logger.Information("Saved mnemonic to secure storage.");
+            WalletService.Logger.Information("Saved mnemonic to secure storage.");
 
             // After this we should be able to start the wallet if it's not started since we have a mnemonic
-            if (!_WalletService.IsStarted)
-                Task.Run(_WalletService.StartWalletWithWalletId);
+            if (!WalletService.IsStarted)
+                Task.Run(WalletService.StartWalletWithWalletId);
         }
 
         private int GetWordCount()
@@ -66,7 +66,7 @@ namespace HodlWallet.Core.ViewModels
             // TODO This should read from the user's preference eventually.
             int wordCount = 12;
 
-            _WalletService.Logger.Information($"Word count is {wordCount}");
+            WalletService.Logger.Information($"Word count is {wordCount}");
 
             return wordCount;
         }

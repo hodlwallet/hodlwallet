@@ -31,12 +31,12 @@ namespace HodlWallet.Core.ViewModels
     {
         public async Task ResyncWallet()
         {
-            await _WalletService.Wallet.Resync();
+            await WalletService.Wallet.Resync();
         }
 
         public void WipeWallet()
         {
-            _WalletService.DestroyWallet();
+            WalletService.DestroyWallet();
         }
     }
 }

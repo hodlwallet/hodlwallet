@@ -31,7 +31,7 @@ namespace HodlWallet.Core.ViewModels
                         case "bip49":
                         case "bip84":
                         case "bip141":
-                            _WalletService.Wallet.AddAccount(arg, Name ?? "Bitcoin Account");
+                            WalletService.Wallet.AddAccount(arg, Name ?? "Bitcoin Account");
                             break;
                         default:
                             throw new NotImplementedException();
