@@ -31,10 +31,10 @@
                                     <Label x:Name="BalanceLabel"
                                            Text="{Binding Amount}"
                                            Style="{DynamicResource CustomLabel}"
-                                           FontFamily="{StaticResource Mono-Regular}" />
+                                           FontFamily="{StaticResource Mono-Bold}" />
                                     <Label Text="{Binding Currency, StringFormat=' {0}'}"
                                            Style="{DynamicResource CustomLabel}"
-                                           FontFamily="{StaticResource Mono-Regular}" />
+                                           FontFamily="{StaticResource Mono-Bold}" />
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Balance_Tapped" NumberOfTapsRequired="1" />
                                     </StackLayout.GestureRecognizers>
