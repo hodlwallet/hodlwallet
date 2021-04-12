@@ -40,7 +40,7 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </StackLayout>
-                            <Label Text="1 BTC = $58,010.48"
+                            <Label Text="{Binding Rate, StringFormat='1 BTC = ${0:n}'}"
                                    FlexLayout.Grow="1"
                                    HorizontalTextAlignment="End"
                                    Style="{DynamicResource CustomLabel}"

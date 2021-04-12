@@ -78,6 +78,13 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref isBtcEnabled, value);
         }
 
+        decimal rate;
+        public decimal Rate
+        {
+            get => rate;
+            set => SetProperty(ref rate, value);
+        }
+
         public decimal Amount
         {
             get => amount;
@@ -218,11 +225,12 @@ namespace HodlWallet.Core.ViewModels
             if (WalletService.IsStarted)
             {
                 Amount = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                AmountFiat = Amount * (decimal)newRate;
+                Rate = (decimal)newRate;
+                AmountFiat = Amount * Rate;
             }
             else
             {
-                WalletService.OnStarted += _WalletService_OnStarted_ViewAppearing;
+                WalletService.OnStarted += WalletService_OnStarted_ViewAppearing;
             }
 
             IsBtcEnabled = true;
@@ -243,7 +251,8 @@ namespace HodlWallet.Core.ViewModels
             {
                 Currency = "USD";
                 Amount = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                AmountFiat = Amount * (decimal)newRate;
+                Rate = (decimal)newRate;
+                AmountFiat = Amount * Rate;
 
                 UpdateTransanctions();
 
@@ -253,7 +262,8 @@ namespace HodlWallet.Core.ViewModels
             {
                 Currency = "BTC";
                 Amount = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                AmountFiat = Amount * (decimal)newRate;
+                Rate = (decimal)newRate;
+                AmountFiat = Amount * Rate;
 
                 UpdateTransanctions();
 
@@ -266,43 +276,42 @@ namespace HodlWallet.Core.ViewModels
         void InitializePrecioAndWalletTimers()
         {
             // Run and schedule next times precio will be called
-            using (var cts = new CancellationTokenSource())
+            using var cts = new CancellationTokenSource();
+            Task.Factory.StartNew(async (options) =>
             {
-                Task.Factory.StartNew(async (options) =>
+                while (true)
                 {
-                    while (true)
+                    if (!isViewVisible)
                     {
-                        if (!isViewVisible)
-                        {
-                            Debug.WriteLine("[InitializePrecioAndWalletTimers] Stopped timer.");
+                        Debug.WriteLine("[InitializePrecioAndWalletTimers] Stopped timer.");
 
-                            cts.Cancel();
-                            break;
-                        }
-
-                        // Gets first BTC-USD rate.
-                        var rate = PrecioService.Rate;
-                        if (rate != null)
-                        {
-                            // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
-                            oldRate = newRate = rate.Rate;
-
-                            AmountFiat = Amount * (decimal)newRate;
-
-                            UpdateTransanctions();
-                        }
-
-                        await Task.Delay(priceUpdateDelay);
+                        cts.Cancel();
+                        break;
                     }
-                }, TaskCreationOptions.LongRunning, cts.Token);
-            }
+
+                    // Gets first BTC-USD rate.
+                    var rate = PrecioService.Rate;
+                    if (rate != null)
+                    {
+                        // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
+                        oldRate = newRate = rate.Rate;
+                        Rate = (decimal)newRate;
+                        AmountFiat = Amount * Rate;
+
+                        UpdateTransanctions();
+                    }
+
+                    await Task.Delay(priceUpdateDelay);
+                }
+            }, TaskCreationOptions.LongRunning, cts.Token);
         }
 
         void UpdateTransanctions()
         {
             if (Currency != "BTC")
             {
-                AmountFiat = Amount * (decimal)newRate;
+                Rate = (decimal)newRate;
+                AmountFiat = Amount * Rate;
 
                 if (!oldRate.Equals(newRate))
                 {
@@ -324,7 +333,7 @@ namespace HodlWallet.Core.ViewModels
             }
         }
 
-        private void _WalletService_OnStarted_ViewAppearing(object sender, EventArgs e)
+        private void WalletService_OnStarted_ViewAppearing(object sender, EventArgs e)
         {
             logger = WalletService.Logger;
 
@@ -333,9 +342,10 @@ namespace HodlWallet.Core.ViewModels
                 lock (@lock)
                 {
                     Amount = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                    AmountFiat = Amount * (decimal)newRate;
+                    Rate = (decimal)newRate;
+                    AmountFiat = Amount * Rate;
 
-                    WalletService.OnStarted -= _WalletService_OnStarted_ViewAppearing;
+                    WalletService.OnStarted -= WalletService_OnStarted_ViewAppearing;
                 }
             });
         }
