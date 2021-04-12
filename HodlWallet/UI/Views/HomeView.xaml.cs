@@ -37,15 +37,13 @@ namespace HodlWallet.UI.Views
 {
     public partial class HomeView : ContentPage
     {
-        HomeViewModel ViewModel => (HomeViewModel)BindingContext;
+        HomeViewModel ViewModel => BindingContext as HomeViewModel;
 
         public HomeView()
         {
             InitializeComponent();
 
             SubscribeToMessages();
-
-            SetLabels();
         }
 
         protected override void OnAppearing()
@@ -68,17 +66,9 @@ namespace HodlWallet.UI.Views
             ViewModel.View_OnDisappearing();
         }
 
-        void SetLabels()
-        {
-            //Send.Text = LocaleResources.Send_title;
-            //Receive.Text = LocaleResources.Receive_title;
-        }
-
         void InitializeDisplayedCurrency()
         {
-            var currency = Preferences.Get("currency", "BTC");
-
-            if (currency == "BTC")
+            if (ViewModel.Currency == "BTC")
             {
                 //BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
             }
@@ -142,6 +132,13 @@ namespace HodlWallet.UI.Views
             {
                 BalanceNavigationTitleLabel.FadeTo(0, 50);
             }
+        }
+
+        async void Balance_Tapped(object sender, EventArgs args)
+        {
+            ViewModel.SwitchCurrency();
+
+            await this.DisplayToast($"Balance tapped, currency: {ViewModel.Currency}");
         }
     }
 }

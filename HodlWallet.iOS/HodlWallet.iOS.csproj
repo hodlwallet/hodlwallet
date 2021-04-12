@@ -252,15 +252,6 @@
 		<PackageReference Include="ZXing.Net.Mobile.Forms">
 			<Version>2.4.1</Version>
 		</PackageReference>
-		<PackageReference Include="Microcharts">
-			<Version>0.9.5.9</Version>
-		</PackageReference>
-		<PackageReference Include="Microcharts.Forms">
-			<Version>0.9.5.9</Version>
-		</PackageReference>
-		<PackageReference Include="NBitcoin">
-			<Version>5.0.76</Version>
-		</PackageReference>
 		<PackageReference Include="Xamarin.Forms">
 			<Version>5.0.0.2012</Version>
 		</PackageReference>
@@ -272,7 +263,7 @@
 	<ItemGroup />
 	<ItemGroup>
 		<ProjectReference Include="..\HodlWallet\HodlWallet.csproj">
-			<Project>{D37EC354-F146-4FF5-8788-4632DEDFB52C}</Project>
+			<Project>{7D5ECE43-EC1B-4F28-84B1-4017F8C5D035}</Project>
 			<Name>HodlWallet</Name>
 		</ProjectReference>
 	</ItemGroup>

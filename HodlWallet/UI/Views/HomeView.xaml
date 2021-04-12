@@ -27,10 +27,18 @@
                                        Style="{DynamicResource CustomLabel}"
                                        FontSize="Small"
                                        TextColor="{DynamicResource TextSecondary}" />
-                                <Label x:Name="BalanceLabel"
-                                       Text="0.02454691 BTC"
-                                       Style="{DynamicResource CustomLabel}"
-                                       FontFamily="{StaticResource Mono-Regular}" />
+                                <StackLayout x:Name="BalanceStackLayout" Orientation="Horizontal" Spacing="0">
+                                    <Label x:Name="BalanceLabel"
+                                           Text="{Binding Amount}"
+                                           Style="{DynamicResource CustomLabel}"
+                                           FontFamily="{StaticResource Mono-Regular}" />
+                                    <Label Text="{Binding Currency, StringFormat=' {0}'}"
+                                           Style="{DynamicResource CustomLabel}"
+                                           FontFamily="{StaticResource Mono-Regular}" />
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Balance_Tapped" NumberOfTapsRequired="1" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
                             </StackLayout>
                             <Label Text="1 BTC = $58,010.48"
                                    FlexLayout.Grow="1"
