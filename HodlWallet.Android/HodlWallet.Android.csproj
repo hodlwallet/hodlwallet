@@ -80,6 +80,9 @@
     <PackageReference Include="Xamarin.Forms">
       <Version>5.0.0.2012</Version>
     </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile">
+      <Version>2.4.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -156,7 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HodlWallet\HodlWallet.csproj">
-      <Project>{D37EC354-F146-4FF5-8788-4632DEDFB52C}</Project>
+      <Project>{7D5ECE43-EC1B-4F28-84B1-4017F8C5D035}</Project>
       <Name>HodlWallet</Name>
     </ProjectReference>
   </ItemGroup>
