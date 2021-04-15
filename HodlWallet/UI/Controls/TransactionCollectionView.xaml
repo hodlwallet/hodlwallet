@@ -9,7 +9,7 @@
         <ResourceDictionary>
             <converters:MemoToHeightConverter x:Key="MemoToHeightConverter" />
             <converters:IsSendToStatusColorConverter x:Key="IsSendToStatusColorConverter" />
-            <converters:CreationTimeToDurationConverter x:Key="CreationTimeToDurationConverter" />
+            <converters:CreatedAtToDurationConverter x:Key="CreationTimeToDurationConverter" />
             <converters:IsSendToIconConverter x:Key="IsSendToIconConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
@@ -52,7 +52,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Orientation="Horizontal">
-                            <Image Source="{Binding IsSend, Converter={StaticResource IsSendToIconConverter}}" Opacity="0.3" Margin="15, 2, 0, 2" HeightRequest="30" WidthRequest="30" />
+                            <!--<Image Source="{Binding IsSend, Converter={StaticResource IsSendToIconConverter}}" Opacity="0.3" Margin="15, 2, 0, 2" HeightRequest="30" WidthRequest="30" />-->
                             <Grid
                                 Margin="0, 2, 15, 2"
                                 Padding="10"
@@ -92,7 +92,8 @@
                                            FontFamily="{StaticResource Sans-Regular}"
                                            HorizontalTextAlignment="End"
                                            TextColor="{DynamicResource TextSecondary}"
-                                           Text="{Binding CreationTime, Converter={StaticResource CreationTimeToDurationConverter}}" />
+                                           WidthRequest="66"
+                                           Text="{Binding CreatedAt, Converter={StaticResource CreatedAtToDurationConverter}}" />
                                 </StackLayout>
                                 <Label
                                     Style="{StaticResource TransactionInfoLabel}"

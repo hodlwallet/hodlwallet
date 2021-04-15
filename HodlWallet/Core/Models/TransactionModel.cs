@@ -40,8 +40,8 @@ namespace HodlWallet.Core.Models
         public uint256 Id { get; set; }
         public string IdText { get; set; }
 
-        public DateTimeOffset? CreationTime { get; set; }
-        public string CreationTimeText { get; set; }
+        public DateTimeOffset? CreatedAt { get; set; }
+        public string CreatedAtText { get; set; }
 
         public Money Amount { get; set; }
 
@@ -92,8 +92,8 @@ namespace HodlWallet.Core.Models
             IsSend = (bool)TransactionData.IsSend;
             IsReceive = (bool)TransactionData.IsReceive;
 
-            CreationTime = TransactionData.CreatedAt;
-            CreationTimeText = TransactionData.CreatedAt.ToString();
+            CreatedAt = TransactionData.CreatedAt;
+            CreatedAtText = TransactionData.CreatedAt.ToString();
 
             Amount = GetAmount();
             AmountText = GetAmountText();
@@ -132,7 +132,7 @@ namespace HodlWallet.Core.Models
             if (other.Id != Id) return false;
             if (other.IsReceive != IsReceive) return false;
             if (other.IsSend != IsSend) return false;
-            if (other.CreationTime != CreationTime) return false;
+            if (other.CreatedAt != CreatedAt) return false;
             if (other.IsSpendable != IsSpendable) return false;
             if (other.IsConfirmed != IsConfirmed) return false;
             if (other.BlockHeight != BlockHeight) return false;

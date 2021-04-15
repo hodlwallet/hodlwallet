@@ -77,7 +77,7 @@ namespace HodlWallet.UI.Converters
         }
     }
 
-    public class CreationTimeToDurationConverter : IValueConverter
+    public class CreatedAtToDurationConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
