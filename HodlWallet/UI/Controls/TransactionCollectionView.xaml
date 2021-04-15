@@ -9,7 +9,7 @@
         <ResourceDictionary>
             <converters:MemoToHeightConverter x:Key="MemoToHeightConverter" />
             <converters:IsSendToStatusColorConverter x:Key="IsSendToStatusColorConverter" />
-            <converters:CreatedAtToDurationConverter x:Key="CreationTimeToDurationConverter" />
+            <converters:CreatedAtToDurationConverter x:Key="CreatedAtToDurationConverter" />
             <converters:IsSendToIconConverter x:Key="IsSendToIconConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
