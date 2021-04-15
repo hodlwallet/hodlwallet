@@ -40,13 +40,13 @@ namespace HodlWallet.Core.ViewModels
 
         void InitializeWalletServiceAccounts()
         {
-            if (_WalletService.IsStarted)
+            if (WalletService.IsStarted)
             {
                 LoadAccounts();
             }
             else
             {
-                _WalletService.OnStarted += _WalletService_OnStarted;
+                WalletService.OnStarted += _WalletService_OnStarted;
             }
         }
 
@@ -66,9 +66,9 @@ namespace HodlWallet.Core.ViewModels
             if (Accounts != null)
                 Accounts.Clear();
 
-            var accounts = _WalletService.Wallet.Accounts;
+            var accounts = WalletService.Wallet.Accounts;
 
-            foreach(var account in accounts)
+            foreach (var account in accounts)
             {
                 Accounts.Add(AccountModel.FromAccountData(account));
             }
@@ -78,14 +78,14 @@ namespace HodlWallet.Core.ViewModels
         {
             if (CurrentAccount is null) return;
 
-            _WalletService.Wallet.CurrentAccount = CurrentAccount.AccountData;
+            WalletService.Wallet.CurrentAccount = CurrentAccount.AccountData;
 
             CurrentAccount = null;
 
             // FIXME this is probably wrong
             //_WalletService.Start();
 
-            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
+            Shell.Current.GoToAsync("home");
         }
     }
 }

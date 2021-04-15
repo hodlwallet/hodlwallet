@@ -37,28 +37,30 @@ namespace HodlWallet.Core.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IWalletService _WalletService => DependencyService.Get<IWalletService>();
-        public IShareIntent _ShareIntent => DependencyService.Get<IShareIntent>();
-        public IPrecioHttpService _PrecioHttpService => RestService.For<IPrecioHttpService>(Constants.PRECIO_HOST_URL);
-        public IPrecioService _PrecioService => DependencyService.Get<IPrecioService>();
-        public IPermissions _PermissionsService => DependencyService.Get<IPermissions>();
+        public IWalletService WalletService => DependencyService.Get<IWalletService>();
+        public IShareIntent ShareIntent => DependencyService.Get<IShareIntent>();
+        public IPrecioHttpService PrecioHttpService => RestService.For<IPrecioHttpService>(Constants.PRECIO_HOST_URL);
+        public IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
+        public IPermissions PermissionsService => DependencyService.Get<IPermissions>();
 
-        bool _IsLoading;
+        bool isLoading;
         public bool IsLoading
         {
-            get { return _IsLoading; }
-            set { SetProperty(ref _IsLoading, value); }
+            get { return isLoading; }
+            set { SetProperty(ref isLoading, value); }
         }
 
-        string _Title = string.Empty;
+        string title = string.Empty;
         public string Title
         {
-            get { return _Title; }
-            set { SetProperty(ref _Title, value); }
+            get { return title; }
+            set { SetProperty(ref title, value); }
         }
 
-        protected bool SetProperty<T>(ref T backingStore, T value,
-            [CallerMemberName]string propertyName = "",
+        protected bool SetProperty<T>(
+            ref T backingStore,
+            T value,
+            [CallerMemberName] string propertyName = "",
             Action onChanged = null)
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))

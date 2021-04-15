@@ -4,6 +4,7 @@
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              x:Class="HodlWallet.UI.Views.PinPadView"
+             Title="Create A New Pin"
              BackgroundColor="{DynamicResource BackgroundPrimary}">
     <ContentPage.BindingContext>
         <vm:PinPadViewModel />
@@ -12,7 +13,7 @@
         <AbsoluteLayout>
             <FlexLayout>
                 <controls:PinPad x:Name="PinPadControl"
-                                       Command="{Binding SuccessCommand}" />
+                                 Command="{Binding SuccessCommand}" />
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

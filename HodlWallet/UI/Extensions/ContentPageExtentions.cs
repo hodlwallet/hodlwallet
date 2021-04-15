@@ -79,7 +79,7 @@ namespace HodlWallet.UI.Extensions
 
                 var res = view.DisplayAlert(title, message, okButton, cancelButton).Result;
 
-                promptTaskSource.SetResult(res);    
+                promptTaskSource.SetResult(res);
             }
 
             return await promptTaskSource.Task;
@@ -110,7 +110,7 @@ namespace HodlWallet.UI.Extensions
             layout.Children.Add(prompt);
 
             prompt.Init();
-            
+
             return prompt;
         }
 
@@ -127,19 +127,13 @@ namespace HodlWallet.UI.Extensions
                 (View child) => child.GetType() == typeof(ToastView)
             );
 
-            if (prevToast != null)
-            {
-                ((ToastView)prevToast).UpdateContent(content);
-
-                taskSource.SetResult(true);
-                return taskSource;
-            }
+            if (prevToast != null) layout.Children.Remove(prevToast);
 
             layout.Children.Add(toast);
 
             toast.Init();
 
-            toast.IsClosed += (object sender, bool res) =>
+            toast.OnClosed += (object sender, bool res) =>
             {
                 layout.Children.Remove(toast);
             };

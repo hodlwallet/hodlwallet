@@ -26,17 +26,15 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using NBitcoin;
-using Serilog.Parsing;
+
 using Xamarin.Forms;
 
 namespace HodlWallet.UI.Controls
 {
     public class MoneyLabel : StackLayout
     {
-        object _Lock = new object();
-
-        Animation _Animation = new Animation();
+        readonly object @lock = new();
+        readonly Animation animation = new();
 
         const string ALLOWED_DIGITS = "9876543210";
         const string ALLOWED_SYMBOLS_SMALL = " ,.-";
@@ -182,11 +180,11 @@ namespace HodlWallet.UI.Controls
             }
         }
 
-        void ChangeStartText()
-        {
-            // TODO figure this out...
-            Children.Insert(0, new Label() { Text = StartText });
-        }
+        //void ChangeStartText()
+        //{
+        //    // TODO figure this out...
+        //    Children.Insert(0, new Label() { Text = StartText });
+        //}
 
         void ChangeTextFontAttributes()
         {
@@ -212,16 +210,16 @@ namespace HodlWallet.UI.Controls
             {
                 LayoutChanged += (object s, EventArgs e) =>
                 {
-                    _ChangeTextColor();
+                    ChangeTextColorHelper();
                 };
 
                 return;
             }
 
-            _ChangeTextColor();
+            ChangeTextColorHelper();
         }
 
-        void _ChangeTextColor()
+        void ChangeTextColorHelper()
         {
             foreach (var child in Children)
             {
@@ -246,16 +244,16 @@ namespace HodlWallet.UI.Controls
             {
                 LayoutChanged += (object s, EventArgs e) =>
                 {
-                    _ChangeFontFamily();
+                    ChangeFontFamilyHelper();
                 };
 
                 return;
             }
 
-            _ChangeFontFamily();
+            ChangeFontFamilyHelper();
         }
 
-        void _ChangeFontFamily()
+        void ChangeFontFamilyHelper()
         {
             foreach (var child in Children)
             {
@@ -281,16 +279,16 @@ namespace HodlWallet.UI.Controls
             {
                 LayoutChanged += (object s, EventArgs e) =>
                 {
-                    _ChangeFontSize();
+                    ChangeFontSizeHelper();
                 };
 
                 return;
             }
 
-            _ChangeFontSize();
+            ChangeFontSizeHelper();
         }
 
-        void _ChangeFontSize()
+        void ChangeFontSizeHelper()
         {
             foreach (var child in Children)
             {
@@ -364,7 +362,7 @@ namespace HodlWallet.UI.Controls
         {
             if (string.IsNullOrWhiteSpace(Text))
             {
-                lock (_Lock)
+                lock (@lock)
                 {
                     Children.Clear();
                 }
@@ -382,7 +380,7 @@ namespace HodlWallet.UI.Controls
             }
             else
             {
-                lock (_Lock)
+                lock (@lock)
                 {
                     while (Children.Count() != Text.Length)
                     {
@@ -392,10 +390,10 @@ namespace HodlWallet.UI.Controls
                 }
             }
 
-            _ModifyText();
+            ModifyTextHelper();
         }
 
-        void _ModifyText()
+        void ModifyTextHelper()
         {
             // Now we replace the old chars
             for (int i = 0, count = Text.Length; i < count; i++)
@@ -436,7 +434,7 @@ namespace HodlWallet.UI.Controls
 
                 if (moneyDigitAnimation != null)
                 {
-                    _Animation.Add(startAt, endAt, moneyDigitAnimation);
+                    animation.Add(startAt, endAt, moneyDigitAnimation);
                     if (!animationAdded) animationAdded = true;
                 }
 
@@ -445,7 +443,7 @@ namespace HodlWallet.UI.Controls
 
             if (animationAdded)
             {
-                _Animation.Commit(
+                animation.Commit(
                     owner: this,
                     name: "ChildrenAnimation",
                     length: fullAnimationDuration
@@ -474,7 +472,7 @@ namespace HodlWallet.UI.Controls
 
         void AddNewChar(char newChar)
         {
-            lock (_Lock)
+            lock (@lock)
             {
                 var moneyDigit = CreateNewChar(newChar);
 

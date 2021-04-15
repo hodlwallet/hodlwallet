@@ -33,17 +33,24 @@ using Xamarin.Forms.Xaml;
 
 using HodlWallet.Core.Interfaces;
 
-namespace HodlWallet.UI.Extensions
+namespace HodlWallet.UI.Extensions.I18n
 {
     // You exclude the 'Extension' suffix when using in XAML
     [ContentProperty("Text")]
     public class TranslateExtension : IMarkupExtension
     {
-        readonly CultureInfo ci;
-        const string ResourceId = "HodlWallet.UI.Locale.LocaleResources";
+        const string RESOURCE_ID = "HodlWallet.UI.Locale.LocaleResources";
 
-        static readonly Lazy<ResourceManager> ResMgr = new Lazy<ResourceManager>(
-            () => new ResourceManager(ResourceId, IntrospectionExtensions.GetTypeInfo(typeof(TranslateExtension)).Assembly));
+        readonly CultureInfo ci;
+
+        ILocalize LocalizeService => DependencyService.Get<ILocalize>();
+
+        static readonly Lazy<ResourceManager> ResMgr = new(
+            () => new ResourceManager(
+                RESOURCE_ID,
+                IntrospectionExtensions.GetTypeInfo(typeof(TranslateExtension)).Assembly
+            )
+        );
 
         public string Text { get; set; }
 
@@ -51,7 +58,7 @@ namespace HodlWallet.UI.Extensions
         {
             if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
             {
-                ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+                ci = LocalizeService.GetCurrentCultureInfo();
             }
         }
 
@@ -65,12 +72,14 @@ namespace HodlWallet.UI.Extensions
             {
 #if DEBUG
                 throw new ArgumentException(
-                    string.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, ci.Name),
-                    "Text");
+                    $"Key '{Text}' was not found in resources '{RESOURCE_ID}' for culture '{ci.Name}'.",
+                    "Text"
+                );
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif
             }
+
             return translation;
         }
     }

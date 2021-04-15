@@ -14,7 +14,11 @@
                     <Image Source="logo_front.png"
                            Scale="0.5"
                            VerticalOptions="Center"
-                           HorizontalOptions="Center" />
+                           HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Logo_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
                 </Frame>
 
                 <Button x:Name="CreateButton"

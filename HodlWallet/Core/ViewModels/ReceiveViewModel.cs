@@ -43,13 +43,13 @@ namespace HodlWallet.Core.ViewModels
         {
             ShowShareIntentCommand = new Command(ShowShareIntent);
 
-            if (_WalletService.IsStarted)
+            if (WalletService.IsStarted)
             {
                 GetAddressFromWallet();
             }
             else
             {
-                _WalletService.OnStarted += _WalletService_OnStarted;
+                WalletService.OnStarted += _WalletService_OnStarted;
             }
         }
 
@@ -60,7 +60,7 @@ namespace HodlWallet.Core.ViewModels
 
         void GetAddressFromWallet()
         {
-            Address = _WalletService.GetReceiveAddress().ToString();
+            Address = WalletService.GetReceiveAddress().ToString();
 
             Debug.WriteLine($"[GetAddressFromWallet] New address: {Address}");
         }
@@ -69,7 +69,7 @@ namespace HodlWallet.Core.ViewModels
         {
             Debug.WriteLine($"[ShowShareIntent] Sharing address: {Address}");
 
-            _ShareIntent.QRTextShareIntent(Address);
+            ShareIntent.QRTextShareIntent(Address);
         }
     }
 }

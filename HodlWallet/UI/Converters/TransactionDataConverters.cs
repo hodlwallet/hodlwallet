@@ -77,10 +77,13 @@ namespace HodlWallet.UI.Converters
         }
     }
 
-    public class CreationTimeToDurationConverter : IValueConverter
+    public class CreatedAtToDurationConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value is null)
+                return "???";
+
             var creationTime = (DateTimeOffset)value;
 
             return DateTimeOffsetOperations.ShortDate(creationTime);

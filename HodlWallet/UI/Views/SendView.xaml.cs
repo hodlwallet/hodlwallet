@@ -37,18 +37,18 @@ namespace HodlWallet.UI.Views
 {
     public partial class SendView : ContentPage
     {
+        SendViewModel ViewModel => BindingContext as SendViewModel;
+
         public SendView()
         {
             InitializeComponent();
-
             SubscribeToMessages();
-
             SetLabels();
         }
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<SendViewModel>(this, "OpenBarcodeScanner", async (vm) => await OpenBarcodeScanner(vm));
+            MessagingCenter.Subscribe<SendViewModel>(this, "OpenBarcodeScanner", OpenBarcodeScanner);
             MessagingCenter.Subscribe<SendViewModel, string[]>(this, "DisplayProcessAlertError", DisplayProcessAlertError);
             MessagingCenter.Subscribe<SendViewModel, ValueTuple<decimal, decimal>>(this, "AskToBroadcastTransaction", AskToBroadcastTransaction);
         }
@@ -78,10 +78,10 @@ namespace HodlWallet.UI.Views
             ScanLabel.Text = LocaleResources.Send_scan;
             PasteLabel.Text = LocaleResources.Send_paste;
             AmountLabel.Text = LocaleResources.Send_amount;
-            ISOLabel.Text = "USD($)"; // Localize
+            ISOLabel.Text = "USD($)"; // TODO Localize
         }
 
-        async Task OpenBarcodeScanner(SendViewModel _)
+        async void OpenBarcodeScanner(SendViewModel _)
         {
             // Android
             if (Device.RuntimePlatform == Device.Android)
@@ -153,6 +153,11 @@ namespace HodlWallet.UI.Views
             {
                 await this.DisplayToast(message ?? string.Join("", messageAndTitle));
             });
+        }
+
+        async void FeeSlider_DragCompleted(object sender, EventArgs e)
+        {
+            await ViewModel.SetSliderValue();
         }
     }
 }

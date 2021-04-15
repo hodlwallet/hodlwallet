@@ -23,11 +23,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using Xamarin.Forms;
+
 namespace HodlWallet.UI.Extensions
 {
     public static class FormsExtensions
     {
-        public static string GetHex(this Xamarin.Forms.Color color)
+        public static string GetHex(this Color color)
         {
             var red = (int)(color.R * 255);
             var green = (int)(color.G * 255);

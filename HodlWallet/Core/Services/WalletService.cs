@@ -216,7 +216,7 @@ namespace HodlWallet.Core.Services
 
             Wallet.Init(mnemonic, password, null, network, createdAt, storage);
 
-            Wallet.AddAccount("bip141");
+            Wallet.AddAccount("bip84");
 
             if (!Wallet.Accounts.Any())
             {

@@ -45,95 +45,121 @@ using HodlWallet.Core.Utils;
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Extensions;
 using HodlWallet.UI.Views;
+using HodlWallet.UI.Extensions;
 using Liviano.Events;
 
 namespace HodlWallet.Core.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-        Serilog.ILogger _Logger;
+        Serilog.ILogger logger;
 
-        bool _IsViewVisible = true;
+        bool isViewVisible = true;
 
-        public string SyncTitleText => "SYNCING";
+        bool attachedWalletListeners = false;
+        decimal balance;
+        decimal balanceFiat;
+        float newRate;
+        float oldRate;
+        bool isBtcEnabled;
+        TransactionModel currentTransaction;
 
-        bool _AttachedWalletListeners = false;
-        decimal _Amount;
-        decimal _AmountFiat;
-        float _NewRate;
-        float _OldRate;
-        bool _IsBtcEnabled;
-        TransactionModel _CurrentTransaction;
-
-        int _PriceUpdateDelay = 2_500; // 2.5 seconds
+        readonly int priceUpdateDelay = 2_500; // 2.5 seconds
 
         public TransactionModel CurrentTransaction
         {
-            get => _CurrentTransaction;
-            set => SetProperty(ref _CurrentTransaction, value);
+            get => currentTransaction;
+            set => SetProperty(ref currentTransaction, value);
         }
 
         public bool IsBtcEnabled
         {
-            get => _IsBtcEnabled;
-            set => SetProperty(ref _IsBtcEnabled, value);
+            get => isBtcEnabled;
+            set => SetProperty(ref isBtcEnabled, value);
         }
 
-        public decimal Amount
+        decimal rate;
+        public decimal Rate
         {
-            get => _Amount;
-            set => SetProperty(ref _Amount, value);
+            get => rate;
+            set => SetProperty(ref rate, value);
         }
 
-        public decimal AmountFiat
+        public decimal Balance
         {
-            get => _AmountFiat;
-            set => SetProperty(ref _AmountFiat, value);
+            get => balance;
+            set => SetProperty(ref balance, value);
         }
 
-        private object _Lock = new object();
+        public decimal BalanceFiat
+        {
+            get => balanceFiat;
+            set => SetProperty(ref balanceFiat, value);
+        }
+
+        readonly object @lock = new();
         public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
 
-        Color _GradientStart;
+        Color gradientStart;
         public Color GradientStart
         {
-            get => _GradientStart;
-            set => SetProperty(ref _GradientStart, value);
+            get => gradientStart;
+            set => SetProperty(ref gradientStart, value);
         }
 
-        Color _GradientEnd;
+        Color gradientEnd;
         public Color GradientEnd
         {
-            get => _GradientEnd;
-            set => SetProperty(ref _GradientEnd, value);
+            get => gradientEnd;
+            set => SetProperty(ref gradientEnd, value);
         }
 
-        string _PriceText;
+        string priceText;
         public string PriceText
         {
-            get => _PriceText;
-            set => SetProperty(ref _PriceText, value);
+            get => priceText;
+            set => SetProperty(ref priceText, value);
         }
 
-        string _SyncDateText;
+        string syncDateText;
         public string SyncDateText
         {
-            get => _SyncDateText;
-            set => SetProperty(ref _SyncDateText, value);
+            get => syncDateText;
+            set => SetProperty(ref syncDateText, value);
         }
 
-        double _SyncCurrentProgress;
+        double syncCurrentProgress;
         public double SyncCurrentProgress
         {
-            get => _SyncCurrentProgress;
-            set => SetProperty(ref _SyncCurrentProgress, value);
+            get => syncCurrentProgress;
+            set => SetProperty(ref syncCurrentProgress, value);
         }
 
-        bool _SyncIsVisible;
+        bool syncIsVisible;
         public bool SyncIsVisible
         {
-            get => _SyncIsVisible;
-            set => SetProperty(ref _SyncIsVisible, value);
+            get => syncIsVisible;
+            set => SetProperty(ref syncIsVisible, value);
+        }
+
+        string currency;
+        public string Currency
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(currency))
+                    return currency;
+
+                SetProperty(ref currency, Preferences.Get("currency", "BTC"));
+
+                return currency;
+            }
+            set
+            {
+                // TODO Add validation
+                SetProperty(ref currency, value);
+                Preferences.Set("currency", currency);
+            }
         }
 
         public ICommand SwitchCurrencyCommand { get; }
@@ -144,7 +170,7 @@ namespace HodlWallet.Core.ViewModels
 
         public HomeViewModel()
         {
-            _Logger = _WalletService.Logger;
+            logger = WalletService.Logger;
 
             NavigateToTransactionDetailsCommand = new Command(NavigateToTransactionDetails);
             SwitchCurrencyCommand = new Command(SwitchCurrency);
@@ -157,14 +183,12 @@ namespace HodlWallet.Core.ViewModels
 
         public void View_OnDisappearing()
         {
-            _IsViewVisible = false;
+            isViewVisible = false;
         }
 
         public void View_OnAppearing()
         {
-            _IsViewVisible = true;
-
-            _Logger = _WalletService.Logger;
+            isViewVisible = true;
 
             InitializeWalletAndPrecio();
             InitializePrecioAndWalletTimers(); // TODO see bellow
@@ -174,18 +198,18 @@ namespace HodlWallet.Core.ViewModels
         public void InitializeWalletAndPrecio()
         {
             // FIXME This logic needs to change...
-            if (_AttachedWalletListeners) return;
+            if (attachedWalletListeners) return;
 
             InitializePrecioAndWalletTimers();
 
             InitializeWalletServiceTransactions();
 
-            _AttachedWalletListeners = true;
+            attachedWalletListeners = true;
         }
 
         void InitializeWalletServiceTransactions()
         {
-            if (_WalletService.IsStarted)
+            if (WalletService.IsStarted)
             {
                 LoadTransactions();
                 AddWalletServiceEvents();
@@ -194,18 +218,19 @@ namespace HodlWallet.Core.ViewModels
             }
             else
             {
-                _WalletService.OnStarted += _WalletService_OnStarted;
+                WalletService.OnStarted += _WalletService_OnStarted;
             }
 
             // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
-            if (_WalletService.IsStarted)
+            if (WalletService.IsStarted)
             {
-                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                AmountFiat = Amount * (decimal)_NewRate;
+                Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                Rate = (decimal)newRate;
+                BalanceFiat = Balance * Rate;
             }
             else
             {
-                _WalletService.OnStarted += _WalletService_OnStarted_ViewAppearing;
+                WalletService.OnStarted += WalletService_OnStarted_ViewAppearing;
             }
 
             IsBtcEnabled = true;
@@ -218,17 +243,17 @@ namespace HodlWallet.Core.ViewModels
             MessagingCenter.Send(this, "DisplaySearchNotImplementedAlert");
         }
 
-        void SwitchCurrency()
+        public void SwitchCurrency()
         {
-            if (!_WalletService.IsStarted) return;
+            if (!WalletService.IsStarted) return;
 
-            var currency = Preferences.Get("currency", "BTC");
-            if (currency == "BTC")
+            if (Currency == "BTC")
             {
-                Preferences.Set("currency", "USD");
+                Currency = "USD";
+                Rate = (decimal)newRate;
 
-                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                AmountFiat = Amount * (decimal)_NewRate;
+                Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                BalanceFiat = Balance * Rate;
 
                 UpdateTransanctions();
 
@@ -236,10 +261,11 @@ namespace HodlWallet.Core.ViewModels
             }
             else
             {
-                Preferences.Set("currency", "BTC");
+                Currency = "BTC";
+                Rate = (decimal)newRate;
 
-                Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                AmountFiat = Amount * (decimal)_NewRate;
+                Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                BalanceFiat = Balance * Rate;
 
                 UpdateTransanctions();
 
@@ -252,52 +278,52 @@ namespace HodlWallet.Core.ViewModels
         void InitializePrecioAndWalletTimers()
         {
             // Run and schedule next times precio will be called
-            using (var cts = new CancellationTokenSource())
+            using var cts = new CancellationTokenSource();
+            Task.Factory.StartNew(async (options) =>
             {
-                Task.Factory.StartNew(async (options) =>
+                while (true)
                 {
-                    while (true)
+                    if (!isViewVisible)
                     {
-                        if (!_IsViewVisible)
-                        {
-                            Debug.WriteLine("[InitializePrecioAndWalletTimers] Stopped timer.");
+                        Debug.WriteLine("[InitializePrecioAndWalletTimers] Stopped timer.");
 
-                            cts.Cancel();
-                            break;
-                        }
-
-                        // Gets first BTC-USD rate.
-                        var rate = _PrecioService.Rate;
-                        if (rate != null)
-                        {
-                            // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
-                            _OldRate = _NewRate = rate.Rate;
-
-                            AmountFiat = Amount * (decimal)_NewRate;
-
-                            UpdateTransanctions();
-                        }
-
-                        await Task.Delay(_PriceUpdateDelay);
+                        cts.Cancel();
+                        break;
                     }
-                }, TaskCreationOptions.LongRunning, cts.Token);
-            }
+
+                    // Gets first BTC-USD rate.
+                    var rate = PrecioService.Rate;
+                    if (rate != null)
+                    {
+                        // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
+                        oldRate = newRate = rate.Rate;
+                        Rate = (decimal)newRate;
+
+                        BalanceFiat = Balance * Rate;
+
+                        UpdateTransanctions();
+                    }
+
+                    await Task.Delay(priceUpdateDelay);
+                }
+            }, TaskCreationOptions.LongRunning, cts.Token);
         }
 
         void UpdateTransanctions()
         {
-            if (Preferences.Get("currency", "BTC") != "BTC")
+            if (Currency != "BTC")
             {
-                AmountFiat = Amount * (decimal)_NewRate;
+                Rate = (decimal)newRate;
+                BalanceFiat = Balance * Rate;
 
-                if (!_OldRate.Equals(_NewRate))
+                if (!oldRate.Equals(newRate))
                 {
-                    _OldRate = _NewRate;
+                    oldRate = newRate;
 
                     // DO NOT convert this into a foreach loop or LINQ statement.
                     for (int i = 0; i < Transactions.Count; i++)
                     {
-                        Transactions[i].AmountText = (Transactions[i].Amount.ToDecimal(MoneyUnit.BTC) * (decimal)_NewRate).ToString("C");
+                        Transactions[i].AmountText = (Transactions[i].Amount.ToDecimal(MoneyUnit.BTC) * (decimal)newRate).ToString("C");
                     }
                 }
 
@@ -310,30 +336,31 @@ namespace HodlWallet.Core.ViewModels
             }
         }
 
-        private void _WalletService_OnStarted_ViewAppearing(object sender, EventArgs e)
+        private void WalletService_OnStarted_ViewAppearing(object sender, EventArgs e)
         {
-            _Logger = _WalletService.Logger;
+            logger = WalletService.Logger;
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                lock (_Lock)
+                lock (@lock)
                 {
-                    Amount = _WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                    AmountFiat = Amount * (decimal)_NewRate;
+                    Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                    Rate = (decimal)newRate;
+                    BalanceFiat = Balance * Rate;
 
-                    _WalletService.OnStarted -= _WalletService_OnStarted_ViewAppearing;
+                    WalletService.OnStarted -= WalletService_OnStarted_ViewAppearing;
                 }
             });
         }
 
-        void NavigateToSend()
+        async void NavigateToSend()
         {
-            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Send);
+            await Shell.Current.GoToAsync("send");
         }
 
-        void NavigateToReceive()
+        async void NavigateToReceive()
         {
-            MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Receive);
+            await Shell.Current.GoToAsync("receive");
         }
 
         void NavigateToTransactionDetails()
@@ -347,13 +374,13 @@ namespace HodlWallet.Core.ViewModels
 
         async Task RatesAsync()
         {
-            var rates = await _PrecioHttpService.GetRates();
+            var rates = await PrecioHttpService.GetRates();
 
             foreach (var rate in rates)
             {
                 if (rate.Code == "USD")
                 {
-                    var price = _NewRate = rate.Rate;
+                    var price = newRate = rate.Rate;
                     //PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BTC_UNIT_LABEL, price);
                     PriceText = string.Format(CultureInfo.CurrentCulture, "{0:C}", price);
                     //PriceText = price.ToString("0.00");
@@ -376,11 +403,11 @@ namespace HodlWallet.Core.ViewModels
 
         void _WalletService_OnStarted(object sender, EventArgs e)
         {
-            _Logger = _WalletService.Logger;
+            logger = WalletService.Logger;
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                lock (_Lock)
+                lock (@lock)
                 {
                     LoadTransactions();
 
@@ -394,8 +421,8 @@ namespace HodlWallet.Core.ViewModels
 
         void AddWalletServiceEvents()
         {
-            _WalletService.Wallet.ElectrumPool.OnNewTransaction += Wallet_OnNewTransaction;
-            _WalletService.Wallet.ElectrumPool.OnUpdateTransaction += Wallet_OnUpdateTransaction;
+            WalletService.Wallet.ElectrumPool.OnNewTransaction += Wallet_OnNewTransaction;
+            WalletService.Wallet.ElectrumPool.OnUpdateTransaction += Wallet_OnUpdateTransaction;
         }
 
         void Wallet_OnNewTransaction(object sender, TxEventArgs e)
@@ -412,7 +439,7 @@ namespace HodlWallet.Core.ViewModels
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                lock (_Lock)
+                lock (@lock)
                 {
                     // Double Check if the tx is there or not...
                     if (Transactions.Any(tx => tx.Id == txEventArgs.Tx.Id)) return;
@@ -426,7 +453,7 @@ namespace HodlWallet.Core.ViewModels
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                lock (_Lock)
+                lock (@lock)
                 {
                     var txModel = TransactionModel.FromTransactionData(txEventArgs.Tx);
                     var tx = Transactions.FirstOrDefault(tx1 => tx1.Id == txEventArgs.Tx.Id);
@@ -444,7 +471,7 @@ namespace HodlWallet.Core.ViewModels
 
         void LoadTransactions()
         {
-            var txs = _WalletService.GetCurrentAccountTransactions().OrderBy(
+            var txs = WalletService.GetCurrentAccountTransactions().OrderBy(
                 (Tx txData) => txData.CreatedAt
             );
 
@@ -474,31 +501,29 @@ namespace HodlWallet.Core.ViewModels
         {
             if (tx is null)
             {
-                _Logger.Debug("Tx is null, because we need to figure out how to change amounts");
+                logger.Debug("Tx is null, because we need to figure out how to change amounts");
 
                 return "";
             }
 
-            var preferences = Preferences.Get("currency", "BTC");
-
-            if (preferences == "BTC")
+            if (Currency == "BTC")
             {
                 if (tx.IsSend == true)
-                    return string.Format(Constants.SENT_AMOUNT, preferences, $"-{tx.AmountSent}");
+                    return string.Format(Constants.SENT_AMOUNT, Currency, $"-{tx.AmountSent}");
 
-                return string.Format(Constants.RECEIVE_AMOUNT, preferences, tx.SpendableAmount(false));
+                return string.Format(Constants.RECEIVE_AMOUNT, Currency, tx.SpendableAmount(false));
             }
 
             if (tx.IsSend == true)
                 return string.Format(
                 Constants.SENT_AMOUNT,
-                preferences,
-                $"-{tx.AmountSent.ToUsd((decimal)_NewRate):F2}");
+                Currency,
+                $"-{tx.AmountSent.ToUsd((decimal)newRate):F2}");
 
             return string.Format(
                 Constants.RECEIVE_AMOUNT,
-                preferences,
-                $"{tx.SpendableAmount(false).ToUsd((decimal)_NewRate):F2}");
+                Currency,
+                $"{tx.SpendableAmount(false).ToUsd((decimal)newRate):F2}");
         }
     }
 }

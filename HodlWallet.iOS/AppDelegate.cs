@@ -70,6 +70,7 @@ namespace HodlWallet.iOS
                 .CreateLogger();
 #else
             WalletService.Logger = new LoggerConfiguration()
+                .MinimumLevel.Error()
                 .WriteTo.NSLog()
                 .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet") // Sets the tag fields
                 .CreateLogger();

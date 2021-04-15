@@ -128,7 +128,7 @@ namespace HodlWallet.Core.ViewModels
         public void UpdatePriceChangeWithPeriod(string periodKey)
         {
             var key = $"Btc{periodKey}Change";
-            var btcPriceChange = (BtcPriceChangeEntity)_PrecioService.GetType().GetProperty(key).GetValue(_PrecioService);
+            var btcPriceChange = (BtcPriceChangeEntity)PrecioService.GetType().GetProperty(key).GetValue(PrecioService);
 
             if (btcPriceChange is null) return;
 
@@ -172,7 +172,7 @@ namespace HodlWallet.Core.ViewModels
 
         void UpdatePriceChange1d()
         {
-            var priceChange = _PrecioService.Btc1dChange;
+            var priceChange = PrecioService.Btc1dChange;
 
             if (priceChange is null) return;
 
@@ -226,23 +226,23 @@ namespace HodlWallet.Core.ViewModels
 
         void UpdatePrice()
         {
-            Price = decimal.Parse(_PrecioService.BtcPrice.CRaw);
+            Price = decimal.Parse(PrecioService.BtcPrice.CRaw);
             PriceText = Price.ToString("C");
         }
 
         void UpdateMarketcap()
         {
-            MarketcapText = _PrecioService.MarketCap.Marketcap;
+            MarketcapText = PrecioService.MarketCap.Marketcap;
         }
 
         void UpdateChartData()
         {
-            Prices1h = _PrecioService.Prices1h;
-            Prices1d = _PrecioService.Prices1d;
-            Prices1w = _PrecioService.Prices1w;
-            Prices1m = _PrecioService.Prices1m;
-            Prices1y = _PrecioService.Prices1y;
-            PricesAll = _PrecioService.PricesAll;
+            Prices1h = PrecioService.Prices1h;
+            Prices1d = PrecioService.Prices1d;
+            Prices1w = PrecioService.Prices1w;
+            Prices1m = PrecioService.Prices1m;
+            Prices1y = PrecioService.Prices1y;
+            PricesAll = PrecioService.PricesAll;
 
             DrawPricesChart();
         }

@@ -26,6 +26,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
+using HodlWallet.Core.Interfaces;
+using System;
 
 namespace HodlWallet.UI.Views
 {
@@ -36,7 +38,7 @@ namespace HodlWallet.UI.Views
         Color DigitOnColor => (Color)Application.Current.Resources["InputPinOn"];
         Color DigitOffColor => (Color)Application.Current.Resources["InputPinOff"];
 
-        RootView rootView;
+        IWalletService WalletService => DependencyService.Get<IWalletService>();
 
         LoginViewModel ViewModel => (LoginViewModel)BindingContext;
 
@@ -45,14 +47,6 @@ namespace HodlWallet.UI.Views
             InitializeComponent();
 
             SubscribeToMessages();
-
-            // Little RootView optimization to allow it to be creaed before,
-            // this only call all the constructors inside of it.
-            // DOES NOT solve all performance issue, that's related to the
-            // HomeView's layout being too complex (tm)
-            Task.Run(() =>
-                rootView = new RootView()
-            );
         }
 
         protected override void OnDisappearing()
@@ -66,7 +60,7 @@ namespace HodlWallet.UI.Views
         {
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitAdded", DigitAdded);
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitRemoved", DigitRemoved);
-            MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", (vm) => _ = IncorrectPinAnimation(vm));
+            MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", IncorrectPinAnimation);
             MessagingCenter.Subscribe<LoginViewModel>(this, "NavigateToRootView", NavigateToRootView);
             MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
         }
@@ -85,7 +79,7 @@ namespace HodlWallet.UI.Views
             ColorDigitTo(index, DigitOffColor);
         }
 
-        async Task IncorrectPinAnimation(LoginViewModel _)
+        async void IncorrectPinAnimation(LoginViewModel _)
         {
             Debug.WriteLine($"[SubscribeToMessage][IncorrectPinAnimation]");
 
@@ -107,7 +101,7 @@ namespace HodlWallet.UI.Views
             Debug.WriteLine($"[SubscribeToMessage][NavigateToRootView]");
 
             // Incase we're faster than light, we call the constructor anyways.
-            Navigation.PushAsync(rootView ?? new RootView());
+            Application.Current.MainPage = new AppShell();
         }
 
         void ResetPin(LoginViewModel _)
@@ -132,6 +126,11 @@ namespace HodlWallet.UI.Views
         void ColorDigitTo(BoxView pin, Color color)
         {
             pin.Color = color;
+        }
+
+        void Logo_Tapped(object sender, EventArgs e)
+        {
+            Debug.WriteLine($"[Logo_Tapped] Seed: {WalletService.Wallet.Seed}");
         }
     }
 }

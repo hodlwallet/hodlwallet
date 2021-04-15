@@ -1,5 +1,5 @@
 //
-// AssemblyInfo.xaml.cs
+// AssemblyInfo.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //

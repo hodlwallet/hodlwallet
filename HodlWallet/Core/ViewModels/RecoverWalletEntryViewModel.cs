@@ -132,14 +132,14 @@ namespace HodlWallet.Core.ViewModels
 
             SecureStorageService.SetMnemonic(mnemonic);
 
-            _WalletService.StartWalletWithWalletId();
+            WalletService.StartWalletWithWalletId();
 
             MessagingCenter.Send(this, "NavigateToRootView");
         }
 
         bool CheckWordInWordlist(string word, string wordlist = "english")
         {
-            if (!string.IsNullOrEmpty(word) && WalletService.IsWordInWordlist(word.ToLower(), wordlist) == true)
+            if (!string.IsNullOrEmpty(word) && Services.WalletService.IsWordInWordlist(word.ToLower(), wordlist) == true)
             {
                 return true;
             }
@@ -171,7 +171,7 @@ namespace HodlWallet.Core.ViewModels
 
         bool CheckMnemonicHasValidChecksum(string mnemonic, string wordlist = "english")
         {
-            if (WalletService.IsVerifyChecksum(mnemonic, wordlist) == true) return true;
+            if (Services.WalletService.IsVerifyChecksum(mnemonic, wordlist) == true) return true;
 
             Debug.WriteLine($"Mnemonic returned invalid checksum: {mnemonic}");
 

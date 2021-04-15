@@ -1,7 +1,10 @@
+﻿//
+// ControlsDemoView.xaml.cs
 //
-// IFeatureSwitchingService.cs
+// Author:
+//       Igor Guerrero <igorgue@protonmail.com>
 //
-// Copyright (c) 2019 HODL Wallet
+// Copyright (c) 2019 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,30 +23,18 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Collections.Generic;
-using HodlWallet.Core.Models;
 
-namespace HodlWallet.Core.Interfaces
+using Xamarin.Forms;
+
+namespace HodlWallet.UI.Views.Demos
 {
-    public interface IFeatureSwitchingService <R, F>
-        where R : struct
-        where F : struct
+    public partial class ControlsDemoView : ContentPage
     {
-        R DefaultRelease { get; }
-
-        R CurrentRelease { get; set; }
-
-        bool IsDevMode { get; set; }
-
-        R GetRelease(int releaseValue);
-
-        FeatureSwitchingKeyPairValue<F>[] CurrentFeatures { get; }
-
-        bool IsFeatureEnabled(F feature);
-
-        void ChangeRelease(R release);
-
-        string FriendlyReleaseName(R release);
-        List<string> FriendlyReleases();
+        public ControlsDemoView()
+        {
+            InitializeComponent();
+        }
     }
 }

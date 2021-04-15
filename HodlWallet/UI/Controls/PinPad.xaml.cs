@@ -215,6 +215,7 @@ namespace HodlWallet.UI.Controls
                     PaintBoxView(Color.Orange, _pin1.Length);
                     if (_pin1.Length == 6)
                     {
+                        await Task.Delay(300);
                         grdSetPin.IsVisible = false;
                         grdReSetPin.IsVisible = true;
                     }
@@ -232,6 +233,7 @@ namespace HodlWallet.UI.Controls
                         {
                             // TODO: FIX POPUP STACK ERROR
                             // await Navigation.PushPopupAsync(new SetPin());
+
                             Command?.Execute(_pin1);
                         }
                         else
@@ -252,8 +254,7 @@ namespace HodlWallet.UI.Controls
 
                             grdReSetPin.TranslationX = 0;
 
-                            await Task.Delay(500);
-                            ClearBoxViews();
+                            await ClearBoxViews();
                             grdSetPin.IsVisible = true;
                             grdReSetPin.IsVisible = false;
                         }
@@ -264,8 +265,10 @@ namespace HodlWallet.UI.Controls
             }
         }
 
-        private void ClearBoxViews()
+        private async Task ClearBoxViews()
         {
+            await Task.Delay(500);
+
             foreach (var element in cntViewBoxes.Children)
             {
                 if (element is Grid grid)

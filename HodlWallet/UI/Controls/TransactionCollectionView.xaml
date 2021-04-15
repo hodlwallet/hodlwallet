@@ -2,21 +2,21 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
     x:Class="HodlWallet.UI.Controls.TransactionCollectionView"
     xmlns:converters="clr-namespace:HodlWallet.UI.Converters">
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:MemoToHeightConverter x:Key="MemoToHeightConverter" />
             <converters:IsSendToStatusColorConverter x:Key="IsSendToStatusColorConverter" />
-            <converters:CreationTimeToDurationConverter x:Key="CreationTimeToDurationConverter" />
+            <converters:CreatedAtToDurationConverter x:Key="CreatedAtToDurationConverter" />
             <converters:IsSendToIconConverter x:Key="IsSendToIconConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
-    <Frame
-        HeightRequest="150"
-        HasShadow="False"
-        BackgroundColor="Transparent"
-        Padding="0">
+    <Frame HasShadow="False"
+           HeightRequest="450"
+           BackgroundColor="Transparent"
+           Padding="0">
         <StackLayout>
             <CollectionView
                 x:Name="Collection"
@@ -25,10 +25,34 @@
                 SelectedItem="{Binding CurrentTransaction}"
                 SelectionChangedCommand="{Binding NavigateToTransactionDetailsCommand}"
                 BackgroundColor="{DynamicResource BackgroundPrimary}">
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="CenterAndExpand"
+                                     VerticalOptions="CenterAndExpand">
+                            <Label Text="{i18n:Translate Text=Transactions.empty}"
+                                   Margin="10,25,10,10"
+                                   FontAttributes="Bold"
+                                   FontSize="18"
+                                   Style="{DynamicResource CustomLabel}"
+                                   TextColor="{DynamicResource TextSecondary}"
+                                   HorizontalOptions="Fill"
+                                   HorizontalTextAlignment="Center" />
+                            <Button Text="{i18n:Translate Text=Transactions.empty.button}"
+                                    Style="{DynamicResource CustomButton}"
+                                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                                    Clicked="EmptyGetAddressButton_Clicked"
+                                    FontSize="Medium"
+                                    HeightRequest="50"
+                                    FlexLayout.AlignSelf="Stretch"
+                                    FlexLayout.Grow="1" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Orientation="Horizontal">
-                            <Image Source="{Binding IsSend, Converter={StaticResource IsSendToIconConverter}}" Opacity="0.3" Margin="15, 2, 0, 2" HeightRequest="30" WidthRequest="30" />
+                            <!--<Image Source="{Binding IsSend, Converter={StaticResource IsSendToIconConverter}}" Opacity="0.3" Margin="15, 2, 0, 2" HeightRequest="30" WidthRequest="30" />-->
                             <Grid
                                 Margin="0, 2, 15, 2"
                                 Padding="10"
@@ -68,7 +92,8 @@
                                            FontFamily="{StaticResource Sans-Regular}"
                                            HorizontalTextAlignment="End"
                                            TextColor="{DynamicResource TextSecondary}"
-                                           Text="{Binding CreationTime, Converter={StaticResource CreationTimeToDurationConverter}}" />
+                                           WidthRequest="66"
+                                           Text="{Binding CreatedAt, Converter={StaticResource CreatedAtToDurationConverter}}" />
                                 </StackLayout>
                                 <Label
                                     Style="{StaticResource TransactionInfoLabel}"

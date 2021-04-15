@@ -4,7 +4,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
-             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.LoginView"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{DynamicResource BackgroundPrimary}"
@@ -19,12 +19,16 @@
                         BackgroundColor="{DynamicResource BackgroundPrimary}"
                         JustifyContent="SpaceAround"
                         AlignItems="Center">
- 
+
                 <Image Source="logo_front.png"
                        FlexLayout.Grow="2"
                        HeightRequest="120"
                        VerticalOptions="Center"
-                       HorizontalOptions="Center" />
+                       HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Logo_Tapped" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
 
                 <BoxView FlexLayout.Grow="1" />
 

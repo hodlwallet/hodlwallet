@@ -52,10 +52,10 @@ namespace HodlWallet.UI.Views
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<PinPadViewModel>(this, "NavigateToBackupViewModel", async (vm) => await NavigateToBackupViewModel(vm));
+            MessagingCenter.Subscribe<PinPadViewModel>(this, "NavigateToBackupViewModel", NavigateToBackupViewModel);
         }
 
-        async Task NavigateToBackupViewModel(PinPadViewModel _)
+        async void NavigateToBackupViewModel(PinPadViewModel _)
         {
             await Navigation.PushAsync(new BackupView(action: "skip"));
         }

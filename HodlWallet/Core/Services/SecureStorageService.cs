@@ -28,7 +28,6 @@ using System.Linq;
 
 using Xamarin.Essentials;
 
-using Liviano;
 using Liviano.Bips;
 using Liviano.Exceptions;
 using Liviano.Utilities;
@@ -42,7 +41,7 @@ namespace HodlWallet.Core.Services
         const string PASSWORD_KEY = "password";
         const string MNEMONIC_KEY = "mnemonic";
         const string NETWORK_KEY = "network";
-        const string SEED_BIRTHDAY = "seed-birthday";
+        const string SEED_BIRTHDAY_KEY = "seed-birthday";
 
         public static string GetWalletId()
         {
@@ -73,7 +72,7 @@ namespace HodlWallet.Core.Services
         {
             Guard.NotEmpty(mnemonic, nameof(mnemonic));
 
-            if (! Hd.IsValidChecksum(mnemonic))
+            if (!Hd.IsValidChecksum(mnemonic))
                 throw new WalletException("Invalid mnemonic the checksum wasn't validated");
 
             Set(MNEMONIC_KEY, mnemonic);
@@ -137,11 +136,11 @@ namespace HodlWallet.Core.Services
 
         public static int GetSeedBirthday()
         {
-            var result = Get(SEED_BIRTHDAY);
+            var result = Get(SEED_BIRTHDAY_KEY);
 
             if (result == null) return -1;
 
-            return int.Parse(Get(SEED_BIRTHDAY));
+            return int.Parse(Get(SEED_BIRTHDAY_KEY));
         }
 
         public static bool HasSeedBirthday()
@@ -151,7 +150,7 @@ namespace HodlWallet.Core.Services
 
         public static void SetSeedBirthday(DateTimeOffset birthday)
         {
-            Set(SEED_BIRTHDAY, birthday.ToUnixTimeSeconds().ToString());
+            Set(SEED_BIRTHDAY_KEY, birthday.ToUnixTimeSeconds().ToString());
         }
 
         public static void RemoveAll()

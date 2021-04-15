@@ -39,137 +39,151 @@ namespace HodlWallet.Core.ViewModels
 {
     public class TransactionDetailsViewModel : BaseViewModel
     {
+        string BlockExplorerAddressUri => WalletService.GetNetwork() == Network.Main ?
+                Constants.BLOCK_EXPLORER_ADDRESS_MAINNET_URI :
+                Constants.BLOCK_EXPLORER_ADDRESS_TESTNET_URI;
+
+        string BlockExplorerTransactionsUri => WalletService.GetNetwork() == Network.Main ?
+                Constants.BLOCK_EXPLORER_TRANSACTION_MAINNET_URI :
+                Constants.BLOCK_EXPLORER_TRANSACTION_TESTNET_URI;
+
         public ICommand ShowFaqCommand { get; }
+
         public ICommand BrowseAddressCommand { get; }
+        
         public ICommand BrowseTransactionIdCommand { get; }
 
         public string StatusTitle => LocaleResources.TransactionDetails_statusTitle;
+        
         public string MemoTitle => LocaleResources.TransactionDetails_memoTitle;
+        
         public string AmountTitle => LocaleResources.TransactionDetails_amountTitle;
+        
         public string TransactionIdTitle => LocaleResources.TransactionDetails_transactionIdTitle;
+        
         public string ConfirmedBlockTitle => LocaleResources.TransactionDetails_confirmedBlockTitle;
 
-        TransactionModel _TransactionModel;
+        TransactionModel transactionModel;
         public TransactionModel TransactionModel
         {
-            get => _TransactionModel;
+            get => transactionModel;
             set
             {
-                SetProperty(ref _TransactionModel, value);
+                SetProperty(ref transactionModel, value);
 
                 GetTransactionModelData();
             }
         }
 
-        DateTimeOffset _CreationTime;
-        public DateTimeOffset CreationTime
+        DateTimeOffset createdAt;
+        public DateTimeOffset CreatedAt
         {
-            get => _CreationTime;
-            set => SetProperty(ref _CreationTime, value);
+            get => createdAt;
+            set => SetProperty(ref createdAt, value);
         }
 
-        string _CreationTimeText;
-        public string CreationTimeText
+        string createdAtText;
+        public string CreatedAtText
         {
-            get => _CreationTimeText;
-            set => SetProperty(ref _CreationTimeText, value);
+            get => createdAtText;
+            set => SetProperty(ref createdAtText, value);
         }
 
-        Money _Amount;
+        Money amount;
         public Money Amount
         {
-            get => _Amount;
-            set => SetProperty(ref _Amount, value);
+            get => amount;
+            set => SetProperty(ref amount, value);
         }
 
-        string _AmountText;
+        string amountText;
         public string AmountText
         {
-            get => _AmountText;
-            set => SetProperty(ref _AmountText, value);
+            get => amountText;
+            set => SetProperty(ref amountText, value);
         }
 
-        string _Address;
+        string address;
         public string Address
         {
-            get => _Address;
-            set => SetProperty(ref _Address, value);
+            get => address;
+            set => SetProperty(ref address, value);
         }
 
-        string _AddressText;
+        string addressText;
         public string AddressText
         {
-            get => _AddressText;
-            set => SetProperty(ref _AddressText, value);
+            get => addressText;
+            set => SetProperty(ref addressText, value);
         }
 
-        string _AddressTitle;
+        string addressTitle;
         public string AddressTitle
         {
-            get => _AddressTitle;
-            set => SetProperty(ref _AddressTitle, value);
+            get => addressTitle;
+            set => SetProperty(ref addressTitle, value);
         }
 
-        string _StatusText;
+        string statusText;
         public string StatusText
         {
-            get => _StatusText;
-            set => SetProperty(ref _StatusText, value);
+            get => statusText;
+            set => SetProperty(ref statusText, value);
         }
 
-        string _MemoText;
+        string memoText;
         public string MemoText
         {
-            get => _MemoText;
+            get => memoText;
             set
             {
                 if (value != null)
                 {
-                    SetProperty(ref _MemoText, value);
+                    SetProperty(ref memoText, value);
                 }
             }
         }
 
-        string _AmountWithFeeText;
+        string amountWithFeeText;
         public string AmountWithFeeText
         {
-            get => _AmountWithFeeText;
-            set => SetProperty(ref _AmountWithFeeText, value);
+            get => amountWithFeeText;
+            set => SetProperty(ref amountWithFeeText, value);
         }
 
-        string _StartingBalanceText;
+        string startingBalanceText;
         public string StartingBalanceText
         {
-            get => _StartingBalanceText;
-            set => SetProperty(ref _StartingBalanceText, value);
+            get => startingBalanceText;
+            set => SetProperty(ref startingBalanceText, value);
         }
 
-        string _EndingBalanceText;
+        string endingBalanceText;
         public string EndingBalanceText
         {
-            get => _EndingBalanceText;
-            set => SetProperty(ref _EndingBalanceText, value);
+            get => endingBalanceText;
+            set => SetProperty(ref endingBalanceText, value);
         }
 
-        string _IdText;
+        string idText;
         public string IdText
         {
-            get => _IdText;
-            set => SetProperty(ref _IdText, value);
+            get => idText;
+            set => SetProperty(ref idText, value);
         }
 
-        uint256 _Id;
+        uint256 id;
         public uint256 Id
         {
-            get => _Id;
-            set => SetProperty(ref _Id, value);
+            get => id;
+            set => SetProperty(ref id, value);
         }
 
-        string _ConfirmedBlockText;
+        string confirmedBlockText;
         public string ConfirmedBlockText
         {
-            get => _ConfirmedBlockText;
-            set => SetProperty(ref _ConfirmedBlockText, value);
+            get => confirmedBlockText;
+            set => SetProperty(ref confirmedBlockText, value);
         }
 
         public TransactionDetailsViewModel()
@@ -187,17 +201,17 @@ namespace HodlWallet.Core.ViewModels
 
         void GetTransactionModelData()
         {
-            AddressText = _TransactionModel.AddressText;
-            AddressTitle = _TransactionModel.AddressTitle;
-            CreationTimeText = _TransactionModel.CreationTimeText;
-            AmountText = _TransactionModel.AmountText;
-            StatusText = _TransactionModel.StatusText;
-            MemoText = _TransactionModel.MemoText;
-            AmountWithFeeText = _TransactionModel.AmountWithFeeText;
-            Address = _TransactionModel.Address;
-            Id = _TransactionModel.Id;
-            IdText = _TransactionModel.IdText;
-            ConfirmedBlockText = _TransactionModel.ConfirmedBlockText;
+            AddressText = transactionModel.AddressText;
+            AddressTitle = transactionModel.AddressTitle;
+            CreatedAtText = transactionModel.CreatedAtText;
+            AmountText = transactionModel.AmountText;
+            StatusText = transactionModel.StatusText;
+            MemoText = transactionModel.MemoText;
+            AmountWithFeeText = transactionModel.AmountWithFeeText;
+            Address = transactionModel.Address;
+            Id = transactionModel.Id;
+            IdText = transactionModel.IdText;
+            ConfirmedBlockText = transactionModel.ConfirmedBlockText;
         }
 
         Task ShowFaq()
@@ -207,32 +221,14 @@ namespace HodlWallet.Core.ViewModels
 
         async Task AddressToBrowser()
         {
-            Uri uri;
-
-            if (_WalletService.GetNetwork() == Network.Main)
-            {
-                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_ADDRESS_MAINNET_URI, Address));
-            }
-            else
-            {
-                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_ADDRESS_TESTNET_URI, Address));
-            }
+            var uri = new Uri(string.Format(BlockExplorerAddressUri, Address));
 
             await Browser.OpenAsync(uri, BrowserLaunchMode.External);
         }
 
         async Task IdToBrowser()
         {
-            Uri uri;
-
-            if (_WalletService.GetNetwork() == Network.Main)
-            {
-                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_TRANSACTION_MAINNET_URI, IdText));
-            }
-            else
-            {
-                uri = new Uri(string.Format(Constants.BLOCK_EXPLORER_TRANSACTION_TESTNET_URI, IdText));
-            }
+            var uri = new Uri(string.Format(BlockExplorerTransactionsUri, Address));
 
             await Browser.OpenAsync(uri, BrowserLaunchMode.External);
         }

@@ -29,13 +29,13 @@ namespace HodlWallet.UI.Views
 {
     public partial class BackupRecoveryConfirmView : ContentPage
     {
-        BackupRecoveryConfirmViewModel _ViewModel => (BackupRecoveryConfirmViewModel) BindingContext;
+        BackupRecoveryConfirmViewModel ViewModel => (BackupRecoveryConfirmViewModel)BindingContext;
 
         public BackupRecoveryConfirmView(string[] mnemonic)
         {
             InitializeComponent();
 
-            _ViewModel.Mnemonic = mnemonic;
+            ViewModel.Mnemonic = mnemonic;
 
             SubscribeToMessages();
 
@@ -67,7 +67,7 @@ namespace HodlWallet.UI.Views
             }
 
             // First time launching recovery we finish the account creation!
-            Navigation.PushAsync(new RootView());
+            Application.Current.MainPage = new AppShell();
         }
     }
 }

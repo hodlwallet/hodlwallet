@@ -26,6 +26,7 @@ using System.Diagnostics;
 using Xamarin.Forms;
 
 using HodlWallet.UI.Locale;
+using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.UI.Views
 {
@@ -46,16 +47,17 @@ namespace HodlWallet.UI.Views
 
         void CreateButton_Clicked(object sender, EventArgs e)
         {
-            Debug.WriteLine("[CreateButton_Clicked]");
-
             Navigation.PushAsync(new PinPadView());
         }
 
         void RecoverButton_Clicked(object sender, EventArgs e)
         {
-            Debug.WriteLine("[RecoverButton_Clicked]");
-
             Navigation.PushAsync(new RecoverView());
+        }
+
+        async void Logo_Tapped(object sender, EventArgs e)
+        {
+            await this.DisplayToast("Test");
         }
     }
 }

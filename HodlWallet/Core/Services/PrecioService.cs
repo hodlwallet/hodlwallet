@@ -68,116 +68,116 @@ namespace HodlWallet.Core.Services
         readonly int btcPriceDelay = 2_500; // 2.5 seconds, time of the animation as well
         readonly int httpRequestsDelay = 30_000; // 30 seconds
 
-        BtcPriceEntity _BtcPrice;
+        BtcPriceEntity btcPrice;
         public BtcPriceEntity BtcPrice
         {
-            get => _BtcPrice;
-            set => SetProperty(ref _BtcPrice, value, nameof(BtcPrice));
+            get => btcPrice;
+            set => SetProperty(ref btcPrice, value, nameof(BtcPrice));
         }
 
-        List<List<object>> _ExchangesLeaderboard;
+        List<List<object>> exchangesLeaderboard;
         public List<List<object>> ExchangesLeaderboard
         {
-            get => _ExchangesLeaderboard;
-            set => SetProperty(ref _ExchangesLeaderboard, value, nameof(ExchangesLeaderboard));
+            get => exchangesLeaderboard;
+            set => SetProperty(ref exchangesLeaderboard, value, nameof(ExchangesLeaderboard));
         }
 
-        MarketCapEntity _MarketCap;
+        MarketCapEntity marketCap;
         public MarketCapEntity MarketCap
         {
-            get => _MarketCap;
-            set => SetProperty(ref _MarketCap, value, nameof(MarketCap));
+            get => marketCap;
+            set => SetProperty(ref marketCap, value, nameof(MarketCap));
         }
 
-        BtcPriceChangeEntity _Btc1hChange;
+        BtcPriceChangeEntity btc1hChange;
         public BtcPriceChangeEntity Btc1hChange
         {
-            get => _Btc1hChange;
-            set => SetProperty(ref _Btc1hChange, value, nameof(Btc1hChange));
+            get => btc1hChange;
+            set => SetProperty(ref btc1hChange, value, nameof(Btc1hChange));
         }
 
-        BtcPriceChangeEntity _Btc1dChange;
+        BtcPriceChangeEntity btc1dChange;
         public BtcPriceChangeEntity Btc1dChange
         {
-            get => _Btc1dChange;
-            set => SetProperty(ref _Btc1dChange, value, nameof(Btc1dChange));
+            get => btc1dChange;
+            set => SetProperty(ref btc1dChange, value, nameof(Btc1dChange));
         }
 
-        BtcPriceChangeEntity _Btc1wChange;
+        BtcPriceChangeEntity btc1wChange;
         public BtcPriceChangeEntity Btc1wChange
         {
-            get => _Btc1wChange;
-            set => SetProperty(ref _Btc1wChange, value, nameof(Btc1wChange));
+            get => btc1wChange;
+            set => SetProperty(ref btc1wChange, value, nameof(Btc1wChange));
         }
 
-        BtcPriceChangeEntity _Btc1mChange;
+        BtcPriceChangeEntity btc1mChange;
         public BtcPriceChangeEntity Btc1mChange
         {
-            get => _Btc1mChange;
-            set => SetProperty(ref _Btc1mChange, value, nameof(Btc1mChange));
+            get => btc1mChange;
+            set => SetProperty(ref btc1mChange, value, nameof(Btc1mChange));
         }
 
-        BtcPriceChangeEntity _Btc1yChange;
+        BtcPriceChangeEntity btc1yChange;
         public BtcPriceChangeEntity Btc1yChange
         {
-            get => _Btc1yChange;
-            set => SetProperty(ref _Btc1yChange, value, nameof(Btc1yChange));
+            get => btc1yChange;
+            set => SetProperty(ref btc1yChange, value, nameof(Btc1yChange));
         }
 
-        BtcPriceChangeEntity _BtcAllChange;
+        BtcPriceChangeEntity btcAllChange;
         public BtcPriceChangeEntity BtcAllChange
         {
-            get => _BtcAllChange;
-            set => SetProperty(ref _BtcAllChange, value, nameof(BtcAllChange));
+            get => btcAllChange;
+            set => SetProperty(ref btcAllChange, value, nameof(BtcAllChange));
         }
 
-        PricesEntity _Prices1h;
+        PricesEntity prices1h;
         public PricesEntity Prices1h
         {
-            get => _Prices1h;
-            set => SetProperty(ref _Prices1h, value, nameof(Prices1h));
+            get => prices1h;
+            set => SetProperty(ref prices1h, value, nameof(Prices1h));
         }
 
-        PricesEntity _Prices1d;
+        PricesEntity prices1d;
         public PricesEntity Prices1d
         {
-            get => _Prices1d;
-            set => SetProperty(ref _Prices1d, value, nameof(Prices1d));
+            get => prices1d;
+            set => SetProperty(ref prices1d, value, nameof(Prices1d));
         }
 
-        PricesEntity _Prices1w;
+        PricesEntity prices1w;
         public PricesEntity Prices1w
         {
-            get => _Prices1w;
-            set => SetProperty(ref _Prices1w, value, nameof(Prices1w));
+            get => prices1w;
+            set => SetProperty(ref prices1w, value, nameof(Prices1w));
         }
 
-        PricesEntity _Prices1m;
+        PricesEntity prices1m;
         public PricesEntity Prices1m
         {
-            get => _Prices1m;
-            set => SetProperty(ref _Prices1m, value, nameof(Prices1m));
+            get => prices1m;
+            set => SetProperty(ref prices1m, value, nameof(Prices1m));
         }
 
-        PricesEntity _Prices1y;
+        PricesEntity prices1y;
         public PricesEntity Prices1y
         {
-            get => _Prices1y;
-            set => SetProperty(ref _Prices1y, value, nameof(Prices1y));
+            get => prices1y;
+            set => SetProperty(ref prices1y, value, nameof(Prices1y));
         }
 
-        PricesEntity _PricesAll;
+        PricesEntity pricesAll;
         public PricesEntity PricesAll
         {
-            get => _PricesAll;
-            set => SetProperty(ref _PricesAll, value, nameof(PricesAll));
+            get => pricesAll;
+            set => SetProperty(ref pricesAll, value, nameof(PricesAll));
         }
 
-        CurrencyEntity _Rate;
+        CurrencyEntity rate;
         public CurrencyEntity Rate
         {
-            get => _Rate;
-            set => SetProperty(ref _Rate, value, nameof(Rate));
+            get => rate;
+            set => SetProperty(ref rate, value, nameof(Rate));
         }
 
         public PrecioService()
@@ -306,8 +306,6 @@ namespace HodlWallet.Core.Services
         async Task FetchRate()
         {
             Rate = (await PrecioHttpService.GetRates()).SingleOrDefault(r => r.Code == "USD");
-
-            Debug.WriteLine($"[FetchRate] Got rate {Rate.Rate:C}");
         }
 
         async Task WebSocketConnect()
@@ -396,8 +394,6 @@ namespace HodlWallet.Core.Services
 
         void UpdateDataFrom(string key, string data)
         {
-            Debug.WriteLine($"[UpdateDataFrom] {key} with: {data}");
-
             switch (key)
             {
                 case "btc-price":
@@ -432,7 +428,7 @@ namespace HodlWallet.Core.Services
 
                     Debug.WriteLine(err);
                     throw new ArgumentException(err);
-        }
+            }
         }
     }
 }

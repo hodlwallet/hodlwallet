@@ -1,153 +1,162 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>pdbonly</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+		<PackageReference Include="SkiaSharp" Version="2.80.2" />
+		<PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
+		<PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+		<PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
+		<PackageReference Include="Refit" Version="6.0.38" />
+		<PackageReference Include="Serilog" Version="2.10.0" />
+		<PackageReference Include="QRCoder" Version="1.4.1" />
+		<PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
+		<PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
+		<PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Core\" />
+		<Folder Include="Core\Models\" />
+		<Folder Include="Core\Services\" />
+		<Folder Include="Core\ViewModels\" />
+		<Folder Include="UI\Extensions\" />
+		<Folder Include="UI\Locale\" />
+		<Folder Include="Core\Utils\" />
+		<Folder Include="UI\Converters\" />
+		<Folder Include="Core\Interfaces\" />
+		<Folder Include="UI\Renderers\" />
+		<Folder Include="UI\Effects\" />
+		<Folder Include="UI\Extensions\I18n\" />
+		<Folder Include="UI\Views\Demos\" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="UI\Assets\circle_check_gray.svg" />
+		<None Remove="UI\Assets\circle_check_yellow.svg" />
+		<None Remove="UI\Assets\close.svg" />
+		<None Remove="UI\Assets\currency_switch.svg" />
+		<None Remove="UI\Assets\faq.svg" />
+		<None Remove="UI\Assets\fingerprint_large.svg" />
+		<None Remove="UI\Assets\logo.png" />
+		<None Remove="UI\Assets\logo_front.png" />
+		<None Remove="UI\Assets\menu_tab.svg" />
+		<None Remove="UI\Assets\paper_key.svg" />
+		<None Remove="UI\Assets\paste.svg" />
+		<None Remove="UI\Assets\receive_tab.svg" />
+		<None Remove="UI\Assets\recover_wallet_illustration.svg" />
+		<None Remove="UI\Assets\scan.svg" />
+		<None Remove="UI\Assets\search.svg" />
+		<None Remove="UI\Assets\send_tab.svg" />
+		<None Remove="UI\Assets\shield.svg" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="UI\Assets\circle_check_gray.svg" />
+		<EmbeddedResource Include="UI\Assets\circle_check_yellow.svg" />
+		<EmbeddedResource Include="UI\Assets\close.svg" />
+		<EmbeddedResource Include="UI\Assets\currency_switch.svg" />
+		<EmbeddedResource Include="UI\Assets\faq.svg" />
+		<EmbeddedResource Include="UI\Assets\fingerprint_large.svg" />
+		<EmbeddedResource Include="UI\Assets\logo.png" />
+		<EmbeddedResource Include="UI\Assets\logo_front.png" />
+		<EmbeddedResource Include="UI\Assets\menu_tab.svg" />
+		<EmbeddedResource Include="UI\Assets\paper_key.svg" />
+		<EmbeddedResource Include="UI\Assets\paste.svg" />
+		<EmbeddedResource Include="UI\Assets\receive_tab.svg" />
+		<EmbeddedResource Include="UI\Assets\recover_wallet_illustration.svg" />
+		<EmbeddedResource Include="UI\Assets\scan.svg" />
+		<EmbeddedResource Include="UI\Assets\search.svg" />
+		<EmbeddedResource Include="UI\Assets\send_tab.svg" />
+		<EmbeddedResource Include="UI\Assets\shield.svg" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="UI\AppShell.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="UI\Controls\FlyoutHeader.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="UI\Locale\LocaleResources.resx">
+			<LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Update="UI\Locale\LocaleResources.Designer.cs">
+			<DependentUpon>LocaleResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="UI\Views\RecoverView.xaml.cs">
+			<DependentUpon>RecoverView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="UI\Views\RecoverWalletEntryView.xaml.cs">
+			<DependentUpon>RecoverWalletEntryView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="UI\Views\AccountSettingsView.xaml.cs">
+			<DependentUpon>AccountSettingsView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="UI\Views\SettingsView.xaml.cs">
+			<DependentUpon>SettingsView.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="UI\Locale\LocaleResources.es.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>LocaleResources.es.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Update="UI\Locale\LocaleResources.es.Designer.cs">
+			<DependentUpon>LocaleResources.es.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\liviano\Liviano\Liviano.csproj" />
+		<ProjectReference Include="..\liviano\Liviano.Utilities\Liviano.Utilities.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <GitPath Include="..\.git" />
+  </ItemGroup>
+  <Target Name="GetBuildInfo" BeforeTargets="WriteBuildInfo" Condition="'$(GitHead)' == ''">
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
-        <LangVersion>latest</LangVersion>
+      <BuildDateTime>$([System.DateTime]::Now.ToString("MMMM d, yyyy h:mm:ss"))</BuildDateTime>
+      <GitBranch Condition="Exists(@(GitPath))">$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: refs/heads/", ""))</GitBranch>
+      <GitBranch Condition="!Exists(@(GitPath))">not-a-git-repo</GitBranch>
+      <GitHeadFile Condition="Exists(@(GitPath))">$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: ", "").Insert(0, "..\.git\"))</GitHeadFile>
+      <GitHeadFile Condition="!Exists(@(GitPath))">..\.no-git-head</GitHeadFile>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <DebugType>pdbonly</DebugType>
-        <DebugSymbols>true</DebugSymbols>
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
-    </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-        <PackageReference Include="SkiaSharp" Version="2.80.2" />
-        <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
-        <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
-        <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
-        <PackageReference Include="Refit" Version="6.0.38" />
-        <PackageReference Include="Serilog" Version="2.10.0" />
-        <PackageReference Include="QRCoder" Version="1.4.1" />
-        <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
-        <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
-        <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
-        <PackageReference Include="Microcharts" Version="0.9.5.9" />
-        <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
-        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-    </ItemGroup>
-    <ItemGroup>
-        <Folder Include="Core\" />
-        <Folder Include="Core\Models\" />
-        <Folder Include="Core\Services\" />
-        <Folder Include="Core\ViewModels\" />
-        <Folder Include="UI\Views\" />
-        <Folder Include="UI\Extensions\" />
-        <Folder Include="UI\Locale\" />
-        <Folder Include="UI\Controls\" />
-        <Folder Include="Core\Utils\" />
-        <Folder Include="UI\Converters\" />
-        <Folder Include="Core\Interfaces\" />
-        <Folder Include="UI\Renderers\" />
-        <Folder Include="UI\Effects\" />
-    </ItemGroup>
-    <ItemGroup>
-        <None Remove="UI\Assets\circle_check_gray.svg" />
-        <None Remove="UI\Assets\circle_check_yellow.svg" />
-        <None Remove="UI\Assets\close.svg" />
-        <None Remove="UI\Assets\currency_switch.svg" />
-        <None Remove="UI\Assets\faq.svg" />
-        <None Remove="UI\Assets\fingerprint_large.svg" />
-        <None Remove="UI\Assets\logo.png" />
-        <None Remove="UI\Assets\logo_front.png" />
-        <None Remove="UI\Assets\menu_tab.svg" />
-        <None Remove="UI\Assets\paper_key.svg" />
-        <None Remove="UI\Assets\paste.svg" />
-        <None Remove="UI\Assets\receive_tab.svg" />
-        <None Remove="UI\Assets\recover_wallet_illustration.svg" />
-        <None Remove="UI\Assets\scan.svg" />
-        <None Remove="UI\Assets\search.svg" />
-        <None Remove="UI\Assets\send_tab.svg" />
-        <None Remove="UI\Assets\shield.svg" />
-    </ItemGroup>
-    <ItemGroup>
-        <EmbeddedResource Include="UI\Assets\circle_check_gray.svg" />
-        <EmbeddedResource Include="UI\Assets\circle_check_yellow.svg" />
-        <EmbeddedResource Include="UI\Assets\close.svg" />
-        <EmbeddedResource Include="UI\Assets\currency_switch.svg" />
-        <EmbeddedResource Include="UI\Assets\faq.svg" />
-        <EmbeddedResource Include="UI\Assets\fingerprint_large.svg" />
-        <EmbeddedResource Include="UI\Assets\logo.png" />
-        <EmbeddedResource Include="UI\Assets\logo_front.png" />
-        <EmbeddedResource Include="UI\Assets\menu_tab.svg" />
-        <EmbeddedResource Include="UI\Assets\paper_key.svg" />
-        <EmbeddedResource Include="UI\Assets\paste.svg" />
-        <EmbeddedResource Include="UI\Assets\receive_tab.svg" />
-        <EmbeddedResource Include="UI\Assets\recover_wallet_illustration.svg" />
-        <EmbeddedResource Include="UI\Assets\scan.svg" />
-        <EmbeddedResource Include="UI\Assets\search.svg" />
-        <EmbeddedResource Include="UI\Assets\send_tab.svg" />
-        <EmbeddedResource Include="UI\Assets\shield.svg" />
-    </ItemGroup>
-    <ItemGroup>
-        <EmbeddedResource Update="UI\AppShell.xaml">
-          <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-        </EmbeddedResource>
-        <EmbeddedResource Update="UI\Locale\LocaleResources.resx">
-            <LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>
-            <Generator>PublicResXFileCodeGenerator</Generator>
-        </EmbeddedResource>
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Update="UI\Locale\LocaleResources.Designer.cs">
-            <DependentUpon>LocaleResources.resx</DependentUpon>
-        </Compile>
-        <Compile Update="UI\Views\RecoverView.xaml.cs">
-            <DependentUpon>RecoverView.xaml</DependentUpon>
-        </Compile>
-        <Compile Update="UI\Views\RecoverWalletEntryView.xaml.cs">
-            <DependentUpon>RecoverWalletEntryView.xaml</DependentUpon>
-        </Compile>
-        <Compile Update="UI\Views\SettingsView.xaml.cs">
-            <DependentUpon>SettingsView.xaml</DependentUpon>
-        </Compile>
-    </ItemGroup>
-    <ItemGroup>
-        <EmbeddedResource Update="UI\Locale\LocaleResources.es.resx">
-            <Generator>PublicResXFileCodeGenerator</Generator>
-            <LastGenOutput>LocaleResources.es.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Update="UI\Locale\LocaleResources.es.Designer.cs">
-            <DependentUpon>LocaleResources.es.resx</DependentUpon>
-        </Compile>
-    </ItemGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\liviano\Liviano\Liviano.csproj" />
-        <ProjectReference Include="..\liviano\Liviano.Utilities\Liviano.Utilities.csproj" />
-    </ItemGroup>
-    <Target Name="GetBuildInfo" BeforeTargets="WriteBuildInfo" Condition="'$(GitHead)' == ''">
-        <PropertyGroup>
-            <BuildDateTime>$([System.DateTime]::Now.ToString("MMMM d, yyyy h:mm:ss"))</BuildDateTime>
-            <GitBranch>$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: refs/heads/", ""))</GitBranch>
-            <GitHeadFile>$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: ", "").Insert(0, "..\.git\"))</GitHeadFile>
-        </PropertyGroup>
-        <ReadLinesFromFile File="$(GitHeadFile)">
-            <Output TaskParameter="Lines" PropertyName="GitHead" />
-        </ReadLinesFromFile>
-    </Target>
-    <Target Name="WriteBuildInfo" BeforeTargets="CoreCompile">
-        <PropertyGroup>
-            <CustomAssemblyInfoFile>$(IntermediateOutputPath)CustomAssemblyInfo.cs</CustomAssemblyInfoFile>
-        </PropertyGroup>
-        <ItemGroup>
-            <Compile Include="$(CustomAssemblyInfoFile)" />
-        </ItemGroup>
-        <ItemGroup>
-            <AssemblyAttributes Include="AssemblyMetadata">
-                <_Parameter1>BuildDateTime</_Parameter1>
-                <_Parameter2>$(BuildDateTime)</_Parameter2>
-            </AssemblyAttributes>
-            <AssemblyAttributes Include="AssemblyMetadata">
-                <_Parameter1>GitHead</_Parameter1>
-                <_Parameter2>$(GitHead)</_Parameter2>
-            </AssemblyAttributes>
-            <AssemblyAttributes Include="AssemblyMetadata">
-                <_Parameter1>GitBranch</_Parameter1>
-                <_Parameter2>$(GitBranch)</_Parameter2>
-            </AssemblyAttributes>
-        </ItemGroup>
-        <WriteCodeFragment Language="C#" OutputFile="$(CustomAssemblyInfoFile)" AssemblyAttributes="@(AssemblyAttributes)" />
-        <Message Importance="High" Text="Git: '$(GitBranch)': '$(GitHead)'" />
-    </Target>
+    <ReadLinesFromFile File="$(GitHeadFile)">
+      <Output TaskParameter="Lines" PropertyName="GitHead" />
+    </ReadLinesFromFile>
+  </Target>
+	<Target Name="WriteBuildInfo" BeforeTargets="CoreCompile">
+		<PropertyGroup>
+			<CustomAssemblyInfoFile>$(IntermediateOutputPath)CustomAssemblyInfo.cs</CustomAssemblyInfoFile>
+		</PropertyGroup>
+		<ItemGroup>
+			<Compile Include="$(CustomAssemblyInfoFile)" />
+		</ItemGroup>
+		<ItemGroup>
+			<AssemblyAttributes Include="AssemblyMetadata">
+				<_Parameter1>BuildDateTime</_Parameter1>
+				<_Parameter2>$(BuildDateTime)</_Parameter2>
+			</AssemblyAttributes>
+			<AssemblyAttributes Include="AssemblyMetadata">
+				<_Parameter1>GitHead</_Parameter1>
+				<_Parameter2>$(GitHead)</_Parameter2>
+			</AssemblyAttributes>
+			<AssemblyAttributes Include="AssemblyMetadata">
+				<_Parameter1>GitBranch</_Parameter1>
+				<_Parameter2>$(GitBranch)</_Parameter2>
+			</AssemblyAttributes>
+		</ItemGroup>
+		<WriteCodeFragment Language="C#" OutputFile="$(CustomAssemblyInfoFile)" AssemblyAttributes="@(AssemblyAttributes)" />
+		<Message Importance="High" Text="Git: '$(GitBranch)': '$(GitHead)'" />
+	</Target>
 </Project>

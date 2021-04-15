@@ -47,14 +47,14 @@ namespace HodlWallet.iOS.Renderers
         };
 
         UIFont TitleFont => UIFont.FromName(SansFontName, 20);
-        UIStringAttributes TitleStringAttributes => new UIStringAttributes()
+        UIStringAttributes TitleStringAttributes => new()
         {
             ForegroundColor = TextPrimary,
             Font = TitleFont
         };
 
         UIFont ItemFont => UIFont.FromName(SansFontName, 16);
-        UITextAttributes ItemTextAttributes => new UITextAttributes()
+        UITextAttributes ItemTextAttributes => new()
         {
             TextColor = TextPrimary,
             Font = ItemFont
@@ -62,19 +62,19 @@ namespace HodlWallet.iOS.Renderers
 
         public CustomNavigationRenderer()
         {
-            UpdateNavBarStyles();
-            UpdateNavBarItemStyles();
+            //UpdateNavBarStyles();
+            //UpdateNavBarItemStyles();
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            UpdateNavBarStyles();
-            UpdateNavBarItemStyles();
+            //UpdateNavBarStyles();
+            //UpdateNavBarItemStyles();
 
             UpdateNavBar();
-            UpdateNavBarItems();
+            //UpdateNavBarItems();
         }
 
         void UpdateNavBarStyles()
@@ -99,7 +99,7 @@ namespace HodlWallet.iOS.Renderers
             NavigationBar.ShadowImage = new UIImage();
             NavigationBar.SetBackgroundImage(new UIImage(), UIBarPosition.Any, UIBarMetrics.Default);
 
-            NavigationBar.TitleTextAttributes = TitleStringAttributes;
+            //NavigationBar.TitleTextAttributes = TitleStringAttributes;
         }
 
         void UpdateNavBarItems()

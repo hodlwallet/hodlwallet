@@ -29,27 +29,28 @@ using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
 using HodlWallet.UI.Locale;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace HodlWallet.UI.Views
 {
     public partial class HomeView : ContentPage
     {
-        HomeViewModel ViewModel => (HomeViewModel)BindingContext;
+        HomeViewModel ViewModel => BindingContext as HomeViewModel;
 
         public HomeView()
         {
             InitializeComponent();
 
             SubscribeToMessages();
-
-            SetLabels();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            PriceButton.Source = "price_tag_3_line.png";
+            //PriceButton.Source = "price_tag_3_line.png";
 
             ViewModel.View_OnAppearing();
 
@@ -65,32 +66,22 @@ namespace HodlWallet.UI.Views
             ViewModel.View_OnDisappearing();
         }
 
-        void SetLabels()
-        {
-            Send.Text = LocaleResources.Send_title;
-            Receive.Text = LocaleResources.Receive_title;
-        }
-
         void InitializeDisplayedCurrency()
         {
-            var currency = Preferences.Get("currency", "BTC");
-
-            if (currency == "BTC")
+            if (ViewModel.Currency == "BTC")
             {
-                BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
+                //BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
             }
             else
             {
-                BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
+                //BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
             }
         }
 
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<HomeViewModel, TransactionModel>(this, "NavigateToTransactionDetail", NavigateToTransactionDetail);
-
             MessagingCenter.Subscribe<HomeViewModel>(this, "DisplaySearchNotImplementedAlert", DisplaySearchNotImplementedAlert);
-
             MessagingCenter.Subscribe<HomeViewModel>(this, "SwitchCurrency", SwitchCurrency);
         }
 
@@ -102,28 +93,52 @@ namespace HodlWallet.UI.Views
             await Navigation.PushModalAsync(nav);
         }
 
-        void DisplaySearchNotImplementedAlert(HomeViewModel vm)
+        async void DisplaySearchNotImplementedAlert(HomeViewModel vm)
         {
-            _ = this.DisplayToast("Search Not Implemented");
+            await this.DisplayToast("Search Not Implemented");
         }
 
-        void PriceButton_Tapped(object sender, EventArgs e)
-        {
-            PriceButton.Source = "price_tag_3_fill.png";
+        //void PriceButton_Tapped(object sender, EventArgs e)
+        //{
+        //    PriceButton.Source = "price_tag_3_fill.png";
 
-            Navigation.PushModalAsync(new PriceView());
-        }
+        //    Navigation.PushModalAsync(new PriceView());
+        //}
 
         void SwitchCurrency(HomeViewModel _)
         {
             if (ViewModel.IsBtcEnabled)
             {
-                BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
+                //BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
             }
             else
             {
-                BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
+                //BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
             }
+        }
+
+        void Search_Clicked(object sender, EventArgs e)
+        {
+            DisplaySearchNotImplementedAlert(ViewModel);
+        }
+
+        void TransactionsScrollView_Scrolled(object sender, ScrolledEventArgs e)
+        {
+            if (BalanceLabel.Bounds.Bottom < e.ScrollY)
+            {
+                BalanceNavigationTitleLabel.FadeTo(1, 100);
+            }
+            else
+            {
+                BalanceNavigationTitleLabel.FadeTo(0, 50);
+            }
+        }
+
+        async void Balance_Tapped(object sender, EventArgs args)
+        {
+            ViewModel.SwitchCurrency();
+
+            await this.DisplayToast($"Balance tapped, currency: {ViewModel.Currency}");
         }
     }
 }

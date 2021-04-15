@@ -229,7 +229,7 @@ namespace HodlWallet.Core.ViewModels
                 _WordToGuess = mnemonic[wordIndex];
 
                 Exercise = string.Format(LocaleResources.BackupConfirm_exercise, place[wordIndex]);
-                string[] guessWords = WalletService.GenerateGuessWords(_WordToGuess, _WalletService.GetWordListLanguage(), AMOUNT_AROUND);
+                string[] guessWords = Services.WalletService.GenerateGuessWords(_WordToGuess, WalletService.GetWordListLanguage(), AMOUNT_AROUND);
 
                 UpdateWords(guessWords);
             }

@@ -88,7 +88,7 @@ namespace HodlWallet.Core.ViewModels
         {
             string rawMnemonic = GetMnemonic();
 
-            _WalletService.Logger.Information($"Mnemonic is: {rawMnemonic}");
+            WalletService.Logger.Information($"Mnemonic is: {rawMnemonic}");
 
             _Mnemonic = rawMnemonic.Split(' ');
         }
