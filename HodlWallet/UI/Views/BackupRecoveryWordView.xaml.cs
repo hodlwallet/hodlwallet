@@ -48,7 +48,6 @@ namespace HodlWallet.UI.Views
             Title = LocaleResources.BackupWord_title;
             Header.Text = LocaleResources.BackupWord_header;
             Next.Text = LocaleResources.BackupWord_next;
-            Previous.Text = LocaleResources.BackupWord_previous;
         }
 
         void SubscribeToMessages()

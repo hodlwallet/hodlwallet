@@ -34,53 +34,22 @@ namespace HodlWallet.Core.ViewModels
     public class BackupRecoveryWordViewModel : BaseViewModel
     {
         string[] _Mnemonic;
-        int _Position;
-        string _Word;
 
-        public string Word
-        {
-            get => (_Position == 0) ? _Mnemonic[PositionText] : _Word;
-            private set => SetProperty(ref _Word, value);
-        }
+        public string[] MnemonicWords { get => _Mnemonic;}
 
-        public int PositionText
-        {
-            get => _Position;
-            private set => SetProperty(ref _Position, value);
-        }
-
-        public ICommand NextWordCommand { get; }
-        public ICommand PreviousWordCommand { get; }
+        public ICommand NextCommand { get; }
 
         public BackupRecoveryWordViewModel()
         {
-            NextWordCommand = new Command(NextWord);
-            PreviousWordCommand = new Command(PreviousWord);
+            NextCommand = new Command(NextWord);
 
             if (DesignMode.IsDesignModeEnabled) return;
 
             InitMnemonic();
         }
 
-        private void PreviousWord()
-        {
-            if (PositionText > 0)
-            {
-                PositionText--;
-                Word = _Mnemonic[PositionText];
-            }
-        }
-
         private void NextWord()
         {
-            if (PositionText < 11)
-            {
-                PositionText++;
-                Word = _Mnemonic[PositionText];
-
-                return;
-            }
-
             MessagingCenter.Send(this, "NavigateToBackupRecoveryConfirmView", _Mnemonic);
         }
 

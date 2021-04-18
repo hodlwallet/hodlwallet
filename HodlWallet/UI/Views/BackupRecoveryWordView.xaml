@@ -28,37 +28,193 @@
                             FlexLayout.Grow="4"
                             JustifyContent="Center"
                             AlignItems="Center">
-                    <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
-                                 Margin="40"
-                                 HeightRequest="50"
-                                 WidthRequest="150">
+                    
+                    <Grid x:Name="EntryGrid"
+                              HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand"
+                              BackgroundColor="{DynamicResource BackgroundSecondary}"
+                              Padding="10"
+                              Margin="10">
 
-                        <Label x:Name="Word"
-                               Style="{DynamicResource CustomLabel}"
-                               HorizontalTextAlignment="Center"
-                               VerticalOptions="Center"
-                               FontSize="Medium"
-                               Text="{Binding Word}" />
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
 
-                    </ContentView>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                    <Label x:Name="Index"
-                           FontFamily="{StaticResource Sans-Regular}"
-                           TextColor="Gray"
-                           FontSize="Micro"
-                           Text="{Binding PositionText, Converter={StaticResource IndexToStringConverter}}" />
+                        <Label x:Name="Word1"
+                               Style="{DynamicResource MnemonicLabel}"
+                               Text="{Binding MnemonicWords[0]}" 
+                               Grid.Row="1"
+                               Grid.Column="1"/>
+                        <Label Text="1"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="2"
+                                   Grid.Column="1" />
+
+                        <Label x:Name="Word2"
+                               Style="{DynamicResource MnemonicLabel}"
+                               Text="{Binding MnemonicWords[1]}" 
+                               Grid.Row="1"
+                               Grid.Column="2"/>
+                        <Label Text="2"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="2"
+                                   Grid.Column="2" />
+
+                        <Label x:Name="Word3"
+                               Style="{DynamicResource MnemonicLabel}"
+                               Text="{Binding MnemonicWords[2]}" 
+                               Grid.Row="1"
+                               Grid.Column="3"/>
+                        <Label Text="3"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="2"
+                                   Grid.Column="3" />
+
+                        <Label x:Name="Word4"
+                               Style="{DynamicResource MnemonicLabel}"
+                               Text="{Binding MnemonicWords[3]}" 
+                               Grid.Row="3"
+                               Grid.Column="1"/>
+                        <Label Text="4"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="4"
+                                   Grid.Column="1" />
+
+                        <Label x:Name="Word5"
+                               Style="{DynamicResource MnemonicLabel}"
+                               Text="{Binding MnemonicWords[4]}" 
+                               Grid.Row="3"
+                               Grid.Column="2"/>
+                        <Label Text="5"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="4"
+                                   Grid.Column="2" />
+
+                        <Label x:Name="Word6"
+                               Style="{DynamicResource MnemonicLabel}"
+                               Text="{Binding MnemonicWords[5]}" 
+                               Grid.Row="3"
+                               Grid.Column="3"/>
+                        <Label Text="6"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="4"
+                                   Grid.Column="3" />
+
+                        <Label x:Name="Word7"
+                               Style="{DynamicResource MnemonicLabel}"
+                               Text="{Binding MnemonicWords[6]}" 
+                               Grid.Row="5"
+                               Grid.Column="1"/>
+                        <Label Text="7"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="6"
+                                   Grid.Column="1" />
+
+                        <Label x:Name="Word8"
+                               Style="{DynamicResource MnemonicLabel}"
+                               Text="{Binding MnemonicWords[7]}" 
+                               Grid.Row="5"
+                               Grid.Column="2"/>
+                        <Label Text="8"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="6"
+                                   Grid.Column="2" />
+
+                        <Label x:Name="Word9"
+                               Style="{DynamicResource MnemonicLabel}"
+                               Text="{Binding MnemonicWords[8]}" 
+                               Grid.Row="5"
+                               Grid.Column="3"/>
+                        <Label Text="9"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="6"
+                                   Grid.Column="3" />
+
+                        <Label x:Name="Word10"
+                               Style="{DynamicResource MnemonicLabel}"
+                               Text="{Binding MnemonicWords[9]}" 
+                               Grid.Row="7"
+                               Grid.Column="1"/>
+                        <Label Text="10"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="8"
+                                   Grid.Column="1" />
+
+                        <Label x:Name="Word11"
+                               Style="{DynamicResource MnemonicLabel}"
+                               Text="{Binding MnemonicWords[10]}" 
+                               Grid.Row="7"
+                               Grid.Column="2"/>
+                        <Label Text="11"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="8"
+                                   Grid.Column="2" />
+
+                        <Label x:Name="Word12"
+                               Style="{DynamicResource MnemonicLabel}"
+                               Text="{Binding MnemonicWords[11]}" 
+                               Grid.Row="7"
+                               Grid.Column="3"/>
+                        <Label Text="12"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource TextSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="8"
+                                   Grid.Column="3" />
+                    </Grid>
+
                 </FlexLayout>
 
                 <FlexLayout Direction="Row"
                             FlexLayout.Grow="1">
-                    <Button x:Name="Previous"
-                            Style="{DynamicResource CustomButton}"
-                            BackgroundColor="{DynamicResource BackgroundSecondary}"
-                            CornerRadius="0"
-                            FontSize="Large"
-                            FlexLayout.AlignSelf="Stretch"
-                            FlexLayout.Grow="2"
-                            Command="{Binding PreviousWordCommand}" />
+
 
                     <Button x:Name="Next"
                             Style="{DynamicResource CustomButton}"
@@ -66,8 +222,8 @@
                             CornerRadius="0"
                             FontSize="Large"
                             FlexLayout.AlignSelf="Stretch"
-                            FlexLayout.Grow="2"
-                            Command="{Binding NextWordCommand}" />
+                            FlexLayout.Grow="1"
+                            Command="{Binding NextCommand}" />
                 </FlexLayout>
             </FlexLayout>
         </AbsoluteLayout>

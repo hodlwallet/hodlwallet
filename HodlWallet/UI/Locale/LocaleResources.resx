@@ -77,12 +77,8 @@
         <comment>label for backup word title</comment>
     </data>
 	<data name="BackupWord.next" xml:space="preserve">
-        <value>Next Word</value>
-        <comment>label for backup word next button</comment>
-    </data>
-	<data name="BackupWord.previous" xml:space="preserve">
-        <value>Previous</value>
-        <comment>label for backup word previous button</comment>
+        <value>Next</value>
+        <comment>label for next button to word verify view</comment>
     </data>
 	<data name="BackupWord.header" xml:space="preserve">
         <value>Write down each word in order and store it in a safe place.</value>
