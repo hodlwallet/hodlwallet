@@ -119,22 +119,22 @@
 	<ItemGroup>
 		<ProjectReference Include="..\liviano\Liviano\Liviano.csproj" />
 		<ProjectReference Include="..\liviano\Liviano.Utilities\Liviano.Utilities.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <GitPath Include="..\.git" />
-  </ItemGroup>
-  <Target Name="GetBuildInfo" BeforeTargets="WriteBuildInfo" Condition="'$(GitHead)' == ''">
-    <PropertyGroup>
-      <BuildDateTime>$([System.DateTime]::Now.ToString("MMMM d, yyyy h:mm:ss"))</BuildDateTime>
-      <GitBranch Condition="Exists(@(GitPath))">$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: refs/heads/", ""))</GitBranch>
-      <GitBranch Condition="!Exists(@(GitPath))">not-a-git-repo</GitBranch>
-      <GitHeadFile Condition="Exists(@(GitPath))">$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: ", "").Insert(0, "..\.git\"))</GitHeadFile>
-      <GitHeadFile Condition="!Exists(@(GitPath))">..\.no-git-head</GitHeadFile>
-    </PropertyGroup>
-    <ReadLinesFromFile File="$(GitHeadFile)">
-      <Output TaskParameter="Lines" PropertyName="GitHead" />
-    </ReadLinesFromFile>
-  </Target>
+	</ItemGroup>
+	<ItemGroup>
+		<GitPath Include="..\.git" Visible="false" />
+	</ItemGroup>
+	<Target Name="GetBuildInfo" BeforeTargets="WriteBuildInfo" Condition="'$(GitHead)' == ''">
+		<PropertyGroup>
+			<BuildDateTime>$([System.DateTime]::Now.ToString("MMMM d, yyyy h:mm:ss"))</BuildDateTime>
+			<GitBranch Condition="Exists(@(GitPath))">$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: refs/heads/", ""))</GitBranch>
+			<GitBranch Condition="!Exists(@(GitPath))">not-a-git-repo</GitBranch>
+			<GitHeadFile Condition="Exists(@(GitPath))">$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: ", "").Insert(0, "..\.git\"))</GitHeadFile>
+			<GitHeadFile Condition="!Exists(@(GitPath))">..\.no-git-head</GitHeadFile>
+		</PropertyGroup>
+		<ReadLinesFromFile File="$(GitHeadFile)">
+			<Output TaskParameter="Lines" PropertyName="GitHead" />
+		</ReadLinesFromFile>
+	</Target>
 	<Target Name="WriteBuildInfo" BeforeTargets="CoreCompile">
 		<PropertyGroup>
 			<CustomAssemblyInfoFile>$(IntermediateOutputPath)CustomAssemblyInfo.cs</CustomAssemblyInfoFile>
