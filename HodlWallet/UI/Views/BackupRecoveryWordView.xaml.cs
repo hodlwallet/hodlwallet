@@ -69,9 +69,9 @@ namespace HodlWallet.UI.Views
 
             int wordKey = 0;
             int indexKey = 0;
-            string palabra ;
+            string word;
 
-            for (int rowIndex = 0; rowIndex <= words.Count; rowIndex++)
+            for (int rowIndex = 0; rowIndex < words.Count; rowIndex++)
             {
                 if (indexKey >= words.Count)
                     break;
@@ -79,18 +79,18 @@ namespace HodlWallet.UI.Views
                 {
                         if (rowIndex % 2 == 0)
                         {
-                            palabra = words[wordKey].Word;
+                            word = words[wordKey].Word;
                             wordKey += 1;
                         } 
                         else
                         {
-                            palabra = words[indexKey].WordIndex;
+                            word = words[indexKey].WordIndex;
                             indexKey += 1;
                         }
 
                         var label = new Label
                         {
-                            Text = palabra,
+                            Text = word,
                             VerticalOptions = LayoutOptions.Center,
                             HorizontalOptions = LayoutOptions.Center
                         };
