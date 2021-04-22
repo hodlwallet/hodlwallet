@@ -23,7 +23,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -68,43 +67,35 @@ namespace HodlWallet.UI.Views
             var vm = BindingContext as BackupRecoveryWordViewModel;
             words = (List<BackupWordModel>)vm.words;
 
-            var wordKey = 0;
-            var indexKey = 0;
+            int wordKey = 0;
+            int indexKey = 0;
+            string palabra ;
 
-            for (int rowIndex = 0; rowIndex < words.Count; rowIndex++)
+            for (int rowIndex = 0; rowIndex <= words.Count; rowIndex++)
             {
-                if (rowIndex % 2 == 0)
+                if (indexKey >= words.Count)
+                    break;
+                for (int columnIndex = 0; columnIndex < 3; columnIndex++)
                 {
-                    for (int columnIndex = 0; columnIndex < 3; columnIndex++)
-                    {
-                        if (wordKey >= words.Count)
-                            break;
+                        if (rowIndex % 2 == 0)
+                        {
+                            palabra = words[wordKey].Word;
+                            wordKey += 1;
+                        } 
+                        else
+                        {
+                            palabra = words[indexKey].WordIndex;
+                            indexKey += 1;
+                        }
+
                         var label = new Label
                         {
-                            Text = words[wordKey].Word,
+                            Text = palabra,
                             VerticalOptions = LayoutOptions.Center,
                             HorizontalOptions = LayoutOptions.Center
                         };
-                        wordKey += 1;
                         gridLayout.Children.Add(label, columnIndex, rowIndex);
-                    }
-                }
-                else
-                {
-                    for (int columnIndex = 0; columnIndex < 3; columnIndex++)
-                    {
-                        if (indexKey >= words.Count)
-                            break;
-                        var labelWordIndex = new Label
-                        {
-                            Text = words[indexKey].WordIndex,
-                            VerticalOptions = LayoutOptions.Center,
-                            HorizontalOptions = LayoutOptions.Center
-                        };
-                        indexKey += 1;
-                        gridLayout.Children.Add(labelWordIndex, columnIndex, rowIndex);
-                    }
-                }
+                }                
             }
         }
     }
