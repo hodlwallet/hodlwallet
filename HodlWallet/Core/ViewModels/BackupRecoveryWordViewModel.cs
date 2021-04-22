@@ -28,6 +28,9 @@ using Xamarin.Forms;
 using Liviano.Exceptions;
 
 using HodlWallet.Core.Services;
+using HodlWallet.Core.Models;
+using System.Collections.Generic;
+
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -38,6 +41,8 @@ namespace HodlWallet.Core.ViewModels
         public string[] MnemonicWords { get => _Mnemonic;}
 
         public ICommand NextCommand { get; }
+
+        public IList<BackupWordModel> words { get; set; }
 
         public BackupRecoveryWordViewModel()
         {
@@ -60,6 +65,8 @@ namespace HodlWallet.Core.ViewModels
             WalletService.Logger.Information($"Mnemonic is: {rawMnemonic}");
 
             _Mnemonic = rawMnemonic.Split(' ');
+            GenerateWordsList();
+            MessagingCenter.Send(this, "BackupRecoveryWordView", words);
         }
 
         private string GetMnemonic()
@@ -68,6 +75,17 @@ namespace HodlWallet.Core.ViewModels
                 throw new WalletException("This wallet doesn't have a mnemonic, we cannot do anything without that one");
 
             return SecureStorageService.GetMnemonic();
+        }
+
+        private void GenerateWordsList()
+        {
+            int index = 0;
+            words = new List<BackupWordModel>();
+            foreach (var word in _Mnemonic)
+            {
+                index++;
+                words.Add(new BackupWordModel() { Word = word, WordIndex=index.ToString() });
+            }
         }
     }
 }
