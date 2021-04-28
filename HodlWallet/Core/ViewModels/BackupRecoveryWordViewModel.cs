@@ -38,11 +38,9 @@ namespace HodlWallet.Core.ViewModels
     {
         string[] _Mnemonic;
 
-        public string[] MnemonicWords { get => _Mnemonic;}
-
         public ICommand NextCommand { get; }
 
-        public IList<BackupWordModel> words { get; set; }
+        public IList<BackupWordModel> Words { get; set; }
 
         public BackupRecoveryWordViewModel()
         {
@@ -66,7 +64,6 @@ namespace HodlWallet.Core.ViewModels
 
             _Mnemonic = rawMnemonic.Split(' ');
             GenerateWordsList();
-            MessagingCenter.Send(this, "BackupRecoveryWordView", words);
         }
 
         private string GetMnemonic()
@@ -80,11 +77,11 @@ namespace HodlWallet.Core.ViewModels
         private void GenerateWordsList()
         {
             int index = 0;
-            words = new List<BackupWordModel>();
+            Words = new List<BackupWordModel>();
             foreach (var word in _Mnemonic)
             {
                 index++;
-                words.Add(new BackupWordModel() { Word = word, WordIndex=index.ToString() });
+                Words.Add(new BackupWordModel() { Word = word, WordIndex=index.ToString() });
             }
         }
     }

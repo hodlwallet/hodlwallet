@@ -8,10 +8,5 @@ namespace HodlWallet.Core.Models
     {
         public string WordIndex { get; set; }
         public string Word { get; set; }
-
-        public BackupWordModel()
-        {
-                
-        }
     }
 }

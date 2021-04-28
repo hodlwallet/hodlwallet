@@ -25,14 +25,43 @@
                        HorizontalTextAlignment="Center"
                        Margin="0, 20, 0, 0" />
                 <!--print Mnemonic words-->
-            <Grid>
-                <ScrollView>
-                    <Grid x:Name="gridLayout" RowDefinitions="3*,3*,3*" ColumnDefinitions="3*,3*,3*">
-                     
-                        </Grid>
-                </ScrollView>
-            </Grid>
-            <FlexLayout Direction="Row" FlexLayout.Grow="1">
+
+                <FlexLayout Direction="Row"
+                            FlexLayout.Grow="3"
+                            Wrap="Wrap"
+                            JustifyContent="Center"
+                            BindableLayout.ItemsSource="{Binding Words}"
+                            BindableLayout.EmptyView="Mnemonic not found!"
+                            Margin="0,20">
+
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
+                                 Margin="5"
+                                 HeightRequest="60"
+                                 WidthRequest="100" >
+                                    <Label Text="{Binding Word}"
+                                       Style="{DynamicResource MnemonicLabel}"
+                                       Margin="7" />
+                                </ContentView>
+                                <Label Text="{Binding WordIndex}"
+                                       FontFamily="{StaticResource Sans-Regular}"
+                                       TextColor="{DynamicResource SyncGradientStart}"
+                                       FontSize="Micro"
+                                       HorizontalTextAlignment="Center"
+                                       Style="{DynamicResource CustomLabel}"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+
+                </FlexLayout>
+
+
+
+
+
+                <FlexLayout Direction="Row" FlexLayout.Grow="1">
                     <Button x:Name="Next"
                             Style="{DynamicResource CustomButton}"
                             BackgroundColor="{DynamicResource BackgroundSecondary}"

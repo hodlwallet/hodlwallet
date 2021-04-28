@@ -21,25 +21,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Locale;
-using HodlWallet.Core.Models;
 
 namespace HodlWallet.UI.Views
 {
     public partial class BackupRecoveryWordView : ContentPage
     {
-        List<BackupWordModel> words = new List<BackupWordModel>();
         public BackupRecoveryWordView()
         {
             InitializeComponent();
             SubscribeToMessages();
-            GenerateGridWithWords();
             SetLabels();
         }
 
@@ -60,43 +56,6 @@ namespace HodlWallet.UI.Views
             Debug.WriteLine($"[NavigateToBackupRecoveryConfirmView] About to write mnemonic: {string.Join(" ", mnemonic)}");
 
             await Navigation.PushAsync(new BackupRecoveryConfirmView(mnemonic));
-        }
-
-        void GenerateGridWithWords()
-        {
-            var vm = BindingContext as BackupRecoveryWordViewModel;
-            words = (List<BackupWordModel>)vm.words;
-
-            int wordKey = 0;
-            int indexKey = 0;
-            string word;
-
-            for (int rowIndex = 0; rowIndex < words.Count; rowIndex++)
-            {
-                if (indexKey >= words.Count)
-                    break;
-                for (int columnIndex = 0; columnIndex < 3; columnIndex++)
-                {
-                        if (rowIndex % 2 == 0)
-                        {
-                            word = words[wordKey].Word;
-                            wordKey += 1;
-                        } 
-                        else
-                        {
-                            word = words[indexKey].WordIndex;
-                            indexKey += 1;
-                        }
-
-                        var label = new Label
-                        {
-                            Text = word,
-                            VerticalOptions = LayoutOptions.Center,
-                            HorizontalOptions = LayoutOptions.Center
-                        };
-                        gridLayout.Children.Add(label, columnIndex, rowIndex);
-                }                
-            }
         }
     }
 }
