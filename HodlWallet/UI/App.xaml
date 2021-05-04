@@ -194,7 +194,7 @@
                 <Setter Property="TextColor"
                         Value="{DynamicResource TextPrimary}" />
                 <Setter Property="FontSize"
-                        Value="Title" />
+                        Value="Large" />
                 <Setter Property="HorizontalTextAlignment"
                         Value="Center" />
                 <Setter Property="VerticalOptions" 

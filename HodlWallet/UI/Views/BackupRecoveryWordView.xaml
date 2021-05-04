@@ -12,66 +12,54 @@
         <converters:IndexToStringConverter x:Key="IndexToStringConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
-
-        <AbsoluteLayout>
-            <FlexLayout Direction="Column"
-                        JustifyContent="SpaceBetween"
-                        AlignItems="Center"
-                        BackgroundColor="{DynamicResource BackgroundPrimary}">
-
-                <Label x:Name="Header"
+        <StackLayout>
+            <Label x:Name="Header"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        HorizontalTextAlignment="Center"
-                       Margin="0, 20, 0, 0" />
-                <!--print Mnemonic words-->
+                        FlexLayout.Grow="1"
+                       Margin="0, 20" />
 
+            <ScrollView IsClippedToBounds="True" Orientation="Vertical">
                 <FlexLayout Direction="Row"
-                            FlexLayout.Grow="3"
-                            Wrap="Wrap"
-                            JustifyContent="Center"
-                            BindableLayout.ItemsSource="{Binding Words}"
-                            BindableLayout.EmptyView="Mnemonic not found!"
-                            Margin="0,20">
-
+                                Wrap="Wrap"
+                                JustifyContent="SpaceAround"
+                                AlignItems="End"
+                                BindableLayout.ItemsSource="{Binding Words}"
+                                BindableLayout.EmptyView="Mnemonic not found!"
+                                >
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
                                 <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
-                                 Margin="5"
-                                 HeightRequest="60"
-                                 WidthRequest="100" >
+                                                Margin="10,0,5,0"
+                                                HeightRequest="70"
+                                                WidthRequest="120" >
                                     <Label Text="{Binding Word}"
-                                       Style="{DynamicResource MnemonicLabel}"
-                                       Margin="7" />
+                                                    Style="{DynamicResource MnemonicLabel}"
+                                                    HorizontalTextAlignment="Center"/>
                                 </ContentView>
                                 <Label Text="{Binding WordIndex}"
-                                       FontFamily="{StaticResource Sans-Regular}"
-                                       TextColor="{DynamicResource SyncGradientStart}"
-                                       FontSize="Micro"
-                                       HorizontalTextAlignment="Center"
-                                       Style="{DynamicResource CustomLabel}"/>
+                                                FontFamily="{StaticResource Sans-Regular}"
+                                                TextColor="{DynamicResource SyncGradientStart}"
+                                                FontSize="Micro"
+                                                Margin="0,-5,0,15"
+                                                HorizontalTextAlignment="Center"
+                                                Style="{DynamicResource CustomLabel}"/>
                             </StackLayout>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
-
                 </FlexLayout>
+            </ScrollView>
 
-
-
-
-
-                <FlexLayout Direction="Row" FlexLayout.Grow="1">
-                    <Button x:Name="Next"
+            <Button x:Name="Next"
                             Style="{DynamicResource CustomButton}"
                             BackgroundColor="{DynamicResource BackgroundSecondary}"
                             CornerRadius="0"
                             FontSize="Large"
-                            FlexLayout.AlignSelf="Stretch"
-                            FlexLayout.Grow="1"
+                            HeightRequest="145"
+                            VerticalOptions="EndAndExpand"
                             Command="{Binding NextCommand}" />
-                </FlexLayout>
-            </FlexLayout>
-        </AbsoluteLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

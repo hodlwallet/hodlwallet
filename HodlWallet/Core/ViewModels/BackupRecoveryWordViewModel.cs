@@ -83,6 +83,13 @@ namespace HodlWallet.Core.ViewModels
                 index++;
                 Words.Add(new BackupWordModel() { Word = word, WordIndex=index.ToString() });
             }
+            
+            //Temp code to print 12 extra-mnemonics
+            //for (int i = 0; i < _Mnemonic.Length; i++)
+            //{
+            //    index++;
+            //    Words.Add(new BackupWordModel() { Word = $"{_Mnemonic[i]}{index}" , WordIndex = index.ToString() });
+            //}
         }
     }
 }
