@@ -49,13 +49,13 @@ namespace HodlWallet.UI.Locale {
         
         public static string Onboard_create {
             get {
-                return ResourceManager.GetString("Onboard_create", resourceCulture);
+                return ResourceManager.GetString("Onboard.create", resourceCulture);
             }
         }
         
         public static string Onboard_recover {
             get {
-                return ResourceManager.GetString("Onboard_recover", resourceCulture);
+                return ResourceManager.GetString("Onboard.recover", resourceCulture);
             }
         }
         

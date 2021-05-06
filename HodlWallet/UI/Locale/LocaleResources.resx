@@ -12,11 +12,11 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	<data name="Onboard_create" xml:space="preserve">
+	<data name="Onboard.create" xml:space="preserve">
         <value>CREATE NEW WALLET</value>
         <comment>label for create button</comment>
     </data>
-	<data name="Onboard_recover" xml:space="preserve">
+	<data name="Onboard.recover" xml:space="preserve">
         <value>RECOVER WALLET</value>
         <comment>label for recover button</comment>
     </data>
