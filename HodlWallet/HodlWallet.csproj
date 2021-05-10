@@ -80,6 +80,9 @@
 		<EmbeddedResource Update="UI\AppShell.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="UI\Controls\FlyoutFooter.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="UI\Controls\FlyoutHeader.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
@@ -91,6 +94,8 @@
 	<ItemGroup>
 		<Compile Update="UI\Locale\LocaleResources.Designer.cs">
 			<DependentUpon>LocaleResources.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
 		</Compile>
 		<Compile Update="UI\Views\RecoverView.xaml.cs">
 			<DependentUpon>RecoverView.xaml</DependentUpon>

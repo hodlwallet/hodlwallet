@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             x:Class="HodlWallet.UI.Controls.FlyoutFooter">
+    <ContentView.Content>
+        <FlexLayout Direction="Column"
+                        JustifyContent="SpaceAround">
+
+            <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+            
+            <Button Text="{i18n:Translate Text=AddAccount.button}"
+                        Style="{DynamicResource CustomButton}"
+                        FontSize="Medium"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1"
+                        BackgroundColor="Transparent"
+                        />
+
+            <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+            
+            <Button Text="{i18n:Translate Text=Settings.button}"
+                        Style="{DynamicResource CustomButton}"
+                        FontSize="Medium"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1"
+                        BackgroundColor="Transparent"
+                        />
+
+            <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+        </FlexLayout>
+    </ContentView.Content>
+</ContentView>
