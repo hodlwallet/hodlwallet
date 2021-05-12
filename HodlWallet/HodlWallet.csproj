@@ -91,6 +91,8 @@
 	<ItemGroup>
 		<Compile Update="UI\Locale\LocaleResources.Designer.cs">
 			<DependentUpon>LocaleResources.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
 		</Compile>
 		<Compile Update="UI\Views\RecoverView.xaml.cs">
 			<DependentUpon>RecoverView.xaml</DependentUpon>

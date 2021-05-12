@@ -1,57 +1,279 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="source-language">
-		<value>en</value>
-	</resheader>
-	<data name="Onboard.create" xml:space="preserve">
-        <value>Crear nueva cartera</value>
-        <comment>label for create button</comment>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
     </data>
-	<data name="Onboard.recover" xml:space="preserve">
-        <value>Recuperar cartera</value>
-        <comment>label for recover button</comment>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
     </data>
-	<data name="Menu.resyncWallet" xml:space="preserve">
-        <value>Re-Sync Wallet</value>
-   </data>
-	<data name="Menu.restoreWallet" xml:space="preserve">
-        <value>Restore Wallet</value>
-        <comment>label for menu restore wallet</comment>
-    </data>
-	<data name="Menu.wipeWallet" xml:space="preserve">
-        <value>Wipe Wallet</value>
-        <comment>label for menu wipe wallet</comment>
-    </data>
-	<data name="Pin.enter" xml:space="preserve">
-        <value>Ingrese su PIN</value>
-        <comment>label for current wallet pin</comment>
-    </data>
-	<data name="NowLoading.text" xml:space="preserve">
-        <value>Cargando...</value>
-        <comment>texto que muestra el indicador de actividad</comment>
-    </data>
-	<data name="Transactions.title" xml:space="preserve">
-        <value>TRANSACCIONES</value>
-        <comment>label for transactions list empty button</comment>
-    </data>
-	<data name="Transactions.empty" xml:space="preserve">
-        <value>No hay transacciones recibidas</value>
-        <comment>label for transactions list empty button</comment>
-    </data>
-	<data name="Transactions.empty.button" xml:space="preserve">
-        <value>Obtiene Una Dirección</value>
-        <comment>label for transactions list empty button</comment>
-    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Onboard.create" xml:space="preserve">
+    <value>Crear nueva cartera</value>
+    <comment>label for create button</comment>
+  </data>
+  <data name="Onboard.recover" xml:space="preserve">
+    <value>Recuperar cartera</value>
+    <comment>label for recover button</comment>
+  </data>
+  <data name="Menu.resyncWallet" xml:space="preserve">
+    <value>Re-Sync Wallet</value>
+  </data>
+  <data name="Menu.restoreWallet" xml:space="preserve">
+    <value>Restore Wallet</value>
+    <comment>label for menu restore wallet</comment>
+  </data>
+  <data name="Menu.wipeWallet" xml:space="preserve">
+    <value>Wipe Wallet</value>
+    <comment>label for menu wipe wallet</comment>
+  </data>
+  <data name="Pin.enter" xml:space="preserve">
+    <value>Ingrese su PIN</value>
+    <comment>label for current wallet pin</comment>
+  </data>
+  <data name="NowLoading.text" xml:space="preserve">
+    <value>Cargando...</value>
+    <comment>texto que muestra el indicador de actividad</comment>
+  </data>
+  <data name="Transactions.title" xml:space="preserve">
+    <value>TRANSACCIONES</value>
+    <comment>label for transactions list empty button</comment>
+  </data>
+  <data name="Transactions.empty" xml:space="preserve">
+    <value>No hay transacciones recibidas</value>
+    <comment>label for transactions list empty button</comment>
+  </data>
+  <data name="Transactions.empty.button" xml:space="preserve">
+    <value>Obtiene Una Dirección</value>
+    <comment>label for transactions list empty button</comment>
+  </data>
+  <data name="Accounts.title" xml:space="preserve">
+    <value>Cuentas</value>
+    <comment>label for accounts view title</comment>
+  </data>
+  <data name="AccountSelection.header" xml:space="preserve">
+    <value>Por favor ingrese el nombre de esta cuenta.</value>
+    <comment>label for account selection header.</comment>
+  </data>
+  <data name="AccountSelection.subheader" xml:space="preserve">
+    <value>Seleccione el tipo de cuenta que desea crear.</value>
+    <comment>label for account selection subheader</comment>
+  </data>
+  <data name="AccountSelection.title" xml:space="preserve">
+    <value>Seleccione una Cuenta</value>
+    <comment>label for account selection view title</comment>
+  </data>
+  <data name="AddAccount.button" xml:space="preserve">
+    <value>Crear una Cuenta</value>
+    <comment>label for add account button</comment>
+  </data>
+  <data name="AddAccount.header" xml:space="preserve">
+    <value>[Actualizar Imagen]</value>
+    <comment>label for add account header</comment>
+  </data>
+  <data name="AddAccount.subheader" xml:space="preserve">
+    <value>Seleccione de la variedad de tipos de cuenta</value>
+    <comment>label for add account subheader</comment>
+  </data>
+  <data name="AddAccount.title" xml:space="preserve">
+    <value>Agregar una Cuenta</value>
+    <comment>label for add account title</comment>
+  </data>
+  <data name="Backup.button" xml:space="preserve">
+    <value>Anote la clave de recuperación de copia de seguridad</value>
+    <comment>label for backup recovery button</comment>
+  </data>
+  <data name="Backup.header" xml:space="preserve">
+    <value>Su clave de recuperación de respaldo es la única forma de restaurar su billetera si su teléfono se pierde, es robado, roto o actualizado.</value>
+    <comment>label for backup recovery header</comment>
+  </data>
+  <data name="Backup.subheader" xml:space="preserve">
+    <value>Se le mostrará una lista de palabras, escríbalas en una hoja de papel y mantengalas a salvo.</value>
+    <comment>label for backup recovery subheader</comment>
+  </data>
+  <data name="Backup.title" xml:space="preserve">
+    <value>Copia de seguridad de la clave de recuperación.</value>
+    <comment>label for backup recovery title</comment>
+  </data>
+  <data name="BackupConfirm.exercise" xml:space="preserve">
+    <value>Elija la {0} palabra de su nemónico:</value>
+    <comment>label for backup confirmation exercise</comment>
+  </data>
+  <data name="BackupConfirm.header" xml:space="preserve">
+    <value>Para asegurarse de que todo se haya escrito correctamente, ingrese las siguientes palabras de su clave de recuperación de respaldo.</value>
+    <comment>label for backup confirmation</comment>
+  </data>
+  <data name="BackupConfirm.warning" xml:space="preserve">
+    <value>Esa palabra no está en tu nemónico.</value>
+    <comment>label for backup confirmation warning</comment>
+  </data>
+  <data name="BackupWord.header" xml:space="preserve">
+    <value>Escriba cada palabra en orden y guárdela en un lugar seguro.</value>
+    <comment>label for backup word header</comment>
+  </data>
+  <data name="BackupWord.next" xml:space="preserve">
+    <value>Siguiente Palabra</value>
+    <comment>label for backup word next button</comment>
+  </data>
+  <data name="BackupWord.previous" xml:space="preserve">
+    <value>Anterior</value>
+    <comment>label for backup word previous button</comment>
+  </data>
+  <data name="BackupWord.title" xml:space="preserve">
+    <value>Clave de recuperación de copia de seguridad.</value>
+    <comment>label for backup word title</comment>
+  </data>
+  <data name="Dashboard.menu" xml:space="preserve">
+    <value>Menu</value>
+    <comment>label for menu button</comment>
+  </data>
+  <data name="Dashboard.receive" xml:space="preserve">
+    <value>Recibir</value>
+    <comment>label for receive button</comment>
+  </data>
+  <data name="Dashboard.send" xml:space="preserve">
+    <value>Enviar</value>
+    <comment>label for send button</comment>
+  </data>
+  <data name="Done.button" xml:space="preserve">
+    <value>Hecho</value>
+    <comment>label for done button</comment>
+  </data>
+  <data name="FingerprintAuth.header" xml:space="preserve">
+    <value>Use su huella digital para desbloquear su billetera y enviar dinero hasta el límite establecido.</value>
+    <comment>label for fingerprint auth header</comment>
+  </data>
+  <data name="FingerprintAuth.limitButtonAndroid" xml:space="preserve">
+    <value>Pantalla autenticación de límite de gasto con huellas dactilares.</value>
+    <comment>label for spending limit button on Android</comment>
+  </data>
+  <data name="FingerprintAuth.spendingLimit" xml:space="preserve">
+    <value>Límite de gasto:</value>
+    <comment>label for fingerprint auth spending limit</comment>
+  </data>
+  <data name="FingerprintAuth.switchAndroid" xml:space="preserve">
+    <value>Habilitar la autenticación de huellas dactilares para Hodl.</value>
+    <comment>label for fingerprint auth slider on android</comment>
+  </data>
+  <data name="FingerprintAuth.switchLabelIOS" xml:space="preserve">
+    <value>Habilitar Touch ID para Hodl</value>
+    <comment>label for fingerprint auth slider on IOS</comment>
+  </data>
+  <data name="Backup.Close" xml:space="preserve">
+    <value>Cerrar</value>
+    <comment>label for backup toolbar Close button</comment>
+  </data>
+  <data name="Backup.Skip" xml:space="preserve">
+    <value>Saltar</value>
+    <comment>label for backup toolbar Skip button</comment>
+  </data>
 </root>
