@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.AccountSettingsView"
-             Title="Account Settings"
+             Title="{i18n:Translate AccountSettings.Title}"
              BackgroundColor="{DynamicResource BackgroundPrimary}">
     <ContentPage.BindingContext>
         <vm:SettingsViewModel />

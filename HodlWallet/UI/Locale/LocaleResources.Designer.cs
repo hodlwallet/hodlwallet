@@ -97,6 +97,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account Settings.
+        /// </summary>
+        public static string AccountSettings_Title {
+            get {
+                return ResourceManager.GetString("AccountSettings.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create an Account.
         /// </summary>
         public static string AddAccount_button {
@@ -511,6 +520,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create A New Pin.
+        /// </summary>
+        public static string PinPad_Title {
+            get {
+                return ResourceManager.GetString("PinPad.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request An Amount.
         /// </summary>
         public static string Receive_requestAmount {
@@ -606,6 +624,15 @@ namespace HodlWallet.UI.Locale {
         public static string RecoverEntry_title {
             get {
                 return ResourceManager.GetString("RecoverEntry.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Recovery_Close {
+            get {
+                return ResourceManager.GetString("Recovery.Close", resourceCulture);
             }
         }
         
@@ -741,6 +768,24 @@ namespace HodlWallet.UI.Locale {
         public static string Send_amount {
             get {
                 return ResourceManager.GetString("Send.amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string Send_button_send {
+            get {
+                return ResourceManager.GetString("Send.button_send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fee (sats/byte).
+        /// </summary>
+        public static string Send_fee {
+            get {
+                return ResourceManager.GetString("Send.fee", resourceCulture);
             }
         }
         

@@ -488,4 +488,24 @@
     <value>Skip</value>
     <comment>label for backup toolbar Skip button</comment>
   </data>
+  <data name="AccountSettings.Title" xml:space="preserve">
+    <value>Account Settings</value>
+    <comment>Account Settings Title</comment>
+  </data>
+  <data name="PinPad.Title" xml:space="preserve">
+    <value>Create A New Pin</value>
+    <comment>Pin Pad Title</comment>
+  </data>
+  <data name="Recovery.Close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for recovery toolbar Close button</comment>
+  </data>
+  <data name="Send.button_send" xml:space="preserve">
+    <value>Send</value>
+    <comment>label for send button</comment>
+  </data>
+  <data name="Send.fee" xml:space="preserve">
+    <value>Fee (sats/byte)</value>
+    <comment>label for send fee </comment>
+  </data>
 </root>
