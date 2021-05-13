@@ -30,23 +30,21 @@
                                 >
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout>
-                                <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
-                                                Margin="10,0,5,0"
-                                                HeightRequest="70"
-                                                WidthRequest="120" >
-                                    <Label Text="{Binding Word}"
-                                                    Style="{DynamicResource MnemonicLabel}"
-                                                    HorizontalTextAlignment="Center"/>
-                                </ContentView>
-                                <Label Text="{Binding WordIndex}"
+                            <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
+                                                Margin="10"
+                                                HeightRequest="40"
+                                                WidthRequest="110" >
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding WordIndex}"
                                                 FontFamily="{StaticResource Sans-Regular}"
                                                 TextColor="{DynamicResource SyncGradientStart}"
                                                 FontSize="Micro"
-                                                Margin="0,-5,0,15"
-                                                HorizontalTextAlignment="Center"
-                                                Style="{DynamicResource CustomLabel}"/>
-                            </StackLayout>
+                                                Margin="0,0,5,0"
+                                                BackgroundColor="Transparent"/>
+                                    <Label Text="{Binding Word}"
+                                            Style="{DynamicResource MnemonicLabel}" />
+                                </StackLayout>
+                            </ContentView>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </FlexLayout>
