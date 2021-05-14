@@ -22,7 +22,7 @@
 
             <ScrollView IsClippedToBounds="True" Orientation="Vertical" VerticalOptions="StartAndExpand">
                 <StackLayout>
-                    <!--<FlexLayout Direction="Row"
+                    <FlexLayout Direction="Row"
                                     Wrap="Wrap"
                                     JustifyContent="SpaceAround"
                                     AlignItems="End"
@@ -47,32 +47,16 @@
                                 </ContentView>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
-                    </FlexLayout>-->
+                    </FlexLayout>
 
-                    <Frame BorderColor="White" Padding="5">
-
-                        <Button Text="1"
-                            HeightRequest="100" 
-                            VerticalOptions="StartAndExpand" />
-
-                    </Frame>
-
-                    <Frame BorderColor="CadetBlue" Padding="5" >
-
-                        <Button Text="2"
-                            HeightRequest="100" 
-                                VerticalOptions="EndAndExpand"
-                            />
-                    </Frame>
-
-                    <!--<Button x:Name="Next"
+                    <Button x:Name="Next"
                             Style="{DynamicResource CustomButton}"
-                            BackgroundColor="RosyBrown"
+                            BackgroundColor="{DynamicResource BackgroundSecondary}"
                             CornerRadius="0"
                             FontSize="Large"
                             HeightRequest="100"
-                            VerticalOptions="Fill"
-                            Command="{Binding NextCommand}" />-->
+                            VerticalOptions="FillAndExpand"
+                            Command="{Binding NextCommand}" />
 
                 </StackLayout>
             </ScrollView>
