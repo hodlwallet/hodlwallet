@@ -201,7 +201,7 @@
     <comment>label for backup recovery subheader</comment>
   </data>
   <data name="Backup.title" xml:space="preserve">
-    <value>Copia de seguridad de la clave de recuperación.</value>
+    <value>Respaldo de la clave de recuperación.</value>
     <comment>label for backup recovery title</comment>
   </data>
   <data name="BackupConfirm.exercise" xml:space="preserve">
@@ -229,7 +229,7 @@
     <comment>label for backup word previous button</comment>
   </data>
   <data name="BackupWord.title" xml:space="preserve">
-    <value>Clave de recuperación de copia de seguridad.</value>
+    <value>Respaldo de la clave de recuperación.</value>
     <comment>label for backup word title</comment>
   </data>
   <data name="Dashboard.menu" xml:space="preserve">
