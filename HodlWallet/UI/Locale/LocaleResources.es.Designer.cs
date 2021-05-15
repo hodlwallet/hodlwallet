@@ -76,7 +76,105 @@ namespace HodlWallet.UI.Locale {
                 return ResourceManager.GetString("Menu.wipeWallet", resourceCulture);
             }
         }
-        
+
+        //Ordinals
+        public static string Ordinal_first
+        {
+            get
+            {
+                return ResourceManager.GetString("Ordinal.first", resourceCulture);
+            }
+        }
+
+        public static string Ordinal_second
+        {
+            get
+            {
+                return ResourceManager.GetString("Ordinal.second", resourceCulture);
+            }
+        }
+
+        public static string Ordinal_third
+        {
+            get
+            {
+                return ResourceManager.GetString("Ordinal.third", resourceCulture);
+            }
+        }
+
+        public static string Ordinal_fourth
+        {
+            get
+            {
+                return ResourceManager.GetString("Ordinal.fourth", resourceCulture);
+            }
+        }
+
+        public static string Ordinal_fifth
+        {
+            get
+            {
+                return ResourceManager.GetString("Ordinal.fifth", resourceCulture);
+            }
+        }
+
+        public static string Ordinal_sixth
+        {
+            get
+            {
+                return ResourceManager.GetString("Ordinal.sixth", resourceCulture);
+            }
+        }
+
+        public static string Ordinal_seventh
+        {
+            get
+            {
+                return ResourceManager.GetString("Ordinal.seventh", resourceCulture);
+            }
+        }
+
+        public static string Ordinal_eighth
+        {
+            get
+            {
+                return ResourceManager.GetString("Ordinal.eighth", resourceCulture);
+            }
+        }
+
+        public static string Ordinal_ninth
+        {
+            get
+            {
+                return ResourceManager.GetString("Ordinal.ninth", resourceCulture);
+            }
+        }
+
+        public static string Ordinal_tenth
+        {
+            get
+            {
+                return ResourceManager.GetString("Ordinal.tenth", resourceCulture);
+            }
+        }
+
+        public static string Ordinal_eleventh
+        {
+            get
+            {
+                return ResourceManager.GetString("Ordinal.eleventh", resourceCulture);
+            }
+        }
+
+        public static string Ordinal_twelveth
+        {
+            get
+            {
+                return ResourceManager.GetString("Ordinal.twelveth", resourceCulture);
+            }
+        }//End of ordinals
+
+
         public static string Pin_enter {
             get {
                 return ResourceManager.GetString("Pin.enter", resourceCulture);

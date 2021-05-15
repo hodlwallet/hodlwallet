@@ -201,7 +201,7 @@
     <comment>label for backup recovery subheader</comment>
   </data>
   <data name="Backup.title" xml:space="preserve">
-    <value>Respaldo de la clave de recuperación.</value>
+    <value>Respaldo de clave de recuperación.</value>
     <comment>label for backup recovery title</comment>
   </data>
   <data name="BackupConfirm.exercise" xml:space="preserve">
@@ -287,5 +287,53 @@
   <data name="Send.title" xml:space="preserve">
     <value>Enviar</value>
     <comment>label for send view title</comment>
+  </data>
+  <data name="Ordinal.eighth" xml:space="preserve">
+    <value>octava</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.eleventh" xml:space="preserve">
+    <value>undécima</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.fifth" xml:space="preserve">
+    <value>quinta</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.first" xml:space="preserve">
+    <value>primera</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.fourth" xml:space="preserve">
+    <value>cuarta</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.ninth" xml:space="preserve">
+    <value>novena</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.second" xml:space="preserve">
+    <value>segunda</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.seventh" xml:space="preserve">
+    <value>séptima</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.sixth" xml:space="preserve">
+    <value>sexta</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.tenth" xml:space="preserve">
+    <value>décima</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.third" xml:space="preserve">
+    <value>tercera</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twelveth" xml:space="preserve">
+    <value>duodécima</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
   </data>
 </root>

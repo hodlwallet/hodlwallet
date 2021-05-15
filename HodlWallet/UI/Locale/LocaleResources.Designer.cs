@@ -457,6 +457,114 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to eighth.
+        /// </summary>
+        public static string Ordinal_eighth {
+            get {
+                return ResourceManager.GetString("Ordinal.eighth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to eleventh.
+        /// </summary>
+        public static string Ordinal_eleventh {
+            get {
+                return ResourceManager.GetString("Ordinal.eleventh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to fifth.
+        /// </summary>
+        public static string Ordinal_fifth {
+            get {
+                return ResourceManager.GetString("Ordinal.fifth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to first.
+        /// </summary>
+        public static string Ordinal_first {
+            get {
+                return ResourceManager.GetString("Ordinal.first", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to fourth.
+        /// </summary>
+        public static string Ordinal_fourth {
+            get {
+                return ResourceManager.GetString("Ordinal.fourth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ninth.
+        /// </summary>
+        public static string Ordinal_ninth {
+            get {
+                return ResourceManager.GetString("Ordinal.ninth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to second.
+        /// </summary>
+        public static string Ordinal_second {
+            get {
+                return ResourceManager.GetString("Ordinal.second", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to seventh.
+        /// </summary>
+        public static string Ordinal_seventh {
+            get {
+                return ResourceManager.GetString("Ordinal.seventh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sixth.
+        /// </summary>
+        public static string Ordinal_sixth {
+            get {
+                return ResourceManager.GetString("Ordinal.sixth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tenth.
+        /// </summary>
+        public static string Ordinal_tenth {
+            get {
+                return ResourceManager.GetString("Ordinal.tenth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to third.
+        /// </summary>
+        public static string Ordinal_third {
+            get {
+                return ResourceManager.GetString("Ordinal.third", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to twelveth.
+        /// </summary>
+        public static string Ordinal_twelveth {
+            get {
+                return ResourceManager.GetString("Ordinal.twelveth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter Pin.
         /// </summary>
         public static string Pin_enter {

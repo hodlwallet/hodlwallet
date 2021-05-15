@@ -43,8 +43,11 @@ namespace HodlWallet.Core.ViewModels
         int _PrevIndex;
         bool _WarningVisible;
 
-        private string[] confirmWords = new string[8], place = { "first", "second", "third", "fourth",
-            "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelveth" }; // Localize
+        private string[] confirmWords = new string[8], 
+            place = { LocaleResources.Ordinal_first,    LocaleResources.Ordinal_second,     LocaleResources.Ordinal_third,      
+                    LocaleResources.Ordinal_fourth,     LocaleResources.Ordinal_fifth,      LocaleResources.Ordinal_sixth,
+                    LocaleResources.Ordinal_seventh,    LocaleResources.Ordinal_eighth,     LocaleResources.Ordinal_ninth, 
+                    LocaleResources.Ordinal_tenth,      LocaleResources.Ordinal_eleventh,   LocaleResources.Ordinal_twelveth };
 
         public ICommand WordCommand { get; }
 

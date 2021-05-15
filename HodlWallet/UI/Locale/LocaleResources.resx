@@ -508,4 +508,52 @@
     <value>Fee (sats/byte)</value>
     <comment>label for send fee </comment>
   </data>
+  <data name="Ordinal.eighth" xml:space="preserve">
+    <value>eighth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.eleventh" xml:space="preserve">
+    <value>eleventh</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.fifth" xml:space="preserve">
+    <value>fifth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.first" xml:space="preserve">
+    <value>first</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.fourth" xml:space="preserve">
+    <value>fourth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.ninth" xml:space="preserve">
+    <value>ninth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.second" xml:space="preserve">
+    <value>second</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.seventh" xml:space="preserve">
+    <value>seventh</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.sixth" xml:space="preserve">
+    <value>sixth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.tenth" xml:space="preserve">
+    <value>tenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.third" xml:space="preserve">
+    <value>third</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twelveth" xml:space="preserve">
+    <value>twelveth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
 </root>
