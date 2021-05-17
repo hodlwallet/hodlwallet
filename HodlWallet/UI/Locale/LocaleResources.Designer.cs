@@ -142,6 +142,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This action is irreversible, are you sure?.
+        /// </summary>
+        public static string Alert_irreversible {
+            get {
+                return ResourceManager.GetString("Alert.irreversible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Write Down Backup Recovery Key.
         /// </summary>
         public static string Backup_button {
@@ -255,6 +264,24 @@ namespace HodlWallet.UI.Locale {
         public static string BackupWord_title {
             get {
                 return ResourceManager.GetString("BackupWord.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string Button_no {
+            get {
+                return ResourceManager.GetString("Button.no", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Button_yes {
+            get {
+                return ResourceManager.GetString("Button.yes", resourceCulture);
             }
         }
         

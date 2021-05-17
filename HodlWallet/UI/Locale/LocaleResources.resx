@@ -556,6 +556,18 @@
     <value>twelveth</value>
     <comment>Part of the label in backup recovery confirmation</comment>
   </data>
+  <data name="Alert.irreversible" xml:space="preserve">
+    <value>This action is irreversible, are you sure?</value>
+    <comment>Alert in DisplayPrompt of account settings</comment>
+  </data>
+  <data name="Button.no" xml:space="preserve">
+    <value>No</value>
+    <comment>No button in DisplayPrompt of account settings</comment>
+  </data>
+  <data name="Button.yes" xml:space="preserve">
+    <value>Yes</value>
+    <comment>Yes button in DisplayPrompt of account settings</comment>
+  </data>
   <data name="Ordinal.eighteenth" xml:space="preserve">
     <value>eighteenth</value>
     <comment>Part of the label in backup recovery confirmation</comment>

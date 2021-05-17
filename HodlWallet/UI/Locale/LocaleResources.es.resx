@@ -149,7 +149,7 @@
     <comment>label for transactions list empty button</comment>
   </data>
   <data name="Transactions.empty" xml:space="preserve">
-    <value>No hay transacciones recibidas</value>
+    <value>Aún no hay transacciones recibidas</value>
     <comment>label for transactions list empty button</comment>
   </data>
   <data name="Transactions.empty.button" xml:space="preserve">
@@ -335,6 +335,18 @@
   <data name="Ordinal.twelveth" xml:space="preserve">
     <value>duodécima</value>
     <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Alert.irreversible" xml:space="preserve">
+    <value>Esta acción es irreversible, ¿Está seguro?</value>
+    <comment>Alert in DisplayPrompt of account settings</comment>
+  </data>
+  <data name="Button.no" xml:space="preserve">
+    <value>No</value>
+    <comment>No button in DisplayPrompt of account settings</comment>
+  </data>
+  <data name="Button.yes" xml:space="preserve">
+    <value>Si</value>
+    <comment>Yes button in DisplayPrompt of account settings</comment>
   </data>
   <data name="Ordinal.eighteenth" xml:space="preserve">
     <value>décimo octava</value>

@@ -141,10 +141,10 @@ namespace HodlWallet.UI.Views
 
             return await this.DisplayPrompt(
                 title,
-                Constants.ACTION_IRREVERSIBLE,
-                Constants.YES_BUTTON,
-                Constants.NO_BUTTON
-            );
+                LocaleResources.Alert_irreversible,
+                LocaleResources.Button_yes,
+                LocaleResources.Button_no
+            ) ;
         }
     }
 }

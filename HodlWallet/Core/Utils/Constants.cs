@@ -60,10 +60,7 @@ namespace HodlWallet.Core.Utils
         public const string DISPLAY_ALERT_ERROR_BUTTON = "OK";
         public const string DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF = "Send to yourself is disabled.";
         public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported.";
-        public const string NO_BUTTON = "No";
-        public const string YES_BUTTON = "Yes";
-        public const string ACTION_IRREVERSIBLE = "This action is irreversible, are you sure?";
-        public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE = "Address Copied to Clipboard";
+       public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE = "Address Copied to Clipboard";
         public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON = "OK";
         public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_TITLE = "Transaction ID Copied to Clipboard";
         public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_BUTTON = "OK";
