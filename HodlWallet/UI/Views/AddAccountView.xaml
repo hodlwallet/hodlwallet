@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HodlWallet.UI.Views.AddAccountView"
              xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
-             Title="{Binding AddAccountTitle}">
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             x:Class="HodlWallet.UI.Views.AddAccountView"
+             Title="{i18n:Translate AddAccount.title}">
+    
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="CloseToolbarItem"
-                     Order="Primary"
-                     Text="Close"
+        <ToolbarItem Order="Primary"
+                     Text="{i18n:Translate Text=AddAccount.close}"
                      Priority="0"
                      Clicked="CloseToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
@@ -27,19 +28,19 @@
                           FlexLayout.Grow="2" />
                 <ActivityIndicator IsRunning="False"
                                    Color="{DynamicResource SyncGradientStart}" />
-                <Label x:Name="Header"
+                <Label Text="{i18n:Translate Text=AddAccount.header}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        HorizontalTextAlignment="Center"
                        FontSize="Medium"
                        Margin="0, 0, 0, 10" />
-                <Label x:Name="Subheader"
+                <Label Text="{i18n:Translate Text=AddAccount.subheader}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        HorizontalTextAlignment="Center"
                        FontSize="Medium" />
                 <BoxView FlexLayout.Grow="1" />
-                <Button x:Name="Button"
+                <Button Text="{i18n:Translate Text=AddAccount.button}"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
                         CornerRadius="0"

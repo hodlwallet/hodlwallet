@@ -115,6 +115,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string AddAccount_close {
+            get {
+                return ResourceManager.GetString("AddAccount.close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [Update Image].
         /// </summary>
         public static string AddAccount_header {

@@ -616,4 +616,8 @@
     <value>twenty-third</value>
     <comment>Part of the label in backup recovery confirmation</comment>
   </data>
+  <data name="AddAccount.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for add account toolbar Close button</comment>
+  </data>
 </root>
