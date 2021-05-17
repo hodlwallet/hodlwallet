@@ -556,4 +556,52 @@
     <value>twelveth</value>
     <comment>Part of the label in backup recovery confirmation</comment>
   </data>
+  <data name="Ordinal.eighteenth" xml:space="preserve">
+    <value>eighteenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.fifteenth" xml:space="preserve">
+    <value>fifteenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.fourteenth" xml:space="preserve">
+    <value>fourteenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.nineteenth" xml:space="preserve">
+    <value>nineteenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.seventeenth" xml:space="preserve">
+    <value>seventeenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.sixteenth" xml:space="preserve">
+    <value>sixteenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.thirteenth" xml:space="preserve">
+    <value>thirteenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twentieth" xml:space="preserve">
+    <value>twentieth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twenty-first" xml:space="preserve">
+    <value>twenty-first</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twenty-fourth" xml:space="preserve">
+    <value>twenty-fourth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twenty-second" xml:space="preserve">
+    <value>twenty-second</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twenty-third" xml:space="preserve">
+    <value>twenty-third</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
 </root>

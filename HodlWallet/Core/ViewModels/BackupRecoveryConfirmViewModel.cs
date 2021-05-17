@@ -44,10 +44,14 @@ namespace HodlWallet.Core.ViewModels
         bool _WarningVisible;
 
         private string[] confirmWords = new string[8], 
-            place = { LocaleResources.Ordinal_first,    LocaleResources.Ordinal_second,     LocaleResources.Ordinal_third,      
-                    LocaleResources.Ordinal_fourth,     LocaleResources.Ordinal_fifth,      LocaleResources.Ordinal_sixth,
-                    LocaleResources.Ordinal_seventh,    LocaleResources.Ordinal_eighth,     LocaleResources.Ordinal_ninth, 
-                    LocaleResources.Ordinal_tenth,      LocaleResources.Ordinal_eleventh,   LocaleResources.Ordinal_twelveth };
+            place = { LocaleResources.Ordinal_first,        LocaleResources.Ordinal_second,         LocaleResources.Ordinal_third,      
+                    LocaleResources.Ordinal_fourth,         LocaleResources.Ordinal_fifth,          LocaleResources.Ordinal_sixth,
+                    LocaleResources.Ordinal_seventh,        LocaleResources.Ordinal_eighth,         LocaleResources.Ordinal_ninth, 
+                    LocaleResources.Ordinal_tenth,          LocaleResources.Ordinal_eleventh,       LocaleResources.Ordinal_twelveth,
+                    LocaleResources.Ordinal_thirteenth,     LocaleResources.Ordinal_fourteenth,     LocaleResources.Ordinal_fifteenth,
+                    LocaleResources.Ordinal_sixteenth,      LocaleResources.Ordinal_seventeenth,    LocaleResources.Ordinal_eighteenth,
+                    LocaleResources.Ordinal_nineteenth,     LocaleResources.Ordinal_twentieth,      LocaleResources.Ordinal_twenty_first,
+                    LocaleResources.Ordinal_twenty_second,  LocaleResources.Ordinal_twenty_third,   LocaleResources.Ordinal_twenty_fourth};
 
         public ICommand WordCommand { get; }
 

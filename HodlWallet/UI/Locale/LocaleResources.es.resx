@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Onboard.create" xml:space="preserve">
-    <value>Crear nueva cartera</value>
+    <value>Crear nueva billetera</value>
     <comment>label for create button</comment>
   </data>
   <data name="Onboard.recover" xml:space="preserve">
-    <value>Recuperar cartera</value>
+    <value>Recuperar billetera</value>
     <comment>label for recover button</comment>
   </data>
   <data name="Menu.resyncWallet" xml:space="preserve">
-    <value>Re-Sync Wallet</value>
+    <value>Resincronizar Billetera</value>
   </data>
   <data name="Menu.restoreWallet" xml:space="preserve">
-    <value>Restore Wallet</value>
+    <value>Restaurar Billetera</value>
     <comment>label for menu restore wallet</comment>
   </data>
   <data name="Menu.wipeWallet" xml:space="preserve">
-    <value>Wipe Wallet</value>
+    <value>Limpiar Billetera</value>
     <comment>label for menu wipe wallet</comment>
   </data>
   <data name="Pin.enter" xml:space="preserve">
@@ -153,7 +153,7 @@
     <comment>label for transactions list empty button</comment>
   </data>
   <data name="Transactions.empty.button" xml:space="preserve">
-    <value>Obtiene Una Dirección</value>
+    <value>Obtener Dirección</value>
     <comment>label for transactions list empty button</comment>
   </data>
   <data name="Accounts.title" xml:space="preserve">
@@ -334,6 +334,54 @@
   </data>
   <data name="Ordinal.twelveth" xml:space="preserve">
     <value>duodécima</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.eighteenth" xml:space="preserve">
+    <value>décimo octava</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.fifteenth" xml:space="preserve">
+    <value>décimo quinta</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.fourteenth" xml:space="preserve">
+    <value>décimo cuarta</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.nineteenth" xml:space="preserve">
+    <value>décimo novena</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.seventeenth" xml:space="preserve">
+    <value>décimo séptima</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.sixteenth" xml:space="preserve">
+    <value>décimo sexta</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.thirteenth" xml:space="preserve">
+    <value>décimo tercera</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twentieth" xml:space="preserve">
+    <value>vigésima</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twenty-first" xml:space="preserve">
+    <value>vigésimo primera</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twenty-fourth" xml:space="preserve">
+    <value>vigésimo cuarta</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twenty-second" xml:space="preserve">
+    <value>vigésimo segunda</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twenty-third" xml:space="preserve">
+    <value>vigésimo tercera</value>
     <comment>Part of the label in backup recovery confirmation</comment>
   </data>
 </root>

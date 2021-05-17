@@ -116,14 +116,9 @@ namespace HodlWallet.UI.Views
 
         void SetLabels()
         {
-            ResyncWallet.Text = LocaleResources.Menu_resyncWallet;
-            RestoreWallet.Text = LocaleResources.Menu_restoreWallet;
-            WipeWallet.Text = LocaleResources.Menu_wipeWallet;
-            BackupMnemonic.Text = LocaleResources.Backup_title;
-
-#if DEBUG
-            BuildDate.Text = $"Built on: {BuildInfo.BuildDateText}";
-#endif
+            #if DEBUG
+                BuildDate.Text = $"Built on: {BuildInfo.BuildDateText}";
+            #endif
         }
 
         async Task<bool> AskThisIsIrreversibleQuestion(string key)
