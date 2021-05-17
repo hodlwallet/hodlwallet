@@ -34,8 +34,8 @@
     </Shell.FlyoutHeader>
     
     <Shell.FlyoutFooter>
-            <controls:FlyoutFooter />
-        </Shell.FlyoutFooter>
+        <controls:FlyoutFooter />
+    </Shell.FlyoutFooter>
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <Tab x:Name="homeTab"
