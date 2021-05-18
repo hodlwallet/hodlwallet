@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             x:Class="HodlWallet.UI.Views.AcknowledgeRiskView"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="CloseToolbarItem"
+                     Order="Primary"
+                     Text="Close"
+                     Priority="0"
+                      />
+        <ToolbarItem x:Name="SkipToolbarItem"
+                     Order="Primary"
+                     Text="Skip"
+                     Priority="0"
+                      />
+    </ContentPage.ToolbarItems>
+    <ContentPage.BindingContext>
+        <vm:BackupViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <FlexLayout Direction="Column"
+                        JustifyContent="SpaceAround"
+                        BackgroundColor="{DynamicResource BackgroundPrimary}"
+                        AlignItems="Center">
+                
+                <ActivityIndicator IsRunning="False"
+                                   Color="{DynamicResource SyncGradientStart}" />
+
+                <Grid FlexLayout.Grow="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                
+                    <CheckBox Grid.Column="1"
+                          HorizontalOptions="Start" />
+
+                    <Label x:Name="AckTerm1"
+                        FontFamily="{StaticResource Sans-Regular}"
+                        TextColor="{DynamicResource SyncGradientStart}"
+                        HorizontalTextAlignment="Start"
+                        FontSize="Medium"
+                        Margin="0, 0, 0, 10"
+                        Grid.Column="2" />
+
+                    <CheckBox Grid.Column="1"
+                              Grid.Row="2"
+                          HorizontalOptions="Start" />
+
+                    <Label x:Name="AckTerm2"
+                        FontFamily="{StaticResource Sans-Regular}"
+                        TextColor="{DynamicResource SyncGradientStart}"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontSize="Medium"
+                        Margin="0, 0, 0, 10"
+                        Grid.Column="2"
+                        Grid.Row="2" />
+
+
+                    <CheckBox Grid.Column="1"
+                              Grid.Row="3"
+                          HorizontalOptions="Start" />
+
+                    <Label x:Name="AckTerm3"
+                        FontFamily="{StaticResource Sans-Regular}"
+                        TextColor="{DynamicResource SyncGradientStart}"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontSize="Medium"
+                        Margin="0, 0, 0, 10"
+                        Grid.Column="2"
+                        Grid.Row="3"/>
+                    
+                    <CheckBox Grid.Column="1"
+                              Grid.Row="4"
+                          HorizontalOptions="Start" />
+
+                    <Label x:Name="AckTerm4"
+                        FontFamily="{StaticResource Sans-Regular}"
+                        TextColor="{DynamicResource SyncGradientStart}"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontSize="Medium"
+                        Margin="0, 0, 0, 10"
+                        Grid.Column="2"
+                        Grid.Row="4"/>
+                </Grid>
+                
+               
+                <BoxView FlexLayout.Grow="1" />
+                <Button x:Name="Button"
+                        Style="{DynamicResource CustomButton}"
+                        BackgroundColor="{DynamicResource BackgroundSecondary}"
+                        CornerRadius="0"
+                        FontSize="Large"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1"
+                        Clicked="WalletInfoButton_Clicked" />
+            </FlexLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

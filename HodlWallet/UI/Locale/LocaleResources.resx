@@ -484,4 +484,27 @@
     <value>Settings</value>
     <comment>Label for Settings Button</comment>
   </data>
+  <data name="AckRisk_Term1" xml:space="preserve">
+    <value>I understand that not properly backing up my wallet can lead to loss of funds.</value>
+  </data>
+  <data name="AckRisk_Term2" xml:space="preserve">
+    <value>I will not take a screen shot of my key.</value>
+  </data>
+  <data name="AckRisk_Term3" xml:space="preserve">
+    <value>I understand that Hodl Wallet does not store a copy of this key and should I lose it Hodl Wallet can't help me recover my funds.</value>
+  </data>
+  <data name="AckRisk_Term4" xml:space="preserve">
+    <value>I am ready to copy down the 12 word Backup Recovery Key and store it.</value>
+  </data>
+  <data name="NewWallet_button" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="NewWallet_header" xml:space="preserve">
+    <value>Welcome to Hodl Wallet</value>
+  </data>
+  <data name="NewWallet_subheader" xml:space="preserve">
+    <value>Hodl Wallet is a non-custodial Bitcoin Wallet. This means you are the sole person with access to the bitcoin stored in this app. 
+
+All you have to do is safety store the wallets backup recovery key and you'll always have access to you bitcoin.</value>
+  </data>
 </root>
