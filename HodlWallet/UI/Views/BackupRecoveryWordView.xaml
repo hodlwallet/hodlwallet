@@ -12,54 +12,53 @@
         <converters:IndexToStringConverter x:Key="IndexToStringConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <FlexLayout Direction="Column"
+                        JustifyContent="SpaceAround"
+                        BackgroundColor="{DynamicResource BackgroundPrimary}"
+                        AlignItems="Center">
             <Label x:Name="Header"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        HorizontalTextAlignment="Center"
-                        FlexLayout.Grow="1"
                        Margin="0, 20" />
 
-            <ScrollView IsClippedToBounds="True" Orientation="Vertical" VerticalOptions="StartAndExpand">
-                <StackLayout>
-                    <FlexLayout Direction="Row"
+                <FlexLayout Direction="Row"
                                     Wrap="Wrap"
                                     JustifyContent="SpaceAround"
-                                    AlignItems="End"
+                                    AlignItems="Center"
                                     BindableLayout.ItemsSource="{Binding Words}"
-                                    BindableLayout.EmptyView="Mnemonic not found!" >
+                                    BindableLayout.EmptyView="Mnemonic not found!"
+                                    Margin="15"                                    
+                                    FlexLayout.Grow="4">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
-                                                    Margin="10"
-                                                    HeightRequest="40"
-                                                    WidthRequest="110" >
-                                    <StackLayout Orientation="Horizontal">
+                                                    Margin="2" >
+                            <StackLayout Orientation="Horizontal" Margin="2">
                                         <Label Text="{Binding WordIndex}"
                                                     FontFamily="{StaticResource Sans-Regular}"
                                                     TextColor="{DynamicResource SyncGradientStart}"
-                                                    FontSize="Micro"
-                                                    Margin="0,0,5,0"
-                                                    BackgroundColor="Transparent"/>
+                                                    FontSize="Micro" 
+                                                    />
                                         <Label Text="{Binding Word}"
-                                                Style="{DynamicResource MnemonicLabel}" />
+                                                Style="{DynamicResource MnemonicLabel}" 
+                                                Margin="0,0,5,0" />
                                     </StackLayout>
                                 </ContentView>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>
 
-                    <Button x:Name="Next"
-                            Style="{DynamicResource CustomButton}"
-                            BackgroundColor="{DynamicResource BackgroundSecondary}"
-                            CornerRadius="0"
-                            FontSize="Large"
-                            HeightRequest="100"
-                            VerticalOptions="FillAndExpand"
-                            Command="{Binding NextCommand}" />
+                <Button x:Name="Next"
+                        Style="{DynamicResource CustomButton}"
+                        BackgroundColor="{DynamicResource BackgroundSecondary}"
+                        CornerRadius="0"
+                        FontSize="Large"                        
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1"
+                        VerticalOptions="EndAndExpand"
+                        Command="{Binding NextCommand}" />
 
-                </StackLayout>
-            </ScrollView>
-        </StackLayout>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
