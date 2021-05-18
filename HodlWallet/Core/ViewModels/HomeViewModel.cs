@@ -57,8 +57,8 @@ namespace HodlWallet.Core.ViewModels
         bool isViewVisible = true;
 
         bool attachedWalletListeners = false;
-        decimal amount;
-        decimal amountFiat;
+        decimal balance;
+        decimal balanceFiat;
         float newRate;
         float oldRate;
         bool isBtcEnabled;
@@ -85,16 +85,16 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref rate, value);
         }
 
-        public decimal Amount
+        public decimal Balance
         {
-            get => amount;
-            set => SetProperty(ref amount, value);
+            get => balance;
+            set => SetProperty(ref balance, value);
         }
 
-        public decimal AmountFiat
+        public decimal BalanceFiat
         {
-            get => amountFiat;
-            set => SetProperty(ref amountFiat, value);
+            get => balanceFiat;
+            set => SetProperty(ref balanceFiat, value);
         }
 
         readonly object @lock = new();
@@ -224,9 +224,9 @@ namespace HodlWallet.Core.ViewModels
             // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
             if (WalletService.IsStarted)
             {
-                Amount = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 Rate = (decimal)newRate;
-                AmountFiat = Amount * Rate;
+                BalanceFiat = Balance * Rate;
             }
             else
             {
@@ -250,9 +250,10 @@ namespace HodlWallet.Core.ViewModels
             if (Currency == "BTC")
             {
                 Currency = "USD";
-                Amount = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 Rate = (decimal)newRate;
-                AmountFiat = Amount * Rate;
+
+                Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                BalanceFiat = Balance * Rate;
 
                 UpdateTransanctions();
 
@@ -261,9 +262,10 @@ namespace HodlWallet.Core.ViewModels
             else
             {
                 Currency = "BTC";
-                Amount = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 Rate = (decimal)newRate;
-                AmountFiat = Amount * Rate;
+
+                Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                BalanceFiat = Balance * Rate;
 
                 UpdateTransanctions();
 
@@ -296,7 +298,8 @@ namespace HodlWallet.Core.ViewModels
                         // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
                         oldRate = newRate = rate.Rate;
                         Rate = (decimal)newRate;
-                        AmountFiat = Amount * Rate;
+
+                        BalanceFiat = Balance * Rate;
 
                         UpdateTransanctions();
                     }
@@ -311,7 +314,7 @@ namespace HodlWallet.Core.ViewModels
             if (Currency != "BTC")
             {
                 Rate = (decimal)newRate;
-                AmountFiat = Amount * Rate;
+                BalanceFiat = Balance * Rate;
 
                 if (!oldRate.Equals(newRate))
                 {
@@ -341,9 +344,9 @@ namespace HodlWallet.Core.ViewModels
             {
                 lock (@lock)
                 {
-                    Amount = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                    Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                     Rate = (decimal)newRate;
-                    AmountFiat = Amount * Rate;
+                    BalanceFiat = Balance * Rate;
 
                     WalletService.OnStarted -= WalletService_OnStarted_ViewAppearing;
                 }

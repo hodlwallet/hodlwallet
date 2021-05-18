@@ -35,14 +35,6 @@ namespace HodlWallet.UI.Views
         public OnboardView()
         {
             InitializeComponent();
-
-            SetLabels();
-        }
-
-        void SetLabels()
-        {
-            CreateButton.Text = LocaleResources.Onboard_create;
-            RecoverButton.Text = LocaleResources.Onboard_recover;
         }
 
         void CreateButton_Clicked(object sender, EventArgs e)

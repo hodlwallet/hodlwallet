@@ -17,7 +17,7 @@
     </Shell.TitleView>
     <ContentPage.Content>
         <AbsoluteLayout>
-            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="10,0,10,0">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="20,0,20,0">
                 <ScrollView x:Name="TransactionsScrollView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Scrolled="TransactionsScrollView_Scrolled">
                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <FlexLayout Direction="Row">
@@ -29,7 +29,7 @@
                                        TextColor="{DynamicResource TextSecondary}" />
                                 <StackLayout x:Name="BalanceStackLayout" Orientation="Horizontal" Spacing="0">
                                     <Label x:Name="BalanceLabel"
-                                           Text="{Binding Amount}"
+                                           Text="{Binding Balance}"
                                            Style="{DynamicResource CustomLabel}"
                                            FontFamily="{StaticResource Mono-Bold}" />
                                     <Label Text="{Binding Currency, StringFormat=' {0}'}"

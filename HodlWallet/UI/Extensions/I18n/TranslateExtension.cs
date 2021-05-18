@@ -39,15 +39,20 @@ namespace HodlWallet.UI.Extensions.I18n
     [ContentProperty("Text")]
     public class TranslateExtension : IMarkupExtension
     {
-        readonly CultureInfo ci;
         const string RESOURCE_ID = "HodlWallet.UI.Locale.LocaleResources";
 
-        static readonly Lazy<ResourceManager> ResMgr = new(
-            () => new ResourceManager(RESOURCE_ID, IntrospectionExtensions.GetTypeInfo(typeof(TranslateExtension)).Assembly));
-
-        public string Text { get; set; }
+        readonly CultureInfo ci;
 
         ILocalize LocalizeService => DependencyService.Get<ILocalize>();
+
+        static readonly Lazy<ResourceManager> ResMgr = new(
+            () => new ResourceManager(
+                RESOURCE_ID,
+                IntrospectionExtensions.GetTypeInfo(typeof(TranslateExtension)).Assembly
+            )
+        );
+
+        public string Text { get; set; }
 
         public TranslateExtension()
         {
@@ -67,8 +72,9 @@ namespace HodlWallet.UI.Extensions.I18n
             {
 #if DEBUG
                 throw new ArgumentException(
-                    string.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, RESOURCE_ID, ci.Name),
-                    "Text");
+                    $"Key '{Text}' was not found in resources '{RESOURCE_ID}' for culture '{ci.Name}'.",
+                    "Text"
+                );
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif
