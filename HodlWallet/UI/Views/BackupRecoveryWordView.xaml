@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:HodlWallet.UI.Converters"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupRecoveryWordView"
+             Title="{i18n:Translate BackupWord.title}"
              BackgroundColor="{DynamicResource BackgroundPrimary}">
     <ContentPage.BindingContext>
         <vm:BackupRecoveryWordViewModel />
@@ -18,7 +20,7 @@
                         AlignItems="Center"
                         BackgroundColor="{DynamicResource BackgroundPrimary}">
 
-                <Label x:Name="Header"
+                <Label Text="{i18n:Translate Text=BackupWord.header}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        HorizontalTextAlignment="Center"
@@ -51,7 +53,7 @@
 
                 <FlexLayout Direction="Row"
                             FlexLayout.Grow="1">
-                    <Button x:Name="Previous"
+                    <Button Text="{i18n:Translate Text=BackupWord.previous}"
                             Style="{DynamicResource CustomButton}"
                             BackgroundColor="{DynamicResource BackgroundSecondary}"
                             CornerRadius="0"
@@ -60,7 +62,7 @@
                             FlexLayout.Grow="2"
                             Command="{Binding PreviousWordCommand}" />
 
-                    <Button x:Name="Next"
+                    <Button Text="{i18n:Translate Text=BackupWord.next}"
                             Style="{DynamicResource CustomButton}"
                             BackgroundColor="{DynamicResource BackgroundSecondary}"
                             CornerRadius="0"
