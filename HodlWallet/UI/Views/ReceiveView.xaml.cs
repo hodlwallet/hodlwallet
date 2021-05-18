@@ -28,7 +28,6 @@ using Xamarin.Forms;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.Core.Utils;
 using HodlWallet.UI.Extensions;
-using HodlWallet.UI.Locale;
 using System.Diagnostics;
 
 namespace HodlWallet.UI.Views
