@@ -889,6 +889,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scan Bitcoin Address.
+        /// </summary>
+        public static string Scan_Title {
+            get {
+                return ResourceManager.GetString("Scan.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conveniently unlock your wallet and send money up to a set limit..
         /// </summary>
         public static string SecurityCenter_fingerprintDetail {

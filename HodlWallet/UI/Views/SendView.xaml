@@ -22,7 +22,7 @@
                                     AlignItems="Center">
                             <StackLayout Orientation="Vertical"
                                          FlexLayout.Grow="4">
-                                <Label x:Name="ToLabel"
+                                <Label Text="{i18n:Translate Text=Send.to}"
                                        Style="{DynamicResource CustomLabel}"
                                        HorizontalTextAlignment="Start" />
 
@@ -38,7 +38,7 @@
 
                             <StackLayout Orientation="Vertical"
                                          FlexLayout.Grow="1">
-                                <Label x:Name="ScanLabel"
+                                <Label Text="{i18n:Translate Text=Send.scan}"
                                        Style="{DynamicResource CustomLabel}"
                                        FontSize="Small"
                                        HorizontalTextAlignment="Center" />
@@ -53,7 +53,7 @@
 
                             <StackLayout Orientation="Vertical"
                                          FlexLayout.Grow="1">
-                                <Label x:Name="PasteLabel"
+                                <Label Text="{i18n:Translate Text=Send.paste}"
                                        Style="{DynamicResource CustomLabel}"
                                        FontSize="Small"
                                        HorizontalTextAlignment="Center" />
@@ -72,7 +72,7 @@
                                     AlignItems="Center">
                             <StackLayout Orientation="Vertical"
                                          FlexLayout.Grow="4">
-                                <Label x:Name="AmountLabel"
+                                <Label Text="{i18n:Translate Text=Send.amount}"
                                        Style="{DynamicResource CustomLabel}"
                                        HorizontalTextAlignment="Start"
                                        VerticalOptions="Center" />

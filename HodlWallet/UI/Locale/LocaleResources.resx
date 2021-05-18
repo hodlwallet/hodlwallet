@@ -620,4 +620,8 @@
     <value>Close</value>
     <comment>label for add account toolbar Close button</comment>
   </data>
+  <data name="Scan.Title" xml:space="preserve">
+    <value>Scan Bitcoin Address</value>
+    <comment>title scan page</comment>
+  </data>
 </root>
