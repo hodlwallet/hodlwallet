@@ -110,7 +110,7 @@ namespace HodlWallet.UI.Views
             _ = this.DisplayPrompt(
                 Constants.BUILD_INFO_MESSAGE_TITLE,
                 msg,
-                Constants.DISPLAY_ALERT_ERROR_BUTTON
+                LocaleResources.Error_ok
             );
         }
 

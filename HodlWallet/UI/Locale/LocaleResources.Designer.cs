@@ -331,6 +331,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string Error_ok {
+            get {
+                return ResourceManager.GetString("Error.ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use your fingerprint to unlock your wallet and send money up to a set limit..
         /// </summary>
         public static string FingerprintAuth_header {

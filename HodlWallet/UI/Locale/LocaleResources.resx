@@ -624,4 +624,8 @@
     <value>Scan Bitcoin Address</value>
     <comment>title scan page</comment>
   </data>
+  <data name="Error.ok" xml:space="preserve">
+    <value>Ok</value>
+    <comment>Label of display alert error Button</comment>
+  </data>
 </root>
