@@ -151,6 +151,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address Copied to Clipboard.
+        /// </summary>
+        public static string Address_copied {
+            get {
+                return ResourceManager.GetString("Address.copied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This action is irreversible, are you sure?.
         /// </summary>
         public static string Alert_irreversible {

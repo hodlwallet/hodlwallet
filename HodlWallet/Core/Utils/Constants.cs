@@ -57,9 +57,8 @@ namespace HodlWallet.Core.Utils
         public const string DISPLAY_ALERT_ERROR_TITLE = "Error"; //MessagingCenter
         public const string DISPLAY_ALERT_PASTE_MESSAGE = "Pasteboard is empty or invalid."; //MessagingCenter
         public const string DISPLAY_ALERT_SCAN_MESSAGE = "Invalid QR code."; //MessagingCenter
-        public const string DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF = "Send to yourself is disabled.";
-        public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported.";
-        public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE = "Address Copied to Clipboard";
+        public const string DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF = "Send to yourself is disabled."; //MessagingCenter
+        public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported."; //MessagingCenter
         public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON = "OK";
         public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_TITLE = "Transaction ID Copied to Clipboard";
         public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_BUTTON = "OK";
