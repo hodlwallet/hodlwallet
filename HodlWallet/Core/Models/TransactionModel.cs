@@ -29,6 +29,7 @@ using Liviano.Models;
 using HodlWallet.Core.Extensions;
 using HodlWallet.Core.Utils;
 using HodlWallet.Core.Interfaces;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.Core.Models
 {
@@ -222,9 +223,9 @@ namespace HodlWallet.Core.Models
         string GetAddressTitleText()
         {
             if (TransactionData.IsSend == true)
-                return Constants.TRANSACTION_DETAILS_SENT_ADDRESS_TITLE;
+                return LocaleResources.TransactionDetails_send_adress_title;
 
-            return Constants.TRANSACTION_DETAILS_RECEIVED_ADDRESS_TITLE;
+            return LocaleResources.TransactionDetails_received_adress_title;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

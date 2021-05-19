@@ -1168,11 +1168,20 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Received At This Address.
         /// </summary>
-        public static string TransactionDetails_send_title {
+        public static string TransactionDetails_received_adress_title {
             get {
-                return ResourceManager.GetString("TransactionDetails.send_title", resourceCulture);
+                return ResourceManager.GetString("TransactionDetails.received_adress_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sent To This Address.
+        /// </summary>
+        public static string TransactionDetails_send_adress_title {
+            get {
+                return ResourceManager.GetString("TransactionDetails.send_adress_title", resourceCulture);
             }
         }
         
