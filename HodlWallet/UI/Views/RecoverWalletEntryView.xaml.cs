@@ -102,9 +102,9 @@ namespace HodlWallet.UI.Views
         void ShowRecoverSeedError(RecoverWalletEntryViewModel vm)
         {
             _ = this.DisplayPrompt(
-                LocaleResources.Recover_View_Alert_title,
-                LocaleResources.Recover_View_Alert_message,
-                LocaleResources.Recover_View_Alert_button                
+                LocaleResources.Recover_alertTitle,
+                LocaleResources.Recover_alertHeader,
+                LocaleResources.Recover_alertButton
             );
         }
 

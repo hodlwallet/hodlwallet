@@ -880,33 +880,6 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Try Again.
-        /// </summary>
-        public static string Recover_View_Alert_button {
-            get {
-                return ResourceManager.GetString("Recover_View_Alert.button", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to One or more of the words you entered are either mispelled or invalid..
-        /// </summary>
-        public static string Recover_View_Alert_message {
-            get {
-                return ResourceManager.GetString("Recover_View_Alert.message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid Mnemonic.
-        /// </summary>
-        public static string Recover_View_Alert_title {
-            get {
-                return ResourceManager.GetString("Recover_View_Alert.title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Enter Backup Recovery Key.
         /// </summary>
         public static string RecoverEntry_header {
@@ -1191,6 +1164,15 @@ namespace HodlWallet.UI.Locale {
         public static string TransactionDetails_memoTitle {
             get {
                 return ResourceManager.GetString("TransactionDetails.memoTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TransactionDetails_send_title {
+            get {
+                return ResourceManager.GetString("TransactionDetails.send_title", resourceCulture);
             }
         }
         

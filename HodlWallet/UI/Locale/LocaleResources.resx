@@ -632,16 +632,7 @@
     <value>Ok</value>
     <comment>Label of display alert error Button</comment>
   </data>
-  <data name="Recover_View_Alert.button" xml:space="preserve">
-    <value>Try Again</value>
-    <comment>Label of recover view alert button</comment>
-  </data>
-  <data name="Recover_View_Alert.message" xml:space="preserve">
-    <value>One or more of the words you entered are either mispelled or invalid.</value>
-    <comment>Label of recover view alert message</comment>
-  </data>
-  <data name="Recover_View_Alert.title" xml:space="preserve">
-    <value>Invalid Mnemonic</value>
-    <comment>Label of recover view alert title</comment>
+  <data name="TransactionDetails.send_title" xml:space="preserve">
+    <value />
   </data>
 </root>
