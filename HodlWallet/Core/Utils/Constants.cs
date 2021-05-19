@@ -59,13 +59,10 @@ namespace HodlWallet.Core.Utils
         public const string DISPLAY_ALERT_SCAN_MESSAGE = "Invalid QR code."; //MessagingCenter
         public const string DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF = "Send to yourself is disabled."; //MessagingCenter
         public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported."; //MessagingCenter
-        public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON = "OK";
-        public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_TITLE = "Transaction ID Copied to Clipboard";
-        public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_BUTTON = "OK";
-        public const string SYNC_LOADING_HEADERS = "Loading headers...";
-        public const string RECOVER_VIEW_ALERT_TITLE = "Invalid Mnemonic";
-        public const string RECOVER_VIEW_ALERT_MESSAGE = "One or more of the words you entered are either mispelled or invalid.";
-        public const string RECOVER_VIEW_ALERT_BUTTON = "Try Again";
+        public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON = "OK"; //Not found
+        public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_TITLE = "Transaction ID Copied to Clipboard"; //Not found
+        public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_BUTTON = "OK"; //Not found
+        public const string SYNC_LOADING_HEADERS = "Loading headers...";  //Not found
         public const string TRANSACTION_DETAILS_SENT_ADDRESS_TITLE = "Sent To This Address";
         public const string TRANSACTION_DETAILS_RECEIVED_ADDRESS_TITLE = "Received At This Address";
         public const string DISPLAY_ALERT_TRANSACTION_MESSAGE = "There was an error broadcasting your transaction.";
