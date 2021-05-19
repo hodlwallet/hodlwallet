@@ -45,26 +45,16 @@ namespace HodlWallet.Core.Utils
 
         // Localized Strings
         public const string HODL_WALLET = "HODL Wallet";
-        public const string IS_AVAILABLE = "Available to spend";    //Not found
         public const string SENT_AMOUNT = "Sent {0} {1}"; //Only appears in a unused method in HomeviewModel.cs
         public const string RECEIVE_AMOUNT = "Received {0} {1}";
-        public const string IS_NOT_AVAILABLE = "Waiting for confirmation";  //Not found
-        public const string SENT_RECEIVED_NULL = "Send and Receive is NULL";    //Not found
-        public const string SYNC_DATE_LABEL = "{0}, Block: {1}";    //Not found
-        public const string SHARE_TEXT_INTENT_TITLE = "Share via"; //No idea...
-        public const string TO_LABEL = "To";    //Not found
-        public const string AT_LABEL = "At";    //Not found
+        public const string SHARE_TEXT_INTENT_TITLE = "Share via"; 
         public const string DISPLAY_ALERT_ERROR_TITLE = "Error"; //MessagingCenter
         public const string DISPLAY_ALERT_PASTE_MESSAGE = "Pasteboard is empty or invalid."; //MessagingCenter
         public const string DISPLAY_ALERT_SCAN_MESSAGE = "Invalid QR code."; //MessagingCenter
         public const string DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF = "Send to yourself is disabled."; //MessagingCenter
         public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported."; //MessagingCenter
-        public const string RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_BUTTON = "OK"; //Not found
-        public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_TITLE = "Transaction ID Copied to Clipboard"; //Not found
-        public const string TRANSACTION_ID_COPIED_TO_CLIPBOARD_BUTTON = "OK"; //Not found
-        public const string SYNC_LOADING_HEADERS = "Loading headers...";  //Not found
-        public const string DISPLAY_ALERT_TRANSACTION_MESSAGE = "There was an error broadcasting your transaction.";
-        public const string DISPLAY_ALERT_AMOUNT_MESSAGE = "Unable to send, check your amount, address and fee";
+        public const string DISPLAY_ALERT_TRANSACTION_MESSAGE = "There was an error broadcasting your transaction."; //MessagingCenter
+        public const string DISPLAY_ALERT_AMOUNT_MESSAGE = "Unable to send, check your amount, address and fee"; //MessagingCenter
 
         // Temporary Values
         public const string USE_ADDRESS_FROM_CLIPBOARD =
