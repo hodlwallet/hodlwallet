@@ -26,6 +26,7 @@ namespace HodlWallet.UI.Views
             AckTerm2.Text = LocaleResources.AckRisk_Term2;
             AckTerm3.Text = LocaleResources.AckRisk_Term3;
             AckTerm4.Text = LocaleResources.AckRisk_Term4;
+            AckButton.Text = LocaleResources.AckRisk_Button;
         }
 
         void WalletInfoButton_Clicked(object sender, EventArgs e)
