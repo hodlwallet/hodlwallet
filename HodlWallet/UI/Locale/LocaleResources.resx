@@ -640,4 +640,8 @@
     <value>Sent To This Address</value>
     <comment>Label of the send adress title</comment>
   </data>
+  <data name="Settings.button" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Label for Settings Button</comment>
+  </data>
 </root>

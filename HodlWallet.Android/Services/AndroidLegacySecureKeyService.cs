@@ -20,7 +20,7 @@ namespace HodlWallet.Droid.Services
 {
     public class AndroidLegacySecureKeyService : ILegacySecureKeyService
     {
-        static readonly object locker = new object();
+        static readonly object @lock = new object();
 
         internal static Context AppContext => Android.App.Application.Context;
 
@@ -35,7 +35,7 @@ namespace HodlWallet.Droid.Services
 
             if (obj == null) throw new KeyNotFoundException(string.Format("Key does not return an Alias Object: {0}", key));
 
-            lock (locker)
+            lock (@lock)
             {
                 var ks = KeyStore.GetInstance(BRKeyStoreAliases.ANDROID_KEY_STORE);
                 ks.Load(null);

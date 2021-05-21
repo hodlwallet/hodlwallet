@@ -13,8 +13,8 @@ namespace HodlWallet.iOS.Services
 {
     public class IOSLegacySecureKeyService : ILegacySecureKeyService
     {
-        const string WAllET_SEC_ATTR_SERVICE = "co.hodlwallet";
-        
+        const string WALLET_SEC_ATTR_SERVICE = "co.hodlwallet";
+
         static T LegacyGetKeychainItem<T>(string key)
         {
             byte[] data = null;
@@ -58,7 +58,7 @@ namespace HodlWallet.iOS.Services
         {
             return new SecRecord(SecKind.GenericPassword)
             {
-                Service = WAllET_SEC_ATTR_SERVICE,
+                Service = WALLET_SEC_ATTR_SERVICE,
                 Account = key
             };
         }
