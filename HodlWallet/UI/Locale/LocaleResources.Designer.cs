@@ -241,6 +241,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Backup Confirmation.
+        /// </summary>
+        public static string BackupConfirm_title {
+            get {
+                return ResourceManager.GetString("BackupConfirm.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to That word is not in your mnemonic..
         /// </summary>
         public static string BackupConfirm_warning {
@@ -1137,6 +1146,15 @@ namespace HodlWallet.UI.Locale {
         public static string Send_transactionOk {
             get {
                 return ResourceManager.GetString("Send.transactionOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings_button {
+            get {
+                return ResourceManager.GetString("Settings.button", resourceCulture);
             }
         }
         

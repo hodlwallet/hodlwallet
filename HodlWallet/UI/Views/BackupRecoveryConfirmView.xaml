@@ -6,6 +6,7 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupRecoveryConfirmView"
              BackgroundColor="{DynamicResource BackgroundPrimary}"
+             Title="{i18n:Translate BackupConfirm.title}">
              ios:Page.UseSafeArea="True">
     <ContentPage.BindingContext>
         <vm:BackupRecoveryConfirmViewModel />
