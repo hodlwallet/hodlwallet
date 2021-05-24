@@ -33,7 +33,7 @@ namespace HodlWallet.Core.Utils
         public const string SAT_PER_BYTE_UNIT_LABEL = "{0} sat/byte";
         public const int PRECIO_TIMER_INTERVAL = 5; // seconds
 
-        //Block Explorer URls
+        // Block Explorer URls
         public const string BLOCK_EXPLORER_ADDRESS_MAINNET_URI = "https://blockstream.info/address/{0}";
         public const string BLOCK_EXPLORER_ADDRESS_TESTNET_URI = "https://blockstream.info/testnet/address/{0}";
         public const string BLOCK_EXPLORER_TRANSACTION_MAINNET_URI = "https://blockstream.info/tx/{0}";
@@ -48,13 +48,15 @@ namespace HodlWallet.Core.Utils
         public const string SENT_AMOUNT = "Sent {0} {1}"; //Only appears in a unused method in HomeviewModel.cs
         public const string RECEIVE_AMOUNT = "Received {0} {1}";
         public const string SHARE_TEXT_INTENT_TITLE = "Share via"; 
-        public const string DISPLAY_ALERT_ERROR_TITLE = "Error"; //MessagingCenter
-        public const string DISPLAY_ALERT_PASTE_MESSAGE = "Pasteboard is empty or invalid."; //MessagingCenter
-        public const string DISPLAY_ALERT_SCAN_MESSAGE = "Invalid QR code."; //MessagingCenter
-        public const string DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF = "Send to yourself is disabled."; //MessagingCenter
-        public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported."; //MessagingCenter
-        public const string DISPLAY_ALERT_TRANSACTION_MESSAGE = "There was an error broadcasting your transaction."; //MessagingCenter
-        public const string DISPLAY_ALERT_AMOUNT_MESSAGE = "Unable to send, check your amount, address and fee"; //MessagingCenter
+        public const string DISPLAY_ALERT_ERROR_TITLE = "Error"; 
+        
+        // MessagingCenter
+        public const string DISPLAY_ALERT_PASTE_MESSAGE = "Pasteboard is empty or invalid."; 
+        public const string DISPLAY_ALERT_SCAN_MESSAGE = "Invalid QR code."; 
+        public const string DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF = "Send to yourself is disabled."; 
+        public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported."; 
+        public const string DISPLAY_ALERT_TRANSACTION_MESSAGE = "There was an error broadcasting your transaction."; 
+        public const string DISPLAY_ALERT_AMOUNT_MESSAGE = "Unable to send, check your amount, address and fee"; 
 
         // Temporary Values
         public const string USE_ADDRESS_FROM_CLIPBOARD =
