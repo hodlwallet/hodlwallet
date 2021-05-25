@@ -21,7 +21,7 @@ namespace HodlWallet.UI.Views
 
         void SetLabels()
         {
-            //Title = LocaleResources.Backup_title;
+            Title = LocaleResources.NewWallet_Title;
             AckTerm1.Text = LocaleResources.AckRisk_Term1;
             AckTerm2.Text = LocaleResources.AckRisk_Term2;
             AckTerm3.Text = LocaleResources.AckRisk_Term3;

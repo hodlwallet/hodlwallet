@@ -503,11 +503,16 @@
     <value>Welcome to Hodl Wallet</value>
   </data>
   <data name="NewWallet_subheader" xml:space="preserve">
-    <value>Hodl Wallet is a non-custodial Bitcoin Wallet. This means you are the sole person with access to the bitcoin stored in this app. 
+    <value>Before we get started you should know:
+    
+Hodl Wallet is a non-custodial Bitcoin Wallet. This means you are the sole person with access to the bitcoin stored in this app. 
 
 All you have to do is safety store the wallets backup recovery key and you'll always have access to you bitcoin.</value>
   </data>
   <data name="AckRisk.Button" xml:space="preserve">
     <value>Next</value>
+  </data>
+  <data name="NewWallet.Title" xml:space="preserve">
+    <value>Create Wallet</value>
   </data>
 </root>

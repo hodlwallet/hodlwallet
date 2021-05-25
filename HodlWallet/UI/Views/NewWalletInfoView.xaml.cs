@@ -21,7 +21,7 @@ namespace HodlWallet.UI.Views
 
         void SetLabels()
         {
-            //Title = LocaleResources.Backup_title;
+            Title = LocaleResources.NewWallet_Title;
             Header.Text = LocaleResources.NewWallet_header;
             Subheader.Text = LocaleResources.NewWallet_subheader;
             Button.Text = LocaleResources.NewWallet_button;
