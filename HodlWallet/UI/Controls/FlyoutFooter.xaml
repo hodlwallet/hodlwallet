@@ -12,7 +12,9 @@
                     FontSize="Medium"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
-                    BackgroundColor="{DynamicResource BackgroundPrimary}" />
+                    BackgroundColor="{DynamicResource BackgroundPrimary}" 
+                    Clicked="CreateAcc_Clicked"
+                    Routing.Route="CreateAccountView"/>
 
             <BoxView BackgroundColor="Transparent"
                      HeightRequest="1" />

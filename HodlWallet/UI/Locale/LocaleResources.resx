@@ -464,6 +464,10 @@
     <value>Choose from the options below which type of account you want to create.</value>
     <comment>label for account selection subheader</comment>
   </data>
+  <data name="AddAccountText.label" xml:space="preserve">
+    <value>Account:</value>
+    <comment>label for create an account</comment>
+  </data>
   <data name="AddAccount.title" xml:space="preserve">
     <value>Add an Account</value>
     <comment>label for add account title</comment>

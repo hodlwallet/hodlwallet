@@ -133,6 +133,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account:.
+        /// </summary>
+        public static string AddAccountText_label {
+            get {
+                return ResourceManager.GetString("AddAccountText.label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Write Down Backup Recovery Key.
         /// </summary>
         public static string Backup_button {

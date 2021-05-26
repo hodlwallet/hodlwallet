@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HodlWallet.UI.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,11 @@ namespace HodlWallet.UI.Controls
         public FlyoutFooter()
         {
             InitializeComponent();
+        }
+
+        async void CreateAcc_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(CreateAccountView));
         }
     }
 }
