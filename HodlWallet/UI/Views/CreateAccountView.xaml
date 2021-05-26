@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HodlWallet.UI.Views.CreateAccountView"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels">
+    <ContentPage.BindingContext>
+        <vm:CreateAccountViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <FlexLayout Direction="Column"
+                    JustifyContent="SpaceAround"
+                    BackgroundColor="{DynamicResource BackgroundPrimary}"
+                    AlignItems="Center">
+            <Label x:Name="Header"
+                       FontFamily="{StaticResource Sans-Regular}"
+                       TextColor="{DynamicResource SyncGradientStart}"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"
+                       Margin="0, 0, 0, 10" />
+            <Label x:Name="AddAccountLbl"
+                       FontFamily="{StaticResource Sans-Regular}"
+                       TextColor="{DynamicResource SyncGradientStart}"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium" />
+            <BoxView FlexLayout.Grow="1" />
+            <Button x:Name="CreateAcc"
+                        Style="{DynamicResource CustomButton}"
+                        BackgroundColor="{DynamicResource BackgroundSecondary}"
+                        CornerRadius="0"
+                        FontSize="Large"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1"
+                        Command="{Binding CreateAccCommand}"/>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>
