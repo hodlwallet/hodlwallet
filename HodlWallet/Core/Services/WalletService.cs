@@ -286,11 +286,9 @@ namespace HodlWallet.Core.Services
                 else
                 {
                     int countBfrAddToList = Wallet.Accounts.Count;
-                    Logger.Debug($"Count before Add to Account List => {countBfrAddToList}");
-             
+                    
                     Wallet.AddAccount(type, name);
 
-                    Logger.Debug($"Count AFTER Add to Account List => {Wallet.Accounts.Count}");
                     if (Wallet.Accounts.Count <= countBfrAddToList)
                     {
                         messageError = $"Unable to add a new accountto the current Wallet | Name => {name} - Type => {type}.";
