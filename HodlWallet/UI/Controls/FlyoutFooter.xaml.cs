@@ -20,6 +20,7 @@ namespace HodlWallet.UI.Controls
 
         async void CreateAcc_Clicked(object sender, EventArgs e)
         {
+            Shell.Current.FlyoutIsPresented = false;
             await Shell.Current.GoToAsync(nameof(CreateAccountView));
         }
     }
