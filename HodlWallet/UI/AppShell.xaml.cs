@@ -26,8 +26,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Input;
 
 using Xamarin.Forms;
@@ -47,7 +49,8 @@ namespace HodlWallet.UI
         readonly object @lock = new();
         IWalletService WalletService => DependencyService.Get<IWalletService>();
 
-        public ObservableCollection<AccountModel> AccountList { get; } = new ObservableCollection<AccountModel>();
+        public ObservableCollection<AccountModel> AccountList = new ObservableCollection<AccountModel>();
+        
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand CreateCommand => new Command(async () => await Launcher.OpenAsync("//create"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
@@ -59,6 +62,7 @@ namespace HodlWallet.UI
             SetupDefaultTab();
             InitializeWalletServiceAccounts();
             PropertyChanged += Shell_PropertyChanged;
+            AccountList.CollectionChanged += AccountsCollectionChanged;
         }
         void InitializeWalletServiceAccounts()
         {
@@ -105,30 +109,42 @@ namespace HodlWallet.UI
         void RefreshAccountsList()
         {
             int accountsCount = WalletService.Wallet.Accounts.Count;
-            logger.Debug($"RefreshAccountsList() AccountList.Count => {AccountList.Count}");
-            logger.Debug($"RefreshAccountsList() Wallet.Accounts.Count => {accountsCount}");
             if (AccountList.Count < accountsCount)
             {
-                //TODO Fix by looking for the element[s] in WalletService missing in the AccountList.
-                var account = WalletService.Wallet.Accounts[accountsCount - 1];
-                AccountList.Add(AccountModel.FromAccountData(account));
-                AddMenuItems(AccountModel.FromAccountData(account));
+                SyncCollections();
             }
         }
-        void SetupAccounts()
+        void SyncCollections()
         {
-            LoadAccounts();
-            logger.Debug($"Setting up Accounts!!! AccountList.Count => {AccountList.Count}");
-            if (AccountList.Count > 0)
+            // Compare and sync accounts in the wallet account list that are not already into AccountList.
+            AccountModel.SyncCollections(WalletService.Wallet.Accounts, AccountList);
+        }
+
+        public void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            //This will get called when the collection is changed
+            if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                foreach (var item in AccountList)
+                logger.Debug($"******AccountsCollectionChanged ADD ACTION=> {e.Action}");
+                //  An Account was Added to the collection
+                foreach (AccountModel account in e.NewItems)
                 {
-                    logger.Information($"[AppShell] For in Accounts | Name => {item.AccountName} - Balance => {item.Balance}");
-                    AddMenuItems(item);
+                    logger.Debug($"********AccountsCollectionChanged Item => {account.AccountName}");
+                    AddMenuItems(account);
                 }
             }
+            // TODO: Pending implementation for another actions from NotifyCollectionChangedAction
+            /*else
+            {
+                logger.Debug($"********AccountsCollectionChanged another ACTION=> {e.Action}");
+                // An action on the Account collection
+                foreach (AccountModel account in e.NewItems)
+                {
+                    logger.Debug($"********AccountsCollectionChanged Item => {account.AccountName}");
+                }
+            }*/
         }
-        void LoadAccounts()
+        void SetupAccounts()
         {
             var accounts = WalletService.Wallet.Accounts;
 
@@ -176,7 +192,6 @@ namespace HodlWallet.UI
 
         void OnFlyoutOpened()
         {
-            logger.Information("OnFlyoutOpened!!!");
             RefreshAccountsList();
         }
     }
