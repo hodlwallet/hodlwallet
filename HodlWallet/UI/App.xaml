@@ -187,6 +187,20 @@
                         Value="{DynamicResource TextPrimary}" />
             </Style>
 
+            <Style x:Key="MnemonicLabel"
+                   TargetType="Label">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Regular}" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource TextPrimary}" />
+                <Setter Property="FontSize"
+                        Value="Large" />
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalOptions" 
+                        Value="Center" />
+            </Style>
+
             <Style x:Key="TransactionInfoLabel"
                    TargetType="Label">
                 <Setter Property="FontFamily"

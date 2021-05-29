@@ -21,9 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -37,9 +35,7 @@ namespace HodlWallet.UI.Views
         public BackupRecoveryWordView()
         {
             InitializeComponent();
-
             SubscribeToMessages();
-
             SetLabels();
         }
 
@@ -48,7 +44,6 @@ namespace HodlWallet.UI.Views
             Title = LocaleResources.BackupWord_title;
             Header.Text = LocaleResources.BackupWord_header;
             Next.Text = LocaleResources.BackupWord_next;
-            Previous.Text = LocaleResources.BackupWord_previous;
         }
 
         void SubscribeToMessages()

@@ -28,59 +28,31 @@ using Xamarin.Forms;
 using Liviano.Exceptions;
 
 using HodlWallet.Core.Services;
+using HodlWallet.Core.Models;
+using System.Collections.Generic;
+
 
 namespace HodlWallet.Core.ViewModels
 {
     public class BackupRecoveryWordViewModel : BaseViewModel
     {
         string[] _Mnemonic;
-        int _Position;
-        string _Word;
 
-        public string Word
-        {
-            get => (_Position == 0) ? _Mnemonic[PositionText] : _Word;
-            private set => SetProperty(ref _Word, value);
-        }
+        public ICommand NextCommand { get; }
 
-        public int PositionText
-        {
-            get => _Position;
-            private set => SetProperty(ref _Position, value);
-        }
-
-        public ICommand NextWordCommand { get; }
-        public ICommand PreviousWordCommand { get; }
+        public IList<BackupWordModel> Words { get; set; }
 
         public BackupRecoveryWordViewModel()
         {
-            NextWordCommand = new Command(NextWord);
-            PreviousWordCommand = new Command(PreviousWord);
+            NextCommand = new Command(NextWord);
 
             if (DesignMode.IsDesignModeEnabled) return;
 
             InitMnemonic();
         }
 
-        private void PreviousWord()
-        {
-            if (PositionText > 0)
-            {
-                PositionText--;
-                Word = _Mnemonic[PositionText];
-            }
-        }
-
         private void NextWord()
         {
-            if (PositionText < 11)
-            {
-                PositionText++;
-                Word = _Mnemonic[PositionText];
-
-                return;
-            }
-
             MessagingCenter.Send(this, "NavigateToBackupRecoveryConfirmView", _Mnemonic);
         }
 
@@ -91,6 +63,7 @@ namespace HodlWallet.Core.ViewModels
             WalletService.Logger.Information($"Mnemonic is: {rawMnemonic}");
 
             _Mnemonic = rawMnemonic.Split(' ');
+            GenerateWordsList();
         }
 
         private string GetMnemonic()
@@ -99,6 +72,24 @@ namespace HodlWallet.Core.ViewModels
                 throw new WalletException("This wallet doesn't have a mnemonic, we cannot do anything without that one");
 
             return SecureStorageService.GetMnemonic();
+        }
+
+        private void GenerateWordsList()
+        {
+            int index = 0;
+            Words = new List<BackupWordModel>();
+            foreach (var word in _Mnemonic)
+            {
+                index++;
+                Words.Add(new BackupWordModel() { Word = word, WordIndex=index.ToString() });
+            }
+            
+            //Temp code to print 12 extra-mnemonics
+            //for (int i = 0; i < _Mnemonic.Length; i++)
+            //{
+            //    index++;
+            //    Words.Add(new BackupWordModel() { Word = $"{_Mnemonic[i]}{index}" , WordIndex = index.ToString() });
+            //}
         }
     }
 }
