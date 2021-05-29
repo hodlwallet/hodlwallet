@@ -58,27 +58,31 @@ namespace HodlWallet.UI
         public AppShell()
         {
             InitializeComponent();
+            logger = WalletService.Logger;
             RegisterRoutes();
             SetupDefaultTab();
-            InitializeWalletServiceAccounts();
+            // Important: Keep the order here of the following three instructions, if the order change
+            // the accounts doesn't load correctly on scenarios where the wallet is already configured.
             PropertyChanged += Shell_PropertyChanged;
             AccountList.CollectionChanged += AccountsCollectionChanged;
+            InitializeWalletServiceAccounts();
         }
         void InitializeWalletServiceAccounts()
         {
             if (WalletService.IsStarted)
             {
-                SetupAccounts();
+                logger.Debug($"InitializeWalletServiceAccounts OnConfigured - isStarted => {WalletService.IsStarted}");
+                RefreshAccountsList();
             }
             else
             {
-                WalletService.OnStarted += _WalletService_OnStarted;
+                logger.Debug($"InitializeWalletServiceAccounts OnStarted - isStarted => {WalletService.IsStarted}");
+                WalletService.OnStarted += _WalletService_SetupAccounts;
             }
         }
-        void _WalletService_OnStarted(object sender, EventArgs e)
+        void _WalletService_SetupAccounts(object sender, EventArgs e)
         {
-            logger = WalletService.Logger;
-
+            logger.Debug($"_WalletService_SetupAccounts - walletService isStarted => {WalletService.IsStarted}");
             Device.BeginInvokeOnMainThread(() =>
             {
                 lock (@lock)
@@ -109,6 +113,7 @@ namespace HodlWallet.UI
         void RefreshAccountsList()
         {
             int accountsCount = WalletService.Wallet.Accounts.Count;
+            logger.Debug($"++++++RefreshAccount!! WalletService count => {accountsCount} - AccountList count => {AccountList.Count}");
             if (AccountList.Count < accountsCount)
             {
                 SyncCollections();
@@ -120,12 +125,12 @@ namespace HodlWallet.UI
             AccountModel.SyncCollections(WalletService.Wallet.Accounts, AccountList);
         }
 
-        public void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             //This will get called when the collection is changed
+            logger.Debug($"******AccountsCollectionChanged ADD ACTION=> {e.Action}");
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                logger.Debug($"******AccountsCollectionChanged ADD ACTION=> {e.Action}");
                 //  An Account was Added to the collection
                 foreach (AccountModel account in e.NewItems)
                 {
@@ -150,7 +155,9 @@ namespace HodlWallet.UI
 
             foreach (var account in accounts)
             {
-                AccountList.Add(AccountModel.FromAccountData(account));
+                AccountModel acc = AccountModel.FromAccountData(account);
+                logger.Debug($"SetupAccounts - Wallet service accounts => {acc.AccountName}");
+                AccountList.Add(acc);
             }
         }
 
@@ -185,14 +192,9 @@ namespace HodlWallet.UI
             {
                 if (FlyoutIsPresented)
                 {
-                    OnFlyoutOpened();
+                    RefreshAccountsList();
                 }
             }
-        }
-
-        void OnFlyoutOpened()
-        {
-            RefreshAccountsList();
         }
     }
 }
