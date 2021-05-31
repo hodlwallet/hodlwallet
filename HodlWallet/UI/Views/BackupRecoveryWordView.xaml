@@ -7,6 +7,7 @@
              x:Class="HodlWallet.UI.Views.BackupRecoveryWordView"
              Title="{i18n:Translate BackupWord.title}"
              BackgroundColor="{DynamicResource BackgroundPrimary}">
+
     <ContentPage.BindingContext>
         <vm:BackupRecoveryWordViewModel />
     </ContentPage.BindingContext>
@@ -14,64 +15,53 @@
         <converters:IndexToStringConverter x:Key="IndexToStringConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <FlexLayout Direction="Column"
-                        JustifyContent="SpaceBetween"
-                        AlignItems="Center"
-                        BackgroundColor="{DynamicResource BackgroundPrimary}">
-
-                <Label Text="{i18n:Translate Text=BackupWord.header}"
+        <FlexLayout Direction="Column"
+                        JustifyContent="SpaceAround"
+                        BackgroundColor="{DynamicResource BackgroundPrimary}"
+                        AlignItems="Center">
+            <Label Text="{i18n:Translate Text=BackupWord.header}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        HorizontalTextAlignment="Center"
-                       Margin="0, 20, 0, 0" />
+                       Margin="0, 20" />
 
-                <FlexLayout Direction="Column"
-                            FlexLayout.Grow="4"
-                            JustifyContent="Center"
-                            AlignItems="Center">
-                    <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
-                                 Margin="40"
-                                 HeightRequest="50"
-                                 WidthRequest="150">
-
-                        <Label x:Name="Word"
-                               Style="{DynamicResource CustomLabel}"
-                               HorizontalTextAlignment="Center"
-                               VerticalOptions="Center"
-                               FontSize="Medium"
-                               Text="{Binding Word}" />
-
-                    </ContentView>
-
-                    <Label x:Name="Index"
-                           FontFamily="{StaticResource Sans-Regular}"
-                           TextColor="Gray"
-                           FontSize="Micro"
-                           Text="{Binding PositionText, Converter={StaticResource IndexToStringConverter}}" />
-                </FlexLayout>
-
-                <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1">
-                    <Button Text="{i18n:Translate Text=BackupWord.previous}"
-                            Style="{DynamicResource CustomButton}"
-                            BackgroundColor="{DynamicResource BackgroundSecondary}"
-                            CornerRadius="0"
-                            FontSize="Large"
-                            FlexLayout.AlignSelf="Stretch"
-                            FlexLayout.Grow="2"
-                            Command="{Binding PreviousWordCommand}" />
-
-                    <Button Text="{i18n:Translate Text=BackupWord.next}"
-                            Style="{DynamicResource CustomButton}"
-                            BackgroundColor="{DynamicResource BackgroundSecondary}"
-                            CornerRadius="0"
-                            FontSize="Large"
-                            FlexLayout.AlignSelf="Stretch"
-                            FlexLayout.Grow="2"
-                            Command="{Binding NextWordCommand}" />
-                </FlexLayout>
+            <FlexLayout Direction="Row"
+                                    Wrap="Wrap"
+                                    JustifyContent="SpaceAround"
+                                    AlignItems="Center"
+                                    BindableLayout.ItemsSource="{Binding Words}"
+                                    BindableLayout.EmptyView="Mnemonic not found!"
+                                    Margin="15"                                    
+                                    FlexLayout.Grow="4">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
+                                                    Margin="2" >
+                            <StackLayout Orientation="Horizontal" Margin="2">
+                                <Label Text="{Binding WordIndex}"
+                                                    FontFamily="{StaticResource Sans-Regular}"
+                                                    TextColor="{DynamicResource SyncGradientStart}"
+                                                    FontSize="Micro" 
+                                                    />
+                                <Label Text="{Binding Word}"
+                                                Style="{DynamicResource MnemonicLabel}" 
+                                                Margin="0,0,5,0" />
+                            </StackLayout>
+                        </ContentView>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
             </FlexLayout>
-        </AbsoluteLayout>
+
+            <Button Text="{i18n:Translate Text=BackupWord.next}"
+                        Style="{DynamicResource CustomButton}"
+                        BackgroundColor="{DynamicResource BackgroundSecondary}"
+                        CornerRadius="0"
+                        FontSize="Large"                        
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="1"
+                        VerticalOptions="EndAndExpand"
+                        Command="{Binding NextCommand}" />
+
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
