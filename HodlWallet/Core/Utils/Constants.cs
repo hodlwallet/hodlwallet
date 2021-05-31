@@ -33,7 +33,7 @@ namespace HodlWallet.Core.Utils
         public const string SAT_PER_BYTE_UNIT_LABEL = "{0} sat/byte";
         public const int PRECIO_TIMER_INTERVAL = 5; // seconds
 
-        // Block Explorer URls
+        // Block Explorer URLs
         public const string BLOCK_EXPLORER_ADDRESS_MAINNET_URI = "https://blockstream.info/address/{0}";
         public const string BLOCK_EXPLORER_ADDRESS_TESTNET_URI = "https://blockstream.info/testnet/address/{0}";
         public const string BLOCK_EXPLORER_TRANSACTION_MAINNET_URI = "https://blockstream.info/tx/{0}";
@@ -59,8 +59,7 @@ namespace HodlWallet.Core.Utils
         public const string DISPLAY_ALERT_AMOUNT_MESSAGE = "Unable to send, check your amount, address and fee"; 
 
         // Temporary Values
-        public const string USE_ADDRESS_FROM_CLIPBOARD =
-            "The Bitcoin address '{0} is in your clipboard, would you like to send to that address?";
+        public const string USE_ADDRESS_FROM_CLIPBOARD = "The Bitcoin address '{0} is in your clipboard, would you like to send to that address?";
         public const string MEMO_LABEL = "In Progress";
 
         // Build info temp values
