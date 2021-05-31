@@ -33,7 +33,7 @@ namespace HodlWallet.Core.ViewModels
         private async void CreateAccount()
         {
             Debug.WriteLine($"[CreateAcount Before] Trying to create a new account => Account Type: {AccountType} Account Name: {AccountName} ");
-            var (Success, Error) = WalletService.AddAccount(AccountType ?? "bip84", AccountName ?? "Karen's Bitcoin Account");
+            var (Success, Error) = await WalletService.AddAccount(AccountType ?? "bip84", AccountName ?? "Karen's Bitcoin Account");
             Debug.WriteLine($"[CreateAcount] Trying to create a new account => Account Type: {AccountType} Account Name: {AccountName} | Result => Success: {Success} Error: {Error} ");
             await Shell.Current.GoToAsync("..");
         }

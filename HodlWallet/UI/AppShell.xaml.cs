@@ -61,11 +61,9 @@ namespace HodlWallet.UI
             logger = WalletService.Logger;
             RegisterRoutes();
             SetupDefaultTab();
-            // Important: Keep the order here of the following three instructions, if the order change
-            // the accounts doesn't load correctly on scenarios where the wallet is already configured.
+            InitializeWalletServiceAccounts();
             PropertyChanged += Shell_PropertyChanged;
             AccountList.CollectionChanged += AccountsCollectionChanged;
-            InitializeWalletServiceAccounts();
         }
         void InitializeWalletServiceAccounts()
         {
@@ -128,13 +126,11 @@ namespace HodlWallet.UI
         void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             //This will get called when the collection is changed
-            logger.Debug($"******AccountsCollectionChanged ADD ACTION=> {e.Action}");
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 //  An Account was Added to the collection
                 foreach (AccountModel account in e.NewItems)
                 {
-                    logger.Debug($"********AccountsCollectionChanged Item => {account.AccountName}");
                     AddMenuItems(account);
                 }
             }
@@ -155,9 +151,7 @@ namespace HodlWallet.UI
 
             foreach (var account in accounts)
             {
-                AccountModel acc = AccountModel.FromAccountData(account);
-                logger.Debug($"SetupAccounts - Wallet service accounts => {acc.AccountName}");
-                AccountList.Add(acc);
+                AccountList.Add(AccountModel.FromAccountData(account));
             }
         }
 
@@ -188,13 +182,8 @@ namespace HodlWallet.UI
         private void Shell_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // Listen to Shell PropertyChanged event, if flyout menu is open then the property is FlyoutIsPresented.
-            if (e.PropertyName.Equals("FlyoutIsPresented"))
-            {
-                if (FlyoutIsPresented)
-                {
-                    RefreshAccountsList();
-                }
-            }
+            if (e.PropertyName.Equals("FlyoutIsPresented") && FlyoutIsPresented)
+                RefreshAccountsList();
         }
     }
 }

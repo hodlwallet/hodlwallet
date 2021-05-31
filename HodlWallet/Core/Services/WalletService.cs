@@ -272,7 +272,7 @@ namespace HodlWallet.Core.Services
             IsStarted = true;
         }
 
-        public (bool Success, string Error) AddAccount(string type = "bip84", string name = null)
+        public async Task<(bool Success, string Error)> AddAccount(string type = "bip84", string name = null)
         {
             bool addedAccount = false;
             string messageError = null;
@@ -297,6 +297,8 @@ namespace HodlWallet.Core.Services
                     else
                     {
                         addedAccount = true;
+                        // To ensure the account is correctly associated to the current Wallet configured.
+                        await Save();
                     }
                 }
                 return (addedAccount, messageError);
