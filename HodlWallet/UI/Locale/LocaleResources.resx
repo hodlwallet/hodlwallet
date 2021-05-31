@@ -644,8 +644,4 @@
     <value>Settings</value>
     <comment>Label for Settings Button</comment>
   </data>
-  <data name="BackupConfirm.title" xml:space="preserve">
-    <value>Backup Confirmation</value>
-    <comment>Title of BackupRecoveryConfirmView</comment>
-  </data>
 </root>

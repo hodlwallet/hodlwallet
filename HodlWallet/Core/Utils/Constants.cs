@@ -48,9 +48,9 @@ namespace HodlWallet.Core.Utils
         public const string SENT_AMOUNT = "Sent {0} {1}"; //Only appears in a unused method in HomeviewModel.cs
         public const string RECEIVE_AMOUNT = "Received {0} {1}";
         public const string SHARE_TEXT_INTENT_TITLE = "Share via"; 
-        public const string DISPLAY_ALERT_ERROR_TITLE = "Error"; 
         
         // MessagingCenter
+        public const string DISPLAY_ALERT_ERROR_TITLE = "Error"; 
         public const string DISPLAY_ALERT_PASTE_MESSAGE = "Pasteboard is empty or invalid."; 
         public const string DISPLAY_ALERT_SCAN_MESSAGE = "Invalid QR code."; 
         public const string DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF = "Send to yourself is disabled."; 
