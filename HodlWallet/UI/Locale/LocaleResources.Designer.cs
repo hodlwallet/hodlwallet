@@ -1224,18 +1224,18 @@ namespace HodlWallet.UI.Locale {
         /// <summary>
         ///   Looks up a localized string similar to Received At This Address.
         /// </summary>
-        public static string TransactionDetails_received_adress_title {
+        public static string TransactionDetails_receivedAdressTitle {
             get {
-                return ResourceManager.GetString("TransactionDetails.received_adress_title", resourceCulture);
+                return ResourceManager.GetString("TransactionDetails.receivedAdressTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Sent To This Address.
         /// </summary>
-        public static string TransactionDetails_send_adress_title {
+        public static string TransactionDetails_sendAdressTitle {
             get {
-                return ResourceManager.GetString("TransactionDetails.send_adress_title", resourceCulture);
+                return ResourceManager.GetString("TransactionDetails.sendAdressTitle", resourceCulture);
             }
         }
         

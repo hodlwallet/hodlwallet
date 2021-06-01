@@ -223,9 +223,9 @@ namespace HodlWallet.Core.Models
         string GetAddressTitleText()
         {
             if (TransactionData.IsSend == true)
-                return LocaleResources.TransactionDetails_send_adress_title;
+                return LocaleResources.TransactionDetails_sendAdressTitle;
 
-            return LocaleResources.TransactionDetails_received_adress_title;
+            return LocaleResources.TransactionDetails_receivedAdressTitle;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
