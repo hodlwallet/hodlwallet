@@ -110,9 +110,9 @@
                             <FlexLayout Direction="Row"
                                         JustifyContent="SpaceBetween">
                                 <Label Style="{StaticResource CustomLabel}"
-                                       Text="{Binding TransactionFeeTitle}" />
+                                       Text="{i18n:Translate Text=Send.transactionFee}" />
                                 <Label Style="{StaticResource CustomLabel}"
-                                       Text="{Binding EstConfirmationTitle}" />
+                                       Text="{i18n:Translate Text=Send.estConfirmation}"/>
                             </FlexLayout>
 
                             <FlexLayout Direction="Row"
@@ -128,11 +128,11 @@
                             <FlexLayout Direction="Row"
                                         JustifyContent="SpaceBetween">
                                 <Label Style="{StaticResource CustomLabel}"
-                                       Text="{Binding SlowText}" />
+                                       Text="{i18n:Translate Text=Send.economyFee}"/>
                                 <Label Style="{StaticResource CustomLabel}"
-                                       Text="{Binding NormalText}" />
+                                       Text="{i18n:Translate Text=Send.normalFee}" />
                                 <Label Style="{StaticResource CustomLabel}"
-                                       Text="{Binding FastestText}" />
+                                       Text="{i18n:Translate Text=Send.highFee}" />
                             </FlexLayout>
 
                             <renderers:FeeSlider MinimumTrackColor="{DynamicResource SyncGradientStart}"

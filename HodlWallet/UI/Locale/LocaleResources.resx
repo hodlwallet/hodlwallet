@@ -644,6 +644,26 @@
     <value>Settings</value>
     <comment>Label for Settings Button</comment>
   </data>
+  <data name="Send.economyFee" xml:space="preserve">
+    <value>Economy</value>
+    <comment>label for economy fee in send page</comment>
+  </data>
+  <data name="Send.estConfirmation" xml:space="preserve">
+    <value>Est. Confirmation</value>
+    <comment>label for est. confirmation in send page</comment>
+  </data>
+  <data name="Send.highFee" xml:space="preserve">
+    <value>High</value>
+    <comment>label for highfee in send page</comment>
+  </data>
+  <data name="Send.normalFee" xml:space="preserve">
+    <value>Normal</value>
+    <comment>label for normal fee in send page</comment>
+  </data>
+  <data name="Send.transactionFee" xml:space="preserve">
+    <value>Transaction Fee</value>
+    <comment>label for Transaction Fee in send page</comment>
+  </data>
   <data name="Transactions.awaitingConfirmation" xml:space="preserve">
     <value>Awaiting Confirmation</value>
     <comment>state of transaction of GetConfirmedBlockText in TransactionModel</comment>

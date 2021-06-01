@@ -1060,11 +1060,47 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Economy.
+        /// </summary>
+        public static string Send_economyFee {
+            get {
+                return ResourceManager.GetString("Send.economyFee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Est. Confirmation.
+        /// </summary>
+        public static string Send_estConfirmation {
+            get {
+                return ResourceManager.GetString("Send.estConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fee (sats/byte).
         /// </summary>
         public static string Send_fee {
             get {
                 return ResourceManager.GetString("Send.fee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to High.
+        /// </summary>
+        public static string Send_highFee {
+            get {
+                return ResourceManager.GetString("Send.highFee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        public static string Send_normalFee {
+            get {
+                return ResourceManager.GetString("Send.normalFee", resourceCulture);
             }
         }
         
@@ -1119,6 +1155,15 @@ namespace HodlWallet.UI.Locale {
         public static string Send_transactionCancel {
             get {
                 return ResourceManager.GetString("Send.transactionCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction Fee.
+        /// </summary>
+        public static string Send_transactionFee {
+            get {
+                return ResourceManager.GetString("Send.transactionFee", resourceCulture);
             }
         }
         
