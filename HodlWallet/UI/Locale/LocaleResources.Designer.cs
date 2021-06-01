@@ -1305,18 +1305,18 @@ namespace HodlWallet.UI.Locale {
         /// <summary>
         ///   Looks up a localized string similar to At:.
         /// </summary>
-        public static string Transactions_IsSendAt {
+        public static string Transactions_isSendAt {
             get {
-                return ResourceManager.GetString("Transactions.IsSendAt", resourceCulture);
+                return ResourceManager.GetString("Transactions.isSendAt", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to To:.
         /// </summary>
-        public static string Transactions_IsSendTo {
+        public static string Transactions_isSendTo {
             get {
-                return ResourceManager.GetString("Transactions.IsSendTo", resourceCulture);
+                return ResourceManager.GetString("Transactions.isSendTo", resourceCulture);
             }
         }
         

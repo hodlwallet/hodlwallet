@@ -672,11 +672,11 @@
     <value>Confirmed</value>
     <comment>state of transaction of GetStatusText in TransactionModel</comment>
   </data>
-  <data name="Transactions.IsSendAt" xml:space="preserve">
+  <data name="Transactions.isSendAt" xml:space="preserve">
     <value>At:</value>
     <comment>state of sent of GetAddressText in TransactionModel</comment>
   </data>
-  <data name="Transactions.IsSendTo" xml:space="preserve">
+  <data name="Transactions.isSendTo" xml:space="preserve">
     <value>To:</value>
     <comment>state of sent of GetAddressText in TransactionModel</comment>
   </data>

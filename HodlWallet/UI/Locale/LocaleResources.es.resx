@@ -149,7 +149,7 @@
     <comment>label for transactions list empty button</comment>
   </data>
   <data name="Transactions.empty" xml:space="preserve">
-    <value>Aún no hay transacciones recibidas</value>
+    <value>Aún no se han recibido transacciones</value>
     <comment>label for transactions list empty button</comment>
   </data>
   <data name="Transactions.empty.button" xml:space="preserve">
@@ -337,7 +337,7 @@
     <comment>Part of the label in backup recovery confirmation</comment>
   </data>
   <data name="Alert.irreversible" xml:space="preserve">
-    <value>Esta acción es irreversible, ¿Está seguro?</value>
+    <value>Esta acción es irreversible, ¿Está seguro de continuar?</value>
     <comment>Alert in DisplayPrompt of account settings</comment>
   </data>
   <data name="Button.no" xml:space="preserve">
@@ -395,5 +395,25 @@
   <data name="Ordinal.twenty-third" xml:space="preserve">
     <value>vigésimo tercera</value>
     <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Send.economyFee" xml:space="preserve">
+    <value>Económica</value>
+    <comment>label for economy fee in send page</comment>
+  </data>
+  <data name="Send.estConfirmation" xml:space="preserve">
+    <value>Est. Confirmación</value>
+    <comment>label for est. confirmation in send page</comment>
+  </data>
+  <data name="Send.highFee" xml:space="preserve">
+    <value>Costosa</value>
+    <comment>label for highfee in send page</comment>
+  </data>
+  <data name="Send.normalFee" xml:space="preserve">
+    <value>Normal</value>
+    <comment>label for normal fee in send page</comment>
+  </data>
+  <data name="Send.transactionFee" xml:space="preserve">
+    <value>Tarifa de transacción</value>
+    <comment>label for Transaction Fee in send page</comment>
   </data>
 </root>

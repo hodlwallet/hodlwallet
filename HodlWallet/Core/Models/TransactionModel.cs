@@ -182,8 +182,8 @@ namespace HodlWallet.Core.Models
         string GetAddressText()
         {
             return TransactionData.IsSend == true
-                ? LocaleResources.Transactions_IsSendTo + $"{Address}"
-                : LocaleResources.Transactions_IsSendAt + $"{Address}";
+                ? LocaleResources.Transactions_isSendTo + $"{Address}"
+                : LocaleResources.Transactions_isSendAt + $"{Address}";
         }
 
         Money GetAmount()
