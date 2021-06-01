@@ -500,7 +500,7 @@
     <value>Close</value>
     <comment>label for recovery toolbar Close button</comment>
   </data>
-  <data name="Send.button_send" xml:space="preserve">
+  <data name="Send.buttonSend" xml:space="preserve">
     <value>Send</value>
     <comment>label for send button</comment>
   </data>

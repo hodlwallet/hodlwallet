@@ -1053,9 +1053,9 @@ namespace HodlWallet.UI.Locale {
         /// <summary>
         ///   Looks up a localized string similar to Send.
         /// </summary>
-        public static string Send_button_send {
+        public static string Send_buttonSend {
             get {
-                return ResourceManager.GetString("Send.button_send", resourceCulture);
+                return ResourceManager.GetString("Send.buttonSend", resourceCulture);
             }
         }
         

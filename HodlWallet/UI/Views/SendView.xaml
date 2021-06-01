@@ -156,7 +156,7 @@
                     </StackLayout>
                 </ScrollView>
 
-                <Button Text="{i18n:Translate Text=Send.button_send}"
+                <Button Text="{i18n:Translate Text=Send.buttonSend}"
                         Command="{Binding SendCommand}"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
