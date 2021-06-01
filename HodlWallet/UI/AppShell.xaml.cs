@@ -29,7 +29,6 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Windows.Input;
 
 using Xamarin.Forms;
@@ -67,20 +66,14 @@ namespace HodlWallet.UI
         }
         void InitializeWalletServiceAccounts()
         {
-            if (WalletService.IsStarted)
-            {
-                logger.Debug($"InitializeWalletServiceAccounts OnConfigured - isStarted => {WalletService.IsStarted}");
-                RefreshAccountsList();
-            }
-            else
+            if (!WalletService.IsStarted)
             {
                 logger.Debug($"InitializeWalletServiceAccounts OnStarted - isStarted => {WalletService.IsStarted}");
-                WalletService.OnStarted += _WalletService_SetupAccounts;
+                WalletService.OnStarted += WalletService_SetupAccounts;
             }
         }
-        void _WalletService_SetupAccounts(object sender, EventArgs e)
+        void WalletService_SetupAccounts(object sender, EventArgs e)
         {
-            logger.Debug($"_WalletService_SetupAccounts - walletService isStarted => {WalletService.IsStarted}");
             Device.BeginInvokeOnMainThread(() =>
             {
                 lock (@lock)
@@ -88,6 +81,15 @@ namespace HodlWallet.UI
                     SetupAccounts();
                 }
             });
+        }
+        void SetupAccounts()
+        {
+            var accounts = WalletService.Wallet.Accounts;
+
+            foreach (var account in accounts)
+            {
+                AccountList.Add(AccountModel.FromAccountData(account));
+            }
         }
         public void ChangeTabsTo(string tabName)
         {
@@ -106,21 +108,6 @@ namespace HodlWallet.UI
         void SetupDefaultTab()
         {
             ChangeTabsTo("homeTab");
-        }
-
-        void RefreshAccountsList()
-        {
-            int accountsCount = WalletService.Wallet.Accounts.Count;
-            logger.Debug($"++++++RefreshAccount!! WalletService count => {accountsCount} - AccountList count => {AccountList.Count}");
-            if (AccountList.Count < accountsCount)
-            {
-                SyncCollections();
-            }
-        }
-        void SyncCollections()
-        {
-            // Compare and sync accounts in the wallet account list that are not already into AccountList.
-            AccountModel.SyncCollections(WalletService.Wallet.Accounts, AccountList);
         }
 
         void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -145,16 +132,6 @@ namespace HodlWallet.UI
                 }
             }*/
         }
-        void SetupAccounts()
-        {
-            var accounts = WalletService.Wallet.Accounts;
-
-            foreach (var account in accounts)
-            {
-                AccountList.Add(AccountModel.FromAccountData(account));
-            }
-        }
-
         void AddMenuItems(AccountModel accountItem)
         {
             MenuItem mi = new()
@@ -168,6 +145,18 @@ namespace HodlWallet.UI
             Items.Add(mi);
         }
 
+        private void Shell_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            // Listen to Shell PropertyChanged event, if flyout menu is open then the property is FlyoutIsPresented.
+            if (e.PropertyName.Equals("FlyoutIsPresented") && FlyoutIsPresented)
+                SyncCollections();
+        }
+        void SyncCollections()
+        {
+            // Compare and sync accounts in the wallet account list that are not already into AccountList.
+            AccountModel.SyncCollections(WalletService.Wallet.Accounts, AccountList);
+        }
+
         void RegisterRoutes()
         {
             Routing.RegisterRoute("settings", typeof(SettingsView));
@@ -177,13 +166,6 @@ namespace HodlWallet.UI
             Routing.RegisterRoute("receive", typeof(ReceiveView));
             Routing.RegisterRoute("account-settings", typeof(AccountSettingsView));
             Routing.RegisterRoute(nameof(CreateAccountView), typeof(CreateAccountView));
-        }
-
-        private void Shell_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            // Listen to Shell PropertyChanged event, if flyout menu is open then the property is FlyoutIsPresented.
-            if (e.PropertyName.Equals("FlyoutIsPresented") && FlyoutIsPresented)
-                RefreshAccountsList();
         }
     }
 }
