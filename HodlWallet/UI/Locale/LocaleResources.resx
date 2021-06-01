@@ -632,13 +632,13 @@
     <value>Ok</value>
     <comment>Label of display alert error Button</comment>
   </data>
-  <data name="TransactionDetails.receivedAdressTitle" xml:space="preserve">
+  <data name="TransactionDetails.receivedAddressTitle" xml:space="preserve">
     <value>Received At This Address</value>
-    <comment>Label of the receive adress title</comment>
+    <comment>Label of the receive address title</comment>
   </data>
-  <data name="TransactionDetails.sendAdressTitle" xml:space="preserve">
+  <data name="TransactionDetails.sendAddressTitle" xml:space="preserve">
     <value>Sent To This Address</value>
-    <comment>Label of the send adress title</comment>
+    <comment>Label of the send address title</comment>
   </data>
   <data name="Settings.button" xml:space="preserve">
     <value>Settings</value>
