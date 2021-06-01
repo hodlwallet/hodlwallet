@@ -161,15 +161,15 @@ namespace HodlWallet.Core.Models
             var blockHeight = TransactionData.BlockHeight;
 
             return blockHeight is null
-                ? "Awaiting Confirmation"
+                ? LocaleResources.Transactions_awaitingConfirmation
                 : blockHeight.ToString();
         }
 
         string GetStatusText()
         {
             return TransactionData.IsConfirmed()
-                ? "Confirmed"
-                : "Awaiting Confirmation";
+                ? LocaleResources.Transactions_confirmed
+                : LocaleResources.Transactions_awaitingConfirmation;
         }
 
         string GetAddress()
@@ -182,8 +182,8 @@ namespace HodlWallet.Core.Models
         string GetAddressText()
         {
             return TransactionData.IsSend == true
-                ? $"To: {Address}"
-                : $"At: {Address}";
+                ? LocaleResources.Transactions_IsSendTo + $"{Address}"
+                : LocaleResources.Transactions_IsSendAt + $"{Address}";
         }
 
         Money GetAmount()

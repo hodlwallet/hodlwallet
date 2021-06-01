@@ -644,4 +644,20 @@
     <value>Settings</value>
     <comment>Label for Settings Button</comment>
   </data>
+  <data name="Transactions.awaitingConfirmation" xml:space="preserve">
+    <value>Awaiting Confirmation</value>
+    <comment>state of transaction of GetConfirmedBlockText in TransactionModel</comment>
+  </data>
+  <data name="Transactions.confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+    <comment>state of transaction of GetStatusText in TransactionModel</comment>
+  </data>
+  <data name="Transactions.IsSendAt" xml:space="preserve">
+    <value>At:</value>
+    <comment>state of sent of GetAddressText in TransactionModel</comment>
+  </data>
+  <data name="Transactions.IsSendTo" xml:space="preserve">
+    <value>To:</value>
+    <comment>state of sent of GetAddressText in TransactionModel</comment>
+  </data>
 </root>

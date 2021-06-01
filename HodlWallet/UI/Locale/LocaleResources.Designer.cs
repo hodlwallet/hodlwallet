@@ -1222,6 +1222,24 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Awaiting Confirmation.
+        /// </summary>
+        public static string Transactions_awaitingConfirmation {
+            get {
+                return ResourceManager.GetString("Transactions.awaitingConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmed.
+        /// </summary>
+        public static string Transactions_confirmed {
+            get {
+                return ResourceManager.GetString("Transactions.confirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No transactions received yet.
         /// </summary>
         public static string Transactions_empty {
@@ -1236,6 +1254,24 @@ namespace HodlWallet.UI.Locale {
         public static string Transactions_empty_button {
             get {
                 return ResourceManager.GetString("Transactions.empty.button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At:.
+        /// </summary>
+        public static string Transactions_IsSendAt {
+            get {
+                return ResourceManager.GetString("Transactions.IsSendAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To:.
+        /// </summary>
+        public static string Transactions_IsSendTo {
+            get {
+                return ResourceManager.GetString("Transactions.IsSendTo", resourceCulture);
             }
         }
         
