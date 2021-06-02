@@ -56,10 +56,9 @@ namespace HodlWallet.Core.Models
         static List<IAccount> GetAccountListFromCollection (ObservableCollection<AccountModel> accountCollection)
         {
             List<IAccount> AccountList = new List<IAccount>();
-            foreach (var item in accountCollection)
-            {
-                AccountList.Add(item.AccountData);
-            }
+        
+            AccountList.AddRange(accountCollection.Select(item => item.AccountData).ToArray());
+
             return AccountList;
         }
 
