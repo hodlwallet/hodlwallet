@@ -12,15 +12,6 @@ namespace HodlWallet.UI.Views
         public AddAccountView()
         {
             InitializeComponent();
-            SetLabels();
-        }
-
-        void SetLabels()
-        {
-            Title = LocaleResources.AddAccount_title;
-            Header.Text = LocaleResources.AddAccount_header;
-            Subheader.Text = LocaleResources.AddAccount_subheader;
-            Button.Text = LocaleResources.AddAccount_button;
         }
 
         async void CreateAccountButton_Clicked(object sender, EventArgs e)

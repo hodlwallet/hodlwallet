@@ -28,14 +28,15 @@ using Xamarin.Forms;
 
 using HodlWallet.Core.Services;
 using HodlWallet.UI.Views;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.Core.ViewModels
 {
     public class PinPadViewModel : BaseViewModel
     {
-        public string PinPadTitle { get; } = "Enter PIN";
-        public string PinPadHeader { get; } = "Your PIN will be used to unlock your wallet and send money.";
-        public string PinPadWarning { get; } = "Remember this PIN. If you forget it, you won't be able to access your bitcoin.";
+        public string PinPadTitle { get; } = LocaleResources.Pin_enter;
+        public string PinPadHeader { get; } = LocaleResources.Pin_header;
+        public string PinPadWarning { get; } = LocaleResources.Pin_warning;
 
         public ICommand SuccessCommand { get; }
 

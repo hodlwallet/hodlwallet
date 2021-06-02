@@ -46,7 +46,7 @@ namespace HodlWallet.UI.Views
         {
             Clipboard.SetTextAsync(ViewModel.Address);
 
-            _ = this.DisplayToast(Constants.RECEIVE_ADDRESS_COPIED_TO_CLIPBOARD_TITLE);
+            _ = this.DisplayToast(LocaleResources.Address_copied);
         }
 
         protected override void OnAppearing()

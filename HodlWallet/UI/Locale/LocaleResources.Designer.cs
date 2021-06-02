@@ -97,11 +97,29 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account Settings.
+        /// </summary>
+        public static string AccountSettings_Title {
+            get {
+                return ResourceManager.GetString("AccountSettings.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create an Account.
         /// </summary>
         public static string AddAccount_button {
             get {
                 return ResourceManager.GetString("AddAccount.button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string AddAccount_close {
+            get {
+                return ResourceManager.GetString("AddAccount.close", resourceCulture);
             }
         }
         
@@ -133,6 +151,24 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address Copied to Clipboard.
+        /// </summary>
+        public static string Address_copied {
+            get {
+                return ResourceManager.GetString("Address.copied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This action is irreversible, are you sure?.
+        /// </summary>
+        public static string Alert_irreversible {
+            get {
+                return ResourceManager.GetString("Alert.irreversible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Write Down Backup Recovery Key.
         /// </summary>
         public static string Backup_button {
@@ -142,11 +178,29 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Backup_Close {
+            get {
+                return ResourceManager.GetString("Backup.Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your backup recovery key is the only way to restore your wallet if your phone is lost, stolen, broken or upgraded..
         /// </summary>
         public static string Backup_header {
             get {
                 return ResourceManager.GetString("Backup.header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip.
+        /// </summary>
+        public static string Backup_Skip {
+            get {
+                return ResourceManager.GetString("Backup.Skip", resourceCulture);
             }
         }
         
@@ -232,6 +286,24 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string Button_no {
+            get {
+                return ResourceManager.GetString("Button.no", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Button_yes {
+            get {
+                return ResourceManager.GetString("Button.yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Menu.
         /// </summary>
         public static string Dashboard_menu {
@@ -264,6 +336,15 @@ namespace HodlWallet.UI.Locale {
         public static string Done_button {
             get {
                 return ResourceManager.GetString("Done.button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string Error_ok {
+            get {
+                return ResourceManager.GetString("Error.ok", resourceCulture);
             }
         }
         
@@ -430,6 +511,222 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to eighteenth.
+        /// </summary>
+        public static string Ordinal_eighteenth {
+            get {
+                return ResourceManager.GetString("Ordinal.eighteenth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to eighth.
+        /// </summary>
+        public static string Ordinal_eighth {
+            get {
+                return ResourceManager.GetString("Ordinal.eighth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to eleventh.
+        /// </summary>
+        public static string Ordinal_eleventh {
+            get {
+                return ResourceManager.GetString("Ordinal.eleventh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to fifteenth.
+        /// </summary>
+        public static string Ordinal_fifteenth {
+            get {
+                return ResourceManager.GetString("Ordinal.fifteenth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to fifth.
+        /// </summary>
+        public static string Ordinal_fifth {
+            get {
+                return ResourceManager.GetString("Ordinal.fifth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to first.
+        /// </summary>
+        public static string Ordinal_first {
+            get {
+                return ResourceManager.GetString("Ordinal.first", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to fourteenth.
+        /// </summary>
+        public static string Ordinal_fourteenth {
+            get {
+                return ResourceManager.GetString("Ordinal.fourteenth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to fourth.
+        /// </summary>
+        public static string Ordinal_fourth {
+            get {
+                return ResourceManager.GetString("Ordinal.fourth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nineteenth.
+        /// </summary>
+        public static string Ordinal_nineteenth {
+            get {
+                return ResourceManager.GetString("Ordinal.nineteenth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ninth.
+        /// </summary>
+        public static string Ordinal_ninth {
+            get {
+                return ResourceManager.GetString("Ordinal.ninth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to second.
+        /// </summary>
+        public static string Ordinal_second {
+            get {
+                return ResourceManager.GetString("Ordinal.second", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to seventeenth.
+        /// </summary>
+        public static string Ordinal_seventeenth {
+            get {
+                return ResourceManager.GetString("Ordinal.seventeenth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to seventh.
+        /// </summary>
+        public static string Ordinal_seventh {
+            get {
+                return ResourceManager.GetString("Ordinal.seventh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sixteenth.
+        /// </summary>
+        public static string Ordinal_sixteenth {
+            get {
+                return ResourceManager.GetString("Ordinal.sixteenth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sixth.
+        /// </summary>
+        public static string Ordinal_sixth {
+            get {
+                return ResourceManager.GetString("Ordinal.sixth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tenth.
+        /// </summary>
+        public static string Ordinal_tenth {
+            get {
+                return ResourceManager.GetString("Ordinal.tenth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to third.
+        /// </summary>
+        public static string Ordinal_third {
+            get {
+                return ResourceManager.GetString("Ordinal.third", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to thirteenth.
+        /// </summary>
+        public static string Ordinal_thirteenth {
+            get {
+                return ResourceManager.GetString("Ordinal.thirteenth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to twelveth.
+        /// </summary>
+        public static string Ordinal_twelveth {
+            get {
+                return ResourceManager.GetString("Ordinal.twelveth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to twentieth.
+        /// </summary>
+        public static string Ordinal_twentieth {
+            get {
+                return ResourceManager.GetString("Ordinal.twentieth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to twenty-first.
+        /// </summary>
+        public static string Ordinal_twenty_first {
+            get {
+                return ResourceManager.GetString("Ordinal.twenty-first", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to twenty-fourth.
+        /// </summary>
+        public static string Ordinal_twenty_fourth {
+            get {
+                return ResourceManager.GetString("Ordinal.twenty-fourth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to twenty-second.
+        /// </summary>
+        public static string Ordinal_twenty_second {
+            get {
+                return ResourceManager.GetString("Ordinal.twenty-second", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to twenty-third.
+        /// </summary>
+        public static string Ordinal_twenty_third {
+            get {
+                return ResourceManager.GetString("Ordinal.twenty-third", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter Pin.
         /// </summary>
         public static string Pin_enter {
@@ -489,6 +786,15 @@ namespace HodlWallet.UI.Locale {
         public static string Pin_warning {
             get {
                 return ResourceManager.GetString("Pin.warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create A New Pin.
+        /// </summary>
+        public static string PinPad_Title {
+            get {
+                return ResourceManager.GetString("PinPad.Title", resourceCulture);
             }
         }
         
@@ -588,6 +894,24 @@ namespace HodlWallet.UI.Locale {
         public static string RecoverEntry_title {
             get {
                 return ResourceManager.GetString("RecoverEntry.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Recovery_Close {
+            get {
+                return ResourceManager.GetString("Recovery.Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan Bitcoin Address.
+        /// </summary>
+        public static string Scan_Title {
+            get {
+                return ResourceManager.GetString("Scan.Title", resourceCulture);
             }
         }
         
@@ -727,6 +1051,60 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string Send_buttonSend {
+            get {
+                return ResourceManager.GetString("Send.buttonSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Economy.
+        /// </summary>
+        public static string Send_economyFee {
+            get {
+                return ResourceManager.GetString("Send.economyFee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Est. Confirmation.
+        /// </summary>
+        public static string Send_estConfirmation {
+            get {
+                return ResourceManager.GetString("Send.estConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fee (sats/byte).
+        /// </summary>
+        public static string Send_fee {
+            get {
+                return ResourceManager.GetString("Send.fee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to High.
+        /// </summary>
+        public static string Send_highFee {
+            get {
+                return ResourceManager.GetString("Send.highFee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        public static string Send_normalFee {
+            get {
+                return ResourceManager.GetString("Send.normalFee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Paste.
         /// </summary>
         public static string Send_paste {
@@ -777,6 +1155,15 @@ namespace HodlWallet.UI.Locale {
         public static string Send_transactionCancel {
             get {
                 return ResourceManager.GetString("Send.transactionCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction Fee.
+        /// </summary>
+        public static string Send_transactionFee {
+            get {
+                return ResourceManager.GetString("Send.transactionFee", resourceCulture);
             }
         }
         
@@ -835,6 +1222,24 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Received At This Address.
+        /// </summary>
+        public static string TransactionDetails_receivedAddressTitle {
+            get {
+                return ResourceManager.GetString("TransactionDetails.receivedAddressTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sent To This Address.
+        /// </summary>
+        public static string TransactionDetails_sendAddressTitle {
+            get {
+                return ResourceManager.GetString("TransactionDetails.sendAddressTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Status.
         /// </summary>
         public static string TransactionDetails_statusTitle {
@@ -862,6 +1267,24 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Awaiting Confirmation.
+        /// </summary>
+        public static string Transactions_awaitingConfirmation {
+            get {
+                return ResourceManager.GetString("Transactions.awaitingConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmed.
+        /// </summary>
+        public static string Transactions_confirmed {
+            get {
+                return ResourceManager.GetString("Transactions.confirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No transactions received yet.
         /// </summary>
         public static string Transactions_empty {
@@ -876,6 +1299,24 @@ namespace HodlWallet.UI.Locale {
         public static string Transactions_empty_button {
             get {
                 return ResourceManager.GetString("Transactions.empty.button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At:.
+        /// </summary>
+        public static string Transactions_isSendAt {
+            get {
+                return ResourceManager.GetString("Transactions.isSendAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To:.
+        /// </summary>
+        public static string Transactions_isSendTo {
+            get {
+                return ResourceManager.GetString("Transactions.isSendTo", resourceCulture);
             }
         }
         

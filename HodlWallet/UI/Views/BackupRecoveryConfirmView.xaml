@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupRecoveryConfirmView"
              BackgroundColor="{DynamicResource BackgroundPrimary}"
              ios:Page.UseSafeArea="True">
@@ -16,7 +17,7 @@
                         JustifyContent="SpaceAround"
                         AlignItems="Center">
 
-                <Label x:Name="Header"
+                <Label Text="{i18n:Translate Text=BackupConfirm.header}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        HorizontalTextAlignment="Center"
@@ -27,7 +28,7 @@
                        Style="{DynamicResource CustomLabel}"
                        HorizontalTextAlignment="Center" />
 
-                <Label x:Name="Warning"
+                <Label Text="{i18n:Translate Text=BackupConfirm.warning}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource TextError}"
                        HorizontalTextAlignment="Center"
