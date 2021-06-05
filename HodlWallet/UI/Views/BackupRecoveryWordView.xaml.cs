@@ -36,14 +36,6 @@ namespace HodlWallet.UI.Views
         {
             InitializeComponent();
             SubscribeToMessages();
-            SetLabels();
-        }
-
-        void SetLabels()
-        {
-            Title = LocaleResources.BackupWord_title;
-            Header.Text = LocaleResources.BackupWord_header;
-            Next.Text = LocaleResources.BackupWord_next;
         }
 
         void SubscribeToMessages()
@@ -54,7 +46,6 @@ namespace HodlWallet.UI.Views
         async void NavigateToBackupRecoveryConfirmView(BackupRecoveryWordViewModel _, string[] mnemonic)
         {
             Debug.WriteLine($"[NavigateToBackupRecoveryConfirmView] About to write mnemonic: {string.Join(" ", mnemonic)}");
-
             await Navigation.PushAsync(new BackupRecoveryConfirmView(mnemonic));
         }
     }

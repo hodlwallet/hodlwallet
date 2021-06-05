@@ -74,10 +74,6 @@ namespace HodlWallet.UI.Views
 
         void SetLabels()
         {
-            ToLabel.Text = LocaleResources.Send_to;
-            ScanLabel.Text = LocaleResources.Send_scan;
-            PasteLabel.Text = LocaleResources.Send_paste;
-            AmountLabel.Text = LocaleResources.Send_amount;
             ISOLabel.Text = "USD($)"; // TODO Localize
         }
 
@@ -122,7 +118,7 @@ namespace HodlWallet.UI.Views
                     }
                 );
 
-                scanPage.Title = "Scan Bitcoin Address";
+                scanPage.Title = LocaleResources.Scan_Title;
 
                 scanPage.OnScanResult += (ZXing.Result resultIOS) =>
                 {

@@ -32,6 +32,7 @@ using Xamarin.Forms;
 
 using HodlWallet.Core.Utils;
 using HodlWallet.UI.Controls;
+using HodlWallet.UI.Locale;
 using Liviano.Utilities;
 
 namespace HodlWallet.UI.Extensions
@@ -50,7 +51,7 @@ namespace HodlWallet.UI.Extensions
             {
                 Debug.WriteLine("[DisplayToast] Cannot attach toast to view, your layout must be a AbsoluteLayout");
 
-                _ = view.DisplayAlert(Constants.HODL_WALLET, content, Constants.DISPLAY_ALERT_ERROR_BUTTON);
+                _ = view.DisplayAlert(Constants.HODL_WALLET, content, LocaleResources.Error_ok);
 
                 promptTaskSource.SetResult(true);
             }

@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:utils="clr-namespace:HodlWallet.Core.Utils"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.RecoverWalletEntryView"
-             BackgroundColor="{DynamicResource BackgroundPrimary}">
+             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             Title="{i18n:Translate Text=RecoverEntry.title}">
     <ContentPage.BindingContext>
         <vm:RecoverWalletEntryViewModel />
     </ContentPage.BindingContext>
@@ -18,7 +20,7 @@
                            Style="{DynamicResource CustomLabel}"
                            FontSize="Large"
                            Margin="10, 0, 0, 0" />
-                    <Label x:Name="Header"
+                    <Label Text="{i18n:Translate Text=RecoverEntry.header}"
                            Style="{DynamicResource CustomLabel}"
                            Margin="10, 0, 10, 20" />
 
@@ -278,9 +280,9 @@
                 </StackLayout>
 
                 <Button x:Name="DoneButton"
+                        Text="{i18n:Translate Text=Done.button}"
                         FlexLayout.Grow="1"
                         IsVisible="False"
-                        Text="Done"
                         FontSize="Large"
                         Command="{Binding OnRecoverEntryCompleted}" />
             </FlexLayout>

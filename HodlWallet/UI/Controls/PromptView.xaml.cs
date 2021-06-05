@@ -30,6 +30,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using HodlWallet.Core.Utils;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Controls
 {
@@ -124,7 +125,7 @@ namespace HodlWallet.UI.Controls
             Title = title;
             Message = message ?? string.Empty;
 
-            if (string.IsNullOrEmpty(okButton)) OkText = Constants.DISPLAY_ALERT_ERROR_BUTTON;
+            if (string.IsNullOrEmpty(okButton)) OkText = LocaleResources.Error_ok;
             else OkText = okButton;
 
             if (string.IsNullOrEmpty(cancelButton))

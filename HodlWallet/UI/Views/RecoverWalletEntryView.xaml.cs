@@ -28,8 +28,8 @@ using HodlWallet.Core.Utils;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
 using HodlWallet.Core.ViewModels;
-
 using HodlWallet.UI.Locale;
+
 using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.UI.Views
@@ -47,15 +47,6 @@ namespace HodlWallet.UI.Views
             InitializeComponent();
 
             SubscribeToMessages();
-
-            SetLabels();
-        }
-
-        void SetLabels()
-        {
-            RecoverTitle.Text = LocaleResources.RecoverEntry_title;
-            Header.Text = LocaleResources.RecoverEntry_header;
-            DoneButton.Text = LocaleResources.Done_button;
         }
 
         void SubscribeToMessages()
@@ -111,9 +102,9 @@ namespace HodlWallet.UI.Views
         void ShowRecoverSeedError(RecoverWalletEntryViewModel vm)
         {
             _ = this.DisplayPrompt(
-                Constants.RECOVER_VIEW_ALERT_TITLE,
-                Constants.RECOVER_VIEW_ALERT_MESSAGE,
-                Constants.RECOVER_VIEW_ALERT_BUTTON
+                LocaleResources.Recover_alertTitle,
+                LocaleResources.Recover_alertHeader,
+                LocaleResources.Recover_alertButton
             );
         }
 
