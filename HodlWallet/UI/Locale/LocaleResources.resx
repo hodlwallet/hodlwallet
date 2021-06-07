@@ -478,6 +478,22 @@
   </data>
   <data name="AddAccount.button" xml:space="preserve">
     <value>Create an Account</value>
+    <comment>label for add account flyout button</comment>
+  </data>
+  <data name="AddAccount.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for add account toolbar Close button</comment>
+  </data>
+  <data name="AddAccount.entry" xml:space="preserve">
+    <value>Name</value>
+    <comment>label for create an account</comment>
+  </data>
+    <data name="AddAccount.options" xml:space="preserve">
+    <value>Type</value>
+    <comment>label for type options when create an account</comment>
+  </data>
+  <data name="AddAccount.createButton" xml:space="preserve">
+    <value>Create</value>
     <comment>label for add account button</comment>
   </data>
   <data name="Backup.Close" xml:space="preserve">
@@ -615,10 +631,6 @@
   <data name="Ordinal.twenty-third" xml:space="preserve">
     <value>twenty-third</value>
     <comment>Part of the label in backup recovery confirmation</comment>
-  </data>
-  <data name="AddAccount.close" xml:space="preserve">
-    <value>Close</value>
-    <comment>label for add account toolbar Close button</comment>
   </data>
   <data name="Scan.Title" xml:space="preserve">
     <value>Scan Bitcoin Address</value>

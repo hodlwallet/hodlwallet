@@ -10,7 +10,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="CloseToolbarItem"
                      Order="Primary"
-                     Text="Close"
+                     Text="{i18n:Translate Text=AddAccount.close}"
                      Priority="0"
                      Clicked="CloseToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
@@ -53,7 +53,7 @@
 
                 <BoxView x:Name="boxView" FlexLayout.Grow="2"/>
 
-                <Button Text="{i18n:Translate Text=AddAccount.button}"
+                <Button Text="{i18n:Translate Text=AddAccount.createButton}"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
                         CornerRadius="0"
