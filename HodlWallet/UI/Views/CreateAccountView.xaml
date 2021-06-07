@@ -1,36 +1,67 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.CreateAccountView"
-             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels">
+             Title="{i18n:Translate Text=AddAccount.title}"
+             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="CloseToolbarItem"
+                     Order="Primary"
+                     Text="Close"
+                     Priority="0"
+                     Clicked="CloseToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.BindingContext>
         <vm:CreateAccountViewModel />
     </ContentPage.BindingContext>
+    
     <ContentPage.Content>
-        <FlexLayout Direction="Column"
-                    JustifyContent="SpaceAround"
-                    BackgroundColor="{DynamicResource BackgroundPrimary}"
-                    AlignItems="Center">
-            <Label x:Name="Header"
-                       FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource SyncGradientStart}"
-                       HorizontalTextAlignment="Center"
-                       FontSize="Medium"
-                       Margin="0, 0, 0, 10" />
-            <Label x:Name="AddAccountLbl"
-                       FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource SyncGradientStart}"
-                       HorizontalTextAlignment="Center"
-                       FontSize="Medium" />
-            <BoxView FlexLayout.Grow="1" />
-            <Button x:Name="CreateAcc"
+        <AbsoluteLayout>
+            <FlexLayout Direction="Column"
+                JustifyContent="SpaceAround"
+                BackgroundColor="{DynamicResource BackgroundPrimary}"
+                AlignItems="Stretch">
+                <Label Text="{i18n:Translate Text=AddAccount.entry}"
+                        FontSize="Large"
+                        FlexLayout.AlignSelf="Center" />
+                <Entry Placeholder="Bitcoin Account"
+                        Text="{Binding AccountName}"
+                        Style="{DynamicResource CustomEntry}"
+                        TextColor="{DynamicResource TextPrimary}"
+                        BackgroundColor="Transparent"
+                        Margin="20"
+                        PlaceholderColor="{DynamicResource TextSecondary}" />
+                <Label Text="{i18n:Translate Text=AddAccount.options}"
+                        FontSize="Large"
+                        FlexLayout.AlignSelf="Center" />
+                <Grid RowDefinitions="*,*" RowSpacing="20" FlexLayout.AlignSelf="Center" >
+                    <RadioButton Content="{Binding AcountTypes[0]}"
+                             IsChecked="True"
+                             Style="{DynamicResource CustomButton}"
+                             BackgroundColor="{DynamicResource BackgroundPrimary}"
+                             CheckedChanged="OnAccountTypeCheckedChanged" 
+                             BorderColor="{DynamicResource TextPrimary}" />
+                    <RadioButton Grid.Row="1" Content="{Binding AcountTypes[1]}"
+                             Style="{DynamicResource CustomButton}"
+                             BackgroundColor="{DynamicResource BackgroundPrimary}"
+                             CheckedChanged="OnAccountTypeCheckedChanged"
+                             BorderColor="{DynamicResource TextPrimary}" />
+                </Grid>
+
+                <BoxView x:Name="boxView" FlexLayout.Grow="2"/>
+
+                <Button Text="{i18n:Translate Text=AddAccount.button}"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
                         CornerRadius="0"
                         FontSize="Large"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="1"
-                        Command="{Binding CreateAccCommand}"/>
-        </FlexLayout>
+                        Command="{Binding CreateAccountCommand}" />
+            </FlexLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

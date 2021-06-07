@@ -464,9 +464,13 @@
     <value>Choose from the options below which type of account you want to create.</value>
     <comment>label for account selection subheader</comment>
   </data>
-  <data name="AddAccountText.label" xml:space="preserve">
-    <value>Account:</value>
+  <data name="AddAccount.entry" xml:space="preserve">
+    <value>Name</value>
     <comment>label for create an account</comment>
+  </data>
+  <data name="AddAccount.options" xml:space="preserve">
+    <value>Type</value>
+    <comment>label for type options when create an account</comment>
   </data>
   <data name="AddAccount.title" xml:space="preserve">
     <value>Add an Account</value>
@@ -481,7 +485,7 @@
     <comment>label for add account subheader</comment>
   </data>
   <data name="AddAccount.button" xml:space="preserve">
-    <value>Create an Account</value>
+    <value>Create</value>
     <comment>label for add account button</comment>
   </data>
   <data name="Settings.button" xml:space="preserve">
