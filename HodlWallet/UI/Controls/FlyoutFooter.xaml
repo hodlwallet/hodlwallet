@@ -13,7 +13,7 @@
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
                     BackgroundColor="{DynamicResource BackgroundPrimary}" 
-                    Clicked="CreateAcc_Clicked"
+                    Clicked="CreateAccountButton_Clicked"
                     Routing.Route="CreateAccountView"/>
 
             <BoxView BackgroundColor="Transparent"

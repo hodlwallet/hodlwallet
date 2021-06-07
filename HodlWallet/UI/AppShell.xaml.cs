@@ -1,5 +1,5 @@
 ﻿//
-// App.xaml.cs
+// AppShell.xaml.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -51,7 +51,6 @@ namespace HodlWallet.UI
         public ObservableCollection<AccountModel> AccountList = new ObservableCollection<AccountModel>();
         
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
-        public ICommand CreateCommand => new Command(async () => await Launcher.OpenAsync("//create"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
 
         public AppShell()
