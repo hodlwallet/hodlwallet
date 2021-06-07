@@ -21,10 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-
 using Xamarin.Forms;
-
-using HodlWallet.UI.Locale;
 using System.Threading.Tasks;
 
 namespace HodlWallet.UI.Views
@@ -37,7 +34,6 @@ namespace HodlWallet.UI.Views
         {
             InitializeComponent();
             EnableToolBarItems(action);
-            SetLabels();
 
             Task.Run(() =>
             {
@@ -45,13 +41,6 @@ namespace HodlWallet.UI.Views
             });
         }
 
-        void SetLabels()
-        {
-            Title = LocaleResources.Backup_title;
-            Header.Text = LocaleResources.Backup_header;
-            Subheader.Text = LocaleResources.Backup_subheader;
-            Button.Text = LocaleResources.Backup_button;
-        }
 
         void EnableToolBarItems(string action = null)
         {

@@ -464,14 +464,6 @@
     <value>Choose from the options below which type of account you want to create.</value>
     <comment>label for account selection subheader</comment>
   </data>
-  <data name="AddAccount.entry" xml:space="preserve">
-    <value>Name</value>
-    <comment>label for create an account</comment>
-  </data>
-  <data name="AddAccount.options" xml:space="preserve">
-    <value>Type</value>
-    <comment>label for type options when create an account</comment>
-  </data>
   <data name="AddAccount.title" xml:space="preserve">
     <value>Add an Account</value>
     <comment>label for add account title</comment>
@@ -485,11 +477,207 @@
     <comment>label for add account subheader</comment>
   </data>
   <data name="AddAccount.button" xml:space="preserve">
-    <value>Create</value>
+    <value>Create an Account</value>
     <comment>label for add account button</comment>
+  </data>
+  <data name="Backup.Close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for backup toolbar Close button</comment>
+  </data>
+  <data name="Backup.Skip" xml:space="preserve">
+    <value>Skip</value>
+    <comment>label for backup toolbar Skip button</comment>
+  </data>
+  <data name="AccountSettings.Title" xml:space="preserve">
+    <value>Account Settings</value>
+    <comment>Account Settings Title</comment>
+  </data>
+  <data name="PinPad.Title" xml:space="preserve">
+    <value>Create A New Pin</value>
+    <comment>Pin Pad Title</comment>
+  </data>
+  <data name="Recovery.Close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for recovery toolbar Close button</comment>
+  </data>
+  <data name="Send.buttonSend" xml:space="preserve">
+    <value>Send</value>
+    <comment>label for send button</comment>
+  </data>
+  <data name="Send.fee" xml:space="preserve">
+    <value>Fee (sats/byte)</value>
+    <comment>label for send fee </comment>
+  </data>
+  <data name="Ordinal.eighth" xml:space="preserve">
+    <value>eighth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.eleventh" xml:space="preserve">
+    <value>eleventh</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.fifth" xml:space="preserve">
+    <value>fifth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.first" xml:space="preserve">
+    <value>first</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.fourth" xml:space="preserve">
+    <value>fourth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.ninth" xml:space="preserve">
+    <value>ninth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.second" xml:space="preserve">
+    <value>second</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.seventh" xml:space="preserve">
+    <value>seventh</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.sixth" xml:space="preserve">
+    <value>sixth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.tenth" xml:space="preserve">
+    <value>tenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.third" xml:space="preserve">
+    <value>third</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twelveth" xml:space="preserve">
+    <value>twelveth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Alert.irreversible" xml:space="preserve">
+    <value>This action is irreversible, are you sure?</value>
+    <comment>Alert in DisplayPrompt of account settings</comment>
+  </data>
+  <data name="Button.no" xml:space="preserve">
+    <value>No</value>
+    <comment>No button in DisplayPrompt of account settings</comment>
+  </data>
+  <data name="Button.yes" xml:space="preserve">
+    <value>Yes</value>
+    <comment>Yes button in DisplayPrompt of account settings</comment>
+  </data>
+  <data name="Ordinal.eighteenth" xml:space="preserve">
+    <value>eighteenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.fifteenth" xml:space="preserve">
+    <value>fifteenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.fourteenth" xml:space="preserve">
+    <value>fourteenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.nineteenth" xml:space="preserve">
+    <value>nineteenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.seventeenth" xml:space="preserve">
+    <value>seventeenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.sixteenth" xml:space="preserve">
+    <value>sixteenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.thirteenth" xml:space="preserve">
+    <value>thirteenth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twentieth" xml:space="preserve">
+    <value>twentieth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twenty-first" xml:space="preserve">
+    <value>twenty-first</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twenty-fourth" xml:space="preserve">
+    <value>twenty-fourth</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twenty-second" xml:space="preserve">
+    <value>twenty-second</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="Ordinal.twenty-third" xml:space="preserve">
+    <value>twenty-third</value>
+    <comment>Part of the label in backup recovery confirmation</comment>
+  </data>
+  <data name="AddAccount.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for add account toolbar Close button</comment>
+  </data>
+  <data name="Scan.Title" xml:space="preserve">
+    <value>Scan Bitcoin Address</value>
+    <comment>title scan page</comment>
+  </data>
+  <data name="Address.copied" xml:space="preserve">
+    <value>Address Copied to Clipboard</value>
+    <comment>Label of toast when address is tapped</comment>
+  </data>
+  <data name="Error.ok" xml:space="preserve">
+    <value>Ok</value>
+    <comment>Label of display alert error Button</comment>
+  </data>
+  <data name="TransactionDetails.receivedAddressTitle" xml:space="preserve">
+    <value>Received At This Address</value>
+    <comment>Label of the receive address title</comment>
+  </data>
+  <data name="TransactionDetails.sendAddressTitle" xml:space="preserve">
+    <value>Sent To This Address</value>
+    <comment>Label of the send address title</comment>
   </data>
   <data name="Settings.button" xml:space="preserve">
     <value>Settings</value>
     <comment>Label for Settings Button</comment>
+  </data>
+  <data name="Send.economyFee" xml:space="preserve">
+    <value>Economy</value>
+    <comment>label for economy fee in send page</comment>
+  </data>
+  <data name="Send.estConfirmation" xml:space="preserve">
+    <value>Est. Confirmation</value>
+    <comment>label for est. confirmation in send page</comment>
+  </data>
+  <data name="Send.highFee" xml:space="preserve">
+    <value>High</value>
+    <comment>label for highfee in send page</comment>
+  </data>
+  <data name="Send.normalFee" xml:space="preserve">
+    <value>Normal</value>
+    <comment>label for normal fee in send page</comment>
+  </data>
+  <data name="Send.transactionFee" xml:space="preserve">
+    <value>Transaction Fee</value>
+    <comment>label for Transaction Fee in send page</comment>
+  </data>
+  <data name="Transactions.awaitingConfirmation" xml:space="preserve">
+    <value>Awaiting Confirmation</value>
+    <comment>state of transaction of GetConfirmedBlockText in TransactionModel</comment>
+  </data>
+  <data name="Transactions.confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+    <comment>state of transaction of GetStatusText in TransactionModel</comment>
+  </data>
+  <data name="Transactions.isSendAt" xml:space="preserve">
+    <value>At:</value>
+    <comment>state of sent of GetAddressText in TransactionModel</comment>
+  </data>
+  <data name="Transactions.isSendTo" xml:space="preserve">
+    <value>To:</value>
+    <comment>state of sent of GetAddressText in TransactionModel</comment>
   </data>
 </root>

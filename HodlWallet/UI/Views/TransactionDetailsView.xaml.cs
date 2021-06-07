@@ -39,13 +39,6 @@ namespace HodlWallet.UI.Views
             var vm = (TransactionDetailsViewModel)BindingContext;
 
             vm.TransactionModel = txModel;
-
-            SetLabels();
-        }
-
-        void SetLabels()
-        {
-            TransactionTitle.Text = LocaleResources.TransactionDetails_title;
         }
 
         void Close_Tapped(object sender, EventArgs e)

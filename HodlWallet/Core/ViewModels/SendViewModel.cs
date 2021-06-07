@@ -56,11 +56,6 @@ namespace HodlWallet.Core.ViewModels
         string _EstConfirmationText;
         string _ISOLabel;
 
-        public string TransactionFeeTitle => "Transaction Fee";
-        public string EstConfirmationTitle => "Est. Confirmation";
-        public string SlowText => "Economy";
-        public string NormalText => "Normal";
-        public string FastestText => "High";
         public string TransactionFeeText
         {
             get => _TransactionFeeText;

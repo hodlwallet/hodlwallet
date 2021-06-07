@@ -34,18 +34,9 @@ namespace HodlWallet.UI.Views
         {
             InitializeComponent();
 
-            SetLabels();
-
             if (closeable) return;
 
             ToolbarItems.Clear();
-        }
-
-        void SetLabels()
-        {
-            Title = LocaleResources.Recover_title;
-            Header.Text = LocaleResources.Recover_header;
-            Next.Text = LocaleResources.Recover_next;
         }
 
         void Next_Clicked(object sender, EventArgs e)

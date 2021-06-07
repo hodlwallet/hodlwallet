@@ -34,19 +34,10 @@ namespace HodlWallet.UI.Views
         public BackupRecoveryConfirmView(string[] mnemonic)
         {
             InitializeComponent();
-
             ViewModel.Mnemonic = mnemonic;
-
             SubscribeToMessages();
-
-            SetLabels();
         }
 
-        void SetLabels()
-        {
-            Header.Text = LocaleResources.BackupConfirm_header;
-            Warning.Text = LocaleResources.BackupConfirm_warning;
-        }
 
         void SubscribeToMessages()
         {

@@ -29,6 +29,7 @@ using Liviano.Models;
 using HodlWallet.Core.Extensions;
 using HodlWallet.Core.Utils;
 using HodlWallet.Core.Interfaces;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.Core.Models
 {
@@ -160,15 +161,15 @@ namespace HodlWallet.Core.Models
             var blockHeight = TransactionData.BlockHeight;
 
             return blockHeight is null
-                ? "Awaiting Confirmation"
+                ? LocaleResources.Transactions_awaitingConfirmation
                 : blockHeight.ToString();
         }
 
         string GetStatusText()
         {
             return TransactionData.IsConfirmed()
-                ? "Confirmed"
-                : "Awaiting Confirmation";
+                ? LocaleResources.Transactions_confirmed
+                : LocaleResources.Transactions_awaitingConfirmation;
         }
 
         string GetAddress()
@@ -181,8 +182,8 @@ namespace HodlWallet.Core.Models
         string GetAddressText()
         {
             return TransactionData.IsSend == true
-                ? $"To: {Address}"
-                : $"At: {Address}";
+                ? LocaleResources.Transactions_isSendTo + $"{Address}"
+                : LocaleResources.Transactions_isSendAt + $"{Address}";
         }
 
         Money GetAmount()
@@ -222,9 +223,9 @@ namespace HodlWallet.Core.Models
         string GetAddressTitleText()
         {
             if (TransactionData.IsSend == true)
-                return Constants.TRANSACTION_DETAILS_SENT_ADDRESS_TITLE;
+                return LocaleResources.TransactionDetails_sendAddressTitle;
 
-            return Constants.TRANSACTION_DETAILS_RECEIVED_ADDRESS_TITLE;
+            return LocaleResources.TransactionDetails_receivedAddressTitle;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
