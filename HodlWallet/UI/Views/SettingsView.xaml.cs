@@ -110,17 +110,12 @@ namespace HodlWallet.UI.Views
             _ = this.DisplayPrompt(
                 Constants.BUILD_INFO_MESSAGE_TITLE,
                 msg,
-                Constants.DISPLAY_ALERT_ERROR_BUTTON
+                LocaleResources.Error_ok
             );
         }
 
         void SetLabels()
         {
-            ResyncWallet.Text = LocaleResources.Menu_resyncWallet;
-            RestoreWallet.Text = LocaleResources.Menu_restoreWallet;
-            WipeWallet.Text = LocaleResources.Menu_wipeWallet;
-            BackupMnemonic.Text = LocaleResources.Backup_title;
-
 #if DEBUG
             BuildDate.Text = $"Built on: {BuildInfo.BuildDateText}";
 #endif
@@ -146,9 +141,9 @@ namespace HodlWallet.UI.Views
 
             return await this.DisplayPrompt(
                 title,
-                Constants.ACTION_IRREVERSIBLE,
-                Constants.YES_BUTTON,
-                Constants.NO_BUTTON
+                LocaleResources.Alert_irreversible,
+                LocaleResources.Button_yes,
+                LocaleResources.Button_no
             );
         }
     }

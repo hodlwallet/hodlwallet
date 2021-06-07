@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.AccountSettingsView"
-             Title="Account Settings"
+             Title="{i18n:Translate AccountSettings.Title}"
              BackgroundColor="{DynamicResource BackgroundPrimary}">
     <ContentPage.BindingContext>
         <vm:SettingsViewModel />
@@ -18,28 +19,28 @@
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
-                        <Button x:Name="BackupMnemonic"
+                        <Button Text="{i18n:Translate Text=Backup.title}"
                                 Style="{DynamicResource SettingsButton}"
                                 Clicked="BackupMnemonic_Clicked" />
 
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
-                        <Button x:Name="ResyncWallet"
+                        <Button Text="{i18n:Translate Text=Menu.resyncWallet}"
                                 Style="{DynamicResource SettingsButton}"
                                 Clicked="ResyncWallet_Clicked" />
 
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
-                        <Button x:Name="RestoreWallet"
+                        <Button Text="{i18n:Translate Text=Menu.restoreWallet}"
                                 Style="{DynamicResource SettingsButton}"
                                 Clicked="RestoreWallet_Clicked" />
 
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
-                        <Button x:Name="WipeWallet"
+                        <Button Text="{i18n:Translate Text=Menu.wipeWallet}"
                                 Style="{DynamicResource SettingsButton}"
                                 Clicked="WipeWallet_Clicked" />
 
