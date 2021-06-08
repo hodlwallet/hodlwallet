@@ -27,7 +27,6 @@ autom4te.cache/
 tarballs/
 test-results/
 Thumbs.db
-.vs/
 
 # Mac bundle stuff
 *.dmg
@@ -66,13 +65,8 @@ bld/
 [Oo]bj/
 [Ll]og/
 
-# Visual Studio 2015/2017 cache/options directory
-.vs/
-# Uncomment if you have tasks that create the project's static files in wwwroot
-#wwwroot/
-
-# Visual Studio 2017 auto generated files
-Generated\ Files/
+# Xamarin Components
+Components/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
@@ -99,34 +93,6 @@ artifacts/
 # StyleCop
 StyleCopReport.xml
 
-# Files built by Visual Studio
-*_i.c
-*_p.c
-*_i.h
-*.ilk
-*.meta
-*.obj
-*.iobj
-*.pch
-*.pdb
-*.ipdb
-*.pgc
-*.pgd
-*.rsp
-*.sbr
-*.tlb
-*.tli
-*.tlh
-*.tmp
-*.tmp_proj
-*.log
-*.vspscc
-*.vssscc
-.builds
-*.pidb
-*.svclog
-*.scc
-
 # Chutzpah Test files
 _Chutzpah*
 
@@ -140,15 +106,6 @@ ipch/
 *.cachefile
 *.VC.db
 *.VC.VC.opendb
-
-# Visual Studio profiler
-*.psess
-*.vsp
-*.vspx
-*.sap
-
-# Visual Studio Trace Files
-*.e2e
 
 # TFS 2012 Local Workspace
 $tf/
@@ -221,12 +178,17 @@ PublishScripts/
 
 # NuGet Packages
 *.nupkg
+*.lock.json
+
 # The packages folder can be ignored because of Package Restore
 **/[Pp]ackages/*
+
 # except build/, which is used as an MSBuild target.
 !**/[Pp]ackages/build/
+
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/[Pp]ackages/repositories.config
+
 # NuGet v3's project.json files produces more ignorable files
 *.nuget.props
 *.nuget.targets
@@ -262,6 +224,8 @@ ClientBin/
 *.pfx
 *.publishsettings
 orleans.codegen.cs
+*.bak
+[Ss]tyle[Cc]op.*
 
 # Including strong name files can present a security risk 
 # (https://github.com/github/gitignore/pull/2483#issue-259490424)
@@ -288,6 +252,7 @@ ServiceFabricBackup/
 *.mdf
 *.ldf
 *.ndf
+sql/
 
 # Business Intelligence projects
 *.rdl.data
@@ -304,23 +269,6 @@ FakesAssemblies/
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
 node_modules/
-
-# Visual Studio 6 build log
-*.plg
-
-# Visual Studio 6 workspace options file
-*.opt
-
-# Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
-*.vbw
-
-# Visual Studio LightSwitch build output
-**/*.HTMLClient/GeneratedArtifacts
-**/*.DesktopClient/GeneratedArtifacts
-**/*.DesktopClient/ModelManifest.xml
-**/*.Server/GeneratedArtifacts
-**/*.Server/ModelManifest.xml
-_Pvt_Extensions
 
 # Paket dependency manager
 .paket/paket.exe
@@ -371,8 +319,83 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 
-# Visual studio code
+# Visual Studio Code
 .vscode/
+.vscode/settings.json
 
-# Add annoying file
-HodlWallet.Android/Resources/Resource.Designer.cs
+# Visual Studio (>=2015) project-specific, machine local files
+.vs/
+
+# Visual Studio 6 build log
+*.plg
+
+# Visual Studio 6 workspace options file
+*.opt
+
+# Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
+*.vbw
+
+# Visual Studio LightSwitch build output
+**/*.HTMLClient/GeneratedArtifacts
+**/*.DesktopClient/GeneratedArtifacts
+**/*.DesktopClient/ModelManifest.xml
+**/*.Server/GeneratedArtifacts
+**/*.Server/ModelManifest.xml
+_Pvt_Extensions
+
+# Visual Studio 2017 auto generated files
+Generated\ Files/
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Visual Studio Trace Files
+*.e2e
+
+# Visual Studio Files built
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+*_i.c
+*_p.c
+*_i.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Xamarin.Android Resource.Designer.cs files
+**/*.Droid/**/[Rr]esources.[Dd]esigner*.cs
+**/*.Android/**/[Rr]esources.[Dd]esigner*.cs
+**/Android/**/[Rr]esources.[Dd]esigner*.cs
+**/Droid/**/[Rr]esources.[Dd]esigner*.cs
+**/*.Droid/**/[Rr]esource.[Dd]esigner*.cs
+**/*.Android/**/[Rr]esource.[Dd]esigner*.cs
+**/Android/**/[Rr]esource.[Dd]esigner*.cs
+**/Droid/**/[Rr]esource.[Dd]esigner*.cs
+
+# Xamarin HODL Locale Resource.Designer.cs files
+**/HodlWallet/Resources/[Rr]esource.[Dd]esigner*.cs
+HodlWallet/UI/Locale/Locale[Rr]esources.*[Dd]esigner.cs
