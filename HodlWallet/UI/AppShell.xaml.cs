@@ -49,7 +49,6 @@ namespace HodlWallet.UI
         IWalletService WalletService => DependencyService.Get<IWalletService>();
 
         public ObservableCollection<AccountModel> AccountList = new ObservableCollection<AccountModel>();
-        
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
 
@@ -59,37 +58,10 @@ namespace HodlWallet.UI
             logger = WalletService.Logger;
             RegisterRoutes();
             SetupDefaultTab();
-            InitializeWalletServiceAccounts();
             PropertyChanged += Shell_PropertyChanged;
             AccountList.CollectionChanged += AccountsCollectionChanged;
         }
-        void InitializeWalletServiceAccounts()
-        {
-            if (!WalletService.IsStarted)
-            {
-                logger.Debug($"InitializeWalletServiceAccounts OnStarted - isStarted => {WalletService.IsStarted}");
-                WalletService.OnStarted += WalletService_SetupAccounts;
-            }
-        }
-        void WalletService_SetupAccounts(object sender, EventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                lock (@lock)
-                {
-                    SetupAccounts();
-                }
-            });
-        }
-        void SetupAccounts()
-        {
-            var accounts = WalletService.Wallet.Accounts;
 
-            foreach (var account in accounts)
-            {
-                AccountList.Add(AccountModel.FromAccountData(account));
-            }
-        }
         public void ChangeTabsTo(string tabName)
         {
             Tab tab = tabName switch
@@ -120,6 +92,7 @@ namespace HodlWallet.UI
                     AddMenuItems(account);
                 }
             }
+
             // TODO: Pending implementation for another actions from NotifyCollectionChangedAction
             /*else
             {
