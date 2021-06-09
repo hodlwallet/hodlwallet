@@ -23,10 +23,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 using Xamarin.Forms;
 
+using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -58,7 +60,20 @@ namespace HodlWallet.Core.ViewModels
         private async void CreateAccount()
         {
             var (Success, Error) = await WalletService.AddAccount(AccountType ?? accountTypesList[0], AccountName);
-            await Shell.Current.GoToAsync("..");
+
+            if (!Success && !string.IsNullOrEmpty(Error))
+            {
+                DisplayProcessAccountErrorAlert(Error);
+            }
+            else
+            {
+                await Shell.Current.GoToAsync("..");
+            }
+        }
+
+        void DisplayProcessAccountErrorAlert(string errorMessage)
+        {
+            MessagingCenter.Send(this, "DisplayErrorCreatingAccount", errorMessage);
         }
     }
 }

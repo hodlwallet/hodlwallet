@@ -27,13 +27,19 @@
                 <Label Text="{i18n:Translate Text=AddAccount.entry}"
                         FontSize="Large"
                         FlexLayout.AlignSelf="Center" />
+                <ContentView>                    
                 <Entry Placeholder="Bitcoin Account"
                         Text="{Binding AccountName}"
                         Style="{DynamicResource CustomEntry}"
                         TextColor="{DynamicResource TextPrimary}"
                         BackgroundColor="Transparent"
-                        Margin="20"
-                        PlaceholderColor="{DynamicResource TextSecondary}" />
+                        PlaceholderColor="{DynamicResource TextSecondary}"
+                       Margin="20,10"/>
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" />
+                    </ContentView.GestureRecognizers>
+                </ContentView>
+
                 <Label Text="{i18n:Translate Text=AddAccount.options}"
                         FontSize="Large"
                         FlexLayout.AlignSelf="Center" />

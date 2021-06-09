@@ -25,6 +25,8 @@ using System;
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
+using HodlWallet.UI.Extensions;
+using System.Diagnostics;
 
 namespace HodlWallet.UI.Views
 {
@@ -34,6 +36,7 @@ namespace HodlWallet.UI.Views
         public CreateAccountView()
         {
             InitializeComponent();
+            SubscribeToMessages();
         }
 
         void OnAccountTypeCheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -45,9 +48,19 @@ namespace HodlWallet.UI.Views
             }
         }
 
-        void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        async void CloseToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            await Shell.Current.GoToAsync("..");
+        }
+
+        void SubscribeToMessages()
+        {
+            MessagingCenter.Subscribe<CreateAccountViewModel, string>(this, "DisplayErrorCreatingAccount", DisplayErrorCreatingAccount);
+        }
+
+        void DisplayErrorCreatingAccount(CreateAccountViewModel vm, string errorMessage)
+        {
+            _ = this.DisplayToast(errorMessage);
         }
 
     }
