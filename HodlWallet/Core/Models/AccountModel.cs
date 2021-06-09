@@ -23,6 +23,10 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+
 using Xamarin.Forms;
 
 using Liviano.Interfaces;
@@ -47,6 +51,25 @@ namespace HodlWallet.Core.Models
                 GradientStart = Color.Purple,
                 GradientEnd = Color.Black
             };
+        }
+
+        static List<IAccount> GetAccountListFromCollection (ObservableCollection<AccountModel> accountCollection)
+        {
+            List<IAccount> AccountList = new List<IAccount>();
+        
+            AccountList.AddRange(accountCollection.Select(item => item.AccountData).ToArray());
+
+            return AccountList;
+        }
+
+        public static void SyncCollections(List<IAccount> mainAccountsList, ObservableCollection<AccountModel> menuAccounts)
+        {
+            // Compare and look for the missing items in the menu accounts.
+            var accountsToSync = mainAccountsList.Except(GetAccountListFromCollection(menuAccounts));
+            foreach (var item in accountsToSync)
+            {
+                menuAccounts.Add(FromAccountData(item));
+            }
         }
     }
 }
