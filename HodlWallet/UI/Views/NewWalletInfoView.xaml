@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             Title="{i18n:Translate NewWallet.title}"
              x:Class="HodlWallet.UI.Views.NewWalletInfoView">
     <ContentPage.BindingContext>
         <vm:BackupViewModel />
@@ -12,12 +14,14 @@
                         BackgroundColor="{DynamicResource BackgroundPrimary}" >
 
                 <Label x:Name="Header"
+                       Text="{i18n:Translate Text=NewWallet.header}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        FontSize="Large"
                        Margin="10" />
 
                 <Label x:Name="Subheader"
+                       Text="{i18n:Translate Text=NewWallet.body}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        FontSize="Medium"
@@ -25,6 +29,7 @@
                        FlexLayout.Grow="4" />
 
                 <Button x:Name="Button"
+                        Text="{i18n:Translate Text=NewWallet.button}"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
                         CornerRadius="0"

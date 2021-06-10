@@ -680,4 +680,43 @@
     <value>To:</value>
     <comment>state of sent of GetAddressText in TransactionModel</comment>
   </data>
+  <data name="AckRisk.button" xml:space="preserve">
+    <value>Next</value>
+    <comment>label for fourth term from Acknowledge Risk of Non-Custodial</comment>
+  </data>
+  <data name="AckRisk.term1" xml:space="preserve">
+    <value>I understand that not properly backing up my wallet can lead to loss of funds.</value>
+    <comment>label for first term from Acknowledge Risk of Non-Custodial</comment>
+  </data>
+  <data name="AckRisk.term2" xml:space="preserve">
+    <value>I will not take a screen shot of my key.</value>
+    <comment>label for second term from Acknowledge Risk of Non-Custodial</comment>
+  </data>
+  <data name="AckRisk.term3" xml:space="preserve">
+    <value>I understand that Hodl Wallet does not store a copy of this key and should I lose it Hodl Wallet can't help me recover my funds.</value>
+    <comment>label for third term from Acknowledge Risk of Non-Custodial</comment>
+  </data>
+  <data name="AckRisk.term4" xml:space="preserve">
+    <value>I am ready to copy down the words of my Backup Recovery Key and store it.</value>
+    <comment>label for fourth term from Acknowledge Risk of Non-Custodial</comment>
+  </data>
+  <data name="AckRisk.title" xml:space="preserve">
+    <value>Create New Wallet</value>
+  </data>
+  <data name="NewWallet.body" xml:space="preserve">
+    <value>Before we get started you should know:
+
+Hodl Wallet is a non-custodial Bitcoin Wallet. This means you are the sole person with access to the bitcoin stored in this app.
+ 
+All you have to do is safety store the wallets backup recovery key and you'll always have access to you bitcoin.</value>
+  </data>
+  <data name="NewWallet.button" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="NewWallet.header" xml:space="preserve">
+    <value>Welcome to Hodl Wallet</value>
+  </data>
+  <data name="NewWallet.title" xml:space="preserve">
+    <value>Create New Wallet</value>
+  </data>
 </root>

@@ -21,10 +21,10 @@ namespace HodlWallet.UI.Views
 
         void SetLabels()
         {
-            Title = LocaleResources.NewWallet_Title;
-            Header.Text = LocaleResources.NewWallet_header;
-            Subheader.Text = LocaleResources.NewWallet_subheader;
-            Button.Text = LocaleResources.NewWallet_button;
+            //Title = LocaleResources.NewWallet_Title;
+            //Header.Text = LocaleResources.NewWallet_header;
+            //Subheader.Text = LocaleResources.NewWallet_subheader;
+            //Button.Text = LocaleResources.NewWallet_button;
         }
 
         void WalletInfoButton_Clicked(object sender, EventArgs e)
