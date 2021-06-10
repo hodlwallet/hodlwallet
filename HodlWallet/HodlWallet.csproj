@@ -24,12 +24,8 @@
 		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
 	</ItemGroup>
 	<ItemGroup>
-		<Folder Include="Core\" />
 		<Folder Include="Core\Models\" />
-		<Folder Include="Core\Services\" />
-		<Folder Include="Core\ViewModels\" />
 		<Folder Include="UI\Extensions\" />
-		<Folder Include="UI\Locale\" />
 		<Folder Include="Core\Utils\" />
 		<Folder Include="UI\Converters\" />
 		<Folder Include="Core\Interfaces\" />
@@ -114,6 +110,9 @@
 		<EmbeddedResource Update="UI\Locale\LocaleResources.es.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>LocaleResources.es.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="UI\Views\CreateAccountView.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>

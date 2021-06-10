@@ -1,5 +1,5 @@
 ﻿//
-// SettingsView.xaml.cs
+// CreateAccountView.xaml.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -23,27 +23,45 @@
 using System;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
-using HodlWallet.UI.Views;
+using HodlWallet.Core.ViewModels;
+using HodlWallet.UI.Extensions;
+using System.Diagnostics;
 
-namespace HodlWallet.UI.Controls
+namespace HodlWallet.UI.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FlyoutFooter : ContentView
+    public partial class CreateAccountView : ContentPage
     {
-        public FlyoutFooter()
+        CreateAccountViewModel ViewModel => (CreateAccountViewModel)BindingContext;
+        public CreateAccountView()
         {
             InitializeComponent();
+            SubscribeToMessages();
         }
 
-        void CreateAccountButton_Clicked(object sender, EventArgs e)
+        void OnAccountTypeCheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            Shell.Current.FlyoutIsPresented = false;
-            var view = new CreateAccountView();
-            var nav = new NavigationPage(view);
-
-            Navigation.PushModalAsync(nav);
+            RadioButton button = sender as RadioButton;
+            if (button != null)
+            {
+                ViewModel.AccountType = $"{button.Content}";
+            }
         }
+
+        async void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("..");
+        }
+
+        void SubscribeToMessages()
+        {
+            MessagingCenter.Subscribe<CreateAccountViewModel, string>(this, "DisplayErrorCreatingAccount", DisplayErrorCreatingAccount);
+        }
+
+        void DisplayErrorCreatingAccount(CreateAccountViewModel vm, string errorMessage)
+        {
+            _ = this.DisplayToast(errorMessage);
+        }
+
     }
 }

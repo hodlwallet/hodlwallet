@@ -272,6 +272,45 @@ namespace HodlWallet.Core.Services
             IsStarted = true;
         }
 
+        public async Task<(bool Success, string Error)> AddAccount(string type = "bip84", string name = null)
+        {
+            bool addedAccount = false;
+            string messageError = null;
+            try
+            {
+                if (string.IsNullOrEmpty(name))
+                {
+                    messageError = "Invalid account name: It cannot be empty!";
+                    Logger.Error(messageError);
+                }
+                else
+                {
+                    int countBfrAddToList = Wallet.Accounts.Count;
+                    
+                    Wallet.AddAccount(type, name);
+
+                    if (Wallet.Accounts.Count <= countBfrAddToList)
+                    {
+                        messageError = $"Unable to add a new accountto the current Wallet | Name => {name} - Type => {type}.";
+                        Logger.Error(messageError);
+                    } 
+                    else
+                    {
+                        addedAccount = true;
+                        // To ensure the account is correctly associated to the current Wallet configured.
+                        await Save();
+                    }
+                }
+                return (addedAccount, messageError);
+            }
+            catch (WalletException e)
+            {
+                Logger.Error(e.Message);
+
+                return (addedAccount, e.Message);
+            }
+        }
+
         public static string GetNewMnemonic(string wordList = "english", int wordCount = 12)
         {
             return Hd.NewMnemonic(wordList, wordCount).ToString();

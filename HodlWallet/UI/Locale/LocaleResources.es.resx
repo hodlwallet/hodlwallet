@@ -174,7 +174,7 @@
   </data>
   <data name="AddAccount.button" xml:space="preserve">
     <value>Crear una Cuenta</value>
-    <comment>label for add account button</comment>
+    <comment>label for add account flyout button</comment>
   </data>
   <data name="AddAccount.header" xml:space="preserve">
     <value>[Actualizar Imagen]</value>
@@ -187,6 +187,22 @@
   <data name="AddAccount.title" xml:space="preserve">
     <value>Agregar una Cuenta</value>
     <comment>label for add account title</comment>
+  </data>
+  <data name="AddAccount.close" xml:space="preserve">
+    <value>Cerrar</value>
+    <comment>label for add account toolbar Close button</comment>
+  </data>
+  <data name="AddAccount.entry" xml:space="preserve">
+    <value>Nombre</value>
+    <comment>label for create an account</comment>
+  </data>
+  <data name="AddAccount.options" xml:space="preserve">
+    <value>Tipo</value>
+    <comment>label for type options when create an account</comment>
+  </data>
+  <data name="AddAccount.createButton" xml:space="preserve">
+    <value>Crear</value>
+    <comment>label for add account button</comment>
   </data>
   <data name="Backup.button" xml:space="preserve">
     <value>Anote la clave de recuperación de copia de seguridad</value>

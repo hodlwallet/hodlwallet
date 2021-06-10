@@ -1,5 +1,5 @@
 ﻿//
-// App.xaml.cs
+// AppShell.xaml.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -25,6 +25,9 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -32,27 +35,31 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 
+using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
-using HodlWallet.UI.Controls;
+using HodlWallet.Core.Models;
 
 namespace HodlWallet.UI
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppShell : Shell
     {
-        // XXX
-        public IEnumerable<string> Accounts = new List<string>() { "Account 1", "Account 2", "Account 3" };
-        public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
-        public ICommand CreateCommand => new Command(async () => await Launcher.OpenAsync("//create"));
-        public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
+        Serilog.ILogger logger;
+        readonly object @lock = new();
+        IWalletService WalletService => DependencyService.Get<IWalletService>();
 
+        public ObservableCollection<AccountModel> AccountList = new ObservableCollection<AccountModel>();
+        public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
+        public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
 
         public AppShell()
         {
             InitializeComponent();
+            logger = WalletService.Logger;
             RegisterRoutes();
-            SetupAccounts();
             SetupDefaultTab();
+            PropertyChanged += Shell_PropertyChanged;
+            AccountList.CollectionChanged += AccountsCollectionChanged;
         }
 
         public void ChangeTabsTo(string tabName)
@@ -74,20 +81,52 @@ namespace HodlWallet.UI
             ChangeTabsTo("homeTab");
         }
 
-        void SetupAccounts()
+        void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            foreach (var item in Accounts)
+            //This will get called when the collection is changed
+            if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                MenuItem mi = new()
+                //  An Account was Added to the collection
+                foreach (AccountModel account in e.NewItems)
                 {
-                    Text = item,
-                    Command = GoToAccountCommand,
-                    CommandParameter = item,
-                    StyleClass = new List<string> { "MenuItemLabelClass" },
-                };
-
-                Items.Add(mi);
+                    AddMenuItems(account);
+                }
             }
+
+            // TODO: Pending implementation for another actions from NotifyCollectionChangedAction
+            /*else
+            {
+                logger.Debug($"********AccountsCollectionChanged another ACTION=> {e.Action}");
+                // An action on the Account collection
+                foreach (AccountModel account in e.NewItems)
+                {
+                    logger.Debug($"********AccountsCollectionChanged Item => {account.AccountName}");
+                }
+            }*/
+        }
+        void AddMenuItems(AccountModel accountItem)
+        {
+            MenuItem mi = new()
+            {
+                Text = accountItem.AccountName,
+                Command = GoToAccountCommand,
+                CommandParameter = accountItem,
+                StyleClass = new List<string> { "MenuItemLabelClass" },
+            };
+
+            Items.Add(mi);
+        }
+
+        private void Shell_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            // Listen to Shell PropertyChanged event, if flyout menu is open then the property is FlyoutIsPresented.
+            if (e.PropertyName.Equals("FlyoutIsPresented") && FlyoutIsPresented)
+                SyncCollections();
+        }
+        void SyncCollections()
+        {
+            // Compare and sync accounts in the wallet account list that are not already into AccountList.
+            AccountModel.SyncCollections(WalletService.Wallet.Accounts, AccountList);
         }
 
         void RegisterRoutes()
@@ -98,6 +137,7 @@ namespace HodlWallet.UI
             Routing.RegisterRoute("home", typeof(HomeView));
             Routing.RegisterRoute("receive", typeof(ReceiveView));
             Routing.RegisterRoute("account-settings", typeof(AccountSettingsView));
+            Routing.RegisterRoute(nameof(CreateAccountView), typeof(CreateAccountView));
         }
     }
 }
