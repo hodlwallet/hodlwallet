@@ -23,11 +23,13 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using NBitcoin;
 using Xamarin.Forms;
+
+using NBitcoin;
+
 using Liviano.Models;
+
 using HodlWallet.Core.Extensions;
-using HodlWallet.Core.Utils;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Locale;
 

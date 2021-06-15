@@ -82,9 +82,13 @@
 		<EmbeddedResource Update="UI\Controls\FlyoutHeader.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
-		<EmbeddedResource Update="UI\Locale\LocaleResources.resx">
-			<LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>
-			<Generator>PublicResXFileCodeGenerator</Generator>
+		<EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="UI\Locale\LocaleResources.es.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>LocaleResources.es.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="UI\Locale\LocaleResources.resx">
+		  <LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>
+		  <Generator>PublicResXFileCodeGenerator</Generator>
 		</EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
@@ -105,12 +109,14 @@
 		<Compile Update="UI\Views\SettingsView.xaml.cs">
 			<DependentUpon>SettingsView.xaml</DependentUpon>
 		</Compile>
+		<Compile Update="UI\Locale\LocaleResources.es.Designer.cs">
+		  <DependentUpon>LocaleResources.es.resx</DependentUpon>
+		</Compile>
+		<Compile Update="UI\Locale\LocaleResources.Designer.cs">
+		  <DependentUpon>LocaleResources.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
 	<ItemGroup>
-		<EmbeddedResource Update="UI\Locale\LocaleResources.es.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>LocaleResources.es.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
 		<EmbeddedResource Update="UI\Views\CreateAccountView.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
