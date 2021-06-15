@@ -26,6 +26,8 @@ using System.Windows.Input;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Services;
+using System;
+using System.Runtime.CompilerServices;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -131,6 +133,7 @@ namespace HodlWallet.Core.ViewModels
             if (!CheckMnemonicHasValidChecksum(mnemonic)) return;
 
             SecureStorageService.SetMnemonic(mnemonic);
+            SecureStorageService.SetSeedBirthday(new DateTimeOffset(DateTime.UtcNow));
 
             WalletService.StartWalletWithWalletId();
 
