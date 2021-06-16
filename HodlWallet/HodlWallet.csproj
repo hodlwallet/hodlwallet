@@ -92,11 +92,11 @@
 		</EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Update="UI\Locale\LocaleResources.Designer.cs">
+        <EmbeddedResource Update="UI\Locale\LocaleResources.resx">
 			<DependentUpon>LocaleResources.resx</DependentUpon>
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-		</Compile>
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>            
+		</EmbeddedResource>
 		<Compile Update="UI\Views\RecoverView.xaml.cs">
 			<DependentUpon>RecoverView.xaml</DependentUpon>
 		</Compile>
@@ -114,6 +114,8 @@
 		</Compile>
 		<Compile Update="UI\Locale\LocaleResources.Designer.cs">
 		  <DependentUpon>LocaleResources.resx</DependentUpon>
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>
