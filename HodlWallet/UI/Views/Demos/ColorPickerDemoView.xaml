@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HodlWallet.UI.Views.Demos.ColorPickerDemoView"
+             xmlns:controls="clr-namespace:HodlWallet.UI.Controls">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Pick a color" FontSize="Medium" TextColor="White"></Label>
+
+            <controls:ColorPicker x:Name="PickColorControl" ></controls:ColorPicker>
+
+            <Label Text="Sample" FontSize="Medium" TextColor="White"></Label>
+
+            <BoxView x:Name="Box_View" VerticalOptions="FillAndExpand" 
+                 BindingContext="{x:Reference Name=PickColorControl}"
+                 Color="{Binding ButtonColorSelected}"
+        ></BoxView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
