@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             Title="{i18n:Translate AckRisk.title}"
+             x:Class="HodlWallet.UI.Views.AcknowledgeRiskView" >
+    <ContentPage.BindingContext>
+        <vm:BackupViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <FlexLayout Direction="Column"
+                        BackgroundColor="{DynamicResource BackgroundPrimary}"
+                        AlignItems="Center">
+                <BoxView FlexLayout.Grow="1" />
+
+                <Grid FlexLayout.Grow="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="9*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="80" />
+                    </Grid.RowDefinitions>
+
+                    <!--First Acknowledge Risk Term-->
+                    <CheckBox Grid.Column="0"
+                        Grid.Row="0"
+                        HorizontalOptions="Start"
+                        CheckedChanged="OnAckTerm1Checked" />
+
+                    <Label x:Name="AckTerm1"
+                        Text="{i18n:Translate Text=AckRisk.term1}"
+                        FontFamily="{StaticResource Sans-Regular}"
+                        TextColor="{DynamicResource SyncGradientStart}"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontSize="Medium"
+                        Margin="0, 0, 0, 10"
+                        Grid.Column="1"
+                        Grid.Row="0" />
+
+                    <!--Second Acknowledge Risk Term-->
+                    <CheckBox Grid.Column="0"
+                        Grid.Row="1"
+                        HorizontalOptions="Start"
+                        CheckedChanged="OnAckTerm2Checked" />
+
+                    <Label x:Name="AckTerm2"
+                        Text="{i18n:Translate Text=AckRisk.term2}"   
+                        FontFamily="{StaticResource Sans-Regular}"
+                        TextColor="{DynamicResource SyncGradientStart}"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontSize="Medium"
+                        Margin="0, 0, 0, 10"
+                        Grid.Column="1"
+                        Grid.Row="1" />
+
+                    <!--Third Acknowledge Risk Term-->
+                    <CheckBox Grid.Column="0"
+                        Grid.Row="2"
+                        HorizontalOptions="Start"
+                        CheckedChanged="OnAckTerm3Checked" />
+
+                    <Label x:Name="AckTerm3"
+                        Text="{i18n:Translate Text=AckRisk.term3}"
+                        FontFamily="{StaticResource Sans-Regular}"
+                        TextColor="{DynamicResource SyncGradientStart}"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontSize="Medium"
+                        Margin="0, 0, 0, 10"
+                        Grid.Column="1"
+                        Grid.Row="2" />
+
+                    <!--Fourth Acknowledge Risk Term-->
+                    <CheckBox Grid.Column="0"
+                        Grid.Row="3"
+                        HorizontalOptions="Start" 
+                        CheckedChanged="OnAckTerm4Checked"/>
+
+                    <Label x:Name="AckTerm4"
+                        Text="{i18n:Translate Text=AckRisk.term4}"
+                        FontFamily="{StaticResource Sans-Regular}"
+                        TextColor="{DynamicResource SyncGradientStart}"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontSize="Medium"
+                        Margin="0, 0, 0, 10"
+                        Grid.Column="1"
+                        Grid.Row="3"/>
+                </Grid>
+
+                <BoxView FlexLayout.Grow="1" />
+                <Button x:Name="AckButton"
+                    Text="{i18n:Translate Text=AckRisk.button}"
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                    CornerRadius="0"
+                    FontSize="Large"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="1"
+                    Clicked="WalletInfoButton_Clicked" />
+                
+            </FlexLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
