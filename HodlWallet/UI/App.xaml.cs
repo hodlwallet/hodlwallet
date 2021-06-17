@@ -30,7 +30,6 @@ using HodlWallet.Core.Services;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
 using HodlWallet.UI.Locale;
-using HodlWallet.UI.Views.Demos;
 
 namespace HodlWallet.UI
 {
