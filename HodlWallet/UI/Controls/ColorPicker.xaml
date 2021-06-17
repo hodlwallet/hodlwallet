@@ -9,12 +9,12 @@
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions >
-        <ColumnDefinition Width=" * " />
-        <ColumnDefinition Width=" * " />
-        <ColumnDefinition Width=" * " />
-        <ColumnDefinition Width=" * " />
-        <ColumnDefinition Width=" * " />
-        <ColumnDefinition Width=" * " />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions >
 
     <Button BackgroundColor="#B71C1C" Grid.Row="0" Grid.Column="0" Clicked="ColorButtonClicked"></Button>
