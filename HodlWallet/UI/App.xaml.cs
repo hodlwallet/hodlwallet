@@ -30,6 +30,7 @@ using HodlWallet.Core.Services;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
 using HodlWallet.UI.Locale;
+using HodlWallet.UI.Views.Demos;
 
 namespace HodlWallet.UI
 {
@@ -42,6 +43,8 @@ namespace HodlWallet.UI
 
         public App()
         {
+            MainPage = new ColorPickerDemoView();
+            return;
             SetupCultureInfo();
 
             InitializeComponent();
@@ -72,6 +75,7 @@ namespace HodlWallet.UI
 
         protected override void OnStart()
         {
+            return;
             // NOTE You might think, why not move this forward?
             // the init code that inserts the logger into
             // WalletService is only run after the custructor

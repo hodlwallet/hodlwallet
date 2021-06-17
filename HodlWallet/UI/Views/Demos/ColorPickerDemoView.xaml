@@ -4,17 +4,17 @@
              x:Class="HodlWallet.UI.Views.Demos.ColorPickerDemoView"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Pick a color" FontSize="Medium" TextColor="White"></Label>
+        <StackLayout Margin="5, 30, 5, 10">
+            <Label Text="Pick a color" FontSize="Medium" TextColor="Gray" />
 
-            <controls:ColorPicker x:Name="PickColorControl"></controls:ColorPicker>
+            <controls:ColorPicker x:Name="PickColorControl" />
 
-            <Label Text="Sample" FontSize="Medium" TextColor="White"></Label>
+            <Label Text="Sample" FontSize="Medium" TextColor="Gray" />
 
-            <BoxView x:Name="Box_View" VerticalOptions="FillAndExpand" 
-                 BindingContext="{x:Reference Name=PickColorControl}"
-                 Color="{Binding ButtonColorSelected}">
-            </BoxView>
+            <BoxView x:Name="Box_View"
+                     VerticalOptions="FillAndExpand"
+                     BindingContext="{x:Reference Name=PickColorControl}"
+                     Color="{Binding ButtonColorSelected}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
