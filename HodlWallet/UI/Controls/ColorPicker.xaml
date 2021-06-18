@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HodlWallet.UI.Controls.ColorPicker">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions >
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions >
+
+    <Button BackgroundColor="{StaticResource ColorPicker1}" Grid.Row="0" Grid.Column="0" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker2}" Grid.Row="0" Grid.Column="1" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker3}" Grid.Row="0" Grid.Column="2" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker4}" Grid.Row="0" Grid.Column="3" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker5}" Grid.Row="0" Grid.Column="4" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker6}" Grid.Row="0" Grid.Column="5" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker7}" Grid.Row="1" Grid.Column="0" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker8}" Grid.Row="1" Grid.Column="1" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker9}" Grid.Row="1" Grid.Column="2" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker10}" Grid.Row="1" Grid.Column="3" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker11}" Grid.Row="1" Grid.Column="4" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker12}" Grid.Row="1" Grid.Column="5" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker13}" Grid.Row="2" Grid.Column="0" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker14}" Grid.Row="2" Grid.Column="1" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker15}" Grid.Row="2" Grid.Column="2" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker16}" Grid.Row="2" Grid.Column="3" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker17}" Grid.Row="2" Grid.Column="4" Clicked="ColorButtonClicked"></Button>
+    <Button BackgroundColor="{StaticResource ColorPicker18}" Grid.Row="2" Grid.Column="5" Clicked="ColorButtonClicked"></Button>
+</Grid>
