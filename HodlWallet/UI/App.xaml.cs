@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -29,7 +30,6 @@ using HodlWallet.Core.Services;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
 using HodlWallet.UI.Locale;
-using System.Threading;
 
 namespace HodlWallet.UI
 {
@@ -156,8 +156,8 @@ namespace HodlWallet.UI
                 var birthday = LegacySecureKeyService.GetWalletCreationTime();
 
                 SecureStorageService.SetMnemonic(mnemonic);
-                SecureStorageService.SetPin(pin);
                 SecureStorageService.SetSeedBirthday(new DateTimeOffset(new DateTime(birthday)));
+                SecureStorageService.SetPin(pin);
 
                 WalletService.InitializeWallet(true);
             }

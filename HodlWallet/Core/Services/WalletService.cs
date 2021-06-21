@@ -41,12 +41,10 @@ using Liviano.Utilities;
 using Liviano.Extensions;
 using Liviano.Models;
 using Liviano.Exceptions;
-using Liviano.Electrum;
-
-using static Liviano.Electrum.ElectrumClient;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
+using NBitcoin.Protocol;
 
 [assembly: Dependency(typeof(WalletService))]
 namespace HodlWallet.Core.Services
@@ -286,14 +284,14 @@ namespace HodlWallet.Core.Services
                 else
                 {
                     int countBfrAddToList = Wallet.Accounts.Count;
-                    
+
                     Wallet.AddAccount(type, name);
 
                     if (Wallet.Accounts.Count <= countBfrAddToList)
                     {
                         messageError = $"Unable to add a new accountto the current Wallet | Name => {name} - Type => {type}.";
                         Logger.Error(messageError);
-                    } 
+                    }
                     else
                     {
                         addedAccount = true;
@@ -422,15 +420,18 @@ namespace HodlWallet.Core.Services
 
             try
             {
-                tx = TransactionExtensions.CreateTransaction(
+                TransactionBuilder builder;
+                (builder, tx) = TransactionExtensions.CreateTransaction(
                     addressTo,
                     btcAmount,
                     feeSatsPerByte,
+                    true,
                     Wallet.CurrentAccount
                 );
                 fees = tx.GetVirtualSize() * feeSatsPerByte;
+                bool verified = TransactionExtensions.VerifyTransaction(builder, tx, out var transactionPolicyErrors);
 
-                return (true, tx, fees, null);
+                return (verified, tx, fees, null);
             }
             catch (WalletException e)
             {
