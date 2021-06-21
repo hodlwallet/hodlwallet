@@ -182,7 +182,7 @@
     <comment>label for backup word title</comment>
   </data>
   <data name="BackupWord.next" xml:space="preserve">
-    <value>Next Word</value>
+    <value>Next</value>
     <comment>label for backup word next button</comment>
   </data>
   <data name="BackupWord.previous" xml:space="preserve">
