@@ -57,7 +57,6 @@ namespace HodlWallet.UI.Views
 
         async void NavigateToBackupViewModel(PinPadViewModel _)
         {
-            //await Navigation.PushAsync(new BackupView(action: "skip"));
             await Navigation.PushAsync(new NewWalletInfoView());
         }
     }
