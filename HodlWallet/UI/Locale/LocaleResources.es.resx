@@ -200,6 +200,10 @@
     <value>Tipo</value>
     <comment>label for type options when create an account</comment>
   </data>
+  <data name="AddAccount.color" xml:space="preserve">
+    <value>Elige un Color</value>
+    <comment>label for the color associated to an account</comment>
+  </data>
   <data name="AddAccount.createButton" xml:space="preserve">
     <value>Crear</value>
     <comment>label for add account button</comment>
