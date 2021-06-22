@@ -34,6 +34,7 @@
             <Color x:Key="DecreasePriceChange">Red</Color>
 
             <!-- ColorPicker control colors-->
+            <Color x:Key="ColorPickerSelected">#C89E26</Color>
             <Color x:Key="ColorPicker1">#B71C1C</Color>
             <Color x:Key="ColorPicker2">#EC407A</Color>
             <Color x:Key="ColorPicker3">#880E4F</Color>

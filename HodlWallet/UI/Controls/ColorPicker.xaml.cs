@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -27,6 +26,20 @@ namespace HodlWallet.UI.Controls
         {
             Button pressed = sender as Button;
             ButtonColorSelected = pressed.BackgroundColor;
+            CleanBorderButtons();
+            pressed.BorderColor = (Color)Application.Current.Resources["ColorPickerSelected"];
+            pressed.BorderWidth = 4;
+        }
+
+        private void CleanBorderButtons()
+        {
+            foreach (var element in controlViewColorPicker.Children)
+            {
+                if (element is Button button)
+                {
+                    button.BorderColor = Color.Transparent;
+                }
+            }
         }
     }
 }
