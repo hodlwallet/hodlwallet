@@ -2,38 +2,38 @@
 <Grid xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="HodlWallet.UI.Controls.ColorPicker"
-    x:Name="controlViewColorPicker">
+    x:Name="controlViewColorPicker" >
     <Grid.RowDefinitions>
         <RowDefinition Height="*" />
         <RowDefinition Height="*" />
         <RowDefinition Height="*" />
     </Grid.RowDefinitions>
 
-    <Grid.ColumnDefinitions >
+    <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="*" />
-    </Grid.ColumnDefinitions >
+    </Grid.ColumnDefinitions>
 
-    <Button BackgroundColor="{StaticResource ColorPicker1}" Grid.Row="0" Grid.Column="0" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker2}" Grid.Row="0" Grid.Column="1" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker3}" Grid.Row="0" Grid.Column="2" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker4}" Grid.Row="0" Grid.Column="3" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker5}" Grid.Row="0" Grid.Column="4" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker6}" Grid.Row="0" Grid.Column="5" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker7}" Grid.Row="1" Grid.Column="0" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker8}" Grid.Row="1" Grid.Column="1" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker9}" Grid.Row="1" Grid.Column="2" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker10}" Grid.Row="1" Grid.Column="3" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker11}" Grid.Row="1" Grid.Column="4" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker12}" Grid.Row="1" Grid.Column="5" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker13}" Grid.Row="2" Grid.Column="0" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker14}" Grid.Row="2" Grid.Column="1" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker15}" Grid.Row="2" Grid.Column="2" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker16}" Grid.Row="2" Grid.Column="3" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker17}" Grid.Row="2" Grid.Column="4" Clicked="ColorButtonClicked"></Button>
-    <Button BackgroundColor="{StaticResource ColorPicker18}" Grid.Row="2" Grid.Column="5" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[1]}" Grid.Row="0" Grid.Column="0" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[2]}" Grid.Row="0" Grid.Column="1" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[3]}" Grid.Row="0" Grid.Column="2" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[4]}" Grid.Row="0" Grid.Column="3" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[5]}" Grid.Row="0" Grid.Column="4" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[6]}" Grid.Row="0" Grid.Column="5" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[7]}" Grid.Row="1" Grid.Column="0" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[8]}" Grid.Row="1" Grid.Column="1" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[9]}" Grid.Row="1" Grid.Column="2" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[10]}" Grid.Row="1" Grid.Column="3" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[11]}" Grid.Row="1" Grid.Column="4" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[12]}" Grid.Row="1" Grid.Column="5" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[13]}" Grid.Row="2" Grid.Column="0" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[14]}" Grid.Row="2" Grid.Column="1" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[15]}" Grid.Row="2" Grid.Column="2" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[16]}" Grid.Row="2" Grid.Column="3" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[17]}" Grid.Row="2" Grid.Column="4" Clicked="ColorButtonClicked"></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[18]}" Grid.Row="2" Grid.Column="5" Clicked="ColorButtonClicked"></Button>
 </Grid>

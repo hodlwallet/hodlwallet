@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,6 +10,31 @@ namespace HodlWallet.UI.Controls
     {
         public static readonly BindableProperty ButtonColorSelectedProperty
             = BindableProperty.Create(nameof(ButtonColorSelected), typeof(Color), typeof(ColorPicker), Color.White);
+
+        Color[] colorPickerControlList =
+        {
+            (Color)Application.Current.Resources["ColorPickerSelected"],
+            (Color)Application.Current.Resources["ColorPicker1"],
+            (Color)Application.Current.Resources["ColorPicker2"],
+            (Color)Application.Current.Resources["ColorPicker3"],
+            (Color)Application.Current.Resources["ColorPicker4"],
+            (Color)Application.Current.Resources["ColorPicker5"],
+            (Color)Application.Current.Resources["ColorPicker6"],
+            (Color)Application.Current.Resources["ColorPicker7"],
+            (Color)Application.Current.Resources["ColorPicker8"],
+            (Color)Application.Current.Resources["ColorPicker9"],
+            (Color)Application.Current.Resources["ColorPicker10"],
+            (Color)Application.Current.Resources["ColorPicker11"],
+            (Color)Application.Current.Resources["ColorPicker12"],
+            (Color)Application.Current.Resources["ColorPicker13"],
+            (Color)Application.Current.Resources["ColorPicker14"],
+            (Color)Application.Current.Resources["ColorPicker15"],
+            (Color)Application.Current.Resources["ColorPicker16"],
+            (Color)Application.Current.Resources["ColorPicker17"],
+            (Color)Application.Current.Resources["ColorPicker18"]
+        };
+
+        public IList<Color> ColorPickerControlList { get => colorPickerControlList; }
 
         public Color ButtonColorSelected
         {
