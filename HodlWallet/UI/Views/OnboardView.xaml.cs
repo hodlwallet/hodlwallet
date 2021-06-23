@@ -39,8 +39,7 @@ namespace HodlWallet.UI.Views
 
         void CreateButton_Clicked(object sender, EventArgs e)
         {
-            //Navigation.PushAsync(new PinPadView());
-            Navigation.PushAsync(new NewWalletInfoView());
+            Navigation.PushAsync(new PinPadView());
         }
 
         void RecoverButton_Clicked(object sender, EventArgs e)
