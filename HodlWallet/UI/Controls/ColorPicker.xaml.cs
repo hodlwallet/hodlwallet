@@ -13,8 +13,13 @@ namespace HodlWallet.UI.Controls
             = BindableProperty.Create(nameof(ButtonColorSelected), 
                 typeof(Color), 
                 typeof(ColorPicker), 
-                Color.White);
-        
+                Color.White,
+                propertyChanged: OnEventColorChanged);
+        public static void OnEventColorChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            b1.BorderColor = (Color)Application.Current.Resources["ColorPickerSelected"];
+        }
+
         Color[] colorPickerControlList =
         {
             (Color)Application.Current.Resources["ColorPickerSelected"],
@@ -58,7 +63,8 @@ namespace HodlWallet.UI.Controls
             Button pressed = sender as Button;
             ButtonColorSelected = pressed.BackgroundColor;
             CleanBorderButtons();
-            pressed.BorderColor = (Color)Application.Current.Resources["ColorPickerSelected"];
+            
+            //pressed.BorderColor = (Color)Application.Current.Resources["ColorPickerSelected"];
         }
 
         private void CleanBorderButtons()
