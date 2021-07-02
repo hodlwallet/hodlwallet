@@ -15,23 +15,26 @@ namespace HodlWallet.UI.Controls
                 typeof(ColorPicker), 
                 Color.White,
                 propertyChanged: OnEventColorChanged);
+
         public static void OnEventColorChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            b1.BorderColor = (Color)Application.Current.Resources["ColorPickerSelected"];
+            ColorPicker colorPicker = bindable as ColorPicker;
+            colorPicker.b1.BorderColor = Color.Black;
+            //colorPicker.b1.BorderColor = (Color)Application.Current.Resources["ColorPickerSelected"];
         }
-
+         
         Color[] colorPickerControlList =
         {
             (Color)Application.Current.Resources["ColorPickerSelected"],
-            (Color)Application.Current.Resources["ColorPicker1 "],
-            (Color)Application.Current.Resources["ColorPicker2 "],
-            (Color)Application.Current.Resources["ColorPicker3 "],
-            (Color)Application.Current.Resources["ColorPicker4 "],
-            (Color)Application.Current.Resources["ColorPicker5 "],
-            (Color)Application.Current.Resources["ColorPicker6 "],
-            (Color)Application.Current.Resources["ColorPicker7 "],
-            (Color)Application.Current.Resources["ColorPicker8 "],
-            (Color)Application.Current.Resources["ColorPicker9 "],
+            (Color)Application.Current.Resources["ColorPicker1" ],
+            (Color)Application.Current.Resources["ColorPicker2" ],
+            (Color)Application.Current.Resources["ColorPicker3" ],
+            (Color)Application.Current.Resources["ColorPicker4" ],
+            (Color)Application.Current.Resources["ColorPicker5" ],
+            (Color)Application.Current.Resources["ColorPicker6" ],
+            (Color)Application.Current.Resources["ColorPicker7" ],
+            (Color)Application.Current.Resources["ColorPicker8" ],
+            (Color)Application.Current.Resources["ColorPicker9" ],
             (Color)Application.Current.Resources["ColorPicker10"],
             (Color)Application.Current.Resources["ColorPicker11"],
             (Color)Application.Current.Resources["ColorPicker12"],
