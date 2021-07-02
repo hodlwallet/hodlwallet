@@ -62,6 +62,5 @@ namespace HodlWallet.UI.Views
         {
             _ = this.DisplayToast(errorMessage);
         }
-
     }
 }

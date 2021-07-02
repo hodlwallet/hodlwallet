@@ -27,7 +27,7 @@
         <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
 
-    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[1]}"  Grid.Row="0" Grid.Column="0" Clicked="ColorButtonClicked" x:Name="b1" Style="{StaticResource buttonStyle}" ></Button>
+    <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[1]}"  Grid.Row="0" Grid.Column="0" Clicked="ColorButtonClicked" Style="{StaticResource buttonStyle}" ></Button>
     <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[2]}"  Grid.Row="0" Grid.Column="1" Clicked="ColorButtonClicked" Style="{StaticResource buttonStyle}" ></Button>
     <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[3]}"  Grid.Row="0" Grid.Column="2" Clicked="ColorButtonClicked" Style="{StaticResource buttonStyle}" ></Button>
     <Button BindingContext="{x:Reference Name=controlViewColorPicker}" BackgroundColor="{Binding ColorPickerControlList[4]}"  Grid.Row="0" Grid.Column="3" Clicked="ColorButtonClicked" Style="{StaticResource buttonStyle}" ></Button>

@@ -19,8 +19,20 @@ namespace HodlWallet.UI.Controls
         public static void OnEventColorChanged(BindableObject bindable, object oldValue, object newValue)
         {
             ColorPicker colorPicker = bindable as ColorPicker;
-            colorPicker.b1.BorderColor = Color.Black;
-            //colorPicker.b1.BorderColor = (Color)Application.Current.Resources["ColorPickerSelected"];
+            foreach (var element in colorPicker.Children)
+            {
+                if (element is Button button)
+                {
+                    if (element.BackgroundColor == colorPicker.ButtonColorSelected)
+                    {
+                        button.BorderColor = (Color)Application.Current.Resources["ColorPickerSelected"];
+                    }
+                    else
+                    {
+                        button.BorderColor = Color.Transparent;
+                    }
+                }
+            }
         }
          
         Color[] colorPickerControlList =
@@ -65,20 +77,6 @@ namespace HodlWallet.UI.Controls
         {
             Button pressed = sender as Button;
             ButtonColorSelected = pressed.BackgroundColor;
-            CleanBorderButtons();
-            
-            //pressed.BorderColor = (Color)Application.Current.Resources["ColorPickerSelected"];
-        }
-
-        private void CleanBorderButtons()
-        {
-            foreach (var element in controlViewColorPicker.Children)
-            {
-                if (element is Button button)
-                {
-                    button.BorderColor = Color.Transparent;
-                }
-            }
         }
     }
 }
