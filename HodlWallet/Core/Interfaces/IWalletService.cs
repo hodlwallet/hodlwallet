@@ -64,7 +64,7 @@ namespace HodlWallet.Core.Interfaces
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,
             long feeSatsPerByte, string password);
 
-        Task<(bool Success, string Error)> AddAccount(string type, string name);
+        Task<(bool Success, string Error)> AddAccount(string type, string name, string color);
         string GetWordListLanguage();
         Task<(bool Sent, string Error)> SendTransaction(Transaction tx);
     }

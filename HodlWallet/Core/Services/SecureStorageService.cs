@@ -42,6 +42,11 @@ namespace HodlWallet.Core.Services
         const string MNEMONIC_KEY = "mnemonic";
         const string NETWORK_KEY = "network";
         const string SEED_BIRTHDAY_KEY = "seed-birthday";
+        /*
+         * Key string format to identify the color bellowing to an account:
+         * ACCOUNT_COLOR_PREFIX_KEY + WALLET_ID + account_name
+         */
+        const string ACCOUNT_COLOR_PREFIX_KEY = "account:";
 
         public static string GetWalletId()
         {
@@ -151,6 +156,29 @@ namespace HodlWallet.Core.Services
         public static void SetSeedBirthday(DateTimeOffset birthday)
         {
             Set(SEED_BIRTHDAY_KEY, birthday.ToUnixTimeSeconds().ToString());
+        }
+
+        public static string GetAccountColor(string walletId, string accountName)
+        {
+            Guard.NotEmpty(walletId, nameof(walletId));
+            Guard.NotEmpty(accountName, nameof(accountName));
+            string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}-{accountName}";
+            return Get(accountColorKey);
+        }
+
+        public static bool GetAccountColors(string walletId)
+        {
+            string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}-";
+            return !string.IsNullOrEmpty(GetWalletId());
+        }
+
+        public static void SetAccountColor(string walletId, string accountName, string color)
+        {
+            Guard.NotEmpty(walletId, nameof(walletId));
+            Guard.NotEmpty(accountName, nameof(accountName));
+            Guard.NotEmpty(color, nameof(color));
+            string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}-{accountName}";
+            Set(accountColorKey, color);
         }
 
         public static void RemoveAll()

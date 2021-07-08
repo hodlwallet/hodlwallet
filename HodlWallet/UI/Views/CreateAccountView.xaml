@@ -34,7 +34,6 @@
                         Style="{DynamicResource CustomEntry}"
                         TextColor="{DynamicResource TextPrimary}"
                         BackgroundColor="Transparent"
-                        PlaceholderColor="{DynamicResource TextSecondary}"
                         Margin="20,10" />
                     <ContentView.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" />
