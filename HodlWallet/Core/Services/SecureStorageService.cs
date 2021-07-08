@@ -31,6 +31,7 @@ using Xamarin.Essentials;
 using Liviano.Bips;
 using Liviano.Exceptions;
 using Liviano.Utilities;
+using System.Diagnostics;
 
 namespace HodlWallet.Core.Services
 {
@@ -47,6 +48,7 @@ namespace HodlWallet.Core.Services
          * ACCOUNT_COLOR_PREFIX_KEY + WALLET_ID + account_name
          */
         const string ACCOUNT_COLOR_PREFIX_KEY = "account:";
+        const string ACCOUNT_COLOR_SEPARATOR_KEY = ":";
 
         public static string GetWalletId()
         {
@@ -162,14 +164,8 @@ namespace HodlWallet.Core.Services
         {
             Guard.NotEmpty(walletId, nameof(walletId));
             Guard.NotEmpty(accountName, nameof(accountName));
-            string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}-{accountName}";
+            string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}{ACCOUNT_COLOR_SEPARATOR_KEY}{accountName}";
             return Get(accountColorKey);
-        }
-
-        public static bool GetAccountColors(string walletId)
-        {
-            string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}-";
-            return !string.IsNullOrEmpty(GetWalletId());
         }
 
         public static void SetAccountColor(string walletId, string accountName, string color)
@@ -177,7 +173,8 @@ namespace HodlWallet.Core.Services
             Guard.NotEmpty(walletId, nameof(walletId));
             Guard.NotEmpty(accountName, nameof(accountName));
             Guard.NotEmpty(color, nameof(color));
-            string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}-{accountName}";
+            string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}{ACCOUNT_COLOR_SEPARATOR_KEY}{accountName}";
+            Debug.WriteLine($"++++++ Account color Key => { accountColorKey} - Color saved => {color}");
             Set(accountColorKey, color);
         }
 

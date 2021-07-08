@@ -28,7 +28,7 @@
                 <Label Text="{i18n:Translate Text=AddAccount.entry}"
                         FontSize="Large"
                         FlexLayout.AlignSelf="Center" />
-                <ContentView>                    
+                <ContentView>
                     <Entry Placeholder="Bitcoin Account"
                         Text="{Binding AccountName}"
                         Style="{DynamicResource CustomEntry}"
@@ -60,7 +60,7 @@
                         FontSize="Large"
                         FlexLayout.AlignSelf="Center" 
                         Margin="0, 20, 0, 0" />
-                <controls:ColorPicker x:Name="PickColorControl" ButtonColorSelected="#0D47A1"/>
+                <controls:ColorPicker x:Name="PickColorControl" ButtonColorSelected="{Binding AccountColor}"/>
 
                 <BoxView x:Name="boxView" FlexLayout.Grow="1"/>
                 <Button Text="{i18n:Translate Text=AddAccount.createButton}"

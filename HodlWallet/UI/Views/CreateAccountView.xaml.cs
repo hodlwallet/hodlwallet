@@ -37,6 +37,7 @@ namespace HodlWallet.UI.Views
         {
             InitializeComponent();
             SubscribeToMessages();
+            SetSuggestedColor();
         }
 
         void OnAccountTypeCheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -61,6 +62,11 @@ namespace HodlWallet.UI.Views
         void DisplayErrorCreatingAccount(CreateAccountViewModel vm, string errorMessage)
         {
             _ = this.DisplayToast(errorMessage);
+        }
+
+        void SetSuggestedColor()
+        {
+            ViewModel.AccountColor = "#EC407A";
         }
     }
 }

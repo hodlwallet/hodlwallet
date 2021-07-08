@@ -60,10 +60,6 @@ namespace HodlWallet.UI.Controls
 
         public IList<Color> ColorPickerControlList { get => colorPickerControlList; }
 
-        
-
-        public static readonly BindableProperty ButtonColorSelectedProperty
-            = BindableProperty.Create(nameof(ButtonColorSelected), typeof(Color), typeof(ColorPicker), Color.White);
         public Color ButtonColorSelected
         {
             get => (Color)GetValue(ButtonColorSelectedProperty);

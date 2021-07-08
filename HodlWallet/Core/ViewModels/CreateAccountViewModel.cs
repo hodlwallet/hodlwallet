@@ -29,6 +29,8 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 
+using HodlWallet.UI.Controls;
+
 namespace HodlWallet.Core.ViewModels
 {
     class CreateAccountViewModel : BaseViewModel
@@ -60,8 +62,6 @@ namespace HodlWallet.Core.ViewModels
             get => accountColor;
             set => SetProperty(ref accountColor, value);
         }
-
-        public ObservableCollection<Color> ColorPickerOptions { get; } = new ObservableCollection<Color>();
 
         public CreateAccountViewModel()
         {
