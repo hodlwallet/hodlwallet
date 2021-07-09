@@ -70,7 +70,9 @@
                         FontSize="Large"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="1"
-                        Command="{Binding CreateAccountCommand}" />
+                        Command="{Binding CreateAccountCommand}"
+                        CommandParameter="{Binding Source={x:Reference PickColorControl},
+                                                    Path=ButtonColorSelected}"/>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

@@ -65,10 +65,11 @@ namespace HodlWallet.Core.ViewModels
 
         public CreateAccountViewModel()
         {
-            CreateAccountCommand = new Command(CreateAccount);
+            CreateAccountCommand = new Command<Color>((color) => CreateAccount(color));
         }
-        private async void CreateAccount()
+        private async void CreateAccount(Color color)
         {
+            AccountColor = color.ToString();
             var (Success, Error) = await WalletService.AddAccount(AccountType ?? accountTypesList[0], AccountName, AccountColor);
 
             if (!Success && !string.IsNullOrEmpty(Error))
