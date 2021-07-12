@@ -300,7 +300,12 @@ namespace HodlWallet.Core.Services
                         // Backup the color associated with this account
                         Guard.NotNull(walletId, nameof(walletId));
                         Guard.NotEmpty(color, nameof(color));
-                        SecureStorageService.SetAccountColor(walletId, name, color);
+                        string accountIdSaved = 
+                                (from account in Wallet.Accounts
+                                where account.Name == name
+                                select account.Id).LastOrDefault();
+                        Guard.NotEmpty(accountIdSaved, nameof(accountIdSaved));
+                        SecureStorageService.SetAccountColor(walletId, accountIdSaved, color);
                     }
                 }
                 return (addedAccount, messageError);

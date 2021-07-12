@@ -160,20 +160,20 @@ namespace HodlWallet.Core.Services
             Set(SEED_BIRTHDAY_KEY, birthday.ToUnixTimeSeconds().ToString());
         }
 
-        public static string GetAccountColor(string walletId, string accountName)
+        public static string GetAccountColor(string walletId, string accountId)
         {
             Guard.NotEmpty(walletId, nameof(walletId));
-            Guard.NotEmpty(accountName, nameof(accountName));
-            string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}{ACCOUNT_COLOR_SEPARATOR_KEY}{accountName}";
+            Guard.NotEmpty(accountId, nameof(accountId));
+            string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}{ACCOUNT_COLOR_SEPARATOR_KEY}{accountId}";
             return Get(accountColorKey);
         }
 
-        public static void SetAccountColor(string walletId, string accountName, string color)
+        public static void SetAccountColor(string walletId, string accountId, string color)
         {
             Guard.NotEmpty(walletId, nameof(walletId));
-            Guard.NotEmpty(accountName, nameof(accountName));
+            Guard.NotEmpty(accountId, nameof(accountId));
             Guard.NotEmpty(color, nameof(color));
-            string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}{ACCOUNT_COLOR_SEPARATOR_KEY}{accountName}";
+            string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}{ACCOUNT_COLOR_SEPARATOR_KEY}{accountId}";
             Debug.WriteLine($"++++++ Account color Key => { accountColorKey} - Color saved => {color}");
             Set(accountColorKey, color);
         }

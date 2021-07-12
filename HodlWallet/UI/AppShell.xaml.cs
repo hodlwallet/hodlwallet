@@ -110,7 +110,7 @@ namespace HodlWallet.UI
             {
                 Text = accountItem.AccountName,
                 Command = GoToAccountCommand,
-                CommandParameter = accountItem,
+                CommandParameter = accountItem.AccountData.Id,
                 StyleClass = new List<string> { "MenuItemLabelClass" },
             };
 
