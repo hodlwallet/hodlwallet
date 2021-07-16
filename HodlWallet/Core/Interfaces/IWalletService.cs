@@ -66,6 +66,7 @@ namespace HodlWallet.Core.Interfaces
 
         Task<(bool Success, string Error)> AddAccount(string type, string name, string color);
         string GetWordListLanguage();
+        string GetColorByAccount(string accountId);
         Task<(bool Sent, string Error)> SendTransaction(Transaction tx);
     }
 }
