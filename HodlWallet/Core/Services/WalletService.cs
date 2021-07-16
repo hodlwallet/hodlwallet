@@ -420,18 +420,17 @@ namespace HodlWallet.Core.Services
 
             try
             {
-                TransactionBuilder builder;
-                (builder, tx) = TransactionExtensions.CreateTransaction(
+                string error;
+                (tx, error) = Wallet.CurrentAccount.CreateTransaction(
                     addressTo,
                     btcAmount,
                     feeSatsPerByte,
-                    true,
-                    Wallet.CurrentAccount
+                    true
                 );
                 fees = tx.GetVirtualSize() * feeSatsPerByte;
-                bool verified = TransactionExtensions.VerifyTransaction(builder, tx, out var transactionPolicyErrors);
+                bool verified = string.IsNullOrEmpty(error);
 
-                return (verified, tx, fees, null);
+                return (verified, tx, fees, error);
             }
             catch (WalletException e)
             {
@@ -443,7 +442,7 @@ namespace HodlWallet.Core.Services
 
         public async Task<(bool Sent, string Error)> SendTransaction(Transaction tx)
         {
-            return await Wallet.SendTransaction(tx);
+            return await Wallet.Broadcast(tx);
         }
 
         public Network GetNetwork()
