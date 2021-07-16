@@ -110,7 +110,6 @@ namespace HodlWallet.UI
         }
         void AddMenuItems(AccountModel accountItem)
         {
-            Debug.WriteLine($"AddMenuItems: AccountId => {accountItem.AccountData.Id} | Color => {accountItem.AccountColor}");
             MenuItem mi = new()
             {
                 Text = accountItem.AccountName,

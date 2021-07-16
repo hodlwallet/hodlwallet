@@ -49,6 +49,7 @@ namespace HodlWallet.Core.Services
          */
         const string ACCOUNT_COLOR_PREFIX_KEY = "account:";
         const string ACCOUNT_COLOR_SEPARATOR_KEY = ":";
+        const string ACCOUNT_COLORS_LIST_KEY = "accountColors:";
 
         public static string GetWalletId()
         {
@@ -174,8 +175,23 @@ namespace HodlWallet.Core.Services
             Guard.NotEmpty(accountId, nameof(accountId));
             Guard.NotEmpty(color, nameof(color));
             string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}{ACCOUNT_COLOR_SEPARATOR_KEY}{accountId}";
-            Debug.WriteLine($"++++++ Account color Key => { accountColorKey} - Color saved => {color}");
             Set(accountColorKey, color);
+        }
+
+        public static string GetAccountColorList(string walletId)
+        {
+            Guard.NotEmpty(walletId, nameof(walletId));
+            string accountColorKey = $"{ACCOUNT_COLORS_LIST_KEY}{walletId}";
+            return Get(accountColorKey);
+        }
+
+        public static void SetAccountColorList(string walletId, string colors)
+        {
+            Guard.NotEmpty(walletId, nameof(walletId));
+            Guard.NotEmpty(colors, nameof(colors));
+            string accountColorKey = $"{ACCOUNT_COLORS_LIST_KEY}{walletId}";
+            SecureStorage.Remove(accountColorKey);
+            Set(accountColorKey, colors);
         }
 
         public static void RemoveAll()
