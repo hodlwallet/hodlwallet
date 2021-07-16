@@ -89,6 +89,10 @@ namespace HodlWallet.UI
                 //  An Account was Added to the collection
                 foreach (AccountModel account in e.NewItems)
                 {
+                    // Update the color of the account saved on storage service
+                    string colorStr = WalletService.GetColorByAccount(account.AccountData.Id);
+                    Color accountColor = !string.IsNullOrWhiteSpace(colorStr) ? Color.FromHex(colorStr) : (Color)Application.Current.Resources["TextPrimary"];
+                    account.AccountColor = accountColor;
                     AddMenuItems(account);
                 }
             }
@@ -106,6 +110,7 @@ namespace HodlWallet.UI
         }
         void AddMenuItems(AccountModel accountItem)
         {
+            Debug.WriteLine($"AddMenuItems: AccountId => {accountItem.AccountData.Id} | Color => {accountItem.AccountColor}");
             MenuItem mi = new()
             {
                 Text = accountItem.AccountName,
