@@ -21,6 +21,7 @@
             <Color x:Key="BackgroundSecondary">#161616</Color>
             <Color x:Key="TextPrimary">#F5F7FA</Color>
             <Color x:Key="TextSecondary">#A3A8AD</Color>
+            <Color x:Key="TextDark">#212121</Color>
             <Color x:Key="TextSuccess">#C89E26</Color>
             <Color x:Key="TextError">Red</Color>
             <Color x:Key="SelectedTab">#C89E26</Color>

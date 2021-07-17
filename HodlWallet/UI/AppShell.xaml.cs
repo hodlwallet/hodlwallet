@@ -38,6 +38,7 @@ using Xamarin.Essentials;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
 using HodlWallet.Core.Models;
+using HodlWallet.Core.Services;
 
 namespace HodlWallet.UI
 {
@@ -51,6 +52,29 @@ namespace HodlWallet.UI
         public ObservableCollection<AccountModel> AccountList = new ObservableCollection<AccountModel>();
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
+
+        public Color[] colorList =
+            {
+                Color.Black,
+                (Color)Application.Current.Resources["ColorPicker1" ],
+                (Color)Application.Current.Resources["ColorPicker2" ],
+                (Color)Application.Current.Resources["ColorPicker3" ],
+                (Color)Application.Current.Resources["ColorPicker4" ],
+                (Color)Application.Current.Resources["ColorPicker5" ],
+                (Color)Application.Current.Resources["ColorPicker6" ],
+                (Color)Application.Current.Resources["ColorPicker7" ],
+                (Color)Application.Current.Resources["ColorPicker8" ],
+                (Color)Application.Current.Resources["ColorPicker9" ],
+                (Color)Application.Current.Resources["ColorPicker10"],
+                (Color)Application.Current.Resources["ColorPicker11"],
+                (Color)Application.Current.Resources["ColorPicker12"],
+                (Color)Application.Current.Resources["ColorPicker13"],
+                (Color)Application.Current.Resources["ColorPicker14"],
+                (Color)Application.Current.Resources["ColorPicker15"],
+                (Color)Application.Current.Resources["ColorPicker16"],
+                (Color)Application.Current.Resources["ColorPicker17"],
+                (Color)Application.Current.Resources["ColorPicker18"],
+            };
 
         public AppShell()
         {
@@ -110,12 +134,30 @@ namespace HodlWallet.UI
         }
         void AddMenuItems(AccountModel accountItem)
         {
+            Color colorSaved = accountItem.AccountColor;
+
+            bool styleAdded = false;//Erase this line when Default Account is modified...
+            var style = new List<string> { "" };
+            for (int i = 1; i < colorList.Length; i++)
+            {
+                if (colorSaved == colorList[i])
+                {
+                    style = new List<string> { "MenuItemLabelClass" + i.ToString() };
+                    styleAdded = true;//Erase this line when Default Account is modified...
+                }
+            }
+
+            if (!styleAdded)//Erase this if when Default Account is modified...
+            {
+                style = new List<string> { "MenuItemLabelClass18" };
+            }
+
             MenuItem mi = new()
             {
                 Text = accountItem.AccountName,
                 Command = GoToAccountCommand,
                 CommandParameter = accountItem.AccountData.Id,
-                StyleClass = new List<string> { "MenuItemLabelClass" },
+                StyleClass = style,
             };
 
             Items.Add(mi);
