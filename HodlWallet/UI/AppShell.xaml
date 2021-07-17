@@ -21,143 +21,103 @@
             <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource TextSecondary}" />
             <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource SelectedTab}" />
         </Style>
-        <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        
 
-        <Style TargetType="Label" Class="MenuItemLabelClass1">
-            <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker1}" />
+        <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}">
+        </Style>
+
+        <Style x:Key="MenuItemLabelBase" TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
             <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass2">
+        <Style TargetType="Label" Class="MenuItemLabelClass1" BasedOn="{StaticResource MenuItemLabelBase}">
+            <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker1}" />
+        </Style>
+
+        <Style TargetType="Label" Class="MenuItemLabelClass2" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker2}" />
             <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass3">
+        <Style TargetType="Label" Class="MenuItemLabelClass3" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker3}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass4">
+        <Style TargetType="Label" Class="MenuItemLabelClass4" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker4}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass5">
+        <Style TargetType="Label" Class="MenuItemLabelClass5" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker5}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass6">
+        <Style TargetType="Label" Class="MenuItemLabelClass6" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker6}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass7">
+        <Style TargetType="Label" Class="MenuItemLabelClass7" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker7}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
+            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass8">
+        <Style TargetType="Label" Class="MenuItemLabelClass8" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker8}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass9">
+        <Style TargetType="Label" Class="MenuItemLabelClass9" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker9}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass10">
+        <Style TargetType="Label" Class="MenuItemLabelClass10" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker10}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass11">
+        <Style TargetType="Label" Class="MenuItemLabelClass11" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker11}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
+            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass12">
+        <Style TargetType="Label" Class="MenuItemLabelClass12" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker12}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
+            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass13">
+        <Style TargetType="Label" Class="MenuItemLabelClass13" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker13}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass14">
+        <Style TargetType="Label" Class="MenuItemLabelClass14" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker14}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass15">
+        <Style TargetType="Label" Class="MenuItemLabelClass15" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker15}" />
             <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass16">
+        <Style TargetType="Label" Class="MenuItemLabelClass16" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker16}" />
             <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass17">
+        <Style TargetType="Label" Class="MenuItemLabelClass17" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker17}" />
             <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass18">
+        <Style TargetType="Label" Class="MenuItemLabelClass18" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker18}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="Padding" Value="20, 0" />
         </Style>
 
 
-
-        <!--<Style TargetType="Layout"
+        <Style TargetType="Layout"
             Class="FlyoutItemLayoutStyle"
             ApplyToDerivedTypes="True">
-            <Setter Property="BackgroundColor"
-                Value="Teal" />
-        </Style>-->
+            <Setter Property="Grid.ColumnDefinitions" Value="0*, 1*" />
+        </Style>
     </Shell.Resources>
+
 
     <Shell.FlyoutHeader>
         <controls:FlyoutHeader />
