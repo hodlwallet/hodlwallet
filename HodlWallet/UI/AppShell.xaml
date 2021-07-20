@@ -75,7 +75,6 @@
 
         <Style TargetType="Label" Class="MenuItemLabelClass11" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker11}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
         </Style>
 
         <Style TargetType="Label" Class="MenuItemLabelClass12" BasedOn="{StaticResource MenuItemLabelBase}">
@@ -85,6 +84,7 @@
 
         <Style TargetType="Label" Class="MenuItemLabelClass13" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker13}" />
+            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
         </Style>
 
         <Style TargetType="Label" Class="MenuItemLabelClass14" BasedOn="{StaticResource MenuItemLabelBase}">
@@ -93,7 +93,6 @@
 
         <Style TargetType="Label" Class="MenuItemLabelClass15" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker15}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
         </Style>
 
         <Style TargetType="Label" Class="MenuItemLabelClass16" BasedOn="{StaticResource MenuItemLabelBase}">

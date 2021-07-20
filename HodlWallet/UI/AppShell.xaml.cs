@@ -65,7 +65,6 @@ namespace HodlWallet.UI
 
         public static Color RandomColor()
         {
-            
             List<int> notSelected = new();
             var rand = new Random();
             bool exit = false;
@@ -87,13 +86,7 @@ namespace HodlWallet.UI
                     exit = true;
                 }
             }
-
-            Console.WriteLine("*********************************************");
-            Console.WriteLine("N no selected = "+ notSelected.Count.ToString());
-            Console.WriteLine("*********************************************");
             return colorList[notSelected[rand.Next(notSelected.Count)]];
-
-            //return colorList[7];
         }
 
 
@@ -160,7 +153,7 @@ namespace HodlWallet.UI
                 {
                     // Update the color of the account saved on storage service
                     string colorStr = WalletService.GetColorByAccount(account.AccountData.Id);
-                    Color accountColor = !string.IsNullOrWhiteSpace(colorStr) ? Color.FromHex(colorStr) : (Color)Application.Current.Resources["ColorPicker18"];
+                    Color accountColor = !string.IsNullOrWhiteSpace(colorStr) ? Color.FromHex(colorStr) : (Color)Application.Current.Resources["ColorPicker11"];
                     account.AccountColor = accountColor;
                     AddMenuItems(account);
                 }
