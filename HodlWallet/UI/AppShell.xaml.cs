@@ -53,28 +53,72 @@ namespace HodlWallet.UI
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
 
-        public Color[] colorList =
+        public static bool[] isColorSelected = new bool[19];
+        public static void ClearColorSelectedList()
+        {
+            isColorSelected[0] = true;
+            for (int i=1; i< isColorSelected.Length; i++)
             {
-                Color.Black,
-                (Color)Application.Current.Resources["ColorPicker1" ],
-                (Color)Application.Current.Resources["ColorPicker2" ],
-                (Color)Application.Current.Resources["ColorPicker3" ],
-                (Color)Application.Current.Resources["ColorPicker4" ],
-                (Color)Application.Current.Resources["ColorPicker5" ],
-                (Color)Application.Current.Resources["ColorPicker6" ],
-                (Color)Application.Current.Resources["ColorPicker7" ],
-                (Color)Application.Current.Resources["ColorPicker8" ],
-                (Color)Application.Current.Resources["ColorPicker9" ],
-                (Color)Application.Current.Resources["ColorPicker10"],
-                (Color)Application.Current.Resources["ColorPicker11"],
-                (Color)Application.Current.Resources["ColorPicker12"],
-                (Color)Application.Current.Resources["ColorPicker13"],
-                (Color)Application.Current.Resources["ColorPicker14"],
-                (Color)Application.Current.Resources["ColorPicker15"],
-                (Color)Application.Current.Resources["ColorPicker16"],
-                (Color)Application.Current.Resources["ColorPicker17"],
-                (Color)Application.Current.Resources["ColorPicker18"],
-            };
+                isColorSelected[i] = false;
+            }
+        }
+
+        public static Color RandomColor()
+        {
+            
+            List<int> notSelected = new();
+            var rand = new Random();
+            bool exit = false;
+            while (!exit)
+            {
+                for (int i = 1; i < isColorSelected.Length; i++)
+                {
+                    if (!isColorSelected[i])
+                    {
+                        notSelected.Add(i);
+                    }
+                }
+                if (notSelected.Count == 0)
+                {
+                    ClearColorSelectedList();
+                }
+                else
+                {
+                    exit = true;
+                }
+            }
+
+            Console.WriteLine("*********************************************");
+            Console.WriteLine("N no selected = "+ notSelected.Count.ToString());
+            Console.WriteLine("*********************************************");
+            return colorList[notSelected[rand.Next(notSelected.Count)]];
+
+            //return colorList[7];
+        }
+
+
+        public static Color[] colorList =
+        {
+            Color.Black,
+            (Color)Application.Current.Resources["ColorPicker1" ],
+            (Color)Application.Current.Resources["ColorPicker2" ],
+            (Color)Application.Current.Resources["ColorPicker3" ],
+            (Color)Application.Current.Resources["ColorPicker4" ],
+            (Color)Application.Current.Resources["ColorPicker5" ],
+            (Color)Application.Current.Resources["ColorPicker6" ],
+            (Color)Application.Current.Resources["ColorPicker7" ],
+            (Color)Application.Current.Resources["ColorPicker8" ],
+            (Color)Application.Current.Resources["ColorPicker9" ],
+            (Color)Application.Current.Resources["ColorPicker10"],
+            (Color)Application.Current.Resources["ColorPicker11"],
+            (Color)Application.Current.Resources["ColorPicker12"],
+            (Color)Application.Current.Resources["ColorPicker13"],
+            (Color)Application.Current.Resources["ColorPicker14"],
+            (Color)Application.Current.Resources["ColorPicker15"],
+            (Color)Application.Current.Resources["ColorPicker16"],
+            (Color)Application.Current.Resources["ColorPicker17"],
+            (Color)Application.Current.Resources["ColorPicker18"],
+        };
 
         public AppShell()
         {
@@ -82,6 +126,7 @@ namespace HodlWallet.UI
             logger = WalletService.Logger;
             RegisterRoutes();
             SetupDefaultTab();
+            ClearColorSelectedList();
             PropertyChanged += Shell_PropertyChanged;
             AccountList.CollectionChanged += AccountsCollectionChanged;
         }
@@ -142,6 +187,7 @@ namespace HodlWallet.UI
                 if (colorSaved == colorList[i])
                 {
                     style = new List<string> { "MenuItemLabelClass" + i.ToString() };
+                    isColorSelected[i] = true;
                 }
             }
             
