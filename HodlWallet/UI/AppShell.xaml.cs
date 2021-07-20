@@ -115,7 +115,7 @@ namespace HodlWallet.UI
                 {
                     // Update the color of the account saved on storage service
                     string colorStr = WalletService.GetColorByAccount(account.AccountData.Id);
-                    Color accountColor = !string.IsNullOrWhiteSpace(colorStr) ? Color.FromHex(colorStr) : (Color)Application.Current.Resources["TextPrimary"];
+                    Color accountColor = !string.IsNullOrWhiteSpace(colorStr) ? Color.FromHex(colorStr) : (Color)Application.Current.Resources["ColorPicker18"];
                     account.AccountColor = accountColor;
                     AddMenuItems(account);
                 }
@@ -136,22 +136,15 @@ namespace HodlWallet.UI
         {
             Color colorSaved = accountItem.AccountColor;
 
-            bool styleAdded = false;//Erase this line when Default Account is modified...
             var style = new List<string> { "" };
             for (int i = 1; i < colorList.Length; i++)
             {
                 if (colorSaved == colorList[i])
                 {
                     style = new List<string> { "MenuItemLabelClass" + i.ToString() };
-                    styleAdded = true;//Erase this line when Default Account is modified...
                 }
             }
-
-            if (!styleAdded)//Erase this if when Default Account is modified...
-            {
-                style = new List<string> { "MenuItemLabelClass18" };
-            }
-
+            
             MenuItem mi = new()
             {
                 Text = accountItem.AccountName,
