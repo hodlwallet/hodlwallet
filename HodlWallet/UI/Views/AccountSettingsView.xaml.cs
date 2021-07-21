@@ -53,16 +53,16 @@ namespace HodlWallet.UI.Views
             Navigation.PushModalAsync(nav);
         }
 
-        async void ResyncWallet_Clicked(object sender, EventArgs e)
+        void ResyncWallet_Clicked(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
                 var answer = await AskThisIsIrreversibleQuestion("resync-wallet");
 
                 if (!answer) return;
-            });
 
-            await ViewModel.ResyncWallet();
+                await ViewModel.ResyncWallet();
+            });
         }
 
         void RestoreWallet_Clicked(object sender, EventArgs e)
@@ -116,9 +116,9 @@ namespace HodlWallet.UI.Views
 
         void SetLabels()
         {
-            #if DEBUG
-                BuildDate.Text = $"Built on: {BuildInfo.BuildDateText}";
-            #endif
+#if DEBUG
+            BuildDate.Text = $"Built on: {BuildInfo.BuildDateText}";
+#endif
         }
 
         async Task<bool> AskThisIsIrreversibleQuestion(string key)
@@ -144,7 +144,7 @@ namespace HodlWallet.UI.Views
                 LocaleResources.Alert_irreversible,
                 LocaleResources.Button_yes,
                 LocaleResources.Button_no
-            ) ;
+            );
         }
     }
 }
