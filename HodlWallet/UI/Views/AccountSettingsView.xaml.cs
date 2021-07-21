@@ -123,21 +123,13 @@ namespace HodlWallet.UI.Views
 
         async Task<bool> AskThisIsIrreversibleQuestion(string key)
         {
-            string title;
-            switch (key)
+            var title = key switch
             {
-                case "wipe-wallet":
-                    title = LocaleResources.Menu_wipeWallet;
-                    break;
-                case "resync-wallet":
-                    title = LocaleResources.Menu_resyncWallet;
-                    break;
-                case "restore-wallet":
-                    title = LocaleResources.Menu_restoreWallet;
-                    break;
-                default:
-                    throw new ArgumentException($"Invalid question sent, key: {key}");
-            }
+                "wipe-wallet" => LocaleResources.Menu_wipeWallet,
+                "resync-wallet" => LocaleResources.Menu_resyncWallet,
+                "restore-wallet" => LocaleResources.Menu_restoreWallet,
+                _ => throw new ArgumentException($"Invalid question sent, key: {key}"),
+            };
 
             return await this.DisplayPrompt(
                 title,
