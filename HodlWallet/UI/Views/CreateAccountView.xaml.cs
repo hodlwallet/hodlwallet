@@ -66,7 +66,7 @@ namespace HodlWallet.UI.Views
 
         void SetSuggestedColor()
         {
-            ViewModel.AccountColor = "#EC407A";
+            PickColorControl.ButtonColorSelected = AppShell.RandomColor();
         }
     }
 }

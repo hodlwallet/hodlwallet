@@ -38,6 +38,7 @@ using Xamarin.Essentials;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
 using HodlWallet.Core.Models;
+using HodlWallet.Core.Services;
 
 namespace HodlWallet.UI
 {
@@ -52,12 +53,71 @@ namespace HodlWallet.UI
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
 
+        public static bool[] isColorSelected = new bool[18];
+        public static void ClearColorSelectedList()
+        {
+            for (int i = 0; i < isColorSelected.Length; i++)
+            {
+                isColorSelected[i] = false;
+            }
+        }
+
+        public static Color RandomColor()
+        {
+            List<int> notSelected = new();
+            var rand = new Random();
+            bool exit = false;
+            while (!exit)
+            {
+                for (int i = 0; i < isColorSelected.Length; i++)
+                {
+                    if (!isColorSelected[i])
+                    {
+                        notSelected.Add(i);
+                    }
+                }
+                if (notSelected.Count == 0)
+                {
+                    ClearColorSelectedList();
+                }
+                else
+                {
+                    exit = true;
+                }
+            }
+            return colorList[notSelected[rand.Next(notSelected.Count)]];
+        }
+
+
+        public static Color[] colorList =
+        {
+            (Color)Application.Current.Resources["ColorPicker0" ],
+            (Color)Application.Current.Resources["ColorPicker1" ],
+            (Color)Application.Current.Resources["ColorPicker2" ],
+            (Color)Application.Current.Resources["ColorPicker3" ],
+            (Color)Application.Current.Resources["ColorPicker4" ],
+            (Color)Application.Current.Resources["ColorPicker5" ],
+            (Color)Application.Current.Resources["ColorPicker6" ],
+            (Color)Application.Current.Resources["ColorPicker7" ],
+            (Color)Application.Current.Resources["ColorPicker8" ],
+            (Color)Application.Current.Resources["ColorPicker9" ],
+            (Color)Application.Current.Resources["ColorPicker10"],
+            (Color)Application.Current.Resources["ColorPicker11"],
+            (Color)Application.Current.Resources["ColorPicker12"],
+            (Color)Application.Current.Resources["ColorPicker13"],
+            (Color)Application.Current.Resources["ColorPicker14"],
+            (Color)Application.Current.Resources["ColorPicker15"],
+            (Color)Application.Current.Resources["ColorPicker16"],
+            (Color)Application.Current.Resources["ColorPicker17"],
+        };
+
         public AppShell()
         {
             InitializeComponent();
             logger = WalletService.Logger;
             RegisterRoutes();
             SetupDefaultTab();
+            ClearColorSelectedList();
             PropertyChanged += Shell_PropertyChanged;
             AccountList.CollectionChanged += AccountsCollectionChanged;
         }
@@ -91,7 +151,7 @@ namespace HodlWallet.UI
                 {
                     // Update the color of the account saved on storage service
                     string colorStr = WalletService.GetColorByAccount(account.AccountData.Id);
-                    Color accountColor = !string.IsNullOrWhiteSpace(colorStr) ? Color.FromHex(colorStr) : (Color)Application.Current.Resources["TextPrimary"];
+                    Color accountColor = !string.IsNullOrWhiteSpace(colorStr) ? Color.FromHex(colorStr) : (Color)Application.Current.Resources["ColorPicker10"];
                     account.AccountColor = accountColor;
                     AddMenuItems(account);
                 }
@@ -110,12 +170,24 @@ namespace HodlWallet.UI
         }
         void AddMenuItems(AccountModel accountItem)
         {
+            Color colorSaved = accountItem.AccountColor;
+
+            var style = new List<string> { "" };
+            for (int i = 0; i < colorList.Length; i++)
+            {
+                if (colorSaved == colorList[i])
+                {
+                    style = new List<string> { "MenuItemLabelClass" + i.ToString() };
+                    isColorSelected[i] = true;
+                }
+            }
+            
             MenuItem mi = new()
             {
                 Text = accountItem.AccountName,
                 Command = GoToAccountCommand,
                 CommandParameter = accountItem.AccountData.Id,
-                StyleClass = new List<string> { "MenuItemLabelClass" },
+                StyleClass = style,
             };
 
             Items.Add(mi);

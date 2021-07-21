@@ -37,7 +37,7 @@ namespace HodlWallet.UI.Controls
          
         Color[] colorPickerControlList =
         {
-            (Color)Application.Current.Resources["ColorPickerSelected"],
+            (Color)Application.Current.Resources["ColorPicker0" ],
             (Color)Application.Current.Resources["ColorPicker1" ],
             (Color)Application.Current.Resources["ColorPicker2" ],
             (Color)Application.Current.Resources["ColorPicker3" ],
@@ -54,8 +54,7 @@ namespace HodlWallet.UI.Controls
             (Color)Application.Current.Resources["ColorPicker14"],
             (Color)Application.Current.Resources["ColorPicker15"],
             (Color)Application.Current.Resources["ColorPicker16"],
-            (Color)Application.Current.Resources["ColorPicker17"],
-            (Color)Application.Current.Resources["ColorPicker18"]
+            (Color)Application.Current.Resources["ColorPicker17"]
         };
 
         public IList<Color> ColorPickerControlList { get => colorPickerControlList; }
