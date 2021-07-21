@@ -53,11 +53,10 @@ namespace HodlWallet.UI
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
 
-        public static bool[] isColorSelected = new bool[19];
+        public static bool[] isColorSelected = new bool[18];
         public static void ClearColorSelectedList()
         {
-            isColorSelected[0] = true;
-            for (int i=1; i< isColorSelected.Length; i++)
+            for (int i = 0; i < isColorSelected.Length; i++)
             {
                 isColorSelected[i] = false;
             }
@@ -70,7 +69,7 @@ namespace HodlWallet.UI
             bool exit = false;
             while (!exit)
             {
-                for (int i = 1; i < isColorSelected.Length; i++)
+                for (int i = 0; i < isColorSelected.Length; i++)
                 {
                     if (!isColorSelected[i])
                     {
@@ -92,7 +91,7 @@ namespace HodlWallet.UI
 
         public static Color[] colorList =
         {
-            Color.Black,
+            (Color)Application.Current.Resources["ColorPicker0" ],
             (Color)Application.Current.Resources["ColorPicker1" ],
             (Color)Application.Current.Resources["ColorPicker2" ],
             (Color)Application.Current.Resources["ColorPicker3" ],
@@ -110,7 +109,6 @@ namespace HodlWallet.UI
             (Color)Application.Current.Resources["ColorPicker15"],
             (Color)Application.Current.Resources["ColorPicker16"],
             (Color)Application.Current.Resources["ColorPicker17"],
-            (Color)Application.Current.Resources["ColorPicker18"],
         };
 
         public AppShell()
@@ -153,7 +151,7 @@ namespace HodlWallet.UI
                 {
                     // Update the color of the account saved on storage service
                     string colorStr = WalletService.GetColorByAccount(account.AccountData.Id);
-                    Color accountColor = !string.IsNullOrWhiteSpace(colorStr) ? Color.FromHex(colorStr) : (Color)Application.Current.Resources["ColorPicker11"];
+                    Color accountColor = !string.IsNullOrWhiteSpace(colorStr) ? Color.FromHex(colorStr) : (Color)Application.Current.Resources["ColorPicker10"];
                     account.AccountColor = accountColor;
                     AddMenuItems(account);
                 }
@@ -175,7 +173,7 @@ namespace HodlWallet.UI
             Color colorSaved = accountItem.AccountColor;
 
             var style = new List<string> { "" };
-            for (int i = 1; i < colorList.Length; i++)
+            for (int i = 0; i < colorList.Length; i++)
             {
                 if (colorSaved == colorList[i])
                 {

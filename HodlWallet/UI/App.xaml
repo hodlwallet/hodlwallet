@@ -35,25 +35,25 @@
             <Color x:Key="DecreasePriceChange">Red</Color>
 
             <!-- ColorPicker control colors-->
+            <Color x:Key="ColorPicker0">#B71C1C</Color>
+            <Color x:Key="ColorPicker1">#EC407A</Color>
+            <Color x:Key="ColorPicker2">#880E4F</Color>
+            <Color x:Key="ColorPicker3">#7B1FA2</Color>
+            <Color x:Key="ColorPicker4">#673AB7</Color>
+            <Color x:Key="ColorPicker5">#3F51B5</Color>
+            <Color x:Key="ColorPicker6">#2196F3</Color>
+            <Color x:Key="ColorPicker7">#0D47A1</Color>
+            <Color x:Key="ColorPicker8">#00897B</Color>
+            <Color x:Key="ColorPicker9">#43A047</Color>
+            <Color x:Key="ColorPicker10">#212121</Color>
+            <Color x:Key="ColorPicker11">#C0CA33</Color>
+            <Color x:Key="ColorPicker12">#FDD835</Color>
+            <Color x:Key="ColorPicker13">#F57C00</Color>
+            <Color x:Key="ColorPicker14">#795548</Color>
+            <Color x:Key="ColorPicker15">#CFD8DC</Color>
+            <Color x:Key="ColorPicker16">#9E9E9E</Color>
+            <Color x:Key="ColorPicker17">#607D8B</Color>
             <Color x:Key="ColorPickerSelected">#C89E26</Color>
-            <Color x:Key="ColorPicker1">#B71C1C</Color>
-            <Color x:Key="ColorPicker2">#EC407A</Color>
-            <Color x:Key="ColorPicker3">#880E4F</Color>
-            <Color x:Key="ColorPicker4">#7B1FA2</Color>
-            <Color x:Key="ColorPicker5">#673AB7</Color>
-            <Color x:Key="ColorPicker6">#3F51B5</Color>
-            <Color x:Key="ColorPicker7">#2196F3</Color>
-            <Color x:Key="ColorPicker8">#0D47A1</Color>
-            <Color x:Key="ColorPicker9">#00897B</Color>
-            <Color x:Key="ColorPicker10">#43A047</Color>
-            <Color x:Key="ColorPicker11">#212121</Color>
-            <Color x:Key="ColorPicker12">#C0CA33</Color>
-            <Color x:Key="ColorPicker13">#FDD835</Color>
-            <Color x:Key="ColorPicker14">#F57C00</Color>
-            <Color x:Key="ColorPicker15">#795548</Color>
-            <Color x:Key="ColorPicker16">#CFD8DC</Color>
-            <Color x:Key="ColorPicker17">#9E9E9E</Color>
-            <Color x:Key="ColorPicker18">#607D8B</Color>
 
             <!-- Fonts -->
             <!-- All fonts are here, all that you ever need, they're named like this:

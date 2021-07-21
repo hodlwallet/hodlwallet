@@ -46,7 +46,7 @@ namespace HodlWallet.Core.Models
                 AccountData = account,
                 AccountName = account.Name,
                 Balance = account.GetBalance().ToString(),
-                AccountColor = (Color)Application.Current.Resources["TextPrimary"]
+                AccountColor = (Color)Application.Current.Resources["ColorPicker10"]
             };
         }
 
