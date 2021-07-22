@@ -39,6 +39,7 @@ using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.Services;
+using HodlWallet.UI.Controls;
 
 namespace HodlWallet.UI
 {
@@ -56,15 +57,12 @@ namespace HodlWallet.UI
         public static bool[] isColorSelected = new bool[18];
         public static void ClearColorSelectedList()
         {
-            for (int i = 0; i < isColorSelected.Length; i++)
-            {
-                isColorSelected[i] = false;
-            }
+            Array.Fill<bool>(isColorSelected, false);
         }
 
         public static Color RandomColor()
         {
-            List<int> notSelected = new();
+            List<int> notSelected = new List<int>();
             var rand = new Random();
             bool exit = false;
             while (!exit)
@@ -89,28 +87,8 @@ namespace HodlWallet.UI
         }
 
 
-        public static Color[] colorList =
-        {
-            (Color)Application.Current.Resources["ColorPicker0" ],
-            (Color)Application.Current.Resources["ColorPicker1" ],
-            (Color)Application.Current.Resources["ColorPicker2" ],
-            (Color)Application.Current.Resources["ColorPicker3" ],
-            (Color)Application.Current.Resources["ColorPicker4" ],
-            (Color)Application.Current.Resources["ColorPicker5" ],
-            (Color)Application.Current.Resources["ColorPicker6" ],
-            (Color)Application.Current.Resources["ColorPicker7" ],
-            (Color)Application.Current.Resources["ColorPicker8" ],
-            (Color)Application.Current.Resources["ColorPicker9" ],
-            (Color)Application.Current.Resources["ColorPicker10"],
-            (Color)Application.Current.Resources["ColorPicker11"],
-            (Color)Application.Current.Resources["ColorPicker12"],
-            (Color)Application.Current.Resources["ColorPicker13"],
-            (Color)Application.Current.Resources["ColorPicker14"],
-            (Color)Application.Current.Resources["ColorPicker15"],
-            (Color)Application.Current.Resources["ColorPicker16"],
-            (Color)Application.Current.Resources["ColorPicker17"],
-        };
-
+        public static Color[] colorList = ColorPicker.colorPickerControlList;
+        
         public AppShell()
         {
             InitializeComponent();
