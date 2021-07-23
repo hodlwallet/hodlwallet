@@ -9,6 +9,8 @@ namespace HodlWallet.UI.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ColorPicker//: INotifyPropertyChanged
     {
+        public static string ColorCode { get; set; }
+
         public static readonly BindableProperty ButtonColorSelectedProperty
             = BindableProperty.Create(nameof(ButtonColorSelected), 
                 typeof(Color), 
@@ -26,6 +28,7 @@ namespace HodlWallet.UI.Controls
                     if (element.BackgroundColor == colorPicker.ButtonColorSelected)
                     {
                         button.BorderColor = (Color)Application.Current.Resources["ColorPickerSelected"];
+                        ColorCode = button.Text;
                     }
                     else
                     {
