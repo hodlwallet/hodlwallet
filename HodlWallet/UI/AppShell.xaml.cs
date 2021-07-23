@@ -1,4 +1,4 @@
-﻿//
+//
 // AppShell.xaml.cs
 //
 // Author:
@@ -62,7 +62,7 @@ namespace HodlWallet.UI
 
         public static Color RandomColor()
         {
-            List<int> notSelected = new();
+            List<int> notSelected = new List<int>();
             var rand = new Random();
             bool exit = false;
             while (!exit)
