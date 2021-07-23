@@ -40,6 +40,7 @@ using HodlWallet.UI.Views;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.Services;
 using HodlWallet.UI.Controls;
+using HodlWallet.Core.Utils;
 
 namespace HodlWallet.UI
 {
@@ -119,6 +120,20 @@ namespace HodlWallet.UI
             ChangeTabsTo("homeTab");
         }
 
+        string GetColorCodeByAccount(string accountId)
+        {
+            // Update the color of the account saved on storage service
+            string colorStr = WalletService.GetColorByAccount(accountId);
+            Debug.WriteLine($"GetColorCodeByAccount({accountId}) => colorStr = {colorStr}");
+            string colorCode = Constants.DEFAULT_ACCOUNT_COLOR_CODE;
+            if (!string.IsNullOrWhiteSpace(colorStr))
+            {
+                int position = colorStr.IndexOf(Constants.HEX_CHAR);
+                colorCode = colorStr.Substring(0, position);
+            }
+            Debug.WriteLine($"GetColorCodeByAccount({accountId}) => codeColor: {colorCode}");
+            return colorCode;
+        }
         void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             //This will get called when the collection is changed
@@ -127,10 +142,8 @@ namespace HodlWallet.UI
                 //  An Account was Added to the collection
                 foreach (AccountModel account in e.NewItems)
                 {
-                    // Update the color of the account saved on storage service
-                    string colorStr = WalletService.GetColorByAccount(account.AccountData.Id);
-                    Color accountColor = !string.IsNullOrWhiteSpace(colorStr) ? Color.FromHex(colorStr) : (Color)Application.Current.Resources["ColorPicker10"];
-                    account.AccountColor = accountColor;
+                    string colorCode = GetColorCodeByAccount(account.AccountData.Id);
+                    account.AccountColorCode = !string.IsNullOrWhiteSpace(colorCode) ? colorCode : Constants.DEFAULT_ACCOUNT_COLOR_CODE;
                     AddMenuItems(account);
                 }
             }
