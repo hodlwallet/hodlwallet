@@ -30,6 +30,7 @@ using System.Linq;
 using Xamarin.Forms;
 
 using Liviano.Interfaces;
+using HodlWallet.Core.Utils;
 
 namespace HodlWallet.Core.Models
 {
@@ -47,7 +48,7 @@ namespace HodlWallet.Core.Models
                 AccountData = account,
                 AccountName = account.Name,
                 Balance = account.GetBalance().ToString(),
-                AccountColorCode = "10",
+                AccountColorCode = Constants.DEFAULT_ACCOUNT_COLOR_CODE,
                 AccountColor = (Color)Application.Current.Resources["ColorPicker10"]
             };
         }
