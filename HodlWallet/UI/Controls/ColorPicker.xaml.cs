@@ -1,22 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using HodlWallet.Core.Utils;
 
 namespace HodlWallet.UI.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ColorPicker//: INotifyPropertyChanged
     {
-        public static string ColorCode { get; set; }
-
         public static readonly BindableProperty ButtonColorSelectedProperty
             = BindableProperty.Create(nameof(ButtonColorSelected), 
                 typeof(Color), 
                 typeof(ColorPicker), 
                 Color.White,
                 propertyChanged: OnEventColorChanged);
+
+        public static readonly BindableProperty ButtonColorCodeProperty
+            = BindableProperty.Create(nameof(ColorCode),
+                typeof(string),
+                typeof(ColorPicker),
+                Constants.DEFAULT_ACCOUNT_COLOR_CODE);
 
         public static void OnEventColorChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -28,7 +35,7 @@ namespace HodlWallet.UI.Controls
                     if (element.BackgroundColor == colorPicker.ButtonColorSelected)
                     {
                         button.BorderColor = (Color)Application.Current.Resources["ColorPickerSelected"];
-                        ColorCode = button.Text;
+                        colorPicker.ColorCode = button.Text;
                     }
                     else
                     {
@@ -69,6 +76,12 @@ namespace HodlWallet.UI.Controls
             set => SetValue(ButtonColorSelectedProperty, value);
         }
 
+        public string ColorCode
+        {
+            get => (string)GetValue(ButtonColorCodeProperty);
+
+            set => SetValue(ButtonColorCodeProperty, value);
+        }
 
         public ColorPicker()
         {
@@ -79,6 +92,7 @@ namespace HodlWallet.UI.Controls
         {
             Button pressed = sender as Button;
             ButtonColorSelected = pressed.BackgroundColor;
+            ColorCode = pressed.Text;
         }
     }
 }

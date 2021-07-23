@@ -72,7 +72,7 @@
                         FlexLayout.Grow="1"
                         Command="{Binding CreateAccountCommand}"
                         CommandParameter="{Binding Source={x:Reference PickColorControl},
-                                                    Path=ButtonColorSelected}"/>
+                                                    Path=ColorCode}"/>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

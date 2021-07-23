@@ -24,16 +24,17 @@ using System;
 
 using Xamarin.Forms;
 
+using HodlWallet.Core.Utils;
+
 namespace HodlWallet.UI.Converters
 {
     public static class ColorExtensions
     {
-        public const string HEX_CHAR= "#";
         public static string ToHexString(this Color color, bool outputAlpha = false)
         {
             string DoubleToHex(double value) => string.Format("{0:X2}", (int)(value * 255));
 
-            string hex = HEX_CHAR;
+            string hex = Constants.HEX_CHAR;
             if (outputAlpha) 
                 hex += DoubleToHex(color.A);
 
