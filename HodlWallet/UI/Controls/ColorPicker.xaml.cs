@@ -38,7 +38,7 @@ namespace HodlWallet.UI.Controls
             }
         }
          
-        Color[] colorPickerControlList =
+        public static Color[] colorPickerControlList =
         {
             (Color)Application.Current.Resources["ColorPicker0" ],
             (Color)Application.Current.Resources["ColorPicker1" ],
