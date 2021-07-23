@@ -1,4 +1,4 @@
-﻿//
+//
 // AppShell.xaml.cs
 //
 // Author:
@@ -74,6 +74,7 @@ namespace HodlWallet.UI
                         notSelected.Add(i);
                     }
                 }
+                
                 if (notSelected.Count == 0)
                 {
                     ClearColorSelectedList();
@@ -86,9 +87,8 @@ namespace HodlWallet.UI
             return colorList[notSelected[rand.Next(notSelected.Count)]];
         }
 
-
         public static Color[] colorList = ColorPicker.colorPickerControlList;
-        
+
         public AppShell()
         {
             InitializeComponent();
@@ -148,17 +148,10 @@ namespace HodlWallet.UI
         }
         void AddMenuItems(AccountModel accountItem)
         {
-            Color colorSaved = accountItem.AccountColor;
+            string colorCode = accountItem.AccountColorCode;
 
-            var style = new List<string> { "" };
-            for (int i = 0; i < colorList.Length; i++)
-            {
-                if (colorSaved == colorList[i])
-                {
-                    style = new List<string> { "MenuItemLabelClass" + i.ToString() };
-                    isColorSelected[i] = true;
-                }
-            }
+            var style = new List<string> { "MenuItemLabelClass" + colorCode };
+            isColorSelected[int.Parse(colorCode)] = true;
             
             MenuItem mi = new()
             {
