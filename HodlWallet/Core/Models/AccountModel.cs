@@ -30,6 +30,7 @@ using System.Linq;
 using Xamarin.Forms;
 
 using Liviano.Interfaces;
+using HodlWallet.Core.Utils;
 
 namespace HodlWallet.Core.Models
 {
@@ -38,9 +39,7 @@ namespace HodlWallet.Core.Models
         public IAccount AccountData { get; private set; }
         public string AccountName { get; private set; }
         public string Balance { get; private set; }
-        public Color GradientStart { get; set; }
-        public Color GradientEnd { get; set; }
-
+        public string AccountColorCode { get; set; }
         public static AccountModel FromAccountData(IAccount account)
         {
             return new AccountModel
@@ -48,8 +47,7 @@ namespace HodlWallet.Core.Models
                 AccountData = account,
                 AccountName = account.Name,
                 Balance = account.GetBalance().ToString(),
-                GradientStart = Color.Purple,
-                GradientEnd = Color.Black
+                AccountColorCode = Constants.DEFAULT_ACCOUNT_COLOR_CODE
             };
         }
 

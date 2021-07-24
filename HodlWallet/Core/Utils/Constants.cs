@@ -42,6 +42,8 @@ namespace HodlWallet.Core.Utils
         // Colors
         public const string SYNC_GRADIENT_START_COLOR_HEX = "#DAAB28";
         public const string GRAY_TEXT_TINT_COLOR_HEX = "#A3A8AD";
+        public const string HEX_CHAR = "#";
+        public const string DEFAULT_ACCOUNT_COLOR_CODE = "10";
 
         // Localized Strings
         public const string HODL_WALLET = "HODL Wallet";

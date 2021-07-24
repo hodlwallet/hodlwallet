@@ -1,4 +1,4 @@
-﻿//
+//
 // AppShell.xaml.cs
 //
 // Author:
@@ -38,6 +38,9 @@ using Xamarin.Essentials;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
 using HodlWallet.Core.Models;
+using HodlWallet.Core.Services;
+using HodlWallet.UI.Controls;
+using HodlWallet.Core.Utils;
 
 namespace HodlWallet.UI
 {
@@ -52,12 +55,48 @@ namespace HodlWallet.UI
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
 
+        public static bool[] isColorSelected = new bool[18];
+        public static void ClearColorSelectedList()
+        {
+            Array.Fill<bool>(isColorSelected, false);
+        }
+
+        public static Color RandomColor()
+        {
+            List<int> notSelected = new List<int>();
+            var rand = new Random();
+            bool exit = false;
+            while (!exit)
+            {
+                for (int i = 0; i < isColorSelected.Length; i++)
+                {
+                    if (!isColorSelected[i])
+                    {
+                        notSelected.Add(i);
+                    }
+                }
+                
+                if (notSelected.Count == 0)
+                {
+                    ClearColorSelectedList();
+                }
+                else
+                {
+                    exit = true;
+                }
+            }
+            return colorList[notSelected[rand.Next(notSelected.Count)]];
+        }
+
+        public static Color[] colorList = ColorPicker.colorPickerControlList;
+
         public AppShell()
         {
             InitializeComponent();
             logger = WalletService.Logger;
             RegisterRoutes();
             SetupDefaultTab();
+            ClearColorSelectedList();
             PropertyChanged += Shell_PropertyChanged;
             AccountList.CollectionChanged += AccountsCollectionChanged;
         }
@@ -81,6 +120,18 @@ namespace HodlWallet.UI
             ChangeTabsTo("homeTab");
         }
 
+        string GetColorCodeByAccount(string accountId)
+        {
+            // Update the color of the account saved on storage service
+            string colorStr = WalletService.GetColorByAccount(accountId);
+            string colorCode = Constants.DEFAULT_ACCOUNT_COLOR_CODE;
+            if (!string.IsNullOrWhiteSpace(colorStr))
+            {
+                int position = colorStr.IndexOf(Constants.HEX_CHAR);
+                colorCode = colorStr.Substring(0, position);
+            }
+            return colorCode;
+        }
         void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             //This will get called when the collection is changed
@@ -89,6 +140,7 @@ namespace HodlWallet.UI
                 //  An Account was Added to the collection
                 foreach (AccountModel account in e.NewItems)
                 {
+                    account.AccountColorCode = GetColorCodeByAccount(account.AccountData.Id);
                     AddMenuItems(account);
                 }
             }
@@ -106,12 +158,17 @@ namespace HodlWallet.UI
         }
         void AddMenuItems(AccountModel accountItem)
         {
+            string colorCode = accountItem.AccountColorCode;
+
+            var style = new List<string> { "MenuItemLabelClass" + colorCode };
+            isColorSelected[int.Parse(colorCode)] = true;
+            
             MenuItem mi = new()
             {
                 Text = accountItem.AccountName,
                 Command = GoToAccountCommand,
-                CommandParameter = accountItem,
-                StyleClass = new List<string> { "MenuItemLabelClass" },
+                CommandParameter = accountItem.AccountData.Id,
+                StyleClass = style,
             };
 
             Items.Add(mi);
