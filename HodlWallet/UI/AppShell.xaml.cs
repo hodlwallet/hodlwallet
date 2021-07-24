@@ -124,14 +124,12 @@ namespace HodlWallet.UI
         {
             // Update the color of the account saved on storage service
             string colorStr = WalletService.GetColorByAccount(accountId);
-            Debug.WriteLine($"GetColorCodeByAccount({accountId}) => colorStr = {colorStr}");
             string colorCode = Constants.DEFAULT_ACCOUNT_COLOR_CODE;
             if (!string.IsNullOrWhiteSpace(colorStr))
             {
                 int position = colorStr.IndexOf(Constants.HEX_CHAR);
                 colorCode = colorStr.Substring(0, position);
             }
-            Debug.WriteLine($"GetColorCodeByAccount({accountId}) => codeColor: {colorCode}");
             return colorCode;
         }
         void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -142,8 +140,7 @@ namespace HodlWallet.UI
                 //  An Account was Added to the collection
                 foreach (AccountModel account in e.NewItems)
                 {
-                    string colorCode = GetColorCodeByAccount(account.AccountData.Id);
-                    account.AccountColorCode = !string.IsNullOrWhiteSpace(colorCode) ? colorCode : Constants.DEFAULT_ACCOUNT_COLOR_CODE;
+                    account.AccountColorCode = GetColorCodeByAccount(account.AccountData.Id);
                     AddMenuItems(account);
                 }
             }
