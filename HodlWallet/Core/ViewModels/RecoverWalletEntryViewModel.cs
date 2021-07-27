@@ -20,14 +20,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Diagnostics;
 using System.Windows.Input;
 
 using Xamarin.Forms;
 
 using HodlWallet.Core.Services;
-using System;
-using System.Runtime.CompilerServices;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -35,88 +34,88 @@ namespace HodlWallet.Core.ViewModels
     {
         public ICommand OnRecoverEntryCompleted { get; }
 
-        string _WordOne;
+        string wordOne;
         public string WordOne
         {
-            get => _WordOne;
-            set => SetProperty(ref _WordOne, value);
+            get => wordOne;
+            set => SetProperty(ref wordOne, value);
         }
 
-        string _WordTwo;
+        string wordTwo;
         public string WordTwo
         {
-            get => _WordTwo;
-            set => SetProperty(ref _WordTwo, value);
+            get => wordTwo;
+            set => SetProperty(ref wordTwo, value);
         }
 
-        string _WordThree;
+        string wordThree;
         public string WordThree
         {
-            get => _WordThree;
-            set => SetProperty(ref _WordThree, value);
+            get => wordThree;
+            set => SetProperty(ref wordThree, value);
         }
 
-        string _WordFour;
+        string wordFour;
         public string WordFour
         {
-            get => _WordFour;
-            set => SetProperty(ref _WordFour, value);
+            get => wordFour;
+            set => SetProperty(ref wordFour, value);
         }
 
-        string _WordFive;
+        string wordFive;
         public string WordFive
         {
-            get => _WordFive;
-            set => SetProperty(ref _WordFive, value);
+            get => wordFive;
+            set => SetProperty(ref wordFive, value);
         }
 
-        string _WordSix;
+        string wordSix;
         public string WordSix
         {
-            get => _WordSix;
-            set => SetProperty(ref _WordSix, value);
+            get => wordSix;
+            set => SetProperty(ref wordSix, value);
         }
 
-        string _WordSeven;
+        string wordSeven;
         public string WordSeven
         {
-            get => _WordSeven;
-            set => SetProperty(ref _WordSeven, value);
+            get => wordSeven;
+            set => SetProperty(ref wordSeven, value);
         }
 
-        string _WordEight;
+        string wordEight;
         public string WordEight
         {
-            get => _WordEight;
-            set => SetProperty(ref _WordEight, value);
+            get => wordEight;
+            set => SetProperty(ref wordEight, value);
         }
 
-        string _WordNine;
+        string wordNine;
         public string WordNine
         {
-            get => _WordNine;
-            set => SetProperty(ref _WordNine, value);
+            get => wordNine;
+            set => SetProperty(ref wordNine, value);
         }
 
-        string _WordTen;
+        string wordTen;
         public string WordTen
         {
-            get => _WordTen;
-            set => SetProperty(ref _WordTen, value);
+            get => wordTen;
+            set => SetProperty(ref wordTen, value);
         }
 
-        string _WordEleven;
+        string wordEleven;
         public string WordEleven
         {
-            get => _WordEleven;
-            set => SetProperty(ref _WordEleven, value);
+            get => wordEleven;
+            set => SetProperty(ref wordEleven, value);
         }
 
-        string _WordTwelve;
+        string wordTwelve;
         public string WordTwelve
         {
-            get => _WordTwelve;
-            set => SetProperty(ref _WordTwelve, value);
+            get => wordTwelve;
+            set => SetProperty(ref wordTwelve, value);
         }
 
         public RecoverWalletEntryViewModel()
@@ -128,7 +127,7 @@ namespace HodlWallet.Core.ViewModels
         {
             if (!MnemonicInWordList()) return;
 
-            string mnemonic = GetMnemonic();
+            var mnemonic = GetMnemonic();
 
             if (!CheckMnemonicHasValidChecksum(mnemonic)) return;
 
@@ -137,15 +136,13 @@ namespace HodlWallet.Core.ViewModels
 
             WalletService.StartWalletWithWalletId();
 
-            MessagingCenter.Send(this, "NavigateToRootView");
+            MessagingCenter.Send(this, "InitiateAppShell");
         }
 
         bool CheckWordInWordlist(string word, string wordlist = "english")
         {
-            if (!string.IsNullOrEmpty(word) && Services.WalletService.IsWordInWordlist(word.ToLower(), wordlist) == true)
-            {
+            if (!string.IsNullOrEmpty(word) && Services.WalletService.IsWordInWordlist(word.ToLower(), wordlist))
                 return true;
-            }
 
             Debug.WriteLine($"User input not found in wordlist: {word}");
 
@@ -174,7 +171,7 @@ namespace HodlWallet.Core.ViewModels
 
         bool CheckMnemonicHasValidChecksum(string mnemonic, string wordlist = "english")
         {
-            if (Services.WalletService.IsVerifyChecksum(mnemonic, wordlist) == true) return true;
+            if (Services.WalletService.IsVerifyChecksum(mnemonic, wordlist)) return true;
 
             Debug.WriteLine($"Mnemonic returned invalid checksum: {mnemonic}");
 

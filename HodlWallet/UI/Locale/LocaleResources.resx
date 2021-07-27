@@ -234,11 +234,11 @@
     <comment>label for recover wallet button</comment>
   </data>
   <data name="RecoverEntry.header" xml:space="preserve">
-    <value>Enter Backup Recovery Key</value>
+    <value>Enter the backup recovery key for the wallet you want to recover.</value>
     <comment>label for recover wallet entry header</comment>
   </data>
   <data name="RecoverEntry.title" xml:space="preserve">
-    <value>Enter the backup recovery key for the wallet you want to recover.</value>
+    <value>Enter Backup Recovery Key</value>
     <comment>label for recover wallet entry title</comment>
   </data>
   <data name="Recover.alertTitle" xml:space="preserve">

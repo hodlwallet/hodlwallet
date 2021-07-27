@@ -397,7 +397,7 @@ namespace HodlWallet.Core.Services
             // TODO This should read from the user's language.
             string language = "english";
 
-            Logger.Information($"Wordlist is on {language}");
+            Logger.Information($"[GetWordListLanguage] Wordlist is on {language}");
 
             return language;
         }

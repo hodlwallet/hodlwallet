@@ -21,11 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Diagnostics;
 
 using Xamarin.Forms;
 
-using HodlWallet.UI.Locale;
 using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.UI.Views
@@ -49,7 +47,9 @@ namespace HodlWallet.UI.Views
 
         async void Logo_Tapped(object sender, EventArgs e)
         {
+#if DEBUG
             await this.DisplayToast("Test");
+#endif
         }
     }
 }

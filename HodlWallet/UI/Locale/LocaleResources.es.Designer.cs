@@ -173,6 +173,12 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
+        public static string AddAccount_color {
+            get {
+                return ResourceManager.GetString("AddAccount.color", resourceCulture);
+            }
+        }
+        
         public static string AddAccount_createButton {
             get {
                 return ResourceManager.GetString("AddAccount.createButton", resourceCulture);

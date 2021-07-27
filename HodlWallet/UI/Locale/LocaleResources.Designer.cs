@@ -16,7 +16,7 @@ namespace HodlWallet.UI.Locale {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class LocaleResources {
+    internal class LocaleResources {
         
         private static System.Resources.ResourceManager resourceMan;
         
@@ -27,7 +27,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static System.Resources.ResourceManager ResourceManager {
+        internal static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
                     System.Resources.ResourceManager temp = new System.Resources.ResourceManager("HodlWallet.UI.Locale.LocaleResources", typeof(LocaleResources).Assembly);
@@ -38,7 +38,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static System.Globalization.CultureInfo Culture {
+        internal static System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -47,925 +47,931 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
-        public static string Onboard_create {
+        internal static string Onboard_create {
             get {
                 return ResourceManager.GetString("Onboard.create", resourceCulture);
             }
         }
         
-        public static string Onboard_recover {
+        internal static string Onboard_recover {
             get {
                 return ResourceManager.GetString("Onboard.recover", resourceCulture);
             }
         }
         
-        public static string Dashboard_send {
+        internal static string Dashboard_send {
             get {
                 return ResourceManager.GetString("Dashboard.send", resourceCulture);
             }
         }
         
-        public static string Dashboard_receive {
+        internal static string Dashboard_receive {
             get {
                 return ResourceManager.GetString("Dashboard.receive", resourceCulture);
             }
         }
         
-        public static string Dashboard_menu {
+        internal static string Dashboard_menu {
             get {
                 return ResourceManager.GetString("Dashboard.menu", resourceCulture);
             }
         }
         
-        public static string Seed_title {
+        internal static string Seed_title {
             get {
                 return ResourceManager.GetString("Seed.title", resourceCulture);
             }
         }
         
-        public static string Seed_next {
+        internal static string Seed_next {
             get {
                 return ResourceManager.GetString("Seed.next", resourceCulture);
             }
         }
         
-        public static string Seed_subheader {
+        internal static string Seed_subheader {
             get {
                 return ResourceManager.GetString("Seed.subheader", resourceCulture);
             }
         }
         
-        public static string Backup_title {
+        internal static string Backup_title {
             get {
                 return ResourceManager.GetString("Backup.title", resourceCulture);
             }
         }
         
-        public static string Backup_button {
+        internal static string Backup_button {
             get {
                 return ResourceManager.GetString("Backup.button", resourceCulture);
             }
         }
         
-        public static string Backup_header {
+        internal static string Backup_header {
             get {
                 return ResourceManager.GetString("Backup.header", resourceCulture);
             }
         }
         
-        public static string Backup_subheader {
+        internal static string Backup_subheader {
             get {
                 return ResourceManager.GetString("Backup.subheader", resourceCulture);
             }
         }
         
-        public static string BackupConfirm_header {
+        internal static string BackupConfirm_header {
             get {
                 return ResourceManager.GetString("BackupConfirm.header", resourceCulture);
             }
         }
         
-        public static string BackupConfirm_warning {
+        internal static string BackupConfirm_warning {
             get {
                 return ResourceManager.GetString("BackupConfirm.warning", resourceCulture);
             }
         }
         
-        public static string BackupConfirm_exercise {
+        internal static string BackupConfirm_exercise {
             get {
                 return ResourceManager.GetString("BackupConfirm.exercise", resourceCulture);
             }
         }
         
-        public static string BackupWord_title {
+        internal static string BackupWord_title {
             get {
                 return ResourceManager.GetString("BackupWord.title", resourceCulture);
             }
         }
         
-        public static string BackupWord_next {
+        internal static string BackupWord_next {
             get {
                 return ResourceManager.GetString("BackupWord.next", resourceCulture);
             }
         }
         
-        public static string BackupWord_previous {
+        internal static string BackupWord_previous {
             get {
                 return ResourceManager.GetString("BackupWord.previous", resourceCulture);
             }
         }
         
-        public static string BackupWord_header {
+        internal static string BackupWord_header {
             get {
                 return ResourceManager.GetString("BackupWord.header", resourceCulture);
             }
         }
         
-        public static string Pin_setTitle {
+        internal static string Pin_setTitle {
             get {
                 return ResourceManager.GetString("Pin.setTitle", resourceCulture);
             }
         }
         
-        public static string Pin_redoTitle {
+        internal static string Pin_redoTitle {
             get {
                 return ResourceManager.GetString("Pin.redoTitle", resourceCulture);
             }
         }
         
-        public static string Pin_updateTitle {
+        internal static string Pin_updateTitle {
             get {
                 return ResourceManager.GetString("Pin.updateTitle", resourceCulture);
             }
         }
         
-        public static string Pin_updateHeader {
+        internal static string Pin_updateHeader {
             get {
                 return ResourceManager.GetString("Pin.updateHeader", resourceCulture);
             }
         }
         
-        public static string Pin_header {
+        internal static string Pin_header {
             get {
                 return ResourceManager.GetString("Pin.header", resourceCulture);
             }
         }
         
-        public static string Pin_warning {
+        internal static string Pin_warning {
             get {
                 return ResourceManager.GetString("Pin.warning", resourceCulture);
             }
         }
         
-        public static string Pin_enter {
+        internal static string Pin_enter {
             get {
                 return ResourceManager.GetString("Pin.enter", resourceCulture);
             }
         }
         
-        public static string Recover_title {
+        internal static string Recover_title {
             get {
                 return ResourceManager.GetString("Recover.title", resourceCulture);
             }
         }
         
-        public static string Recover_header {
+        internal static string Recover_header {
             get {
                 return ResourceManager.GetString("Recover.header", resourceCulture);
             }
         }
         
-        public static string Recover_next {
+        internal static string Recover_next {
             get {
                 return ResourceManager.GetString("Recover.next", resourceCulture);
             }
         }
         
-        public static string RecoverEntry_header {
+        internal static string RecoverEntry_header {
             get {
                 return ResourceManager.GetString("RecoverEntry.header", resourceCulture);
             }
         }
         
-        public static string RecoverEntry_title {
+        internal static string RecoverEntry_title {
             get {
                 return ResourceManager.GetString("RecoverEntry.title", resourceCulture);
             }
         }
         
-        public static string Recover_alertTitle {
+        internal static string Recover_alertTitle {
             get {
                 return ResourceManager.GetString("Recover.alertTitle", resourceCulture);
             }
         }
         
-        public static string Recover_alertHeader {
+        internal static string Recover_alertHeader {
             get {
                 return ResourceManager.GetString("Recover.alertHeader", resourceCulture);
             }
         }
         
-        public static string Recover_alertButton {
+        internal static string Recover_alertButton {
             get {
                 return ResourceManager.GetString("Recover.alertButton", resourceCulture);
             }
         }
         
-        public static string Done_button {
+        internal static string Done_button {
             get {
                 return ResourceManager.GetString("Done.button", resourceCulture);
             }
         }
         
-        public static string Send_title {
+        internal static string Send_title {
             get {
                 return ResourceManager.GetString("Send.title", resourceCulture);
             }
         }
         
-        public static string Send_to {
+        internal static string Send_to {
             get {
                 return ResourceManager.GetString("Send.to", resourceCulture);
             }
         }
         
-        public static string Send_scan {
+        internal static string Send_scan {
             get {
                 return ResourceManager.GetString("Send.scan", resourceCulture);
             }
         }
         
-        public static string Send_paste {
+        internal static string Send_paste {
             get {
                 return ResourceManager.GetString("Send.paste", resourceCulture);
             }
         }
         
-        public static string Send_amount {
+        internal static string Send_amount {
             get {
                 return ResourceManager.GetString("Send.amount", resourceCulture);
             }
         }
         
-        public static string Send_transaction {
+        internal static string Send_transaction {
             get {
                 return ResourceManager.GetString("Send.transaction", resourceCulture);
             }
         }
         
-        public static string Send_transactionMessage {
+        internal static string Send_transactionMessage {
             get {
                 return ResourceManager.GetString("Send.transactionMessage", resourceCulture);
             }
         }
         
-        public static string Send_transactionOk {
+        internal static string Send_transactionOk {
             get {
                 return ResourceManager.GetString("Send.transactionOk", resourceCulture);
             }
         }
         
-        public static string Send_transactionCancel {
+        internal static string Send_transactionCancel {
             get {
                 return ResourceManager.GetString("Send.transactionCancel", resourceCulture);
             }
         }
         
-        public static string Receive_title {
+        internal static string Receive_title {
             get {
                 return ResourceManager.GetString("Receive.title", resourceCulture);
             }
         }
         
-        public static string Receive_share {
+        internal static string Receive_share {
             get {
                 return ResourceManager.GetString("Receive.share", resourceCulture);
             }
         }
         
-        public static string Receive_requestAmount {
+        internal static string Receive_requestAmount {
             get {
                 return ResourceManager.GetString("Receive.requestAmount", resourceCulture);
             }
         }
         
-        public static string Menu_title {
+        internal static string Menu_title {
             get {
                 return ResourceManager.GetString("Menu.title", resourceCulture);
             }
         }
         
-        public static string Menu_security {
+        internal static string Menu_security {
             get {
                 return ResourceManager.GetString("Menu.security", resourceCulture);
             }
         }
         
-        public static string Menu_knowledge {
+        internal static string Menu_knowledge {
             get {
                 return ResourceManager.GetString("Menu.knowledge", resourceCulture);
             }
         }
         
-        public static string Menu_settings {
+        internal static string Menu_settings {
             get {
                 return ResourceManager.GetString("Menu.settings", resourceCulture);
             }
         }
         
-        public static string Menu_lock {
+        internal static string Menu_lock {
             get {
                 return ResourceManager.GetString("Menu.lock", resourceCulture);
             }
         }
         
-        public static string Menu_resyncWallet {
+        internal static string Menu_resyncWallet {
             get {
                 return ResourceManager.GetString("Menu.resyncWallet", resourceCulture);
             }
         }
         
-        public static string Menu_restoreWallet {
+        internal static string Menu_restoreWallet {
             get {
                 return ResourceManager.GetString("Menu.restoreWallet", resourceCulture);
             }
         }
         
-        public static string Menu_wipeWallet {
+        internal static string Menu_wipeWallet {
             get {
                 return ResourceManager.GetString("Menu.wipeWallet", resourceCulture);
             }
         }
         
-        public static string SecurityCenter_title {
+        internal static string SecurityCenter_title {
             get {
                 return ResourceManager.GetString("SecurityCenter.title", resourceCulture);
             }
         }
         
-        public static string SecurityCenter_header {
+        internal static string SecurityCenter_header {
             get {
                 return ResourceManager.GetString("SecurityCenter.header", resourceCulture);
             }
         }
         
-        public static string SecurityCenter_pinHeader {
+        internal static string SecurityCenter_pinHeader {
             get {
                 return ResourceManager.GetString("SecurityCenter.pinHeader", resourceCulture);
             }
         }
         
-        public static string SecurityCenter_pinDetail {
+        internal static string SecurityCenter_pinDetail {
             get {
                 return ResourceManager.GetString("SecurityCenter.pinDetail", resourceCulture);
             }
         }
         
-        public static string SecurityCenter_fingerprintHeaderIOS {
+        internal static string SecurityCenter_fingerprintHeaderIOS {
             get {
                 return ResourceManager.GetString("SecurityCenter.fingerprintHeaderIOS", resourceCulture);
             }
         }
         
-        public static string SecurityCenter_fingerprintHeaderAndroid {
+        internal static string SecurityCenter_fingerprintHeaderAndroid {
             get {
                 return ResourceManager.GetString("SecurityCenter.fingerprintHeaderAndroid", resourceCulture);
             }
         }
         
-        public static string SecurityCenter_fingerprintDetail {
+        internal static string SecurityCenter_fingerprintDetail {
             get {
                 return ResourceManager.GetString("SecurityCenter.fingerprintDetail", resourceCulture);
             }
         }
         
-        public static string SecurityCenter_mnemonicHeader {
+        internal static string SecurityCenter_mnemonicHeader {
             get {
                 return ResourceManager.GetString("SecurityCenter.mnemonicHeader", resourceCulture);
             }
         }
         
-        public static string SecurityCenter_mnemonicDetail {
+        internal static string SecurityCenter_mnemonicDetail {
             get {
                 return ResourceManager.GetString("SecurityCenter.mnemonicDetail", resourceCulture);
             }
         }
         
-        public static string FingerprintAuth_header {
+        internal static string FingerprintAuth_header {
             get {
                 return ResourceManager.GetString("FingerprintAuth.header", resourceCulture);
             }
         }
         
-        public static string FingerprintAuth_switchLabelIOS {
+        internal static string FingerprintAuth_switchLabelIOS {
             get {
                 return ResourceManager.GetString("FingerprintAuth.switchLabelIOS", resourceCulture);
             }
         }
         
-        public static string FingerprintAuth_switchAndroid {
+        internal static string FingerprintAuth_switchAndroid {
             get {
                 return ResourceManager.GetString("FingerprintAuth.switchAndroid", resourceCulture);
             }
         }
         
-        public static string FingerprintAuth_spendingLimit {
+        internal static string FingerprintAuth_spendingLimit {
             get {
                 return ResourceManager.GetString("FingerprintAuth.spendingLimit", resourceCulture);
             }
         }
         
-        public static string FingerprintAuth_subheader {
+        internal static string FingerprintAuth_subheader {
             get {
                 return ResourceManager.GetString("FingerprintAuth.subheader", resourceCulture);
             }
         }
         
-        public static string FingerprintAuth_limitButtonIOS {
+        internal static string FingerprintAuth_limitButtonIOS {
             get {
                 return ResourceManager.GetString("FingerprintAuth.limitButtonIOS", resourceCulture);
             }
         }
         
-        public static string FingerprintAuth_limitButtonAndroid {
+        internal static string FingerprintAuth_limitButtonAndroid {
             get {
                 return ResourceManager.GetString("FingerprintAuth.limitButtonAndroid", resourceCulture);
             }
         }
         
-        public static string Send_addressDetectedOnClipboardTitle {
+        internal static string Send_addressDetectedOnClipboardTitle {
             get {
                 return ResourceManager.GetString("Send.addressDetectedOnClipboardTitle", resourceCulture);
             }
         }
         
-        public static string Send_addressDetectedOnClipboardMessage {
+        internal static string Send_addressDetectedOnClipboardMessage {
             get {
                 return ResourceManager.GetString("Send.addressDetectedOnClipboardMessage", resourceCulture);
             }
         }
         
-        public static string Transactions_title {
+        internal static string Transactions_title {
             get {
                 return ResourceManager.GetString("Transactions.title", resourceCulture);
             }
         }
         
-        public static string Transactions_empty {
+        internal static string Transactions_empty {
             get {
                 return ResourceManager.GetString("Transactions.empty", resourceCulture);
             }
         }
         
-        public static string Transactions_empty_button {
+        internal static string Transactions_empty_button {
             get {
                 return ResourceManager.GetString("Transactions.empty.button", resourceCulture);
             }
         }
         
-        public static string TransactionDetails_title {
+        internal static string TransactionDetails_title {
             get {
                 return ResourceManager.GetString("TransactionDetails.title", resourceCulture);
             }
         }
         
-        public static string TransactionDetails_statusTitle {
+        internal static string TransactionDetails_statusTitle {
             get {
                 return ResourceManager.GetString("TransactionDetails.statusTitle", resourceCulture);
             }
         }
         
-        public static string TransactionDetails_memoTitle {
+        internal static string TransactionDetails_memoTitle {
             get {
                 return ResourceManager.GetString("TransactionDetails.memoTitle", resourceCulture);
             }
         }
         
-        public static string TransactionDetails_amountTitle {
+        internal static string TransactionDetails_amountTitle {
             get {
                 return ResourceManager.GetString("TransactionDetails.amountTitle", resourceCulture);
             }
         }
         
-        public static string TransactionDetails_transactionIdTitle {
+        internal static string TransactionDetails_transactionIdTitle {
             get {
                 return ResourceManager.GetString("TransactionDetails.transactionIdTitle", resourceCulture);
             }
         }
         
-        public static string TransactionDetails_confirmedBlockTitle {
+        internal static string TransactionDetails_confirmedBlockTitle {
             get {
                 return ResourceManager.GetString("TransactionDetails.confirmedBlockTitle", resourceCulture);
             }
         }
         
-        public static string NowLoading_text {
+        internal static string NowLoading_text {
             get {
                 return ResourceManager.GetString("NowLoading.text", resourceCulture);
             }
         }
         
-        public static string Accounts_title {
+        internal static string Accounts_title {
             get {
                 return ResourceManager.GetString("Accounts.title", resourceCulture);
             }
         }
         
-        public static string AccountSelection_title {
+        internal static string AccountSelection_title {
             get {
                 return ResourceManager.GetString("AccountSelection.title", resourceCulture);
             }
         }
         
-        public static string AccountSelection_header {
+        internal static string AccountSelection_header {
             get {
                 return ResourceManager.GetString("AccountSelection.header", resourceCulture);
             }
         }
         
-        public static string AccountSelection_subheader {
+        internal static string AccountSelection_subheader {
             get {
                 return ResourceManager.GetString("AccountSelection.subheader", resourceCulture);
             }
         }
         
-        public static string AddAccount_title {
+        internal static string AddAccount_title {
             get {
                 return ResourceManager.GetString("AddAccount.title", resourceCulture);
             }
         }
         
-        public static string AddAccount_header {
+        internal static string AddAccount_header {
             get {
                 return ResourceManager.GetString("AddAccount.header", resourceCulture);
             }
         }
         
-        public static string AddAccount_subheader {
+        internal static string AddAccount_subheader {
             get {
                 return ResourceManager.GetString("AddAccount.subheader", resourceCulture);
             }
         }
         
-        public static string AddAccount_button {
+        internal static string AddAccount_button {
             get {
                 return ResourceManager.GetString("AddAccount.button", resourceCulture);
             }
         }
         
-        public static string AddAccount_close {
+        internal static string AddAccount_close {
             get {
                 return ResourceManager.GetString("AddAccount.close", resourceCulture);
             }
         }
         
-        public static string AddAccount_entry {
+        internal static string AddAccount_entry {
             get {
                 return ResourceManager.GetString("AddAccount.entry", resourceCulture);
             }
         }
         
-        public static string AddAccount_options {
+        internal static string AddAccount_options {
             get {
                 return ResourceManager.GetString("AddAccount.options", resourceCulture);
             }
         }
         
-        public static string AddAccount_createButton {
+        internal static string AddAccount_color {
+            get {
+                return ResourceManager.GetString("AddAccount.color", resourceCulture);
+            }
+        }
+        
+        internal static string AddAccount_createButton {
             get {
                 return ResourceManager.GetString("AddAccount.createButton", resourceCulture);
             }
         }
         
-        public static string Backup_Close {
+        internal static string Backup_Close {
             get {
                 return ResourceManager.GetString("Backup.Close", resourceCulture);
             }
         }
         
-        public static string Backup_Skip {
+        internal static string Backup_Skip {
             get {
                 return ResourceManager.GetString("Backup.Skip", resourceCulture);
             }
         }
         
-        public static string AccountSettings_Title {
+        internal static string AccountSettings_Title {
             get {
                 return ResourceManager.GetString("AccountSettings.Title", resourceCulture);
             }
         }
         
-        public static string PinPad_Title {
+        internal static string PinPad_Title {
             get {
                 return ResourceManager.GetString("PinPad.Title", resourceCulture);
             }
         }
         
-        public static string Recovery_Close {
+        internal static string Recovery_Close {
             get {
                 return ResourceManager.GetString("Recovery.Close", resourceCulture);
             }
         }
         
-        public static string Send_buttonSend {
+        internal static string Send_buttonSend {
             get {
                 return ResourceManager.GetString("Send.buttonSend", resourceCulture);
             }
         }
         
-        public static string Send_fee {
+        internal static string Send_fee {
             get {
                 return ResourceManager.GetString("Send.fee", resourceCulture);
             }
         }
         
-        public static string Ordinal_eighth {
+        internal static string Ordinal_eighth {
             get {
                 return ResourceManager.GetString("Ordinal.eighth", resourceCulture);
             }
         }
         
-        public static string Ordinal_eleventh {
+        internal static string Ordinal_eleventh {
             get {
                 return ResourceManager.GetString("Ordinal.eleventh", resourceCulture);
             }
         }
         
-        public static string Ordinal_fifth {
+        internal static string Ordinal_fifth {
             get {
                 return ResourceManager.GetString("Ordinal.fifth", resourceCulture);
             }
         }
         
-        public static string Ordinal_first {
+        internal static string Ordinal_first {
             get {
                 return ResourceManager.GetString("Ordinal.first", resourceCulture);
             }
         }
         
-        public static string Ordinal_fourth {
+        internal static string Ordinal_fourth {
             get {
                 return ResourceManager.GetString("Ordinal.fourth", resourceCulture);
             }
         }
         
-        public static string Ordinal_ninth {
+        internal static string Ordinal_ninth {
             get {
                 return ResourceManager.GetString("Ordinal.ninth", resourceCulture);
             }
         }
         
-        public static string Ordinal_second {
+        internal static string Ordinal_second {
             get {
                 return ResourceManager.GetString("Ordinal.second", resourceCulture);
             }
         }
         
-        public static string Ordinal_seventh {
+        internal static string Ordinal_seventh {
             get {
                 return ResourceManager.GetString("Ordinal.seventh", resourceCulture);
             }
         }
         
-        public static string Ordinal_sixth {
+        internal static string Ordinal_sixth {
             get {
                 return ResourceManager.GetString("Ordinal.sixth", resourceCulture);
             }
         }
         
-        public static string Ordinal_tenth {
+        internal static string Ordinal_tenth {
             get {
                 return ResourceManager.GetString("Ordinal.tenth", resourceCulture);
             }
         }
         
-        public static string Ordinal_third {
+        internal static string Ordinal_third {
             get {
                 return ResourceManager.GetString("Ordinal.third", resourceCulture);
             }
         }
         
-        public static string Ordinal_twelveth {
+        internal static string Ordinal_twelveth {
             get {
                 return ResourceManager.GetString("Ordinal.twelveth", resourceCulture);
             }
         }
         
-        public static string Alert_irreversible {
+        internal static string Alert_irreversible {
             get {
                 return ResourceManager.GetString("Alert.irreversible", resourceCulture);
             }
         }
         
-        public static string Button_no {
+        internal static string Button_no {
             get {
                 return ResourceManager.GetString("Button.no", resourceCulture);
             }
         }
         
-        public static string Button_yes {
+        internal static string Button_yes {
             get {
                 return ResourceManager.GetString("Button.yes", resourceCulture);
             }
         }
         
-        public static string Ordinal_eighteenth {
+        internal static string Ordinal_eighteenth {
             get {
                 return ResourceManager.GetString("Ordinal.eighteenth", resourceCulture);
             }
         }
         
-        public static string Ordinal_fifteenth {
+        internal static string Ordinal_fifteenth {
             get {
                 return ResourceManager.GetString("Ordinal.fifteenth", resourceCulture);
             }
         }
         
-        public static string Ordinal_fourteenth {
+        internal static string Ordinal_fourteenth {
             get {
                 return ResourceManager.GetString("Ordinal.fourteenth", resourceCulture);
             }
         }
         
-        public static string Ordinal_nineteenth {
+        internal static string Ordinal_nineteenth {
             get {
                 return ResourceManager.GetString("Ordinal.nineteenth", resourceCulture);
             }
         }
         
-        public static string Ordinal_seventeenth {
+        internal static string Ordinal_seventeenth {
             get {
                 return ResourceManager.GetString("Ordinal.seventeenth", resourceCulture);
             }
         }
         
-        public static string Ordinal_sixteenth {
+        internal static string Ordinal_sixteenth {
             get {
                 return ResourceManager.GetString("Ordinal.sixteenth", resourceCulture);
             }
         }
         
-        public static string Ordinal_thirteenth {
+        internal static string Ordinal_thirteenth {
             get {
                 return ResourceManager.GetString("Ordinal.thirteenth", resourceCulture);
             }
         }
         
-        public static string Ordinal_twentieth {
+        internal static string Ordinal_twentieth {
             get {
                 return ResourceManager.GetString("Ordinal.twentieth", resourceCulture);
             }
         }
         
-        public static string Ordinal_twenty_first {
+        internal static string Ordinal_twenty_first {
             get {
                 return ResourceManager.GetString("Ordinal.twenty-first", resourceCulture);
             }
         }
         
-        public static string Ordinal_twenty_fourth {
+        internal static string Ordinal_twenty_fourth {
             get {
                 return ResourceManager.GetString("Ordinal.twenty-fourth", resourceCulture);
             }
         }
         
-        public static string Ordinal_twenty_second {
+        internal static string Ordinal_twenty_second {
             get {
                 return ResourceManager.GetString("Ordinal.twenty-second", resourceCulture);
             }
         }
         
-        public static string Ordinal_twenty_third {
+        internal static string Ordinal_twenty_third {
             get {
                 return ResourceManager.GetString("Ordinal.twenty-third", resourceCulture);
             }
         }
         
-        public static string Scan_Title {
+        internal static string Scan_Title {
             get {
                 return ResourceManager.GetString("Scan.Title", resourceCulture);
             }
         }
         
-        public static string Address_copied {
+        internal static string Address_copied {
             get {
                 return ResourceManager.GetString("Address.copied", resourceCulture);
             }
         }
         
-        public static string Error_ok {
+        internal static string Error_ok {
             get {
                 return ResourceManager.GetString("Error.ok", resourceCulture);
             }
         }
         
-        public static string TransactionDetails_receivedAddressTitle {
+        internal static string TransactionDetails_receivedAddressTitle {
             get {
                 return ResourceManager.GetString("TransactionDetails.receivedAddressTitle", resourceCulture);
             }
         }
         
-        public static string TransactionDetails_sendAddressTitle {
+        internal static string TransactionDetails_sendAddressTitle {
             get {
                 return ResourceManager.GetString("TransactionDetails.sendAddressTitle", resourceCulture);
             }
         }
         
-        public static string Settings_button {
+        internal static string Settings_button {
             get {
                 return ResourceManager.GetString("Settings.button", resourceCulture);
             }
         }
         
-        public static string Send_economyFee {
+        internal static string Send_economyFee {
             get {
                 return ResourceManager.GetString("Send.economyFee", resourceCulture);
             }
         }
         
-        public static string Send_estConfirmation {
+        internal static string Send_estConfirmation {
             get {
                 return ResourceManager.GetString("Send.estConfirmation", resourceCulture);
             }
         }
         
-        public static string Send_highFee {
+        internal static string Send_highFee {
             get {
                 return ResourceManager.GetString("Send.highFee", resourceCulture);
             }
         }
         
-        public static string Send_normalFee {
+        internal static string Send_normalFee {
             get {
                 return ResourceManager.GetString("Send.normalFee", resourceCulture);
             }
         }
         
-        public static string Send_transactionFee {
+        internal static string Send_transactionFee {
             get {
                 return ResourceManager.GetString("Send.transactionFee", resourceCulture);
             }
         }
         
-        public static string Transactions_awaitingConfirmation {
+        internal static string Transactions_awaitingConfirmation {
             get {
                 return ResourceManager.GetString("Transactions.awaitingConfirmation", resourceCulture);
             }
         }
         
-        public static string Transactions_confirmed {
+        internal static string Transactions_confirmed {
             get {
                 return ResourceManager.GetString("Transactions.confirmed", resourceCulture);
             }
         }
         
-        public static string Transactions_isSendAt {
+        internal static string Transactions_isSendAt {
             get {
                 return ResourceManager.GetString("Transactions.isSendAt", resourceCulture);
             }
         }
         
-        public static string Transactions_isSendTo {
+        internal static string Transactions_isSendTo {
             get {
                 return ResourceManager.GetString("Transactions.isSendTo", resourceCulture);
             }
         }
         
-        public static string AckRisk_button {
+        internal static string AckRisk_button {
             get {
                 return ResourceManager.GetString("AckRisk.button", resourceCulture);
             }
         }
         
-        public static string AckRisk_term1 {
+        internal static string AckRisk_term1 {
             get {
                 return ResourceManager.GetString("AckRisk.term1", resourceCulture);
             }
         }
         
-        public static string AckRisk_term2 {
+        internal static string AckRisk_term2 {
             get {
                 return ResourceManager.GetString("AckRisk.term2", resourceCulture);
             }
         }
         
-        public static string AckRisk_term3 {
+        internal static string AckRisk_term3 {
             get {
                 return ResourceManager.GetString("AckRisk.term3", resourceCulture);
             }
         }
         
-        public static string AckRisk_term4 {
+        internal static string AckRisk_term4 {
             get {
                 return ResourceManager.GetString("AckRisk.term4", resourceCulture);
             }
         }
         
-        public static string AckRisk_title {
+        internal static string AckRisk_title {
             get {
                 return ResourceManager.GetString("AckRisk.title", resourceCulture);
             }
         }
         
-        public static string NewWallet_body {
+        internal static string NewWallet_body {
             get {
                 return ResourceManager.GetString("NewWallet.body", resourceCulture);
             }
         }
         
-        public static string NewWallet_button {
+        internal static string NewWallet_button {
             get {
                 return ResourceManager.GetString("NewWallet.button", resourceCulture);
             }
         }
         
-        public static string NewWallet_header {
+        internal static string NewWallet_header {
             get {
                 return ResourceManager.GetString("NewWallet.header", resourceCulture);
             }
         }
         
-        public static string NewWallet_title {
+        internal static string NewWallet_title {
             get {
                 return ResourceManager.GetString("NewWallet.title", resourceCulture);
             }

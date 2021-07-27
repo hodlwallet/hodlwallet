@@ -28,7 +28,7 @@
                        FontSize="Medium"
                        FlexLayout.AlignSelf="Center"
                        FlexLayout.Grow="1" />
-                <BoxView FlexLayout.Grow="3" />
+                <BoxView FlexLayout.Grow="4" />
                 <Button Text="{i18n:Translate Text=Recover.next}"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
@@ -36,7 +36,7 @@
                         FontSize="Large"
                         Clicked="Next_Clicked"
                         FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1" />
+                        FlexLayout.Grow="2" />
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>
