@@ -53,7 +53,7 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref accountType, value);
         }
 
-        string accountColor;
+        string accountColor = ((Color)Application.Current.Resources["ColorPicker10"]).ToHexString();
 
         public string AccountColor
         {
