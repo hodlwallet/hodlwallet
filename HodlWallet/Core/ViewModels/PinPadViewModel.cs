@@ -49,7 +49,7 @@ namespace HodlWallet.Core.ViewModels
         {
             SavePin(pin);
 
-            MessagingCenter.Send(this, "NavigateToBackupViewModel");
+            MessagingCenter.Send(this, "NavigateToNextView");
         }
 
         void SavePin(string pin)
