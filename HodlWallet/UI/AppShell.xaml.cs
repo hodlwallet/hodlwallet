@@ -54,7 +54,7 @@ namespace HodlWallet.UI
         public ObservableCollection<AccountModel> AccountList = new ObservableCollection<AccountModel>();
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
-
+        
         public static bool[] isColorSelected = new bool[18];
         public static void ClearColorSelectedList()
         {
@@ -156,6 +156,12 @@ namespace HodlWallet.UI
                 }
             }*/
         }
+
+        string GetAccountLabelMenu(AccountModel account)
+        {
+            return $"{account.AccountName} - {account.Balance}";
+        }
+
         void AddMenuItems(AccountModel accountItem)
         {
             string colorCode = accountItem.AccountColorCode;
@@ -165,7 +171,7 @@ namespace HodlWallet.UI
             
             MenuItem mi = new()
             {
-                Text = accountItem.AccountName,
+                Text = GetAccountLabelMenu(accountItem),
                 Command = GoToAccountCommand,
                 CommandParameter = accountItem.AccountData.Id,
                 StyleClass = style,
@@ -173,6 +179,7 @@ namespace HodlWallet.UI
 
             Items.Add(mi);
         }
+
 
         private void Shell_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
