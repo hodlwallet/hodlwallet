@@ -37,8 +37,8 @@ namespace HodlWallet.UI.Views
     {
         RecoverWalletEntryViewModel ViewModel => BindingContext as RecoverWalletEntryViewModel;
 
-        readonly Color textPrimary = (Color)Application.Current.Resources["TextPrimary"];
-        readonly Color textError = (Color)Application.Current.Resources["TextError"];
+        Color TextPrimary => (Color)Application.Current.Resources["TextPrimary"];
+        Color TextError => (Color)Application.Current.Resources["TextError"];
 
         public RecoverWalletEntryView()
         {
@@ -89,11 +89,11 @@ namespace HodlWallet.UI.Views
 
             if (Core.Services.WalletService.IsWordInWordlist(word, ViewModel.WalletService.GetWordListLanguage()))
             {
-                entry.TextColor = textPrimary;
+                entry.TextColor = TextPrimary;
             }
             else
             {
-                entry.TextColor = textError;
+                entry.TextColor = TextError;
             }
         }
 
