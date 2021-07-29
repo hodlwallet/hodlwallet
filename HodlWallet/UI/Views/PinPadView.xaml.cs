@@ -31,8 +31,12 @@ namespace HodlWallet.UI.Views
 {
     public partial class PinPadView : ContentPage
     {
-        public PinPadView()
+        readonly ContentPage nextView;
+
+        public PinPadView(ContentPage nextView)
         {
+            this.nextView = nextView;
+
             InitializeComponent();
 
             SetPinPadControlBindings();
@@ -52,12 +56,15 @@ namespace HodlWallet.UI.Views
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<PinPadViewModel>(this, "NavigateToBackupViewModel", NavigateToBackupViewModel);
+            MessagingCenter.Subscribe<PinPadViewModel>(this, "NavigateToNextView", NavigateToNextView);
         }
 
-        async void NavigateToBackupViewModel(PinPadViewModel _)
+        async void NavigateToNextView(PinPadViewModel _)
         {
-            await Navigation.PushAsync(new NewWalletInfoView());
+            await Navigation.PushAsync(nextView);
+
+            // No page should go back to the pinpad view
+            Application.Current.MainPage.Navigation.RemovePage(this);
         }
     }
 }

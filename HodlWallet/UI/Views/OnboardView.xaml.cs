@@ -25,6 +25,7 @@ using System;
 using Xamarin.Forms;
 
 using HodlWallet.UI.Extensions;
+using HodlWallet.Core.Services;
 
 namespace HodlWallet.UI.Views
 {
@@ -37,12 +38,22 @@ namespace HodlWallet.UI.Views
 
         void CreateButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new PinPadView());
+            if (SecureStorageService.HasPin())
+                Navigation.PushAsync(new NewWalletInfoView());
+            else
+            {
+                Navigation.PushAsync(new PinPadView(new NewWalletInfoView()));
+            }
         }
 
         void RecoverButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new RecoverView());
+            if (SecureStorageService.HasPin())
+                Navigation.PushAsync(new RecoverView());
+            else
+            {
+                Navigation.PushAsync(new PinPadView(new RecoverView()));
+            }
         }
 
         async void Logo_Tapped(object sender, EventArgs e)

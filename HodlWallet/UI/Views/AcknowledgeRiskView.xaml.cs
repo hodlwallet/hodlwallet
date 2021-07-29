@@ -19,7 +19,7 @@ namespace HodlWallet.UI.Views
 
         void WalletInfoButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new BackupRecoveryWordView());
+            Navigation.PushAsync(new BackupView("skip"));
         }
 
         void OnAckTerm1Checked(object sender, CheckedChangedEventArgs e)
