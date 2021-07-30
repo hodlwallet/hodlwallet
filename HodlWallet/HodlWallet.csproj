@@ -9,6 +9,10 @@
 		<DebugSymbols>true</DebugSymbols>
 		<DefineConstants>DEBUG;TRACE</DefineConstants>
 	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	  <DebugType></DebugType>
+	  <DefineConstants>RELEASE</DefineConstants>
+	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
 		<PackageReference Include="SkiaSharp" Version="2.80.3" />
