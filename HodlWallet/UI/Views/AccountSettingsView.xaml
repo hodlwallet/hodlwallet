@@ -28,7 +28,6 @@
 
                         <!-- Extra space -->
                         <BoxView FlexLayout.Grow="3" />
-
                     </FlexLayout>
                 </ScrollView>
             </FlexLayout>
