@@ -228,7 +228,7 @@ namespace HodlWallet.Core.ViewModels
 
         async Task IdToBrowser()
         {
-            var uri = new Uri(string.Format(BlockExplorerTransactionsUri, Address));
+            var uri = new Uri(string.Format(BlockExplorerTransactionsUri, Id));
 
             await Browser.OpenAsync(uri, BrowserLaunchMode.External);
         }
