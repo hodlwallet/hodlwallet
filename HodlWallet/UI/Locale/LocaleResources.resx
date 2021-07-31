@@ -512,6 +512,14 @@
     <value>Account Settings</value>
     <comment>Account Settings Title</comment>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Global Settings</value>
+    <comment>Global Settings Title</comment>
+  </data>
+  <data name="Settings.Close" xml:space="preserve">
+    <value>Close</value>
+    <comment>Global Settings Close Button</comment>
+  </data>
   <data name="PinPad.Title" xml:space="preserve">
     <value>Create A New Pin</value>
     <comment>Pin Pad Title</comment>

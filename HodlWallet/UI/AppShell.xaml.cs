@@ -36,11 +36,10 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 
 using HodlWallet.Core.Interfaces;
-using HodlWallet.UI.Views;
 using HodlWallet.Core.Models;
-using HodlWallet.Core.Services;
-using HodlWallet.UI.Controls;
 using HodlWallet.Core.Utils;
+using HodlWallet.UI.Controls;
+using HodlWallet.UI.Views;
 
 namespace HodlWallet.UI
 {
@@ -97,7 +96,7 @@ namespace HodlWallet.UI
 
         public void ChangeTabsTo(string tabName)
         {
-            Tab tab = tabName switch
+            var tab = tabName switch
             {
                 "home" => homeTab,
                 "receive" => receiveTab,
@@ -154,9 +153,9 @@ namespace HodlWallet.UI
         }
         void AddMenuItems(AccountModel accountItem)
         {
-            string colorCode = accountItem.AccountColorCode;
-
+            var colorCode = accountItem.AccountColorCode;
             var style = new List<string> { "MenuItemLabelClass" + colorCode };
+
             isColorSelected[int.Parse(colorCode)] = true;
             
             MenuItem mi = new()

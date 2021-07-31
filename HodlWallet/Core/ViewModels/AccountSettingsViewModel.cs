@@ -1,5 +1,5 @@
 ﻿//
-// SettingsView.xaml.cs
+// SettingsViewModel.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -20,39 +20,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+using System.Threading.Tasks;
 
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using HodlWallet.UI.Views;
-
-namespace HodlWallet.UI.Controls
+namespace HodlWallet.Core.ViewModels
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FlyoutFooter : ContentView
+    public class AccountSettingsViewModel : BaseViewModel
     {
-        public FlyoutFooter()
+        public async Task ResyncAccount()
         {
-            InitializeComponent();
-        }
-
-        void CreateAccountButton_Clicked(object sender, EventArgs e)
-        {
-            Shell.Current.FlyoutIsPresented = false;
-            var view = new CreateAccountView();
-            var nav = new NavigationPage(view);
-
-            Navigation.PushModalAsync(nav);
-        }
-
-        void SettingsButton_Clicked(object sender, EventArgs e)
-        {
-            Shell.Current.FlyoutIsPresented = false;
-            var view = new SettingsView();
-            var nav = new NavigationPage(view);
-
-            Navigation.PushModalAsync(nav);
+            await WalletService.Wallet.Resync();
         }
     }
 }

@@ -641,6 +641,18 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
+        internal static string Settings_Title {
+            get {
+                return ResourceManager.GetString("Settings.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Close {
+            get {
+                return ResourceManager.GetString("Settings.Close", resourceCulture);
+            }
+        }
+        
         internal static string PinPad_Title {
             get {
                 return ResourceManager.GetString("PinPad.Title", resourceCulture);

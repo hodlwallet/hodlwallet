@@ -108,7 +108,6 @@
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker17}" />
         </Style>
 
-
         <Style TargetType="Layout"
             Class="FlyoutItemLayoutStyle"
             ApplyToDerivedTypes="True">

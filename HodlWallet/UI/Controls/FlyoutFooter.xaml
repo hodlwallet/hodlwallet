@@ -25,6 +25,7 @@
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
                     HeightRequest="70"
+                    Clicked="SettingsButton_Clicked"
                     BackgroundColor="{DynamicResource BackgroundPrimary}" />
         </FlexLayout>
     </ContentView.Content>

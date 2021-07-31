@@ -21,39 +21,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
-using HodlWallet.Core.Utils;
+using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Locale;
 using HodlWallet.UI.Extensions;
-using HodlWallet.Core.ViewModels;
 
 namespace HodlWallet.UI.Views
 {
     public partial class AccountSettingsView : ContentPage
     {
-        SettingsViewModel ViewModel => (SettingsViewModel)BindingContext;
+        AccountSettingsViewModel ViewModel => BindingContext as AccountSettingsViewModel;
 
         public AccountSettingsView()
         {
             InitializeComponent();
-
-            SetLabels();
         }
 
-        void BackupMnemonic_Clicked(object sender, EventArgs e)
-        {
-            var view = new BackupView(action: "close");
-            var nav = new NavigationPage(view);
-
-            Navigation.PushModalAsync(nav);
-        }
-
-        void ResyncWallet_Clicked(object sender, EventArgs e)
+        void ResyncAccount_Clicked(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
@@ -61,64 +48,8 @@ namespace HodlWallet.UI.Views
 
                 if (!answer) return;
 
-                await ViewModel.ResyncWallet();
+                await ViewModel.ResyncAccount();
             });
-        }
-
-        void RestoreWallet_Clicked(object sender, EventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                var answer = await AskThisIsIrreversibleQuestion("restore-wallet");
-
-                if (!answer) return;
-
-                var view = new RecoverView(closeable: true);
-                var nav = new NavigationPage(view);
-
-                await Navigation.PushModalAsync(nav);
-            });
-        }
-
-        void WipeWallet_Clicked(object sender, EventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                var answer = await AskThisIsIrreversibleQuestion("wipe-wallet");
-
-                if (!answer) return;
-
-                ViewModel.WipeWallet();
-                Process.GetCurrentProcess().Kill(); // die
-            });
-        }
-
-        void BuildDate_Tapped(object sender, EventArgs e)
-        {
-            string buildInfo = string.Format(
-                Constants.BUILD_INFO_CONTENT,
-                BuildInfo.GitBranch,
-                BuildInfo.GitHead
-            );
-
-            Debug.WriteLine(buildInfo);
-
-            Clipboard.SetTextAsync(buildInfo);
-
-            string msg = $"{buildInfo}\n\n{Constants.BUILD_INFO_COPIED_TO_CLIPBOARD}";
-
-            _ = this.DisplayPrompt(
-                Constants.BUILD_INFO_MESSAGE_TITLE,
-                msg,
-                LocaleResources.Error_ok
-            );
-        }
-
-        void SetLabels()
-        {
-#if DEBUG
-            BuildDate.Text = $"Built on: {BuildInfo.BuildDateText}";
-#endif
         }
 
         async Task<bool> AskThisIsIrreversibleQuestion(string key)
