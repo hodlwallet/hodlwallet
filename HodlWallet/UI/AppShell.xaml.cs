@@ -47,44 +47,38 @@ namespace HodlWallet.UI
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppShell : Shell
     {
-        Serilog.ILogger logger;
+        readonly Serilog.ILogger logger;
         readonly object @lock = new();
         IWalletService WalletService => DependencyService.Get<IWalletService>();
 
-        public ObservableCollection<AccountModel> AccountList = new ObservableCollection<AccountModel>();
+        public ObservableCollection<AccountModel> AccountList = new();
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
 
         public static bool[] isColorSelected = new bool[18];
         public static void ClearColorSelectedList()
         {
-            Array.Fill<bool>(isColorSelected, false);
+            Array.Fill(isColorSelected, false);
         }
 
         public static Color RandomColor()
         {
-            List<int> notSelected = new List<int>();
+            List<int> notSelected = new();
             var rand = new Random();
-            bool exit = false;
+
+            var exit = false;
             while (!exit)
             {
                 for (int i = 0; i < isColorSelected.Length; i++)
-                {
                     if (!isColorSelected[i])
-                    {
                         notSelected.Add(i);
-                    }
-                }
                 
                 if (notSelected.Count == 0)
-                {
                     ClearColorSelectedList();
-                }
                 else
-                {
                     exit = true;
-                }
             }
+
             return colorList[notSelected[rand.Next(notSelected.Count)]];
         }
 
@@ -125,11 +119,13 @@ namespace HodlWallet.UI
             // Update the color of the account saved on storage service
             string colorStr = WalletService.GetColorByAccount(accountId);
             string colorCode = Constants.DEFAULT_ACCOUNT_COLOR_CODE;
+
             if (!string.IsNullOrWhiteSpace(colorStr))
             {
                 int position = colorStr.IndexOf(Constants.HEX_CHAR);
                 colorCode = colorStr.Substring(0, position);
             }
+
             return colorCode;
         }
         void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
