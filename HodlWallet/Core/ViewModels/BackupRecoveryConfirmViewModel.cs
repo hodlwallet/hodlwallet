@@ -30,6 +30,11 @@ using Xamarin.Forms;
 
 using HodlWallet.Core.Services;
 using HodlWallet.UI.Locale;
+using System.Collections.Generic;
+using HodlWallet.Core.Models;
+using System.Diagnostics;
+using HodlWallet.UI.Converters;
+using HodlWallet.Core.Utils;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -43,10 +48,10 @@ namespace HodlWallet.Core.ViewModels
         int _PrevIndex;
         bool _WarningVisible;
 
-        private string[] confirmWords = new string[8], 
-            place = { LocaleResources.Ordinal_first,        LocaleResources.Ordinal_second,         LocaleResources.Ordinal_third,      
+        private string[] confirmWords = new string[8],
+            place = { LocaleResources.Ordinal_first,        LocaleResources.Ordinal_second,         LocaleResources.Ordinal_third,
                     LocaleResources.Ordinal_fourth,         LocaleResources.Ordinal_fifth,          LocaleResources.Ordinal_sixth,
-                    LocaleResources.Ordinal_seventh,        LocaleResources.Ordinal_eighth,         LocaleResources.Ordinal_ninth, 
+                    LocaleResources.Ordinal_seventh,        LocaleResources.Ordinal_eighth,         LocaleResources.Ordinal_ninth,
                     LocaleResources.Ordinal_tenth,          LocaleResources.Ordinal_eleventh,       LocaleResources.Ordinal_twelveth,
                     LocaleResources.Ordinal_thirteenth,     LocaleResources.Ordinal_fourteenth,     LocaleResources.Ordinal_fifteenth,
                     LocaleResources.Ordinal_sixteenth,      LocaleResources.Ordinal_seventeenth,    LocaleResources.Ordinal_eighteenth,
@@ -55,15 +60,15 @@ namespace HodlWallet.Core.ViewModels
 
         public ICommand WordCommand { get; }
 
+        public IList<BackupWordModel> ShuffledWordsList { get; set; }
+        public IList<BackupWordModel> WordList { get; set; }
+
         public string[] Mnemonic
         {
             get => _Mnemonic;
             set
             {
                 SetProperty(ref _Mnemonic, value);
-
-                _PrevIndex = _Mnemonic.Length;
-                _ = RefreshWords(_Mnemonic);
             }
         }
 
@@ -198,10 +203,18 @@ namespace HodlWallet.Core.ViewModels
                 return confirmWords[7];
             }
         }
-
         public BackupRecoveryConfirmViewModel()
         {
+            WordList = new List<BackupWordModel>();
+            ShuffledWordsList = new List<BackupWordModel>();
             WordCommand = new Command<string>(RefreshConfirmWords);
+            //foreach (var item in Mnemonic)
+            //{
+            //    Console.WriteLine($"Aqui está el famoso --->>> {item}");
+            //}
+            Console.WriteLine($"Aqui está el famoso --->>> {_Mnemonic.Length}");
+
+            //ShuffleMnemonic(Mnemonic);
         }
 
         private void RefreshConfirmWords(string arg)
@@ -239,6 +252,8 @@ namespace HodlWallet.Core.ViewModels
                 string[] guessWords = Services.WalletService.GenerateGuessWords(_WordToGuess, WalletService.GetWordListLanguage(), AMOUNT_AROUND);
 
                 UpdateWords(guessWords);
+
+
             }
             else
             {
@@ -249,7 +264,29 @@ namespace HodlWallet.Core.ViewModels
                 await Task.Delay(1);
 
                 MessagingCenter.Send(this, "NavigateToRootView");
+            } 
+           
+        }
+
+        void ShuffleMnemonic(string[] mnemonic)
+        {
+            WordList = MnemonicArrayToList.GenerateWordsList(mnemonic);
+            
+
+            ShuffledWordsList = WordList.ToList();
+            ShuffledWordsList.Shuffle<BackupWordModel>();
+
+            Console.WriteLine("Lista A");
+            foreach (var item in WordList)
+            {
+                Console.WriteLine($"{item.WordIndex} --> {item.Word}");
             }
+            Console.WriteLine("Lista B");
+            foreach (var item in ShuffledWordsList)
+            {
+                Console.WriteLine($"{item.WordIndex} --> {item.Word}");
+            }
+            //await Task.Delay(1000);
         }
 
         private void UpdateWords(string[] guessWords)
@@ -263,5 +300,6 @@ namespace HodlWallet.Core.ViewModels
             WordSeven = guessWords[6];
             WordEight = guessWords[7];
         }
+
     }
 }

@@ -11,111 +11,43 @@
         <vm:BackupRecoveryConfirmViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <FlexLayout Direction="Column"
-                        BackgroundColor="{DynamicResource BackgroundPrimary}"
+        <FlexLayout Direction="Column"
                         JustifyContent="SpaceAround"
+                        BackgroundColor="{DynamicResource BackgroundPrimary}"
                         AlignItems="Center">
-
-                <Label Text="{i18n:Translate Text=BackupConfirm.header}"
+            <Label Text="{i18n:Translate Text=BackupWord.header}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        HorizontalTextAlignment="Center"
-                       FlexLayout.Grow="1"
-                       Margin="0, 20, 0, 0" />
+                       Margin="0, 20" />
 
-                <Label Text="{Binding Exercise}"
-                       Style="{DynamicResource CustomLabel}"
-                       HorizontalTextAlignment="Center" />
-
-                <Label Text="{i18n:Translate Text=BackupConfirm.warning}"
-                       FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource TextError}"
-                       HorizontalTextAlignment="Center"
-                       IsVisible="{Binding WarningVisible}" />
-
-                <ActivityIndicator IsRunning="{Binding IsLoading}"
-                                   Color="{DynamicResource SyncGradientStart}" />
-
-                <FlexLayout Direction="Row"
-                            JustifyContent="SpaceEvenly"
-                            FlexLayout.AlignSelf="Stretch"
-                            FlexLayout.Grow="2">
-
-                    <FlexLayout Direction="Column"
-                                FlexLayout.Grow="1" />
-
-                    <FlexLayout Direction="Column"
-                                FlexLayout.Grow="1"
-                                JustifyContent="SpaceEvenly"
-                                AlignItems="Stretch">
-
-                        <Button Text="{Binding WordOne}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="0" />
-                        <BoxView />
-
-                        <Button Text="{Binding WordTwo}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="1" />
-                        <BoxView />
-
-                        <Button Text="{Binding WordThree}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="2" />
-                        <BoxView />
-
-
-                        <Button Text="{Binding WordFour}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="3" />
-                        <BoxView />
-
-
-                    </FlexLayout>
-
-                    <BoxView WidthRequest="10" />
-
-                    <FlexLayout Direction="Column"
-                                FlexLayout.Grow="1"
-                                JustifyContent="SpaceEvenly"
-                                AlignItems="Stretch">
-
-                        <Button Text="{Binding WordFive}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="4" />
-
-                        <BoxView />
-
-                        <Button Text="{Binding WordSix}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="5" />
-
-                        <BoxView />
-                        <Button Text="{Binding WordSeven}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="6" />
-
-                        <BoxView />
-                        <Button Text="{Binding WordEight}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="7" />
-
-                        <BoxView />
-                    </FlexLayout>
-
-                    <FlexLayout Direction="Column"
-                                FlexLayout.Grow="1" />
-                </FlexLayout>
+            <FlexLayout Direction="Row"
+                                    Wrap="Wrap"
+                                    JustifyContent="SpaceAround"
+                                    AlignItems="Center"
+                                    BindableLayout.ItemsSource="{Binding WordList}"
+                                    BindableLayout.EmptyView="Mnemonic not found!"
+                                    Margin="15"                                    
+                                    FlexLayout.Grow="4">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
+                                                    Margin="2" >
+                            <StackLayout Orientation="Horizontal" Margin="2">
+                                <Label Text="{Binding WordIndex}"
+                                                    FontFamily="{StaticResource Sans-Regular}"
+                                                    TextColor="{DynamicResource SyncGradientStart}"
+                                                    FontSize="Micro" 
+                                                    />
+                                <Label Text="{Binding Word}"
+                                                Style="{DynamicResource MnemonicLabel}" 
+                                                Margin="0,0,5,0" />
+                            </StackLayout>
+                        </ContentView>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
             </FlexLayout>
-        </AbsoluteLayout>
+
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

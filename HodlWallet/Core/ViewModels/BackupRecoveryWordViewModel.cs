@@ -22,6 +22,7 @@
 // THE SOFTWARE.
 using System;
 using System.Windows.Input;
+using System.Collections.Generic;
 
 using Xamarin.Forms;
 
@@ -29,7 +30,7 @@ using Liviano.Exceptions;
 
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Models;
-using System.Collections.Generic;
+using HodlWallet.UI.Converters;
 
 
 namespace HodlWallet.Core.ViewModels
@@ -63,7 +64,7 @@ namespace HodlWallet.Core.ViewModels
             WalletService.Logger.Information($"Mnemonic is: {rawMnemonic}");
 
             _Mnemonic = rawMnemonic.Split(' ');
-            GenerateWordsList();
+            Words = MnemonicArrayToList.GenerateWordsList(_Mnemonic);
         }
 
         private string GetMnemonic()
@@ -74,7 +75,7 @@ namespace HodlWallet.Core.ViewModels
             return SecureStorageService.GetMnemonic();
         }
 
-        private void GenerateWordsList()
+        /*private void GenerateWordsList()
         {
             int index = 0;
             Words = new List<BackupWordModel>();
@@ -90,6 +91,6 @@ namespace HodlWallet.Core.ViewModels
             //    index++;
             //    Words.Add(new BackupWordModel() { Word = $"{_Mnemonic[i]}{index}" , WordIndex = index.ToString() });
             //}
-        }
+        }*/
     }
 }
