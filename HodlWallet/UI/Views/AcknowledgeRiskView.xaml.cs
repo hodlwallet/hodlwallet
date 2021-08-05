@@ -8,47 +8,75 @@ namespace HodlWallet.UI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AcknowledgeRiskView : ContentPage
     {
-        bool term1, term2, term3, term4;
+        bool acknowledgeRiskTerm1Checked, acknowledgeRiskTerm2Checked, acknowledgeRiskTerm3Checked, acknowledgeRiskTerm4Checked = false;
 
         public AcknowledgeRiskView()
         {
             InitializeComponent();
-            term1 = term2 = term3 = term4 = false;
-            AckButton.IsEnabled = false;
+            AcknowledgeRiskTermsViewButton.IsEnabled = false;
         }
 
-        void WalletInfoButton_Clicked(object sender, EventArgs e)
+        void AcknowledgeRiskTermsViewButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new BackupView("skip"));
         }
 
-        void OnAckTerm1Checked(object sender, CheckedChangedEventArgs e)
+        /// Toggles checkbox anytime a label is tapped.
+        /// Some room to improvement
+        private void OnAcknowledgeRiskTermLabel_Tapped(object sender, EventArgs e)
         {
-            term1 = e.Value;
-            AllTermsChecked();
+            Label label = sender as Label;
+            if (label == AcknowledgeRiskTerm1_Label)
+            {
+                AcknowledgeRiskTerm1_Check.IsChecked = !AcknowledgeRiskTerm1_Check.IsChecked;
+            }
+            else if (label == AcknowledgeRiskTerm2_Label)
+            {
+                AcknowledgeRiskTerm2_Check.IsChecked = !AcknowledgeRiskTerm2_Check.IsChecked;
+            }
+            else if (label == AcknowledgeRiskTerm3_Label)
+            {
+                AcknowledgeRiskTerm3_Check.IsChecked = !AcknowledgeRiskTerm3_Check.IsChecked;
+            }
+            else if (label == AcknowledgeRiskTerm4_Label)
+            {
+                AcknowledgeRiskTerm4_Check.IsChecked = !AcknowledgeRiskTerm4_Check.IsChecked;
+            }
         }
 
-        void OnAckTerm2Checked(object sender, CheckedChangedEventArgs e)
+        /// Toggles a boolean variable everytime a check is checked. 
+        /// When all checks are checked the NEXT button gets enabled.
+        /// Some room to improvement
+        private void OnAcknowledgeRiskTerm_Checked(object sender, CheckedChangedEventArgs e)
         {
-            term2 = e.Value;
-            AllTermsChecked();
+            CheckBox termCheck = sender as CheckBox;
+
+            if (termCheck == AcknowledgeRiskTerm1_Check)
+            {
+                acknowledgeRiskTerm1Checked = e.Value;
+            }
+            else if (termCheck == AcknowledgeRiskTerm2_Check)
+            {
+                acknowledgeRiskTerm2Checked = e.Value;
+            }
+            else if (termCheck == AcknowledgeRiskTerm3_Check)
+            {
+                acknowledgeRiskTerm3Checked = e.Value;
+            }
+            else if (termCheck == AcknowledgeRiskTerm4_Check)
+            {
+                acknowledgeRiskTerm4Checked = e.Value;
+            }
+
+            AllAcknowledgeRiskTermsChecked();
         }
 
-        void OnAckTerm3Checked(object sender, CheckedChangedEventArgs e)
+        private void AllAcknowledgeRiskTermsChecked()
         {
-            term3 = e.Value;
-            AllTermsChecked();
-        }
-
-        void OnAckTerm4Checked(object sender, CheckedChangedEventArgs e)
-        {
-            term4 = e.Value;
-            AllTermsChecked();
-        }
-
-        void AllTermsChecked()
-        { 
-            AckButton.IsEnabled = term1 && term2 && term3 && term4;
+            AcknowledgeRiskTermsViewButton.IsEnabled = acknowledgeRiskTerm1Checked
+                                            && acknowledgeRiskTerm2Checked
+                                            && acknowledgeRiskTerm3Checked
+                                            && acknowledgeRiskTerm4Checked;
         }
     }
 }
