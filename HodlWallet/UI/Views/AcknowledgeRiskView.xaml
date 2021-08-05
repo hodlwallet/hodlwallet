@@ -18,7 +18,7 @@
                 <Grid FlexLayout.Grow="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="9*" />
+                        <ColumnDefinition Width="7*" />
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
@@ -107,7 +107,6 @@
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
                     Clicked="WalletInfoButton_Clicked" />
-                
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

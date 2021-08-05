@@ -270,7 +270,7 @@ namespace HodlWallet.Core.Services
             IsStarted = true;
         }
 
-        public async Task<(bool Success, string Error)> AddAccount(string type = "bip84", string name = null)
+        public async Task<(bool Success, string Error)> AddAccount(string type = "bip84", string name = null, string color = null )
         {
             bool addedAccount = false;
             string messageError = null;
@@ -283,20 +283,27 @@ namespace HodlWallet.Core.Services
                 }
                 else
                 {
-                    int countBfrAddToList = Wallet.Accounts.Count;
-
                     Wallet.AddAccount(type, name);
+                    
+                    // To ensure the account is correctly associated to the current Wallet configured.
+                    await Save();
 
-                    if (Wallet.Accounts.Count <= countBfrAddToList)
+                    string accountIdSaved = 
+                            (from account in Wallet.Accounts
+                            where account.Name == name
+                            select account.Id).LastOrDefault();
+
+                    if (string.IsNullOrWhiteSpace(accountIdSaved))
                     {
-                        messageError = $"Unable to add a new accountto the current Wallet | Name => {name} - Type => {type}.";
+                        messageError = $"Unable to add a new account to the current Wallet | Name => {name} - Type => {type}.";
                         Logger.Error(messageError);
                     }
                     else
                     {
                         addedAccount = true;
-                        // To ensure the account is correctly associated to the current Wallet configured.
-                        await Save();
+
+                        // Backup the color associated with this account
+                        SetAccountColor(accountIdSaved, color);
                     }
                 }
                 return (addedAccount, messageError);
@@ -307,6 +314,19 @@ namespace HodlWallet.Core.Services
 
                 return (addedAccount, e.Message);
             }
+        }
+
+        void SetAccountColor(string accountId, string color)
+        {
+            Guard.NotEmpty(color, nameof(color));
+            SecureStorageService.SetAccountColor(walletId, accountId, color);
+        }
+
+        public string GetColorByAccount(string accountId)
+        {
+            Guard.NotEmpty(accountId, nameof(accountId));
+            string color = SecureStorageService.GetAccountColor(walletId, accountId);
+            return color;
         }
 
         public static string GetNewMnemonic(string wordList = "english", int wordCount = 12)
@@ -377,7 +397,7 @@ namespace HodlWallet.Core.Services
             // TODO This should read from the user's language.
             string language = "english";
 
-            Logger.Information($"Wordlist is on {language}");
+            Logger.Information($"[GetWordListLanguage] Wordlist is on {language}");
 
             return language;
         }
@@ -420,18 +440,17 @@ namespace HodlWallet.Core.Services
 
             try
             {
-                TransactionBuilder builder;
-                (builder, tx) = TransactionExtensions.CreateTransaction(
+                string error;
+                (tx, error) = Wallet.CurrentAccount.CreateTransaction(
                     addressTo,
                     btcAmount,
                     feeSatsPerByte,
-                    true,
-                    Wallet.CurrentAccount
+                    true
                 );
                 fees = tx.GetVirtualSize() * feeSatsPerByte;
-                bool verified = TransactionExtensions.VerifyTransaction(builder, tx, out var transactionPolicyErrors);
+                bool verified = string.IsNullOrEmpty(error);
 
-                return (verified, tx, fees, null);
+                return (verified, tx, fees, error);
             }
             catch (WalletException e)
             {
@@ -443,7 +462,7 @@ namespace HodlWallet.Core.Services
 
         public async Task<(bool Sent, string Error)> SendTransaction(Transaction tx)
         {
-            return await Wallet.SendTransaction(tx);
+            return await Wallet.Broadcast(tx);
         }
 
         public Network GetNetwork()

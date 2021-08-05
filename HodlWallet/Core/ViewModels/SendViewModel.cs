@@ -269,11 +269,6 @@ namespace HodlWallet.Core.ViewModels
                     // once currency flip is available then we can do this
                     AmountToSend = amount.ToDecimal(MoneyUnit.BTC);
                 }
-
-#pragma warning disable CS0618 // Type or member is obsolete
-                if (bitcoinUrl.PaymentRequestUrl is Uri paymentRequestUrl)
-#pragma warning restore CS0618 // Type or member is obsolete
-                    throw new WalletException($"HODL Wallet does not support BIP70");
             }
             catch (WalletException we)
             {

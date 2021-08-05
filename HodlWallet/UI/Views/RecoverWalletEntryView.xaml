@@ -279,6 +279,8 @@
                     </ScrollView>
                 </StackLayout>
 
+                <BoxView FlexLayout.Grow="1" />
+
                 <Button x:Name="DoneButton"
                         Text="{i18n:Translate Text=Done.button}"
                         FlexLayout.Grow="1"

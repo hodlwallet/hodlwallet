@@ -36,5 +36,10 @@ namespace HodlWallet.UI.Views.Demos
         {
             InitializeComponent();
         }
+
+        void CloseToolbarItem_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
     }
 }

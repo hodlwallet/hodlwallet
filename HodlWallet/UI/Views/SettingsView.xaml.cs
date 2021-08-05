@@ -36,13 +36,13 @@ namespace HodlWallet.UI.Views
 {
     public partial class SettingsView : ContentPage
     {
-        SettingsViewModel _ViewModel => (SettingsViewModel)BindingContext;
+        SettingsViewModel ViewModel => BindingContext as SettingsViewModel;
 
         public SettingsView()
         {
             InitializeComponent();
 
-            SetLabels();
+            SetBuiltOnDate();
         }
 
         void BackupMnemonic_Clicked(object sender, EventArgs e)
@@ -51,18 +51,6 @@ namespace HodlWallet.UI.Views
             var nav = new NavigationPage(view);
 
             Navigation.PushModalAsync(nav);
-        }
-
-        async void ResyncWallet_Clicked(object sender, EventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                var answer = await AskThisIsIrreversibleQuestion("resync-wallet");
-
-                if (!answer) return;
-            });
-
-            await _ViewModel.ResyncWallet();
         }
 
         void RestoreWallet_Clicked(object sender, EventArgs e)
@@ -88,7 +76,7 @@ namespace HodlWallet.UI.Views
 
                 if (!answer) return;
 
-                _ViewModel.WipeWallet();
+                ViewModel.WipeWallet();
                 Process.GetCurrentProcess().Kill(); // die
             });
         }
@@ -114,7 +102,7 @@ namespace HodlWallet.UI.Views
             );
         }
 
-        void SetLabels()
+        void SetBuiltOnDate()
         {
 #if DEBUG
             BuildDate.Text = $"Built on: {BuildInfo.BuildDateText}";
@@ -123,21 +111,13 @@ namespace HodlWallet.UI.Views
 
         async Task<bool> AskThisIsIrreversibleQuestion(string key)
         {
-            string title;
-            switch (key)
+            var title = key switch
             {
-                case "wipe-wallet":
-                    title = LocaleResources.Menu_wipeWallet;
-                    break;
-                case "resync-wallet":
-                    title = LocaleResources.Menu_resyncWallet;
-                    break;
-                case "restore-wallet":
-                    title = LocaleResources.Menu_restoreWallet;
-                    break;
-                default:
-                    throw new ArgumentException($"Invalid question sent, key: {key}");
-            }
+                "wipe-wallet" => LocaleResources.Menu_wipeWallet,
+                "resync-wallet" => LocaleResources.Menu_resyncWallet,
+                "restore-wallet" => LocaleResources.Menu_restoreWallet,
+                _ => throw new ArgumentException($"Invalid question sent, key: {key}"),
+            };
 
             return await this.DisplayPrompt(
                 title,
@@ -145,6 +125,11 @@ namespace HodlWallet.UI.Views
                 LocaleResources.Button_yes,
                 LocaleResources.Button_no
             );
+        }
+
+        void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }

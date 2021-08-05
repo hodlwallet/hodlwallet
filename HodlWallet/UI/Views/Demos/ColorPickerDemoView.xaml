@@ -9,7 +9,7 @@
 
             <controls:ColorPicker x:Name="PickColorControl" />
 
-            <Label Text="Sample" FontSize="Medium" TextColor="Gray" />
+            <Label Text="Sample" FontSize="Medium" TextColor="Gray"/>
 
             <BoxView x:Name="Box_View"
                      VerticalOptions="FillAndExpand"

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              x:Class="HodlWallet.UI.Views.CreateAccountView"
              Title="{i18n:Translate Text=AddAccount.title}"
              BackgroundColor="{DynamicResource BackgroundPrimary}"
@@ -27,14 +28,13 @@
                 <Label Text="{i18n:Translate Text=AddAccount.entry}"
                         FontSize="Large"
                         FlexLayout.AlignSelf="Center" />
-                <ContentView>                    
-                <Entry Placeholder="Bitcoin Account"
+                <ContentView>
+                    <Entry Placeholder="Bitcoin Account"
                         Text="{Binding AccountName}"
                         Style="{DynamicResource CustomEntry}"
                         TextColor="{DynamicResource TextPrimary}"
                         BackgroundColor="Transparent"
-                        PlaceholderColor="{DynamicResource TextSecondary}"
-                       Margin="20,10"/>
+                        Margin="20,10" />
                     <ContentView.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" />
                     </ContentView.GestureRecognizers>
@@ -56,9 +56,13 @@
                              CheckedChanged="OnAccountTypeCheckedChanged"
                              BorderColor="{DynamicResource TextPrimary}" />
                 </Grid>
+                <Label Text="{i18n:Translate Text=AddAccount.color}"
+                        FontSize="Large"
+                        FlexLayout.AlignSelf="Center" 
+                        Margin="0, 20, 0, 0" />
+                <controls:ColorPicker x:Name="PickColorControl" ButtonColorSelected="{Binding AccountColor}"/>
 
-                <BoxView x:Name="boxView" FlexLayout.Grow="2"/>
-
+                <BoxView x:Name="boxView" FlexLayout.Grow="1"/>
                 <Button Text="{i18n:Translate Text=AddAccount.createButton}"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
@@ -66,7 +70,9 @@
                         FontSize="Large"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="1"
-                        Command="{Binding CreateAccountCommand}" />
+                        Command="{Binding CreateAccountCommand}"
+                        CommandParameter="{Binding Source={x:Reference PickColorControl},
+                                                    Path=ColorCode}"/>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

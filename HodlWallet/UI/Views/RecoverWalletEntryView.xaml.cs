@@ -26,7 +26,6 @@ using Xamarin.Forms;
 
 using HodlWallet.Core.Utils;
 using HodlWallet.Core.Interfaces;
-using HodlWallet.Core.Services;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Locale;
 
@@ -36,11 +35,10 @@ namespace HodlWallet.UI.Views
 {
     public partial class RecoverWalletEntryView : ContentPage
     {
-        // TODO This should be on the view model, and should be prevented to use wallet fuctions in views
-        IWalletService WalletService => DependencyService.Get<IWalletService>();
+        RecoverWalletEntryViewModel ViewModel => BindingContext as RecoverWalletEntryViewModel;
 
-        readonly Color textPrimary = (Color)Application.Current.Resources["TextPrimary"];
-        readonly Color textError = (Color)Application.Current.Resources["TextError"];
+        Color TextPrimary => (Color)Application.Current.Resources["TextPrimary"];
+        Color TextError => (Color)Application.Current.Resources["TextError"];
 
         public RecoverWalletEntryView()
         {
@@ -52,7 +50,7 @@ namespace HodlWallet.UI.Views
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<RecoverWalletEntryViewModel>(this, "RecoverySeedError", ShowRecoverSeedError);
-            MessagingCenter.Subscribe<RecoverWalletEntryViewModel>(this, "NavigateToRootView", NavigateToRootView);
+            MessagingCenter.Subscribe<RecoverWalletEntryViewModel>(this, "InitiateAppShell", InitiateAppShell);
         }
 
         void Entry_Completed(object sender, EventArgs e)
@@ -87,15 +85,15 @@ namespace HodlWallet.UI.Views
         {
             if (entry.Text == null) return;
 
-            string word = entry.Text.ToLower();
+            var word = entry.Text;
 
-            if (Core.Services.WalletService.IsWordInWordlist(word, WalletService.GetWordListLanguage()))
+            if (Core.Services.WalletService.IsWordInWordlist(word, ViewModel.WalletService.GetWordListLanguage()))
             {
-                entry.TextColor = textPrimary;
+                entry.TextColor = TextPrimary;
             }
             else
             {
-                entry.TextColor = textError;
+                entry.TextColor = TextError;
             }
         }
 
@@ -114,17 +112,19 @@ namespace HodlWallet.UI.Views
             {
                 var entry = (Entry)FindByName($"Entry{i}");
 
-                if (entry is null) throw new ArgumentException("Something's wrong with this...");
-
                 if (string.IsNullOrEmpty(entry.Text)) return;
             }
 
             DoneButton.IsVisible = true;
         }
 
-        void NavigateToRootView(RecoverWalletEntryViewModel _)
+        void InitiateAppShell(RecoverWalletEntryViewModel _)
         {
             Application.Current.MainPage = new AppShell();
+        }
+
+        void Entry12_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
         }
     }
 }

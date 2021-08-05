@@ -22,8 +22,6 @@
 // THE SOFTWARE.
 using System;
 
-using HodlWallet.UI.Locale;
-
 using Xamarin.Forms;
 
 namespace HodlWallet.UI.Views

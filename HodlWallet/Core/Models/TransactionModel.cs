@@ -32,6 +32,7 @@ using Liviano.Models;
 using HodlWallet.Core.Extensions;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Locale;
+using System.Diagnostics;
 
 namespace HodlWallet.Core.Models
 {
@@ -176,9 +177,18 @@ namespace HodlWallet.Core.Models
 
         string GetAddress()
         {
-            return TransactionData.IsSend == true
+            try
+            {
+                return TransactionData.IsSend == true
                 ? TransactionData.SentScriptPubKey.GetDestinationAddress(Network).ToString()
                 : TransactionData.ScriptPubKey.GetDestinationAddress(Network).ToString();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"[GetAddress] Error: {e.Message}");
+            }
+
+            return string.Empty;
         }
 
         string GetAddressText()
