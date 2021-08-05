@@ -92,7 +92,7 @@
                     FontSize="Large"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
-                    Clicked="AcknowledgeRiskTermsViewButton_Clicked" />
+                    Clicked="WalletInfoButton_Clicked" />
                 
             </FlexLayout>
         </AbsoluteLayout>

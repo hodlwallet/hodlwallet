@@ -14,7 +14,7 @@
                     FlexLayout.Grow="1"
                     BackgroundColor="{DynamicResource BackgroundPrimary}" 
                     Clicked="CreateAccountButton_Clicked"
-                    Routing.Route="CreateAccountView"/>
+                    HeightRequest="70" />
 
             <BoxView BackgroundColor="Transparent"
                      HeightRequest="1" />
@@ -24,6 +24,8 @@
                     FontSize="Medium"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
+                    HeightRequest="70"
+                    Clicked="SettingsButton_Clicked"
                     BackgroundColor="{DynamicResource BackgroundPrimary}" />
         </FlexLayout>
     </ContentView.Content>

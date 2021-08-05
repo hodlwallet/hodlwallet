@@ -46,8 +46,9 @@ namespace HodlWallet.UI
 
             InitializeComponent();
 
-            // DEBUG
-            //SecureStorageService.RemoveAll();
+#if WIPE_WALLET
+            SecureStorageService.RemoveAll();
+#endif
 
             RegisterServices();
 

@@ -234,11 +234,11 @@
     <comment>label for recover wallet button</comment>
   </data>
   <data name="RecoverEntry.header" xml:space="preserve">
-    <value>Enter Backup Recovery Key</value>
+    <value>Enter the backup recovery key for the wallet you want to recover.</value>
     <comment>label for recover wallet entry header</comment>
   </data>
   <data name="RecoverEntry.title" xml:space="preserve">
-    <value>Enter the backup recovery key for the wallet you want to recover.</value>
+    <value>Enter Backup Recovery Key</value>
     <comment>label for recover wallet entry title</comment>
   </data>
   <data name="Recover.alertTitle" xml:space="preserve">
@@ -492,6 +492,10 @@
     <value>Type</value>
     <comment>label for type options when create an account</comment>
   </data>
+  <data name="AddAccount.color" xml:space="preserve">
+    <value>Pick a Color</value>
+    <comment>label for the color associated to an account</comment>
+  </data>
   <data name="AddAccount.createButton" xml:space="preserve">
     <value>Create</value>
     <comment>label for add account button</comment>
@@ -507,6 +511,14 @@
   <data name="AccountSettings.Title" xml:space="preserve">
     <value>Account Settings</value>
     <comment>Account Settings Title</comment>
+  </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Global Settings</value>
+    <comment>Global Settings Title</comment>
+  </data>
+  <data name="Settings.Close" xml:space="preserve">
+    <value>Close</value>
+    <comment>Global Settings Close Button</comment>
   </data>
   <data name="PinPad.Title" xml:space="preserve">
     <value>Create A New Pin</value>

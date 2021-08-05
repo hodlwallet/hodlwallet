@@ -397,5 +397,6 @@ dlldata.c
 **/Droid/**/[Rr]esource.[Dd]esigner*.cs
 
 # Xamarin HODL Locale Resource.Designer.cs files
-**/HodlWallet/Resources/[Rr]esource.[Dd]esigner*.cs
-HodlWallet/UI/Locale/Locale[Rr]esources.*[Dd]esigner.cs
+# TODO Add these back when we fix the problem of generating after cloning
+#**/HodlWallet/Resources/[Rr]esource.[Dd]esigner*.cs
+#HodlWallet/UI/Locale/Locale[Rr]esources.*[Dd]esigner.cs

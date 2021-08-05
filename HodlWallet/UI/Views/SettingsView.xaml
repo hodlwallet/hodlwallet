@@ -4,11 +4,18 @@
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.SettingsView"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
-             NavigationPage.HasNavigationBar="False">
+             Title="{i18n:Translate Text=Settings.Title}"
+             BackgroundColor="{DynamicResource BackgroundPrimary}">
     <ContentPage.BindingContext>
         <vm:SettingsViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="CloseToolbarItem"
+                     Order="Primary"
+                     Text="{i18n:Translate Text=Settings.Close}"
+                     Priority="0"
+                     Clicked="CloseToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout>
@@ -22,13 +29,6 @@
                         <Button Text="{i18n:Translate Text=Backup.title}"
                                 Style="{DynamicResource SettingsButton}"
                                 Clicked="BackupMnemonic_Clicked" />
-
-                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
-                                 HeightRequest="1" />
-
-                        <Button Text="{i18n:Translate Text=Menu.resyncWallet}"
-                                Style="{DynamicResource SettingsButton}"
-                                Clicked="ResyncWallet_Clicked" />
 
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />

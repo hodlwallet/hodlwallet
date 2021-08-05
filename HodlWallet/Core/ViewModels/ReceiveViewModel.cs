@@ -32,11 +32,11 @@ namespace HodlWallet.Core.ViewModels
     {
         public ICommand ShowShareIntentCommand { get; }
 
-        string _Address;
+        string address;
         public string Address
         {
-            get => _Address;
-            set => SetProperty(ref _Address, value);
+            get => address;
+            set => SetProperty(ref address, value);
         }
 
         public ReceiveViewModel()

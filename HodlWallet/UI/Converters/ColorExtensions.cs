@@ -1,7 +1,7 @@
 ﻿//
-// OnboardView.xaml.cs
+// ColorExtensions.cs
 //
-// Copyright (c) 2019 HODL Wallet
+// Copyright (c) 2021 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,43 +24,21 @@ using System;
 
 using Xamarin.Forms;
 
-using HodlWallet.UI.Extensions;
-using HodlWallet.Core.Services;
+using HodlWallet.Core.Utils;
 
-namespace HodlWallet.UI.Views
+namespace HodlWallet.UI.Converters
 {
-    public partial class OnboardView : ContentPage
+    public static class ColorExtensions
     {
-        public OnboardView()
+        public static string ToHexString(this Color color, bool outputAlpha = false)
         {
-            InitializeComponent();
-        }
+            string DoubleToHex(double value) => string.Format("{0:X2}", (int)(value * 255));
 
-        void CreateButton_Clicked(object sender, EventArgs e)
-        {
-            if (SecureStorageService.HasPin())
-                Navigation.PushAsync(new NewWalletInfoView());
-            else
-            {
-                Navigation.PushAsync(new PinPadView(new NewWalletInfoView()));
-            }
-        }
+            string hex = Constants.HEX_CHAR;
+            if (outputAlpha) 
+                hex += DoubleToHex(color.A);
 
-        void RecoverButton_Clicked(object sender, EventArgs e)
-        {
-            if (SecureStorageService.HasPin())
-                Navigation.PushAsync(new RecoverView());
-            else
-            {
-                Navigation.PushAsync(new PinPadView(new RecoverView()));
-            }
-        }
-
-        async void Logo_Tapped(object sender, EventArgs e)
-        {
-#if DEBUG
-            await this.DisplayToast("Test");
-#endif
+            return $"{hex}{DoubleToHex(color.R)}{DoubleToHex(color.G)}{DoubleToHex(color.B)}";
         }
     }
 }

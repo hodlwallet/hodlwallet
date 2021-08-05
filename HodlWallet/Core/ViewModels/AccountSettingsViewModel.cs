@@ -1,5 +1,5 @@
 ﻿//
-// OnboardView.xaml.cs
+// SettingsViewModel.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -20,47 +20,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+using System.Threading.Tasks;
 
-using Xamarin.Forms;
-
-using HodlWallet.UI.Extensions;
-using HodlWallet.Core.Services;
-
-namespace HodlWallet.UI.Views
+namespace HodlWallet.Core.ViewModels
 {
-    public partial class OnboardView : ContentPage
+    public class AccountSettingsViewModel : BaseViewModel
     {
-        public OnboardView()
+        public async Task ResyncAccount()
         {
-            InitializeComponent();
-        }
-
-        void CreateButton_Clicked(object sender, EventArgs e)
-        {
-            if (SecureStorageService.HasPin())
-                Navigation.PushAsync(new NewWalletInfoView());
-            else
-            {
-                Navigation.PushAsync(new PinPadView(new NewWalletInfoView()));
-            }
-        }
-
-        void RecoverButton_Clicked(object sender, EventArgs e)
-        {
-            if (SecureStorageService.HasPin())
-                Navigation.PushAsync(new RecoverView());
-            else
-            {
-                Navigation.PushAsync(new PinPadView(new RecoverView()));
-            }
-        }
-
-        async void Logo_Tapped(object sender, EventArgs e)
-        {
-#if DEBUG
-            await this.DisplayToast("Test");
-#endif
+            await WalletService.Wallet.Resync();
         }
     }
 }

@@ -37,6 +37,7 @@ namespace HodlWallet.UI.Views
         {
             InitializeComponent();
             SubscribeToMessages();
+            SetSuggestedColor();
         }
 
         void OnAccountTypeCheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -63,5 +64,9 @@ namespace HodlWallet.UI.Views
             _ = this.DisplayToast(errorMessage);
         }
 
+        void SetSuggestedColor()
+        {
+            PickColorControl.ButtonColorSelected = AppShell.RandomColor();
+        }
     }
 }

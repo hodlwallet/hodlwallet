@@ -22,13 +22,12 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 using Xamarin.Forms;
 
-using HodlWallet.UI.Extensions;
+using HodlWallet.UI.Controls;
+using HodlWallet.UI.Converters;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -53,13 +52,26 @@ namespace HodlWallet.Core.ViewModels
             get => accountType;
             set => SetProperty(ref accountType, value);
         }
+
+        string accountColor;
+
+        public string AccountColor
+        {
+            get => accountColor;
+            set => SetProperty(ref accountColor, value);
+        }
+
         public CreateAccountViewModel()
         {
-            CreateAccountCommand = new Command(CreateAccount);
+            CreateAccountCommand = new Command<string>((color) => CreateAccount(color));
         }
-        private async void CreateAccount()
+        private async void CreateAccount(string colorCode)
         {
-            var (Success, Error) = await WalletService.AddAccount(AccountType ?? accountTypesList[0], AccountName);
+            var color = ColorPicker.colorPickerControlList[int.Parse(colorCode)];
+            // Get a hexadecimal string of the color to be stored.
+            AccountColor = $"{colorCode}{color.ToHexString()}";
+
+            var (Success, Error) = await WalletService.AddAccount(AccountType ?? accountTypesList[0], AccountName, AccountColor);
 
             if (!Success && !string.IsNullOrEmpty(Error))
             {

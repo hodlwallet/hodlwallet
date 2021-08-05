@@ -45,5 +45,14 @@ namespace HodlWallet.UI.Controls
 
             Navigation.PushModalAsync(nav);
         }
+
+        void SettingsButton_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.FlyoutIsPresented = false;
+            var view = new SettingsView();
+            var nav = new NavigationPage(view);
+
+            Navigation.PushModalAsync(nav);
+        }
     }
 }

@@ -28,6 +28,8 @@ using Xamarin.Forms;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.Core.Interfaces;
 using System;
+using HodlWallet.UI.Views.Demos;
+using HodlWallet.Core.Services;
 
 namespace HodlWallet.UI.Views
 {
@@ -130,7 +132,13 @@ namespace HodlWallet.UI.Views
 
         void Logo_Tapped(object sender, EventArgs e)
         {
-            Debug.WriteLine($"[Logo_Tapped] Seed: {WalletService.Wallet.Seed}");
+            if (SecureStorageService.HasMnemonic())
+                Debug.WriteLine($"[Logo_Tapped] Seed: {SecureStorageService.GetMnemonic()}");
+
+            if (WalletService.Wallet != null)
+                Debug.WriteLine($"[Logo_Tapped] Seed: {WalletService.Wallet.Seed}");
+
+            Navigation.PushAsync(new ControlsDemoView());
         }
     }
 }
