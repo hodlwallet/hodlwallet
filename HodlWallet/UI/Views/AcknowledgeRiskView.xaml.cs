@@ -18,7 +18,7 @@ namespace HodlWallet.UI.Views
 
         void AcknowledgeRiskTermsViewButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new BackupView("skip"));
+            Navigation.PushAsync(new BackupRecoveryWordView());
         }
 
         /// Toggles checkbox anytime a label is tapped.
