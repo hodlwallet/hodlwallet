@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             x:Class="HodlWallet.UI.Views.SecuritySettingsView"
+             Title="{i18n:Translate SecurityCenter.title}"
+             BackgroundColor="{DynamicResource BackgroundPrimary}">
+    <ContentPage.BindingContext>
+        <vm:SettingsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <FlexLayout>
+                <ScrollView x:Name="MenuScroll">
+                    <FlexLayout Direction="Column">
+                        <BoxView FlexLayout.Grow="2" />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <Button Text="{i18n:Translate Text=Security.backUpRecoveryKey}"
+                                Style="{DynamicResource SettingsButton}"
+                                />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <Button Text="{i18n:Translate Text=Security.pin}"
+                                Style="{DynamicResource SettingsButton}"
+                                />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <Button Text="{i18n:Translate Text=Security.biometrics}"
+                                Style="{DynamicResource SettingsButton}"
+                                />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <!-- Extra space -->
+                        <BoxView FlexLayout.Grow="3" />
+                    </FlexLayout>
+                </ScrollView>
+            </FlexLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+    </ContentPage>

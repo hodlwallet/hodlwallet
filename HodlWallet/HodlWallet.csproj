@@ -126,6 +126,9 @@
 		<EmbeddedResource Update="UI\Views\CreateAccountView.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="UI\Views\SecuritySettingsView.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="UI\Locale\LocaleResources.es.Designer.cs">
