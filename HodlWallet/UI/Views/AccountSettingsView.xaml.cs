@@ -40,6 +40,12 @@ namespace HodlWallet.UI.Views
             InitializeComponent();
         }
 
+        void Security_Clicked(object sender, EventArgs e)
+        {
+            
+        }
+
+        /*
         void ResyncAccount_Clicked(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(async () =>
@@ -69,5 +75,6 @@ namespace HodlWallet.UI.Views
                 LocaleResources.Button_no
             );
         }
+        */
     }
 }

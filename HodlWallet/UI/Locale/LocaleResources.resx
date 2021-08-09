@@ -310,8 +310,8 @@
     <comment>label for menu view title</comment>
   </data>
   <data name="Menu.security" xml:space="preserve">
-    <value>Security Center</value>
-    <comment>label for security view title</comment>
+    <value>Security</value>
+    <comment>label for menu security button</comment>
   </data>
   <data name="Menu.knowledge" xml:space="preserve">
     <value>Knowledge</value>
@@ -747,5 +747,17 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="NewWallet.title" xml:space="preserve">
     <value>Create New Wallet</value>
     <comment>label for titel of New Wallet view</comment>
+  </data>
+  <data name="Menu.currency" xml:space="preserve">
+    <value>Currency</value>
+    <comment>label for menu currency button</comment>
+  </data>
+  <data name="Menu.network" xml:space="preserve">
+    <value>Network</value>
+    <comment>label for menu network button</comment>
+  </data>
+  <data name="Menu.wallet" xml:space="preserve">
+    <value>Wallet</value>
+    <comment>label for menu wallet button</comment>
   </data>
 </root>
