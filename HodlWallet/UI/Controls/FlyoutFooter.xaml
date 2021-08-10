@@ -24,7 +24,7 @@
                     FontSize="Medium"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
-                    HeightRequest="{OnPlatform 70, iOS=85}"
+                    HeightRequest="{OnPlatform 70, iOS=75}"
                     Clicked="SettingsButton_Clicked"
                     BackgroundColor="{DynamicResource BackgroundPrimary}" />
         </FlexLayout>
