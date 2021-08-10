@@ -42,7 +42,11 @@ namespace HodlWallet.UI.Views
 
         void Security_Clicked(object sender, EventArgs e)
         {
-            
+            //var view = new BackupView(action: "close");
+            var view = new SecuritySettingsView();
+            var nav = new NavigationPage(view);
+
+            Navigation.PushModalAsync(nav);
         }
 
         /*

@@ -760,4 +760,40 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Wallet</value>
     <comment>label for menu wallet button</comment>
   </data>
+  <data name="PinSettings.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for close button of PinSettingsView</comment>
+  </data>
+  <data name="PinSettings.title" xml:space="preserve">
+    <value>Pin Settings</value>
+    <comment>label for PinSettingsView title</comment>
+  </data>
+  <data name="Security.backupRecoveryKey" xml:space="preserve">
+    <value>Backup Recovery Key</value>
+    <comment>label for backup recovery key button</comment>
+  </data>
+  <data name="Security.biometrics" xml:space="preserve">
+    <value>Biometrics</value>
+    <comment>label for biometrics button</comment>
+  </data>
+  <data name="Security.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for close button of SecuritySettingsView</comment>
+  </data>
+  <data name="Security.pin" xml:space="preserve">
+    <value>Pin</value>
+    <comment>label for pin button</comment>
+  </data>
+  <data name="Security.title" xml:space="preserve">
+    <value>Security Settings</value>
+    <comment>label for SecuritySettingsView title</comment>
+  </data>
+  <data name="PinSettings.pinSpendingLimits" xml:space="preserve">
+    <value>Pin Spending Limits</value>
+    <comment>label for Pin Spending Limits button of PinSettingsView</comment>
+  </data>
+  <data name="PinSettings.updatePin" xml:space="preserve">
+    <value>Update Pin</value>
+    <comment>label for Update Pin button of PinSettingsView</comment>
+  </data>
 </root>

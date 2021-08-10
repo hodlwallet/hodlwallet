@@ -956,6 +956,42 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string PinSettings_close {
+            get {
+                return ResourceManager.GetString("PinSettings.close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pin Spending Limits.
+        /// </summary>
+        internal static string PinSettings_pinSpendingLimits {
+            get {
+                return ResourceManager.GetString("PinSettings.pinSpendingLimits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pin Settings.
+        /// </summary>
+        internal static string PinSettings_title {
+            get {
+                return ResourceManager.GetString("PinSettings.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Pin.
+        /// </summary>
+        internal static string PinSettings_updatePin {
+            get {
+                return ResourceManager.GetString("PinSettings.updatePin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request An Amount.
         /// </summary>
         internal static string Receive_requestAmount {
@@ -1069,6 +1105,51 @@ namespace HodlWallet.UI.Locale {
         internal static string Scan_Title {
             get {
                 return ResourceManager.GetString("Scan.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Backup Recovery Key.
+        /// </summary>
+        internal static string Security_backupRecoveryKey {
+            get {
+                return ResourceManager.GetString("Security.backupRecoveryKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Biometrics.
+        /// </summary>
+        internal static string Security_biometrics {
+            get {
+                return ResourceManager.GetString("Security.biometrics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string Security_close {
+            get {
+                return ResourceManager.GetString("Security.close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pin.
+        /// </summary>
+        internal static string Security_pin {
+            get {
+                return ResourceManager.GetString("Security.pin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security Settings.
+        /// </summary>
+        internal static string Security_title {
+            get {
+                return ResourceManager.GetString("Security.title", resourceCulture);
             }
         }
         
