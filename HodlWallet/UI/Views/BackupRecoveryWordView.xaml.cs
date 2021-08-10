@@ -49,9 +49,16 @@ namespace HodlWallet.UI.Views
             await Navigation.PushAsync(new BackupRecoveryConfirmView(mnemonic));
         }
 
-        private void SkipToolbarItem_Clicked(object sender, EventArgs e)
+        async void SkipToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new HomeView());
+            if (string.Equals(Application.Current.GetType().Name, "App"))
+            {
+                Application.Current.MainPage = new AppShell();
+
+                return;
+            }
+
+            await Navigation.PopAsync();
         }
     }
 }
