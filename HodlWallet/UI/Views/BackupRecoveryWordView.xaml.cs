@@ -51,14 +51,14 @@ namespace HodlWallet.UI.Views
 
         async void SkipToolbarItem_Clicked(object sender, EventArgs e)
         {
-            if (string.Equals(Application.Current.GetType().Name, "App"))
+            if (Application.Current.MainPage is AppShell)
             {
-                Application.Current.MainPage = new AppShell();
+                await Navigation.PopAsync();
 
                 return;
             }
 
-            await Navigation.PopAsync();
+            Application.Current.MainPage = new AppShell();
         }
     }
 }
