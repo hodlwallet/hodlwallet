@@ -14,6 +14,13 @@
     <ContentPage.Resources>
         <converters:IndexToStringConverter x:Key="IndexToStringConverter" />
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="SkipToolbarItem"
+                     Order="Primary"
+                     Text="{i18n:Translate Text=Backup.Skip}"
+                     Priority="0"
+                     Clicked="SkipToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <FlexLayout Direction="Column"
                         JustifyContent="SpaceAround"
