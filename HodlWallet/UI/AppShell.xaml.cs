@@ -163,7 +163,7 @@ namespace HodlWallet.UI
         void AddMenuItems(AccountModel accountItem)
         {
             var colorCode = accountItem.AccountColorCode;
-            var style = new List<string> { "MenuItemLabelClass" + colorCode };
+            var style = new List<string> { $"MenuItemLabelClass{colorCode}" };
 
             isColorSelected[int.Parse(colorCode)] = true;
 
