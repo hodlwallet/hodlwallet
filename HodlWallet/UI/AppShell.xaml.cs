@@ -71,7 +71,7 @@ namespace HodlWallet.UI
                 for (int i = 0; i < isColorSelected.Length; i++)
                     if (!isColorSelected[i])
                         notSelected.Add(i);
-                
+
                 if (notSelected.Count == 0)
                     ClearColorSelectedList();
                 else
@@ -108,9 +108,11 @@ namespace HodlWallet.UI
             CurrentItem.CurrentItem = tab;
         }
 
-        void SetupDefaultTab()
+        protected override void OnAppearing()
         {
-            ChangeTabsTo("homeTab");
+            base.OnAppearing();
+
+            // TODO Add the code that inits the wallet I think?
         }
 
         string GetColorCodeByAccount(string accountId)
@@ -127,6 +129,13 @@ namespace HodlWallet.UI
 
             return colorCode;
         }
+
+        void SetupDefaultTab()
+        {
+            ChangeTabsTo("homeTab");
+        }
+
+
         void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             //This will get called when the collection is changed
@@ -157,7 +166,7 @@ namespace HodlWallet.UI
             var style = new List<string> { "MenuItemLabelClass" + colorCode };
 
             isColorSelected[int.Parse(colorCode)] = true;
-            
+
             MenuItem mi = new()
             {
                 Text = accountItem.AccountName,
@@ -169,12 +178,13 @@ namespace HodlWallet.UI
             Items.Add(mi);
         }
 
-        private void Shell_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        void Shell_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // Listen to Shell PropertyChanged event, if flyout menu is open then the property is FlyoutIsPresented.
             if (e.PropertyName.Equals("FlyoutIsPresented") && FlyoutIsPresented)
                 SyncCollections();
         }
+
         void SyncCollections()
         {
             // Compare and sync accounts in the wallet account list that are not already into AccountList.
