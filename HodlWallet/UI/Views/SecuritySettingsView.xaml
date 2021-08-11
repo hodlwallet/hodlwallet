@@ -47,6 +47,7 @@
 
                         <Button Text="{i18n:Translate Text=Security.biometrics}"
                                 Style="{DynamicResource SettingsButton}"
+                                Clicked="Biometrics_Clicked"
                                 />
 
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"

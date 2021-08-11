@@ -376,6 +376,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Face ID.
+        /// </summary>
+        internal static string Biometrics_title {
+            get {
+                return ResourceManager.GetString("Biometrics.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string Button_no {

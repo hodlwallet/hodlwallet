@@ -796,4 +796,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Update Pin</value>
     <comment>label for Update Pin button of PinSettingsView</comment>
   </data>
+  <data name="Biometrics.title" xml:space="preserve">
+    <value>Face ID</value>
+    <comment>Label for BiometricsView title label</comment>
+  </data>
 </root>
