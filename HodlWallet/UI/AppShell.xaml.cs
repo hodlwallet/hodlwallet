@@ -51,10 +51,10 @@ namespace HodlWallet.UI
         readonly object @lock = new();
         IWalletService WalletService => DependencyService.Get<IWalletService>();
 
-        public ObservableCollection<AccountModel> AccountList = new ObservableCollection<AccountModel>();
+        public ObservableCollection<AccountModel> AccountList { get; set; }  = new ObservableCollection<AccountModel>();
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
-        
+ 
         public static bool[] isColorSelected = new bool[18];
         public static void ClearColorSelectedList()
         {
@@ -75,7 +75,7 @@ namespace HodlWallet.UI
                         notSelected.Add(i);
                     }
                 }
-                
+
                 if (notSelected.Count == 0)
                 {
                     ClearColorSelectedList();
@@ -94,11 +94,12 @@ namespace HodlWallet.UI
         {
             InitializeComponent();
             logger = WalletService.Logger;
+            AccountList.CollectionChanged += AccountsCollectionChanged;
+            PropertyChanged += Shell_PropertyChanged;
             RegisterRoutes();
             SetupDefaultTab();
             ClearColorSelectedList();
-            PropertyChanged += Shell_PropertyChanged;
-            AccountList.CollectionChanged += AccountsCollectionChanged;
+            BindingContext = this;
         }
 
         public void ChangeTabsTo(string tabName)
@@ -132,6 +133,13 @@ namespace HodlWallet.UI
             }
             return colorCode;
         }
+        void AddAccountToMenu(AccountModel account)
+        {
+            account.AccountColorCode = GetColorCodeByAccount(account.AccountData.Id);
+            string colorCode = account.AccountColorCode;
+            isColorSelected[int.Parse(colorCode)] = true;
+            account.CustomStyle = (Style)Resources[$"{Constants.PREFIX_NAME_STYLE_ACCOUNT_MENU}{colorCode}"];
+        }
         void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             //This will get called when the collection is changed
@@ -140,8 +148,7 @@ namespace HodlWallet.UI
                 //  An Account was Added to the collection
                 foreach (AccountModel account in e.NewItems)
                 {
-                    account.AccountColorCode = GetColorCodeByAccount(account.AccountData.Id);
-                    AddMenuItems(account);
+                    AddAccountToMenu(account);
                 }
             }
 
@@ -162,31 +169,13 @@ namespace HodlWallet.UI
             return $"{account.AccountName} - {account.Balance}";
         }
 
-        void AddMenuItems(AccountModel accountItem)
-        {
-            string colorCode = accountItem.AccountColorCode;
-
-            var style = new List<string> { "MenuItemLabelClass" + colorCode };
-            isColorSelected[int.Parse(colorCode)] = true;
-            
-            MenuItem mi = new()
-            {
-                Text = GetAccountLabelMenu(accountItem),
-                Command = GoToAccountCommand,
-                CommandParameter = accountItem.AccountData.Id,
-                StyleClass = style,
-            };
-
-            Items.Add(mi);
-        }
-
-
         private void Shell_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // Listen to Shell PropertyChanged event, if flyout menu is open then the property is FlyoutIsPresented.
             if (e.PropertyName.Equals("FlyoutIsPresented") && FlyoutIsPresented)
                 SyncCollections();
         }
+
         void SyncCollections()
         {
             // Compare and sync accounts in the wallet account list that are not already into AccountList.
