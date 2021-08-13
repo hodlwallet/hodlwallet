@@ -48,5 +48,17 @@ namespace HodlWallet.UI.Views
             Debug.WriteLine($"[NavigateToBackupRecoveryConfirmView] About to write mnemonic: {string.Join(" ", mnemonic)}");
             await Navigation.PushAsync(new BackupRecoveryConfirmView(mnemonic));
         }
+
+        async void SkipToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            if (Application.Current.MainPage is AppShell)
+            {
+                await Navigation.PopAsync();
+
+                return;
+            }
+
+            Application.Current.MainPage = new AppShell();
+        }
     }
 }

@@ -46,8 +46,9 @@ namespace HodlWallet.UI
 
             InitializeComponent();
 
-            // DEBUG
-            //SecureStorageService.RemoveAll();
+#if WIPE_WALLET
+            SecureStorageService.RemoveAll();
+#endif
 
             RegisterServices();
 
@@ -79,12 +80,6 @@ namespace HodlWallet.UI
             var cts = new CancellationTokenSource();
             var ct = cts.Token;
 
-            //ThreadPool.QueueUserWorkItem(o => WalletService.InitializeWallet());
-            //ThreadPool.QueueUserWorkItem(o => PrecioService.Init());
-
-            //ThreadPool.QueueUserWorkItem((o) => WalletService.InitializeWallet());
-            //ThreadPool.QueueUserWorkItem((o) => PrecioService.Init());
-
             _ = Task.Factory.StartNew(
                 () => WalletService.InitializeWallet(),
                 ct,
@@ -98,18 +93,6 @@ namespace HodlWallet.UI
                 TaskCreationOptions.LongRunning,
                 TaskScheduler.Default
             );
-
-            //new Thread(new ThreadStart(() =>
-            //{
-            //    WalletService.InitializeWallet();
-            //})).Start();
-
-            //new Thread(new ThreadStart(() =>
-            //{
-            //    PrecioService.Init();
-            //})).Start();
-
-            //await Task.Delay(10);
         }
 
         protected override void OnSleep()

@@ -130,8 +130,6 @@ namespace HodlWallet.Core.Services
             network = Hd.GetNetwork(networkStr ?? DEFAULT_TESTING_NETWORK);
             walletId = guid ?? Guid.NewGuid().ToString();
 
-            //ElectrumClient.OverwriteRecentlyConnectedServers(_Network);
-
             if (!SecureStorageService.HasMnemonic() || walletId == null)
             {
                 Logger.Information("Wallet has been configured but not started yet due to the lack of mnemonic in the system");

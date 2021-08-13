@@ -36,18 +36,17 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 
 using HodlWallet.Core.Interfaces;
-using HodlWallet.UI.Views;
 using HodlWallet.Core.Models;
-using HodlWallet.Core.Services;
-using HodlWallet.UI.Controls;
 using HodlWallet.Core.Utils;
+using HodlWallet.UI.Controls;
+using HodlWallet.UI.Views;
 
 namespace HodlWallet.UI
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppShell : Shell
     {
-        Serilog.ILogger logger;
+        readonly Serilog.ILogger logger;
         readonly object @lock = new();
         IWalletService WalletService => DependencyService.Get<IWalletService>();
 
@@ -58,33 +57,27 @@ namespace HodlWallet.UI
         public static bool[] isColorSelected = new bool[18];
         public static void ClearColorSelectedList()
         {
-            Array.Fill<bool>(isColorSelected, false);
+            Array.Fill(isColorSelected, false);
         }
 
         public static Color RandomColor()
         {
-            List<int> notSelected = new List<int>();
+            List<int> notSelected = new();
             var rand = new Random();
-            bool exit = false;
+
+            var exit = false;
             while (!exit)
             {
                 for (int i = 0; i < isColorSelected.Length; i++)
-                {
                     if (!isColorSelected[i])
-                    {
                         notSelected.Add(i);
-                    }
-                }
 
                 if (notSelected.Count == 0)
-                {
                     ClearColorSelectedList();
-                }
                 else
-                {
                     exit = true;
-                }
             }
+
             return colorList[notSelected[rand.Next(notSelected.Count)]];
         }
 
@@ -99,12 +92,13 @@ namespace HodlWallet.UI
             RegisterRoutes();
             SetupDefaultTab();
             ClearColorSelectedList();
-            BindingContext = this;
+            PropertyChanged += Shell_PropertyChanged;
+            AccountList.CollectionChanged += AccountsCollectionChanged;
         }
 
         public void ChangeTabsTo(string tabName)
         {
-            Tab tab = tabName switch
+            var tab = tabName switch
             {
                 "home" => homeTab,
                 "receive" => receiveTab,
@@ -116,9 +110,11 @@ namespace HodlWallet.UI
             CurrentItem.CurrentItem = tab;
         }
 
-        void SetupDefaultTab()
+        protected override void OnAppearing()
         {
-            ChangeTabsTo("homeTab");
+            base.OnAppearing();
+
+            // TODO Add the code that inits the wallet I think?
         }
 
         string GetColorCodeByAccount(string accountId)
@@ -126,11 +122,13 @@ namespace HodlWallet.UI
             // Update the color of the account saved on storage service
             string colorStr = WalletService.GetColorByAccount(accountId);
             string colorCode = Constants.DEFAULT_ACCOUNT_COLOR_CODE;
+
             if (!string.IsNullOrWhiteSpace(colorStr))
             {
                 int position = colorStr.IndexOf(Constants.HEX_CHAR);
                 colorCode = colorStr.Substring(0, position);
             }
+
             return colorCode;
         }
         void AddAccountToMenu(AccountModel account)
@@ -140,6 +138,13 @@ namespace HodlWallet.UI
             isColorSelected[int.Parse(colorCode)] = true;
             account.CustomStyle = (Style)Resources[$"{Constants.PREFIX_NAME_STYLE_ACCOUNT_MENU}{colorCode}"];
         }
+
+        void SetupDefaultTab()
+        {
+            ChangeTabsTo("homeTab");
+        }
+
+
         void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             //This will get called when the collection is changed
@@ -164,12 +169,7 @@ namespace HodlWallet.UI
             }*/
         }
 
-        string GetAccountLabelMenu(AccountModel account)
-        {
-            return $"{account.AccountName} - {account.Balance}";
-        }
-
-        private void Shell_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        void Shell_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // Listen to Shell PropertyChanged event, if flyout menu is open then the property is FlyoutIsPresented.
             if (e.PropertyName.Equals("FlyoutIsPresented") && FlyoutIsPresented)
