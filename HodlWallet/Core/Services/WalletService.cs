@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -44,7 +43,6 @@ using Liviano.Exceptions;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
-using NBitcoin.Protocol;
 
 [assembly: Dependency(typeof(WalletService))]
 namespace HodlWallet.Core.Services
@@ -56,6 +54,8 @@ namespace HodlWallet.Core.Services
         public const string DEFAULT_TESTING_NETWORK = "testnet";
 
         public static string USER_AGENT { get; } = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
+
+        public const int PERIODIC_SAVE_TIMEOUT = 60_000;
 
         readonly object @lock = new();
 
@@ -75,18 +75,13 @@ namespace HodlWallet.Core.Services
 
         public IWallet Wallet { get; private set; }
 
-        /// <summary>
-        /// Empty constructor that MvvmCross needs to start as a service
-        /// </summary>
-        public WalletService() { }
-
         async Task PeriodicSave()
         {
             while (true)
             {
                 await Save();
 
-                await Task.Delay(60_000);
+                await Task.Delay(PERIODIC_SAVE_TIMEOUT);
             }
         }
 
