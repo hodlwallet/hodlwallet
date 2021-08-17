@@ -35,10 +35,10 @@ namespace HodlWallet.UI.Views
 {
     public partial class SelectAccountTypeView : ContentPage
     {
-        Color SELECTED_COLOR => Color.Purple;
         bool initialLoad = true;
 
         SelectAccountTypeViewModel ViewModel => BindingContext as SelectAccountTypeViewModel;
+        Color SELECTED_COLOR => (Color)Application.Current.Resources["TextSuccess"];
 
         public SelectAccountTypeView()
         {

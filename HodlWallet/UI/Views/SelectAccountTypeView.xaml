@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
+    Title="Account Type Selection"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="HodlWallet.UI.Views.SelectAccountTypeView"
     xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
-    x:DataType="vm:SelectAccountTypeViewModel"
-    Title="Account Type Selection">
+    x:Class="HodlWallet.UI.Views.SelectAccountTypeView"
+    x:DataType="vm:SelectAccountTypeViewModel">
     <ContentPage.BindingContext>
         <vm:SelectAccountTypeViewModel />
     </ContentPage.BindingContext>
