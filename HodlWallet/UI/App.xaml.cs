@@ -77,22 +77,22 @@ namespace HodlWallet.UI
             // the init code that inserts the logger into
             // WalletService is only run after the custructor
             // and only after all the platforms init
-            var cts = new CancellationTokenSource();
-            var ct = cts.Token;
+            //var cts = new CancellationTokenSource();
+            //var ct = cts.Token;
 
-            _ = Task.Factory.StartNew(
-                () => WalletService.InitializeWallet(),
-                ct,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
+            //_ = Task.Factory.StartNew(
+            //    () => WalletService.InitializeWallet(),
+            //    ct,
+            //    TaskCreationOptions.LongRunning,
+            //    TaskScheduler.Default
+            //);
 
-            _ = Task.Factory.StartNew(
-                () => PrecioService.Init(),
-                ct,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
+            //_ = Task.Factory.StartNew(
+            //    () => PrecioService.Init(),
+            //    ct,
+            //    TaskCreationOptions.LongRunning,
+            //    TaskScheduler.Default
+            //);
         }
 
         protected override void OnSleep()

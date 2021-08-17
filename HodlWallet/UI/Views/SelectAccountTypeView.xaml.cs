@@ -29,7 +29,7 @@ using Xamarin.Forms;
 
 namespace HodlWallet.UI.Views
 {
-    public partial class SelectAccountTypeView : ContentView
+    public partial class SelectAccountTypeView : ContentPage
     {
         public SelectAccountTypeView()
         {
