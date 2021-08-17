@@ -72,9 +72,9 @@ namespace HodlWallet.UI.Views
             initialLoad = false;
         }
 
-        void NextButton_Clicked(object sender, EventArgs e)
+        void DoneButton_Clicked(object sender, EventArgs e)
         {
-            Debug.WriteLine($"[NextButton_Clicked] Account type selected: {ViewModel.AccountType}");
+            Debug.WriteLine($"[DoneButton_Clicked] Account type selected: {ViewModel.AccountType}");
         }
     }
 }

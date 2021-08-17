@@ -748,4 +748,32 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Create New Wallet</value>
     <comment>label for titel of New Wallet view</comment>
   </data>
+  <data name="AccountTypeSelection.description" xml:space="preserve">
+    <value>In HODL wallet we have two kinds of accounts, one standard and one legacy, standard is great for new Bitcoin uses, legacy should only be selected if a HODL Wallet 1.0 wallet is being restored.</value>
+    <comment>description of the account type selection view</comment>
+  </data>
+  <data name="AccountTypeSelection.doneButton" xml:space="preserve">
+    <value>Done</value>
+    <comment>done button of the select view</comment>
+  </data>
+  <data name="AccountTypeSelection.legacyDescription" xml:space="preserve">
+    <value>The traditional format Bitcoin started with. This format tends to have higher transaction fees. It can't talk to Segwit addresses.</value>
+    <comment>description of the legacy type</comment>
+  </data>
+  <data name="AccountTypeSelection.legacyTitle" xml:space="preserve">
+    <value>Legacy</value>
+    <comment>title of the legacy type</comment>
+  </data>
+  <data name="AccountTypeSelection.standardDescription" xml:space="preserve">
+    <value>The Segwit address format. Using Segwit can lower transaction fees. Some third party wallets and exchanges still don't accept this format.</value>
+    <comment>description of the standard type</comment>
+  </data>
+  <data name="AccountTypeSelection.standardTitle" xml:space="preserve">
+    <value>Standard</value>
+    <comment>title of the standard type</comment>
+  </data>
+  <data name="AccountTypeSelection.title" xml:space="preserve">
+    <value>Account Type Selection</value>
+    <comment>title of the account type selection view</comment>
+  </data>
 </root>
