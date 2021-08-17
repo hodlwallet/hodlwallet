@@ -45,7 +45,10 @@ namespace HodlWallet.UI.Views
 
         private void UpdatePin_Clicked(object sender, EventArgs e)
         {
+            var view = new LoginView("update");
+            var nav = new NavigationPage(view);
 
+            Navigation.PushModalAsync(nav); 
         }
 
         private void PinSpendingLimits_Clicked(object sender, EventArgs e)

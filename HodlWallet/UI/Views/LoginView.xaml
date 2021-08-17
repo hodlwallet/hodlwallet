@@ -24,13 +24,20 @@
                        FlexLayout.Grow="2"
                        HeightRequest="120"
                        VerticalOptions="Center"
-                       HorizontalOptions="Center">
+                       HorizontalOptions="Center"
+                       x:Name="LogoFront">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Logo_Tapped" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
 
                 <BoxView FlexLayout.Grow="1" />
+
+                <Label IsVisible="false"
+                       FlexLayout.Grow="1"
+                       Text="{i18n:Translate Text=Pin.updateTitle}"
+                       FontSize="Title"
+                       HorizontalTextAlignment="Center" />
 
                 <Label x:Name="Header"
                        FlexLayout.Grow="1"

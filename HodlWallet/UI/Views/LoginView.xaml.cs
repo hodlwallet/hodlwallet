@@ -44,11 +44,21 @@ namespace HodlWallet.UI.Views
 
         LoginViewModel ViewModel => (LoginViewModel)BindingContext;
 
-        public LoginView()
+        string next = null;
+
+        public LoginView(string next = null)
         {
             InitializeComponent();
 
             SubscribeToMessages();
+            this.next = next;
+
+            if (next == "update") 
+            {
+                LogoFront.IsVisible = false;
+                Header.Text = Locale.LocaleResources.Pin_updateHeader;
+            }
+
         }
 
         protected override void OnDisappearing()
@@ -103,7 +113,17 @@ namespace HodlWallet.UI.Views
             Debug.WriteLine($"[SubscribeToMessage][NavigateToRootView]");
 
             // Incase we're faster than light, we call the constructor anyways.
-            Application.Current.MainPage = new AppShell();
+
+            
+            
+            if (next == null)
+            {
+                Application.Current.MainPage = new AppShell();
+            }
+            else
+            {
+                Navigation.PushAsync(new PinPadView(new BackupView("close")));
+            }
         }
 
         void ResetPin(LoginViewModel _)
