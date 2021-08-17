@@ -138,7 +138,7 @@ namespace HodlWallet.UI.Views
             if (WalletService.Wallet != null)
                 Debug.WriteLine($"[Logo_Tapped] Seed: {WalletService.Wallet.Seed}");
 
-            Navigation.PushAsync(new ControlsDemoView());
+            Application.Current.MainPage = new ControlsDemoView();
         }
     }
 }
