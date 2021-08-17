@@ -50,25 +50,26 @@ namespace HodlWallet.UI
             SecureStorageService.RemoveAll();
 #endif
 
-            RegisterServices();
+            //RegisterServices();
 
-            if (UserDidSetup())
-            {
-                MainPage = new LoginView();
+            //if (UserDidSetup())
+            //{
+            //    MainPage = new LoginView();
 
-                return;
-            }
+            //    return;
+            //}
 
-            CollectExistingKeys();
+            //CollectExistingKeys();
 
-            if (UserDidSetup())
-            {
-                MainPage = new LoginView();
+            //if (UserDidSetup())
+            //{
+            //    MainPage = new LoginView();
 
-                return;
-            }
+            //    return;
+            //}
 
-            MainPage = new NavigationPage(new OnboardView());
+            //MainPage = new NavigationPage(new OnboardView());
+            MainPage = new NavigationPage(new SelectAccountTypeView());
         }
 
         protected override void OnStart()

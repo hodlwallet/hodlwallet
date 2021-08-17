@@ -194,12 +194,11 @@ namespace HodlWallet.UI
         void RegisterRoutes()
         {
             Routing.RegisterRoute("settings", typeof(SettingsView));
-            Routing.RegisterRoute("create", typeof(AddAccountView));
+            Routing.RegisterRoute("create-account", typeof(CreateAccountView));
             Routing.RegisterRoute("send", typeof(SendView));
             Routing.RegisterRoute("home", typeof(HomeView));
             Routing.RegisterRoute("receive", typeof(ReceiveView));
             Routing.RegisterRoute("account-settings", typeof(AccountSettingsView));
-            Routing.RegisterRoute(nameof(CreateAccountView), typeof(CreateAccountView));
         }
     }
 }
