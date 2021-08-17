@@ -1,270 +1,270 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<PropertyGroup>
-		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		<Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-		<ProductVersion>8.0.30703</ProductVersion>
-		<SchemaVersion>2.0</SchemaVersion>
-		<ProjectGuid>{E7FBDB38-B4CD-4F95-986B-192666FAFBF0}</ProjectGuid>
-		<ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-		<TemplateGuid>{89a4fe7c-635d-49c9-8d8c-5cd363c0d68d}</TemplateGuid>
-		<OutputType>Exe</OutputType>
-		<RootNamespace>HodlWallet.iOS</RootNamespace>
-		<IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-		<AssemblyName>HodlWallet.iOS</AssemblyName>
-		<MtouchEnableSGenConc>true</MtouchEnableSGenConc>
-		<MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-		<ProvisioningType>automatic</ProvisioningType>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<Optimize>false</Optimize>
-		<OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
-		<DefineConstants>DEBUG</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<MtouchArch>x86_64</MtouchArch>
-		<MtouchLink>None</MtouchLink>
-		<MtouchDebug>true</MtouchDebug>
-		<CodesignKey>iPhone Developer</CodesignKey>
-		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-		<LangVersion>latest</LangVersion>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
-		<DebugType>none</DebugType>
-		<Optimize>true</Optimize>
-		<OutputPath>bin\iPhoneSimulator\Release</OutputPath>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<MtouchLink>None</MtouchLink>
-		<MtouchArch>x86_64</MtouchArch>
-		<CodesignKey>iPhone Developer</CodesignKey>
-		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-		<MtouchUseLlvm>true</MtouchUseLlvm>
-		<LangVersion>latest</LangVersion>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<Optimize>false</Optimize>
-		<OutputPath>bin\iPhone\Debug</OutputPath>
-		<DefineConstants>DEBUG</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<MtouchArch>ARM64</MtouchArch>
-		<CodesignKey>iPhone Developer</CodesignKey>
-		<MtouchDebug>true</MtouchDebug>
-		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-		<DeviceSpecificBuild>false</DeviceSpecificBuild>
-		<MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-		<MtouchLink>None</MtouchLink>
-		<LangVersion>latest</LangVersion>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
-		<DebugType>none</DebugType>
-		<Optimize>true</Optimize>
-		<OutputPath>bin\iPhone\Release</OutputPath>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<MtouchArch>ARM64</MtouchArch>
-		<CodesignKey>iPhone Developer</CodesignKey>
-		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-		<MtouchUseLlvm>true</MtouchUseLlvm>
-		<MtouchLink>SdkOnly</MtouchLink>
-		<LangVersion>latest</LangVersion>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<DebugSymbols>false</DebugSymbols>
-		<Optimize>false</Optimize>
-		<OutputPath>bin\Debug</OutputPath>
-		<DefineConstants>DEBUG;__IOS__;__MOBILE__;__UNIFIED__;</DefineConstants>
-		<WarningLevel>4</WarningLevel>
-		<CodesignKey>iPhone Developer</CodesignKey>
-		<MtouchDebug>true</MtouchDebug>
-		<MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-		<MtouchEnableSGenConc>false</MtouchEnableSGenConc>
-		<IOSDebuggerPort>21268</IOSDebuggerPort>
-		<MtouchLink>None</MtouchLink>
-		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-		<MtouchArch>ARMv7</MtouchArch>
-		<LangVersion>latest</LangVersion>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<DebugType>pdbonly</DebugType>
-		<Optimize>false</Optimize>
-		<OutputPath>bin\Release</OutputPath>
-		<DefineConstants>
-		</DefineConstants>
-		<WarningLevel>4</WarningLevel>
-		<CodesignKey>iPhone Developer</CodesignKey>
-		<MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-		<MtouchEnableSGenConc>false</MtouchEnableSGenConc>
-		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-		<MtouchUseLlvm>true</MtouchUseLlvm>
-		<MtouchUseThumb>true</MtouchUseThumb>
-		<MtouchArch>ARMv7</MtouchArch>
-		<MtouchLink>SdkOnly</MtouchLink>
-		<LangVersion>latest</LangVersion>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
-		<AppExtensionDebugBundleId />
-	</PropertyGroup>
-	<ItemGroup>
-		<Compile Include="Main.cs" />
-		<Compile Include="AppDelegate.cs" />
-		<None Include="Entitlements.plist" />
-		<None Include="Info.plist" />
-		<Compile Include="Properties\AssemblyInfo.cs" />
-		<Compile Include="Renderers\FeeSliderRenderer.cs" />
-		<Compile Include="Services\ShareIntent.cs" />
-		<Compile Include="Services\iOSPermissions.cs" />
-		<Compile Include="Effects\HideTabbarEffect.cs" />
-		<Compile Include="Services\Localize.cs" />
-		<Compile Include="Services\iOSLegacySecureKeyService.cs" />
-		<Compile Include="Renderers\CustomShellRenderer.cs" />
-		<Compile Include="Renderers\CustomNavigationRenderer.cs" />
-	</ItemGroup>
-	<ItemGroup>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-		<ImageAsset Include="Assets.xcassets\logo_front.png.imageset\Contents.json">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\logo_front.png.imageset\logo_front.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\logo.png.imageset\logo.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\logo.png.imageset\Contents.json">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<BundleResource Include="Resources\receive_tab.png" />
-		<BundleResource Include="Resources\receive_tab%402x.png" />
-		<BundleResource Include="Resources\received%402x.png" />
-		<BundleResource Include="Resources\send_tab.png" />
-		<BundleResource Include="Resources\received.png" />
-		<BundleResource Include="Resources\settings_tab.png" />
-		<BundleResource Include="Resources\schedule%402x.png" />
-		<BundleResource Include="Resources\price_tag_3_fill%402x.png" />
-		<BundleResource Include="Resources\home_tab%402x.png" />
-		<BundleResource Include="Resources\sent%402x.png" />
-		<BundleResource Include="Resources\price_tag_3_line%402x.png" />
-		<BundleResource Include="Resources\home_tab.png" />
-		<BundleResource Include="Resources\price_tag_3_line.png" />
-		<BundleResource Include="Resources\schedule.png" />
-		<BundleResource Include="Resources\send_tab%402x.png" />
-		<BundleResource Include="Resources\settings_tab%402x.png" />
-		<BundleResource Include="Resources\sent.png" />
-		<BundleResource Include="Resources\price_tag_3_fill.png" />
-		<BundleResource Include="Resources\FiraSans-Bold.ttf">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</BundleResource>
-		<BundleResource Include="Resources\FiraSans-BoldItalic.ttf">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</BundleResource>
-		<BundleResource Include="Resources\FiraSans-Regular.ttf">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</BundleResource>
-		<BundleResource Include="Resources\FiraMono-Bold.ttf">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</BundleResource>
-		<BundleResource Include="Resources\FiraMono-Regular.ttf">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</BundleResource>
-		<BundleResource Include="Resources\FiraSans-LightItalic.ttf">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</BundleResource>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\NotificationIcon~ipad%402x.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\NotificationIcon%403x.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small%402x.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small%403x.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40%402x.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40%403x.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%402x.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%403x.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\NotificationIcon~ipad.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\NotificationIcon~ipad%402x-1.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small%402x-1.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40%402x-1.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76%402x.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-83.5%402x.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<ImageAsset Include="Assets.xcassets\AppIcon.appiconset\large-icon.png">
-			<Visible>false</Visible>
-		</ImageAsset>
-		<BundleResource Include="Resources\search.png" />
-		<BundleResource Include="Resources\search%402x.png" />
-		<BundleResource Include="Resources\search%403x.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Reference Include="System" />
-		<Reference Include="System.Xml" />
-		<Reference Include="System.Core" />
-		<Reference Include="Xamarin.iOS" />
-		<Reference Include="System.Numerics" />
-		<Reference Include="System.Numerics.Vectors" />
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
-		<PackageReference Include="Serilog.Sinks.Xamarin">
-			<Version>0.2.0.64</Version>
-		</PackageReference>
-		<PackageReference Include="ZXing.Net.Mobile.Forms">
-			<Version>2.4.1</Version>
-		</PackageReference>
-		<PackageReference Include="Xamarin.Forms">
-			<Version>5.0.0.2083</Version>
-		</PackageReference>
-		<PackageReference Include="ZXing.Net.Mobile">
-		  <Version>2.4.1</Version>
-		</PackageReference>
-	</ItemGroup>
-	<Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-	<ItemGroup />
-	<ItemGroup>
-		<ProjectReference Include="..\HodlWallet\HodlWallet.csproj">
-			<Project>{7D5ECE43-EC1B-4F28-84B1-4017F8C5D035}</Project>
-			<Name>HodlWallet</Name>
-		</ProjectReference>
-	</ItemGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E7FBDB38-B4CD-4F95-986B-192666FAFBF0}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{89a4fe7c-635d-49c9-8d8c-5cd363c0d68d}</TemplateGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>HodlWallet.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>HodlWallet.iOS</AssemblyName>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <ProvisioningType>automatic</ProvisioningType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <DeviceSpecificBuild>false</DeviceSpecificBuild>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchLink>None</MtouchLink>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;__IOS__;__MOBILE__;__UNIFIED__;</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
+    <IOSDebuggerPort>21268</IOSDebuggerPort>
+    <MtouchLink>None</MtouchLink>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchArch>ARMv7</MtouchArch>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+    <MtouchUseThumb>true</MtouchUseThumb>
+    <MtouchArch>ARMv7</MtouchArch>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\FeeSliderRenderer.cs" />
+    <Compile Include="Services\ShareIntent.cs" />
+    <Compile Include="Services\iOSPermissions.cs" />
+    <Compile Include="Effects\HideTabbarEffect.cs" />
+    <Compile Include="Services\Localize.cs" />
+    <Compile Include="Services\iOSLegacySecureKeyService.cs" />
+    <Compile Include="Renderers\CustomShellRenderer.cs" />
+    <Compile Include="Renderers\CustomNavigationRenderer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ImageAsset Include="Assets.xcassets\logo_front.png.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo_front.png.imageset\logo_front.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo.png.imageset\logo.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo.png.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <BundleResource Include="Resources\receive_tab.png" />
+    <BundleResource Include="Resources\receive_tab%402x.png" />
+    <BundleResource Include="Resources\received%402x.png" />
+    <BundleResource Include="Resources\send_tab.png" />
+    <BundleResource Include="Resources\received.png" />
+    <BundleResource Include="Resources\settings_tab.png" />
+    <BundleResource Include="Resources\schedule%402x.png" />
+    <BundleResource Include="Resources\price_tag_3_fill%402x.png" />
+    <BundleResource Include="Resources\home_tab%402x.png" />
+    <BundleResource Include="Resources\sent%402x.png" />
+    <BundleResource Include="Resources\price_tag_3_line%402x.png" />
+    <BundleResource Include="Resources\home_tab.png" />
+    <BundleResource Include="Resources\price_tag_3_line.png" />
+    <BundleResource Include="Resources\schedule.png" />
+    <BundleResource Include="Resources\send_tab%402x.png" />
+    <BundleResource Include="Resources\settings_tab%402x.png" />
+    <BundleResource Include="Resources\sent.png" />
+    <BundleResource Include="Resources\price_tag_3_fill.png" />
+    <BundleResource Include="Resources\FiraSans-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\FiraSans-BoldItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\FiraSans-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\FiraMono-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\FiraMono-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\FiraSans-LightItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\NotificationIcon~ipad%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\NotificationIcon%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\NotificationIcon~ipad.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\NotificationIcon~ipad%402x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small%402x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40%402x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-83.5%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\large-icon.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <BundleResource Include="Resources\search.png" />
+    <BundleResource Include="Resources\search%402x.png" />
+    <BundleResource Include="Resources\search%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Serilog.Sinks.Xamarin">
+      <Version>0.2.0.64</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile.Forms">
+      <Version>2.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms">
+      <Version>5.0.0.2083</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile">
+      <Version>2.4.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\HodlWallet\HodlWallet.csproj">
+      <Project>{7D5ECE43-EC1B-4F28-84B1-4017F8C5D035}</Project>
+      <Name>HodlWallet</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

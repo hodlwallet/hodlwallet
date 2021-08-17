@@ -24,16 +24,57 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
+
 using Xamarin.Forms;
+
+using HodlWallet.Core.ViewModels;
+using HodlWallet.UI.Extensions;
+using System.Diagnostics;
 
 namespace HodlWallet.UI.Views
 {
     public partial class SelectAccountTypeView : ContentPage
     {
+        Color SELECTED_COLOR => Color.Purple;
+        bool initialLoad = true;
+
+        SelectAccountTypeViewModel ViewModel => BindingContext as SelectAccountTypeViewModel;
+
         public SelectAccountTypeView()
         {
             InitializeComponent();
+
+            MessagingCenter.Subscribe<SelectAccountTypeViewModel>(this, "AnimateSelected", AnimateSelected);
+        }
+
+        void AnimateSelected(SelectAccountTypeViewModel vm)
+        {
+            switch (vm.AccountType)
+            {
+                case "standard":
+                    StandardFrame.ColorTo(StandardFrame.BackgroundColor, SELECTED_COLOR, c => StandardFrame.BackgroundColor = c, 250);
+
+                    if (!initialLoad)
+                        LegacyFrame.ColorTo(LegacyFrame.BackgroundColor, Color.Default, c => LegacyFrame.BackgroundColor = c, 100);
+
+                    break;
+                case "legacy":
+                    if (!initialLoad)
+                        StandardFrame.ColorTo(StandardFrame.BackgroundColor, Color.Default, c => StandardFrame.BackgroundColor = c, 100);
+
+                    LegacyFrame.ColorTo(LegacyFrame.BackgroundColor, SELECTED_COLOR, c => LegacyFrame.BackgroundColor = c, 250);
+
+                    break;
+                default:
+                    break;
+            }
+
+            initialLoad = false;
+        }
+
+        void NextButton_Clicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine($"[NextButton_Clicked] Account type selected: {ViewModel.AccountType}");
         }
     }
 }

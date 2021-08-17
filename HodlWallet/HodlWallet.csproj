@@ -29,7 +29,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Core\Models\" />
-		<Folder Include="UI\Extensions\" />
 		<Folder Include="Core\Utils\" />
 		<Folder Include="UI\Converters\" />
 		<Folder Include="Core\Interfaces\" />
