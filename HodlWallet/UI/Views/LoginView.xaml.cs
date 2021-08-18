@@ -57,6 +57,8 @@ namespace HodlWallet.UI.Views
             {
                 LogoFront.IsVisible = false;
                 Header.Text = Locale.LocaleResources.Pin_updateHeader;
+                CancelButton.IsEnabled = true;
+                CancelButton.IsVisible = true;
             }
 
         }
@@ -116,13 +118,13 @@ namespace HodlWallet.UI.Views
 
             
             
-            if (next == null)
-            {
-                Application.Current.MainPage = new AppShell();
+            if (next == "update")
+            {//Update
+                Navigation.PushAsync(new PinPadView(new PinChangedView()));
             }
             else
-            {
-                Navigation.PushAsync(new PinPadView(new BackupView("close")));
+            {//Login
+                Application.Current.MainPage = new AppShell();
             }
         }
 
@@ -159,6 +161,11 @@ namespace HodlWallet.UI.Views
                 Debug.WriteLine($"[Logo_Tapped] Seed: {WalletService.Wallet.Seed}");
 
             Navigation.PushAsync(new ControlsDemoView());
+        }
+
+        private void CancelButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }

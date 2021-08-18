@@ -800,4 +800,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Face ID</value>
     <comment>Label for BiometricsView title label</comment>
   </data>
+  <data name="Login.cancel" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Label of cancel button in LoginView</comment>
+  </data>
 </root>
