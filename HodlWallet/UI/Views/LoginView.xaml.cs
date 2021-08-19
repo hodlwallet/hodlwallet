@@ -116,10 +116,8 @@ namespace HodlWallet.UI.Views
 
             // Incase we're faster than light, we call the constructor anyways.
 
-            
-            
             if (next == "update")
-            {//Update
+            {//Update PIN
                 Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
             }
             else
