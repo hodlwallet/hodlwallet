@@ -120,7 +120,7 @@ namespace HodlWallet.UI.Views
             
             if (next == "update")
             {//Update
-                Navigation.PushAsync(new PinPadView(new PinChangedView()));
+                Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
             }
             else
             {//Login

@@ -1,5 +1,5 @@
 ﻿//
-// PinChangedView.xaml.cs
+// PinPadChangeView.xaml.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -32,9 +32,9 @@ using Xamarin.Forms.Xaml;
 namespace HodlWallet.UI.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PinChangedView : ContentPage
+    public partial class PinPadChangeView : ContentPage
     {
-        public PinChangedView()
+        public PinPadChangeView()
         {
             InitializeComponent();
         }
