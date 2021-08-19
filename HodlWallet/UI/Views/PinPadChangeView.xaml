@@ -18,19 +18,19 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="The Pin has been succesfully updated"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                   FontSize="Body"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
 
             <Button Text="{i18n:Translate Text=PinSettings.close}"
-                        Style="{DynamicResource CustomButton}"
-                        BackgroundColor="{DynamicResource BackgroundSecondary}"
-                        CornerRadius="0"
-                        FontSize="Large"
-                        Clicked="CloseToolbarItem_Clicked"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="2"
-                        HeightRequest="80"
-                        />
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                    CornerRadius="0"
+                    FontSize="Large"
+                    Clicked="CloseToolbarItem_Clicked"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="2"
+                    HeightRequest="80"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
