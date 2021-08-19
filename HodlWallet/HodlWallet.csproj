@@ -101,6 +101,9 @@
             <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>            
 		</EmbeddedResource>
+        <Compile Update="UI\Views\PinPadChangeView.xaml.cs">
+          <DependentUpon>PinPadChangeView.xaml</DependentUpon>
+        </Compile>
         <Compile Update="UI\Views\PinSettingsView.xaml.cs">
           <DependentUpon>PinSettingsView.xaml</DependentUpon>
         </Compile>
@@ -132,7 +135,7 @@
 		<EmbeddedResource Update="UI\Views\CreateAccountView.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
-		<EmbeddedResource Update="UI\Views\PinChangedView.xaml">
+		<EmbeddedResource Update="UI\Views\PinPadChangeView.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="UI\Views\PinSettingsView.xaml">
