@@ -101,12 +101,9 @@
             <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>            
 		</EmbeddedResource>
-        <Compile Update="UI\Views\PinPadChangeView.xaml.cs">
-          <DependentUpon>PinPadChangeView.xaml</DependentUpon>
-        </Compile>
-        <Compile Update="UI\Views\PinSettingsView.xaml.cs">
-          <DependentUpon>PinSettingsView.xaml</DependentUpon>
-        </Compile>
+                <Compile Update="UI\Views\PinSettingsView.xaml.cs">
+                        <DependentUpon>PinSettingsView.xaml</DependentUpon>
+                </Compile>
 		<Compile Update="UI\Views\RecoverView.xaml.cs">
 			<DependentUpon>RecoverView.xaml</DependentUpon>
 		</Compile>
