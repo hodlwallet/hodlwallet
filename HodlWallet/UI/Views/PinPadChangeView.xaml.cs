@@ -17,9 +17,9 @@ namespace HodlWallet.UI.Views
             InitializeComponent();
         }
 
-        private void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        private async void CloseToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new AppShell();
+            await Shell.Current.GoToAsync("//account-settings");
         }
     }
 }

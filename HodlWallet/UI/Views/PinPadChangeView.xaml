@@ -11,8 +11,7 @@
                      Order="Primary"
                      Text="{i18n:Translate Text=PinSettings.close}"
                      Priority="0"
-                     Clicked="CloseToolbarItem_Clicked"
-                     />
+                     Clicked="CloseToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
