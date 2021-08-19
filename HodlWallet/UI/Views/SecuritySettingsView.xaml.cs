@@ -1,5 +1,5 @@
 ﻿//
-// AccountSettingsView.xaml.cs
+// SecuritySettingsView.xaml.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
