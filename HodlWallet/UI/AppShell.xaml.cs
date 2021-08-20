@@ -49,8 +49,7 @@ namespace HodlWallet.UI
         readonly Serilog.ILogger logger;
         readonly object @lock = new();
         IWalletService WalletService => DependencyService.Get<IWalletService>();
-
-        public ObservableCollection<AccountModel> AccountList { get; set; }  = new ObservableCollection<AccountModel>();
+        public ObservableCollection<AccountModel> AccountList { get; set; }  = new ();
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
  
@@ -87,8 +86,6 @@ namespace HodlWallet.UI
         {
             InitializeComponent();
             logger = WalletService.Logger;
-            AccountList.CollectionChanged += AccountsCollectionChanged;
-            PropertyChanged += Shell_PropertyChanged;
             RegisterRoutes();
             SetupDefaultTab();
             ClearColorSelectedList();
