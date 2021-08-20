@@ -16,6 +16,7 @@
                 <Label FlexLayout.Grow="1"
                        Margin="20,20,20,0"
                        Text="{i18n:Translate Text=AccountTypeSelection.description}" />
+                
                 <Frame x:Name="StandardFrame" FlexLayout.Grow="1" Margin="10" BorderColor="{DynamicResource BackgroundSecondary}" HasShadow="false" CornerRadius="10">
                     <StackLayout>
                         <Label Text="{i18n:Translate Text=AccountTypeSelection.standardTitle}" FontFamily="{StaticResource Sans-Bold}" />
@@ -35,7 +36,10 @@
                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AccountTypeSelectedCommand}" CommandParameter="legacy" />
                     </Frame.GestureRecognizers>
                 </Frame>
-                <BoxView FlexLayout.Grow="1" />
+
+                <StackLayout FlexLayout.Grow="1">
+                    <Label x:Name="PleaseSelectAccountTypeLabel" TextColor="{DynamicResource TextSecondary}" IsVisible="True"  Text="{i18n:Translate Text=AccountTypeSelection.pleaseSelect}" FontSize="Small"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+                </StackLayout>
 
                 <Button FlexLayout.Grow="1" Text="{i18n:Translate Text=AccountTypeSelection.doneButton}" FontSize="Large" Margin="10" CornerRadius="5" Clicked="DoneButton_Clicked" />
             </FlexLayout>

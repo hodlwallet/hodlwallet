@@ -776,4 +776,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Account Type Selection</value>
     <comment>title of the account type selection view</comment>
   </data>
+  <data name="AccountTypeSelection.pleaseSelect" xml:space="preserve">
+    <value>Please select the type of account</value>
+    <comment>label that's shown when the user haven't selected a type of account</comment>
+  </data>
 </root>

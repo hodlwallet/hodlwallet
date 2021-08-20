@@ -45,6 +45,12 @@ namespace HodlWallet.UI.Views
             InitializeComponent();
 
             MessagingCenter.Subscribe<SelectAccountTypeViewModel>(this, "AnimateSelected", AnimateSelected);
+            MessagingCenter.Subscribe<SelectAccountTypeViewModel>(this, "HideEmptyState", HideEmptyState);
+        }
+
+        void HideEmptyState(SelectAccountTypeViewModel vm)
+        {
+            PleaseSelectAccountTypeLabel.FadeTo(0.00);
         }
 
         void AnimateSelected(SelectAccountTypeViewModel vm)

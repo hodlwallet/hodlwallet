@@ -32,13 +32,15 @@ namespace HodlWallet.Core.ViewModels
 {
     class SelectAccountTypeViewModel : BaseViewModel
     {
-        string accountType;
+        string accountType = null;
         public string AccountType
         {
             get => accountType;
             set => SetProperty(ref accountType, value);
         }
 
+        public bool IsNotSelected => string.IsNullOrEmpty(AccountType);
+ 
         public ICommand AccountTypeSelectedCommand { get; }
 
         public SelectAccountTypeViewModel()
@@ -49,6 +51,12 @@ namespace HodlWallet.Core.ViewModels
         void AccountTypeSelected(string typeSelected)
         {
             Debug.WriteLine($"[AccountTypeSelected] Account type selected: {typeSelected}");
+
+            if (AccountType is null)
+            {
+                MessagingCenter.Send(this, "HideEmptyState");
+            }
+
             AccountType = typeSelected;
 
             MessagingCenter.Send(this, "AnimateSelected");

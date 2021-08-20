@@ -142,6 +142,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select the type of account.
+        /// </summary>
+        internal static string AccountTypeSelection_pleaseSelect {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.pleaseSelect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Segwit address format. Using Segwit can lower transaction fees. Some third party wallets and exchanges still don&apos;t accept this format..
         /// </summary>
         internal static string AccountTypeSelection_standardDescription {
