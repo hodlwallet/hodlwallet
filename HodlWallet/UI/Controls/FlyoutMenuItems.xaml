@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HodlWallet.UI.Controls.FlyoutMenuItems">
+    <FlexLayout Direction="Row"
+            Wrap="Wrap"
+            JustifyContent="SpaceEvenly" >
+        <Label Text="{Binding AccountName}"
+                Style="{Binding CustomStyle}" 
+                FlexLayout.Grow="1"/>
+        <Label Text="{Binding Balance}" 
+            Style="{Binding CustomStyle}" />
+    </FlexLayout>
+</ContentView>

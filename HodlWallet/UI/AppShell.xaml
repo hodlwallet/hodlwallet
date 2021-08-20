@@ -7,6 +7,8 @@
        Shell.NavBarHasShadow="False"
        xmlns:views="clr-namespace:HodlWallet.UI.Views"
        xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
+       xmlns:ui="clr-namespace:HodlWallet.UI"
+       x:DataType="ui:AppShell"
        x:Name="shell">
 
     <Shell.Resources>
@@ -113,16 +115,8 @@
                 <CollectionView BindingContext="{x:Reference shell}"
                             ItemsSource="{Binding AccountList}">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate >
-                            <FlexLayout Direction="Row"
-                                    Wrap="Wrap"
-                                    JustifyContent="SpaceEvenly">
-                                <Label Text="{Binding AccountName}"
-                                     Style="{Binding CustomStyle}" 
-                                       FlexLayout.Grow="1"/>
-                                <Label Text="{Binding Balance}" 
-                                    Style="{Binding CustomStyle}" />
-                            </FlexLayout>
+                        <DataTemplate>
+                            <controls:FlyoutMenuItems/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
