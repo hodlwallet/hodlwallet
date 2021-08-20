@@ -106,7 +106,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In HODL wallet we have two kinds of accounts, one standard and one legacy, standard is great for new Bitcoin uses, legacy should only be selected if a HODL Wallet 1.0 wallet is being restored..
+        ///   Looks up a localized string similar to Hodl Wallet supports two different account types described below. Please select the account type you would like to create. Creating a new account has no effect on your existing accounts..
         /// </summary>
         internal static string AccountTypeSelection_description {
             get {
@@ -124,7 +124,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The traditional format Bitcoin started with. This format tends to have higher transaction fees. It can&apos;t talk to Segwit addresses..
+        ///   Looks up a localized string similar to Creates legacy bitcoin addresses that begin with 1. These addresses are supported by all bitcoin services but will lead to higher fees when sending than standard. Use this account type if the service or wallet you are sending to does not support the newest address standard..
         /// </summary>
         internal static string AccountTypeSelection_legacyDescription {
             get {
@@ -151,7 +151,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Segwit address format. Using Segwit can lower transaction fees. Some third party wallets and exchanges still don&apos;t accept this format..
+        ///   Looks up a localized string similar to The newest bitcoin address standard. This will create addresses that begin with bc1 (Bech 32). This account type will help you save on fees but Bech 32 addresses may still not be supported by some bitcoin wallets and services..
         /// </summary>
         internal static string AccountTypeSelection_standardDescription {
             get {
@@ -169,7 +169,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account Type Selection.
+        ///   Looks up a localized string similar to Select Account Type.
         /// </summary>
         internal static string AccountTypeSelection_title {
             get {
