@@ -20,11 +20,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
-using HodlWallet.UI.Locale;
-using System;
+using HodlWallet.Core.Models;
+using System.Diagnostics;
 
 namespace HodlWallet.UI.Views
 {
@@ -32,10 +34,11 @@ namespace HodlWallet.UI.Views
     {
         BackupRecoveryConfirmViewModel ViewModel => (BackupRecoveryConfirmViewModel)BindingContext;
 
-        public BackupRecoveryConfirmView(string[] mnemonic)
+        public BackupRecoveryConfirmView(List<BackupWordModel> mnemonic)
         {
             InitializeComponent();
-            ViewModel.Mnemonic = mnemonic;
+            ViewModel.ShuffledWordsList = mnemonic;
+            Debug.WriteLine($"*******Asignacin de la prop !!!!: { ViewModel.ShuffledWordsList[0].Word}");
             SubscribeToMessages();
         }
 
@@ -44,6 +47,7 @@ namespace HodlWallet.UI.Views
         {
             MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "NavigateToRootView", NavigateToRootView);
         }
+
 
         void NavigateToRootView(BackupRecoveryConfirmViewModel _)
         {

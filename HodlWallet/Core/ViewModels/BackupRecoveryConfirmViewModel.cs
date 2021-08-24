@@ -40,266 +40,72 @@ namespace HodlWallet.Core.ViewModels
 {
     public class BackupRecoveryConfirmViewModel : BaseViewModel
     {
-        private const int AMOUNT_AROUND = 7;
-        private int _Confirm = 0;
-        private string _WordToGuess;
-        private string _Exercise;
-        private string[] _Mnemonic;
-        int _PrevIndex;
-        bool _WarningVisible;
+        public List<BackupWordModel> ShuffledWordsList { get; set; } = new();
 
-        private string[] confirmWords = new string[8],
-            place = { LocaleResources.Ordinal_first,        LocaleResources.Ordinal_second,         LocaleResources.Ordinal_third,
-                    LocaleResources.Ordinal_fourth,         LocaleResources.Ordinal_fifth,          LocaleResources.Ordinal_sixth,
-                    LocaleResources.Ordinal_seventh,        LocaleResources.Ordinal_eighth,         LocaleResources.Ordinal_ninth,
-                    LocaleResources.Ordinal_tenth,          LocaleResources.Ordinal_eleventh,       LocaleResources.Ordinal_twelveth,
-                    LocaleResources.Ordinal_thirteenth,     LocaleResources.Ordinal_fourteenth,     LocaleResources.Ordinal_fifteenth,
-                    LocaleResources.Ordinal_sixteenth,      LocaleResources.Ordinal_seventeenth,    LocaleResources.Ordinal_eighteenth,
-                    LocaleResources.Ordinal_nineteenth,     LocaleResources.Ordinal_twentieth,      LocaleResources.Ordinal_twenty_first,
-                    LocaleResources.Ordinal_twenty_second,  LocaleResources.Ordinal_twenty_third,   LocaleResources.Ordinal_twenty_fourth};
+        public ICommand NextCommand { get; }
 
-        public ICommand WordCommand { get; }
+        //public List<BackupWordModel> Mnemonic
+        //{
+        //    get => mnemonic;
+        //    set
+        //    {
+        //        SetProperty(ref mnemonic, value);
+        //    }
+        //}
 
-        public IList<BackupWordModel> ShuffledWordsList { get; set; }
-        public IList<BackupWordModel> WordList { get; set; }
-
-        public string[] Mnemonic
-        {
-            get => _Mnemonic;
-            set
-            {
-                SetProperty(ref _Mnemonic, value);
-            }
-        }
-
-        public string Exercise
-        {
-            get => _Exercise;
-            set => SetProperty(ref _Exercise, value);
-        }
-
-        public bool WarningVisible
-        {
-            get => _WarningVisible;
-            set => SetProperty(ref _WarningVisible, value);
-        }
-
-        public string WordOne
-        {
-            set
-            {
-                if (confirmWords[0] != value)
-                {
-                    SetProperty(ref confirmWords[0], value);
-                }
-            }
-            get
-            {
-                return confirmWords[0];
-            }
-        }
-
-        public string WordTwo
-        {
-            set
-            {
-                if (confirmWords[1] != value)
-                {
-                    SetProperty(ref confirmWords[1], value);
-                }
-            }
-            get
-            {
-                return confirmWords[1];
-            }
-        }
-
-        public string WordThree
-        {
-            set
-            {
-                if (confirmWords[2] != value)
-                {
-                    SetProperty(ref confirmWords[2], value);
-                }
-            }
-            get
-            {
-                return confirmWords[2];
-            }
-        }
-
-        public string WordFour
-        {
-            set
-            {
-                if (confirmWords[3] != value)
-                {
-                    SetProperty(ref confirmWords[3], value);
-                }
-            }
-            get
-            {
-                return confirmWords[3];
-            }
-        }
-
-        public string WordFive
-        {
-            set
-            {
-                if (confirmWords[4] != value)
-                {
-                    SetProperty(ref confirmWords[4], value);
-                }
-            }
-            get
-            {
-                return confirmWords[4];
-            }
-        }
-
-        public string WordSix
-        {
-            set
-            {
-                if (confirmWords[5] != value)
-                {
-                    SetProperty(ref confirmWords[5], value);
-                }
-            }
-            get
-            {
-                return confirmWords[5];
-            }
-        }
-
-        public string WordSeven
-        {
-            set
-            {
-                if (confirmWords[6] != value)
-                {
-                    SetProperty(ref confirmWords[6], value);
-                }
-            }
-            get
-            {
-                return confirmWords[6];
-            }
-        }
-
-        public string WordEight
-        {
-            set
-            {
-                if (confirmWords[7] != value)
-                {
-                    SetProperty(ref confirmWords[7], value);
-                }
-            }
-            get
-            {
-                return confirmWords[7];
-            }
-        }
         public BackupRecoveryConfirmViewModel()
         {
-            WordList = new List<BackupWordModel>();
-            ShuffledWordsList = new List<BackupWordModel>();
-            WordCommand = new Command<string>(RefreshConfirmWords);
-            //foreach (var item in Mnemonic)
-            //{
-            //    Console.WriteLine($"Aqui está el famoso --->>> {item}");
-            //}
-            Console.WriteLine($"Aqui está el famoso --->>> {_Mnemonic.Length}");
+            NextCommand = new Command(NextWord);
+          
+            Debug.WriteLine($"============>BackupRecoveryConfirmViewModel, ya tenemos la lista revuelta!!! {ShuffledWordsList.Count}");
+            //MessagingCenter.Subscribe<BackupRecoveryWordViewModel, List<BackupWordModel>>(this, "MnemonicListMessage", ShuffledWordsList);
 
-            //ShuffleMnemonic(Mnemonic);
+            //TestList = new List<BackupWordModel>{Word="Marconi", WordIndex="Uno" };
+
         }
 
-        private void RefreshConfirmWords(string arg)
+        //public void GenerateShuffledMnemonics(BackupRecoveryWordViewModel _, List<BackupWordModel> Words)
+        //{
+        //    ShuffledWordsList.AddRange(Words);
+        //    ShuffledWordsList.Shuffle();
+
+
+        //    Console.WriteLine("Lista A");
+        //    foreach (var item in Words)
+        //    {
+        //        Console.WriteLine($"{item.WordIndex} --> {item.Word}");
+        //    }
+        //    Console.WriteLine("Lista B");
+        //    foreach (var item in ShuffledWordsList)
+        //    {
+        //        Console.WriteLine($"{item.WordIndex} --> {item.Word}");
+        //    }
+        //}
+
+        private void NextWord()
         {
-            int input = Convert.ToInt32(arg);
-
-            if (confirmWords[input] == _WordToGuess)
-            {
-                if (WarningVisible)
-                    WarningVisible = false;
-                _Confirm++;
-                _PrevIndex = input;
-            }
-            else
-            {
-                _Confirm = 0;
-                WarningVisible = true;
-                _PrevIndex = _Mnemonic.Length;
-            }
-
-            _ = RefreshWords(_Mnemonic);
+            Debug.WriteLine("============> ALL DONE!!!");
         }
 
-        public async Task RefreshWords(string[] mnemonic)
-        {
-            Random rng = new Random();
 
-            if (_Confirm < 2)
-            {
-                var rangeArray = Enumerable.Range(0, mnemonic.Length - 1).Where(a => a != _PrevIndex).ToArray();
-                int wordIndex = rangeArray[rng.Next(rangeArray.Length)];
-                _WordToGuess = mnemonic[wordIndex];
-
-                Exercise = string.Format(LocaleResources.BackupConfirm_exercise, place[wordIndex]);
-                string[] guessWords = Services.WalletService.GenerateGuessWords(_WordToGuess, WalletService.GetWordListLanguage(), AMOUNT_AROUND);
-
-                UpdateWords(guessWords);
+        //void ShuffleMnemonic(string[] mnemonic)
+        //{
+        //    WordList = MnemonicArrayToList.GenerateWordsList(mnemonic);
 
 
-            }
-            else
-            {
-                Preferences.Set("MnemonicStatus", true);
+        //    ShuffledWordsList = WordList.ToList();
+        //    ShuffledWordsList.Shuffle<BackupWordModel>();
 
-                IsLoading = true;
-
-                await Task.Delay(1);
-
-                MessagingCenter.Send(this, "NavigateToRootView");
-            } 
-           
-        }
-
-        void ShuffleMnemonic(string[] mnemonic)
-        {
-            WordList = MnemonicArrayToList.GenerateWordsList(mnemonic);
-            
-
-            ShuffledWordsList = WordList.ToList();
-            ShuffledWordsList.Shuffle<BackupWordModel>();
-
-            Console.WriteLine("Lista A");
-            foreach (var item in WordList)
-            {
-                Console.WriteLine($"{item.WordIndex} --> {item.Word}");
-            }
-            Console.WriteLine("Lista B");
-            foreach (var item in ShuffledWordsList)
-            {
-                Console.WriteLine($"{item.WordIndex} --> {item.Word}");
-            }
-            //await Task.Delay(1000);
-        }
-
-        private void UpdateWords(string[] guessWords)
-        {
-            WordOne = guessWords[0];
-            WordTwo = guessWords[1];
-            WordThree = guessWords[2];
-            WordFour = guessWords[3];
-            WordFive = guessWords[4];
-            WordSix = guessWords[5];
-            WordSeven = guessWords[6];
-            WordEight = guessWords[7];
-        }
-
+        //    Console.WriteLine("Lista A");
+        //    foreach (var item in WordList)
+        //    {
+        //        Console.WriteLine($"{item.WordIndex} --> {item.Word}");
+        //    }
+        //    Console.WriteLine("Lista B");
+        //    foreach (var item in ShuffledWordsList)
+        //    {
+        //        Console.WriteLine($"{item.WordIndex} --> {item.Word}");
+        //    }
+        //}
     }
 }

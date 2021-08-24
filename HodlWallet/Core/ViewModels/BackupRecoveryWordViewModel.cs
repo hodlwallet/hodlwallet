@@ -21,17 +21,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Windows.Input;
 using System.Collections.Generic;
+using System.Windows.Input;
 
 using Xamarin.Forms;
 
 using Liviano.Exceptions;
 
-using HodlWallet.Core.Services;
 using HodlWallet.Core.Models;
+using HodlWallet.Core.Services;
 using HodlWallet.UI.Converters;
-
+using HodlWallet.Core.Utils;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -41,7 +41,9 @@ namespace HodlWallet.Core.ViewModels
 
         public ICommand NextCommand { get; }
 
-        public IList<BackupWordModel> Words { get; set; }
+        public List<BackupWordModel> Words { get; set; }
+
+        public List<BackupWordModel> ShuffledWordsList { get; set; } = new();
 
         public BackupRecoveryWordViewModel()
         {
@@ -54,7 +56,8 @@ namespace HodlWallet.Core.ViewModels
 
         private void NextWord()
         {
-            MessagingCenter.Send(this, "NavigateToBackupRecoveryConfirmView", _Mnemonic);
+            //MessagingCenter.Send(this, "NavigateToBackupRecoveryConfirmView", _Mnemonic);
+            MessagingCenter.Send(this, "MnemonicListMessage", Words);
         }
 
         void InitMnemonic()
@@ -65,6 +68,7 @@ namespace HodlWallet.Core.ViewModels
 
             _Mnemonic = rawMnemonic.Split(' ');
             Words = MnemonicArrayToList.GenerateWordsList(_Mnemonic);
+            GenerateShuffledMnemonics();
         }
 
         private string GetMnemonic()
@@ -75,22 +79,22 @@ namespace HodlWallet.Core.ViewModels
             return SecureStorageService.GetMnemonic();
         }
 
-        /*private void GenerateWordsList()
+        public void GenerateShuffledMnemonics()
         {
-            int index = 0;
-            Words = new List<BackupWordModel>();
-            foreach (var word in _Mnemonic)
+            ShuffledWordsList.AddRange(Words);
+            ShuffledWordsList.Shuffle();
+
+
+            Console.WriteLine("Lista A");
+            foreach (var item in Words)
             {
-                index++;
-                Words.Add(new BackupWordModel() { Word = word, WordIndex=index.ToString() });
+                Console.WriteLine($"{item.WordIndex} --> {item.Word}");
             }
-            
-            //Temp code to print 12 extra-mnemonics
-            //for (int i = 0; i < _Mnemonic.Length; i++)
-            //{
-            //    index++;
-            //    Words.Add(new BackupWordModel() { Word = $"{_Mnemonic[i]}{index}" , WordIndex = index.ToString() });
-            //}
-        }*/
+            Console.WriteLine("Lista B");
+            foreach (var item in ShuffledWordsList)
+            {
+                Console.WriteLine($"{item.WordIndex} --> {item.Word}");
+            }
+        }
     }
 }

@@ -26,6 +26,8 @@ using System.Diagnostics;
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
+using System.Collections.Generic;
+using HodlWallet.Core.Models;
 
 namespace HodlWallet.UI.Views
 {
@@ -39,12 +41,14 @@ namespace HodlWallet.UI.Views
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<BackupRecoveryWordViewModel, string[]>(this, "NavigateToBackupRecoveryConfirmView", NavigateToBackupRecoveryConfirmView);
+            //MessagingCenter.Subscribe<BackupRecoveryWordViewModel, string[]>(this, "NavigateToBackupRecoveryConfirmView", NavigateToBackupRecoveryConfirmView);
+            MessagingCenter.Subscribe<BackupRecoveryWordViewModel, List<BackupWordModel>>(this, "MnemonicListMessage", NavigateToBackupRecoveryConfirmView);
         }
 
-        async void NavigateToBackupRecoveryConfirmView(BackupRecoveryWordViewModel _, string[] mnemonic)
+        async void NavigateToBackupRecoveryConfirmView(BackupRecoveryWordViewModel _, List<BackupWordModel> mnemonic)
         {
-            Debug.WriteLine($"[NavigateToBackupRecoveryConfirmView] About to write mnemonic: {string.Join(" ", mnemonic)}");
+            //Debug.WriteLine($"[NavigateToBackupRecoveryConfirmView] About to write mnemonic: {string.Join(" ", mnemonic)}");
+            Debug.WriteLine($"*******[NavigateToBackupRecoveryConfirmView]Invocar el constructor con el mnemonic!!!!: { mnemonic[0].Word}");
             await Navigation.PushAsync(new BackupRecoveryConfirmView(mnemonic));
         }
 
