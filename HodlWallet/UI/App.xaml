@@ -111,7 +111,14 @@
                 <Setter Property="CornerRadius"
                         Value="5" />
                 <Setter Property="Margin"
-                        Value="5,0,5,0" />
+                        Value="5" />
+            </Style>
+
+            <Style x:Key="BottomButton"
+                   TargetType="Button"
+                   BasedOn="{StaticResource CustomButton}">
+                <Setter Property="Margin"
+                        Value="5,0,5,5" />
             </Style>
 
             <Style x:Key="NoBorderButton"
@@ -133,6 +140,10 @@
                         Value="{StaticResource TextPrimary}" />
                 <Setter Property="FontSize"
                         Value="Small" />
+                <Setter Property="CornerRadius"
+                        Value="5" />
+                <Setter Property="Margin"
+                        Value="5" />
             </Style>
 
             <Style x:Key="LoginDigitButton"
@@ -222,7 +233,7 @@
                 <Setter Property="TextColor"
                         Value="{DynamicResource TextPrimary}" />
                 <Setter Property="FontSize"
-                        Value="Large" />
+                        Value="Medium" />
                 <Setter Property="HorizontalTextAlignment"
                         Value="Center" />
                 <Setter Property="VerticalOptions" 

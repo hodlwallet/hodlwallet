@@ -15,26 +15,22 @@
 
                 <Label x:Name="Header"
                        Text="{i18n:Translate Text=NewWallet.header}"
-                       FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource SyncGradientStart}"
+                       FontFamily="{StaticResource Sans-Bold}"
+                       TextColor="{DynamicResource TextPrimary}"
                        FontSize="Large"
                        Margin="10" />
 
                 <Label x:Name="Subheader"
                        Text="{i18n:Translate Text=NewWallet.body}"
                        FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource SyncGradientStart}"
+                       TextColor="{DynamicResource TextSuccess}"
                        FontSize="Medium"
                        Margin="10"
                        FlexLayout.Grow="4" />
 
                 <Button x:Name="Button"
                         Text="{i18n:Translate Text=NewWallet.button}"
-                        Style="{DynamicResource CustomButton}"
-                        BackgroundColor="{DynamicResource BackgroundSecondary}"
-                        CornerRadius="0"
-                        FontSize="Large"
-                        FlexLayout.AlignSelf="Stretch"
+                        Style="{DynamicResource BottomButton}"
                         FlexLayout.Grow="1"
                         Clicked="WalletInfoButton_Clicked" />
             </FlexLayout>

@@ -7,7 +7,6 @@
              x:Class="HodlWallet.UI.Views.BackupRecoveryWordView"
              Title="{i18n:Translate BackupWord.title}"
              BackgroundColor="{DynamicResource BackgroundPrimary}">
-
     <ContentPage.BindingContext>
         <vm:BackupRecoveryWordViewModel />
     </ContentPage.BindingContext>
@@ -28,7 +27,7 @@
                         AlignItems="Center">
             <Label Text="{i18n:Translate Text=BackupWord.header}"
                        FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource SyncGradientStart}"
+                       TextColor="{DynamicResource TextSuccess}"
                        HorizontalTextAlignment="Center"
                        Margin="0, 20" />
 
@@ -44,15 +43,14 @@
                     <DataTemplate>
                         <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
                                                     Margin="2" >
-                            <StackLayout Orientation="Horizontal" Margin="2">
+                            <StackLayout Orientation="Horizontal" Margin="2" Padding="10">
                                 <Label Text="{Binding WordIndex}"
                                                     FontFamily="{StaticResource Sans-Regular}"
-                                                    TextColor="{DynamicResource SyncGradientStart}"
-                                                    FontSize="Micro" 
-                                                    />
+                                                    TextColor="{DynamicResource TextSuccess}"
+                                                    FontSize="Micro" />
                                 <Label Text="{Binding Word}"
-                                                Style="{DynamicResource MnemonicLabel}" 
-                                                Margin="0,0,5,0" />
+                                       Style="{DynamicResource MnemonicLabel}"
+                                       Margin="0,0,5,0" />
                             </StackLayout>
                         </ContentView>
                     </DataTemplate>
@@ -60,10 +58,8 @@
             </FlexLayout>
 
             <Button Text="{i18n:Translate Text=BackupWord.next}"
-                        Style="{DynamicResource CustomButton}"
+                        Style="{DynamicResource BottomButton}"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
-                        CornerRadius="0"
-                        FontSize="Large"                        
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="1"
                         VerticalOptions="EndAndExpand"

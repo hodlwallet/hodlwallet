@@ -16,13 +16,9 @@
                 <StackLayout Margin="10,20,10,10"
                              HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand">
-                    <Label x:Name="RecoverTitle"
-                           Style="{DynamicResource CustomLabel}"
-                           FontSize="Large"
-                           Margin="10, 0, 0, 0" />
                     <Label Text="{i18n:Translate Text=RecoverEntry.header}"
                            Style="{DynamicResource CustomLabel}"
-                           Margin="10, 0, 10, 20" />
+                           Margin="10, 0, 10, 0" />
 
                     <ScrollView>
                         <Grid x:Name="EntryGrid"
@@ -279,12 +275,11 @@
                     </ScrollView>
                 </StackLayout>
 
-                <BoxView FlexLayout.Grow="1" />
-
                 <Button x:Name="DoneButton"
                         Text="{i18n:Translate Text=Done.button}"
+                        Style="{DynamicResource RecoveryWordButton}"
                         FlexLayout.Grow="1"
-                        IsVisible="False"
+                        IsVisible="True"
                         FontSize="Large"
                         Command="{Binding OnRecoverEntryCompleted}" />
             </FlexLayout>

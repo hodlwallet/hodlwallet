@@ -21,16 +21,14 @@
                 </Frame>
 
                 <Button Text="{i18n:Translate Text=Onboard.create}"
-                        Style="{DynamicResource CustomButton}"
-                        Clicked="CreateButton_Clicked"
-                        FlexLayout.Grow="1" />
-
-                <BoxView HeightRequest="2" />
+                        Style="{DynamicResource BottomButton}"
+                        FlexLayout.Grow="1"
+                        Clicked="CreateButton_Clicked" />
 
                 <Button Text="{i18n:Translate Text=Onboard.recover}"
-                        Style="{DynamicResource CustomButton}"
-                        Clicked="RecoverButton_Clicked"
-                        FlexLayout.Grow="1" />
+                        Style="{DynamicResource BottomButton}"
+                        FlexLayout.Grow="1"
+                        Clicked="RecoverButton_Clicked" />
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>
