@@ -7,9 +7,7 @@
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <AbsoluteLayout>
-            <FlexLayout Direction="Column"
-                        JustifyContent="SpaceAround">
-
+            <FlexLayout Direction="Column">
                 <Frame FlexLayout.Grow="5"
                        BackgroundColor="Transparent">
                     <Image Source="logo_front.png"
@@ -24,18 +22,13 @@
 
                 <Button Text="{i18n:Translate Text=Onboard.create}"
                         Style="{DynamicResource CustomButton}"
-                        FlexLayout.AlignSelf="Stretch"
-                        FontSize="Medium"
                         Clicked="CreateButton_Clicked"
                         FlexLayout.Grow="1" />
 
-                <BoxView HeightRequest="2"
-                         BackgroundColor="Transparent" />
+                <BoxView HeightRequest="2" />
 
                 <Button Text="{i18n:Translate Text=Onboard.recover}"
                         Style="{DynamicResource CustomButton}"
-                        FlexLayout.AlignSelf="Stretch"
-                        FontSize="Medium"
                         Clicked="RecoverButton_Clicked"
                         FlexLayout.Grow="1" />
             </FlexLayout>

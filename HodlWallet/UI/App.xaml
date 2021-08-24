@@ -102,10 +102,16 @@
                    TargetType="Button">
                 <Setter Property="FontFamily"
                         Value="{StaticResource Sans-Regular}" />
+                <Setter Property="FontSize"
+                        Value="Medium" />
                 <Setter Property="TextColor"
                         Value="{DynamicResource TextPrimary}" />
                 <Setter Property="BackgroundColor"
                         Value="{DynamicResource BackgroundPrimary}" />
+                <Setter Property="CornerRadius"
+                        Value="5" />
+                <Setter Property="Margin"
+                        Value="5,0,5,0" />
             </Style>
 
             <Style x:Key="NoBorderButton"

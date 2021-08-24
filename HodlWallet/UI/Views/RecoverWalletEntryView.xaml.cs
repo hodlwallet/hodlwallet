@@ -25,10 +25,8 @@ using System;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Utils;
-using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Locale;
-
 using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.UI.Views
@@ -110,7 +108,7 @@ namespace HodlWallet.UI.Views
         {
             for (int i = 1; i < 13; i++)
             {
-                var entry = (Entry)FindByName($"Entry{i}");
+                var entry = FindByName($"Entry{i}") as Entry;
 
                 if (string.IsNullOrEmpty(entry.Text)) return;
             }
@@ -121,10 +119,6 @@ namespace HodlWallet.UI.Views
         void InitiateAppShell(RecoverWalletEntryViewModel _)
         {
             Application.Current.MainPage = new AppShell();
-        }
-
-        void Entry12_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
-        {
         }
     }
 }
