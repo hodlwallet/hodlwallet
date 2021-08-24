@@ -25,12 +25,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
+using Refit;
 using Xamarin.Forms;
 
-using Refit;
-
 using HodlWallet.Core.Interfaces;
-
 using HodlWallet.Core.Utils;
 
 namespace HodlWallet.Core.ViewModels
@@ -46,15 +44,15 @@ namespace HodlWallet.Core.ViewModels
         bool isLoading;
         public bool IsLoading
         {
-            get { return isLoading; }
-            set { SetProperty(ref isLoading, value); }
+            get => isLoading;
+            set => SetProperty(ref isLoading, value);
         }
 
-        string title = string.Empty;
+        string title;
         public string Title
         {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            get => title;
+            set => SetProperty(ref title, value);
         }
 
         protected bool SetProperty<T>(
@@ -69,6 +67,7 @@ namespace HodlWallet.Core.ViewModels
             backingStore = value;
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);
+
             return true;
         }
 
