@@ -55,13 +55,13 @@ namespace HodlWallet.UI.Views
 
         void Entry_Completed(object sender, EventArgs e)
         {
-            Entry completed = sender as Entry;
+            var completed = sender as Entry;
             if (completed.Text != null)
             {
                 ValidateEntry(completed);
             }
 
-            Entry NextEntry = this.FindByName(Tags.GetTag(completed)) as Entry;
+            var NextEntry = FindByName(Tags.GetTag(completed)) as Entry;
             NextEntry?.Focus();
         }
 
