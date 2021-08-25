@@ -16,7 +16,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="SkipToolbarItem"
                      Order="Primary"
-                     Text="{i18n:Translate Text=Backup.Skip}"
+                     Text="{i18n:Translate Text=Backup.skip}"
                      Priority="0"
                      Clicked="SkipToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>

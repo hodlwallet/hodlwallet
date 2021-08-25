@@ -500,11 +500,11 @@
     <value>Create</value>
     <comment>label for add account button</comment>
   </data>
-  <data name="Backup.Close" xml:space="preserve">
+  <data name="Backup.close" xml:space="preserve">
     <value>Close</value>
     <comment>label for backup toolbar Close button</comment>
   </data>
-  <data name="Backup.Skip" xml:space="preserve">
+  <data name="Backup.skip" xml:space="preserve">
     <value>Skip</value>
     <comment>label for backup toolbar Skip button</comment>
   </data>

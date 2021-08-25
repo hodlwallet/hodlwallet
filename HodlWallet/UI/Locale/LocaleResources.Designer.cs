@@ -342,9 +342,9 @@ namespace HodlWallet.UI.Locale {
         /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
-        internal static string Backup_Close {
+        internal static string Backup_close {
             get {
-                return ResourceManager.GetString("Backup.Close", resourceCulture);
+                return ResourceManager.GetString("Backup.close", resourceCulture);
             }
         }
         
@@ -360,9 +360,9 @@ namespace HodlWallet.UI.Locale {
         /// <summary>
         ///   Looks up a localized string similar to Skip.
         /// </summary>
-        internal static string Backup_Skip {
+        internal static string Backup_skip {
             get {
-                return ResourceManager.GetString("Backup.Skip", resourceCulture);
+                return ResourceManager.GetString("Backup.skip", resourceCulture);
             }
         }
         
