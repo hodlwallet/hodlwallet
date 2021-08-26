@@ -23,7 +23,7 @@
                             FlexLayout.Grow="2" />
                 <Label Text="{i18n:Translate Text=Recover.header}"
                        FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource SyncGradientStart}"
+                       TextColor="{DynamicResource TextSuccess}"
                        HorizontalTextAlignment="Center"
                        FontSize="Medium"
                        FlexLayout.AlignSelf="Center"
