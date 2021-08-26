@@ -67,7 +67,7 @@ namespace HodlWallet.UI.Views
         {
             ValidateEntry(sender as Entry);
 
-            TryShowNextButton();
+            ToggleNextButton();
         }
 
         void LowercaseEntry(object sender, EventArgs e)
@@ -104,13 +104,18 @@ namespace HodlWallet.UI.Views
             );
         }
 
-        void TryShowNextButton()
+        void ToggleNextButton()
         {
             for (int i = 1; i < 13; i++)
             {
                 var entry = FindByName($"Entry{i}") as Entry;
 
-                if (string.IsNullOrEmpty(entry.Text)) return;
+                if (string.IsNullOrEmpty(entry.Text))
+                {
+                    NextButton.IsVisible = false;
+
+                    return;
+                }
             }
 
             NextButton.IsVisible = true;
