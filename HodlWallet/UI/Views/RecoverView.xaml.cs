@@ -28,6 +28,7 @@ using HodlWallet.Core.Utils;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Locale;
 using HodlWallet.UI.Extensions;
+using HodlWallet.Core.Services;
 
 namespace HodlWallet.UI.Views
 {
@@ -48,16 +49,14 @@ namespace HodlWallet.UI.Views
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<RecoverViewModel>(this, "RecoverySeedError", ShowRecoverSeedError);
-            MessagingCenter.Subscribe<RecoverViewModel>(this, "InitiateAppShell", InitiateAppShell);
+            MessagingCenter.Subscribe<RecoverViewModel>(this, "ShowRecoverAccountType", ShowRecoverAccountType);
         }
 
         void Entry_Completed(object sender, EventArgs e)
         {
             var completed = sender as Entry;
             if (completed.Text != null)
-            {
                 ValidateEntry(completed);
-            }
 
             var NextEntry = FindByName(Tags.GetTag(completed)) as Entry;
             NextEntry?.Focus();
@@ -85,14 +84,10 @@ namespace HodlWallet.UI.Views
 
             var word = entry.Text;
 
-            if (Core.Services.WalletService.IsWordInWordlist(word, ViewModel.WalletService.GetWordListLanguage()))
-            {
+            if (WalletService.IsWordInWordlist(word, ViewModel.WalletService.GetWordListLanguage()))
                 entry.TextColor = TextPrimary;
-            }
             else
-            {
                 entry.TextColor = TextError;
-            }
         }
 
         void ShowRecoverSeedError(RecoverViewModel vm)
@@ -121,9 +116,9 @@ namespace HodlWallet.UI.Views
             NextButton.IsVisible = true;
         }
 
-        void InitiateAppShell(RecoverViewModel _)
+        void ShowRecoverAccountType(RecoverViewModel _)
         {
-            Application.Current.MainPage = new AppShell();
+            Navigation.PushAsync(new RecoverAccountTypeView());
         }
     }
 }

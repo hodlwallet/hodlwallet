@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
-    xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
-    x:Class="HodlWallet.UI.Views.SelectAccountTypeView"
-    x:DataType="vm:SelectAccountTypeViewModel"
-    Title="{i18n:Translate Text=AccountTypeSelection.title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             x:Class="HodlWallet.UI.Views.RecoverAccountTypeView"
+             x:DataType="vm:RecoverAccountTypeViewModel"
+             Title="{i18n:Translate Text=AccountTypeSelection.title}">
     <ContentPage.BindingContext>
-        <vm:SelectAccountTypeViewModel />
+        <vm:RecoverAccountTypeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <AbsoluteLayout>
@@ -41,7 +40,7 @@
                     <Label x:Name="PleaseSelectAccountTypeLabel" TextColor="{DynamicResource TextSecondary}" IsVisible="True"  Text="{i18n:Translate Text=AccountTypeSelection.pleaseSelect}" FontSize="Small"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
                 </StackLayout>
 
-                <Button FlexLayout.Grow="1" Text="{i18n:Translate Text=AccountTypeSelection.doneButton}" FontSize="Large" Margin="10" CornerRadius="5" Clicked="DoneButton_Clicked" />
+                <Button x:Name="DoneButton" FlexLayout.Grow="1" Text="{i18n:Translate Text=AccountTypeSelection.doneButton}" IsVisible="False" FontSize="Large" Style="{DynamicResource BottomButtonSecondary}" Clicked="DoneButton_Clicked" />
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

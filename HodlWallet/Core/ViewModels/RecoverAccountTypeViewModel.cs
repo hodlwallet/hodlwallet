@@ -1,5 +1,5 @@
 ﻿//
-// SelectAccountTypeViewModel.cs
+// RecoverAccountTypeViewModel.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -23,14 +23,14 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System.Diagnostics;
 using System.Windows.Input;
+
 using Xamarin.Forms;
 
 namespace HodlWallet.Core.ViewModels
 {
-    class SelectAccountTypeViewModel : BaseViewModel
+    class RecoverAccountTypeViewModel : BaseViewModel
     {
         string accountType = null;
         public string AccountType
@@ -43,7 +43,7 @@ namespace HodlWallet.Core.ViewModels
  
         public ICommand AccountTypeSelectedCommand { get; }
 
-        public SelectAccountTypeViewModel()
+        public RecoverAccountTypeViewModel()
         {
             AccountTypeSelectedCommand = new Command<string>(AccountTypeSelected);
         }

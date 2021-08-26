@@ -1,5 +1,5 @@
 ﻿//
-// SelectAccountTypeView.xaml.cs
+// RecoverAccountTypeView.xaml.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -33,27 +33,27 @@ using System.Diagnostics;
 
 namespace HodlWallet.UI.Views
 {
-    public partial class SelectAccountTypeView : ContentPage
+    public partial class RecoverAccountTypeView : ContentPage
     {
         bool initialLoad = true;
 
-        SelectAccountTypeViewModel ViewModel => BindingContext as SelectAccountTypeViewModel;
+        RecoverAccountTypeViewModel ViewModel => BindingContext as RecoverAccountTypeViewModel;
         Color SELECTED_COLOR => (Color)Application.Current.Resources["TextSuccess"];
 
-        public SelectAccountTypeView()
+        public RecoverAccountTypeView()
         {
             InitializeComponent();
 
-            MessagingCenter.Subscribe<SelectAccountTypeViewModel>(this, "AnimateSelected", AnimateSelected);
-            MessagingCenter.Subscribe<SelectAccountTypeViewModel>(this, "HideEmptyState", HideEmptyState);
+            MessagingCenter.Subscribe<RecoverAccountTypeViewModel>(this, "AnimateSelected", AnimateSelected);
+            MessagingCenter.Subscribe<RecoverAccountTypeViewModel>(this, "HideEmptyState", HideEmptyState);
         }
 
-        void HideEmptyState(SelectAccountTypeViewModel vm)
+        void HideEmptyState(RecoverAccountTypeViewModel vm)
         {
             PleaseSelectAccountTypeLabel.FadeTo(0.00);
         }
 
-        void AnimateSelected(SelectAccountTypeViewModel vm)
+        void AnimateSelected(RecoverAccountTypeViewModel vm)
         {
             switch (vm.AccountType)
             {
@@ -76,6 +76,7 @@ namespace HodlWallet.UI.Views
             }
 
             initialLoad = false;
+            DoneButton.IsVisible = true;
         }
 
         void DoneButton_Clicked(object sender, EventArgs e)

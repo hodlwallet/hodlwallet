@@ -20,7 +20,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -133,7 +132,7 @@ namespace HodlWallet.Core.ViewModels
 
             SecureStorageService.SetMnemonic(mnemonic);
 
-            MessagingCenter.Send(this, "InitiateAppShell");
+            MessagingCenter.Send(this, "ShowRecoverAccountType");
         }
 
         bool CheckWordInWordlist(string word, string wordlist = "english")
