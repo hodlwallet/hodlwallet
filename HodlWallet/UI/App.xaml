@@ -121,6 +121,13 @@
                         Value="5,0,5,5" />
             </Style>
 
+            <Style x:Key="BottomButtonSecondary"
+                   TargetType="Button"
+                   BasedOn="{StaticResource BottomButton}">
+                <Setter Property="BackgroundColor"
+                        Value="{DynamicResource BackgroundSecondary}" />
+            </Style>
+
             <Style x:Key="NoBorderButton"
                    TargetType="Button"
                    BasedOn="{StaticResource CustomButton}">
