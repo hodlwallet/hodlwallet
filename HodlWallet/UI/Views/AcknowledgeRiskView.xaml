@@ -4,10 +4,7 @@
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              Title="{i18n:Translate AckRisk.title}"
-             x:Class="HodlWallet.UI.Views.AcknowledgeRiskView" >
-    <ContentPage.BindingContext>
-        <vm:BackupViewModel />
-    </ContentPage.BindingContext>
+             x:Class="HodlWallet.UI.Views.AcknowledgeRiskView">
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
@@ -16,67 +13,63 @@
 
                 <!--First Acknowledge Risk Term-->
                 <StackLayout Orientation="Horizontal">
-                    <CheckBox
-                        x:Name="AcknowledgeRiskTerm1_Check"
-                        CheckedChanged="OnAcknowledgeRiskTerm_Checked" />
+                    <CheckBox x:Name="AcknowledgeRiskTerm1_Check"
+                              CheckedChanged="OnAcknowledgeRiskTerm_Checked" />
 
                     <Label x:Name="AcknowledgeRiskTerm1_Label"                           
-                        Text="{i18n:Translate Text=AckRisk.term1}"
-                        FontSize="Medium"
-                        FontFamily="{StaticResource Sans-Regular}"
-                        TextColor="{DynamicResource SyncGradientStart}"
-                        Margin="10">
+                           Text="{i18n:Translate Text=AckRisk.term1}"
+                           FontSize="Medium"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           TextColor="{DynamicResource SyncGradientStart}"
+                           Margin="10">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnAcknowledgeRiskTermLabel_Tapped" />
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
-                
+
                 <StackLayout Orientation="Horizontal">
-                    <CheckBox
-                        x:Name="AcknowledgeRiskTerm2_Check"
-                        CheckedChanged="OnAcknowledgeRiskTerm_Checked" />
+                    <CheckBox x:Name="AcknowledgeRiskTerm2_Check"
+                              CheckedChanged="OnAcknowledgeRiskTerm_Checked" />
 
                     <Label x:Name="AcknowledgeRiskTerm2_Label"
-                        Text="{i18n:Translate Text=AckRisk.term2}"
-                        FontSize="Medium"
-                        FontFamily="{StaticResource Sans-Regular}"
-                        TextColor="{DynamicResource SyncGradientStart}"
-                        Margin="10" >
+                           Text="{i18n:Translate Text=AckRisk.term2}"
+                           FontSize="Medium"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           TextColor="{DynamicResource SyncGradientStart}"
+                           Margin="10">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnAcknowledgeRiskTermLabel_Tapped" />
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
-                
+
                 <StackLayout Orientation="Horizontal">
-                    <CheckBox
-                        x:Name="AcknowledgeRiskTerm3_Check"
-                        CheckedChanged="OnAcknowledgeRiskTerm_Checked" />
+                    <CheckBox x:Name="AcknowledgeRiskTerm3_Check"
+                              CheckedChanged="OnAcknowledgeRiskTerm_Checked" />
 
                     <Label x:Name="AcknowledgeRiskTerm3_Label"
-                        Text="{i18n:Translate Text=AckRisk.term3}"
-                        FontSize="Medium"
-                        FontFamily="{StaticResource Sans-Regular}"
-                        TextColor="{DynamicResource SyncGradientStart}"
-                        Margin="10" >
+                           Text="{i18n:Translate Text=AckRisk.term3}"
+                           FontSize="Medium"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           TextColor="{DynamicResource SyncGradientStart}"
+                           Margin="10">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnAcknowledgeRiskTermLabel_Tapped" />
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
-                
+
                 <StackLayout Orientation="Horizontal">
-                    <CheckBox
-                        x:Name="AcknowledgeRiskTerm4_Check"
-                        CheckedChanged="OnAcknowledgeRiskTerm_Checked" />
+                    <CheckBox x:Name="AcknowledgeRiskTerm4_Check"
+                              CheckedChanged="OnAcknowledgeRiskTerm_Checked" />
 
                     <Label x:Name="AcknowledgeRiskTerm4_Label"
-                        Text="{i18n:Translate Text=AckRisk.term4}"
-                        FontSize="Medium"
-                        FontFamily="{StaticResource Sans-Regular}"
-                        TextColor="{DynamicResource SyncGradientStart}"
-                        Margin="10">
+                           Text="{i18n:Translate Text=AckRisk.term4}"
+                           FontSize="Medium"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           TextColor="{DynamicResource SyncGradientStart}"
+                           Margin="10">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnAcknowledgeRiskTermLabel_Tapped" />
                         </Label.GestureRecognizers>
@@ -84,16 +77,15 @@
                 </StackLayout>
 
                 <BoxView FlexLayout.Grow="1" />
-                <Button x:Name="AcknowledgeRiskTermsViewButton"
-                    Text="{i18n:Translate Text=AckRisk.button}"
-                    Style="{DynamicResource CustomButton}"
-                    BackgroundColor="{DynamicResource BackgroundSecondary}"
-                    CornerRadius="0"
-                    FontSize="Large"
-                    FlexLayout.AlignSelf="Stretch"
-                    FlexLayout.Grow="1"
-                    Clicked="AcknowledgeRiskTermsViewButton_Clicked" />
-                
+
+                <FlexLayout Direction="Row" FlexLayout.Grow="1">
+                    <Button x:Name="AcknowledgeRiskTermsViewButton"
+                            Text="{i18n:Translate Text=AckRisk.button}"
+                            Style="{DynamicResource BottomButtonSecondary}"
+                            FontSize="Large"
+                            FlexLayout.Grow="1"
+                            Clicked="AcknowledgeRiskTermsViewButton_Clicked" />
+                </FlexLayout>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>
