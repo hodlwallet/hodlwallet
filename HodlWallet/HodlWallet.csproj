@@ -103,8 +103,8 @@
 		<Compile Update="UI\Views\RecoverInfoView.xaml.cs">
 			<DependentUpon>RecoverInfoView.xaml</DependentUpon>
 		</Compile>
-		<Compile Update="UI\Views\RecoverEntryView.xaml.cs">
-			<DependentUpon>RecoverEntryView.xaml</DependentUpon>
+		<Compile Update="UI\Views\RecoverView.xaml.cs">
+			<DependentUpon>RecoverView.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="UI\Views\AccountSettingsView.xaml.cs">
 			<DependentUpon>AccountSettingsView.xaml</DependentUpon>

@@ -30,7 +30,7 @@ using HodlWallet.Core.Services;
 
 namespace HodlWallet.Core.ViewModels
 {
-    public class RecoverWalletEntryViewModel : BaseViewModel
+    public class RecoverViewModel : BaseViewModel
     {
         public ICommand OnRecoverEntryCompleted { get; }
 
@@ -118,7 +118,7 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref wordTwelve, value);
         }
 
-        public RecoverWalletEntryViewModel()
+        public RecoverViewModel()
         {
             OnRecoverEntryCompleted = new Command(TrySaveMnemonic);
         }
@@ -132,7 +132,6 @@ namespace HodlWallet.Core.ViewModels
             if (!CheckMnemonicHasValidChecksum(mnemonic)) return;
 
             SecureStorageService.SetMnemonic(mnemonic);
-            WalletService.StartWalletWithWalletId();
 
             MessagingCenter.Send(this, "InitiateAppShell");
         }

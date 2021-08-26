@@ -1,5 +1,5 @@
 ﻿//
-// RecoverWalletEntryView.xaml.cs
+// RecoverView.xaml.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -31,14 +31,14 @@ using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.UI.Views
 {
-    public partial class RecoverEntryView : ContentPage
+    public partial class RecoverView : ContentPage
     {
-        RecoverWalletEntryViewModel ViewModel => BindingContext as RecoverWalletEntryViewModel;
+        RecoverViewModel ViewModel => BindingContext as RecoverViewModel;
 
         Color TextPrimary => (Color)Application.Current.Resources["TextPrimary"];
         Color TextError => (Color)Application.Current.Resources["TextError"];
 
-        public RecoverEntryView()
+        public RecoverView()
         {
             InitializeComponent();
 
@@ -47,8 +47,8 @@ namespace HodlWallet.UI.Views
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<RecoverWalletEntryViewModel>(this, "RecoverySeedError", ShowRecoverSeedError);
-            MessagingCenter.Subscribe<RecoverWalletEntryViewModel>(this, "InitiateAppShell", InitiateAppShell);
+            MessagingCenter.Subscribe<RecoverViewModel>(this, "RecoverySeedError", ShowRecoverSeedError);
+            MessagingCenter.Subscribe<RecoverViewModel>(this, "InitiateAppShell", InitiateAppShell);
         }
 
         void Entry_Completed(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace HodlWallet.UI.Views
         {
             ValidateEntry(sender as Entry);
 
-            TryShowDoneButton();
+            TryShowNextButton();
         }
 
         void LowercaseEntry(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace HodlWallet.UI.Views
             }
         }
 
-        void ShowRecoverSeedError(RecoverWalletEntryViewModel vm)
+        void ShowRecoverSeedError(RecoverViewModel vm)
         {
             _ = this.DisplayPrompt(
                 LocaleResources.Recover_alertTitle,
@@ -104,7 +104,7 @@ namespace HodlWallet.UI.Views
             );
         }
 
-        void TryShowDoneButton()
+        void TryShowNextButton()
         {
             for (int i = 1; i < 13; i++)
             {
@@ -113,10 +113,10 @@ namespace HodlWallet.UI.Views
                 if (string.IsNullOrEmpty(entry.Text)) return;
             }
 
-            DoneButton.IsVisible = true;
+            NextButton.IsVisible = true;
         }
 
-        void InitiateAppShell(RecoverWalletEntryViewModel _)
+        void InitiateAppShell(RecoverViewModel _)
         {
             Application.Current.MainPage = new AppShell();
         }

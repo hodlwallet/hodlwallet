@@ -1,5 +1,5 @@
 ﻿//
-// RecoverView.xaml.cs
+// RecoverInfoView.xaml.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -39,7 +39,7 @@ namespace HodlWallet.UI.Views
 
         async void Next_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RecoverEntryView());
+            await Navigation.PushAsync(new RecoverView());
         }
 
         async void CloseToolbarItem_Clicked(object sender, EventArgs e)
