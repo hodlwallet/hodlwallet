@@ -240,7 +240,7 @@
                 <Setter Property="TextColor"
                         Value="{DynamicResource TextPrimary}" />
                 <Setter Property="FontSize"
-                        Value="Medium" />
+                        Value="Small" />
                 <Setter Property="HorizontalTextAlignment"
                         Value="Center" />
                 <Setter Property="VerticalOptions" 

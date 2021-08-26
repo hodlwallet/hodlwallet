@@ -32,25 +32,24 @@
                        Margin="0, 20" />
 
             <FlexLayout Direction="Row"
-                                    Wrap="Wrap"
-                                    JustifyContent="SpaceAround"
-                                    AlignItems="Center"
-                                    BindableLayout.ItemsSource="{Binding Words}"
-                                    BindableLayout.EmptyView="Mnemonic not found!"
-                                    Margin="15"                                    
-                                    FlexLayout.Grow="4">
+                        Wrap="Wrap"
+                        JustifyContent="SpaceAround"
+                        AlignItems="Center"
+                        BindableLayout.ItemsSource="{Binding Words}"
+                        BindableLayout.EmptyView="Mnemonic not found!"
+                        Margin="15"
+                        FlexLayout.Grow="4">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
-                                                    Margin="2" >
+                                     Margin="2" >
                             <StackLayout Orientation="Horizontal" Margin="2" Padding="10">
                                 <Label Text="{Binding WordIndex}"
-                                                    FontFamily="{StaticResource Sans-Regular}"
-                                                    TextColor="{DynamicResource TextSuccess}"
-                                                    FontSize="Micro" />
+                                       FontFamily="{StaticResource Sans-Regular}"
+                                       TextColor="{DynamicResource TextSuccess}"
+                                       FontSize="Medium" />
                                 <Label Text="{Binding Word}"
-                                       Style="{DynamicResource MnemonicLabel}"
-                                       Margin="0,0,5,0" />
+                                       Style="{DynamicResource MnemonicLabel}" />
                             </StackLayout>
                         </ContentView>
                     </DataTemplate>
@@ -58,13 +57,12 @@
             </FlexLayout>
 
             <Button Text="{i18n:Translate Text=BackupWord.next}"
-                        Style="{DynamicResource BottomButton}"
-                        BackgroundColor="{DynamicResource BackgroundSecondary}"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1"
-                        VerticalOptions="EndAndExpand"
-                        Command="{Binding NextCommand}" />
-
+                    Style="{DynamicResource BottomButton}"
+                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="1"
+                    VerticalOptions="EndAndExpand"
+                    Command="{Binding NextCommand}" />
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
