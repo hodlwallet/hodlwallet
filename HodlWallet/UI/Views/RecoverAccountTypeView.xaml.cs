@@ -39,6 +39,7 @@ namespace HodlWallet.UI.Views
 
         RecoverAccountTypeViewModel ViewModel => BindingContext as RecoverAccountTypeViewModel;
         Color SELECTED_COLOR => (Color)Application.Current.Resources["TextSuccess"];
+        Color UNSELECTED_COLOR => (Color)Application.Current.Resources["BackgroundSecondary"];
 
         public RecoverAccountTypeView()
         {
@@ -61,12 +62,12 @@ namespace HodlWallet.UI.Views
                     StandardFrame.ColorTo(StandardFrame.BackgroundColor, SELECTED_COLOR, c => StandardFrame.BackgroundColor = c, 250);
 
                     if (!initialLoad)
-                        LegacyFrame.ColorTo(LegacyFrame.BackgroundColor, Color.Default, c => LegacyFrame.BackgroundColor = c, 100);
+                        LegacyFrame.ColorTo(LegacyFrame.BackgroundColor, UNSELECTED_COLOR, c => LegacyFrame.BackgroundColor = c, 100);
 
                     break;
                 case "legacy":
                     if (!initialLoad)
-                        StandardFrame.ColorTo(StandardFrame.BackgroundColor, Color.Default, c => StandardFrame.BackgroundColor = c, 100);
+                        StandardFrame.ColorTo(StandardFrame.BackgroundColor, UNSELECTED_COLOR, c => StandardFrame.BackgroundColor = c, 100);
 
                     LegacyFrame.ColorTo(LegacyFrame.BackgroundColor, SELECTED_COLOR, c => LegacyFrame.BackgroundColor = c, 250);
 
