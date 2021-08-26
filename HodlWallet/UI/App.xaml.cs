@@ -125,7 +125,6 @@ namespace HodlWallet.UI
         {
             return SecureStorageService.HasPin()
                 && SecureStorageService.HasMnemonic()
-                && SecureStorageService.HasSeedBirthday()
                 && SecureStorageService.HasWalletId()
                 && SecureStorageService.HasNetwork();
         }
@@ -139,7 +138,6 @@ namespace HodlWallet.UI
                 var birthday = LegacySecureKeyService.GetWalletCreationTime();
 
                 SecureStorageService.SetMnemonic(mnemonic);
-                SecureStorageService.SetSeedBirthday(new DateTimeOffset(new DateTime(birthday)));
                 SecureStorageService.SetPin(pin);
 
                 WalletService.InitializeWallet(true);

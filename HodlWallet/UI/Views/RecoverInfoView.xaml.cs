@@ -26,9 +26,9 @@ using Xamarin.Forms;
 
 namespace HodlWallet.UI.Views
 {
-    public partial class RecoverView : ContentPage
+    public partial class RecoverInfoView : ContentPage
     {
-        public RecoverView(bool closeable = false)
+        public RecoverInfoView(bool closeable = false)
         {
             InitializeComponent();
 
@@ -37,14 +37,14 @@ namespace HodlWallet.UI.Views
             ToolbarItems.Clear();
         }
 
-        void Next_Clicked(object sender, EventArgs e)
+        async void Next_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new RecoverWalletEntryView());
+            await Navigation.PushAsync(new RecoverEntryView());
         }
 
-        void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        async void CloseToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         }
     }
 }

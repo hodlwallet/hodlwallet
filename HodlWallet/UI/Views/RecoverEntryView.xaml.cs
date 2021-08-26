@@ -31,14 +31,14 @@ using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.UI.Views
 {
-    public partial class RecoverWalletEntryView : ContentPage
+    public partial class RecoverEntryView : ContentPage
     {
         RecoverWalletEntryViewModel ViewModel => BindingContext as RecoverWalletEntryViewModel;
 
         Color TextPrimary => (Color)Application.Current.Resources["TextPrimary"];
         Color TextError => (Color)Application.Current.Resources["TextError"];
 
-        public RecoverWalletEntryView()
+        public RecoverEntryView()
         {
             InitializeComponent();
 

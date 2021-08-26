@@ -131,12 +131,6 @@ namespace HodlWallet.Core.Services
                 return;
             }
 
-            if (isLegacy == true && !SecureStorageService.HasSeedBirthday())
-            {
-                Logger.Information("Legacy wallet has been configured but not started yet due to the lack of seed birthday in the system");
-                return;
-            }
-
             StartWalletWithWalletId();
 
             Logger.Information("Since wallet has a mnemonic, then start the wallet.");
@@ -197,9 +191,7 @@ namespace HodlWallet.Core.Services
 
             Logger.Debug("Creating wallet ({guid}) with password: {password}", walletId, password);
 
-            DateTimeOffset createdAt = SecureStorageService.HasSeedBirthday()
-                ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageService.GetSeedBirthday())
-                : new DateTimeOffset(DateTime.UtcNow);
+            DateTimeOffset createdAt = new DateTimeOffset(DateTime.UtcNow);
 
             Wallet = new Wallet { Id = walletId };
 

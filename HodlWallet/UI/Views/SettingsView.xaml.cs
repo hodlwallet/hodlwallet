@@ -61,7 +61,7 @@ namespace HodlWallet.UI.Views
 
                 if (!answer) return;
 
-                var view = new RecoverView(closeable: true);
+                var view = new RecoverInfoView(closeable: true);
                 var nav = new NavigationPage(view);
 
                 await Navigation.PushModalAsync(nav);

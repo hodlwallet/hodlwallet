@@ -41,9 +41,6 @@ namespace HodlWallet.Core.ViewModels
         {
             if (SecureStorageService.HasMnemonic())
             {
-                if (SecureStorageService.GetSeedBirthday() == -1)
-                    SecureStorageService.SetSeedBirthday(DateTimeOffset.UtcNow);
-
                 if (!WalletService.IsStarted)
                     Task.Run(WalletService.StartWalletWithWalletId);
 
@@ -55,7 +52,6 @@ namespace HodlWallet.Core.ViewModels
             WalletService.Logger.Information($"Wallet generated a new mnemonic, mnemonic: {rawMnemonic}");
 
             SecureStorageService.SetMnemonic(rawMnemonic);
-            SecureStorageService.SetSeedBirthday(new DateTimeOffset(DateTime.UtcNow));
 
             WalletService.Logger.Information("Saved mnemonic to secure storage.");
 

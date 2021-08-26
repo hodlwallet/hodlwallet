@@ -132,8 +132,6 @@ namespace HodlWallet.Core.ViewModels
             if (!CheckMnemonicHasValidChecksum(mnemonic)) return;
 
             SecureStorageService.SetMnemonic(mnemonic);
-            SecureStorageService.SetSeedBirthday(new DateTimeOffset(DateTime.UtcNow));
-
             WalletService.StartWalletWithWalletId();
 
             MessagingCenter.Send(this, "InitiateAppShell");
