@@ -24,12 +24,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Diagnostics;
 
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
-using System.Diagnostics;
 
 namespace HodlWallet.UI.Views
 {
@@ -83,6 +83,10 @@ namespace HodlWallet.UI.Views
         void DoneButton_Clicked(object sender, EventArgs e)
         {
             Debug.WriteLine($"[DoneButton_Clicked] Account type selected: {ViewModel.AccountType}");
+
+            ViewModel.InitializeWallet(ViewModel.AccountType);
+
+            Application.Current.MainPage = new AppShell();
         }
     }
 }

@@ -46,7 +46,7 @@ namespace HodlWallet.Core.Interfaces
         event EventHandler OnConfigured;
         event EventHandler OnStarted;
 
-        void InitializeWallet(bool isLegacy = false);
+        void InitializeWallet(string accountType = "standard");
         void Start();
         void StartWalletWithWalletId();
         void DestroyWallet(bool dryRun = false);

@@ -96,7 +96,7 @@ namespace HodlWallet.Core.Services
             });
         }
 
-        public void InitializeWallet(bool isLegacy = false)
+        public void InitializeWallet(string accountType = "standard")
         {
             string guid;
             if (SecureStorageService.HasWalletId())

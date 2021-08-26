@@ -23,6 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -40,12 +41,17 @@ namespace HodlWallet.Core.ViewModels
         }
 
         public bool IsNotSelected => string.IsNullOrEmpty(AccountType);
- 
+
         public ICommand AccountTypeSelectedCommand { get; }
 
         public RecoverAccountTypeViewModel()
         {
             AccountTypeSelectedCommand = new Command<string>(AccountTypeSelected);
+        }
+
+        public void InitializeWallet(string accountType)
+        {
+            WalletService.InitializeWallet(accountType);
         }
 
         void AccountTypeSelected(string typeSelected)

@@ -140,7 +140,7 @@ namespace HodlWallet.UI
                 SecureStorageService.SetMnemonic(mnemonic);
                 SecureStorageService.SetPin(pin);
 
-                WalletService.InitializeWallet(true);
+                WalletService.InitializeWallet("legacy");
             }
             catch (Exception ex)
             {
