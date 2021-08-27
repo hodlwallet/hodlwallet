@@ -10,8 +10,8 @@
 		<DefineConstants>WIPE_WALLET;DEBUG;TRACE</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-	  <DebugType></DebugType>
-	  <DefineConstants>RELEASE</DefineConstants>
+		<DebugType></DebugType>
+		<DefineConstants>RELEASE</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
@@ -86,22 +86,25 @@
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="UI\Locale\LocaleResources.es.resx">
-		  <Generator>PublicResXFileCodeGenerator</Generator>
-		  <LastGenOutput>LocaleResources.es.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>LocaleResources.es.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="UI\Locale\LocaleResources.resx">
-		  <LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>
-		  <Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
 		</EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-        <EmbeddedResource Update="UI\Locale\LocaleResources.resx">
+		<EmbeddedResource Update="UI\Locale\LocaleResources.resx">
 			<DependentUpon>LocaleResources.resx</DependentUpon>
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>            
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>            
 		</EmbeddedResource>
 		<Compile Update="UI\Views\RecoverInfoView.xaml.cs">
 			<DependentUpon>RecoverInfoView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="UI\Views\PinSettingsView.xaml.cs">
+			<DependentUpon>PinSettingsView.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="UI\Views\RecoverView.xaml.cs">
 			<DependentUpon>RecoverView.xaml</DependentUpon>
@@ -110,71 +113,83 @@
 			<DependentUpon>AccountSettingsView.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="UI\Views\RecoverAccountTypeView.xaml.cs">
-		  <DependentUpon>RecoverAccountTypeView.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="UI\Views\SettingsView.xaml.cs">
-			<DependentUpon>SettingsView.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="UI\Locale\LocaleResources.es.Designer.cs">
-		  <DependentUpon>LocaleResources.es.resx</DependentUpon>
-		</Compile>
-		<Compile Update="UI\Locale\LocaleResources.Designer.cs">
-		  <DependentUpon>LocaleResources.resx</DependentUpon>
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		</Compile>
+		<DependentUpon>RecoverAccountTypeView.xaml</DependentUpon>
+	</Compile>
+	<Compile Update="UI\Views\SettingsView.xaml.cs">
+		<DependentUpon>SettingsView.xaml</DependentUpon>
+	</Compile>
+	<Compile Update="UI\Locale\LocaleResources.es.Designer.cs">
+		<DependentUpon>LocaleResources.es.resx</DependentUpon>
+	</Compile>
+	<Compile Update="UI\Locale\LocaleResources.Designer.cs">
+		<DependentUpon>LocaleResources.resx</DependentUpon>
+		<DesignTime>True</DesignTime>
+		<AutoGen>True</AutoGen>
+	</Compile>
+</ItemGroup>
+<ItemGroup>
+	<EmbeddedResource Update="UI\Views\BiometricsView.xaml">
+		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	</EmbeddedResource>
+	<EmbeddedResource Update="UI\Views\CreateAccountView.xaml">
+		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	</EmbeddedResource>
+	<EmbeddedResource Update="UI\Views\PinPadChangeView.xaml">
+		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	</EmbeddedResource>
+	<EmbeddedResource Update="UI\Views\PinSettingsView.xaml">
+		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	</EmbeddedResource>
+	<EmbeddedResource Update="UI\Views\SecuritySettingsView.xaml">
+		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	</EmbeddedResource>
+</ItemGroup>
+<ItemGroup>
+	<Compile Update="UI\Locale\LocaleResources.es.Designer.cs">
+		<DependentUpon>LocaleResources.es.resx</DependentUpon>
+	</Compile>
+</ItemGroup>
+<ItemGroup>
+	<ProjectReference Include="..\liviano\Liviano\Liviano.csproj" />
+	<ProjectReference Include="..\liviano\Liviano.Utilities\Liviano.Utilities.csproj" />
+</ItemGroup>
+<ItemGroup>
+	<GitPath Include="..\.git" Visible="false" />
+</ItemGroup>
+<Target Name="GetBuildInfo" BeforeTargets="WriteBuildInfo" Condition="'$(GitHead)' == ''">
+	<PropertyGroup>
+		<BuildDateTime>$([System.DateTime]::Now.ToString("MMMM d, yyyy h:mm:ss"))</BuildDateTime>
+		<GitBranch Condition="Exists(@(GitPath))">$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: refs/heads/", ""))</GitBranch>
+		<GitBranch Condition="!Exists(@(GitPath))">not-a-git-repo</GitBranch>
+		<GitHeadFile Condition="Exists(@(GitPath))">$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: ", "").Insert(0, "..\.git\"))</GitHeadFile>
+		<GitHeadFile Condition="!Exists(@(GitPath))">..\.no-git-head</GitHeadFile>
+	</PropertyGroup>
+	<ReadLinesFromFile File="$(GitHeadFile)">
+		<Output TaskParameter="Lines" PropertyName="GitHead" />
+	</ReadLinesFromFile>
+</Target>
+<Target Name="WriteBuildInfo" BeforeTargets="CoreCompile">
+	<PropertyGroup>
+		<CustomAssemblyInfoFile>$(IntermediateOutputPath)CustomAssemblyInfo.cs</CustomAssemblyInfoFile>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Include="$(CustomAssemblyInfoFile)" />
 	</ItemGroup>
 	<ItemGroup>
-		<EmbeddedResource Update="UI\Views\CreateAccountView.xaml">
-		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-		</EmbeddedResource>
+		<AssemblyAttributes Include="AssemblyMetadata">
+			<_Parameter1>BuildDateTime</_Parameter1>
+			<_Parameter2>$(BuildDateTime)</_Parameter2>
+		</AssemblyAttributes>
+		<AssemblyAttributes Include="AssemblyMetadata">
+			<_Parameter1>GitHead</_Parameter1>
+			<_Parameter2>$(GitHead)</_Parameter2>
+		</AssemblyAttributes>
+		<AssemblyAttributes Include="AssemblyMetadata">
+			<_Parameter1>GitBranch</_Parameter1>
+			<_Parameter2>$(GitBranch)</_Parameter2>
+		</AssemblyAttributes>
 	</ItemGroup>
-	<ItemGroup>
-		<Compile Update="UI\Locale\LocaleResources.es.Designer.cs">
-			<DependentUpon>LocaleResources.es.resx</DependentUpon>
-		</Compile>
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\liviano\Liviano\Liviano.csproj" />
-		<ProjectReference Include="..\liviano\Liviano.Utilities\Liviano.Utilities.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<GitPath Include="..\.git" Visible="false" />
-	</ItemGroup>
-	<Target Name="GetBuildInfo" BeforeTargets="WriteBuildInfo" Condition="'$(GitHead)' == ''">
-		<PropertyGroup>
-			<BuildDateTime>$([System.DateTime]::Now.ToString("MMMM d, yyyy h:mm:ss"))</BuildDateTime>
-			<GitBranch Condition="Exists(@(GitPath))">$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: refs/heads/", ""))</GitBranch>
-			<GitBranch Condition="!Exists(@(GitPath))">not-a-git-repo</GitBranch>
-			<GitHeadFile Condition="Exists(@(GitPath))">$([System.IO.File]::ReadAllText("..\.git\HEAD").Trim().Replace("ref: ", "").Insert(0, "..\.git\"))</GitHeadFile>
-			<GitHeadFile Condition="!Exists(@(GitPath))">..\.no-git-head</GitHeadFile>
-		</PropertyGroup>
-		<ReadLinesFromFile File="$(GitHeadFile)">
-			<Output TaskParameter="Lines" PropertyName="GitHead" />
-		</ReadLinesFromFile>
-	</Target>
-	<Target Name="WriteBuildInfo" BeforeTargets="CoreCompile">
-		<PropertyGroup>
-			<CustomAssemblyInfoFile>$(IntermediateOutputPath)CustomAssemblyInfo.cs</CustomAssemblyInfoFile>
-		</PropertyGroup>
-		<ItemGroup>
-			<Compile Include="$(CustomAssemblyInfoFile)" />
-		</ItemGroup>
-		<ItemGroup>
-			<AssemblyAttributes Include="AssemblyMetadata">
-				<_Parameter1>BuildDateTime</_Parameter1>
-				<_Parameter2>$(BuildDateTime)</_Parameter2>
-			</AssemblyAttributes>
-			<AssemblyAttributes Include="AssemblyMetadata">
-				<_Parameter1>GitHead</_Parameter1>
-				<_Parameter2>$(GitHead)</_Parameter2>
-			</AssemblyAttributes>
-			<AssemblyAttributes Include="AssemblyMetadata">
-				<_Parameter1>GitBranch</_Parameter1>
-				<_Parameter2>$(GitBranch)</_Parameter2>
-			</AssemblyAttributes>
-		</ItemGroup>
-		<WriteCodeFragment Language="C#" OutputFile="$(CustomAssemblyInfoFile)" AssemblyAttributes="@(AssemblyAttributes)" />
-		<Message Importance="High" Text="Git: '$(GitBranch)': '$(GitHead)'" />
-	</Target>
+	<WriteCodeFragment Language="C#" OutputFile="$(CustomAssemblyInfoFile)" AssemblyAttributes="@(AssemblyAttributes)" />
+	<Message Importance="High" Text="Git: '$(GitBranch)': '$(GitHead)'" />
+</Target>
 </Project>

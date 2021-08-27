@@ -19,12 +19,42 @@
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
-                        <Button Text="{i18n:Translate Text=Menu.resyncWallet}"
+                        <Button Text="{i18n:Translate Text=Menu.security}"
+                                Style="{DynamicResource SettingsButton}"
+                                Clicked="Security_Clicked"
+                                />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <Button Text="{i18n:Translate Text=Menu.currency}"
+                                Style="{DynamicResource SettingsButton}"
+                                />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <Button Text="{i18n:Translate Text=Menu.network}"
+                                Style="{DynamicResource SettingsButton}"
+                                />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <Button Text="{i18n:Translate Text=Menu.wallet}"
+                                Style="{DynamicResource SettingsButton}"
+                                />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+
+                        <!--<Button Text="{i18n:Translate Text=Menu.resyncWallet}"
                                 Style="{DynamicResource SettingsButton}"
                                 Clicked="ResyncAccount_Clicked" />
 
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
-                                 HeightRequest="1" />
+                                 HeightRequest="1" />-->
 
                         <!-- Extra space -->
                         <BoxView FlexLayout.Grow="3" />

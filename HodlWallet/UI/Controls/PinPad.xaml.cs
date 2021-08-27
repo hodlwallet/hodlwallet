@@ -218,6 +218,7 @@ namespace HodlWallet.UI.Controls
                         await Task.Delay(300);
                         grdSetPin.IsVisible = false;
                         grdReSetPin.IsVisible = true;
+                        TitleText = Locale.LocaleResources.Pin_redoTitle;
                     }
                 }
             }

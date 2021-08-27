@@ -44,11 +44,23 @@ namespace HodlWallet.UI.Views
 
         LoginViewModel ViewModel => (LoginViewModel)BindingContext;
 
-        public LoginView()
+        string next = null;
+
+        public LoginView(string next = null)
         {
             InitializeComponent();
 
             SubscribeToMessages();
+            this.next = next;
+
+            if (next == "update") 
+            {
+                LogoFront.IsVisible = false;
+                Header.Text = Locale.LocaleResources.Pin_updateHeader;
+                CancelButton.IsEnabled = true;
+                CancelButton.IsVisible = true;
+            }
+
         }
 
         protected override void OnDisappearing()
@@ -103,7 +115,15 @@ namespace HodlWallet.UI.Views
             Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
 
             // Incase we're faster than light, we call the constructor anyways.
-            Application.Current.MainPage = new AppShell();
+
+            if (next == "update")
+            {//Update PIN
+                Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
+            }
+            else
+            {//Login
+                Application.Current.MainPage = new AppShell();
+            }
         }
 
         void ResetPin(LoginViewModel _)
@@ -136,6 +156,11 @@ namespace HodlWallet.UI.Views
                 Debug.WriteLine($"[Logo_Tapped] Seed: {SecureStorageService.GetMnemonic()}");
 
             Application.Current.MainPage = new ControlsDemoView();
+        }
+
+        private void CancelButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }

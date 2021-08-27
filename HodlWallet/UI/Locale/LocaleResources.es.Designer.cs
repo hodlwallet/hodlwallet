@@ -305,15 +305,15 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
-        public static string Backup_Close {
+        public static string Backup_close {
             get {
-                return ResourceManager.GetString("Backup.Close", resourceCulture);
+                return ResourceManager.GetString("Backup.close", resourceCulture);
             }
         }
         
-        public static string Backup_Skip {
+        public static string Backup_skip {
             get {
-                return ResourceManager.GetString("Backup.Skip", resourceCulture);
+                return ResourceManager.GetString("Backup.skip", resourceCulture);
             }
         }
         
@@ -524,6 +524,54 @@ namespace HodlWallet.UI.Locale {
         public static string Send_transactionFee {
             get {
                 return ResourceManager.GetString("Send.transactionFee", resourceCulture);
+            }
+        }
+        
+        public static string AccountTypeSelection_description {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.description", resourceCulture);
+            }
+        }
+        
+        public static string AccountTypeSelection_doneButton {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.doneButton", resourceCulture);
+            }
+        }
+        
+        public static string AccountTypeSelection_legacyDescription {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.legacyDescription", resourceCulture);
+            }
+        }
+        
+        public static string AccountTypeSelection_legacyTitle {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.legacyTitle", resourceCulture);
+            }
+        }
+        
+        public static string AccountTypeSelection_standardDescription {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.standardDescription", resourceCulture);
+            }
+        }
+        
+        public static string AccountTypeSelection_standardTitle {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.standardTitle", resourceCulture);
+            }
+        }
+        
+        public static string AccountTypeSelection_title {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.title", resourceCulture);
+            }
+        }
+        
+        public static string AccountTypeSelection_pleaseSelect {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.pleaseSelect", resourceCulture);
             }
         }
     }
