@@ -623,9 +623,9 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
-        internal static string Backup_Close {
+        internal static string Backup_close {
             get {
-                return ResourceManager.GetString("Backup.Close", resourceCulture);
+                return ResourceManager.GetString("Backup.close", resourceCulture);
             }
         }
         

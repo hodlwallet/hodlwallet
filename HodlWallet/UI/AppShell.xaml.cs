@@ -138,7 +138,7 @@ namespace HodlWallet.UI
 
         void SetupDefaultTab()
         {
-            ChangeTabsTo("homeTab");
+            ChangeTabsTo("home");
         }
 
 

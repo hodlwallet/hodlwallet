@@ -1,20 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
        x:Class="HodlWallet.UI.AppShell"
        BackgroundColor="{DynamicResource BackgroundSecondary}"
        FlyoutBackgroundColor="{DynamicResource BackgroundSecondary}"
        Shell.NavBarHasShadow="False"
        xmlns:views="clr-namespace:HodlWallet.UI.Views"
        xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
-       xmlns:ui="clr-namespace:HodlWallet.UI"
-       x:DataType="ui:AppShell"
+       ios:Page.UseSafeArea="True"
        x:Name="shell">
-
     <Shell.Resources>
         <Style x:Key="BaseStyle" TargetType="Element">
             <Setter Property="Shell.BackgroundColor" Value="{DynamicResource BackgroundPrimary}" />
-            <Setter Property="Shell.ForegroundColor" Value="{ DynamicResource TextSecondary}" />
+            <Setter Property="Shell.ForegroundColor" Value="{DynamicResource TextSecondary}" />
             <Setter Property="Shell.TitleColor" Value="{DynamicResource TextPrimary}" />
             <Setter Property="Shell.DisabledColor" Value="{DynamicResource TextSecondary}" />
             <Setter Property="Shell.UnselectedColor" Value="{DynamicResource TextSecondary}" />
@@ -22,6 +21,9 @@
             <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource TextPrimary}" />
             <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource TextSecondary}" />
             <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource SelectedTab}" />
+        </Style>
+
+        <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}">
         </Style>
 
         <Style x:Key="MenuItemLabelBase" TargetType="Label">
@@ -113,7 +115,7 @@
         <DataTemplate>
             <FlexLayout Direction="Column">
                 <CollectionView BindingContext="{x:Reference shell}"
-                            ItemsSource="{Binding AccountList}">
+                                ItemsSource="{Binding AccountList}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <controls:FlyoutMenuItems/>

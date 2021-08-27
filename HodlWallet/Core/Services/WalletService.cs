@@ -131,6 +131,8 @@ namespace HodlWallet.Core.Services
                 return;
             }
 
+            StartWalletWithWalletId();
+
             Logger.Information("Since wallet has a mnemonic, then start the wallet.");
 
             OnConfigured?.Invoke(this, null);
@@ -139,7 +141,7 @@ namespace HodlWallet.Core.Services
             Logger.Information("Configured wallet.");
         }
 
-        public void StartWalletWithWalletId(string newAccountType)
+        public void StartWalletWithWalletId(string newAccountType = "standard")
         {
             Guard.NotNull(walletId, nameof(walletId));
 
