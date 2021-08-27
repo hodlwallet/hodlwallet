@@ -48,7 +48,7 @@ namespace HodlWallet.Core.Interfaces
 
         void InitializeWallet(string accountType = "standard");
         void Start();
-        void StartWalletWithWalletId();
+        void StartWalletWithWalletId(string accountType = "standard");
         void DestroyWallet(bool dryRun = false);
 
         bool IsAddressOwn(string address);

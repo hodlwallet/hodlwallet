@@ -42,7 +42,7 @@ namespace HodlWallet.Core.ViewModels
             if (SecureStorageService.HasMnemonic())
             {
                 if (!WalletService.IsStarted)
-                    Task.Run(WalletService.StartWalletWithWalletId);
+                    Task.Run(() => WalletService.StartWalletWithWalletId());
 
                 return;
             }
@@ -57,7 +57,7 @@ namespace HodlWallet.Core.ViewModels
 
             // After this we should be able to start the wallet if it's not started since we have a mnemonic
             if (!WalletService.IsStarted)
-                Task.Run(WalletService.StartWalletWithWalletId);
+                Task.Run(() => WalletService.StartWalletWithWalletId());
         }
 
         private int GetWordCount()
