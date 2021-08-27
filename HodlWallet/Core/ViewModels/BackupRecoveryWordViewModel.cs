@@ -37,11 +37,17 @@ namespace HodlWallet.Core.ViewModels
 {
     public class BackupRecoveryWordViewModel : BaseViewModel
     {
+        List<BackupWordModel> words;
         string[] _Mnemonic;
+
 
         public ICommand NextCommand { get; }
 
-        public List<BackupWordModel> Words { get; set; }
+        public List<BackupWordModel> Words
+        {
+            get => words;
+            set => SetProperty(ref words, value);
+        }
 
         public List<BackupWordModel> ShuffledWordsList { get; set; } = new();
 

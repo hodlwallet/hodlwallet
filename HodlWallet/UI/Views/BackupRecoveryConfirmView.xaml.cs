@@ -34,6 +34,8 @@ namespace HodlWallet.UI.Views
     {
         BackupRecoveryConfirmViewModel ViewModel => (BackupRecoveryConfirmViewModel)BindingContext;
 
+        public List<BackupWordModel> ShuffledWordsList { get; set; } = new();
+
         public BackupRecoveryConfirmView(List<BackupWordModel> mnemonic)
         {
             InitializeComponent();
@@ -46,6 +48,7 @@ namespace HodlWallet.UI.Views
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "NavigateToRootView", NavigateToRootView);
+            //MessagingCenter.Subscribe<BackupRecoveryWordViewModel, List<BackupWordModel>>(this, "MnemonicListMessage", ShuffledWordsList);
         }
 
 

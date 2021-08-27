@@ -58,29 +58,29 @@ namespace HodlWallet.Core.ViewModels
             NextCommand = new Command(NextWord);
           
             Debug.WriteLine($"============>BackupRecoveryConfirmViewModel, ya tenemos la lista revuelta!!! {ShuffledWordsList.Count}");
-            //MessagingCenter.Subscribe<BackupRecoveryWordViewModel, List<BackupWordModel>>(this, "MnemonicListMessage", ShuffledWordsList);
+            MessagingCenter.Subscribe<BackupRecoveryWordViewModel, List<BackupWordModel>>(this, "MnemonicListMessage", GenerateShuffledMnemonics);
 
             //TestList = new List<BackupWordModel>{Word="Marconi", WordIndex="Uno" };
 
         }
 
-        //public void GenerateShuffledMnemonics(BackupRecoveryWordViewModel _, List<BackupWordModel> Words)
-        //{
-        //    ShuffledWordsList.AddRange(Words);
-        //    ShuffledWordsList.Shuffle();
+        public void GenerateShuffledMnemonics(BackupRecoveryWordViewModel _, List<BackupWordModel> Words)
+        {
+            ShuffledWordsList.AddRange(Words);
+            ShuffledWordsList.Shuffle();
 
 
-        //    Console.WriteLine("Lista A");
-        //    foreach (var item in Words)
-        //    {
-        //        Console.WriteLine($"{item.WordIndex} --> {item.Word}");
-        //    }
-        //    Console.WriteLine("Lista B");
-        //    foreach (var item in ShuffledWordsList)
-        //    {
-        //        Console.WriteLine($"{item.WordIndex} --> {item.Word}");
-        //    }
-        //}
+            Console.WriteLine("Lista A");
+            foreach (var item in Words)
+            {
+                Console.WriteLine($"{item.WordIndex} --> {item.Word}");
+            }
+            Console.WriteLine("Lista B");
+            foreach (var item in ShuffledWordsList)
+            {
+                Console.WriteLine($"{item.WordIndex} --> {item.Word}");
+            }
+        }
 
         private void NextWord()
         {
