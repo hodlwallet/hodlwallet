@@ -1,21 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
-             x:Class="HodlWallet.UI.Views.SettingsView"
-             Title="{i18n:Translate Text=Settings.Title}"
+             x:Class="HodlWallet.UI.Views.SecuritySettingsView"
+             Title="{i18n:Translate Security.title}"
              BackgroundColor="{DynamicResource BackgroundPrimary}">
-    <ContentPage.BindingContext>
-        <vm:SettingsViewModel />
-    </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="CloseToolbarItem"
                      Order="Primary"
-                     Text="{i18n:Translate Text=Settings.Close}"
+                     Text="{i18n:Translate Text=Security.close}"
                      Priority="0"
-                     Clicked="CloseToolbarItem_Clicked" />
+                     Clicked="CloseToolbarItem_Clicked"
+                     />
     </ContentPage.ToolbarItems>
+    
+    <!--<ContentPage.BindingContext>
+        <vm:SecuritySettingsViewModel />
+    </ContentPage.BindingContext>-->
+    
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout>
@@ -26,43 +29,35 @@
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
-                        <Button Text="{i18n:Translate Text=Backup.title}"
+                        <Button Text="{i18n:Translate Text=Security.backupRecoveryKey}"
                                 Style="{DynamicResource SettingsButton}"
-                                Clicked="BackupMnemonic_Clicked" />
+                                Clicked="BackupMnemonic_Clicked"
+                                />
 
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
-                        <Button Text="{i18n:Translate Text=Menu.restoreWallet}"
+                        <Button Text="{i18n:Translate Text=Security.pin}"
                                 Style="{DynamicResource SettingsButton}"
-                                Clicked="RestoreWallet_Clicked" />
+                                Clicked="PinButton_Clicked"
+                                />
 
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
-                        <Button Text="{i18n:Translate Text=Menu.wipeWallet}"
+                        <Button Text="{i18n:Translate Text=Security.biometrics}"
                                 Style="{DynamicResource SettingsButton}"
-                                Clicked="WipeWallet_Clicked" />
+                                Clicked="Biometrics_Clicked"
+                                />
 
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
                         <!-- Extra space -->
                         <BoxView FlexLayout.Grow="3" />
-
-                        <Label x:Name="BuildDate"
-                               Style="{StaticResource CustomLabel}"
-                               FontSize="Micro"
-                               FlexLayout.AlignSelf="Center"
-                               FlexLayout.Grow="1">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="BuildDate_Tapped"
-                                                      NumberOfTapsRequired="1" />
-                            </Label.GestureRecognizers>
-                        </Label>
                     </FlexLayout>
                 </ScrollView>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>
-</ContentPage>
+    </ContentPage>

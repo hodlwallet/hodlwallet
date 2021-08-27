@@ -40,6 +40,16 @@ namespace HodlWallet.UI.Views
             InitializeComponent();
         }
 
+        void Security_Clicked(object sender, EventArgs e)
+        {
+            //var view = new BackupView(action: "close");
+            var view = new SecuritySettingsView();
+            var nav = new NavigationPage(view);
+
+            Navigation.PushModalAsync(nav);
+        }
+
+        /*
         void ResyncAccount_Clicked(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(async () =>
@@ -69,5 +79,6 @@ namespace HodlWallet.UI.Views
                 LocaleResources.Button_no
             );
         }
+        */
     }
 }

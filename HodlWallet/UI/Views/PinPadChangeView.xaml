@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             x:Class="HodlWallet.UI.Views.PinPadChangeView"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource BackgroundPrimary}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="CloseToolbarItem"
+                     Order="Primary"
+                     Text="{i18n:Translate Text=PinSettings.close}"
+                     Priority="0"
+                     Clicked="CloseToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="The Pin has been succesfully updated"
+                   FontSize="Body"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+
+            <Button Text="{i18n:Translate Text=PinSettings.close}"
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                    CornerRadius="0"
+                    FontSize="Large"
+                    Clicked="CloseToolbarItem_Clicked"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="2"
+                    HeightRequest="80"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
