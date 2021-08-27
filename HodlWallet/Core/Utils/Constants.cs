@@ -44,6 +44,7 @@ namespace HodlWallet.Core.Utils
         public const string GRAY_TEXT_TINT_COLOR_HEX = "#A3A8AD";
         public const string HEX_CHAR = "#";
         public const string DEFAULT_ACCOUNT_COLOR_CODE = "10";
+        public const string PREFIX_NAME_STYLE_ACCOUNT_MENU = "MenuItemLabelClass";
 
         // Localized Strings
         public const string HODL_WALLET = "HODL Wallet";

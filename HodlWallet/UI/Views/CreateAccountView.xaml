@@ -46,12 +46,12 @@
                 <Grid RowDefinitions="*,*" RowSpacing="20" FlexLayout.AlignSelf="Center" >
                     <RadioButton Content="{Binding AcountTypes[0]}"
                              IsChecked="True"
-                             Style="{DynamicResource CustomButton}"
+                             Style="{DynamicResource CustomRadioButton}"
                              BackgroundColor="{DynamicResource BackgroundPrimary}"
                              CheckedChanged="OnAccountTypeCheckedChanged" 
                              BorderColor="{DynamicResource TextPrimary}" />
                     <RadioButton Grid.Row="1" Content="{Binding AcountTypes[1]}"
-                             Style="{DynamicResource CustomButton}"
+                             Style="{DynamicResource CustomRadioButton}"
                              BackgroundColor="{DynamicResource BackgroundPrimary}"
                              CheckedChanged="OnAccountTypeCheckedChanged"
                              BorderColor="{DynamicResource TextPrimary}" />
