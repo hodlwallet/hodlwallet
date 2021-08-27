@@ -63,7 +63,7 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitAdded", DigitAdded);
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitRemoved", DigitRemoved);
             MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", IncorrectPinAnimation);
-            MessagingCenter.Subscribe<LoginViewModel>(this, "NavigateToRootView", NavigateToRootView);
+            MessagingCenter.Subscribe<LoginViewModel>(this, "StartAppShell", NavigateToRootView);
             MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
         }
 
@@ -100,7 +100,7 @@ namespace HodlWallet.UI.Views
 
         void NavigateToRootView(LoginViewModel _)
         {
-            Debug.WriteLine($"[SubscribeToMessage][NavigateToRootView]");
+            Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
 
             // Incase we're faster than light, we call the constructor anyways.
             Application.Current.MainPage = new AppShell();

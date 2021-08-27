@@ -41,10 +41,10 @@ namespace HodlWallet.UI.Views
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "NavigateToRootView", NavigateToRootView);
+            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "StartAppShell", StartAppShell);
         }
 
-        void NavigateToRootView(BackupRecoveryConfirmViewModel _)
+        void StartAppShell(BackupRecoveryConfirmViewModel _)
         {
             // If the recovery was launched later...
             if (Navigation.ModalStack.Count > 0)

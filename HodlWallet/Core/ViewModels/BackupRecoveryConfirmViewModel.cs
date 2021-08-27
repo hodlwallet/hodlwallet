@@ -248,7 +248,7 @@ namespace HodlWallet.Core.ViewModels
 
                 await Task.Delay(1);
 
-                MessagingCenter.Send(this, "NavigateToRootView");
+                MessagingCenter.Send(this, "StartAppShell");
             }
         }
 
