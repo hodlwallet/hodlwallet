@@ -623,9 +623,9 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
-        internal static string Backup_close {
+        internal static string Backup_Close {
             get {
-                return ResourceManager.GetString("Backup.close", resourceCulture);
+                return ResourceManager.GetString("Backup.Close", resourceCulture);
             }
         }
         
@@ -986,6 +986,90 @@ namespace HodlWallet.UI.Locale {
         internal static string NewWallet_title {
             get {
                 return ResourceManager.GetString("NewWallet.title", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_currency {
+            get {
+                return ResourceManager.GetString("Menu.currency", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_network {
+            get {
+                return ResourceManager.GetString("Menu.network", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_wallet {
+            get {
+                return ResourceManager.GetString("Menu.wallet", resourceCulture);
+            }
+        }
+        
+        internal static string PinSettings_close {
+            get {
+                return ResourceManager.GetString("PinSettings.close", resourceCulture);
+            }
+        }
+        
+        internal static string PinSettings_title {
+            get {
+                return ResourceManager.GetString("PinSettings.title", resourceCulture);
+            }
+        }
+        
+        internal static string Security_backupRecoveryKey {
+            get {
+                return ResourceManager.GetString("Security.backupRecoveryKey", resourceCulture);
+            }
+        }
+        
+        internal static string Security_biometrics {
+            get {
+                return ResourceManager.GetString("Security.biometrics", resourceCulture);
+            }
+        }
+        
+        internal static string Security_close {
+            get {
+                return ResourceManager.GetString("Security.close", resourceCulture);
+            }
+        }
+        
+        internal static string Security_pin {
+            get {
+                return ResourceManager.GetString("Security.pin", resourceCulture);
+            }
+        }
+        
+        internal static string Security_title {
+            get {
+                return ResourceManager.GetString("Security.title", resourceCulture);
+            }
+        }
+        
+        internal static string PinSettings_pinSpendingLimits {
+            get {
+                return ResourceManager.GetString("PinSettings.pinSpendingLimits", resourceCulture);
+            }
+        }
+        
+        internal static string PinSettings_updatePin {
+            get {
+                return ResourceManager.GetString("PinSettings.updatePin", resourceCulture);
+            }
+        }
+        
+        internal static string Biometrics_title {
+            get {
+                return ResourceManager.GetString("Biometrics.title", resourceCulture);
+            }
+        }
+        
+        internal static string Login_cancel {
+            get {
+                return ResourceManager.GetString("Login.cancel", resourceCulture);
             }
         }
         
