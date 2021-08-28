@@ -341,6 +341,18 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
+        internal static string Menu_info {
+            get {
+                return ResourceManager.GetString("Menu.info", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_coinControl {
+            get {
+                return ResourceManager.GetString("Menu.coinControl", resourceCulture);
+            }
+        }
+        
         internal static string Menu_knowledge {
             get {
                 return ResourceManager.GetString("Menu.knowledge", resourceCulture);

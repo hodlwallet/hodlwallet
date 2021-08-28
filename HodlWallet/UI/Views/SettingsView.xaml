@@ -26,23 +26,27 @@
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
-                        <Button Text="{i18n:Translate Text=Backup.title}"
+                        <Button Text="{i18n:Translate Text=Menu.security}"
                                 Style="{DynamicResource SettingsButton}"
-                                Clicked="BackupMnemonic_Clicked" />
+                                Clicked="Security_Clicked" />
 
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
-                        <Button Text="{i18n:Translate Text=Menu.restoreWallet}"
-                                Style="{DynamicResource SettingsButton}"
-                                Clicked="RestoreWallet_Clicked" />
+                        <Button Text="{i18n:Translate Text=Menu.currency}"
+                                Style="{DynamicResource SettingsButton}" />
 
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
-                        <Button Text="{i18n:Translate Text=Menu.wipeWallet}"
-                                Style="{DynamicResource SettingsButton}"
-                                Clicked="WipeWallet_Clicked" />
+                        <Button Text="{i18n:Translate Text=Menu.network}"
+                                Style="{DynamicResource SettingsButton}" />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
+                        <Button Text="{i18n:Translate Text=Menu.wallet}"
+                                Style="{DynamicResource SettingsButton}" />
 
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
