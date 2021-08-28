@@ -69,7 +69,10 @@ namespace HodlWallet.Core.ViewModels
         {
             Debug.WriteLine($"[ShowShareIntent] Sharing address: {Address}");
 
-            ShareIntent.QRTextShareIntent(Address);
+            if (string.IsNullOrEmpty(Address))
+                Debug.WriteLine("[ShowShareIntent] Sharing address is empty");
+            else
+                ShareIntent.QRTextShareIntent(Address);
         }
     }
 }

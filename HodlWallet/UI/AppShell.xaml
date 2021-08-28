@@ -28,7 +28,8 @@
 
         <Style x:Key="MenuItemLabelBase" TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="Padding" Value="20, 0" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="FontSize" Value="Small" />
         </Style>
 
         <Style x:Key="MenuItemLabelClass0" TargetType="Label" Class="MenuItemLabelClass0" BasedOn="{StaticResource MenuItemLabelBase}">
@@ -111,9 +112,19 @@
 
     </Shell.Resources>
 
+    <!-- TODO The FlyoutHeader doesn't render propertly in iOS
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader />
+    </Shell.FlyoutHeader>-->
+
     <Shell.FlyoutContentTemplate>
         <DataTemplate>
             <FlexLayout Direction="Column">
+                <ContentView> <!-- HACK this would do, see above error with FlyoutHeader -->
+                    <ContentView.Content>
+                        <controls:FlyoutHeader Padding="0,0,0,5" />
+                    </ContentView.Content>
+                </ContentView>
                 <CollectionView BindingContext="{x:Reference shell}"
                                 ItemsSource="{Binding AccountList}">
                     <CollectionView.ItemTemplate>
@@ -125,10 +136,6 @@
             </FlexLayout>
         </DataTemplate>
     </Shell.FlyoutContentTemplate>
-
-    <Shell.FlyoutHeader>
-        <controls:FlyoutHeader />
-    </Shell.FlyoutHeader>
     
     <Shell.FlyoutFooter>
         <controls:FlyoutFooter />

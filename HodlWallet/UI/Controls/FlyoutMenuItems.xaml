@@ -2,14 +2,17 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="HodlWallet.UI.Controls.FlyoutMenuItems">
+    xmlns:models="clr-namespace:HodlWallet.Core.Models"
+    x:Class="HodlWallet.UI.Controls.FlyoutMenuItems"
+    x:DataType="models:AccountModel">
     <FlexLayout Direction="Row"
-            Wrap="Wrap"
-            JustifyContent="SpaceEvenly" >
+                Wrap="Wrap"
+                JustifyContent="SpaceEvenly">
         <Label Text="{Binding AccountName}"
-                Style="{Binding CustomStyle}" 
-                FlexLayout.Grow="1"/>
-        <Label Text="{Binding Balance}" 
-            Style="{Binding CustomStyle}" />
+               Style="{Binding CustomStyle}" 
+               FlexLayout.Grow="1" />
+        <Label Text="{Binding Balance}"
+               Style="{Binding CustomStyle}"
+               FontFamily="{StaticResource Mono-Regular}" />
     </FlexLayout>
 </ContentView>

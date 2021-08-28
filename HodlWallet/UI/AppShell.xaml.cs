@@ -128,6 +128,7 @@ namespace HodlWallet.UI
 
             return colorCode;
         }
+
         void AddAccountToMenu(AccountModel account)
         {
             account.AccountColorCode = GetColorCodeByAccount(account.AccountData.Id);
@@ -140,7 +141,6 @@ namespace HodlWallet.UI
         {
             ChangeTabsTo("home");
         }
-
 
         void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
