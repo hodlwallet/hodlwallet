@@ -40,6 +40,8 @@ namespace HodlWallet.UI
         ILocalize Localize => DependencyService.Get<ILocalize>();
         ILegacySecureKeyService LegacySecureKeyService => DependencyService.Get<ILegacySecureKeyService>();
 
+        CancellationTokenSource Cts { get; set; }
+
         public App()
         {
             SetupCultureInfo();
@@ -49,6 +51,8 @@ namespace HodlWallet.UI
 #if WIPE_WALLET
             SecureStorageService.RemoveAll();
 #endif
+
+            Cts ??= new CancellationTokenSource();
 
             RegisterServices();
 
@@ -77,22 +81,19 @@ namespace HodlWallet.UI
             // the init code that inserts the logger into
             // WalletService is only run after the custructor
             // and only after all the platforms init
-            var cts = new CancellationTokenSource();
-            var ct = cts.Token;
+            //Task.Factory.StartNew(
+            //    () => WalletService.InitializeWallet(),
+            //    Cts.Token,
+            //    TaskCreationOptions.LongRunning,
+            //    TaskScheduler.Default
+            //);
 
-            Task.Factory.StartNew(
-                () => WalletService.InitializeWallet(),
-                ct,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
-
-            Task.Factory.StartNew(
-                () => PrecioService.Init(),
-                ct,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
+            //Task.Factory.StartNew(
+            //    () => PrecioService.Init(),
+            //    Cts.Token,
+            //    TaskCreationOptions.LongRunning,
+            //    TaskScheduler.Default
+            //);
         }
 
         protected override void OnSleep()
