@@ -275,6 +275,8 @@
                     </ScrollView>
                 </StackLayout>
 
+                <BoxView FlexLayout.Grow="1" />
+
                 <Button x:Name="NextButton"
                         Text="{i18n:Translate Text=Recover.next}"
                         Style="{DynamicResource RecoveryWordButton}"
