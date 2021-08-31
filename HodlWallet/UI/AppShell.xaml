@@ -120,9 +120,9 @@
     <Shell.FlyoutContentTemplate>
         <DataTemplate>
             <FlexLayout Direction="Column">
-                <ContentView> <!-- HACK this would do, see above error with FlyoutHeader -->
+                <ContentView HeightRequest="80"> <!-- HACK this would do, see above error with FlyoutHeader -->
                     <ContentView.Content>
-                        <controls:FlyoutHeader Padding="0,0,0,5" />
+                        <controls:FlyoutHeader />
                     </ContentView.Content>
                 </ContentView>
                 <CollectionView BindingContext="{x:Reference shell}"
