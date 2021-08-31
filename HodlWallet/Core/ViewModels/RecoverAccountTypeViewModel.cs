@@ -24,8 +24,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
-
+using NBitcoin.Protocol;
 using Xamarin.Forms;
 
 namespace HodlWallet.Core.ViewModels
@@ -42,9 +44,11 @@ namespace HodlWallet.Core.ViewModels
         public bool IsNotSelected => string.IsNullOrEmpty(AccountType);
 
         public ICommand AccountTypeSelectedCommand { get; }
+        CancellationTokenSource Cts { get; set; }
 
         public RecoverAccountTypeViewModel()
         {
+            Cts ??= new CancellationTokenSource();
             AccountTypeSelectedCommand = new Command<string>(AccountTypeSelected);
         }
 
@@ -52,7 +56,19 @@ namespace HodlWallet.Core.ViewModels
         {
             IsLoading = true;
 
-            WalletService.InitializeWallet(accountType);
+            Task.Factory.StartNew(
+                () => WalletService.InitializeWallet(accountType),
+                Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
+
+            WalletService.Wallet.OnSyncStarted += Wallet_OnSyncStarted;
+        }
+
+        private void Wallet_OnSyncStarted(object sender, System.EventArgs e)
+        {
+            MessagingCenter.Send(this, "InitAppShell");
 
             IsLoading = false;
         }

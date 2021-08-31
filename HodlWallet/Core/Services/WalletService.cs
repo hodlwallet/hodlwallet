@@ -131,7 +131,7 @@ namespace HodlWallet.Core.Services
                 return;
             }
 
-            StartWalletWithWalletId();
+            StartWalletWithWalletId(accountType);
 
             Logger.Information("Since wallet has a mnemonic, then start the wallet.");
 

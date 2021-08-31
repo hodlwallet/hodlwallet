@@ -47,11 +47,17 @@ namespace HodlWallet.UI.Views
 
             MessagingCenter.Subscribe<RecoverAccountTypeViewModel>(this, "AnimateSelected", AnimateSelected);
             MessagingCenter.Subscribe<RecoverAccountTypeViewModel>(this, "HideEmptyState", HideEmptyState);
+            MessagingCenter.Subscribe<RecoverAccountTypeViewModel>(this, "InitAppShell", InitAppShell);
+        }
+
+        void InitAppShell(RecoverAccountTypeViewModel vm)
+        {
+            Application.Current.MainPage = new AppShell();
         }
 
         void HideEmptyState(RecoverAccountTypeViewModel vm)
         {
-            PleaseSelectAccountTypeLabel.FadeTo(0.00);
+            PleaseSelectAccountTypeLabel.FadeTo(0.00, 500);
         }
 
         void AnimateSelected(RecoverAccountTypeViewModel vm)
@@ -85,8 +91,6 @@ namespace HodlWallet.UI.Views
             Debug.WriteLine($"[DoneButton_Clicked] Account type selected: {ViewModel.AccountType}");
 
             ViewModel.InitializeWallet(ViewModel.AccountType);
-
-            Application.Current.MainPage = new AppShell();
         }
     }
 }
