@@ -250,7 +250,14 @@ namespace HodlWallet.Core.Services
                 Logger.Debug($"Syncing time: {(end - start).TotalSeconds}");
             };
 
-            _ = PeriodicSave();
+            Task.Factory.StartNew(
+                () => PeriodicSave(),
+                Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
+
+            // TODO add ping
 
             Task.Factory.StartNew(
                 () => Wallet.Sync(),
