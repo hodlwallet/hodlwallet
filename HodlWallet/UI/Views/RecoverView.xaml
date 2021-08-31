@@ -284,6 +284,7 @@
                         FontSize="Large"
                         Command="{Binding OnRecoverEntryCompleted}" />
 
+                <!-- 3 taps on the layout makes the mnemonic be: "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about" on DEBUG only-->
                 <FlexLayout.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="3" Tapped="DebugMnemonic3Taps_Tapped" />
                 </FlexLayout.GestureRecognizers>

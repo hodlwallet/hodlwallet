@@ -135,8 +135,6 @@ namespace HodlWallet.UI.Views
             var lastEntry = FindByName($"Entry{12}") as Entry;
 
             lastEntry.Text = "about";
-
-            ToggleNextButton();
 #endif
         }
     }
