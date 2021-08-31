@@ -46,19 +46,14 @@ namespace HodlWallet.Core.Interfaces
         event EventHandler OnConfigured;
         event EventHandler OnStarted;
 
-        void InitializeWallet(string accountType = "standard");
         void Start();
+        void InitializeWallet(string accountType = "standard");
         void StartWalletWithWalletId(string accountType = "standard");
         void DestroyWallet(bool dryRun = false);
-
         bool IsAddressOwn(string address);
-
         decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);
-
         long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed);
-
         BitcoinAddress GetReceiveAddress();
-
         Network GetNetwork();
         IEnumerable<Tx> GetCurrentAccountTransactions();
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,

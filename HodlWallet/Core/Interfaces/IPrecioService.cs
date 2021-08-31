@@ -32,6 +32,8 @@ namespace HodlWallet.Core.Interfaces
 {
     public interface IPrecioService
     {
+        bool IsStarted { get; }
+
         BtcPriceChangeEntity Btc1dChange { get; set; }
         BtcPriceChangeEntity Btc1hChange { get; set; }
         BtcPriceChangeEntity Btc1mChange { get; set; }

@@ -47,6 +47,8 @@ namespace HodlWallet.Core.Services
 {
     public class PrecioService : IPrecioService, INotifyPropertyChanged
     {
+        public bool IsStarted { get; private set; }
+
         public IPrecioHttpService PrecioHttpService => RestService.For<IPrecioHttpService>(Constants.PRECIO_HOST_URL);
 
         readonly string webSocketServerBaseUrl = Constants.PRECIO_WS_HOST_URL + "/{0}";
@@ -185,12 +187,15 @@ namespace HodlWallet.Core.Services
             PropertyChanged += delegate { };
 
             webSockets = new Dictionary<string, ClientWebSocket>();
+            IsStarted = false;
         }
 
         public void Init()
         {
             Task.Run(WebSocketConnect);
             Task.Run(HttpDataFetchConnect);
+
+            IsStarted = true;
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value, string propertyName = "",

@@ -81,19 +81,22 @@ namespace HodlWallet.UI
             // the init code that inserts the logger into
             // WalletService is only run after the custructor
             // and only after all the platforms init
-            //Task.Factory.StartNew(
-            //    () => WalletService.InitializeWallet(),
-            //    Cts.Token,
-            //    TaskCreationOptions.LongRunning,
-            //    TaskScheduler.Default
-            //);
 
-            //Task.Factory.StartNew(
-            //    () => PrecioService.Init(),
-            //    Cts.Token,
-            //    TaskCreationOptions.LongRunning,
-            //    TaskScheduler.Default
-            //);
+            if (!UserDidSetup()) return;
+
+            Task.Factory.StartNew(
+                () => WalletService.InitializeWallet(),
+                Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
+
+            Task.Factory.StartNew(
+                () => PrecioService.Init(),
+                Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
         }
 
         protected override void OnSleep()
@@ -141,7 +144,7 @@ namespace HodlWallet.UI
                 SecureStorageService.SetMnemonic(mnemonic);
                 SecureStorageService.SetPin(pin);
 
-                WalletService.InitializeWallet("legacy");
+                WalletService.InitializeWallet(accountType: "legacy");
             }
             catch (Exception ex)
             {

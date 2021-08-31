@@ -20,7 +20,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -32,8 +32,12 @@ namespace HodlWallet.Core.ViewModels
     {
         public ICommand WriteDownWordsCommand { get; }
 
+        CancellationTokenSource Cts { get; set; }
+
         public BackupViewModel()
         {
+            Cts ??= new CancellationTokenSource();
+
             CreateSeedIfNeeded();
         }
 
@@ -56,11 +60,10 @@ namespace HodlWallet.Core.ViewModels
             WalletService.Logger.Information("Saved mnemonic to secure storage.");
 
             // After this we should be able to start the wallet if it's not started since we have a mnemonic
-            if (!WalletService.IsStarted)
-                Task.Run(() => WalletService.StartWalletWithWalletId());
+            StartServices();
         }
 
-        private int GetWordCount()
+        int GetWordCount()
         {
             // TODO This should read from the user's preference eventually.
             int wordCount = 12;
@@ -68,6 +71,29 @@ namespace HodlWallet.Core.ViewModels
             WalletService.Logger.Information($"Word count is {wordCount}");
 
             return wordCount;
+        }
+
+        void StartServices()
+        {
+            if (!WalletService.IsStarted)
+            {
+                Task.Factory.StartNew(
+                    () => WalletService.InitializeWallet(),
+                    Cts.Token,
+                    TaskCreationOptions.LongRunning,
+                    TaskScheduler.Default
+                );
+            }
+
+            if (!PrecioService.IsStarted)
+            {
+                Task.Factory.StartNew(
+                    () => PrecioService.Init(),
+                    Cts.Token,
+                    TaskCreationOptions.LongRunning,
+                    TaskScheduler.Default
+                );
+            }
         }
     }
 }
