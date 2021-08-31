@@ -23,11 +23,12 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using NBitcoin.Protocol;
+
 using Xamarin.Forms;
 
 namespace HodlWallet.Core.ViewModels
@@ -63,10 +64,10 @@ namespace HodlWallet.Core.ViewModels
                 TaskScheduler.Default
             );
 
-            WalletService.Wallet.OnSyncStarted += Wallet_OnSyncStarted;
+            WalletService.OnStarted += WalletService_OnStarted;
         }
 
-        private void Wallet_OnSyncStarted(object sender, System.EventArgs e)
+        private void WalletService_OnStarted(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "InitAppShell");
 

@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Threading;
 
 using Xamarin.Forms;
 
@@ -62,6 +63,7 @@ namespace HodlWallet.Core.Services
         Network network;
 
         string walletId;
+        CancellationTokenSource Cts;
 
         public Serilog.ILogger Logger { set; get; }
 
@@ -124,6 +126,8 @@ namespace HodlWallet.Core.Services
 
             network = Hd.GetNetwork(networkStr ?? DEFAULT_TESTING_NETWORK);
             walletId = guid ?? Guid.NewGuid().ToString();
+
+            Cts ??= new CancellationTokenSource();
 
             if (!SecureStorageService.HasMnemonic() || walletId == null)
             {
@@ -248,8 +252,19 @@ namespace HodlWallet.Core.Services
 
             _ = PeriodicSave();
 
-            _ = Wallet.Sync();
-            _ = Wallet.Watch();
+            Task.Factory.StartNew(
+                () => Wallet.Sync(),
+                Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
+
+            Task.Factory.StartNew(
+                () => Wallet.Watch(),
+                Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
 
             OnStarted?.Invoke(this, null);
             IsStarted = true;
