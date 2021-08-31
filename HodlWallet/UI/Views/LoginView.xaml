@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
@@ -6,13 +6,13 @@
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.LoginView"
+             x:DataType="vm:LoginViewModel"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{DynamicResource BackgroundPrimary}"
              ios:Page.UseSafeArea="True">
     <ContentPage.BindingContext>
         <vm:LoginViewModel />
     </ContentPage.BindingContext>
-
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
@@ -31,8 +31,6 @@
                         <TapGestureRecognizer Tapped="Logo_Tapped" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
-                
-                
 
                 <BoxView FlexLayout.Grow="1" />
 

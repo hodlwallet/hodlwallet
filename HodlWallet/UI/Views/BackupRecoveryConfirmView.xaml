@@ -5,6 +5,7 @@
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupRecoveryConfirmView"
+             x:DataType="vm:BackupRecoveryConfirmViewModel"
              BackgroundColor="{DynamicResource BackgroundPrimary}"
              ios:Page.UseSafeArea="True">
     <ContentPage.BindingContext>

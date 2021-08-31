@@ -123,7 +123,7 @@ namespace HodlWallet.UI.Views
             Navigation.PushAsync(new RecoverAccountTypeView());
         }
 
-        void DebugMnemonic3Taps_Tapped(object sender, EventArgs e)
+        void DebugMnemonic_Tapped(object sender, EventArgs e)
         {
 #if WIPE_WALLET
             for (int i = 1; i < 12; i++)

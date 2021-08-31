@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:utils="clr-namespace:HodlWallet.Core.Utils"
@@ -16,7 +16,7 @@
             <FlexLayout Direction="Column">
                 <FlexLayout Direction="Column"
                             Margin="0,20,10,0"
-                            FlexLayout.Grow="6">
+                            FlexLayout.Grow="8">
                     <Label Text="{i18n:Translate Text=RecoverEntry.header}"
                            Style="{DynamicResource CustomLabel}"
                            Margin="10, 0, 10, 0" />
@@ -277,7 +277,7 @@
 
                 <Button x:Name="NextButton"
                         FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1"
+                        FlexLayout.Grow="2"
                         Text="{i18n:Translate Text=Recover.next}"
                         Style="{DynamicResource RecoveryWordButton}"
                         IsVisible="False"
@@ -286,7 +286,7 @@
 
                 <!-- 3 taps on the layout makes the mnemonic be: "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about" on DEBUG only-->
                 <FlexLayout.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="3" Tapped="DebugMnemonic3Taps_Tapped" />
+                    <TapGestureRecognizer NumberOfTapsRequired="{OnPlatform 3, Android=1}" Tapped="DebugMnemonic_Tapped" />
                 </FlexLayout.GestureRecognizers>
             </FlexLayout>
         </AbsoluteLayout>
