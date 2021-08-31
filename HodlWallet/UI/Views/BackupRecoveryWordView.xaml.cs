@@ -21,13 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-using HodlWallet.Core.ViewModels;
-using System.Collections.Generic;
 using HodlWallet.Core.Models;
+using HodlWallet.Core.ViewModels;
 
 namespace HodlWallet.UI.Views
 {
@@ -41,15 +40,12 @@ namespace HodlWallet.UI.Views
 
         void SubscribeToMessages()
         {
-            //MessagingCenter.Subscribe<BackupRecoveryWordViewModel, string[]>(this, "NavigateToBackupRecoveryConfirmView", NavigateToBackupRecoveryConfirmView);
-            MessagingCenter.Subscribe<BackupRecoveryWordViewModel, List<BackupWordModel>>(this, "MnemonicListMessage", NavigateToBackupRecoveryConfirmView);
+            MessagingCenter.Subscribe<BackupRecoveryWordViewModel, List<BackupWordModel>>(this, "NavigateToBackupRecoveryConfirmView", NavigateToExtraBackupView);
         }
 
-        async void NavigateToBackupRecoveryConfirmView(BackupRecoveryWordViewModel _, List<BackupWordModel> mnemonic)
+        async void NavigateToExtraBackupView(BackupRecoveryWordViewModel _, List<BackupWordModel> mnemonic)
         {
-            //Debug.WriteLine($"[NavigateToBackupRecoveryConfirmView] About to write mnemonic: {string.Join(" ", mnemonic)}");
-            Debug.WriteLine($"*******[NavigateToBackupRecoveryConfirmView]Invocar el constructor con el mnemonic!!!!: { mnemonic[0].Word}");
-            await Navigation.PushAsync(new BackupRecoveryConfirmView(mnemonic));
+            await Navigation.PushAsync(new BackupRecoveryConfirmView());
         }
 
         async void SkipToolbarItem_Clicked(object sender, EventArgs e)

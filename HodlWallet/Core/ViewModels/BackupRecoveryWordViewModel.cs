@@ -26,81 +26,34 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 
-using Liviano.Exceptions;
-
 using HodlWallet.Core.Models;
-using HodlWallet.Core.Services;
 using HodlWallet.UI.Converters;
-using HodlWallet.Core.Utils;
 
 namespace HodlWallet.Core.ViewModels
 {
     public class BackupRecoveryWordViewModel : BaseViewModel
     {
         List<BackupWordModel> words;
-        string[] _Mnemonic;
-
-
-        public ICommand NextCommand { get; }
 
         public List<BackupWordModel> Words
         {
             get => words;
             set => SetProperty(ref words, value);
         }
-
-        public List<BackupWordModel> ShuffledWordsList { get; set; } = new();
+        
+        public ICommand NextCommand { get; }
 
         public BackupRecoveryWordViewModel()
         {
             NextCommand = new Command(NextWord);
 
             if (DesignMode.IsDesignModeEnabled) return;
-
-            InitMnemonic();
+            Words = MnemonicStringToList.GenerateWordsList();
         }
 
-        private void NextWord()
+        void NextWord()
         {
-            //MessagingCenter.Send(this, "NavigateToBackupRecoveryConfirmView", _Mnemonic);
-            MessagingCenter.Send(this, "MnemonicListMessage", Words);
-        }
-
-        void InitMnemonic()
-        {
-            string rawMnemonic = GetMnemonic();
-
-            WalletService.Logger.Information($"Mnemonic is: {rawMnemonic}");
-
-            _Mnemonic = rawMnemonic.Split(' ');
-            Words = MnemonicArrayToList.GenerateWordsList(_Mnemonic);
-            GenerateShuffledMnemonics();
-        }
-
-        private string GetMnemonic()
-        {
-            if (!SecureStorageService.HasMnemonic())
-                throw new WalletException("This wallet doesn't have a mnemonic, we cannot do anything without that one");
-
-            return SecureStorageService.GetMnemonic();
-        }
-
-        public void GenerateShuffledMnemonics()
-        {
-            ShuffledWordsList.AddRange(Words);
-            ShuffledWordsList.Shuffle();
-
-
-            Console.WriteLine("Lista A");
-            foreach (var item in Words)
-            {
-                Console.WriteLine($"{item.WordIndex} --> {item.Word}");
-            }
-            Console.WriteLine("Lista B");
-            foreach (var item in ShuffledWordsList)
-            {
-                Console.WriteLine($"{item.WordIndex} --> {item.Word}");
-            }
+            MessagingCenter.Send(this, "NavigateToBackupRecoveryConfirmView", Words);
         }
     }
 }

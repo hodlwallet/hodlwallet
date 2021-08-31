@@ -13,11 +13,6 @@
                         JustifyContent="SpaceAround"
                         BackgroundColor="{DynamicResource BackgroundPrimary}"
                         AlignItems="Center">
-            <Label Text="{Binding ShuffledWordsList[1].Word}"
-                       FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource SyncGradientStart}"
-                       HorizontalTextAlignment="Center"
-                       Margin="0, 20" />
 
             <FlexLayout Direction="Row"
                                     Wrap="Wrap"
@@ -31,8 +26,13 @@
                         <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
                                                     Margin="2" >
                             <StackLayout Orientation="Horizontal" Margin="2">
+                                <Label Text="{Binding WordIndex}"
+                                                    FontFamily="{StaticResource Sans-Regular}"
+                                                    TextColor="{DynamicResource SyncGradientStart}"
+                                                    FontSize="Micro" 
+                                                    />
                                 <Label Text="{Binding Word}"
-                                               
+                                                Style="{DynamicResource MnemonicLabel}" 
                                                 Margin="0,0,5,0" />
                             </StackLayout>
                         </ContentView>

@@ -21,37 +21,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
+
 using Xamarin.Forms;
 
-using HodlWallet.Core.ViewModels;
 using HodlWallet.Core.Models;
-using System.Diagnostics;
+using HodlWallet.Core.ViewModels;
 
 namespace HodlWallet.UI.Views
 {
     public partial class BackupRecoveryConfirmView : ContentPage
     {
-        BackupRecoveryConfirmViewModel ViewModel => (BackupRecoveryConfirmViewModel)BindingContext;
-
-        public List<BackupWordModel> ShuffledWordsList { get; set; } = new();
-
-        public BackupRecoveryConfirmView(List<BackupWordModel> mnemonic)
+        public BackupRecoveryConfirmView()
         {
             InitializeComponent();
-            ViewModel.ShuffledWordsList = mnemonic;
-            Debug.WriteLine($"*******Asignacin de la prop !!!!: { ViewModel.ShuffledWordsList[0].Word}");
             SubscribeToMessages();
         }
 
-
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "NavigateToRootView", NavigateToRootView);
-            //MessagingCenter.Subscribe<BackupRecoveryWordViewModel, List<BackupWordModel>>(this, "MnemonicListMessage", ShuffledWordsList);
+            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "NavigateToExtraBackupView", NavigateToRootView);
         }
-
-
+        
         void NavigateToRootView(BackupRecoveryConfirmViewModel _)
         {
             // If the recovery was launched later...

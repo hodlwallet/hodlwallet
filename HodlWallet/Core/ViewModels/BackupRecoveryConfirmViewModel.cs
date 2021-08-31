@@ -21,18 +21,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Input;
 
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
-using HodlWallet.Core.Services;
-using HodlWallet.UI.Locale;
-using System.Collections.Generic;
 using HodlWallet.Core.Models;
-using System.Diagnostics;
 using HodlWallet.UI.Converters;
 using HodlWallet.Core.Utils;
 
@@ -42,70 +37,30 @@ namespace HodlWallet.Core.ViewModels
     {
         public List<BackupWordModel> ShuffledWordsList { get; set; } = new();
 
-        public ICommand NextCommand { get; }
+        public List<BackupWordModel> Words { get; set; } = new();
 
-        //public List<BackupWordModel> Mnemonic
-        //{
-        //    get => mnemonic;
-        //    set
-        //    {
-        //        SetProperty(ref mnemonic, value);
-        //    }
-        //}
+        public ICommand NextCommand { get; }
 
         public BackupRecoveryConfirmViewModel()
         {
             NextCommand = new Command(NextWord);
-          
-            Debug.WriteLine($"============>BackupRecoveryConfirmViewModel, ya tenemos la lista revuelta!!! {ShuffledWordsList.Count}");
-            MessagingCenter.Subscribe<BackupRecoveryWordViewModel, List<BackupWordModel>>(this, "MnemonicListMessage", GenerateShuffledMnemonics);
-
-            //TestList = new List<BackupWordModel>{Word="Marconi", WordIndex="Uno" };
-
+            GenerateShuffledMnemonics();
         }
 
-        public void GenerateShuffledMnemonics(BackupRecoveryWordViewModel _, List<BackupWordModel> Words)
+        void GenerateShuffledMnemonics()
         {
+            //Bring the Mnemonic list from SecureStorage as a List and copy it to a new list
+            Words = MnemonicStringToList.GenerateWordsList();
             ShuffledWordsList.AddRange(Words);
+
+            //Suffle the copy of the original list.
             ShuffledWordsList.Shuffle();
-
-
-            Console.WriteLine("Lista A");
-            foreach (var item in Words)
-            {
-                Console.WriteLine($"{item.WordIndex} --> {item.Word}");
-            }
-            Console.WriteLine("Lista B");
-            foreach (var item in ShuffledWordsList)
-            {
-                Console.WriteLine($"{item.WordIndex} --> {item.Word}");
-            }
         }
 
         private void NextWord()
         {
             Debug.WriteLine("============> ALL DONE!!!");
+            MessagingCenter.Send(this, "NavigateToExtraBackupView", ShuffledWordsList);
         }
-
-
-        //void ShuffleMnemonic(string[] mnemonic)
-        //{
-        //    WordList = MnemonicArrayToList.GenerateWordsList(mnemonic);
-
-
-        //    ShuffledWordsList = WordList.ToList();
-        //    ShuffledWordsList.Shuffle<BackupWordModel>();
-
-        //    Console.WriteLine("Lista A");
-        //    foreach (var item in WordList)
-        //    {
-        //        Console.WriteLine($"{item.WordIndex} --> {item.Word}");
-        //    }
-        //    Console.WriteLine("Lista B");
-        //    foreach (var item in ShuffledWordsList)
-        //    {
-        //        Console.WriteLine($"{item.WordIndex} --> {item.Word}");
-        //    }
-        //}
     }
 }
