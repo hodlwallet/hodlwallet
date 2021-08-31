@@ -283,6 +283,10 @@
                         IsVisible="False"
                         FontSize="Large"
                         Command="{Binding OnRecoverEntryCompleted}" />
+
+                <FlexLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="3" Tapped="DebugMnemonic3Taps_Tapped" />
+                </FlexLayout.GestureRecognizers>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

@@ -76,6 +76,8 @@ namespace HodlWallet.UI.Views
             entry.Text = entry.Text.ToLower();
 
             ValidateEntry(entry);
+
+            ToggleNextButton();
         }
 
         void ValidateEntry(Entry entry)
@@ -119,6 +121,23 @@ namespace HodlWallet.UI.Views
         void ShowRecoverAccountType(RecoverViewModel _)
         {
             Navigation.PushAsync(new RecoverAccountTypeView());
+        }
+
+        void DebugMnemonic3Taps_Tapped(object sender, EventArgs e)
+        {
+#if WIPE_WALLET
+            for (int i = 1; i < 12; i++)
+            {
+                var entry = FindByName($"Entry{i}") as Entry;
+
+                entry.Text = "abandon";
+            }
+            var lastEntry = FindByName($"Entry{12}") as Entry;
+
+            lastEntry.Text = "about";
+
+            ToggleNextButton();
+#endif
         }
     }
 }
