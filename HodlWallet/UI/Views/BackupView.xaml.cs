@@ -21,26 +21,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+
 using Xamarin.Forms;
-using System.Threading.Tasks;
 
 namespace HodlWallet.UI.Views
 {
     public partial class BackupView : ContentPage
     {
-        AppShell appShell;
-
         public BackupView(string action = null)
         {
             InitializeComponent();
             EnableToolBarItems(action);
-
-            Task.Run(() =>
-            {
-                appShell = new AppShell();
-            });
         }
-
 
         void EnableToolBarItems(string action = null)
         {
@@ -70,7 +62,7 @@ namespace HodlWallet.UI.Views
 
         void SkipToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = appShell ?? new AppShell();
+            Application.Current.MainPage = new AppShell();
         }
     }
 }
