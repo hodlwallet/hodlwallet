@@ -521,7 +521,7 @@
     <comment>Account Settings Title</comment>
   </data>
   <data name="Settings.Title" xml:space="preserve">
-    <value>Global Settings</value>
+    <value>Settings</value>
     <comment>Global Settings Title</comment>
   </data>
   <data name="Settings.Close" xml:space="preserve">
@@ -793,7 +793,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <comment>label for pin button</comment>
   </data>
   <data name="Security.title" xml:space="preserve">
-    <value>Security Settings</value>
+    <value>Security</value>
     <comment>label for SecuritySettingsView title</comment>
   </data>
   <data name="PinSettings.pinSpendingLimits" xml:space="preserve">

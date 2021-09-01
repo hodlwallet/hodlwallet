@@ -129,9 +129,7 @@ namespace HodlWallet.UI.Views
 
         async void Security_Clicked(object sender, EventArgs e)
         {
-            var view = new SecuritySettingsView();
-
-            await Navigation.PushModalAsync(new NavigationPage(view));
+            await Navigation.PushAsync(new SecuritySettingsView());
         }
 
         async void CloseToolbarItem_Clicked(object sender, EventArgs e)

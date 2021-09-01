@@ -21,10 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -38,34 +34,23 @@ namespace HodlWallet.UI.Views
         {
             InitializeComponent();
         }
-
-        private void CloseToolbarItem_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PopModalAsync();
-        }
         
-        void BackupMnemonic_Clicked(object sender, EventArgs e)
+        async void BackupMnemonic_Clicked(object sender, EventArgs e)
         {
             var view = new BackupView(action: "close");
             var nav = new NavigationPage(view);
 
-            Navigation.PushModalAsync(nav);
+            await Navigation.PushModalAsync(nav);
         }
 
-        void PinButton_Clicked(object sender, EventArgs e)
+        async void PinButton_Clicked(object sender, EventArgs e)
         {
-            var view = new PinSettingsView();
-            var nav = new NavigationPage(view);
-
-            Navigation.PushModalAsync(nav);
+            await Navigation.PushAsync(new PinSettingsView());
         }
 
-        private void Biometrics_Clicked(object sender, EventArgs e)
+        async void Biometrics_Clicked(object sender, EventArgs e)
         {
-            var view = new BiometricsView();
-            var nav = new NavigationPage(view);
-
-            Navigation.PushModalAsync(nav);
+            await Navigation.PushAsync(new BiometricsView());
         }
     }
 }

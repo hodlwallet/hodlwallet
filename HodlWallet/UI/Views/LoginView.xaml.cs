@@ -163,7 +163,7 @@ namespace HodlWallet.UI.Views
 
         private void CancelButtonClicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+                Navigation.PopModalAsync();
         }
     }
 }
