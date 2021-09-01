@@ -40,11 +40,9 @@ namespace HodlWallet.UI.Views
         Color DigitOnColor => (Color)Application.Current.Resources["InputPinOn"];
         Color DigitOffColor => (Color)Application.Current.Resources["InputPinOff"];
 
-        IWalletService WalletService => DependencyService.Get<IWalletService>();
-
         LoginViewModel ViewModel => (LoginViewModel)BindingContext;
 
-        string next = null;
+        readonly string next = null;
 
         public LoginView(string next = null)
         {
@@ -75,7 +73,7 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitAdded", DigitAdded);
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitRemoved", DigitRemoved);
             MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", IncorrectPinAnimation);
-            MessagingCenter.Subscribe<LoginViewModel>(this, "StartAppShell", NavigateToRootView);
+            MessagingCenter.Subscribe<LoginViewModel>(this, "StartAppShell", StartAppShell);
             MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
         }
 
@@ -110,7 +108,7 @@ namespace HodlWallet.UI.Views
             await Task.Delay(500);
         }
 
-        void NavigateToRootView(LoginViewModel _)
+        void StartAppShell(LoginViewModel _)
         {
             Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
 

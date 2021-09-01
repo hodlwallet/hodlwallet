@@ -69,8 +69,6 @@ namespace HodlWallet.Core.ViewModels
             // Digit is not complete, input more
             if (_Pin.Count != 6) return;
 
-            await Task.Delay(350);
-
             // _Pin.Count == 6 now...
             // We're done inputting our PIN
 
@@ -94,6 +92,8 @@ namespace HodlWallet.Core.ViewModels
                 await Task.Delay(65);
                 MessagingCenter.Send(this, "ResetPin");
             }
+
+            await Task.Delay(350);
 
             Debug.WriteLine($"[AddDigit] Incorrect PIN: {input}");
 
