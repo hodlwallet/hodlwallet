@@ -51,6 +51,13 @@
                         <BoxView BackgroundColor="{DynamicResource TextSecondary}"
                                  HeightRequest="1" />
 
+                        <Button Text="{i18n:Translate Text=Menu.wipeWallet}"
+                                Style="{DynamicResource SettingsButton}"
+                                Clicked="WipeWallet_Clicked" />
+
+                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                                 HeightRequest="1" />
+
                         <!-- Extra space -->
                         <BoxView FlexLayout.Grow="3" />
 
