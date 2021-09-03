@@ -36,7 +36,11 @@ namespace HodlWallet.Core.Services
 {
     public sealed class AuthenticationService : IAuthenticationService
     {
-        const int EXPIRATION_TIME = 300_000; // 5 mins in milliseconds
+#if DEBUG
+        const int EXPIRATION_TIME = 10_000; // 10 seconds in ms
+#else
+        const int EXPIRATION_TIME = 300_000; // 5 mins in ms
+#endif
 
         public DateTimeOffset LastAuth { get; set; }
 

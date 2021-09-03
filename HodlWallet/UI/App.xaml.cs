@@ -107,7 +107,10 @@ namespace HodlWallet.UI
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            if (!AuthenticationService.IsAuthenticated)
+            {
+                AuthenticationService.ShowLogin();
+            }
         }
 
         void RegisterServices()
