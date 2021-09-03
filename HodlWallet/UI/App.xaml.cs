@@ -39,6 +39,7 @@ namespace HodlWallet.UI
         IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
         ILocalize Localize => DependencyService.Get<ILocalize>();
         ILegacySecureKeyService LegacySecureKeyService => DependencyService.Get<ILegacySecureKeyService>();
+        IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
 
         CancellationTokenSource Cts { get; set; }
 
@@ -58,7 +59,7 @@ namespace HodlWallet.UI
 
             if (UserDidSetup())
             {
-                MainPage = new LoginView();
+                AuthenticationService.ShowLogin();
 
                 return;
             }
@@ -67,7 +68,7 @@ namespace HodlWallet.UI
 
             if (UserDidSetup())
             {
-                MainPage = new LoginView();
+                AuthenticationService.ShowLogin();
 
                 return;
             }

@@ -75,7 +75,7 @@ namespace HodlWallet.Core.ViewModels
             string input = string.Join(string.Empty, _Pin.ToArray());
 
             // Check if it's the pin
-            if (SecureStorageService.GetPin() == input)
+            if (AuthenticationService.Authenticate(input))
             {
                 Debug.WriteLine("[AddDigit] Logged in!");
 
@@ -83,6 +83,7 @@ namespace HodlWallet.Core.ViewModels
 
                 // DONE! We navigate to the root view
                 await Task.Delay(65);
+
                 MessagingCenter.Send(this, "StartAppShell");
 
                 return;

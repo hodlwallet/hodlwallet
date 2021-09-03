@@ -112,19 +112,19 @@ namespace HodlWallet.UI.Views
         {
             Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
 
-            // Incase we're faster than light, we call the constructor anyways.
-
+            // Update PIN
             if (next == "update")
-            { // Update PIN
+            {
                 Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
+
+                return;
             }
-            else
-            { // Login
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    Application.Current.MainPage = new AppShell();
-                });
-            }
+
+            // Login Successful
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                Application.Current.MainPage = new AppShell();
+            });
         }
 
         void ResetPin(LoginViewModel _)
