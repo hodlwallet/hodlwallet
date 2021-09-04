@@ -43,7 +43,6 @@ namespace HodlWallet.UI.Views
         {
             InitializeComponent();
             SubscribeToMessages();
-            SetLabels();
         }
 
         void SubscribeToMessages()
@@ -70,11 +69,6 @@ namespace HodlWallet.UI.Views
             if (!res) return;
 
             MessagingCenter.Send(this, "BroadcastTransaction");
-        }
-
-        void SetLabels()
-        {
-            ISOLabel.Text = "USD($)"; // TODO Localize
         }
 
         async void OpenBarcodeScanner(SendViewModel _)

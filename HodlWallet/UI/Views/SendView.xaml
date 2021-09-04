@@ -87,8 +87,7 @@
                                        VerticalOptions="Center" />
                             </StackLayout>
 
-                            <Label x:Name="ISOLabel"
-                                   Style="{DynamicResource CustomLabel}"
+                            <Label Style="{DynamicResource CustomLabel}"
                                    FontSize="Small"
                                    FlexLayout.Grow="1"
                                    HorizontalTextAlignment="Center"
@@ -145,12 +144,13 @@
                             <Label Text="{i18n:Translate Text=Send.fee}"
                                    Style="{StaticResource CustomLabel}" />
 
-                            <Entry Placeholder="0.0001"
+                            <Entry Placeholder="1"
                                    Text="{Binding Fee}"
                                    Style="{StaticResource CustomEntry}"
                                    TextColor="{DynamicResource TextPrimary}"
                                    BackgroundColor="Transparent"
                                    PlaceholderColor="{DynamicResource TextPrimary}"
+                                   Keyboard="Numeric"
                                    Margin="0, 0, 0, 10" />
                         </StackLayout>
                     </StackLayout>

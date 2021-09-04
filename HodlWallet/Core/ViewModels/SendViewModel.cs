@@ -54,7 +54,7 @@ namespace HodlWallet.Core.ViewModels
 
         string _TransactionFeeText;
         string _EstConfirmationText;
-        string _ISOLabel;
+        string _ISOLabel = "BTC";
 
         public string TransactionFeeText
         {
