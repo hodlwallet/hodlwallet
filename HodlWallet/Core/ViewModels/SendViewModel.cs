@@ -313,7 +313,7 @@ namespace HodlWallet.Core.ViewModels
                 var totalOut = Tx.TotalOut.ToDecimal(MoneyUnit.BTC);
                 _TransactionToBroadcast = Tx;
 
-                MessagingCenter.Send(this, "AskToBroadcastTransaction", (totalOut, Fees));
+                MessagingCenter.Send(this, "AskToBroadcastTransaction", (AmountToSend, Fees));
             }
             else
             {
