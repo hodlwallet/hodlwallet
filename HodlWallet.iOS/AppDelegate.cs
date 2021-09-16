@@ -38,6 +38,7 @@ namespace HodlWallet.iOS
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
         IWalletService WalletService => global::Xamarin.Forms.DependencyService.Get<IWalletService>();
+        UIVisualEffectView blurView = null;
 
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -57,6 +58,29 @@ namespace HodlWallet.iOS
             SetupLogging();
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override void OnActivated(UIApplication uiApplication)
+        {
+            base.OnActivated(uiApplication);
+
+            blurView?.RemoveFromSuperview();
+            blurView?.Dispose();
+            blurView = null;
+        }
+
+        public override void OnResignActivation(UIApplication uiApplication)
+        {
+            base.OnResignActivation(uiApplication);
+
+            using var blurEffect = UIBlurEffect.FromStyle(UIBlurEffectStyle.Dark);
+
+            blurView = new UIVisualEffectView(blurEffect)
+            {
+                Frame = UIApplication.SharedApplication.KeyWindow.RootViewController.View.Bounds
+            };
+
+            UIApplication.SharedApplication.KeyWindow.RootViewController.View.AddSubview(blurView);
         }
 
         void SetupLogging()
