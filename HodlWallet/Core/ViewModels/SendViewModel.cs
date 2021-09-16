@@ -37,6 +37,7 @@ using Liviano.Exceptions;
 using Liviano.Extensions;
 using HodlWallet.UI.Views;
 using System.Diagnostics;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -163,7 +164,11 @@ namespace HodlWallet.Core.ViewModels
 
             if (sent == true)
             {
-                await Shell.Current.GoToAsync("home");
+                await Shell.Current.GoToAsync("../send");
+                AddressToSendTo = "";
+                AmountToSend = 0;
+                SliderValue = MAX_SLIDER_VALUE * 0.5;
+                DisplayProcessAddressErrorAlert(LocaleResources.Send_transactionSendedMessage);
             }
             else
             {

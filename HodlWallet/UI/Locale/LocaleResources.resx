@@ -844,4 +844,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Please select the type of account</value>
     <comment>label that's shown when the user haven't selected a type of account</comment>
   </data>
+  <data name="Send.transactionSendedMessage" xml:space="preserve">
+    <value>Transaction beggined succesfully, waiting for confirmation.</value>
+    <comment>label of toast message for transaction beggined</comment>
+  </data>
 </root>
