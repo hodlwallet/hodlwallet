@@ -65,6 +65,21 @@
                                     </svg:Icon.GestureRecognizers>
                                 </svg:Icon>
                             </StackLayout>
+
+                            <StackLayout Orientation="Vertical"
+                                         FlexLayout.Grow="1">
+                                <Label Text="{i18n:Translate Text=Send.clear}"
+                                       Style="{DynamicResource CustomLabel}"
+                                       FontSize="Small"
+                                       HorizontalTextAlignment="Center" />
+                                <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
+                                          WidthRequest="16"
+                                          HeightRequest="16">
+                                    <svg:Icon.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ClearAdressCommand}" />
+                                    </svg:Icon.GestureRecognizers>
+                                </svg:Icon>
+                            </StackLayout>
                         </FlexLayout>
 
                         <FlexLayout Direction="Row"
@@ -101,6 +116,18 @@
                                 <svg:Icon.GestureRecognizers>
                                     <TapGestureRecognizer
                                         Command="{Binding SwitchCurrencyCommand}" />
+                                </svg:Icon.GestureRecognizers>
+                            </svg:Icon>
+
+
+                            <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
+                                      FlexLayout.Grow="1"
+                                      FlexLayout.AlignSelf="Center"
+                                      WidthRequest="16"
+                                      HeightRequest="16">
+                                <svg:Icon.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding ClearAmountCommand}" />
                                 </svg:Icon.GestureRecognizers>
                             </svg:Icon>
                         </FlexLayout>

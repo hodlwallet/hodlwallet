@@ -848,4 +848,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Transaction beggined succesfully, waiting for confirmation.</value>
     <comment>label of toast message for transaction beggined</comment>
   </data>
+  <data name="Send.clear" xml:space="preserve">
+    <value>Clear</value>
+    <comment>label for clear scan button</comment>
+  </data>
 </root>

@@ -1406,6 +1406,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        internal static string Send_clear {
+            get {
+                return ResourceManager.GetString("Send.clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Economy.
         /// </summary>
         internal static string Send_economyFee {
