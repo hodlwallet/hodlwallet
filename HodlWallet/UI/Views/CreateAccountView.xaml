@@ -29,8 +29,9 @@
                         FontSize="Large"
                         FlexLayout.AlignSelf="Center" />
                 <ContentView>
-                    <Entry Placeholder="Bitcoin Account"
+                    <Entry Placeholder="{i18n:Translate Text=AddAccount.placeholder}"
                         Text="{Binding AccountName}"
+                        MaxLength="32"
                         Style="{DynamicResource CustomEntry}"
                         TextColor="{DynamicResource TextPrimary}"
                         BackgroundColor="Transparent"

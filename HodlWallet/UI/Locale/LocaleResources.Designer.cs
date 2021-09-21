@@ -592,7 +592,15 @@ namespace HodlWallet.UI.Locale {
                 return ResourceManager.GetString("AddAccount.header", resourceCulture);
             }
         }
-        
+
+        internal static string AddAccount_placeholder
+        {
+            get
+            {
+                return ResourceManager.GetString("AddAccount.placeholder", resourceCulture);
+            }
+        }
+
         internal static string AddAccount_subheader {
             get {
                 return ResourceManager.GetString("AddAccount.subheader", resourceCulture);

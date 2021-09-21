@@ -496,6 +496,10 @@
     <value>Name</value>
     <comment>label for create an account</comment>
   </data>
+  <data name="AddAccount.placeholder" xml:space="preserve">
+    <value>Bitcoin Account</value>
+    <comment>label for create an account</comment>
+  </data>
   <data name="AddAccount.options" xml:space="preserve">
     <value>Type</value>
     <comment>label for type options when create an account</comment>
