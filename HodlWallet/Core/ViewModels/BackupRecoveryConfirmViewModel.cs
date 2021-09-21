@@ -30,37 +30,58 @@ using Xamarin.Forms;
 using HodlWallet.Core.Models;
 using HodlWallet.UI.Converters;
 using HodlWallet.Core.Utils;
+using System.Collections.ObjectModel;
 
 namespace HodlWallet.Core.ViewModels
 {
     public class BackupRecoveryConfirmViewModel : BaseViewModel
     {
-        public List<BackupWordModel> ShuffledWordsList { get; set; } = new();
-
-        public List<BackupWordModel> Words { get; set; } = new();
-
+        public ObservableCollection<BackupWordModel> ShuffledWordsCollection { get; set; }
+        public ObservableCollection<BackupWordModel> OrderedWordsCollection { get; set; } = new();
+        public List<BackupWordModel> OriginalWordsList { get; set; } = new();
         public ICommand NextCommand { get; }
+        public ICommand TapUnorderedCommand { get; }
+        public ICommand TapOrderedCommand { get; }
 
         public BackupRecoveryConfirmViewModel()
         {
             NextCommand = new Command(NextWord);
+            TapUnorderedCommand = new Command(UnorderedTappedWord);
+            TapOrderedCommand = new Command(OrderedTappedWord);
             GenerateShuffledMnemonics();
         }
 
         void GenerateShuffledMnemonics()
         {
+            List<BackupWordModel> shuffledWordsList = new();
             //Bring the Mnemonic list from SecureStorage as a List and copy it to a new list
-            Words = MnemonicStringToList.GenerateWordsList();
-            ShuffledWordsList.AddRange(Words);
-
+            OriginalWordsList = MnemonicStringToList.GenerateWordsList();
+            shuffledWordsList.AddRange(OriginalWordsList);
             //Suffle the copy of the original list.
-            ShuffledWordsList.Shuffle();
+            shuffledWordsList.Shuffle();
+            ShuffledWordsCollection = new ObservableCollection<BackupWordModel>(shuffledWordsList);
+
         }
 
         private void NextWord()
         {
             Debug.WriteLine("============> ALL DONE!!!");
-            MessagingCenter.Send(this, "NavigateToExtraBackupView", ShuffledWordsList);
+            //MessagingCenter.Send(this, "NavigateToExtraBackupView", shuffledWordsList);
+        }
+        void UnorderedTappedWord(object obj)
+        {
+            var TappedWord = obj as BackupWordModel;
+            Debug.WriteLine($"Tapped Label!! {TappedWord.WordIndex} --> {TappedWord.Word}");
+            OrderedWordsCollection.Add(TappedWord);
+            ShuffledWordsCollection.Remove(TappedWord);
+        }
+
+        void OrderedTappedWord(object obj)
+        {
+            var TappedWord = obj as BackupWordModel;
+            Debug.WriteLine($"Tapped Label!! {TappedWord.WordIndex} --> {TappedWord.Word}");
+            ShuffledWordsCollection.Add(TappedWord);
+            OrderedWordsCollection.Remove(TappedWord);
         }
     }
 }

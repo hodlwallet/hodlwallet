@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupRecoveryConfirmView"
              BackgroundColor="{DynamicResource BackgroundPrimary}">
     <ContentPage.BindingContext>
@@ -13,38 +14,77 @@
                         JustifyContent="SpaceAround"
                         BackgroundColor="{DynamicResource BackgroundPrimary}"
                         AlignItems="Center">
-
+            <Label Text="{i18n:Translate Text=BackupWord.header}"
+                       FontFamily="{StaticResource Sans-Regular}"
+                       TextColor="{DynamicResource SyncGradientStart}"
+                       HorizontalTextAlignment="Center"
+                       Margin="0, 20" />
             <FlexLayout Direction="Row"
-                                    Wrap="Wrap"
-                                    JustifyContent="SpaceAround"
-                                    AlignItems="Center"
-                                    BindableLayout.ItemsSource="{Binding ShuffledWordsList}"                              
-                                    Margin="15"                                    
-                                    FlexLayout.Grow="4">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
-                                                    Margin="2" >
-                            <StackLayout Orientation="Horizontal" Margin="2">
-                                <Label Text="{Binding WordIndex}"
-                                                    FontFamily="{StaticResource Sans-Regular}"
-                                                    TextColor="{DynamicResource SyncGradientStart}"
-                                                    FontSize="Micro" 
-                                                    />
+                        Wrap="Wrap"
+                        JustifyContent="SpaceAround"
+                        AlignItems="Center"
+                        Margin="15"
+                        FlexLayout.Grow="2">
+                <CollectionView ItemsSource="{Binding OrderedWordsCollection}"
+                            ItemsLayout="VerticalGrid, 4"
+                            VerticalOptions="CenterAndExpand">
+                    <CollectionView.ItemTemplate >
+                        <DataTemplate>
+                            <StackLayout>
                                 <Label Text="{Binding Word}"
-                                                Style="{DynamicResource MnemonicLabel}" 
-                                                Margin="0,0,5,0" />
+                                       Margin="5"
+                                       Style="{DynamicResource MnemonicLabel}"
+                                       BackgroundColor="{DynamicResource BackgroundSecondary}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                                    Command="{Binding
+                                                        Source={RelativeSource
+                                                        AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
+                                                        Path=TapOrderedCommand}"
+                                                    CommandParameter="{Binding .}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
                             </StackLayout>
-                        </ContentView>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </FlexLayout>
 
-            <Button Text="AAAAA"
+            <FlexLayout Direction="Row"
+                        Wrap="Wrap"
+                        JustifyContent="SpaceAround"
+                        AlignItems="Center"
+                        Margin="15"
+                        FlexLayout.Grow="2">
+                <CollectionView ItemsSource="{Binding ShuffledWordsCollection}"
+                            ItemsLayout="VerticalGrid, 4"
+                                VerticalOptions="CenterAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Label Text="{Binding Word}"
+                                       Margin="5"
+                                       Style="{DynamicResource MnemonicLabel}"
+                                       BackgroundColor="{DynamicResource BackgroundSecondary}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                                Command="{Binding
+                                                    Source={RelativeSource
+                                                    AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
+                                                    Path=TapUnorderedCommand}"
+                                                CommandParameter="{Binding .}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </FlexLayout>
+            <Button Text="{i18n:Translate Text=BackupWord.next}"
                         Style="{DynamicResource CustomButton}"
                         BackgroundColor="{DynamicResource BackgroundSecondary}"
                         CornerRadius="0"
-                        FontSize="Large"                        
+                        FontSize="Large"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="1"
                         VerticalOptions="EndAndExpand"
