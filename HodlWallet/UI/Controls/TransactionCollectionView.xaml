@@ -14,7 +14,7 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <Frame HasShadow="False"
-           HeightRequest="450"
+           VerticalOptions="FillAndExpand"
            BackgroundColor="Transparent"
            Padding="0">
         <StackLayout>
@@ -55,7 +55,7 @@
                             <!--<Image Source="{Binding IsSend, Converter={StaticResource IsSendToIconConverter}}" Opacity="0.3" Margin="15, 2, 0, 2" HeightRequest="30" WidthRequest="30" />-->
                             <Grid
                                 Margin="0, 2, 15, 2"
-                                Padding="10"
+                                Padding="12"
                                 BackgroundColor="{DynamicResource BackgroundPrimary}"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
