@@ -102,14 +102,14 @@ namespace HodlWallet.UI
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            AuthenticationService.LastAuth = DateTimeOffset.UtcNow;
         }
 
         protected override void OnResume()
         {
             if (!AuthenticationService.IsAuthenticated)
             {
-                AuthenticationService.ShowLogin();
+                AuthenticationService.ShowLogin(action: "pop");
             }
         }
 

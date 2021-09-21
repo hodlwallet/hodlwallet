@@ -30,6 +30,7 @@ using Xamarin.Forms;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
 using HodlWallet.UI.Views;
+using HodlWallet.UI;
 
 [assembly: Dependency(typeof(AuthenticationService))]
 namespace HodlWallet.Core.Services
@@ -68,9 +69,18 @@ namespace HodlWallet.Core.Services
             }
         }
 
-        public void ShowLogin()
+        public void ShowLogin(string action = null)
         {
-            Application.Current.MainPage = new LoginView();
+            if (action == "pop")
+            {
+                var appShell = Application.Current.MainPage as AppShell;
+
+                appShell.Navigation.PushModalAsync(new LoginView(action));
+
+                return;
+            }
+
+            Application.Current.MainPage = new LoginView(action);
         }
 
         public bool Authenticate(string input)

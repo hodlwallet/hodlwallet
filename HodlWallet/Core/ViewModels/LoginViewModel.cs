@@ -27,24 +27,17 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 
-using HodlWallet.Core.Services;
-
 namespace HodlWallet.Core.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        List<int> _Pin = new List<int>();
-        object _Lock = new object();
+        List<int> ping = new ();
+        object @lock = new ();
 
         public ICommand DigitCommand { get; }
         public ICommand BackspaceCommand { get; }
 
-        //string _Header;
-        //public string Header
-        //{
-        //    get => _Header;
-        //    set => SetProperty(ref _Header, value);
-        //}
+        public string Action { get; set; }
 
         public LoginViewModel()
         {
@@ -57,22 +50,22 @@ namespace HodlWallet.Core.ViewModels
             Debug.WriteLine($"[AddDigit] Adding: {digit}");
 
             // Digit has already being inputed
-            if (_Pin.Count >= 6) return;
+            if (ping.Count >= 6) return;
 
-            lock (_Lock)
+            lock (@lock)
             {
-                _Pin.Add(digit);
+                ping.Add(digit);
             }
 
-            MessagingCenter.Send(this, "DigitAdded", _Pin.Count);
+            MessagingCenter.Send(this, "DigitAdded", ping.Count);
 
             // Digit is not complete, input more
-            if (_Pin.Count != 6) return;
+            if (ping.Count != 6) return;
 
             // _Pin.Count == 6 now...
             // We're done inputting our PIN
 
-            string input = string.Join(string.Empty, _Pin.ToArray());
+            string input = string.Join(string.Empty, ping.ToArray());
 
             // Check if it's the pin
             if (AuthenticationService.Authenticate(input))
@@ -99,7 +92,7 @@ namespace HodlWallet.Core.ViewModels
             Debug.WriteLine($"[AddDigit] Incorrect PIN: {input}");
 
             // Sadly it's not the pin! We clear and launch an animation
-            _Pin.Clear();
+            ping.Clear();
 
             MessagingCenter.Send(this, "IncorrectPinAnimation");
         }
@@ -108,13 +101,13 @@ namespace HodlWallet.Core.ViewModels
         {
             Debug.WriteLine("[RemoveDigit]");
 
-            if (_Pin.Count <= 0) return;
+            if (ping.Count <= 0) return;
 
-            lock (_Lock)
+            lock (@lock)
             {
-                _Pin.RemoveAt(_Pin.Count - 1);
+                ping.RemoveAt(ping.Count - 1);
 
-                MessagingCenter.Send(this, "DigitRemoved", _Pin.Count + 1);
+                MessagingCenter.Send(this, "DigitRemoved", ping.Count + 1);
             }
         }
     }
