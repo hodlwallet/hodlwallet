@@ -31,7 +31,7 @@ namespace HodlWallet.Core.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        List<int> ping = new ();
+        List<int> pin = new ();
         object @lock = new ();
 
         public ICommand DigitCommand { get; }
@@ -50,22 +50,22 @@ namespace HodlWallet.Core.ViewModels
             Debug.WriteLine($"[AddDigit] Adding: {digit}");
 
             // Digit has already being inputed
-            if (ping.Count >= 6) return;
+            if (pin.Count >= 6) return;
 
             lock (@lock)
             {
-                ping.Add(digit);
+                pin.Add(digit);
             }
 
-            MessagingCenter.Send(this, "DigitAdded", ping.Count);
+            MessagingCenter.Send(this, "DigitAdded", pin.Count);
 
             // Digit is not complete, input more
-            if (ping.Count != 6) return;
+            if (pin.Count != 6) return;
 
             // _Pin.Count == 6 now...
             // We're done inputting our PIN
 
-            string input = string.Join(string.Empty, ping.ToArray());
+            string input = string.Join(string.Empty, pin.ToArray());
 
             // Check if it's the pin
             if (AuthenticationService.Authenticate(input))
@@ -92,7 +92,7 @@ namespace HodlWallet.Core.ViewModels
             Debug.WriteLine($"[AddDigit] Incorrect PIN: {input}");
 
             // Sadly it's not the pin! We clear and launch an animation
-            ping.Clear();
+            pin.Clear();
 
             MessagingCenter.Send(this, "IncorrectPinAnimation");
         }
@@ -101,13 +101,13 @@ namespace HodlWallet.Core.ViewModels
         {
             Debug.WriteLine("[RemoveDigit]");
 
-            if (ping.Count <= 0) return;
+            if (pin.Count <= 0) return;
 
             lock (@lock)
             {
-                ping.RemoveAt(ping.Count - 1);
+                pin.RemoveAt(pin.Count - 1);
 
-                MessagingCenter.Send(this, "DigitRemoved", ping.Count + 1);
+                MessagingCenter.Send(this, "DigitRemoved", pin.Count + 1);
             }
         }
     }
