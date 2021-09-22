@@ -109,7 +109,7 @@ namespace HodlWallet.UI
         {
             var isAlreadyTryingToLogin = (
                 Application.Current.MainPage is LoginView ||
-                Application.Current.MainPage.Navigation.NavigationStack[0] is LoginView
+                (Application.Current.MainPage as AppShell).Navigation.NavigationStack[0] is LoginView
             );
 
             if (!AuthenticationService.IsAuthenticated && !isAlreadyTryingToLogin)

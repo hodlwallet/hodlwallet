@@ -71,16 +71,18 @@ namespace HodlWallet.Core.Services
 
         public void ShowLogin(string action = null)
         {
+            var view = new LoginView(action);
+
             if (action == "pop")
             {
                 var appShell = Application.Current.MainPage as AppShell;
 
-                appShell.Navigation.PushModalAsync(new LoginView(action));
+                appShell.Navigation.PushModalAsync(view);
 
                 return;
             }
 
-            Application.Current.MainPage = new LoginView(action);
+            Application.Current.MainPage = view;
         }
 
         public bool Authenticate(string input)
