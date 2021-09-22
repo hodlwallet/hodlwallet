@@ -37,11 +37,11 @@
                                        BackgroundColor="{DynamicResource BackgroundSecondary}">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer
-                                                    Command="{Binding
-                                                        Source={RelativeSource
-                                                        AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
-                                                        Path=TapOrderedCommand}"
-                                                    CommandParameter="{Binding .}" />
+                                            Command="{Binding
+                                                Source={RelativeSource
+                                                AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
+                                                Path=TapOrderedCommand}"
+                                            CommandParameter="{Binding .}" />
                                     </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>
@@ -80,15 +80,17 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </FlexLayout>
-            <Button Text="{i18n:Translate Text=BackupWord.next}"
-                        Style="{DynamicResource CustomButton}"
-                        BackgroundColor="{DynamicResource BackgroundSecondary}"
-                        CornerRadius="0"
-                        FontSize="Large"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1"
-                        VerticalOptions="EndAndExpand"
-                        Command="{Binding NextCommand}" />
+            <Button x:Name="nextButton"
+                    Text="{i18n:Translate Text=BackupWord.next}"
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                    CornerRadius="0"
+                    FontSize="Large"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="1"
+                    VerticalOptions="EndAndExpand"
+                    IsEnabled="False"
+                    Command="{Binding NextCommand}" />
 
         </FlexLayout>
     </ContentPage.Content>

@@ -31,17 +31,21 @@ using HodlWallet.Core.Models;
 using HodlWallet.UI.Converters;
 using HodlWallet.Core.Utils;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace HodlWallet.Core.ViewModels
 {
     public class BackupRecoveryConfirmViewModel : BaseViewModel
     {
+        public bool CollectionsEqual { get; set; } = false;
         public ObservableCollection<BackupWordModel> ShuffledWordsCollection { get; set; }
         public ObservableCollection<BackupWordModel> OrderedWordsCollection { get; set; } = new();
         public List<BackupWordModel> OriginalWordsList { get; set; } = new();
         public ICommand NextCommand { get; }
         public ICommand TapUnorderedCommand { get; }
         public ICommand TapOrderedCommand { get; }
+
+
 
         public BackupRecoveryConfirmViewModel()
         {
@@ -65,23 +69,29 @@ namespace HodlWallet.Core.ViewModels
 
         private void NextWord()
         {
-            Debug.WriteLine("============> ALL DONE!!!");
             //MessagingCenter.Send(this, "NavigateToExtraBackupView", shuffledWordsList);
         }
         void UnorderedTappedWord(object obj)
         {
             var TappedWord = obj as BackupWordModel;
-            Debug.WriteLine($"Tapped Label!! {TappedWord.WordIndex} --> {TappedWord.Word}");
             OrderedWordsCollection.Add(TappedWord);
             ShuffledWordsCollection.Remove(TappedWord);
+            if (OrderedWordsCollection.Count() == OriginalWordsList.Count())
+                CheckWordLists();
         }
 
         void OrderedTappedWord(object obj)
         {
             var TappedWord = obj as BackupWordModel;
-            Debug.WriteLine($"Tapped Label!! {TappedWord.WordIndex} --> {TappedWord.Word}");
             ShuffledWordsCollection.Add(TappedWord);
             OrderedWordsCollection.Remove(TappedWord);
         }
+
+        void CheckWordLists()
+        {
+            CollectionsEqual = OrderedWordsCollection.SequenceEqual(OriginalWordsList);
+            Console.WriteLine("The lists {0} equal.", CollectionsEqual ? "are" : "are not");
+        }
+
     }
 }
