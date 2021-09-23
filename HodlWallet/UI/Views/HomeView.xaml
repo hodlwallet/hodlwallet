@@ -11,6 +11,7 @@
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="search" Clicked="Search_Clicked" />
+        <controls:SyncingToolbarItem />
     </ContentPage.ToolbarItems>
     <Shell.TitleView>
         <Label x:Name="BalanceNavigationTitleLabel" Text="0.02454691 BTC" VerticalOptions="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource Mono-Regular}" FontSize="Medium" Opacity="0.00" />

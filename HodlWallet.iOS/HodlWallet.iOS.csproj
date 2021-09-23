@@ -235,6 +235,21 @@
     <BundleResource Include="Resources\search.png" />
     <BundleResource Include="Resources\search%402x.png" />
     <BundleResource Include="Resources\search%403x.png" />
+    <BundleResource Include="Resources\node.png" />
+    <BundleResource Include="Resources\node%402x.png" />
+    <BundleResource Include="Resources\node%403x.png" />
+    <BundleResource Include="Resources\node-0-connections.png" />
+    <BundleResource Include="Resources\node-0-connections%402x.png" />
+    <BundleResource Include="Resources\node-0-connections%403x.png" />
+    <BundleResource Include="Resources\node-1-connections.png" />
+    <BundleResource Include="Resources\node-1-connections%402x.png" />
+    <BundleResource Include="Resources\node-1-connections%403x.png" />
+    <BundleResource Include="Resources\node-2-connections.png" />
+    <BundleResource Include="Resources\node-2-connections%402x.png" />
+    <BundleResource Include="Resources\node-2-connections%403x.png" />
+    <BundleResource Include="Resources\node-3-connections.png" />
+    <BundleResource Include="Resources\node-3-connections%402x.png" />
+    <BundleResource Include="Resources\node-3-connections%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
