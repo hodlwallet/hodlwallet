@@ -39,6 +39,22 @@ namespace HodlWallet.Core.ViewModels
 
         public string Action { get; set; }
 
+        bool loginFormVisible = false;
+        public bool LoginFormVisible
+        {
+            get
+            {
+                return loginFormVisible;
+            }
+
+            set
+            {
+                loginFormVisible = value;
+
+                AuthenticationService.ShowingLoginForm = loginFormVisible;
+            }
+        }
+
         public LoginViewModel()
         {
             DigitCommand = new Command<string>((s) => _ = AddDigit(int.Parse(s)));

@@ -69,6 +69,8 @@ namespace HodlWallet.Core.Services
             }
         }
 
+        public bool ShowingLoginForm { get; set; }
+
         public void ShowLogin(string action = null)
         {
             var view = new LoginView(action);

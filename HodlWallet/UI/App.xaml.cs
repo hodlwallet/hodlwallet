@@ -107,12 +107,7 @@ namespace HodlWallet.UI
 
         protected override void OnResume()
         {
-            var isAlreadyTryingToLogin = (
-                Application.Current.MainPage is LoginView ||
-                (Application.Current.MainPage as AppShell).Navigation.NavigationStack[0] is LoginView
-            );
-
-            if (!AuthenticationService.IsAuthenticated && !isAlreadyTryingToLogin)
+            if (!AuthenticationService.IsAuthenticated && !AuthenticationService.ShowingLoginForm)
             {
                 AuthenticationService.ShowLogin(action: "pop");
             }

@@ -32,6 +32,7 @@ namespace HodlWallet.Core.Interfaces
     public interface IAuthenticationService
     {
         DateTimeOffset LastAuth { get; set; }
+        bool ShowingLoginForm { get; set; }
         bool IsAuthenticated { get; set; }
         void ShowLogin(string action = null);
         bool Authenticate(string input);

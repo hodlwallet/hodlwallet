@@ -57,11 +57,20 @@ namespace HodlWallet.UI.Views
             }
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ViewModel.LoginFormVisible = true;
+        }
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
 
             if (ViewModel.IsLoading) ViewModel.IsLoading = false;
+
+            ViewModel.LoginFormVisible = false;
         }
 
         void SubscribeToMessages()
@@ -157,9 +166,9 @@ namespace HodlWallet.UI.Views
             Application.Current.MainPage = new ControlsDemoView();
         }
 
-        private void CancelButtonClicked(object sender, EventArgs e)
+        void CancelButtonClicked(object sender, EventArgs e)
         {
-                Navigation.PopModalAsync();
+            Navigation.PopModalAsync();
         }
     }
 }
