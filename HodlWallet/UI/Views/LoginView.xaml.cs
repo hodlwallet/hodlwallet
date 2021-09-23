@@ -20,16 +20,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
-using HodlWallet.Core.Interfaces;
-using System;
-using HodlWallet.UI.Views.Demos;
 using HodlWallet.Core.Services;
+using HodlWallet.UI.Views.Demos;
 
 namespace HodlWallet.UI.Views
 {
@@ -42,23 +41,27 @@ namespace HodlWallet.UI.Views
 
         LoginViewModel ViewModel => (LoginViewModel)BindingContext;
 
-        readonly string next = null;
-
-        public LoginView(string next = null)
+        public LoginView(string action = null)
         {
             InitializeComponent();
-
             SubscribeToMessages();
-            this.next = next;
 
-            if (next == "update") 
+            ViewModel.Action = action;
+
+            if (ViewModel.Action == "update")
             {
                 LogoFront.IsVisible = false;
                 Header.Text = Locale.LocaleResources.Pin_updateHeader;
                 CancelButton.IsEnabled = true;
                 CancelButton.IsVisible = true;
             }
+        }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ViewModel.LoginFormVisible = true;
         }
 
         protected override void OnDisappearing()
@@ -66,6 +69,8 @@ namespace HodlWallet.UI.Views
             base.OnDisappearing();
 
             if (ViewModel.IsLoading) ViewModel.IsLoading = false;
+
+            ViewModel.LoginFormVisible = false;
         }
 
         void SubscribeToMessages()
@@ -112,19 +117,21 @@ namespace HodlWallet.UI.Views
         {
             Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
 
-            // Incase we're faster than light, we call the constructor anyways.
-
-            if (next == "update")
-            { // Update PIN
+            if (ViewModel.Action == "update") // Update PIN
+            {
                 Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
+
+                return;
             }
-            else
-            { // Login
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    Application.Current.MainPage = new AppShell();
-                });
+            else if (ViewModel.Action == "pop") // Login after logout or timeout
+            {
+                Navigation.PopModalAsync();
+
+                return;
             }
+
+            // Init app after startup, new wallet or restore
+            Application.Current.MainPage = new AppShell();
         }
 
         void ResetPin(LoginViewModel _)
@@ -159,9 +166,9 @@ namespace HodlWallet.UI.Views
             Application.Current.MainPage = new ControlsDemoView();
         }
 
-        private void CancelButtonClicked(object sender, EventArgs e)
+        void CancelButtonClicked(object sender, EventArgs e)
         {
-                Navigation.PopModalAsync();
+            Navigation.PopModalAsync();
         }
     }
 }

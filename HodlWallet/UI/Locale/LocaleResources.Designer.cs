@@ -297,6 +297,17 @@ namespace HodlWallet.UI.Locale {
         /// <summary>
         ///   Looks up a localized string similar to Select from a variety of account types..
         /// </summary>
+        internal static string AddAccount_placeholder
+        {
+            get
+            {
+                return ResourceManager.GetString("AddAccount.placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select from a variety of account types..
+        /// </summary>
         internal static string AddAccount_subheader {
             get {
                 return ResourceManager.GetString("AddAccount.subheader", resourceCulture);
