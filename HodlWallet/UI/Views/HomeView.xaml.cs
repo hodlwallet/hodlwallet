@@ -54,9 +54,7 @@ namespace HodlWallet.UI.Views
 
             ViewModel.View_OnAppearing();
 
-            ViewModel.InitializeWalletAndPrecio();
-
-            InitializeDisplayedCurrency();
+            ViewModel.InitializeWalletAndPrecio();        
         }
 
         protected override void OnDisappearing()
@@ -64,18 +62,6 @@ namespace HodlWallet.UI.Views
             base.OnDisappearing();
 
             ViewModel.View_OnDisappearing();
-        }
-
-        void InitializeDisplayedCurrency()
-        {
-            if (ViewModel.Currency == "BTC")
-            {
-                //BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
-            }
-            else
-            {
-                //BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
-            }
         }
 
         void SubscribeToMessages()
