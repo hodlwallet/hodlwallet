@@ -6,7 +6,6 @@
     x:Class="HodlWallet.UI.Controls.FlyoutMenuItems"
     x:DataType="models:AccountModel">
     <FlexLayout Direction="Row"
-                Wrap="Wrap"
                 JustifyContent="SpaceEvenly">
         <Label Text="{Binding AccountName}"
                Style="{Binding CustomStyle}" 

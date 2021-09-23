@@ -40,6 +40,7 @@ namespace HodlWallet.Core.ViewModels
         public IPrecioHttpService PrecioHttpService => RestService.For<IPrecioHttpService>(Constants.PRECIO_HOST_URL);
         public IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
         public IPermissions PermissionsService => DependencyService.Get<IPermissions>();
+        public IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
 
         bool isLoading;
         public bool IsLoading

@@ -1,5 +1,8 @@
 ﻿//
-// PinSettingsView.xaml.cs
+// IAuthenticationService.cs
+//
+// Author:
+//       Igor Guerrero <igorgue@protonmail.com>
 //
 // Copyright (c) 2021 HODL Wallet
 //
@@ -21,39 +24,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
-namespace HodlWallet.UI.Views
+namespace HodlWallet.Core.Interfaces
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PinSettingsView : ContentPage
+    public interface IAuthenticationService
     {
-        public PinSettingsView()
-        {
-            InitializeComponent();
-        }
-        private void CloseToolbarItem_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PopModalAsync();
-        }
-
-        private void UpdatePin_Clicked(object sender, EventArgs e)
-        {
-            var view = new LoginView("update");
-            var nav = new NavigationPage(view);
-
-            Navigation.PushModalAsync(nav); 
-        }
-
-        private void PinSpendingLimits_Clicked(object sender, EventArgs e)
-        {
-
-        }
+        DateTimeOffset LastAuth { get; set; }
+        bool ShowingLoginForm { get; set; }
+        bool IsAuthenticated { get; set; }
+        void ShowLogin(string action = null);
+        bool Authenticate(string input);
     }
 }
