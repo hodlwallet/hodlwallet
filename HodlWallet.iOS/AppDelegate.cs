@@ -62,17 +62,15 @@ namespace HodlWallet.iOS
 
         public override void OnActivated(UIApplication uiApplication)
         {
-            base.OnActivated(uiApplication);
-
             blurView?.RemoveFromSuperview();
             blurView?.Dispose();
             blurView = null;
+
+            base.OnActivated(uiApplication);
         }
 
         public override void OnResignActivation(UIApplication uiApplication)
         {
-            base.OnResignActivation(uiApplication);
-
             using var blurEffect = UIBlurEffect.FromStyle(UIBlurEffectStyle.Dark);
 
             blurView = new UIVisualEffectView(blurEffect)
@@ -81,6 +79,13 @@ namespace HodlWallet.iOS
             };
 
             UIApplication.SharedApplication.KeyWindow.RootViewController.View.AddSubview(blurView);
+
+            if (UIApplication.SharedApplication.KeyWindow.RootViewController.PresentedViewController != null)
+            {
+                UIApplication.SharedApplication.KeyWindow.RootViewController.PresentedViewController.View.AddSubview(blurView);
+            }
+
+            base.OnResignActivation(uiApplication);
         }
 
         void SetupLogging()
