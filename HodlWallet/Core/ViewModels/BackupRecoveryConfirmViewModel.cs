@@ -37,7 +37,7 @@ namespace HodlWallet.Core.ViewModels
 {
     public class BackupRecoveryConfirmViewModel : BaseViewModel
     {
-        public bool CollectionsEqual { get; set; } = false;
+        bool collectionsEqual = false;
         public ObservableCollection<BackupWordModel> ShuffledWordsCollection { get; set; }
         public ObservableCollection<BackupWordModel> OrderedWordsCollection { get; set; } = new();
         public List<BackupWordModel> OriginalWordsList { get; set; } = new();
@@ -71,6 +71,7 @@ namespace HodlWallet.Core.ViewModels
         {
             //MessagingCenter.Send(this, "NavigateToExtraBackupView", shuffledWordsList);
         }
+
         void UnorderedTappedWord(object obj)
         {
             var TappedWord = obj as BackupWordModel;
@@ -85,13 +86,21 @@ namespace HodlWallet.Core.ViewModels
             var TappedWord = obj as BackupWordModel;
             ShuffledWordsCollection.Add(TappedWord);
             OrderedWordsCollection.Remove(TappedWord);
+            collectionsEqual = false;
+            if (OrderedWordsCollection.Count() == OriginalWordsList.Count() - 1)
+                sendStatusNotification();
         }
 
         void CheckWordLists()
         {
-            CollectionsEqual = OrderedWordsCollection.SequenceEqual(OriginalWordsList);
-            Console.WriteLine("The lists {0} equal.", CollectionsEqual ? "are" : "are not");
+            collectionsEqual = OrderedWordsCollection.SequenceEqual(OriginalWordsList);
+            if (collectionsEqual)
+                sendStatusNotification();
         }
 
+        void sendStatusNotification()
+        {
+            MessagingCenter.Send(this, "CollectionsAreEqual", collectionsEqual);
+        }
     }
 }

@@ -30,15 +30,19 @@ namespace HodlWallet.UI.Views
 {
     public partial class BackupRecoveryConfirmView : ContentPage
     {
+        BackupRecoveryConfirmViewModel ViewModel => BindingContext as BackupRecoveryConfirmViewModel;
+
         public BackupRecoveryConfirmView()
         {
             InitializeComponent();
             SubscribeToMessages();
+            nextButton.IsEnabled = false;
         }
 
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "NavigateToExtraBackupView", NavigateToRootView);
+            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel, bool>(this, "CollectionsAreEqual", (page, enableButton) => nextButton.IsEnabled = enableButton);
         }
         
         void NavigateToRootView(BackupRecoveryConfirmViewModel _)

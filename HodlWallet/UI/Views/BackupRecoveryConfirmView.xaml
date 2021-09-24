@@ -27,7 +27,8 @@
                         FlexLayout.Grow="2">
                 <CollectionView ItemsSource="{Binding OrderedWordsCollection}"
                             ItemsLayout="VerticalGrid, 4"
-                            VerticalOptions="CenterAndExpand">
+                                ItemSizingStrategy="MeasureAllItems"
+                            VerticalOptions="CenterAndExpand" >
                     <CollectionView.ItemTemplate >
                         <DataTemplate>
                             <StackLayout>
@@ -89,9 +90,7 @@
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
                     VerticalOptions="EndAndExpand"
-                    IsEnabled="False"
                     Command="{Binding NextCommand}" />
-
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
