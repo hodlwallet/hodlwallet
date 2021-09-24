@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
     x:Class="HodlWallet.UI.Views.OnboardView"
-    BackgroundColor="{DynamicResource BackgroundSecondary}"
+    BackgroundColor="{DynamicResource Bg2}"
     NavigationPage.HasNavigationBar="False">
 <ContentPage.Content>
     <AbsoluteLayout>

@@ -36,8 +36,8 @@ namespace HodlWallet.UI.Views
     {
         RecoverViewModel ViewModel => BindingContext as RecoverViewModel;
 
-        Color TextPrimary => (Color)Application.Current.Resources["TextPrimary"];
-        Color TextError => (Color)Application.Current.Resources["TextError"];
+        Color Fg => (Color)Application.Current.Resources["Fg"];
+        Color FgError => (Color)Application.Current.Resources["FgError"];
 
         public RecoverView()
         {
@@ -87,9 +87,9 @@ namespace HodlWallet.UI.Views
             var word = entry.Text;
 
             if (WalletService.IsWordInWordlist(word, ViewModel.WalletService.GetWordListLanguage()))
-                entry.TextColor = TextPrimary;
+                entry.TextColor = Fg;
             else
-                entry.TextColor = TextError;
+                entry.TextColor = FgError;
         }
 
         void ShowRecoverSeedError(RecoverViewModel vm)

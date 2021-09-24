@@ -12,9 +12,9 @@
 
             <!-- Colors -->
             <!-- Named after the purpose they served, by this a color cannot be named
-                 "White" should be named TextPrimary
+                 "White" should be named Fg
                  "Primary" means the first color, then we could define
-                 TextSecondary and that could be "LightGray".
+                 Fg2 and that could be "LightGray".
                  Tip to keep this going: Repeating colors is fine. -->
 
             <!-- New colors better structure -->
@@ -35,6 +35,8 @@
             <Color x:Key="FgWarning">#FF8787</Color>
             <Color x:Key="FgError">#FF5F00</Color>
             <Color x:Key="FgComment">#6C6C6C</Color>
+            <Color x:Key="FgRed">#FF5F00</Color>
+            <Color x:Key="FgGreen">#43A047</Color>
 
             <!-- ColorPicker control colors-->
             <Color x:Key="ColorPicker0">#B71C1C</Color>
@@ -56,24 +58,6 @@
             <Color x:Key="ColorPicker16">#9E9E9E</Color>
             <Color x:Key="ColorPicker17">#607D8B</Color>
             <Color x:Key="ColorPickerSelected">#FFD75F</Color>
-
-            <!-- Legacy colors :( -->
-            <Color x:Key="BackgroundPrimary">#212121</Color>
-            <Color x:Key="BackgroundSecondary">#161616</Color>
-            <Color x:Key="TextPrimary">#F5F7FA</Color>
-            <Color x:Key="TextSecondary">#A3A8AD</Color>
-            <Color x:Key="TextDark">#212121</Color>
-            <Color x:Key="TextSuccess">#C89E26</Color>
-            <Color x:Key="TextError">Red</Color>
-            <Color x:Key="SelectedTab">#C89E26</Color>
-            <Color x:Key="InputPinOn">#C89E26</Color>
-            <Color x:Key="InputPinOff">#F5F7FA</Color>
-            <Color x:Key="UnselectedTab">#EBEBEB</Color>
-            <Color x:Key="SyncGradientStart">#DAAB28</Color>
-            <Color x:Key="SyncGradientEnd">#DBAC29</Color>
-            <Color x:Key="NavigationPrimary">#2196F3</Color>
-            <Color x:Key="IncreasePriceChange">#C89E26</Color>
-            <Color x:Key="DecreasePriceChange">Red</Color>
 
             <!-- Fonts -->
             <!-- All fonts are here, all that you ever need, they're named like this:

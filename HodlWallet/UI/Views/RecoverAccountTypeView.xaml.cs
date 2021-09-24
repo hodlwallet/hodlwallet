@@ -38,8 +38,8 @@ namespace HodlWallet.UI.Views
         bool initialLoad = true;
 
         RecoverAccountTypeViewModel ViewModel => BindingContext as RecoverAccountTypeViewModel;
-        Color SELECTED_COLOR => (Color)Application.Current.Resources["TextSuccess"];
-        Color UNSELECTED_COLOR => (Color)Application.Current.Resources["BackgroundSecondary"];
+        Color SELECTED_COLOR => (Color)Application.Current.Resources["FgSuccess"];
+        Color UNSELECTED_COLOR => (Color)Application.Current.Resources["Bg2"];
 
         public RecoverAccountTypeView()
         {

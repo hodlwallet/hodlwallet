@@ -22,16 +22,11 @@
 // THE SOFTWARE.
 using System;
 
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
-using HodlWallet.UI.Locale;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace HodlWallet.UI.Views
 {

@@ -42,8 +42,8 @@ namespace HodlWallet.UI.Views
     public partial class PriceView : ContentPage
     {
         string currentPeriod = "1d";
-        readonly Color increaseColor = (Color)Application.Current.Resources["IncreasePriceChange"];
-        readonly Color decreaseColor = (Color)Application.Current.Resources["DecreasePriceChange"];
+        readonly Color increaseColor = (Color)Application.Current.Resources["FgGreen"];
+        readonly Color decreaseColor = (Color)Application.Current.Resources["FgRed"];
 
         PriceViewModel ViewModel => (PriceViewModel)BindingContext;
 

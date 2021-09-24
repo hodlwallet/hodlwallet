@@ -9,11 +9,11 @@
         <ResourceDictionary>
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="FontFamily"
                         Value="{StaticResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{StaticResource TextPrimary}" />
+                        Value="{StaticResource Fg}" />
                 <Setter Property="FontSize"
                         Value="Large" />
             </Style>
@@ -22,7 +22,7 @@
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{StaticResource TextPrimary}" />
+                        Value="{StaticResource Fg}" />
                 <Setter Property="FlexLayout.AlignSelf"
                         Value="Start" />
             </Style>
@@ -260,7 +260,7 @@
                         FontFamily="{StaticResource Mono-Regular}"
                         Clicked="OnBackspaceTapped"
                         Command="{Binding BackspaceCommand}"
-                        TextColor="{StaticResource SyncGradientStart}" />
+                        TextColor="{StaticResource FgSuccess}" />
             </FlexLayout>
         </FlexLayout>
     </FlexLayout>

@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
-                        BackgroundColor="{DynamicResource BackgroundPrimary}">
+                        BackgroundColor="{DynamicResource Bg}">
                 <BoxView FlexLayout.Grow="1" />
 
                 <!--First Acknowledge Risk Term-->
@@ -20,7 +20,7 @@
                            Text="{i18n:Translate Text=AckRisk.term1}"
                            FontSize="Medium"
                            FontFamily="{StaticResource Sans-Regular}"
-                           TextColor="{DynamicResource SyncGradientStart}"
+                           TextColor="{DynamicResource FgSuccess}"
                            Margin="10">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnAcknowledgeRiskTermLabel_Tapped" />
@@ -36,7 +36,7 @@
                            Text="{i18n:Translate Text=AckRisk.term2}"
                            FontSize="Medium"
                            FontFamily="{StaticResource Sans-Regular}"
-                           TextColor="{DynamicResource SyncGradientStart}"
+                           TextColor="{DynamicResource FgSuccess}"
                            Margin="10">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnAcknowledgeRiskTermLabel_Tapped" />
@@ -52,7 +52,7 @@
                            Text="{i18n:Translate Text=AckRisk.term3}"
                            FontSize="Medium"
                            FontFamily="{StaticResource Sans-Regular}"
-                           TextColor="{DynamicResource SyncGradientStart}"
+                           TextColor="{DynamicResource FgSuccess}"
                            Margin="10">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnAcknowledgeRiskTermLabel_Tapped" />
@@ -68,7 +68,7 @@
                            Text="{i18n:Translate Text=AckRisk.term4}"
                            FontSize="Medium"
                            FontFamily="{StaticResource Sans-Regular}"
-                           TextColor="{DynamicResource SyncGradientStart}"
+                           TextColor="{DynamicResource FgSuccess}"
                            Margin="10">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnAcknowledgeRiskTermLabel_Tapped" />

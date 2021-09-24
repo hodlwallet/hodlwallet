@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              x:Class="HodlWallet.UI.Views.CreateAccountView"
              Title="{i18n:Translate Text=AddAccount.title}"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             BackgroundColor="{DynamicResource Bg}"
              NavigationPage.HasBackButton="False">
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="CloseToolbarItem"
@@ -23,7 +23,7 @@
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
                 JustifyContent="SpaceAround"
-                BackgroundColor="{DynamicResource BackgroundPrimary}"
+                BackgroundColor="{DynamicResource Bg}"
                 AlignItems="Stretch">
                 <Label Text="{i18n:Translate Text=AddAccount.entry}"
                         FontSize="Large"
@@ -33,7 +33,7 @@
                         Text="{Binding AccountName}"
                         MaxLength="32"
                         Style="{DynamicResource CustomEntry}"
-                        TextColor="{DynamicResource TextPrimary}"
+                        TextColor="{DynamicResource Fg}"
                         BackgroundColor="Transparent"
                         Margin="20,10" />
                     <ContentView.GestureRecognizers>
@@ -48,14 +48,14 @@
                     <RadioButton Content="{Binding AcountTypes[0]}"
                              IsChecked="True"
                              Style="{DynamicResource CustomRadioButton}"
-                             BackgroundColor="{DynamicResource BackgroundPrimary}"
+                             BackgroundColor="{DynamicResource Bg}"
                              CheckedChanged="OnAccountTypeCheckedChanged" 
-                             BorderColor="{DynamicResource TextPrimary}" />
+                             BorderColor="{DynamicResource Fg}" />
                     <RadioButton Grid.Row="1" Content="{Binding AcountTypes[1]}"
                              Style="{DynamicResource CustomRadioButton}"
-                             BackgroundColor="{DynamicResource BackgroundPrimary}"
+                             BackgroundColor="{DynamicResource Bg}"
                              CheckedChanged="OnAccountTypeCheckedChanged"
-                             BorderColor="{DynamicResource TextPrimary}" />
+                             BorderColor="{DynamicResource Fg}" />
                 </Grid>
                 <Label Text="{i18n:Translate Text=AddAccount.color}"
                         FontSize="Large"
@@ -66,7 +66,7 @@
                 <BoxView x:Name="boxView" FlexLayout.Grow="1"/>
                 <Button Text="{i18n:Translate Text=AddAccount.createButton}"
                         Style="{DynamicResource CustomButton}"
-                        BackgroundColor="{DynamicResource BackgroundSecondary}"
+                        BackgroundColor="{DynamicResource Bg2}"
                         CornerRadius="0"
                         FontSize="Large"
                         FlexLayout.AlignSelf="Stretch"
