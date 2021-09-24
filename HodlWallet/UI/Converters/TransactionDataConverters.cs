@@ -45,13 +45,16 @@ namespace HodlWallet.UI.Converters
 
     public class IsSendToStatusColorConverter : IValueConverter
     {
+        Color SendColor => (Color)Application.Current.Resources["FgSuccess"];
+        Color ReceiveColor => (Color)Application.Current.Resources["Fg2"];
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             bool isSend = (bool)value;
 
             return isSend
-                ? Color.FromHex(Constants.SYNC_GRADIENT_START_COLOR_HEX)
-                : Color.FromHex(Constants.GRAY_TEXT_TINT_COLOR_HEX);
+                ? SendColor
+                : ReceiveColor;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

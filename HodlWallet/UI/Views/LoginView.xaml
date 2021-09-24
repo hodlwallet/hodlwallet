@@ -8,7 +8,7 @@
              x:Class="HodlWallet.UI.Views.LoginView"
              x:DataType="vm:LoginViewModel"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             BackgroundColor="{DynamicResource Bg}"
              ios:Page.UseSafeArea="True">
     <ContentPage.BindingContext>
         <vm:LoginViewModel />
@@ -17,7 +17,7 @@
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
                         Margin="20"
-                        BackgroundColor="{DynamicResource BackgroundPrimary}"
+                        BackgroundColor="{DynamicResource Bg}"
                         JustifyContent="SpaceAround"
                         AlignItems="Center">
 
@@ -62,27 +62,27 @@
                     </Grid.ColumnDefinitions>
 
                     <BoxView x:Name="Pin1"
-                             Color="{DynamicResource TextPrimary}"
+                             Color="{DynamicResource Fg}"
                              Grid.Row="0"
                              Grid.Column="0" />
                     <BoxView x:Name="Pin2"
-                             Color="{DynamicResource TextPrimary}"
+                             Color="{DynamicResource Fg}"
                              Grid.Row="0"
                              Grid.Column="1" />
                     <BoxView x:Name="Pin3"
-                             Color="{DynamicResource TextPrimary}"
+                             Color="{DynamicResource Fg}"
                              Grid.Row="0"
                              Grid.Column="2" />
                     <BoxView x:Name="Pin4"
-                             Color="{DynamicResource TextPrimary}"
+                             Color="{DynamicResource Fg}"
                              Grid.Row="0"
                              Grid.Column="3" />
                     <BoxView x:Name="Pin5"
-                             Color="{DynamicResource TextPrimary}"
+                             Color="{DynamicResource Fg}"
                              Grid.Row="0"
                              Grid.Column="4" />
                     <BoxView x:Name="Pin6"
-                             Color="{DynamicResource TextPrimary}"
+                             Color="{DynamicResource Fg}"
                              Grid.Row="0"
                              Grid.Column="5" />
                 </Grid>
@@ -172,7 +172,7 @@
                     <Button Text="{DynamicResource LoginBackButtonText}"
                             FlexLayout.Grow="1"
                             Command="{Binding BackspaceCommand}"
-                            TextColor="{StaticResource SyncGradientStart}"
+                            TextColor="{StaticResource FgSuccess}"
                             Style="{DynamicResource LoginDigitButton}" />
                 </FlexLayout>
             </FlexLayout>

@@ -10,7 +10,7 @@
             <BoxView x:Name="TransparentBackgroundBoxView"
                      AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All"
-                     BackgroundColor="{DynamicResource BackgroundPrimary}"
+                     BackgroundColor="{DynamicResource Bg}"
                      Opacity="0" />
             <FlexLayout Direction="Column">
                 <BoxView FlexLayout.Grow="1" />
@@ -19,7 +19,7 @@
                     <BoxView FlexLayout.Grow="1" />
                     <Frame x:Name="QuestionFrame"
                            FlexLayout.AlignSelf="Center"
-                           BackgroundColor="{DynamicResource BackgroundPrimary}"
+                           BackgroundColor="{DynamicResource Bg}"
                            Padding="0">
                         <StackLayout Orientation="Vertical">
                             <StackLayout Orientation="Horizontal"
@@ -28,11 +28,11 @@
                                        Text="{Binding Title}"
                                        FontSize="Large"
                                        FontFamily="{StaticResource Sans-Bold}"
-                                       TextColor="{DynamicResource TextPrimary}" />
+                                       TextColor="{DynamicResource Fg}" />
                             </StackLayout>
 
                             <BoxView HeightRequest="1"
-                                     BackgroundColor="{DynamicResource BackgroundSecondary}" />
+                                     BackgroundColor="{DynamicResource Bg2}" />
 
                             <FlexLayout Direction="Row"
                                         FlexLayout.Grow="1"
@@ -41,7 +41,7 @@
                                        Text="{Binding Message}"
                                        LineBreakMode="WordWrap"
                                        FlexLayout.AlignSelf="Center"
-                                       TextColor="{DynamicResource TextSecondary}" />
+                                       TextColor="{DynamicResource Fg2}" />
                             </FlexLayout>
 
                             <StackLayout Orientation="Horizontal"
@@ -49,15 +49,15 @@
                                 <Button x:Name="CancelButton"
                                         Style="{StaticResource NoBorderButton}"
                                         HorizontalOptions="FillAndExpand"
-                                        BackgroundColor="{DynamicResource BackgroundSecondary}"
+                                        BackgroundColor="{DynamicResource Bg2}"
                                         Text="{Binding CancelText}"
                                         Clicked="CancelButton_Clicked" />
                                 <Button x:Name="OkButton"
                                         Style="{StaticResource NoBorderButton}"
                                         HorizontalOptions="FillAndExpand"
-                                        BackgroundColor="{DynamicResource BackgroundSecondary}"
+                                        BackgroundColor="{DynamicResource Bg2}"
                                         Text="{Binding OkText}"
-                                        TextColor="{DynamicResource TextSuccess}"
+                                        TextColor="{DynamicResource FgSuccess}"
                                         Clicked="OkButton_Clicked" />
                             </StackLayout>
                         </StackLayout>

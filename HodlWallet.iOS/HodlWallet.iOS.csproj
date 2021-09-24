@@ -250,6 +250,9 @@
     <BundleResource Include="Resources\node-3-connections.png" />
     <BundleResource Include="Resources\node-3-connections%402x.png" />
     <BundleResource Include="Resources\node-3-connections%403x.png" />
+    <BundleResource Include="Resources\node.gif" />
+    <BundleResource Include="Resources\node%402x.gif" />
+    <BundleResource Include="Resources\node%403x.gif" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -6,7 +6,7 @@
              x:Class="HodlWallet.UI.Views.SecuritySettingsView"
              Title="{i18n:Translate Security.title}"
              NavigationPage.HasNavigationBar="True"
-             BackgroundColor="{DynamicResource BackgroundPrimary}">
+             BackgroundColor="{DynamicResource Bg}">
     
     <!--<ContentPage.BindingContext>
         <vm:SecuritySettingsViewModel />
@@ -19,7 +19,7 @@
                     <FlexLayout Direction="Column">
                         <BoxView FlexLayout.Grow="2" />
 
-                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                        <BoxView BackgroundColor="{DynamicResource Fg2}"
                                  HeightRequest="1" />
 
                         <Button Text="{i18n:Translate Text=Security.backupRecoveryKey}"
@@ -27,7 +27,7 @@
                                 Clicked="BackupMnemonic_Clicked"
                                 />
 
-                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                        <BoxView BackgroundColor="{DynamicResource Fg2}"
                                  HeightRequest="1" />
 
                         <Button Text="{i18n:Translate Text=Security.pin}"
@@ -35,7 +35,7 @@
                                 Clicked="PinButton_Clicked"
                                 />
 
-                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                        <BoxView BackgroundColor="{DynamicResource Fg2}"
                                  HeightRequest="1" />
 
                         <Button Text="{i18n:Translate Text=Security.biometrics}"
@@ -43,7 +43,7 @@
                                 Clicked="Biometrics_Clicked"
                                 />
 
-                        <BoxView BackgroundColor="{DynamicResource TextSecondary}"
+                        <BoxView BackgroundColor="{DynamicResource Fg2}"
                                  HeightRequest="1" />
 
                         <!-- Extra space -->

@@ -15,8 +15,49 @@
                  "White" should be named TextPrimary
                  "Primary" means the first color, then we could define
                  TextSecondary and that could be "LightGray".
-
                  Tip to keep this going: Repeating colors is fine. -->
+
+            <!-- New colors better structure -->
+            <Color x:Key="Bg">#161925</Color>
+            <Color x:Key="Bg2">#262B40</Color>
+            <Color x:Key="Bg3">#454555</Color>
+            <Color x:Key="Bg4">#394160</Color>
+            <Color x:Key="Bg5">#344055</Color>
+
+            <Color x:Key="Fg">#DADADA</Color>
+            <Color x:Key="Fg2">#BCBCBC</Color>
+            <Color x:Key="Fg3">#9e9e9e</Color>
+            <Color x:Key="Fg4">#808080</Color>
+            <Color x:Key="Fg5">#626262</Color>
+
+            <Color x:Key="FgDark">Black</Color> <!-- Same as in Bg, so for inverted situations -->
+            <Color x:Key="FgSuccess">#FFD75F</Color>
+            <Color x:Key="FgWarning">#FF8787</Color>
+            <Color x:Key="FgError">#FF5F00</Color>
+            <Color x:Key="FgComment">#6C6C6C</Color>
+
+            <!-- ColorPicker control colors-->
+            <Color x:Key="ColorPicker0">#B71C1C</Color>
+            <Color x:Key="ColorPicker1">#ff8787</Color>
+            <Color x:Key="ColorPicker2">#ff5f00</Color>
+            <Color x:Key="ColorPicker3">#ffd7ff</Color>
+            <Color x:Key="ColorPicker4">#875fff</Color>
+            <Color x:Key="ColorPicker5">#8787d7</Color>
+            <Color x:Key="ColorPicker6">#afd7ff</Color>
+            <Color x:Key="ColorPicker7">#0D47A1</Color>
+            <Color x:Key="ColorPicker8">#00af87</Color>
+            <Color x:Key="ColorPicker9">#43A047</Color>
+            <Color x:Key="ColorPicker10">#ffffd7</Color>
+            <Color x:Key="ColorPicker11">#afd7af</Color>
+            <Color x:Key="ColorPicker12">#ffd7ff</Color>
+            <Color x:Key="ColorPicker13">#ffd7d7</Color>
+            <Color x:Key="ColorPicker14">#795548</Color>
+            <Color x:Key="ColorPicker15">#CFD8DC</Color>
+            <Color x:Key="ColorPicker16">#9E9E9E</Color>
+            <Color x:Key="ColorPicker17">#607D8B</Color>
+            <Color x:Key="ColorPickerSelected">#FFD75F</Color>
+
+            <!-- Legacy colors :( -->
             <Color x:Key="BackgroundPrimary">#212121</Color>
             <Color x:Key="BackgroundSecondary">#161616</Color>
             <Color x:Key="TextPrimary">#F5F7FA</Color>
@@ -33,27 +74,6 @@
             <Color x:Key="NavigationPrimary">#2196F3</Color>
             <Color x:Key="IncreasePriceChange">#C89E26</Color>
             <Color x:Key="DecreasePriceChange">Red</Color>
-
-            <!-- ColorPicker control colors-->
-            <Color x:Key="ColorPicker0">#B71C1C</Color>
-            <Color x:Key="ColorPicker1">#EC407A</Color>
-            <Color x:Key="ColorPicker2">#880E4F</Color>
-            <Color x:Key="ColorPicker3">#7B1FA2</Color>
-            <Color x:Key="ColorPicker4">#673AB7</Color>
-            <Color x:Key="ColorPicker5">#3F51B5</Color>
-            <Color x:Key="ColorPicker6">#2196F3</Color>
-            <Color x:Key="ColorPicker7">#0D47A1</Color>
-            <Color x:Key="ColorPicker8">#00897B</Color>
-            <Color x:Key="ColorPicker9">#43A047</Color>
-            <Color x:Key="ColorPicker10">#212121</Color>
-            <Color x:Key="ColorPicker11">#C0CA33</Color>
-            <Color x:Key="ColorPicker12">#FDD835</Color>
-            <Color x:Key="ColorPicker13">#F57C00</Color>
-            <Color x:Key="ColorPicker14">#795548</Color>
-            <Color x:Key="ColorPicker15">#CFD8DC</Color>
-            <Color x:Key="ColorPicker16">#9E9E9E</Color>
-            <Color x:Key="ColorPicker17">#607D8B</Color>
-            <Color x:Key="ColorPickerSelected">#C89E26</Color>
 
             <!-- Fonts -->
             <!-- All fonts are here, all that you ever need, they're named like this:
@@ -105,9 +125,9 @@
                 <Setter Property="FontSize"
                         Value="Medium" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="CornerRadius"
                         Value="5" />
                 <Setter Property="Margin"
@@ -125,7 +145,7 @@
                    TargetType="Button"
                    BasedOn="{StaticResource BottomButton}">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundSecondary}" />
+                        Value="{DynamicResource Bg2}" />
             </Style>
 
             <!-- Radio Buttons -->
@@ -134,9 +154,9 @@
                 <Setter Property="FontFamily"
                         Value="{StaticResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
             </Style>
             
             <Style x:Key="NoBorderButton"
@@ -149,13 +169,13 @@
             <Style x:Key="RecoveryWordButton"
                    TargetType="Button">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundSecondary}" />
+                        Value="{DynamicResource Bg2}" />
                 <Setter Property="CornerRadius"
                         Value="0" />
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{StaticResource TextPrimary}" />
+                        Value="{StaticResource Fg}" />
                 <Setter Property="FontSize"
                         Value="Small" />
                 <Setter Property="CornerRadius"
@@ -176,7 +196,7 @@
             <Style x:Key="SettingsButton"
                    TargetType="Button">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="FlexLayout.AlignSelf"
                         Value="Stretch" />
                 <Setter Property="FlexLayout.Grow"
@@ -184,13 +204,13 @@
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style x:Key="TransactionDetailsButton"
                    TargetType="Button">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="HeightRequest"
                         Value="20" />
                 <Setter Property="FontFamily"
@@ -200,13 +220,13 @@
                 <Setter Property="HorizontalOptions"
                         Value="Start" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style x:Key="PriceChartSwitchButtonDisabled"
                    TargetType="Button">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Fg}" />
                 <Setter Property="HeightRequest"
                         Value="30" />
                 <Setter Property="WidthRequest"
@@ -216,13 +236,13 @@
                 <Setter Property="FontSize"
                         Value="Body" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style x:Key="PriceChartSwitchButtonEnabled"
                    TargetType="Button">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource TextSuccess}" />
+                        Value="{DynamicResource FgSuccess}" />
                 <Setter Property="HeightRequest"
                         Value="30" />
                 <Setter Property="WidthRequest"
@@ -232,7 +252,7 @@
                 <Setter Property="FontSize"
                         Value="Body" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <!-- Labels -->
@@ -241,7 +261,7 @@
                 <Setter Property="FontFamily"
                         Value="{StaticResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style x:Key="MnemonicLabel"
@@ -249,7 +269,7 @@
                 <Setter Property="FontFamily"
                         Value="{StaticResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
                 <Setter Property="FontSize"
                         Value="Small" />
                 <Setter Property="HorizontalTextAlignment"
@@ -275,7 +295,7 @@
                 <Setter Property="LineBreakMode"
                         Value="MiddleTruncation" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style x:Key="TransactionDetailTitle"
@@ -283,7 +303,7 @@
                 <Setter Property="FontSize"
                         Value="Small" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextSecondary}" />
+                        Value="{DynamicResource Fg2}" />
                 <Setter Property="FontFamily"
                         Value="{StaticResource Sans-Bold}" />
             </Style>
@@ -314,7 +334,7 @@
             <Style x:Key="TransactionDetailsBoxView"
                    TargetType="BoxView">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="HeightRequest"
                         Value="2" />
             </Style>
@@ -323,41 +343,41 @@
             <Style TargetType="ContentPage"
                    ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
             </Style>
 
             <Style TargetType="NavigationPage"
                    ApplyToDerivedTypes="True">
                 <Setter Property="BarBackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="BarTextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style TargetType="TabbedPage"
                    ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="BarBackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="BarTextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
                 <Setter Property="SelectedTabColor"
-                        Value="{DynamicResource SelectedTab}" />
+                        Value="{DynamicResource FgSuccess}" />
                 <Setter Property="UnselectedTabColor"
-                        Value="{DynamicResource UnselectedTab}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style TargetType="Frame"
                    ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
             </Style>
 
             <Style TargetType="WebView"
                    ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
             </Style>
 
             <Style TargetType="Label"
@@ -365,7 +385,7 @@
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style TargetType="Button"
@@ -373,9 +393,9 @@
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundSecondary}" />
+                        Value="{DynamicResource Bg}" />
             </Style>
 
             <Style TargetType="Entry"
@@ -383,11 +403,11 @@
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="PlaceholderColor"
-                        Value="{DynamicResource TextSecondary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style TargetType="Editor"
@@ -395,11 +415,11 @@
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="PlaceholderColor"
-                        Value="{DynamicResource TextSecondary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style TargetType="SearchBar"
@@ -407,31 +427,31 @@
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource BackgroundSecondary}" />
+                        Value="{DynamicResource Bg2}" />
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="PlaceholderColor"
-                        Value="{DynamicResource TextSecondary}" />
+                        Value="{DynamicResource Fg2}" />
                 <Setter Property="CancelButtonColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style TargetType="CheckBox"
                    ApplyToDerivedTypes="True">
                 <Setter Property="Color"
-                        Value="{DynamicResource TextSuccess}" />
+                        Value="{DynamicResource FgSuccess}" />
             </Style>
 
             <Style TargetType="Slider"
                    ApplyToDerivedTypes="True">
                 <Setter Property="MinimumTrackColor"
-                        Value="{DynamicResource TextSuccess}" />
+                        Value="{DynamicResource FgSuccess}" />
             </Style>
 
             <Style TargetType="Switch"
                    ApplyToDerivedTypes="True">
                 <Setter Property="OnColor"
-                        Value="{DynamicResource TextSuccess}" />
+                        Value="{DynamicResource FgSuccess}" />
             </Style>
 
             <Style TargetType="Picker"
@@ -439,9 +459,9 @@
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style TargetType="DatePicker"
@@ -449,9 +469,9 @@
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style TargetType="TimePicker"
@@ -459,21 +479,21 @@
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource BackgroundPrimary}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource TextPrimary}" />
+                        Value="{DynamicResource Fg}" />
             </Style>
 
             <Style TargetType="ProgressBar"
                    ApplyToDerivedTypes="True">
                 <Setter Property="ProgressColor"
-                        Value="{DynamicResource TextSuccess}" />
+                        Value="{DynamicResource FgSuccess}" />
             </Style>
 
             <Style TargetType="ActivityIndicator"
                    ApplyToDerivedTypes="True">
                 <Setter Property="Color"
-                        Value="{DynamicResource TextSuccess}" />
+                        Value="{DynamicResource FgSuccess}" />
                 <Setter Property="Opacity"
                         Value="0.8" />
             </Style>

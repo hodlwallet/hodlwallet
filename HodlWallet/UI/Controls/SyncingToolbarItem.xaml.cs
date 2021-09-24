@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -34,22 +35,35 @@ namespace HodlWallet.UI.Controls
     public partial class SyncingToolbarItem : ToolbarItem
     {
         readonly List<string> states = new () { "node", "node-0-connections", "node-1-connections", "node-2-connections", "node-3-connections" };
+        readonly CancellationTokenSource Cts;
 
         public SyncingToolbarItem()
         {
             InitializeComponent();
-            DoFlip();
+
+            Cts = new CancellationTokenSource();
+
+            Task.Factory.StartNew(
+                () => DoFlip(),
+                Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
         }
 
         async void DoFlip()
         {
-            var fileName = (IconImageSource as FileImageSource).File;
-            var index = states.IndexOf(fileName);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var fileName = (IconImageSource as FileImageSource).File;
+                var index = states.IndexOf(fileName);
 
-            var newFileName = states[++index % 5];
-            IconImageSource = newFileName;
+                var newFileName = states[++index % 5];
 
-            Debug.WriteLine($"[DoFlip] Flippin' to {IconImageSource}, trying to set it to: {newFileName}");
+                Debug.WriteLine($"[DoFlip] Flippin' to: {newFileName}");
+
+                IconImageSource = newFileName;
+            });
 
             await Task.Delay(1_000);
 
