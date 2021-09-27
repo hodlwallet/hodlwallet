@@ -71,8 +71,8 @@ namespace HodlWallet.Core.Services
 
         public event EventHandler OnConfigured;
         public event EventHandler OnStarted;
-        public event EventHandler OnSyncStarted;
-        public event EventHandler OnSyncFinished;
+        public event EventHandler<DateTimeOffset> OnSyncStarted;
+        public event EventHandler<DateTimeOffset> OnSyncFinished;
 
         public bool IsStarted { get; private set; }
         public bool IsConfigured { get; private set; }
@@ -242,7 +242,7 @@ namespace HodlWallet.Core.Services
             {
                 start = DateTimeOffset.Now;
 
-                OnSyncStarted?.Invoke(this, null);
+                OnSyncStarted?.Invoke(this, start);
                 Syncing = true;
 
                 Logger.Debug($"Syncing started at {start.LocalDateTime.ToLongTimeString()}");
@@ -252,7 +252,7 @@ namespace HodlWallet.Core.Services
             {
                 end = DateTimeOffset.UtcNow;
 
-                OnSyncFinished?.Invoke(this, null);
+                OnSyncFinished?.Invoke(this, end);
                 Syncing = false;
 
                 Logger.Debug($"Syncing ended at {end.LocalDateTime.ToLongTimeString()}");

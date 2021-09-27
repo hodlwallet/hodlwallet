@@ -48,8 +48,8 @@ namespace HodlWallet.Core.Interfaces
         event EventHandler OnConfigured;
         event EventHandler OnStarted;
 
-        event EventHandler OnSyncStarted;
-        event EventHandler OnSyncFinished;
+        event EventHandler<DateTimeOffset> OnSyncStarted;
+        event EventHandler<DateTimeOffset> OnSyncFinished;
 
         void Start();
         void InitializeWallet(string accountType = "standard");
