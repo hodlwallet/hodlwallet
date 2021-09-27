@@ -10,8 +10,8 @@
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="search" Clicked="Search_Clicked" />
-        <controls:SyncingToolbarItem />
+        <ToolbarItem x:Name="SearchToolBarItem" IconImageSource="search" Clicked="Search_Clicked" />
+        <controls:SyncingToolbarItem x:Name="SyncToolbarItem" IsVisible="False" />
     </ContentPage.ToolbarItems>
     <Shell.TitleView>
         <Label x:Name="BalanceNavigationTitleLabel" Text="0.02454691 BTC" VerticalOptions="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource Mono-Regular}" FontSize="Medium" Opacity="0.00" />
