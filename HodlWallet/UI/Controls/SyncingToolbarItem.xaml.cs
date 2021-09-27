@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -59,8 +58,6 @@ namespace HodlWallet.UI.Controls
                 var index = states.IndexOf(fileName);
 
                 var newFileName = states[++index % 5];
-
-                Debug.WriteLine($"[DoFlip] Flippin' to: {newFileName}");
 
                 IconImageSource = newFileName;
             });
