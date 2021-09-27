@@ -108,9 +108,7 @@ namespace HodlWallet.UI
         protected override void OnResume()
         {
             if (!AuthenticationService.IsAuthenticated && !AuthenticationService.ShowingLoginForm)
-            {
                 AuthenticationService.ShowLogin(action: "pop");
-            }
         }
 
         void RegisterServices()

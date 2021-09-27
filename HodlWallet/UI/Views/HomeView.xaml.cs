@@ -24,21 +24,35 @@ using System;
 
 using Xamarin.Forms;
 
+using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
+using System.Threading.Tasks;
 
 namespace HodlWallet.UI.Views
 {
     public partial class HomeView : ContentPage
     {
         HomeViewModel ViewModel => BindingContext as HomeViewModel;
+        IWalletService WalletService => DependencyService.Get<IWalletService>();
 
         public HomeView()
         {
             InitializeComponent();
 
             SubscribeToMessages();
+
+            if (WalletService.Syncing)
+            {
+                SyncToolbarItem.IsVisible = true;
+                SearchToolBarItem.IsVisible = false;
+            }
+            else
+            {
+                SyncToolbarItem.IsVisible = false;
+                SearchToolBarItem.IsVisible = true;
+            }
         }
 
         protected override void OnAppearing()
@@ -76,7 +90,6 @@ namespace HodlWallet.UI.Views
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<HomeViewModel, TransactionModel>(this, "NavigateToTransactionDetail", NavigateToTransactionDetail);
-            MessagingCenter.Subscribe<HomeViewModel>(this, "DisplaySearchNotImplementedAlert", DisplaySearchNotImplementedAlert);
             MessagingCenter.Subscribe<HomeViewModel>(this, "SwitchCurrency", SwitchCurrency);
         }
 
@@ -88,9 +101,15 @@ namespace HodlWallet.UI.Views
             await Navigation.PushModalAsync(nav);
         }
 
-        async void DisplaySearchNotImplementedAlert(HomeViewModel vm)
+        async Task DisplaySearchNotImplementedMessage()
         {
             await this.DisplayToast("Search Not Implemented");
+        }
+
+        async Task DisplaySyncingMessage()
+        {
+            // TODO Display better information
+            await this.DisplayToast("Syncing...");
         }
 
         //void PriceButton_Tapped(object sender, EventArgs e)
@@ -112,9 +131,14 @@ namespace HodlWallet.UI.Views
             }
         }
 
-        void Search_Clicked(object sender, EventArgs e)
+        async void Search_Clicked(object sender, EventArgs e)
         {
-            DisplaySearchNotImplementedAlert(ViewModel);
+            await DisplaySearchNotImplementedMessage();
+        }
+
+        async void Sync_Clicked(object sender, EventArgs e)
+        {
+            await DisplaySyncingMessage();
         }
 
         void TransactionsScrollView_Scrolled(object sender, ScrolledEventArgs e)

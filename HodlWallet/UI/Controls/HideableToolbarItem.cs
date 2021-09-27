@@ -1,5 +1,5 @@
 ﻿//
-// SyncingToolbarItem.xaml.cs
+// HideableToolbarItem.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -23,51 +23,56 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
 namespace HodlWallet.UI.Controls
 {
-    public partial class SyncingToolbarItem : HideableToolbarItem
+    public class HideableToolbarItem : ToolbarItem
     {
-        readonly List<string> states = new () { "node", "node-0-connections", "node-1-connections", "node-2-connections", "node-3-connections" };
-        readonly CancellationTokenSource Cts;
-
-        public SyncingToolbarItem()
+        public HideableToolbarItem() : base()
         {
-            InitializeComponent();
-
-            Cts = new CancellationTokenSource();
-
-            Task.Factory.StartNew(
-                () => DoFlip(),
-                Cts.Token,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
+            this.InitVisibility();
         }
 
-        async void DoFlip()
+        private async void InitVisibility()
         {
-            Device.BeginInvokeOnMainThread(() =>
+            await Task.Delay(100);
+            OnIsVisibleChanged(this, false, IsVisible);
+        }
+
+        public bool IsVisible
+        {
+            get { return (bool)GetValue(IsVisibleProperty); }
+            set
             {
-                var fileName = (IconImageSource as FileImageSource).File;
-                var index = states.IndexOf(fileName);
+                OnIsVisibleChanged(this, IsVisible, value);
 
-                var newFileName = states[++index % 5];
+                SetValue(IsVisibleProperty, value);
+            }
+        }
 
-                Debug.WriteLine($"[DoFlip] Flippin' to: {newFileName}");
+        public static BindableProperty IsVisibleProperty =
+            BindableProperty.Create(nameof(IsVisible), typeof(bool), typeof(HideableToolbarItem), defaultValueCreator: binding => true);
 
-                IconImageSource = newFileName;
-            });
+        private static void OnIsVisibleChanged(BindableObject bindable, bool oldvalue, bool newvalue)
+        {
+            var item = bindable as HideableToolbarItem;
 
-            await Task.Delay(1_000);
+            if (item.Parent == null)
+                return;
 
-            DoFlip();
+            var items = (item.Parent as ContentPage).ToolbarItems;
+
+            if (newvalue && !items.Contains(item))
+            {
+                items.Add(item);
+            }
+            else if (!newvalue && items.Contains(item))
+            {
+                items.Remove(item);
+            }
         }
     }
 }
