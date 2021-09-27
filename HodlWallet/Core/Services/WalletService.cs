@@ -71,9 +71,12 @@ namespace HodlWallet.Core.Services
 
         public event EventHandler OnConfigured;
         public event EventHandler OnStarted;
+        public event EventHandler OnSyncStarted;
+        public event EventHandler OnSyncFinished;
 
         public bool IsStarted { get; private set; }
         public bool IsConfigured { get; private set; }
+        public bool Syncing { get; private set; }
 
         public IWallet Wallet { get; private set; }
 
@@ -239,12 +242,18 @@ namespace HodlWallet.Core.Services
             {
                 start = DateTimeOffset.Now;
 
+                OnSyncStarted?.Invoke(this, null);
+                Syncing = true;
+
                 Logger.Debug($"Syncing started at {start.LocalDateTime.ToLongTimeString()}");
             };
 
             Wallet.ElectrumPool.OnSyncFinished += (obj, _) =>
             {
                 end = DateTimeOffset.UtcNow;
+
+                OnSyncFinished?.Invoke(this, null);
+                Syncing = false;
 
                 Logger.Debug($"Syncing ended at {end.LocalDateTime.ToLongTimeString()}");
                 Logger.Debug($"Syncing time: {(end - start).TotalSeconds}");

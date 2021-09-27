@@ -65,11 +65,11 @@ namespace HodlWallet.UI.Controls
         public event EventHandler<bool> Responded;
 
         public static readonly BindableProperty TitleProperty = BindableProperty.CreateAttached(
-                    nameof(Title),
-                    typeof(string),
-                    typeof(PromptView),
-                    default(string)
-                );
+            nameof(Title),
+            typeof(string),
+            typeof(PromptView),
+            default(string)
+        );
 
         public string Title
         {
