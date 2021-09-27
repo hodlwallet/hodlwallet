@@ -10,7 +10,7 @@
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <controls:HideableToolbarItem x:Name="SearchToolBarItem" IconImageSource="search" Clicked="Search_Clicked" />
+        <controls:HideableToolbarItem x:Name="SearchToolBarItem" IsVisible="False" IconImageSource="search" Clicked="Search_Clicked" />
         <controls:SyncingToolbarItem x:Name="SyncToolbarItem" IsVisible="False" Clicked="Sync_Clicked" />
     </ContentPage.ToolbarItems>
     <Shell.TitleView>
