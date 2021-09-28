@@ -528,6 +528,26 @@
     <value>Account Info</value>
     <comment>Account Info Title</comment>
   </data>
+  <data name="AccountInfo.Id" xml:space="preserve">
+    <value>ID</value>
+    <comment>Account Id Title</comment>
+  </data>
+  <data name="AccountInfo.Name" xml:space="preserve">
+    <value>NAME</value>
+    <comment>Account HD Path Title</comment>
+  </data>
+  <data name="AccountInfo.HdPath" xml:space="preserve">
+    <value>HD PATH</value>
+    <comment>Account HD Path Title</comment>
+  </data>
+  <data name="AccountInfo.XPub" xml:space="preserve">
+    <value>XPUB (PUBLIC KEY)</value>
+    <comment>Account XPub Title</comment>
+  </data>
+  <data name="AccountInfo.XPrv" xml:space="preserve">
+    <value>XPRV (PRIVATE KEY)</value>
+    <comment>Account XPrv Title</comment>
+  </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>Settings</value>
     <comment>Global Settings Title</comment>

@@ -23,11 +23,19 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+using Xamarin.Forms;
+
+using HodlWallet.Core.Interfaces;
+
+using Liviano.Models;
+using Liviano.Extensions;
+
 namespace HodlWallet.Core.ViewModels
 {
-    public class AccountInfoViewModel
+    public class AccountInfoViewModel : BaseViewModel
     {
+        public AccountInfo AccountInfo => WalletService.Wallet.CurrentAccount.GetAccountInfo();
+
         public AccountInfoViewModel()
         {
         }

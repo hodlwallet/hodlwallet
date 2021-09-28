@@ -292,6 +292,26 @@
                         Value="{StaticResource Sans-Bold}" />
             </Style>
 
+            <Style x:Key="AccountInfoTitle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="Small" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource Fg2}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Bold}" />
+            </Style>
+
+            <Style x:Key="AccountInfoValue"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="Small" />
+                <Setter Property="TextColor"
+                        Value="{DynamicResource Fg3}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Mono-Regular}" />
+            </Style>
+
             <!-- Text entries -->
             <Style x:Key="CustomEntry"
                    TargetType="Entry">

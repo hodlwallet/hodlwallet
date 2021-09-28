@@ -665,6 +665,36 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
+        internal static string AccountInfo_Id {
+            get {
+                return ResourceManager.GetString("AccountInfo.Id", resourceCulture);
+            }
+        }
+        
+        internal static string AccountInfo_Name {
+            get {
+                return ResourceManager.GetString("AccountInfo.Name", resourceCulture);
+            }
+        }
+        
+        internal static string AccountInfo_HdPath {
+            get {
+                return ResourceManager.GetString("AccountInfo.HdPath", resourceCulture);
+            }
+        }
+        
+        internal static string AccountInfo_XPub {
+            get {
+                return ResourceManager.GetString("AccountInfo.XPub", resourceCulture);
+            }
+        }
+        
+        internal static string AccountInfo_XPrv {
+            get {
+                return ResourceManager.GetString("AccountInfo.XPrv", resourceCulture);
+            }
+        }
+        
         internal static string Settings_Title {
             get {
                 return ResourceManager.GetString("Settings.Title", resourceCulture);

@@ -13,8 +13,41 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <AbsoluteLayout>
-            <FlexLayout Direction="Row"
+            <FlexLayout Direction="Column"
+                        Margin="15, 15, 15, 0"
                         FlexLayout.Grow="1">
+                <Label Style="{StaticResource AccountInfoTitle}"
+                       Text="{i18n:Translate AccountInfo.Id}" />
+                <Label Style="{StaticResource AccountInfoValue}"
+                       Text="{Binding AccountInfo.Id}" />
+
+                <BoxView HeightRequest="10" />
+
+                <Label Style="{StaticResource AccountInfoTitle}"
+                       Text="{i18n:Translate AccountInfo.Name}" />
+                <Label Style="{StaticResource AccountInfoValue}"
+                       Text="{Binding AccountInfo.Name}" />
+
+                <BoxView HeightRequest="10" />
+
+                <Label Style="{StaticResource AccountInfoTitle}"
+                       Text="{i18n:Translate AccountInfo.HdPath}" />
+                <Label Style="{StaticResource AccountInfoValue}"
+                       Text="{Binding AccountInfo.HdPath}" />
+
+                <BoxView HeightRequest="10" />
+
+                <Label Style="{StaticResource AccountInfoTitle}"
+                       Text="{i18n:Translate AccountInfo.XPub}" />
+                <Label Style="{StaticResource AccountInfoValue}"
+                       Text="{Binding AccountInfo.Xpub}" />
+
+                <BoxView HeightRequest="10" />
+
+                <Label Style="{StaticResource AccountInfoTitle}"
+                       Text="{i18n:Translate AccountInfo.XPrv}" />
+                <Label Style="{StaticResource AccountInfoValue}"
+                       Text="{Binding AccountInfo.Xprv}" />
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>
