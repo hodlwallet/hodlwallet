@@ -1,5 +1,5 @@
 ﻿//
-// AccountInfoView.xaml.cs
+// AccountInfoViewModel.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -24,21 +24,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
-
-using HodlWallet.Core.ViewModels;
-
-namespace HodlWallet.UI.Views
+namespace HodlWallet.Core.ViewModels
 {
-    public partial class AccountInfoView : ContentPage
+    public class AccountInfoViewModel
     {
-        AccountInfoViewModel ViewModel => BindingContext as AccountInfoViewModel;
-        
-        public AccountInfoView()
+        public AccountInfoViewModel()
         {
-            InitializeComponent();
         }
     }
 }

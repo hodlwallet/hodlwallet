@@ -524,6 +524,10 @@
     <value>Account Settings</value>
     <comment>Account Settings Title</comment>
   </data>
+  <data name="AccountInfo.Title" xml:space="preserve">
+    <value>Account Info</value>
+    <comment>Account Info Title</comment>
+  </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>Settings</value>
     <comment>Global Settings Title</comment>

@@ -2,8 +2,20 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="HodlWallet.UI.Views.AccountInfoView">
+    xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
+    xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+    xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+    x:Class="HodlWallet.UI.Views.AccountInfoView"
+    BackgroundColor="{DynamicResource Bg}"
+    Title="{i18n:Translate AccountInfo.Title}">
+    <ContentPage.BindingContext>
+        <vm:AccountInfoViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        
+        <AbsoluteLayout>
+            <FlexLayout Direction="Row"
+                        FlexLayout.Grow="1">
+            </FlexLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
