@@ -166,7 +166,7 @@
     <comment>label for backup recovery subheader</comment>
   </data>
   <data name="BackupConfirm.header" xml:space="preserve">
-    <value>To make sure everything was written down correctly, please enter the following words from your backup recovery key.</value>
+    <value>Tap the words to put them in the same order you wrote them down. Then Tap Next.</value>
     <comment>label for backup confirmation</comment>
   </data>
   <data name="BackupConfirm.warning" xml:space="preserve">

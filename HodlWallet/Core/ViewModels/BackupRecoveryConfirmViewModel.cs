@@ -22,7 +22,8 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 using Xamarin.Forms;
@@ -30,8 +31,6 @@ using Xamarin.Forms;
 using HodlWallet.Core.Models;
 using HodlWallet.UI.Converters;
 using HodlWallet.Core.Utils;
-using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -44,8 +43,6 @@ namespace HodlWallet.Core.ViewModels
         public ICommand NextCommand { get; }
         public ICommand TapUnorderedCommand { get; }
         public ICommand TapOrderedCommand { get; }
-
-
 
         public BackupRecoveryConfirmViewModel()
         {
@@ -64,18 +61,20 @@ namespace HodlWallet.Core.ViewModels
             //Suffle the copy of the original list.
             shuffledWordsList.Shuffle();
             ShuffledWordsCollection = new ObservableCollection<BackupWordModel>(shuffledWordsList);
-
         }
 
         private void NextWord()
         {
-            //MessagingCenter.Send(this, "NavigateToExtraBackupView", shuffledWordsList);
+            MessagingCenter.Send(this, "NavigateToRootView");
         }
 
         void UnorderedTappedWord(object obj)
         {
             var TappedWord = obj as BackupWordModel;
-            OrderedWordsCollection.Add(TappedWord);
+
+            if (!OrderedWordsCollection.Contains(TappedWord))
+                OrderedWordsCollection.Add(TappedWord);
+
             ShuffledWordsCollection.Remove(TappedWord);
             if (OrderedWordsCollection.Count() == OriginalWordsList.Count())
                 CheckWordLists();
@@ -84,7 +83,9 @@ namespace HodlWallet.Core.ViewModels
         void OrderedTappedWord(object obj)
         {
             var TappedWord = obj as BackupWordModel;
-            ShuffledWordsCollection.Add(TappedWord);
+            if(!ShuffledWordsCollection.Contains(TappedWord))
+                ShuffledWordsCollection.Add(TappedWord);
+
             OrderedWordsCollection.Remove(TappedWord);
             collectionsEqual = false;
             if (OrderedWordsCollection.Count() == OriginalWordsList.Count() - 1)

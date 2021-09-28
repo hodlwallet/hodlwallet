@@ -30,8 +30,6 @@ namespace HodlWallet.UI.Views
 {
     public partial class BackupRecoveryConfirmView : ContentPage
     {
-        BackupRecoveryConfirmViewModel ViewModel => BindingContext as BackupRecoveryConfirmViewModel;
-
         public BackupRecoveryConfirmView()
         {
             InitializeComponent();
@@ -41,10 +39,10 @@ namespace HodlWallet.UI.Views
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "NavigateToExtraBackupView", NavigateToRootView);
+            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "NavigateToRootView", NavigateToRootView);
             MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel, bool>(this, "CollectionsAreEqual", (page, enableButton) => nextButton.IsEnabled = enableButton);
         }
-        
+
         void NavigateToRootView(BackupRecoveryConfirmViewModel _)
         {
             // If the recovery was launched later...

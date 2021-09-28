@@ -7,18 +7,19 @@
              x:Class="HodlWallet.UI.Views.BackupRecoveryConfirmView"
              BackgroundColor="{DynamicResource BackgroundPrimary}">
     <ContentPage.BindingContext>
-        <vm:BackupRecoveryConfirmViewModel />
+        <vm:BackupRecoveryConfirmViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <FlexLayout Direction="Column"
                         JustifyContent="SpaceAround"
                         BackgroundColor="{DynamicResource BackgroundPrimary}"
                         AlignItems="Center">
-            <Label Text="{i18n:Translate Text=BackupWord.header}"
+            <Label Text="{i18n:Translate Text=BackupConfirm.header}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource SyncGradientStart}"
                        HorizontalTextAlignment="Center"
-                       Margin="0, 20" />
+                       Margin="0, 20"/>
+            
             <FlexLayout Direction="Row"
                         Wrap="Wrap"
                         JustifyContent="SpaceAround"
@@ -26,10 +27,10 @@
                         Margin="15"
                         FlexLayout.Grow="2">
                 <CollectionView ItemsSource="{Binding OrderedWordsCollection}"
-                            ItemsLayout="VerticalGrid, 4"
+                            ItemsLayout="VerticalGrid,3"
                                 ItemSizingStrategy="MeasureAllItems"
-                            VerticalOptions="CenterAndExpand" >
-                    <CollectionView.ItemTemplate >
+                            VerticalOptions="CenterAndExpand">
+                    <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
                                 <Label Text="{Binding Word}"
@@ -42,7 +43,7 @@
                                                 Source={RelativeSource
                                                 AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
                                                 Path=TapOrderedCommand}"
-                                            CommandParameter="{Binding .}" />
+                                            CommandParameter="{Binding .}"/>
                                     </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>
@@ -58,7 +59,7 @@
                         Margin="15"
                         FlexLayout.Grow="2">
                 <CollectionView ItemsSource="{Binding ShuffledWordsCollection}"
-                            ItemsLayout="VerticalGrid, 4"
+                            ItemsLayout="VerticalGrid,3"
                                 VerticalOptions="CenterAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -73,7 +74,7 @@
                                                     Source={RelativeSource
                                                     AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
                                                     Path=TapUnorderedCommand}"
-                                                CommandParameter="{Binding .}" />
+                                                CommandParameter="{Binding .}"/>
                                     </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>
@@ -90,7 +91,7 @@
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
                     VerticalOptions="EndAndExpand"
-                    Command="{Binding NextCommand}" />
+                    Command="{Binding NextCommand}"/>
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
