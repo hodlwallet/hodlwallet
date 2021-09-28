@@ -16,7 +16,7 @@
                         AlignItems="Center">
             <Label Text="{i18n:Translate Text=BackupConfirm.header}"
                        FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource SyncGradientStart}"
+                       TextColor="{DynamicResource FgSuccess}"
                        HorizontalTextAlignment="Center"
                        Margin="0, 20"/>
             

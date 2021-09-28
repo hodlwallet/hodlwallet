@@ -341,6 +341,18 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
+        internal static string Menu_info {
+            get {
+                return ResourceManager.GetString("Menu.info", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_coinControl {
+            get {
+                return ResourceManager.GetString("Menu.coinControl", resourceCulture);
+            }
+        }
+        
         internal static string Menu_knowledge {
             get {
                 return ResourceManager.GetString("Menu.knowledge", resourceCulture);
@@ -580,7 +592,15 @@ namespace HodlWallet.UI.Locale {
                 return ResourceManager.GetString("AddAccount.header", resourceCulture);
             }
         }
-        
+
+        internal static string AddAccount_placeholder
+        {
+            get
+            {
+                return ResourceManager.GetString("AddAccount.placeholder", resourceCulture);
+            }
+        }
+
         internal static string AddAccount_subheader {
             get {
                 return ResourceManager.GetString("AddAccount.subheader", resourceCulture);
@@ -623,15 +643,15 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
-        internal static string Backup_Close {
+        internal static string Backup_close {
             get {
-                return ResourceManager.GetString("Backup.Close", resourceCulture);
+                return ResourceManager.GetString("Backup.close", resourceCulture);
             }
         }
         
-        internal static string Backup_Skip {
+        internal static string Backup_skip {
             get {
-                return ResourceManager.GetString("Backup.Skip", resourceCulture);
+                return ResourceManager.GetString("Backup.skip", resourceCulture);
             }
         }
         
@@ -986,6 +1006,138 @@ namespace HodlWallet.UI.Locale {
         internal static string NewWallet_title {
             get {
                 return ResourceManager.GetString("NewWallet.title", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_currency {
+            get {
+                return ResourceManager.GetString("Menu.currency", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_network {
+            get {
+                return ResourceManager.GetString("Menu.network", resourceCulture);
+            }
+        }
+        
+        internal static string Menu_wallet {
+            get {
+                return ResourceManager.GetString("Menu.wallet", resourceCulture);
+            }
+        }
+        
+        internal static string PinSettings_close {
+            get {
+                return ResourceManager.GetString("PinSettings.close", resourceCulture);
+            }
+        }
+        
+        internal static string PinSettings_title {
+            get {
+                return ResourceManager.GetString("PinSettings.title", resourceCulture);
+            }
+        }
+        
+        internal static string Security_backupRecoveryKey {
+            get {
+                return ResourceManager.GetString("Security.backupRecoveryKey", resourceCulture);
+            }
+        }
+        
+        internal static string Security_biometrics {
+            get {
+                return ResourceManager.GetString("Security.biometrics", resourceCulture);
+            }
+        }
+        
+        internal static string Security_close {
+            get {
+                return ResourceManager.GetString("Security.close", resourceCulture);
+            }
+        }
+        
+        internal static string Security_pin {
+            get {
+                return ResourceManager.GetString("Security.pin", resourceCulture);
+            }
+        }
+        
+        internal static string Security_title {
+            get {
+                return ResourceManager.GetString("Security.title", resourceCulture);
+            }
+        }
+        
+        internal static string PinSettings_pinSpendingLimits {
+            get {
+                return ResourceManager.GetString("PinSettings.pinSpendingLimits", resourceCulture);
+            }
+        }
+        
+        internal static string PinSettings_updatePin {
+            get {
+                return ResourceManager.GetString("PinSettings.updatePin", resourceCulture);
+            }
+        }
+        
+        internal static string Biometrics_title {
+            get {
+                return ResourceManager.GetString("Biometrics.title", resourceCulture);
+            }
+        }
+        
+        internal static string Login_cancel {
+            get {
+                return ResourceManager.GetString("Login.cancel", resourceCulture);
+            }
+        }
+        
+        internal static string AccountTypeSelection_description {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.description", resourceCulture);
+            }
+        }
+        
+        internal static string AccountTypeSelection_doneButton {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.doneButton", resourceCulture);
+            }
+        }
+        
+        internal static string AccountTypeSelection_legacyDescription {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.legacyDescription", resourceCulture);
+            }
+        }
+        
+        internal static string AccountTypeSelection_legacyTitle {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.legacyTitle", resourceCulture);
+            }
+        }
+        
+        internal static string AccountTypeSelection_standardDescription {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.standardDescription", resourceCulture);
+            }
+        }
+        
+        internal static string AccountTypeSelection_standardTitle {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.standardTitle", resourceCulture);
+            }
+        }
+        
+        internal static string AccountTypeSelection_title {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.title", resourceCulture);
+            }
+        }
+        
+        internal static string AccountTypeSelection_pleaseSelect {
+            get {
+                return ResourceManager.GetString("AccountTypeSelection.pleaseSelect", resourceCulture);
             }
         }
     }

@@ -4,13 +4,14 @@
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             BackgroundColor="{DynamicResource Bg}"
              x:Class="HodlWallet.UI.Views.HomeView">
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="search" Clicked="Search_Clicked" />
+        <controls:HideableToolbarItem x:Name="SearchToolBarItem" IsVisible="False" IconImageSource="search" Clicked="Search_Clicked" />
+        <controls:SyncingToolbarItem x:Name="SyncToolbarItem" IsVisible="False" Clicked="Sync_Clicked" />
     </ContentPage.ToolbarItems>
     <Shell.TitleView>
         <Label x:Name="BalanceNavigationTitleLabel" Text="0.02454691 BTC" VerticalOptions="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource Mono-Regular}" FontSize="Medium" Opacity="0.00" />
@@ -26,7 +27,7 @@
                                        Text="Account 1"
                                        Style="{DynamicResource CustomLabel}"
                                        FontSize="Small"
-                                       TextColor="{DynamicResource TextSecondary}" />
+                                       TextColor="{DynamicResource Fg2}" />
                                 <StackLayout x:Name="BalanceStackLayout" Orientation="Horizontal" Spacing="0">
                                     <Label x:Name="BalanceLabel"
                                            Text="{Binding Balance}"
@@ -45,17 +46,18 @@
                                    HorizontalTextAlignment="End"
                                    Style="{DynamicResource CustomLabel}"
                                    FontSize="Micro"
-                                   TextColor="{DynamicResource TextSecondary}"
+                                   TextColor="{DynamicResource Fg2}"
                                    FontFamily="{DynamicResource Mono-Regular}" />
                         </FlexLayout>
 
                         <BoxView HeightRequest="5" />
 
-                        <Label Text="{i18n:Translate Text=Transactions.title}" Style="{DynamicResource CustomLabel}" TextColor="{DynamicResource TextSecondary}" FontSize="Small" />
+                        <Label Text="{i18n:Translate Text=Transactions.title}" Style="{DynamicResource CustomLabel}" TextColor="{DynamicResource Fg2}" FontSize="Small" />
 
                         <BoxView HeightRequest="5" />
 
                         <controls:TransactionCollectionView />
+                        <BoxView HeightRequest="10" />
                     </StackLayout>
                 </ScrollView>
             </StackLayout>

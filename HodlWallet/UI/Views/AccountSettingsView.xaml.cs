@@ -20,54 +20,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
-
-using HodlWallet.Core.ViewModels;
-using HodlWallet.UI.Locale;
-using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.UI.Views
 {
     public partial class AccountSettingsView : ContentPage
     {
-        AccountSettingsViewModel ViewModel => BindingContext as AccountSettingsViewModel;
-
         public AccountSettingsView()
         {
             InitializeComponent();
-        }
-
-        void ResyncAccount_Clicked(object sender, EventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                var answer = await AskThisIsIrreversibleQuestion("resync-wallet");
-
-                if (!answer) return;
-
-                await ViewModel.ResyncAccount();
-            });
-        }
-
-        async Task<bool> AskThisIsIrreversibleQuestion(string key)
-        {
-            var title = key switch
-            {
-                "wipe-wallet" => LocaleResources.Menu_wipeWallet,
-                "resync-wallet" => LocaleResources.Menu_resyncWallet,
-                "restore-wallet" => LocaleResources.Menu_restoreWallet,
-                _ => throw new ArgumentException($"Invalid question sent, key: {key}"),
-            };
-
-            return await this.DisplayPrompt(
-                title,
-                LocaleResources.Alert_irreversible,
-                LocaleResources.Button_yes,
-                LocaleResources.Button_no
-            );
         }
     }
 }

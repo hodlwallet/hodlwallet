@@ -27,24 +27,33 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 
-using HodlWallet.Core.Services;
-
 namespace HodlWallet.Core.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        List<int> _Pin = new List<int>();
-        object _Lock = new object();
+        List<int> pin = new ();
+        object @lock = new ();
 
         public ICommand DigitCommand { get; }
         public ICommand BackspaceCommand { get; }
 
-        //string _Header;
-        //public string Header
-        //{
-        //    get => _Header;
-        //    set => SetProperty(ref _Header, value);
-        //}
+        public string Action { get; set; }
+
+        bool loginFormVisible = false;
+        public bool LoginFormVisible
+        {
+            get
+            {
+                return loginFormVisible;
+            }
+
+            set
+            {
+                loginFormVisible = value;
+
+                AuthenticationService.ShowingLoginForm = loginFormVisible;
+            }
+        }
 
         public LoginViewModel()
         {
@@ -57,27 +66,25 @@ namespace HodlWallet.Core.ViewModels
             Debug.WriteLine($"[AddDigit] Adding: {digit}");
 
             // Digit has already being inputed
-            if (_Pin.Count >= 6) return;
+            if (pin.Count >= 6) return;
 
-            lock (_Lock)
+            lock (@lock)
             {
-                _Pin.Add(digit);
+                pin.Add(digit);
             }
 
-            MessagingCenter.Send(this, "DigitAdded", _Pin.Count);
+            MessagingCenter.Send(this, "DigitAdded", pin.Count);
 
             // Digit is not complete, input more
-            if (_Pin.Count != 6) return;
-
-            await Task.Delay(350);
+            if (pin.Count != 6) return;
 
             // _Pin.Count == 6 now...
             // We're done inputting our PIN
 
-            string input = string.Join(string.Empty, _Pin.ToArray());
+            string input = string.Join(string.Empty, pin.ToArray());
 
             // Check if it's the pin
-            if (SecureStorageService.GetPin() == input)
+            if (AuthenticationService.Authenticate(input))
             {
                 Debug.WriteLine("[AddDigit] Logged in!");
 
@@ -85,7 +92,8 @@ namespace HodlWallet.Core.ViewModels
 
                 // DONE! We navigate to the root view
                 await Task.Delay(65);
-                MessagingCenter.Send(this, "NavigateToRootView");
+
+                MessagingCenter.Send(this, "StartAppShell");
 
                 return;
             }
@@ -95,10 +103,12 @@ namespace HodlWallet.Core.ViewModels
                 MessagingCenter.Send(this, "ResetPin");
             }
 
+            await Task.Delay(350);
+
             Debug.WriteLine($"[AddDigit] Incorrect PIN: {input}");
 
             // Sadly it's not the pin! We clear and launch an animation
-            _Pin.Clear();
+            pin.Clear();
 
             MessagingCenter.Send(this, "IncorrectPinAnimation");
         }
@@ -107,13 +117,13 @@ namespace HodlWallet.Core.ViewModels
         {
             Debug.WriteLine("[RemoveDigit]");
 
-            if (_Pin.Count <= 0) return;
+            if (pin.Count <= 0) return;
 
-            lock (_Lock)
+            lock (@lock)
             {
-                _Pin.RemoveAt(_Pin.Count - 1);
+                pin.RemoveAt(pin.Count - 1);
 
-                MessagingCenter.Send(this, "DigitRemoved", _Pin.Count + 1);
+                MessagingCenter.Send(this, "DigitRemoved", pin.Count + 1);
             }
         }
     }

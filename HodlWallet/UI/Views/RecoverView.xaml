@@ -1,42 +1,293 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:utils="clr-namespace:HodlWallet.Core.Utils"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.RecoverView"
-             Title="{i18n:Translate Recover.title}">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="CloseToolbarItem"
-                     Order="Primary"
-                     Text="{i18n:Translate Text=Recovery.Close}"
-                     Priority="0"
-                     Clicked="CloseToolbarItem_Clicked" />
-    </ContentPage.ToolbarItems>
+             x:DataType="vm:RecoverViewModel"
+             BackgroundColor="{DynamicResource Bg}"
+             Title="{i18n:Translate Text=RecoverEntry.title}">
+    <ContentPage.BindingContext>
+        <vm:RecoverViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <AbsoluteLayout>
-            <FlexLayout Direction="Column"
-                        BackgroundColor="{DynamicResource BackgroundPrimary}">
-                <BoxView FlexLayout.Grow="1" />
-                <utils:Icon ResourceId="HodlWallet.UI.Assets.recover_wallet_illustration.svg"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            FlexLayout.Grow="2" />
-                <Label Text="{i18n:Translate Text=Recover.header}"
-                       FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource SyncGradientStart}"
-                       HorizontalTextAlignment="Center"
-                       FontSize="Medium"
-                       FlexLayout.AlignSelf="Center"
-                       FlexLayout.Grow="1" />
-                <BoxView FlexLayout.Grow="4" />
-                <Button Text="{i18n:Translate Text=Recover.next}"
-                        Style="{DynamicResource CustomButton}"
-                        BackgroundColor="{DynamicResource BackgroundSecondary}"
-                        CornerRadius="0"
-                        FontSize="Large"
-                        Clicked="Next_Clicked"
+            <FlexLayout Direction="Column">
+                <FlexLayout Direction="Column"
+                            Margin="0,20,10,0"
+                            FlexLayout.Grow="8">
+                    <Label Text="{i18n:Translate Text=RecoverEntry.header}"
+                           Style="{DynamicResource CustomLabel}"
+                           Margin="10, 0, 10, 0" />
+
+                    <ScrollView>
+                        <Grid x:Name="EntryGrid"
+                              BackgroundColor="{DynamicResource Bg2}"
+                              Padding="10"
+                              Margin="10">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="{OnPlatform *, Android=15}" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="{OnPlatform *, Android=15}" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="{OnPlatform *, Android=15}" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="{OnPlatform *, Android=15}" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Entry x:Name="Entry1"
+                                   Style="{StaticResource RecoveryWordEntry}"
+                                   Text="{Binding WordOne, Mode=OneWayToSource}"
+                                   TextChanged="LowercaseEntry"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
+                                   ReturnType="Next"
+                                   Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
+                                   utils:Tags.Tag="Entry2" />
+
+                            <Label Text="1"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="2"
+                                   Grid.Column="1" />
+
+                            <Entry x:Name="Entry2"
+                                   Style="{StaticResource RecoveryWordEntry}"
+                                   Text="{Binding WordTwo, Mode=OneWayToSource}"
+                                   TextChanged="LowercaseEntry"
+                                   Grid.Row="1"
+                                   Grid.Column="2"
+                                   Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
+                                   ReturnType="Next"
+                                   utils:Tags.Tag="Entry3" />
+
+                            <Label Text="2"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="2"
+                                   Grid.Column="2" />
+
+                            <Entry x:Name="Entry3"
+                                   Style="{StaticResource RecoveryWordEntry}"
+                                   Text="{Binding WordThree, Mode=OneWayToSource}"
+                                   TextChanged="LowercaseEntry"
+                                   Grid.Row="1"
+                                   Grid.Column="3"
+                                   Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
+                                   ReturnType="Next"
+                                   utils:Tags.Tag="Entry4" />
+
+                            <Label Text="3"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="2"
+                                   Grid.Column="3" />
+
+                            <Entry x:Name="Entry4"
+                                   Style="{StaticResource RecoveryWordEntry}"
+                                   Text="{Binding WordFour, Mode=OneWayToSource}"
+                                   TextChanged="LowercaseEntry"
+                                   Grid.Row="3"
+                                   Grid.Column="1"
+                                   Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
+                                   ReturnType="Next"
+                                   utils:Tags.Tag="Entry5" />
+
+                            <Label Text="4"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="4"
+                                   Grid.Column="1" />
+
+                            <Entry x:Name="Entry5"
+                                   Style="{StaticResource RecoveryWordEntry}"
+                                   Text="{Binding WordFive, Mode=OneWayToSource}"
+                                   TextChanged="LowercaseEntry"
+                                   Grid.Row="3"
+                                   Grid.Column="2"
+                                   Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
+                                   ReturnType="Next"
+                                   utils:Tags.Tag="Entry6" />
+
+                            <Label Text="5"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="4"
+                                   Grid.Column="2" />
+
+                            <Entry x:Name="Entry6"
+                                   Style="{StaticResource RecoveryWordEntry}"
+                                   Text="{Binding WordSix, Mode=OneWayToSource}"
+                                   TextChanged="LowercaseEntry"
+                                   Unfocused="Entry_Unfocused"
+                                   Grid.Row="3"
+                                   Grid.Column="3"
+                                   Completed="Entry_Completed"
+                                   ReturnType="Next"
+                                   utils:Tags.Tag="Entry7" />
+
+                            <Label Text="6"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="4"
+                                   Grid.Column="3" />
+
+                            <Entry x:Name="Entry7"
+                                   Style="{StaticResource RecoveryWordEntry}"
+                                   Text="{Binding WordSeven, Mode=OneWayToSource}"
+                                   TextChanged="LowercaseEntry"
+                                   Grid.Row="5"
+                                   Grid.Column="1"
+                                   Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
+                                   ReturnType="Next"
+                                   utils:Tags.Tag="Entry8" />
+
+                            <Label Text="7"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="6"
+                                   Grid.Column="1" />
+
+                            <Entry x:Name="Entry8"
+                                   Style="{StaticResource RecoveryWordEntry}"
+                                   Text="{Binding WordEight, Mode=OneWayToSource}"
+                                   TextChanged="LowercaseEntry"
+                                   Grid.Row="5"
+                                   Grid.Column="2"
+                                   Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
+                                   ReturnType="Next"
+                                   utils:Tags.Tag="Entry9" />
+
+                            <Label Text="8"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="6"
+                                   Grid.Column="2" />
+
+                            <Entry x:Name="Entry9"
+                                   Style="{StaticResource RecoveryWordEntry}"
+                                   Text="{Binding WordNine, Mode=OneWayToSource}"
+                                   TextChanged="LowercaseEntry"
+                                   Grid.Row="5"
+                                   Grid.Column="3"
+                                   Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
+                                   ReturnType="Next"
+                                   utils:Tags.Tag="Entry10" />
+
+                            <Label Text="9"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="6"
+                                   Grid.Column="3" />
+
+                            <Entry x:Name="Entry10"
+                                   Style="{StaticResource RecoveryWordEntry}"
+                                   Text="{Binding WordTen, Mode=OneWayToSource}"
+                                   TextChanged="LowercaseEntry"
+                                   Grid.Row="7"
+                                   Grid.Column="1"
+                                   Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
+                                   ReturnType="Next"
+                                   utils:Tags.Tag="Entry11" />
+
+                            <Label Text="10"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="8"
+                                   Grid.Column="1" />
+
+                            <Entry x:Name="Entry11"
+                                   Style="{StaticResource RecoveryWordEntry}"
+                                   Text="{Binding WordEleven, Mode=OneWayToSource}"
+                                   TextChanged="LowercaseEntry"
+                                   Grid.Row="7"
+                                   Grid.Column="2"
+                                   Completed="Entry_Completed"
+                                   Unfocused="Entry_Unfocused"
+                                   ReturnType="Next"
+                                   utils:Tags.Tag="Entry12" />
+
+                            <Label Text="11"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="8"
+                                   Grid.Column="2" />
+
+                            <Entry x:Name="Entry12"
+                                   Style="{StaticResource RecoveryWordEntry}"
+                                   Text="{Binding WordTwelve, Mode=TwoWay}"
+                                   TextChanged="LowercaseEntry"
+                                   Unfocused="Entry_Unfocused"
+                                   ReturnCommand="{Binding OnRecoverEntryCompleted}"
+                                   Grid.Row="7"
+                                   Grid.Column="3"
+                                   ReturnType="Done" />
+
+                            <Label Text="12"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   HorizontalOptions="Center"
+                                   FontSize="Micro"
+                                   Grid.Row="8"
+                                   Grid.Column="3" />
+                        </Grid>
+                    </ScrollView>
+                </FlexLayout>
+
+                <Button x:Name="NextButton"
                         FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="2" />
+                        FlexLayout.Grow="2"
+                        Text="{i18n:Translate Text=Recover.next}"
+                        Style="{DynamicResource RecoveryWordButton}"
+                        IsVisible="False"
+                        FontSize="Large"
+                        Command="{Binding OnRecoverEntryCompleted}" />
+
+                <!-- 3 taps on the layout makes the mnemonic be: "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about" on DEBUG only-->
+                <FlexLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="{OnPlatform 3, Android=1}" Tapped="DebugMnemonic_Tapped" />
+                </FlexLayout.GestureRecognizers>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

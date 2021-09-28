@@ -14,7 +14,7 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <Frame HasShadow="False"
-           HeightRequest="450"
+           VerticalOptions="FillAndExpand"
            BackgroundColor="Transparent"
            Padding="0">
         <StackLayout>
@@ -24,7 +24,7 @@
                 ItemsSource="{Binding Transactions}"
                 SelectedItem="{Binding CurrentTransaction}"
                 SelectionChangedCommand="{Binding NavigateToTransactionDetailsCommand}"
-                BackgroundColor="{DynamicResource BackgroundPrimary}">
+                BackgroundColor="{DynamicResource Bg}">
                 <CollectionView.EmptyView>
                     <ContentView>
                         <StackLayout HorizontalOptions="CenterAndExpand"
@@ -34,12 +34,12 @@
                                    FontAttributes="Bold"
                                    FontSize="18"
                                    Style="{DynamicResource CustomLabel}"
-                                   TextColor="{DynamicResource TextSecondary}"
+                                   TextColor="{DynamicResource Fg2}"
                                    HorizontalOptions="Fill"
                                    HorizontalTextAlignment="Center" />
                             <Button Text="{i18n:Translate Text=Transactions.empty.button}"
                                     Style="{DynamicResource CustomButton}"
-                                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                                    BackgroundColor="{DynamicResource Bg2}"
                                     Clicked="EmptyGetAddressButton_Clicked"
                                     FontSize="Medium"
                                     HeightRequest="50"
@@ -55,8 +55,8 @@
                             <!--<Image Source="{Binding IsSend, Converter={StaticResource IsSendToIconConverter}}" Opacity="0.3" Margin="15, 2, 0, 2" HeightRequest="30" WidthRequest="30" />-->
                             <Grid
                                 Margin="0, 2, 15, 2"
-                                Padding="10"
-                                BackgroundColor="{DynamicResource BackgroundPrimary}"
+                                Padding="12"
+                                BackgroundColor="{DynamicResource Bg}"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
                                     <RowDefinition
@@ -91,7 +91,7 @@
                                     <Label Style="{StaticResource TransactionInfoLabel}"
                                            FontFamily="{StaticResource Sans-Regular}"
                                            HorizontalTextAlignment="End"
-                                           TextColor="{DynamicResource TextSecondary}"
+                                           TextColor="{DynamicResource Fg2}"
                                            WidthRequest="66"
                                            Text="{Binding CreatedAt, Converter={StaticResource CreatedAtToDurationConverter}}" />
                                 </StackLayout>
@@ -100,21 +100,21 @@
                                     Grid.Column="0"
                                     Grid.Row="1"
                                     Grid.ColumnSpan="2"
-                                    TextColor="{DynamicResource TextPrimary}"
+                                    TextColor="{DynamicResource Fg}"
                                     Text="{Binding AddressText}" />
                                 <Label
                                     Style="{StaticResource TransactionInfoLabel}"
                                     Grid.Column="0"
                                     Grid.Row="2"
                                     Grid.ColumnSpan="2"
-                                    TextColor="{DynamicResource TextPrimary}"
+                                    TextColor="{DynamicResource Fg}"
                                     Text="{Binding MemoText}" />
                                 <Label
                                     Style="{StaticResource TransactionInfoLabel}"
                                     Grid.Column="0"
                                     Grid.Row="3"
                                     Grid.ColumnSpan="2"
-                                    TextColor="{DynamicResource SyncGradientStart}"
+                                    TextColor="{DynamicResource FgSuccess}"
                                     Text="{Binding StatusText}" />
                             </Grid>
                         </StackLayout>

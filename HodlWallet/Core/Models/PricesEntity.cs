@@ -59,8 +59,8 @@ namespace HodlWallet.Core.Models
 
     public class PricesEntity
     {
-        SKColor Color => ((Color)Application.Current.Resources["TextSuccess"]).ToSKColor();
-        SKColor ChartBackgroundColor => ((Color)Application.Current.Resources["BackgroundPrimary"]).ToSKColor();
+        SKColor Color => ((Color)Application.Current.Resources["FgSuccess"]).ToSKColor();
+        SKColor ChartBackgroundColor => ((Color)Application.Current.Resources["Bg"]).ToSKColor();
 
         [JsonProperty("meta")]
         public MetaEntity Meta { get; set; }

@@ -24,6 +24,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Android.Views;
 
 using Serilog;
 
@@ -55,6 +56,8 @@ namespace HodlWallet.Droid
             global::ZXing.Mobile.MobileBarcodeScanner.Initialize(Application);
 
             LoadApplication(new App());
+
+            Window.SetFlags(WindowManagerFlags.Secure, WindowManagerFlags.Secure);
 
             SetupLogging();
         }

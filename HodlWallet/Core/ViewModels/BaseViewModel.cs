@@ -25,12 +25,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
+using Refit;
 using Xamarin.Forms;
 
-using Refit;
-
 using HodlWallet.Core.Interfaces;
-
 using HodlWallet.Core.Utils;
 
 namespace HodlWallet.Core.ViewModels
@@ -42,19 +40,20 @@ namespace HodlWallet.Core.ViewModels
         public IPrecioHttpService PrecioHttpService => RestService.For<IPrecioHttpService>(Constants.PRECIO_HOST_URL);
         public IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
         public IPermissions PermissionsService => DependencyService.Get<IPermissions>();
+        public IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
 
         bool isLoading;
         public bool IsLoading
         {
-            get { return isLoading; }
-            set { SetProperty(ref isLoading, value); }
+            get => isLoading;
+            set => SetProperty(ref isLoading, value);
         }
 
-        string title = string.Empty;
+        string title;
         public string Title
         {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            get => title;
+            set => SetProperty(ref title, value);
         }
 
         protected bool SetProperty<T>(
@@ -69,6 +68,7 @@ namespace HodlWallet.Core.ViewModels
             backingStore = value;
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);
+
             return true;
         }
 

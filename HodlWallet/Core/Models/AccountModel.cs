@@ -40,6 +40,7 @@ namespace HodlWallet.Core.Models
         public string AccountName { get; private set; }
         public string Balance { get; private set; }
         public string AccountColorCode { get; set; }
+        public Style CustomStyle { get; set; }
         public static AccountModel FromAccountData(IAccount account)
         {
             return new AccountModel
@@ -47,7 +48,10 @@ namespace HodlWallet.Core.Models
                 AccountData = account,
                 AccountName = account.Name,
                 Balance = account.GetBalance().ToString(),
-                AccountColorCode = Constants.DEFAULT_ACCOUNT_COLOR_CODE
+                AccountColorCode = Constants.DEFAULT_ACCOUNT_COLOR_CODE,
+                CustomStyle = (Style)Shell.Current.Resources[
+                    $"{Constants.PREFIX_NAME_STYLE_ACCOUNT_MENU}"
+                    + $"{Constants.DEFAULT_ACCOUNT_COLOR_CODE}"]
             };
         }
 

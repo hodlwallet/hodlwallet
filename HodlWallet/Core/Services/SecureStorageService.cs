@@ -141,25 +141,6 @@ namespace HodlWallet.Core.Services
             Set(NETWORK_KEY, network);
         }
 
-        public static int GetSeedBirthday()
-        {
-            var result = Get(SEED_BIRTHDAY_KEY);
-
-            if (result == null) return -1;
-
-            return int.Parse(Get(SEED_BIRTHDAY_KEY));
-        }
-
-        public static bool HasSeedBirthday()
-        {
-            return GetSeedBirthday() != -1;
-        }
-
-        public static void SetSeedBirthday(DateTimeOffset birthday)
-        {
-            Set(SEED_BIRTHDAY_KEY, birthday.ToUnixTimeSeconds().ToString());
-        }
-
         public static string GetAccountColor(string walletId, string accountId)
         {
             Guard.NotEmpty(walletId, nameof(walletId));

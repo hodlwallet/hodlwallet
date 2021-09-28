@@ -1,124 +1,142 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
        x:Class="HodlWallet.UI.AppShell"
-       BackgroundColor="{DynamicResource BackgroundSecondary}"
-       FlyoutBackgroundColor="{DynamicResource BackgroundSecondary}"
+       BackgroundColor="{DynamicResource Bg2}"
+       FlyoutBackgroundColor="{DynamicResource Bg2}"
        Shell.NavBarHasShadow="False"
        xmlns:views="clr-namespace:HodlWallet.UI.Views"
        xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
-       xmlns:ui="clr-namespace:HodlWallet.UI"
-       x:DataType="ui:AppShell">
+       ios:Page.UseSafeArea="True"
+       x:Name="shell">
     <Shell.Resources>
         <Style x:Key="BaseStyle" TargetType="Element">
-            <Setter Property="Shell.BackgroundColor" Value="{DynamicResource BackgroundPrimary}" />
-            <Setter Property="Shell.ForegroundColor" Value="{ DynamicResource TextSecondary}" />
-            <Setter Property="Shell.TitleColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="Shell.DisabledColor" Value="{DynamicResource TextSecondary}" />
-            <Setter Property="Shell.UnselectedColor" Value="{DynamicResource TextSecondary}" />
-            <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource BackgroundPrimary}" />
-            <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource TextSecondary}" />
-            <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource SelectedTab}" />
+            <Setter Property="Shell.BackgroundColor" Value="{DynamicResource Bg}" />
+            <Setter Property="Shell.ForegroundColor" Value="{DynamicResource Fg2}" />
+            <Setter Property="Shell.TitleColor" Value="{DynamicResource Fg}" />
+            <Setter Property="Shell.DisabledColor" Value="{DynamicResource Fg2}" />
+            <Setter Property="Shell.UnselectedColor" Value="{DynamicResource Fg2}" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource Bg}" />
+            <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource Fg}" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource Fg2}" />
+            <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource FgSuccess}" />
         </Style>
-        
 
         <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}">
         </Style>
 
         <Style x:Key="MenuItemLabelBase" TargetType="Label">
-            <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
-            <Setter Property="Padding" Value="20, 0" />
+            <Setter Property="TextColor" Value="{DynamicResource Fg}" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="FontSize" Value="Small" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass0" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass0" TargetType="Label" Class="MenuItemLabelClass0" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker0}" />
-            
-        </Style><Style TargetType="Label" Class="MenuItemLabelClass1" BasedOn="{StaticResource MenuItemLabelBase}">
-            <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker1}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass2" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass1" TargetType="Label" Class="MenuItemLabelClass1" BasedOn="{StaticResource MenuItemLabelBase}">
+            <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker1}" />
+            <Setter Property="TextColor" Value="{DynamicResource FgDark}" />
+        </Style>
+
+        <Style x:Key="MenuItemLabelClass2" TargetType="Label" Class="MenuItemLabelClass2" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker2}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass3" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass3" TargetType="Label" Class="MenuItemLabelClass3" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker3}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass4" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass4" TargetType="Label" Class="MenuItemLabelClass4" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker4}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass5" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass5" TargetType="Label" Class="MenuItemLabelClass5" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker5}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass6" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass6" TargetType="Label" Class="MenuItemLabelClass6" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker6}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
+            <Setter Property="TextColor" Value="{DynamicResource FgDark}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass7" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass7" TargetType="Label" Class="MenuItemLabelClass7" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker7}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass8" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass8" TargetType="Label" Class="MenuItemLabelClass8" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker8}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass9" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass9" TargetType="Label" Class="MenuItemLabelClass9" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker9}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass10" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass10" TargetType="Label" Class="MenuItemLabelClass10" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker10}" />
+            <Setter Property="TextColor" Value="{DynamicResource FgDark}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass11" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass11" TargetType="Label" Class="MenuItemLabelClass11" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker11}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
+            <Setter Property="TextColor" Value="{DynamicResource FgDark}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass12" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass12" TargetType="Label" Class="MenuItemLabelClass12" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker12}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
+            <Setter Property="TextColor" Value="{DynamicResource FgDark}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass13" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass13" TargetType="Label" Class="MenuItemLabelClass13" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker13}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass14" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass14" TargetType="Label" Class="MenuItemLabelClass14" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker14}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass15" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass15" TargetType="Label" Class="MenuItemLabelClass15" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker15}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
+            <Setter Property="TextColor" Value="{DynamicResource FgDark}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass16" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass16" TargetType="Label" Class="MenuItemLabelClass16" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker16}" />
-            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
+            <Setter Property="TextColor" Value="{DynamicResource FgDark}" />
         </Style>
 
-        <Style TargetType="Label" Class="MenuItemLabelClass17" BasedOn="{StaticResource MenuItemLabelBase}">
+        <Style x:Key="MenuItemLabelClass17" TargetType="Label" Class="MenuItemLabelClass17" BasedOn="{StaticResource MenuItemLabelBase}">
             <Setter Property="BackgroundColor" Value="{DynamicResource ColorPicker17}" />
         </Style>
 
-        <Style TargetType="Layout"
-            Class="FlyoutItemLayoutStyle"
-            ApplyToDerivedTypes="True">
-            <Setter Property="Grid.ColumnDefinitions" Value="0*, 1*" />
-        </Style>
     </Shell.Resources>
 
-
+    <!-- TODO The FlyoutHeader doesn't render propertly in iOS
     <Shell.FlyoutHeader>
         <controls:FlyoutHeader />
-    </Shell.FlyoutHeader>
+    </Shell.FlyoutHeader>-->
+
+    <Shell.FlyoutContentTemplate>
+        <DataTemplate>
+            <FlexLayout Direction="Column">
+                <ContentView HeightRequest="80"> <!-- HACK this would do, see above error with FlyoutHeader -->
+                    <ContentView.Content>
+                        <controls:FlyoutHeader />
+                    </ContentView.Content>
+                </ContentView>
+                <CollectionView BindingContext="{x:Reference shell}"
+                                ItemsSource="{Binding AccountList}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <controls:FlyoutMenuItems/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </FlexLayout>
+        </DataTemplate>
+    </Shell.FlyoutContentTemplate>
     
     <Shell.FlyoutFooter>
         <controls:FlyoutFooter />

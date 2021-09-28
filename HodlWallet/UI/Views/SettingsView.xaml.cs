@@ -61,7 +61,7 @@ namespace HodlWallet.UI.Views
 
                 if (!answer) return;
 
-                var view = new RecoverView(closeable: true);
+                var view = new RecoverInfoView(closeable: true);
                 var nav = new NavigationPage(view);
 
                 await Navigation.PushModalAsync(nav);
@@ -81,7 +81,7 @@ namespace HodlWallet.UI.Views
             });
         }
 
-        void BuildDate_Tapped(object sender, EventArgs e)
+        async void BuildDate_Tapped(object sender, EventArgs e)
         {
             string buildInfo = string.Format(
                 Constants.BUILD_INFO_CONTENT,
@@ -91,11 +91,11 @@ namespace HodlWallet.UI.Views
 
             Debug.WriteLine(buildInfo);
 
-            Clipboard.SetTextAsync(buildInfo);
+            await Clipboard.SetTextAsync(buildInfo);
 
             string msg = $"{buildInfo}\n\n{Constants.BUILD_INFO_COPIED_TO_CLIPBOARD}";
 
-            _ = this.DisplayPrompt(
+            await this.DisplayPrompt(
                 Constants.BUILD_INFO_MESSAGE_TITLE,
                 msg,
                 LocaleResources.Error_ok
@@ -127,9 +127,14 @@ namespace HodlWallet.UI.Views
             );
         }
 
-        void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        async void Security_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            await Navigation.PushAsync(new SecuritySettingsView());
+        }
+
+        async void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
         }
     }
 }

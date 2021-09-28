@@ -1,44 +1,35 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
-             x:Class="HodlWallet.UI.Views.OnboardView"
-             BackgroundColor="{DynamicResource BackgroundSecondary}"
-             NavigationPage.HasNavigationBar="False">
-    <ContentPage.Content>
-        <AbsoluteLayout>
-            <FlexLayout Direction="Column"
-                        JustifyContent="SpaceAround">
-
-                <Frame FlexLayout.Grow="5"
-                       BackgroundColor="Transparent">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+    x:Class="HodlWallet.UI.Views.OnboardView"
+    BackgroundColor="{DynamicResource Bg2}"
+    NavigationPage.HasNavigationBar="False">
+<ContentPage.Content>
+    <AbsoluteLayout>
+        <FlexLayout Direction="Column">
+            <Frame FlexLayout.Grow="5"
+                BackgroundColor="Transparent">
                     <Image Source="logo_front.png"
-                           Scale="0.5"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Logo_Tapped" />
-                        </Image.GestureRecognizers>
-                    </Image>
-                </Frame>
+                        Scale="0.5"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Logo_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
 
-                <Button Text="{i18n:Translate Text=Onboard.create}"
-                        Style="{DynamicResource CustomButton}"
-                        FlexLayout.AlignSelf="Stretch"
-                        FontSize="Medium"
-                        Clicked="CreateButton_Clicked"
-                        FlexLayout.Grow="1" />
+            <Button Text="{i18n:Translate Text=Onboard.create}"
+                Style="{DynamicResource BottomButton}"
+                FlexLayout.Grow="1"
+                Clicked="CreateButton_Clicked" />
 
-                <BoxView HeightRequest="2"
-                         BackgroundColor="Transparent" />
-
-                <Button Text="{i18n:Translate Text=Onboard.recover}"
-                        Style="{DynamicResource CustomButton}"
-                        FlexLayout.AlignSelf="Stretch"
-                        FontSize="Medium"
-                        Clicked="RecoverButton_Clicked"
-                        FlexLayout.Grow="1" />
-            </FlexLayout>
-        </AbsoluteLayout>
-    </ContentPage.Content>
+            <Button Text="{i18n:Translate Text=Onboard.recover}"
+                Style="{DynamicResource BottomButton}"
+                FlexLayout.Grow="1"
+                Clicked="RecoverButton_Clicked" />
+        </FlexLayout>
+    </AbsoluteLayout>
+</ContentPage.Content>
 </ContentPage>

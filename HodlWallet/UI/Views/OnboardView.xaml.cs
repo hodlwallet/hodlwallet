@@ -36,23 +36,27 @@ namespace HodlWallet.UI.Views
             InitializeComponent();
         }
 
-        void CreateButton_Clicked(object sender, EventArgs e)
+        async void CreateButton_Clicked(object sender, EventArgs e)
         {
+            var view = new NewWalletInfoView();
+
             if (SecureStorageService.HasPin())
-                Navigation.PushAsync(new NewWalletInfoView());
+                await Navigation.PushAsync(view);
             else
             {
-                Navigation.PushAsync(new PinPadView(new NewWalletInfoView()));
+                await Navigation.PushAsync(new PinPadView(view));
             }
         }
 
-        void RecoverButton_Clicked(object sender, EventArgs e)
+        async void RecoverButton_Clicked(object sender, EventArgs e)
         {
+            var view = new RecoverInfoView();
+
             if (SecureStorageService.HasPin())
-                Navigation.PushAsync(new RecoverView());
+                await Navigation.PushAsync(view);
             else
             {
-                Navigation.PushAsync(new PinPadView(new RecoverView()));
+                await Navigation.PushAsync(new PinPadView(view));
             }
         }
 

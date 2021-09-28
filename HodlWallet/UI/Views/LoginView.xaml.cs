@@ -20,16 +20,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
-using HodlWallet.Core.Interfaces;
-using System;
-using HodlWallet.UI.Views.Demos;
 using HodlWallet.Core.Services;
+using HodlWallet.UI.Views.Demos;
 
 namespace HodlWallet.UI.Views
 {
@@ -37,18 +36,32 @@ namespace HodlWallet.UI.Views
     {
         readonly uint incorrectPinAnimationTimeout = 50;
 
-        Color DigitOnColor => (Color)Application.Current.Resources["InputPinOn"];
-        Color DigitOffColor => (Color)Application.Current.Resources["InputPinOff"];
-
-        IWalletService WalletService => DependencyService.Get<IWalletService>();
+        Color DigitOnColor => (Color)Application.Current.Resources["FgSuccess"];
+        Color DigitOffColor => (Color)Application.Current.Resources["Fg"];
 
         LoginViewModel ViewModel => (LoginViewModel)BindingContext;
 
-        public LoginView()
+        public LoginView(string action = null)
         {
             InitializeComponent();
-
             SubscribeToMessages();
+
+            ViewModel.Action = action;
+
+            if (ViewModel.Action == "update")
+            {
+                LogoFront.IsVisible = false;
+                Header.Text = Locale.LocaleResources.Pin_updateHeader;
+                CancelButton.IsEnabled = true;
+                CancelButton.IsVisible = true;
+            }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ViewModel.LoginFormVisible = true;
         }
 
         protected override void OnDisappearing()
@@ -56,6 +69,8 @@ namespace HodlWallet.UI.Views
             base.OnDisappearing();
 
             if (ViewModel.IsLoading) ViewModel.IsLoading = false;
+
+            ViewModel.LoginFormVisible = false;
         }
 
         void SubscribeToMessages()
@@ -63,7 +78,7 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitAdded", DigitAdded);
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitRemoved", DigitRemoved);
             MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", IncorrectPinAnimation);
-            MessagingCenter.Subscribe<LoginViewModel>(this, "NavigateToRootView", NavigateToRootView);
+            MessagingCenter.Subscribe<LoginViewModel>(this, "StartAppShell", StartAppShell);
             MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
         }
 
@@ -98,11 +113,24 @@ namespace HodlWallet.UI.Views
             await Task.Delay(500);
         }
 
-        void NavigateToRootView(LoginViewModel _)
+        void StartAppShell(LoginViewModel _)
         {
-            Debug.WriteLine($"[SubscribeToMessage][NavigateToRootView]");
+            Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
 
-            // Incase we're faster than light, we call the constructor anyways.
+            if (ViewModel.Action == "update") // Update PIN
+            {
+                Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
+
+                return;
+            }
+            else if (ViewModel.Action == "pop") // Login after logout or timeout
+            {
+                Navigation.PopModalAsync();
+
+                return;
+            }
+
+            // Init app after startup, new wallet or restore
             Application.Current.MainPage = new AppShell();
         }
 
@@ -136,6 +164,11 @@ namespace HodlWallet.UI.Views
                 Debug.WriteLine($"[Logo_Tapped] Seed: {SecureStorageService.GetMnemonic()}");
 
             Application.Current.MainPage = new ControlsDemoView();
+        }
+
+        void CancelButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }

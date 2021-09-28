@@ -310,8 +310,16 @@
     <comment>label for menu view title</comment>
   </data>
   <data name="Menu.security" xml:space="preserve">
-    <value>Security Center</value>
-    <comment>label for security view title</comment>
+    <value>Security</value>
+    <comment>label for menu security button</comment>
+  </data>
+  <data name="Menu.info" xml:space="preserve">
+    <value>Info</value>
+    <comment>label for menu info button</comment>
+  </data>
+  <data name="Menu.coinControl" xml:space="preserve">
+    <value>Coin Control</value>
+    <comment>label for menu coin control button</comment>
   </data>
   <data name="Menu.knowledge" xml:space="preserve">
     <value>Knowledge</value>
@@ -488,6 +496,10 @@
     <value>Name</value>
     <comment>label for create an account</comment>
   </data>
+  <data name="AddAccount.placeholder" xml:space="preserve">
+    <value>Bitcoin Account</value>
+    <comment>label for create an account</comment>
+  </data>
   <data name="AddAccount.options" xml:space="preserve">
     <value>Type</value>
     <comment>label for type options when create an account</comment>
@@ -500,11 +512,11 @@
     <value>Create</value>
     <comment>label for add account button</comment>
   </data>
-  <data name="Backup.Close" xml:space="preserve">
+  <data name="Backup.close" xml:space="preserve">
     <value>Close</value>
     <comment>label for backup toolbar Close button</comment>
   </data>
-  <data name="Backup.Skip" xml:space="preserve">
+  <data name="Backup.skip" xml:space="preserve">
     <value>Skip</value>
     <comment>label for backup toolbar Skip button</comment>
   </data>
@@ -513,7 +525,7 @@
     <comment>Account Settings Title</comment>
   </data>
   <data name="Settings.Title" xml:space="preserve">
-    <value>Global Settings</value>
+    <value>Settings</value>
     <comment>Global Settings Title</comment>
   </data>
   <data name="Settings.Close" xml:space="preserve">
@@ -747,5 +759,93 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="NewWallet.title" xml:space="preserve">
     <value>Create New Wallet</value>
     <comment>label for titel of New Wallet view</comment>
+  </data>
+  <data name="Menu.currency" xml:space="preserve">
+    <value>Currency</value>
+    <comment>label for menu currency button</comment>
+  </data>
+  <data name="Menu.network" xml:space="preserve">
+    <value>Network</value>
+    <comment>label for menu network button</comment>
+  </data>
+  <data name="Menu.wallet" xml:space="preserve">
+    <value>Wallet</value>
+    <comment>label for menu wallet button</comment>
+  </data>
+  <data name="PinSettings.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for close button of PinSettingsView</comment>
+  </data>
+  <data name="PinSettings.title" xml:space="preserve">
+    <value>Pin Settings</value>
+    <comment>label for PinSettingsView title</comment>
+  </data>
+  <data name="Security.backupRecoveryKey" xml:space="preserve">
+    <value>Backup Recovery Key</value>
+    <comment>label for backup recovery key button</comment>
+  </data>
+  <data name="Security.biometrics" xml:space="preserve">
+    <value>Biometrics</value>
+    <comment>label for biometrics button</comment>
+  </data>
+  <data name="Security.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for close button of SecuritySettingsView</comment>
+  </data>
+  <data name="Security.pin" xml:space="preserve">
+    <value>Pin</value>
+    <comment>label for pin button</comment>
+  </data>
+  <data name="Security.title" xml:space="preserve">
+    <value>Security</value>
+    <comment>label for SecuritySettingsView title</comment>
+  </data>
+  <data name="PinSettings.pinSpendingLimits" xml:space="preserve">
+    <value>Pin Spending Limits</value>
+    <comment>label for Pin Spending Limits button of PinSettingsView</comment>
+  </data>
+  <data name="PinSettings.updatePin" xml:space="preserve">
+    <value>Update Pin</value>
+    <comment>label for Update Pin button of PinSettingsView</comment>
+  </data>
+  <data name="Biometrics.title" xml:space="preserve">
+    <value>Face ID</value>
+    <comment>Label for BiometricsView title label</comment>
+  </data>
+  <data name="Login.cancel" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Label of cancel button in LoginView</comment>
+  </data>
+  <data name="AccountTypeSelection.description" xml:space="preserve">
+    <value>Hodl Wallet supports two different account types described below. Please select the account type you would like to create. Creating a new account has no effect on your existing accounts.</value>
+    <comment>description of the account type selection view</comment>
+  </data>
+  <data name="AccountTypeSelection.doneButton" xml:space="preserve">
+    <value>Done</value>
+    <comment>done button of the select view</comment>
+  </data>
+  <data name="AccountTypeSelection.legacyDescription" xml:space="preserve">
+    <value>Creates legacy bitcoin addresses that begin with 1. These addresses are supported by all bitcoin services but will lead to higher fees when sending than standard. Use this account type if the service or wallet you are sending to does not support the newest address standard.</value>
+    <comment>description of the legacy type</comment>
+  </data>
+  <data name="AccountTypeSelection.legacyTitle" xml:space="preserve">
+    <value>Legacy</value>
+    <comment>title of the legacy type</comment>
+  </data>
+  <data name="AccountTypeSelection.standardDescription" xml:space="preserve">
+    <value>The newest bitcoin address standard. This will create addresses that begin with bc1 (Bech 32). This account type will help you save on fees but Bech 32 addresses may still not be supported by some bitcoin wallets and services.</value>
+    <comment>description of the standard type</comment>
+  </data>
+  <data name="AccountTypeSelection.standardTitle" xml:space="preserve">
+    <value>Standard</value>
+    <comment>title of the standard type</comment>
+  </data>
+  <data name="AccountTypeSelection.title" xml:space="preserve">
+    <value>Select Account Type</value>
+    <comment>title of the account type selection view</comment>
+  </data>
+  <data name="AccountTypeSelection.pleaseSelect" xml:space="preserve">
+    <value>Please select the type of account</value>
+    <comment>label that's shown when the user haven't selected a type of account</comment>
   </data>
 </root>

@@ -39,6 +39,8 @@ namespace HodlWallet.Core.Interfaces
         bool IsStarted { get; }
         bool IsConfigured { get; }
 
+        bool Syncing { get; }
+
         IWallet Wallet { get; }
 
         Serilog.ILogger Logger { set; get; }
@@ -46,19 +48,17 @@ namespace HodlWallet.Core.Interfaces
         event EventHandler OnConfigured;
         event EventHandler OnStarted;
 
-        void InitializeWallet(bool isLegacy = false);
+        event EventHandler<DateTimeOffset> OnSyncStarted;
+        event EventHandler<DateTimeOffset> OnSyncFinished;
+
         void Start();
-        void StartWalletWithWalletId();
+        void InitializeWallet(string accountType = "standard");
+        void StartWalletWithWalletId(string accountType = "standard");
         void DestroyWallet(bool dryRun = false);
-
         bool IsAddressOwn(string address);
-
         decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);
-
         long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed);
-
         BitcoinAddress GetReceiveAddress();
-
         Network GetNetwork();
         IEnumerable<Tx> GetCurrentAccountTransactions();
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,

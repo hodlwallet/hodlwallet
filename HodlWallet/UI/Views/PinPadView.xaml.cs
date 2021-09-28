@@ -22,10 +22,12 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Controls;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace HodlWallet.UI.Views
 {
@@ -64,7 +66,7 @@ namespace HodlWallet.UI.Views
             await Navigation.PushAsync(nextView);
 
             // No page should go back to the pinpad view
-            Application.Current.MainPage.Navigation.RemovePage(this);
+            if (Navigation.NavigationStack.Contains(this)) Navigation.RemovePage(this);
         }
     }
 }

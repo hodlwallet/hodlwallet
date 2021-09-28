@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Threading;
 
 using Xamarin.Forms;
 
@@ -62,6 +63,7 @@ namespace HodlWallet.Core.Services
         Network network;
 
         string walletId;
+        CancellationTokenSource Cts;
 
         public Serilog.ILogger Logger { set; get; }
 
@@ -69,9 +71,12 @@ namespace HodlWallet.Core.Services
 
         public event EventHandler OnConfigured;
         public event EventHandler OnStarted;
+        public event EventHandler<DateTimeOffset> OnSyncStarted;
+        public event EventHandler<DateTimeOffset> OnSyncFinished;
 
         public bool IsStarted { get; private set; }
         public bool IsConfigured { get; private set; }
+        public bool Syncing { get; private set; }
 
         public IWallet Wallet { get; private set; }
 
@@ -96,7 +101,7 @@ namespace HodlWallet.Core.Services
             });
         }
 
-        public void InitializeWallet(bool isLegacy = false)
+        public void InitializeWallet(string accountType = "standard")
         {
             string guid;
             if (SecureStorageService.HasWalletId())
@@ -125,19 +130,15 @@ namespace HodlWallet.Core.Services
             network = Hd.GetNetwork(networkStr ?? DEFAULT_TESTING_NETWORK);
             walletId = guid ?? Guid.NewGuid().ToString();
 
+            Cts ??= new CancellationTokenSource();
+
             if (!SecureStorageService.HasMnemonic() || walletId == null)
             {
                 Logger.Information("Wallet has been configured but not started yet due to the lack of mnemonic in the system");
                 return;
             }
 
-            if (isLegacy == true && !SecureStorageService.HasSeedBirthday())
-            {
-                Logger.Information("Legacy wallet has been configured but not started yet due to the lack of seed birthday in the system");
-                return;
-            }
-
-            StartWalletWithWalletId();
+            StartWalletWithWalletId(accountType);
 
             Logger.Information("Since wallet has a mnemonic, then start the wallet.");
 
@@ -147,7 +148,7 @@ namespace HodlWallet.Core.Services
             Logger.Information("Configured wallet.");
         }
 
-        public void StartWalletWithWalletId()
+        public void StartWalletWithWalletId(string newAccountType = "standard")
         {
             Guard.NotNull(walletId, nameof(walletId));
 
@@ -197,9 +198,7 @@ namespace HodlWallet.Core.Services
 
             Logger.Debug("Creating wallet ({guid}) with password: {password}", walletId, password);
 
-            DateTimeOffset createdAt = SecureStorageService.HasSeedBirthday()
-                ? DateTimeOffset.FromUnixTimeSeconds(SecureStorageService.GetSeedBirthday())
-                : new DateTimeOffset(DateTime.UtcNow);
+            DateTimeOffset createdAt = new DateTimeOffset(DateTime.UtcNow);
 
             Wallet = new Wallet { Id = walletId };
 
@@ -243,6 +242,9 @@ namespace HodlWallet.Core.Services
             {
                 start = DateTimeOffset.Now;
 
+                OnSyncStarted?.Invoke(this, start);
+                Syncing = true;
+
                 Logger.Debug($"Syncing started at {start.LocalDateTime.ToLongTimeString()}");
             };
 
@@ -250,14 +252,35 @@ namespace HodlWallet.Core.Services
             {
                 end = DateTimeOffset.UtcNow;
 
+                OnSyncFinished?.Invoke(this, end);
+                Syncing = false;
+
                 Logger.Debug($"Syncing ended at {end.LocalDateTime.ToLongTimeString()}");
                 Logger.Debug($"Syncing time: {(end - start).TotalSeconds}");
             };
 
-            _ = PeriodicSave();
+            Task.Factory.StartNew(
+                () => PeriodicSave(),
+                Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
 
-            _ = Wallet.Sync();
-            _ = Wallet.Watch();
+            // TODO add ping
+
+            Task.Factory.StartNew(
+                () => Wallet.Sync(),
+                Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
+
+            Task.Factory.StartNew(
+                () => Wallet.Watch(),
+                Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
 
             OnStarted?.Invoke(this, null);
             IsStarted = true;

@@ -7,7 +7,7 @@
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              x:Class="HodlWallet.UI.Views.ReceiveView"
              Title="{i18n:Translate Receive.title}"
-             BackgroundColor="{DynamicResource BackgroundPrimary}">
+             BackgroundColor="{DynamicResource Bg}">
     <ContentPage.BindingContext>
         <vm:ReceiveViewModel />
     </ContentPage.BindingContext>
@@ -48,7 +48,7 @@
                 <BoxView FlexLayout.Grow="1" />
 
                 <Button x:Name="ShareButton"
-                        BackgroundColor="{DynamicResource BackgroundSecondary}"
+                        BackgroundColor="{DynamicResource Bg2}"
                         Command="{Binding ShowShareIntentCommand}"
                         Text="{i18n:Translate Text=Receive.share}"
                         FlexLayout.AlignSelf="Stretch"

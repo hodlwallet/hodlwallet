@@ -305,15 +305,15 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
-        public static string Backup_Close {
+        public static string Backup_close {
             get {
-                return ResourceManager.GetString("Backup.Close", resourceCulture);
+                return ResourceManager.GetString("Backup.close", resourceCulture);
             }
         }
         
-        public static string Backup_Skip {
+        public static string Backup_skip {
             get {
-                return ResourceManager.GetString("Backup.Skip", resourceCulture);
+                return ResourceManager.GetString("Backup.skip", resourceCulture);
             }
         }
         

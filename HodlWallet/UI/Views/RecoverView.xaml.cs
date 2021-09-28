@@ -24,27 +24,118 @@ using System;
 
 using Xamarin.Forms;
 
+using HodlWallet.Core.Utils;
+using HodlWallet.Core.ViewModels;
+using HodlWallet.UI.Locale;
+using HodlWallet.UI.Extensions;
+using HodlWallet.Core.Services;
+
 namespace HodlWallet.UI.Views
 {
     public partial class RecoverView : ContentPage
     {
-        public RecoverView(bool closeable = false)
+        RecoverViewModel ViewModel => BindingContext as RecoverViewModel;
+
+        Color Fg => (Color)Application.Current.Resources["Fg"];
+        Color FgError => (Color)Application.Current.Resources["FgError"];
+
+        public RecoverView()
         {
             InitializeComponent();
 
-            if (closeable) return;
-
-            ToolbarItems.Clear();
+            SubscribeToMessages();
         }
 
-        void Next_Clicked(object sender, EventArgs e)
+        void SubscribeToMessages()
         {
-            Navigation.PushAsync(new RecoverWalletEntryView());
+            MessagingCenter.Subscribe<RecoverViewModel>(this, "RecoverySeedError", ShowRecoverSeedError);
+            MessagingCenter.Subscribe<RecoverViewModel>(this, "ShowRecoverAccountType", ShowRecoverAccountType);
         }
 
-        void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        void Entry_Completed(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            var completed = sender as Entry;
+            if (completed.Text != null)
+                ValidateEntry(completed);
+
+            var NextEntry = FindByName(Tags.GetTag(completed)) as Entry;
+            NextEntry?.Focus();
+        }
+
+        void Entry_Unfocused(object sender, EventArgs e)
+        {
+            ValidateEntry(sender as Entry);
+
+            ToggleNextButton();
+        }
+
+        void LowercaseEntry(object sender, EventArgs e)
+        {
+            var entry = (Entry)sender;
+
+            entry.Text = entry.Text.ToLower();
+
+            ValidateEntry(entry);
+
+            ToggleNextButton();
+        }
+
+        void ValidateEntry(Entry entry)
+        {
+            if (entry.Text == null) return;
+
+            var word = entry.Text;
+
+            if (WalletService.IsWordInWordlist(word, ViewModel.WalletService.GetWordListLanguage()))
+                entry.TextColor = Fg;
+            else
+                entry.TextColor = FgError;
+        }
+
+        void ShowRecoverSeedError(RecoverViewModel vm)
+        {
+            _ = this.DisplayPrompt(
+                LocaleResources.Recover_alertTitle,
+                LocaleResources.Recover_alertHeader,
+                LocaleResources.Recover_alertButton
+            );
+        }
+
+        void ToggleNextButton()
+        {
+            for (int i = 1; i < 13; i++)
+            {
+                var entry = FindByName($"Entry{i}") as Entry;
+
+                if (string.IsNullOrEmpty(entry.Text))
+                {
+                    NextButton.IsVisible = false;
+
+                    return;
+                }
+            }
+
+            NextButton.IsVisible = true;
+        }
+
+        void ShowRecoverAccountType(RecoverViewModel _)
+        {
+            Navigation.PushAsync(new RecoverAccountTypeView());
+        }
+
+        void DebugMnemonic_Tapped(object sender, EventArgs e)
+        {
+#if WIPE_WALLET
+            for (int i = 1; i < 12; i++)
+            {
+                var entry = FindByName($"Entry{i}") as Entry;
+
+                entry.Text = "abandon";
+            }
+            var lastEntry = FindByName($"Entry{12}") as Entry;
+
+            lastEntry.Text = "about";
+#endif
         }
     }
 }

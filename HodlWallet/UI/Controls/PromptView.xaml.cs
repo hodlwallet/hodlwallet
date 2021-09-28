@@ -29,14 +29,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Essentials;
-using HodlWallet.Core.Utils;
+
 using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Controls
 {
     public partial class PromptView : ContentView
     {
-        readonly Color textPrimary = (Color)Application.Current.Resources["TextPrimary"];
+        Color Fg => (Color)Application.Current.Resources["Fg"];
         double QuestionFrameTopMargin => (DeviceDisplay.MainDisplayInfo.Height / 2) - (QuestionFrame.Height * 2);
 
         public enum PromptResponses
@@ -65,11 +65,11 @@ namespace HodlWallet.UI.Controls
         public event EventHandler<bool> Responded;
 
         public static readonly BindableProperty TitleProperty = BindableProperty.CreateAttached(
-                    nameof(Title),
-                    typeof(string),
-                    typeof(PromptView),
-                    default(string)
-                );
+            nameof(Title),
+            typeof(string),
+            typeof(PromptView),
+            default(string)
+        );
 
         public string Title
         {
@@ -130,7 +130,7 @@ namespace HodlWallet.UI.Controls
 
             if (string.IsNullOrEmpty(cancelButton))
             {
-                OkButton.TextColor = textPrimary;
+                OkButton.TextColor = Fg;
                 CancelButton.IsVisible = false;
             }
             else

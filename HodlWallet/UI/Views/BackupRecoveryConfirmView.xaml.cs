@@ -43,7 +43,7 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel, bool>(this, "CollectionsAreEqual", (page, enableButton) => nextButton.IsEnabled = enableButton);
         }
 
-        void NavigateToRootView(BackupRecoveryConfirmViewModel _)
+        void StartAppShell(BackupRecoveryConfirmViewModel _)
         {
             // If the recovery was launched later...
             if (Navigation.ModalStack.Count > 0)

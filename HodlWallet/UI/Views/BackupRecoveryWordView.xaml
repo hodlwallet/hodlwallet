@@ -6,8 +6,7 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupRecoveryWordView"
              Title="{i18n:Translate BackupWord.title}"
-             BackgroundColor="{DynamicResource BackgroundPrimary}">
-
+             BackgroundColor="{DynamicResource Bg}">
     <ContentPage.BindingContext>
         <vm:BackupRecoveryWordViewModel />
     </ContentPage.BindingContext>
@@ -17,42 +16,40 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="SkipToolbarItem"
                      Order="Primary"
-                     Text="{i18n:Translate Text=Backup.Skip}"
+                     Text="{i18n:Translate Text=Backup.skip}"
                      Priority="0"
                      Clicked="SkipToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <FlexLayout Direction="Column"
                         JustifyContent="SpaceAround"
-                        BackgroundColor="{DynamicResource BackgroundPrimary}"
+                        BackgroundColor="{DynamicResource Bg}"
                         AlignItems="Center">
             <Label Text="{i18n:Translate Text=BackupWord.header}"
                        FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource SyncGradientStart}"
+                       TextColor="{DynamicResource FgSuccess}"
                        HorizontalTextAlignment="Center"
                        Margin="0, 20" />
 
             <FlexLayout Direction="Row"
-                                    Wrap="Wrap"
-                                    JustifyContent="SpaceAround"
-                                    AlignItems="Center"
-                                    BindableLayout.ItemsSource="{Binding Words}"
-                                    BindableLayout.EmptyView="Mnemonic not found!"
-                                    Margin="15"                                    
-                                    FlexLayout.Grow="4">
+                        Wrap="Wrap"
+                        JustifyContent="SpaceAround"
+                        AlignItems="Center"
+                        BindableLayout.ItemsSource="{Binding Words}"
+                        BindableLayout.EmptyView="Mnemonic not found!"
+                        Margin="15"
+                        FlexLayout.Grow="4">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
-                                                    Margin="2" >
-                            <StackLayout Orientation="Horizontal" Margin="2">
+                        <ContentView BackgroundColor="{DynamicResource Bg2}"
+                                     Margin="2" >
+                            <StackLayout Orientation="Horizontal" Margin="2" Padding="10">
                                 <Label Text="{Binding WordIndex}"
-                                                    FontFamily="{StaticResource Sans-Regular}"
-                                                    TextColor="{DynamicResource SyncGradientStart}"
-                                                    FontSize="Micro" 
-                                                    />
+                                       FontFamily="{StaticResource Sans-Regular}"
+                                       TextColor="{DynamicResource FgSuccess}"
+                                       FontSize="Medium" />
                                 <Label Text="{Binding Word}"
-                                                Style="{DynamicResource MnemonicLabel}" 
-                                                Margin="0,0,5,0" />
+                                       Style="{DynamicResource MnemonicLabel}" />
                             </StackLayout>
                         </ContentView>
                     </DataTemplate>
@@ -60,15 +57,12 @@
             </FlexLayout>
 
             <Button Text="{i18n:Translate Text=BackupWord.next}"
-                        Style="{DynamicResource CustomButton}"
-                        BackgroundColor="{DynamicResource BackgroundSecondary}"
-                        CornerRadius="0"
-                        FontSize="Large"                        
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1"
-                        VerticalOptions="EndAndExpand"
-                        Command="{Binding NextCommand}" />
-
+                    Style="{DynamicResource BottomButton}"
+                    BackgroundColor="{DynamicResource Bg2}"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="1"
+                    VerticalOptions="EndAndExpand"
+                    Command="{Binding NextCommand}" />
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

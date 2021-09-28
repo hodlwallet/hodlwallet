@@ -53,7 +53,6 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
-
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -288,11 +287,11 @@
     <value>Habilitar Touch ID para Hodl</value>
     <comment>label for fingerprint auth slider on IOS</comment>
   </data>
-  <data name="Backup.Close" xml:space="preserve">
+  <data name="Backup.close" xml:space="preserve">
     <value>Cerrar</value>
     <comment>label for backup toolbar Close button</comment>
   </data>
-  <data name="Backup.Skip" xml:space="preserve">
+  <data name="Backup.skip" xml:space="preserve">
     <value>Saltar</value>
     <comment>label for backup toolbar Skip button</comment>
   </data>

@@ -49,11 +49,10 @@ namespace HodlWallet.UI
         readonly Serilog.ILogger logger;
         readonly object @lock = new();
         IWalletService WalletService => DependencyService.Get<IWalletService>();
-
-        public ObservableCollection<AccountModel> AccountList = new();
+        public ObservableCollection<AccountModel> AccountList { get; set; }  = new ();
         public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
         public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
-
+ 
         public static bool[] isColorSelected = new bool[18];
         public static void ClearColorSelectedList()
         {
@@ -130,11 +129,18 @@ namespace HodlWallet.UI
             return colorCode;
         }
 
-        void SetupDefaultTab()
+        void AddAccountToMenu(AccountModel account)
         {
-            ChangeTabsTo("homeTab");
+            account.AccountColorCode = GetColorCodeByAccount(account.AccountData.Id);
+            string colorCode = account.AccountColorCode;
+            isColorSelected[int.Parse(colorCode)] = true;
+            account.CustomStyle = (Style)Resources[$"{Constants.PREFIX_NAME_STYLE_ACCOUNT_MENU}{colorCode}"];
         }
 
+        void SetupDefaultTab()
+        {
+            ChangeTabsTo("home");
+        }
 
         void AccountsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -144,8 +150,7 @@ namespace HodlWallet.UI
                 //  An Account was Added to the collection
                 foreach (AccountModel account in e.NewItems)
                 {
-                    account.AccountColorCode = GetColorCodeByAccount(account.AccountData.Id);
-                    AddMenuItems(account);
+                    AddAccountToMenu(account);
                 }
             }
 
@@ -159,23 +164,6 @@ namespace HodlWallet.UI
                     logger.Debug($"********AccountsCollectionChanged Item => {account.AccountName}");
                 }
             }*/
-        }
-        void AddMenuItems(AccountModel accountItem)
-        {
-            var colorCode = accountItem.AccountColorCode;
-            var style = new List<string> { $"MenuItemLabelClass{colorCode}" };
-
-            isColorSelected[int.Parse(colorCode)] = true;
-
-            MenuItem mi = new()
-            {
-                Text = accountItem.AccountName,
-                Command = GoToAccountCommand,
-                CommandParameter = accountItem.AccountData.Id,
-                StyleClass = style,
-            };
-
-            Items.Add(mi);
         }
 
         void Shell_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -194,12 +182,11 @@ namespace HodlWallet.UI
         void RegisterRoutes()
         {
             Routing.RegisterRoute("settings", typeof(SettingsView));
-            Routing.RegisterRoute("create", typeof(AddAccountView));
+            Routing.RegisterRoute("create-account", typeof(CreateAccountView));
             Routing.RegisterRoute("send", typeof(SendView));
             Routing.RegisterRoute("home", typeof(HomeView));
             Routing.RegisterRoute("receive", typeof(ReceiveView));
             Routing.RegisterRoute("account-settings", typeof(AccountSettingsView));
-            Routing.RegisterRoute(nameof(CreateAccountView), typeof(CreateAccountView));
         }
     }
 }

@@ -39,6 +39,9 @@ namespace HodlWallet.UI
         IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
         ILocalize Localize => DependencyService.Get<ILocalize>();
         ILegacySecureKeyService LegacySecureKeyService => DependencyService.Get<ILegacySecureKeyService>();
+        IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
+
+        CancellationTokenSource Cts { get; set; }
 
         public App()
         {
@@ -50,11 +53,13 @@ namespace HodlWallet.UI
             SecureStorageService.RemoveAll();
 #endif
 
+            Cts ??= new CancellationTokenSource();
+
             RegisterServices();
 
             if (UserDidSetup())
             {
-                MainPage = new LoginView();
+                AuthenticationService.ShowLogin();
 
                 return;
             }
@@ -63,7 +68,7 @@ namespace HodlWallet.UI
 
             if (UserDidSetup())
             {
-                MainPage = new LoginView();
+                AuthenticationService.ShowLogin();
 
                 return;
             }
@@ -77,19 +82,19 @@ namespace HodlWallet.UI
             // the init code that inserts the logger into
             // WalletService is only run after the custructor
             // and only after all the platforms init
-            var cts = new CancellationTokenSource();
-            var ct = cts.Token;
 
-            _ = Task.Factory.StartNew(
+            if (!UserDidSetup()) return;
+
+            Task.Factory.StartNew(
                 () => WalletService.InitializeWallet(),
-                ct,
+                Cts.Token,
                 TaskCreationOptions.LongRunning,
                 TaskScheduler.Default
             );
 
-            _ = Task.Factory.StartNew(
+            Task.Factory.StartNew(
                 () => PrecioService.Init(),
-                ct,
+                Cts.Token,
                 TaskCreationOptions.LongRunning,
                 TaskScheduler.Default
             );
@@ -97,12 +102,13 @@ namespace HodlWallet.UI
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            AuthenticationService.LastAuth = DateTimeOffset.UtcNow;
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            if (!AuthenticationService.IsAuthenticated && !AuthenticationService.ShowingLoginForm)
+                AuthenticationService.ShowLogin(action: "pop");
         }
 
         void RegisterServices()
@@ -125,7 +131,6 @@ namespace HodlWallet.UI
         {
             return SecureStorageService.HasPin()
                 && SecureStorageService.HasMnemonic()
-                && SecureStorageService.HasSeedBirthday()
                 && SecureStorageService.HasWalletId()
                 && SecureStorageService.HasNetwork();
         }
@@ -139,10 +144,9 @@ namespace HodlWallet.UI
                 var birthday = LegacySecureKeyService.GetWalletCreationTime();
 
                 SecureStorageService.SetMnemonic(mnemonic);
-                SecureStorageService.SetSeedBirthday(new DateTimeOffset(new DateTime(birthday)));
                 SecureStorageService.SetPin(pin);
 
-                WalletService.InitializeWallet(true);
+                WalletService.InitializeWallet(accountType: "legacy");
             }
             catch (Exception ex)
             {

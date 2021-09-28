@@ -13,7 +13,7 @@ namespace HodlWallet.UI.Views
         public AcknowledgeRiskView()
         {
             InitializeComponent();
-            AcknowledgeRiskTermsViewButton.IsEnabled = false;
+            AcknowledgeRiskTermsViewButton.IsVisible = false;
         }
 
         void AcknowledgeRiskTermsViewButton_Clicked(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace HodlWallet.UI.Views
 
         private void AllAcknowledgeRiskTermsChecked()
         {
-            AcknowledgeRiskTermsViewButton.IsEnabled = acknowledgeRiskTerm1Checked
+            AcknowledgeRiskTermsViewButton.IsVisible = acknowledgeRiskTerm1Checked
                                             && acknowledgeRiskTerm2Checked
                                             && acknowledgeRiskTerm3Checked
                                             && acknowledgeRiskTerm4Checked;
