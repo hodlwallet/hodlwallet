@@ -305,7 +305,7 @@
             <Style x:Key="AccountInfoValue"
                    TargetType="Label">
                 <Setter Property="FontSize"
-                        Value="Small" />
+                        Value="Medium" />
                 <Setter Property="TextColor"
                         Value="{DynamicResource Fg3}" />
                 <Setter Property="FontFamily"

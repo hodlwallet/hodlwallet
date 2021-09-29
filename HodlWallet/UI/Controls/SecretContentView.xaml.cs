@@ -23,6 +23,8 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace HodlWallet.UI.Controls
@@ -32,6 +34,77 @@ namespace HodlWallet.UI.Controls
         public SecretContentView()
         {
             InitializeComponent();
+            HiddenLayout.SizeChanged += HiddenLayout_SizeChanged;
+        }
+
+        void HiddenLayout_SizeChanged(object sender, EventArgs e)
+        {
+            CensoredContentBoxView.HeightRequest = HiddenLayout.Height;
+            HiddenLayout.IsVisible = false;
+        }
+
+        public View Secret
+        {
+            get => (View)GetValue(SecretProperty);
+            set
+            {
+                SetValue(SecretProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty SecretProperty = BindableProperty.Create(
+            nameof(Secret),
+            typeof(View),
+            typeof(SecretContentView),
+            default(View),
+            propertyChanged: OnSecretChanged
+        );
+
+        public static void OnSecretChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var secretContentView = bindable as SecretContentView;
+
+            secretContentView.HiddenLayout.Children.Clear();
+            secretContentView.HiddenLayout.Children.Add(newValue as View);
+        }
+
+        public bool IsHidden
+        {
+            get => (bool)GetValue(IsHiddenProperty);
+            set
+            {
+                SetValue(IsHiddenProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty IsHiddenProperty = BindableProperty.Create(
+            nameof(IsHidden),
+            typeof(bool),
+            typeof(SecretContentView),
+            true,
+            propertyChanged: OnIsHiddenChanged
+        );
+
+        public static void OnIsHiddenChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var secretContentView = bindable as SecretContentView;
+            var value = (bool)newValue;
+
+            secretContentView.ToggleHideButton.Source = value ? "hidden" : "visible";
+            secretContentView.HiddenLayout.IsVisible = !value;
+            secretContentView.HiddenLayout.Opacity = value ? 0.00 : 1.00;
+            secretContentView.CensoredContentBoxView.IsVisible = value;
+
+        }
+
+        void ToggleHideButton_Clicked(object sender, EventArgs e)
+        {
+            IsHidden = !IsHidden;
+        }
+
+        void QrCodeButton_Clicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Not implemented yet");
         }
     }
 }

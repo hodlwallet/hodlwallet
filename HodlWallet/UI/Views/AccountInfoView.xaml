@@ -39,15 +39,21 @@
 
                 <Label Style="{StaticResource AccountInfoTitle}"
                        Text="{i18n:Translate AccountInfo.XPub}" />
-                <Label Style="{StaticResource AccountInfoValue}"
-                       Text="{Binding AccountInfo.Xpub}" />
+                <controls:SecretContentView>
+                    <controls:SecretContentView.Secret>
+                        <Label Style="{StaticResource AccountInfoValue}" Text="{Binding AccountInfo.Xpub}" />
+                    </controls:SecretContentView.Secret>
+                </controls:SecretContentView>
 
                 <BoxView HeightRequest="10" />
 
                 <Label Style="{StaticResource AccountInfoTitle}"
                        Text="{i18n:Translate AccountInfo.XPrv}" />
-                <Label Style="{StaticResource AccountInfoValue}"
-                       Text="{Binding AccountInfo.Xprv}" />
+                <controls:SecretContentView>
+                    <controls:SecretContentView.Secret>
+                        <Label Style="{StaticResource AccountInfoValue}" Text="{Binding AccountInfo.Xprv}" />
+                    </controls:SecretContentView.Secret>
+                </controls:SecretContentView>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>
