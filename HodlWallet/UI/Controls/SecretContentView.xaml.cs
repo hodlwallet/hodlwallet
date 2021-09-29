@@ -25,7 +25,12 @@
 // THE SOFTWARE.
 using System;
 using System.Diagnostics;
+
+using Xamarin.Essentials;
 using Xamarin.Forms;
+
+using HodlWallet.UI.Extensions;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Controls
 {
@@ -92,9 +97,9 @@ namespace HodlWallet.UI.Controls
 
             secretContentView.ToggleHideButton.Source = value ? "hidden" : "visible";
             secretContentView.HiddenLayout.IsVisible = !value;
+            secretContentView.QrCodeButton.IsVisible = !value;
             secretContentView.HiddenLayout.Opacity = value ? 0.00 : 1.00;
             secretContentView.CensoredContentBoxView.IsVisible = value;
-
         }
 
         void ToggleHideButton_Clicked(object sender, EventArgs e)
@@ -105,6 +110,19 @@ namespace HodlWallet.UI.Controls
         void QrCodeButton_Clicked(object sender, EventArgs e)
         {
             Debug.WriteLine("Not implemented yet");
+        }
+
+        async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            if (IsHidden) return;
+            if (HiddenLayout.Children.Count == 0) return;
+
+            var onlyChild = HiddenLayout.Children[0];
+            if (onlyChild is Label) await Clipboard.SetTextAsync((onlyChild as Label).Text);
+            if (onlyChild is Entry) await Clipboard.SetTextAsync((onlyChild as Entry).Text);
+            if (onlyChild is Editor) await Clipboard.SetTextAsync((onlyChild as Editor).Text);
+
+            await (Navigation.NavigationStack[1] as ContentPage).DisplayToast(LocaleResources.SecretContentView_textCopied);
         }
     }
 }

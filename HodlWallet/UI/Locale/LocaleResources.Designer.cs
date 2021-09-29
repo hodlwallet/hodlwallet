@@ -1174,5 +1174,11 @@ namespace HodlWallet.UI.Locale {
                 return ResourceManager.GetString("AccountTypeSelection.pleaseSelect", resourceCulture);
             }
         }
+        
+        internal static string SecretContentView_textCopied {
+            get {
+                return ResourceManager.GetString("SecretContentView.textCopied", resourceCulture);
+            }
+        }
     }
 }

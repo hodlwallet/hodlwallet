@@ -49,11 +49,11 @@ namespace HodlWallet.Core.ViewModels
             }
             else
             {
-                WalletService.OnStarted += _WalletService_OnStarted;
+                WalletService.OnStarted += WalletService_OnStarted;
             }
         }
 
-        private void _WalletService_OnStarted(object sender, EventArgs e)
+        private void WalletService_OnStarted(object sender, EventArgs e)
         {
             GetAddressFromWallet();
         }

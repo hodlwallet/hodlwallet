@@ -872,4 +872,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Please select the type of account</value>
     <comment>label that's shown when the user haven't selected a type of account</comment>
   </data>
+  <data name="SecretContentView.textCopied" xml:space="preserve">
+    <value>Text Copied.</value>
+    <comment>A message shown when clicked and saved to the clipboard</comment>
+  </data>
 </root>
