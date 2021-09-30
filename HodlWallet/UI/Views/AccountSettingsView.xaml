@@ -20,6 +20,7 @@
                                  HeightRequest="1" />
 
                         <Button Text="{i18n:Translate Text=Menu.info}"
+                                Clicked="AccountInfo_Clicked"
                                 Style="{DynamicResource SettingsButton}" />
 
                         <BoxView BackgroundColor="{DynamicResource Fg2}"

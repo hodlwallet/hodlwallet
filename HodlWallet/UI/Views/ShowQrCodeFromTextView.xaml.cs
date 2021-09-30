@@ -1,7 +1,10 @@
 ﻿//
-// ReceiveView.xaml.cs
+// ShowQrCodeFromTextView.xaml.cs
 //
-// Copyright (c) 2019 HODL Wallet
+// Author:
+//       Igor Guerrero <igorgue@protonmail.com>
+//
+// Copyright (c) 2021 HODL Wallet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,10 +24,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Diagnostics;
+using System.Threading.Tasks;
 
-using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
@@ -32,27 +35,46 @@ using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Views
 {
-    public partial class ReceiveView : ContentPage
+    public partial class ShowQrCodeFromTextView : ContentPage
     {
-        ReceiveViewModel ViewModel => (ReceiveViewModel)BindingContext;
+        ShowQrCodeFromTextViewModel ViewModel => BindingContext as ShowQrCodeFromTextViewModel;
 
-        public ReceiveView()
+        public ShowQrCodeFromTextView(string text)
         {
             InitializeComponent();
+
+            ViewModel.Text = text;
         }
 
-        void Address_Tapped(object sender, EventArgs e)
+        async void QrCode_Tapped(object sender, EventArgs e)
         {
-            Clipboard.SetTextAsync(ViewModel.Address);
-
-            _ = this.DisplayToast(LocaleResources.SecretContentView_textCopied);
+            await CopyText();
         }
 
-        protected override void OnAppearing()
+        async void Text_Tapped(object sender, EventArgs e)
         {
-            Debug.WriteLine($"[ReceiveView][OnAppearing] Showing Address: {ViewModel.Address}");
+            await CopyText();
+        }
 
-            base.OnAppearing();
+        async Task CopyText()
+        {
+            await Clipboard.SetTextAsync(ViewModel.Text);
+            await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
+        }
+
+        async void Close_Tapped(object sender, EventArgs e)
+        {
+            await Close();
+        }
+
+        async void Close_Swiped(object sender, SwipedEventArgs e)
+        {
+            await Close();
+        }
+
+        async Task Close()
+        {
+            await Navigation.PopModalAsync();
         }
     }
 }

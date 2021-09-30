@@ -1,7 +1,10 @@
 ﻿//
-// ReceiveView.xaml.cs
+// AccountInfoView.xaml.cs
 //
-// Copyright (c) 2019 HODL Wallet
+// Author:
+//       Igor Guerrero <igorgue@protonmail.com>
+//
+// Copyright (c) 2021 HODL Wallet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Diagnostics;
 
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -32,27 +34,19 @@ using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Views
 {
-    public partial class ReceiveView : ContentPage
+    public partial class AccountInfoView : ContentPage
     {
-        ReceiveViewModel ViewModel => (ReceiveViewModel)BindingContext;
-
-        public ReceiveView()
+        AccountInfoViewModel ViewModel => BindingContext as AccountInfoViewModel;
+        
+        public AccountInfoView()
         {
             InitializeComponent();
         }
 
-        void Address_Tapped(object sender, EventArgs e)
+        async void HdPath_Tapped(object sender, EventArgs e)
         {
-            Clipboard.SetTextAsync(ViewModel.Address);
-
-            _ = this.DisplayToast(LocaleResources.SecretContentView_textCopied);
-        }
-
-        protected override void OnAppearing()
-        {
-            Debug.WriteLine($"[ReceiveView][OnAppearing] Showing Address: {ViewModel.Address}");
-
-            base.OnAppearing();
+            await Clipboard.SetTextAsync(ViewModel.AccountInfo.HdPath);
+            await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
         }
     }
 }

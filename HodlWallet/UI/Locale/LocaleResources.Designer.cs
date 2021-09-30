@@ -592,15 +592,7 @@ namespace HodlWallet.UI.Locale {
                 return ResourceManager.GetString("AddAccount.header", resourceCulture);
             }
         }
-
-        internal static string AddAccount_placeholder
-        {
-            get
-            {
-                return ResourceManager.GetString("AddAccount.placeholder", resourceCulture);
-            }
-        }
-
+        
         internal static string AddAccount_subheader {
             get {
                 return ResourceManager.GetString("AddAccount.subheader", resourceCulture);
@@ -622,6 +614,12 @@ namespace HodlWallet.UI.Locale {
         internal static string AddAccount_entry {
             get {
                 return ResourceManager.GetString("AddAccount.entry", resourceCulture);
+            }
+        }
+        
+        internal static string AddAccount_placeholder {
+            get {
+                return ResourceManager.GetString("AddAccount.placeholder", resourceCulture);
             }
         }
         
@@ -658,6 +656,42 @@ namespace HodlWallet.UI.Locale {
         internal static string AccountSettings_Title {
             get {
                 return ResourceManager.GetString("AccountSettings.Title", resourceCulture);
+            }
+        }
+        
+        internal static string AccountInfo_Title {
+            get {
+                return ResourceManager.GetString("AccountInfo.Title", resourceCulture);
+            }
+        }
+        
+        internal static string AccountInfo_Id {
+            get {
+                return ResourceManager.GetString("AccountInfo.Id", resourceCulture);
+            }
+        }
+        
+        internal static string AccountInfo_Name {
+            get {
+                return ResourceManager.GetString("AccountInfo.Name", resourceCulture);
+            }
+        }
+        
+        internal static string AccountInfo_HdPath {
+            get {
+                return ResourceManager.GetString("AccountInfo.HdPath", resourceCulture);
+            }
+        }
+        
+        internal static string AccountInfo_XPub {
+            get {
+                return ResourceManager.GetString("AccountInfo.XPub", resourceCulture);
+            }
+        }
+        
+        internal static string AccountInfo_XPrv {
+            get {
+                return ResourceManager.GetString("AccountInfo.XPrv", resourceCulture);
             }
         }
         
@@ -1138,6 +1172,18 @@ namespace HodlWallet.UI.Locale {
         internal static string AccountTypeSelection_pleaseSelect {
             get {
                 return ResourceManager.GetString("AccountTypeSelection.pleaseSelect", resourceCulture);
+            }
+        }
+        
+        internal static string SecretContentView_textCopied {
+            get {
+                return ResourceManager.GetString("SecretContentView.textCopied", resourceCulture);
+            }
+        }
+        
+        internal static string QrCode_title {
+            get {
+                return ResourceManager.GetString("QrCode.title", resourceCulture);
             }
         }
     }
