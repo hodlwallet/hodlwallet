@@ -24,11 +24,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
 
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
+using HodlWallet.UI.Extensions;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Views
 {
@@ -39,6 +41,12 @@ namespace HodlWallet.UI.Views
         public AccountInfoView()
         {
             InitializeComponent();
+        }
+
+        async void HdPath_Tapped(object sender, EventArgs e)
+        {
+            await Clipboard.SetTextAsync(ViewModel.AccountInfo.HdPath);
+            await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
         }
     }
 }

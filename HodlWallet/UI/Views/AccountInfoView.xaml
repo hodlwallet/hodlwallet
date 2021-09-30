@@ -32,8 +32,13 @@
 
                 <Label Style="{StaticResource AccountInfoTitle}"
                        Text="{i18n:Translate AccountInfo.HdPath}" />
-                <Label Style="{StaticResource AccountInfoValue}"
-                       Text="{Binding AccountInfo.HdPath}" />
+                <ContentView>
+                    <Label Style="{StaticResource AccountInfoValue}"
+                           Text="{Binding AccountInfo.HdPath}" />
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="HdPath_Tapped" />
+                    </ContentView.GestureRecognizers>
+                </ContentView>
 
                 <BoxView HeightRequest="10" />
 
