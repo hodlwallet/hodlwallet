@@ -24,14 +24,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
 using HodlWallet.UI.Locale;
-using Xamarin.Essentials;
-using System.Threading.Tasks;
 
 namespace HodlWallet.UI.Views
 {
@@ -44,11 +44,6 @@ namespace HodlWallet.UI.Views
             InitializeComponent();
 
             ViewModel.Text = text;
-        }
-
-        async void Close_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PopModalAsync();
         }
 
         async void QrCode_Tapped(object sender, EventArgs e)
@@ -65,6 +60,21 @@ namespace HodlWallet.UI.Views
         {
             await Clipboard.SetTextAsync(ViewModel.Text);
             await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
+        }
+
+        async void Close_Tapped(object sender, EventArgs e)
+        {
+            await Close();
+        }
+
+        async void Close_Swiped(object sender, SwipedEventArgs e)
+        {
+            await Close();
+        }
+
+        async Task Close()
+        {
+            await Navigation.PopModalAsync();
         }
     }
 }

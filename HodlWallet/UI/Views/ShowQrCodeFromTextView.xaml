@@ -66,6 +66,9 @@
                     </ContentView>
                     <BoxView FlexLayout.Grow="1" />
                 </FlexLayout>
+                <FlexLayout.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Down" Swiped="Close_Swiped" />
+                </FlexLayout.GestureRecognizers>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>
