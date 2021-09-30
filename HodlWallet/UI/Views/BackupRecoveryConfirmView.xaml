@@ -5,14 +5,14 @@
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupRecoveryConfirmView"
-             BackgroundColor="{DynamicResource BackgroundPrimary}">
+             BackgroundColor="{DynamicResource Bg}">
     <ContentPage.BindingContext>
         <vm:BackupRecoveryConfirmViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <FlexLayout Direction="Column"
                         JustifyContent="SpaceAround"
-                        BackgroundColor="{DynamicResource BackgroundPrimary}"
+                        BackgroundColor="{DynamicResource Bg}"
                         AlignItems="Center">
             <Label Text="{i18n:Translate Text=BackupConfirm.header}"
                        FontFamily="{StaticResource Sans-Regular}"
@@ -34,9 +34,11 @@
                         <DataTemplate>
                             <StackLayout>
                                 <Label Text="{Binding Word}"
-                                       Margin="5"
+                                       Margin="2"
+                                       Padding="10"
+                                       FontSize="Medium"
                                        Style="{DynamicResource MnemonicLabel}"
-                                       BackgroundColor="{DynamicResource BackgroundSecondary}">
+                                       BackgroundColor="{DynamicResource Bg2}">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer
                                             Command="{Binding
@@ -65,9 +67,11 @@
                         <DataTemplate>
                             <StackLayout>
                                 <Label Text="{Binding Word}"
-                                       Margin="5"
+                                       Margin="2"
+                                       Padding="10"
+                                       FontSize="Medium"
                                        Style="{DynamicResource MnemonicLabel}"
-                                       BackgroundColor="{DynamicResource BackgroundSecondary}">
+                                       BackgroundColor="{DynamicResource Bg2}">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer
                                                 Command="{Binding
@@ -84,10 +88,8 @@
             </FlexLayout>
             <Button x:Name="nextButton"
                     Text="{i18n:Translate Text=BackupWord.next}"
-                    Style="{DynamicResource CustomButton}"
-                    BackgroundColor="{DynamicResource BackgroundSecondary}"
-                    CornerRadius="0"
-                    FontSize="Large"
+                    Style="{DynamicResource BottomButton}"
+                    BackgroundColor="{DynamicResource Bg2}"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
                     VerticalOptions="EndAndExpand"
