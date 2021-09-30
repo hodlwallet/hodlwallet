@@ -1180,5 +1180,11 @@ namespace HodlWallet.UI.Locale {
                 return ResourceManager.GetString("SecretContentView.textCopied", resourceCulture);
             }
         }
+        
+        internal static string QrCode_title {
+            get {
+                return ResourceManager.GetString("QrCode.title", resourceCulture);
+            }
+        }
     }
 }

@@ -31,6 +31,8 @@ using Xamarin.Forms;
 
 using HodlWallet.UI.Extensions;
 using HodlWallet.UI.Locale;
+using System.Runtime.CompilerServices;
+using HodlWallet.UI.Views;
 
 namespace HodlWallet.UI.Controls
 {
@@ -97,7 +99,7 @@ namespace HodlWallet.UI.Controls
 
             secretContentView.ToggleHideButton.Source = value ? "hidden" : "visible";
             secretContentView.HiddenLayout.IsVisible = !value;
-            secretContentView.QrCodeButton.IsVisible = !value;
+            secretContentView.QrCodeButton.IsVisible = !value && secretContentView.ContainsText();
             secretContentView.HiddenLayout.Opacity = value ? 0.00 : 1.00;
             secretContentView.CensoredContentBoxView.IsVisible = value;
         }
@@ -107,9 +109,25 @@ namespace HodlWallet.UI.Controls
             IsHidden = !IsHidden;
         }
 
-        void QrCodeButton_Clicked(object sender, EventArgs e)
+        async void QrCodeButton_Clicked(object sender, EventArgs e)
         {
-            Debug.WriteLine("Not implemented yet");
+            string text = null;
+
+            var onlyChild = HiddenLayout.Children[0];
+            if (onlyChild is Label) text = (onlyChild as Label).Text;
+            if (onlyChild is Entry) text = (onlyChild as Entry).Text;
+            if (onlyChild is Editor) text = (onlyChild as Editor).Text;
+
+            if (text is null) return;
+
+            await Navigation.PushModalAsync(new NavigationPage(new ShowQrCodeFromTextView(text)));
+        }
+
+        public bool ContainsText()
+        {
+            var onlyChild = HiddenLayout.Children[0];
+
+            return (onlyChild is Label) || (onlyChild is Entry) || (onlyChild is Editor);
         }
 
         async void TapGestureRecognizer_Tapped(object sender, EventArgs e)

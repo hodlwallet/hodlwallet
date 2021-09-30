@@ -876,4 +876,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Text Copied.</value>
     <comment>A message shown when clicked and saved to the clipboard</comment>
   </data>
+  <data name="QrCode.title" xml:space="preserve">
+    <value>QR Code</value>
+    <comment>QR Code window title</comment>
+  </data>
 </root>
