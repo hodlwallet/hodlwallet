@@ -293,8 +293,6 @@ namespace HodlWallet.Core.ViewModels
                         Rate = (decimal)newRate;
 
                         BalanceFiat = Balance * Rate;
-
-                        UpdateTransanctions();
                     }
 
                     await Task.Delay(priceUpdateDelay);
