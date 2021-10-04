@@ -73,6 +73,8 @@ namespace HodlWallet.UI.Views
             base.OnDisappearing();
 
             ViewModel.View_OnDisappearing();
+
+            BalanceNavigationTitleLabel.FadeTo(0, 50);
         }
 
         void InitializeDisplayedCurrency()
