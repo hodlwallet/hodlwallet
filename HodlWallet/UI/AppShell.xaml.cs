@@ -107,7 +107,7 @@ namespace HodlWallet.UI
             CurrentItem.CurrentItem = tab;
         }
 
-        void GoToAccount(string accountId)
+        async void GoToAccount(string accountId)
         {
             Debug.WriteLine($"[GoToAccount] Switching to account {accountId}");
             
@@ -127,9 +127,10 @@ namespace HodlWallet.UI
                 return;
             }
 
-            // TODO Show yes / no dialog to pick if to switch or not
+            ChangeTabsTo("home");
 
-            // TODO Switch to found account
+            var view = CurrentItem.CurrentItem.CurrentItem.Content as HomeView;
+            await view.SwitchAccount(accountId);
         }
 
         string GetColorCodeByAccount(string accountId)

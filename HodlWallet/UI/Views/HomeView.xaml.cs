@@ -21,6 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -28,7 +30,6 @@ using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
-using System.Threading.Tasks;
 
 namespace HodlWallet.UI.Views
 {
@@ -129,6 +130,15 @@ namespace HodlWallet.UI.Views
             {
                 //BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
             }
+        }
+
+        public async Task SwitchAccount(string accountId)
+        {
+            Debug.WriteLine($"[SwitchAccount] AccountID: {accountId}");
+
+            await this.DisplayToast("Click switched account");
+
+            ViewModel.SwitchAccount(accountId);
         }
 
         async void Search_Clicked(object sender, EventArgs e)
