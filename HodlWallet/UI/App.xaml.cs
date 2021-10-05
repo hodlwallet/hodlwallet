@@ -57,7 +57,7 @@ namespace HodlWallet.UI
 
             RegisterServices();
 
-            if (UserDidSetup())
+            if (SecureStorageService.UserDidSetup())
             {
                 AuthenticationService.ShowLogin();
 
@@ -66,7 +66,7 @@ namespace HodlWallet.UI
 
             CollectExistingKeys();
 
-            if (UserDidSetup())
+            if (SecureStorageService.UserDidSetup())
             {
                 AuthenticationService.ShowLogin();
 
@@ -83,7 +83,7 @@ namespace HodlWallet.UI
             // WalletService is only run after the custructor
             // and only after all the platforms init
 
-            if (!UserDidSetup()) return;
+            if (!SecureStorageService.UserDidSetup()) return;
 
             Task.Factory.StartNew(
                 () => WalletService.InitializeWallet(),
@@ -107,7 +107,7 @@ namespace HodlWallet.UI
 
         protected override void OnResume()
         {
-            if (!AuthenticationService.IsAuthenticated && !AuthenticationService.ShowingLoginForm)
+            if (SecureStorageService.UserDidSetup() && !AuthenticationService.IsAuthenticated && !AuthenticationService.ShowingLoginForm)
                 AuthenticationService.ShowLogin(action: "pop");
         }
 
@@ -125,14 +125,6 @@ namespace HodlWallet.UI
 
             LocaleResources.Culture = ci; // set the RESX for resource localization
             Localize.SetLocale(ci); // set the Thread for locale-aware methods
-        }
-
-        bool UserDidSetup()
-        {
-            return SecureStorageService.HasPin()
-                && SecureStorageService.HasMnemonic()
-                && SecureStorageService.HasWalletId()
-                && SecureStorageService.HasNetwork();
         }
 
         void CollectExistingKeys()
