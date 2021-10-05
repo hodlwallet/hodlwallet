@@ -30,6 +30,7 @@ using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
+using Liviano.Interfaces;
 
 namespace HodlWallet.UI.Views
 {
@@ -132,13 +133,22 @@ namespace HodlWallet.UI.Views
             }
         }
 
-        public async Task SwitchAccount(string accountId)
+        public async Task SwitchAccount(IAccount account)
         {
-            Debug.WriteLine($"[SwitchAccount] AccountID: {accountId}");
+            Debug.WriteLine($"[SwitchAccount] AccountID: {account.Id}");
 
-            await this.DisplayToast("Click switched account");
+            var prompt = this.DisplayPrompt(
+                "Switch Account",
+                $"Switch account to \"{account.Name}\"",
+                "Ok",
+                "Cancel"
+            );
 
-            ViewModel.SwitchAccount(accountId);
+            if (!(await prompt)) return;
+
+            ViewModel.SwitchAccount(account);
+
+            await this.DisplayToast($"Switched account to {account.Id}");
         }
 
         async void Search_Clicked(object sender, EventArgs e)

@@ -130,7 +130,7 @@ namespace HodlWallet.UI
             ChangeTabsTo("home");
 
             var view = CurrentItem.CurrentItem.CurrentItem.Content as HomeView;
-            await view.SwitchAccount(accountId);
+            await view.SwitchAccount(foundAccount);
         }
 
         string GetColorCodeByAccount(string accountId)

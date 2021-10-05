@@ -16,7 +16,7 @@
            FontFamily="{StaticResource Sans-Bold}"
            VerticalTextAlignment="Center"
            HorizontalTextAlignment="Center"
-           TextColor="{DynamicResource Fg}" />
+           TextColor="{DynamicResource Fg2}" />
     <Frame.GestureRecognizers>
         <TapGestureRecognizer Tapped="Toast_Tapped" NumberOfTapsRequired="1" />
     </Frame.GestureRecognizers>
