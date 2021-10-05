@@ -9,7 +9,7 @@
        xmlns:views="clr-namespace:HodlWallet.UI.Views"
        xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
        ios:Page.UseSafeArea="True"
-       x:Name="shell">
+       x:Name="self">
     <Shell.Resources>
         <Style x:Key="BaseStyle" TargetType="Element">
             <Setter Property="Shell.BackgroundColor" Value="{DynamicResource Bg}" />
@@ -126,11 +126,11 @@
                         <controls:FlyoutHeader />
                     </ContentView.Content>
                 </ContentView>
-                <CollectionView BindingContext="{x:Reference shell}"
+                <CollectionView BindingContext="{x:Reference self}"
                                 ItemsSource="{Binding AccountList}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <controls:FlyoutMenuItems/>
+                            <controls:FlyoutMenuItems />
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

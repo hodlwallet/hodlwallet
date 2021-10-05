@@ -29,11 +29,11 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Input;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.Essentials;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Models;
@@ -50,8 +50,7 @@ namespace HodlWallet.UI
         readonly object @lock = new();
         IWalletService WalletService => DependencyService.Get<IWalletService>();
         public ObservableCollection<AccountModel> AccountList { get; set; }  = new ();
-        public ICommand SettingsCommand => new Command(async () => await Launcher.OpenAsync("//settings"));
-        public ICommand GoToAccountCommand => new Command<string>((accountId) => Debug.WriteLine($"[GoToAccountCommand] Going to: //account/{accountId}"));
+        public ICommand GoToAccountCommand;
  
         public static bool[] isColorSelected = new bool[18];
         public static void ClearColorSelectedList()
@@ -91,6 +90,7 @@ namespace HodlWallet.UI
             ClearColorSelectedList();
             PropertyChanged += Shell_PropertyChanged;
             AccountList.CollectionChanged += AccountsCollectionChanged;
+            GoToAccountCommand = new Command<string>(GoToAccount);
         }
 
         public void ChangeTabsTo(string tabName)
@@ -107,11 +107,29 @@ namespace HodlWallet.UI
             CurrentItem.CurrentItem = tab;
         }
 
-        protected override void OnAppearing()
+        void GoToAccount(string accountId)
         {
-            base.OnAppearing();
+            Debug.WriteLine($"[GoToAccount] Switching to account {accountId}");
+            
+            var currentId = WalletService.Wallet.CurrentAccountId;
+            if (accountId == currentId)
+            {
+                Debug.WriteLine($"[GoToAccount] Account Id: {accountId} is the current account, doing nothing...");
 
-            // TODO Add the code that inits the wallet I think?
+                return;
+            }
+
+            var foundAccount = WalletService.Wallet.Accounts.FirstOrDefault((acc) => acc.Id == accountId);
+            if (foundAccount is null)
+            {
+                Debug.WriteLine($"[GoToAccount] Account ({accountId}) could not be found.");
+
+                return;
+            }
+
+            // TODO Show yes / no dialog to pick if to switch or not
+
+            // TODO Switch to found account
         }
 
         string GetColorCodeByAccount(string accountId)

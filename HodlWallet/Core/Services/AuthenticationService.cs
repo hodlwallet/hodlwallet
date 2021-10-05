@@ -77,11 +77,8 @@ namespace HodlWallet.Core.Services
 
             if (action == "pop")
             {
-                var appShell = Application.Current.MainPage as AppShell;
-
-                if (appShell is null) return;
-
-                appShell.Navigation.PushModalAsync(view);
+                if (Application.Current.MainPage is AppShell appShell)
+                    appShell.Navigation.PushModalAsync(view);
 
                 return;
             }

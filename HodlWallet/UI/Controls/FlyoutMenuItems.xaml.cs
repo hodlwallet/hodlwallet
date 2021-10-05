@@ -24,13 +24,23 @@ using System;
 
 using Xamarin.Forms;
 
+using HodlWallet.Core.Models;
+
 namespace HodlWallet.UI.Controls
 {
     public partial class FlyoutMenuItems : ContentView
     {
+        AccountModel ViewModel => BindingContext as AccountModel;
+        AppShell AppShell => Application.Current.MainPage as AppShell;
+
         public FlyoutMenuItems()
         {
             InitializeComponent();
+        }
+
+        void Item_Clicked(object sender, EventArgs e)
+        {
+            AppShell.GoToAccountCommand.Execute(ViewModel.AccountData.Id);
         }
     }
 }
