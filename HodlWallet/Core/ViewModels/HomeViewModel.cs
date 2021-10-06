@@ -57,7 +57,7 @@ namespace HodlWallet.Core.ViewModels
         bool isBtcEnabled;
         TransactionModel currentTransaction;
 
-        readonly int priceUpdateDelay = 2_500; // 2.5 seconds
+        readonly int priceUpdateDelay = 5_500; // 2.5 seconds
 
         public TransactionModel CurrentTransaction
         {
@@ -92,20 +92,6 @@ namespace HodlWallet.Core.ViewModels
 
         readonly object @lock = new();
         public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
-
-        Color gradientStart;
-        public Color GradientStart
-        {
-            get => gradientStart;
-            set => SetProperty(ref gradientStart, value);
-        }
-
-        Color gradientEnd;
-        public Color GradientEnd
-        {
-            get => gradientEnd;
-            set => SetProperty(ref gradientEnd, value);
-        }
 
         string priceText;
         public string PriceText
@@ -205,9 +191,7 @@ namespace HodlWallet.Core.ViewModels
             if (WalletService.IsStarted)
             {
                 LoadTransactions();
-                AddWalletServiceEvents();
-                GradientStart = Color.Purple;
-                GradientEnd = Color.Black;
+                AddWalletServiceEvents();                
             }
             else
             {
@@ -292,7 +276,7 @@ namespace HodlWallet.Core.ViewModels
                         oldRate = newRate = rate.Rate;
                         Rate = (decimal)newRate;
 
-                        BalanceFiat = Balance * Rate;
+                        BalanceFiat = Balance * Rate;                        
                     }
 
                     await Task.Delay(priceUpdateDelay);
@@ -403,9 +387,6 @@ namespace HodlWallet.Core.ViewModels
                     LoadTransactions();
 
                     AddWalletServiceEvents();
-
-                    GradientStart = Color.Purple;
-                    GradientEnd = Color.Black;
                 }
             });
         }
