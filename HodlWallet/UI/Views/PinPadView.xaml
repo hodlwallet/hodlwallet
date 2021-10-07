@@ -6,7 +6,7 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.PinPadView"
              Title="{i18n:Translate PinPad.Title}"
-             BackgroundColor="{DynamicResource BackgroundPrimary}">
+             BackgroundColor="{DynamicResource Bg}">
     <ContentPage.BindingContext>
         <vm:PinPadViewModel />
     </ContentPage.BindingContext>

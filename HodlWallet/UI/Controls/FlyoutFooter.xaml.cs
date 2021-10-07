@@ -1,5 +1,5 @@
 ﻿//
-// SettingsView.xaml.cs
+// FlyoutFooter.xaml.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //

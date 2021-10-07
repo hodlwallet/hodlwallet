@@ -21,15 +21,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Diagnostics;
 
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
-using HodlWallet.Core.Utils;
 using HodlWallet.UI.Extensions;
 using HodlWallet.UI.Locale;
-using System.Diagnostics;
 
 namespace HodlWallet.UI.Views
 {
@@ -46,7 +45,7 @@ namespace HodlWallet.UI.Views
         {
             Clipboard.SetTextAsync(ViewModel.Address);
 
-            _ = this.DisplayToast(LocaleResources.Address_copied);
+            _ = this.DisplayToast(LocaleResources.SecretContentView_textCopied);
         }
 
         protected override void OnAppearing()

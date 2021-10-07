@@ -172,7 +172,7 @@ namespace HodlWallet.Core.ViewModels
                 AddressToSendTo = "";
                 AmountToSend = 0;
                 SliderValue = MAX_SLIDER_VALUE * 0.5;
-                DisplayProcessAddressErrorAlert(LocaleResources.Send_transactionSendedMessage);
+                DisplayProcessAddressErrorAlert(LocaleResources.Send_transactionSentMessage);
             }
             else
             {

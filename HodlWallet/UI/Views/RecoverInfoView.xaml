@@ -15,7 +15,7 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
-                        BackgroundColor="{DynamicResource BackgroundPrimary}">
+                        BackgroundColor="{DynamicResource Bg}">
                 <BoxView FlexLayout.Grow="1" />
                 <utils:Icon ResourceId="HodlWallet.UI.Assets.recover_wallet_illustration.svg"
                             HorizontalOptions="Center"
@@ -23,7 +23,7 @@
                             FlexLayout.Grow="2" />
                 <Label Text="{i18n:Translate Text=Recover.header}"
                        FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource TextSuccess}"
+                       TextColor="{DynamicResource FgSuccess}"
                        HorizontalTextAlignment="Center"
                        FontSize="Medium"
                        FlexLayout.AlignSelf="Center"
@@ -31,7 +31,7 @@
                 <BoxView FlexLayout.Grow="4" />
                 <Button Text="{i18n:Translate Text=Recover.next}"
                         Style="{DynamicResource CustomButton}"
-                        BackgroundColor="{DynamicResource BackgroundSecondary}"
+                        BackgroundColor="{DynamicResource Bg2}"
                         FontSize="Large"
                         Clicked="Next_Clicked"
                         FlexLayout.AlignSelf="Stretch"

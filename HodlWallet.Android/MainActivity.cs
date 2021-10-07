@@ -57,9 +57,21 @@ namespace HodlWallet.Droid
 
             LoadApplication(new App());
 
+            SetupLogging();
+        }
+
+        protected override void OnPause()
+        {
             Window.SetFlags(WindowManagerFlags.Secure, WindowManagerFlags.Secure);
 
-            SetupLogging();
+            base.OnPause();
+        }
+
+        protected override void OnPostResume()
+        {
+            Window.ClearFlags(WindowManagerFlags.Secure);
+
+            base.OnPostResume();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)

@@ -32,7 +32,7 @@ namespace HodlWallet.iOS.Renderers
 {
     public class CustomNavigationRenderer : NavigationRenderer
     {
-        UIColor TextPrimary => ((Color)Xamarin.Forms.Application.Current.Resources["TextPrimary"]).ToUIColor();
+        UIColor Fg => ((Color)Xamarin.Forms.Application.Current.Resources["Fg"]).ToUIColor();
         string SansFontName => (OnPlatform<string>)Xamarin.Forms.Application.Current.Resources["Sans-Regular"];
 
         //string _SansBoldFontName => (OnPlatform<string>)Xamarin.Forms.Application.Current.Resources["Sans-Bold"];
@@ -49,14 +49,14 @@ namespace HodlWallet.iOS.Renderers
         UIFont TitleFont => UIFont.FromName(SansFontName, 20);
         UIStringAttributes TitleStringAttributes => new()
         {
-            ForegroundColor = TextPrimary,
+            ForegroundColor = Fg,
             Font = TitleFont
         };
 
         UIFont ItemFont => UIFont.FromName(SansFontName, 16);
         UITextAttributes ItemTextAttributes => new()
         {
-            TextColor = TextPrimary,
+            TextColor = Fg,
             Font = ItemFont
         };
 

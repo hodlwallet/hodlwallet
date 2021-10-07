@@ -4,7 +4,7 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BiometricsView"
              Title="{i18n:Translate Biometrics.title}"
-             BackgroundColor="{DynamicResource BackgroundPrimary}">
+             BackgroundColor="{DynamicResource Bg}">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"

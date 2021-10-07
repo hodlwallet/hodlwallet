@@ -11,19 +11,19 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
-                        BackgroundColor="{DynamicResource BackgroundPrimary}" >
+                        BackgroundColor="{DynamicResource Bg}" >
 
                 <Label x:Name="Header"
                        Text="{i18n:Translate Text=NewWallet.header}"
                        FontFamily="{StaticResource Sans-Bold}"
-                       TextColor="{DynamicResource TextPrimary}"
+                       TextColor="{DynamicResource Fg}"
                        FontSize="Large"
                        Margin="10" />
 
                 <Label x:Name="Subheader"
                        Text="{i18n:Translate Text=NewWallet.body}"
                        FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource TextSuccess}"
+                       TextColor="{DynamicResource FgSuccess}"
                        FontSize="Medium"
                        Margin="10"
                        FlexLayout.Grow="4" />

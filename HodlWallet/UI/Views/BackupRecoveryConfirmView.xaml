@@ -6,7 +6,7 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupRecoveryConfirmView"
              x:DataType="vm:BackupRecoveryConfirmViewModel"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             BackgroundColor="{DynamicResource Bg}"
              ios:Page.UseSafeArea="True">
     <ContentPage.BindingContext>
         <vm:BackupRecoveryConfirmViewModel />
@@ -14,13 +14,13 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
-                        BackgroundColor="{DynamicResource BackgroundPrimary}"
+                        BackgroundColor="{DynamicResource Bg}"
                         JustifyContent="SpaceAround"
                         AlignItems="Center">
 
                 <Label Text="{i18n:Translate Text=BackupConfirm.header}"
                        FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource SyncGradientStart}"
+                       TextColor="{DynamicResource FgSuccess}"
                        HorizontalTextAlignment="Center"
                        FlexLayout.Grow="1"
                        Margin="0, 20, 0, 0" />
@@ -31,12 +31,12 @@
 
                 <Label Text="{i18n:Translate Text=BackupConfirm.warning}"
                        FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource TextError}"
+                       TextColor="{DynamicResource FgError}"
                        HorizontalTextAlignment="Center"
                        IsVisible="{Binding WarningVisible}" />
 
                 <ActivityIndicator IsRunning="{Binding IsLoading}"
-                                   Color="{DynamicResource SyncGradientStart}" />
+                                   Color="{DynamicResource FgSuccess}" />
 
                 <FlexLayout Direction="Row"
                             JustifyContent="SpaceEvenly"

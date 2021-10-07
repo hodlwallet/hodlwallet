@@ -126,6 +126,10 @@
 		<DesignTime>True</DesignTime>
 		<AutoGen>True</AutoGen>
 	</Compile>
+	<Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="UI\Views\LoginView2.xaml.cs">
+	  <DependentUpon>LoginView2.xaml</DependentUpon>
+	  <SubType>Code</SubType>
+	</Compile>
 </ItemGroup>
 <ItemGroup>
 	<EmbeddedResource Update="UI\Views\BiometricsView.xaml">

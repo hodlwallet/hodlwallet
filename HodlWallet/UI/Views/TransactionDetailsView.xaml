@@ -7,7 +7,7 @@
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.TransactionDetailsView"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             BackgroundColor="{DynamicResource Bg}"
              NavigationPage.HasNavigationBar="False"
              ios:Page.UseSafeArea="true">
     <ContentPage.BindingContext>
@@ -29,7 +29,7 @@
                                FontSize="Title"
                                FlexLayout.AlignSelf="Center"
                                FontFamily="{StaticResource Sans-Bold}"
-                               TextColor="{DynamicResource TextPrimary}" />
+                               TextColor="{DynamicResource Fg}" />
 
                         <FlexLayout Direction="Column"
                                     FlexLayout.Grow="1"
@@ -80,7 +80,7 @@
                                    Text="{Binding MemoTitle, Converter={StaticResource UpperCaseConverter}}" />
                             <Entry BackgroundColor="Transparent"
                                    FontSize="Small"
-                                   TextColor="{DynamicResource TextPrimary}"
+                                   TextColor="{DynamicResource Fg}"
                                    Text="{Binding MemoText}"
                                    Completed="Memo_Completed"
                                    ReturnType="Done"/>

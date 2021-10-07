@@ -142,24 +142,6 @@
     <ImageAsset Include="Assets.xcassets\logo.png.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <BundleResource Include="Resources\receive_tab.png" />
-    <BundleResource Include="Resources\receive_tab%402x.png" />
-    <BundleResource Include="Resources\received%402x.png" />
-    <BundleResource Include="Resources\send_tab.png" />
-    <BundleResource Include="Resources\received.png" />
-    <BundleResource Include="Resources\settings_tab.png" />
-    <BundleResource Include="Resources\schedule%402x.png" />
-    <BundleResource Include="Resources\price_tag_3_fill%402x.png" />
-    <BundleResource Include="Resources\home_tab%402x.png" />
-    <BundleResource Include="Resources\sent%402x.png" />
-    <BundleResource Include="Resources\price_tag_3_line%402x.png" />
-    <BundleResource Include="Resources\home_tab.png" />
-    <BundleResource Include="Resources\price_tag_3_line.png" />
-    <BundleResource Include="Resources\schedule.png" />
-    <BundleResource Include="Resources\send_tab%402x.png" />
-    <BundleResource Include="Resources\settings_tab%402x.png" />
-    <BundleResource Include="Resources\sent.png" />
-    <BundleResource Include="Resources\price_tag_3_fill.png" />
     <BundleResource Include="Resources\FiraSans-Bold.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
@@ -232,9 +214,48 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\large-icon.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <BundleResource Include="Resources\gear.png" />
+    <BundleResource Include="Resources\gear%402x.png" />
+    <BundleResource Include="Resources\gear%403x.png" />
+    <BundleResource Include="Resources\send.png" />
+    <BundleResource Include="Resources\send%402x.png" />
+    <BundleResource Include="Resources\send%403x.png" />
+    <BundleResource Include="Resources\receive.png" />
+    <BundleResource Include="Resources\receive%402x.png" />
+    <BundleResource Include="Resources\receive%403x.png" />
+    <BundleResource Include="Resources\home.png" />
+    <BundleResource Include="Resources\home%402x.png" />
+    <BundleResource Include="Resources\home%403x.png" />
     <BundleResource Include="Resources\search.png" />
     <BundleResource Include="Resources\search%402x.png" />
     <BundleResource Include="Resources\search%403x.png" />
+    <BundleResource Include="Resources\node_0_connections.png" />
+    <BundleResource Include="Resources\node_0_connections%402x.png" />
+    <BundleResource Include="Resources\node_0_connections%403x.png" />
+    <BundleResource Include="Resources\node_1_connection.png" />
+    <BundleResource Include="Resources\node_1_connection%402x.png" />
+    <BundleResource Include="Resources\node_1_connection%403x.png" />
+    <BundleResource Include="Resources\node_2_connections.png" />
+    <BundleResource Include="Resources\node_2_connections%402x.png" />
+    <BundleResource Include="Resources\node_2_connections%403x.png" />
+    <BundleResource Include="Resources\node_3_connections.png" />
+    <BundleResource Include="Resources\node_3_connections%402x.png" />
+    <BundleResource Include="Resources\node_3_connections%403x.png" />
+    <BundleResource Include="Resources\node.png" />
+    <BundleResource Include="Resources\node%402x.png" />
+    <BundleResource Include="Resources\node%403x.png" />
+    <BundleResource Include="Resources\visible.png" />
+    <BundleResource Include="Resources\visible%402x.png" />
+    <BundleResource Include="Resources\visible%403x.png" />
+    <BundleResource Include="Resources\hidden.png" />
+    <BundleResource Include="Resources\hidden%402x.png" />
+    <BundleResource Include="Resources\hidden%403x.png" />
+    <BundleResource Include="Resources\qr_code.png" />
+    <BundleResource Include="Resources\qr_code%402x.png" />
+    <BundleResource Include="Resources\qr_code%403x.png" />
+    <BundleResource Include="Resources\clock.png" />
+    <BundleResource Include="Resources\clock%402x.png" />
+    <BundleResource Include="Resources\clock%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -16,7 +16,7 @@
                 ItemsSource="{Binding Accounts}"
                 SelectedItem="{Binding CurrentAccount}"
                 SelectionChangedCommand="{Binding NavigateToHomeCommand}"
-                BackgroundColor="{DynamicResource BackgroundPrimary}">
+                BackgroundColor="{DynamicResource Bg}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <pc:PancakeView

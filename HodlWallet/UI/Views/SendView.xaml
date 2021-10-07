@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
@@ -7,7 +7,7 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              Title ="{i18n:Translate Send.title}"
              x:Class="HodlWallet.UI.Views.SendView"
-             BackgroundColor="{DynamicResource BackgroundPrimary}">
+             BackgroundColor="{DynamicResource Bg}">
     <ContentPage.BindingContext>
         <vm:SendViewModel />
     </ContentPage.BindingContext>
@@ -29,9 +29,9 @@
                                 <Entry x:Name="SendAddress"
                                        Placeholder="bc1..."
                                        Text="{Binding AddressToSendTo}"
-                                       TextColor="{DynamicResource TextPrimary}"
+                                       TextColor="{DynamicResource Fg}"
                                        BackgroundColor="Transparent"
-                                       PlaceholderColor="{DynamicResource TextPrimary}"
+                                       PlaceholderColor="{DynamicResource Fg}"
                                        Style="{StaticResource CustomEntry}" />
 
                             </StackLayout>
@@ -96,7 +96,7 @@
                                        Keyboard="Numeric"
                                        ReturnType="Done"
                                        Text="{Binding AmountToSend}"
-                                       TextColor="{DynamicResource SyncGradientStart}"
+                                       TextColor="{DynamicResource FgSuccess}"
                                        BackgroundColor="Transparent"
                                        FontFamily="{StaticResource Mono-Bold}"
                                        VerticalOptions="Center" />
@@ -144,10 +144,10 @@
                             <FlexLayout Direction="Row"
                                         JustifyContent="SpaceBetween">
                                 <Label FontFamily="{StaticResource Sans-Regular}"
-                                       TextColor="{DynamicResource TextSecondary}"
+                                       TextColor="{DynamicResource Fg2}"
                                        Text="{Binding TransactionFeeText}" />
                                 <Label FontFamily="{StaticResource Sans-Regular}"
-                                       TextColor="{StaticResource TextSecondary}"
+                                       TextColor="{StaticResource Fg2}"
                                        Text="{Binding EstConfirmationText}" />
                             </FlexLayout>
 
@@ -161,8 +161,8 @@
                                        Text="{i18n:Translate Text=Send.highFee}" />
                             </FlexLayout>
 
-                            <renderers:FeeSlider MinimumTrackColor="{DynamicResource SyncGradientStart}"
-                                                 MaximumTrackColor="{DynamicResource TextPrimary}"
+                            <renderers:FeeSlider MinimumTrackColor="{DynamicResource FgSuccess}"
+                                                 MaximumTrackColor="{DynamicResource Fg}"
                                                  Maximum="100"
                                                  DragCompleted="FeeSlider_DragCompleted"
                                                  Value="{Binding SliderValue}">
@@ -173,9 +173,9 @@
 
                             <Entry Text="{Binding Fee}"
                                    Style="{StaticResource CustomEntry}"
-                                   TextColor="{DynamicResource TextPrimary}"
+                                   TextColor="{DynamicResource Fg}"
                                    BackgroundColor="Transparent"
-                                   PlaceholderColor="{DynamicResource TextPrimary}"
+                                   PlaceholderColor="{DynamicResource Fg}"
                                    Keyboard="Numeric"
                                    Margin="0, 0, 0, 10" />
                         </StackLayout>
@@ -185,7 +185,7 @@
                 <Button Text="{i18n:Translate Text=Send.buttonSend}"
                         Command="{Binding SendCommand}"
                         Style="{DynamicResource CustomButton}"
-                        BackgroundColor="{DynamicResource BackgroundSecondary}"
+                        BackgroundColor="{DynamicResource Bg2}"
                         FontSize="Large"
                         HeightRequest="50"
                         FlexLayout.AlignSelf="Stretch"

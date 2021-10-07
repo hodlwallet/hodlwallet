@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -524,6 +524,30 @@
     <value>Account Settings</value>
     <comment>Account Settings Title</comment>
   </data>
+  <data name="AccountInfo.Title" xml:space="preserve">
+    <value>Account Info</value>
+    <comment>Account Info Title</comment>
+  </data>
+  <data name="AccountInfo.Id" xml:space="preserve">
+    <value>ID</value>
+    <comment>Account Id Title</comment>
+  </data>
+  <data name="AccountInfo.Name" xml:space="preserve">
+    <value>NAME</value>
+    <comment>Account HD Path Title</comment>
+  </data>
+  <data name="AccountInfo.HdPath" xml:space="preserve">
+    <value>HD PATH</value>
+    <comment>Account HD Path Title</comment>
+  </data>
+  <data name="AccountInfo.XPub" xml:space="preserve">
+    <value>XPUB (PUBLIC KEY)</value>
+    <comment>Account XPub Title</comment>
+  </data>
+  <data name="AccountInfo.XPrv" xml:space="preserve">
+    <value>XPRV (PRIVATE KEY)</value>
+    <comment>Account XPrv Title</comment>
+  </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>Settings</value>
     <comment>Global Settings Title</comment>
@@ -848,9 +872,17 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Please select the type of account</value>
     <comment>label that's shown when the user haven't selected a type of account</comment>
   </data>
-  <data name="Send.transactionSendedMessage" xml:space="preserve">
-    <value>Transaction beggined succesfully, waiting for confirmation.</value>
-    <comment>label of toast message for transaction beggined</comment>
+  <data name="SecretContentView.textCopied" xml:space="preserve">
+    <value>Text Copied.</value>
+    <comment>A message shown when clicked and saved to the clipboard</comment>
+  </data>
+  <data name="QrCode.title" xml:space="preserve">
+    <value>QR Code</value>
+    <comment>QR Code window title</comment>
+  </data>
+  <data name="Send.transactionSentMessage" xml:space="preserve">
+    <value>    <value> successful, waiting for confirmation.</value>
+    <comment>label of toast message for transaction beginning</comment>
   </data>
   <data name="Send.clear" xml:space="preserve">
     <value>Clear</value>

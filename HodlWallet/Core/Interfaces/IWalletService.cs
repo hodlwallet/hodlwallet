@@ -39,12 +39,17 @@ namespace HodlWallet.Core.Interfaces
         bool IsStarted { get; }
         bool IsConfigured { get; }
 
+        bool Syncing { get; }
+
         IWallet Wallet { get; }
 
         Serilog.ILogger Logger { set; get; }
 
         event EventHandler OnConfigured;
         event EventHandler OnStarted;
+
+        event EventHandler<DateTimeOffset> OnSyncStarted;
+        event EventHandler<DateTimeOffset> OnSyncFinished;
 
         void Start();
         void InitializeWallet(string accountType = "standard");

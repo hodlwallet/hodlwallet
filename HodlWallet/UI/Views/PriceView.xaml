@@ -8,7 +8,7 @@
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              x:Class="HodlWallet.UI.Views.PriceView"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             BackgroundColor="{DynamicResource Bg}"
              NavigationPage.HasNavigationBar="False"
              ios:Page.UseSafeArea="True">
     <ContentPage.BindingContext>
@@ -30,7 +30,7 @@
                                    FontSize="Title"
                                    FlexLayout.AlignSelf="Center"
                                    FontFamily="{StaticResource Sans-Bold}"
-                                   TextColor="{DynamicResource TextPrimary}" />
+                                   TextColor="{DynamicResource Fg}" />
 
                             <FlexLayout Direction="Column"
                                         FlexLayout.Grow="1"
@@ -57,13 +57,13 @@
                                                      Margin="20, 10, 0, 0"
                                                      Text="{Binding PriceText}"
                                                      FontSize="Large"
-                                                     TextColor="{DynamicResource TextPrimary}"
+                                                     TextColor="{DynamicResource Fg}"
                                                      FontFamily="{StaticResource Mono-Bold}" />
                                 <!--<controls:MoneyLabel x:Name="PriceLabel"
                                                      Margin="20, 10, 0, 0"
                                                      Text="{Binding PriceText}"
                                                      FontSize="Large"
-                                                     TextColor="{DynamicResource TextPrimary}"
+                                                     TextColor="{DynamicResource Fg}"
                                                      FontFamily="{StaticResource Mono-Bold}" />-->
                             </ScrollView>
                         </FlexLayout>
@@ -78,27 +78,27 @@
                                         HeightRequest="270">
                                 <StackLayout Orientation="Horizontal">
                                     <!--<microchartsForms:ChartView x:Name="Prices1hChartView"
-                                               BackgroundColor="{DynamicResource BackgroundPrimary}"
+                                               BackgroundColor="{DynamicResource Bg}"
                                                WidthRequest="500"
                                                HeightRequest="250" />-->
                                     <microchartsForms:ChartView x:Name="Prices1dChartView"
-                                                                BackgroundColor="{DynamicResource BackgroundPrimary}"
+                                                                BackgroundColor="{DynamicResource Bg}"
                                                                 WidthRequest="420"
                                                                 HeightRequest="250" />
                                     <microchartsForms:ChartView x:Name="Prices1wChartView"
-                                                                BackgroundColor="{DynamicResource BackgroundPrimary}"
+                                                                BackgroundColor="{DynamicResource Bg}"
                                                                 WidthRequest="420"
                                                                 HeightRequest="250" />
                                     <microchartsForms:ChartView x:Name="Prices1mChartView"
-                                                                BackgroundColor="{DynamicResource BackgroundPrimary}"
+                                                                BackgroundColor="{DynamicResource Bg}"
                                                                 WidthRequest="420"
                                                                 HeightRequest="250" />
                                     <microchartsForms:ChartView x:Name="Prices1yChartView"
-                                                                BackgroundColor="{DynamicResource BackgroundPrimary}"
+                                                                BackgroundColor="{DynamicResource Bg}"
                                                                 WidthRequest="420"
                                                                 HeightRequest="250" />
                                     <!--<microchartsForms:ChartView x:Name="PricesAllChartView"
-                                                            BackgroundColor="{DynamicResource BackgroundPrimary}"
+                                                            BackgroundColor="{DynamicResource Bg}"
                                                             WidthRequest="420"
                                                             HeightRequest="250" />-->
                                 </StackLayout>
@@ -141,12 +141,12 @@
                                        Text="Marketcap"
                                        FontSize="Title"
                                        FontFamily="{StaticResource Sans-Bold}"
-                                       TextColor="{DynamicResource TextPrimary}" />
+                                       TextColor="{DynamicResource Fg}" />
                                 <Label x:Name="MarketcapLabel"
                                        FontSize="Large"
                                        FontFamily="{StaticResource Mono-Bold}"
                                        Text="{Binding MarketcapText}"
-                                       TextColor="{StaticResource TextPrimary}" />
+                                       TextColor="{StaticResource Fg}" />
                             </StackLayout>
                         </FlexLayout>
                         <FlexLayout Direction="Row"
@@ -157,12 +157,12 @@
                                        Text="Change"
                                        FontSize="Title"
                                        FontFamily="{StaticResource Sans-Bold}"
-                                       TextColor="{DynamicResource TextPrimary}" />
+                                       TextColor="{DynamicResource Fg}" />
                                 <Label x:Name="PriceChangeLabel"
                                        FontSize="Large"
                                        FontFamily="{StaticResource Mono-Bold}"
                                        Text="{Binding PriceChangeText}"
-                                       TextColor="Red" />
+                                       TextColor="{DynamicResource FgError}" />
                             </StackLayout>
                         </FlexLayout>
                         <FlexLayout Direction="Row"

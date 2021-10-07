@@ -2,11 +2,11 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HodlWallet.UI.Controls.FlyoutHeader"
-             BackgroundColor="{DynamicResource BackgroundSecondary}">
+             BackgroundColor="{DynamicResource Bg2}">
     <ContentView.Content>
         <Grid HeightRequest="30">
             <Label Text="ACCOUNTS"
-                   TextColor="{DynamicResource TextSecondary}"
+                   TextColor="{DynamicResource Fg2}"
                    VerticalTextAlignment="Center"
                    HorizontalTextAlignment="Center" />
         </Grid>

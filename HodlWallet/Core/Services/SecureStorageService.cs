@@ -23,7 +23,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
 using System.Linq;
 
 using Xamarin.Essentials;
@@ -31,7 +30,6 @@ using Xamarin.Essentials;
 using Liviano.Bips;
 using Liviano.Exceptions;
 using Liviano.Utilities;
-using System.Diagnostics;
 
 namespace HodlWallet.Core.Services
 {
@@ -156,6 +154,11 @@ namespace HodlWallet.Core.Services
             Guard.NotEmpty(color, nameof(color));
             string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}{ACCOUNT_COLOR_SEPARATOR_KEY}{accountId}";
             Set(accountColorKey, color);
+        }
+
+        public static bool UserDidSetup()
+        {
+            return HasPin() && HasMnemonic() && HasWalletId() && HasNetwork();
         }
 
         public static void RemoveAll()

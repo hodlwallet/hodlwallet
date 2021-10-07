@@ -21,29 +21,40 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
+using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
-using HodlWallet.UI.Locale;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System.Diagnostics;
+using Liviano.Interfaces;
 
 namespace HodlWallet.UI.Views
 {
     public partial class HomeView : ContentPage
     {
         HomeViewModel ViewModel => BindingContext as HomeViewModel;
+        IWalletService WalletService => DependencyService.Get<IWalletService>();
 
         public HomeView()
         {
             InitializeComponent();
 
             SubscribeToMessages();
+
+            if (WalletService.Syncing)
+            {
+                SyncToolbarItem.IsVisible = true;
+                SearchToolBarItem.IsVisible = false;
+            }
+            else
+            {
+                SyncToolbarItem.IsVisible = false;
+                SearchToolBarItem.IsVisible = true;
+            }
         }
 
         protected override void OnAppearing()
@@ -67,7 +78,6 @@ namespace HodlWallet.UI.Views
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<HomeViewModel, TransactionModel>(this, "NavigateToTransactionDetail", NavigateToTransactionDetail);
-            MessagingCenter.Subscribe<HomeViewModel>(this, "DisplaySearchNotImplementedAlert", DisplaySearchNotImplementedAlert);
             MessagingCenter.Subscribe<HomeViewModel>(this, "SwitchCurrency", SwitchCurrency);
         }
 
@@ -79,9 +89,15 @@ namespace HodlWallet.UI.Views
             await Navigation.PushModalAsync(nav);
         }
 
-        async void DisplaySearchNotImplementedAlert(HomeViewModel vm)
+        async Task DisplaySearchNotImplementedMessage()
         {
             await this.DisplayToast("Search Not Implemented");
+        }
+
+        async Task DisplaySyncingMessage()
+        {
+            // TODO Display better information
+            await this.DisplayToast("Syncing...");
         }
 
         //void PriceButton_Tapped(object sender, EventArgs e)
@@ -103,9 +119,32 @@ namespace HodlWallet.UI.Views
             }
         }
 
-        void Search_Clicked(object sender, EventArgs e)
+        public async Task SwitchAccount(IAccount account)
         {
-            DisplaySearchNotImplementedAlert(ViewModel);
+            Debug.WriteLine($"[SwitchAccount] AccountID: {account.Id}");
+
+            var prompt = this.DisplayPrompt(
+                "Switch Account",
+                $"Switch account to \"{account.Name}\"",
+                "Ok",
+                "Cancel"
+            );
+
+            if (!(await prompt)) return;
+
+            ViewModel.SwitchAccount(account);
+
+            await this.DisplayToast($"Switched account to {account.Id}");
+        }
+
+        async void Search_Clicked(object sender, EventArgs e)
+        {
+            await DisplaySearchNotImplementedMessage();
+        }
+
+        async void Sync_Clicked(object sender, EventArgs e)
+        {
+            await DisplaySyncingMessage();
         }
 
         void TransactionsScrollView_Scrolled(object sender, ScrolledEventArgs e)

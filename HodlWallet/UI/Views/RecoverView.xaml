@@ -6,7 +6,7 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.RecoverView"
              x:DataType="vm:RecoverViewModel"
-             BackgroundColor="{DynamicResource BackgroundPrimary}"
+             BackgroundColor="{DynamicResource Bg}"
              Title="{i18n:Translate Text=RecoverEntry.title}">
     <ContentPage.BindingContext>
         <vm:RecoverViewModel />
@@ -23,7 +23,7 @@
 
                     <ScrollView>
                         <Grid x:Name="EntryGrid"
-                              BackgroundColor="{DynamicResource BackgroundSecondary}"
+                              BackgroundColor="{DynamicResource Bg2}"
                               Padding="10"
                               Margin="10">
 
@@ -58,7 +58,7 @@
 
                             <Label Text="1"
                                    FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource TextSuccess}"
+                                   TextColor="{DynamicResource FgSuccess}"
                                    HorizontalOptions="Center"
                                    FontSize="Micro"
                                    Grid.Row="2"
@@ -77,7 +77,7 @@
 
                             <Label Text="2"
                                    FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource TextSuccess}"
+                                   TextColor="{DynamicResource FgSuccess}"
                                    HorizontalOptions="Center"
                                    FontSize="Micro"
                                    Grid.Row="2"
@@ -96,7 +96,7 @@
 
                             <Label Text="3"
                                    FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource TextSuccess}"
+                                   TextColor="{DynamicResource FgSuccess}"
                                    HorizontalOptions="Center"
                                    FontSize="Micro"
                                    Grid.Row="2"
@@ -115,7 +115,7 @@
 
                             <Label Text="4"
                                    FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource TextSuccess}"
+                                   TextColor="{DynamicResource FgSuccess}"
                                    HorizontalOptions="Center"
                                    FontSize="Micro"
                                    Grid.Row="4"
@@ -134,7 +134,7 @@
 
                             <Label Text="5"
                                    FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource TextSuccess}"
+                                   TextColor="{DynamicResource FgSuccess}"
                                    HorizontalOptions="Center"
                                    FontSize="Micro"
                                    Grid.Row="4"
@@ -153,7 +153,7 @@
 
                             <Label Text="6"
                                    FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource TextSuccess}"
+                                   TextColor="{DynamicResource FgSuccess}"
                                    HorizontalOptions="Center"
                                    FontSize="Micro"
                                    Grid.Row="4"
@@ -172,7 +172,7 @@
 
                             <Label Text="7"
                                    FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource TextSuccess}"
+                                   TextColor="{DynamicResource FgSuccess}"
                                    HorizontalOptions="Center"
                                    FontSize="Micro"
                                    Grid.Row="6"
@@ -191,7 +191,7 @@
 
                             <Label Text="8"
                                    FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource TextSuccess}"
+                                   TextColor="{DynamicResource FgSuccess}"
                                    HorizontalOptions="Center"
                                    FontSize="Micro"
                                    Grid.Row="6"
@@ -210,7 +210,7 @@
 
                             <Label Text="9"
                                    FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource TextSuccess}"
+                                   TextColor="{DynamicResource FgSuccess}"
                                    HorizontalOptions="Center"
                                    FontSize="Micro"
                                    Grid.Row="6"
@@ -229,7 +229,7 @@
 
                             <Label Text="10"
                                    FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource TextSuccess}"
+                                   TextColor="{DynamicResource FgSuccess}"
                                    HorizontalOptions="Center"
                                    FontSize="Micro"
                                    Grid.Row="8"
@@ -248,7 +248,7 @@
 
                             <Label Text="11"
                                    FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource TextSuccess}"
+                                   TextColor="{DynamicResource FgSuccess}"
                                    HorizontalOptions="Center"
                                    FontSize="Micro"
                                    Grid.Row="8"
@@ -266,7 +266,7 @@
 
                             <Label Text="12"
                                    FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource TextSuccess}"
+                                   TextColor="{DynamicResource FgSuccess}"
                                    HorizontalOptions="Center"
                                    FontSize="Micro"
                                    Grid.Row="8"

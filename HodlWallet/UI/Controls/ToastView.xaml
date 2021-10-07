@@ -2,7 +2,7 @@
 <Frame xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="HodlWallet.UI.Controls.ToastView"
-       BackgroundColor="{DynamicResource BackgroundSecondary}"
+       BackgroundColor="{DynamicResource Bg2}"
        HasShadow="True"
        Padding="5"
        Opacity="0"
@@ -16,7 +16,7 @@
            FontFamily="{StaticResource Sans-Bold}"
            VerticalTextAlignment="Center"
            HorizontalTextAlignment="Center"
-           TextColor="{DynamicResource TextPrimary}" />
+           TextColor="{DynamicResource Fg2}" />
     <Frame.GestureRecognizers>
         <TapGestureRecognizer Tapped="Toast_Tapped" NumberOfTapsRequired="1" />
     </Frame.GestureRecognizers>

@@ -6,7 +6,7 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupRecoveryWordView"
              Title="{i18n:Translate BackupWord.title}"
-             BackgroundColor="{DynamicResource BackgroundPrimary}">
+             BackgroundColor="{DynamicResource Bg}">
     <ContentPage.BindingContext>
         <vm:BackupRecoveryWordViewModel />
     </ContentPage.BindingContext>
@@ -23,11 +23,11 @@
     <ContentPage.Content>
         <FlexLayout Direction="Column"
                         JustifyContent="SpaceAround"
-                        BackgroundColor="{DynamicResource BackgroundPrimary}"
+                        BackgroundColor="{DynamicResource Bg}"
                         AlignItems="Center">
             <Label Text="{i18n:Translate Text=BackupWord.header}"
                        FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource TextSuccess}"
+                       TextColor="{DynamicResource FgSuccess}"
                        HorizontalTextAlignment="Center"
                        Margin="0, 20" />
 
@@ -41,12 +41,12 @@
                         FlexLayout.Grow="4">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <ContentView BackgroundColor="{DynamicResource BackgroundSecondary}"
+                        <ContentView BackgroundColor="{DynamicResource Bg2}"
                                      Margin="2" >
                             <StackLayout Orientation="Horizontal" Margin="2" Padding="10">
                                 <Label Text="{Binding WordIndex}"
                                        FontFamily="{StaticResource Sans-Regular}"
-                                       TextColor="{DynamicResource TextSuccess}"
+                                       TextColor="{DynamicResource FgSuccess}"
                                        FontSize="Medium" />
                                 <Label Text="{Binding Word}"
                                        Style="{DynamicResource MnemonicLabel}" />
@@ -58,7 +58,7 @@
 
             <Button Text="{i18n:Translate Text=BackupWord.next}"
                     Style="{DynamicResource BottomButton}"
-                    BackgroundColor="{DynamicResource BackgroundSecondary}"
+                    BackgroundColor="{DynamicResource Bg2}"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
                     VerticalOptions="EndAndExpand"

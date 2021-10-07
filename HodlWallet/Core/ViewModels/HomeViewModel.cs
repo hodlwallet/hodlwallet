@@ -25,9 +25,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Diagnostics;
 using System.Threading;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 
@@ -36,17 +34,14 @@ using Xamarin.Essentials;
 
 using NBitcoin;
 
-using Liviano;
 using Liviano.Models;
 
-using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.Utils;
-using HodlWallet.Core.Services;
 using HodlWallet.Core.Extensions;
-using HodlWallet.UI.Views;
-using HodlWallet.UI.Extensions;
+
 using Liviano.Events;
+using Liviano.Interfaces;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -273,6 +268,11 @@ namespace HodlWallet.Core.ViewModels
             }
 
             MessagingCenter.Send(this, "SwitchCurrency");
+        }
+
+        public void SwitchAccount(IAccount account)
+        {
+            Debug.WriteLine($"[SwitchAccount] AccountID: {account.Id}");
         }
 
         void InitializePrecioAndWalletTimers()
