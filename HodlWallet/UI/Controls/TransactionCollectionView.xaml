@@ -85,9 +85,9 @@
                                              Grid.Column="1"
                                              Grid.Row="0"
                                              HorizontalOptions="End">
-                                    <Image Source="schedule.png"
-                                           HeightRequest="11"
-                                           WidthRequest="11" />
+                                    <Image Source="clock.png"
+                                           HeightRequest="15"
+                                           WidthRequest="15" />
                                     <Label Style="{StaticResource TransactionInfoLabel}"
                                            FontFamily="{StaticResource Sans-Regular}"
                                            HorizontalTextAlignment="End"

@@ -131,6 +131,9 @@
 	  <DependentUpon>LoginView2.xaml</DependentUpon>
 	  <SubType>Code</SubType>
 	</Compile>
+	<Compile Update="UI\Locale\LocaleResources.Designer.cs">
+	  <DependentUpon>LocaleResources.resx</DependentUpon>
+	</Compile>
 </ItemGroup>
 <ItemGroup>
 	<EmbeddedResource Update="UI\Views\BiometricsView.xaml">
@@ -160,6 +163,11 @@
 </ItemGroup>
 <ItemGroup>
 	<GitPath Include="..\.git" Visible="false" />
+</ItemGroup>
+<ItemGroup>
+  <Reference Include="Mono.Android">
+    <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v11.0\Mono.Android.dll</HintPath>
+  </Reference>
 </ItemGroup>
 <Target Name="GetBuildInfo" BeforeTargets="WriteBuildInfo" Condition="'$(GitHead)' == ''">
 	<PropertyGroup>

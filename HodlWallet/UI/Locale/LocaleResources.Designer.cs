@@ -1186,5 +1186,17 @@ namespace HodlWallet.UI.Locale {
                 return ResourceManager.GetString("QrCode.title", resourceCulture);
             }
         }
+        
+        internal static string Send_transactionSentMessage {
+            get {
+                return ResourceManager.GetString("Send.transactionSentMessage", resourceCulture);
+            }
+        }
+        
+        internal static string Send_clear {
+            get {
+                return ResourceManager.GetString("Send.clear", resourceCulture);
+            }
+        }
     }
 }

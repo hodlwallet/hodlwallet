@@ -73,7 +73,7 @@ namespace HodlWallet.UI.Controls
         {
             IsVisible = true;
 
-            this.FadeTo(0.65);
+            this.FadeTo(0.85);
         }
 
         public void UpdateContent(string content)

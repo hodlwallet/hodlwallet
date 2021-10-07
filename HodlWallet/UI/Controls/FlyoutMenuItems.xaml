@@ -13,5 +13,8 @@
         <Label Text="{Binding Balance}"
                Style="{Binding CustomStyle}"
                FontFamily="{StaticResource Mono-Regular}" />
+        <FlexLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Item_Clicked" />
+        </FlexLayout.GestureRecognizers>
     </FlexLayout>
 </ContentView>

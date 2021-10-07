@@ -9,7 +9,7 @@
        xmlns:views="clr-namespace:HodlWallet.UI.Views"
        xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
        ios:Page.UseSafeArea="True"
-       x:Name="shell">
+       x:Name="self">
     <Shell.Resources>
         <Style x:Key="BaseStyle" TargetType="Element">
             <Setter Property="Shell.BackgroundColor" Value="{DynamicResource Bg}" />
@@ -126,11 +126,11 @@
                         <controls:FlyoutHeader />
                     </ContentView.Content>
                 </ContentView>
-                <CollectionView BindingContext="{x:Reference shell}"
+                <CollectionView BindingContext="{x:Reference self}"
                                 ItemsSource="{Binding AccountList}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <controls:FlyoutMenuItems/>
+                            <controls:FlyoutMenuItems />
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -145,7 +145,7 @@
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <Tab x:Name="homeTab"
              Route="home"
-             Icon="home_tab.png"
+             Icon="home.png"
              FlyoutItemIsVisible="False">
             <ShellContent>
                 <views:HomeView />
@@ -154,7 +154,7 @@
 
         <Tab x:Name="sendTab"
              Route="send"
-             Icon="send_tab.png"
+             Icon="send.png"
              FlyoutItemIsVisible="False">
             <ShellContent>
                 <views:SendView />
@@ -163,7 +163,7 @@
 
         <Tab x:Name="receiveTab"
              Route="receive"
-             Icon="receive_tab.png"
+             Icon="receive.png"
              FlyoutItemIsVisible="False">
             <ShellContent>
                 <views:ReceiveView />
@@ -172,7 +172,7 @@
 
         <Tab x:Name="accountSettingsTab"
              Route="account-settings"
-             Icon="settings_tab.png"
+             Icon="gear.png"
              FlyoutItemIsVisible="False">
             <ShellContent>
                 <views:AccountSettingsView />

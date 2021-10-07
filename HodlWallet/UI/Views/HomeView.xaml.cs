@@ -21,6 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -28,7 +30,7 @@ using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
-using System.Threading.Tasks;
+using Liviano.Interfaces;
 
 namespace HodlWallet.UI.Views
 {
@@ -63,9 +65,7 @@ namespace HodlWallet.UI.Views
 
             ViewModel.View_OnAppearing();
 
-            ViewModel.InitializeWalletAndPrecio();
-
-            InitializeDisplayedCurrency();
+            ViewModel.InitializeWalletAndPrecio();        
         }
 
         protected override void OnDisappearing()
@@ -73,18 +73,6 @@ namespace HodlWallet.UI.Views
             base.OnDisappearing();
 
             ViewModel.View_OnDisappearing();
-        }
-
-        void InitializeDisplayedCurrency()
-        {
-            if (ViewModel.Currency == "BTC")
-            {
-                //BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
-            }
-            else
-            {
-                //BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
-            }
         }
 
         void SubscribeToMessages()
@@ -129,6 +117,24 @@ namespace HodlWallet.UI.Views
             {
                 //BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
             }
+        }
+
+        public async Task SwitchAccount(IAccount account)
+        {
+            Debug.WriteLine($"[SwitchAccount] AccountID: {account.Id}");
+
+            var prompt = this.DisplayPrompt(
+                "Switch Account",
+                $"Switch account to \"{account.Name}\"",
+                "Ok",
+                "Cancel"
+            );
+
+            if (!(await prompt)) return;
+
+            ViewModel.SwitchAccount(account);
+
+            await this.DisplayToast($"Switched account to {account.Id}");
         }
 
         async void Search_Clicked(object sender, EventArgs e)
