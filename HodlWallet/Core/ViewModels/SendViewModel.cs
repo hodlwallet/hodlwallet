@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -31,13 +32,11 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 
 using HodlWallet.Core.Utils;
+using HodlWallet.UI.Views;
+using HodlWallet.UI.Locale;
 
-using Liviano;
 using Liviano.Exceptions;
 using Liviano.Extensions;
-using HodlWallet.UI.Views;
-using System.Diagnostics;
-using HodlWallet.UI.Locale;
 
 namespace HodlWallet.Core.ViewModels
 {
