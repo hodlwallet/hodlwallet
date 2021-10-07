@@ -881,7 +881,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <comment>QR Code window title</comment>
   </data>
   <data name="Send.transactionSentMessage" xml:space="preserve">
-    <value>    <value> successful, waiting for confirmation.</value>
+    <value>Transaction successful, waiting for confirmation.</value>
     <comment>label of toast message for transaction beginning</comment>
   </data>
   <data name="Send.clear" xml:space="preserve">
