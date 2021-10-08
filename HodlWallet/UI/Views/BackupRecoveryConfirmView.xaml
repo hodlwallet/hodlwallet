@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupRecoveryConfirmView"
@@ -45,7 +44,7 @@
                                                 Source={RelativeSource
                                                 AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
                                                 Path=TapOrderedCommand}"
-                                            CommandParameter="{Binding .}"/>
+                                            CommandParameter="{Binding .}" />
                                     </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>
@@ -78,7 +77,7 @@
                                                     Source={RelativeSource
                                                     AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
                                                     Path=TapUnorderedCommand}"
-                                                CommandParameter="{Binding .}"/>
+                                                CommandParameter="{Binding .}" />
                                     </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>
@@ -86,14 +85,20 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </FlexLayout>
-            <Button x:Name="nextButton"
+            <Label x:Name="OrderErrorLabel"
+                   TextColor="{DynamicResource FgError}"
+                   Text="{i18n:Translate Text=BackupConfirm.incorrectOrder}"
+                   Opacity="0.00"
+                   FlexLayout.Grow="1" />
+            <Button x:Name="NextButton"
+                    IsEnabled="False"
                     Text="{i18n:Translate Text=BackupWord.next}"
                     Style="{DynamicResource BottomButton}"
                     BackgroundColor="{DynamicResource Bg2}"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
                     VerticalOptions="EndAndExpand"
-                    Command="{Binding NextCommand}"/>
+                    Command="{Binding NextCommand}" />
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

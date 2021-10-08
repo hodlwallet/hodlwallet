@@ -137,6 +137,12 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
+        internal static string BackupConfirm_incorrectOrder {
+            get {
+                return ResourceManager.GetString("BackupConfirm.incorrectOrder", resourceCulture);
+            }
+        }
+        
         internal static string BackupWord_title {
             get {
                 return ResourceManager.GetString("BackupWord.title", resourceCulture);

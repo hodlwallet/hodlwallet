@@ -37,6 +37,7 @@ namespace HodlWallet.Core.ViewModels
     public class BackupRecoveryConfirmViewModel : BaseViewModel
     {
         bool collectionsEqual = false;
+
         public ObservableCollection<BackupWordModel> ShuffledWordsCollection { get; set; }
         public ObservableCollection<BackupWordModel> OrderedWordsCollection { get; set; } = new();
         public List<BackupWordModel> OriginalWordsList { get; set; } = new();
@@ -55,9 +56,11 @@ namespace HodlWallet.Core.ViewModels
         void GenerateShuffledMnemonics()
         {
             List<BackupWordModel> shuffledWordsList = new();
+
             //Bring the Mnemonic list from SecureStorage as a List and copy it to a new list
             OriginalWordsList = MnemonicStringToList.GenerateWordsList();
             shuffledWordsList.AddRange(OriginalWordsList);
+
             //Suffle the copy of the original list.
             shuffledWordsList.Shuffle();
             ShuffledWordsCollection = new ObservableCollection<BackupWordModel>(shuffledWordsList);
@@ -70,36 +73,40 @@ namespace HodlWallet.Core.ViewModels
 
         void UnorderedTappedWord(object obj)
         {
-            var TappedWord = obj as BackupWordModel;
+            var tappedWord = obj as BackupWordModel;
 
-            if (!OrderedWordsCollection.Contains(TappedWord))
-                OrderedWordsCollection.Add(TappedWord);
+            if (!OrderedWordsCollection.Contains(tappedWord))
+                OrderedWordsCollection.Add(tappedWord);
 
-            ShuffledWordsCollection.Remove(TappedWord);
+            ShuffledWordsCollection.Remove(tappedWord);
             if (OrderedWordsCollection.Count() == OriginalWordsList.Count())
                 CheckWordLists();
+
+            MessagingCenter.Send(this, "ErrorMessageToggle", collectionsEqual);
         }
 
         void OrderedTappedWord(object obj)
         {
-            var TappedWord = obj as BackupWordModel;
-            if(!ShuffledWordsCollection.Contains(TappedWord))
-                ShuffledWordsCollection.Add(TappedWord);
+            var tappedWord = obj as BackupWordModel;
+            if(!ShuffledWordsCollection.Contains(tappedWord))
+                ShuffledWordsCollection.Add(tappedWord);
 
-            OrderedWordsCollection.Remove(TappedWord);
+            OrderedWordsCollection.Remove(tappedWord);
             collectionsEqual = false;
             if (OrderedWordsCollection.Count() == OriginalWordsList.Count() - 1)
-                sendStatusNotification();
+                SendStatusNotification();
+
+            MessagingCenter.Send(this, "ErrorMessageToggle", collectionsEqual);
         }
 
         void CheckWordLists()
         {
             collectionsEqual = OrderedWordsCollection.SequenceEqual(OriginalWordsList);
             if (collectionsEqual)
-                sendStatusNotification();
+                SendStatusNotification();
         }
 
-        void sendStatusNotification()
+        void SendStatusNotification()
         {
             MessagingCenter.Send(this, "CollectionsAreEqual", collectionsEqual);
         }

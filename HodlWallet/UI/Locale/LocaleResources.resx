@@ -177,6 +177,10 @@
     <value>Choose the {0} word from your mnemonic:</value>
     <comment>label for backup confirmation exercise</comment>
   </data>
+  <data name="BackupConfirm.incorrectOrder" xml:space="preserve">
+    <value>Incorrect mnemonic order please review your seed</value>
+    <comment>label for error of mnemonic order</comment>
+  </data>
   <data name="BackupWord.title" xml:space="preserve">
     <value>Backup Recovery Key</value>
     <comment>label for backup word title</comment>
