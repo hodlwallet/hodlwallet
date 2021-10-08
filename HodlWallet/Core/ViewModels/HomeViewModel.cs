@@ -57,7 +57,7 @@ namespace HodlWallet.Core.ViewModels
         bool isBtcEnabled;
         TransactionModel currentTransaction;
 
-        readonly int priceUpdateDelay = 5_500; // 2.5 seconds
+        readonly int priceUpdateDelay = 2_500; // 2.5 seconds
 
         public TransactionModel CurrentTransaction
         {
