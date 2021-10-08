@@ -64,7 +64,7 @@ namespace HodlWallet.UI.Views
 
         void ErrorMessageToggle(BackupRecoveryConfirmViewModel _, bool show)
         {
-            OrderErrorLabel.Opacity = show ? 1.00 : 0.00;
+            OrderErrorLabel.Opacity = show ? 0.00 : 1.00;
         }
     }
 }

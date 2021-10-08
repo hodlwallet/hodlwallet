@@ -6,7 +6,7 @@
              x:Class="HodlWallet.UI.Views.BackupRecoveryConfirmView"
              BackgroundColor="{DynamicResource Bg}">
     <ContentPage.BindingContext>
-        <vm:BackupRecoveryConfirmViewModel/>
+        <vm:BackupRecoveryConfirmViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <FlexLayout Direction="Column"
@@ -17,14 +17,15 @@
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource FgSuccess}"
                        HorizontalTextAlignment="Center"
-                       Margin="0, 20"/>
-            
+                       Margin="0, 20" />
+
             <FlexLayout Direction="Row"
                         Wrap="Wrap"
                         JustifyContent="SpaceAround"
                         AlignItems="Center"
                         Margin="15"
                         FlexLayout.Grow="2">
+
                 <CollectionView ItemsSource="{Binding OrderedWordsCollection}"
                             ItemsLayout="VerticalGrid,3"
                                 ItemSizingStrategy="MeasureAllItems"
@@ -85,12 +86,14 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </FlexLayout>
+
             <Label x:Name="OrderErrorLabel"
                    TextColor="{DynamicResource FgError}"
                    Text="{i18n:Translate Text=BackupConfirm.incorrectOrder}"
                    FontSize="Micro"
                    Opacity="0.00"
                    FlexLayout.Grow="1" />
+
             <Button x:Name="NextButton"
                     IsEnabled="False"
                     Text="{i18n:Translate Text=BackupWord.next}"
