@@ -299,7 +299,7 @@ namespace HodlWallet.Core.ViewModels
 
             for (int i = 0; i < Transactions.Count; i++)
             {
-                Transactions[i].AmountText = Transactions[i].Amount.ToDecimal(MoneyUnit.BTC).ToString();
+                Transactions[i].AmountText = Transactions[i].Amount.ToDecimal(MoneyUnit.BTC).ToString("C");
             }
         }
 
