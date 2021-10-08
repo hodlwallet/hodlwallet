@@ -191,23 +191,15 @@ namespace HodlWallet.Core.ViewModels
             if (WalletService.IsStarted)
             {
                 LoadTransactions();
-                AddWalletServiceEvents();                
-            }
-            else
-            {
-                WalletService.OnStarted += _WalletService_OnStarted;
-            }
+                AddWalletServiceEvents();
 
-            // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
-            if (WalletService.IsStarted)
-            {
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 Rate = (decimal)newRate;
                 BalanceFiat = Balance * Rate;
             }
             else
             {
-                WalletService.OnStarted += WalletService_OnStarted_ViewAppearing;
+                WalletService.OnStarted += _WalletService_OnStarted;
             }
 
             IsBtcEnabled = true;
