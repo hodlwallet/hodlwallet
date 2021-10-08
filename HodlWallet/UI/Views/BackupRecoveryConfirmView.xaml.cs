@@ -62,9 +62,9 @@ namespace HodlWallet.UI.Views
             NextButton.IsEnabled = collectionsEqual;
         }
 
-        void ErrorMessageToggle(BackupRecoveryConfirmViewModel _, bool collectionsEqual)
+        void ErrorMessageToggle(BackupRecoveryConfirmViewModel _, bool show)
         {
-            OrderErrorLabel.Opacity = collectionsEqual ? 0.00 : 1.00;
+            OrderErrorLabel.Opacity = show ? 1.00 : 0.00;
         }
     }
 }

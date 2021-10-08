@@ -81,8 +81,8 @@ namespace HodlWallet.Core.ViewModels
             ShuffledWordsCollection.Remove(tappedWord);
             if (OrderedWordsCollection.Count() == OriginalWordsList.Count())
                 CheckWordLists();
-
-            MessagingCenter.Send(this, "ErrorMessageToggle", collectionsEqual);
+            else
+                ToggleErrorMessage();
         }
 
         void OrderedTappedWord(object obj)
@@ -95,8 +95,6 @@ namespace HodlWallet.Core.ViewModels
             collectionsEqual = false;
             if (OrderedWordsCollection.Count() == OriginalWordsList.Count() - 1)
                 SendStatusNotification();
-
-            MessagingCenter.Send(this, "ErrorMessageToggle", collectionsEqual);
         }
 
         void CheckWordLists()
@@ -104,11 +102,25 @@ namespace HodlWallet.Core.ViewModels
             collectionsEqual = OrderedWordsCollection.SequenceEqual(OriginalWordsList);
             if (collectionsEqual)
                 SendStatusNotification();
+            else
+                ToggleErrorMessage();
         }
 
         void SendStatusNotification()
         {
             MessagingCenter.Send(this, "CollectionsAreEqual", collectionsEqual);
+        }
+
+        void ToggleErrorMessage()
+        {
+            if (OrderedWordsCollection.Count() != OriginalWordsList.Count())
+            {
+                MessagingCenter.Send(this, "ErrorMessageToggle", false);
+
+                return;
+            }
+
+            MessagingCenter.Send(this, "ErrorMessageToggle", collectionsEqual);
         }
     }
 }

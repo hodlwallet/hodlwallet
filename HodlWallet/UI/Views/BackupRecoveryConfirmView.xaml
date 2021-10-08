@@ -88,6 +88,7 @@
             <Label x:Name="OrderErrorLabel"
                    TextColor="{DynamicResource FgError}"
                    Text="{i18n:Translate Text=BackupConfirm.incorrectOrder}"
+                   FontSize="Micro"
                    Opacity="0.00"
                    FlexLayout.Grow="1" />
             <Button x:Name="NextButton"
