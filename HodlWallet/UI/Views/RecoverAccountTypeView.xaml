@@ -19,8 +19,8 @@
 
                 <Frame x:Name="StandardFrame" FlexLayout.Grow="1" Margin="10" BorderColor="{DynamicResource Bg2}" BackgroundColor="{DynamicResource Bg2}" HasShadow="false" CornerRadius="10">
                     <StackLayout>
-                        <Label Text="{i18n:Translate Text=AccountTypeSelection.standardTitle}" FontFamily="{StaticResource Sans-Bold}" />
-                        <Label FontSize="Micro" Text="{i18n:Translate Text=AccountTypeSelection.standardDescription}" />
+                        <Label x:Name="StandardTitleLabel" Text="{i18n:Translate Text=AccountTypeSelection.standardTitle}" FontFamily="{StaticResource Sans-Bold}" />
+                        <Label x:Name="StandardDescriptionLabel" FontSize="Micro" Text="{i18n:Translate Text=AccountTypeSelection.standardDescription}" />
                     </StackLayout>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AccountTypeSelectedCommand}" CommandParameter="standard" />
@@ -29,8 +29,8 @@
 
                 <Frame x:Name="LegacyFrame" FlexLayout.Grow="1" Margin="10" BorderColor="{DynamicResource Bg2}" BackgroundColor="{DynamicResource Bg2}" HasShadow="false" CornerRadius="10">
                     <StackLayout>
-                        <Label Text="{i18n:Translate Text=AccountTypeSelection.legacyTitle}" FontFamily="{StaticResource Sans-Bold}" />
-                        <Label FontSize="Micro" Text="{i18n:Translate Text=AccountTypeSelection.legacyDescription}" />
+                        <Label x:Name="LegacyTitleLabel" Text="{i18n:Translate Text=AccountTypeSelection.legacyTitle}" FontFamily="{StaticResource Sans-Bold}" />
+                        <Label x:Name="LegacyDescriptionLabel" FontSize="Micro" Text="{i18n:Translate Text=AccountTypeSelection.legacyDescription}" />
                     </StackLayout>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AccountTypeSelectedCommand}" CommandParameter="legacy" />

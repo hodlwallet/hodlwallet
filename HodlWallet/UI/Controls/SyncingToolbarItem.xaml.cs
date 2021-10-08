@@ -23,7 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System.Collections.Generic;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -33,7 +33,7 @@ namespace HodlWallet.UI.Controls
 {
     public partial class SyncingToolbarItem : HideableToolbarItem
     {
-        readonly List<string> states = new () { "node", "node-0-connections", "node-1-connections", "node-2-connections", "node-3-connections" };
+        readonly string[] states = new [] { "node", "node_0_connections", "node_1_connection", "node_2_connections", "node_3_connections" };
         readonly CancellationTokenSource Cts;
 
         public SyncingToolbarItem()
@@ -55,7 +55,7 @@ namespace HodlWallet.UI.Controls
             Device.BeginInvokeOnMainThread(() =>
             {
                 var fileName = (IconImageSource as FileImageSource).File;
-                var index = states.IndexOf(fileName);
+                var index = Array.IndexOf(states, fileName);
 
                 var newFileName = states[++index % 5];
 

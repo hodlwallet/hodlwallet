@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
@@ -65,6 +65,21 @@
                                     </svg:Icon.GestureRecognizers>
                                 </svg:Icon>
                             </StackLayout>
+
+                            <StackLayout Orientation="Vertical"
+                                         FlexLayout.Grow="1">
+                                <Label Text="{i18n:Translate Text=Send.clear}"
+                                       Style="{DynamicResource CustomLabel}"
+                                       FontSize="Small"
+                                       HorizontalTextAlignment="Center" />
+                                <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
+                                          WidthRequest="16"
+                                          HeightRequest="16">
+                                    <svg:Icon.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ClearAdressCommand}" />
+                                    </svg:Icon.GestureRecognizers>
+                                </svg:Icon>
+                            </StackLayout>
                         </FlexLayout>
 
                         <FlexLayout Direction="Row"
@@ -77,7 +92,7 @@
                                        HorizontalTextAlignment="Start"
                                        VerticalOptions="Center" />
 
-                                <Entry Placeholder="0.00"
+                                <Entry x:Name="AmountToSendEntry"
                                        Keyboard="Numeric"
                                        ReturnType="Done"
                                        Text="{Binding AmountToSend}"
@@ -101,6 +116,18 @@
                                 <svg:Icon.GestureRecognizers>
                                     <TapGestureRecognizer
                                         Command="{Binding SwitchCurrencyCommand}" />
+                                </svg:Icon.GestureRecognizers>
+                            </svg:Icon>
+
+
+                            <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
+                                      FlexLayout.Grow="1"
+                                      FlexLayout.AlignSelf="Center"
+                                      WidthRequest="16"
+                                      HeightRequest="16">
+                                <svg:Icon.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding ClearAmountCommand}" />
                                 </svg:Icon.GestureRecognizers>
                             </svg:Icon>
                         </FlexLayout>
@@ -144,8 +171,7 @@
                             <Label Text="{i18n:Translate Text=Send.fee}"
                                    Style="{StaticResource CustomLabel}" />
 
-                            <Entry Placeholder="1"
-                                   Text="{Binding Fee}"
+                            <Entry Text="{Binding Fee}"
                                    Style="{StaticResource CustomEntry}"
                                    TextColor="{DynamicResource Fg}"
                                    BackgroundColor="Transparent"

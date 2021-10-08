@@ -10,7 +10,7 @@ using HodlWallet.Core.Utils;
 namespace HodlWallet.UI.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ColorPicker//: INotifyPropertyChanged
+    public partial class ColorPicker
     {
         public static readonly BindableProperty ButtonColorSelectedProperty
             = BindableProperty.Create(nameof(ButtonColorSelected), 

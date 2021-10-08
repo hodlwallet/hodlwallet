@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -31,12 +32,11 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 
 using HodlWallet.Core.Utils;
+using HodlWallet.UI.Views;
+using HodlWallet.UI.Locale;
 
-using Liviano;
 using Liviano.Exceptions;
 using Liviano.Extensions;
-using HodlWallet.UI.Views;
-using System.Diagnostics;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -106,15 +106,19 @@ namespace HodlWallet.Core.ViewModels
 
         public ICommand ScanCommand { get; }
         public ICommand PasteCommand { get; }
+        public ICommand ClearAdressCommand { get; }
         public ICommand SendCommand { get; }
         public ICommand SwitchCurrencyCommand { get; }
+        public ICommand ClearAmountCommand { get; }
 
         public SendViewModel()
         {
             ScanCommand = new Command(Scan);
             PasteCommand = new Command(() => _ = Paste());
+            ClearAdressCommand = new Command(ClearAdress);
             SendCommand = new Command(Send);
             SwitchCurrencyCommand = new Command(SwitchCurrency);
+            ClearAmountCommand = new Command(ClearAmount);
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
 
@@ -163,7 +167,11 @@ namespace HodlWallet.Core.ViewModels
 
             if (sent == true)
             {
-                await Shell.Current.GoToAsync("home");
+                await Shell.Current.GoToAsync("../send");
+                AddressToSendTo = "";
+                AmountToSend = 0;
+                SliderValue = MAX_SLIDER_VALUE * 0.5;
+                DisplayProcessAddressErrorAlert(LocaleResources.Send_transactionSentMessage);
             }
             else
             {
@@ -222,6 +230,16 @@ namespace HodlWallet.Core.ViewModels
             }
 
             WalletService.OnStarted += _WalletService_OnStarted_PasteAddress;
+        }
+
+        void ClearAdress()
+        {
+            AddressToSendTo = "";
+        }
+
+        void ClearAmount()
+        {
+            AmountToSend = 0;
         }
 
         void _WalletService_OnStarted_PasteAddress(object sender, EventArgs e)

@@ -38,8 +38,12 @@ namespace HodlWallet.UI.Views
         bool initialLoad = true;
 
         RecoverAccountTypeViewModel ViewModel => BindingContext as RecoverAccountTypeViewModel;
+
         Color SELECTED_COLOR => (Color)Application.Current.Resources["FgSuccess"];
         Color UNSELECTED_COLOR => (Color)Application.Current.Resources["Bg2"];
+
+        Color UNSELECTED_TEXT_COLOR => (Color)Application.Current.Resources["Fg"];
+        Color SELECTED_TEXT_COLOR => (Color)Application.Current.Resources["Bg"];
 
         public RecoverAccountTypeView()
         {
@@ -68,10 +72,15 @@ namespace HodlWallet.UI.Views
             switch (vm.AccountType)
             {
                 case "standard":
-                    StandardFrame.ColorTo(StandardFrame.BackgroundColor, SELECTED_COLOR, c => StandardFrame.BackgroundColor = c, 250);
-
                     if (!initialLoad)
                         LegacyFrame.ColorTo(LegacyFrame.BackgroundColor, UNSELECTED_COLOR, c => LegacyFrame.BackgroundColor = c, 100);
+
+                    StandardFrame.ColorTo(StandardFrame.BackgroundColor, SELECTED_COLOR, c => StandardFrame.BackgroundColor = c, 250);
+
+                    StandardTitleLabel.TextColor = SELECTED_TEXT_COLOR;
+                    StandardDescriptionLabel.TextColor = SELECTED_TEXT_COLOR;
+                    LegacyTitleLabel.TextColor = UNSELECTED_TEXT_COLOR;
+                    LegacyDescriptionLabel.TextColor = UNSELECTED_TEXT_COLOR;
 
                     break;
                 case "legacy":
@@ -79,6 +88,11 @@ namespace HodlWallet.UI.Views
                         StandardFrame.ColorTo(StandardFrame.BackgroundColor, UNSELECTED_COLOR, c => StandardFrame.BackgroundColor = c, 100);
 
                     LegacyFrame.ColorTo(LegacyFrame.BackgroundColor, SELECTED_COLOR, c => LegacyFrame.BackgroundColor = c, 250);
+
+                    StandardTitleLabel.TextColor = UNSELECTED_TEXT_COLOR;
+                    StandardDescriptionLabel.TextColor = UNSELECTED_TEXT_COLOR;
+                    LegacyTitleLabel.TextColor = SELECTED_TEXT_COLOR;
+                    LegacyDescriptionLabel.TextColor = SELECTED_TEXT_COLOR;
 
                     break;
                 default:

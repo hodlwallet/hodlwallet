@@ -39,7 +39,9 @@ using Liviano.Models;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.Utils;
 using HodlWallet.Core.Extensions;
+
 using Liviano.Events;
+using Liviano.Interfaces;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -242,6 +244,11 @@ namespace HodlWallet.Core.ViewModels
             }
 
             MessagingCenter.Send(this, "SwitchCurrency");
+        }
+
+        public void SwitchAccount(IAccount account)
+        {
+            Debug.WriteLine($"[SwitchAccount] AccountID: {account.Id}");
         }
 
         void InitializePrecioAndWalletTimers()

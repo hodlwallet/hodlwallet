@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -879,5 +879,13 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="QrCode.title" xml:space="preserve">
     <value>QR Code</value>
     <comment>QR Code window title</comment>
+  </data>
+  <data name="Send.transactionSentMessage" xml:space="preserve">
+    <value>Transaction successful, waiting for confirmation.</value>
+    <comment>label of toast message for transaction beginning</comment>
+  </data>
+  <data name="Send.clear" xml:space="preserve">
+    <value>Clear</value>
+    <comment>label for clear scan button</comment>
   </data>
 </root>
