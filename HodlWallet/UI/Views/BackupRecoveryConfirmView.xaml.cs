@@ -32,6 +32,7 @@ namespace HodlWallet.UI.Views
         {
             InitializeComponent();
             SubscribeToMessages();
+
             NextButton.IsEnabled = false;
         }
 
@@ -56,14 +57,14 @@ namespace HodlWallet.UI.Views
             Application.Current.MainPage = new AppShell();
         }
 
-        void EnableNextButton(BackupRecoveryConfirmViewModel _, bool enable)
+        void EnableNextButton(BackupRecoveryConfirmViewModel _, bool collectionsEqual)
         {
-            NextButton.IsEnabled = enable;
+            NextButton.IsEnabled = collectionsEqual;
         }
 
-        void ErrorMessageToggle(BackupRecoveryConfirmViewModel _, bool show)
+        void ErrorMessageToggle(BackupRecoveryConfirmViewModel _, bool collectionsEqual)
         {
-            OrderErrorLabel.Opacity = show ? 1.00 : 0.00;
+            OrderErrorLabel.Opacity = collectionsEqual ? 0.00 : 1.00;
         }
     }
 }
