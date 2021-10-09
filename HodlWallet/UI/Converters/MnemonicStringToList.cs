@@ -39,10 +39,10 @@ namespace HodlWallet.UI.Converters
             int index = 0;
             string rawMnemonic = GetMnemonic();
 
-            string[] _Mnemonic = rawMnemonic.Split(' ');
+            string[] mnemonic = rawMnemonic.Split(' ');
 
             List<BackupWordModel> words = new();
-            foreach (var word in _Mnemonic)
+            foreach (var word in mnemonic)
             {
                 index++;
                 words.Add(new BackupWordModel() { Word = word, WordIndex = index.ToString() });
@@ -50,10 +50,10 @@ namespace HodlWallet.UI.Converters
             return words;
 
             //Temp code to print 12 extra-mnemonics
-            //for (int i = 0; i < _Mnemonic.Length; i++)
+            //for (int i = 0; i < mnemonic.Length; i++)
             //{
             //    index++;
-            //    Words.Add(new BackupWordModel() { Word = $"{_Mnemonic[i]}{index}" , WordIndex = index.ToString() });
+            //    Words.Add(new BackupWordModel() { Word = $"{mnemonic[i]}{index}" , WordIndex = index.ToString() });
             //}
         }
 
