@@ -101,7 +101,10 @@ namespace HodlWallet.Core.ViewModels
 
         void CheckWordLists()
         {
-            collectionsEqual = OrderedWordsCollection.SequenceEqual(OriginalWordsList);
+            var orderedMnemonicStr = string.Join(' ', OrderedWordsCollection.Select((i) => i.Word));
+            var originalMnemonicStr = string.Join(' ', OriginalWordsList.Select((i) => i.Word));
+
+            collectionsEqual = string.Equals(orderedMnemonicStr, originalMnemonicStr);
             if (collectionsEqual)
                 SendStatusNotification();
             else
