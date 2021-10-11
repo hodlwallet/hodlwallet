@@ -1,7 +1,7 @@
 ﻿//
-// BackupRecoveryWordViewModel.cs
+// ThreadSafeRandom.cs
 //
-// Copyright (c) 2019 HODL Wallet
+// Copyright (c) 2021 HODL Wallet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,40 +20,21 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 using System.Collections.Generic;
-using System.Windows.Input;
+using System.Text;
+using System.Threading;
 
-using Xamarin.Forms;
-
-using HodlWallet.Core.Models;
-using HodlWallet.UI.Converters;
-
-namespace HodlWallet.Core.ViewModels
+namespace HodlWallet.Core.Utils
 {
-    public class BackupRecoveryWordViewModel : BaseViewModel
+    public static class ThreadSafeRandom
     {
-        List<BackupWordModel> words;
+        [ThreadStatic] private static Random Local;
 
-        public List<BackupWordModel> Words
+        public static Random ThisThreadsRandom
         {
-            get => words;
-            set => SetProperty(ref words, value);
-        }
-        
-        public ICommand NextCommand { get; }
-
-        public BackupRecoveryWordViewModel()
-        {
-            NextCommand = new Command(NextWord);
-
-            if (DesignMode.IsDesignModeEnabled) return;
-            Words = MnemonicStringToList.GenerateWordsList();
-        }
-
-        void NextWord()
-        {
-            MessagingCenter.Send(this, "NavigateToBackupRecoveryConfirmView", Words);
+            get { return Local ?? (Local = new Random(unchecked(Environment.TickCount * 31 + Thread.CurrentThread.ManagedThreadId))); }
         }
     }
 }

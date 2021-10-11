@@ -21,247 +21,111 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
-using HodlWallet.Core.Services;
-using HodlWallet.UI.Locale;
+using HodlWallet.Core.Models;
+using HodlWallet.UI.Converters;
+using HodlWallet.Core.Utils;
 
 namespace HodlWallet.Core.ViewModels
 {
     public class BackupRecoveryConfirmViewModel : BaseViewModel
     {
-        private const int AMOUNT_AROUND = 7;
-        private int _Confirm = 0;
-        private string _WordToGuess;
-        private string _Exercise;
-        private string[] _Mnemonic;
-        int _PrevIndex;
-        bool _WarningVisible;
+        bool collectionsEqual = false;
 
-        private string[] confirmWords = new string[8], 
-            place = { LocaleResources.Ordinal_first,        LocaleResources.Ordinal_second,         LocaleResources.Ordinal_third,      
-                    LocaleResources.Ordinal_fourth,         LocaleResources.Ordinal_fifth,          LocaleResources.Ordinal_sixth,
-                    LocaleResources.Ordinal_seventh,        LocaleResources.Ordinal_eighth,         LocaleResources.Ordinal_ninth, 
-                    LocaleResources.Ordinal_tenth,          LocaleResources.Ordinal_eleventh,       LocaleResources.Ordinal_twelveth,
-                    LocaleResources.Ordinal_thirteenth,     LocaleResources.Ordinal_fourteenth,     LocaleResources.Ordinal_fifteenth,
-                    LocaleResources.Ordinal_sixteenth,      LocaleResources.Ordinal_seventeenth,    LocaleResources.Ordinal_eighteenth,
-                    LocaleResources.Ordinal_nineteenth,     LocaleResources.Ordinal_twentieth,      LocaleResources.Ordinal_twenty_first,
-                    LocaleResources.Ordinal_twenty_second,  LocaleResources.Ordinal_twenty_third,   LocaleResources.Ordinal_twenty_fourth};
-
-        public ICommand WordCommand { get; }
-
-        public string[] Mnemonic
-        {
-            get => _Mnemonic;
-            set
-            {
-                SetProperty(ref _Mnemonic, value);
-
-                _PrevIndex = _Mnemonic.Length;
-                _ = RefreshWords(_Mnemonic);
-            }
-        }
-
-        public string Exercise
-        {
-            get => _Exercise;
-            set => SetProperty(ref _Exercise, value);
-        }
-
-        public bool WarningVisible
-        {
-            get => _WarningVisible;
-            set => SetProperty(ref _WarningVisible, value);
-        }
-
-        public string WordOne
-        {
-            set
-            {
-                if (confirmWords[0] != value)
-                {
-                    SetProperty(ref confirmWords[0], value);
-                }
-            }
-            get
-            {
-                return confirmWords[0];
-            }
-        }
-
-        public string WordTwo
-        {
-            set
-            {
-                if (confirmWords[1] != value)
-                {
-                    SetProperty(ref confirmWords[1], value);
-                }
-            }
-            get
-            {
-                return confirmWords[1];
-            }
-        }
-
-        public string WordThree
-        {
-            set
-            {
-                if (confirmWords[2] != value)
-                {
-                    SetProperty(ref confirmWords[2], value);
-                }
-            }
-            get
-            {
-                return confirmWords[2];
-            }
-        }
-
-        public string WordFour
-        {
-            set
-            {
-                if (confirmWords[3] != value)
-                {
-                    SetProperty(ref confirmWords[3], value);
-                }
-            }
-            get
-            {
-                return confirmWords[3];
-            }
-        }
-
-        public string WordFive
-        {
-            set
-            {
-                if (confirmWords[4] != value)
-                {
-                    SetProperty(ref confirmWords[4], value);
-                }
-            }
-            get
-            {
-                return confirmWords[4];
-            }
-        }
-
-        public string WordSix
-        {
-            set
-            {
-                if (confirmWords[5] != value)
-                {
-                    SetProperty(ref confirmWords[5], value);
-                }
-            }
-            get
-            {
-                return confirmWords[5];
-            }
-        }
-
-        public string WordSeven
-        {
-            set
-            {
-                if (confirmWords[6] != value)
-                {
-                    SetProperty(ref confirmWords[6], value);
-                }
-            }
-            get
-            {
-                return confirmWords[6];
-            }
-        }
-
-        public string WordEight
-        {
-            set
-            {
-                if (confirmWords[7] != value)
-                {
-                    SetProperty(ref confirmWords[7], value);
-                }
-            }
-            get
-            {
-                return confirmWords[7];
-            }
-        }
+        public ObservableCollection<BackupWordModel> ShuffledWordsCollection { get; set; }
+        public ObservableCollection<BackupWordModel> OrderedWordsCollection { get; set; } = new();
+        public List<BackupWordModel> OriginalWordsList { get; set; } = new();
+        public ICommand NextCommand { get; }
+        public ICommand TapUnorderedCommand { get; }
+        public ICommand TapOrderedCommand { get; }
 
         public BackupRecoveryConfirmViewModel()
         {
-            WordCommand = new Command<string>(RefreshConfirmWords);
+            NextCommand = new Command(NextWord);
+            TapUnorderedCommand = new Command(UnorderedTappedWord);
+            TapOrderedCommand = new Command(OrderedTappedWord);
+            GenerateShuffledMnemonics();
         }
 
-        private void RefreshConfirmWords(string arg)
+        void GenerateShuffledMnemonics()
         {
-            int input = Convert.ToInt32(arg);
+            List<BackupWordModel> shuffledWordsList = new();
 
-            if (confirmWords[input] == _WordToGuess)
+            //Bring the Mnemonic list from SecureStorage as a List and copy it to a new list
+            OriginalWordsList = MnemonicStringToList.GenerateWordsList();
+            shuffledWordsList.AddRange(OriginalWordsList);
+
+            //Suffle the copy of the original list.
+            shuffledWordsList.Shuffle();
+            ShuffledWordsCollection = new ObservableCollection<BackupWordModel>(shuffledWordsList);
+        }
+
+        private void NextWord()
+        {
+            MessagingCenter.Send(this, "NavigateToRootView");
+        }
+
+        void UnorderedTappedWord(object obj)
+        {
+            var tappedWord = obj as BackupWordModel;
+
+            if (!OrderedWordsCollection.Contains(tappedWord))
+                OrderedWordsCollection.Add(tappedWord);
+
+            ShuffledWordsCollection.Remove(tappedWord);
+            if (OrderedWordsCollection.Count() == OriginalWordsList.Count())
+                CheckWordLists();
+
+        }
+
+        void OrderedTappedWord(object obj)
+        {
+            var tappedWord = obj as BackupWordModel;
+            if(!ShuffledWordsCollection.Contains(tappedWord))
+                ShuffledWordsCollection.Add(tappedWord);
+
+            OrderedWordsCollection.Remove(tappedWord);
+            collectionsEqual = false;
+            if (OrderedWordsCollection.Count() == (OriginalWordsList.Count() - 1))
             {
-                if (WarningVisible)
-                    WarningVisible = false;
-                _Confirm++;
-                _PrevIndex = input;
+                SendStatusNotification();
+                ToggleErrorMessage();
             }
+        }
+
+        void CheckWordLists()
+        {
+            var orderedMnemonicStr = string.Join(' ', OrderedWordsCollection.Select((i) => i.Word));
+            var originalMnemonicStr = string.Join(' ', OriginalWordsList.Select((i) => i.Word));
+
+            collectionsEqual = string.Equals(orderedMnemonicStr, originalMnemonicStr);
+            if (collectionsEqual)
+                SendStatusNotification();
             else
-            {
-                _Confirm = 0;
-                WarningVisible = true;
-                _PrevIndex = _Mnemonic.Length;
-            }
-
-            _ = RefreshWords(_Mnemonic);
+                ToggleErrorMessage();
         }
 
-        public async Task RefreshWords(string[] mnemonic)
+        void SendStatusNotification()
         {
-            Random rng = new Random();
-
-            if (_Confirm < 2)
-            {
-                var rangeArray = Enumerable.Range(0, mnemonic.Length - 1).Where(a => a != _PrevIndex).ToArray();
-                int wordIndex = rangeArray[rng.Next(rangeArray.Length)];
-                _WordToGuess = mnemonic[wordIndex];
-
-                Exercise = string.Format(LocaleResources.BackupConfirm_exercise, place[wordIndex]);
-                string[] guessWords = Services.WalletService.GenerateGuessWords(_WordToGuess, WalletService.GetWordListLanguage(), AMOUNT_AROUND);
-
-                UpdateWords(guessWords);
-            }
-            else
-            {
-                Preferences.Set("MnemonicStatus", true);
-
-                IsLoading = true;
-
-                await Task.Delay(1);
-
-                MessagingCenter.Send(this, "StartAppShell");
-            }
+            MessagingCenter.Send(this, "CollectionsAreEqual", collectionsEqual);
         }
 
-        private void UpdateWords(string[] guessWords)
+        void ToggleErrorMessage()
         {
-            WordOne = guessWords[0];
-            WordTwo = guessWords[1];
-            WordThree = guessWords[2];
-            WordFour = guessWords[3];
-            WordFive = guessWords[4];
-            WordSix = guessWords[5];
-            WordSeven = guessWords[6];
-            WordEight = guessWords[7];
+            if (OrderedWordsCollection.Count() != OriginalWordsList.Count())
+            {
+                MessagingCenter.Send(this, "ErrorMessageToggle", true);
+
+                return;
+            }
+
+            MessagingCenter.Send(this, "ErrorMessageToggle", collectionsEqual);
         }
     }
 }

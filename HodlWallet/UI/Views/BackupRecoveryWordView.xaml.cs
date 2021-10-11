@@ -21,10 +21,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 
 using Xamarin.Forms;
 
+using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
 
 namespace HodlWallet.UI.Views
@@ -39,13 +40,12 @@ namespace HodlWallet.UI.Views
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<BackupRecoveryWordViewModel, string[]>(this, "NavigateToBackupRecoveryConfirmView", NavigateToBackupRecoveryConfirmView);
+            MessagingCenter.Subscribe<BackupRecoveryWordViewModel, List<BackupWordModel>>(this, "NavigateToBackupRecoveryConfirmView", NavigateToExtraBackupView);
         }
 
-        async void NavigateToBackupRecoveryConfirmView(BackupRecoveryWordViewModel _, string[] mnemonic)
+        async void NavigateToExtraBackupView(BackupRecoveryWordViewModel _, List<BackupWordModel> mnemonic)
         {
-            Debug.WriteLine($"[NavigateToBackupRecoveryConfirmView] About to write mnemonic: {string.Join(" ", mnemonic)}");
-            await Navigation.PushAsync(new BackupRecoveryConfirmView(mnemonic));
+            await Navigation.PushAsync(new BackupRecoveryConfirmView());
         }
 
         async void SkipToolbarItem_Clicked(object sender, EventArgs e)

@@ -1,7 +1,7 @@
 ﻿//
-// BackupRecoveryWordViewModel.cs
+// ShuffleList.cs
 //
-// Copyright (c) 2019 HODL Wallet
+// Copyright (c) 2021 HODL Wallet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,40 +20,26 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 using System.Collections.Generic;
-using System.Windows.Input;
+using System.Text;
 
-using Xamarin.Forms;
-
-using HodlWallet.Core.Models;
-using HodlWallet.UI.Converters;
-
-namespace HodlWallet.Core.ViewModels
+namespace HodlWallet.Core.Utils
 {
-    public class BackupRecoveryWordViewModel : BaseViewModel
+    static class ShuffleList
     {
-        List<BackupWordModel> words;
-
-        public List<BackupWordModel> Words
+        public static void Shuffle<T>(this IList<T> list)
         {
-            get => words;
-            set => SetProperty(ref words, value);
-        }
-        
-        public ICommand NextCommand { get; }
-
-        public BackupRecoveryWordViewModel()
-        {
-            NextCommand = new Command(NextWord);
-
-            if (DesignMode.IsDesignModeEnabled) return;
-            Words = MnemonicStringToList.GenerateWordsList();
-        }
-
-        void NextWord()
-        {
-            MessagingCenter.Send(this, "NavigateToBackupRecoveryConfirmView", Words);
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = ThreadSafeRandom.ThisThreadsRandom.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
         }
     }
 }

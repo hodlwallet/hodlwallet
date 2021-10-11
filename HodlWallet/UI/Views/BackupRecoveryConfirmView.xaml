@@ -1,122 +1,108 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupRecoveryConfirmView"
-             x:DataType="vm:BackupRecoveryConfirmViewModel"
-             BackgroundColor="{DynamicResource Bg}"
-             ios:Page.UseSafeArea="True">
+             BackgroundColor="{DynamicResource Bg}">
     <ContentPage.BindingContext>
         <vm:BackupRecoveryConfirmViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <FlexLayout Direction="Column"
-                        BackgroundColor="{DynamicResource Bg}"
+        <FlexLayout Direction="Column"
                         JustifyContent="SpaceAround"
+                        BackgroundColor="{DynamicResource Bg}"
                         AlignItems="Center">
-
-                <Label Text="{i18n:Translate Text=BackupConfirm.header}"
+            <Label Text="{i18n:Translate Text=BackupConfirm.header}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource FgSuccess}"
                        HorizontalTextAlignment="Center"
-                       FlexLayout.Grow="1"
-                       Margin="0, 20, 0, 0" />
+                       Margin="0, 20" />
 
-                <Label Text="{Binding Exercise}"
-                       Style="{DynamicResource CustomLabel}"
-                       HorizontalTextAlignment="Center" />
+            <FlexLayout Direction="Row"
+                        Wrap="Wrap"
+                        JustifyContent="SpaceAround"
+                        AlignItems="Center"
+                        Margin="15"
+                        FlexLayout.Grow="2">
 
-                <Label Text="{i18n:Translate Text=BackupConfirm.warning}"
-                       FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource FgError}"
-                       HorizontalTextAlignment="Center"
-                       IsVisible="{Binding WarningVisible}" />
-
-                <ActivityIndicator IsRunning="{Binding IsLoading}"
-                                   Color="{DynamicResource FgSuccess}" />
-
-                <FlexLayout Direction="Row"
-                            JustifyContent="SpaceEvenly"
-                            FlexLayout.AlignSelf="Stretch"
-                            FlexLayout.Grow="2">
-
-                    <FlexLayout Direction="Column"
-                                FlexLayout.Grow="1" />
-
-                    <FlexLayout Direction="Column"
-                                FlexLayout.Grow="1"
-                                JustifyContent="SpaceEvenly"
-                                AlignItems="Stretch">
-
-                        <Button Text="{Binding WordOne}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="0" />
-                        <BoxView />
-
-                        <Button Text="{Binding WordTwo}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="1" />
-                        <BoxView />
-
-                        <Button Text="{Binding WordThree}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="2" />
-                        <BoxView />
-
-
-                        <Button Text="{Binding WordFour}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="3" />
-                        <BoxView />
-
-
-                    </FlexLayout>
-
-                    <BoxView WidthRequest="10" />
-
-                    <FlexLayout Direction="Column"
-                                FlexLayout.Grow="1"
-                                JustifyContent="SpaceEvenly"
-                                AlignItems="Stretch">
-
-                        <Button Text="{Binding WordFive}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="4" />
-
-                        <BoxView />
-
-                        <Button Text="{Binding WordSix}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="5" />
-
-                        <BoxView />
-                        <Button Text="{Binding WordSeven}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="6" />
-
-                        <BoxView />
-                        <Button Text="{Binding WordEight}"
-                                Style="{StaticResource RecoveryWordButton}"
-                                Command="{Binding WordCommand}"
-                                CommandParameter="7" />
-
-                        <BoxView />
-                    </FlexLayout>
-
-                    <FlexLayout Direction="Column"
-                                FlexLayout.Grow="1" />
-                </FlexLayout>
+                <CollectionView ItemsSource="{Binding OrderedWordsCollection}"
+                            ItemsLayout="VerticalGrid,3"
+                                ItemSizingStrategy="MeasureAllItems"
+                            VerticalOptions="CenterAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Label Text="{Binding Word}"
+                                       Margin="2"
+                                       Padding="10"
+                                       FontSize="Medium"
+                                       Style="{DynamicResource MnemonicLabel}"
+                                       BackgroundColor="{DynamicResource Bg2}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding
+                                                Source={RelativeSource
+                                                AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
+                                                Path=TapOrderedCommand}"
+                                            CommandParameter="{Binding .}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </FlexLayout>
-        </AbsoluteLayout>
+
+            <FlexLayout Direction="Row"
+                        Wrap="Wrap"
+                        JustifyContent="SpaceAround"
+                        AlignItems="Center"
+                        Margin="15"
+                        FlexLayout.Grow="2">
+                <CollectionView ItemsSource="{Binding ShuffledWordsCollection}"
+                            ItemsLayout="VerticalGrid,3"
+                                VerticalOptions="CenterAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Label Text="{Binding Word}"
+                                       Margin="2"
+                                       Padding="10"
+                                       FontSize="Medium"
+                                       Style="{DynamicResource MnemonicLabel}"
+                                       BackgroundColor="{DynamicResource Bg2}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                                Command="{Binding
+                                                    Source={RelativeSource
+                                                    AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
+                                                    Path=TapUnorderedCommand}"
+                                                CommandParameter="{Binding .}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </FlexLayout>
+
+            <Label x:Name="OrderErrorLabel"
+                   TextColor="{DynamicResource FgError}"
+                   Text="{i18n:Translate Text=BackupConfirm.incorrectOrder}"
+                   FontSize="Micro"
+                   Opacity="0.00"
+                   FlexLayout.Grow="1" />
+
+            <Button x:Name="NextButton"
+                    IsEnabled="False"
+                    Text="{i18n:Translate Text=BackupWord.next}"
+                    Style="{DynamicResource BottomButton}"
+                    BackgroundColor="{DynamicResource Bg2}"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="1"
+                    VerticalOptions="EndAndExpand"
+                    Command="{Binding NextCommand}" />
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -31,6 +31,7 @@
 		<Folder Include="Core\Models\" />
 		<Folder Include="Core\Utils\" />
 		<Folder Include="UI\Converters\" />
+		<Folder Include="UI\Extensions\" />
 		<Folder Include="Core\Interfaces\" />
 		<Folder Include="UI\Renderers\" />
 		<Folder Include="UI\Effects\" />

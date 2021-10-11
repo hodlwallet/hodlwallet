@@ -23,25 +23,24 @@
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
-using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Views
 {
     public partial class BackupRecoveryConfirmView : ContentPage
     {
-        BackupRecoveryConfirmViewModel ViewModel => (BackupRecoveryConfirmViewModel)BindingContext;
-
-        public BackupRecoveryConfirmView(string[] mnemonic)
+        public BackupRecoveryConfirmView()
         {
             InitializeComponent();
-            ViewModel.Mnemonic = mnemonic;
             SubscribeToMessages();
-        }
 
+            NextButton.IsEnabled = false;
+        }
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "StartAppShell", StartAppShell);
+            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "NavigateToRootView", StartAppShell);
+            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel, bool>(this, "CollectionsAreEqual", EnableNextButton);
+            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel, bool>(this, "ErrorMessageToggle", ErrorMessageToggle);
         }
 
         void StartAppShell(BackupRecoveryConfirmViewModel _)
@@ -51,14 +50,21 @@ namespace HodlWallet.UI.Views
             {
                 Navigation.PopModalAsync();
 
-                // NOTE if we want to go to home we can add this line.
-                // MessagingCenter.Send(this, "ChangeCurrentPageTo", RootView.Tabs.Home);
-
                 return;
             }
 
             // First time launching recovery we finish the account creation!
             Application.Current.MainPage = new AppShell();
+        }
+
+        void EnableNextButton(BackupRecoveryConfirmViewModel _, bool collectionsEqual)
+        {
+            NextButton.IsEnabled = collectionsEqual;
+        }
+
+        void ErrorMessageToggle(BackupRecoveryConfirmViewModel _, bool hide)
+        {
+            OrderErrorLabel.Opacity = hide ? 0.00 : 1.00;
         }
     }
 }

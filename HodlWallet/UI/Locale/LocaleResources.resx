@@ -166,7 +166,7 @@
     <comment>label for backup recovery subheader</comment>
   </data>
   <data name="BackupConfirm.header" xml:space="preserve">
-    <value>To make sure everything was written down correctly, please enter the following words from your backup recovery key.</value>
+    <value>Tap the words to put them in the same order you wrote them down. Then Tap Next.</value>
     <comment>label for backup confirmation</comment>
   </data>
   <data name="BackupConfirm.warning" xml:space="preserve">
@@ -176,6 +176,10 @@
   <data name="BackupConfirm.exercise" xml:space="preserve">
     <value>Choose the {0} word from your mnemonic:</value>
     <comment>label for backup confirmation exercise</comment>
+  </data>
+  <data name="BackupConfirm.incorrectOrder" xml:space="preserve">
+    <value>Incorrect mnemonic order please review your seed</value>
+    <comment>label for error of mnemonic order</comment>
   </data>
   <data name="BackupWord.title" xml:space="preserve">
     <value>Backup Recovery Key</value>
