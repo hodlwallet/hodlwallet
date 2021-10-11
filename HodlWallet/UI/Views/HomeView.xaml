@@ -14,7 +14,7 @@
         <controls:SyncingToolbarItem x:Name="SyncToolbarItem" IsVisible="False" Clicked="Sync_Clicked" />
     </ContentPage.ToolbarItems>
     <Shell.TitleView>
-        <Label x:Name="BalanceNavigationTitleLabel" Text="0.02454691 BTC" VerticalOptions="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource Mono-Regular}" FontSize="Medium" Opacity="0.00" />
+        <Label x:Name="BalanceNavigationTitleLabel" VerticalOptions="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource Mono-Regular}" FontSize="Medium" Opacity="0.00" />
     </Shell.TitleView>
     <ContentPage.Content>
         <AbsoluteLayout>

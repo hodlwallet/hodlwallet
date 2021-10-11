@@ -95,20 +95,6 @@ namespace HodlWallet.Core.ViewModels
         readonly object @lock = new();
         public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
 
-        Color gradientStart;
-        public Color GradientStart
-        {
-            get => gradientStart;
-            set => SetProperty(ref gradientStart, value);
-        }
-
-        Color gradientEnd;
-        public Color GradientEnd
-        {
-            get => gradientEnd;
-            set => SetProperty(ref gradientEnd, value);
-        }
-
         string priceText;
         public string PriceText
         {
@@ -208,24 +194,14 @@ namespace HodlWallet.Core.ViewModels
             {
                 LoadTransactions();
                 AddWalletServiceEvents();
-                GradientStart = Color.Purple;
-                GradientEnd = Color.Black;
-            }
-            else
-            {
-                WalletService.OnStarted += _WalletService_OnStarted;
-            }
 
-            // FIXME for now we gonna include the unconfirmed transactions, but this should not be the case
-            if (WalletService.IsStarted)
-            {
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 Rate = (decimal)newRate;
                 BalanceFiat = Balance * Rate;
             }
             else
             {
-                WalletService.OnStarted += WalletService_OnStarted_ViewAppearing;
+                WalletService.OnStarted += _WalletService_OnStarted;
             }
 
             IsBtcEnabled = true;
@@ -299,9 +275,7 @@ namespace HodlWallet.Core.ViewModels
                         oldRate = newRate = rate.Rate;
                         Rate = (decimal)newRate;
 
-                        BalanceFiat = Balance * Rate;
-
-                        UpdateTransanctions();
+                        BalanceFiat = Balance * Rate;                        
                     }
 
                     await Task.Delay(priceUpdateDelay);
@@ -332,7 +306,7 @@ namespace HodlWallet.Core.ViewModels
 
             for (int i = 0; i < Transactions.Count; i++)
             {
-                Transactions[i].AmountText = Transactions[i].Amount.ToDecimal(MoneyUnit.BTC).ToString();
+                Transactions[i].AmountText = Transactions[i].Amount.ToDecimal(MoneyUnit.BTC).ToString("C");
             }
         }
 
@@ -412,9 +386,6 @@ namespace HodlWallet.Core.ViewModels
                     LoadTransactions();
 
                     AddWalletServiceEvents();
-
-                    GradientStart = Color.Purple;
-                    GradientEnd = Color.Black;
                 }
             });
         }
