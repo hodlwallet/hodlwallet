@@ -155,6 +155,12 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
+        internal static string BackupWord_next {
+            get {
+                return ResourceManager.GetString("BackupWord.next", resourceCulture);
+            }
+        }
+        
         internal static string BackupWord_previous {
             get {
                 return ResourceManager.GetString("BackupWord.previous", resourceCulture);
