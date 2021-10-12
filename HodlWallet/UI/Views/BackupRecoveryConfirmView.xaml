@@ -94,9 +94,9 @@
                    Opacity="0.00"
                    FlexLayout.Grow="1" />
 
-            <Button x:Name="NextButton"
+            <Button x:Name="DoneButton"
                     IsEnabled="False"
-                    Text="{i18n:Translate Text=BackupWord.next}"
+                    Text="{i18n:Translate Text=BackupWord.done}"
                     Style="{DynamicResource BottomButton}"
                     BackgroundColor="{DynamicResource Bg2}"
                     FlexLayout.AlignSelf="Stretch"

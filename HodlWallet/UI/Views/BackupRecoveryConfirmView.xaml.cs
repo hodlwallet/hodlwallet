@@ -33,13 +33,13 @@ namespace HodlWallet.UI.Views
             InitializeComponent();
             SubscribeToMessages();
 
-            NextButton.IsEnabled = false;
+            DoneButton.IsEnabled = false;
         }
 
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel>(this, "NavigateToRootView", StartAppShell);
-            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel, bool>(this, "CollectionsAreEqual", EnableNextButton);
+            MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel, bool>(this, "CollectionsAreEqual", EnableDoneButton);
             MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel, bool>(this, "ErrorMessageToggle", ErrorMessageToggle);
         }
 
@@ -57,9 +57,9 @@ namespace HodlWallet.UI.Views
             Application.Current.MainPage = new AppShell();
         }
 
-        void EnableNextButton(BackupRecoveryConfirmViewModel _, bool collectionsEqual)
+        void EnableDoneButton(BackupRecoveryConfirmViewModel _, bool collectionsEqual)
         {
-            NextButton.IsEnabled = collectionsEqual;
+            DoneButton.IsEnabled = collectionsEqual;
         }
 
         void ErrorMessageToggle(BackupRecoveryConfirmViewModel _, bool hide)

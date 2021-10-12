@@ -185,9 +185,9 @@
     <value>Backup Recovery Key</value>
     <comment>label for backup word title</comment>
   </data>
-  <data name="BackupWord.next" xml:space="preserve">
-    <value>Next</value>
-    <comment>label for backup word next button</comment>
+  <data name="BackupWord.done" xml:space="preserve">
+    <value>Done</value>
+    <comment>label for backup word done button</comment>
   </data>
   <data name="BackupWord.previous" xml:space="preserve">
     <value>Previous</value>
