@@ -117,6 +117,7 @@ namespace HodlWallet.UI
             DependencyService.Register<IPrecioService>();
             DependencyService.Register<IShareIntent>();
             DependencyService.Register<IPermissions>();
+            DependencyService.Register<IAuthenticationService>();
         }
 
         void SetupCultureInfo()
