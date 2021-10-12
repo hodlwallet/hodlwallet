@@ -9,16 +9,15 @@
              Opacity="0.92"
              AbsoluteLayout.LayoutBounds="0,0,1,1"
              AbsoluteLayout.LayoutFlags="All" />
-
     <ActivityIndicator IsRunning="{Binding IsLoading}"
                        Scale="1.5"
-                       BackgroundColor="{DynamicResource Bg}"
-                       AbsoluteLayout.LayoutBounds="0.5,0.32,-1,-1"
+                       BackgroundColor="Transparent"
+                       AbsoluteLayout.LayoutBounds="0.5,0.42,-1,-1"
                        AbsoluteLayout.LayoutFlags="PositionProportional" />
     <Label x:Name="NowLoadingLabel"
            Text="{Binding Text}"
            FontSize="Subtitle"
            HorizontalTextAlignment="Center"
-           AbsoluteLayout.LayoutBounds="0.5,0.325,-1,-1"
+           AbsoluteLayout.LayoutBounds="0.5,0.36,-1,-1"
            AbsoluteLayout.LayoutFlags="PositionProportional" />
 </AbsoluteLayout>
