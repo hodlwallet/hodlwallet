@@ -80,6 +80,13 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref rate, value);
         }
 
+        string accountName;
+        public string AccountName
+        {
+            get => accountName;
+            set => SetProperty(ref accountName, value);
+        }
+
         public decimal Balance
         {
             get => balance;
@@ -195,6 +202,7 @@ namespace HodlWallet.Core.ViewModels
                 LoadTransactions();
                 AddWalletServiceEvents();
 
+                AccountName = WalletService.Wallet.CurrentAccount.Name;
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 Rate = (decimal)newRate;
                 BalanceFiat = Balance * Rate;
@@ -318,6 +326,7 @@ namespace HodlWallet.Core.ViewModels
             {
                 lock (@lock)
                 {
+                    AccountName = WalletService.Wallet.CurrentAccount.Name;
                     Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                     Rate = (decimal)newRate;
                     BalanceFiat = Balance * Rate;

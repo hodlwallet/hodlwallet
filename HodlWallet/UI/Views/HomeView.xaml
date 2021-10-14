@@ -24,7 +24,7 @@
                         <FlexLayout Direction="Row">
                             <StackLayout Orientation="Vertical">
                                 <Label x:Name="AccountNameLabel"
-                                       Text="Account 1"
+                                       Text="{Binding AccountName}"
                                        Style="{DynamicResource CustomLabel}"
                                        FontSize="Small"
                                        TextColor="{DynamicResource Fg2}" />
