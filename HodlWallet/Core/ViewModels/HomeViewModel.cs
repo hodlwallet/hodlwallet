@@ -257,6 +257,19 @@ namespace HodlWallet.Core.ViewModels
         public void SwitchAccount(IAccount account)
         {
             Debug.WriteLine($"[SwitchAccount] AccountID: {account.Id}");
+
+            var wallet = WalletService.Wallet;
+            for (int i = 0; i < wallet.Accounts.Count; i++)
+            {
+                if (wallet.Accounts[i].Id != account.Id) continue;
+
+                WalletService.Wallet.CurrentAccount = WalletService.Wallet.Accounts[i];
+                WalletService.Wallet.CurrentAccountId = WalletService.Wallet.Accounts[i].Id;
+
+                break;
+            }
+
+            WalletService.Wallet.Storage.Save();
         }
 
         void InitializePrecioAndWalletTimers()
