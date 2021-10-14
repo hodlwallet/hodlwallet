@@ -209,7 +209,7 @@ namespace HodlWallet.Core.ViewModels
             }
             else
             {
-                WalletService.OnStarted += _WalletService_OnStarted;
+                WalletService.OnStarted += WalletService_OnStarted;
             }
 
             IsBtcEnabled = true;
@@ -396,7 +396,7 @@ namespace HodlWallet.Core.ViewModels
         }
         */
 
-        void _WalletService_OnStarted(object sender, EventArgs e)
+        void WalletService_OnStarted(object sender, EventArgs e)
         {
             logger = WalletService.Logger;
 
@@ -415,6 +415,15 @@ namespace HodlWallet.Core.ViewModels
         {
             WalletService.Wallet.ElectrumPool.OnNewTransaction += Wallet_OnNewTransaction;
             WalletService.Wallet.ElectrumPool.OnUpdateTransaction += Wallet_OnUpdateTransaction;
+            WalletService.Wallet.OnCurrentAccountChanged += Wallet_OnCurrentAccountChanged;
+        }
+
+        private void Wallet_OnCurrentAccountChanged(object sender, EventArgs e)
+        {
+            LoadTransactions();
+
+            Balance = WalletService.Wallet.CurrentAccount.GetBalance().ToUnit(MoneyUnit.BTC);
+            AccountName = WalletService.Wallet.CurrentAccount.Name;
         }
 
         void Wallet_OnNewTransaction(object sender, TxEventArgs e)
