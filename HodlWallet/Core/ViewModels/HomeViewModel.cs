@@ -264,7 +264,6 @@ namespace HodlWallet.Core.ViewModels
                 if (wallet.Accounts[i].Id != account.Id) continue;
 
                 WalletService.Wallet.CurrentAccount = WalletService.Wallet.Accounts[i];
-                WalletService.Wallet.CurrentAccountId = WalletService.Wallet.Accounts[i].Id;
 
                 break;
             }
