@@ -32,7 +32,8 @@
                                        TextColor="{DynamicResource Fg}"
                                        BackgroundColor="Transparent"
                                        PlaceholderColor="{DynamicResource Fg}"
-                                       Style="{StaticResource CustomEntry}" />
+                                       Style="{StaticResource CustomEntry}"
+                                       WidthRequest="50"/>
 
                             </StackLayout>
 
