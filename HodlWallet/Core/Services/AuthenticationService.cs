@@ -71,19 +71,31 @@ namespace HodlWallet.Core.Services
 
         public bool ShowingLoginForm { get; set; }
 
+        public bool biometricLogin { get; set; } = true;
+
         public void ShowLogin(string action = null)
         {
-            var view = new LoginView(action);
-
-            if (action == "pop")
+            
+            if (biometricLogin)
             {
-                if (Application.Current.MainPage is AppShell appShell)
-                    appShell.Navigation.PushModalAsync(view);
-
-                return;
+                var view = new BiometricLoginView();
+                //view = new BiometricLoginView(action);
+                Application.Current.MainPage = view;
             }
+            else
+            {
+                var view = new LoginView(action);
 
-            Application.Current.MainPage = view;
+                if (action == "pop")
+                {
+                    if (Application.Current.MainPage is AppShell appShell)
+                        appShell.Navigation.PushModalAsync(view);
+
+                    return;
+                }
+                
+                Application.Current.MainPage = view;
+            }
         }
 
         public bool Authenticate(string input)
