@@ -142,6 +142,9 @@
 	<EmbeddedResource Update="UI\Views\CreateAccountView.xaml">
 		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	</EmbeddedResource>
+	<EmbeddedResource Update="UI\Views\DisplayCurrencyView.xaml">
+	  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	</EmbeddedResource>
 	<EmbeddedResource Update="UI\Views\PinPadChangeView.xaml">
 		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	</EmbeddedResource>

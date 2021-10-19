@@ -136,5 +136,10 @@ namespace HodlWallet.UI.Views
         {
             await Navigation.PopModalAsync();
         }
+
+        async void Currency_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DisplayCurrencyView());
+        }
     }
 }

@@ -34,7 +34,8 @@
                                  HeightRequest="1" />
 
                         <Button Text="{i18n:Translate Text=Menu.currency}"
-                                Style="{DynamicResource SettingsButton}" />
+                                Style="{DynamicResource SettingsButton}"
+                                Clicked="Currency_Clicked"/>
 
                         <BoxView BackgroundColor="{DynamicResource Fg2}"
                                  HeightRequest="1" />
