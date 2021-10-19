@@ -1,9 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
-             x:Class="HodlWallet.UI.Views.BiometricLoginView">
+             x:Class="HodlWallet.UI.Views.BiometricLoginView"
+             x:DataType="vm:BiometricLoginViewModel"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource Bg}"
+             ios:Page.UseSafeArea="True">
+    <ContentPage.BindingContext>
+        <vm:BiometricLoginViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
@@ -37,20 +46,32 @@
                        FontSize="Subtitle"
                        HorizontalTextAlignment="Center" />
 
-            </FlexLayout>
 
-            <Button Text="{i18n:Translate Text=Login.cancel}"
+            <!--Text="{i18n:Translate Text=Login.cancel}"-->
+
+            <Button Text ="Use Biometrics"
                 Style="{DynamicResource CustomButton}"
                 CornerRadius="0"
                 FontSize="Large"
-                Clicked="CancelButtonClicked"
+                FlexLayout.AlignSelf="Stretch"
+                FlexLayout.Grow="2"
+                IsEnabled="True"
+                IsVisible="True"
+                Clicked="BiometricsButton_Clicked"
+                x:Name="BiometricsButton"/>
+
+            <Button Text ="Use PIN"
+                Style="{DynamicResource CustomButton}"
+                CornerRadius="0"
+                FontSize="Large"
                 FlexLayout.AlignSelf="Stretch"
                 FlexLayout.Grow="2"
                 IsEnabled="False"
                 IsVisible="False"
-                x:Name="CancelButton"/>
+                x:Name="UsePinButton"/>
 
             <controls:NowLoadingIndicator />
+            </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

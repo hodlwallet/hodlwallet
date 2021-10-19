@@ -34,8 +34,8 @@ namespace HodlWallet.Core.ViewModels
         List<int> pin = new ();
         object @lock = new ();
 
-        public ICommand DigitCommand { get; }
-        public ICommand BackspaceCommand { get; }
+        //public ICommand DigitCommand { get; }
+        //public ICommand BackspaceCommand { get; }
 
         public string Action { get; set; }
 
@@ -55,10 +55,10 @@ namespace HodlWallet.Core.ViewModels
             }
         }
 
-        public LoginViewModel()
+        public BiometricLoginViewModel()
         {
-            DigitCommand = new Command<string>((s) => _ = AddDigit(int.Parse(s)));
-            BackspaceCommand = new Command(RemoveDigit);
+            //DigitCommand = new Command<string>((s) => _ = AddDigit(int.Parse(s)));
+            //BackspaceCommand = new Command(RemoveDigit);
         }
 
         async Task AddDigit(int digit)
