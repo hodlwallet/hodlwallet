@@ -14,6 +14,7 @@
 		<DefineConstants>RELEASE</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="MvvmCross.Plugins.Fingerprint" Version="2.1.4" />
 		<PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
 		<PackageReference Include="SkiaSharp" Version="2.80.3" />
 		<PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
@@ -25,7 +26,7 @@
 		<PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
 		<PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
 		<PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
-		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Core\Models\" />
