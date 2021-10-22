@@ -43,18 +43,18 @@ namespace HodlWallet.UI.Views.Demos
 
         void PromptButton_Clicked(object sender, EventArgs e)
         {
-            var promptView = new PromptView2("This title", "this is the message", "okay", "cancel");
+            var promptView = new PromptView("This title", "this is the message", "okay", "cancel");
             promptView.Responded += PromptView_Responded;
             Navigation.PushPopupAsync(promptView);
         }
 
-        async void PromptView_Responded(object sender, bool e)
-        {
-            Debug.WriteLine($"Responded with: {e}");
-        }
-
         void ToastButton_Clicked(object sender, EventArgs e)
         {
+        }
+
+        void PromptView_Responded(object sender, bool e)
+        {
+            Debug.WriteLine($"Responded with: {e}");
         }
     }
 }

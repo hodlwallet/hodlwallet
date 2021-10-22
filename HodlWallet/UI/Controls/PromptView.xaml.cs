@@ -25,19 +25,19 @@
 // THE SOFTWARE.
 using System;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using Xamarin.Essentials;
+
+using Rg.Plugins.Popup.Pages;
 
 using HodlWallet.UI.Locale;
+using Rg.Plugins.Popup.Services;
 
 namespace HodlWallet.UI.Controls
 {
-    public partial class PromptView : ContentView
+    public partial class PromptView : PopupPage
     {
         Color Fg => (Color)Application.Current.Resources["Fg"];
-        double QuestionFrameTopMargin => (DeviceDisplay.MainDisplayInfo.Height / 2) - (QuestionFrame.Height * 2);
 
         public enum PromptResponses
         {
@@ -55,27 +55,14 @@ namespace HodlWallet.UI.Controls
                 promptResponse = value;
 
                 if (promptResponse == PromptResponses.Ok)
-                    Responded.Invoke(this, true);
+                    Responded?.Invoke(this, true);
 
                 if (promptResponse == PromptResponses.Cancel)
-                    Responded.Invoke(this, false);
+                    Responded?.Invoke(this, false);
             }
         }
 
         public event EventHandler<bool> Responded;
-
-        public static readonly BindableProperty TitleProperty = BindableProperty.CreateAttached(
-            nameof(Title),
-            typeof(string),
-            typeof(PromptView),
-            default(string)
-        );
-
-        public string Title
-        {
-            get => (string)GetValue(TitleProperty);
-            set => SetValue(TitleProperty, value);
-        }
 
         public static readonly BindableProperty MessageProperty = BindableProperty.CreateAttached(
             nameof(Message),
@@ -120,8 +107,6 @@ namespace HodlWallet.UI.Controls
         {
             InitializeComponent();
 
-            QuestionFrame.Margin = new Thickness(0, QuestionFrameTopMargin, 0, 0);
-
             Title = title;
             Message = message ?? string.Empty;
 
@@ -138,11 +123,6 @@ namespace HodlWallet.UI.Controls
                 CancelText = cancelButton;
                 CancelButton.IsVisible = true;
             }
-        }
-
-        public void Init()
-        {
-            Show();
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -170,60 +150,6 @@ namespace HodlWallet.UI.Controls
             }
         }
 
-        async Task ShowPromptAnimated()
-        {
-            IsVisible = true;
-
-            var animationTaskSource = new TaskCompletionSource<bool>();
-
-            var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, 0);
-            animation.Commit(this, "OpenPromptAnimation", 16, 350, Easing.SinOut, (v, c) => QuestionFrame.Margin = new Thickness(0, 0, 0, 0), () =>
-            {
-                animationTaskSource.SetResult(false);
-                return false;
-            });
-
-            await Task.WhenAll(
-                animationTaskSource.Task,
-                TransparentBackgroundBoxView.FadeTo(0.9)
-            );
-
-            MessagingCenter.Send(this, "HideTabbar");
-        }
-
-        async Task HidePromptAnimated()
-        {
-            var animationTaskSource = new TaskCompletionSource<bool>();
-
-            MessagingCenter.Send(this, "ShowTabbar");
-
-            var animation = new Animation(v => { QuestionFrame.Margin = new Thickness(0, v, 0, 0); }, QuestionFrame.Margin.Top, QuestionFrameTopMargin);
-            animation.Commit(this, "ClosePromptAnimation", 16, 350, Easing.SinOut, (v, c) => QuestionFrame.Margin = new Thickness(0, QuestionFrameTopMargin, 0, 0), () =>
-            {
-                animationTaskSource.SetResult(false);
-                return false;
-            });
-
-            await Task.WhenAll(
-                animationTaskSource.Task,
-                TransparentBackgroundBoxView.FadeTo(0.0)
-            );
-
-            IsVisible = false;
-
-            RemoveYourself();
-        }
-
-        void Show()
-        {
-            _ = ShowPromptAnimated();
-        }
-
-        void Hide()
-        {
-            _ = HidePromptAnimated();
-        }
-
         void ChangeTitleTo(string title)
         {
             TitleLabel.Text = title;
@@ -244,23 +170,18 @@ namespace HodlWallet.UI.Controls
             OkButton.Text = okText;
         }
 
-        void CancelButton_Clicked(object sender, EventArgs e)
+        async void CancelButton_Clicked(object sender, EventArgs e)
         {
             PromptResponse = PromptResponses.Cancel;
 
-            Hide();
+            await PopupNavigation.Instance.PopAsync();
         }
 
-        void OkButton_Clicked(object sender, EventArgs e)
+        async void OkButton_Clicked(object sender, EventArgs e)
         {
             PromptResponse = PromptResponses.Ok;
 
-            Hide();
-        }
-
-        void RemoveYourself()
-        {
-            ((AbsoluteLayout)Parent).Children.Remove(this);
+            await PopupNavigation.Instance.PopAsync();
         }
     }
 }

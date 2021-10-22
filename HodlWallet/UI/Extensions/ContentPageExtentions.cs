@@ -34,6 +34,7 @@ using HodlWallet.Core.Utils;
 using HodlWallet.UI.Controls;
 using HodlWallet.UI.Locale;
 using Liviano.Utilities;
+using Rg.Plugins.Popup.Extensions;
 
 namespace HodlWallet.UI.Extensions
 {
@@ -65,23 +66,14 @@ namespace HodlWallet.UI.Extensions
             Guard.NotEmpty(title, nameof(title));
 
             var promptTaskSource = new TaskCompletionSource<bool>();
-            if (CanAttachToView(view))
+            var prompt = new PromptView(title, message, okButton, cancelButton);
+
+            await view.Navigation.PushPopupAsync(prompt);
+
+            prompt.Responded += (object sender, bool res) =>
             {
-                var prompt = CreatePromptFor(view, title, message, okButton, cancelButton);
-
-                prompt.Responded += (object sender, bool res) =>
-                {
-                    promptTaskSource.SetResult(res);
-                };
-            }
-            else
-            {
-                Debug.WriteLine("[DisplayToast] Cannot attach toast to view, your layout must be a AbsoluteLayout");
-
-                var res = view.DisplayAlert(title, message, okButton, cancelButton).Result;
-
                 promptTaskSource.SetResult(res);
-            }
+            };
 
             return await promptTaskSource.Task;
         }
@@ -92,27 +84,6 @@ namespace HodlWallet.UI.Extensions
             if (view.Content.GetType() == typeof(AbsoluteLayout)) return true;
 
             return false;
-        }
-
-        static PromptView CreatePromptFor(ContentPage view, string title, string message = null, string okButton = null, string cancelButton = null)
-        {
-            if (!(GetContentType(view) == "AbsoluteLayout"))
-                throw new ArgumentException("Should not be called without an AbsoluteLayout");
-
-            var prompt = new PromptView(title, message, okButton, cancelButton);
-            var layout = (AbsoluteLayout)view.Content;
-
-            var prevPrompt = layout.Children.FirstOrDefault((View child) =>
-                child.GetType() == typeof(PromptView)
-            );
-
-            if (prevPrompt != null) return (PromptView)prevPrompt;
-
-            layout.Children.Add(prompt);
-
-            prompt.Init();
-
-            return prompt;
         }
 
         static TaskCompletionSource<bool> CreateToastFor(ContentPage view, string content)
