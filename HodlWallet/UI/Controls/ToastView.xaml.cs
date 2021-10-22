@@ -104,7 +104,7 @@ namespace HodlWallet.UI.Controls
         {
             if (retry) cts = new CancellationTokenSource();
 
-            Task.Run(async () =>
+            Device.BeginInvokeOnMainThread(async () =>
             {
                 await Task.Delay(TIME_DELAY_MILLISECONDS);
 
@@ -114,7 +114,7 @@ namespace HodlWallet.UI.Controls
 
                     Close();
                 }
-            }, cts.Token);
+            });
         }
 
         void ChangeToastText(string toastText)
