@@ -426,7 +426,12 @@ namespace HodlWallet.Core.ViewModels
 
             WalletService.Wallet.Disconnect();
 
-            Task.Run(async () => await WalletService.Wallet.Sync());
+            Task.Factory.StartNew(
+                () => WalletService.Wallet.Sync(),
+                WalletService.Wallet.Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
         }
 
         void Wallet_OnNewTransaction(object sender, TxEventArgs e)
