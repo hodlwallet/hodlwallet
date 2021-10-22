@@ -14,179 +14,181 @@
         <vm:LoginViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <FlexLayout Direction="Column"
-                    Margin="20"
-                    BackgroundColor="{DynamicResource Bg}"
-                    JustifyContent="SpaceAround"
-                    AlignItems="Center">
+        <AbsoluteLayout>
+            <FlexLayout Direction="Column"
+                        Margin="20"
+                        BackgroundColor="{DynamicResource Bg}"
+                        JustifyContent="SpaceAround"
+                        AlignItems="Center">
 
-            <Image Source="logo_front.png"
-                   FlexLayout.Grow="2"
-                   HeightRequest="120"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"
-                   x:Name="LogoFront">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Logo_Tapped" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
+                <Image Source="logo_front.png"
+                       FlexLayout.Grow="2"
+                       HeightRequest="120"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       x:Name="LogoFront">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Logo_Tapped" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
 
-            <BoxView FlexLayout.Grow="1" />
+                <BoxView FlexLayout.Grow="1" />
 
-            <Label IsVisible="false"
-                   FlexLayout.Grow="1"
-                   Text="{i18n:Translate Text=Pin.updateTitle}"
-                   FontSize="Title"
-                   HorizontalTextAlignment="Center" />
+                <Label IsVisible="false"
+                       FlexLayout.Grow="1"
+                       Text="{i18n:Translate Text=Pin.updateTitle}"
+                       FontSize="Title"
+                       HorizontalTextAlignment="Center" />
 
-            <Label x:Name="Header"
-                   FlexLayout.Grow="1"
-                   Text="{i18n:Translate Text=Pin.enter}"
-                   FontSize="Subtitle"
-                   HorizontalTextAlignment="Center" />
+                <Label x:Name="Header"
+                       FlexLayout.Grow="1"
+                       Text="{i18n:Translate Text=Pin.enter}"
+                       FontSize="Subtitle"
+                       HorizontalTextAlignment="Center" />
 
-            <Grid x:Name="InputGrid"
-                  Padding="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25" />
-                </Grid.RowDefinitions>
+                <Grid x:Name="InputGrid"
+                      Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25" />
+                    </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="25" />
-                    <ColumnDefinition Width="25" />
-                    <ColumnDefinition Width="25" />
-                    <ColumnDefinition Width="25" />
-                    <ColumnDefinition Width="25" />
-                    <ColumnDefinition Width="25" />
-                </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="25" />
+                    </Grid.ColumnDefinitions>
 
-                <BoxView x:Name="Pin1"
-                         Color="{DynamicResource Fg}"
-                         Grid.Row="0"
-                         Grid.Column="0" />
-                <BoxView x:Name="Pin2"
-                         Color="{DynamicResource Fg}"
-                         Grid.Row="0"
-                         Grid.Column="1" />
-                <BoxView x:Name="Pin3"
-                         Color="{DynamicResource Fg}"
-                         Grid.Row="0"
-                         Grid.Column="2" />
-                <BoxView x:Name="Pin4"
-                         Color="{DynamicResource Fg}"
-                         Grid.Row="0"
-                         Grid.Column="3" />
-                <BoxView x:Name="Pin5"
-                         Color="{DynamicResource Fg}"
-                         Grid.Row="0"
-                         Grid.Column="4" />
-                <BoxView x:Name="Pin6"
-                         Color="{DynamicResource Fg}"
-                         Grid.Row="0"
-                         Grid.Column="5" />
-            </Grid>
+                    <BoxView x:Name="Pin1"
+                             Color="{DynamicResource Fg}"
+                             Grid.Row="0"
+                             Grid.Column="0" />
+                    <BoxView x:Name="Pin2"
+                             Color="{DynamicResource Fg}"
+                             Grid.Row="0"
+                             Grid.Column="1" />
+                    <BoxView x:Name="Pin3"
+                             Color="{DynamicResource Fg}"
+                             Grid.Row="0"
+                             Grid.Column="2" />
+                    <BoxView x:Name="Pin4"
+                             Color="{DynamicResource Fg}"
+                             Grid.Row="0"
+                             Grid.Column="3" />
+                    <BoxView x:Name="Pin5"
+                             Color="{DynamicResource Fg}"
+                             Grid.Row="0"
+                             Grid.Column="4" />
+                    <BoxView x:Name="Pin6"
+                             Color="{DynamicResource Fg}"
+                             Grid.Row="0"
+                             Grid.Column="5" />
+                </Grid>
 
-            <BoxView HeightRequest="30" />
+                <BoxView HeightRequest="30" />
 
-            <FlexLayout Direction="Row"
-                        FlexLayout.Grow="1">
+                <FlexLayout Direction="Row"
+                            FlexLayout.Grow="1">
 
-                <Button Text="1"
-                        FlexLayout.Grow="1"
-                        Command="{Binding DigitCommand}"
-                        CommandParameter="1"
-                        Style="{DynamicResource LoginDigitButton}" />
+                    <Button Text="1"
+                            FlexLayout.Grow="1"
+                            Command="{Binding DigitCommand}"
+                            CommandParameter="1"
+                            Style="{DynamicResource LoginDigitButton}" />
 
-                <Button Text="2"
-                        FlexLayout.Grow="1"
-                        Command="{Binding DigitCommand}"
-                        CommandParameter="2"
-                        Style="{DynamicResource LoginDigitButton}" />
+                    <Button Text="2"
+                            FlexLayout.Grow="1"
+                            Command="{Binding DigitCommand}"
+                            CommandParameter="2"
+                            Style="{DynamicResource LoginDigitButton}" />
 
-                <Button Text="3"
-                        FlexLayout.Grow="1"
-                        Command="{Binding DigitCommand}"
-                        CommandParameter="3"
-                        Style="{DynamicResource LoginDigitButton}" />
+                    <Button Text="3"
+                            FlexLayout.Grow="1"
+                            Command="{Binding DigitCommand}"
+                            CommandParameter="3"
+                            Style="{DynamicResource LoginDigitButton}" />
+                </FlexLayout>
+
+                <FlexLayout Direction="Row"
+                            FlexLayout.Grow="1">
+
+                    <Button Text="4"
+                            FlexLayout.Grow="1"
+                            Command="{Binding DigitCommand}"
+                            CommandParameter="4"
+                            Style="{DynamicResource LoginDigitButton}" />
+
+                    <Button Text="5"
+                            FlexLayout.Grow="1"
+                            Command="{Binding DigitCommand}"
+                            CommandParameter="5"
+                            Style="{DynamicResource LoginDigitButton}" />
+
+                    <Button Text="6"
+                            FlexLayout.Grow="1"
+                            Command="{Binding DigitCommand}"
+                            CommandParameter="6"
+                            Style="{DynamicResource LoginDigitButton}" />
+
+                </FlexLayout>
+
+                <FlexLayout Direction="Row"
+                            FlexLayout.Grow="1">
+
+                    <Button Text="7"
+                            FlexLayout.Grow="1"
+                            Command="{Binding DigitCommand}"
+                            CommandParameter="7"
+                            Style="{DynamicResource LoginDigitButton}" />
+
+                    <Button Text="8"
+                            FlexLayout.Grow="1"
+                            Command="{Binding DigitCommand}"
+                            CommandParameter="8"
+                            Style="{DynamicResource LoginDigitButton}" />
+
+                    <Button Text="9"
+                            FlexLayout.Grow="1"
+                            Command="{Binding DigitCommand}"
+                            CommandParameter="9"
+                            Style="{DynamicResource LoginDigitButton}" />
+                </FlexLayout>
+
+                <FlexLayout Direction="Row"
+                            FlexLayout.Grow="1">
+
+                    <Button Text=""
+                            FlexLayout.Grow="1"
+                            Style="{DynamicResource LoginDigitButton}" />
+
+                    <Button Text="0"
+                            FlexLayout.Grow="1"
+                            Command="{Binding DigitCommand}"
+                            CommandParameter="0"
+                            Style="{DynamicResource LoginDigitButton}" />
+
+                    <Button Text="{DynamicResource LoginBackButtonText}"
+                            FlexLayout.Grow="1"
+                            Command="{Binding BackspaceCommand}"
+                            TextColor="{StaticResource FgSuccess}"
+                            Style="{DynamicResource LoginDigitButton}" />
+                </FlexLayout>
+
+                <Button Text="{i18n:Translate Text=Login.cancel}"
+                        Style="{DynamicResource CustomButton}"
+                        CornerRadius="0"
+                        FontSize="Large"
+                        Clicked="CancelButtonClicked"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="2"
+                        IsEnabled="False"
+                        IsVisible="False"
+                        x:Name="CancelButton"/>
             </FlexLayout>
 
-            <FlexLayout Direction="Row"
-                        FlexLayout.Grow="1">
-
-                <Button Text="4"
-                        FlexLayout.Grow="1"
-                        Command="{Binding DigitCommand}"
-                        CommandParameter="4"
-                        Style="{DynamicResource LoginDigitButton}" />
-
-                <Button Text="5"
-                        FlexLayout.Grow="1"
-                        Command="{Binding DigitCommand}"
-                        CommandParameter="5"
-                        Style="{DynamicResource LoginDigitButton}" />
-
-                <Button Text="6"
-                        FlexLayout.Grow="1"
-                        Command="{Binding DigitCommand}"
-                        CommandParameter="6"
-                        Style="{DynamicResource LoginDigitButton}" />
-
-            </FlexLayout>
-
-            <FlexLayout Direction="Row"
-                        FlexLayout.Grow="1">
-
-                <Button Text="7"
-                        FlexLayout.Grow="1"
-                        Command="{Binding DigitCommand}"
-                        CommandParameter="7"
-                        Style="{DynamicResource LoginDigitButton}" />
-
-                <Button Text="8"
-                        FlexLayout.Grow="1"
-                        Command="{Binding DigitCommand}"
-                        CommandParameter="8"
-                        Style="{DynamicResource LoginDigitButton}" />
-
-                <Button Text="9"
-                        FlexLayout.Grow="1"
-                        Command="{Binding DigitCommand}"
-                        CommandParameter="9"
-                        Style="{DynamicResource LoginDigitButton}" />
-            </FlexLayout>
-
-            <FlexLayout Direction="Row"
-                        FlexLayout.Grow="1">
-
-                <Button Text=""
-                        FlexLayout.Grow="1"
-                        Style="{DynamicResource LoginDigitButton}" />
-
-                <Button Text="0"
-                        FlexLayout.Grow="1"
-                        Command="{Binding DigitCommand}"
-                        CommandParameter="0"
-                        Style="{DynamicResource LoginDigitButton}" />
-
-                <Button Text="{DynamicResource LoginBackButtonText}"
-                        FlexLayout.Grow="1"
-                        Command="{Binding BackspaceCommand}"
-                        TextColor="{StaticResource FgSuccess}"
-                        Style="{DynamicResource LoginDigitButton}" />
-            </FlexLayout>
-        </FlexLayout>
-
-        <Button Text="{i18n:Translate Text=Login.cancel}"
-            Style="{DynamicResource CustomButton}"
-            CornerRadius="0"
-            FontSize="Large"
-            Clicked="CancelButtonClicked"
-            FlexLayout.AlignSelf="Stretch"
-            FlexLayout.Grow="2"
-            IsEnabled="False"
-            IsVisible="False"
-            x:Name="CancelButton"/>
-
-        <controls:NowLoadingIndicator />
+            <controls:NowLoadingIndicator />
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -15,7 +15,7 @@
         <vm:PriceViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <FlexLayout>
+        <AbsoluteLayout>
             <ScrollView Orientation="Vertical"
                         VerticalScrollBarVisibility="Never"
                         HorizontalScrollBarVisibility="Never">
@@ -169,7 +169,7 @@
                     </FlexLayout>
                 </FlexLayout>
             </ScrollView>
-        </FlexLayout>
-        <controls:NowLoadingIndicator />
+            <controls:NowLoadingIndicator />
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
