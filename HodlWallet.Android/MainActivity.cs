@@ -30,6 +30,7 @@ using Serilog;
 
 using HodlWallet.UI;
 using HodlWallet.Core.Interfaces;
+using Plugin.Fingerprint;
 
 [assembly: global::Xamarin.Forms.ResolutionGroupName("HodlWallet")]
 namespace HodlWallet.Droid
@@ -52,6 +53,8 @@ namespace HodlWallet.Droid
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
             global::Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            CrossFingerprint.SetCurrentActivityResolver(() =>
+                Xamarin.Essentials.Platform.CurrentActivity);
 
             global::ZXing.Mobile.MobileBarcodeScanner.Initialize(Application);
 
