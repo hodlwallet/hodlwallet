@@ -23,6 +23,7 @@
 using Foundation;
 using UIKit;
 
+using Rg.Plugins.Popup;
 using Serilog;
 
 using HodlWallet.Core.Interfaces;
@@ -49,6 +50,8 @@ namespace HodlWallet.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Popup.Init();
+
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
