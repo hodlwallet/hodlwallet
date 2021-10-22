@@ -14,7 +14,7 @@
 		<DefineConstants>RELEASE</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="MvvmCross.Plugins.Fingerprint" Version="2.1.4" />
+		<PackageReference Include="Plugin.Fingerprint" Version="2.1.4" />
 		<PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
 		<PackageReference Include="SkiaSharp" Version="2.80.3" />
 		<PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
