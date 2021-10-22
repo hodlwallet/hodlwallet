@@ -42,9 +42,10 @@ namespace HodlWallet.UI.Extensions
             Guard.NotNull(message, nameof(message));
             Guard.NotEmpty(message, nameof(message));
 
-            var bg = (Color)Application.Current.Resources["Bg2"];
-            var fg = (Color)Application.Current.Resources["Fg2"];
-            var fontFamily = (OnPlatform<string>)Application.Current.Resources["Sans-Bold"];
+            var res = Application.Current.Resources;
+            var bg = (Color)res["Bg2"];
+            var fg = (Color)res["Fg2"];
+            var fontFamily = (OnPlatform<string>)res["Sans-Bold"];
             var font = Font.OfSize(fontFamily, Device.GetNamedSize(NamedSize.Medium, view));
 
             var toastOptions = new ToastOptions
