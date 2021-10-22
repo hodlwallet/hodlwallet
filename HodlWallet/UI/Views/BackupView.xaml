@@ -23,38 +23,36 @@
         <vm:BackupViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <FlexLayout Direction="Column"
-                        JustifyContent="SpaceAround"
-                        BackgroundColor="{DynamicResource Bg}"
-                        AlignItems="Center">
-                <svg:Icon ResourceId="HodlWallet.UI.Assets.paper_key.svg"
-                          HorizontalOptions="Center"
-                          VerticalOptions="Center"
-                          FlexLayout.Grow="2" />
-                <ActivityIndicator IsRunning="False"
-                                   Color="{DynamicResource FgSuccess}" />
-                <Label Text="{i18n:Translate Text=Backup.header}"
-                       FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource FgSuccess}"
-                       HorizontalTextAlignment="Center"
-                       FontSize="Medium"
-                       Margin="0, 0, 0, 10" />
-                <Label Text="{i18n:Translate Text=Backup.subheader}"
-                       FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource FgSuccess}"
-                       HorizontalTextAlignment="Center"
-                       FontSize="Medium" />
-                <BoxView FlexLayout.Grow="1" />
-                <Button Text="{i18n:Translate Text=Backup.button}"
-                        Style="{DynamicResource CustomButton}"
-                        BackgroundColor="{DynamicResource Bg2}"
-                        CornerRadius="0"
-                        FontSize="Large"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1"
-                        Clicked="BackupWordsButton_Clicked" />
-            </FlexLayout>
-        </AbsoluteLayout>
+        <FlexLayout Direction="Column"
+                    JustifyContent="SpaceAround"
+                    BackgroundColor="{DynamicResource Bg}"
+                    AlignItems="Center">
+            <svg:Icon ResourceId="HodlWallet.UI.Assets.paper_key.svg"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center"
+                      FlexLayout.Grow="2" />
+            <ActivityIndicator IsRunning="False"
+                               Color="{DynamicResource FgSuccess}" />
+            <Label Text="{i18n:Translate Text=Backup.header}"
+                   FontFamily="{StaticResource Sans-Regular}"
+                   TextColor="{DynamicResource FgSuccess}"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   Margin="0, 0, 0, 10" />
+            <Label Text="{i18n:Translate Text=Backup.subheader}"
+                   FontFamily="{StaticResource Sans-Regular}"
+                   TextColor="{DynamicResource FgSuccess}"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium" />
+            <BoxView FlexLayout.Grow="1" />
+            <Button Text="{i18n:Translate Text=Backup.button}"
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{DynamicResource Bg2}"
+                    CornerRadius="0"
+                    FontSize="Large"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="1"
+                    Clicked="BackupWordsButton_Clicked" />
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

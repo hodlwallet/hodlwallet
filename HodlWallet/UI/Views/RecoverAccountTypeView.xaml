@@ -11,39 +11,37 @@
         <vm:RecoverAccountTypeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <FlexLayout JustifyContent="SpaceAround" Direction="Column">
-                <Label FlexLayout.Grow="1"
-                       Margin="20,20,20,0"
-                       Text="{i18n:Translate Text=AccountTypeSelection.description}" />
+        <FlexLayout JustifyContent="SpaceAround" Direction="Column">
+            <Label FlexLayout.Grow="1"
+                   Margin="20,20,20,0"
+                   Text="{i18n:Translate Text=AccountTypeSelection.description}" />
 
-                <Frame x:Name="StandardFrame" FlexLayout.Grow="1" Margin="10" BorderColor="{DynamicResource Bg2}" BackgroundColor="{DynamicResource Bg2}" HasShadow="false" CornerRadius="10">
-                    <StackLayout>
-                        <Label x:Name="StandardTitleLabel" Text="{i18n:Translate Text=AccountTypeSelection.standardTitle}" FontFamily="{StaticResource Sans-Bold}" />
-                        <Label x:Name="StandardDescriptionLabel" FontSize="Micro" Text="{i18n:Translate Text=AccountTypeSelection.standardDescription}" />
-                    </StackLayout>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AccountTypeSelectedCommand}" CommandParameter="standard" />
-                    </Frame.GestureRecognizers>
-                </Frame>
-
-                <Frame x:Name="LegacyFrame" FlexLayout.Grow="1" Margin="10" BorderColor="{DynamicResource Bg2}" BackgroundColor="{DynamicResource Bg2}" HasShadow="false" CornerRadius="10">
-                    <StackLayout>
-                        <Label x:Name="LegacyTitleLabel" Text="{i18n:Translate Text=AccountTypeSelection.legacyTitle}" FontFamily="{StaticResource Sans-Bold}" />
-                        <Label x:Name="LegacyDescriptionLabel" FontSize="Micro" Text="{i18n:Translate Text=AccountTypeSelection.legacyDescription}" />
-                    </StackLayout>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AccountTypeSelectedCommand}" CommandParameter="legacy" />
-                    </Frame.GestureRecognizers>
-                </Frame>
-
-                <StackLayout FlexLayout.Grow="1">
-                    <Label x:Name="PleaseSelectAccountTypeLabel" TextColor="{DynamicResource Fg2}" IsVisible="True"  Text="{i18n:Translate Text=AccountTypeSelection.pleaseSelect}" FontSize="Small"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+            <Frame x:Name="StandardFrame" FlexLayout.Grow="1" Margin="10" BorderColor="{DynamicResource Bg2}" BackgroundColor="{DynamicResource Bg2}" HasShadow="false" CornerRadius="10">
+                <StackLayout>
+                    <Label x:Name="StandardTitleLabel" Text="{i18n:Translate Text=AccountTypeSelection.standardTitle}" FontFamily="{StaticResource Sans-Bold}" />
+                    <Label x:Name="StandardDescriptionLabel" FontSize="Micro" Text="{i18n:Translate Text=AccountTypeSelection.standardDescription}" />
                 </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AccountTypeSelectedCommand}" CommandParameter="standard" />
+                </Frame.GestureRecognizers>
+            </Frame>
 
-                <Button x:Name="DoneButton" FlexLayout.Grow="1" Text="{i18n:Translate Text=AccountTypeSelection.doneButton}" IsVisible="False" FontSize="Large" Style="{DynamicResource BottomButtonSecondary}" Clicked="DoneButton_Clicked" />
-            </FlexLayout>
-            <controls:NowLoadingIndicator />
-        </AbsoluteLayout>
+            <Frame x:Name="LegacyFrame" FlexLayout.Grow="1" Margin="10" BorderColor="{DynamicResource Bg2}" BackgroundColor="{DynamicResource Bg2}" HasShadow="false" CornerRadius="10">
+                <StackLayout>
+                    <Label x:Name="LegacyTitleLabel" Text="{i18n:Translate Text=AccountTypeSelection.legacyTitle}" FontFamily="{StaticResource Sans-Bold}" />
+                    <Label x:Name="LegacyDescriptionLabel" FontSize="Micro" Text="{i18n:Translate Text=AccountTypeSelection.legacyDescription}" />
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AccountTypeSelectedCommand}" CommandParameter="legacy" />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <StackLayout FlexLayout.Grow="1">
+                <Label x:Name="PleaseSelectAccountTypeLabel" TextColor="{DynamicResource Fg2}" IsVisible="True"  Text="{i18n:Translate Text=AccountTypeSelection.pleaseSelect}" FontSize="Small"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+            </StackLayout>
+
+            <Button x:Name="DoneButton" FlexLayout.Grow="1" Text="{i18n:Translate Text=AccountTypeSelection.doneButton}" IsVisible="False" FontSize="Large" Style="{DynamicResource BottomButtonSecondary}" Clicked="DoneButton_Clicked" />
+        </FlexLayout>
+        <controls:NowLoadingIndicator />
     </ContentPage.Content>
 </ContentPage>
