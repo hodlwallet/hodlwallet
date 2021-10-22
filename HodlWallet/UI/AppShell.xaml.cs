@@ -219,6 +219,8 @@ namespace HodlWallet.UI
 
         void SyncCollections()
         {
+            if (WalletService.Wallet is null) return;
+
             // Compare and sync accounts in the wallet account list that are not already into AccountList.
             AccountModel.SyncCollections(WalletService.Wallet.Accounts, AccountList);
         }
