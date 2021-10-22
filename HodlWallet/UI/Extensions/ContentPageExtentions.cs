@@ -23,6 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -37,6 +38,8 @@ namespace HodlWallet.UI.Extensions
 {
     public static class ContentPageExtentions
     {
+        const int TOAST_DURATION_MS = 2500;
+
         public static async Task DisplayToast(this ContentPage view, string message)
         {
             Guard.NotNull(message, nameof(message));
@@ -57,6 +60,7 @@ namespace HodlWallet.UI.Extensions
                     Foreground = fg,
                     Message = message
                 },
+                Duration = TimeSpan.FromMilliseconds(TOAST_DURATION_MS)
             };
 
             await view.DisplayToastAsync(toastOptions);
