@@ -67,7 +67,18 @@ namespace HodlWallet.UI.Controls
             var view = new ToastView(message);
             await PopupNavigation.Instance.PushAsync(view);
 
-            _ = Task.Delay(TIME_DELAY_MILLISECONDS, view.Cts.Token).ContinueWith(async _ => await PopupNavigation.Instance.PopAsync());
+            try
+            {
+                await Task.Delay(TIME_DELAY_MILLISECONDS, view.Cts.Token);
+            }
+            catch (TaskCanceledException)
+            {
+                return;
+            }
+
+            if (view.Cts.IsCancellationRequested) return;
+
+            await PopupNavigation.Instance.PopAsync();
         }
 
         protected override void OnPropertyChanged(string propertyName = null)
