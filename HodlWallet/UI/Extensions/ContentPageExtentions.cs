@@ -35,9 +35,9 @@ namespace HodlWallet.UI.Extensions
 {
     public static class ContentPageExtentions
     {
-        public static async Task DisplayToast(this ContentPage _, string content)
+        public static async Task DisplayToast(this ContentPage  view, string content)
         {
-            await ToastView.Show(content);
+            await ToastView.Show(view, content);
         }
 
         public static async Task<bool> DisplayPrompt(this ContentPage view, string title, string message = null, string okButton = null, string cancelButton = null)

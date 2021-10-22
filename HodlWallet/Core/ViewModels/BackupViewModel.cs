@@ -58,9 +58,6 @@ namespace HodlWallet.Core.ViewModels
             SecureStorageService.SetMnemonic(rawMnemonic);
 
             WalletService.Logger.Information("Saved mnemonic to secure storage.");
-
-            // After this we should be able to start the wallet if it's not started since we have a mnemonic
-            StartServices();
         }
 
         int GetWordCount()
@@ -71,29 +68,6 @@ namespace HodlWallet.Core.ViewModels
             WalletService.Logger.Information($"Word count is {wordCount}");
 
             return wordCount;
-        }
-
-        void StartServices()
-        {
-            if (!WalletService.IsStarted)
-            {
-                Task.Factory.StartNew(
-                    () => WalletService.InitializeWallet(),
-                    Cts.Token,
-                    TaskCreationOptions.LongRunning,
-                    TaskScheduler.Default
-                );
-            }
-
-            if (!PrecioService.IsStarted)
-            {
-                Task.Factory.StartNew(
-                    () => PrecioService.Init(),
-                    Cts.Token,
-                    TaskCreationOptions.LongRunning,
-                    TaskScheduler.Default
-                );
-            }
         }
     }
 }

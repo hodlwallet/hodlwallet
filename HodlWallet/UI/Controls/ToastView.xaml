@@ -6,7 +6,7 @@
                  x:Class="HodlWallet.UI.Controls.ToastView"
                  BackgroundColor="Transparent"
                  BackgroundInputTransparent="True"
-                 CloseWhenBackgroundIsClicked="False">
+                 CloseWhenBackgroundIsClicked="True">
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation PositionIn="Center"
                                    PositionOut="Center"
@@ -27,14 +27,14 @@
             <Label x:Name="ToastContent"
                    Text="{Binding ToastText}"
                    FontSize="Small"
-                   Padding="5"
+                   Padding="2"
                    HeightRequest="25"
-                   FontFamily="{StaticResource Sans-Bold}"
+                   FontFamily="{StaticResource Sans-Regular}"
                    VerticalTextAlignment="Center"
                    HorizontalTextAlignment="Center"
                    TextColor="{DynamicResource Fg2}" />
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="Toast_Tapped" NumberOfTapsRequired="1" />
+                <TapGestureRecognizer Tapped="Toast_Tapped" />
             </Frame.GestureRecognizers>
         </Frame>
     </StackLayout>

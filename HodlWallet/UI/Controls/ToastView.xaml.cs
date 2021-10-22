@@ -31,6 +31,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Extensions;
+using Rg.Plugins.Popup.Exceptions;
 using Rg.Plugins.Popup.Services;
 
 namespace HodlWallet.UI.Controls
@@ -40,6 +42,8 @@ namespace HodlWallet.UI.Controls
         const int TIME_DELAY_MILLISECONDS = 2500;
 
         public CancellationTokenSource Cts { get; private set; }
+
+        public ContentPage View { get; private set; }
 
         public static readonly BindableProperty ToastTextProperty = BindableProperty.CreateAttached(
                 nameof(ToastText),
@@ -54,31 +58,42 @@ namespace HodlWallet.UI.Controls
             set => SetValue(ToastTextProperty, value);
         }
 
-        public ToastView(string text)
+        public ToastView(ContentPage view, string text)
         {
             InitializeComponent();
 
             Cts ??= new CancellationTokenSource();
+            View ??= view;
+
             ToastText = text;
         }
 
-        public static async Task Show(string message)
+        public static async Task Show(ContentPage view, string message)
         {
-            var view = new ToastView(message);
-            await PopupNavigation.Instance.PushAsync(view);
+            var toast = new ToastView(view, message);
 
-            try
+            await view.Navigation.PushPopupAsync(toast);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            _ = Task.Run(async () =>
             {
-                await Task.Delay(TIME_DELAY_MILLISECONDS, view.Cts.Token);
-            }
-            catch (TaskCanceledException)
-            {
-                return;
-            }
+                try
+                {
+                    await Task.Delay(TIME_DELAY_MILLISECONDS, Cts.Token);
+                }
+                catch (TaskCanceledException)
+                {
+                    return;
+                }
 
-            if (view.Cts.IsCancellationRequested) return;
+                if (Cts.IsCancellationRequested) return;
 
-            await PopupNavigation.Instance.PopAsync();
+                await TryRemovePopup();
+            });
         }
 
         protected override void OnPropertyChanged(string propertyName = null)
@@ -98,11 +113,30 @@ namespace HodlWallet.UI.Controls
             ToastContent.Text = toastText;
         }
 
+        async Task TryRemovePopup()
+        {
+            try
+            {
+                await View.Navigation.PopPopupAsync();
+            }
+            catch (RGPopupStackInvalidException e)
+            {
+                Debug.WriteLine($"[OnAppearing] Failed to remove the popup, I hope is not there anymore: {e.Message}");
+
+                try
+                {
+                    await PopupNavigation.Instance.PopAllAsync();
+                }
+                catch (RGPopupStackInvalidException e2)
+                {
+                    Debug.WriteLine($"[OnAppearing] Extra error: {e2.Message}");
+                }
+            }
+        }
+
         async void Toast_Tapped(object sender, EventArgs e)
         {
-            Cts.Cancel();
-
-            await PopupNavigation.Instance.PopAsync();
+            await TryRemovePopup();
         }
     }
 }

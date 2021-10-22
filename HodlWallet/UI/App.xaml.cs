@@ -76,30 +76,6 @@ namespace HodlWallet.UI
             MainPage = new NavigationPage(new OnboardView());
         }
 
-        protected override void OnStart()
-        {
-            // NOTE You might think, why not move this forward?
-            // the init code that inserts the logger into
-            // WalletService is only run after the custructor
-            // and only after all the platforms init
-
-            if (!SecureStorageService.UserDidSetup()) return;
-
-            Task.Factory.StartNew(
-                () => WalletService.InitializeWallet(),
-                Cts.Token,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
-
-            Task.Factory.StartNew(
-                () => PrecioService.Init(),
-                Cts.Token,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
-        }
-
         protected override void OnSleep()
         {
             AuthenticationService.LastAuth = DateTimeOffset.UtcNow;
@@ -139,7 +115,7 @@ namespace HodlWallet.UI
                 SecureStorageService.SetMnemonic(mnemonic);
                 SecureStorageService.SetPin(pin);
 
-                WalletService.InitializeWallet(accountType: "legacy");
+                // TODO initialize a legacy account as in HODL 1.0
             }
             catch (Exception ex)
             {
