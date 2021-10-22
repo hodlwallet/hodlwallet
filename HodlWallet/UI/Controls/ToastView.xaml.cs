@@ -27,13 +27,19 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
+
+using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 
 namespace HodlWallet.UI.Controls
 {
-    public partial class ToastView : Frame
+    public partial class ToastView : PopupPage
     {
         const int TIME_DELAY_MILLISECONDS = 2500;
+
+        public CancellationTokenSource Cts { get; private set; }
 
         public static readonly BindableProperty ToastTextProperty = BindableProperty.CreateAttached(
                 nameof(ToastText),
@@ -48,39 +54,20 @@ namespace HodlWallet.UI.Controls
             set => SetValue(ToastTextProperty, value);
         }
 
-        bool closed;
-        public bool Closed
-        {
-            get => closed;
-            set
-            {
-                closed = value;
-
-                if (closed) OnClosed.Invoke(this, closed);
-            }
-        }
-
-        public event EventHandler<bool> OnClosed;
-
-        CancellationTokenSource cts = new();
-
-        public ToastView()
+        public ToastView(string text)
         {
             InitializeComponent();
+
+            Cts ??= new CancellationTokenSource();
+            ToastText = text;
         }
 
-        public void Init()
+        public static async Task Show(string message)
         {
-            IsVisible = true;
+            var view = new ToastView(message);
+            await PopupNavigation.Instance.PushAsync(view);
 
-            this.FadeTo(0.85);
-        }
-
-        public void UpdateContent(string content)
-        {
-            ToastText = content;
-
-            StartTimerToClose(retry: true);
+            _ = Task.Delay(TIME_DELAY_MILLISECONDS, view.Cts.Token).ContinueWith(async _ => await PopupNavigation.Instance.PopAsync());
         }
 
         protected override void OnPropertyChanged(string propertyName = null)
@@ -93,30 +80,6 @@ namespace HodlWallet.UI.Controls
             }
         }
 
-        protected override void OnParentSet()
-        {
-            base.OnParentSet();
-
-            if (Parent != null) StartTimerToClose();
-        }
-
-        void StartTimerToClose(bool retry = false)
-        {
-            if (retry) cts = new CancellationTokenSource();
-
-            Task.Run(async () =>
-            {
-                await Task.Delay(TIME_DELAY_MILLISECONDS);
-
-                if (!cts.IsCancellationRequested)
-                {
-                    cts.Cancel();
-
-                    Close();
-                }
-            }, cts.Token);
-        }
-
         void ChangeToastText(string toastText)
         {
             Debug.WriteLine($"[ChangeToastText] Changing toast text to: {toastText}");
@@ -124,19 +87,11 @@ namespace HodlWallet.UI.Controls
             ToastContent.Text = toastText;
         }
 
-        void Toast_Tapped(object sender, EventArgs e)
+        async void Toast_Tapped(object sender, EventArgs e)
         {
-            cts.Cancel();
+            Cts.Cancel();
 
-            Close();
-        }
-
-        void Close(uint animationTime = 250)
-        {
-            this.FadeTo(0.0, animationTime);
-
-            IsVisible = false;
-            Closed = true;
+            await PopupNavigation.Instance.PopAsync();
         }
     }
 }

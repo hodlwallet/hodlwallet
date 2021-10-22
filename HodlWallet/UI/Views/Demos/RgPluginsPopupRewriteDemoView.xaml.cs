@@ -46,8 +46,9 @@ namespace HodlWallet.UI.Views.Demos
             Debug.WriteLine($"res = {res}");
         }
 
-        void ToastButton_Clicked(object sender, EventArgs e)
+        async void ToastButton_Clicked(object sender, EventArgs e)
         {
+            await this.DisplayToast("toast.txt");
         }
     }
 }

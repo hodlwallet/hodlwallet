@@ -2,7 +2,7 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="HodlWallet.UI.Views.Demos.PromptV2DemoView"
+    x:Class="HodlWallet.UI.Views.Demos.RgPluginsPopupRewriteDemoView"
     BackgroundColor="{DynamicResource Bg}">
     <ContentPage.Content>
         <StackLayout  Margin="0,50,0,0">

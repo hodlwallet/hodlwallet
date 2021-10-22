@@ -1,23 +1,40 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Frame xmlns="http://xamarin.com/schemas/2014/forms"
-       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       x:Class="HodlWallet.UI.Controls.ToastView"
-       BackgroundColor="{DynamicResource Bg2}"
-       HasShadow="True"
-       Padding="5"
-       Opacity="0"
-       IsVisible="False"
-       AbsoluteLayout.LayoutBounds="0.5, 0.75, 0.75, 0.1"
-       AbsoluteLayout.LayoutFlags="All">
-    <Label x:Name="ToastContent"
-           Text="{Binding ToastText}"
-           FontSize="Small"
-           HeightRequest="25"
-           FontFamily="{StaticResource Sans-Bold}"
-           VerticalTextAlignment="Center"
-           HorizontalTextAlignment="Center"
-           TextColor="{DynamicResource Fg2}" />
-    <Frame.GestureRecognizers>
-        <TapGestureRecognizer Tapped="Toast_Tapped" NumberOfTapsRequired="1" />
-    </Frame.GestureRecognizers>
-</Frame>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 x:Class="HodlWallet.UI.Controls.ToastView"
+                 BackgroundColor="Transparent"
+                 BackgroundInputTransparent="True"
+                 CloseWhenBackgroundIsClicked="False">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation PositionIn="Center"
+                                   PositionOut="Center"
+                                   ScaleIn="1.2"
+                                   ScaleOut="0.8"
+                                   DurationIn="400"
+                                   DurationOut="300"
+                                   EasingIn="SinOut"
+                                   EasingOut="SinIn"
+                                   HasBackgroundAnimation="True" />
+    </pages:PopupPage.Animation>
+    <StackLayout VerticalOptions="Center">
+        <Frame BackgroundColor="{DynamicResource Bg2}"
+               HorizontalOptions="Center"
+               HasShadow="True"
+               Padding="5"
+               Opacity="0.8">
+            <Label x:Name="ToastContent"
+                   Text="{Binding ToastText}"
+                   FontSize="Small"
+                   HeightRequest="25"
+                   FontFamily="{StaticResource Sans-Bold}"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{DynamicResource Fg2}" />
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Toast_Tapped" NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
+        </Frame>
+    </StackLayout>
+</pages:PopupPage>
