@@ -42,7 +42,7 @@
             <Color x:Key="ColorPicker0">#B71C1C</Color>
             <Color x:Key="ColorPicker1">#ff8787</Color>
             <Color x:Key="ColorPicker2">#ff5f00</Color>
-            <Color x:Key="ColorPicker3">#ffd7ff</Color>
+            <Color x:Key="ColorPicker3">#ffc898</Color>
             <Color x:Key="ColorPicker4">#875fff</Color>
             <Color x:Key="ColorPicker5">#8787d7</Color>
             <Color x:Key="ColorPicker6">#afd7ff</Color>
