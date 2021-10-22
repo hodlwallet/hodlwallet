@@ -6,7 +6,6 @@
              Title="{i18n:Translate AckRisk.title}"
              x:Class="HodlWallet.UI.Views.AcknowledgeRiskView">
     <ContentPage.Content>
-        <AbsoluteLayout>
             <FlexLayout Direction="Column"
                         BackgroundColor="{DynamicResource Bg}">
                 <BoxView FlexLayout.Grow="1" />
@@ -87,6 +86,5 @@
                             Clicked="AcknowledgeRiskTermsViewButton_Clicked" />
                 </FlexLayout>
             </FlexLayout>
-        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
