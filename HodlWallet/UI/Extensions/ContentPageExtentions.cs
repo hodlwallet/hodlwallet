@@ -26,18 +26,39 @@
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.CommunityToolkit.UI.Views.Options;
 using Rg.Plugins.Popup.Extensions;
-using Liviano.Utilities;
 
+using Liviano.Utilities;
 using HodlWallet.UI.Controls;
 
 namespace HodlWallet.UI.Extensions
 {
     public static class ContentPageExtentions
     {
-        public static async Task DisplayToast(this ContentPage  view, string content)
+        public static async Task DisplayToast(this ContentPage view, string message)
         {
-            await ToastView.Show(view, content);
+            Guard.NotNull(message, nameof(message));
+            Guard.NotEmpty(message, nameof(message));
+
+            var bg = (Color)Application.Current.Resources["Bg2"];
+            var fg = (Color)Application.Current.Resources["Fg2"];
+            var fontFamily = (OnPlatform<string>)Application.Current.Resources["Sans-Bold"];
+            var font = Font.OfSize(fontFamily, Device.GetNamedSize(NamedSize.Medium, view));
+
+            var toastOptions = new ToastOptions
+            {
+                BackgroundColor = bg,
+                MessageOptions = new MessageOptions
+                {
+                    Font = font,
+                    Foreground = fg,
+                    Message = message
+                },
+            };
+
+            await view.DisplayToastAsync(toastOptions);
         }
 
         public static async Task<bool> DisplayPrompt(this ContentPage view, string title, string message = null, string okButton = null, string cancelButton = null)
