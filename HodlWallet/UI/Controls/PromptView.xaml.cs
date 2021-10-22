@@ -172,16 +172,16 @@ namespace HodlWallet.UI.Controls
 
         async void CancelButton_Clicked(object sender, EventArgs e)
         {
-            PromptResponse = PromptResponses.Cancel;
-
             await PopupNavigation.Instance.PopAsync();
+
+            PromptResponse = PromptResponses.Cancel;
         }
 
         async void OkButton_Clicked(object sender, EventArgs e)
         {
-            PromptResponse = PromptResponses.Ok;
-
             await PopupNavigation.Instance.PopAsync();
+
+            PromptResponse = PromptResponses.Ok;
         }
     }
 }
