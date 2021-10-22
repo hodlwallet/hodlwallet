@@ -27,6 +27,7 @@
             <Label x:Name="ToastContent"
                    Text="{Binding ToastText}"
                    FontSize="Small"
+                   Padding="5"
                    HeightRequest="25"
                    FontFamily="{StaticResource Sans-Bold}"
                    VerticalTextAlignment="Center"
