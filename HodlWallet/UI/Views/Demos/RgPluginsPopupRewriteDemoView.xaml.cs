@@ -1,5 +1,5 @@
 ﻿//
-// PromptV2DemoView.xaml.cs
+// RgPluginsPopupRewriteDemoView.xaml.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -24,37 +24,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using Rg.Plugins.Popup.Extensions;
-using Xamarin.Essentials;
+using System.Diagnostics;
+
 using Xamarin.Forms;
 
-using HodlWallet.UI.Controls;
-using System.Diagnostics;
+using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.UI.Views.Demos
 {
-    public partial class PromptV2DemoView : ContentPage
+    public partial class RgPluginsPopupRewriteDemoView : ContentPage
     {
-        public PromptV2DemoView()
+        public RgPluginsPopupRewriteDemoView()
         {
             InitializeComponent();
         }
 
-        void PromptButton_Clicked(object sender, EventArgs e)
+        async void PromptButton_Clicked(object sender, EventArgs e)
         {
-            var promptView = new PromptView("This title", "this is the message", "okay", "cancel");
-            promptView.Responded += PromptView_Responded;
-            Navigation.PushPopupAsync(promptView);
+            var res = await this.DisplayPrompt("This title", "this is the message", "okay", "cancel");
+
+            Debug.WriteLine($"res = {res}");
         }
 
         void ToastButton_Clicked(object sender, EventArgs e)
         {
-        }
-
-        void PromptView_Responded(object sender, bool e)
-        {
-            Debug.WriteLine($"Responded with: {e}");
         }
     }
 }
