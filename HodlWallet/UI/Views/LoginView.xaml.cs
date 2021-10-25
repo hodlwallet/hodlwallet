@@ -170,5 +170,11 @@ namespace HodlWallet.UI.Views
         {
             Navigation.PopModalAsync();
         }
+        
+        void FingerprintButtonClicked(object sender, EventArgs e)
+        {
+            var view = new BiometricLoginView();
+            Application.Current.MainPage = view;
+        }
     }
 }

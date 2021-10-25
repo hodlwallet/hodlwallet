@@ -42,21 +42,19 @@
 
                 <Label x:Name="Header"
                        FlexLayout.Grow="1"
-                       Text="{i18n:Translate Text=Pin.enter}"
+                       Text="Select the way of autentication"
                        FontSize="Subtitle"
                        HorizontalTextAlignment="Center" />
 
 
-            <!--Text="{i18n:Translate Text=Login.cancel}"-->
 
-            <Button Text ="Use Biometrics"
+            <!--Text="{i18n:Translate Text=Login.cancel}"-->
+                <Button Text ="Use Fingerprint"
                 Style="{DynamicResource CustomButton}"
                 CornerRadius="0"
                 FontSize="Large"
                 FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="2"
-                IsEnabled="True"
-                IsVisible="True"
+                FlexLayout.Grow="0.8"
                 Clicked="BiometricsButton_Clicked"
                 x:Name="BiometricsButton"/>
 
@@ -64,14 +62,12 @@
                 Style="{DynamicResource CustomButton}"
                 CornerRadius="0"
                 FontSize="Large"
+                Clicked="UsePinButton"
                 FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="2"
-                IsEnabled="False"
-                IsVisible="False"
-                x:Name="UsePinButton"/>
+                FlexLayout.Grow="0.8"/>
+            </FlexLayout>
 
             <controls:NowLoadingIndicator />
-            </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
