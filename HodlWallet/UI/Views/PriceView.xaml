@@ -16,162 +16,159 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <AbsoluteLayout>
-            <FlexLayout>
-                <ScrollView Orientation="Vertical"
-                            VerticalScrollBarVisibility="Never"
-                            HorizontalScrollBarVisibility="Never">
-                    <FlexLayout Direction="Column">
-                        <FlexLayout Direction="Row"
-                                    FlexLayout.Grow="1">
-                            <Label x:Name="TitleLabel"
-                                   Margin="20, 0, 0, 0"
-                                   Text="{Binding Title}"
-                                   FlexLayout.Grow="1"
-                                   FontSize="Title"
-                                   FlexLayout.AlignSelf="Center"
-                                   FontFamily="{StaticResource Sans-Bold}"
-                                   TextColor="{DynamicResource Fg}" />
+            <ScrollView Orientation="Vertical"
+                        VerticalScrollBarVisibility="Never"
+                        HorizontalScrollBarVisibility="Never">
+                <FlexLayout Direction="Column">
+                    <FlexLayout Direction="Row"
+                                FlexLayout.Grow="1">
+                        <Label x:Name="TitleLabel"
+                               Margin="20, 0, 0, 0"
+                               Text="{Binding Title}"
+                               FlexLayout.Grow="1"
+                               FontSize="Title"
+                               FlexLayout.AlignSelf="Center"
+                               FontFamily="{StaticResource Sans-Bold}"
+                               TextColor="{DynamicResource Fg}" />
 
-                            <FlexLayout Direction="Column"
-                                        FlexLayout.Grow="1"
-                                        FlexLayout.AlignSelf="Center">
-                                <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
-                                          Margin="0, 10, 20, 0"
-                                          HeightRequest="16"
-                                          WidthRequest="16"
-                                          VerticalOptions="Center"
-                                          FlexLayout.AlignSelf="End">
-                                </svg:Icon>
-                                <FlexLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Close_Tapped" />
-                                </FlexLayout.GestureRecognizers>
-                            </FlexLayout>
-                        </FlexLayout>
-
-                        <FlexLayout Direction="Row"
-                                    FlexLayout.Grow="1">
-                            <ScrollView Orientation="Vertical"
-                                        VerticalScrollBarVisibility="Never"
-                                        HorizontalScrollBarVisibility="Never">
-                                <Label x:Name="PriceLabel"
-                                                     Margin="20, 10, 0, 0"
-                                                     Text="{Binding PriceText}"
-                                                     FontSize="Large"
-                                                     TextColor="{DynamicResource Fg}"
-                                                     FontFamily="{StaticResource Mono-Bold}" />
-                                <!--<controls:MoneyLabel x:Name="PriceLabel"
-                                                     Margin="20, 10, 0, 0"
-                                                     Text="{Binding PriceText}"
-                                                     FontSize="Large"
-                                                     TextColor="{DynamicResource Fg}"
-                                                     FontFamily="{StaticResource Mono-Bold}" />-->
-                            </ScrollView>
-                        </FlexLayout>
-
-                        <FlexLayout Direction="Row"
-                                    FlexLayout.Grow="10"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="CenterAndExpand">
-                            <ScrollView x:Name="PricesChartsScrollView"
-                                        HorizontalScrollBarVisibility="Never"
-                                        VerticalScrollBarVisibility="Never"
-                                        HeightRequest="270">
-                                <StackLayout Orientation="Horizontal">
-                                    <!--<microchartsForms:ChartView x:Name="Prices1hChartView"
-                                               BackgroundColor="{DynamicResource Bg}"
-                                               WidthRequest="500"
-                                               HeightRequest="250" />-->
-                                    <microchartsForms:ChartView x:Name="Prices1dChartView"
-                                                                BackgroundColor="{DynamicResource Bg}"
-                                                                WidthRequest="420"
-                                                                HeightRequest="250" />
-                                    <microchartsForms:ChartView x:Name="Prices1wChartView"
-                                                                BackgroundColor="{DynamicResource Bg}"
-                                                                WidthRequest="420"
-                                                                HeightRequest="250" />
-                                    <microchartsForms:ChartView x:Name="Prices1mChartView"
-                                                                BackgroundColor="{DynamicResource Bg}"
-                                                                WidthRequest="420"
-                                                                HeightRequest="250" />
-                                    <microchartsForms:ChartView x:Name="Prices1yChartView"
-                                                                BackgroundColor="{DynamicResource Bg}"
-                                                                WidthRequest="420"
-                                                                HeightRequest="250" />
-                                    <!--<microchartsForms:ChartView x:Name="PricesAllChartView"
-                                                            BackgroundColor="{DynamicResource Bg}"
-                                                            WidthRequest="420"
-                                                            HeightRequest="250" />-->
-                                </StackLayout>
-                            </ScrollView>
-                        </FlexLayout>
-
-                        <FlexLayout x:Name="GoToChartButtonsLayout"
-                                    Direction="Row"
+                        <FlexLayout Direction="Column"
                                     FlexLayout.Grow="1"
-                                    IsVisible="False">
-                            <BoxView FlexLayout.Grow="1" />
-                            <Button x:Name="GoTo1dChartButton"
-                                    Style="{DynamicResource PriceChartSwitchButtonDisabled}"
-                                    Clicked="GoTo1dChartButton_Clicked"
-                                    Text="1d" />
-                            <Button x:Name="GoTo1wChartButton"
-                                    Style="{DynamicResource PriceChartSwitchButtonDisabled}"
-                                    Clicked="GoTo1wChartButton_Clicked"
-                                    Text="1w" />
-                            <Button x:Name="GoTo1mChartButton"
-                                    Style="{DynamicResource PriceChartSwitchButtonDisabled}"
-                                    Clicked="GoTo1mChartButton_Clicked"
-                                    Text="1m" />
-                            <Button x:Name="GoTo1yChartButton"
-                                    Style="{DynamicResource PriceChartSwitchButtonDisabled}"
-                                    Clicked="GoTo1yChartButton_Clicked"
-                                    Text="1y" />
-                            <!--<Button x:Name="GoToAllChartButton"
-                                Style="{DynamicResource PriceChartSwitchButtonDisabled}"
-                                Clicked="GoToAllChartButton_Clicked"
-                                Text="All" />-->
-                            <BoxView FlexLayout.Grow="1" />
-                        </FlexLayout>
-                        <BoxView FlexLayout.Grow="1" />
-                        <FlexLayout Direction="Row"
-                                    FlexLayout.Grow="2">
-                            <StackLayout Orientation="Vertical"
-                                         Margin="20, 0, 0, 0">
-                                <Label x:Name="MarketcapTitleLabel"
-                                       Text="Marketcap"
-                                       FontSize="Title"
-                                       FontFamily="{StaticResource Sans-Bold}"
-                                       TextColor="{DynamicResource Fg}" />
-                                <Label x:Name="MarketcapLabel"
-                                       FontSize="Large"
-                                       FontFamily="{StaticResource Mono-Bold}"
-                                       Text="{Binding MarketcapText}"
-                                       TextColor="{StaticResource Fg}" />
-                            </StackLayout>
-                        </FlexLayout>
-                        <FlexLayout Direction="Row"
-                                    FlexLayout.Grow="2">
-                            <StackLayout Orientation="Vertical"
-                                         Margin="20, 0, 0, 0">
-                                <Label x:Name="ChangeTitleLabel"
-                                       Text="Change"
-                                       FontSize="Title"
-                                       FontFamily="{StaticResource Sans-Bold}"
-                                       TextColor="{DynamicResource Fg}" />
-                                <Label x:Name="PriceChangeLabel"
-                                       FontSize="Large"
-                                       FontFamily="{StaticResource Mono-Bold}"
-                                       Text="{Binding PriceChangeText}"
-                                       TextColor="{DynamicResource FgError}" />
-                            </StackLayout>
-                        </FlexLayout>
-                        <FlexLayout Direction="Row"
-                                    FlexLayout.Grow="4">
+                                    FlexLayout.AlignSelf="Center">
+                            <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
+                                      Margin="0, 10, 20, 0"
+                                      HeightRequest="16"
+                                      WidthRequest="16"
+                                      VerticalOptions="Center"
+                                      FlexLayout.AlignSelf="End">
+                            </svg:Icon>
+                            <FlexLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Close_Tapped" />
+                            </FlexLayout.GestureRecognizers>
                         </FlexLayout>
                     </FlexLayout>
-                </ScrollView>
-            </FlexLayout>
 
+                    <FlexLayout Direction="Row"
+                                FlexLayout.Grow="1">
+                        <ScrollView Orientation="Vertical"
+                                    VerticalScrollBarVisibility="Never"
+                                    HorizontalScrollBarVisibility="Never">
+                            <Label x:Name="PriceLabel"
+                                                 Margin="20, 10, 0, 0"
+                                                 Text="{Binding PriceText}"
+                                                 FontSize="Large"
+                                                 TextColor="{DynamicResource Fg}"
+                                                 FontFamily="{StaticResource Mono-Bold}" />
+                            <!--<controls:MoneyLabel x:Name="PriceLabel"
+                                                 Margin="20, 10, 0, 0"
+                                                 Text="{Binding PriceText}"
+                                                 FontSize="Large"
+                                                 TextColor="{DynamicResource Fg}"
+                                                 FontFamily="{StaticResource Mono-Bold}" />-->
+                        </ScrollView>
+                    </FlexLayout>
+
+                    <FlexLayout Direction="Row"
+                                FlexLayout.Grow="10"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand">
+                        <ScrollView x:Name="PricesChartsScrollView"
+                                    HorizontalScrollBarVisibility="Never"
+                                    VerticalScrollBarVisibility="Never"
+                                    HeightRequest="270">
+                            <StackLayout Orientation="Horizontal">
+                                <!--<microchartsForms:ChartView x:Name="Prices1hChartView"
+                                           BackgroundColor="{DynamicResource Bg}"
+                                           WidthRequest="500"
+                                           HeightRequest="250" />-->
+                                <microchartsForms:ChartView x:Name="Prices1dChartView"
+                                                            BackgroundColor="{DynamicResource Bg}"
+                                                            WidthRequest="420"
+                                                            HeightRequest="250" />
+                                <microchartsForms:ChartView x:Name="Prices1wChartView"
+                                                            BackgroundColor="{DynamicResource Bg}"
+                                                            WidthRequest="420"
+                                                            HeightRequest="250" />
+                                <microchartsForms:ChartView x:Name="Prices1mChartView"
+                                                            BackgroundColor="{DynamicResource Bg}"
+                                                            WidthRequest="420"
+                                                            HeightRequest="250" />
+                                <microchartsForms:ChartView x:Name="Prices1yChartView"
+                                                            BackgroundColor="{DynamicResource Bg}"
+                                                            WidthRequest="420"
+                                                            HeightRequest="250" />
+                                <!--<microchartsForms:ChartView x:Name="PricesAllChartView"
+                                                        BackgroundColor="{DynamicResource Bg}"
+                                                        WidthRequest="420"
+                                                        HeightRequest="250" />-->
+                            </StackLayout>
+                        </ScrollView>
+                    </FlexLayout>
+
+                    <FlexLayout x:Name="GoToChartButtonsLayout"
+                                Direction="Row"
+                                FlexLayout.Grow="1"
+                                IsVisible="False">
+                        <BoxView FlexLayout.Grow="1" />
+                        <Button x:Name="GoTo1dChartButton"
+                                Style="{DynamicResource PriceChartSwitchButtonDisabled}"
+                                Clicked="GoTo1dChartButton_Clicked"
+                                Text="1d" />
+                        <Button x:Name="GoTo1wChartButton"
+                                Style="{DynamicResource PriceChartSwitchButtonDisabled}"
+                                Clicked="GoTo1wChartButton_Clicked"
+                                Text="1w" />
+                        <Button x:Name="GoTo1mChartButton"
+                                Style="{DynamicResource PriceChartSwitchButtonDisabled}"
+                                Clicked="GoTo1mChartButton_Clicked"
+                                Text="1m" />
+                        <Button x:Name="GoTo1yChartButton"
+                                Style="{DynamicResource PriceChartSwitchButtonDisabled}"
+                                Clicked="GoTo1yChartButton_Clicked"
+                                Text="1y" />
+                        <!--<Button x:Name="GoToAllChartButton"
+                            Style="{DynamicResource PriceChartSwitchButtonDisabled}"
+                            Clicked="GoToAllChartButton_Clicked"
+                            Text="All" />-->
+                        <BoxView FlexLayout.Grow="1" />
+                    </FlexLayout>
+                    <BoxView FlexLayout.Grow="1" />
+                    <FlexLayout Direction="Row"
+                                FlexLayout.Grow="2">
+                        <StackLayout Orientation="Vertical"
+                                     Margin="20, 0, 0, 0">
+                            <Label x:Name="MarketcapTitleLabel"
+                                   Text="Marketcap"
+                                   FontSize="Title"
+                                   FontFamily="{StaticResource Sans-Bold}"
+                                   TextColor="{DynamicResource Fg}" />
+                            <Label x:Name="MarketcapLabel"
+                                   FontSize="Large"
+                                   FontFamily="{StaticResource Mono-Bold}"
+                                   Text="{Binding MarketcapText}"
+                                   TextColor="{StaticResource Fg}" />
+                        </StackLayout>
+                    </FlexLayout>
+                    <FlexLayout Direction="Row"
+                                FlexLayout.Grow="2">
+                        <StackLayout Orientation="Vertical"
+                                     Margin="20, 0, 0, 0">
+                            <Label x:Name="ChangeTitleLabel"
+                                   Text="Change"
+                                   FontSize="Title"
+                                   FontFamily="{StaticResource Sans-Bold}"
+                                   TextColor="{DynamicResource Fg}" />
+                            <Label x:Name="PriceChangeLabel"
+                                   FontSize="Large"
+                                   FontFamily="{StaticResource Mono-Bold}"
+                                   Text="{Binding PriceChangeText}"
+                                   TextColor="{DynamicResource FgError}" />
+                        </StackLayout>
+                    </FlexLayout>
+                    <FlexLayout Direction="Row"
+                                FlexLayout.Grow="4">
+                    </FlexLayout>
+                </FlexLayout>
+            </ScrollView>
             <controls:NowLoadingIndicator />
         </AbsoluteLayout>
     </ContentPage.Content>

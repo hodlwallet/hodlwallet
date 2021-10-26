@@ -20,61 +20,58 @@
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <FlexLayout Direction="Column"
-                JustifyContent="SpaceAround"
-                BackgroundColor="{DynamicResource Bg}"
-                AlignItems="Stretch">
-                <Label Text="{i18n:Translate Text=AddAccount.entry}"
-                        FontSize="Large"
-                        FlexLayout.AlignSelf="Center" />
-                <ContentView>
-                    <Entry Placeholder="{i18n:Translate Text=AddAccount.placeholder}"
-                        Text="{Binding AccountName}"
-                        MaxLength="32"
-                        Style="{DynamicResource CustomEntry}"
-                        TextColor="{DynamicResource Fg}"
-                        BackgroundColor="Transparent"
-                        Margin="20,10" />
-                    <ContentView.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" />
-                    </ContentView.GestureRecognizers>
-                </ContentView>
+        <FlexLayout Direction="Column"
+                    JustifyContent="SpaceAround"
+                    BackgroundColor="{DynamicResource Bg}"
+                    AlignItems="Stretch">
+            <Label Text="{i18n:Translate Text=AddAccount.entry}"
+                   FontSize="Large"
+                   FlexLayout.AlignSelf="Center" />
+            <ContentView>
+                <Entry Placeholder="{i18n:Translate Text=AddAccount.placeholder}"
+                       Text="{Binding AccountName}"
+                       MaxLength="32"
+                       Style="{DynamicResource CustomEntry}"
+                       TextColor="{DynamicResource Fg}"
+                       BackgroundColor="Transparent"
+                       Margin="20,10" />
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" />
+                </ContentView.GestureRecognizers>
+            </ContentView>
 
-                <Label Text="{i18n:Translate Text=AddAccount.options}"
-                        FontSize="Large"
-                        FlexLayout.AlignSelf="Center" />
-                <Grid RowDefinitions="*,*" RowSpacing="20" FlexLayout.AlignSelf="Center" >
-                    <RadioButton Content="{Binding AcountTypes[0]}"
+            <Label Text="{i18n:Translate Text=AddAccount.options}"
+                   FontSize="Large"
+                   FlexLayout.AlignSelf="Center" />
+            <Grid RowDefinitions="*,*" RowSpacing="20" FlexLayout.AlignSelf="Center">
+                <RadioButton Content="{Binding AcountTypes[0]}"
                              IsChecked="True"
                              Style="{DynamicResource CustomRadioButton}"
                              BackgroundColor="{DynamicResource Bg}"
                              CheckedChanged="OnAccountTypeCheckedChanged" 
                              BorderColor="{DynamicResource Fg}" />
-                    <RadioButton Grid.Row="1" Content="{Binding AcountTypes[1]}"
+                <RadioButton Grid.Row="1" Content="{Binding AcountTypes[1]}"
                              Style="{DynamicResource CustomRadioButton}"
                              BackgroundColor="{DynamicResource Bg}"
                              CheckedChanged="OnAccountTypeCheckedChanged"
                              BorderColor="{DynamicResource Fg}" />
-                </Grid>
-                <Label Text="{i18n:Translate Text=AddAccount.color}"
-                        FontSize="Large"
-                        FlexLayout.AlignSelf="Center" 
-                        Margin="0, 20, 0, 0" />
-                <controls:ColorPicker x:Name="PickColorControl" ButtonColorSelected="{Binding AccountColor}"/>
+            </Grid>
+            <Label Text="{i18n:Translate Text=AddAccount.color}"
+                   FontSize="Large"
+                   FlexLayout.AlignSelf="Center" 
+                   Margin="0, 20, 0, 0" />
+            <controls:ColorPicker x:Name="PickColorControl" ButtonColorSelected="{Binding AccountColor}" />
 
-                <BoxView x:Name="boxView" FlexLayout.Grow="1"/>
-                <Button Text="{i18n:Translate Text=AddAccount.createButton}"
-                        Style="{DynamicResource CustomButton}"
-                        BackgroundColor="{DynamicResource Bg2}"
-                        CornerRadius="0"
-                        FontSize="Large"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1"
-                        Command="{Binding CreateAccountCommand}"
-                        CommandParameter="{Binding Source={x:Reference PickColorControl},
-                                                    Path=ColorCode}"/>
-            </FlexLayout>
-        </AbsoluteLayout>
+            <BoxView x:Name="boxView" FlexLayout.Grow="1"/>
+            <Button Text="{i18n:Translate Text=AddAccount.createButton}"
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{DynamicResource Bg2}"
+                    CornerRadius="0"
+                    FontSize="Large"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="1"
+                    Command="{Binding CreateAccountCommand}"
+                    CommandParameter="{Binding Source={x:Reference PickColorControl}, Path=ColorCode}" />
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

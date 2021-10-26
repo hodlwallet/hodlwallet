@@ -29,6 +29,7 @@ using Android.Views;
 using Xamarin.Forms.Platform.Android;
 
 using Serilog;
+using Rg.Plugins.Popup;
 
 using HodlWallet.UI;
 using HodlWallet.Core.Interfaces;
@@ -48,6 +49,8 @@ namespace HodlWallet.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+
+            Popup.Init(this);
 
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
@@ -84,6 +87,11 @@ namespace HodlWallet.Droid
             global::Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public override void OnBackPressed()
+        {
+            Popup.SendBackPressed(base.OnBackPressed);
         }
 
         void SetupLogging()

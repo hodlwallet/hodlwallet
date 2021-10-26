@@ -175,18 +175,18 @@
                             TextColor="{StaticResource FgSuccess}"
                             Style="{DynamicResource LoginDigitButton}" />
                 </FlexLayout>
-            </FlexLayout>
 
-            <Button Text="{i18n:Translate Text=Login.cancel}"
-                Style="{DynamicResource CustomButton}"
-                CornerRadius="0"
-                FontSize="Large"
-                Clicked="CancelButtonClicked"
-                FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="2"
-                IsEnabled="False"
-                IsVisible="False"
-                x:Name="CancelButton"/>
+                <Button Text="{i18n:Translate Text=Login.cancel}"
+                        Style="{DynamicResource CustomButton}"
+                        CornerRadius="0"
+                        FontSize="Large"
+                        Clicked="CancelButtonClicked"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="2"
+                        IsEnabled="False"
+                        IsVisible="False"
+                        x:Name="CancelButton"/>
+            </FlexLayout>
 
             <controls:NowLoadingIndicator />
         </AbsoluteLayout>

@@ -24,8 +24,9 @@
 		<PackageReference Include="QRCoder" Version="1.4.1" />
 		<PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
 		<PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
-		<PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
-		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+		<PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.14" />
+		<PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Core\Models\" />
@@ -56,6 +57,8 @@
 		<None Remove="UI\Assets\search.svg" />
 		<None Remove="UI\Assets\send_tab.svg" />
 		<None Remove="UI\Assets\shield.svg" />
+		<None Remove="Rg.Plugins.Popup" />
+		<None Remove="Xamarin.CommunityToolkit" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Include="UI\Assets\circle_check_gray.svg" />

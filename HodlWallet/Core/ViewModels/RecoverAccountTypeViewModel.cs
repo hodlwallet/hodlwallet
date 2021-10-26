@@ -67,16 +67,6 @@ namespace HodlWallet.Core.ViewModels
             WalletService.OnStarted += WalletService_OnStarted;
         }
 
-        public void InitializePrice()
-        {
-            Task.Factory.StartNew(
-                () => PrecioService.Init(),
-                Cts.Token,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
-        }
-
         private void WalletService_OnStarted(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "InitAppShell");

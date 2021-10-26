@@ -34,14 +34,13 @@ using Xamarin.Essentials;
 
 using NBitcoin;
 
-using Liviano.Models;
-
 using HodlWallet.Core.Models;
 using HodlWallet.Core.Utils;
 using HodlWallet.Core.Extensions;
 
 using Liviano.Events;
 using Liviano.Interfaces;
+using Liviano.Models;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -424,6 +423,15 @@ namespace HodlWallet.Core.ViewModels
 
             Balance = WalletService.Wallet.CurrentAccount.GetBalance().ToUnit(MoneyUnit.BTC);
             AccountName = WalletService.Wallet.CurrentAccount.Name;
+
+            WalletService.Wallet.Disconnect();
+
+            Task.Factory.StartNew(
+                () => WalletService.Wallet.Sync(),
+                WalletService.Wallet.Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
         }
 
         void Wallet_OnNewTransaction(object sender, TxEventArgs e)
