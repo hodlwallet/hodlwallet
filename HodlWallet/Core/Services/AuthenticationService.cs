@@ -31,6 +31,8 @@ using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
 using HodlWallet.UI.Views;
 using HodlWallet.UI;
+using HodlWallet.Core.ViewModels;
+using Xamarin.Essentials;
 
 [assembly: Dependency(typeof(AuthenticationService))]
 namespace HodlWallet.Core.Services
@@ -71,18 +73,12 @@ namespace HodlWallet.Core.Services
 
         public bool ShowingLoginForm { get; set; }
 
-        public bool biometricLogin { get; set; } = true;
 
+        string login = Preferences.Get("login", "Pin");
         public void ShowLogin(string action = null)
         {
             
-            if (biometricLogin)
-            {
-                var view = new BiometricLoginView();
-                //view = new BiometricLoginView(action);
-                Application.Current.MainPage = view;
-            }
-            else
+            if (login == "Pin")
             {
                 var view = new LoginView(action);
 
@@ -94,6 +90,11 @@ namespace HodlWallet.Core.Services
                     return;
                 }
                 
+                Application.Current.MainPage = view;
+            }
+            else
+            {
+                var view = new BiometricLoginView();
                 Application.Current.MainPage = view;
             }
         }

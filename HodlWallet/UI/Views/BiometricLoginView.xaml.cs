@@ -149,6 +149,8 @@ namespace HodlWallet.UI.Views
 
         void UsePinButton(object sender, EventArgs e)
         {
+            LoginViewModel loginViewModel=new LoginViewModel();
+            loginViewModel.Login = "Pin"; 
             var view = new LoginView();
             Application.Current.MainPage = view;
         }

@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HodlWallet.Core.ViewModels
@@ -52,6 +52,26 @@ namespace HodlWallet.Core.ViewModels
                 loginFormVisible = value;
 
                 AuthenticationService.ShowingLoginForm = loginFormVisible;
+            }
+        }
+
+        string login;
+        public string Login
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(login))
+                    return login;
+
+                SetProperty(ref login, Preferences.Get("login", "Pin"));
+
+                return login;
+            }
+            set
+            {
+                // TODO Add validation
+                SetProperty(ref login, value);
+                Preferences.Set("login", login);
             }
         }
 
