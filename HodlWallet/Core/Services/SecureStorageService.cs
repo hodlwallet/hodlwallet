@@ -23,7 +23,9 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 using Xamarin.Essentials;
 
@@ -33,6 +35,21 @@ using Liviano.Utilities;
 
 namespace HodlWallet.Core.Services
 {
+#if DEBUG
+    static class DebugStorage
+    {
+        public static async Task<string> GetAsync(string key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static async void SetAsync(string key, string val)
+        {
+            throw new NotImplementedException();
+        }
+    }
+#endif
+
     public static class SecureStorageService
     {
         const string WALLET_ID_KEY = "wallet-id";
@@ -40,7 +57,7 @@ namespace HodlWallet.Core.Services
         const string PASSWORD_KEY = "password";
         const string MNEMONIC_KEY = "mnemonic";
         const string NETWORK_KEY = "network";
-        const string SEED_BIRTHDAY_KEY = "seed-birthday";
+
         /*
          * Key string format to identify the color bellowing to an account:
          * ACCOUNT_COLOR_PREFIX_KEY + WALLET_ID + account_name
@@ -180,12 +197,20 @@ namespace HodlWallet.Core.Services
 
         static string Get(string key)
         {
+#if DEBUG
+            return DebugStorage.GetAsync(key).Result;
+#else
             return SecureStorage.GetAsync(key).Result;
+#endif
         }
 
         static void Set(string key, string val)
         {
+#if DEBUG
+            DebugStorage.SetAsync(key, val);
+#else
             SecureStorage.SetAsync(key, val);
+#endif
         }
     }
 }
