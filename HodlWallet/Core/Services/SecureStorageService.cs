@@ -26,26 +26,57 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-
-using Xamarin.Essentials;
+using System.IO;
 
 using Liviano.Bips;
 using Liviano.Exceptions;
 using Liviano.Utilities;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace HodlWallet.Core.Services
 {
 #if DEBUG
-    static class DebugStorage
+    public static class DebugStorage
     {
+        static string AppPath => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        static string DbFile => Path.Combine(AppPath, "storage.debug.json");
+
+        static readonly object @lock = new();
+
+        static Dictionary<string, string> Data = new();
+
         public static async Task<string> GetAsync(string key)
         {
-            throw new NotImplementedException();
+            var json = "{}";
+            if (File.Exists(DbFile))
+            {
+                using var r = new StreamReader(DbFile);
+                json = await r.ReadToEndAsync();
+            }
+
+            lock (@lock) Data = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+
+            if (Data.ContainsKey(key)) return Data[key];
+            return null;
         }
 
         public static async void SetAsync(string key, string val)
         {
-            throw new NotImplementedException();
+            lock (@lock) Data[key] = val;
+
+            var json = JsonConvert.SerializeObject(Data);
+            await File.WriteAllTextAsync(DbFile, json);
+        }
+
+        public static async void RemoveAll()
+        {
+            await Task.Run(() =>
+            {
+                lock (@lock) Data.Clear();
+
+                File.Delete(DbFile);
+            });
         }
     }
 #endif
@@ -180,20 +211,12 @@ namespace HodlWallet.Core.Services
 
         public static void RemoveAll()
         {
+#if DEBUG
+            DebugStorage.RemoveAll();
+#else
             SecureStorage.RemoveAll();
+#endif
         }
-
-        //public static void LogSecureStorageKeys()
-        //{
-        //    var logger = WalletService.Instance.Logger;
-
-        //    logger.Debug("Network: {0}", SecureStorageProvider.GetNetwork());
-        //    logger.Debug("Wallet ID: {0}", SecureStorageProvider.GetWalletId());
-        //    logger.Debug("Seed Birthday: {0}", SecureStorageProvider.GetSeedBirthday());
-        //    logger.Debug("Mnemonic: {0}", SecureStorageProvider.GetMnemonic());
-        //    logger.Debug("Password: {0}", SecureStorageProvider.GetPassword());
-        //    logger.Debug("Pin: {0}", SecureStorageProvider.GetPin());
-        //}
 
         static string Get(string key)
         {
