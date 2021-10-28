@@ -2,14 +2,49 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              x:Class="HodlWallet.UI.Views.BiometricsView"
              Title="{i18n:Translate Biometrics.title}"
+             NavigationPage.HasNavigationBar="True"
              BackgroundColor="{DynamicResource Bg}">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <!--<FlexLayout Direction="Column" BackgroundColor="Red">-->
+            <StackLayout Padding="20" >
+                <BoxView HeightRequest="50"/>
+
+                <svg:Icon ResourceId="HodlWallet.UI.Assets.fingerprint_large.svg"
+                              HorizontalOptions="Center"
+                              Scale="2"/>
+                
+                <BoxView HeightRequest="70"/>
+
+                <Label Text="Use your fingerprint to unlock your wallet and send money up to a set limit"
+                        FontSize="Medium"
+                        VerticalOptions="FillAndExpand"
+                        FontFamily="{StaticResource Sans-Regular}"
+                        TextColor="{DynamicResource Fg}"
+                        HorizontalTextAlignment="Start" />
+                
+            </StackLayout>
+            <!--FlexLayout.Grow="1"-->
+                <!--<ScrollView VerticalOptions="FillAndExpand">-->
+                    
+                <StackLayout  VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20, 0">
+                    <Label x:Name="Header"
+                           Text="Enable Fingerprint Id for wallet"
+                           FontSize="Subtitle"
+                           FontFamily="{StaticResource Sans-Regular}"
+                           TextColor="{DynamicResource Fg2}"
+                           HorizontalOptions="StartAndExpand"
+                           HorizontalTextAlignment="Start" />
+
+                    <Switch HorizontalOptions="End" VerticalOptions="Start"></Switch>
+                </StackLayout>
+                <!--</ScrollView>-->
+                
+                <!--<BoxView FlexLayout.Grow="1" />-->
+            <!--</FlexLayout>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -47,26 +47,29 @@
                        HorizontalTextAlignment="Center" />
 
 
-
-            <!--Text="{i18n:Translate Text=Login.cancel}"-->
+                <!--Text="{i18n:Translate Text=Login.cancel}"-->
+                <BoxView BackgroundColor="{DynamicResource Fg2}" HeightRequest="1"  WidthRequest="500"/>
+                
                 <Button Text ="Use Fingerprint"
-                Style="{DynamicResource CustomButton}"
-                CornerRadius="0"
-                FontSize="Large"
-                FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="0.8"
-                Clicked="BiometricsButton_Clicked"
-                x:Name="BiometricsButton"/>
+                    Style="{DynamicResource CustomButton}"
+                    CornerRadius="0"
+                    FontSize="Large"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="0.8"
+                    Clicked="BiometricsButton_Clicked"
+                    x:Name="BiometricsButton"/>
 
-            <Button Text ="Use PIN"
-                Style="{DynamicResource CustomButton}"
-                CornerRadius="0"
-                FontSize="Large"
-                Clicked="UsePinButton"
-                FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="0.8"/>
+                <BoxView BackgroundColor="{DynamicResource Fg2}" HeightRequest="1" WidthRequest="500"/>
+
+                    <Button Text ="Use PIN"
+                    Style="{DynamicResource CustomButton}"
+                    CornerRadius="0"
+                    FontSize="Large"
+                    Clicked="UsePinButton"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="0.8"/>
+                
             </FlexLayout>
-
             <controls:NowLoadingIndicator />
         </AbsoluteLayout>
     </ContentPage.Content>
