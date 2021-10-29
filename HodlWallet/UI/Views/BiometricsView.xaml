@@ -34,9 +34,9 @@
                         TextColor="{DynamicResource Fg2}"
                         HorizontalOptions="StartAndExpand"
                         HorizontalTextAlignment="Start" />
-            </StackLayout>
 
-            <Label x:Name="Header"></Label>
+                <Switch x:Name="BiometricSwitch" PropertyChanged="Switch_PropertyChanged"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
