@@ -28,6 +28,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace HodlWallet.UI.Views
 {
@@ -36,7 +37,14 @@ namespace HodlWallet.UI.Views
     {
         public BiometricsView()
         {
+            bool value = Preferences.Get("biometricsAllow", true);
             InitializeComponent();
+            BiometricSwitch.IsToggled =  value;
+        }
+
+        private void Switch_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            Preferences.Set("biometricsAllow", BiometricSwitch.IsToggled);
         }
     }
 }

@@ -60,7 +60,7 @@ namespace HodlWallet.Core.ViewModels
         {
             get
             {
-                return biometricsAvailable;
+                return biometricsAvailable & Preferences.Get("biometricsAllow", true);
             }
 
             set
@@ -70,6 +70,21 @@ namespace HodlWallet.Core.ViewModels
                 AuthenticationService.ShowingLoginForm = biometricsAvailable;
             }
         }
+        /*
+        string biometricsAllowed;
+        public bool BiometricsAllowed
+        {
+            get
+            {
+                return Preferences.Get("biometricsAllowed", "True") == "True";
+            }
+            set
+            {
+                // TODO Add validation
+                SetProperty(ref biometricsAllowed, value.ToString());
+                Preferences.Set("biometricsAllowed", biometricsAllowed);
+            }
+        }*/
 
         string login;
         public string Login
@@ -80,7 +95,6 @@ namespace HodlWallet.Core.ViewModels
                     return login;
 
                 SetProperty(ref login, Preferences.Get("login", "Pin"));
-
                 return login;
             }
             set
@@ -90,6 +104,7 @@ namespace HodlWallet.Core.ViewModels
                 Preferences.Set("login", login);
             }
         }
+
 
         public LoginViewModel()
         {
