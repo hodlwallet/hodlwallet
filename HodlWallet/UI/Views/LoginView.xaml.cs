@@ -30,6 +30,9 @@ using HodlWallet.Core.ViewModels;
 using HodlWallet.Core.Services;
 using HodlWallet.UI.Views.Demos;
 
+using Plugin.Fingerprint;
+using Plugin.Fingerprint.Abstractions;
+
 namespace HodlWallet.UI.Views
 {
     public partial class LoginView : ContentPage
@@ -44,6 +47,7 @@ namespace HodlWallet.UI.Views
         public LoginView(string action = null)
         {
             InitializeComponent();
+            CheckBiometricsAvailabilityAsync();
             SubscribeToMessages();
 
             ViewModel.Action = action;
@@ -62,6 +66,17 @@ namespace HodlWallet.UI.Views
             base.OnAppearing();
 
             ViewModel.LoginFormVisible = true;
+
+            if (!ViewModel.BiometricsAvailable)
+            {
+                FingerprintButton.IsEnabled = false;
+                FingerprintButton.IsVisible = false;
+            }
+            else
+            {
+                FingerprintButton.IsEnabled = true;
+                FingerprintButton.IsVisible = true;
+            }
         }
 
         protected override void OnDisappearing()
@@ -80,6 +95,11 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", IncorrectPinAnimation);
             MessagingCenter.Subscribe<LoginViewModel>(this, "StartAppShell", StartAppShell);
             MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
+        }
+
+        async void CheckBiometricsAvailabilityAsync()
+        {
+            ViewModel.BiometricsAvailable = await CrossFingerprint.Current.IsAvailableAsync();
         }
 
         void DigitAdded(LoginViewModel _, int index)

@@ -183,7 +183,7 @@
                 Clicked="FingerprintButtonClicked"
                 FlexLayout.AlignSelf="Stretch"
                 FlexLayout.Grow="0.8"
-                />
+                x:Name="FingerprintButton"/>
             </FlexLayout>
 
             <Button Text="{i18n:Translate Text=Login.cancel}"

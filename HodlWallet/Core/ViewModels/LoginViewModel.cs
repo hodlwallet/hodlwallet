@@ -55,6 +55,22 @@ namespace HodlWallet.Core.ViewModels
             }
         }
 
+        bool biometricsAvailable;
+        public bool BiometricsAvailable
+        {
+            get
+            {
+                return biometricsAvailable;
+            }
+
+            set
+            {
+                biometricsAvailable = value;
+
+                AuthenticationService.ShowingLoginForm = biometricsAvailable;
+            }
+        }
+
         string login;
         public string Login
         {
