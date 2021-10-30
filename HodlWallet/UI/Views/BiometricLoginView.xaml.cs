@@ -47,14 +47,14 @@ namespace HodlWallet.UI.Views
             SubscribeToMessages();
 
             ViewModel.Action = action;
-            /*
+            
             if (ViewModel.Action == "update")
             {
                 LogoFront.IsVisible = false;
                 Header.Text = Locale.LocaleResources.Pin_updateHeader;
                 CancelButton.IsEnabled = true;
                 CancelButton.IsVisible = true;
-            }*/
+            }
         }
 
 
@@ -150,7 +150,7 @@ namespace HodlWallet.UI.Views
         void UsePinButton(object sender, EventArgs e)
         {
             LoginViewModel loginViewModel=new LoginViewModel();
-            loginViewModel.Login = "Pin"; 
+            loginViewModel.LastLogin = "Pin"; 
             var view = new LoginView();
             Application.Current.MainPage = view;
         }

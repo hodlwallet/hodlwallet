@@ -86,22 +86,22 @@ namespace HodlWallet.Core.ViewModels
             }
         }*/
 
-        string login;
-        public string Login
+        string lastLogin;
+        public string LastLogin
         {
             get
             {
-                if (!string.IsNullOrEmpty(login))
-                    return login;
+                if (!string.IsNullOrEmpty(lastLogin))
+                    return lastLogin;
 
-                SetProperty(ref login, Preferences.Get("login", "Pin"));
-                return login;
+                SetProperty(ref lastLogin, Preferences.Get("lastLogin", "Pin"));
+                return lastLogin;
             }
             set
             {
                 // TODO Add validation
-                SetProperty(ref login, value);
-                Preferences.Set("login", login);
+                SetProperty(ref lastLogin, value);
+                Preferences.Set("lastLogin", lastLogin);
             }
         }
 

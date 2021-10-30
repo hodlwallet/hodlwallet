@@ -180,9 +180,9 @@
                 Style="{DynamicResource CustomButton}"
                 CornerRadius="0"
                 FontSize="Large"
-                Clicked="FingerprintButtonClicked"
                 FlexLayout.AlignSelf="Stretch"
                 FlexLayout.Grow="0.8"
+                Clicked="FingerprintButtonClicked"
                 x:Name="FingerprintButton"/>
             </FlexLayout>
 

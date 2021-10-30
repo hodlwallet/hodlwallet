@@ -49,26 +49,37 @@
 
                 <!--Text="{i18n:Translate Text=Login.cancel}"-->
                 <BoxView BackgroundColor="{DynamicResource Fg2}" HeightRequest="1"  WidthRequest="500"/>
-                
+
                 <Button Text ="Use Fingerprint"
-                    Style="{DynamicResource CustomButton}"
-                    CornerRadius="0"
-                    FontSize="Large"
-                    FlexLayout.AlignSelf="Stretch"
-                    FlexLayout.Grow="0.8"
-                    Clicked="BiometricsButton_Clicked"
-                    x:Name="BiometricsButton"/>
+                        Style="{DynamicResource CustomButton}"
+                        CornerRadius="0"
+                        FontSize="Large"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="0.8"
+                        Clicked="BiometricsButton_Clicked"
+                        x:Name="BiometricsButton"/>
 
                 <BoxView BackgroundColor="{DynamicResource Fg2}" HeightRequest="1" WidthRequest="500"/>
 
-                    <Button Text ="Use PIN"
-                    Style="{DynamicResource CustomButton}"
-                    CornerRadius="0"
-                    FontSize="Large"
-                    Clicked="UsePinButton"
-                    FlexLayout.AlignSelf="Stretch"
-                    FlexLayout.Grow="0.8"/>
-                
+                <Button Text ="Use PIN"
+                        Style="{DynamicResource CustomButton}"
+                        CornerRadius="0"
+                        FontSize="Large"
+                        Clicked="UsePinButton"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="0.8"/>
+
+                <Button Text="{i18n:Translate Text=Login.cancel}"
+                        Style="{DynamicResource CustomButton}"
+                        CornerRadius="0"
+                        FontSize="Large"
+                        Clicked="CancelButtonClicked"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="0.8"
+                        IsEnabled="False"
+                        IsVisible="False"
+                        x:Name="CancelButton"/>
+
             </FlexLayout>
             <controls:NowLoadingIndicator />
         </AbsoluteLayout>

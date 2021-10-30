@@ -30,6 +30,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 
+using Plugin.Fingerprint;
+using Plugin.Fingerprint.Abstractions;
+
 namespace HodlWallet.UI.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -42,8 +45,17 @@ namespace HodlWallet.UI.Views
             BiometricSwitch.IsToggled =  value;
         }
 
-        private void Switch_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private async void Switch_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
+            if (BiometricSwitch.IsToggled)
+            {
+                bool availability = await CrossFingerprint.Current.IsAvailableAsync();
+                if (!availability)
+                {
+                    await DisplayAlert("Warning", "No biometrics authentication available, please check settings of the device.", "Ok");
+                    return;
+                }
+            }
             Preferences.Set("biometricsAllow", BiometricSwitch.IsToggled);
         }
     }
