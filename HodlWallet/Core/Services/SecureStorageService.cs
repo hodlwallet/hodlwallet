@@ -24,15 +24,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 
+using Newtonsoft.Json;
+
 using Liviano.Bips;
 using Liviano.Exceptions;
 using Liviano.Utilities;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using Xamarin.Essentials;
+
+#if !DEBUG
+using Xamarin.Essentials;
+#endif
 
 namespace HodlWallet.Core.Services
 {
@@ -46,13 +52,12 @@ namespace HodlWallet.Core.Services
 
         static Dictionary<string, string> Data = new();
 
-        public static async Task<string> GetAsync(string key)
+        public static string Get(string key)
         {
             var json = "{}";
             if (File.Exists(DbFile))
             {
-                using var r = new StreamReader(DbFile);
-                json = await r.ReadToEndAsync();
+                json = File.ReadAllText(DbFile);
             }
 
             lock (@lock) Data = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
@@ -61,22 +66,19 @@ namespace HodlWallet.Core.Services
             return null;
         }
 
-        public static async void SetAsync(string key, string val)
+        public static void Set(string key, string val)
         {
             lock (@lock) Data[key] = val;
 
             var json = JsonConvert.SerializeObject(Data);
-            await File.WriteAllTextAsync(DbFile, json);
+            File.WriteAllText(DbFile, json);
         }
 
-        public static async void RemoveAll()
+        public static void RemoveAll()
         {
-            await Task.Run(() =>
-            {
-                lock (@lock) Data.Clear();
+            lock (@lock) Data.Clear();
 
-                File.Delete(DbFile);
-            });
+            File.Delete(DbFile);
         }
     }
 #endif
@@ -221,7 +223,7 @@ namespace HodlWallet.Core.Services
         static string Get(string key)
         {
 #if DEBUG
-            return DebugStorage.GetAsync(key).Result;
+            return DebugStorage.Get(key);
 #else
             return SecureStorage.GetAsync(key).Result;
 #endif
@@ -230,7 +232,7 @@ namespace HodlWallet.Core.Services
         static void Set(string key, string val)
         {
 #if DEBUG
-            DebugStorage.SetAsync(key, val);
+            DebugStorage.Set(key, val);
 #else
             SecureStorage.SetAsync(key, val);
 #endif
