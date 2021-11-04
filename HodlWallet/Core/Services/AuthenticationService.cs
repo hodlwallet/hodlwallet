@@ -36,6 +36,7 @@ using Xamarin.Essentials;
 
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
+using System.Diagnostics;
 
 [assembly: Dependency(typeof(AuthenticationService))]
 namespace HodlWallet.Core.Services
@@ -74,18 +75,45 @@ namespace HodlWallet.Core.Services
             }
         }
 
+
         public bool ShowingLoginForm { get; set; }
+        bool biometricsAvailable;
+        public bool BiometricsAvailable
+        {
+            get
+            {
+                return Preferences.Get("biometricsAvailable", false);
+            }
+
+            set
+            {
+                biometricsAvailable = value;
+                Preferences.Set("biometricsAvailable", biometricsAvailable);
+            }
+        }
+
+
+
 
 
         public async void ShowLogin(string action = null)
         {
             string lastLogin = Preferences.Get("lastLogin", "Pin");
             bool biometricsAllow = Preferences.Get("biometricsAllow", false);
-            bool availability = await CrossFingerprint.Current.IsAvailableAsync();
-            
-            if (biometricsAllow & (lastLogin == "Fingerprint" & availability))
+            BiometricsAvailable = await CrossFingerprint.Current.IsAvailableAsync();
+
+            if (biometricsAllow & (lastLogin == "Fingerprint" & BiometricsAvailable))
             {
-                var view = new BiometricLoginView();
+                var view = new BiometricLoginView(action);
+
+                if (action == "pop")
+                {
+                    if (Application.Current.MainPage is AppShell appShell)
+                        await appShell.Navigation.PushModalAsync(view);
+
+                    return;
+                }
+
                 Application.Current.MainPage = view;
             }
             else

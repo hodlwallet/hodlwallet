@@ -197,8 +197,6 @@
                 IsVisible="False"
                 x:Name="CancelButton"/>
 
-            
-
             <controls:NowLoadingIndicator />
         </AbsoluteLayout>
     </ContentPage.Content>

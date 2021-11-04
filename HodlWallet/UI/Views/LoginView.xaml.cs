@@ -51,6 +51,7 @@ namespace HodlWallet.UI.Views
             SubscribeToMessages();
 
             ViewModel.Action = action;
+            ViewModel.LastLogin = "Pin";
 
             if (ViewModel.Action == "update")
             {
@@ -193,7 +194,6 @@ namespace HodlWallet.UI.Views
         
         void FingerprintButtonClicked(object sender, EventArgs e)
         {
-            ViewModel.LastLogin = "Fingerprint";
             var view = new BiometricLoginView();
             Application.Current.MainPage = view;
         }

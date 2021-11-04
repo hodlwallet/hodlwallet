@@ -31,12 +31,6 @@ namespace HodlWallet.Core.ViewModels
 {
     public class BiometricLoginViewModel : BaseViewModel
     {
-        List<int> pin = new ();
-        object @lock = new ();
-
-        //public ICommand DigitCommand { get; }
-        //public ICommand BackspaceCommand { get; }
-
         public string Action { get; set; }
 
         bool loginFormVisible = false;
@@ -61,70 +55,6 @@ namespace HodlWallet.Core.ViewModels
             //BackspaceCommand = new Command(RemoveDigit);
         }
 
-        async Task AddDigit(int digit)
-        {
-            Debug.WriteLine($"[AddDigit] Adding: {digit}");
-
-            // Digit has already being inputed
-            if (pin.Count >= 6) return;
-
-            lock (@lock)
-            {
-                pin.Add(digit);
-            }
-
-            MessagingCenter.Send(this, "DigitAdded", pin.Count);
-
-            // Digit is not complete, input more
-            if (pin.Count != 6) return;
-
-            // _Pin.Count == 6 now...
-            // We're done inputting our PIN
-
-            string input = string.Join(string.Empty, pin.ToArray());
-
-            // Check if it's the pin
-            if (AuthenticationService.Authenticate(input))
-            {
-                Debug.WriteLine("[AddDigit] Logged in!");
-
-                IsLoading = true;
-
-                // DONE! We navigate to the root view
-                await Task.Delay(65);
-
-                MessagingCenter.Send(this, "StartAppShell");
-
-                return;
-            }
-            else
-            {
-                await Task.Delay(65);
-                MessagingCenter.Send(this, "ResetPin");
-            }
-
-            await Task.Delay(350);
-
-            Debug.WriteLine($"[AddDigit] Incorrect PIN: {input}");
-
-            // Sadly it's not the pin! We clear and launch an animation
-            pin.Clear();
-
-            MessagingCenter.Send(this, "IncorrectPinAnimation");
-        }
-
-        void RemoveDigit()
-        {
-            Debug.WriteLine("[RemoveDigit]");
-
-            if (pin.Count <= 0) return;
-
-            lock (@lock)
-            {
-                pin.RemoveAt(pin.Count - 1);
-
-                MessagingCenter.Send(this, "DigitRemoved", pin.Count + 1);
-            }
-        }
+        
     }
 }

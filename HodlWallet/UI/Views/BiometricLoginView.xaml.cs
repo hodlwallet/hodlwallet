@@ -44,10 +44,13 @@ namespace HodlWallet.UI.Views
         public BiometricLoginView(string action = null)
         {
             InitializeComponent();
-            SubscribeToMessages();
 
             ViewModel.Action = action;
-            
+            LoginViewModel loginViewModel = new LoginViewModel
+            {
+                LastLogin = "Fingerprint"
+            };
+
             if (ViewModel.Action == "update")
             {
                 LogoFront.IsVisible = false;
@@ -72,17 +75,6 @@ namespace HodlWallet.UI.Views
             if (ViewModel.IsLoading) ViewModel.IsLoading = false;
 
             ViewModel.LoginFormVisible = false;
-        }
-
-        void SubscribeToMessages()
-        {
-          //  MessagingCenter.Subscribe<BiometricLoginViewModel>(this, "StartAppShell", StartAppShell);
-        }
-
-        void IncorrectPinAnimation(BiometricLoginViewModel _)
-        {
-            Debug.WriteLine($"[SubscribeToMessage][IncorrectPinAnimation]");
-            //await Task.Delay(500);
         }
 
         void StartAppShell()
@@ -113,21 +105,14 @@ namespace HodlWallet.UI.Views
 
             Application.Current.MainPage = new ControlsDemoView();
         }
-        
+
+        void CancelButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
+
         private async void BiometricsButton_Clicked(object sender, EventArgs e)
         {
-            /*
-            bool availability = await CrossFingerprint.Current.IsAvailableAsync();
-            if (!availability)
-            {
-                await DisplayAlert("Warning", "No biometrics available", "Ok");
-                return;
-            }
-            else
-            {
-                await DisplayAlert("Good", "Biometrics available", "Ok");
-            }
-            */
             var authResult = await CrossFingerprint.Current.AuthenticateAsync(
                 new AuthenticationRequestConfiguration("Heads up!", "I would like to use biometrics"));
 
@@ -139,9 +124,7 @@ namespace HodlWallet.UI.Views
                 // DONE! We navigate to the root view
                 await Task.Delay(65);
 
-                //MessagingCenter.Send(this, "StartAppShell");
                 StartAppShell();
-
                 return;
             }
 
@@ -149,8 +132,6 @@ namespace HodlWallet.UI.Views
 
         void UsePinButton(object sender, EventArgs e)
         {
-            LoginViewModel loginViewModel=new LoginViewModel();
-            loginViewModel.LastLogin = "Pin"; 
             var view = new LoginView();
             Application.Current.MainPage = view;
         }
