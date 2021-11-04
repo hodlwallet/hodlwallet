@@ -194,7 +194,7 @@ namespace HodlWallet.UI.Views
         
         void FingerprintButtonClicked(object sender, EventArgs e)
         {
-            var view = new BiometricLoginView();
+            var view = new BiometricLoginView(ViewModel.Action);
             Application.Current.MainPage = view;
         }
     }

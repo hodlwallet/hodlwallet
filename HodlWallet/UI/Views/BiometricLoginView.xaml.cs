@@ -132,7 +132,7 @@ namespace HodlWallet.UI.Views
 
         void UsePinButton(object sender, EventArgs e)
         {
-            var view = new LoginView();
+            var view = new LoginView(ViewModel.Action);
             Application.Current.MainPage = view;
         }
     }
