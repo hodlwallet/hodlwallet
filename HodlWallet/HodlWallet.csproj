@@ -134,6 +134,7 @@
 	</Compile>
 	<Compile Update="UI\Locale\LocaleResources.Designer.cs">
 	  <DependentUpon>LocaleResources.resx</DependentUpon>
+	  <DesignTime>True</DesignTime>
 	</Compile>
 </ItemGroup>
 <ItemGroup>

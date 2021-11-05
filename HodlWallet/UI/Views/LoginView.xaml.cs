@@ -32,6 +32,7 @@ using HodlWallet.UI.Views.Demos;
 
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Views
 {
@@ -59,6 +60,11 @@ namespace HodlWallet.UI.Views
                 Header.Text = Locale.LocaleResources.Pin_updateHeader;
                 CancelButton.IsEnabled = true;
                 CancelButton.IsVisible = true;
+            }
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                FingerprintButton.Text = LocaleResources.Login_useFaceId;
             }
         }
 

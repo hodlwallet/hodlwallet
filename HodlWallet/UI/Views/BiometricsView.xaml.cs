@@ -1,5 +1,5 @@
 ﻿//
-// AccountSettingsView.xaml.cs
+// BiometricsView.xaml.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -32,6 +32,7 @@ using Xamarin.Essentials;
 
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Views
 {
@@ -42,7 +43,17 @@ namespace HodlWallet.UI.Views
         {
             bool value = Preferences.Get("biometricsAllow", true);
             InitializeComponent();
-            BiometricSwitch.IsToggled =  value;
+            BiometricSwitch.IsToggled = value;
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                Header.Title= LocaleResources.BiometricsIOS_title;
+                BiometricHeader.Text = LocaleResources.FingerprintAuth_headerIOS;
+                BiometricEnable.Text = LocaleResources.FingerprintAuth_switchIOS;
+
+                // IT IS NECESSARY TO SET THE CORRECT SVG IMAGE OF FACE RECOGNITION INSTEAD OF FINGERPRINT!!
+                BiometricIcon.ResourceId = "HodlWallet.UI.Assets.fingerprint_large.svg";
+            }
         }
 
         private async void Switch_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

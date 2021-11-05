@@ -47,10 +47,9 @@
                        HorizontalTextAlignment="Center" />
 
 
-                <!--Text="{i18n:Translate Text=Login.cancel}"-->
                 <BoxView BackgroundColor="{DynamicResource Fg2}" HeightRequest="1"  WidthRequest="500"/>
 
-                <Button Text ="Use Fingerprint"
+                <Button Text="{i18n:Translate Text=Login.useFingerprint}"
                         Style="{DynamicResource CustomButton}"
                         CornerRadius="0"
                         FontSize="Large"
@@ -61,7 +60,7 @@
 
                 <BoxView BackgroundColor="{DynamicResource Fg2}" HeightRequest="1" WidthRequest="500"/>
 
-                <Button Text ="Use PIN"
+                <Button Text="{i18n:Translate Text=Login.usePin}"
                         Style="{DynamicResource CustomButton}"
                         CornerRadius="0"
                         FontSize="Large"
