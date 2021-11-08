@@ -20,9 +20,9 @@
 	<key>MinimumOSVersion</key>
 	<string>9.3</string>
 	<key>CFBundleDisplayName</key>
-	<string>HODL</string>
+	<string>HODL Testnet</string>
 	<key>CFBundleIdentifier</key>
-	<string>co.hodlwallet</string>
+	<string>co.hodlwallet.testnet</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>XSAppIconAssets</key>
@@ -59,7 +59,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleName</key>
-	<string>HODL</string>
+	<string>HODLTestnet</string>
 	<key>CFBundleVersion</key>
 	<string>20</string>
 	<key>CFBundleShortVersionString</key>
