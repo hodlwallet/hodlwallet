@@ -14,7 +14,8 @@
     <AssemblyName>HodlWallet.iOS</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <ProvisioningType>automatic</ProvisioningType>
+    <ProvisioningType Condition=" '$(Configuration)' == 'Debug' ">automatic</ProvisioningType>
+    <ProvisioningType Condition=" '$(Configuration)' != 'Debug' ">manual</ProvisioningType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -84,13 +85,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Distribution: Hodl Wallet Inc (J829PTGA25)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <DeviceSpecificBuild>true</DeviceSpecificBuild>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <LangVersion>latest</LangVersion>
-    <MtouchInterpreter>-all</MtouchInterpreter>
+    <CodesignProvision>HODL Wallet Testnet</CodesignProvision>
+    <MtouchFloat32>true</MtouchFloat32>
+    <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testnet|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -104,8 +105,9 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Hodl Wallet Inc (J829PTGA25)</CodesignKey>
     <LangVersion>latest</LangVersion>
+    <CodesignProvision>HODL Wallet Testnet</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <None Include="InfoTestnet.plist" Condition="'$(Configuration)' == 'Testnet'">
