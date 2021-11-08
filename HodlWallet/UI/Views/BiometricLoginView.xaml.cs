@@ -55,7 +55,6 @@ namespace HodlWallet.UI.Views
             if (ViewModel.Action == "update")
             {
                 LogoFront.IsVisible = false;
-                Header.Text = LocaleResources.Pin_updateHeader;
                 CancelButton.IsEnabled = true;
                 CancelButton.IsVisible = true;
             }
@@ -120,7 +119,7 @@ namespace HodlWallet.UI.Views
         private async void BiometricsButton_Clicked(object sender, EventArgs e)
         {
             var authResult = await CrossFingerprint.Current.AuthenticateAsync(
-                new AuthenticationRequestConfiguration(Constants.HODL_WALLET, "Use biometric authentication"));
+                new AuthenticationRequestConfiguration(Constants.HODL_WALLET, LocaleResources.BiometricLogin_askAuth));
 
             if (authResult.Authenticated)
             {
