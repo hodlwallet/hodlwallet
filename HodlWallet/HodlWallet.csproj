@@ -3,6 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>latest</LangVersion>
+		<Configurations>Debug;Release;TestNet</Configurations>
+		<Platforms>AnyCPU;iPhone;iPhoneSimulator</Platforms>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DebugType>pdbonly</DebugType>
@@ -12,6 +14,26 @@
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
 		<DebugType></DebugType>
 		<DefineConstants>RELEASE</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'TestNet|iPhone' ">
+	  <IntermediateOutputPath>obj\iPhone\TestNet</IntermediateOutputPath>
+	  <DebugType></DebugType>
+	  <Optimize>false</Optimize>
+	  <OutputPath>bin\iPhone\TestNet</OutputPath>
+	  <DefineConstants></DefineConstants>
+	  <NoWarn></NoWarn>
+	  <LangVersion>Default</LangVersion>
+	  <NoStdLib>false</NoStdLib>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'TestNet|iPhoneSimulator' ">
+	  <IntermediateOutputPath>obj\iPhoneSimulator\TestNet</IntermediateOutputPath>
+	  <DebugType></DebugType>
+	  <Optimize>false</Optimize>
+	  <OutputPath>bin\iPhoneSimulator\TestNet</OutputPath>
+	  <DefineConstants></DefineConstants>
+	  <NoWarn></NoWarn>
+	  <LangVersion>Default</LangVersion>
+	  <NoStdLib>false</NoStdLib>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
