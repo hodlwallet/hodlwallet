@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>latest</LangVersion>
-		<Configurations>Debug;Release;TestNet</Configurations>
+		<Configurations>Debug;Release;Testnet</Configurations>
 		<Platforms>AnyCPU;iPhone;iPhoneSimulator</Platforms>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,21 +15,21 @@
 		<DebugType></DebugType>
 		<DefineConstants>RELEASE</DefineConstants>
 	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'TestNet|iPhone' ">
-	  <IntermediateOutputPath>obj\iPhone\TestNet</IntermediateOutputPath>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testnet|iPhone' ">
+	  <IntermediateOutputPath>obj\iPhone\Testnet\netstandard2.1</IntermediateOutputPath>
 	  <DebugType></DebugType>
 	  <Optimize>false</Optimize>
-	  <OutputPath>bin\iPhone\TestNet</OutputPath>
+	  <OutputPath>bin\iPhone\Testnet\netstandard2.1</OutputPath>
 	  <DefineConstants></DefineConstants>
 	  <NoWarn></NoWarn>
 	  <LangVersion>Default</LangVersion>
 	  <NoStdLib>false</NoStdLib>
 	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'TestNet|iPhoneSimulator' ">
-	  <IntermediateOutputPath>obj\iPhoneSimulator\TestNet</IntermediateOutputPath>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testnet|iPhoneSimulator' ">
+	  <IntermediateOutputPath>obj\iPhoneSimulator\Testnet\netstandard2.1</IntermediateOutputPath>
 	  <DebugType></DebugType>
 	  <Optimize>false</Optimize>
-	  <OutputPath>bin\iPhoneSimulator\TestNet</OutputPath>
+	  <OutputPath>bin\iPhoneSimulator\Testnet\netstandard2.1</OutputPath>
 	  <DefineConstants></DefineConstants>
 	  <NoWarn></NoWarn>
 	  <LangVersion>Default</LangVersion>

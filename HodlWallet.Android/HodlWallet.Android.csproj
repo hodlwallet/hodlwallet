@@ -47,20 +47,10 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <RunWithWarnings>true</RunWithWarnings>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'TestNet|iPhone' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testnet|AnyCPU' ">
     <DebugType></DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\iPhone\TestNet</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <JavaMaximumHeapSize></JavaMaximumHeapSize>
-    <AndroidUseAapt2>false</AndroidUseAapt2>
-    <AndroidManifest></AndroidManifest>
-    <LangVersion>Default</LangVersion>
-    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'TestNet|iPhoneSimulator' ">
-    <DebugType></DebugType>
-    <Optimize>false</Optimize>
+    <OutputPath>bin\Testnet</OutputPath>
     <WarningLevel>4</WarningLevel>
     <JavaMaximumHeapSize></JavaMaximumHeapSize>
     <AndroidUseAapt2>false</AndroidUseAapt2>
