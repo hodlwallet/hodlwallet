@@ -529,6 +529,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No biometrics authentication available, please check settings of the device..
+        /// </summary>
+        internal static string Biometrics_notAvailableWarning {
+            get {
+                return ResourceManager.GetString("Biometrics.notAvailableWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fingerprint ID.
         /// </summary>
         internal static string BiometricsAndroid_title {

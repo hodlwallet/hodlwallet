@@ -33,6 +33,7 @@ using Xamarin.Essentials;
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
 using HodlWallet.UI.Locale;
+using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.UI.Views
 {
@@ -63,7 +64,7 @@ namespace HodlWallet.UI.Views
                 bool availability = await CrossFingerprint.Current.IsAvailableAsync();
                 if (!availability)
                 {
-                    await DisplayAlert("Warning", "No biometrics authentication available, please check settings of the device.", "Ok");
+                    await this.DisplayToast(LocaleResources.Biometrics_notAvailableWarning);
                     return;
                 }
             }

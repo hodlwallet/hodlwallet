@@ -916,4 +916,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Use Pin</value>
     <comment>label for pin button in BiometricLoginView</comment>
   </data>
+  <data name="Biometrics.notAvailableWarning" xml:space="preserve">
+    <value>No biometrics authentication available, please check settings of the device.</value>
+    <comment>Warning message in BiometricsView</comment>
+  </data>
 </root>
