@@ -61,7 +61,7 @@
 	<key>CFBundleName</key>
 	<string>HODL</string>
 	<key>CFBundleVersion</key>
-	<string>20</string>
+	<string>22</string>
 	<key>CFBundleShortVersionString</key>
 	<string>19.0.0</string>
 	<key>UIRequiresFullScreen</key>
