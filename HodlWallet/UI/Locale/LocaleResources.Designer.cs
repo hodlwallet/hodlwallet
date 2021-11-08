@@ -529,6 +529,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use biometric authentication..
+        /// </summary>
+        internal static string BiometricLogin_askAuth {
+            get {
+                return ResourceManager.GetString("BiometricLogin.askAuth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No biometrics authentication available, please check settings of the device..
         /// </summary>
         internal static string Biometrics_notAvailableWarning {
@@ -727,7 +736,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select the way of autentication.
+        ///   Looks up a localized string similar to Select the way of autentication..
         /// </summary>
         internal static string Login_wayAuthentication {
             get {

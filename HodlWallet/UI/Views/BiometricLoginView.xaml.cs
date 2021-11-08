@@ -33,6 +33,7 @@ using HodlWallet.UI.Views.Demos;
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
 using HodlWallet.UI.Locale;
+using HodlWallet.Core.Utils;
 
 namespace HodlWallet.UI.Views
 {
@@ -119,7 +120,7 @@ namespace HodlWallet.UI.Views
         private async void BiometricsButton_Clicked(object sender, EventArgs e)
         {
             var authResult = await CrossFingerprint.Current.AuthenticateAsync(
-                new AuthenticationRequestConfiguration("Heads up!", "I would like to use biometrics"));
+                new AuthenticationRequestConfiguration(Constants.HODL_WALLET, "Use biometric authentication"));
 
             if (authResult.Authenticated)
             {
