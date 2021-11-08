@@ -66,5 +66,7 @@
 	<string>3.1.10</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Use your biometric authentication to unlock.</string>
 </dict>
 </plist>
