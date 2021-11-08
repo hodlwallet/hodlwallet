@@ -727,6 +727,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select the way of autentication.
+        /// </summary>
+        internal static string Login_wayAuthentication {
+            get {
+                return ResourceManager.GetString("Login.wayAuthentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Coin Control.
         /// </summary>
         internal static string Menu_coinControl {

@@ -920,4 +920,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>No biometrics authentication available, please check settings of the device.</value>
     <comment>Warning message in BiometricsView</comment>
   </data>
+  <data name="Login.wayAuthentication" xml:space="preserve">
+    <value>Select the way of autentication</value>
+    <comment>Header of BiometricLoginView</comment>
+  </data>
 </root>
