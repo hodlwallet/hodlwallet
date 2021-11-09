@@ -49,7 +49,7 @@ namespace HodlWallet.UI.Views
             ViewModel.Action = action;
             LoginViewModel loginViewModel = new LoginViewModel
             {
-                LastLogin = "Fingerprint"
+                LastLogin = "Biometric"
             };
 
             if (ViewModel.Action == "update")
@@ -57,11 +57,6 @@ namespace HodlWallet.UI.Views
                 LogoFront.IsVisible = false;
                 CancelButton.IsEnabled = true;
                 CancelButton.IsVisible = true;
-            }
-
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                BiometricsButton.Text = LocaleResources.Login_useFaceId;
             }
         }
 

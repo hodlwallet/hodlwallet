@@ -49,7 +49,7 @@
 
                 <BoxView BackgroundColor="{DynamicResource Fg2}" HeightRequest="1"  WidthRequest="500"/>
 
-                <Button Text="{i18n:Translate Text=Login.useFingerprint}"
+                <Button Text="{i18n:Translate Text=Login.useBiometric}"
                         Style="{DynamicResource CustomButton}"
                         CornerRadius="0"
                         FontSize="Large"

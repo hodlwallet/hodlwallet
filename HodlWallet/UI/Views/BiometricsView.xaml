@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              x:Class="HodlWallet.UI.Views.BiometricsView"
-             Title="{i18n:Translate BiometricsAndroid.title}"
+             Title="{i18n:Translate Biometrics.title}"
              BackgroundColor="{DynamicResource Bg}"
              NavigationPage.HasNavigationBar="True"
              x:Name="Header">
@@ -20,7 +20,7 @@
                 
                 <BoxView HeightRequest="70"/>
 
-                <Label Text="{i18n:Translate Text=FingerprintAuth.headerAndroid}"
+                <Label Text="{i18n:Translate Text=BiometricAuth.header}"
                        x:Name="BiometricHeader"
                        FontSize="Medium"
                        VerticalOptions="FillAndExpand"
@@ -31,7 +31,7 @@
             </StackLayout>
 
             <StackLayout  VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20, 0">
-                <Label Text="{i18n:Translate Text=FingerprintAuth.switchAndroid}"
+                <Label Text="{i18n:Translate Text=BiometricAuth.switch}"
                        FontSize="Subtitle"
                        x:Name="BiometricEnable"
                        FontFamily="{StaticResource Sans-Regular}"

@@ -176,7 +176,7 @@
                             Style="{DynamicResource LoginDigitButton}" />
                 </FlexLayout>
 
-                <Button Text="{i18n:Translate Text=Login.useFingerprint}"
+                <Button Text="{i18n:Translate Text=Login.useBiometric}"
                 Style="{DynamicResource CustomButton}"
                 CornerRadius="0"
                 FontSize="Large"

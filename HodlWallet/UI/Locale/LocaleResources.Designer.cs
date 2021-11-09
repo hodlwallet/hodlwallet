@@ -529,6 +529,24 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use your biometric authentication to unlock your wallet and send money up to a set limit..
+        /// </summary>
+        internal static string BiometricAuth_header {
+            get {
+                return ResourceManager.GetString("BiometricAuth.header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Biometric Authentication for Hodl.
+        /// </summary>
+        internal static string BiometricAuth_switch {
+            get {
+                return ResourceManager.GetString("BiometricAuth.switch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use biometric authentication..
         /// </summary>
         internal static string BiometricLogin_askAuth {
@@ -547,20 +565,11 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fingerprint ID.
+        ///   Looks up a localized string similar to Biometrics ID.
         /// </summary>
-        internal static string BiometricsAndroid_title {
+        internal static string Biometrics_title {
             get {
-                return ResourceManager.GetString("BiometricsAndroid.title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Face ID.
-        /// </summary>
-        internal static string BiometricsIOS_title {
-            get {
-                return ResourceManager.GetString("BiometricsIOS.title", resourceCulture);
+                return ResourceManager.GetString("Biometrics.title", resourceCulture);
             }
         }
         
@@ -628,38 +637,11 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use your fingerprint to unlock your wallet and send money up to a set limit..
-        /// </summary>
-        internal static string FingerprintAuth_headerAndroid {
-            get {
-                return ResourceManager.GetString("FingerprintAuth.headerAndroid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use facial recognition to unlock your wallet and send money up to a set limit..
-        /// </summary>
-        internal static string FingerprintAuth_headerIOS {
-            get {
-                return ResourceManager.GetString("FingerprintAuth.headerIOS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Fingerprint Authentication Spending Limit Screen..
         /// </summary>
         internal static string FingerprintAuth_limitButtonAndroid {
             get {
                 return ResourceManager.GetString("FingerprintAuth.limitButtonAndroid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Touch ID Spending Limit Screen..
-        /// </summary>
-        internal static string FingerprintAuth_limitButtonIOS {
-            get {
-                return ResourceManager.GetString("FingerprintAuth.limitButtonIOS", resourceCulture);
             }
         }
         
@@ -682,24 +664,6 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable Fingerprint Authentication for Hodl.
-        /// </summary>
-        internal static string FingerprintAuth_switchAndroid {
-            get {
-                return ResourceManager.GetString("FingerprintAuth.switchAndroid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enable Touch ID for Hodl.
-        /// </summary>
-        internal static string FingerprintAuth_switchIOS {
-            get {
-                return ResourceManager.GetString("FingerprintAuth.switchIOS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Login_cancel {
@@ -709,25 +673,16 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Face Id.
+        ///   Looks up a localized string similar to Biometric Authentication.
         /// </summary>
-        internal static string Login_useFaceId {
+        internal static string Login_useBiometric {
             get {
-                return ResourceManager.GetString("Login.useFaceId", resourceCulture);
+                return ResourceManager.GetString("Login.useBiometric", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Fingerprint.
-        /// </summary>
-        internal static string Login_useFingerprint {
-            get {
-                return ResourceManager.GetString("Login.useFingerprint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use Pin.
+        ///   Looks up a localized string similar to Pin.
         /// </summary>
         internal static string Login_usePin {
             get {

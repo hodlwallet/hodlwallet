@@ -61,11 +61,6 @@ namespace HodlWallet.UI.Views
                 CancelButton.IsEnabled = true;
                 CancelButton.IsVisible = true;
             }
-
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                FingerprintButton.Text = LocaleResources.Login_useFaceId;
-            }
         }
 
         protected override void OnAppearing()
