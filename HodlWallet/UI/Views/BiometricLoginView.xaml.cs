@@ -45,11 +45,12 @@ namespace HodlWallet.UI.Views
         public BiometricLoginView(string action = null)
         {
             InitializeComponent();
+            SubscribeToMessages();
 
             ViewModel.Action = action;
             LoginViewModel loginViewModel = new LoginViewModel
             {
-                LastLogin = "Biometric"
+                LastLogin = "biometric"
             };
 
             if (ViewModel.Action == "update")
@@ -77,7 +78,12 @@ namespace HodlWallet.UI.Views
             ViewModel.LoginFormVisible = false;
         }
 
-        void StartAppShell()
+        void SubscribeToMessages()
+        {
+            MessagingCenter.Subscribe<BiometricLoginViewModel>(this, "StartAppShell", StartAppShell);
+        }
+
+        void StartAppShell(BiometricLoginViewModel _)
         {
             Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
 
@@ -118,13 +124,16 @@ namespace HodlWallet.UI.Views
 
             if (authResult.Authenticated)
             {
-                Debug.WriteLine("[Fingerprint] Logged in!");
+                Debug.WriteLine("[Biometrics] Logged in!");
                 ViewModel.IsLoading = true;
 
                 // DONE! We navigate to the root view
                 await Task.Delay(65);
 
-                StartAppShell();
+                //MessagingCenter.Send(this, "StartAppShell");
+                //StartAppShell();
+                //StartAppShell(this);
+                ViewModel.begind();
                 return;
             }
 

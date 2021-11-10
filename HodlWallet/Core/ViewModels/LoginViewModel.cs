@@ -76,7 +76,7 @@ namespace HodlWallet.Core.ViewModels
         {
             get
             {
-                SetProperty(ref lastLogin, Preferences.Get("lastLogin", "Pin"));
+                SetProperty(ref lastLogin, Preferences.Get("lastLogin", "pin"));
                 return lastLogin;
             }
             set

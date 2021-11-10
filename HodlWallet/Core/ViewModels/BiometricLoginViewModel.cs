@@ -51,8 +51,11 @@ namespace HodlWallet.Core.ViewModels
 
         public BiometricLoginViewModel()
         {
-            //DigitCommand = new Command<string>((s) => _ = AddDigit(int.Parse(s)));
-            //BackspaceCommand = new Command(RemoveDigit);
+        }
+
+        public void begind()
+        {
+            MessagingCenter.Send(this, "StartAppShell");
         }
 
         

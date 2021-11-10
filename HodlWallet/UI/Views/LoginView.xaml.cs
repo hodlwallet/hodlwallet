@@ -31,8 +31,6 @@ using HodlWallet.Core.Services;
 using HodlWallet.UI.Views.Demos;
 
 using Plugin.Fingerprint;
-using Plugin.Fingerprint.Abstractions;
-using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Views
 {
@@ -52,7 +50,7 @@ namespace HodlWallet.UI.Views
             SubscribeToMessages();
 
             ViewModel.Action = action;
-            ViewModel.LastLogin = "Pin";
+            ViewModel.LastLogin = "pin";
 
             if (ViewModel.Action == "update")
             {

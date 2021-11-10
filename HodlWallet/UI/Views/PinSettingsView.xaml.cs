@@ -47,11 +47,11 @@ namespace HodlWallet.UI.Views
 
         private void UpdatePin_Clicked(object sender, EventArgs e)
         {
-            string lastLogin = Preferences.Get("lastLogin", "Pin");
+            string lastLogin = Preferences.Get("lastLogin", "pin");
             bool biometricsAllow = Preferences.Get("biometricsAllow", false);
             bool availability = Preferences.Get("biometricsAvailable", false);
 
-            if (biometricsAllow & (lastLogin == "Fingerprint" & availability))
+            if (biometricsAllow & (lastLogin == "biometric" & availability))
             {
                 var view = new BiometricLoginView("update");
                 var nav = new NavigationPage(view);

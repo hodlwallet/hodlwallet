@@ -98,11 +98,11 @@ namespace HodlWallet.Core.Services
 
         public async void ShowLogin(string action = null)
         {
-            string lastLogin = Preferences.Get("lastLogin", "Pin");
+            string lastLogin = Preferences.Get("lastLogin", "pin");
             bool biometricsAllow = Preferences.Get("biometricsAllow", false);
             BiometricsAvailable = await CrossFingerprint.Current.IsAvailableAsync();
 
-            if (biometricsAllow & (lastLogin == "Biometric" & BiometricsAvailable))
+            if (biometricsAllow & (lastLogin == "biometric" & BiometricsAvailable))
             {
                 var view = new BiometricLoginView(action);
 
