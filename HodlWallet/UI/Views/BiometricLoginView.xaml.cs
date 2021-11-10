@@ -45,9 +45,9 @@ namespace HodlWallet.UI.Views
         public BiometricLoginView(string action = null)
         {
             InitializeComponent();
+            ViewModel.Action = action;
             SubscribeToMessages();
 
-            ViewModel.Action = action;
             LoginViewModel loginViewModel = new LoginViewModel
             {
                 LastLogin = "biometric"
@@ -142,8 +142,17 @@ namespace HodlWallet.UI.Views
 
         void UsePinButton(object sender, EventArgs e)
         {
-            var view = new LoginView(ViewModel.Action);
-            Application.Current.MainPage = view;
+            if (ViewModel.Action == "update")
+            {
+                var view = new LoginView(ViewModel.Action);
+                var nav = new NavigationPage(view);
+                Navigation.PushModalAsync(nav);
+            }
+            else
+            {
+                var view = new LoginView(ViewModel.Action);
+                Application.Current.MainPage = view;
+            }
         }
     }
 }
