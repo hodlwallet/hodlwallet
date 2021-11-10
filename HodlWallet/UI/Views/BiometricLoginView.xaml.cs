@@ -67,6 +67,7 @@ namespace HodlWallet.UI.Views
             base.OnAppearing();
 
             ViewModel.LoginFormVisible = true;
+            BiometricsButton_Clicked(this,new EventArgs());
         }
 
         protected override void OnDisappearing()
