@@ -59,6 +59,8 @@ namespace HodlWallet.UI.Views
                 CancelButton.IsEnabled = true;
                 CancelButton.IsVisible = true;
             }
+
+            BiometricsButton_Clicked(this, new EventArgs());
         }
 
 
@@ -67,7 +69,6 @@ namespace HodlWallet.UI.Views
             base.OnAppearing();
 
             ViewModel.LoginFormVisible = true;
-            BiometricsButton_Clicked(this,new EventArgs());
         }
 
         protected override void OnDisappearing()
@@ -131,10 +132,7 @@ namespace HodlWallet.UI.Views
                 // DONE! We navigate to the root view
                 await Task.Delay(65);
 
-                //MessagingCenter.Send(this, "StartAppShell");
-                //StartAppShell();
-                //StartAppShell(this);
-                ViewModel.begind();
+                ViewModel.StartAppShell();
                 return;
             }
 

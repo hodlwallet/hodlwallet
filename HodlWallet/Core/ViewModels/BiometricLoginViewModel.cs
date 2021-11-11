@@ -53,7 +53,7 @@ namespace HodlWallet.Core.ViewModels
         {
         }
 
-        public void begind()
+        public void StartAppShell()
         {
             MessagingCenter.Send(this, "StartAppShell");
         }
