@@ -145,9 +145,9 @@ namespace HodlWallet.UI.Views
             }
             else if (ViewModel.Action == "pop") // Login after logout or timeout
             {
-                //Navigation.PopModalAsync();
+                Navigation.PopModalAsync();
                 //Shell.Current.GoToAsync("/home");
-                Shell.Current.GoToAsync("../home");
+                //Shell.Current.GoToAsync("../home");
 
                 return;
             }
