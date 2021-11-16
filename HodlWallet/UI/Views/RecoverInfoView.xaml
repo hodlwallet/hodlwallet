@@ -13,30 +13,28 @@
                      Clicked="CloseToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <FlexLayout Direction="Column"
-                        BackgroundColor="{DynamicResource Bg}">
-                <BoxView FlexLayout.Grow="1" />
-                <utils:Icon ResourceId="HodlWallet.UI.Assets.recover_wallet_illustration.svg"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            FlexLayout.Grow="2" />
-                <Label Text="{i18n:Translate Text=Recover.header}"
-                       FontFamily="{StaticResource Sans-Regular}"
-                       TextColor="{DynamicResource FgSuccess}"
-                       HorizontalTextAlignment="Center"
-                       FontSize="Medium"
-                       FlexLayout.AlignSelf="Center"
-                       FlexLayout.Grow="1" />
-                <BoxView FlexLayout.Grow="4" />
-                <Button Text="{i18n:Translate Text=Recover.next}"
-                        Style="{DynamicResource CustomButton}"
-                        BackgroundColor="{DynamicResource Bg2}"
-                        FontSize="Large"
-                        Clicked="Next_Clicked"
-                        FlexLayout.AlignSelf="Stretch"
+        <FlexLayout Direction="Column"
+                    BackgroundColor="{DynamicResource Bg}">
+            <BoxView FlexLayout.Grow="1" />
+            <utils:Icon ResourceId="HodlWallet.UI.Assets.recover_wallet_illustration.svg"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
                         FlexLayout.Grow="2" />
-            </FlexLayout>
-        </AbsoluteLayout>
+            <Label Text="{i18n:Translate Text=Recover.header}"
+                   FontFamily="{StaticResource Sans-Regular}"
+                   TextColor="{DynamicResource FgSuccess}"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   FlexLayout.AlignSelf="Center"
+                   FlexLayout.Grow="1" />
+            <BoxView FlexLayout.Grow="4" />
+            <Button Text="{i18n:Translate Text=Recover.next}"
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{DynamicResource Bg2}"
+                    FontSize="Large"
+                    Clicked="Next_Clicked"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="2" />
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

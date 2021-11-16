@@ -26,7 +26,10 @@ using Android.Runtime;
 using Android.OS;
 using Android.Views;
 
+using Xamarin.Forms.Platform.Android;
+
 using Serilog;
+using Rg.Plugins.Popup;
 
 using HodlWallet.UI;
 using HodlWallet.Core.Interfaces;
@@ -48,6 +51,8 @@ namespace HodlWallet.Droid
 
             base.OnCreate(savedInstanceState);
 
+            Popup.Init(this);
+
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
@@ -59,6 +64,8 @@ namespace HodlWallet.Droid
             global::ZXing.Mobile.MobileBarcodeScanner.Initialize(Application);
 
             LoadApplication(new App());
+
+            Xamarin.Forms.Application.Current.PageAppearing += Current_PageAppearing;
 
             SetupLogging();
         }
@@ -85,6 +92,11 @@ namespace HodlWallet.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
+        public override void OnBackPressed()
+        {
+            Popup.SendBackPressed(base.OnBackPressed);
+        }
+
         void SetupLogging()
         {
             // Please call after LoadApplication
@@ -100,6 +112,15 @@ namespace HodlWallet.Droid
                 .Enrich.WithProperty(Serilog.Core.Constants.SourceContextPropertyName, "HodlWallet") // Sets the Tag field.
                 .CreateLogger();
 #endif
+        }
+
+        void Current_PageAppearing(object sender, Xamarin.Forms.Page e)
+        {
+            if (e is Xamarin.Forms.NavigationPage) return;
+
+            var bg = e.BackgroundColor.ToAndroid();
+
+            if (Window.StatusBarColor != bg) Window.SetStatusBarColor(bg);
         }
 
         internal static MainActivity Instance { get; private set; }

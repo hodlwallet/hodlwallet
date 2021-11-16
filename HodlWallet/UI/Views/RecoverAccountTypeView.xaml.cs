@@ -107,7 +107,6 @@ namespace HodlWallet.UI.Views
         {
             Debug.WriteLine($"[DoneButton_Clicked] Account type selected: {ViewModel.AccountType}");
 
-            ViewModel.InitializePrice();
             ViewModel.InitializeWallet(ViewModel.AccountType);
         }
     }

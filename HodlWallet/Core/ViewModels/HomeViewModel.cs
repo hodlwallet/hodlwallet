@@ -34,14 +34,13 @@ using Xamarin.Essentials;
 
 using NBitcoin;
 
-using Liviano.Models;
-
 using HodlWallet.Core.Models;
 using HodlWallet.Core.Utils;
 using HodlWallet.Core.Extensions;
 
 using Liviano.Events;
 using Liviano.Interfaces;
+using Liviano.Models;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -209,7 +208,7 @@ namespace HodlWallet.Core.ViewModels
             }
             else
             {
-                WalletService.OnStarted += _WalletService_OnStarted;
+                WalletService.OnStarted += WalletService_OnStarted;
             }
 
             IsBtcEnabled = true;
@@ -264,7 +263,6 @@ namespace HodlWallet.Core.ViewModels
                 if (wallet.Accounts[i].Id != account.Id) continue;
 
                 WalletService.Wallet.CurrentAccount = WalletService.Wallet.Accounts[i];
-                WalletService.Wallet.CurrentAccountId = WalletService.Wallet.Accounts[i].Id;
 
                 break;
             }
@@ -397,7 +395,7 @@ namespace HodlWallet.Core.ViewModels
         }
         */
 
-        void _WalletService_OnStarted(object sender, EventArgs e)
+        void WalletService_OnStarted(object sender, EventArgs e)
         {
             logger = WalletService.Logger;
 
@@ -416,6 +414,24 @@ namespace HodlWallet.Core.ViewModels
         {
             WalletService.Wallet.ElectrumPool.OnNewTransaction += Wallet_OnNewTransaction;
             WalletService.Wallet.ElectrumPool.OnUpdateTransaction += Wallet_OnUpdateTransaction;
+            WalletService.Wallet.OnCurrentAccountChanged += Wallet_OnCurrentAccountChanged;
+        }
+
+        private void Wallet_OnCurrentAccountChanged(object sender, EventArgs e)
+        {
+            LoadTransactions();
+
+            Balance = WalletService.Wallet.CurrentAccount.GetBalance().ToUnit(MoneyUnit.BTC);
+            AccountName = WalletService.Wallet.CurrentAccount.Name;
+
+            WalletService.Wallet.Disconnect();
+
+            Task.Factory.StartNew(
+                () => WalletService.Wallet.Sync(),
+                WalletService.Wallet.Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
         }
 
         void Wallet_OnNewTransaction(object sender, TxEventArgs e)

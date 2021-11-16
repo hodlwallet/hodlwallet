@@ -24,39 +24,47 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.CommunityToolkit.UI.Views.Options;
+using Rg.Plugins.Popup.Extensions;
 
-using HodlWallet.Core.Utils;
-using HodlWallet.UI.Controls;
-using HodlWallet.UI.Locale;
 using Liviano.Utilities;
+using HodlWallet.UI.Controls;
 
 namespace HodlWallet.UI.Extensions
 {
     public static class ContentPageExtentions
     {
-        public static async Task DisplayToast(this ContentPage view, string content)
+        const int TOAST_DURATION_MS = 2500;
+
+        public static async Task DisplayToast(this ContentPage view, string message)
         {
-            var promptTaskSource = new TaskCompletionSource<bool>();
+            Guard.NotNull(message, nameof(message));
+            Guard.NotEmpty(message, nameof(message));
 
-            if (CanAttachToView(view))
+            var res = Application.Current.Resources;
+            var bg = (Color)res["Bg3"];
+            var fg = (Color)res["Fg3"];
+            var fontFamily = (OnPlatform<string>)res["Sans-Regular"];
+            var font = Font.OfSize(fontFamily, Device.GetNamedSize(NamedSize.Medium, view));
+
+            var toastOptions = new ToastOptions
             {
-                promptTaskSource = CreateToastFor(view, content);
-            }
-            else
-            {
-                Debug.WriteLine("[DisplayToast] Cannot attach toast to view, your layout must be a AbsoluteLayout");
+                BackgroundColor = bg,
+                MessageOptions = new MessageOptions
+                {
+                    Font = font,
+                    Foreground = fg,
+                    Message = message
+                },
+                Duration = TimeSpan.FromMilliseconds(TOAST_DURATION_MS),
+                CornerRadius = 5
+            };
 
-                _ = view.DisplayAlert(Constants.HODL_WALLET, content, LocaleResources.Error_ok);
-
-                promptTaskSource.SetResult(true);
-            }
-
-            await promptTaskSource.Task;
+            await view.DisplayToastAsync(toastOptions);
         }
 
         public static async Task<bool> DisplayPrompt(this ContentPage view, string title, string message = null, string okButton = null, string cancelButton = null)
@@ -65,89 +73,16 @@ namespace HodlWallet.UI.Extensions
             Guard.NotEmpty(title, nameof(title));
 
             var promptTaskSource = new TaskCompletionSource<bool>();
-            if (CanAttachToView(view))
-            {
-                var prompt = CreatePromptFor(view, title, message, okButton, cancelButton);
-
-                prompt.Responded += (object sender, bool res) =>
-                {
-                    promptTaskSource.SetResult(res);
-                };
-            }
-            else
-            {
-                Debug.WriteLine("[DisplayToast] Cannot attach toast to view, your layout must be a AbsoluteLayout");
-
-                var res = view.DisplayAlert(title, message, okButton, cancelButton).Result;
-
-                promptTaskSource.SetResult(res);
-            }
-
-            return await promptTaskSource.Task;
-        }
-
-        static bool CanAttachToView(ContentPage view)
-        {
-            // Supported layouts that we can add a view to.
-            if (view.Content.GetType() == typeof(AbsoluteLayout)) return true;
-
-            return false;
-        }
-
-        static PromptView CreatePromptFor(ContentPage view, string title, string message = null, string okButton = null, string cancelButton = null)
-        {
-            if (!(GetContentType(view) == "AbsoluteLayout"))
-                throw new ArgumentException("Should not be called without an AbsoluteLayout");
-
             var prompt = new PromptView(title, message, okButton, cancelButton);
-            var layout = (AbsoluteLayout)view.Content;
 
-            var prevPrompt = layout.Children.FirstOrDefault((View child) =>
-                child.GetType() == typeof(PromptView)
-            );
+            await view.Navigation.PushPopupAsync(prompt);
 
-            if (prevPrompt != null) return (PromptView)prevPrompt;
-
-            layout.Children.Add(prompt);
-
-            prompt.Init();
-
-            return prompt;
-        }
-
-        static TaskCompletionSource<bool> CreateToastFor(ContentPage view, string content)
-        {
-            if (!(GetContentType(view) == "AbsoluteLayout"))
-                throw new ArgumentException("Should not be called without an AbsoluteLayout");
-
-            var taskSource = new TaskCompletionSource<bool>();
-            var toast = new ToastView { ToastText = content };
-            var layout = (AbsoluteLayout)view.Content;
-
-            var prevToast = layout.Children.FirstOrDefault(
-                (View child) => child.GetType() == typeof(ToastView)
-            );
-
-            if (prevToast != null) layout.Children.Remove(prevToast);
-
-            layout.Children.Add(toast);
-
-            toast.Init();
-
-            toast.OnClosed += (object sender, bool res) =>
+            prompt.Responded += (object sender, bool res) =>
             {
-                layout.Children.Remove(toast);
+                promptTaskSource.SetResult(res);
             };
 
-            taskSource.SetResult(true);
-            return taskSource;
-        }
-
-        static string GetContentType(ContentPage view)
-        {
-            if (view.Content.GetType() == typeof(AbsoluteLayout)) return "AbsoluteLayout";
-
-            throw new ArgumentException("This function should not be called if we don't have a valid layout, right now that means AbsoluteLayout");
+            return await promptTaskSource.Task;
         }
     }
 }

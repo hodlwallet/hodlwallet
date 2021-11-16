@@ -23,16 +23,66 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using System.IO;
 
-using Xamarin.Essentials;
+using Newtonsoft.Json;
 
 using Liviano.Bips;
 using Liviano.Exceptions;
 using Liviano.Utilities;
+using Xamarin.Essentials;
+
+#if !DEBUG
+using Xamarin.Essentials;
+#endif
 
 namespace HodlWallet.Core.Services
 {
+#if DEBUG
+    public static class DebugStorage
+    {
+        static string AppPath => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        static string DbFile => Path.Combine(AppPath, "storage.debug.json");
+
+        static readonly object @lock = new();
+
+        static Dictionary<string, string> Data = new();
+
+        public static string Get(string key)
+        {
+            var json = "{}";
+            if (File.Exists(DbFile))
+            {
+                json = File.ReadAllText(DbFile);
+            }
+
+            lock (@lock) Data = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+
+            if (Data.ContainsKey(key)) return Data[key];
+            return null;
+        }
+
+        public static void Set(string key, string val)
+        {
+            lock (@lock) Data[key] = val;
+
+            var json = JsonConvert.SerializeObject(Data);
+            File.WriteAllText(DbFile, json);
+        }
+
+        public static void RemoveAll()
+        {
+            lock (@lock) Data.Clear();
+
+            File.Delete(DbFile);
+        }
+    }
+#endif
+
     public static class SecureStorageService
     {
         const string WALLET_ID_KEY = "wallet-id";
@@ -40,7 +90,7 @@ namespace HodlWallet.Core.Services
         const string PASSWORD_KEY = "password";
         const string MNEMONIC_KEY = "mnemonic";
         const string NETWORK_KEY = "network";
-        const string SEED_BIRTHDAY_KEY = "seed-birthday";
+
         /*
          * Key string format to identify the color bellowing to an account:
          * ACCOUNT_COLOR_PREFIX_KEY + WALLET_ID + account_name
@@ -163,29 +213,29 @@ namespace HodlWallet.Core.Services
 
         public static void RemoveAll()
         {
+#if DEBUG
+            DebugStorage.RemoveAll();
+#else
             SecureStorage.RemoveAll();
+#endif
         }
-
-        //public static void LogSecureStorageKeys()
-        //{
-        //    var logger = WalletService.Instance.Logger;
-
-        //    logger.Debug("Network: {0}", SecureStorageProvider.GetNetwork());
-        //    logger.Debug("Wallet ID: {0}", SecureStorageProvider.GetWalletId());
-        //    logger.Debug("Seed Birthday: {0}", SecureStorageProvider.GetSeedBirthday());
-        //    logger.Debug("Mnemonic: {0}", SecureStorageProvider.GetMnemonic());
-        //    logger.Debug("Password: {0}", SecureStorageProvider.GetPassword());
-        //    logger.Debug("Pin: {0}", SecureStorageProvider.GetPin());
-        //}
 
         static string Get(string key)
         {
+#if DEBUG
+            return DebugStorage.Get(key);
+#else
             return SecureStorage.GetAsync(key).Result;
+#endif
         }
 
         static void Set(string key, string val)
         {
+#if DEBUG
+            DebugStorage.Set(key, val);
+#else
             SecureStorage.SetAsync(key, val);
+#endif
         }
     }
 }

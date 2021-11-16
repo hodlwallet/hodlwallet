@@ -17,50 +17,48 @@
         <Label x:Name="BalanceNavigationTitleLabel" VerticalOptions="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource Mono-Regular}" FontSize="Medium" Opacity="0.00" />
     </Shell.TitleView>
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="20,0,20,0">
-                <ScrollView x:Name="TransactionsScrollView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Scrolled="TransactionsScrollView_Scrolled">
-                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <FlexLayout Direction="Row">
-                            <StackLayout Orientation="Vertical">
-                                <Label x:Name="AccountNameLabel"
-                                       Text="{Binding AccountName}"
-                                       Style="{DynamicResource CustomLabel}"
-                                       FontSize="Small"
-                                       TextColor="{DynamicResource Fg2}" />
-                                <StackLayout x:Name="BalanceStackLayout" Orientation="Horizontal" Spacing="0">
-                                    <Label x:Name="BalanceLabel"
-                                           Text="{Binding Balance}"
-                                           Style="{DynamicResource CustomLabel}"
-                                           FontFamily="{StaticResource Mono-Bold}" />
-                                    <Label Text="{Binding Currency, StringFormat=' {0}'}"
-                                           Style="{DynamicResource CustomLabel}"
-                                           FontFamily="{StaticResource Mono-Bold}" />
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="Balance_Tapped" NumberOfTapsRequired="1" />
-                                    </StackLayout.GestureRecognizers>
-                                </StackLayout>
-                            </StackLayout>
-                            <Label Text="{Binding Rate, StringFormat='1 BTC = ${0:n}'}"
-                                   FlexLayout.Grow="1"
-                                   HorizontalTextAlignment="End"
+        <StackLayout Margin="20,0,20,0">
+            <ScrollView x:Name="TransactionsScrollView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Scrolled="TransactionsScrollView_Scrolled">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <FlexLayout Direction="Row">
+                        <StackLayout Orientation="Vertical">
+                            <Label x:Name="AccountNameLabel"
+                                   Text="{Binding AccountName}"
                                    Style="{DynamicResource CustomLabel}"
-                                   FontSize="Micro"
-                                   TextColor="{DynamicResource Fg2}"
-                                   FontFamily="{DynamicResource Mono-Regular}" />
-                        </FlexLayout>
+                                   FontSize="Small"
+                                   TextColor="{DynamicResource Fg2}" />
+                            <StackLayout x:Name="BalanceStackLayout" Orientation="Horizontal" Spacing="0">
+                                <Label x:Name="BalanceLabel"
+                                       Text="{Binding Balance}"
+                                       Style="{DynamicResource CustomLabel}"
+                                       FontFamily="{StaticResource Mono-Bold}" />
+                                <Label Text="{Binding Currency, StringFormat=' {0}'}"
+                                       Style="{DynamicResource CustomLabel}"
+                                       FontFamily="{StaticResource Mono-Bold}" />
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Balance_Tapped" NumberOfTapsRequired="1" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </StackLayout>
+                        <Label Text="{Binding Rate, StringFormat='1 BTC = ${0:n}'}"
+                               FlexLayout.Grow="1"
+                               HorizontalTextAlignment="End"
+                               Style="{DynamicResource CustomLabel}"
+                               FontSize="Micro"
+                               TextColor="{DynamicResource Fg2}"
+                               FontFamily="{DynamicResource Mono-Regular}" />
+                    </FlexLayout>
 
-                        <BoxView HeightRequest="5" />
+                    <BoxView HeightRequest="5" />
 
-                        <Label Text="{i18n:Translate Text=Transactions.title}" Style="{DynamicResource CustomLabel}" TextColor="{DynamicResource Fg2}" FontSize="Small" />
+                    <Label Text="{i18n:Translate Text=Transactions.title}" Style="{DynamicResource CustomLabel}" TextColor="{DynamicResource Fg2}" FontSize="Small" />
 
-                        <BoxView HeightRequest="5" />
+                    <BoxView HeightRequest="5" />
 
-                        <controls:TransactionCollectionView />
-                        <BoxView HeightRequest="10" />
-                    </StackLayout>
-                </ScrollView>
-            </StackLayout>
-        </AbsoluteLayout>
+                    <controls:TransactionCollectionView />
+                    <BoxView HeightRequest="10" />
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

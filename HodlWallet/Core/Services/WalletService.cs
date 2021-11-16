@@ -52,7 +52,11 @@ namespace HodlWallet.Core.Services
     {
         public const int DEFAULT_NODES_TO_CONNECT = 4;
 
-        public const string DEFAULT_TESTING_NETWORK = "testnet";
+#if DEBUG || TESTNET
+        public const string DEFAULT_NETWORK = "testnet";
+#else
+        public const string DEFAULT_NETWORK = "mainnet";
+#endif
 
         public static string USER_AGENT { get; } = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
 
@@ -123,11 +127,12 @@ namespace HodlWallet.Core.Services
             }
             else
             {
-                networkStr = DEFAULT_TESTING_NETWORK;
+                networkStr = DEFAULT_NETWORK;
                 SecureStorageService.SetNetwork(networkStr);
             }
 
-            network = Hd.GetNetwork(networkStr ?? DEFAULT_TESTING_NETWORK);
+            network = Hd.GetNetwork(networkStr ?? DEFAULT_NETWORK);
+
             walletId = guid ?? Guid.NewGuid().ToString();
 
             Cts ??= new CancellationTokenSource();
@@ -157,12 +162,7 @@ namespace HodlWallet.Core.Services
                                   // change liviano load wallet to accept null passwords
                                   // But, since HODLWallet 1 didn't have passwords this is okay
 
-#if DEBUG
-            network = Hd.GetNetwork(DEFAULT_TESTING_NETWORK);
-#else
-            network = Hd.GetNetwork();
-#endif
-
+            network = Hd.GetNetwork(DEFAULT_NETWORK);
             var storage = new WalletStorageProvider(walletId, network);
 
             if (storage.Exists())

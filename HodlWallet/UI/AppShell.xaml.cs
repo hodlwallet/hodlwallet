@@ -40,6 +40,9 @@ using HodlWallet.Core.Models;
 using HodlWallet.Core.Utils;
 using HodlWallet.UI.Controls;
 using HodlWallet.UI.Views;
+using HodlWallet.Core.Services;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace HodlWallet.UI
 {
@@ -49,6 +52,7 @@ namespace HodlWallet.UI
         readonly Serilog.ILogger logger;
         readonly object @lock = new();
         IWalletService WalletService => DependencyService.Get<IWalletService>();
+        IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
         public ObservableCollection<AccountModel> AccountList { get; set; }  = new ();
         public ICommand GoToAccountCommand;
  
@@ -81,8 +85,12 @@ namespace HodlWallet.UI
 
         public static Color[] colorList = ColorPicker.colorPickerControlList;
 
+        public CancellationTokenSource Cts { get; private set; }
+
         public AppShell()
         {
+            Cts ??= new CancellationTokenSource();
+            StartWalletAndPrecioService();
             InitializeComponent();
             logger = WalletService.Logger;
             RegisterRoutes();
@@ -105,6 +113,23 @@ namespace HodlWallet.UI
             };
 
             CurrentItem.CurrentItem = tab;
+        }
+
+        void StartWalletAndPrecioService()
+        {
+            Task.Factory.StartNew(
+                () => WalletService.InitializeWallet(),
+                Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
+
+            Task.Factory.StartNew(
+                () => PrecioService.Init(),
+                Cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default
+            );
         }
 
         async void GoToAccount(string accountId)
@@ -194,6 +219,8 @@ namespace HodlWallet.UI
 
         void SyncCollections()
         {
+            if (WalletService.Wallet is null) return;
+
             // Compare and sync accounts in the wallet account list that are not already into AccountList.
             AccountModel.SyncCollections(WalletService.Wallet.Accounts, AccountList);
         }

@@ -12,19 +12,18 @@
         <vm:SendViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <FlexLayout Direction="Column">
-                <ScrollView FlexLayout.Grow="4">
-                    <StackLayout Spacing="30"
-                                 Margin="20, 0, 20, 0">
-                        <FlexLayout Direction="Row"
-                                    JustifyContent="SpaceBetween"
-                                    AlignItems="Center">
-                            <StackLayout Orientation="Vertical"
-                                         FlexLayout.Grow="4">
-                                <Label Text="{i18n:Translate Text=Send.to}"
-                                       Style="{DynamicResource CustomLabel}"
-                                       HorizontalTextAlignment="Start" />
+        <FlexLayout Direction="Column">
+            <ScrollView FlexLayout.Grow="4">
+                <StackLayout Spacing="30"
+                             Margin="20, 0, 20, 0">
+                    <FlexLayout Direction="Row"
+                                JustifyContent="SpaceBetween"
+                                AlignItems="Center">
+                        <StackLayout Orientation="Vertical"
+                                     FlexLayout.Grow="4">
+                            <Label Text="{i18n:Translate Text=Send.to}"
+                                   Style="{DynamicResource CustomLabel}"
+                                   HorizontalTextAlignment="Start" />
 
                                 <Entry x:Name="SendAddress"
                                        Placeholder="bc1..."
@@ -35,163 +34,162 @@
                                        Style="{StaticResource CustomEntry}"
                                        WidthRequest="50"/>
 
-                            </StackLayout>
+                        </StackLayout>
 
-                            <StackLayout Orientation="Vertical"
-                                         FlexLayout.Grow="1">
-                                <Label Text="{i18n:Translate Text=Send.scan}"
-                                       Style="{DynamicResource CustomLabel}"
-                                       FontSize="Small"
-                                       HorizontalTextAlignment="Center" />
-                                <svg:Icon ResourceId="HodlWallet.UI.Assets.scan.svg"
-                                          WidthRequest="16"
-                                          HeightRequest="16">
-                                    <svg:Icon.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ScanCommand}" />
-                                    </svg:Icon.GestureRecognizers>
-                                </svg:Icon>
-                            </StackLayout>
+                        <StackLayout Orientation="Vertical"
+                                     FlexLayout.Grow="1">
+                            <Label Text="{i18n:Translate Text=Send.scan}"
+                                   Style="{DynamicResource CustomLabel}"
+                                   FontSize="Small"
+                                   HorizontalTextAlignment="Center" />
+                            <svg:Icon ResourceId="HodlWallet.UI.Assets.scan.svg"
+                                      WidthRequest="16"
+                                      HeightRequest="16">
+                                <svg:Icon.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ScanCommand}" />
+                                </svg:Icon.GestureRecognizers>
+                            </svg:Icon>
+                        </StackLayout>
 
-                            <StackLayout Orientation="Vertical"
-                                         FlexLayout.Grow="1">
-                                <Label Text="{i18n:Translate Text=Send.paste}"
-                                       Style="{DynamicResource CustomLabel}"
-                                       FontSize="Small"
-                                       HorizontalTextAlignment="Center" />
-                                <svg:Icon ResourceId="HodlWallet.UI.Assets.paste.svg"
-                                          WidthRequest="16"
-                                          HeightRequest="16">
-                                    <svg:Icon.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding PasteCommand}" />
-                                    </svg:Icon.GestureRecognizers>
-                                </svg:Icon>
-                            </StackLayout>
+                        <StackLayout Orientation="Vertical"
+                                     FlexLayout.Grow="1">
+                            <Label Text="{i18n:Translate Text=Send.paste}"
+                                   Style="{DynamicResource CustomLabel}"
+                                   FontSize="Small"
+                                   HorizontalTextAlignment="Center" />
+                            <svg:Icon ResourceId="HodlWallet.UI.Assets.paste.svg"
+                                      WidthRequest="16"
+                                      HeightRequest="16">
+                                <svg:Icon.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PasteCommand}" />
+                                </svg:Icon.GestureRecognizers>
+                            </svg:Icon>
+                        </StackLayout>
 
-                            <StackLayout Orientation="Vertical"
-                                         FlexLayout.Grow="1">
-                                <Label Text="{i18n:Translate Text=Send.clear}"
-                                       Style="{DynamicResource CustomLabel}"
-                                       FontSize="Small"
-                                       HorizontalTextAlignment="Center" />
-                                <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
-                                          WidthRequest="16"
-                                          HeightRequest="16">
-                                    <svg:Icon.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ClearAdressCommand}" />
-                                    </svg:Icon.GestureRecognizers>
-                                </svg:Icon>
-                            </StackLayout>
+                        <StackLayout Orientation="Vertical"
+                                     FlexLayout.Grow="1">
+                            <Label Text="{i18n:Translate Text=Send.clear}"
+                                   Style="{DynamicResource CustomLabel}"
+                                   FontSize="Small"
+                                   HorizontalTextAlignment="Center" />
+                            <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
+                                      WidthRequest="16"
+                                      HeightRequest="16">
+                                <svg:Icon.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ClearAdressCommand}" />
+                                </svg:Icon.GestureRecognizers>
+                            </svg:Icon>
+                        </StackLayout>
+                    </FlexLayout>
+
+                    <FlexLayout Direction="Row"
+                                JustifyContent="SpaceBetween"
+                                AlignItems="Center">
+                        <StackLayout Orientation="Vertical"
+                                     FlexLayout.Grow="4">
+                            <Label Text="{i18n:Translate Text=Send.amount}"
+                                   Style="{DynamicResource CustomLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalOptions="Center" />
+
+                            <Entry x:Name="AmountToSendEntry"
+                                   Keyboard="Numeric"
+                                   ReturnType="Done"
+                                   Text="{Binding AmountToSend}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   BackgroundColor="Transparent"
+                                   FontFamily="{StaticResource Mono-Bold}"
+                                   VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <Label Style="{DynamicResource CustomLabel}"
+                               FontSize="Small"
+                               FlexLayout.Grow="1"
+                               HorizontalTextAlignment="Center"
+                               Text="{Binding ISOLabel}" />
+
+                        <svg:Icon ResourceId="HodlWallet.UI.Assets.currency_switch.svg"
+                                  FlexLayout.Grow="1"
+                                  FlexLayout.AlignSelf="Center"
+                                  WidthRequest="16"
+                                  HeightRequest="16">
+                            <svg:Icon.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding SwitchCurrencyCommand}" />
+                            </svg:Icon.GestureRecognizers>
+                        </svg:Icon>
+
+
+                        <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
+                                  FlexLayout.Grow="1"
+                                  FlexLayout.AlignSelf="Center"
+                                  WidthRequest="16"
+                                  HeightRequest="16">
+                            <svg:Icon.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding ClearAmountCommand}" />
+                            </svg:Icon.GestureRecognizers>
+                        </svg:Icon>
+                    </FlexLayout>
+
+                    <StackLayout Orientation="Vertical">
+                        <FlexLayout Direction="Row"
+                                    JustifyContent="SpaceBetween">
+                            <Label Style="{StaticResource CustomLabel}"
+                                   Text="{i18n:Translate Text=Send.transactionFee}" />
+                            <Label Style="{StaticResource CustomLabel}"
+                                   Text="{i18n:Translate Text=Send.estConfirmation}"/>
                         </FlexLayout>
 
                         <FlexLayout Direction="Row"
-                                    JustifyContent="SpaceBetween"
-                                    AlignItems="Center">
-                            <StackLayout Orientation="Vertical"
-                                         FlexLayout.Grow="4">
-                                <Label Text="{i18n:Translate Text=Send.amount}"
-                                       Style="{DynamicResource CustomLabel}"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center" />
-
-                                <Entry x:Name="AmountToSendEntry"
-                                       Keyboard="Numeric"
-                                       ReturnType="Done"
-                                       Text="{Binding AmountToSend}"
-                                       TextColor="{DynamicResource FgSuccess}"
-                                       BackgroundColor="Transparent"
-                                       FontFamily="{StaticResource Mono-Bold}"
-                                       VerticalOptions="Center" />
-                            </StackLayout>
-
-                            <Label Style="{DynamicResource CustomLabel}"
-                                   FontSize="Small"
-                                   FlexLayout.Grow="1"
-                                   HorizontalTextAlignment="Center"
-                                   Text="{Binding ISOLabel}" />
-
-                            <svg:Icon ResourceId="HodlWallet.UI.Assets.currency_switch.svg"
-                                      FlexLayout.Grow="1"
-                                      FlexLayout.AlignSelf="Center"
-                                      WidthRequest="16"
-                                      HeightRequest="16">
-                                <svg:Icon.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        Command="{Binding SwitchCurrencyCommand}" />
-                                </svg:Icon.GestureRecognizers>
-                            </svg:Icon>
-
-
-                            <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
-                                      FlexLayout.Grow="1"
-                                      FlexLayout.AlignSelf="Center"
-                                      WidthRequest="16"
-                                      HeightRequest="16">
-                                <svg:Icon.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        Command="{Binding ClearAmountCommand}" />
-                                </svg:Icon.GestureRecognizers>
-                            </svg:Icon>
+                                    JustifyContent="SpaceBetween">
+                            <Label FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{DynamicResource Fg2}"
+                                   Text="{Binding TransactionFeeText}" />
+                            <Label FontFamily="{StaticResource Sans-Regular}"
+                                   TextColor="{StaticResource Fg2}"
+                                   Text="{Binding EstConfirmationText}" />
                         </FlexLayout>
 
-                        <StackLayout Orientation="Vertical">
-                            <FlexLayout Direction="Row"
-                                        JustifyContent="SpaceBetween">
-                                <Label Style="{StaticResource CustomLabel}"
-                                       Text="{i18n:Translate Text=Send.transactionFee}" />
-                                <Label Style="{StaticResource CustomLabel}"
-                                       Text="{i18n:Translate Text=Send.estConfirmation}"/>
-                            </FlexLayout>
+                        <FlexLayout Direction="Row"
+                                    JustifyContent="SpaceBetween">
+                            <Label Style="{StaticResource CustomLabel}"
+                                   Text="{i18n:Translate Text=Send.economyFee}"/>
+                            <Label Style="{StaticResource CustomLabel}"
+                                   Text="{i18n:Translate Text=Send.normalFee}" />
+                            <Label Style="{StaticResource CustomLabel}"
+                                   Text="{i18n:Translate Text=Send.highFee}" />
+                        </FlexLayout>
 
-                            <FlexLayout Direction="Row"
-                                        JustifyContent="SpaceBetween">
-                                <Label FontFamily="{StaticResource Sans-Regular}"
-                                       TextColor="{DynamicResource Fg2}"
-                                       Text="{Binding TransactionFeeText}" />
-                                <Label FontFamily="{StaticResource Sans-Regular}"
-                                       TextColor="{StaticResource Fg2}"
-                                       Text="{Binding EstConfirmationText}" />
-                            </FlexLayout>
+                        <renderers:FeeSlider MinimumTrackColor="{DynamicResource FgSuccess}"
+                                             MaximumTrackColor="{DynamicResource Fg}"
+                                             Maximum="100"
+                                             DragCompleted="FeeSlider_DragCompleted"
+                                             Value="{Binding SliderValue}">
+                        </renderers:FeeSlider>
 
-                            <FlexLayout Direction="Row"
-                                        JustifyContent="SpaceBetween">
-                                <Label Style="{StaticResource CustomLabel}"
-                                       Text="{i18n:Translate Text=Send.economyFee}"/>
-                                <Label Style="{StaticResource CustomLabel}"
-                                       Text="{i18n:Translate Text=Send.normalFee}" />
-                                <Label Style="{StaticResource CustomLabel}"
-                                       Text="{i18n:Translate Text=Send.highFee}" />
-                            </FlexLayout>
+                        <Label Text="{i18n:Translate Text=Send.fee}"
+                               Style="{StaticResource CustomLabel}" />
 
-                            <renderers:FeeSlider MinimumTrackColor="{DynamicResource FgSuccess}"
-                                                 MaximumTrackColor="{DynamicResource Fg}"
-                                                 Maximum="100"
-                                                 DragCompleted="FeeSlider_DragCompleted"
-                                                 Value="{Binding SliderValue}">
-                            </renderers:FeeSlider>
-
-                            <Label Text="{i18n:Translate Text=Send.fee}"
-                                   Style="{StaticResource CustomLabel}" />
-
-                            <Entry Text="{Binding Fee}"
-                                   Style="{StaticResource CustomEntry}"
-                                   TextColor="{DynamicResource Fg}"
-                                   BackgroundColor="Transparent"
-                                   PlaceholderColor="{DynamicResource Fg}"
-                                   Keyboard="Numeric"
-                                   Margin="0, 0, 0, 10" />
-                        </StackLayout>
+                        <Entry Text="{Binding Fee}"
+                               Style="{StaticResource CustomEntry}"
+                               TextColor="{DynamicResource Fg}"
+                               BackgroundColor="Transparent"
+                               PlaceholderColor="{DynamicResource Fg}"
+                               Keyboard="Numeric"
+                               Margin="0, 0, 0, 10" />
                     </StackLayout>
-                </ScrollView>
+                </StackLayout>
+            </ScrollView>
 
-                <Button Text="{i18n:Translate Text=Send.buttonSend}"
-                        Command="{Binding SendCommand}"
-                        Style="{DynamicResource CustomButton}"
-                        BackgroundColor="{DynamicResource Bg2}"
-                        FontSize="Large"
-                        HeightRequest="50"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="1"/>
-            </FlexLayout>
-        </AbsoluteLayout>
+            <Button Text="{i18n:Translate Text=Send.buttonSend}"
+                    Command="{Binding SendCommand}"
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{DynamicResource Bg2}"
+                    FontSize="Large"
+                    HeightRequest="50"
+                    FlexLayout.AlignSelf="Stretch"
+                    FlexLayout.Grow="1"/>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

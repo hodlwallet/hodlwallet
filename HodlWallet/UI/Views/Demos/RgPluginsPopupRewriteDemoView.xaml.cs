@@ -1,7 +1,10 @@
 ﻿//
-// Main.cs
+// RgPluginsPopupRewriteDemoView.xaml.cs
 //
-// Copyright (c) 2019 HODL Wallet
+// Author:
+//       Igor Guerrero <igorgue@protonmail.com>
+//
+// Copyright (c) 2021 HODL Wallet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,18 +23,32 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using UIKit;
+using System;
+using System.Diagnostics;
 
-namespace HodlWallet.iOS
+using Xamarin.Forms;
+
+using HodlWallet.UI.Extensions;
+
+namespace HodlWallet.UI.Views.Demos
 {
-    public class Application
+    public partial class RgPluginsPopupRewriteDemoView : ContentPage
     {
-        // This is the main entry point of the application.
-        static void Main(string[] args)
+        public RgPluginsPopupRewriteDemoView()
         {
-            // if you want to use a different Application Delegate class from "AppDelegate"
-            // you can specify it here.
-            UIApplication.Main(args, null, typeof(AppDelegate));
+            InitializeComponent();
+        }
+
+        async void PromptButton_Clicked(object sender, EventArgs e)
+        {
+            var res = await this.DisplayPrompt("This title", "this is the message", "okay", "cancel");
+
+            Debug.WriteLine($"res = {res}");
+        }
+
+        async void ToastButton_Clicked(object sender, EventArgs e)
+        {
+            await this.DisplayToast("toast.txt");
         }
     }
 }

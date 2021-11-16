@@ -6,30 +6,28 @@
     BackgroundColor="{DynamicResource Bg2}"
     NavigationPage.HasNavigationBar="False">
 <ContentPage.Content>
-    <AbsoluteLayout>
-        <FlexLayout Direction="Column">
-            <Frame FlexLayout.Grow="5"
-                BackgroundColor="Transparent">
-                    <Image Source="logo_front.png"
-                        Scale="0.5"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Logo_Tapped" />
-                    </Image.GestureRecognizers>
-                </Image>
-            </Frame>
+    <FlexLayout Direction="Column">
+        <Frame FlexLayout.Grow="5"
+               BackgroundColor="Transparent">
+                <Image Source="logo_front.png"
+                       Scale="0.5"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Logo_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Frame>
 
-            <Button Text="{i18n:Translate Text=Onboard.create}"
+        <Button Text="{i18n:Translate Text=Onboard.create}"
                 Style="{DynamicResource BottomButton}"
                 FlexLayout.Grow="1"
                 Clicked="CreateButton_Clicked" />
 
-            <Button Text="{i18n:Translate Text=Onboard.recover}"
+        <Button Text="{i18n:Translate Text=Onboard.recover}"
                 Style="{DynamicResource BottomButton}"
                 FlexLayout.Grow="1"
                 Clicked="RecoverButton_Clicked" />
-        </FlexLayout>
-    </AbsoluteLayout>
+    </FlexLayout>
 </ContentPage.Content>
 </ContentPage>

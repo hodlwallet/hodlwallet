@@ -104,7 +104,7 @@ namespace HodlWallet.UI.Views
 
         void SetBuiltOnDate()
         {
-#if DEBUG
+#if DEBUG || TESTNET
             BuildDate.Text = $"Built on: {BuildInfo.BuildDateText}";
 #endif
         }

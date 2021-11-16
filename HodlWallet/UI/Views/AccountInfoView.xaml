@@ -12,54 +12,52 @@
         <vm:AccountInfoViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <FlexLayout Direction="Column"
-                        Margin="15, 15, 15, 0"
-                        FlexLayout.Grow="1">
-                <Label Style="{StaticResource AccountInfoTitle}"
-                       Text="{i18n:Translate AccountInfo.Id}" />
+        <FlexLayout Direction="Column"
+                    Margin="15, 15, 15, 0"
+                    FlexLayout.Grow="1">
+            <Label Style="{StaticResource AccountInfoTitle}"
+                   Text="{i18n:Translate AccountInfo.Id}" />
+            <Label Style="{StaticResource AccountInfoValue}"
+                   Text="{Binding AccountInfo.Id}" />
+
+            <BoxView HeightRequest="10" />
+
+            <Label Style="{StaticResource AccountInfoTitle}"
+                   Text="{i18n:Translate AccountInfo.Name}" />
+            <Label Style="{StaticResource AccountInfoValue}"
+                   Text="{Binding AccountInfo.Name}" />
+
+            <BoxView HeightRequest="10" />
+
+            <Label Style="{StaticResource AccountInfoTitle}"
+                   Text="{i18n:Translate AccountInfo.HdPath}" />
+            <ContentView>
                 <Label Style="{StaticResource AccountInfoValue}"
-                       Text="{Binding AccountInfo.Id}" />
+                       Text="{Binding AccountInfo.HdPath}" />
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="HdPath_Tapped" />
+                </ContentView.GestureRecognizers>
+            </ContentView>
 
-                <BoxView HeightRequest="10" />
+            <BoxView HeightRequest="10" />
 
-                <Label Style="{StaticResource AccountInfoTitle}"
-                       Text="{i18n:Translate AccountInfo.Name}" />
-                <Label Style="{StaticResource AccountInfoValue}"
-                       Text="{Binding AccountInfo.Name}" />
+            <Label Style="{StaticResource AccountInfoTitle}"
+                   Text="{i18n:Translate AccountInfo.XPub}" />
+            <controls:SecretContentView>
+                <controls:SecretContentView.Secret>
+                    <Label Style="{StaticResource AccountInfoValue}" Text="{Binding AccountInfo.Xpub}" />
+                </controls:SecretContentView.Secret>
+            </controls:SecretContentView>
 
-                <BoxView HeightRequest="10" />
+            <BoxView HeightRequest="10" />
 
-                <Label Style="{StaticResource AccountInfoTitle}"
-                       Text="{i18n:Translate AccountInfo.HdPath}" />
-                <ContentView>
-                    <Label Style="{StaticResource AccountInfoValue}"
-                           Text="{Binding AccountInfo.HdPath}" />
-                    <ContentView.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="HdPath_Tapped" />
-                    </ContentView.GestureRecognizers>
-                </ContentView>
-
-                <BoxView HeightRequest="10" />
-
-                <Label Style="{StaticResource AccountInfoTitle}"
-                       Text="{i18n:Translate AccountInfo.XPub}" />
-                <controls:SecretContentView>
-                    <controls:SecretContentView.Secret>
-                        <Label Style="{StaticResource AccountInfoValue}" Text="{Binding AccountInfo.Xpub}" />
-                    </controls:SecretContentView.Secret>
-                </controls:SecretContentView>
-
-                <BoxView HeightRequest="10" />
-
-                <Label Style="{StaticResource AccountInfoTitle}"
-                       Text="{i18n:Translate AccountInfo.XPrv}" />
-                <controls:SecretContentView>
-                    <controls:SecretContentView.Secret>
-                        <Label Style="{StaticResource AccountInfoValue}" Text="{Binding AccountInfo.Xprv}" />
-                    </controls:SecretContentView.Secret>
-                </controls:SecretContentView>
-            </FlexLayout>
-        </AbsoluteLayout>
+            <Label Style="{StaticResource AccountInfoTitle}"
+                   Text="{i18n:Translate AccountInfo.XPrv}" />
+            <controls:SecretContentView>
+                <controls:SecretContentView.Secret>
+                    <Label Style="{StaticResource AccountInfoValue}" Text="{Binding AccountInfo.Xprv}" />
+                </controls:SecretContentView.Secret>
+            </controls:SecretContentView>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
