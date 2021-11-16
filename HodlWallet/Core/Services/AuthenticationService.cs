@@ -31,12 +31,9 @@ using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
 using HodlWallet.UI.Views;
 using HodlWallet.UI;
-using HodlWallet.Core.ViewModels;
 using Xamarin.Essentials;
 
 using Plugin.Fingerprint;
-using Plugin.Fingerprint.Abstractions;
-using System.Diagnostics;
 
 [assembly: Dependency(typeof(AuthenticationService))]
 namespace HodlWallet.Core.Services
@@ -110,7 +107,7 @@ namespace HodlWallet.Core.Services
                 {
                     if (Application.Current.MainPage is AppShell appShell)
                         await appShell.Navigation.PushModalAsync(view);
-
+                        
                     return;
                 }
 

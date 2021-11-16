@@ -145,7 +145,9 @@ namespace HodlWallet.UI.Views
             }
             else if (ViewModel.Action == "pop") // Login after logout or timeout
             {
-                Navigation.PopModalAsync();
+                //Navigation.PopModalAsync();
+                //Shell.Current.GoToAsync("/home");
+                Shell.Current.GoToAsync("../home");
 
                 return;
             }
@@ -191,18 +193,18 @@ namespace HodlWallet.UI.Views
             Navigation.PopModalAsync();
         }
         
-        void FingerprintButtonClicked(object sender, EventArgs e)
+        async void FingerprintButtonClicked(object sender, EventArgs e)
         {
             if (ViewModel.Action == "update")
             {
                 var view = new BiometricLoginView(ViewModel.Action);
                 var nav = new NavigationPage(view);
-                Navigation.PushModalAsync(nav);
+                await Navigation.PushModalAsync(nav);
             }
             else
             {
                 var view = new BiometricLoginView(ViewModel.Action);
-                Application.Current.MainPage = view;
+                Application.Current.MainPage = view;                
             }
 
 

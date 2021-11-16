@@ -98,6 +98,8 @@ namespace HodlWallet.UI.Views
             else if (ViewModel.Action == "pop") // Login after logout or timeout
             {
                 Navigation.PopModalAsync();
+                //Shell.Current.GoToAsync("/home");
+                //Shell.Current.GoToAsync("../home");
 
                 return;
             }
@@ -138,13 +140,13 @@ namespace HodlWallet.UI.Views
 
         }
 
-        void UsePinButton(object sender, EventArgs e)
+        async void UsePinButton(object sender, EventArgs e)
         {
             if (ViewModel.Action == "update")
             {
                 var view = new LoginView(ViewModel.Action);
                 var nav = new NavigationPage(view);
-                Navigation.PushModalAsync(nav);
+                await Navigation.PushModalAsync(nav);
             }
             else
             {
