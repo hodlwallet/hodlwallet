@@ -48,10 +48,8 @@ namespace HodlWallet.UI.Views
             ViewModel.Action = action;
             SubscribeToMessages();
 
-            LoginViewModel loginViewModel = new LoginViewModel
-            {
-                LastLogin = "biometric"
-            };
+            LoginViewModel loginViewModel = new LoginViewModel();
+            loginViewModel.LastLogin = "biometric";
 
             if (ViewModel.Action == "update")
             {
@@ -60,7 +58,7 @@ namespace HodlWallet.UI.Views
                 CancelButton.IsVisible = true;
             }
 
-            BiometricsButton_Clicked(this, new EventArgs());
+            BiometricsButtonClicked(this, new EventArgs());
         }
 
 
@@ -98,8 +96,7 @@ namespace HodlWallet.UI.Views
             else if (ViewModel.Action == "pop") // Login after logout or timeout
             {
                 Navigation.PopModalAsync();
-                //Shell.Current.GoToAsync("/home");
-                //Shell.Current.GoToAsync("../home");
+                Navigation.PopModalAsync();
 
                 return;
             }
@@ -121,7 +118,7 @@ namespace HodlWallet.UI.Views
             Navigation.PopModalAsync();
         }
 
-        private async void BiometricsButton_Clicked(object sender, EventArgs e)
+        private async void BiometricsButtonClicked(object sender, EventArgs e)
         {
             var authResult = await CrossFingerprint.Current.AuthenticateAsync(
                 new AuthenticationRequestConfiguration(Constants.HODL_WALLET, LocaleResources.BiometricLogin_askAuth));
@@ -140,7 +137,7 @@ namespace HodlWallet.UI.Views
 
         }
 
-        async void UsePinButton(object sender, EventArgs e)
+        async void UsePinButtonClicked(object sender, EventArgs e)
         {
             if (ViewModel.Action == "update")
             {
@@ -151,7 +148,8 @@ namespace HodlWallet.UI.Views
             else
             {
                 var view = new LoginView(ViewModel.Action);
-                Application.Current.MainPage = view;
+                var nav = new NavigationPage(view);
+                await Navigation.PushModalAsync(nav);
             }
         }
     }

@@ -55,7 +55,7 @@
                         FontSize="Large"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="0.8"
-                        Clicked="BiometricsButton_Clicked"
+                        Clicked="BiometricsButtonClicked"
                         x:Name="BiometricsButton"/>
 
                 <BoxView BackgroundColor="{DynamicResource Fg2}" HeightRequest="1" WidthRequest="500"/>
@@ -64,7 +64,7 @@
                         Style="{DynamicResource CustomButton}"
                         CornerRadius="0"
                         FontSize="Large"
-                        Clicked="UsePinButton"
+                        Clicked="UsePinButtonClicked"
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="0.8"/>
             </FlexLayout>

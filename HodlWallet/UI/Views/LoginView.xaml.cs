@@ -146,9 +146,8 @@ namespace HodlWallet.UI.Views
             else if (ViewModel.Action == "pop") // Login after logout or timeout
             {
                 Navigation.PopModalAsync();
-                //Shell.Current.GoToAsync("/home");
-                //Shell.Current.GoToAsync("../home");
-
+                Navigation.PopModalAsync();
+                
                 return;
             }
 
@@ -204,10 +203,9 @@ namespace HodlWallet.UI.Views
             else
             {
                 var view = new BiometricLoginView(ViewModel.Action);
-                Application.Current.MainPage = view;                
+                var nav = new NavigationPage(view);
+                await Navigation.PushModalAsync(nav);
             }
-
-
         }
     }
 }
