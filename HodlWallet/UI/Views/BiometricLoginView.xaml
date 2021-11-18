@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             x:Class="HodlWallet.UI.Views.BiometricLoginView"
+             x:DataType="vm:BiometricLoginViewModel"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource Bg}"
+             ios:Page.UseSafeArea="True">
+    <ContentPage.BindingContext>
+        <vm:BiometricLoginViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <FlexLayout Direction="Column"
+                        Margin="20"
+                        BackgroundColor="{DynamicResource Bg}"
+                        JustifyContent="SpaceAround"
+                        AlignItems="Center">
+
+                <Image Source="logo_front.png"
+                       FlexLayout.Grow="2"
+                       HeightRequest="120"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       x:Name="LogoFront">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Logo_Tapped" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <BoxView FlexLayout.Grow="1" />
+
+                <Label IsVisible="false"
+                       FlexLayout.Grow="1"
+                       Text="{i18n:Translate Text=Pin.updateTitle}"
+                       FontSize="Title"
+                       HorizontalTextAlignment="Center" />
+
+                <Label x:Name="Header"
+                       FlexLayout.Grow="1"
+                       Text="{i18n:Translate Text=Login.wayAuthentication}"
+                       FontSize="Subtitle"
+                       HorizontalTextAlignment="Center" />
+
+
+                <BoxView BackgroundColor="{DynamicResource Fg2}" HeightRequest="1"  WidthRequest="500"/>
+
+                <Button Text="{i18n:Translate Text=Login.useBiometric}"
+                        Style="{DynamicResource CustomButton}"
+                        CornerRadius="0"
+                        FontSize="Large"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="0.8"
+                        Clicked="BiometricsButtonClicked"
+                        x:Name="BiometricsButton"/>
+
+                <BoxView BackgroundColor="{DynamicResource Fg2}" HeightRequest="1" WidthRequest="500"/>
+
+                <Button Text="{i18n:Translate Text=Login.usePin}"
+                        Style="{DynamicResource CustomButton}"
+                        CornerRadius="0"
+                        FontSize="Large"
+                        Clicked="UsePinButtonClicked"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="0.8"/>
+            </FlexLayout>
+
+                <Button Text="{i18n:Translate Text=Login.cancel}"
+                        Style="{DynamicResource CustomButton}"
+                        CornerRadius="0"
+                        FontSize="Large"
+                        Clicked="CancelButtonClicked"
+                        FlexLayout.AlignSelf="Stretch"
+                        FlexLayout.Grow="0.8"
+                        IsEnabled="False"
+                        IsVisible="False"
+                        x:Name="CancelButton"/>
+
+            <controls:NowLoadingIndicator />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

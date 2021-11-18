@@ -46,9 +46,9 @@ namespace HodlWallet.UI.Extensions
             Guard.NotEmpty(message, nameof(message));
 
             var res = Application.Current.Resources;
-            var bg = (Color)res["Bg2"];
-            var fg = (Color)res["Fg2"];
-            var fontFamily = (OnPlatform<string>)res["Sans-Bold"];
+            var bg = (Color)res["Bg3"];
+            var fg = (Color)res["Fg3"];
+            var fontFamily = (OnPlatform<string>)res["Sans-Regular"];
             var font = Font.OfSize(fontFamily, Device.GetNamedSize(NamedSize.Medium, view));
 
             var toastOptions = new ToastOptions
@@ -60,7 +60,8 @@ namespace HodlWallet.UI.Extensions
                     Foreground = fg,
                     Message = message
                 },
-                Duration = TimeSpan.FromMilliseconds(TOAST_DURATION_MS)
+                Duration = TimeSpan.FromMilliseconds(TOAST_DURATION_MS),
+                CornerRadius = 5
             };
 
             await view.DisplayToastAsync(toastOptions);

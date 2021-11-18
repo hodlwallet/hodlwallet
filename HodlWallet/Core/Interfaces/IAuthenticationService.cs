@@ -33,6 +33,7 @@ namespace HodlWallet.Core.Interfaces
     {
         DateTimeOffset LastAuth { get; set; }
         bool ShowingLoginForm { get; set; }
+        bool BiometricsAvailable { get; set; }
         bool IsAuthenticated { get; set; }
         void ShowLogin(string action = null);
         bool Authenticate(string input);

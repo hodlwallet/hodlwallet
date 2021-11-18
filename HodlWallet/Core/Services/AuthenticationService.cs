@@ -31,6 +31,9 @@ using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
 using HodlWallet.UI.Views;
 using HodlWallet.UI;
+using Xamarin.Essentials;
+
+using Plugin.Fingerprint;
 
 [assembly: Dependency(typeof(AuthenticationService))]
 namespace HodlWallet.Core.Services
@@ -69,21 +72,61 @@ namespace HodlWallet.Core.Services
             }
         }
 
+
         public bool ShowingLoginForm { get; set; }
-
-        public void ShowLogin(string action = null)
+        bool biometricsAvailable;
+        public bool BiometricsAvailable
         {
-            var view = new LoginView(action);
-
-            if (action == "pop")
+            get
             {
-                if (Application.Current.MainPage is AppShell appShell)
-                    appShell.Navigation.PushModalAsync(view);
-
-                return;
+                return Preferences.Get("biometricsAvailable", false);
             }
 
-            Application.Current.MainPage = view;
+            set
+            {
+                biometricsAvailable = value;
+                Preferences.Set("biometricsAvailable", biometricsAvailable);
+            }
+        }
+
+
+
+
+
+        public async void ShowLogin(string action = null)
+        {
+            string lastLogin = Preferences.Get("lastLogin", "pin");
+            bool biometricsAllow = Preferences.Get("biometricsAllow", false);
+            BiometricsAvailable = await CrossFingerprint.Current.IsAvailableAsync();
+
+            if (biometricsAllow & (lastLogin == "biometric" & BiometricsAvailable))
+            {
+                var view = new BiometricLoginView(action);
+
+                if (action == "pop")
+                {
+                    if (Application.Current.MainPage is AppShell appShell)
+                        await appShell.Navigation.PushModalAsync(view);
+                        
+                    return;
+                }
+
+                Application.Current.MainPage = view;
+            }
+            else
+            {
+                var view = new LoginView(action);
+
+                if (action == "pop")
+                {
+                    if (Application.Current.MainPage is AppShell appShell)
+                        await appShell.Navigation.PushModalAsync(view);
+
+                    return;
+                }
+                
+                Application.Current.MainPage = view;
+            }
         }
 
         public bool Authenticate(string input)

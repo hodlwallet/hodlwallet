@@ -1,7 +1,7 @@
 ﻿//
 // LoginView.xaml.cs
 //
-// Copyright (c) 2019 HODL Wallet
+// Copyright (c) 2021 HODL Wallet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +30,8 @@ using HodlWallet.Core.ViewModels;
 using HodlWallet.Core.Services;
 using HodlWallet.UI.Views.Demos;
 
+using Plugin.Fingerprint;
+
 namespace HodlWallet.UI.Views
 {
     public partial class LoginView : ContentPage
@@ -44,15 +46,16 @@ namespace HodlWallet.UI.Views
         public LoginView(string action = null)
         {
             InitializeComponent();
+            ViewModel.Action = action;
+            CheckBiometricsAvailabilityAsync();
             SubscribeToMessages();
 
-            ViewModel.Action = action;
+            ViewModel.LastLogin = "pin";
 
             if (ViewModel.Action == "update")
             {
                 LogoFront.IsVisible = false;
                 Header.Text = Locale.LocaleResources.Pin_updateHeader;
-                CancelButton.IsEnabled = true;
                 CancelButton.IsVisible = true;
             }
         }
@@ -62,6 +65,15 @@ namespace HodlWallet.UI.Views
             base.OnAppearing();
 
             ViewModel.LoginFormVisible = true;
+
+            if (!ViewModel.BiometricsAvailable)
+            {
+                FingerprintButton.IsVisible = false;
+            }
+            else
+            {
+                FingerprintButton.IsVisible = true;
+            }
         }
 
         protected override void OnDisappearing()
@@ -80,6 +92,11 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", IncorrectPinAnimation);
             MessagingCenter.Subscribe<LoginViewModel>(this, "StartAppShell", StartAppShell);
             MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
+        }
+
+        async void CheckBiometricsAvailabilityAsync()
+        {
+            ViewModel.BiometricsAvailable = await CrossFingerprint.Current.IsAvailableAsync();
         }
 
         void DigitAdded(LoginViewModel _, int index)
@@ -126,7 +143,8 @@ namespace HodlWallet.UI.Views
             else if (ViewModel.Action == "pop") // Login after logout or timeout
             {
                 Navigation.PopModalAsync();
-
+                Navigation.PopModalAsync();
+                
                 return;
             }
 
@@ -169,6 +187,22 @@ namespace HodlWallet.UI.Views
         void CancelButtonClicked(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
+        }
+        
+        async void FingerprintButtonClicked(object sender, EventArgs e)
+        {
+            if (ViewModel.Action == "update")
+            {
+                var view = new BiometricLoginView(ViewModel.Action);
+                var nav = new NavigationPage(view);
+                await Navigation.PushModalAsync(nav);
+            }
+            else
+            {
+                var view = new BiometricLoginView(ViewModel.Action);
+                var nav = new NavigationPage(view);
+                await Navigation.PushModalAsync(nav);
+            }
         }
     }
 }

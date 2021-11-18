@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HodlWallet.Core.ViewModels
@@ -54,6 +54,39 @@ namespace HodlWallet.Core.ViewModels
                 AuthenticationService.ShowingLoginForm = loginFormVisible;
             }
         }
+        
+        bool biometricsAvailable;
+        public bool BiometricsAvailable
+        {
+            get
+            {
+                return biometricsAvailable & Preferences.Get("biometricsAllow", true);
+            }
+
+            set
+            {
+                biometricsAvailable = value;
+
+                AuthenticationService.BiometricsAvailable = biometricsAvailable;
+            }
+        }
+        
+        string lastLogin;
+        public string LastLogin
+        {
+            get
+            {
+                SetProperty(ref lastLogin, Preferences.Get("lastLogin", "pin"));
+                return lastLogin;
+            }
+            set
+            {
+                // TODO Add validation
+                SetProperty(ref lastLogin, value);
+                Preferences.Set("lastLogin", lastLogin);
+            }
+        }
+
 
         public LoginViewModel()
         {

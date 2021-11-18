@@ -1,5 +1,5 @@
 ﻿//
-// ImageResourceExtension.cs
+// ImageResourceExtensions.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -28,7 +28,7 @@ using Xamarin.Forms.Xaml;
 namespace HodlWallet.UI.Extensions
 {
     [ContentProperty("Source")]
-    public class ImageResourceExtension : IMarkupExtension
+    public class ImageResourceExtensions : IMarkupExtension
     {
         public string Source { get; set; }
 

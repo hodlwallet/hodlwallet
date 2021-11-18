@@ -3,6 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>latest</LangVersion>
+		<Configurations>Debug;Release;Testnet</Configurations>
+		<Platforms>AnyCPU;iPhone;iPhoneSimulator</Platforms>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DebugType>pdbonly</DebugType>
@@ -13,7 +15,28 @@
 		<DebugType></DebugType>
 		<DefineConstants>RELEASE</DefineConstants>
 	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testnet|iPhone' ">
+	  <IntermediateOutputPath>obj\iPhone\Testnet\netstandard2.1</IntermediateOutputPath>
+	  <DebugType></DebugType>
+	  <Optimize>false</Optimize>
+	  <OutputPath>bin\iPhone\Testnet\netstandard2.1</OutputPath>
+	  <DefineConstants></DefineConstants>
+	  <NoWarn></NoWarn>
+	  <LangVersion>Default</LangVersion>
+	  <NoStdLib>false</NoStdLib>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testnet|iPhoneSimulator' ">
+	  <IntermediateOutputPath>obj\iPhoneSimulator\Testnet\netstandard2.1</IntermediateOutputPath>
+	  <DebugType></DebugType>
+	  <Optimize>false</Optimize>
+	  <OutputPath>bin\iPhoneSimulator\Testnet\netstandard2.1</OutputPath>
+	  <DefineConstants></DefineConstants>
+	  <NoWarn></NoWarn>
+	  <LangVersion>Default</LangVersion>
+	  <NoStdLib>false</NoStdLib>
+	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Plugin.Fingerprint" Version="2.1.4" />
 		<PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
 		<PackageReference Include="SkiaSharp" Version="2.80.3" />
 		<PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
@@ -26,7 +49,8 @@
 		<PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
 		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.14" />
-		<PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
+		<PackageReference Include="Xamarin.CommunityToolkit" Version="1.3.0" />
+		<PackageReference Include="Liviano" Version="0.1.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Core\Models\" />
@@ -136,9 +160,13 @@
 	</Compile>
 	<Compile Update="UI\Locale\LocaleResources.Designer.cs">
 	  <DependentUpon>LocaleResources.resx</DependentUpon>
+	  <DesignTime>True</DesignTime>
 	</Compile>
 </ItemGroup>
 <ItemGroup>
+	<EmbeddedResource Update="UI\Views\BiometricLoginView.xaml">
+	  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	</EmbeddedResource>
 	<EmbeddedResource Update="UI\Views\BiometricsView.xaml">
 		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	</EmbeddedResource>
@@ -162,10 +190,6 @@
 	<Compile Update="UI\Locale\LocaleResources.es.Designer.cs">
 		<DependentUpon>LocaleResources.es.resx</DependentUpon>
 	</Compile>
-</ItemGroup>
-<ItemGroup>
-	<ProjectReference Include="..\liviano\Liviano\Liviano.csproj" />
-	<ProjectReference Include="..\liviano\Liviano.Utilities\Liviano.Utilities.csproj" />
 </ItemGroup>
 <ItemGroup>
 	<GitPath Include="..\.git" Visible="false" />

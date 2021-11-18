@@ -1,15 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              x:Class="HodlWallet.UI.Views.BiometricsView"
              Title="{i18n:Translate Biometrics.title}"
-             BackgroundColor="{DynamicResource Bg}">
+             BackgroundColor="{DynamicResource Bg}"
+             NavigationPage.HasNavigationBar="True"
+             x:Name="Header">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Padding="20" >
+                <BoxView HeightRequest="50"/>
+
+                <svg:Icon ResourceId="HodlWallet.UI.Assets.fingerprint_large.svg"
+                          HorizontalOptions="Center"
+                          x:Name="BiometricIcon"
+                          Scale="2"/>
+                
+                <BoxView HeightRequest="70"/>
+
+                <Label Text="{i18n:Translate Text=BiometricAuth.header}"
+                       x:Name="BiometricHeader"
+                       FontSize="Medium"
+                       VerticalOptions="FillAndExpand"
+                       FontFamily="{StaticResource Sans-Regular}"
+                       TextColor="{DynamicResource Fg}"
+                       HorizontalTextAlignment="Start" />
+                
+            </StackLayout>
+
+            <StackLayout  VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20, 0">
+                <Label Text="{i18n:Translate Text=BiometricAuth.switch}"
+                       FontSize="Subtitle"
+                       x:Name="BiometricEnable"
+                       FontFamily="{StaticResource Sans-Regular}"
+                       TextColor="{DynamicResource Fg2}"
+                       HorizontalOptions="StartAndExpand"
+                       HorizontalTextAlignment="Start" />
+
+                <Switch x:Name="BiometricSwitch" PropertyChanged="Switch_PropertyChanged" VerticalOptions="Start"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
