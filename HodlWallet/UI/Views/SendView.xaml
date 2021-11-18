@@ -25,13 +25,14 @@
                                    Style="{DynamicResource CustomLabel}"
                                    HorizontalTextAlignment="Start" />
 
-                            <Entry x:Name="SendAddress"
-                                   Placeholder="bc1..."
-                                   Text="{Binding AddressToSendTo}"
-                                   TextColor="{DynamicResource Fg}"
-                                   BackgroundColor="Transparent"
-                                   PlaceholderColor="{DynamicResource Fg}"
-                                   Style="{StaticResource CustomEntry}" />
+                                <Entry x:Name="SendAddress"
+                                       Placeholder="bc1..."
+                                       Text="{Binding AddressToSendTo}"
+                                       TextColor="{DynamicResource Fg}"
+                                       BackgroundColor="Transparent"
+                                       PlaceholderColor="{DynamicResource Fg}"
+                                       Style="{StaticResource CustomEntry}"
+                                       WidthRequest="50"/>
 
                         </StackLayout>
 

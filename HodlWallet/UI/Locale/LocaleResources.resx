@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -387,17 +388,13 @@
     <value>The only way to access your bitcoin if you lose or upgrade your phone.</value>
     <comment>label for security center mnemonic detail</comment>
   </data>
-  <data name="FingerprintAuth.header" xml:space="preserve">
-    <value>Use your fingerprint to unlock your wallet and send money up to a set limit.</value>
-    <comment>label for fingerprint auth header</comment>
+  <data name="BiometricAuth.header" xml:space="preserve">
+    <value>Use your biometric authentication to unlock your wallet and send money up to a set limit.</value>
+    <comment>label for biometric auth header in BiometricsView</comment>
   </data>
-  <data name="FingerprintAuth.switchLabelIOS" xml:space="preserve">
-    <value>Enable Touch ID for Hodl</value>
-    <comment>label for fingerprint auth slider on IOS</comment>
-  </data>
-  <data name="FingerprintAuth.switchAndroid" xml:space="preserve">
-    <value>Enable Fingerprint Authentication for Hodl</value>
-    <comment>label for fingerprint auth slider on android</comment>
+  <data name="BiometricAuth.switch" xml:space="preserve">
+    <value>Enable Biometric Authentication for Hodl</value>
+    <comment>label for biometric auth slider BiometricsView</comment>
   </data>
   <data name="FingerprintAuth.spendingLimit" xml:space="preserve">
     <value>Spending limit: </value>
@@ -406,10 +403,6 @@
   <data name="FingerprintAuth.subheader" xml:space="preserve">
     <value>You can customize your touch ID spending limit from the </value>
     <comment>label for fingerprint auth subheader</comment>
-  </data>
-  <data name="FingerprintAuth.limitButtonIOS" xml:space="preserve">
-    <value>Touch ID Spending Limit Screen.</value>
-    <comment>label for spending limit button on IOS</comment>
   </data>
   <data name="FingerprintAuth.limitButtonAndroid" xml:space="preserve">
     <value>Fingerprint Authentication Spending Limit Screen.</value>
@@ -839,10 +832,6 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Update Pin</value>
     <comment>label for Update Pin button of PinSettingsView</comment>
   </data>
-  <data name="Biometrics.title" xml:space="preserve">
-    <value>Face ID</value>
-    <comment>Label for BiometricsView title label</comment>
-  </data>
   <data name="Login.cancel" xml:space="preserve">
     <value>Cancel</value>
     <comment>Label of cancel button in LoginView</comment>
@@ -894,5 +883,29 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="Send.clear" xml:space="preserve">
     <value>Clear</value>
     <comment>label for clear scan button</comment>
+  </data>
+  <data name="Biometrics.title" xml:space="preserve">
+    <value>Biometrics ID</value>
+    <comment>Label for BiometricsView title</comment>
+  </data>
+  <data name="Login.useBiometric" xml:space="preserve">
+    <value>Biometric Authentication</value>
+    <comment>label for fingerprint button in LoginView on Android</comment>
+  </data>
+  <data name="Login.usePin" xml:space="preserve">
+    <value>Pin</value>
+    <comment>label for pin button in BiometricLoginView</comment>
+  </data>
+  <data name="BiometricLogin.askAuth" xml:space="preserve">
+    <value>Use biometric authentication.</value>
+    <comment>Header of authentication request in BiometricLoginView</comment>
+  </data>
+  <data name="Biometrics.notAvailableWarning" xml:space="preserve">
+    <value>No biometrics authentication available, please check settings of the device.</value>
+    <comment>Warning message in BiometricsView</comment>
+  </data>
+  <data name="Login.wayAuthentication" xml:space="preserve">
+    <value>Select the way of autentication.</value>
+    <comment>Header of BiometricLoginView</comment>
   </data>
 </root>

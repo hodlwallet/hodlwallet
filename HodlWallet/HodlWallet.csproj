@@ -36,6 +36,7 @@
 	  <NoStdLib>false</NoStdLib>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Plugin.Fingerprint" Version="2.1.4" />
 		<PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
 		<PackageReference Include="SkiaSharp" Version="2.80.3" />
 		<PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
@@ -159,9 +160,13 @@
 	</Compile>
 	<Compile Update="UI\Locale\LocaleResources.Designer.cs">
 	  <DependentUpon>LocaleResources.resx</DependentUpon>
+	  <DesignTime>True</DesignTime>
 	</Compile>
 </ItemGroup>
 <ItemGroup>
+	<EmbeddedResource Update="UI\Views\BiometricLoginView.xaml">
+	  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	</EmbeddedResource>
 	<EmbeddedResource Update="UI\Views\BiometricsView.xaml">
 		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	</EmbeddedResource>

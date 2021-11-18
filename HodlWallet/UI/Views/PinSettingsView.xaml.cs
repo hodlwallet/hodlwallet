@@ -20,12 +20,14 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using HodlWallet.Core.Services;
+using Plugin.Fingerprint;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -45,10 +47,22 @@ namespace HodlWallet.UI.Views
 
         private void UpdatePin_Clicked(object sender, EventArgs e)
         {
-            var view = new LoginView("update");
-            var nav = new NavigationPage(view);
+            string lastLogin = Preferences.Get("lastLogin", "pin");
+            bool biometricsAllow = Preferences.Get("biometricsAllow", false);
+            bool availability = Preferences.Get("biometricsAvailable", false);
 
-            Navigation.PushModalAsync(nav); 
+            if (biometricsAllow & (lastLogin == "biometric" & availability))
+            {
+                var view = new BiometricLoginView("update");
+                var nav = new NavigationPage(view);
+                Navigation.PushModalAsync(nav);
+            }
+            else
+            {
+                var view = new LoginView("update");
+                var nav = new NavigationPage(view);
+                Navigation.PushModalAsync(nav);
+            }
         }
 
         private void PinSpendingLimits_Clicked(object sender, EventArgs e)

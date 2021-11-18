@@ -176,17 +176,26 @@
                             Style="{DynamicResource LoginDigitButton}" />
                 </FlexLayout>
 
-                <Button Text="{i18n:Translate Text=Login.cancel}"
-                        Style="{DynamicResource CustomButton}"
-                        CornerRadius="0"
-                        FontSize="Large"
-                        Clicked="CancelButtonClicked"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="2"
-                        IsEnabled="False"
-                        IsVisible="False"
-                        x:Name="CancelButton"/>
+                <Button Text="{i18n:Translate Text=Login.useBiometric}"
+                Style="{DynamicResource CustomButton}"
+                CornerRadius="0"
+                FontSize="Large"
+                FlexLayout.AlignSelf="Stretch"
+                FlexLayout.Grow="0.8"
+                Clicked="FingerprintButtonClicked"
+                x:Name="FingerprintButton"/>
             </FlexLayout>
+
+            <Button Text="{i18n:Translate Text=Login.cancel}"
+                Style="{DynamicResource CustomButton}"
+                CornerRadius="0"
+                FontSize="Large"
+                Clicked="CancelButtonClicked"
+                FlexLayout.AlignSelf="Stretch"
+                FlexLayout.Grow="0.8"
+                IsEnabled="False"
+                IsVisible="False"
+                x:Name="CancelButton"/>
 
             <controls:NowLoadingIndicator />
         </AbsoluteLayout>

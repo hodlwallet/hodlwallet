@@ -1,7 +1,7 @@
 ﻿//
-// BiometricsView.xaml.cs
+// BiometricLoginViewModel.cs
 //
-// Copyright (c) 2021 HODL Wallet
+// Copyright (c) 2019 HODL Wallet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,45 +20,44 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Xamarin.Essentials;
 
-using Plugin.Fingerprint;
-using Plugin.Fingerprint.Abstractions;
-using HodlWallet.UI.Locale;
-using HodlWallet.UI.Extensions;
-
-namespace HodlWallet.UI.Views
+namespace HodlWallet.Core.ViewModels
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BiometricsView : ContentPage
+    public class BiometricLoginViewModel : BaseViewModel
     {
-        public BiometricsView()
+        public string Action { get; set; }
+
+        bool loginFormVisible = false;
+        public bool LoginFormVisible
         {
-            bool value = Preferences.Get("biometricsAllow", true);
-            InitializeComponent();
-            BiometricSwitch.IsToggled = value;
+            get
+            {
+                return loginFormVisible;
+            }
+
+            set
+            {
+                loginFormVisible = value;
+
+                AuthenticationService.ShowingLoginForm = loginFormVisible;
+            }
         }
 
-        private async void Switch_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        public BiometricLoginViewModel()
         {
-            if (BiometricSwitch.IsToggled)
-            {
-                bool availability = await CrossFingerprint.Current.IsAvailableAsync();
-                if (!availability)
-                {
-                    await this.DisplayToast(LocaleResources.Biometrics_notAvailableWarning);
-                    return;
-                }
-            }
-            Preferences.Set("biometricsAllow", BiometricSwitch.IsToggled);
         }
+
+        public void StartAppShell()
+        {
+            MessagingCenter.Send(this, "StartAppShell");
+        }
+
+        
     }
 }
