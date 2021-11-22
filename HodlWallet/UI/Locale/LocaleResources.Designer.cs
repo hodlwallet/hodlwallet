@@ -19,7 +19,7 @@ namespace HodlWallet.UI.Locale {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class LocaleResources {
@@ -570,6 +570,15 @@ namespace HodlWallet.UI.Locale {
         internal static string Biometrics_title {
             get {
                 return ResourceManager.GetString("Biometrics.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string BiometricsSettings_close {
+            get {
+                return ResourceManager.GetString("BiometricsSettings.close", resourceCulture);
             }
         }
         

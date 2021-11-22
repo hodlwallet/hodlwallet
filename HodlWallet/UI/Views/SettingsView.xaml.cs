@@ -131,10 +131,5 @@ namespace HodlWallet.UI.Views
         {
             await Navigation.PushAsync(new SecuritySettingsView());
         }
-
-        async void CloseToolbarItem_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopModalAsync();
-        }
     }
 }

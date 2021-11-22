@@ -888,6 +888,10 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Biometrics ID</value>
     <comment>Label for BiometricsView title</comment>
   </data>
+  <data name="BiometricsSettings.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for close button of BiometricsView</comment>
+  </data>
   <data name="Login.useBiometric" xml:space="preserve">
     <value>Biometric Authentication</value>
     <comment>label for fingerprint button in LoginView on Android</comment>

@@ -60,5 +60,10 @@ namespace HodlWallet.UI.Views
             }
             Preferences.Set("biometricsAllow", BiometricSwitch.IsToggled);
         }
+
+        void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
     }
 }

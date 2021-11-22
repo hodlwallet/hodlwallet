@@ -40,12 +40,13 @@ namespace HodlWallet.UI.Views
         {
             InitializeComponent();
         }
-        private void CloseToolbarItem_Clicked(object sender, EventArgs e)
+
+        void CloseToolbarItem_Clicked(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
         }
 
-        private void UpdatePin_Clicked(object sender, EventArgs e)
+        void UpdatePin_Clicked(object sender, EventArgs e)
         {
             string lastLogin = Preferences.Get("lastLogin", "pin");
             bool biometricsAllow = Preferences.Get("biometricsAllow", false);
@@ -65,7 +66,7 @@ namespace HodlWallet.UI.Views
             }
         }
 
-        private void PinSpendingLimits_Clicked(object sender, EventArgs e)
+        void PinSpendingLimits_Clicked(object sender, EventArgs e)
         {
 
         }

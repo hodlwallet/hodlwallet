@@ -11,8 +11,7 @@
                      Order="Primary"
                      Text="{i18n:Translate Text=PinSettings.close}"
                      Priority="0"
-                     Clicked="CloseToolbarItem_Clicked"
-                     />
+                     Clicked="CloseToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <FlexLayout>
@@ -25,16 +24,14 @@
 
                     <Button Text="{i18n:Translate Text=PinSettings.updatePin}"
                             Style="{DynamicResource SettingsButton}"
-                            Clicked="UpdatePin_Clicked"
-                            />
+                            Clicked="UpdatePin_Clicked" />
 
                     <BoxView BackgroundColor="{DynamicResource Fg2}"
                              HeightRequest="1" />
 
                     <Button Text="{i18n:Translate Text=PinSettings.pinSpendingLimits}"
                             Style="{DynamicResource SettingsButton}"
-                            Clicked="PinSpendingLimits_Clicked"
-                            />
+                            Clicked="PinSpendingLimits_Clicked" />
 
                     <BoxView BackgroundColor="{DynamicResource Fg2}"
                              HeightRequest="1" />
