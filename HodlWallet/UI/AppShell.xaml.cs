@@ -108,7 +108,7 @@ namespace HodlWallet.UI
                 "home" => homeTab,
                 "receive" => receiveTab,
                 "send" => sendTab,
-                "accountSettings" => accountSettingsTab,
+                "settings" => settingsTab,
                 _ => homeTab,
             };
 
@@ -232,7 +232,7 @@ namespace HodlWallet.UI
             Routing.RegisterRoute("send", typeof(SendView));
             Routing.RegisterRoute("home", typeof(HomeView));
             Routing.RegisterRoute("receive", typeof(ReceiveView));
-            Routing.RegisterRoute("account-settings", typeof(AccountSettingsView));
+            //Routing.RegisterRoute("account-settings", typeof(AccountSettingsView));
         }
     }
 }
