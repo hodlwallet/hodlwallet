@@ -682,6 +682,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string Login_close {
+            get {
+                return ResourceManager.GetString("Login.close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Biometric Authentication.
         /// </summary>
         internal static string Login_useBiometric {

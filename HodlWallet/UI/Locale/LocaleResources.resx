@@ -912,4 +912,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Select the way of autentication.</value>
     <comment>Header of BiometricLoginView</comment>
   </data>
+  <data name="Login.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for close button of LoginView</comment>
+  </data>
 </root>

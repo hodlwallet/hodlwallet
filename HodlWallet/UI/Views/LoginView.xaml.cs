@@ -56,7 +56,6 @@ namespace HodlWallet.UI.Views
             {
                 LogoFront.IsVisible = false;
                 Header.Text = Locale.LocaleResources.Pin_updateHeader;
-                CancelButton.IsVisible = true;
             }
         }
 
@@ -203,6 +202,11 @@ namespace HodlWallet.UI.Views
                 var nav = new NavigationPage(view);
                 await Navigation.PushModalAsync(nav);
             }
+        }
+
+        void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }
