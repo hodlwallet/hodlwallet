@@ -48,8 +48,7 @@ namespace HodlWallet.UI.Views
             ViewModel.Action = action;
             SubscribeToMessages();
 
-            LoginViewModel loginViewModel = new LoginViewModel();
-            loginViewModel.LastLogin = "biometric";
+            LoginViewModel.SetLastLoginAs("biometric");
 
             if (ViewModel.Action == "update")
             {

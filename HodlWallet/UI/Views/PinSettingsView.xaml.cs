@@ -55,14 +55,12 @@ namespace HodlWallet.UI.Views
             if (biometricsAllow & (lastLogin == "biometric" & availability))
             {
                 var view = new BiometricLoginView("update");
-                var nav = new NavigationPage(view);
-                Navigation.PushModalAsync(nav);
+                Navigation.PushAsync(view);
             }
             else
             {
                 var view = new LoginView("update");
-                var nav = new NavigationPage(view);
-                Navigation.PushModalAsync(nav);
+                Navigation.PushAsync(view);
             }
         }
 

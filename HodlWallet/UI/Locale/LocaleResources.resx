@@ -322,7 +322,7 @@
     <comment>label for menu security button</comment>
   </data>
   <data name="Menu.info" xml:space="preserve">
-    <value>Info</value>
+    <value>Account Info</value>
     <comment>label for menu info button</comment>
   </data>
   <data name="Menu.coinControl" xml:space="preserve">

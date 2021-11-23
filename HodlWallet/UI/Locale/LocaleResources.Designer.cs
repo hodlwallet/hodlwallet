@@ -736,7 +736,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Info.
+        ///   Looks up a localized string similar to Account Info.
         /// </summary>
         internal static string Menu_info {
             get {
