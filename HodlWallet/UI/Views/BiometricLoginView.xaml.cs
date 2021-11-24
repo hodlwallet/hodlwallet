@@ -137,18 +137,9 @@ namespace HodlWallet.UI.Views
 
         async void UsePinButtonClicked(object sender, EventArgs e)
         {
-            if (ViewModel.Action == "update")
-            {
-                var view = new LoginView(ViewModel.Action);
-                var nav = new NavigationPage(view);
-                await Navigation.PushModalAsync(nav);
-            }
-            else
-            {
-                var view = new LoginView(ViewModel.Action);
-                var nav = new NavigationPage(view);
-                await Navigation.PushModalAsync(nav);
-            }
+            var view = new LoginView(ViewModel.Action);
+            var nav = new NavigationPage(view);
+            await Navigation.PushModalAsync(nav);
         }
     }
 }

@@ -31,6 +31,7 @@ using HodlWallet.Core.Services;
 using HodlWallet.UI.Views.Demos;
 
 using Plugin.Fingerprint;
+using Xamarin.Essentials;
 
 namespace HodlWallet.UI.Views
 {
@@ -64,14 +65,15 @@ namespace HodlWallet.UI.Views
             base.OnAppearing();
 
             ViewModel.LoginFormVisible = true;
+            bool biometricsAllow = Preferences.Get("biometricsAllow", false);
 
-            if (!ViewModel.BiometricsAvailable)
+            if (ViewModel.BiometricsAvailable & biometricsAllow)
             {
-                FingerprintButton.IsVisible = false;
+                FingerprintButton.IsVisible = true;
             }
             else
             {
-                FingerprintButton.IsVisible = true;
+                FingerprintButton.IsVisible = false;
             }
         }
 
@@ -190,18 +192,9 @@ namespace HodlWallet.UI.Views
         
         async void FingerprintButtonClicked(object sender, EventArgs e)
         {
-            if (ViewModel.Action == "update")
-            {
-                var view = new BiometricLoginView(ViewModel.Action);
-                var nav = new NavigationPage(view);
-                await Navigation.PushModalAsync(nav);
-            }
-            else
-            {
-                var view = new BiometricLoginView(ViewModel.Action);
-                var nav = new NavigationPage(view);
-                await Navigation.PushModalAsync(nav);
-            }
+            var view = new BiometricLoginView(ViewModel.Action);
+            var nav = new NavigationPage(view);
+            await Navigation.PushModalAsync(nav);
         }
 
         void CloseToolbarItem_Clicked(object sender, EventArgs e)

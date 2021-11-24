@@ -55,6 +55,7 @@ namespace HodlWallet.UI.Views
                 if (!availability)
                 {
                     await this.DisplayToast(LocaleResources.Biometrics_notAvailableWarning);
+                    BiometricSwitch.IsToggled = false;
                     return;
                 }
             }
