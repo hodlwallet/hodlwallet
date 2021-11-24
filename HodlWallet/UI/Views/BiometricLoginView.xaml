@@ -12,6 +12,13 @@
     <ContentPage.BindingContext>
         <vm:BiometricLoginViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="CloseToolbarItem"
+                     Order="Primary"
+                     Text="{i18n:Translate Text=Login.close}"
+                     Priority="0"
+                     Clicked="CloseToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
@@ -67,17 +74,6 @@
                         FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="0.8"/>
             </FlexLayout>
-
-                <Button Text="{i18n:Translate Text=Login.cancel}"
-                        Style="{DynamicResource CustomButton}"
-                        CornerRadius="0"
-                        FontSize="Large"
-                        Clicked="CancelButtonClicked"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="0.8"
-                        IsEnabled="False"
-                        IsVisible="False"
-                        x:Name="CancelButton"/>
 
             <controls:NowLoadingIndicator />
         </AbsoluteLayout>

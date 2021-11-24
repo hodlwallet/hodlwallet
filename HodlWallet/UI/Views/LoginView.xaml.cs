@@ -190,11 +190,6 @@ namespace HodlWallet.UI.Views
             Application.Current.MainPage = new ControlsDemoView();
         }
 
-        void CancelButtonClicked(object sender, EventArgs e)
-        {
-            Navigation.PopModalAsync();
-        }
-        
         async void FingerprintButtonClicked(object sender, EventArgs e)
         {
             var view = new BiometricLoginView(ViewModel.Action);
@@ -202,9 +197,9 @@ namespace HodlWallet.UI.Views
             await Navigation.PushModalAsync(nav);
         }
 
-        void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        async void CloseToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            await Shell.Current.GoToAsync("../../pinSettings");
         }
     }
 }

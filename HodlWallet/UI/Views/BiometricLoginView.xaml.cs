@@ -53,7 +53,6 @@ namespace HodlWallet.UI.Views
             if (ViewModel.Action == "update")
             {
                 LogoFront.IsVisible = false;
-                CancelButton.IsVisible = true;
                 NavigationPage.SetHasNavigationBar(this, true);
             }
             else
@@ -116,11 +115,6 @@ namespace HodlWallet.UI.Views
             Application.Current.MainPage = new ControlsDemoView();
         }
 
-        void CancelButtonClicked(object sender, EventArgs e)
-        {
-            Navigation.PopModalAsync();
-        }
-
         private async void BiometricsButtonClicked(object sender, EventArgs e)
         {
             var authResult = await CrossFingerprint.Current.AuthenticateAsync(
@@ -145,6 +139,11 @@ namespace HodlWallet.UI.Views
             var view = new LoginView(ViewModel.Action);
             var nav = new NavigationPage(view);
             await Navigation.PushModalAsync(nav);
+        }
+
+        async void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("../../pinSettings");
         }
     }
 }
