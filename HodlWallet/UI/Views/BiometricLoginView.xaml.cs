@@ -54,6 +54,11 @@ namespace HodlWallet.UI.Views
             {
                 LogoFront.IsVisible = false;
                 CancelButton.IsVisible = true;
+                NavigationPage.SetHasNavigationBar(this, true);
+            }
+            else
+            {
+                NavigationPage.SetHasNavigationBar(this, false);
             }
 
             BiometricsButtonClicked(this, new EventArgs());

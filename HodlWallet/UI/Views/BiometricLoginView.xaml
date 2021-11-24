@@ -7,7 +7,6 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BiometricLoginView"
              x:DataType="vm:BiometricLoginViewModel"
-             NavigationPage.HasNavigationBar="False"
              BackgroundColor="{DynamicResource Bg}"
              ios:Page.UseSafeArea="True">
     <ContentPage.BindingContext>
