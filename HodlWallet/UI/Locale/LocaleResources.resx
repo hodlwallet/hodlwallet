@@ -832,10 +832,6 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Update Pin</value>
     <comment>label for Update Pin button of PinSettingsView</comment>
   </data>
-  <data name="Login.cancel" xml:space="preserve">
-    <value>Cancel</value>
-    <comment>Label of cancel button in LoginView</comment>
-  </data>
   <data name="AccountTypeSelection.description" xml:space="preserve">
     <value>Hodl Wallet supports two different account types described below. Please select the account type you would like to create. Creating a new account has no effect on your existing accounts.</value>
     <comment>description of the account type selection view</comment>
