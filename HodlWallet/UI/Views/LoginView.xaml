@@ -182,13 +182,13 @@
                 </FlexLayout>
 
                 <Button Text="{i18n:Translate Text=Login.useBiometric}"
-                Style="{DynamicResource CustomButton}"
-                CornerRadius="0"
-                FontSize="Large"
-                FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="0.8"
-                Clicked="FingerprintButtonClicked"
-                x:Name="FingerprintButton"/>
+                        Style="{DynamicResource BottomButtonSecondary}"
+                        FontSize="Large"
+                        CornerRadius="0"
+                        FlexLayout.Grow="0.8"
+                        x:Name="FingerprintButton"
+                        FlexLayout.AlignSelf="Stretch"
+                        Clicked="FingerprintButtonClicked"/>
             </FlexLayout>
             <controls:NowLoadingIndicator />
         </AbsoluteLayout>

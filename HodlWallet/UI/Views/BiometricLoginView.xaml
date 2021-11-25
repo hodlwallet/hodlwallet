@@ -56,23 +56,25 @@
                 <BoxView BackgroundColor="{DynamicResource Fg3}" HeightRequest="1"  WidthRequest="500"/>
 
                 <Button Text="{i18n:Translate Text=Login.useBiometric}"
-                        Style="{DynamicResource CustomButton}"
+                        Style="{DynamicResource BottomButton}"
                         CornerRadius="0"
                         FontSize="Large"
-                        FlexLayout.AlignSelf="Stretch"
                         FlexLayout.Grow="0.8"
-                        Clicked="BiometricsButtonClicked"
-                        x:Name="BiometricsButton"/>
+                        x:Name="BiometricsButton"
+                        FlexLayout.AlignSelf="Stretch"
+                        Clicked="BiometricsButtonClicked"/>
 
                 <BoxView BackgroundColor="{DynamicResource Fg3}" HeightRequest="1" WidthRequest="500"/>
 
                 <Button Text="{i18n:Translate Text=Login.usePin}"
-                        Style="{DynamicResource CustomButton}"
+                        Style="{DynamicResource BottomButton}"
                         CornerRadius="0"
                         FontSize="Large"
+                        FlexLayout.Grow="0.8"
                         Clicked="UsePinButtonClicked"
-                        FlexLayout.AlignSelf="Stretch"
-                        FlexLayout.Grow="0.8"/>
+                        FlexLayout.AlignSelf="Stretch"/>
+                
+                <BoxView BackgroundColor="{DynamicResource Fg3}" HeightRequest="1" WidthRequest="500"/>
             </FlexLayout>
 
             <controls:NowLoadingIndicator />
