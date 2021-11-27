@@ -1,15 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n" 
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              x:Class="HodlWallet.UI.Views.DisplayCurrencyView"
-             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              Title="{i18n:Translate Text=DisplayCurrency.Title}"
              BackgroundColor="{DynamicResource Bg}" >
+    <ContentPage.BindingContext>
+        <vm:DisplayCurrencyViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="20">
+            <StackLayout Orientation="Horizontal"
+                         Spacing="15">
+                <Label FontSize="Large" Text="Show Balance in Satochis" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                <Switch IsToggled="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <BoxView />
+            <Label Text="Selected Currency: " />
+
+            <BoxView />
+            <StackLayout>
+                <CollectionView 
+                    BackgroundColor="{DynamicResource Bg2}"
+                    ItemsLayout="VerticalList"
+                    SelectionMode="Single"
+                    ItemsSource="{Binding currencySymbolEntities}" >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label 
+                                FontSize="Large" 
+                                TextColor="{DynamicResource FgSuccess}" >
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{}{0} ({1})">
+                                        <Binding Path="Name" />
+                                        <Binding Path="Code" />
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

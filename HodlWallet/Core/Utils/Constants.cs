@@ -20,6 +20,9 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using HodlWallet.Core.Models;
+using System.Collections.Generic;
+
 namespace HodlWallet.Core.Utils
 {
     public static class Constants
@@ -28,6 +31,18 @@ namespace HodlWallet.Core.Utils
         public const string PRECIO_HOST_URL = "https://precio.bitstop.co";
         public const string PRECIO_WS_HOST_URL = "wss://precio.bitstop.co";
         public static readonly string[] CURRENCY_CODES = { "USD" };
+        public static readonly List<CurrencySymbolEntity> CURRENCY_SYMBOLS = new() {
+                            new CurrencySymbolEntity { Code = "USD", Symbol = "$" },
+                            new CurrencySymbolEntity { Code = "AUD", Symbol = "AU$" },
+                            new CurrencySymbolEntity { Code = "ALL", Symbol = "L" },
+                            new CurrencySymbolEntity { Code = "DZD", Symbol = "دج" },
+                            new CurrencySymbolEntity { Code = "ARS", Symbol = "$" },
+                            new CurrencySymbolEntity { Code = "AFN", Symbol = "؋" },
+                            new CurrencySymbolEntity { Code = "AOA", Symbol = "Kz" },
+                            new CurrencySymbolEntity { Code = "AMD", Symbol = "֏" },
+                            new CurrencySymbolEntity { Code = "AZN", Symbol = "₼" }
+                            };
+
         public const string BTC_UNIT_LABEL = "1 BTC ≈ {0:C}";
         public const string BTC_UNIT_LABEL_TMP = "";
         public const string SAT_PER_BYTE_UNIT_LABEL = "{0} sat/byte";
