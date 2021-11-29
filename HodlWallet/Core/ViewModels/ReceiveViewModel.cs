@@ -31,6 +31,7 @@ namespace HodlWallet.Core.ViewModels
     public class ReceiveViewModel : BaseViewModel
     {
         public ICommand ShowShareIntentCommand { get; }
+        public ICommand CloseCommand { get; }
 
         string address;
         public string Address
@@ -39,9 +40,31 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref address, value);
         }
 
+        string amount;
+        public string Amount
+        {
+            get => amount;
+            set => SetProperty(ref amount, value);
+        }
+
+        bool amountIsVisible = false;
+        public bool AmountIsVisible
+        {
+            get => amountIsVisible;
+            set => SetProperty(ref amountIsVisible, value);
+        }
+
+        bool amountButtonIsVisible = true;
+        public bool AmountButtonIsVisible
+        {
+            get => amountButtonIsVisible;
+            set => SetProperty(ref amountButtonIsVisible, value);
+        }
+
         public ReceiveViewModel()
         {
             ShowShareIntentCommand = new Command(ShowShareIntent);
+            CloseCommand = new Command(Close);
 
             if (WalletService.IsStarted)
             {
@@ -51,6 +74,14 @@ namespace HodlWallet.Core.ViewModels
             {
                 WalletService.OnStarted += WalletService_OnStarted;
             }
+        }
+
+        void Close()
+        {
+            amount = "";
+            AmountIsVisible = false;
+            AmountButtonIsVisible = true;
+            Debug.WriteLine($"[Jonathan] Close");
         }
 
         private void WalletService_OnStarted(object sender, EventArgs e)

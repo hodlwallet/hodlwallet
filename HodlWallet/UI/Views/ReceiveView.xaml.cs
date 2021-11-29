@@ -54,5 +54,19 @@ namespace HodlWallet.UI.Views
 
             base.OnAppearing();
         }
+
+        private void AddAmountButton_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.AmountIsVisible = true;
+            ViewModel.AmountButtonIsVisible = false;
+        }
+
+        private void Amount_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            //if (int.Parse(AmountEntry.Text) > 0)
+            //{
+            //    ViewModel.Address = ViewModel.Address + "?amount=" + ViewModel.Amount.ToString();
+            //}
+        }
     }
 }
