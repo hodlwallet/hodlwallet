@@ -66,7 +66,7 @@ namespace HodlWallet.UI.Views
         {
             if (Convert.ToDecimal(ViewModel.Amount) > 0 && ViewModel.AmountIsVisible)
             {
-                ViewModel.Address = ViewModel.BasicAddress + "?amount=" + ViewModel.Amount;
+                ViewModel.Address = "bitcoin:" + ViewModel.BasicAddress + "?amount=" + ViewModel.Amount;
             }
         }
     }
