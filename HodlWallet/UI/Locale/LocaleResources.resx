@@ -908,4 +908,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Select the way of autentication.</value>
     <comment>Header of BiometricLoginView</comment>
   </data>
+  <data name="Receive.amount" xml:space="preserve">
+    <value>Amount</value>
+    <comment>label for amount section in receive view</comment>
+  </data>
 </root>
