@@ -59,14 +59,15 @@ namespace HodlWallet.UI.Views
         {
             ViewModel.AmountIsVisible = true;
             ViewModel.AmountButtonIsVisible = false;
+            ViewModel.Amount = "0.000";
         }
 
-        private void Amount_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void AmountEntry_Completed(object sender, EventArgs e)
         {
-            //if (int.Parse(AmountEntry.Text) > 0)
-            //{
-            //    ViewModel.Address = ViewModel.Address + "?amount=" + ViewModel.Amount.ToString();
-            //}
+            if (Convert.ToDecimal(ViewModel.Amount) > 0 && ViewModel.AmountIsVisible)
+            {
+                ViewModel.Address = ViewModel.BasicAddress + "?amount=" + ViewModel.Amount;
+            }
         }
     }
 }

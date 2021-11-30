@@ -15,7 +15,7 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THEadre
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
@@ -38,6 +38,13 @@ namespace HodlWallet.Core.ViewModels
         {
             get => address;
             set => SetProperty(ref address, value);
+        }
+
+        string basicAddress;
+        public string BasicAddress
+        {
+            get => basicAddress;
+            set => SetProperty(ref basicAddress, value);
         }
 
         string amount;
@@ -78,10 +85,9 @@ namespace HodlWallet.Core.ViewModels
 
         void Close()
         {
-            amount = "";
             AmountIsVisible = false;
             AmountButtonIsVisible = true;
-            Debug.WriteLine($"[Jonathan] Close");
+            Address = BasicAddress;
         }
 
         private void WalletService_OnStarted(object sender, EventArgs e)
@@ -91,7 +97,8 @@ namespace HodlWallet.Core.ViewModels
 
         void GetAddressFromWallet()
         {
-            Address = WalletService.GetReceiveAddress().ToString();
+            BasicAddress = WalletService.GetReceiveAddress().ToString();
+            Address = BasicAddress;
 
             Debug.WriteLine($"[GetAddressFromWallet] New address: {Address}");
         }
