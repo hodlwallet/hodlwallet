@@ -22,13 +22,13 @@
             <BoxView />
             <StackLayout>
                 <CollectionView 
-                    BackgroundColor="{DynamicResource Bg2}"
+                    
                     ItemsLayout="VerticalList"
                     SelectionMode="Single"
                     ItemsSource="{Binding currencySymbolEntities}" >
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame>
+                            <Frame BackgroundColor="Transparent">
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup x:Name="CommonStates">
                                         <VisualState x:Name="Normal">
@@ -41,15 +41,15 @@
                                             <VisualState.Setters>
                                                 <Setter TargetName="CheckIcon" Property="Image.IsVisible" Value="True" />
                                                 <Setter Property="Padding" Value="1" />
+                                                <Setter Property="BackgroundColor" Value="Transparent" />
                                             </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
-                                <Grid 
-                                    BackgroundColor="Transparent">
+                                <Grid>
                                     <Label 
                                         FontSize="Large" 
-                                        TextColor="{DynamicResource FgSuccess}" >
+                                        TextColor="{DynamicResource Fg}" >
                                         <Label.Text>
                                             <MultiBinding StringFormat="{}{0} ({1})">
                                                 <Binding Path="Name" />
