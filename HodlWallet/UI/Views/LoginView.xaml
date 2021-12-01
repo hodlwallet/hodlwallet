@@ -7,12 +7,17 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.LoginView"
              x:DataType="vm:LoginViewModel"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundColor="{DynamicResource Bg}"
              ios:Page.UseSafeArea="True">
     <ContentPage.BindingContext>
         <vm:LoginViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="CloseToolbarItem"
+                     Order="Primary"
+                     Text="{i18n:Translate Text=Login.close}"
+                     Priority="0"
+                     Clicked="CloseToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout Direction="Column"
@@ -177,26 +182,14 @@
                 </FlexLayout>
 
                 <Button Text="{i18n:Translate Text=Login.useBiometric}"
-                Style="{DynamicResource CustomButton}"
-                CornerRadius="0"
-                FontSize="Large"
-                FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="0.8"
-                Clicked="FingerprintButtonClicked"
-                x:Name="FingerprintButton"/>
+                        Style="{DynamicResource BottomButtonSecondary}"
+                        FontSize="Large"
+                        CornerRadius="0"
+                        FlexLayout.Grow="0.8"
+                        x:Name="FingerprintButton"
+                        FlexLayout.AlignSelf="Stretch"
+                        Clicked="FingerprintButtonClicked"/>
             </FlexLayout>
-
-            <Button Text="{i18n:Translate Text=Login.cancel}"
-                Style="{DynamicResource CustomButton}"
-                CornerRadius="0"
-                FontSize="Large"
-                Clicked="CancelButtonClicked"
-                FlexLayout.AlignSelf="Stretch"
-                FlexLayout.Grow="0.8"
-                IsEnabled="False"
-                IsVisible="False"
-                x:Name="CancelButton"/>
-
             <controls:NowLoadingIndicator />
         </AbsoluteLayout>
     </ContentPage.Content>

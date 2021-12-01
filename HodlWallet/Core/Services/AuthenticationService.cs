@@ -49,6 +49,7 @@ namespace HodlWallet.Core.Services
         public DateTimeOffset LastAuth { get; set; }
 
         bool isAuthenticated = false;
+
         public bool IsAuthenticated
         {
             get
@@ -72,7 +73,6 @@ namespace HodlWallet.Core.Services
             }
         }
 
-
         public bool ShowingLoginForm { get; set; }
         bool biometricsAvailable;
         public bool BiometricsAvailable
@@ -88,10 +88,6 @@ namespace HodlWallet.Core.Services
                 Preferences.Set("biometricsAvailable", biometricsAvailable);
             }
         }
-
-
-
-
 
         public async void ShowLogin(string action = null)
         {

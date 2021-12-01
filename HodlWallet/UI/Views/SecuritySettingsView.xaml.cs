@@ -45,12 +45,18 @@ namespace HodlWallet.UI.Views
 
         async void PinButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PinSettingsView());
+            var view = new PinSettingsView();
+            var nav = new NavigationPage(view);
+
+            await Navigation.PushModalAsync(nav);
         }
 
         async void Biometrics_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new BiometricsView());
+            var view = new BiometricsView();
+            var nav = new NavigationPage(view);
+
+            await Navigation.PushModalAsync(nav);
         }
     }
 }
