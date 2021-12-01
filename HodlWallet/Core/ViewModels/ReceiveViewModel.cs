@@ -85,9 +85,9 @@ namespace HodlWallet.Core.ViewModels
 
         void Close()
         {
+            Address = BasicAddress;
             AmountIsVisible = false;
             AmountButtonIsVisible = true;
-            Address = BasicAddress;
         }
 
         private void WalletService_OnStarted(object sender, EventArgs e)

@@ -57,9 +57,9 @@ namespace HodlWallet.UI.Views
 
         private void AddAmountButton_Clicked(object sender, EventArgs e)
         {
+            ViewModel.Amount = "0.000";
             ViewModel.AmountIsVisible = true;
             ViewModel.AmountButtonIsVisible = false;
-            ViewModel.Amount = "0.000";
         }
 
         private void AmountEntry_Completed(object sender, EventArgs e)
