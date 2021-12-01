@@ -45,7 +45,8 @@
                                         </VisualState>
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
-                                <Grid>
+                                <Grid 
+                                    BackgroundColor="Transparent">
                                     <Label 
                                         FontSize="Large" 
                                         TextColor="{DynamicResource FgSuccess}" >
