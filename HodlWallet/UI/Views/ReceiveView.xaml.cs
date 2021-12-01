@@ -54,5 +54,20 @@ namespace HodlWallet.UI.Views
 
             base.OnAppearing();
         }
+
+        private void AddAmountButton_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.AmountIsVisible = true;
+            ViewModel.AmountButtonIsVisible = false;
+            ViewModel.Amount = "0.000";
+        }
+
+        private void AmountEntry_Completed(object sender, EventArgs e)
+        {
+            if (Convert.ToDecimal(ViewModel.Amount) > 0 && ViewModel.AmountIsVisible)
+            {
+                ViewModel.Address = "bitcoin:" + ViewModel.BasicAddress + "?amount=" + ViewModel.Amount;
+            }
+        }
     }
 }

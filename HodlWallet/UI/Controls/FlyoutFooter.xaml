@@ -2,29 +2,20 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
+             x:DataType="controls:FlyoutFooter"
              x:Class="HodlWallet.UI.Controls.FlyoutFooter">
     <ContentView.Content>
-        <FlexLayout Direction="Column"
-                    JustifyContent="SpaceAround">
-
-            <Button Text="{i18n:Translate Text=AddAccount.button}"
-                    Style="{DynamicResource BottomButton}"
-                    FlexLayout.Grow="1"
-                    Clicked="CreateAccountButton_Clicked"
-                    HeightRequest="70" />
-
-            <Button Text="{i18n:Translate Text=Settings.button}"
-                    Style="{DynamicResource BottomButton}"
-                    FlexLayout.Grow="1"
-                    HeightRequest="70"
-                    Clicked="SettingsButton_Clicked">
-                <Button.Margin>
-                    <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="Android">5,0,5,5</On>
-                        <On Platform="iOS">5,0,5,20</On>
-                    </OnPlatform>
-                </Button.Margin>
-            </Button>
-        </FlexLayout>
+        <Button Text="{i18n:Translate Text=AddAccount.button}"
+                Style="{DynamicResource BottomButton}"
+                Clicked="CreateAccountButton_Clicked"
+                HeightRequest="70">
+            <Button.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android">5,0,5,5</On>
+                    <On Platform="iOS">5,0,5,20</On>
+                </OnPlatform>
+            </Button.Margin>
+        </Button>
     </ContentView.Content>
 </ContentView>

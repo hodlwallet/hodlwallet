@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
-             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              x:Class="HodlWallet.UI.Views.ReceiveView"
              Title="{i18n:Translate Receive.title}"
              BackgroundColor="{DynamicResource Bg}">
@@ -31,7 +31,7 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView FlexLayout.Grow="1">
+            <ContentView FlexLayout.Grow="0.8" HeightRequest="30">
                 <Label Style="{DynamicResource CustomLabel}"
                        Text="{Binding Address}"
                        HorizontalTextAlignment="Center"
@@ -44,17 +44,53 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <BoxView FlexLayout.Grow="1" />
+            <ContentView FlexLayout.Grow="1" IsVisible="{Binding AmountIsVisible}">
+                <StackLayout HeightRequest="30" 
+                             Margin="20,0">
+                    <StackLayout Orientation="Horizontal" >
+                        <Label Style="{DynamicResource CustomLabel}"
+                               Text="{i18n:Translate Text=Receive.amount}"
+                               HorizontalOptions="StartAndExpand"
+                               HorizontalTextAlignment="Start"
+                               FontFamily="{DynamicResource Mono-Regular}"
+                               FontSize="Small" />
 
-            <Button x:Name="ShareButton"
+                        <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
+                                    HorizontalOptions="End"
+                                    WidthRequest="16"
+                                    HeightRequest="16">
+                            <svg:Icon.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CloseCommand}" />
+                            </svg:Icon.GestureRecognizers>
+                        </svg:Icon>
+                    </StackLayout>
+                    <Entry Keyboard="Numeric"
+                           Completed="AmountEntry_Completed"
+                           x:Name="AmountEntry"
+                           MaxLength="10"
+                           Text="{Binding Amount}"/>
+                    
+                </StackLayout>
+            </ContentView>
+
+            <Button IsVisible="{Binding AmountButtonIsVisible}"
+                    BackgroundColor="{DynamicResource Bg2}"
+                    Clicked="AddAmountButton_Clicked"
+                    Text="{i18n:Translate Text=Receive.requestAmount}"
+                    FlexLayout.Grow="1"
+                    FontSize="Large"
+                    HeightRequest="30"
+                    Style="{DynamicResource CustomButton}"/>
+
+            <Button x:Name="ShareButton" 
                     BackgroundColor="{DynamicResource Bg2}"
                     Command="{Binding ShowShareIntentCommand}"
                     Text="{i18n:Translate Text=Receive.share}"
-                    FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
                     FontSize="Large"
-                    HeightRequest="50"
+                    HeightRequest="30"
                     Style="{DynamicResource CustomButton}"/>
+            
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

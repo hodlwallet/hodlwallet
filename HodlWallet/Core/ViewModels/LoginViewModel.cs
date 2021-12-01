@@ -20,10 +20,12 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
+
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -31,8 +33,8 @@ namespace HodlWallet.Core.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        List<int> pin = new ();
-        object @lock = new ();
+        readonly List<int> pin = new ();
+        readonly object @lock = new ();
 
         public ICommand DigitCommand { get; }
         public ICommand BackspaceCommand { get; }
@@ -54,19 +56,23 @@ namespace HodlWallet.Core.ViewModels
                 AuthenticationService.ShowingLoginForm = loginFormVisible;
             }
         }
-        
+
+        internal static void SetLastLoginAs(string lastLogin)
+        {
+            Preferences.Set("lastLogin", lastLogin);
+        }
+
         bool biometricsAvailable;
         public bool BiometricsAvailable
         {
             get
             {
-                return biometricsAvailable & Preferences.Get("biometricsAllow", true);
+                return AuthenticationService.BiometricsAvailable;
             }
 
             set
             {
-                biometricsAvailable = value;
-
+                SetProperty(ref biometricsAvailable, value);
                 AuthenticationService.BiometricsAvailable = biometricsAvailable;
             }
         }
@@ -76,14 +82,15 @@ namespace HodlWallet.Core.ViewModels
         {
             get
             {
-                SetProperty(ref lastLogin, Preferences.Get("lastLogin", "pin"));
+                if (lastLogin is null)
+                    lastLogin = Preferences.Get("lastLogin", "pin");
+
                 return lastLogin;
             }
             set
             {
-                // TODO Add validation
                 SetProperty(ref lastLogin, value);
-                Preferences.Set("lastLogin", lastLogin);
+                SetLastLoginAs(lastLogin);
             }
         }
 

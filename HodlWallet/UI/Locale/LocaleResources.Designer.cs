@@ -574,6 +574,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string BiometricsSettings_close {
+            get {
+                return ResourceManager.GetString("BiometricsSettings.close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string Button_no {
@@ -664,11 +673,11 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
+        ///   Looks up a localized string similar to Close.
         /// </summary>
-        internal static string Login_cancel {
+        internal static string Login_close {
             get {
-                return ResourceManager.GetString("Login.cancel", resourceCulture);
+                return ResourceManager.GetString("Login.close", resourceCulture);
             }
         }
         
@@ -718,7 +727,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Info.
+        ///   Looks up a localized string similar to Account Info.
         /// </summary>
         internal static string Menu_info {
             get {
@@ -1213,6 +1222,15 @@ namespace HodlWallet.UI.Locale {
         internal static string QrCode_title {
             get {
                 return ResourceManager.GetString("QrCode.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        internal static string Receive_amount {
+            get {
+                return ResourceManager.GetString("Receive.amount", resourceCulture);
             }
         }
         

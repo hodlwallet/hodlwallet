@@ -170,12 +170,12 @@
             </ShellContent>
         </Tab>
 
-        <Tab x:Name="accountSettingsTab"
-             Route="account-settings"
+        <Tab x:Name="settingsTab"
+             Route="settings"
              Icon="gear.png"
              FlyoutItemIsVisible="False">
             <ShellContent>
-                <views:AccountSettingsView />
+                <views:SettingsView />
             </ShellContent>
         </Tab>
     </FlyoutItem>

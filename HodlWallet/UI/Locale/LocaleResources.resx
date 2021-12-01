@@ -322,7 +322,7 @@
     <comment>label for menu security button</comment>
   </data>
   <data name="Menu.info" xml:space="preserve">
-    <value>Info</value>
+    <value>Account Info</value>
     <comment>label for menu info button</comment>
   </data>
   <data name="Menu.coinControl" xml:space="preserve">
@@ -836,10 +836,6 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Update Pin</value>
     <comment>label for Update Pin button of PinSettingsView</comment>
   </data>
-  <data name="Login.cancel" xml:space="preserve">
-    <value>Cancel</value>
-    <comment>Label of cancel button in LoginView</comment>
-  </data>
   <data name="AccountTypeSelection.description" xml:space="preserve">
     <value>Hodl Wallet supports two different account types described below. Please select the account type you would like to create. Creating a new account has no effect on your existing accounts.</value>
     <comment>description of the account type selection view</comment>
@@ -892,6 +888,10 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Biometrics ID</value>
     <comment>Label for BiometricsView title</comment>
   </data>
+  <data name="BiometricsSettings.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for close button of BiometricsView</comment>
+  </data>
   <data name="Login.useBiometric" xml:space="preserve">
     <value>Biometric Authentication</value>
     <comment>label for fingerprint button in LoginView on Android</comment>
@@ -911,5 +911,13 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="Login.wayAuthentication" xml:space="preserve">
     <value>Select the way of autentication.</value>
     <comment>Header of BiometricLoginView</comment>
+  </data>
+  <data name="Receive.amount" xml:space="preserve">
+    <value>Amount</value>
+    <comment>label for amount section in receive view</comment>
+  </data>
+  <data name="Login.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for close button of LoginView</comment>
   </data>
 </root>

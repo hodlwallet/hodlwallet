@@ -41,7 +41,7 @@ namespace HodlWallet.UI.Views
 
         private async void CloseToolbarItem_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//account-settings");
+            await Shell.Current.GoToAsync("//settings");
         }
     }
 }

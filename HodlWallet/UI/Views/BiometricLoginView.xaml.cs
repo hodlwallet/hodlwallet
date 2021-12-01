@@ -48,13 +48,16 @@ namespace HodlWallet.UI.Views
             ViewModel.Action = action;
             SubscribeToMessages();
 
-            LoginViewModel loginViewModel = new LoginViewModel();
-            loginViewModel.LastLogin = "biometric";
+            LoginViewModel.SetLastLoginAs("biometric");
 
             if (ViewModel.Action == "update")
             {
                 LogoFront.IsVisible = false;
-                CancelButton.IsVisible = true;
+                NavigationPage.SetHasNavigationBar(this, true);
+            }
+            else
+            {
+                NavigationPage.SetHasNavigationBar(this, false);
             }
 
             BiometricsButtonClicked(this, new EventArgs());
@@ -112,11 +115,6 @@ namespace HodlWallet.UI.Views
             Application.Current.MainPage = new ControlsDemoView();
         }
 
-        void CancelButtonClicked(object sender, EventArgs e)
-        {
-            Navigation.PopModalAsync();
-        }
-
         private async void BiometricsButtonClicked(object sender, EventArgs e)
         {
             var authResult = await CrossFingerprint.Current.AuthenticateAsync(
@@ -138,18 +136,14 @@ namespace HodlWallet.UI.Views
 
         async void UsePinButtonClicked(object sender, EventArgs e)
         {
-            if (ViewModel.Action == "update")
-            {
-                var view = new LoginView(ViewModel.Action);
-                var nav = new NavigationPage(view);
-                await Navigation.PushModalAsync(nav);
-            }
-            else
-            {
-                var view = new LoginView(ViewModel.Action);
-                var nav = new NavigationPage(view);
-                await Navigation.PushModalAsync(nav);
-            }
+            var view = new LoginView(ViewModel.Action);
+            var nav = new NavigationPage(view);
+            await Navigation.PushModalAsync(nav);
+        }
+
+        async void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("../../pinSettings");
         }
     }
 }
