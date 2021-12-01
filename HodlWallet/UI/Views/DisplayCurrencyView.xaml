@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n" 
-             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels" xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              x:Class="HodlWallet.UI.Views.DisplayCurrencyView"
              Title="{i18n:Translate Text=DisplayCurrency.Title}"
              BackgroundColor="{DynamicResource Bg}" >
@@ -28,16 +28,46 @@
                     ItemsSource="{Binding currencySymbolEntities}" >
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Label 
-                                FontSize="Large" 
-                                TextColor="{DynamicResource FgSuccess}" >
-                                <Label.Text>
-                                    <MultiBinding StringFormat="{}{0} ({1})">
-                                        <Binding Path="Name" />
-                                        <Binding Path="Code" />
-                                    </MultiBinding>
-                                </Label.Text>
-                            </Label>
+                            <Frame>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter TargetName="CheckIcon" Property="Image.IsVisible" Value="False" />
+                                                <Setter Property="Padding" Value="1" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter TargetName="CheckIcon" Property="Image.IsVisible" Value="True" />
+                                                <Setter Property="Padding" Value="1" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Grid>
+                                    <Label 
+                                        FontSize="Large" 
+                                        TextColor="{DynamicResource FgSuccess}" >
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}{0} ({1})">
+                                                <Binding Path="Name" />
+                                                <Binding Path="Symbol" />
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+
+                                    <svg:Icon 
+                                          x:Name="CheckIcon"
+                                          ResourceId="HodlWallet.UI.Assets.circle_check_yellow.svg"
+                                          HeightRequest="25"
+                                          WidthRequest="25"
+                                          HorizontalOptions="End" 
+                                          VerticalOptions="End">
+
+                                    </svg:Icon>
+                                </Grid>
+                            </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

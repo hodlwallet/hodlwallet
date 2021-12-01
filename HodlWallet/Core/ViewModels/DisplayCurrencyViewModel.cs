@@ -30,7 +30,7 @@ namespace HodlWallet.Core.ViewModels
 {
     class DisplayCurrencyViewModel
     {
-        public List<CurrencySymbolEntity> currencySymbolEntities = new();
+        public List<CurrencySymbolEntity> currencySymbolEntities { get; set; }  = new();
 
         public DisplayCurrencyViewModel()
         {
