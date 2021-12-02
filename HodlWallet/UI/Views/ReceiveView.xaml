@@ -46,7 +46,7 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView FlexLayout.Grow="1" IsVisible="{Binding AmountIsVisible}">
+            <ContentView FlexLayout.Grow="0.9" IsVisible="{Binding AmountIsVisible}">
                 <StackLayout HeightRequest="30" 
                              Margin="20,0">
                     <StackLayout Orientation="Horizontal" >
@@ -67,30 +67,34 @@
                         </svg:Icon>
                     </StackLayout>
                     <Entry MaxLength="10"
+                           Placeholder="0.0"
                            Keyboard="Numeric"
                            x:Name="AmountEntry"
                            Text="{Binding Amount}"
-                           Completed="AmountEntry_Completed"/>
+                           PropertyChanged="AmountEntry_Changed"/>
                     
                 </StackLayout>
             </ContentView>
+
+            <BoxView FlexLayout.Grow="0.3" 
+                    IsVisible="{Binding AmountButtonIsVisible}"/>
 
             <Button IsVisible="{Binding AmountButtonIsVisible}"
                     BackgroundColor="{DynamicResource Bg2}"
                     Clicked="AddAmountButton_Clicked"
                     Text="{i18n:Translate Text=Receive.requestAmount}"
-                    FlexLayout.Grow="1"
+                    FlexLayout.Grow="0.5"
                     FontSize="Large"
-                    HeightRequest="30"
+                    HeightRequest="50"
                     Style="{DynamicResource CustomButton}"/>
 
             <Button x:Name="ShareButton" 
                     BackgroundColor="{DynamicResource Bg2}"
                     Command="{Binding ShowShareIntentCommand}"
                     Text="{i18n:Translate Text=Receive.share}"
-                    FlexLayout.Grow="1"
+                    FlexLayout.Grow="0.5"
                     FontSize="Large"
-                    HeightRequest="30"
+                    HeightRequest="50"
                     Style="{DynamicResource CustomButton}"/>
             
         </FlexLayout>
