@@ -3,7 +3,7 @@
   <!-- 
     Microsoft ResX Schema 
     
-    Version 2.0
+      Version 2.0
     
     The primary goals of this format is to allow a simple XML format 
     that is mostly human readable. The generation and parsing of the 
@@ -322,7 +322,7 @@
     <comment>label for menu security button</comment>
   </data>
   <data name="Menu.info" xml:space="preserve">
-    <value>Info</value>
+    <value>Account Info</value>
     <comment>label for menu info button</comment>
   </data>
   <data name="Menu.coinControl" xml:space="preserve">
@@ -768,7 +768,6 @@
     <value>Before we get started you should know:
 
 Hodl Wallet is a non-custodial Bitcoin Wallet. This means you are the sole person with access to the bitcoin stored in this app.
- 
 All you have to do is safety store the wallets backup recovery key and you'll always have access to you bitcoin.</value>
     <comment>label for main message on New Wallet view</comment>
   </data>
@@ -907,6 +906,10 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="Login.wayAuthentication" xml:space="preserve">
     <value>Select the way of autentication.</value>
     <comment>Header of BiometricLoginView</comment>
+  </data>
+  <data name="Login.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for close button of LoginView</comment>
   </data>
   <data name="Receive.amount" xml:space="preserve">
     <value>Amount</value>

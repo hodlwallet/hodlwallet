@@ -13,31 +13,28 @@
                 <FlexLayout Direction="Column">
                     <BoxView FlexLayout.Grow="2" />
 
-                    <BoxView BackgroundColor="{DynamicResource Fg2}"
+                    <BoxView BackgroundColor="{DynamicResource Fg3}"
                              HeightRequest="1" />
 
                     <Button Text="{i18n:Translate Text=Security.backupRecoveryKey}"
                             Style="{DynamicResource SettingsButton}"
-                            Clicked="BackupMnemonic_Clicked"
-                            />
+                            Clicked="BackupMnemonic_Clicked" />
 
-                    <BoxView BackgroundColor="{DynamicResource Fg2}"
+                    <BoxView BackgroundColor="{DynamicResource Fg3}"
                              HeightRequest="1" />
 
                     <Button Text="{i18n:Translate Text=Security.pin}"
                             Style="{DynamicResource SettingsButton}"
-                            Clicked="PinButton_Clicked"
-                            />
+                            Clicked="PinButton_Clicked" />
 
-                    <BoxView BackgroundColor="{DynamicResource Fg2}"
+                    <BoxView BackgroundColor="{DynamicResource Fg3}"
                              HeightRequest="1" />
 
                     <Button Text="{i18n:Translate Text=Security.biometrics}"
                             Style="{DynamicResource SettingsButton}"
-                            Clicked="Biometrics_Clicked"
-                            />
+                            Clicked="Biometrics_Clicked" />
 
-                    <BoxView BackgroundColor="{DynamicResource Fg2}"
+                    <BoxView BackgroundColor="{DynamicResource Fg3}"
                              HeightRequest="1" />
 
                     <!-- Extra space -->
