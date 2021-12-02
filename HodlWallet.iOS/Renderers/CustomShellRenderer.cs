@@ -37,6 +37,8 @@ namespace HodlWallet.iOS.Renderers
             var renderer = base.CreateShellSectionRenderer(shellSection) as ShellSectionRenderer;
 
             renderer.NavigationBar.Translucent = false;
+            renderer.NavigationBar.ShadowImage = null;
+            //renderer.NavigationController.NavigationBar.ShadowImage = null;
 
             return renderer;
         }

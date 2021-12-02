@@ -70,7 +70,7 @@ namespace HodlWallet.iOS.Renderers
         {
             base.ViewDidLoad();
 
-            //UpdateNavBarStyles();
+            UpdateNavBarStyles();
             //UpdateNavBarItemStyles();
 
             UpdateNavBar();
@@ -83,7 +83,7 @@ namespace HodlWallet.iOS.Renderers
             UINavigationBar.Appearance.ShadowImage = new UIImage();
             UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarPosition.Any, UIBarMetrics.Default);
 
-            UINavigationBar.Appearance.TitleTextAttributes = TitleStringAttributes;
+            // UINavigationBar.Appearance.TitleTextAttributes = TitleStringAttributes;
         }
 
         void UpdateNavBarItemStyles()
