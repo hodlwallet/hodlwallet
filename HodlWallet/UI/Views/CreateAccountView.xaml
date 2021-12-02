@@ -31,9 +31,6 @@
                 <Entry Placeholder="{i18n:Translate Text=AddAccount.placeholder}"
                        Text="{Binding AccountName}"
                        MaxLength="32"
-                       Style="{DynamicResource CustomEntry}"
-                       TextColor="{DynamicResource Fg}"
-                       BackgroundColor="Transparent"
                        Margin="20,10" />
                 <ContentView.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" />
