@@ -57,10 +57,10 @@
                                FontFamily="{DynamicResource Mono-Regular}"
                                FontSize="Small" />
 
-                        <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
+                        <svg:Icon WidthRequest="16"
+                                  HeightRequest="16"
                                   HorizontalOptions="End"
-                                  WidthRequest="16"
-                                  HeightRequest="16">
+                                  ResourceId="HodlWallet.UI.Assets.close.svg">
                             <svg:Icon.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CloseCommand}" />
                             </svg:Icon.GestureRecognizers>

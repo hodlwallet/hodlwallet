@@ -67,7 +67,7 @@ namespace HodlWallet.UI.Views
             int places = 8;
             decimal value = Convert.ToDecimal(stringValue);
             decimal step = (decimal)Math.Pow(10, places);
-            if (value * step - Math.Truncate(value * step) == 0)
+            if ((value * step) - Math.Truncate(value * step) == 0)
             {
                 return true;
             }
