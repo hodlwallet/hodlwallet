@@ -67,27 +67,27 @@
                     </Grid.ColumnDefinitions>
 
                     <BoxView x:Name="Pin1"
-                             Color="{DynamicResource Fg}"
+                             Color="{DynamicResource Fg5}"
                              Grid.Row="0"
                              Grid.Column="0" />
                     <BoxView x:Name="Pin2"
-                             Color="{DynamicResource Fg}"
+                             Color="{DynamicResource Fg5}"
                              Grid.Row="0"
                              Grid.Column="1" />
                     <BoxView x:Name="Pin3"
-                             Color="{DynamicResource Fg}"
+                             Color="{DynamicResource Fg5}"
                              Grid.Row="0"
                              Grid.Column="2" />
                     <BoxView x:Name="Pin4"
-                             Color="{DynamicResource Fg}"
+                             Color="{DynamicResource Fg5}"
                              Grid.Row="0"
                              Grid.Column="3" />
                     <BoxView x:Name="Pin5"
-                             Color="{DynamicResource Fg}"
+                             Color="{DynamicResource Fg5}"
                              Grid.Row="0"
                              Grid.Column="4" />
                     <BoxView x:Name="Pin6"
-                             Color="{DynamicResource Fg}"
+                             Color="{DynamicResource Fg5}"
                              Grid.Row="0"
                              Grid.Column="5" />
                 </Grid>
