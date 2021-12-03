@@ -19,7 +19,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
     <DefineConstants>DEBUG</DefineConstants>
@@ -31,6 +31,9 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <LangVersion>latest</LangVersion>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+<MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+<MtouchFloat32>true</MtouchFloat32>
+<MtouchEnableSGenConc>false</MtouchEnableSGenConc>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
