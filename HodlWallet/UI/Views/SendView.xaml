@@ -143,47 +143,51 @@
                         <FlexLayout Direction="Row"
                                     JustifyContent="SpaceBetween">
                             <Label Style="{StaticResource CustomLabel}"
+                                   TextColor="{DynamicResource Fg5}"
                                    Text="{i18n:Translate Text=Send.transactionFee}" />
                             <Label Style="{StaticResource CustomLabel}"
+                                   TextColor="{DynamicResource Fg5}"
                                    Text="{i18n:Translate Text=Send.estConfirmation}"/>
                         </FlexLayout>
 
                         <FlexLayout Direction="Row"
                                     JustifyContent="SpaceBetween">
                             <Label FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{DynamicResource Fg2}"
+                                   TextColor="{DynamicResource Fg5}"
                                    Text="{Binding TransactionFeeText}" />
                             <Label FontFamily="{StaticResource Sans-Regular}"
-                                   TextColor="{StaticResource Fg2}"
+                                   TextColor="{StaticResource Fg5}"
                                    Text="{Binding EstConfirmationText}" />
                         </FlexLayout>
 
                         <FlexLayout Direction="Row"
                                     JustifyContent="SpaceBetween">
                             <Label Style="{StaticResource CustomLabel}"
+                                   TextColor="{DynamicResource Fg2}"
                                    Text="{i18n:Translate Text=Send.economyFee}"/>
                             <Label Style="{StaticResource CustomLabel}"
+                                   TextColor="{DynamicResource Fg2}"
                                    Text="{i18n:Translate Text=Send.normalFee}" />
                             <Label Style="{StaticResource CustomLabel}"
+                                   TextColor="{DynamicResource Fg2}"
                                    Text="{i18n:Translate Text=Send.highFee}" />
                         </FlexLayout>
 
                         <renderers:FeeSlider MinimumTrackColor="{DynamicResource FgSuccess}"
-                                             MaximumTrackColor="{DynamicResource Fg}"
+                                             MaximumTrackColor="{DynamicResource Fg2}"
                                              Maximum="100"
                                              DragCompleted="FeeSlider_DragCompleted"
                                              Value="{Binding SliderValue}">
                         </renderers:FeeSlider>
 
                         <Label Text="{i18n:Translate Text=Send.fee}"
-                               Style="{StaticResource CustomLabel}" />
+                               Style="{StaticResource CustomLabel}"
+                               TextColor="{DynamicResource Fg5}" />
 
                         <Entry Text="{Binding Fee}"
-                               Style="{StaticResource CustomEntry}"
-                               TextColor="{DynamicResource Fg}"
-                               BackgroundColor="Transparent"
-                               PlaceholderColor="{DynamicResource Fg}"
                                Keyboard="Numeric"
+                               Placeholder="Custom Fee"
+                               FontFamily="{DynamicResource Mono-Regular}"
                                Margin="0, 0, 0, 10" />
                     </StackLayout>
                 </StackLayout>

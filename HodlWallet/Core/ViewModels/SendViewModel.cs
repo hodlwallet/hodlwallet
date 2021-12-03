@@ -43,7 +43,7 @@ namespace HodlWallet.Core.ViewModels
     public class SendViewModel : BaseViewModel
     {
         string _AddressToSendTo;
-        long _Fee;
+        long _Fee = 1;
         decimal _AmountToSend;
         float _Rate => PrecioService.Rate.Rate;
         string _AmountToSendText;
