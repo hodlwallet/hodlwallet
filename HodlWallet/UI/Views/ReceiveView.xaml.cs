@@ -95,7 +95,6 @@ namespace HodlWallet.UI.Views
                     else
                     {
                         ViewModel.Amount = RemoveLastCharacter(ViewModel.Amount);
-
                     }
                 }
             }

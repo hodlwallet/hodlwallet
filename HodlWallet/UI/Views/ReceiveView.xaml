@@ -78,23 +78,24 @@
             <BoxView FlexLayout.Grow="0.3" 
                     IsVisible="{Binding AmountButtonIsVisible}"/>
 
-            <Button IsVisible="{Binding AmountButtonIsVisible}"
-                    BackgroundColor="{DynamicResource Bg2}"
-                    Clicked="AddAmountButton_Clicked"
-                    Text="{i18n:Translate Text=Receive.requestAmount}"
-                    FlexLayout.Grow="0.5"
+            <Button Margin="40,5"
                     FontSize="Large"
                     HeightRequest="50"
-                    Style="{DynamicResource CustomButton}"/>
+                    FlexLayout.Grow="0.5"
+                    Clicked="AddAmountButton_Clicked"
+                    Style="{DynamicResource CustomButton}"
+                    BackgroundColor="{DynamicResource Bg2}"
+                    IsVisible="{Binding AmountButtonIsVisible}"
+                    Text="{i18n:Translate Text=Receive.requestAmount}"/>
 
-            <Button x:Name="ShareButton" 
+            <Button Margin="40,5"
+                    FontSize="Large"
+                    HeightRequest="50"
+                    FlexLayout.Grow="0.5"
+                    Style="{DynamicResource CustomButton}"
                     BackgroundColor="{DynamicResource Bg2}"
                     Command="{Binding ShowShareIntentCommand}"
-                    Text="{i18n:Translate Text=Receive.share}"
-                    FlexLayout.Grow="0.5"
-                    FontSize="Large"
-                    HeightRequest="50"
-                    Style="{DynamicResource CustomButton}"/>
+                    Text="{i18n:Translate Text=Receive.share}"/>
             
         </FlexLayout>
     </ContentPage.Content>
