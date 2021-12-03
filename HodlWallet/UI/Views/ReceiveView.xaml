@@ -66,8 +66,7 @@
                             </svg:Icon.GestureRecognizers>
                         </svg:Icon>
                     </StackLayout>
-                    <Entry MaxLength="10"
-                           Placeholder="0.0"
+                    <Entry Placeholder="0"
                            Keyboard="Numeric"
                            x:Name="AmountEntry"
                            Text="{Binding Amount}"
