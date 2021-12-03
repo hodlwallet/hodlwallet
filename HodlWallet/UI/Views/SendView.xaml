@@ -23,7 +23,7 @@
                                      FlexLayout.Grow="4">
                             <Label Text="{i18n:Translate Text=Send.to}"
                                    Style="{DynamicResource CustomLabel}"
-                                   TextColor="{DynamicResource Fg5}"
+                                   TextColor="{DynamicResource Fg3}"
                                    FontSize="Small"
                                    HorizontalTextAlignment="Start" />
 
@@ -93,7 +93,7 @@
                             <Label Text="{i18n:Translate Text=Send.amount}"
                                    Style="{DynamicResource CustomLabel}"
                                    FontSize="Small"
-                                   TextColor="{DynamicResource Fg5}"
+                                   TextColor="{DynamicResource Fg3}"
                                    HorizontalTextAlignment="Start"
                                    VerticalOptions="Center" />
 
@@ -143,10 +143,10 @@
                         <FlexLayout Direction="Row"
                                     JustifyContent="SpaceBetween">
                             <Label Style="{StaticResource CustomLabel}"
-                                   TextColor="{DynamicResource Fg5}"
+                                   TextColor="{DynamicResource Fg3}"
                                    Text="{i18n:Translate Text=Send.transactionFee}" />
                             <Label Style="{StaticResource CustomLabel}"
-                                   TextColor="{DynamicResource Fg5}"
+                                   TextColor="{DynamicResource Fg3}"
                                    Text="{i18n:Translate Text=Send.estConfirmation}"/>
                         </FlexLayout>
 
