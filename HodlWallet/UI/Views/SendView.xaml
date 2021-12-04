@@ -193,12 +193,15 @@
                 </StackLayout>
             </ScrollView>
 
+            <BoxView FlexLayout.Grow="1.5" />
+
             <Button Text="{i18n:Translate Text=Send.buttonSend}"
                     Command="{Binding SendCommand}"
                     Style="{DynamicResource CustomButton}"
                     BackgroundColor="{DynamicResource Bg2}"
                     FontSize="Large"
                     HeightRequest="50"
+                    Margin="45,5"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"/>
         </FlexLayout>
