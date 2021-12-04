@@ -54,6 +54,7 @@
                                Text="{i18n:Translate Text=Receive.amount}"
                                HorizontalOptions="StartAndExpand"
                                HorizontalTextAlignment="Start"
+                               TextColor="{DynamicResource Fg3}"
                                FontFamily="{DynamicResource Mono-Regular}"
                                FontSize="Small" />
 
