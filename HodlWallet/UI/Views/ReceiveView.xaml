@@ -46,7 +46,7 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView FlexLayout.Grow="0.9" IsVisible="{Binding AmountIsVisible}">
+            <ContentView FlexLayout.Grow="0.9" IsVisible="{Binding AmountIsVisible}" Margin="20,0,20,0">
                 <StackLayout HeightRequest="30" 
                              Margin="20,0">
                     <StackLayout Orientation="Horizontal" >
@@ -70,6 +70,8 @@
                            Keyboard="Numeric"
                            x:Name="AmountEntry"
                            Text="{Binding Amount}"
+                           FontFamily="{StaticResource Mono-Regular}"
+                           TextColor="{DynamicResource FgSuccess}"
                            PropertyChanged="AmountEntry_Changed"/>
                     
                 </StackLayout>
