@@ -31,6 +31,7 @@ namespace HodlWallet.Core.ViewModels
     public class ReceiveViewModel : BaseViewModel
     {
         public ICommand ShowShareIntentCommand { get; }
+        public ICommand CloseCommand { get; }
 
         string address;
         public string Address
@@ -39,9 +40,38 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref address, value);
         }
 
+        string basicAddress;
+        public string BasicAddress
+        {
+            get => basicAddress;
+            set => SetProperty(ref basicAddress, value);
+        }
+
+        string amount;
+        public string Amount
+        {
+            get => amount;
+            set => SetProperty(ref amount, value);
+        }
+
+        bool amountIsVisible = false;
+        public bool AmountIsVisible
+        {
+            get => amountIsVisible;
+            set => SetProperty(ref amountIsVisible, value);
+        }
+
+        bool amountButtonIsVisible = true;
+        public bool AmountButtonIsVisible
+        {
+            get => amountButtonIsVisible;
+            set => SetProperty(ref amountButtonIsVisible, value);
+        }
+
         public ReceiveViewModel()
         {
             ShowShareIntentCommand = new Command(ShowShareIntent);
+            CloseCommand = new Command(Close);
 
             if (WalletService.IsStarted)
             {
@@ -53,6 +83,13 @@ namespace HodlWallet.Core.ViewModels
             }
         }
 
+        void Close()
+        {
+            Address = BasicAddress;
+            AmountIsVisible = false;
+            AmountButtonIsVisible = true;
+        }
+
         private void WalletService_OnStarted(object sender, EventArgs e)
         {
             GetAddressFromWallet();
@@ -60,7 +97,8 @@ namespace HodlWallet.Core.ViewModels
 
         void GetAddressFromWallet()
         {
-            Address = WalletService.GetReceiveAddress().ToString();
+            BasicAddress = WalletService.GetReceiveAddress().ToString();
+            Address = BasicAddress;
 
             Debug.WriteLine($"[GetAddressFromWallet] New address: {Address}");
         }
