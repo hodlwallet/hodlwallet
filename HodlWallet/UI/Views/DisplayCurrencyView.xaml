@@ -10,29 +10,26 @@
         <vm:DisplayCurrencyViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Margin="20">
-            <Label 
-                FontSize="Small"
-                Text="{i18n:Translate Text=DisplayCurrency.rate}"
-                TextColor="{DynamicResource Fg3}" />
+        <StackLayout Margin="10">
+            <Label FontSize="Small"
+                   Text="{i18n:Translate Text=DisplayCurrency.rate}"
+                   TextColor="{DynamicResource Fg3}" />
 
             <Label Text="1 BTC = $ 50,000"
-                    HorizontalTextAlignment="Start"
-                    Style="{DynamicResource CustomLabel}"
-                    FontSize="Medium" 
-                    Margin="5,0,0,0"/>
+                   HorizontalTextAlignment="Start"
+                   Style="{DynamicResource CustomLabel}"
+                   FontSize="Medium" 
+                   Margin="5,0,0,0"/>
 
             <BoxView BackgroundColor="{DynamicResource Fg3}"
-                                    HeightRequest="1" />
+                     HeightRequest="1" />
 
-            <Label 
-                FontSize="Small"
-                Text="{i18n:Translate Text=DisplayCurrency.sats}"
-                TextColor="{DynamicResource Fg3}"/>
+            <Label FontSize="Small"
+                   Text="{i18n:Translate Text=DisplayCurrency.sats}"
+                   TextColor="{DynamicResource Fg3}"/>
 
-            <StackLayout 
-                BackgroundColor="{DynamicResource Bg}" 
-                Orientation="Horizontal" >
+            <StackLayout BackgroundColor="{DynamicResource Bg}" 
+                         Orientation="Horizontal" >
 
                 <RadioButton Content="Bitcoin (BTC)"
                              IsChecked="True"
@@ -46,16 +43,17 @@
             </StackLayout>
 
             <BoxView BackgroundColor="{DynamicResource Fg3}"
-                                    HeightRequest="1" />
+                     HeightRequest="1" />
 
             <StackLayout>
                 <CollectionView 
                     ItemsLayout="VerticalList"
                     SelectionMode="Single"
-                    ItemsSource="{Binding currencySymbolEntities}" >
+                    ItemsSource="{Binding currencySymbolEntities}"
+                    SelectedItem="{Binding selectedCurrency}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame>
+                            <StackLayout>
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup x:Name="CommonStates">
                                         <VisualState x:Name="Normal">
@@ -67,9 +65,9 @@
                                         <VisualState x:Name="Selected">
                                             <VisualState.Setters>
                                                 <Setter TargetName="CheckIcon" Property="Image.IsVisible" Value="True" />
+                                                <Setter TargetName="CurrencyLabel" Property="Label.TextColor" Value="#DADADA" />
                                                 <Setter Property="Padding" Value="1" />
-                                                <Setter Property="BackgroundColor" Value="Transparent" />
-                                                <Setter Property="Margin" Value="5,0,0,0" />
+                                                <Setter TargetName="CurrencyLabel" Property="Label.BackgroundColor" Value="Transparent" />
                                             </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
@@ -77,8 +75,9 @@
                                 <Grid>
 
                                     <Label 
+                                        x:Name="CurrencyLabel"
                                         FontSize="Medium" 
-                                        TextColor="{DynamicResource Fg}" >
+                                        TextColor="{DynamicResource Fg3}" >
                                         <Label.Text>
                                             <MultiBinding StringFormat="{}{0} ({1})">
                                                 <Binding Path="Name" />
@@ -94,11 +93,11 @@
                                           WidthRequest="25"
                                           HorizontalOptions="End" 
                                           VerticalOptions="End">
-
+                                        
                                     </svg:Icon>
 
                                 </Grid>
-                            </Frame>
+                            </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

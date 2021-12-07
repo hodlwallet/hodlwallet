@@ -140,7 +140,7 @@
                 <Setter Property="TextColor"
                         Value="{DynamicResource Fg}" />
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource Bg}" />
+                        Value="Transparent" />
             </Style>
             
             <Style x:Key="NoBorderButton"
