@@ -407,11 +407,11 @@
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource Fg}" />
+                        Value="{DynamicResource Fg2}" />
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource Bg}" />
+                        Value="{DynamicResource Bg2}" />
                 <Setter Property="PlaceholderColor"
-                        Value="{DynamicResource Fg}" />
+                        Value="{DynamicResource Fg5}" />
             </Style>
 
             <Style TargetType="Editor"
@@ -419,11 +419,11 @@
                 <Setter Property="FontFamily"
                         Value="{DynamicResource Sans-Regular}" />
                 <Setter Property="TextColor"
-                        Value="{DynamicResource Fg}" />
+                        Value="{DynamicResource Fg2}" />
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource Bg}" />
+                        Value="{DynamicResource Bg2}" />
                 <Setter Property="PlaceholderColor"
-                        Value="{DynamicResource Fg}" />
+                        Value="{DynamicResource Fg5}" />
             </Style>
 
             <Style TargetType="SearchBar"

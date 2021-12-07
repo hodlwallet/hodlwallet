@@ -19,7 +19,7 @@ namespace HodlWallet.UI.Locale {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class LocaleResources {
@@ -574,15 +574,6 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Close.
-        /// </summary>
-        internal static string BiometricsSettings_close {
-            get {
-                return ResourceManager.GetString("BiometricsSettings.close", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string Button_no {
@@ -628,6 +619,33 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exchange Rate.
+        /// </summary>
+        internal static string DisplayCurrency_rate {
+            get {
+                return ResourceManager.GetString("DisplayCurrency.rate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bitcoin Display Unit.
+        /// </summary>
+        internal static string DisplayCurrency_sats {
+            get {
+                return ResourceManager.GetString("DisplayCurrency.sats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Currency.
+        /// </summary>
+        internal static string DisplayCurrency_Title {
+            get {
+                return ResourceManager.GetString("DisplayCurrency.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Done.
         /// </summary>
         internal static string Done_button {
@@ -669,6 +687,15 @@ namespace HodlWallet.UI.Locale {
         internal static string FingerprintAuth_subheader {
             get {
                 return ResourceManager.GetString("FingerprintAuth.subheader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Login_cancel {
+            get {
+                return ResourceManager.GetString("Login.cancel", resourceCulture);
             }
         }
         
@@ -829,7 +856,6 @@ namespace HodlWallet.UI.Locale {
         ///   Looks up a localized string similar to Before we get started you should know:
         ///
         ///Hodl Wallet is a non-custodial Bitcoin Wallet. This means you are the sole person with access to the bitcoin stored in this app.
-        /// 
         ///All you have to do is safety store the wallets backup recovery key and you&apos;ll always have access to you bitcoin..
         /// </summary>
         internal static string NewWallet_body {
