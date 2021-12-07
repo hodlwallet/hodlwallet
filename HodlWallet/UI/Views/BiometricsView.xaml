@@ -46,7 +46,7 @@
                        HorizontalOptions="Start"
                        HorizontalTextAlignment="Start" />
 
-                <Switch x:Name="BiometricSwitch" PropertyChanged="Switch_PropertyChanged" VerticalOptions="Start"/>
+                <Switch x:Name="BiometricSwitch" PropertyChanged="Switch_PropertyChanged" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
 
             
