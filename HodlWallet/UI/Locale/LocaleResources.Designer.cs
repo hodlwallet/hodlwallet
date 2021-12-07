@@ -538,6 +538,33 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spending limit: .
+        /// </summary>
+        internal static string BiometricAuth_spendingLimit {
+            get {
+                return ResourceManager.GetString("BiometricAuth.spendingLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Biometric Authentication Spending Limit Screen..
+        /// </summary>
+        internal static string BiometricAuth_spendingLimitScreen {
+            get {
+                return ResourceManager.GetString("BiometricAuth.spendingLimitScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can customize your touch ID spending limit from the .
+        /// </summary>
+        internal static string BiometricAuth_subheader {
+            get {
+                return ResourceManager.GetString("BiometricAuth.subheader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable Biometric Authentication for Hodl.
         /// </summary>
         internal static string BiometricAuth_switch {
@@ -642,33 +669,6 @@ namespace HodlWallet.UI.Locale {
         internal static string Error_ok {
             get {
                 return ResourceManager.GetString("Error.ok", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fingerprint Authentication Spending Limit Screen..
-        /// </summary>
-        internal static string FingerprintAuth_limitButtonAndroid {
-            get {
-                return ResourceManager.GetString("FingerprintAuth.limitButtonAndroid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Spending limit: .
-        /// </summary>
-        internal static string FingerprintAuth_spendingLimit {
-            get {
-                return ResourceManager.GetString("FingerprintAuth.spendingLimit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can customize your touch ID spending limit from the .
-        /// </summary>
-        internal static string FingerprintAuth_subheader {
-            get {
-                return ResourceManager.GetString("FingerprintAuth.subheader", resourceCulture);
             }
         }
         

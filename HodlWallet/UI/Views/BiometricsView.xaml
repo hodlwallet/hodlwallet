@@ -17,7 +17,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Padding="20" >
+            <StackLayout Padding="20">
                 <BoxView HeightRequest="50"/>
 
                 <svg:Icon ResourceId="HodlWallet.UI.Assets.fingerprint_large.svg"
@@ -37,17 +37,47 @@
                 
             </StackLayout>
 
-            <StackLayout  VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20, 0">
+            <StackLayout Orientation="Horizontal" Padding="20, 0">
                 <Label Text="{i18n:Translate Text=BiometricAuth.switch}"
                        FontSize="Subtitle"
                        x:Name="BiometricEnable"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource Fg2}"
-                       HorizontalOptions="StartAndExpand"
+                       HorizontalOptions="Start"
                        HorizontalTextAlignment="Start" />
 
                 <Switch x:Name="BiometricSwitch" PropertyChanged="Switch_PropertyChanged" VerticalOptions="Start"/>
             </StackLayout>
+
+            
+            <StackLayout Padding="20, 0" VerticalOptions="Start">
+                <BoxView BackgroundColor="{DynamicResource Fg3}"
+                         HeightRequest="1" VerticalOptions="Start"/>
+                
+                <Label Text="{i18n:Translate Text=BiometricAuth.spendingLimit}"
+                       Padding="0, 10"
+                       FontSize="Body"
+                       FontFamily="{StaticResource Sans-Regular}"
+                       TextColor="{DynamicResource Fg2}"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start" />
+
+                <Label Text="{i18n:Translate Text=BiometricAuth.subheader}"
+                       FontSize="Default"
+                       FontFamily="{StaticResource Sans-Regular}"
+                       TextColor="{DynamicResource Fg2}"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start" />
+
+                <Label Text="{i18n:Translate Text=BiometricAuth.spendingLimitScreen}"
+                       FontSize="Small"
+                       FontFamily="{StaticResource Sans-Regular}"
+                       TextColor="{DynamicResource FgSuccess}"
+                       HorizontalOptions="StartAndExpand"
+                       HorizontalTextAlignment="Start" />
+            </StackLayout>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
