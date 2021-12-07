@@ -11,24 +11,52 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Margin="20">
-            <StackLayout Orientation="Horizontal"
-                         Spacing="15">
-                <Label FontSize="Large" Text="Show Balance in Satochis" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                <Switch IsToggled="False" HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
-            <BoxView />
-            <Label Text="Selected Currency: " />
+            <Label 
+                FontSize="Small"
+                Text="{i18n:Translate Text=DisplayCurrency.rate}"
+                TextColor="{DynamicResource Fg3}" />
 
-            <BoxView />
+            <Label Text="1BTC = $ 50,000"
+                    HorizontalTextAlignment="Start"
+                    Style="{DynamicResource CustomLabel}"
+                    FontSize="Medium" 
+                    Margin="5,0,0,0"/>
+
+            <BoxView BackgroundColor="{DynamicResource Fg3}"
+                                    HeightRequest="1" />
+
+            <Label 
+                FontSize="Small"
+                Text="{i18n:Translate Text=DisplayCurrency.sats}"
+                TextColor="{DynamicResource Fg3}"/>
+
+            <StackLayout 
+                BackgroundColor="{DynamicResource Bg}" 
+                Orientation="Horizontal" >
+
+                <RadioButton Content="Bitcoin (BTC)"
+                             IsChecked="True"
+                             Style="{DynamicResource CustomRadioButton}"
+                             HorizontalOptions="StartAndExpand"/>
+
+                <RadioButton Content="Satochi (SATS)"
+                             IsChecked="True"
+                             Style="{DynamicResource CustomRadioButton}"
+                             HorizontalOptions="StartAndExpand"/>
+
+            </StackLayout>
+
+            <BoxView BackgroundColor="{DynamicResource Fg3}"
+                                    HeightRequest="1" />
+
             <StackLayout>
                 <CollectionView 
-                    
                     ItemsLayout="VerticalList"
                     SelectionMode="Single"
                     ItemsSource="{Binding currencySymbolEntities}" >
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame BackgroundColor="Transparent">
+                            <Frame>
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup x:Name="CommonStates">
                                         <VisualState x:Name="Normal">
@@ -42,13 +70,15 @@
                                                 <Setter TargetName="CheckIcon" Property="Image.IsVisible" Value="True" />
                                                 <Setter Property="Padding" Value="1" />
                                                 <Setter Property="BackgroundColor" Value="Transparent" />
+                                                <Setter Property="Margin" Value="5,0,0,0" />
                                             </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
                                 <Grid>
+
                                     <Label 
-                                        FontSize="Large" 
+                                        FontSize="Medium" 
                                         TextColor="{DynamicResource Fg}" >
                                         <Label.Text>
                                             <MultiBinding StringFormat="{}{0} ({1})">
@@ -67,6 +97,7 @@
                                           VerticalOptions="End">
 
                                     </svg:Icon>
+
                                 </Grid>
                             </Frame>
                         </DataTemplate>

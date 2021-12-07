@@ -919,5 +919,16 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="Login.close" xml:space="preserve">
     <value>Close</value>
     <comment>label for close button of LoginView</comment>
+  </data><data name="DisplayCurrency.sats" xml:space="preserve">
+    <value>Bitcoin Display Unit</value>
+    <comment>label for display currency switch to show Sats</comment>
+  </data>
+  <data name="DisplayCurrency.sats" xml:space="preserve">
+    <value>Bitcoin Display Unit</value>
+    <comment>label for display currency switch to show Sats</comment>
+  </data>
+  <data name="DisplayCurrency.rate" xml:space="preserve">
+    <value>Exchange Rate</value>
+    <comment>label for display currency exchange rates</comment>
   </data>
 </root>
