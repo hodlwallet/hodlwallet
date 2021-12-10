@@ -460,6 +460,22 @@
     <value>Accounts</value>
     <comment>label for accounts view title</comment>
   </data>
+  <data name="Menu.info" xml:space="preserve">
+    <value>Account Settings</value>
+    <comment>label for menu info button</comment>
+  </data>
+  <data name="AccountSettings.title" xml:space="preserve">
+    <value>Account Settings</value>
+    <comment>label for accounts settings view title</comment>
+  </data>
+  <data name="AccountSettings.info" xml:space="preserve">
+    <value>Info</value>
+    <comment>label for accounts info view</comment>
+  </data>
+  <data name="AccountSettings.coincontrol" xml:space="preserve">
+    <value>Coin Control</value>
+    <comment>label for coin control view</comment>
+  </data>
   <data name="AccountSelection.title" xml:space="preserve">
     <value>Select an Account</value>
     <comment>label for account selection view title</comment>
