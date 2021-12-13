@@ -14,7 +14,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <FlexLayout Direction="Column">
-            <ContentView FlexLayout.Grow="2">
+            <ContentView FlexLayout.Grow="80">
                 <!-- Use this for debuging due to a break on Hot Reaload for ZXingBarcodeImageView -->
                 <!--<Image Source="logo.png" WidthRequest="320" HeightRequest="320"/>-->
                 <zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
@@ -32,7 +32,7 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView FlexLayout.Grow="0.8" 
+            <ContentView FlexLayout.Grow="20" 
                          HeightRequest="30">
                 <Label Style="{DynamicResource CustomLabel}"
                        Text="{Binding Address}"
@@ -46,7 +46,7 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView FlexLayout.Grow="0.9" IsVisible="{Binding AmountIsVisible}" Margin="20,0,20,0">
+            <ContentView FlexLayout.Grow="40" IsVisible="{Binding AmountIsVisible}" Margin="20,0,20,0">
                 <StackLayout HeightRequest="30" 
                              Margin="20,0">
                     <StackLayout Orientation="Horizontal" >
@@ -77,14 +77,13 @@
                     
                 </StackLayout>
             </ContentView>
-
-            <BoxView FlexLayout.Grow="0.3" 
+            <BoxView FlexLayout.Grow="17" 
                     IsVisible="{Binding AmountButtonIsVisible}"/>
 
             <Button Margin="40,5"
                     FontSize="Large"
                     HeightRequest="50"
-                    FlexLayout.Grow="0.5"
+                    FlexLayout.Grow="20"
                     Clicked="AddAmountButton_Clicked"
                     Style="{DynamicResource CustomButton}"
                     BackgroundColor="{DynamicResource Bg2}"
@@ -94,7 +93,7 @@
             <Button Margin="40,5"
                     FontSize="Large"
                     HeightRequest="50"
-                    FlexLayout.Grow="0.5"
+                    FlexLayout.Grow="20"
                     Style="{DynamicResource CustomButton}"
                     BackgroundColor="{DynamicResource Bg2}"
                     Command="{Binding ShowShareIntentCommand}"
