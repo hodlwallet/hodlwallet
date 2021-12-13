@@ -37,7 +37,6 @@
                    HorizontalOptions="FillAndExpand" 
                    Text="{i18n:Translate QrCode.title}"
                    FontFamily="{StaticResource Sans-Bold}"/>
-            
 
             <ContentView FlexLayout.Grow="10" 
                          VerticalOptions="Start">
@@ -65,9 +64,9 @@
                        Style="{DynamicResource CustomLabel}"
                        BackgroundColor="{DynamicResource Bg2}"
                        FontFamily="{DynamicResource Mono-Regular}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Text_Tapped"/>
-                    </Label.GestureRecognizers>
+                       <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Text_Tapped"/>
+                       </Label.GestureRecognizers>
                 </Label>
             </ContentView>
             

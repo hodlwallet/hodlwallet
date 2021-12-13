@@ -41,22 +41,23 @@
                        FontFamily="{DynamicResource Mono-Regular}"
                        FontSize="Small" />
                 <ContentView.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Address_Tapped"
-                                          NumberOfTapsRequired="1" />
+                    <TapGestureRecognizer Tapped="Address_Tapped" NumberOfTapsRequired="1"/>
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView FlexLayout.Grow="40" IsVisible="{Binding AmountIsVisible}" Margin="20,0,20,0">
+            <ContentView Margin="20,0,20,0"
+                         FlexLayout.Grow="40" 
+                         IsVisible="{Binding AmountIsVisible}">
                 <StackLayout HeightRequest="30" 
                              Margin="20,0">
                     <StackLayout Orientation="Horizontal" >
-                        <Label Style="{DynamicResource CustomLabel}"
-                               Text="{i18n:Translate Text=Receive.amount}"
-                               HorizontalOptions="StartAndExpand"
+                        <Label FontSize="Small"
                                HorizontalTextAlignment="Start"
+                               HorizontalOptions="StartAndExpand"
                                TextColor="{DynamicResource Fg3}"
-                               FontFamily="{DynamicResource Mono-Regular}"
-                               FontSize="Small" />
+                               Style="{DynamicResource CustomLabel}"
+                               Text="{i18n:Translate Text=Receive.amount}"
+                               FontFamily="{DynamicResource Mono-Regular}"/>
 
                         <svg:Icon WidthRequest="16"
                                   HeightRequest="16"
@@ -71,14 +72,14 @@
                            Keyboard="Numeric"
                            x:Name="AmountEntry"
                            Text="{Binding Amount}"
-                           FontFamily="{StaticResource Mono-Regular}"
+                           PropertyChanged="AmountEntry_Changed"
                            TextColor="{DynamicResource FgSuccess}"
-                           PropertyChanged="AmountEntry_Changed"/>
-                    
+                           FontFamily="{StaticResource Mono-Regular}"/>
                 </StackLayout>
             </ContentView>
+            
             <BoxView FlexLayout.Grow="17" 
-                    IsVisible="{Binding AmountButtonIsVisible}"/>
+                     IsVisible="{Binding AmountButtonIsVisible}"/>
 
             <Button Margin="40,5"
                     FontSize="Large"
