@@ -66,14 +66,13 @@
 
             <BoxView x:Name="boxView" FlexLayout.Grow="1"/>
             <Button Text="{i18n:Translate Text=AddAccount.createButton}"
+                    Command="{Binding CreateAccountCommand}"
+                    CommandParameter="{Binding Source={x:Reference PickColorControl}, Path=ColorCode}"
                     Style="{DynamicResource CustomButton}"
                     BackgroundColor="{DynamicResource Bg2}"
-                    CornerRadius="0"
-                    FontSize="Large"
-                    FlexLayout.AlignSelf="Stretch"
-                    FlexLayout.Grow="1"
-                    Command="{Binding CreateAccountCommand}"
-                    CommandParameter="{Binding Source={x:Reference PickColorControl}, Path=ColorCode}" />
+                    FontSize="Medium"
+                    HeightRequest="80"
+                    Margin="65,0,65,0" />
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
