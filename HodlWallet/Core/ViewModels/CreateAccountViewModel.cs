@@ -29,6 +29,7 @@ using Xamarin.Forms;
 
 using HodlWallet.UI.Controls;
 using HodlWallet.UI.Converters;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -36,8 +37,8 @@ namespace HodlWallet.Core.ViewModels
     {
         Dictionary<string, string> accountTypesList = 
             new() { 
-                    { "bip84", "Bip84 Standard" }, 
-                    { "bip141", "Bip141 Legacy" } 
+                    { "bip84", LocaleResources.AddAccount_options_bip84 },
+                    { "bip141", LocaleResources.AddAccount_options_bip141 }
             };
         public Dictionary<string, string> AccountTypes { get => accountTypesList; }
         public ICommand CreateAccountCommand { get; }
