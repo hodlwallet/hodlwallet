@@ -54,5 +54,50 @@ namespace HodlWallet.UI.Views
 
             base.OnAppearing();
         }
+
+        private void AddAmountButton_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.Amount = "";
+            ViewModel.AmountIsVisible = true;
+            ViewModel.AmountButtonIsVisible = false;
+        }
+
+        bool HasLessEightDecimalPlaces(string stringValue)
+        {
+            int places = 8;
+            decimal value = Convert.ToDecimal(stringValue);
+            decimal step = (decimal)Math.Pow(10, places);
+            if ((value * step) - Math.Truncate(value * step) == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        string RemoveLastCharacter(string value)
+        {
+            return value.Remove(value.Length - 1, 1);
+        }
+
+        private void AmountEntry_Changed(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(ViewModel.Amount))
+            {
+                if (Convert.ToDecimal(ViewModel.Amount) > 0 && ViewModel.AmountIsVisible)
+                {
+                    if (HasLessEightDecimalPlaces(ViewModel.Amount))
+                    {
+                        ViewModel.Address = "bitcoin:" + ViewModel.BasicAddress + "?amount=" + ViewModel.Amount;
+                    }
+                    else
+                    {
+                        ViewModel.Amount = RemoveLastCharacter(ViewModel.Amount);
+                    }
+                }
+            }
+        }
     }
 }

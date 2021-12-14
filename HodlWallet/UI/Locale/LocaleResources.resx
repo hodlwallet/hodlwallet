@@ -3,7 +3,7 @@
   <!-- 
     Microsoft ResX Schema 
     
-    Version 2.0
+      Version 2.0
     
     The primary goals of this format is to allow a simple XML format 
     that is mostly human readable. The generation and parsing of the 
@@ -396,17 +396,17 @@
     <value>Enable Biometric Authentication for Hodl</value>
     <comment>label for biometric auth slider BiometricsView</comment>
   </data>
-  <data name="FingerprintAuth.spendingLimit" xml:space="preserve">
+  <data name="BiometricAuth.spendingLimit" xml:space="preserve">
     <value>Spending limit: </value>
     <comment>label for fingerprint auth spending limit</comment>
   </data>
-  <data name="FingerprintAuth.subheader" xml:space="preserve">
+  <data name="BiometricAuth.subheader" xml:space="preserve">
     <value>You can customize your touch ID spending limit from the </value>
     <comment>label for fingerprint auth subheader</comment>
   </data>
-  <data name="FingerprintAuth.limitButtonAndroid" xml:space="preserve">
-    <value>Fingerprint Authentication Spending Limit Screen.</value>
-    <comment>label for spending limit button on Android</comment>
+  <data name="BiometricAuth.spendingLimitScreen" xml:space="preserve">
+    <value>Biometric Authentication Spending Limit Screen.</value>
+    <comment>label for spending limit screen</comment>
   </data>
   <data name="Send.addressDetectedOnClipboardTitle" xml:space="preserve">
     <value>Address Detected On Clipboard</value>
@@ -459,6 +459,22 @@
   <data name="Accounts.title" xml:space="preserve">
     <value>Accounts</value>
     <comment>label for accounts view title</comment>
+  </data>
+  <data name="Menu.info" xml:space="preserve">
+    <value>Account Settings</value>
+    <comment>label for menu info button</comment>
+  </data>
+  <data name="AccountSettings.title" xml:space="preserve">
+    <value>Account Settings</value>
+    <comment>label for accounts settings view title</comment>
+  </data>
+  <data name="AccountSettings.info" xml:space="preserve">
+    <value>Info</value>
+    <comment>label for accounts info view</comment>
+  </data>
+  <data name="AccountSettings.coincontrol" xml:space="preserve">
+    <value>Coin Control</value>
+    <comment>label for coin control view</comment>
   </data>
   <data name="AccountSelection.title" xml:space="preserve">
     <value>Select an Account</value>
@@ -527,10 +543,6 @@
   <data name="Backup.skip" xml:space="preserve">
     <value>Skip</value>
     <comment>label for backup toolbar Skip button</comment>
-  </data>
-  <data name="AccountSettings.Title" xml:space="preserve">
-    <value>Account Settings</value>
-    <comment>Account Settings Title</comment>
   </data>
   <data name="AccountInfo.Title" xml:space="preserve">
     <value>Account Info</value>
@@ -776,7 +788,6 @@
     <value>Before we get started you should know:
 
 Hodl Wallet is a non-custodial Bitcoin Wallet. This means you are the sole person with access to the bitcoin stored in this app.
- 
 All you have to do is safety store the wallets backup recovery key and you'll always have access to you bitcoin.</value>
     <comment>label for main message on New Wallet view</comment>
   </data>
@@ -840,6 +851,10 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Update Pin</value>
     <comment>label for Update Pin button of PinSettingsView</comment>
   </data>
+  <data name="Login.cancel" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Label of cancel button in LoginView</comment>
+  </data>
   <data name="AccountTypeSelection.description" xml:space="preserve">
     <value>Hodl Wallet supports two different account types described below. Please select the account type you would like to create. Creating a new account has no effect on your existing accounts.</value>
     <comment>description of the account type selection view</comment>
@@ -892,10 +907,6 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Biometrics ID</value>
     <comment>Label for BiometricsView title</comment>
   </data>
-  <data name="BiometricsSettings.close" xml:space="preserve">
-    <value>Close</value>
-    <comment>label for close button of BiometricsView</comment>
-  </data>
   <data name="Login.useBiometric" xml:space="preserve">
     <value>Biometric Authentication</value>
     <comment>label for fingerprint button in LoginView on Android</comment>
@@ -912,6 +923,10 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>No biometrics authentication available, please check settings of the device.</value>
     <comment>Warning message in BiometricsView</comment>
   </data>
+    <data name="BiometricsSettings.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>Label of Close button in BiometricsView</comment>
+  </data>
   <data name="Login.wayAuthentication" xml:space="preserve">
     <value>Select the way of autentication.</value>
     <comment>Header of BiometricLoginView</comment>
@@ -919,5 +934,9 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="Login.close" xml:space="preserve">
     <value>Close</value>
     <comment>label for close button of LoginView</comment>
+  </data>
+  <data name="Receive.amount" xml:space="preserve">
+    <value>Amount</value>
+    <comment>label for amount section in receive view</comment>
   </data>
 </root>

@@ -151,11 +151,29 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Coin Control.
+        /// </summary>
+        internal static string AccountSettings_coincontrol {
+            get {
+                return ResourceManager.GetString("AccountSettings.coincontrol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        internal static string AccountSettings_info {
+            get {
+                return ResourceManager.GetString("AccountSettings.info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account Settings.
         /// </summary>
-        internal static string AccountSettings_Title {
+        internal static string AccountSettings_title {
             get {
-                return ResourceManager.GetString("AccountSettings.Title", resourceCulture);
+                return ResourceManager.GetString("AccountSettings.title", resourceCulture);
             }
         }
         
@@ -349,6 +367,24 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bip141 Legacy.
+        /// </summary>
+        internal static string AddAccount_options_bip141 {
+            get {
+                return ResourceManager.GetString("AddAccount.options.bip141", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bip84 Standard.
+        /// </summary>
+        internal static string AddAccount_options_bip84 {
+            get {
+                return ResourceManager.GetString("AddAccount.options.bip84", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bitcoin Account.
         /// </summary>
         internal static string AddAccount_placeholder {
@@ -538,6 +574,33 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spending limit: .
+        /// </summary>
+        internal static string BiometricAuth_spendingLimit {
+            get {
+                return ResourceManager.GetString("BiometricAuth.spendingLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Biometric Authentication Spending Limit Screen..
+        /// </summary>
+        internal static string BiometricAuth_spendingLimitScreen {
+            get {
+                return ResourceManager.GetString("BiometricAuth.spendingLimitScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can customize your touch ID spending limit from the .
+        /// </summary>
+        internal static string BiometricAuth_subheader {
+            get {
+                return ResourceManager.GetString("BiometricAuth.subheader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable Biometric Authentication for Hodl.
         /// </summary>
         internal static string BiometricAuth_switch {
@@ -646,29 +709,11 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fingerprint Authentication Spending Limit Screen..
+        ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        internal static string FingerprintAuth_limitButtonAndroid {
+        internal static string Login_cancel {
             get {
-                return ResourceManager.GetString("FingerprintAuth.limitButtonAndroid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Spending limit: .
-        /// </summary>
-        internal static string FingerprintAuth_spendingLimit {
-            get {
-                return ResourceManager.GetString("FingerprintAuth.spendingLimit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can customize your touch ID spending limit from the .
-        /// </summary>
-        internal static string FingerprintAuth_subheader {
-            get {
-                return ResourceManager.GetString("FingerprintAuth.subheader", resourceCulture);
+                return ResourceManager.GetString("Login.cancel", resourceCulture);
             }
         }
         
@@ -727,7 +772,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account Info.
+        ///   Looks up a localized string similar to Account Settings.
         /// </summary>
         internal static string Menu_info {
             get {
@@ -829,7 +874,6 @@ namespace HodlWallet.UI.Locale {
         ///   Looks up a localized string similar to Before we get started you should know:
         ///
         ///Hodl Wallet is a non-custodial Bitcoin Wallet. This means you are the sole person with access to the bitcoin stored in this app.
-        /// 
         ///All you have to do is safety store the wallets backup recovery key and you&apos;ll always have access to you bitcoin..
         /// </summary>
         internal static string NewWallet_body {
@@ -1222,6 +1266,15 @@ namespace HodlWallet.UI.Locale {
         internal static string QrCode_title {
             get {
                 return ResourceManager.GetString("QrCode.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        internal static string Receive_amount {
+            get {
+                return ResourceManager.GetString("Receive.amount", resourceCulture);
             }
         }
         
