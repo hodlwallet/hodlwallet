@@ -396,17 +396,17 @@
     <value>Enable Biometric Authentication for Hodl</value>
     <comment>label for biometric auth slider BiometricsView</comment>
   </data>
-  <data name="FingerprintAuth.spendingLimit" xml:space="preserve">
+  <data name="BiometricAuth.spendingLimit" xml:space="preserve">
     <value>Spending limit: </value>
     <comment>label for fingerprint auth spending limit</comment>
   </data>
-  <data name="FingerprintAuth.subheader" xml:space="preserve">
+  <data name="BiometricAuth.subheader" xml:space="preserve">
     <value>You can customize your touch ID spending limit from the </value>
     <comment>label for fingerprint auth subheader</comment>
   </data>
-  <data name="FingerprintAuth.limitButtonAndroid" xml:space="preserve">
-    <value>Fingerprint Authentication Spending Limit Screen.</value>
-    <comment>label for spending limit button on Android</comment>
+  <data name="BiometricAuth.spendingLimitScreen" xml:space="preserve">
+    <value>Biometric Authentication Spending Limit Screen.</value>
+    <comment>label for spending limit screen</comment>
   </data>
   <data name="Send.addressDetectedOnClipboardTitle" xml:space="preserve">
     <value>Address Detected On Clipboard</value>
@@ -902,6 +902,10 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="Biometrics.notAvailableWarning" xml:space="preserve">
     <value>No biometrics authentication available, please check settings of the device.</value>
     <comment>Warning message in BiometricsView</comment>
+  </data>
+    <data name="BiometricsSettings.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>Label of Close button in BiometricsView</comment>
   </data>
   <data name="Login.wayAuthentication" xml:space="preserve">
     <value>Select the way of autentication.</value>

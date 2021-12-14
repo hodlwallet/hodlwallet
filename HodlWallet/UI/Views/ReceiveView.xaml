@@ -46,7 +46,7 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView FlexLayout.Grow="0.9" IsVisible="{Binding AmountIsVisible}" Margin="20,0,20,0">
+            <ContentView FlexLayout.Grow="0.9" IsVisible="{Binding AmountIsVisible}">
                 <StackLayout HeightRequest="30" 
                              Margin="20,0">
                     <StackLayout Orientation="Horizontal" >
@@ -54,7 +54,6 @@
                                Text="{i18n:Translate Text=Receive.amount}"
                                HorizontalOptions="StartAndExpand"
                                HorizontalTextAlignment="Start"
-                               TextColor="{DynamicResource Fg3}"
                                FontFamily="{DynamicResource Mono-Regular}"
                                FontSize="Small" />
 
@@ -71,10 +70,8 @@
                            Keyboard="Numeric"
                            x:Name="AmountEntry"
                            Text="{Binding Amount}"
-                           FontFamily="{StaticResource Mono-Regular}"
-                           TextColor="{DynamicResource FgSuccess}"
                            PropertyChanged="AmountEntry_Changed"/>
-                    
+
                 </StackLayout>
             </ContentView>
 
@@ -99,7 +96,7 @@
                     BackgroundColor="{DynamicResource Bg2}"
                     Command="{Binding ShowShareIntentCommand}"
                     Text="{i18n:Translate Text=Receive.share}"/>
-            
+
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
