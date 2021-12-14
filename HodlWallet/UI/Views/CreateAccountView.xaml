@@ -25,8 +25,10 @@
                     BackgroundColor="{DynamicResource Bg}"
                     AlignItems="Stretch">
             <Label Text="{i18n:Translate Text=AddAccount.entry}"
-                   FontSize="Large"
-                   FlexLayout.AlignSelf="Center" />
+                   Style="{DynamicResource CustomLabel}"
+                   FontSize="Small"
+                   TextColor="{DynamicResource Fg3}"
+                   Margin="20,0,20,0" />
             <ContentView>
                 <Entry Placeholder="{i18n:Translate Text=AddAccount.placeholder}"
                        Text="{Binding AccountName}"
@@ -38,37 +40,39 @@
             </ContentView>
 
             <Label Text="{i18n:Translate Text=AddAccount.options}"
-                   FontSize="Large"
-                   FlexLayout.AlignSelf="Center" />
-            <Grid RowDefinitions="*,*" RowSpacing="20" FlexLayout.AlignSelf="Center">
-                <RadioButton Content="{Binding AcountTypes[0]}"
+                   Style="{DynamicResource CustomLabel}"
+                   FontSize="Small"
+                   TextColor="{DynamicResource Fg3}"
+                   Margin="20,10,20,10" />
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="20" FlexLayout.AlignSelf="Center">
+                <RadioButton Content="{Binding Path=AccountTypes[bip84]}"
                              IsChecked="True"
                              Style="{DynamicResource CustomRadioButton}"
                              BackgroundColor="{DynamicResource Bg}"
                              CheckedChanged="OnAccountTypeCheckedChanged" 
                              BorderColor="{DynamicResource Fg}" />
-                <RadioButton Grid.Row="1" Content="{Binding AcountTypes[1]}"
+                <RadioButton Grid.Column="1" Content="{Binding Path=AccountTypes[bip141]}"
                              Style="{DynamicResource CustomRadioButton}"
                              BackgroundColor="{DynamicResource Bg}"
                              CheckedChanged="OnAccountTypeCheckedChanged"
                              BorderColor="{DynamicResource Fg}" />
             </Grid>
             <Label Text="{i18n:Translate Text=AddAccount.color}"
-                   FontSize="Large"
-                   FlexLayout.AlignSelf="Center" 
-                   Margin="0, 20, 0, 0" />
+                   Style="{DynamicResource CustomLabel}"
+                   FontSize="Small"
+                   TextColor="{DynamicResource Fg5}"
+                   Margin="20,10,20,10" />
             <controls:ColorPicker x:Name="PickColorControl" ButtonColorSelected="{Binding AccountColor}" />
 
             <BoxView x:Name="boxView" FlexLayout.Grow="1"/>
             <Button Text="{i18n:Translate Text=AddAccount.createButton}"
+                    Command="{Binding CreateAccountCommand}"
+                    CommandParameter="{Binding Source={x:Reference PickColorControl}, Path=ColorCode}"
                     Style="{DynamicResource CustomButton}"
                     BackgroundColor="{DynamicResource Bg2}"
-                    CornerRadius="0"
-                    FontSize="Large"
-                    FlexLayout.AlignSelf="Stretch"
-                    FlexLayout.Grow="1"
-                    Command="{Binding CreateAccountCommand}"
-                    CommandParameter="{Binding Source={x:Reference PickColorControl}, Path=ColorCode}" />
+                    FontSize="Medium"
+                    HeightRequest="80"
+                    Margin="65,0,65,0" />
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

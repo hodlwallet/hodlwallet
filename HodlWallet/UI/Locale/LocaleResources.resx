@@ -520,6 +520,14 @@
     <value>Type</value>
     <comment>label for type options when create an account</comment>
   </data>
+  <data name="AddAccount.options.bip84" xml:space="preserve">
+    <value>Bip84 Standard</value>
+    <comment>label for type options bip84</comment>
+  </data>
+    <data name="AddAccount.options.bip141" xml:space="preserve">
+    <value>Bip141 Legacy</value>
+    <comment>label for type options bip141</comment>
+  </data>
   <data name="AddAccount.color" xml:space="preserve">
     <value>Pick a Color</value>
     <comment>label for the color associated to an account</comment>
