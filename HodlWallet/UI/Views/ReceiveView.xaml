@@ -32,7 +32,7 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView FlexLayout.Grow="20" 
+            <ContentView FlexLayout.Grow="0.8" 
                          HeightRequest="30">
                 <Label Style="{DynamicResource CustomLabel}"
                        Text="{Binding Address}"
@@ -41,23 +41,23 @@
                        FontFamily="{DynamicResource Mono-Regular}"
                        FontSize="Small" />
                 <ContentView.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Address_Tapped" NumberOfTapsRequired="1"/>
+                    <TapGestureRecognizer Tapped="Address_Tapped" 
+                                          NumberOfTapsRequired="1" />
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView Margin="20,0,20,0"
-                         FlexLayout.Grow="40" 
-                         IsVisible="{Binding AmountIsVisible}">
+            <ContentView FlexLayout.Grow="0.9" IsVisible="{Binding AmountIsVisible}" Margin="20,0,20,0">
                 <StackLayout HeightRequest="30" 
                              Margin="20,0">
                     <StackLayout Orientation="Horizontal" >
-                        <Label FontSize="Small"
-                               HorizontalTextAlignment="Start"
-                               HorizontalOptions="StartAndExpand"
-                               TextColor="{DynamicResource Fg3}"
+                        <Label 
                                Style="{DynamicResource CustomLabel}"
                                Text="{i18n:Translate Text=Receive.amount}"
-                               FontFamily="{DynamicResource Mono-Regular}"/>
+                               HorizontalOptions="StartAndExpand"
+                               HorizontalTextAlignment="Start"
+                               TextColor="{DynamicResource Fg3}"
+                               FontFamily="{DynamicResource Mono-Regular}"
+                               FontSize="Small" />
 
                         <svg:Icon WidthRequest="16"
                                   HeightRequest="16"
@@ -72,19 +72,19 @@
                            Keyboard="Numeric"
                            x:Name="AmountEntry"
                            Text="{Binding Amount}"
-                           PropertyChanged="AmountEntry_Changed"
+                           FontFamily="{StaticResource Mono-Regular}"
                            TextColor="{DynamicResource FgSuccess}"
-                           FontFamily="{StaticResource Mono-Regular}"/>
+                           PropertyChanged="AmountEntry_Changed"/>
                 </StackLayout>
             </ContentView>
             
-            <BoxView FlexLayout.Grow="17" 
+            <BoxView FlexLayout.Grow="0.3" 
                      IsVisible="{Binding AmountButtonIsVisible}"/>
 
             <Button Margin="40,5"
                     FontSize="Large"
                     HeightRequest="50"
-                    FlexLayout.Grow="20"
+                    FlexLayout.Grow="0.5"
                     Clicked="AddAmountButton_Clicked"
                     Style="{DynamicResource CustomButton}"
                     BackgroundColor="{DynamicResource Bg2}"
@@ -94,7 +94,7 @@
             <Button Margin="40,5"
                     FontSize="Large"
                     HeightRequest="50"
-                    FlexLayout.Grow="20"
+                    FlexLayout.Grow="0.5"
                     Style="{DynamicResource CustomButton}"
                     BackgroundColor="{DynamicResource Bg2}"
                     Command="{Binding ShowShareIntentCommand}"
