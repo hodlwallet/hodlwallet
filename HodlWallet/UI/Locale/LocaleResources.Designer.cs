@@ -151,11 +151,29 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Coin Control.
+        /// </summary>
+        internal static string AccountSettings_coincontrol {
+            get {
+                return ResourceManager.GetString("AccountSettings.coincontrol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        internal static string AccountSettings_info {
+            get {
+                return ResourceManager.GetString("AccountSettings.info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account Settings.
         /// </summary>
-        internal static string AccountSettings_Title {
+        internal static string AccountSettings_title {
             get {
-                return ResourceManager.GetString("AccountSettings.Title", resourceCulture);
+                return ResourceManager.GetString("AccountSettings.title", resourceCulture);
             }
         }
         
@@ -345,6 +363,24 @@ namespace HodlWallet.UI.Locale {
         internal static string AddAccount_options {
             get {
                 return ResourceManager.GetString("AddAccount.options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bip141 Legacy.
+        /// </summary>
+        internal static string AddAccount_options_bip141 {
+            get {
+                return ResourceManager.GetString("AddAccount.options.bip141", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bip84 Standard.
+        /// </summary>
+        internal static string AddAccount_options_bip84 {
+            get {
+                return ResourceManager.GetString("AddAccount.options.bip84", resourceCulture);
             }
         }
         
@@ -669,7 +705,19 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
-        internal static string Transactions_title {
+        /// <summary>
+        ///   Looks up a localized string similar to Account Settings.
+        /// </summary>
+        internal static string Menu_info {
+            get {
+                return ResourceManager.GetString("Menu.info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Knowledge.
+        /// </summary>
+        internal static string Menu_knowledge {
             get {
                 return ResourceManager.GetString("Transactions.title", resourceCulture);
             }

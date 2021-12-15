@@ -22,19 +22,25 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 
 using Xamarin.Forms;
 
 using HodlWallet.UI.Controls;
 using HodlWallet.UI.Converters;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.Core.ViewModels
 {
     class CreateAccountViewModel : BaseViewModel
     {
-        string[] accountTypesList = { "bip84", "bip141" };
-        public IList<string> AcountTypes { get => accountTypesList; }
+        Dictionary<string, string> accountTypesList = 
+            new() { 
+                    { "bip84", LocaleResources.AddAccount_options_bip84 },
+                    { "bip141", LocaleResources.AddAccount_options_bip141 }
+            };
+        public Dictionary<string, string> AccountTypes { get => accountTypesList; }
         public ICommand CreateAccountCommand { get; }
 
         string accountName;
@@ -71,7 +77,9 @@ namespace HodlWallet.Core.ViewModels
             // Get a hexadecimal string of the color to be stored.
             AccountColor = $"{colorCode}{color.ToHexString()}";
 
-            var (Success, Error) = await WalletService.AddAccount(AccountType ?? accountTypesList[0], AccountName, AccountColor);
+            string keyType = GetKeyFromValue();
+
+            (bool Success, string Error) = await WalletService.AddAccount(keyType, AccountName, AccountColor);
 
             if (!Success && !string.IsNullOrEmpty(Error))
             {
@@ -86,6 +94,21 @@ namespace HodlWallet.Core.ViewModels
         void DisplayProcessAccountErrorAlert(string errorMessage)
         {
             MessagingCenter.Send(this, "DisplayErrorCreatingAccount", errorMessage);
+        }
+
+        string GetKeyFromValue()
+        {
+            string keyFound = accountTypesList.ElementAt(0).Key;
+            if (!string.IsNullOrEmpty(AccountType))
+                foreach (string keyVar in accountTypesList.Keys)
+                {
+                    if (accountTypesList[keyVar] == AccountType)
+                    {
+                        keyFound = keyVar;
+                        break;
+                    }
+                }
+            return keyFound;
         }
     }
 }

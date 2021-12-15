@@ -132,9 +132,9 @@ namespace HodlWallet.UI.Views
             await Navigation.PushAsync(new SecuritySettingsView());
         }
 
-        async void AccountInfo_Clicked(object sender, EventArgs e)
+        async void AccountSettings_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AccountInfoView());
+            await Navigation.PushAsync(new AccountSettingsView());
         }
 
         async void Currency_Clicked(object sender, EventArgs e)

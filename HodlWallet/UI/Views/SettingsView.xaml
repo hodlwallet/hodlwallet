@@ -19,13 +19,7 @@
                              HeightRequest="1" />
 
                     <Button Text="{i18n:Translate Text=Menu.info}"
-                            Clicked="AccountInfo_Clicked"
-                            Style="{DynamicResource SettingsButton}" />
-
-                    <BoxView BackgroundColor="{DynamicResource Fg3}"
-                             HeightRequest="1" />
-
-                    <Button Text="{i18n:Translate Text=Menu.coinControl}"
+                            Clicked="AccountSettings_Clicked"
                             Style="{DynamicResource SettingsButton}" />
 
                     <BoxView BackgroundColor="{DynamicResource Fg3}"
