@@ -73,10 +73,10 @@
                            TextColor="{DynamicResource Fg2}"
                            Text="{Binding Text}"
                            VerticalOptions="Center">
-                           <Label.GestureRecognizers>
+                        <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Text_Tapped" 
                                                   NumberOfTapsRequired="1" />
-                           </Label.GestureRecognizers>
+                       </Label.GestureRecognizers>
                     </Label>
                 </ContentView>
 
