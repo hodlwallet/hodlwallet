@@ -61,9 +61,9 @@
 	<key>CFBundleName</key>
 	<string>HODLTestnet</string>
 	<key>CFBundleVersion</key>
-	<string>23</string>
+	<string>24</string>
 	<key>CFBundleShortVersionString</key>
-	<string>19.0.1</string>
+	<string>19.0.2</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 </dict>
