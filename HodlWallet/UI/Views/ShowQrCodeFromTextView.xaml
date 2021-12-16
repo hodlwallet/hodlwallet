@@ -18,51 +18,47 @@
     <ContentPage.Content>
         <FlexLayout Direction="Column" >
             <StackLayout Spacing="15"
-                         Margin="15, 15, 15, 0">
-
+                         Margin="15, 15, 15, 0" >
                 <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1">
-                    <Label Text="{i18n:Translate Text=QrCode.title}"
+                            FlexLayout.Grow="1" >
+                    <Label FontSize="Title"
                            FlexLayout.Grow="1"
-                           FontSize="Title"
                            FlexLayout.AlignSelf="Center"
+                           TextColor="{DynamicResource Fg}"
                            FontFamily="{StaticResource Sans-Bold}"
-                           TextColor="{DynamicResource Fg}" />
+                           Text="{i18n:Translate Text=QrCode.title}" />
 
                     <FlexLayout Direction="Column"
                                 FlexLayout.Grow="1"
-                                FlexLayout.AlignSelf="Center">
-                        <svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
-                                  Margin="0, 5, 0, 0"
+                                FlexLayout.AlignSelf="Center" >
+                        <svg:Icon WidthRequest="16"
                                   HeightRequest="16"
-                                  WidthRequest="16"
+                                  Margin="0, 5, 0, 0"
                                   VerticalOptions="Center"
-                                  FlexLayout.AlignSelf="End" >
+                                  FlexLayout.AlignSelf="End" 
+                                  ResourceId="HodlWallet.UI.Assets.close.svg" >
                         </svg:Icon>
                         <FlexLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Close_Tapped" />
                         </FlexLayout.GestureRecognizers>
                     </FlexLayout>
                 </FlexLayout>
-            
-
-
 
                 <ContentView FlexLayout.Grow="10" 
-                             VerticalOptions="Start">
+                             VerticalOptions="Start" >
                         <!-- Use this for debuging due to a break on Hot Reaload for ZXingBarcodeImageView -->
                         <!--<Image Source="logo.png" WidthRequest="320" HeightRequest="320"/>-->
                         <zxing:ZXingBarcodeImageView WidthRequest="320"
                                                      HeightRequest="320"
                                                      BarcodeFormat="QR_CODE"
                                                      x:Name="BarCodeImageView"
-                                                     BarcodeValue="{Binding Text}">
+                                                     BarcodeValue="{Binding Text}" >
                             <zxing:ZXingBarcodeImageView.BarcodeOptions>
-                                <zxcm:EncodingOptions Width="320" Height="320" Margin="1" PureBarcode="True"/>
+                                <zxcm:EncodingOptions Width="320" Height="320" Margin="1" PureBarcode="True" />
                             </zxing:ZXingBarcodeImageView.BarcodeOptions>
                         </zxing:ZXingBarcodeImageView>
                         <ContentView.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="QrCode_Tapped" NumberOfTapsRequired="1"/>
+                            <TapGestureRecognizer Tapped="QrCode_Tapped" NumberOfTapsRequired="1" />
                         </ContentView.GestureRecognizers>
                 </ContentView>
 
@@ -82,7 +78,7 @@
                 <BoxView FlexLayout.Grow="2" />
             </StackLayout>
 
-                <FlexLayout.GestureRecognizers>
+            <FlexLayout.GestureRecognizers>
                 <SwipeGestureRecognizer Direction="Down" Swiped="Close_Swiped" />
             </FlexLayout.GestureRecognizers>
         </FlexLayout>
