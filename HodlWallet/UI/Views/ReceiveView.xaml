@@ -41,7 +41,7 @@
                        FontFamily="{DynamicResource Mono-Regular}"
                        FontSize="Small" />
                 <ContentView.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Address_Tapped" 
+                    <TapGestureRecognizer Tapped="Address_Tapped"
                                           NumberOfTapsRequired="1" />
                 </ContentView.GestureRecognizers>
             </ContentView>
@@ -50,8 +50,7 @@
                 <StackLayout HeightRequest="30" 
                              Margin="20,0">
                     <StackLayout Orientation="Horizontal" >
-                        <Label 
-                               Style="{DynamicResource CustomLabel}"
+                        <Label Style="{DynamicResource CustomLabel}"
                                Text="{i18n:Translate Text=Receive.amount}"
                                HorizontalOptions="StartAndExpand"
                                HorizontalTextAlignment="Start"
@@ -75,6 +74,7 @@
                            FontFamily="{StaticResource Mono-Regular}"
                            TextColor="{DynamicResource FgSuccess}"
                            PropertyChanged="AmountEntry_Changed"/>
+                    
                 </StackLayout>
             </ContentView>
             
