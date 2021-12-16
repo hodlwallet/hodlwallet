@@ -14,7 +14,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <FlexLayout Direction="Column">
-            <ContentView FlexLayout.Grow="80">
+            <ContentView FlexLayout.Grow="2">
                 <!-- Use this for debuging due to a break on Hot Reaload for ZXingBarcodeImageView -->
                 <!--<Image Source="logo.png" WidthRequest="320" HeightRequest="320"/>-->
                 <zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
