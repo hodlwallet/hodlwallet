@@ -74,9 +74,9 @@
 
                 </StackLayout>
             </ContentView>
-
+            
             <BoxView FlexLayout.Grow="0.3" 
-                    IsVisible="{Binding AmountButtonIsVisible}"/>
+                     IsVisible="{Binding AmountButtonIsVisible}"/>
 
             <Button Margin="40,5"
                     FontSize="Large"
