@@ -36,7 +36,7 @@
             </ContentView>
 
             <ContentView FlexLayout.Grow="2" 
-                         HeightRequest="30" >
+                         HeightRequest="30">
                 <Label FontFamily="{DynamicResource Mono-Regular}"
                        FontSize="Small"
                        HorizontalTextAlignment="Center"
@@ -66,7 +66,7 @@
                         <svg:Icon HeightRequest="16"
                                   WidthRequest="16"
                                   HorizontalOptions="End"
-                                  ResourceId="HodlWallet.UI.Assets.close.svg" >
+                                  ResourceId="HodlWallet.UI.Assets.close.svg">
                             <svg:Icon.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CloseCommand}" />
                             </svg:Icon.GestureRecognizers>
@@ -82,8 +82,6 @@
                            Text="{Binding Amount}"
                            TextColor="{DynamicResource FgSuccess}"
                            VerticalOptions="Center" />
-
-
                 </StackLayout>
 
                 <Button BackgroundColor="{DynamicResource Bg2}"
