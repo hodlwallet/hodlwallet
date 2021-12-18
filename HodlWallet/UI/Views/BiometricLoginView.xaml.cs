@@ -83,19 +83,24 @@ namespace HodlWallet.UI.Views
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<BiometricLoginViewModel>(this, "StartAppShell", StartAppShell);
+            MessagingCenter.Subscribe<BiometricLoginViewModel>(this, "UpdatePin", UpdatePin);
         }
+
+        void UpdatePin(BiometricLoginViewModel _)
+        {
+            Debug.WriteLine($"[SubscribeToMessage][UpdatePin]");
+
+            Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
+
+            return;
+        }
+
 
         void StartAppShell(BiometricLoginViewModel _)
         {
             Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
 
-            if (ViewModel.Action == "update") // Update PIN
-            {
-                Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
-
-                return;
-            }
-            else if (ViewModel.Action == "pop") // Login after logout or timeout
+            if (ViewModel.Action == "pop") // Login after logout or timeout
             {
                 Navigation.PopModalAsync();
                 Navigation.PopModalAsync();
@@ -122,13 +127,20 @@ namespace HodlWallet.UI.Views
 
             if (authResult.Authenticated)
             {
-                Debug.WriteLine("[Biometrics] Logged in!");
-                ViewModel.IsLoading = true;
+                if (ViewModel.Action == "update")
+                {
+                    Debug.WriteLine("[Biometrics] Authenticated!");
+                    ViewModel.UpdatePin();
+                }
+                else
+                {
+                    Debug.WriteLine("[Biometrics] Logged in!");
+                    ViewModel.IsLoading = true;
 
-                // DONE! We navigate to the root view
-                await Task.Delay(65);
-
-                ViewModel.StartAppShell();
+                    // DONE! We navigate to the root view
+                    await Task.Delay(65);
+                    ViewModel.StartAppShell();
+                }
                 return;
             }
 

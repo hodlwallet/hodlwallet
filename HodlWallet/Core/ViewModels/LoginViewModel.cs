@@ -126,15 +126,21 @@ namespace HodlWallet.Core.ViewModels
             // Check if it's the pin
             if (AuthenticationService.Authenticate(input))
             {
-                Debug.WriteLine("[AddDigit] Logged in!");
+                if (Action == "update")
+                {
+                    Debug.WriteLine("[AddDigit] Authenticated!");
+                    MessagingCenter.Send(this, "UpdatePin");
+                }
+                else
+                {
+                    Debug.WriteLine("[AddDigit] Logged in!");
 
-                IsLoading = true;
+                    IsLoading = true;
 
-                // DONE! We navigate to the root view
-                await Task.Delay(65);
-
-                MessagingCenter.Send(this, "StartAppShell");
-
+                    // DONE! We navigate to the root view
+                    await Task.Delay(65);
+                    MessagingCenter.Send(this, "StartAppShell");
+                }
                 return;
             }
             else

@@ -97,6 +97,7 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitRemoved", DigitRemoved);
             MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", IncorrectPinAnimation);
             MessagingCenter.Subscribe<LoginViewModel>(this, "StartAppShell", StartAppShell);
+            MessagingCenter.Subscribe<LoginViewModel>(this, "UpdatePin", UpdatePin);
             MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
         }
 
@@ -140,13 +141,7 @@ namespace HodlWallet.UI.Views
         {
             Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
 
-            if (ViewModel.Action == "update") // Update PIN
-            {
-                Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
-
-                return;
-            }
-            else if (ViewModel.Action == "pop") // Login after logout or timeout
+            if (ViewModel.Action == "pop") // Login after logout or timeout
             {
                 Navigation.PopModalAsync();
                 Navigation.PopModalAsync();
@@ -156,6 +151,15 @@ namespace HodlWallet.UI.Views
 
             // Init app after startup, new wallet or restore
             Application.Current.MainPage = new AppShell();
+        }
+
+        void UpdatePin(LoginViewModel _)
+        {
+            Debug.WriteLine($"[SubscribeToMessage][UpdatePin]");
+
+            Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
+
+            return;
         }
 
         void ResetPin(LoginViewModel _)
