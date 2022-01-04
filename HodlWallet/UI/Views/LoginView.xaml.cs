@@ -101,6 +101,13 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
         }
 
+
+        void UnsubscribeToMessages()
+        {
+            MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "StartAppShell");
+            MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "UpdatePin");
+        }
+
         async void CheckBiometricsAvailabilityAsync()
         {
             ViewModel.BiometricsAvailable = await CrossFingerprint.Current.IsAvailableAsync();
@@ -196,6 +203,7 @@ namespace HodlWallet.UI.Views
 
         async void FingerprintButtonClicked(object sender, EventArgs e)
         {
+            UnsubscribeToMessages();
             var view = new BiometricLoginView(ViewModel.Action);
             var nav = new NavigationPage(view);
             await Navigation.PushModalAsync(nav);
