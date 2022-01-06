@@ -40,7 +40,7 @@ namespace HodlWallet.UI.Views
         readonly uint incorrectPinAnimationTimeout = 50;
 
         Color DigitOnColor => (Color)Application.Current.Resources["FgSuccess"];
-        Color DigitOffColor => (Color)Application.Current.Resources["Fg"];
+        Color DigitOffColor => (Color)Application.Current.Resources["Fg5"];
 
         LoginViewModel ViewModel => (LoginViewModel)BindingContext;
 
