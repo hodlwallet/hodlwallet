@@ -53,6 +53,11 @@ namespace HodlWallet.Core.ViewModels
         {
         }
 
+        public void UpdatePin()
+        {
+            MessagingCenter.Send(this, "UpdatePin");
+        }
+        
         public void StartAppShell()
         {
             MessagingCenter.Send(this, "StartAppShell");

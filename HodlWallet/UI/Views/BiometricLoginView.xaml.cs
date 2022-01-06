@@ -83,26 +83,37 @@ namespace HodlWallet.UI.Views
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<BiometricLoginViewModel>(this, "StartAppShell", StartAppShell);
+            MessagingCenter.Subscribe<BiometricLoginViewModel>(this, "UpdatePin", UpdatePin);
         }
+
+        void UnsubscribeToMessages()
+        {
+            MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "StartAppShell");
+            MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "UpdatePin");
+        }
+
+        void UpdatePin(BiometricLoginViewModel _)
+        {
+            Debug.WriteLine($"[SubscribeToMessage][UpdatePin]");
+
+            Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
+            UnsubscribeToMessages();
+            return;
+        }
+
 
         void StartAppShell(BiometricLoginViewModel _)
         {
             Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
 
-            if (ViewModel.Action == "update") // Update PIN
-            {
-                Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
-
-                return;
-            }
-            else if (ViewModel.Action == "pop") // Login after logout or timeout
+            if (ViewModel.Action == "pop") // Login after logout or timeout
             {
                 Navigation.PopModalAsync();
                 Navigation.PopModalAsync();
 
                 return;
             }
-
+            UnsubscribeToMessages();
             // Init app after startup, new wallet or restore
             Application.Current.MainPage = new AppShell();
         }
@@ -122,13 +133,20 @@ namespace HodlWallet.UI.Views
 
             if (authResult.Authenticated)
             {
-                Debug.WriteLine("[Biometrics] Logged in!");
-                ViewModel.IsLoading = true;
+                if (ViewModel.Action == "update")
+                {
+                    Debug.WriteLine("[Biometrics] Authenticated!");
+                    ViewModel.UpdatePin();
+                }
+                else
+                {
+                    Debug.WriteLine("[Biometrics] Logged in!");
+                    ViewModel.IsLoading = true;
 
-                // DONE! We navigate to the root view
-                await Task.Delay(65);
-
-                ViewModel.StartAppShell();
+                    // DONE! We navigate to the root view
+                    await Task.Delay(65);
+                    ViewModel.StartAppShell();
+                }
                 return;
             }
 
@@ -136,6 +154,7 @@ namespace HodlWallet.UI.Views
 
         async void UsePinButtonClicked(object sender, EventArgs e)
         {
+            UnsubscribeToMessages();
             var view = new LoginView(ViewModel.Action);
             var nav = new NavigationPage(view);
             await Navigation.PushModalAsync(nav);
