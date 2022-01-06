@@ -97,7 +97,7 @@ namespace HodlWallet.UI.Views
             Debug.WriteLine($"[SubscribeToMessage][UpdatePin]");
 
             Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
-
+            UnsubscribeToMessages();
             return;
         }
 
@@ -113,7 +113,7 @@ namespace HodlWallet.UI.Views
 
                 return;
             }
-
+            UnsubscribeToMessages();
             // Init app after startup, new wallet or restore
             Application.Current.MainPage = new AppShell();
         }
