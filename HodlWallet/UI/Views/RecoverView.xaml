@@ -22,7 +22,7 @@
 
                 <ScrollView>
                     <Grid x:Name="EntryGrid"
-                          BackgroundColor="{DynamicResource Bg2}"
+                          BackgroundColor="{DynamicResource Bg}"
                           Padding="10"
                           Margin="10">
 
