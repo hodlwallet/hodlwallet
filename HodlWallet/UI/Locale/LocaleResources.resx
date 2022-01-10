@@ -580,6 +580,10 @@
     <value>Create A New Pin</value>
     <comment>Pin Pad Title</comment>
   </data>
+  <data name="PinPad.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for close button of PinPadView</comment>
+  </data>
   <data name="Recovery.Close" xml:space="preserve">
     <value>Close</value>
     <comment>label for recovery toolbar Close button</comment>

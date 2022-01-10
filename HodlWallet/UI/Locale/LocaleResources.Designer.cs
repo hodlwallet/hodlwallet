@@ -1216,6 +1216,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string PinPad_close {
+            get {
+                return ResourceManager.GetString("PinPad.close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create A New Pin.
         /// </summary>
         internal static string PinPad_Title {
