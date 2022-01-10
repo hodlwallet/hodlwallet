@@ -843,6 +843,10 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Security</value>
     <comment>label for SecuritySettingsView title</comment>
   </data>
+  <data name="Security.close" xml:space="preserve">
+    <value>Close</value>
+    <comment>label for close button of SecuritySettingsView</comment>
+  </data>
   <data name="PinSettings.pinSpendingLimits" xml:space="preserve">
     <value>Pin Spending Limits</value>
     <comment>label for Pin Spending Limits button of PinSettingsView</comment>
