@@ -92,11 +92,11 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "UpdatePin");
         }
 
-        void UpdatePin(BiometricLoginViewModel _)
+        async void UpdatePin(BiometricLoginViewModel _)
         {
             Debug.WriteLine($"[SubscribeToMessage][UpdatePin]");
 
-            Navigation.PushAsync(new PinPadView(new PinPadChangeView()));
+            await Navigation.PushAsync(new PinPadView("PinPadChangeView"));
             UnsubscribeToMessages();
             return;
         }
@@ -156,13 +156,21 @@ namespace HodlWallet.UI.Views
         {
             UnsubscribeToMessages();
             var view = new LoginView(ViewModel.Action);
-            var nav = new NavigationPage(view);
-            await Navigation.PushModalAsync(nav);
+
+            if (ViewModel.Action == "update")
+            {
+                await Navigation.PushAsync(view);
+            }
+            else
+            {
+                var nav = new NavigationPage(view);
+                await Navigation.PushModalAsync(nav);
+            }
         }
 
-        async void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        void CloseToolbarItem_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("../../pinSettings");
+            Navigation.PopModalAsync();
         }
     }
 }
