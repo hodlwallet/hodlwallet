@@ -10,6 +10,13 @@
     <ContentPage.BindingContext>
         <vm:PinPadViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="CloseToolbarItem"
+                     Order="Primary"
+                     Text="{i18n:Translate Text=PinPad.close}"
+                     Priority="0"
+                     Clicked="CloseToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <FlexLayout>
             <controls:PinPad x:Name="PinPadControl" Command="{Binding SuccessCommand}" />
