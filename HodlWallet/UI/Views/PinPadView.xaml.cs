@@ -33,15 +33,16 @@ namespace HodlWallet.UI.Views
 {
     public partial class PinPadView : ContentPage
     {
-        string nextView;
+        PinPadViewModel ViewModel => (PinPadViewModel)BindingContext;
+        
         public PinPadView(string nextView)
         {
             InitializeComponent();
             SetPinPadControlBindings();
             SubscribeToMessages();
 
-            this.nextView = nextView;
-            if (this.nextView == "PinPadChangeView")
+            ViewModel.NextView = nextView;
+            if (ViewModel.NextView == "PinPadChangeView")
             {
                 CloseToolbarItem.IsEnabled = true;
             }
@@ -74,7 +75,7 @@ namespace HodlWallet.UI.Views
 
         async void NavigateToNextView(PinPadViewModel _)
         {
-            switch(nextView)
+            switch(ViewModel.NextView)
             {
                 case "NewWalletInfoView":
                     await Navigation.PushAsync(new NewWalletInfoView());

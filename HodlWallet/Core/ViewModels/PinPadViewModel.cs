@@ -37,6 +37,7 @@ namespace HodlWallet.Core.ViewModels
         public string PinPadTitle { get; } = LocaleResources.Pin_enter;
         public string PinPadHeader { get; } = LocaleResources.Pin_header;
         public string PinPadWarning { get; } = LocaleResources.Pin_warning;
+        public string NextView { get; set; };
 
         public ICommand SuccessCommand { get; }
 
