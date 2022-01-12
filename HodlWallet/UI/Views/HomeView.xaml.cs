@@ -42,9 +42,10 @@ namespace HodlWallet.UI.Views
         public HomeView()
         {
             InitializeComponent();
+            BalanceLabel.IsVisible = false;
 
             SubscribeToMessages();
-
+            
             if (WalletService.Syncing)
             {
                 SyncToolbarItem.IsVisible = true;
@@ -81,6 +82,12 @@ namespace HodlWallet.UI.Views
         {
             MessagingCenter.Subscribe<HomeViewModel, TransactionModel>(this, "NavigateToTransactionDetail", NavigateToTransactionDetail);
             MessagingCenter.Subscribe<HomeViewModel>(this, "SwitchCurrency", SwitchCurrency);
+            MessagingCenter.Subscribe<HomeViewModel>(this, "BalanceLabelToVisible", BalanceLabelToVisible);
+        }
+
+        void BalanceLabelToVisible(HomeViewModel _)
+        {
+            BalanceLabel.IsVisible=true;
         }
 
         async void NavigateToTransactionDetail(HomeViewModel _, TransactionModel txModel)

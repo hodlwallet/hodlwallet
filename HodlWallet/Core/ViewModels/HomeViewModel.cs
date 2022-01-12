@@ -404,6 +404,7 @@ namespace HodlWallet.Core.ViewModels
                 lock (@lock)
                 {
                     Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                    MessagingCenter.Send(this, "BalanceLabelToVisible");
                     LoadTransactions();
 
                     AddWalletServiceEvents();
