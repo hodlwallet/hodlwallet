@@ -14,16 +14,19 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <FlexLayout Direction="Column">
-            <ContentView FlexLayout.Grow="2">
+            <ContentView FlexLayout.Grow="7">
                 <!-- Use this for debuging due to a break on Hot Reaload for ZXingBarcodeImageView -->
                 <!--<Image Source="logo.png" WidthRequest="320" HeightRequest="320"/>-->
                 <zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
                                              BarcodeFormat="QR_CODE"
-                                             WidthRequest="320"
+                                             BarcodeValue="{Binding Address}"
                                              HeightRequest="320"
-                                             BarcodeValue="{Binding Address}">
+                                             WidthRequest="320">
                     <zxing:ZXingBarcodeImageView.BarcodeOptions>
-                        <zxcm:EncodingOptions Width="320" Height="320" Margin="1" PureBarcode="True" />
+                        <zxcm:EncodingOptions Height="320" 
+                                              Width="320"
+                                              Margin="1" 
+                                              PureBarcode="True" />
                     </zxing:ZXingBarcodeImageView.BarcodeOptions>
                 </zxing:ZXingBarcodeImageView>
                 <ContentView.GestureRecognizers>
@@ -32,33 +35,36 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView FlexLayout.Grow="0.8" 
+            <ContentView FlexLayout.Grow="2" 
                          HeightRequest="30">
-                <Label Style="{DynamicResource CustomLabel}"
-                       Text="{Binding Address}"
+                <Label FontFamily="{DynamicResource Mono-Regular}"
+                       FontSize="Small"
                        HorizontalTextAlignment="Center"
                        Margin="10"
-                       FontFamily="{DynamicResource Mono-Regular}"
-                       FontSize="Small" />
+                       Style="{DynamicResource CustomLabel}"
+                       Text="{Binding Address}" />
                 <ContentView.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Address_Tapped"
                                           NumberOfTapsRequired="1" />
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView FlexLayout.Grow="0.9" IsVisible="{Binding AmountIsVisible}">
-                <StackLayout HeightRequest="30" 
-                             Margin="20,0">
-                    <StackLayout Orientation="Horizontal" >
-                        <Label Style="{DynamicResource CustomLabel}"
-                               Text="{i18n:Translate Text=Receive.amount}"
+            <StackLayout FlexLayout.Grow="2" 
+                         Margin="20, 0">
+                <StackLayout IsVisible="{Binding AmountIsVisible}"
+                             Margin="45, 0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label FontFamily="{DynamicResource Mono-Regular}"
+                               FontSize="Small"
                                HorizontalOptions="StartAndExpand"
                                HorizontalTextAlignment="Start"
-                               FontFamily="{DynamicResource Mono-Regular}"
-                               FontSize="Small" />
+                               Style="{DynamicResource CustomLabel}"
+                               TextColor="{DynamicResource Fg3}"
+                               Text="{i18n:Translate Text=Receive.amount}"
+                               VerticalOptions="Center" />
 
-                        <svg:Icon WidthRequest="16"
-                                  HeightRequest="16"
+                        <svg:Icon HeightRequest="16"
+                                  WidthRequest="16"
                                   HorizontalOptions="End"
                                   ResourceId="HodlWallet.UI.Assets.close.svg">
                             <svg:Icon.GestureRecognizers>
@@ -66,37 +72,39 @@
                             </svg:Icon.GestureRecognizers>
                         </svg:Icon>
                     </StackLayout>
-                    <Entry Placeholder="0"
+
+                    <Entry x:Name="AmountEntry"
+                           FontFamily="{StaticResource Mono-Bold}"
                            Keyboard="Numeric"
-                           x:Name="AmountEntry"
+                           Placeholder="0"
+                           PropertyChanged="AmountEntry_Changed"
+                           ReturnType="Done"
                            Text="{Binding Amount}"
-                           PropertyChanged="AmountEntry_Changed"/>
-
+                           TextColor="{DynamicResource FgSuccess}"
+                           VerticalOptions="Center" />
                 </StackLayout>
-            </ContentView>
-            
-            <BoxView FlexLayout.Grow="0.3" 
-                     IsVisible="{Binding AmountButtonIsVisible}"/>
 
-            <Button Margin="40,5"
-                    FontSize="Large"
-                    HeightRequest="50"
-                    FlexLayout.Grow="0.5"
-                    Clicked="AddAmountButton_Clicked"
-                    Style="{DynamicResource CustomButton}"
-                    BackgroundColor="{DynamicResource Bg2}"
-                    IsVisible="{Binding AmountButtonIsVisible}"
-                    Text="{i18n:Translate Text=Receive.requestAmount}"/>
+                <Button BackgroundColor="{DynamicResource Bg2}"
+                        Clicked="AddAmountButton_Clicked"
+                        FontSize="Medium"
+                        HeightRequest="50"
+                        IsVisible="{Binding AmountButtonIsVisible}"
+                        Margin="85,5"
+                        Style="{DynamicResource CustomButton}"
+                        Text="{i18n:Translate Text=Receive.requestAmount}"
+                        VerticalOptions="CenterAndExpand" />
+            </StackLayout>
 
-            <Button Margin="40,5"
-                    FontSize="Large"
-                    HeightRequest="50"
-                    FlexLayout.Grow="0.5"
-                    Style="{DynamicResource CustomButton}"
-                    BackgroundColor="{DynamicResource Bg2}"
-                    Command="{Binding ShowShareIntentCommand}"
-                    Text="{i18n:Translate Text=Receive.share}"/>
-
+            <StackLayout FlexLayout.Grow="2">
+                <Button BackgroundColor="{DynamicResource Bg2}"
+                        Command="{Binding ShowShareIntentCommand}"
+                        FontSize="Medium"
+                        HeightRequest="80"
+                        Margin="65,0,65,0"
+                        Style="{DynamicResource CustomButton}"
+                        Text="{i18n:Translate Text=Receive.share}"
+                        VerticalOptions="EndAndExpand" />
+            </StackLayout>
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

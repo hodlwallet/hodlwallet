@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="13" package="co.hodlwallet.testnet" android:installLocation="auto" android:versionName="19.0.1">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="25" package="co.hodlwallet.testnet" android:installLocation="auto" android:versionName="19.0.3">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

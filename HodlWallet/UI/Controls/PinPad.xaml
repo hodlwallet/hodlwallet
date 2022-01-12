@@ -165,7 +165,6 @@
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="1"
-                        Command="{Binding DigitCommand}"
                         CommandParameter="1" />
 
                 <Button Text="2"
@@ -173,7 +172,6 @@
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="2"
-                        Command="{Binding DigitCommand}"
                         CommandParameter="2" />
 
                 <Button Text="3"
@@ -181,7 +179,6 @@
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="3"
-                        Command="{Binding DigitCommand}"
                         CommandParameter="3" />
             </FlexLayout>
 
@@ -193,7 +190,6 @@
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="4"
-                        Command="{Binding DigitCommand}"
                         CommandParameter="4" />
 
                 <Button Text="5"
@@ -201,7 +197,6 @@
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="5"
-                        Command="{Binding DigitCommand}"
                         CommandParameter="5" />
 
                 <Button Text="6"
@@ -209,7 +204,6 @@
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="6"
-                        Command="{Binding DigitCommand}"
                         CommandParameter="6" />
             </FlexLayout>
 
@@ -221,7 +215,6 @@
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="7"
-                        Command="{Binding DigitCommand}"
                         CommandParameter="7" />
 
                 <Button Text="8"
@@ -229,7 +222,6 @@
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="8"
-                        Command="{Binding DigitCommand}"
                         CommandParameter="8" />
 
                 <Button Text="9"
@@ -237,7 +229,6 @@
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="9"
-                        Command="{Binding DigitCommand}"
                         CommandParameter="9" />
             </FlexLayout>
 
@@ -252,14 +243,12 @@
                         FlexLayout.Grow="1"
                         Clicked="OnPinTapped"
                         utils:Tags.Tag="0"
-                        Command="{Binding DigitCommand}"
                         CommandParameter="0" />
 
                 <Button Text="&#x21E6;"
                         FlexLayout.Grow="1"
                         FontFamily="{StaticResource Mono-Regular}"
                         Clicked="OnBackspaceTapped"
-                        Command="{Binding BackspaceCommand}"
                         TextColor="{StaticResource FgSuccess}" />
             </FlexLayout>
         </FlexLayout>
