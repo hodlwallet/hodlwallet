@@ -30,6 +30,7 @@ using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
+
 using Liviano.Interfaces;
 
 namespace HodlWallet.UI.Views
@@ -42,10 +43,10 @@ namespace HodlWallet.UI.Views
         public HomeView()
         {
             InitializeComponent();
+            SubscribeToMessages();
+
             BalanceLabel.IsVisible = false;
 
-            SubscribeToMessages();
-            
             if (WalletService.Syncing)
             {
                 SyncToolbarItem.IsVisible = true;
@@ -87,7 +88,7 @@ namespace HodlWallet.UI.Views
 
         void BalanceLabelToVisible(HomeViewModel _)
         {
-            BalanceLabel.IsVisible=true;
+            BalanceLabel.IsVisible = true;
         }
 
         async void NavigateToTransactionDetail(HomeViewModel _, TransactionModel txModel)
