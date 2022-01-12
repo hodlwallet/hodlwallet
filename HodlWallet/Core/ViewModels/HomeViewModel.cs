@@ -403,6 +403,7 @@ namespace HodlWallet.Core.ViewModels
             {
                 lock (@lock)
                 {
+                    Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                     LoadTransactions();
 
                     AddWalletServiceEvents();
