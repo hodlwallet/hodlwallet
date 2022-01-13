@@ -7,6 +7,14 @@
              Title="{i18n:Translate Security.title}"
              NavigationPage.HasNavigationBar="True"
              BackgroundColor="{DynamicResource Bg}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="CloseToolbarItem"
+                     Order="Primary"
+                     Text="{i18n:Translate Text=Security.close}"
+                     Priority="0"
+                     Clicked="CloseToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <FlexLayout>
             <ScrollView x:Name="MenuScroll">

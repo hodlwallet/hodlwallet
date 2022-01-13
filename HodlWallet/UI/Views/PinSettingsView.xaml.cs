@@ -46,7 +46,7 @@ namespace HodlWallet.UI.Views
             Navigation.PopModalAsync();
         }
 
-        void UpdatePin_Clicked(object sender, EventArgs e)
+        async void UpdatePin_Clicked(object sender, EventArgs e)
         {
             string lastLogin = Preferences.Get("lastLogin", "pin");
             bool biometricsAllow = Preferences.Get("biometricsAllow", false);
@@ -55,12 +55,12 @@ namespace HodlWallet.UI.Views
             if (biometricsAllow & (lastLogin == "biometric" & availability))
             {
                 var view = new BiometricLoginView("update");
-                Navigation.PushAsync(view);
+                await Navigation.PushAsync(view);
             }
             else
             {
                 var view = new LoginView("update");
-                Navigation.PushAsync(view);
+                await Navigation.PushAsync(view);
             }
         }
 
