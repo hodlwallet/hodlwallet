@@ -35,21 +35,22 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView FlexLayout.Grow="2" 
+            <ContentView FlexLayout.Grow="2"
                          HeightRequest="30">
-                <Label FontFamily="{DynamicResource Mono-Regular}"
-                       FontSize="Small"
-                       HorizontalTextAlignment="Center"
-                       Margin="10"
-                       Style="{DynamicResource CustomLabel}"
-                       Text="{Binding Address}" />
+                <Editor FontFamily="{DynamicResource Mono-Regular}"
+                        FontSize="Small"
+                        IsReadOnly="True"
+                        Margin="10"
+                        Style="{DynamicResource CustomLabel}"
+                        BackgroundColor="{DynamicResource Bg}"
+                        Text="{Binding Address}" />
                 <ContentView.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Address_Tapped"
                                           NumberOfTapsRequired="1" />
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <StackLayout FlexLayout.Grow="2" 
+            <StackLayout FlexLayout.Grow="2"
                          Margin="20, 0">
                 <StackLayout IsVisible="{Binding AmountIsVisible}"
                              Margin="45, 0">
@@ -61,7 +62,7 @@
                                Style="{DynamicResource CustomLabel}"
                                TextColor="{DynamicResource Fg3}"
                                Text="{i18n:Translate Text=Receive.amount}"
-                               VerticalOptions="Center" />
+                               VerticalOptions="Start" />
 
                         <svg:Icon HeightRequest="16"
                                   WidthRequest="16"
@@ -81,7 +82,7 @@
                            ReturnType="Done"
                            Text="{Binding Amount}"
                            TextColor="{DynamicResource FgSuccess}"
-                           VerticalOptions="Center" />
+                           VerticalOptions="Start" />
                 </StackLayout>
 
                 <Button BackgroundColor="{DynamicResource Bg2}"
@@ -92,18 +93,19 @@
                         Margin="85,5"
                         Style="{DynamicResource CustomButton}"
                         Text="{i18n:Translate Text=Receive.requestAmount}"
-                        VerticalOptions="CenterAndExpand" />
+                        VerticalOptions="StartAndExpand" />
             </StackLayout>
 
-            <StackLayout FlexLayout.Grow="2">
-                <Button BackgroundColor="{DynamicResource Bg2}"
+            <StackLayout FlexLayout.Grow="2"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="EndAndExpand">
+                <Button Text="{i18n:Translate Text=Receive.share}"
                         Command="{Binding ShowShareIntentCommand}"
+                        Style="{DynamicResource CustomButton}"
+                        BackgroundColor="{DynamicResource Bg2}"
                         FontSize="Medium"
                         HeightRequest="80"
-                        Margin="65,0,65,0"
-                        Style="{DynamicResource CustomButton}"
-                        Text="{i18n:Translate Text=Receive.share}"
-                        VerticalOptions="EndAndExpand" />
+                        Margin="65,0,65,0" />
             </StackLayout>
         </FlexLayout>
     </ContentPage.Content>
