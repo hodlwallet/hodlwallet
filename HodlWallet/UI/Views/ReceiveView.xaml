@@ -37,13 +37,12 @@
 
             <ContentView FlexLayout.Grow="2"
                          HeightRequest="30">
-                <Editor FontFamily="{DynamicResource Mono-Regular}"
-                        FontSize="Small"
-                        IsReadOnly="True"
-                        Margin="10"
-                        Style="{DynamicResource CustomLabel}"
-                        BackgroundColor="{DynamicResource Bg}"
-                        Text="{Binding Address}" />
+                <Label FontFamily="{DynamicResource Mono-Regular}"
+                       FontSize="Small"
+                       LineBreakMode="CharacterWrap"
+                       Style="{DynamicResource CustomLabel}"
+                       BackgroundColor="{DynamicResource Bg}"
+                       Text="{Binding Address}" />
                 <ContentView.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Address_Tapped"
                                           NumberOfTapsRequired="1" />
@@ -87,7 +86,7 @@
 
                 <Button BackgroundColor="{DynamicResource Bg2}"
                         Clicked="AddAmountButton_Clicked"
-                        FontSize="Medium"
+                        FontSize="Small"
                         HeightRequest="50"
                         IsVisible="{Binding AmountButtonIsVisible}"
                         Margin="85,5"

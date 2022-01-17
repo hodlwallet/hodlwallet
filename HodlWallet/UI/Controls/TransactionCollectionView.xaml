@@ -32,7 +32,7 @@
                             <Label Text="{i18n:Translate Text=Transactions.empty}"
                                    Margin="10,25,10,10"
                                    FontAttributes="Bold"
-                                   FontSize="18"
+                                   FontSize="Small"
                                    Style="{DynamicResource CustomLabel}"
                                    TextColor="{DynamicResource Fg2}"
                                    HorizontalOptions="Fill"
@@ -41,7 +41,7 @@
                                     Style="{DynamicResource CustomButton}"
                                     BackgroundColor="{DynamicResource Bg2}"
                                     Clicked="EmptyGetAddressButton_Clicked"
-                                    FontSize="Medium"
+                                    FontSize="Small"
                                     HeightRequest="50"
                                     FlexLayout.AlignSelf="Stretch"
                                     FlexLayout.Grow="1" />
