@@ -33,16 +33,28 @@ namespace HodlWallet.UI.Views
 {
     public partial class PinPadView : ContentPage
     {
-        readonly ContentPage nextView;
-
-        public PinPadView(ContentPage nextView)
+        PinPadViewModel ViewModel => (PinPadViewModel)BindingContext;
+        
+        public PinPadView(string nextView)
         {
-            this.nextView = nextView;
-
             InitializeComponent();
-
             SetPinPadControlBindings();
             SubscribeToMessages();
+
+            ViewModel.NextView = nextView;
+            if (ViewModel.NextView == "PinPadChangeView")
+            {
+                CloseToolbarItem.IsEnabled = true;
+            }
+            else
+            {
+                CloseToolbarItem.IsEnabled = false;
+            }
+        }
+
+        void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
 
         void SetPinPadControlBindings()
@@ -63,7 +75,20 @@ namespace HodlWallet.UI.Views
 
         async void NavigateToNextView(PinPadViewModel _)
         {
-            await Navigation.PushAsync(nextView);
+            switch(ViewModel.NextView)
+            {
+                case "NewWalletInfoView":
+                    await Navigation.PushAsync(new NewWalletInfoView());
+                    break;
+
+                case "PinPadChangeView":
+                    await Navigation.PushAsync(new PinPadChangeView());
+                    break;
+
+                case "RecoverInfoView":
+                    await Navigation.PushAsync(new RecoverInfoView());
+                    break;
+            }
 
             // No page should go back to the pinpad view
             if (Navigation.NavigationStack.Contains(this)) Navigation.RemovePage(this);

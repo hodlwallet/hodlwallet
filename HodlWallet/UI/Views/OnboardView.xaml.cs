@@ -44,7 +44,7 @@ namespace HodlWallet.UI.Views
                 await Navigation.PushAsync(view);
             else
             {
-                await Navigation.PushAsync(new PinPadView(view));
+                await Navigation.PushAsync(new PinPadView("NewWalletInfoView"));
             }
         }
 
@@ -56,7 +56,7 @@ namespace HodlWallet.UI.Views
                 await Navigation.PushAsync(view);
             else
             {
-                await Navigation.PushAsync(new PinPadView(view));
+                await Navigation.PushAsync(new PinPadView("RecoverInfoView"));
             }
         }
 

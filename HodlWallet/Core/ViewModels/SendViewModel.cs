@@ -42,66 +42,66 @@ namespace HodlWallet.Core.ViewModels
 {
     public class SendViewModel : BaseViewModel
     {
-        string _AddressToSendTo;
-        long _Fee = 1;
-        decimal _AmountToSend;
-        float _Rate => PrecioService.Rate.Rate;
-        string _AmountToSendText;
-        Transaction _TransactionToBroadcast;
+        string addressToSendTo;
+        string fee = string.Empty;
+        decimal amountToSend;
+        float rate => PrecioService.Rate.Rate;
+        string amountToSendText;
+        Transaction transactionToBroadcast;
 
         const double MAX_SLIDER_VALUE = 100;
-        double _SliderValue;
+        double sliderValue;
 
-        string _TransactionFeeText;
-        string _EstConfirmationText;
-        string _ISOLabel = "BTC";
+        string transactionFeeText;
+        string estConfirmationText;
+        string isoLabel = "BTC";
 
         public string TransactionFeeText
         {
-            get => _TransactionFeeText;
-            set => SetProperty(ref _TransactionFeeText, value);
+            get => transactionFeeText;
+            set => SetProperty(ref transactionFeeText, value);
         }
 
         public string EstConfirmationText
         {
-            get => _EstConfirmationText;
-            set => SetProperty(ref _EstConfirmationText, value);
+            get => estConfirmationText;
+            set => SetProperty(ref estConfirmationText, value);
         }
 
         public double SliderValue
         {
-            get => _SliderValue;
-            set => SetProperty(ref _SliderValue, value);
+            get => sliderValue;
+            set => SetProperty(ref sliderValue, value);
         }
 
         public string AddressToSendTo
         {
-            get => _AddressToSendTo;
-            set => SetProperty(ref _AddressToSendTo, value);
+            get => addressToSendTo;
+            set => SetProperty(ref addressToSendTo, value);
         }
 
-        public long Fee
+        public string Fee
         {
-            get => _Fee;
-            set => SetProperty(ref _Fee, value);
+            get => fee;
+            set => SetProperty(ref fee, value);
         }
 
         public decimal AmountToSend
         {
-            get => _AmountToSend;
-            set => SetProperty(ref _AmountToSend, value);
+            get => amountToSend;
+            set => SetProperty(ref amountToSend, value);
         }
 
         public string AmountToSendText
         {
-            get => _AmountToSendText;
-            set => SetProperty(ref _AmountToSendText, value);
+            get => amountToSendText;
+            set => SetProperty(ref amountToSendText, value);
         }
 
         public string ISOLabel
         {
-            get => _ISOLabel;
-            set => SetProperty(ref _ISOLabel, value);
+            get => isoLabel;
+            set => SetProperty(ref isoLabel, value);
         }
 
         public ICommand ScanCommand { get; }
@@ -134,22 +134,25 @@ namespace HodlWallet.Core.ViewModels
             if (SliderValue <= (MAX_SLIDER_VALUE * 0.25))
             {
                 SliderValue = 0;
-                Fee = currentFees.SlowSatKB / 1000;
+                Fee = (currentFees.SlowSatKB / 1000).ToString();
                 EstConfirmationText = currentFees.SlowTime;
             }
             else if (SliderValue > (MAX_SLIDER_VALUE * 0.25)
                      && SliderValue < (MAX_SLIDER_VALUE * 0.75))
             {
                 SliderValue = MAX_SLIDER_VALUE * 0.5;
-                Fee = currentFees.NormalSatKB / 1000;
+                Fee = (currentFees.NormalSatKB / 1000).ToString();
                 EstConfirmationText = currentFees.NormalTime;
             }
             else
             {
                 SliderValue = MAX_SLIDER_VALUE;
-                Fee = currentFees.FastestSatKB / 1000;
+                Fee = (currentFees.FastestSatKB / 1000).ToString();
                 EstConfirmationText = currentFees.FastestTime;
             }
+
+            if (string.Equals("0", Fee))
+                Fee = string.Empty;
 
             TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, Fee);
         }
@@ -161,9 +164,9 @@ namespace HodlWallet.Core.ViewModels
 
         async void BroadcastTransaction(SendView _)
         {
-            if (_TransactionToBroadcast is null) return;
+            if (transactionToBroadcast is null) return;
 
-            var (sent, error) = await WalletService.SendTransaction(_TransactionToBroadcast);
+            var (sent, error) = await WalletService.SendTransaction(transactionToBroadcast);
 
             if (sent == true)
             {
@@ -183,13 +186,13 @@ namespace HodlWallet.Core.ViewModels
         {
             if (ISOLabel == "USD($)") //TODO: Refactor with more user currencies
             {
-                AmountToSend = Convert.ToDecimal(AmountToSendText) / (decimal)_Rate;
+                AmountToSend = Convert.ToDecimal(AmountToSendText) / (decimal)rate;
                 AmountToSendText = AmountToSend.ToString();
                 ISOLabel = "BTC";
             }
             else
             {
-                AmountToSend = Convert.ToDecimal(AmountToSend) * (decimal)_Rate;
+                AmountToSend = Convert.ToDecimal(AmountToSend) * (decimal)rate;
                 AmountToSendText = $"{AmountToSend:F2}";
                 ISOLabel = "USD($)";
             }
@@ -316,20 +319,20 @@ namespace HodlWallet.Core.ViewModels
         {
             string password = "";
 
-            if (AmountToSend <= 0.00m || string.IsNullOrEmpty(AddressToSendTo) || Fee <= 0)
+            if (AmountToSend <= 0.00m || string.IsNullOrEmpty(AddressToSendTo) || long.Parse(Fee) <= 0)
             {
                 DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_AMOUNT_MESSAGE);
                 return;
             }
 
-            var (Success, Tx, Fees, Error) = WalletService.CreateTransaction(AmountToSend, AddressToSendTo, Fee, password);
+            var (Success, Tx, Fees, Error) = WalletService.CreateTransaction(AmountToSend, AddressToSendTo, long.Parse(Fee), password);
 
             Debug.WriteLine($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
 
             if (Success)
             {
                 var totalOut = Tx.TotalOut.ToDecimal(MoneyUnit.BTC);
-                _TransactionToBroadcast = Tx;
+                transactionToBroadcast = Tx;
 
                 MessagingCenter.Send(this, "AskToBroadcastTransaction", (AmountToSend, Fees));
             }

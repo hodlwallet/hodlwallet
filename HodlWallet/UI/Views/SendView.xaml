@@ -13,7 +13,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <FlexLayout Direction="Column">
-            <ScrollView FlexLayout.Grow="4">
+            <ContentView FlexLayout.Grow="7">
                 <StackLayout Spacing="30"
                              Margin="20, 0, 20, 0">
                     <FlexLayout Direction="Row"
@@ -191,11 +191,11 @@
                                Margin="0, 0, 0, 10" />
                     </StackLayout>
                 </StackLayout>
-            </ScrollView>
+            </ContentView>
 
-            <BoxView FlexLayout.Grow="2" />
+            <BoxView FlexLayout.Grow="4" />
 
-            <StackLayout FlexLayout.Grow="1"
+            <StackLayout FlexLayout.Grow="2"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions="EndAndExpand">
                 <Button Text="{i18n:Translate Text=Send.buttonSend}"
