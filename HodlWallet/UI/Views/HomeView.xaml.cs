@@ -31,6 +31,7 @@ using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
+
 using Liviano.Interfaces;
 
 namespace HodlWallet.UI.Views
@@ -43,10 +44,9 @@ namespace HodlWallet.UI.Views
         public HomeView()
         {
             InitializeComponent();
+            SubscribeToMessages();
             ViewModel.Balance = Convert.ToDecimal(Preferences.Get("Balance", "0"));
 
-            SubscribeToMessages();
-            
             if (WalletService.Syncing)
             {
                 SyncToolbarItem.IsVisible = true;
