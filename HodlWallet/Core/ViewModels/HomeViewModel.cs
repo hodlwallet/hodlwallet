@@ -229,7 +229,8 @@ namespace HodlWallet.Core.ViewModels
             if (Currency == "BTC")
             {
                 Currency = "USD";
-                Rate = (decimal)newRate;
+                //Rate = (decimal)newRate;
+                Rate = (decimal)10000;
 
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 Balance = Balance * Rate;
@@ -242,10 +243,8 @@ namespace HodlWallet.Core.ViewModels
             else
             {
                 Currency = "BTC";
-                Rate = (decimal)newRate;
 
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                Balance = Balance * Rate;
                 Preferences.Set("Balance", Balance.ToString());
 
                 UpdateTransanctions();
