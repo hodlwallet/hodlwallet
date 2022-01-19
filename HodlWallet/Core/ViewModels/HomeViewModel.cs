@@ -177,9 +177,9 @@ namespace HodlWallet.Core.ViewModels
         {
             isViewVisible = true;
 
+            InitializePrecioAndWalletTimers(); // TODO see bellow
             InitializeWalletServiceTransactions();
             InitializeWalletAndPrecio();
-            InitializePrecioAndWalletTimers(); // TODO see bellow
         }
 
         public void InitializeWalletAndPrecio()
@@ -203,9 +203,12 @@ namespace HodlWallet.Core.ViewModels
 
                 AccountName = WalletService.Wallet.CurrentAccount.Name;
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                Preferences.Set("Balance", Balance.ToString());
                 Rate = (decimal)newRate;
-                BalanceFiat = Balance * Rate;
+                if (Currency == "USD")
+                { 
+                    Balance = Balance * Rate;
+                }
+                Preferences.Set("Balance", Balance.ToString());
             }
             else
             {
@@ -229,9 +232,8 @@ namespace HodlWallet.Core.ViewModels
             if (Currency == "BTC")
             {
                 Currency = "USD";
-                //Rate = (decimal)newRate;
-                Rate = (decimal)10000;
-
+                Rate = (decimal)newRate;
+                
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 Balance = Balance * Rate;
                 Preferences.Set("Balance", Balance.ToString());
@@ -289,14 +291,22 @@ namespace HodlWallet.Core.ViewModels
                     }
 
                     // Gets first BTC-USD rate.
-                    var rate = PrecioService.Rate;
-                    if (rate != null)
+                    //var rate = PrecioService.Rate;
+                    //if (rate != null)
+                    if (Rate == 0)
                     {
                         // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
-                        oldRate = newRate = rate.Rate;
+                        //oldRate = newRate = rate.Rate;
+                        oldRate = newRate = 10000;
                         Rate = (decimal)newRate;
 
-                        BalanceFiat = Balance * Rate;                        
+                        Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                        if (Currency == "USD")
+                        {
+                            //BalanceFiat = Balance * Rate;
+                            Balance = Balance * Rate;
+                        }
+                        Preferences.Set("Balance", Balance.ToString());
                     }
 
                     await Task.Delay(priceUpdateDelay);
@@ -309,7 +319,9 @@ namespace HodlWallet.Core.ViewModels
             if (Currency != "BTC")
             {
                 Rate = (decimal)newRate;
-                BalanceFiat = Balance * Rate;
+                Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                Balance = Balance * Rate;
+                Preferences.Set("Balance", Balance.ToString());
 
                 if (!oldRate.Equals(newRate))
                 {
@@ -341,9 +353,12 @@ namespace HodlWallet.Core.ViewModels
                 {
                     AccountName = WalletService.Wallet.CurrentAccount.Name;
                     Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                    Preferences.Set("Balance", Balance.ToString());
                     Rate = (decimal)newRate;
-                    BalanceFiat = Balance * Rate;
+                    if (Currency == "USD")
+                    {
+                        Balance = Balance * Rate;
+                    }
+                    Preferences.Set("Balance", Balance.ToString());
 
                     WalletService.OnStarted -= WalletService_OnStarted_ViewAppearing;
                 }
@@ -377,7 +392,8 @@ namespace HodlWallet.Core.ViewModels
             {
                 if (rate.Code == "USD")
                 {
-                    var price = newRate = rate.Rate;
+                    //var price = newRate = rate.Rate;
+                    var price = newRate = 10000;
                     //PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BTC_UNIT_LABEL, price);
                     PriceText = string.Format(CultureInfo.CurrentCulture, "{0:C}", price);
                     //PriceText = price.ToString("0.00");
@@ -407,6 +423,10 @@ namespace HodlWallet.Core.ViewModels
                 lock (@lock)
                 {
                     Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                    if (Currency == "USD")
+                    {
+                        Balance = Balance * Rate;
+                    }
                     Preferences.Set("Balance", Balance.ToString());
                     LoadTransactions();
 
