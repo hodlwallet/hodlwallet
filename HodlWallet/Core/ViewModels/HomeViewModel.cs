@@ -177,9 +177,9 @@ namespace HodlWallet.Core.ViewModels
         {
             isViewVisible = true;
 
+            InitializeWalletServiceTransactions();
             InitializeWalletAndPrecio();
             InitializePrecioAndWalletTimers(); // TODO see bellow
-            InitializeWalletServiceTransactions();
         }
 
         public void InitializeWalletAndPrecio()
@@ -203,6 +203,7 @@ namespace HodlWallet.Core.ViewModels
 
                 AccountName = WalletService.Wallet.CurrentAccount.Name;
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                Preferences.Set("Balance", Balance.ToString());
                 Rate = (decimal)newRate;
                 BalanceFiat = Balance * Rate;
             }
@@ -231,7 +232,8 @@ namespace HodlWallet.Core.ViewModels
                 Rate = (decimal)newRate;
 
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                BalanceFiat = Balance * Rate;
+                Balance = Balance * Rate;
+                Preferences.Set("Balance", Balance.ToString());
 
                 UpdateTransanctions();
 
@@ -243,7 +245,8 @@ namespace HodlWallet.Core.ViewModels
                 Rate = (decimal)newRate;
 
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                BalanceFiat = Balance * Rate;
+                Balance = Balance * Rate;
+                Preferences.Set("Balance", Balance.ToString());
 
                 UpdateTransanctions();
 
@@ -339,6 +342,7 @@ namespace HodlWallet.Core.ViewModels
                 {
                     AccountName = WalletService.Wallet.CurrentAccount.Name;
                     Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+                    Preferences.Set("Balance", Balance.ToString());
                     Rate = (decimal)newRate;
                     BalanceFiat = Balance * Rate;
 
@@ -404,7 +408,7 @@ namespace HodlWallet.Core.ViewModels
                 lock (@lock)
                 {
                     Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                    MessagingCenter.Send(this, "BalanceLabelToVisible");
+                    Preferences.Set("Balance", Balance.ToString());
                     LoadTransactions();
 
                     AddWalletServiceEvents();
@@ -424,6 +428,7 @@ namespace HodlWallet.Core.ViewModels
             LoadTransactions();
 
             Balance = WalletService.Wallet.CurrentAccount.GetBalance().ToUnit(MoneyUnit.BTC);
+            Preferences.Set("Balance", Balance.ToString());
             AccountName = WalletService.Wallet.CurrentAccount.Name;
 
             WalletService.Wallet.Disconnect();
