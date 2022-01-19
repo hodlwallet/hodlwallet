@@ -25,6 +25,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Models;
@@ -42,7 +43,7 @@ namespace HodlWallet.UI.Views
         public HomeView()
         {
             InitializeComponent();
-            BalanceLabel.IsVisible = false;
+            ViewModel.Balance = Convert.ToDecimal(Preferences.Get("Balance", "0"));
 
             SubscribeToMessages();
             
@@ -82,12 +83,6 @@ namespace HodlWallet.UI.Views
         {
             MessagingCenter.Subscribe<HomeViewModel, TransactionModel>(this, "NavigateToTransactionDetail", NavigateToTransactionDetail);
             MessagingCenter.Subscribe<HomeViewModel>(this, "SwitchCurrency", SwitchCurrency);
-            MessagingCenter.Subscribe<HomeViewModel>(this, "BalanceLabelToVisible", BalanceLabelToVisible);
-        }
-
-        void BalanceLabelToVisible(HomeViewModel _)
-        {
-            BalanceLabel.IsVisible=true;
         }
 
         async void NavigateToTransactionDetail(HomeViewModel _, TransactionModel txModel)
