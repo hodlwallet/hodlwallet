@@ -90,7 +90,7 @@ namespace HodlWallet.Core.Services
         const string PASSWORD_KEY = "password";
         const string MNEMONIC_KEY = "mnemonic";
         const string NETWORK_KEY = "network";
-        const string LAST_BALANCE_KEY = "balance";
+        const string LAST_BALANCE_KEY = "LastBalance";
 
         /*
          * Key string format to identify the color bellowing to an account:
