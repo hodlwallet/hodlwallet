@@ -29,7 +29,7 @@
                                    TextColor="{DynamicResource Fg2}" />
                             <StackLayout x:Name="BalanceStackLayout" Orientation="Horizontal" Spacing="0">
                                 <Label x:Name="BalanceLabel"
-                                       Text="{Binding Balance}"
+                                       Text="{Binding BalanceFiat}"
                                        Style="{DynamicResource CustomLabel}"
                                        FontFamily="{StaticResource Mono-Bold}" />
                                 <Label Text="{Binding Currency, StringFormat=' {0}'}"

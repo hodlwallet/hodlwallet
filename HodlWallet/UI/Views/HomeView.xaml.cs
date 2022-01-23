@@ -33,6 +33,7 @@ using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
 
 using Liviano.Interfaces;
+using HodlWallet.Core.Services;
 
 namespace HodlWallet.UI.Views
 {
@@ -45,7 +46,12 @@ namespace HodlWallet.UI.Views
         {
             InitializeComponent();
             SubscribeToMessages();
-            ViewModel.Balance = Convert.ToDecimal(Preferences.Get("Balance", "0"));
+
+            string balance = SecureStorageService.GetLastBalance();
+            if (!string.IsNullOrEmpty(balance))
+            {
+                ViewModel.BalanceFiat = decimal.Parse(balance);
+            }
 
             if (WalletService.Syncing)
             {

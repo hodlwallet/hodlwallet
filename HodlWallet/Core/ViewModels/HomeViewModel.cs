@@ -206,10 +206,10 @@ namespace HodlWallet.Core.ViewModels
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 Rate = (decimal)newRate;
                 if (Currency == "USD")
-                { 
-                    Balance = Balance * Rate;
+                {
+                    BalanceFiat = Balance * Rate;
                 }
-                SecureStorage.SetAsync("Balance", Balance.ToString());
+                SecureStorage.SetAsync("Balance", BalanceFiat.ToString());
             }
             else
             {
@@ -236,13 +236,13 @@ namespace HodlWallet.Core.ViewModels
                 Rate = (decimal)newRate;
                 
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                Balance = Balance * Rate;
-                SecureStorageService.SetLastBalance(Balance.ToString());
+                BalanceFiat = Balance * Rate;
+                SecureStorageService.SetLastBalance(BalanceFiat.ToString());
                 UpdateTransanctions();
 
                 IsBtcEnabled = false;
             }
-            else
+            else //***************************************** NO ***********************************************
             {
                 Currency = "BTC";
 
@@ -303,9 +303,9 @@ namespace HodlWallet.Core.ViewModels
                         if (Currency == "USD")
                         {
                             //BalanceFiat = Balance * Rate;
-                            Balance = Balance * Rate;
+                            BalanceFiat = Balance * Rate;
                         }
-                        SecureStorageService.SetLastBalance(Balance.ToString());
+                        SecureStorageService.SetLastBalance(BalanceFiat.ToString());
                     }
 
                     await Task.Delay(priceUpdateDelay);
@@ -319,8 +319,8 @@ namespace HodlWallet.Core.ViewModels
             {
                 Rate = (decimal)newRate;
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                Balance = Balance * Rate;
-                SecureStorageService.SetLastBalance(Balance.ToString());
+                BalanceFiat = Balance * Rate;
+                SecureStorageService.SetLastBalance(BalanceFiat.ToString());
 
                 if (!oldRate.Equals(newRate))
                 {
@@ -355,9 +355,9 @@ namespace HodlWallet.Core.ViewModels
                     Rate = (decimal)newRate;
                     if (Currency == "USD")
                     {
-                        Balance = Balance * Rate;
+                        BalanceFiat = Balance * Rate;
                     }
-                    SecureStorageService.SetLastBalance(Balance.ToString());
+                    SecureStorageService.SetLastBalance(BalanceFiat.ToString());
 
                     WalletService.OnStarted -= WalletService_OnStarted_ViewAppearing;
                 }
@@ -424,9 +424,9 @@ namespace HodlWallet.Core.ViewModels
                     Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                     if (Currency == "USD")
                     {
-                        Balance = Balance * Rate;
+                        BalanceFiat = Balance * Rate;
                     }
-                    SecureStorageService.SetLastBalance(Balance.ToString()); 
+                    SecureStorageService.SetLastBalance(BalanceFiat.ToString()); 
                     
                     LoadTransactions();
 
@@ -447,7 +447,8 @@ namespace HodlWallet.Core.ViewModels
             LoadTransactions();
 
             Balance = WalletService.Wallet.CurrentAccount.GetBalance().ToUnit(MoneyUnit.BTC);
-            SecureStorageService.SetLastBalance(Balance.ToString());
+            BalanceFiat=Balance * Rate;
+            SecureStorageService.SetLastBalance(BalanceFiat.ToString());
             AccountName = WalletService.Wallet.CurrentAccount.Name;
 
             WalletService.Wallet.Disconnect();
