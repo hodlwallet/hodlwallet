@@ -205,10 +205,7 @@ namespace HodlWallet.Core.ViewModels
                 AccountName = WalletService.Wallet.CurrentAccount.Name;
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 Rate = (decimal)newRate;
-                if (Currency == "USD")
-                {
-                    BalanceFiat = Balance * Rate;
-                }
+                BalanceFiat = Balance * Rate;
                 SecureStorage.SetAsync("Balance", BalanceFiat.ToString());
             }
             else
@@ -242,7 +239,7 @@ namespace HodlWallet.Core.ViewModels
 
                 IsBtcEnabled = false;
             }
-            else //***************************************** NO ***********************************************
+            else
             {
                 Currency = "BTC";
 
@@ -290,19 +287,16 @@ namespace HodlWallet.Core.ViewModels
                     }
 
                     // Gets first BTC-USD rate.
-                    //var rate = PrecioService.Rate;
-                    //if (rate != null)
-                    if (Rate == 0)
+                    var rate = PrecioService.Rate;
+                    if (rate != null)
                     {
                         // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
-                        //oldRate = newRate = rate.Rate;
-                        oldRate = newRate = 10000;
+                        oldRate = newRate = rate.Rate;
                         Rate = (decimal)newRate;
 
                         Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                         if (Currency == "USD")
                         {
-                            //BalanceFiat = Balance * Rate;
                             BalanceFiat = Balance * Rate;
                         }
                         SecureStorageService.SetLastBalance(BalanceFiat.ToString());
@@ -353,10 +347,7 @@ namespace HodlWallet.Core.ViewModels
                     AccountName = WalletService.Wallet.CurrentAccount.Name;
                     Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                     Rate = (decimal)newRate;
-                    if (Currency == "USD")
-                    {
-                        BalanceFiat = Balance * Rate;
-                    }
+                    BalanceFiat = Balance * Rate;
                     SecureStorageService.SetLastBalance(BalanceFiat.ToString());
 
                     WalletService.OnStarted -= WalletService_OnStarted_ViewAppearing;
@@ -391,8 +382,7 @@ namespace HodlWallet.Core.ViewModels
             {
                 if (rate.Code == "USD")
                 {
-                    //var price = newRate = rate.Rate;
-                    var price = newRate = 10000;
+                    var price = newRate = rate.Rate;
                     //PriceText = string.Format(CultureInfo.CurrentCulture, Constants.BTC_UNIT_LABEL, price);
                     PriceText = string.Format(CultureInfo.CurrentCulture, "{0:C}", price);
                     //PriceText = price.ToString("0.00");
@@ -422,10 +412,7 @@ namespace HodlWallet.Core.ViewModels
                 lock (@lock)
                 {
                     Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                    if (Currency == "USD")
-                    {
-                        BalanceFiat = Balance * Rate;
-                    }
+                    BalanceFiat = Balance * Rate;
                     SecureStorageService.SetLastBalance(BalanceFiat.ToString()); 
                     
                     LoadTransactions();
@@ -447,7 +434,7 @@ namespace HodlWallet.Core.ViewModels
             LoadTransactions();
 
             Balance = WalletService.Wallet.CurrentAccount.GetBalance().ToUnit(MoneyUnit.BTC);
-            BalanceFiat=Balance * Rate;
+            BalanceFiat = Balance * Rate;
             SecureStorageService.SetLastBalance(BalanceFiat.ToString());
             AccountName = WalletService.Wallet.CurrentAccount.Name;
 
