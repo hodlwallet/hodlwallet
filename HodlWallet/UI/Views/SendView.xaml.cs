@@ -55,7 +55,7 @@ namespace HodlWallet.UI.Views
         async void AskToBroadcastTransaction(SendViewModel vm, (decimal, decimal) values)
         {
             decimal totalOut = values.Item1;
-            decimal fees = values.Item2 / 100000000;
+            decimal fees = values.Item2;
             var total = totalOut + fees;
 
             string title = LocaleResources.Send_transaction;
