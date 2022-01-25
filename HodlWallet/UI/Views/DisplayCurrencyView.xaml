@@ -15,7 +15,7 @@
                    Text="{i18n:Translate Text=DisplayCurrency.rate}"
                    TextColor="{DynamicResource Fg3}" />
 
-            <Label Text="1 BTC = $ 50,000"
+            <Label Text="{Binding Rate.Rate, StringFormat='1 BTC = ${0:n}'}"
                    HorizontalTextAlignment="Start"
                    Style="{DynamicResource CustomLabel}"
                    FontSize="Medium" 

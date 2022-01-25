@@ -20,24 +20,37 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.Utils;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace HodlWallet.Core.ViewModels
+namespace HodlWallet.Core.ViewModels 
 {
-    class DisplayCurrencyViewModel
+    class DisplayCurrencyViewModel : BaseViewModel
     {
         public List<CurrencySymbolEntity> currencySymbolEntities { get; set; }  = new();
 
         public List<CurrencySymbolEntity> selectedCurrency { get; set; } = new();
 
+        CurrencyEntity rate;
+        public CurrencyEntity Rate
+        {
+            get => rate;
+            set => SetProperty(ref rate, value, nameof(Rate));
+        }
+
         public DisplayCurrencyViewModel()
         {
             CurrencySymbol CurrencyList = new();
             currencySymbolEntities = CurrencyList.CurrencySymbols;
+            Rate = PrecioService.Rate;
         }
     }
 }

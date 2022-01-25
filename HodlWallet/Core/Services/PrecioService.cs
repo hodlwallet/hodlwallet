@@ -41,6 +41,7 @@ using HodlWallet.Core.Models;
 using Newtonsoft.Json;
 using Refit;
 using HodlWallet.Core.Utils;
+using System.Net.Http;
 
 [assembly: Dependency(typeof(PrecioService))]
 namespace HodlWallet.Core.Services
@@ -49,7 +50,7 @@ namespace HodlWallet.Core.Services
     {
         public bool IsStarted { get; private set; }
 
-        public IPrecioHttpService PrecioHttpService => RestService.For<IPrecioHttpService>(Constants.PRECIO_HOST_URL);
+        public IPrecioHttpService PrecioHttpService => CustomRefitSettings.RestClient();
 
         readonly string webSocketServerBaseUrl = Constants.PRECIO_WS_HOST_URL + "/{0}";
         string[] Channels => new string[]
@@ -310,6 +311,7 @@ namespace HodlWallet.Core.Services
 
         async Task FetchRate()
         {
+            Debug.WriteLine("[DEBUGIN RATE] Into FetchRate");
             Rate = (await PrecioHttpService.GetRates()).SingleOrDefault(r => r.Code == "USD");
         }
 
