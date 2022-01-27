@@ -35,7 +35,7 @@ namespace HodlWallet.Core.ViewModels
 {
     class DisplayCurrencyViewModel : BaseViewModel
     {
-        public List<CurrencySymbolEntity> currencySymbolEntities { get; set; }  = new();
+        public List<CurrencySymbolEntity> currencySymbolEntities { get; set; }
 
         public List<CurrencySymbolEntity> selectedCurrency { get; set; } = new();
 
@@ -48,9 +48,7 @@ namespace HodlWallet.Core.ViewModels
 
         public DisplayCurrencyViewModel()
         {
-            CurrencySymbol CurrencyList = new();
-            currencySymbolEntities = CurrencyList.CurrencySymbols;
-            Rate = PrecioService.Rate;
+            currencySymbolEntities = Task.Run(async () => await CurrencySymbol.PopulateCurrency());
         }
     }
 }

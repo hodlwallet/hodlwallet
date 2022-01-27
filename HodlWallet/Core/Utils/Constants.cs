@@ -32,16 +32,45 @@ namespace HodlWallet.Core.Utils
         public const string PRECIO_WS_HOST_URL = "wss://precio.bitstop.co";
         public static readonly string[] CURRENCY_CODES = { "USD" };
         public static readonly List<CurrencySymbolEntity> CURRENCY_SYMBOLS = new() {
-                            new CurrencySymbolEntity { Code = "USD", Symbol = "$" },
-                            new CurrencySymbolEntity { Code = "AUD", Symbol = "AU$" },
-                            new CurrencySymbolEntity { Code = "ALL", Symbol = "L" },
-                            new CurrencySymbolEntity { Code = "DZD", Symbol = "دج" },
-                            new CurrencySymbolEntity { Code = "ARS", Symbol = "$" },
-                            new CurrencySymbolEntity { Code = "AFN", Symbol = "؋" },
-                            new CurrencySymbolEntity { Code = "AOA", Symbol = "Kz" },
-                            new CurrencySymbolEntity { Code = "AMD", Symbol = "֏" },
-                            new CurrencySymbolEntity { Code = "AZN", Symbol = "₼" }
-                            };
+                            new CurrencySymbolEntity { Code = "USD", Symbol = "$" },    //US dollar
+                            new CurrencySymbolEntity { Code = "EUR", Symbol = "€" },    //Euro
+                            new CurrencySymbolEntity { Code = "GBP", Symbol = "£" },    //Sterling Pound
+                            new CurrencySymbolEntity { Code = "JPY", Symbol = "¥" },    //Japanese yen
+                            new CurrencySymbolEntity { Code = "CAD", Symbol = "CA$" },  //Canadian dollar
+                            new CurrencySymbolEntity { Code = "AUD", Symbol = "AU$" },  //Australian dollar
+                            new CurrencySymbolEntity { Code = "CNY", Symbol = "¥" },    //Chinese Renminbi yuan
+                            new CurrencySymbolEntity { Code = "CHF", Symbol = "CHF" },  //Swiss franc
+                            new CurrencySymbolEntity { Code = "SEK", Symbol = "kr" },   //Swedish krona
+                            new CurrencySymbolEntity { Code = "NZD", Symbol = "NZ$" },  // New Zealand Dollar
+                            new CurrencySymbolEntity { Code = "KRW", Symbol = "₩" },    // South Korean Won
+                            new CurrencySymbolEntity { Code = "ETH", Symbol = "Ξ" },    // Ethereum
+                            new CurrencySymbolEntity { Code = "LTC", Symbol = "Ł" },    // Lite Coin
+                            new CurrencySymbolEntity { Code = "XRP", Symbol = "XRP" },  // Ripple
+                            new CurrencySymbolEntity { Code = "AED", Symbol = "د.إ" },  // UAE Dirham
+                            new CurrencySymbolEntity { Code = "AFN", Symbol = "؋" },    // Afghan Afghani
+                            new CurrencySymbolEntity { Code = "ALL", Symbol = "L" },    // Albanian Lek
+                            new CurrencySymbolEntity { Code = "AMD", Symbol = "֏" },    // Armenian Dram
+                            new CurrencySymbolEntity { Code = "ANG", Symbol = "NAƒ" },  // Netherlands Antillean Guilder
+                            new CurrencySymbolEntity { Code = "AOA", Symbol = "Kz" },   // Angolan Kwanza
+                            new CurrencySymbolEntity { Code = "ARS", Symbol = "AR$" },  // Argentine Peso
+                            new CurrencySymbolEntity { Code = "AWG", Symbol = "Afl" },  // Aruban Florin
+                            new CurrencySymbolEntity { Code = "AZN", Symbol = "₼" },    // Azerbaijani Manat
+                            new CurrencySymbolEntity { Code = "BAM", Symbol = "KM" },   // Bosnia-Herzegovina Convertible Mark
+                            new CurrencySymbolEntity { Code = "BBD", Symbol = "BBD$" }, // Barbadian Dollar
+                            new CurrencySymbolEntity { Code = "BDT", Symbol = "৳" },    // Bangladeshi Taka
+                            new CurrencySymbolEntity { Code = "BGN", Symbol = "лв" },   // Bulgarian Lev
+                            new CurrencySymbolEntity { Code = "BHD", Symbol = ".د.ب" }, // Bahraini Dinar
+                            new CurrencySymbolEntity { Code = "BIF", Symbol = "FBu" },  // Burundian Franc
+                            new CurrencySymbolEntity { Code = "BMD", Symbol = ".د.ب" }, // Bermudan Dollar
+                            new CurrencySymbolEntity { Code = "BND", Symbol = "B$" },   // Brunei Dollar
+                            new CurrencySymbolEntity { Code = "BOB", Symbol = "Bs" },   // Bolivian Boliviano
+                            new CurrencySymbolEntity { Code = "BRL", Symbol = "R$" },   // Brazilian Real
+                            new CurrencySymbolEntity { Code = "BSD", Symbol = "B$" },   // Bahamian Dollar
+                            new CurrencySymbolEntity { Code = "BTN", Symbol = "Nu" },   // Bhutanese Ngultrum
+                            new CurrencySymbolEntity { Code = "BUSD", Symbol = "BUSD" },// Binance USD
+                            new CurrencySymbolEntity { Code = "DZD", Symbol = "دج" }    // Algerian Dinar
+                            //TODO: Complete Currency List
+        };
 
         public const string BTC_UNIT_LABEL = "1 BTC ≈ {0:C}";
         public const string BTC_UNIT_LABEL_TMP = "";

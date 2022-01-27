@@ -1,24 +1,30 @@
-﻿using HodlWallet.Core.Models;
+﻿using HodlWallet.Core.Interfaces;
+using HodlWallet.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace HodlWallet.Core.Utils
 {
-    public class CurrencySymbol
+    public static class CurrencySymbol
     {
-        public List<CurrencySymbolEntity> CurrencySymbols { get; set; } = new();
-        List<CurrencyEntity> currencyEntitiesEndpoint = new();
+        public static List<CurrencySymbolEntity> CurrencySymbols { get; set; } = new();
+        static List<CurrencyEntity> currencyEntitiesEndpoint = new();
 
-        public CurrencySymbol()
-        {
-            PopulateCurrency();            
-        }
+        static IPrecioHttpService PrecioHttpService => CustomRefitSettings.RestClient();
 
-        private void PopulateCurrency()
+        //public async Task CurrencySymbol()
+        //{
+        //    await PopulateCurrency();
+        //}
+
+        public static async Task<List<CurrencySymbolEntity>> PopulateCurrency()
         {
-            MimicEndpoint EndpointObj = new();
-            currencyEntitiesEndpoint = EndpointObj.Currency;
+            //MimicEndpoint EndpointObj = new();
+            currencyEntitiesEndpoint = await PrecioHttpService.GetRates();
+
+            // Rate
 
             foreach (var currencyEntity in currencyEntitiesEndpoint)
             {
@@ -30,6 +36,8 @@ namespace HodlWallet.Core.Utils
                     Rate = currencyEntity.Rate
                 });
             }
+
+            return CurrencySymbols;
 
 
             /*//currencyEntitiesEndpoint.ForEach(currencyEntity => {
