@@ -25,19 +25,21 @@ using HodlWallet.Core.Models;
 using HodlWallet.Core.Utils;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace HodlWallet.Core.ViewModels 
 {
     class DisplayCurrencyViewModel : BaseViewModel
     {
-        public List<CurrencySymbolEntity> currencySymbolEntities { get; set; }
+        public ObservableCollection<CurrencySymbolEntity> currencySymbolEntities { get; set; } = new(); //Object reference not set to an instance of an object.
 
-        public List<CurrencySymbolEntity> selectedCurrency { get; set; } = new();
+        public ObservableCollection<CurrencySymbolEntity> selectedCurrency { get; set; } = new();
 
         CurrencyEntity rate;
         public CurrencyEntity Rate
@@ -48,7 +50,57 @@ namespace HodlWallet.Core.ViewModels
 
         public DisplayCurrencyViewModel()
         {
-            currencySymbolEntities = Task.Run(async () => await CurrencySymbol.PopulateCurrency());
+            Task.Run( PopulateCurrency );
         }
+
+        public async Task PopulateCurrency()
+        {
+            IsLoading = true;
+            try
+            {
+                var currencyEntities = await PrecioHttpService.GetRates();
+
+                foreach (var currencyEntity in currencyEntities)
+                {
+                    currencySymbolEntities.Add(new CurrencySymbolEntity
+                    {
+                        Code = currencyEntity.Code,
+                        Symbol = GetSymbol(currencyEntity.Code),
+                        Name = currencyEntity.Name,
+                        Rate = currencyEntity.Rate
+                    });
+                }
+                IsLoading = false;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"[PopulateCurrency] Exception on PopulateCurrencyt! => {e.Message}");
+            }
+        }
+
+        private string GetSymbol(string code)
+        {
+            string currentSymbol = Constants.CURRENCY_SYMBOLS[Constants.EMPTY_CURRENCY_SYMBOL_KEY];
+
+            string outSymbol;
+            if (Constants.CURRENCY_SYMBOLS.TryGetValue(code, out outSymbol))
+            {
+                if (outSymbol.IndexOf("\\u") >= 0)
+                {
+                    try
+                    {
+                        currentSymbol = Char.Parse(outSymbol).ToString();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine($"[DecodeSymbol] Error while trying to parse a currency's Unicode => {e.Message}");
+                    }
+                }
+                else
+                    currentSymbol = outSymbol;
+            }
+            return currentSymbol;
+        }
+
     }
 }

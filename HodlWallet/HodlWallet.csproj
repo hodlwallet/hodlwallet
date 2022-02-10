@@ -128,6 +128,11 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>            
 		</EmbeddedResource>
+		<Compile Update="UI\Locale\LocaleResources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>LocaleResources.resx</DependentUpon>
+		</Compile>
 		<Compile Update="UI\Views\RecoverInfoView.xaml.cs">
 			<DependentUpon>RecoverInfoView.xaml</DependentUpon>
 		</Compile>
@@ -146,18 +151,9 @@
 	<Compile Update="UI\Locale\LocaleResources.es.Designer.cs">
 		<DependentUpon>LocaleResources.es.resx</DependentUpon>
 	</Compile>
-	<Compile Update="UI\Locale\LocaleResources.Designer.cs">
-		<DependentUpon>LocaleResources.resx</DependentUpon>
-		<DesignTime>True</DesignTime>
-		<AutoGen>True</AutoGen>
-	</Compile>
 	<Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="UI\Views\LoginView2.xaml.cs">
 	  <DependentUpon>LoginView2.xaml</DependentUpon>
 	  <SubType>Code</SubType>
-	</Compile>
-	<Compile Update="UI\Locale\LocaleResources.Designer.cs">
-	  <DependentUpon>LocaleResources.resx</DependentUpon>
-	  <DesignTime>True</DesignTime>
 	</Compile>
 </ItemGroup>
 <ItemGroup>

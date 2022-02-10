@@ -37,7 +37,7 @@ namespace HodlWallet.Core.ViewModels
     {
         public IWalletService WalletService => DependencyService.Get<IWalletService>();
         public IShareIntent ShareIntent => DependencyService.Get<IShareIntent>();
-        public IPrecioHttpService PrecioHttpService => RestService.For<IPrecioHttpService>(Constants.PRECIO_HOST_URL);
+        public IPrecioHttpService PrecioHttpService => CustomRefitSettings.RestClient();
         public IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
         public IPermissions PermissionsService => DependencyService.Get<IPermissions>();
         public IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
