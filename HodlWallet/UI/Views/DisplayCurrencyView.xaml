@@ -52,8 +52,12 @@
                 <CollectionView 
                     ItemsLayout="VerticalList"
                     SelectionMode="Single"
-                    ItemsSource="{Binding currencySymbolEntities}"
-                    SelectedItem="{Binding selectedCurrency}">
+                    ItemsSource="{Binding CurrencySymbolEntities}"
+                    SelectedItem="{Binding SelectedCurrency}"
+                    SelectionChangedCommand="{Binding SelectedCurrencyCommand} ">
+                    <CollectionView.EmptyView>
+                        <Label HorizontalOptions="Center" Text="No Curriencies Available!" />
+                    </CollectionView.EmptyView>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
@@ -79,7 +83,7 @@
 
                                     <Label 
                                         x:Name="CurrencyLabel"
-                                        FontSize="Medium" 
+                                        FontSize="Medium"
                                         TextColor="{DynamicResource Fg3}" >
                                         <Label.Text>
                                             <MultiBinding StringFormat="{}{0} ({1})">

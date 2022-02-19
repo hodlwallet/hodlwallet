@@ -20,26 +20,27 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using HodlWallet.Core.Interfaces;
-using HodlWallet.Core.Models;
-using HodlWallet.Core.Utils;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Globalization;
+using System.Windows.Input;
+
+using Xamarin.Forms;
+
+using HodlWallet.Core.Models;
+using HodlWallet.Core.Utils;
+using HodlWallet.Core.Services;
+using System.Linq;
 
 namespace HodlWallet.Core.ViewModels 
 {
     class DisplayCurrencyViewModel : BaseViewModel
     {
-        public ObservableCollection<CurrencySymbolEntity> currencySymbolEntities { get; set; } = new(); //Object reference not set to an instance of an object.
+        public ObservableCollection<CurrencySymbolEntity> CurrencySymbolEntities { get; set; } = new();
 
-        public ObservableCollection<CurrencySymbolEntity> selectedCurrency { get; set; } = new();
+        public Command SelectedCurrencyCommand { get; }
 
         CurrencyEntity rate;
         public CurrencyEntity Rate
@@ -48,9 +49,29 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref rate, value, nameof(Rate));
         }
 
+        public CurrencySymbolEntity SelectedCurrency { get; set; } = new();
+
         public DisplayCurrencyViewModel()
         {
-            Task.Run( PopulateCurrency );
+            Task.Run(PopulateCurrency);
+
+            //SelectedCurrencyCommand = new Command(SelectCurrency);
+        }
+
+        private void ShowSelectedCurrency()
+        {
+            //Lookup for the Currency previously saved
+            string currencyCode = SecureStorageService.GetCurrencyCode();
+            var col = CurrencySymbolEntities.Where(p => p.Code == currencyCode).FirstOrDefault();
+
+
+            //Send the found Currency to view
+
+        }
+
+        void SelectCurrency()
+        {
+            Debug.WriteLine($"Guardar Command ------->>>>>> {SelectedCurrency.Code}");
         }
 
         public async Task PopulateCurrency()
@@ -62,7 +83,7 @@ namespace HodlWallet.Core.ViewModels
 
                 foreach (var currencyEntity in currencyEntities)
                 {
-                    currencySymbolEntities.Add(new CurrencySymbolEntity
+                    CurrencySymbolEntities.Add(new CurrencySymbolEntity
                     {
                         Code = currencyEntity.Code,
                         Symbol = GetSymbol(currencyEntity.Code),
@@ -71,6 +92,7 @@ namespace HodlWallet.Core.ViewModels
                     });
                 }
                 IsLoading = false;
+                ShowSelectedCurrency();
             }
             catch (Exception e)
             {
@@ -101,6 +123,5 @@ namespace HodlWallet.Core.ViewModels
             }
             return currentSymbol;
         }
-
     }
 }

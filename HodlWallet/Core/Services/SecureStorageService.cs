@@ -31,6 +31,7 @@ using System.IO;
 
 using Newtonsoft.Json;
 
+using HodlWallet.Core.Utils;
 using Liviano.Bips;
 using Liviano.Exceptions;
 using Liviano.Utilities;
@@ -90,6 +91,7 @@ namespace HodlWallet.Core.Services
         const string PASSWORD_KEY = "password";
         const string MNEMONIC_KEY = "mnemonic";
         const string NETWORK_KEY = "network";
+        const string CURRENCY_CODE_KEY = "currency-code";
 
         /*
          * Key string format to identify the color bellowing to an account:
@@ -204,6 +206,17 @@ namespace HodlWallet.Core.Services
             Guard.NotEmpty(color, nameof(color));
             string accountColorKey = $"{ACCOUNT_COLOR_PREFIX_KEY}{walletId}{ACCOUNT_COLOR_SEPARATOR_KEY}{accountId}";
             Set(accountColorKey, color);
+        }
+
+        public static string GetCurrencyCode()
+        {
+            string currentCode = Get(CURRENCY_CODE_KEY);
+            return !string.IsNullOrEmpty(currentCode) ? currentCode : Constants.CURRENCY_CODES[0];
+        }
+
+        public static void SetCurrencyCode(string currencyCode)
+        {
+            Set(CURRENCY_CODE_KEY, currencyCode);
         }
 
         public static bool UserDidSetup()
