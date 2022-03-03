@@ -49,38 +49,42 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref rate, value, nameof(Rate));
         }
 
-        public CurrencySymbolEntity SelectedCurrency { get; set; } = new();
+        CurrencySymbolEntity selectedCurrency;
+        public CurrencySymbolEntity SelectedCurrency
+        {
+            get
+            {
+                return selectedCurrency;
+            }
+            set => SetProperty(ref selectedCurrency, value, nameof(SelectedCurrency));
+        }
 
         public DisplayCurrencyViewModel()
         {
-            Task.Run(PopulateCurrency);
-
-            //SelectedCurrencyCommand = new Command(SelectCurrency);
+            PopulateCurrency();
+            SelectedCurrencyCommand = new Command(SaveSelectedCurrency);
         }
 
-        private void ShowSelectedCurrency()
+        private void SetSelectedCurrency()
         {
             //Lookup for the Currency previously saved
             string currencyCode = SecureStorageService.GetCurrencyCode();
-            var col = CurrencySymbolEntities.Where(p => p.Code == currencyCode).FirstOrDefault();
-
-
-            //Send the found Currency to view
-
+            selectedCurrency = CurrencySymbolEntities.Where(p => p.Code == currencyCode).FirstOrDefault();
+            PrecioService.GetRateCurrency();
         }
 
-        void SelectCurrency()
+        void SaveSelectedCurrency()
         {
-            Debug.WriteLine($"Guardar Command ------->>>>>> {SelectedCurrency.Code}");
+            SecureStorageService.SetCurrencyCode(SelectedCurrency.Code);
+            SetSelectedCurrency();
         }
 
-        public async Task PopulateCurrency()
+        public void PopulateCurrency()
         {
             IsLoading = true;
             try
             {
-                var currencyEntities = await PrecioHttpService.GetRates();
-
+                var currencyEntities = PrecioService.CurrencyEntities;
                 foreach (var currencyEntity in currencyEntities)
                 {
                     CurrencySymbolEntities.Add(new CurrencySymbolEntity
@@ -92,7 +96,7 @@ namespace HodlWallet.Core.ViewModels
                     });
                 }
                 IsLoading = false;
-                ShowSelectedCurrency();
+                SetSelectedCurrency();
             }
             catch (Exception e)
             {

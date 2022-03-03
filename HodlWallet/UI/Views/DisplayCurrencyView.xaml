@@ -17,18 +17,24 @@
                    Text="{i18n:Translate Text=DisplayCurrency.rate}"
                    TextColor="{DynamicResource Fg3}" />
 
-            <Label Text="{Binding Rate.Rate, StringFormat='1 BTC = ${0:n}'}"
-                   HorizontalTextAlignment="Start"
-                   Style="{DynamicResource CustomLabel}"
-                   FontSize="Medium" 
-                   Margin="5,0,0,0"/>
+            <Label
+                Style="{DynamicResource CustomLabel}"
+                FontSize="Medium"
+                Margin="5,0,0,0" >
+                <Label.Text>
+                    <MultiBinding StringFormat='1 BTC = {0} {1:n}'>
+                        <Binding Path="SelectedCurrency.Symbol" />
+                        <Binding Path="SelectedCurrency.Rate" />
+                    </MultiBinding>
+                </Label.Text>
+            </Label>
 
             <BoxView BackgroundColor="{DynamicResource Fg3}"
                      HeightRequest="1" />
 
             <Label FontSize="Small"
                    Text="{i18n:Translate Text=DisplayCurrency.sats}"
-                   TextColor="{DynamicResource Fg3}"/>
+                   TextColor="{DynamicResource Fg3}" />
 
             <StackLayout BackgroundColor="{DynamicResource Bg}" 
                          Orientation="Horizontal" >

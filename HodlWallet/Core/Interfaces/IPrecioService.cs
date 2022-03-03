@@ -56,8 +56,12 @@ namespace HodlWallet.Core.Interfaces
         PricesEntity Prices1y { get; set; }
         PricesEntity PricesAll { get; set; }
 
+        List<CurrencyEntity> CurrencyEntities { get; set; }
+
         void StartHttpTimers();
         void Init();
+
+        void GetRateCurrency();
 
         event PropertyChangedEventHandler PropertyChanged;
     }

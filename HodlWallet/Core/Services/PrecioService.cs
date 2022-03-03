@@ -42,6 +42,7 @@ using Newtonsoft.Json;
 using Refit;
 using HodlWallet.Core.Utils;
 using System.Net.Http;
+using System.Collections.ObjectModel;
 
 [assembly: Dependency(typeof(PrecioService))]
 namespace HodlWallet.Core.Services
@@ -68,7 +69,7 @@ namespace HodlWallet.Core.Services
 
         readonly Dictionary<string, ClientWebSocket> webSockets;
 
-        readonly int btcPriceDelay = 2_500; // 2.5 seconds, time of the animation as well
+        readonly int btcPriceDelay = 60_000; // 2.5 seconds, time of the animation as well
         readonly int httpRequestsDelay = 30_000; // 30 seconds
 
         BtcPriceEntity btcPrice;
@@ -183,6 +184,8 @@ namespace HodlWallet.Core.Services
             set => SetProperty(ref rate, value, nameof(Rate));
         }
 
+        public List<CurrencyEntity> CurrencyEntities { get; set; } = new();
+
         public PrecioService()
         {
             PropertyChanged += delegate { };
@@ -250,7 +253,7 @@ namespace HodlWallet.Core.Services
         {
             Debug.WriteLine("[StartHttpTimers] Started");
 
-            Task.Factory.StartNew(async (options) =>
+            /* Task.Factory.StartNew(async (options) =>
             {
                 while (true)
                 {
@@ -258,13 +261,23 @@ namespace HodlWallet.Core.Services
 
                     await Task.Delay(httpRequestsDelay);
                 }
-            }, TaskCreationOptions.LongRunning, CancellationToken.None);
+            }, TaskCreationOptions.LongRunning, CancellationToken.None);*/
+
+            /*Task.Factory.StartNew(async (options) =>
+            {
+                while (true)
+                {
+                    await FetchRate();
+
+                    await Task.Delay(btcPriceDelay);
+                }
+            }, TaskCreationOptions.LongRunning, CancellationToken.None);*/
 
             Task.Factory.StartNew(async (options) =>
             {
                 while (true)
                 {
-                    await FetchRate();
+                    await FetchCurrencies();
 
                     await Task.Delay(btcPriceDelay);
                 }
@@ -311,8 +324,24 @@ namespace HodlWallet.Core.Services
 
         async Task FetchRate()
         {
-            Debug.WriteLine("[DEBUGIN RATE] Into FetchRate");
             Rate = (await PrecioHttpService.GetRates()).SingleOrDefault(r => r.Code == "USD");
+        }
+
+        async Task FetchCurrencies()
+        {
+            Debug.WriteLine("[DEBUGIN Currencies] Into FetchCurrencies");
+
+            CurrencyEntities.AddRange(await PrecioHttpService.GetRates());
+
+            GetRateCurrency();
+
+            /*var selectedCurrency = CurrencyEntities.Where(p => p.Code == currencyCode).FirstOrDefault();*/
+        }
+
+        public void GetRateCurrency()
+        {
+            string currencyCode = SecureStorageService.GetCurrencyCode();
+            Rate = CurrencyEntities.Where(p => p.Code == currencyCode).FirstOrDefault();
         }
 
         async Task WebSocketConnect()
