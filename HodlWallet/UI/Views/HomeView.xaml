@@ -28,11 +28,11 @@
                                    FontSize="Small"
                                    TextColor="{DynamicResource Fg2}" />
                             <StackLayout x:Name="BalanceStackLayout" Orientation="Horizontal" Spacing="0">
-                                <Label x:Name="BalanceLabel"
-                                       Text="{Binding Balance}"
+                                <Label Text="{Binding DisplaySymbol, StringFormat='{0} '}"
                                        Style="{DynamicResource CustomLabel}"
                                        FontFamily="{StaticResource Mono-Bold}" />
-                                <Label Text="{Binding Currency, StringFormat=' {0}'}"
+                                <Label x:Name="BalanceLabel"
+                                       Text="{Binding BalanceFiat}"
                                        Style="{DynamicResource CustomLabel}"
                                        FontFamily="{StaticResource Mono-Bold}" />
                                 <StackLayout.GestureRecognizers>
@@ -40,13 +40,21 @@
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                         </StackLayout>
-                        <Label Text="{Binding Rate, StringFormat='1 BTC = ${0:n}'}"
-                               FlexLayout.Grow="1"
+
+                        <Label
+                            FlexLayout.Grow="1"
                                HorizontalTextAlignment="End"
                                Style="{DynamicResource CustomLabel}"
                                FontSize="Micro"
                                TextColor="{DynamicResource Fg2}"
-                               FontFamily="{DynamicResource Mono-Regular}" />
+                               FontFamily="{DynamicResource Mono-Regular}" >
+                            <Label.Text>
+                                <MultiBinding StringFormat='1 BTC = {0} {1:n}'>
+                                    <Binding Path="CurrencySymbol" />
+                                    <Binding Path="Rate" />
+                                </MultiBinding>
+                            </Label.Text>
+                        </Label>
                     </FlexLayout>
 
                     <BoxView HeightRequest="5" />

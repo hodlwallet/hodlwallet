@@ -90,7 +90,7 @@ namespace HodlWallet.Core.ViewModels
                     CurrencySymbolEntities.Add(new CurrencySymbolEntity
                     {
                         Code = currencyEntity.Code,
-                        Symbol = GetSymbol(currencyEntity.Code),
+                        Symbol = CurrencyUtils.GetSymbol(currencyEntity.Code),
                         Name = currencyEntity.Name,
                         Rate = currencyEntity.Rate
                     });
@@ -102,30 +102,6 @@ namespace HodlWallet.Core.ViewModels
             {
                 Debug.WriteLine($"[PopulateCurrency] Exception on PopulateCurrencyt! => {e.Message}");
             }
-        }
-
-        private string GetSymbol(string code)
-        {
-            string currentSymbol = Constants.CURRENCY_SYMBOLS[Constants.EMPTY_CURRENCY_SYMBOL_KEY];
-
-            string outSymbol;
-            if (Constants.CURRENCY_SYMBOLS.TryGetValue(code, out outSymbol))
-            {
-                if (outSymbol.IndexOf("\\u") >= 0)
-                {
-                    try
-                    {
-                        currentSymbol = Char.Parse(outSymbol).ToString();
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.WriteLine($"[DecodeSymbol] Error while trying to parse a currency's Unicode => {e.Message}");
-                    }
-                }
-                else
-                    currentSymbol = outSymbol;
-            }
-            return currentSymbol;
         }
     }
 }
