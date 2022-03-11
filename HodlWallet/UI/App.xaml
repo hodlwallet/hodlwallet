@@ -18,25 +18,25 @@
                  Tip to keep this going: Repeating colors is fine. -->
 
             <!-- New colors better structure -->
-            <Color x:Key="Bg">#161925</Color>
-            <Color x:Key="Bg2">#262B40</Color>
-            <Color x:Key="Bg3">#454555</Color>
-            <Color x:Key="Bg4">#394160</Color>
-            <Color x:Key="Bg5">#344055</Color>
+            <Color x:Key="Bg">#2d2d2d</Color>
+            <Color x:Key="Bg2">#131313</Color>
+            <Color x:Key="Bg3">#131313</Color>
+            <Color x:Key="Bg4">#131313</Color>
+            <Color x:Key="Bg5">#131313</Color>
 
-            <Color x:Key="Fg">#DADADA</Color>
-            <Color x:Key="Fg2">#BCBCBC</Color>
-            <Color x:Key="Fg3">#9e9e9e</Color>
-            <Color x:Key="Fg4">#808080</Color>
-            <Color x:Key="Fg5">#626262</Color>
+            <Color x:Key="Fg">#cccccc</Color>
+            <Color x:Key="Fg2">#515151</Color>
+            <Color x:Key="Fg3">#515151</Color>
+            <Color x:Key="Fg4">#515151</Color>
+            <Color x:Key="Fg5">#515151</Color>
 
-            <Color x:Key="FgDark">Black</Color> <!-- Same as in Bg, so for inverted situations -->
-            <Color x:Key="FgSuccess">#FFD75F</Color>
-            <Color x:Key="FgWarning">#FF8787</Color>
-            <Color x:Key="FgError">#FF5F00</Color>
+            <Color x:Key="FgDark">#2d2d2d</Color> <!-- Same as in Bg, so for inverted situations -->
+            <Color x:Key="FgSuccess">#daa829</Color>
+            <Color x:Key="FgWarning">#cf021a</Color>
+            <Color x:Key="FgError">#eb99a3</Color>
             <Color x:Key="FgComment">#6C6C6C</Color>
-            <Color x:Key="FgRed">#FF5F00</Color>
-            <Color x:Key="FgGreen">#43A047</Color>
+            <Color x:Key="FgRed">#cf021a</Color>
+            <Color x:Key="FgGreen">#1e884e</Color>
 
             <!-- ColorPicker control colors-->
             <Color x:Key="ColorPicker0">#B71C1C</Color>
