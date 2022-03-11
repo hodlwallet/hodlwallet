@@ -51,7 +51,7 @@
             <Color x:Key="ColorPicker9">#43A047</Color>
             <Color x:Key="ColorPicker10">#ffffd7</Color>
             <Color x:Key="ColorPicker11">#afd7af</Color>
-            <Color x:Key="ColorPicker12">#ffd7ff</Color>
+            <Color x:Key="ColorPicker12">#d7ffd7</Color>
             <Color x:Key="ColorPicker13">#ffd7d7</Color>
             <Color x:Key="ColorPicker14">#795548</Color>
             <Color x:Key="ColorPicker15">#CFD8DC</Color>
