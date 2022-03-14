@@ -66,7 +66,6 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref currencySymbol, value, nameof(CurrencySymbol));
         }
 
-
         TransactionModel currentTransaction;
 
         readonly int priceUpdateDelay = 2_500; // 2.5 seconds
@@ -109,6 +108,13 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref balanceFiat, value);
         }
 
+        decimal displayBalance;
+        public decimal DisplayBalance
+        {
+            get => displayBalance;
+            set => SetProperty(ref displayBalance, value);
+        }
+
         public string DisplaySymbol
         {
             get => displaySymbol;
@@ -147,6 +153,7 @@ namespace HodlWallet.Core.ViewModels
         }
 
         string currency;
+
         public string Currency
         {
             get
@@ -154,7 +161,7 @@ namespace HodlWallet.Core.ViewModels
                 if (!string.IsNullOrEmpty(currency))
                     return currency;
 
-                SetProperty(ref currency, Preferences.Get("currency", "BTC"));
+                SetProperty(ref currency, Preferences.Get("currency", Constants.BTC_LABEL));
 
                 return currency;
             }
@@ -194,14 +201,26 @@ namespace HodlWallet.Core.ViewModels
         {
             isViewVisible = true;
 
-            CurrencySymbol = CurrencyUtils.GetSymbol(SecureStorageService.GetCurrencyCode());
-            if (Currency == "BTC")
-                DisplaySymbol = CurrencyUtils.GetSymbol("BTC");
-            else
-                DisplaySymbol = CurrencySymbol;
             InitializeWalletAndPrecio();
             InitializePrecioAndWalletTimers(); // TODO see bellow
             InitializeWalletServiceTransactions();
+            DisplayCurrentBalance();
+        }
+
+        void DisplayCurrentBalance()
+        {
+
+            if (Currency == Constants.BTC_LABEL)
+            {
+                DisplayBalance = Balance;
+                DisplaySymbol = CurrencyUtils.GetSymbol(Constants.BTC_LABEL);
+            }
+            else
+            {
+                DisplayBalance = BalanceFiat;
+                DisplaySymbol = CurrencyUtils.GetSymbol(SecureStorageService.GetCurrencyCode()); ;
+            }
+            
         }
 
         public void InitializeWalletAndPrecio()
@@ -227,6 +246,7 @@ namespace HodlWallet.Core.ViewModels
                 Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
                 Rate = (decimal)newRate;
                 BalanceFiat = Balance * Rate;
+                
             }
             else
             {
@@ -247,29 +267,21 @@ namespace HodlWallet.Core.ViewModels
         {
             if (!WalletService.IsStarted) return;
 
-            if (Currency == "BTC")
+            Rate = (decimal)newRate;
+            Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
+            BalanceFiat = Balance * Rate;
+            UpdateTransanctions();
+            if (Currency == Constants.BTC_LABEL)
             {
-                Rate = (decimal)newRate;
-
-                Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                BalanceFiat = Balance * Rate;
-
-                UpdateTransanctions();
-
                 IsBtcEnabled = false;
                 Currency = SecureStorageService.GetCurrencyCode();
+                DisplayBalance = BalanceFiat;
             }
             else
             {
-                Rate = (decimal)newRate;
-
-                Balance = WalletService.GetCurrentAccountBalanceInBTC(includeUnconfirmed: true);
-                BalanceFiat = Balance * Rate;
-
-                UpdateTransanctions();
-
                 IsBtcEnabled = true;
-                Currency = "BTC";
+                Currency = Constants.BTC_LABEL;
+                DisplayBalance = Balance;
             }
             DisplaySymbol = CurrencyUtils.GetSymbol(Currency);
 
@@ -316,8 +328,6 @@ namespace HodlWallet.Core.ViewModels
                         // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
                         oldRate = newRate = rate.Rate;
                         Rate = (decimal)newRate;
-
-                        BalanceFiat = Balance * Rate;                        
                     }
 
                     await Task.Delay(priceUpdateDelay);
@@ -327,7 +337,7 @@ namespace HodlWallet.Core.ViewModels
 
         void UpdateTransanctions()
         {
-            //if (Currency != "BTC")
+            //if (Currency != Constants.BTC_LABEL)
             if(!isBtcEnabled)
             {
                 Rate = (decimal)newRate;
@@ -539,7 +549,7 @@ namespace HodlWallet.Core.ViewModels
                 return "";
             }
 
-            if (Currency == "BTC")
+            if (Currency == Constants.BTC_LABEL)
             {
                 if (tx.IsSend == true)
                     return string.Format(Constants.SENT_AMOUNT, Currency, $"-{tx.AmountSent}");

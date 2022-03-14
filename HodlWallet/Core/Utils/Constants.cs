@@ -31,7 +31,8 @@ namespace HodlWallet.Core.Utils
         public const string PRECIO_WS_HOST_URL = "wss://precio.bitstop.co";
         public static readonly string[] CURRENCY_CODES = { "USD" };
         public static readonly string EMPTY_CURRENCY_SYMBOL_KEY = "EMPCKEY";
-        static readonly string EMPTY_CURRENCY_SYMBOL_VALUE = "--";
+        static readonly string EMPTY_CURRENCY_SYMBOL_VALUE = "";
+        public const string BTC_LABEL = "BTC";
         public static readonly Dictionary<string, string> CURRENCY_SYMBOLS = new() 
         {
            { EMPTY_CURRENCY_SYMBOL_KEY, EMPTY_CURRENCY_SYMBOL_VALUE },
@@ -41,7 +42,7 @@ namespace HodlWallet.Core.Utils
            { "JPY", "\u00A5" }, //Japanese yen  - HTML Entity
            { "CNY", "\u00A5" }, //Chinese Renminbi yuan
            { "KRW", "\u20A9" }, // South Korean Won
-           { "BTC", "\u20BF" }, // Bitcoin
+           { BTC_LABEL, "\u20BF" }, // Bitcoin
                                 
            { "CAD", "CA$" },    //Canadian dollar
            { "AUD", "AU$" },    //Australian dollar

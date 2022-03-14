@@ -32,9 +32,10 @@
                                        Style="{DynamicResource CustomLabel}"
                                        FontFamily="{StaticResource Mono-Bold}" />
                                 <Label x:Name="BalanceLabel"
-                                       Text="{Binding BalanceFiat}"
+                                       Text="{Binding DisplayBalance}"
                                        Style="{DynamicResource CustomLabel}"
-                                       FontFamily="{StaticResource Mono-Bold}" />
+                                       FontFamily="{StaticResource Mono-Bold}"
+                                       Margin="5,0,0,0" />
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Balance_Tapped" NumberOfTapsRequired="1" />
                                 </StackLayout.GestureRecognizers>

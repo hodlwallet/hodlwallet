@@ -117,12 +117,13 @@ namespace HodlWallet.UI
 
         void StartWalletAndPrecioService()
         {
-            Task.Factory.StartNew(
+            /*Task.Factory.StartNew(
                 () => WalletService.InitializeWallet(),
                 Cts.Token,
                 TaskCreationOptions.LongRunning,
                 TaskScheduler.Default
-            );
+            );*/
+           WalletService.InitializeWallet();
 
             Task.Factory.StartNew(
                 () => PrecioService.Init(),

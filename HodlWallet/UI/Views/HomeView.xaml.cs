@@ -65,7 +65,7 @@ namespace HodlWallet.UI.Views
 
             ViewModel.View_OnAppearing();
 
-            ViewModel.InitializeWalletAndPrecio();        
+            //ViewModel.InitializeWalletAndPrecio();        
         }
 
         protected override void OnDisappearing()
