@@ -151,7 +151,7 @@ namespace HodlWallet.UI.Views
 
         void TransactionsScrollView_Scrolled(object sender, ScrolledEventArgs e)
         {
-            BalanceNavigationTitleLabel.Text = ViewModel.Balance.ToString() + " " + ViewModel.Currency.ToString();
+            BalanceNavigationTitleLabel.Text = ViewModel.DisplaySymbol.ToString() + " " + ViewModel.DisplayBalance.ToString();
             if (BalanceLabel.Bounds.Bottom < e.ScrollY)
             {
                 BalanceNavigationTitleLabel.FadeTo(1, 100);

@@ -108,8 +108,8 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref balanceFiat, value);
         }
 
-        decimal displayBalance;
-        public decimal DisplayBalance
+        string displayBalance;
+        public string DisplayBalance
         {
             get => displayBalance;
             set => SetProperty(ref displayBalance, value);
@@ -209,16 +209,16 @@ namespace HodlWallet.Core.ViewModels
 
         void DisplayCurrentBalance()
         {
-
+            CurrencySymbol = CurrencyUtils.GetSymbol(SecureStorageService.GetCurrencyCode());
             if (Currency == Constants.BTC_LABEL)
             {
-                DisplayBalance = Balance;
+                DisplayBalance = Balance.ToString();
                 DisplaySymbol = CurrencyUtils.GetSymbol(Constants.BTC_LABEL);
             }
             else
             {
-                DisplayBalance = BalanceFiat;
-                DisplaySymbol = CurrencyUtils.GetSymbol(SecureStorageService.GetCurrencyCode()); ;
+                DisplayBalance = BalanceFiat.ToString("n2");
+                DisplaySymbol = CurrencySymbol;
             }
             
         }
@@ -275,13 +275,13 @@ namespace HodlWallet.Core.ViewModels
             {
                 IsBtcEnabled = false;
                 Currency = SecureStorageService.GetCurrencyCode();
-                DisplayBalance = BalanceFiat;
+                DisplayBalance = BalanceFiat.ToString("n2");
             }
             else
             {
                 IsBtcEnabled = true;
                 Currency = Constants.BTC_LABEL;
-                DisplayBalance = Balance;
+                DisplayBalance = Balance.ToString();
             }
             DisplaySymbol = CurrencyUtils.GetSymbol(Currency);
 
