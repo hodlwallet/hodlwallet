@@ -3,7 +3,7 @@
   <!-- 
     Microsoft ResX Schema 
     
-      Version 2.0
+    Version 2.0
     
     The primary goals of this format is to allow a simple XML format 
     that is mostly human readable. The generation and parsing of the 
@@ -322,7 +322,7 @@
     <comment>label for menu security button</comment>
   </data>
   <data name="Menu.info" xml:space="preserve">
-    <value>Account Info</value>
+    <value>Account Settings</value>
     <comment>label for menu info button</comment>
   </data>
   <data name="Menu.coinControl" xml:space="preserve">
@@ -460,10 +460,6 @@
     <value>Accounts</value>
     <comment>label for accounts view title</comment>
   </data>
-  <data name="Menu.info" xml:space="preserve">
-    <value>Account Settings</value>
-    <comment>label for menu info button</comment>
-  </data>
   <data name="AccountSettings.title" xml:space="preserve">
     <value>Account Settings</value>
     <comment>label for accounts settings view title</comment>
@@ -524,7 +520,7 @@
     <value>Bip84 Standard</value>
     <comment>label for type options bip84</comment>
   </data>
-    <data name="AddAccount.options.bip141" xml:space="preserve">
+  <data name="AddAccount.options.bip141" xml:space="preserve">
     <value>Bip141 Legacy</value>
     <comment>label for type options bip141</comment>
   </data>
@@ -847,10 +843,6 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Security</value>
     <comment>label for SecuritySettingsView title</comment>
   </data>
-  <data name="Security.close" xml:space="preserve">
-    <value>Close</value>
-    <comment>label for close button of SecuritySettingsView</comment>
-  </data>
   <data name="PinSettings.pinSpendingLimits" xml:space="preserve">
     <value>Pin Spending Limits</value>
     <comment>label for Pin Spending Limits button of PinSettingsView</comment>
@@ -931,7 +923,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>No biometrics authentication available, please check settings of the device.</value>
     <comment>Warning message in BiometricsView</comment>
   </data>
-    <data name="BiometricsSettings.close" xml:space="preserve">
+  <data name="BiometricsSettings.close" xml:space="preserve">
     <value>Close</value>
     <comment>Label of Close button in BiometricsView</comment>
   </data>

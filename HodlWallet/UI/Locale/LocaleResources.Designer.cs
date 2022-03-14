@@ -573,135 +573,228 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
-        internal static string Menu_knowledge {
+        /// <summary>
+        ///   Looks up a localized string similar to Spending limit: .
+        /// </summary>
+        internal static string BiometricAuth_spendingLimit {
             get {
-                return ResourceManager.GetString("Menu.knowledge", resourceCulture);
+                return ResourceManager.GetString("BiometricAuth.spendingLimit", resourceCulture);
             }
         }
         
-        internal static string Menu_settings {
+        /// <summary>
+        ///   Looks up a localized string similar to Biometric Authentication Spending Limit Screen..
+        /// </summary>
+        internal static string BiometricAuth_spendingLimitScreen {
             get {
-                return ResourceManager.GetString("Menu.settings", resourceCulture);
+                return ResourceManager.GetString("BiometricAuth.spendingLimitScreen", resourceCulture);
             }
         }
         
-        internal static string Menu_lock {
+        /// <summary>
+        ///   Looks up a localized string similar to You can customize your touch ID spending limit from the .
+        /// </summary>
+        internal static string BiometricAuth_subheader {
             get {
-                return ResourceManager.GetString("Menu.lock", resourceCulture);
+                return ResourceManager.GetString("BiometricAuth.subheader", resourceCulture);
             }
         }
         
-        internal static string Menu_resyncWallet {
-            get {
-                return ResourceManager.GetString("Menu.resyncWallet", resourceCulture);
-            }
-        }
-        
-        internal static string Menu_restoreWallet {
-            get {
-                return ResourceManager.GetString("Menu.restoreWallet", resourceCulture);
-            }
-        }
-        
-        internal static string Menu_wipeWallet {
-            get {
-                return ResourceManager.GetString("Menu.wipeWallet", resourceCulture);
-            }
-        }
-        
-        internal static string SecurityCenter_title {
-            get {
-                return ResourceManager.GetString("SecurityCenter.title", resourceCulture);
-            }
-        }
-        
-        internal static string SecurityCenter_header {
-            get {
-                return ResourceManager.GetString("SecurityCenter.header", resourceCulture);
-            }
-        }
-        
-        internal static string SecurityCenter_pinHeader {
-            get {
-                return ResourceManager.GetString("SecurityCenter.pinHeader", resourceCulture);
-            }
-        }
-        
-        internal static string SecurityCenter_pinDetail {
-            get {
-                return ResourceManager.GetString("SecurityCenter.pinDetail", resourceCulture);
-            }
-        }
-        
-        internal static string SecurityCenter_fingerprintHeaderIOS {
-            get {
-                return ResourceManager.GetString("SecurityCenter.fingerprintHeaderIOS", resourceCulture);
-            }
-        }
-        
-        internal static string SecurityCenter_fingerprintHeaderAndroid {
-            get {
-                return ResourceManager.GetString("SecurityCenter.fingerprintHeaderAndroid", resourceCulture);
-            }
-        }
-        
-        internal static string SecurityCenter_fingerprintDetail {
-            get {
-                return ResourceManager.GetString("SecurityCenter.fingerprintDetail", resourceCulture);
-            }
-        }
-        
-        internal static string SecurityCenter_mnemonicHeader {
-            get {
-                return ResourceManager.GetString("SecurityCenter.mnemonicHeader", resourceCulture);
-            }
-        }
-        
-        internal static string SecurityCenter_mnemonicDetail {
-            get {
-                return ResourceManager.GetString("SecurityCenter.mnemonicDetail", resourceCulture);
-            }
-        }
-        
-        internal static string BiometricAuth_header {
-            get {
-                return ResourceManager.GetString("BiometricAuth.header", resourceCulture);
-            }
-        }
-        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Biometric Authentication for Hodl.
+        /// </summary>
         internal static string BiometricAuth_switch {
             get {
                 return ResourceManager.GetString("BiometricAuth.switch", resourceCulture);
             }
         }
         
-        internal static string FingerprintAuth_spendingLimit {
+        /// <summary>
+        ///   Looks up a localized string similar to Use biometric authentication..
+        /// </summary>
+        internal static string BiometricLogin_askAuth {
             get {
-                return ResourceManager.GetString("FingerprintAuth.spendingLimit", resourceCulture);
+                return ResourceManager.GetString("BiometricLogin.askAuth", resourceCulture);
             }
         }
         
-        internal static string FingerprintAuth_subheader {
+        /// <summary>
+        ///   Looks up a localized string similar to No biometrics authentication available, please check settings of the device..
+        /// </summary>
+        internal static string Biometrics_notAvailableWarning {
             get {
-                return ResourceManager.GetString("FingerprintAuth.subheader", resourceCulture);
+                return ResourceManager.GetString("Biometrics.notAvailableWarning", resourceCulture);
             }
         }
         
-        internal static string FingerprintAuth_limitButtonAndroid {
+        /// <summary>
+        ///   Looks up a localized string similar to Biometrics ID.
+        /// </summary>
+        internal static string Biometrics_title {
             get {
-                return ResourceManager.GetString("FingerprintAuth.limitButtonAndroid", resourceCulture);
+                return ResourceManager.GetString("Biometrics.title", resourceCulture);
             }
         }
         
-        internal static string Send_addressDetectedOnClipboardTitle {
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string BiometricsSettings_close {
             get {
-                return ResourceManager.GetString("Send.addressDetectedOnClipboardTitle", resourceCulture);
+                return ResourceManager.GetString("BiometricsSettings.close", resourceCulture);
             }
         }
         
-        internal static string Send_addressDetectedOnClipboardMessage {
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string Button_no {
             get {
-                return ResourceManager.GetString("Send.addressDetectedOnClipboardMessage", resourceCulture);
+                return ResourceManager.GetString("Button.no", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string Button_yes {
+            get {
+                return ResourceManager.GetString("Button.yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menu.
+        /// </summary>
+        internal static string Dashboard_menu {
+            get {
+                return ResourceManager.GetString("Dashboard.menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receive.
+        /// </summary>
+        internal static string Dashboard_receive {
+            get {
+                return ResourceManager.GetString("Dashboard.receive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        internal static string Dashboard_send {
+            get {
+                return ResourceManager.GetString("Dashboard.send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exchange Rate.
+        /// </summary>
+        internal static string DisplayCurrency_rate {
+            get {
+                return ResourceManager.GetString("DisplayCurrency.rate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bitcoin Display Unit.
+        /// </summary>
+        internal static string DisplayCurrency_sats {
+            get {
+                return ResourceManager.GetString("DisplayCurrency.sats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Currency.
+        /// </summary>
+        internal static string DisplayCurrency_Title {
+            get {
+                return ResourceManager.GetString("DisplayCurrency.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        internal static string Done_button {
+            get {
+                return ResourceManager.GetString("Done.button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        internal static string Error_ok {
+            get {
+                return ResourceManager.GetString("Error.ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Login_cancel {
+            get {
+                return ResourceManager.GetString("Login.cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string Login_close {
+            get {
+                return ResourceManager.GetString("Login.close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Biometric Authentication.
+        /// </summary>
+        internal static string Login_useBiometric {
+            get {
+                return ResourceManager.GetString("Login.useBiometric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pin.
+        /// </summary>
+        internal static string Login_usePin {
+            get {
+                return ResourceManager.GetString("Login.usePin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the way of autentication..
+        /// </summary>
+        internal static string Login_wayAuthentication {
+            get {
+                return ResourceManager.GetString("Login.wayAuthentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coin Control.
+        /// </summary>
+        internal static string Menu_coinControl {
+            get {
+                return ResourceManager.GetString("Menu.coinControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currency.
+        /// </summary>
+        internal static string Menu_currency {
+            get {
+                return ResourceManager.GetString("Menu.currency", resourceCulture);
             }
         }
         
@@ -719,127 +812,190 @@ namespace HodlWallet.UI.Locale {
         /// </summary>
         internal static string Menu_knowledge {
             get {
-                return ResourceManager.GetString("Transactions.title", resourceCulture);
+                return ResourceManager.GetString("Menu.knowledge", resourceCulture);
             }
         }
         
-        internal static string Transactions_empty {
+        /// <summary>
+        ///   Looks up a localized string similar to Lock Wallet.
+        /// </summary>
+        internal static string Menu_lock {
             get {
-                return ResourceManager.GetString("Transactions.empty", resourceCulture);
+                return ResourceManager.GetString("Menu.lock", resourceCulture);
             }
         }
         
-        internal static string Transactions_empty_button {
+        /// <summary>
+        ///   Looks up a localized string similar to Network.
+        /// </summary>
+        internal static string Menu_network {
             get {
-                return ResourceManager.GetString("Transactions.empty.button", resourceCulture);
+                return ResourceManager.GetString("Menu.network", resourceCulture);
             }
         }
         
-        internal static string TransactionDetails_title {
+        /// <summary>
+        ///   Looks up a localized string similar to Restore Wallet.
+        /// </summary>
+        internal static string Menu_restoreWallet {
             get {
-                return ResourceManager.GetString("TransactionDetails.title", resourceCulture);
+                return ResourceManager.GetString("Menu.restoreWallet", resourceCulture);
             }
         }
         
-        internal static string TransactionDetails_statusTitle {
+        /// <summary>
+        ///   Looks up a localized string similar to Re-Sync Wallet.
+        /// </summary>
+        internal static string Menu_resyncWallet {
             get {
-                return ResourceManager.GetString("TransactionDetails.statusTitle", resourceCulture);
+                return ResourceManager.GetString("Menu.resyncWallet", resourceCulture);
             }
         }
         
-        internal static string TransactionDetails_memoTitle {
+        /// <summary>
+        ///   Looks up a localized string similar to Security.
+        /// </summary>
+        internal static string Menu_security {
             get {
-                return ResourceManager.GetString("TransactionDetails.memoTitle", resourceCulture);
+                return ResourceManager.GetString("Menu.security", resourceCulture);
             }
         }
         
-        internal static string TransactionDetails_amountTitle {
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Menu_settings {
             get {
-                return ResourceManager.GetString("TransactionDetails.amountTitle", resourceCulture);
+                return ResourceManager.GetString("Menu.settings", resourceCulture);
             }
         }
         
-        internal static string TransactionDetails_transactionIdTitle {
+        /// <summary>
+        ///   Looks up a localized string similar to Menu.
+        /// </summary>
+        internal static string Menu_title {
             get {
-                return ResourceManager.GetString("TransactionDetails.transactionIdTitle", resourceCulture);
+                return ResourceManager.GetString("Menu.title", resourceCulture);
             }
         }
         
-        internal static string TransactionDetails_confirmedBlockTitle {
+        /// <summary>
+        ///   Looks up a localized string similar to Wallet.
+        /// </summary>
+        internal static string Menu_wallet {
             get {
-                return ResourceManager.GetString("TransactionDetails.confirmedBlockTitle", resourceCulture);
+                return ResourceManager.GetString("Menu.wallet", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Wipe Wallet.
+        /// </summary>
+        internal static string Menu_wipeWallet {
+            get {
+                return ResourceManager.GetString("Menu.wipeWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Before we get started you should know:
+        ///
+        ///Hodl Wallet is a non-custodial Bitcoin Wallet. This means you are the sole person with access to the bitcoin stored in this app.
+        ///All you have to do is safety store the wallets backup recovery key and you&apos;ll always have access to you bitcoin..
+        /// </summary>
+        internal static string NewWallet_body {
+            get {
+                return ResourceManager.GetString("NewWallet.body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        internal static string NewWallet_button {
+            get {
+                return ResourceManager.GetString("NewWallet.button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to Hodl Wallet.
+        /// </summary>
+        internal static string NewWallet_header {
+            get {
+                return ResourceManager.GetString("NewWallet.header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create New Wallet.
+        /// </summary>
+        internal static string NewWallet_title {
+            get {
+                return ResourceManager.GetString("NewWallet.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now Loading....
+        /// </summary>
         internal static string NowLoading_text {
             get {
                 return ResourceManager.GetString("NowLoading.text", resourceCulture);
             }
         }
         
-        internal static string Accounts_title {
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE NEW WALLET.
+        /// </summary>
+        internal static string Onboard_create {
             get {
-                return ResourceManager.GetString("Accounts.title", resourceCulture);
+                return ResourceManager.GetString("Onboard.create", resourceCulture);
             }
         }
         
-        internal static string AccountSelection_title {
+        /// <summary>
+        ///   Looks up a localized string similar to RECOVER WALLET.
+        /// </summary>
+        internal static string Onboard_recover {
             get {
-                return ResourceManager.GetString("AccountSelection.title", resourceCulture);
+                return ResourceManager.GetString("Onboard.recover", resourceCulture);
             }
         }
         
-        internal static string AccountSelection_header {
+        /// <summary>
+        ///   Looks up a localized string similar to eighteenth.
+        /// </summary>
+        internal static string Ordinal_eighteenth {
             get {
-                return ResourceManager.GetString("AccountSelection.header", resourceCulture);
+                return ResourceManager.GetString("Ordinal.eighteenth", resourceCulture);
             }
         }
         
-        internal static string AccountSelection_subheader {
+        /// <summary>
+        ///   Looks up a localized string similar to eighth.
+        /// </summary>
+        internal static string Ordinal_eighth {
             get {
-                return ResourceManager.GetString("AccountSelection.subheader", resourceCulture);
+                return ResourceManager.GetString("Ordinal.eighth", resourceCulture);
             }
         }
         
-        internal static string AddAccount_title {
+        /// <summary>
+        ///   Looks up a localized string similar to eleventh.
+        /// </summary>
+        internal static string Ordinal_eleventh {
             get {
-                return ResourceManager.GetString("AddAccount.title", resourceCulture);
+                return ResourceManager.GetString("Ordinal.eleventh", resourceCulture);
             }
         }
         
-        internal static string AddAccount_header {
+        /// <summary>
+        ///   Looks up a localized string similar to fifteenth.
+        /// </summary>
+        internal static string Ordinal_fifteenth {
             get {
-                return ResourceManager.GetString("AddAccount.header", resourceCulture);
-            }
-        }
-        
-        internal static string AddAccount_subheader {
-            get {
-                return ResourceManager.GetString("AddAccount.subheader", resourceCulture);
-            }
-        }
-        
-        internal static string AddAccount_button {
-            get {
-                return ResourceManager.GetString("AddAccount.button", resourceCulture);
-            }
-        }
-        
-        internal static string AddAccount_close {
-            get {
-                return ResourceManager.GetString("AddAccount.close", resourceCulture);
-            }
-        }
-        
-        internal static string AddAccount_entry {
-            get {
-                return ResourceManager.GetString("AddAccount.entry", resourceCulture);
-            }
-        }
-        
-        internal static string AddAccount_placeholder {
-            get {
-                return ResourceManager.GetString("AddAccount.placeholder", resourceCulture);
+                return ResourceManager.GetString("Ordinal.fifteenth", resourceCulture);
             }
         }
         
