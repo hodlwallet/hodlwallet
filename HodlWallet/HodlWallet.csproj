@@ -70,8 +70,6 @@
 		<None Remove="UI\Assets\currency_switch.svg" />
 		<None Remove="UI\Assets\faq.svg" />
 		<None Remove="UI\Assets\fingerprint_large.svg" />
-		<None Remove="UI\Assets\logo.png" />
-		<None Remove="UI\Assets\logo_front.png" />
 		<None Remove="UI\Assets\menu_tab.svg" />
 		<None Remove="UI\Assets\paper_key.svg" />
 		<None Remove="UI\Assets\paste.svg" />
@@ -91,8 +89,6 @@
 		<EmbeddedResource Include="UI\Assets\currency_switch.svg" />
 		<EmbeddedResource Include="UI\Assets\faq.svg" />
 		<EmbeddedResource Include="UI\Assets\fingerprint_large.svg" />
-		<EmbeddedResource Include="UI\Assets\logo.png" />
-		<EmbeddedResource Include="UI\Assets\logo_front.png" />
 		<EmbeddedResource Include="UI\Assets\menu_tab.svg" />
 		<EmbeddedResource Include="UI\Assets\paper_key.svg" />
 		<EmbeddedResource Include="UI\Assets\paste.svg" />

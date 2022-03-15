@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
-    x:Class="HodlWallet.UI.Views.OnboardView"
-    BackgroundColor="{DynamicResource Bg2}"
-    NavigationPage.HasNavigationBar="False">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             x:Class="HodlWallet.UI.Views.OnboardView"
+             BackgroundColor="{DynamicResource Bg2}"
+             NavigationPage.HasNavigationBar="False">
 <ContentPage.Content>
     <FlexLayout Direction="Column">
         <Frame FlexLayout.Grow="5"
                BackgroundColor="Transparent">
-                <Image Source="logo_front.png"
-                       Scale="0.5"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center">
+            <Image Source="logo_front.png"
+                   Scale="0.5"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Logo_Tapped" />
                 </Image.GestureRecognizers>
