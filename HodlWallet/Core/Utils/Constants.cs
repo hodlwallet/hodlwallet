@@ -35,6 +35,7 @@ namespace HodlWallet.Core.Utils
         public const string BTC_LABEL = "BTC";
         public static readonly Dictionary<string, string> CURRENCY_SYMBOLS = new()
         {
+            //TODO: Complete currencies symbols. CODE is used by default. 
             { EMPTY_CURRENCY_SYMBOL_KEY, EMPTY_CURRENCY_SYMBOL_VALUE },
             { "USD", "\u0024" }, //US dollar - Hex Code
             { "EUR", "\u20AC" }, //Euro  - CSS Code
