@@ -30,8 +30,11 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Windows.Input;
+using System.Threading;
 
+using ReactiveUI;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -40,9 +43,6 @@ using HodlWallet.Core.Models;
 using HodlWallet.Core.Utils;
 using HodlWallet.UI.Controls;
 using HodlWallet.UI.Views;
-using HodlWallet.Core.Services;
-using System.Threading.Tasks;
-using System.Threading;
 
 namespace HodlWallet.UI
 {
@@ -89,7 +89,7 @@ namespace HodlWallet.UI
 
         public AppShell()
         {
-            Cts ??= new CancellationTokenSource();
+            Cts ??= new();
             StartWalletAndPrecioService();
             InitializeComponent();
             logger = WalletService.Logger;
@@ -117,20 +117,8 @@ namespace HodlWallet.UI
 
         void StartWalletAndPrecioService()
         {
-            /*Task.Factory.StartNew(
-                () => WalletService.InitializeWallet(),
-                Cts.Token,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );*/
-           WalletService.InitializeWallet();
-
-            Task.Factory.StartNew(
-                () => PrecioService.Init(),
-                Cts.Token,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
+            Observable.Start(() => WalletService.InitializeWallet(), RxApp.TaskpoolScheduler);
+            Observable.Start(() => PrecioService.Init(), RxApp.TaskpoolScheduler);
         }
 
         async void GoToAccount(string accountId)
