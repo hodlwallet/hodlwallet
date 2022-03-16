@@ -11,24 +11,23 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <FlexLayout Direction="Column">
-            <StackLayout FlexLayout.Grow="1" Orientation="Vertical" BackgroundColor="{DynamicResource FgSuccess}">
-                <StackLayout FlexLayout.Grow="2" Orientation="Horizontal">
+            <StackLayout FlexLayout.Grow="1" Orientation="Horizontal" BackgroundColor="{DynamicResource FgSuccess}">
+                <StackLayout Orientation="Horizontal">
                     <BoxView HeightRequest="0" />
                     <Image Source="wallet_filled.png" HeightRequest="40" WidthRequest="40" FlexLayout.AlignSelf="Center" />
                 </StackLayout>
-                <StackLayout FlexLayout.Grow="2" Orientation="Vertical">
-                    <BoxView HeightRequest="0" />
+                <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="100">
+                    <BoxView HeightRequest="10" />
                     <Label Text="{i18n:Translate Text=BalanceHeader.total}" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Sans-Bold}" FontSize="Header" />
                     <Label Text="{i18n:Translate Text=BalanceHeader.balance}" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Sans-Bold}" FontSize="Header" />
-                    <BoxView HeightRequest="0" />
+                    <BoxView HeightRequest="10" />
                 </StackLayout>
-                <StackLayout FlexLayout.Grow="2" Orientation="Vertical">
-                    <BoxView HeightRequest="0" />
+                <StackLayout Orientation="Vertical" Spacing="0">
+                    <BoxView HeightRequest="10" />
                     <Label Text="$14,346.02" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Mono-Bold}" FontSize="Header" />
                     <Label Text="0.0003379 BTC" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Mono-Bold}" FontSize="Header" />
-                    <BoxView HeightRequest="0" />
+                    <BoxView HeightRequest="10" />
                 </StackLayout>
-                <BoxView FlexLayout.Grow="1" HeightRequest="0" />
             </StackLayout>
 
             <StackLayout FlexLayout.Grow="2" Orientation="Vertical" BackgroundColor="{DynamicResource Bg2}">
