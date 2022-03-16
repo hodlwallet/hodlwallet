@@ -139,12 +139,6 @@
     <AndroidResource Include="Resources\xml\provider_paths.xml" />
     <AndroidResource Include="Resources\drawable\logo.png" />
     <AndroidResource Include="Resources\drawable\logo_front.png" />
-    <AndroidResource Include="Resources\drawable\home.png">
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
     <AndroidResource Include="Resources\drawable\receive.png">
       <SubType>
       </SubType>
@@ -158,12 +152,6 @@
       </Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\send.png">
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\gear.png">
       <SubType>
       </SubType>
       <Generator>
@@ -255,6 +243,15 @@
       <Project>{7D5ECE43-EC1B-4F28-84B1-4017F8C5D035}</Project>
       <Name>HodlWallet</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bitcoin_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\home_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\gear_filled.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

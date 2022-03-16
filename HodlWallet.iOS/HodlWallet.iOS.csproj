@@ -228,18 +228,12 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\large-icon.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <BundleResource Include="Resources\gear.png" />
-    <BundleResource Include="Resources\gear%402x.png" />
-    <BundleResource Include="Resources\gear%403x.png" />
     <BundleResource Include="Resources\send.png" />
     <BundleResource Include="Resources\send%402x.png" />
     <BundleResource Include="Resources\send%403x.png" />
     <BundleResource Include="Resources\receive.png" />
     <BundleResource Include="Resources\receive%402x.png" />
     <BundleResource Include="Resources\receive%403x.png" />
-    <BundleResource Include="Resources\home.png" />
-    <BundleResource Include="Resources\home%402x.png" />
-    <BundleResource Include="Resources\home%403x.png" />
     <BundleResource Include="Resources\search.png" />
     <BundleResource Include="Resources\search%402x.png" />
     <BundleResource Include="Resources\search%403x.png" />
@@ -301,11 +295,37 @@
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\home_filled.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HodlWallet\HodlWallet.csproj">
       <Project>{7D5ECE43-EC1B-4F28-84B1-4017F8C5D035}</Project>
       <Name>HodlWallet</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home_filled%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home_filled%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gear_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gear_filled%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gear_filled%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bitcoin_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bitcoin_filled%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bitcoin_filled%403x.png" />
   </ItemGroup>
 </Project>

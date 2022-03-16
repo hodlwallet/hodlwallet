@@ -106,8 +106,7 @@ namespace HodlWallet.UI
             var tab = tabName switch
             {
                 "home" => homeTab,
-                "receive" => receiveTab,
-                "send" => sendTab,
+                "bitcoin" => bitcoinTab,
                 "settings" => settingsTab,
                 _ => homeTab,
             };

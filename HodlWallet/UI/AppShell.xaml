@@ -19,7 +19,7 @@
             <Setter Property="Shell.UnselectedColor" Value="{DynamicResource Fg2}" />
             <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource Bg}" />
             <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource Fg}" />
-            <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource Fg2}" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource Fg}" />
             <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource FgSuccess}" />
         </Style>
 
@@ -142,29 +142,18 @@
         <controls:FlyoutFooter />
     </Shell.FlyoutFooter>
 
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" FlyoutItemIsVisible="False">
         <Tab x:Name="homeTab"
              Route="home"
-             Icon="home.png"
-             FlyoutItemIsVisible="False">
+             Icon="home_filled.png">
             <ShellContent>
                 <views:HomeView />
             </ShellContent>
         </Tab>
 
-        <Tab x:Name="sendTab"
-             Route="send"
-             Icon="send.png"
-             FlyoutItemIsVisible="False">
-            <ShellContent>
-                <views:SendView />
-            </ShellContent>
-        </Tab>
-
-        <Tab x:Name="receiveTab"
-             Route="receive"
-             Icon="receive.png"
-             FlyoutItemIsVisible="False">
+        <Tab x:Name="bitcoinTab"
+             Route="bitcoin"
+             Icon="bitcoin_filled.png">
             <ShellContent>
                 <views:ReceiveView />
             </ShellContent>
@@ -172,8 +161,7 @@
 
         <Tab x:Name="settingsTab"
              Route="settings"
-             Icon="gear.png"
-             FlyoutItemIsVisible="False">
+             Icon="gear_filled.png">
             <ShellContent>
                 <views:SettingsView />
             </ShellContent>
