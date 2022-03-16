@@ -25,8 +25,8 @@ using System;
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
+using HodlWallet.Core.Utils;
 using HodlWallet.UI.Extensions;
-using System.Diagnostics;
 
 namespace HodlWallet.UI.Views
 {
@@ -56,12 +56,14 @@ namespace HodlWallet.UI.Views
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<CreateAccountViewModel, string>(this, "DisplayErrorCreatingAccount", DisplayErrorCreatingAccount);
+            MessagingCenter.Subscribe<CreateAccountViewModel, string>(this, Constants.LABEL_ERROR_ACCOUNT_CREATION_MESSAGE, DisplayNotification);
+            MessagingCenter.Subscribe<CreateAccountViewModel, string>(this, Constants.LABEL_ALERT_CREATING_ACCOUNT_PROGRESS_MESSAGE, DisplayNotification);
+            MessagingCenter.Subscribe<CreateAccountViewModel, string>(this, Constants.LABEL_ALERT_SUCCESS_ACCOUNT_CREATION_MESSAGE, DisplayNotification);
         }
 
-        void DisplayErrorCreatingAccount(CreateAccountViewModel vm, string errorMessage)
+        void DisplayNotification(CreateAccountViewModel vm, string message)
         {
-            _ = this.DisplayToast(errorMessage);
+            _ = this.DisplayToast(message);
         }
 
         void SetSuggestedColor()
