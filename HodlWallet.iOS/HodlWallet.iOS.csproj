@@ -328,4 +328,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\bitcoin_filled%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\wallet_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\wallet_filled%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\wallet_filled%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bitcoin_gold_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bitcoin_gold_filled%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bitcoin_gold_filled%403x.png" />
+  </ItemGroup>
 </Project>

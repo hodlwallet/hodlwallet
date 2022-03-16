@@ -565,6 +565,24 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to B A L A N C E.
+        /// </summary>
+        internal static string BalanceHeader_balance {
+            get {
+                return ResourceManager.GetString("BalanceHeader.balance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T O T A L.
+        /// </summary>
+        internal static string BalanceHeader_total {
+            get {
+                return ResourceManager.GetString("BalanceHeader.total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use your biometric authentication to unlock your wallet and send money up to a set limit..
         /// </summary>
         internal static string BiometricAuth_header {
@@ -894,6 +912,33 @@ namespace HodlWallet.UI.Locale {
         internal static string Menu_wipeWallet {
             get {
                 return ResourceManager.GetString("Menu.wipeWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is a contextual description information sample text long version.
+        /// </summary>
+        internal static string MyBitcoin_contextualInfo {
+            get {
+                return ResourceManager.GetString("MyBitcoin.contextualInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S E N D  /  R E C E I V E.
+        /// </summary>
+        internal static string MyBitcoin_sendSlashReceive {
+            get {
+                return ResourceManager.GetString("MyBitcoin.sendSlashReceive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Bitcoin.
+        /// </summary>
+        internal static string MyBitcoin_title {
+            get {
+                return ResourceManager.GetString("MyBitcoin.title", resourceCulture);
             }
         }
         

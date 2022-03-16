@@ -155,7 +155,7 @@
              Route="bitcoin"
              Icon="bitcoin_filled.png">
             <ShellContent>
-                <views:ReceiveView />
+                <views:MyBitcoinView />
             </ShellContent>
         </Tab>
 

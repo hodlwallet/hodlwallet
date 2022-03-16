@@ -80,6 +80,7 @@
 		<None Remove="UI\Assets\send_tab.svg" />
 		<None Remove="UI\Assets\shield.svg" />
 		<None Remove="Rg.Plugins.Popup" />
+		<None Remove="UI\Assets\wallet.svg" />
 		<None Remove="Xamarin.CommunityToolkit" />
 	</ItemGroup>
 	<ItemGroup>
@@ -98,6 +99,7 @@
 		<EmbeddedResource Include="UI\Assets\search.svg" />
 		<EmbeddedResource Include="UI\Assets\send_tab.svg" />
 		<EmbeddedResource Include="UI\Assets\shield.svg" />
+		<EmbeddedResource Include="UI\Assets\wallet.svg" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="UI\AppShell.xaml">
@@ -169,6 +171,9 @@
 		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	</EmbeddedResource>
 	<EmbeddedResource Update="UI\Views\DisplayCurrencyView.xaml">
+	  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	</EmbeddedResource>
+	<EmbeddedResource Update="UI\Views\MyBitcoinView.xaml">
 	  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	</EmbeddedResource>
 	<EmbeddedResource Update="UI\Views\PinPadChangeView.xaml">

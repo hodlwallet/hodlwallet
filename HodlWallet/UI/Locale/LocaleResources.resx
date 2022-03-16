@@ -951,4 +951,24 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Display Currency</value>
     <comment>Display Currency View Title</comment>
   </data>
+  <data name="MyBitcoin.title" xml:space="preserve">
+    <value>My Bitcoin</value>
+    <comment>title for the My Bitcoin view</comment>
+  </data>
+  <data name="BalanceHeader.balance" xml:space="preserve">
+    <value>B A L A N C E</value>
+    <comment>Balance big title on the header</comment>
+  </data>
+  <data name="BalanceHeader.total" xml:space="preserve">
+    <value>T O T A L</value>
+    <comment>Total big title on the header</comment>
+  </data>
+  <data name="MyBitcoin.contextualInfo" xml:space="preserve">
+    <value>This is a contextual description information sample text long version</value>
+    <comment>Contextual Information</comment>
+  </data>
+  <data name="MyBitcoin.sendSlashReceive" xml:space="preserve">
+    <value>S E N D  /  R E C E I V E</value>
+    <comment>Send / Receive title</comment>
+  </data>
 </root>
