@@ -44,6 +44,7 @@ namespace HodlWallet.Core.Utils
             { "CNY", "\u00A5" }, //Chinese Renminbi yuan
             { "KRW", "\u20A9" }, // South Korean Won
             { BTC_LABEL, "\u20BF" }, // Bitcoin
+            { "BCH", "Ƀ" },      // Bitcoin Cash
             { "CAD", "CA$" },    //Canadian dollar
             { "AUD", "AU$" },    //Australian dollar
             { "NZD", "NZ$" },    // New Zealand Dollar
@@ -64,7 +65,7 @@ namespace HodlWallet.Core.Utils
             { "BTN", "Nu" },     // Bhutanese Ngultrum
             { "ALL", "L" },      // Albanian Lek
             { "ANG", "NAƒ" },    // Netherlands Antillean Guilder
-            { "ETH", "\u20BF" }, // Ethereum
+            { "ETH", "Ξ" },      // Ethereum
             { "LTC", "Ł" },      // Lite Coin
             { "AED", "د.إ" },    // UAE Dirham
             { "AFN", "\u060b" }, // Afghan Afghani
