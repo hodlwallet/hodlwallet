@@ -64,6 +64,13 @@ namespace HodlWallet.UI.Views
         void DisplayNotification(CreateAccountViewModel vm, string message)
         {
             _ = this.DisplayToast(message);
+            // When in progress disable to avoid more than one account creations.
+            if (message == Constants.DISPLAY_ALERT_CREATING_ACCOUNT_PROGRESS_MESSAGE)
+                AddAcountButton.IsEnabled = false;
+
+            // After an error message validation is shown in the view, the button should be enabled again.
+            if (!string.Equals(message, Constants.DISPLAY_ALERT_CREATING_ACCOUNT_PROGRESS_MESSAGE))
+                AddAcountButton.IsEnabled = true;
         }
 
         void SetSuggestedColor()

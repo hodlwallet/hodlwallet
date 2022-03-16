@@ -65,7 +65,8 @@
             <controls:ColorPicker x:Name="PickColorControl" ButtonColorSelected="{Binding AccountColor}" />
 
             <BoxView x:Name="boxView" FlexLayout.Grow="1"/>
-            <Button Text="{i18n:Translate Text=AddAccount.createButton}"
+            <Button x:Name="AddAcountButton"
+                    Text="{i18n:Translate Text=AddAccount.createButton}"
                     Command="{Binding CreateAccountCommand}"
                     CommandParameter="{Binding Source={x:Reference PickColorControl}, Path=ColorCode}"
                     Style="{DynamicResource CustomButton}"
