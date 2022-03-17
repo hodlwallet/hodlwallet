@@ -36,9 +36,9 @@
                     <Image Source="bitcoin_gold_filled.png" HeightRequest="40" />
                 </StackLayout>
                 <StackLayout Spacing="0">
-                    <Label Text="{i18n:Translate Text=MyBitcoin.sendSlashReceive}" XAlign="Center"/>
+                    <Label Text="{i18n:Translate Text=MyBitcoin.sendSlashReceive}" FontFamily="{StaticResource Key=Sans-Bold}" XAlign="Center" />
                     <Label FontSize="Caption" Text="{i18n:Translate Text=MyBitcoin.contextualInfo}" LineBreakMode="WordWrap"
-XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Key=Sans-Bold}" Padding="90,0,90,0" />
+XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Key=Sans-Regular}" Padding="90,0,90,0" />
                 </StackLayout>
             </StackLayout>
 
