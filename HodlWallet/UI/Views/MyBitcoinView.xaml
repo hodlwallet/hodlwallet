@@ -55,9 +55,9 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                     <BoxView WidthRequest="5" />
                     <StackLayout>
                         <Label Text="{i18n:Translate Text=MyBitcoin.sendBitcoin}" FontFamily="{StaticResource Key=Sans-Bold}" />
-                        <Label Text="{i18n:Translate Text=MyBitcoin.sendBitcoinInfo}" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Key=Sans-Regular}" FontSize="Caption" WidthRequest="180" Margin="0,-5,0,0" />
+                        <Label Text="{i18n:Translate Text=MyBitcoin.sendBitcoinInfo}" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Key=Sans-Regular}" FontSize="Caption" WidthRequest="160" Margin="0,-5,0,0" />
                     </StackLayout>
-                    <BoxView WidthRequest="40" />
+                    <BoxView WidthRequest="60" />
                     <Label Text=">" FontSize="Title" TextColor="{DynamicResource Fg3}" FontFamily="{StaticResource Key=Mono-Regular}" VerticalOptions="Center" />
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="SendBitcoin_Tapped" NumberOfTapsRequired="1" />
@@ -76,9 +76,9 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                     <BoxView WidthRequest="5" />
                     <StackLayout>
                         <Label Text="{i18n:Translate Text=MyBitcoin.receiveBitcoin}" FontFamily="{StaticResource Key=Sans-Bold}" />
-                        <Label Text="{i18n:Translate Text=MyBitcoin.receiveBitcoinInfo}" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Key=Sans-Regular}" FontSize="Caption" WidthRequest="180" Margin="0,-5,0,0" />
+                        <Label Text="{i18n:Translate Text=MyBitcoin.receiveBitcoinInfo}" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Key=Sans-Regular}" FontSize="Caption" WidthRequest="160" Margin="0,-5,0,0" />
                     </StackLayout>
-                    <BoxView WidthRequest="40" />
+                    <BoxView WidthRequest="60" />
                     <Label Text=">" FontSize="Title" TextColor="{DynamicResource Fg3}" FontFamily="{StaticResource Key=Mono-Regular}" VerticalOptions="Center" />
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ReceiveBitcoin_Tapped" NumberOfTapsRequired="1" />
