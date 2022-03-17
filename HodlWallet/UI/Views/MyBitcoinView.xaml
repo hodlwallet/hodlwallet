@@ -13,19 +13,19 @@
         <FlexLayout Direction="Column">
             <StackLayout FlexLayout.Grow="1" Orientation="Horizontal" BackgroundColor="{DynamicResource FgSuccess}">
                 <StackLayout Orientation="Horizontal">
-                    <BoxView HeightRequest="0" />
-                    <Image Source="wallet_filled.png" HeightRequest="40" WidthRequest="40" FlexLayout.AlignSelf="Center" />
+                    <BoxView HeightRequest="0" WidthRequest="30" />
+                    <Image Source="wallet_filled.png" HeightRequest="40" WidthRequest="40" />
                 </StackLayout>
-                <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="100">
+                <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="120">
                     <BoxView HeightRequest="10" />
-                    <Label Text="{i18n:Translate Text=BalanceHeader.total}" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Sans-Bold}" FontSize="Header" />
-                    <Label Text="{i18n:Translate Text=BalanceHeader.balance}" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Sans-Bold}" FontSize="Header" />
+                    <Label Text="{i18n:Translate Text=BalanceHeader.total}" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Sans-Bold}" Margin="0,3,0,0" />
+                    <Label Text="{i18n:Translate Text=BalanceHeader.balance}" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Sans-Bold}" Margin="0,-7,0,0" />
                     <BoxView HeightRequest="10" />
                 </StackLayout>
                 <StackLayout Orientation="Vertical" Spacing="0">
                     <BoxView HeightRequest="10" />
-                    <Label Text="$14,346.02" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Mono-Bold}" FontSize="Header" />
-                    <Label Text="0.0003379 BTC" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Mono-Bold}" FontSize="Header" />
+                    <Label Text="$14,346.02" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Mono-Bold}" FontSize="Subtitle" Margin="0,3,0,0" />
+                    <Label Text="0.00033791 BTC" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Mono-Bold}" FontSize="Small" Margin="0,-7,0,0" />
                     <BoxView HeightRequest="10" />
                 </StackLayout>
             </StackLayout>
@@ -42,9 +42,9 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                 </StackLayout>
             </StackLayout>
 
-            <ContentView FlexLayout.Grow="7" BackgroundColor="{DynamicResource Bg}">
+            <StackLayout FlexLayout.Grow="7" BackgroundColor="{DynamicResource Bg}">
                 <Label Text="Content" />
-            </ContentView>
+            </StackLayout>
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
