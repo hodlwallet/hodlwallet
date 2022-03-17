@@ -16,5 +16,15 @@ namespace HodlWallet.UI.Views
         {
             InitializeComponent();
         }
+
+        async void SendBitcoin_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SendView());
+        }
+
+        async void ReceiveBitcoin_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ReceiveView());
+        }
     }
 }

@@ -967,6 +967,18 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>This is a contextual description information sample text long version</value>
     <comment>Contextual Information</comment>
   </data>
+  <data name="MyBitcoin.receiveBitcoin" xml:space="preserve">
+    <value>R E C E I V E  B I T C O I N</value>
+  </data>
+  <data name="MyBitcoin.receiveBitcoinInfo" xml:space="preserve">
+    <value>Get an address to receive Bitcoin</value>
+  </data>
+  <data name="MyBitcoin.sendBitcoin" xml:space="preserve">
+    <value>S E N D  B I T C O I N</value>
+  </data>
+  <data name="MyBitcoin.sendBitcoinInfo" xml:space="preserve">
+    <value>Scan an address and send Bitcoin</value>
+  </data>
   <data name="MyBitcoin.sendSlashReceive" xml:space="preserve">
     <value>S E N D  /  R E C E I V E</value>
     <comment>Send / Receive title</comment>

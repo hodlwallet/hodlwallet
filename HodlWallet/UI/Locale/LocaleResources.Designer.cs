@@ -925,6 +925,42 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to R E C E I V E  B I T C O I N.
+        /// </summary>
+        internal static string MyBitcoin_receiveBitcoin {
+            get {
+                return ResourceManager.GetString("MyBitcoin.receiveBitcoin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get an address to receive Bitcoin.
+        /// </summary>
+        internal static string MyBitcoin_receiveBitcoinInfo {
+            get {
+                return ResourceManager.GetString("MyBitcoin.receiveBitcoinInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S E N D  B I T C O I N.
+        /// </summary>
+        internal static string MyBitcoin_sendBitcoin {
+            get {
+                return ResourceManager.GetString("MyBitcoin.sendBitcoin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan an address and send Bitcoin.
+        /// </summary>
+        internal static string MyBitcoin_sendBitcoinInfo {
+            get {
+                return ResourceManager.GetString("MyBitcoin.sendBitcoinInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to S E N D  /  R E C E I V E.
         /// </summary>
         internal static string MyBitcoin_sendSlashReceive {
