@@ -41,11 +41,10 @@ namespace HodlWallet.UI.Views
             InitializeComponent();
         }
 
-        void Address_Tapped(object sender, EventArgs e)
+        async void Address_Tapped(object sender, EventArgs e)
         {
-            Clipboard.SetTextAsync(ViewModel.Address);
-
-            _ = this.DisplayToast(LocaleResources.SecretContentView_textCopied);
+            await Clipboard.SetTextAsync(ViewModel.Address);
+            await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
         }
 
         protected override void OnAppearing()

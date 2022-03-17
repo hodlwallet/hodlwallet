@@ -266,7 +266,7 @@
     <comment>label for done button</comment>
   </data>
   <data name="Send.title" xml:space="preserve">
-    <value>Send</value>
+    <value>Send Bitcoin</value>
     <comment>label for send view title</comment>
   </data>
   <data name="Send.to" xml:space="preserve">
@@ -302,15 +302,15 @@
     <comment>label for send transaction popup cancel button</comment>
   </data>
   <data name="Receive.title" xml:space="preserve">
-    <value>Receive</value>
+    <value>Receive Bitcoin</value>
     <comment>label for receive title</comment>
   </data>
   <data name="Receive.share" xml:space="preserve">
-    <value>Share</value>
+    <value>S H A R E</value>
     <comment>label for receive share button</comment>
   </data>
-  <data name="Receive.requestAmount" xml:space="preserve">
-    <value>Request An Amount</value>
+  <data name="Receive.addAmount" xml:space="preserve">
+    <value>A D D  A M O U N T</value>
     <comment>label for receive request amount button</comment>
   </data>
   <data name="Menu.title" xml:space="preserve">
@@ -982,5 +982,9 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="MyBitcoin.sendSlashReceive" xml:space="preserve">
     <value>S E N D  /  R E C E I V E</value>
     <comment>Send / Receive title</comment>
+  </data>
+  <data name="Receive.uniqueAddress" xml:space="preserve">
+    <value>U N I Q U E  A D D R E S S</value>
+    <comment>Unique address main subtitle of receive</comment>
   </data>
 </root>

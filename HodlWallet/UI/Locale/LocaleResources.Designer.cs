@@ -1387,6 +1387,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A D D  A M O U N T.
+        /// </summary>
+        internal static string Receive_addAmount {
+            get {
+                return ResourceManager.GetString("Receive.addAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         internal static string Receive_amount {
@@ -1396,16 +1405,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Request An Amount.
-        /// </summary>
-        internal static string Receive_requestAmount {
-            get {
-                return ResourceManager.GetString("Receive.requestAmount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Share.
+        ///   Looks up a localized string similar to S H A R E.
         /// </summary>
         internal static string Receive_share {
             get {
@@ -1414,11 +1414,20 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Receive.
+        ///   Looks up a localized string similar to Receive Bitcoin.
         /// </summary>
         internal static string Receive_title {
             get {
                 return ResourceManager.GetString("Receive.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to U N I Q U E  A D D R E S S.
+        /// </summary>
+        internal static string Receive_uniqueAddress {
+            get {
+                return ResourceManager.GetString("Receive.uniqueAddress", resourceCulture);
             }
         }
         
@@ -1783,7 +1792,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Send.
+        ///   Looks up a localized string similar to Send Bitcoin.
         /// </summary>
         internal static string Send_title {
             get {
