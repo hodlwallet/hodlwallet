@@ -58,7 +58,7 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                     <BoxView WidthRequest="80" />
                     <Label Text=">" FontSize="Title" TextColor="{DynamicResource Fg3}" FontFamily="{StaticResource Key=Mono-Regular}" VerticalOptions="Center" />
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="SendBitcoin_Tapped" />
+                        <TapGestureRecognizer Tapped="SendBitcoin_Tapped" NumberOfTapsRequired="1" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
 
@@ -77,7 +77,7 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                     <BoxView WidthRequest="80" />
                     <Label Text=">" FontSize="Title" TextColor="{DynamicResource Fg3}" FontFamily="{StaticResource Key=Mono-Regular}" VerticalOptions="Center" />
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ReceiveBitcoin_Tapped" />
+                        <TapGestureRecognizer Tapped="ReceiveBitcoin_Tapped" NumberOfTapsRequired="1" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
 

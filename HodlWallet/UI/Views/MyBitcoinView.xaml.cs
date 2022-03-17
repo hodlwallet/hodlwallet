@@ -12,6 +12,9 @@ namespace HodlWallet.UI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MyBitcoinView : ContentPage
     {
+        bool isOpeningSend = false;
+        bool isOpeningReceive = false;
+
         public MyBitcoinView()
         {
             InitializeComponent();
@@ -19,12 +22,20 @@ namespace HodlWallet.UI.Views
 
         async void SendBitcoin_Tapped(object sender, EventArgs e)
         {
+            if (isOpeningSend) return;
+            isOpeningSend = true;
+
             await Navigation.PushAsync(new SendView());
+            isOpeningSend = false;
         }
 
         async void ReceiveBitcoin_Tapped(object sender, EventArgs e)
         {
+            if (isOpeningReceive) return;
+            isOpeningReceive = true;
+
             await Navigation.PushAsync(new ReceiveView());
+            isOpeningReceive = false;
         }
     }
 }
