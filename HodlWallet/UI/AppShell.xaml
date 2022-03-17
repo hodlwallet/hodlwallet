@@ -13,9 +13,9 @@
     <Shell.Resources>
         <Style x:Key="BaseStyle" TargetType="Element">
             <Setter Property="Shell.BackgroundColor" Value="{DynamicResource Bg}" />
-            <Setter Property="Shell.ForegroundColor" Value="{DynamicResource Fg2}" />
+            <Setter Property="Shell.ForegroundColor" Value="{DynamicResource Fg}" />
             <Setter Property="Shell.TitleColor" Value="{DynamicResource Fg}" />
-            <Setter Property="Shell.DisabledColor" Value="{DynamicResource Fg2}" />
+            <Setter Property="Shell.DisabledColor" Value="{DynamicResource Fg3}" />
             <Setter Property="Shell.UnselectedColor" Value="{DynamicResource Fg2}" />
             <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource Bg}" />
             <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource Fg}" />
