@@ -42,7 +42,7 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref addressFormatted, value);
         }
 
-        BitcoinAddress Address { get; set; }
+        public BitcoinAddress Address { get; set; }
 
         string amount;
         public string Amount
@@ -82,11 +82,31 @@ namespace HodlWallet.Core.ViewModels
             else WalletService.OnStarted += WalletService_OnStarted;
         }
 
+        internal void UpdateAddressFormatted()
+        {
+            if (string.IsNullOrEmpty(Amount)) return;
+            if (Amount.StartsWith('.')) Amount = $"0.{Amount[1..]}";
+            if (decimal.TryParse(Amount, out var amount) && amount <= 0) return;
+
+            if (HasLessEightDecimalPlaces(Amount)) AddressFormatted = $"bitcoin:{Address}?amount={Amount}";
+            else Amount = Amount[..(Amount.Length - 1)];
+        }
+
+        bool HasLessEightDecimalPlaces(string decimalStr)
+        {
+            decimal value = Convert.ToDecimal(decimalStr);
+            decimal step = (decimal)Math.Pow(10, 8);
+
+            return (value * step) - Math.Truncate(value * step) == 0;
+        }
+
         void AddAmount()
         {
             AmountFrameIsVisible = true;
             ClearIsVisible = true;
             AddAmountIsVisible = false;
+
+            UpdateAddressFormatted();
         }
 
         void Clear()
@@ -107,7 +127,7 @@ namespace HodlWallet.Core.ViewModels
                 ShareIntentService.QRTextShareIntent(AddressFormatted);
         }
 
-        private void WalletService_OnStarted(object sender, EventArgs e)
+        void WalletService_OnStarted(object sender, EventArgs e)
         {
             SetAddressFromWalletService();
         }
@@ -119,6 +139,5 @@ namespace HodlWallet.Core.ViewModels
 
             Debug.WriteLine($"[SetAddressFromWalletService] New address: {AddressFormatted}");
         }
-
     }
 }

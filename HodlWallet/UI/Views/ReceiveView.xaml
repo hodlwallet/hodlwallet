@@ -35,8 +35,6 @@
             </StackLayout>
             <StackLayout FlexLayout.Grow="8" BackgroundColor="{DynamicResource Bg}">
                 <StackLayout HeightRequest="240" Orientation="Horizontal">
-                    <!-- Use this for debuging due to a break on Hot Reaload for ZXingBarcodeImageView -->
-                    <!--<Image Source="logo.png" WidthRequest="180" HeightRequest="180" />-->
                     <zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
                                                  VerticalOptions="Center"
                                                  HorizontalOptions="CenterAndExpand"

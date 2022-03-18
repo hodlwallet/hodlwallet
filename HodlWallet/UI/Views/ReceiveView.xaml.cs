@@ -34,17 +34,11 @@ namespace HodlWallet.UI.Views
 {
     public partial class ReceiveView : ContentPage
     {
-        ReceiveViewModel ViewModel => (ReceiveViewModel)BindingContext;
+        ReceiveViewModel ViewModel => BindingContext as ReceiveViewModel;
 
         public ReceiveView()
         {
             InitializeComponent();
-        }
-
-        async void Address_Tapped(object sender, EventArgs e)
-        {
-            await Clipboard.SetTextAsync(ViewModel.AddressFormatted);
-            await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
         }
 
         protected override void OnAppearing()
@@ -54,47 +48,15 @@ namespace HodlWallet.UI.Views
             base.OnAppearing();
         }
 
-        bool HasLessEightDecimalPlaces(string stringValue)
+        async void Address_Tapped(object sender, EventArgs e)
         {
-            int places = 8;
-            decimal value = Convert.ToDecimal(stringValue);
-            decimal step = (decimal)Math.Pow(10, places);
-            if ((value * step) - Math.Truncate(value * step) == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            await Clipboard.SetTextAsync(ViewModel.AddressFormatted);
+            await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
         }
 
-        string RemoveLastCharacter(string value)
+        void AmountEntry_Changed(object sender, EventArgs e)
         {
-            return value.Remove(value.Length - 1, 1);
-        }
-
-        private void AmountEntry_Changed(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(ViewModel.Amount))
-            {
-                if (Convert.ToDecimal(ViewModel.Amount) > 0 && ViewModel.AmountFrameIsVisible)
-                {
-                    if (HasLessEightDecimalPlaces(ViewModel.Amount))
-                    {
-                        ViewModel.AddressFormatted = "bitcoin:" + ViewModel.AddressFormatted + "?amount=" + ViewModel.Amount;
-                    }
-                    else
-                    {
-                        ViewModel.Amount = RemoveLastCharacter(ViewModel.Amount);
-                    }
-                }
-            }
-        }
-
-        private void AddAmount_Tapped(object sender, EventArgs e)
-        {
-
+            ViewModel.UpdateAddressFormatted();
         }
     }
 }
