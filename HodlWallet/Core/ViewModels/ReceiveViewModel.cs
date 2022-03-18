@@ -86,7 +86,8 @@ namespace HodlWallet.Core.ViewModels
         {
             if (string.IsNullOrEmpty(Amount)) return;
             if (Amount.StartsWith('.')) Amount = $"0.{Amount[1..]}";
-            if (decimal.TryParse(Amount, out var amount) && amount <= 0) return;
+            if (!decimal.TryParse(Amount, out var amount)) return;
+            if (amount <= 0) return;
 
             if (HasLessEightDecimalPlaces(Amount)) AddressFormatted = $"bitcoin:{Address}?amount={Amount}";
             else Amount = Amount[..(Amount.Length - 1)];
