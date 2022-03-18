@@ -7,17 +7,17 @@
 		<Platforms>AnyCPU;iPhone;iPhoneSimulator</Platforms>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DebugType>pdbonly</DebugType>
+		<DebugType>portable</DebugType>
 		<DebugSymbols>true</DebugSymbols>
 		<DefineConstants>TRACE;DEBUG</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<DebugType></DebugType>
+		<DebugType>portable</DebugType>
 		<DefineConstants>RELEASE</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testnet|iPhone' ">
 	  <IntermediateOutputPath>obj\iPhone\Testnet\netstandard2.1</IntermediateOutputPath>
-	  <DebugType></DebugType>
+	  <DebugType>portable</DebugType>
 	  <Optimize>false</Optimize>
 	  <OutputPath>bin\iPhone\Testnet\netstandard2.1</OutputPath>
 	  <DefineConstants></DefineConstants>
@@ -27,7 +27,7 @@
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testnet|iPhoneSimulator' ">
 	  <IntermediateOutputPath>obj\iPhoneSimulator\Testnet\netstandard2.1</IntermediateOutputPath>
-	  <DebugType></DebugType>
+	  <DebugType>portable</DebugType>
 	  <Optimize>false</Optimize>
 	  <OutputPath>bin\iPhoneSimulator\Testnet\netstandard2.1</OutputPath>
 	  <DefineConstants></DefineConstants>
@@ -50,7 +50,7 @@
 		<PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
 		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
-		<PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.0" />
+		<PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.1" />
 		<PackageReference Include="Liviano" Version="0.1.9" />
 	</ItemGroup>
 	<ItemGroup>
