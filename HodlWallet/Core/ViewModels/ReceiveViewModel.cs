@@ -22,6 +22,7 @@
 // THE SOFTWARE.
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Input;
 
 using Xamarin.Forms;
@@ -87,7 +88,23 @@ namespace HodlWallet.Core.ViewModels
             if (string.IsNullOrEmpty(Amount)) return;
             if (Amount.StartsWith('.')) Amount = $"0.{Amount[1..]}";
             if (!decimal.TryParse(Amount, out var amount)) return;
-            if (amount <= 0) return;
+
+            var split = Amount.Split('.');
+            if (split.Length == 2)
+            {
+                var decimals = split[1];
+                if (decimals.Length > 8 && decimals.All(digit => digit == '0'))
+                {
+                    Amount = "0.00000000";
+                }
+            }
+
+            if (amount <= 0)
+            {
+                AddressFormatted = Address.ToString();
+
+                return;
+            }
 
             if (HasLessEightDecimalPlaces(Amount)) AddressFormatted = $"bitcoin:{Address}?amount={Amount}";
             else Amount = Amount[..(Amount.Length - 1)];
@@ -112,10 +129,11 @@ namespace HodlWallet.Core.ViewModels
 
         void Clear()
         {
-            AddressFormatted = Address.ToString();
             AmountFrameIsVisible = false;
             ClearIsVisible = false;
             AddAmountIsVisible = true;
+
+            AddressFormatted = Address.ToString();
         }
 
         void ShareIntent()
