@@ -43,22 +43,15 @@ namespace HodlWallet.UI.Views
 
         async void Address_Tapped(object sender, EventArgs e)
         {
-            await Clipboard.SetTextAsync(ViewModel.Address);
+            await Clipboard.SetTextAsync(ViewModel.AddressFormatted);
             await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
         }
 
         protected override void OnAppearing()
         {
-            Debug.WriteLine($"[ReceiveView][OnAppearing] Showing Address: {ViewModel.Address}");
+            Debug.WriteLine($"[ReceiveView][OnAppearing] Showing Address: {ViewModel.AddressFormatted}");
 
             base.OnAppearing();
-        }
-
-        private void AddAmountButton_Clicked(object sender, EventArgs e)
-        {
-            ViewModel.Amount = "";
-            ViewModel.AmountIsVisible = true;
-            ViewModel.AmountButtonIsVisible = false;
         }
 
         bool HasLessEightDecimalPlaces(string stringValue)
@@ -85,11 +78,11 @@ namespace HodlWallet.UI.Views
         {
             if (!string.IsNullOrEmpty(ViewModel.Amount))
             {
-                if (Convert.ToDecimal(ViewModel.Amount) > 0 && ViewModel.AmountIsVisible)
+                if (Convert.ToDecimal(ViewModel.Amount) > 0 && ViewModel.AmountFrameIsVisible)
                 {
                     if (HasLessEightDecimalPlaces(ViewModel.Amount))
                     {
-                        ViewModel.Address = "bitcoin:" + ViewModel.BasicAddress + "?amount=" + ViewModel.Amount;
+                        ViewModel.AddressFormatted = "bitcoin:" + ViewModel.AddressFormatted + "?amount=" + ViewModel.Amount;
                     }
                     else
                     {
@@ -97,6 +90,11 @@ namespace HodlWallet.UI.Views
                     }
                 }
             }
+        }
+
+        private void AddAmount_Tapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

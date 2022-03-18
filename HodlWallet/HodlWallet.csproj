@@ -194,11 +194,6 @@
 <ItemGroup>
 	<GitPath Include="..\.git" Visible="false" />
 </ItemGroup>
-<ItemGroup>
-  <Reference Include="Mono.Android">
-    <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v11.0\Mono.Android.dll</HintPath>
-  </Reference>
-</ItemGroup>
 <Target Name="GetBuildInfo" BeforeTargets="WriteBuildInfo" Condition="'$(GitHead)' == ''">
 	<PropertyGroup>
 		<BuildDateTime>$([System.DateTime]::Now.ToString("MMMM d, yyyy h:mm:ss"))</BuildDateTime>

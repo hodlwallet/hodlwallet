@@ -1396,11 +1396,20 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Amount.
+        ///   Looks up a localized string similar to AMOUNT.
         /// </summary>
-        internal static string Receive_amount {
+        internal static string Receive_amountLabel {
             get {
-                return ResourceManager.GetString("Receive.amount", resourceCulture);
+                return ResourceManager.GetString("Receive.amountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C L E A R.
+        /// </summary>
+        internal static string Receive_clear {
+            get {
+                return ResourceManager.GetString("Receive.clear", resourceCulture);
             }
         }
         

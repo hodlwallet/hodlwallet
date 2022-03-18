@@ -36,7 +36,7 @@ namespace HodlWallet.Core.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IWalletService WalletService => DependencyService.Get<IWalletService>();
-        public IShareIntent ShareIntent => DependencyService.Get<IShareIntent>();
+        public IShareIntent ShareIntentService => DependencyService.Get<IShareIntent>();
         public IPrecioHttpService PrecioHttpService => CustomRefitSettings.RestClient();
         public IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
         public IPermissions PermissionsService => DependencyService.Get<IPermissions>();

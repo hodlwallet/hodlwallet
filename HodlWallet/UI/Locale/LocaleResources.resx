@@ -935,8 +935,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Close</value>
     <comment>label for close button of LoginView</comment>
   </data>
-  <data name="Receive.amount" xml:space="preserve">
-    <value>Amount</value>
+  <data name="Receive.amountLabel" xml:space="preserve">
+    <value>AMOUNT</value>
     <comment>label for amount section in receive view</comment>
   </data>
   <data name="DisplayCurrency.sats" xml:space="preserve">
@@ -986,5 +986,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="Receive.uniqueAddress" xml:space="preserve">
     <value>U N I Q U E  A D D R E S S</value>
     <comment>Unique address main subtitle of receive</comment>
+  </data>
+  <data name="Receive.clear" xml:space="preserve">
+    <value>C L E A R</value>
   </data>
 </root>

@@ -25,27 +25,24 @@ using System.Diagnostics;
 using System.Windows.Input;
 
 using Xamarin.Forms;
+using NBitcoin;
 
 namespace HodlWallet.Core.ViewModels
 {
     public class ReceiveViewModel : BaseViewModel
     {
-        public ICommand ShowShareIntentCommand { get; }
-        public ICommand CloseCommand { get; }
+        public ICommand ShareIntentCommand { get; }
+        public ICommand AddAmountCommand { get; }
+        public ICommand ClearCommand { get; }
 
-        string address;
-        public string Address
+        string addressFormatted;
+        public string AddressFormatted
         {
-            get => address;
-            set => SetProperty(ref address, value);
+            get => addressFormatted;
+            set => SetProperty(ref addressFormatted, value);
         }
 
-        string basicAddress;
-        public string BasicAddress
-        {
-            get => basicAddress;
-            set => SetProperty(ref basicAddress, value);
-        }
+        BitcoinAddress Address { get; set; }
 
         string amount;
         public string Amount
@@ -54,63 +51,74 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref amount, value);
         }
 
-        bool amountIsVisible = false;
-        public bool AmountIsVisible
+        bool amountFrameIsVisible = false;
+        public bool AmountFrameIsVisible
         {
-            get => amountIsVisible;
-            set => SetProperty(ref amountIsVisible, value);
+            get => amountFrameIsVisible;
+            set => SetProperty(ref amountFrameIsVisible, value);
         }
 
-        bool amountButtonIsVisible = true;
-        public bool AmountButtonIsVisible
+        bool clearIsVisible = false;
+        public bool ClearIsVisible
         {
-            get => amountButtonIsVisible;
-            set => SetProperty(ref amountButtonIsVisible, value);
+            get => clearIsVisible;
+            set => SetProperty(ref clearIsVisible, value);
+        }
+
+        bool addAmountIsVisible = true;
+        public bool AddAmountIsVisible
+        {
+            get => addAmountIsVisible;
+            set => SetProperty(ref addAmountIsVisible, value);
         }
 
         public ReceiveViewModel()
         {
-            ShowShareIntentCommand = new Command(ShowShareIntent);
-            CloseCommand = new Command(Close);
+            ShareIntentCommand = new Command(ShareIntent);
+            AddAmountCommand = new Command(AddAmount);
+            ClearCommand = new Command(Clear);
 
-            if (WalletService.IsStarted)
-            {
-                GetAddressFromWallet();
-            }
-            else
-            {
-                WalletService.OnStarted += WalletService_OnStarted;
-            }
+            if (WalletService.IsStarted) SetAddressFromWalletService();
+            else WalletService.OnStarted += WalletService_OnStarted;
         }
 
-        void Close()
+        void AddAmount()
         {
-            Address = BasicAddress;
-            AmountIsVisible = false;
-            AmountButtonIsVisible = true;
+            AmountFrameIsVisible = true;
+            ClearIsVisible = true;
+            AddAmountIsVisible = false;
+        }
+
+        void Clear()
+        {
+            AddressFormatted = Address.ToString();
+            AmountFrameIsVisible = false;
+            ClearIsVisible = false;
+            AddAmountIsVisible = true;
+        }
+
+        void ShareIntent()
+        {
+            Debug.WriteLine($"[ShareIntent] Sharing address: {AddressFormatted}");
+
+            if (Address is null)
+                Debug.WriteLine("[ShareIntent] Sharing address is empty");
+            else
+                ShareIntentService.QRTextShareIntent(AddressFormatted);
         }
 
         private void WalletService_OnStarted(object sender, EventArgs e)
         {
-            GetAddressFromWallet();
+            SetAddressFromWalletService();
         }
 
-        void GetAddressFromWallet()
+        void SetAddressFromWalletService()
         {
-            BasicAddress = WalletService.GetReceiveAddress().ToString();
-            Address = BasicAddress;
+            Address = WalletService.GetReceiveAddress();
+            AddressFormatted = Address.ToString();
 
-            Debug.WriteLine($"[GetAddressFromWallet] New address: {Address}");
+            Debug.WriteLine($"[SetAddressFromWalletService] New address: {AddressFormatted}");
         }
 
-        void ShowShareIntent()
-        {
-            Debug.WriteLine($"[ShowShareIntent] Sharing address: {Address}");
-
-            if (string.IsNullOrEmpty(Address))
-                Debug.WriteLine("[ShowShareIntent] Sharing address is empty");
-            else
-                ShareIntent.QRTextShareIntent(Address);
-        }
     }
 }

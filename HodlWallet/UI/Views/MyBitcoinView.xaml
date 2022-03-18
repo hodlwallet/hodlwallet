@@ -48,9 +48,7 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                 <StackLayout Orientation="Horizontal" Padding="0,20,0,20">
                     <BoxView WidthRequest="30" />
                     <StackLayout>
-                        <Frame HeightRequest="10" WidthRequest="10" CornerRadius="50" BackgroundColor="{DynamicResource Bg2}" HasShadow="False">
-                            <Image Source="caret_up_filled.png" HeightRequest="20" WidthRequest="20" Margin="-8" />
-                        </Frame>
+                        <ImageButton Source="caret_up_filled.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" Padding="10" CornerRadius="50" BackgroundColor="{DynamicResource Bg2}" Clicked="SendBitcoin_Tapped" />
                     </StackLayout>
                     <BoxView WidthRequest="5" />
                     <StackLayout>
@@ -69,9 +67,7 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                 <StackLayout Orientation="Horizontal" Padding="0,20,0,20">
                     <BoxView WidthRequest="30" />
                     <StackLayout>
-                        <Frame HeightRequest="10" WidthRequest="10" CornerRadius="50" BackgroundColor="{DynamicResource Bg2}" HasShadow="False">
-                            <Image Source="caret_down_filled.png" HeightRequest="25" WidthRequest="25" Margin="-8" />
-                        </Frame>
+                        <ImageButton Source="caret_down_filled.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" Padding="10" CornerRadius="50" BackgroundColor="{DynamicResource Bg2}" Clicked="ReceiveBitcoin_Tapped"  />
                     </StackLayout>
                     <BoxView WidthRequest="5" />
                     <StackLayout>
