@@ -85,7 +85,7 @@
                                ReturnType="Done"/>
 
                         <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
-
+                        <!-- Amount -->
                         <Label Style="{StaticResource TransactionDetailTitle}"
                                Text="{Binding AmountTitle, Converter={StaticResource UpperCaseConverter}}" />
                         <Label FontSize="Small"
@@ -101,6 +101,7 @@
 
                         <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
 
+                        <!-- To this Address -->
                         <Label Style="{StaticResource TransactionDetailTitle}"
                                Text="{Binding AddressTitle, Converter={StaticResource UpperCaseConverter}}" />
                         <Button Command="{Binding BrowseAddressCommand}"
@@ -109,6 +110,7 @@
 
                         <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
 
+                        <!-- TxID  -->
                         <Label Style="{StaticResource TransactionDetailTitle}"
                                Text="{Binding TransactionIdTitle, Converter={StaticResource UpperCaseConverter}}" />
                         <Button Command="{Binding BrowseTransactionIdCommand}"

@@ -195,8 +195,6 @@
                    TargetType="Button">
                 <Setter Property="BackgroundColor"
                         Value="{DynamicResource Bg}" />
-                <Setter Property="HeightRequest"
-                        Value="20" />
                 <Setter Property="FontFamily"
                         Value="{StaticResource Sans-Regular}" />
                 <Setter Property="FontSize"
