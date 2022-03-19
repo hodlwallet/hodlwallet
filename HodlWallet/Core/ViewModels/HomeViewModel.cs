@@ -42,12 +42,16 @@ using HodlWallet.Core.Extensions;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Utils;
+using System.Reactive.Linq;
+using ReactiveUI;
 
 namespace HodlWallet.Core.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
         Serilog.ILogger logger;
+
+        readonly CancellationTokenSource cts = new();
 
         bool isViewVisible = true;
 
@@ -308,17 +312,15 @@ namespace HodlWallet.Core.ViewModels
         void InitializePrecioAndWalletTimers()
         {
             // Run and schedule next times precio will be called
-            using var cts = new CancellationTokenSource();
-            Task.Factory.StartNew(async (options) =>
-            {
-                while (true)
+            Observable
+                .Interval(TimeSpan.FromMilliseconds(priceUpdateDelay), RxApp.TaskpoolScheduler)
+                .Subscribe(_ =>
                 {
                     if (!isViewVisible)
                     {
                         Debug.WriteLine("[InitializePrecioAndWalletTimers] Stopped timer.");
 
-                        cts.Cancel();
-                        break;
+                        return;
                     }
 
                     // Gets first BTC-USD rate.
@@ -329,10 +331,33 @@ namespace HodlWallet.Core.ViewModels
                         oldRate = newRate = rate.Rate;
                         Rate = (decimal)newRate;
                     }
+                }, cts.Token);
 
-                    await Task.Delay(priceUpdateDelay);
-                }
-            }, TaskCreationOptions.LongRunning, cts.Token);
+            //using var cts = new CancellationTokenSource();
+            //Task.Factory.StartNew(async (options) =>
+            //{
+            //    while (true)
+            //    {
+            //        if (!isViewVisible)
+            //        {
+            //            Debug.WriteLine("[InitializePrecioAndWalletTimers] Stopped timer.");
+
+            //            cts.Cancel();
+            //            break;
+            //        }
+
+            //        // Gets first BTC-USD rate.
+            //        var rate = PrecioService.Rate;
+            //        if (rate != null)
+            //        {
+            //            // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
+            //            oldRate = newRate = rate.Rate;
+            //            Rate = (decimal)newRate;
+            //        }
+
+            //        await Task.Delay(priceUpdateDelay);
+            //    }
+            //}, TaskCreationOptions.LongRunning, cts.Token);
         }
 
         void UpdateTransanctions()
@@ -460,12 +485,8 @@ namespace HodlWallet.Core.ViewModels
 
             WalletService.Wallet.Disconnect();
 
-            Task.Factory.StartNew(
-                () => WalletService.Wallet.Sync(),
-                WalletService.Wallet.Cts.Token,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
+            Observable
+                .Start(async () => await WalletService.Wallet.Sync(), RxApp.TaskpoolScheduler);
         }
 
         void Wallet_OnNewTransaction(object sender, TxEventArgs e)

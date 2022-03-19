@@ -74,7 +74,7 @@ namespace HodlWallet.UI.Views
 
             ViewModel.View_OnDisappearing();
 
-            BalanceNavigationTitleLabel.FadeTo(0, 50);
+            //BalanceNavigationTitleLabel.FadeTo(0, 50);
         }
 
         void SubscribeToMessages()
@@ -152,15 +152,15 @@ namespace HodlWallet.UI.Views
 
         void TransactionsScrollView_Scrolled(object sender, ScrolledEventArgs e)
         {
-            BalanceNavigationTitleLabel.Text = ViewModel.DisplaySymbol.ToString() + " " + ViewModel.DisplayBalance.ToString();
-            if (BalanceLabel.Bounds.Bottom < e.ScrollY)
-            {
-                BalanceNavigationTitleLabel.FadeTo(1, 100);
-            }
-            else
-            {
-                BalanceNavigationTitleLabel.FadeTo(0, 50);
-            }
+            //BalanceNavigationTitleLabel.Text = ViewModel.DisplaySymbol.ToString() + " " + ViewModel.DisplayBalance.ToString();
+            //if (BalanceLabel.Bounds.Bottom < e.ScrollY)
+            //{
+            //    BalanceNavigationTitleLabel.FadeTo(1, 100);
+            //}
+            //else
+            //{
+            //    BalanceNavigationTitleLabel.FadeTo(0, 50);
+            //}
         }
 
         async void Balance_Tapped(object sender, EventArgs args)

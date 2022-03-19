@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              BackgroundColor="{DynamicResource Bg}"
+             Title="{i18n:Translate Text=Home.title}"
              x:Class="HodlWallet.UI.Views.HomeView">
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
@@ -13,61 +14,64 @@
         <controls:HideableToolbarItem x:Name="SearchToolBarItem" IsVisible="False" IconImageSource="search" Clicked="Search_Clicked" />
         <controls:SyncingToolbarItem x:Name="SyncToolbarItem" IsVisible="False" Clicked="Sync_Clicked" />
     </ContentPage.ToolbarItems>
-    <Shell.TitleView>
+    <!--<Shell.TitleView>
         <Label x:Name="BalanceNavigationTitleLabel" VerticalOptions="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource Mono-Regular}" FontSize="Medium" Opacity="0.00" />
-    </Shell.TitleView>
+    </Shell.TitleView>-->
     <ContentPage.Content>
-        <StackLayout Margin="20,0,20,0">
-            <ScrollView x:Name="TransactionsScrollView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Scrolled="TransactionsScrollView_Scrolled">
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <FlexLayout Direction="Row">
-                        <StackLayout Orientation="Vertical">
-                            <Label x:Name="AccountNameLabel"
+        <FlexLayout Direction="Column">
+            <controls:BalanceHeader FlexLayout.Grow="1" />
+            <StackLayout Margin="20,0,20,0" FlexLayout.Grow="9">
+                <!--<ScrollView x:Name="TransactionsScrollView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Scrolled="TransactionsScrollView_Scrolled">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <FlexLayout Direction="Row">
+                            <StackLayout Orientation="Vertical">
+                                <Label x:Name="AccountNameLabel"
                                    Text="{Binding AccountName}"
                                    Style="{DynamicResource CustomLabel}"
                                    FontSize="Small"
                                    TextColor="{DynamicResource Fg2}" />
-                            <StackLayout x:Name="BalanceStackLayout" Orientation="Horizontal" Spacing="0">
-                                <Label Text="{Binding DisplaySymbol, StringFormat='{0} '}"
+                                <StackLayout x:Name="BalanceStackLayout" Orientation="Horizontal" Spacing="0">
+                                    <Label Text="{Binding DisplaySymbol, StringFormat='{0} '}"
                                        Style="{DynamicResource CustomLabel}"
                                        FontFamily="{StaticResource Mono-Bold}" />
-                                <Label x:Name="BalanceLabel"
+                                    <Label x:Name="BalanceLabel"
                                        Text="{Binding DisplayBalance}"
                                        Style="{DynamicResource CustomLabel}"
                                        FontFamily="{StaticResource Mono-Bold}"
                                        Margin="5,0,0,0" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Balance_Tapped" NumberOfTapsRequired="1" />
-                                </StackLayout.GestureRecognizers>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Balance_Tapped" NumberOfTapsRequired="1" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
                             </StackLayout>
-                        </StackLayout>
 
-                        <Label
+                            <Label
                             FlexLayout.Grow="1"
                                HorizontalTextAlignment="End"
                                Style="{DynamicResource CustomLabel}"
                                FontSize="Micro"
                                TextColor="{DynamicResource Fg2}"
                                FontFamily="{DynamicResource Mono-Regular}" >
-                            <Label.Text>
-                                <MultiBinding StringFormat='1 BTC = {0} {1:n}'>
-                                    <Binding Path="CurrencySymbol" />
-                                    <Binding Path="Rate" />
-                                </MultiBinding>
-                            </Label.Text>
-                        </Label>
-                    </FlexLayout>
+                                <Label.Text>
+                                    <MultiBinding StringFormat='1 BTC = {0} {1:n}'>
+                                        <Binding Path="CurrencySymbol" />
+                                        <Binding Path="Rate" />
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>
+                        </FlexLayout>
 
-                    <BoxView HeightRequest="5" />
+                        <BoxView HeightRequest="5" />
 
-                    <Label Text="{i18n:Translate Text=Transactions.title}" Style="{DynamicResource CustomLabel}" TextColor="{DynamicResource Fg2}" FontSize="Small" />
+                        <Label Text="{i18n:Translate Text=Transactions.title}" Style="{DynamicResource CustomLabel}" TextColor="{DynamicResource Fg2}" FontSize="Small" />
 
-                    <BoxView HeightRequest="5" />
+                        <BoxView HeightRequest="5" />
 
-                    <controls:TransactionCollectionView />
-                    <BoxView HeightRequest="10" />
-                </StackLayout>
-            </ScrollView>
-        </StackLayout>
+                        <controls:TransactionCollectionView />
+                        <BoxView HeightRequest="10" />
+                    </StackLayout>
+                </ScrollView>-->
+            </StackLayout>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

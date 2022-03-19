@@ -45,14 +45,17 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref balanceFiat, value);
         }
 
-        IAccount CurrentAccount => WalletService.Wallet.CurrentAccount;
-
         public BalanceHeaderViewModel()
+        {
+            WalletService.OnConfigured += WalletService_OnConfigured;
+        }
+
+        private void WalletService_OnConfigured(object sender, EventArgs e)
         {
             if (WalletService.IsStarted)
             {
                 UpdateBalanceLabels();
-                CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
+                WalletService.Wallet.CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
             }
             else WalletService.OnStarted += WalletService_OnStarted;
         }
@@ -66,12 +69,12 @@ namespace HodlWallet.Core.ViewModels
         {
             UpdateBalanceLabels();
 
-            CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
+            WalletService.Wallet.CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
         }
 
         void UpdateBalanceLabels()
         {
-            var accBalance = CurrentAccount.GetBalance();
+            var accBalance = WalletService.Wallet.CurrentAccount.GetBalance();
             Balance = $"{accBalance} BTC";
 
             var accBalanceFiat = ((decimal)PrecioService.Rate.Rate) * accBalance.ToDecimal(MoneyUnit.BTC);

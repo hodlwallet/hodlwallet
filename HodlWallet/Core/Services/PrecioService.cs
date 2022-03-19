@@ -43,6 +43,8 @@ using Refit;
 using HodlWallet.Core.Utils;
 using System.Net.Http;
 using System.Collections.ObjectModel;
+using System.Reactive.Linq;
+using ReactiveUI;
 
 [assembly: Dependency(typeof(PrecioService))]
 namespace HodlWallet.Core.Services
@@ -249,39 +251,22 @@ namespace HodlWallet.Core.Services
             StartHttpTimers();
         }
 
-        public void StartHttpTimers()
+        public async void StartHttpTimers()
         {
             Debug.WriteLine("[StartHttpTimers] Started");
+            //FetchPricesForAllPeriods();
+            
+            await FetchCurrencies();
+            await FetchRate();
 
-            Task.Factory.StartNew(async (options) =>
-            {
-                while (true)
-                {
-                    FetchPricesForAllPeriods();
+            Observable
+                .Interval(TimeSpan.FromMilliseconds(httpRequestsDelay), RxApp.MainThreadScheduler)
+                .Subscribe(_ => FetchPricesForAllPeriods());
 
-                    await Task.Delay(httpRequestsDelay);
-                }
-            }, TaskCreationOptions.LongRunning, CancellationToken.None);
+            Observable
+                .Interval(TimeSpan.FromMilliseconds(httpRequestsDelay), RxApp.MainThreadScheduler)
+                .Subscribe(async _ => await FetchCurrencies());
 
-            /*Task.Factory.StartNew(async (options) =>
-            {
-                while (true)
-                {
-                    await FetchRate();
-
-                    await Task.Delay(btcPriceDelay);
-                }
-            }, TaskCreationOptions.LongRunning, CancellationToken.None);*/
-
-            Task.Factory.StartNew(async (options) =>
-            {
-                while (true)
-                {
-                    await FetchCurrencies();
-
-                    await Task.Delay(btcPriceDelay);
-                }
-            }, TaskCreationOptions.LongRunning, CancellationToken.None);
         }
 
         void FetchPricesForAllPeriods()
@@ -329,9 +314,10 @@ namespace HodlWallet.Core.Services
 
         async Task FetchCurrencies()
         {
-            Debug.WriteLine("[DEBUGIN Currencies] Into FetchCurrencies");
+            Debug.WriteLine("[FetchCurrencies] Into FetchCurrencies");
+
             var CurrencyEntitiesTemp = await PrecioHttpService.GetRates();
-            await Task.Delay(1_000);
+
             if (CurrencyEntitiesTemp.Count > 0)
             {
                 CurrencyEntities.Clear();

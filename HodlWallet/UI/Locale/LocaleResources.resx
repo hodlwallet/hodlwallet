@@ -990,4 +990,8 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="Receive.clear" xml:space="preserve">
     <value>C L E A R</value>
   </data>
+  <data name="Home.title" xml:space="preserve">
+    <value>Overview</value>
+    <comment>HomeView title</comment>
+  </data>
 </root>
