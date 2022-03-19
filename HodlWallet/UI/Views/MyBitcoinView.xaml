@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HodlWallet.UI.Views.MyBitcoinView"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              BackgroundColor="{DynamicResource Bg}"
              Title="{i18n:Translate Text=MyBitcoin.title}">
@@ -11,24 +12,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <FlexLayout Direction="Column">
-            <StackLayout FlexLayout.Grow="1" Orientation="Horizontal" BackgroundColor="{DynamicResource FgSuccess}">
-                <StackLayout Orientation="Horizontal">
-                    <BoxView HeightRequest="0" WidthRequest="30" />
-                    <Image Source="wallet.png" HeightRequest="40" WidthRequest="40" />
-                </StackLayout>
-                <StackLayout Spacing="0" WidthRequest="110" Padding="10,0,0,0">
-                    <BoxView HeightRequest="10" />
-                    <Label Text="{i18n:Translate Text=BalanceHeader.total}" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Sans-Bold}" Margin="0,3,0,0" />
-                    <Label Text="{i18n:Translate Text=BalanceHeader.balance}" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Sans-Bold}" Margin="0,-7,0,0" />
-                    <BoxView HeightRequest="10" />
-                </StackLayout>
-                <StackLayout Spacing="0">
-                    <BoxView HeightRequest="10" />
-                    <Label Text="$14,346.02" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Mono-Bold}" FontSize="Subtitle" Margin="0,3,0,0" />
-                    <Label Text="0.00033791 BTC" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Mono-Bold}" FontSize="Small" Margin="0,-7,0,0" />
-                    <BoxView HeightRequest="10" />
-                </StackLayout>
-            </StackLayout>
+            <controls:BalanceHeader FlexLayout.Grow="1" />
 
             <StackLayout FlexLayout.Grow="2.5" BackgroundColor="{DynamicResource Bg2}">
                 <StackLayout HeightRequest="80" VerticalOptions="End">
