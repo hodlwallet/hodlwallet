@@ -79,6 +79,11 @@ namespace HodlWallet.Core.ViewModels
             AddAmountCommand = new Command(AddAmount);
             ClearCommand = new Command(Clear);
 
+            RefreshAddressFromWalletService();
+        }
+
+        public void RefreshAddressFromWalletService()
+        {
             if (WalletService.IsStarted) SetAddressFromWalletService();
             else WalletService.OnStarted += WalletService_OnStarted;
         }
