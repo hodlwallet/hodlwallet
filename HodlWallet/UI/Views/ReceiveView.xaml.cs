@@ -50,6 +50,7 @@ namespace HodlWallet.UI.Views
 
         protected override void OnAppearing()
         {
+            ViewModel.RefreshAddressFromWalletService();
             Debug.WriteLine($"[ReceiveView][OnAppearing] Showing Address: {ViewModel.Address}");
 
             base.OnAppearing();

@@ -135,7 +135,8 @@ namespace HodlWallet.UI.Views
             if (!(await prompt)) return;
 
             ViewModel.SwitchAccount(account);
-
+            // Hide the flyout menu
+            Shell.Current.FlyoutIsPresented = false;
             await this.DisplayToast($"Switched account to {account.Id}");
         }
 

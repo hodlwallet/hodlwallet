@@ -72,7 +72,11 @@ namespace HodlWallet.Core.ViewModels
         {
             ShowShareIntentCommand = new Command(ShowShareIntent);
             CloseCommand = new Command(Close);
+            RefreshAddressFromWalletService();
+        }
 
+        public void RefreshAddressFromWalletService()
+        {
             if (WalletService.IsStarted)
             {
                 GetAddressFromWallet();
