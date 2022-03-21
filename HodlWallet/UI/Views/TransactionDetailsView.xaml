@@ -57,7 +57,7 @@
                                Text="{Binding AddressText}" />
                         <Label FontSize="Medium"
                                Style="{StaticResource TransactionDetailLabel}"
-                               Text="{Binding CreationTimeText}" />
+                               Text="{Binding CreatedAtText}" />
                         <Label FontSize="Medium"
                                Style="{StaticResource TransactionDetailLabel}"
                                Text="{Binding AmountText}"
