@@ -159,7 +159,6 @@ namespace HodlWallet.Core.Services
             Set(PIN_KEY, pin);
         }
 
-
         public static string GetPassword()
         {
             return Get(PASSWORD_KEY);
@@ -209,22 +208,20 @@ namespace HodlWallet.Core.Services
             Set(accountColorKey, color);
         }
 
-        public static string GetCurrencyCode()
+        public static string GetFiatCurrencyCode()
         {
             string currentCode = Get(FIAT_CURRENCY_CODE_KEY);
             return !string.IsNullOrEmpty(currentCode) ? currentCode : Constants.DEFAULT_FIAT_CURRENCY_CODE;
         }
 
-        public static void SetCurrencyCode(string currencyCode)
+        public static void SetFiatCurrencyCode(string currencyCode)
         {
             Set(FIAT_CURRENCY_CODE_KEY, currencyCode);
         }
 
-        public static DisplayCurrencyType GetCurrencyType()
+        public static DisplayCurrencyType GetDisplayCurrencyType()
         {
-            string currencyType = Get(DISPLAY_CURRENCY_TYPE_KEY);
-
-            return currencyType switch
+            return Get(DISPLAY_CURRENCY_TYPE_KEY) switch
             {
                 "btc" => DisplayCurrencyType.BTC,
                 "satoshi" => DisplayCurrencyType.Satoshi,
@@ -233,7 +230,7 @@ namespace HodlWallet.Core.Services
             };
         }
 
-        public static void SetCurrencyCode(DisplayCurrencyType displayCurrencyType)
+        public static void SetDisplayCurrencyType(DisplayCurrencyType displayCurrencyType)
         {
             switch (displayCurrencyType)
             {

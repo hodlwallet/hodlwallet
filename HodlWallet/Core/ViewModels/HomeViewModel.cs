@@ -213,7 +213,7 @@ namespace HodlWallet.Core.ViewModels
 
         void DisplayCurrentBalance()
         {
-            CurrencySymbol = CurrencyUtils.GetSymbol(SecureStorageService.GetCurrencyCode());
+            CurrencySymbol = CurrencyUtils.GetSymbol(SecureStorageService.GetFiatCurrencyCode());
             if (Currency == Constants.BTC_LABEL)
             {
                 DisplayBalance = Balance.ToString();
@@ -278,7 +278,7 @@ namespace HodlWallet.Core.ViewModels
             if (Currency == Constants.BTC_LABEL)
             {
                 IsBtcEnabled = false;
-                Currency = SecureStorageService.GetCurrencyCode();
+                Currency = SecureStorageService.GetFiatCurrencyCode();
                 DisplayBalance = BalanceFiat.ToString("n2");
             }
             else

@@ -76,7 +76,7 @@ namespace HodlWallet.Core.ViewModels
 
         void SaveSelectedCurrency()
         {
-            SecureStorageService.SetCurrencyCode(SelectedCurrency.Code);
+            SecureStorageService.SetFiatCurrencyCode(SelectedCurrency.Code);
             //SetSelectedCurrency();
         }
 

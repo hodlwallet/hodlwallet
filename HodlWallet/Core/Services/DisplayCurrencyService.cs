@@ -57,7 +57,14 @@ namespace HodlWallet.Core.Services
 
         public void Load()
         {
-            throw new System.NotImplementedException();
+            FiatCurrencyCode = SecureStorageService.GetFiatCurrencyCode();
+            CurrencyType = SecureStorageService.GetDisplayCurrencyType();
+        }
+
+        public void Save()
+        {
+            SecureStorageService.SetFiatCurrencyCode(FiatCurrencyCode);
+            SecureStorageService.SetDisplayCurrencyType(CurrencyType);
         }
     }
 }

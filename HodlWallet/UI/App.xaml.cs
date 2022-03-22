@@ -21,16 +21,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Reactive.Linq;
 using System.Threading;
 
+using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
 using HodlWallet.UI.Locale;
-using System.Reactive.Linq;
-using ReactiveUI;
 
 namespace HodlWallet.UI
 {
@@ -38,6 +38,7 @@ namespace HodlWallet.UI
     {
         IWalletService WalletService => DependencyService.Get<IWalletService>();
         IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
+        IDisplayCurrencyService DisplayCurrencyService => DependencyService.Get<IDisplayCurrencyService>();
         ILocalize Localize => DependencyService.Get<ILocalize>();
         ILegacySecureKeyService LegacySecureKeyService => DependencyService.Get<ILegacySecureKeyService>();
         IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
@@ -93,6 +94,8 @@ namespace HodlWallet.UI
             Observable
                 .Start(PrecioService.Start, RxApp.TaskpoolScheduler)
                 .Subscribe(cts.Token);
+
+            DisplayCurrencyService.Load();
         }
 
         void RegisterServices()

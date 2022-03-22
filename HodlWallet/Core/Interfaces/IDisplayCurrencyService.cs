@@ -34,5 +34,7 @@ namespace HodlWallet.Core.Interfaces
         public string FiatCurrencyCode { get; set; }
 
         public void Load();
+
+        public void Save();
     }
 }
