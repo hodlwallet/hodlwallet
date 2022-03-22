@@ -34,8 +34,7 @@ namespace HodlWallet.Core.Services
 {
     public enum DisplayCurrencyType
     {
-        BTC,
-        Satoshi,
+        Bitcoin,
         Fiat
     }
 
@@ -55,15 +54,24 @@ namespace HodlWallet.Core.Services
             set => this.RaiseAndSetIfChanged(ref fiatCurrencyCode, value);
         }
 
+        string bitcoinCurrencyCode;
+        public string BitcoinCurrencyCode
+        {
+            get => bitcoinCurrencyCode;
+            set => this.RaiseAndSetIfChanged(ref bitcoinCurrencyCode, value);
+        }
+
         public void Load()
         {
             FiatCurrencyCode = SecureStorageService.GetFiatCurrencyCode();
+            BitcoinCurrencyCode = SecureStorageService.GetBitcoinCurrencyCode();
             CurrencyType = SecureStorageService.GetDisplayCurrencyType();
         }
 
         public void Save()
         {
             SecureStorageService.SetFiatCurrencyCode(FiatCurrencyCode);
+            SecureStorageService.SetBitcoinCurrencyCode(BitcoinCurrencyCode);
             SecureStorageService.SetDisplayCurrencyType(CurrencyType);
         }
     }

@@ -33,7 +33,7 @@
                     <Label x:Name="balanceLabel" Grid.Row="0" Grid.Column="0" Text="{Binding Balance}" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Mono-Bold}" FontSize="Subtitle" Margin="0,3,0,0" />
                     <Label x:Name="balanceFiatLabel" Grid.Row="1" Grid.Column="0" Text="{Binding BalanceFiat}" TextColor="{DynamicResource Bg}" FontFamily="{StaticResource Key=Mono-Bold}" FontSize="Small" Margin="0,-7,0,0" />
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnBalanceGrid_Tapped" />
+                        <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}" NumberOfTapsRequired="1" />
                     </Grid.GestureRecognizers>
                 </Grid>
                 <BoxView HeightRequest="10" />

@@ -31,6 +31,8 @@ using Xamarin.Forms.Xaml;
 using Xamarin.CommunityToolkit.Extensions;
 
 using HodlWallet.Core.ViewModels;
+using System.ComponentModel;
+using HodlWallet.Core.Services;
 
 namespace HodlWallet.UI.Controls
 {
@@ -38,34 +40,26 @@ namespace HodlWallet.UI.Controls
     public partial class BalanceHeader : ContentView
     {
         BalanceHeaderViewModel ViewModel => BindingContext as BalanceHeaderViewModel;
-        bool toggle = true;
 
         public BalanceHeader()
         {
             InitializeComponent();
+
+            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+
+            ToggleTo(ViewModel.CurrencyType);
         }
 
-        void BalanceHeader_Appearing(object sender, EventArgs e)
+        void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            Debug.WriteLine("[BalanceHeader_Appearing] Find out the current display currency");
+            if (!e.PropertyName.Equals(nameof(ViewModel.CurrencyType))) return;
+
+            ToggleTo(ViewModel.CurrencyType);
         }
 
-        void OnBalanceGrid_Tapped(object sender, EventArgs e)
+        void ToggleTo(DisplayCurrencyType displayCurrencyType)
         {
-            Debug.WriteLine("[OnBalanceLabels_Tapped] Flipping default currency");
-
-            if (toggle)
-            {
-                Grid.SetRow(balanceLabel, 1);
-                Grid.SetRow(balanceFiatLabel, 0);
-
-                balanceLabel.Margin = new Thickness(0, -7, 0, 0);
-                balanceLabel.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
-
-                balanceFiatLabel.Margin = new Thickness(0, 3, 0, 0);
-                balanceFiatLabel.FontSize = Device.GetNamedSize(NamedSize.Subtitle, typeof(Label));
-            }
-            else
+            if (displayCurrencyType == DisplayCurrencyType.Bitcoin)
             {
                 Grid.SetRow(balanceLabel, 0);
                 Grid.SetRow(balanceFiatLabel, 1);
@@ -76,8 +70,17 @@ namespace HodlWallet.UI.Controls
                 balanceFiatLabel.Margin = new Thickness(0, -7, 0, 0);
                 balanceFiatLabel.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
             }
+            else
+            {
+                Grid.SetRow(balanceLabel, 1);
+                Grid.SetRow(balanceFiatLabel, 0);
 
-            toggle = !toggle;
+                balanceLabel.Margin = new Thickness(0, -7, 0, 0);
+                balanceLabel.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+
+                balanceFiatLabel.Margin = new Thickness(0, 3, 0, 0);
+                balanceFiatLabel.FontSize = Device.GetNamedSize(NamedSize.Subtitle, typeof(Label));
+            }
         }
     }
 }

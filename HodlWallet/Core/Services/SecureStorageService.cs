@@ -93,6 +93,7 @@ namespace HodlWallet.Core.Services
         const string NETWORK_KEY = "network";
         const string DISPLAY_CURRENCY_TYPE_KEY = "display-currency-type";
         const string FIAT_CURRENCY_CODE_KEY = "fiat-currency-code";
+        const string BITCOIN_CURRENCY_CODE_KEY = "bitcoin-currency-code";
 
         /*
          * Key string format to identify the color bellowing to an account:
@@ -223,30 +224,40 @@ namespace HodlWallet.Core.Services
         {
             return Get(DISPLAY_CURRENCY_TYPE_KEY) switch
             {
-                "btc" => DisplayCurrencyType.BTC,
-                "satoshi" => DisplayCurrencyType.Satoshi,
+                "bitcoin" => DisplayCurrencyType.Bitcoin,
                 "fiat" => DisplayCurrencyType.Fiat,
-                _ => DisplayCurrencyType.BTC,
+                _ => DisplayCurrencyType.Bitcoin,
             };
+        }
+
+        public static void SetBitcoinCurrencyCode(string currencyCode)
+        {
+            Set(BITCOIN_CURRENCY_CODE_KEY, currencyCode);
         }
 
         public static void SetDisplayCurrencyType(DisplayCurrencyType displayCurrencyType)
         {
             switch (displayCurrencyType)
             {
-                case DisplayCurrencyType.BTC:
-                    Set(DISPLAY_CURRENCY_TYPE_KEY, "btc");
-                    break;
-                case DisplayCurrencyType.Satoshi:
-                    Set(DISPLAY_CURRENCY_TYPE_KEY, "satoshi");
+                case DisplayCurrencyType.Bitcoin:
+                    Set(DISPLAY_CURRENCY_TYPE_KEY, "bitcoin");
                     break;
                 case DisplayCurrencyType.Fiat:
                     Set(DISPLAY_CURRENCY_TYPE_KEY, "fiat");
                     break;
                 default:
-                    Set(DISPLAY_CURRENCY_TYPE_KEY, "btc");
+                    Set(DISPLAY_CURRENCY_TYPE_KEY, "bitcoin");
                     break;
             }
+        }
+
+        public static string GetBitcoinCurrencyCode()
+        {
+            var code = Get(BITCOIN_CURRENCY_CODE_KEY);
+
+            if (string.IsNullOrEmpty(code)) return "btc";
+
+            return code;
         }
 
         public static bool UserDidSetup()

@@ -27,6 +27,9 @@ using NBitcoin;
 using ReactiveUI;
 
 using Liviano.Interfaces;
+using System.Windows.Input;
+using Xamarin.Forms;
+using HodlWallet.Core.Services;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -46,13 +49,42 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref balanceFiat, value);
         }
 
+        DisplayCurrencyType currencyType;
+        public DisplayCurrencyType CurrencyType
+        {
+            get => currencyType;
+            set => SetProperty(ref currencyType, value);
+        }
+
         IAccount CurrentAccount => WalletService.Wallet.CurrentAccount;
         decimal AccountBalance => CurrentAccount.GetBalance().ToDecimal(MoneyUnit.BTC);
 
+        public ICommand SwitchCurrencyCommand { get; }
+
         public BalanceHeaderViewModel()
         {
+            SwitchCurrencyCommand = new Command(SwitchCurrency);
+
             if (WalletService.IsStarted) Setup();
             else WalletService.OnStarted += (_, _) => Setup();
+
+            DisplayCurrencyService
+                .WhenAnyValue(service => service.CurrencyType)
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Subscribe(_ => CurrencyType = DisplayCurrencyService.CurrencyType);
+        }
+
+        void SwitchCurrency(object _)
+        {
+            var current = DisplayCurrencyService.CurrencyType;
+
+            if (current == DisplayCurrencyType.Bitcoin)
+                DisplayCurrencyService.CurrencyType = DisplayCurrencyType.Fiat;
+            else
+                DisplayCurrencyService.CurrencyType = DisplayCurrencyType.Bitcoin;
+
+            CurrencyType = DisplayCurrencyService.CurrencyType;
+            DisplayCurrencyService.Save();
         }
 
         void Setup()
@@ -70,8 +102,6 @@ namespace HodlWallet.Core.ViewModels
         void UpdateBalanceFiat()
         {
             BalanceFiat = $"{decimal.Parse(PrecioService.Precio.CRaw) * AccountBalance:C}";
-
-            Console.WriteLine($"Balnace Fiat: {BalanceFiat}");
         }
 
         void UpdateBalance()
