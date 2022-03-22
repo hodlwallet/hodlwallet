@@ -1,5 +1,5 @@
 ﻿//
-// IPrecioService.cs
+// DisplayCurrencyService.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -23,16 +23,41 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using Liviano.Services.Models;
+using ReactiveUI;
+using Xamarin.Forms;
 
-namespace HodlWallet.Core.Interfaces
+using HodlWallet.Core.Interfaces;
+using HodlWallet.Core.Services;
+
+[assembly: Dependency(typeof(DisplayCurrencyService))]
+namespace HodlWallet.Core.Services
 {
-    public interface IPrecioService
+    public enum DisplayCurrencyType
     {
-        public CurrencyEntity[] Rates { get; set; }
+        BTC,
+        Satoshi,
+        Fiat
+    }
 
-        public PrecioEntity Precio { get; set; }
+    public class DisplayCurrencyService : ReactiveObject, IDisplayCurrencyService
+    {
+        DisplayCurrencyType currencyType;
+        public DisplayCurrencyType CurrencyType
+        {
+            get => currencyType;
+            set => this.RaiseAndSetIfChanged(ref currencyType, value);
+        }
 
-        void Start();
+        string fiatCurrencyCode;
+        public string FiatCurrencyCode
+        {
+            get => fiatCurrencyCode;
+            set => this.RaiseAndSetIfChanged(ref fiatCurrencyCode, value);
+        }
+
+        public void Load()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

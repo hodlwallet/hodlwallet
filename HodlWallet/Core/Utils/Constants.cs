@@ -29,7 +29,7 @@ namespace HodlWallet.Core.Utils
         // Precio API
         public const string PRECIO_HOST_URL = "https://precio.bitstop.co";
         public const string PRECIO_WS_HOST_URL = "wss://precio.bitstop.co";
-        public static readonly string[] CURRENCY_CODES = { "USD" };
+        public static readonly string DEFAULT_FIAT_CURRENCY_CODE = "USD";
         public static readonly string EMPTY_CURRENCY_SYMBOL_KEY = "EMPCKEY";
         static readonly string EMPTY_CURRENCY_SYMBOL_VALUE = "";
         public const string BTC_LABEL = "BTC";
@@ -43,7 +43,8 @@ namespace HodlWallet.Core.Utils
             { "JPY", "\u00A5" }, //Japanese yen  - HTML Entity
             { "CNY", "\u00A5" }, //Chinese Renminbi yuan
             { "KRW", "\u20A9" }, // South Korean Won
-            { BTC_LABEL, "\u20BF" }, // Bitcoin
+            { "BTC", "\u20BF" }, // Bitcoin
+            { "SAT", "SAT" },    // Satoshi
             { "BCH", "Ƀ" },      // Bitcoin Cash
             { "CAD", "CA$" },    //Canadian dollar
             { "AUD", "AU$" },    //Australian dollar

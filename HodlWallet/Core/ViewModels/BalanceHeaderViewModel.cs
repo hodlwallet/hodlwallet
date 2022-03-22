@@ -21,9 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Specialized;
+using System.Reactive.Linq;
 
 using NBitcoin;
+using ReactiveUI;
 
 using Liviano.Interfaces;
 
@@ -31,15 +32,53 @@ namespace HodlWallet.Core.ViewModels
 {
     class BalanceHeaderViewModel : BaseViewModel
     {
-        //void UpdateBalanceLabels()
-        //{
-        //    var accBalance = WalletService.Wallet.CurrentAccount.GetBalance();
-        //    Balance = $"{accBalance} BTC";
+        string balance;
+        public string Balance
+        {
+            get => balance;
+            set => SetProperty(ref balance, value);
+        }
 
-        //    var accBalanceFiat = ((decimal)PrecioService.Rate.Rate) * accBalance.ToDecimal(MoneyUnit.BTC);
+        string balanceFiat;
+        public string BalanceFiat
+        {
+            get => balanceFiat;
+            set => SetProperty(ref balanceFiat, value);
+        }
 
-        //    if (PrecioService.Rate.Code == "USD") BalanceFiat = accBalanceFiat.ToString("C");
-        //    else BalanceFiat = $"{PrecioService.Rate.Code} {accBalanceFiat}";
-        //}
+        IAccount CurrentAccount => WalletService.Wallet.CurrentAccount;
+        decimal AccountBalance => CurrentAccount.GetBalance().ToDecimal(MoneyUnit.BTC);
+
+        public BalanceHeaderViewModel()
+        {
+            if (WalletService.IsStarted) Setup();
+            else WalletService.OnStarted += (_, _) => Setup();
+        }
+
+        void Setup()
+        {
+            PrecioService
+                .WhenAnyValue(service => service.Precio)
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Subscribe(_ => UpdateBalanceFiat());
+
+            CurrentAccount.Txs.CollectionChanged += (_, _) => UpdateBalance();
+
+            UpdateBalance();
+        }
+
+        void UpdateBalanceFiat()
+        {
+            BalanceFiat = $"{decimal.Parse(PrecioService.Precio.CRaw) * AccountBalance:C}";
+
+            Console.WriteLine($"Balnace Fiat: {BalanceFiat}");
+        }
+
+        void UpdateBalance()
+        {
+            Balance = $"{AccountBalance} BTC";
+
+            UpdateBalanceFiat();
+        }
     }
 }

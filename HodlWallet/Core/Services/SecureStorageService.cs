@@ -91,7 +91,8 @@ namespace HodlWallet.Core.Services
         const string PASSWORD_KEY = "password";
         const string MNEMONIC_KEY = "mnemonic";
         const string NETWORK_KEY = "network";
-        const string CURRENCY_CODE_KEY = "currency-code";
+        const string CURRENCY_TYPE_KEY = "currency-type";
+        const string FIAT_CURRENCY_CODE_KEY = "fiat-currency-code";
 
         /*
          * Key string format to identify the color bellowing to an account:
@@ -210,13 +211,45 @@ namespace HodlWallet.Core.Services
 
         public static string GetCurrencyCode()
         {
-            string currentCode = Get(CURRENCY_CODE_KEY);
-            return !string.IsNullOrEmpty(currentCode) ? currentCode : Constants.CURRENCY_CODES[0];
+            string currentCode = Get(FIAT_CURRENCY_CODE_KEY);
+            return !string.IsNullOrEmpty(currentCode) ? currentCode : Constants.DEFAULT_FIAT_CURRENCY_CODE;
         }
 
         public static void SetCurrencyCode(string currencyCode)
         {
-            Set(CURRENCY_CODE_KEY, currencyCode);
+            Set(FIAT_CURRENCY_CODE_KEY, currencyCode);
+        }
+
+        public static DisplayCurrencyType GetCurrencyType()
+        {
+            string currencyType = Get(CURRENCY_TYPE_KEY);
+
+            return currencyType switch
+            {
+                "btc" => DisplayCurrencyType.BTC,
+                "satoshi" => DisplayCurrencyType.Satoshi,
+                "fiat" => DisplayCurrencyType.Fiat,
+                _ => DisplayCurrencyType.BTC,
+            };
+        }
+
+        public static void SetCurrencyCode(DisplayCurrencyType displayCurrencyType)
+        {
+            switch (displayCurrencyType)
+            {
+                case DisplayCurrencyType.BTC:
+                    Set(CURRENCY_TYPE_KEY, "btc");
+                    break;
+                case DisplayCurrencyType.Satoshi:
+                    Set(CURRENCY_TYPE_KEY, "satoshi");
+                    break;
+                case DisplayCurrencyType.Fiat:
+                    Set(CURRENCY_TYPE_KEY, "fiat");
+                    break;
+                default:
+                    Set(CURRENCY_TYPE_KEY, "btc");
+                    break;
+            }
         }
 
         public static bool UserDidSetup()

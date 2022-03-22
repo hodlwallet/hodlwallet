@@ -29,6 +29,8 @@ using HodlWallet.Core.Services;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
 using HodlWallet.UI.Locale;
+using System.Reactive.Linq;
+using ReactiveUI;
 
 namespace HodlWallet.UI
 {
@@ -40,7 +42,7 @@ namespace HodlWallet.UI
         ILegacySecureKeyService LegacySecureKeyService => DependencyService.Get<ILegacySecureKeyService>();
         IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
 
-        CancellationTokenSource Cts { get; set; }
+        readonly CancellationTokenSource cts = new();
 
         public App()
         {
@@ -51,8 +53,6 @@ namespace HodlWallet.UI
 #if WIPE_WALLET
             SecureStorageService.RemoveAll();
 #endif
-
-            Cts ??= new CancellationTokenSource();
 
             RegisterServices();
 
@@ -90,7 +90,9 @@ namespace HodlWallet.UI
         {
             base.OnStart();
 
-            PrecioService.Start();
+            Observable
+                .Start(PrecioService.Start, RxApp.TaskpoolScheduler)
+                .Subscribe(cts.Token);
         }
 
         void RegisterServices()

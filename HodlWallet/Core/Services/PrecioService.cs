@@ -24,30 +24,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Net.WebSockets;
+using System.Reactive.Linq;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
-using Xamarin.Forms;
 using Liviano.Services;
+using Liviano.Services.Models;
+using ReactiveUI;
+using Xamarin.Forms;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
-using HodlWallet.Core.Models;
-using Newtonsoft.Json;
-using Refit;
-using HodlWallet.Core.Utils;
-using System.Net.Http;
-using System.Collections.ObjectModel;
-using System.Reactive.Linq;
-using ReactiveUI;
-
-using Liviano.Services.Models;
 
 [assembly: Dependency(typeof(PrecioService))]
 namespace HodlWallet.Core.Services
@@ -74,11 +60,11 @@ namespace HodlWallet.Core.Services
         {
             service
                 .WhenAnyValue(service => service.Rates)
-                .Subscribe(x => Rates = service.Rates);
+                .Subscribe(_ => Rates = service.Rates);
 
             service
                 .WhenAnyValue(service => service.Precio)
-                .Subscribe(x => Precio = service.Precio);
+                .Subscribe(_ => Precio = service.Precio);
         }
 
         public void Start()

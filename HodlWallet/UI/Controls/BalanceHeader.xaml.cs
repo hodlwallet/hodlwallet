@@ -23,8 +23,12 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
+using System.Diagnostics;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.CommunityToolkit.Extensions;
 
 using HodlWallet.Core.ViewModels;
 
@@ -34,10 +38,46 @@ namespace HodlWallet.UI.Controls
     public partial class BalanceHeader : ContentView
     {
         BalanceHeaderViewModel ViewModel => BindingContext as BalanceHeaderViewModel;
+        bool toggle = true;
 
         public BalanceHeader()
         {
             InitializeComponent();
+        }
+
+        void BalanceHeader_Appearing(object sender, EventArgs e)
+        {
+            Debug.WriteLine("[BalanceHeader_Appearing] Find out the current display currency");
+        }
+
+        void OnBalanceGrid_Tapped(object sender, EventArgs e)
+        {
+            Debug.WriteLine("[OnBalanceLabels_Tapped] Flipping default currency");
+
+            if (toggle)
+            {
+                Grid.SetRow(balanceLabel, 1);
+                Grid.SetRow(balanceFiatLabel, 0);
+
+                balanceLabel.Margin = new Thickness(0, -7, 0, 0);
+                balanceLabel.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+
+                balanceFiatLabel.Margin = new Thickness(0, 3, 0, 0);
+                balanceFiatLabel.FontSize = Device.GetNamedSize(NamedSize.Subtitle, typeof(Label));
+            }
+            else
+            {
+                Grid.SetRow(balanceLabel, 0);
+                Grid.SetRow(balanceFiatLabel, 1);
+
+                balanceLabel.Margin = new Thickness(0, 3, 0, 0);
+                balanceLabel.FontSize = Device.GetNamedSize(NamedSize.Subtitle, typeof(Label));
+
+                balanceFiatLabel.Margin = new Thickness(0, -7, 0, 0);
+                balanceFiatLabel.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+            }
+
+            toggle = !toggle;
         }
     }
 }
