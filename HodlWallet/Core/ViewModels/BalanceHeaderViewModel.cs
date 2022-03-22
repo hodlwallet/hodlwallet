@@ -31,56 +31,15 @@ namespace HodlWallet.Core.ViewModels
 {
     class BalanceHeaderViewModel : BaseViewModel
     {
-        string balance;
-        public string Balance
-        {
-            get => balance;
-            set => SetProperty(ref balance, value);
-        }
+        //void UpdateBalanceLabels()
+        //{
+        //    var accBalance = WalletService.Wallet.CurrentAccount.GetBalance();
+        //    Balance = $"{accBalance} BTC";
 
-        string balanceFiat;
-        public string BalanceFiat
-        {
-            get => balanceFiat;
-            set => SetProperty(ref balanceFiat, value);
-        }
+        //    var accBalanceFiat = ((decimal)PrecioService.Rate.Rate) * accBalance.ToDecimal(MoneyUnit.BTC);
 
-        public BalanceHeaderViewModel()
-        {
-            WalletService.OnConfigured += WalletService_OnConfigured;
-        }
-
-        private void WalletService_OnConfigured(object sender, EventArgs e)
-        {
-            if (WalletService.IsStarted)
-            {
-                UpdateBalanceLabels();
-                WalletService.Wallet.CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
-            }
-            else WalletService.OnStarted += WalletService_OnStarted;
-        }
-
-        void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            UpdateBalanceLabels();
-        }
-
-        void WalletService_OnStarted(object sender, EventArgs e)
-        {
-            UpdateBalanceLabels();
-
-            WalletService.Wallet.CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
-        }
-
-        void UpdateBalanceLabels()
-        {
-            var accBalance = WalletService.Wallet.CurrentAccount.GetBalance();
-            Balance = $"{accBalance} BTC";
-
-            var accBalanceFiat = ((decimal)PrecioService.Rate.Rate) * accBalance.ToDecimal(MoneyUnit.BTC);
-
-            if (PrecioService.Rate.Code == "USD") BalanceFiat = accBalanceFiat.ToString("C");
-            else balanceFiat = $"{PrecioService.Rate.Code} {accBalanceFiat}";
-        }
+        //    if (PrecioService.Rate.Code == "USD") BalanceFiat = accBalanceFiat.ToString("C");
+        //    else BalanceFiat = $"{PrecioService.Rate.Code} {accBalanceFiat}";
+        //}
     }
 }

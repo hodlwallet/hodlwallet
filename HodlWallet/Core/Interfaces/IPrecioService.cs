@@ -32,37 +32,5 @@ namespace HodlWallet.Core.Interfaces
 {
     public interface IPrecioService
     {
-        bool IsStarted { get; }
-
-        BtcPriceChangeEntity Btc1dChange { get; set; }
-        BtcPriceChangeEntity Btc1hChange { get; set; }
-        BtcPriceChangeEntity Btc1mChange { get; set; }
-        BtcPriceChangeEntity Btc1wChange { get; set; }
-        BtcPriceChangeEntity Btc1yChange { get; set; }
-        BtcPriceChangeEntity BtcAllChange { get; set; }
-
-        BtcPriceEntity BtcPrice { get; set; }
-
-        List<List<object>> ExchangesLeaderboard { get; set; }
-
-        MarketCapEntity MarketCap { get; set; }
-
-        CurrencyEntity Rate { get; set; }
-
-        PricesEntity Prices1d { get; set; }
-        PricesEntity Prices1h { get; set; }
-        PricesEntity Prices1m { get; set; }
-        PricesEntity Prices1w { get; set; }
-        PricesEntity Prices1y { get; set; }
-        PricesEntity PricesAll { get; set; }
-
-        List<CurrencyEntity> CurrencyEntities { get; set; }
-
-        void StartHttpTimers();
-        void Init();
-
-        void GetRateCurrency();
-
-        event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -324,13 +324,13 @@ namespace HodlWallet.Core.ViewModels
                     }
 
                     // Gets first BTC-USD rate.
-                    var rate = PrecioService.Rate;
-                    if (rate != null)
-                    {
-                        // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
-                        oldRate = newRate = rate.Rate;
-                        Rate = (decimal)newRate;
-                    }
+                    //var rate = PrecioService.Rate;
+                    //if (rate != null)
+                    //{
+                    //    // Sets both old and new rate for comparison on timer to optimize fiat currency updates based on current rate.
+                    //    oldRate = newRate = rate.Rate;
+                    //    Rate = (decimal)newRate;
+                    //}
                 }, cts.Token);
 
             //using var cts = new CancellationTokenSource();

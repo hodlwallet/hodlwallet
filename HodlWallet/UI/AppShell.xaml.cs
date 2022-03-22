@@ -117,7 +117,7 @@ namespace HodlWallet.UI
         void StartWalletAndPrecioService()
         {
             Observable.Start(() => WalletService.InitializeWallet(), RxApp.TaskpoolScheduler);
-            Observable.Start(() => PrecioService.Init(), RxApp.TaskpoolScheduler);
+            //Observable.Start(() => PrecioService.Init(), RxApp.TaskpoolScheduler);
         }
 
         async void GoToAccount(string accountId)

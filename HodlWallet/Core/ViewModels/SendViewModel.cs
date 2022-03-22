@@ -45,7 +45,7 @@ namespace HodlWallet.Core.ViewModels
         string addressToSendTo;
         string fee = string.Empty;
         decimal amountToSend;
-        float rate => PrecioService.Rate.Rate;
+        //float rate => PrecioService.Rate.Rate;
         string amountToSendText;
         Transaction transactionToBroadcast;
 
@@ -186,13 +186,13 @@ namespace HodlWallet.Core.ViewModels
         {
             if (ISOLabel == "USD($)") //TODO: Refactor with more user currencies
             {
-                AmountToSend = Convert.ToDecimal(AmountToSendText) / (decimal)rate;
+                //AmountToSend = Convert.ToDecimal(AmountToSendText) / (decimal)rate;
                 AmountToSendText = AmountToSend.ToString();
                 ISOLabel = "BTC";
             }
             else
             {
-                AmountToSend = Convert.ToDecimal(AmountToSend) * (decimal)rate;
+                //AmountToSend = Convert.ToDecimal(AmountToSend) * (decimal)rate;
                 AmountToSendText = $"{AmountToSend:F2}";
                 ISOLabel = "USD($)";
             }

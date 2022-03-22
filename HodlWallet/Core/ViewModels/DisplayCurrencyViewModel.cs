@@ -65,43 +65,43 @@ namespace HodlWallet.Core.ViewModels
             SelectedCurrencyCommand = new Command(SaveSelectedCurrency);
         }
 
-        private void SetSelectedCurrency()
-        {
-            //Lookup for the Currency previously saved
-            string currencyCode = SecureStorageService.GetCurrencyCode();
-            selectedCurrency = CurrencySymbolEntities.Where(p => p.Code == currencyCode).FirstOrDefault();
-            PrecioService.GetRateCurrency();
-        }
+        //private void SetSelectedCurrency()
+        //{
+        //    //Lookup for the Currency previously saved
+        //    string currencyCode = SecureStorageService.GetCurrencyCode();
+        //    selectedCurrency = CurrencySymbolEntities.Where(p => p.Code == currencyCode).FirstOrDefault();
+        //    PrecioService.GetRateCurrency();
+        //}
 
         void SaveSelectedCurrency()
         {
             SecureStorageService.SetCurrencyCode(SelectedCurrency.Code);
-            SetSelectedCurrency();
+            //SetSelectedCurrency();
         }
 
         public void PopulateCurrency()
         {
-            IsLoading = true;
-            try
-            {
-                var currencyEntities = PrecioService.CurrencyEntities;
-                foreach (var currencyEntity in currencyEntities)
-                {
-                    CurrencySymbolEntities.Add(new CurrencySymbolEntity
-                    {
-                        Code = currencyEntity.Code,
-                        Symbol = CurrencyUtils.GetSymbol(currencyEntity.Code),
-                        Name = currencyEntity.Name,
-                        Rate = currencyEntity.Rate
-                    });
-                }
-                IsLoading = false;
-                SetSelectedCurrency();
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine($"[PopulateCurrency] Exception on PopulateCurrencyt! => {e.Message}");
-            }
+            //IsLoading = true;
+            //try
+            //{
+            //    var currencyEntities = PrecioService.CurrencyEntities;
+            //    foreach (var currencyEntity in currencyEntities)
+            //    {
+            //        CurrencySymbolEntities.Add(new CurrencySymbolEntity
+            //        {
+            //            Code = currencyEntity.Code,
+            //            Symbol = CurrencyUtils.GetSymbol(currencyEntity.Code),
+            //            Name = currencyEntity.Name,
+            //            Rate = currencyEntity.Rate
+            //        });
+            //    }
+            //    IsLoading = false;
+            //    SetSelectedCurrency();
+            //}
+            //catch (Exception e)
+            //{
+            //    Debug.WriteLine($"[PopulateCurrency] Exception on PopulateCurrencyt! => {e.Message}");
+            //}
         }
     }
 }
