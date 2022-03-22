@@ -91,7 +91,7 @@ namespace HodlWallet.Core.Services
         const string PASSWORD_KEY = "password";
         const string MNEMONIC_KEY = "mnemonic";
         const string NETWORK_KEY = "network";
-        const string CURRENCY_TYPE_KEY = "currency-type";
+        const string DISPLAY_CURRENCY_TYPE_KEY = "display-currency-type";
         const string FIAT_CURRENCY_CODE_KEY = "fiat-currency-code";
 
         /*
@@ -222,7 +222,7 @@ namespace HodlWallet.Core.Services
 
         public static DisplayCurrencyType GetCurrencyType()
         {
-            string currencyType = Get(CURRENCY_TYPE_KEY);
+            string currencyType = Get(DISPLAY_CURRENCY_TYPE_KEY);
 
             return currencyType switch
             {
@@ -238,16 +238,16 @@ namespace HodlWallet.Core.Services
             switch (displayCurrencyType)
             {
                 case DisplayCurrencyType.BTC:
-                    Set(CURRENCY_TYPE_KEY, "btc");
+                    Set(DISPLAY_CURRENCY_TYPE_KEY, "btc");
                     break;
                 case DisplayCurrencyType.Satoshi:
-                    Set(CURRENCY_TYPE_KEY, "satoshi");
+                    Set(DISPLAY_CURRENCY_TYPE_KEY, "satoshi");
                     break;
                 case DisplayCurrencyType.Fiat:
-                    Set(CURRENCY_TYPE_KEY, "fiat");
+                    Set(DISPLAY_CURRENCY_TYPE_KEY, "fiat");
                     break;
                 default:
-                    Set(CURRENCY_TYPE_KEY, "btc");
+                    Set(DISPLAY_CURRENCY_TYPE_KEY, "btc");
                     break;
             }
         }
