@@ -33,6 +33,7 @@ using HodlWallet.Core.Models;
 using HodlWallet.Core.Utils;
 using HodlWallet.Core.Services;
 using System.Linq;
+using Liviano.Services.Models;
 
 namespace HodlWallet.Core.ViewModels 
 {

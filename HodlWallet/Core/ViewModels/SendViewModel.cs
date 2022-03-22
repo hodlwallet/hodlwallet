@@ -129,32 +129,32 @@ namespace HodlWallet.Core.ViewModels
 
         public async Task SetSliderValue()
         {
-            var currentFees = await PrecioHttpService.GetFeeEstimator();
+            //var currentFees = await PrecioHttpService.GetFeeEstimator();
 
-            if (SliderValue <= (MAX_SLIDER_VALUE * 0.25))
-            {
-                SliderValue = 0;
-                Fee = (currentFees.SlowSatKB / 1000).ToString();
-                EstConfirmationText = currentFees.SlowTime;
-            }
-            else if (SliderValue > (MAX_SLIDER_VALUE * 0.25)
-                     && SliderValue < (MAX_SLIDER_VALUE * 0.75))
-            {
-                SliderValue = MAX_SLIDER_VALUE * 0.5;
-                Fee = (currentFees.NormalSatKB / 1000).ToString();
-                EstConfirmationText = currentFees.NormalTime;
-            }
-            else
-            {
-                SliderValue = MAX_SLIDER_VALUE;
-                Fee = (currentFees.FastestSatKB / 1000).ToString();
-                EstConfirmationText = currentFees.FastestTime;
-            }
+            //if (SliderValue <= (MAX_SLIDER_VALUE * 0.25))
+            //{
+            //    SliderValue = 0;
+            //    Fee = (currentFees.SlowSatKB / 1000).ToString();
+            //    EstConfirmationText = currentFees.SlowTime;
+            //}
+            //else if (SliderValue > (MAX_SLIDER_VALUE * 0.25)
+            //         && SliderValue < (MAX_SLIDER_VALUE * 0.75))
+            //{
+            //    SliderValue = MAX_SLIDER_VALUE * 0.5;
+            //    Fee = (currentFees.NormalSatKB / 1000).ToString();
+            //    EstConfirmationText = currentFees.NormalTime;
+            //}
+            //else
+            //{
+            //    SliderValue = MAX_SLIDER_VALUE;
+            //    Fee = (currentFees.FastestSatKB / 1000).ToString();
+            //    EstConfirmationText = currentFees.FastestTime;
+            //}
 
-            if (string.Equals("0", Fee))
-                Fee = string.Empty;
+            //if (string.Equals("0", Fee))
+            //    Fee = string.Empty;
 
-            TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, Fee);
+            //TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, Fee);
         }
 
         void SubscribeToMessages()

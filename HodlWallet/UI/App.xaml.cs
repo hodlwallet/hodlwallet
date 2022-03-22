@@ -86,6 +86,13 @@ namespace HodlWallet.UI
                 AuthenticationService.ShowLogin(action: "pop");
         }
 
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            PrecioService.Start();
+        }
+
         void RegisterServices()
         {
             DependencyService.Register<IWalletService>();

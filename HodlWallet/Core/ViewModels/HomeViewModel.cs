@@ -427,7 +427,7 @@ namespace HodlWallet.Core.ViewModels
 
         async Task RatesAsync()
         {
-            var rates = await PrecioHttpService.GetRates();
+            var rates = PrecioService.Rates;
 
             foreach (var rate in rates)
             {

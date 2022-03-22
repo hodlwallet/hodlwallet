@@ -34,6 +34,7 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using Liviano.Services;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
@@ -46,10 +47,43 @@ using System.Collections.ObjectModel;
 using System.Reactive.Linq;
 using ReactiveUI;
 
+using Liviano.Services.Models;
+
 [assembly: Dependency(typeof(PrecioService))]
 namespace HodlWallet.Core.Services
 {
-    public class PrecioService : IPrecioService
+    public class PrecioService : ReactiveObject, IPrecioService
     {
+        readonly Price service = new();
+
+        CurrencyEntity[] rates;
+        public CurrencyEntity[] Rates
+        {
+            get => rates;
+            set => this.RaiseAndSetIfChanged(ref rates, value);
+        }
+
+        PrecioEntity precio;
+        public PrecioEntity Precio
+        {
+            get => precio;
+            set => this.RaiseAndSetIfChanged(ref precio, value);
+        }
+
+        public PrecioService()
+        {
+            service
+                .WhenAnyValue(service => service.Rates)
+                .Subscribe(x => Rates = service.Rates);
+
+            service
+                .WhenAnyValue(service => service.Precio)
+                .Subscribe(x => Precio = service.Precio);
+        }
+
+        public void Start()
+        {
+            service.Start();
+        }
     }
 }

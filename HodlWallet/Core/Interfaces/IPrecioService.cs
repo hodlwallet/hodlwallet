@@ -27,10 +27,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 
 using HodlWallet.Core.Models;
+using Liviano.Services.Models;
 
 namespace HodlWallet.Core.Interfaces
 {
     public interface IPrecioService
     {
+        public CurrencyEntity[] Rates { get; set; }
+
+        public PrecioEntity Precio { get; set; }
+
+        void Start();
     }
 }
