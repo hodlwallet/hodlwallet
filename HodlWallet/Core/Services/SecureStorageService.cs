@@ -232,6 +232,9 @@ namespace HodlWallet.Core.Services
 
         public static void SetBitcoinCurrencyCode(string currencyCode)
         {
+            if (!currencyCode.Equals("BTC") && !currencyCode.Equals("SAT"))
+                throw new ArgumentException($"Invalid currency code: {currencyCode} only BTC and SAT are allowed");
+
             Set(BITCOIN_CURRENCY_CODE_KEY, currencyCode);
         }
 
@@ -255,7 +258,7 @@ namespace HodlWallet.Core.Services
         {
             var code = Get(BITCOIN_CURRENCY_CODE_KEY);
 
-            if (string.IsNullOrEmpty(code)) return "btc";
+            if (string.IsNullOrEmpty(code)) return "BTC";
 
             return code;
         }

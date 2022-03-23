@@ -33,8 +33,14 @@ namespace HodlWallet.Core.Interfaces
 
         public string FiatCurrencyCode { get; set; }
 
+        public string BitcoinCurrencyCode { get; set; }
+
         public void Load();
 
         public void Save();
+
+        public string FiatAmountFormatted(decimal amount);
+
+        public string BitcoinAmountFormatted(decimal amount);
     }
 }

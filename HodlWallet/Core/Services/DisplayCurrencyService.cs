@@ -28,6 +28,8 @@ using Xamarin.Forms;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
+using HodlWallet.Core.Utils;
+using System.Linq;
 
 [assembly: Dependency(typeof(DisplayCurrencyService))]
 namespace HodlWallet.Core.Services
@@ -40,6 +42,8 @@ namespace HodlWallet.Core.Services
 
     public class DisplayCurrencyService : ReactiveObject, IDisplayCurrencyService
     {
+        IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
+
         DisplayCurrencyType currencyType;
         public DisplayCurrencyType CurrencyType
         {
@@ -73,6 +77,37 @@ namespace HodlWallet.Core.Services
             SecureStorageService.SetFiatCurrencyCode(FiatCurrencyCode);
             SecureStorageService.SetBitcoinCurrencyCode(BitcoinCurrencyCode);
             SecureStorageService.SetDisplayCurrencyType(CurrencyType);
+        }
+
+        public string FiatAmountFormatted(decimal balance)
+        {
+            var symbol = Constants.CURRENCY_SYMBOLS[FiatCurrencyCode];
+            decimal amount;
+
+            if (FiatCurrencyCode == "USD")
+                amount = decimal.Parse(PrecioService.Precio.CRaw) * balance;
+            else
+            {
+                var rate = PrecioService.Rates.FirstOrDefault(r => r.Code == FiatCurrencyCode);
+                amount = (decimal)rate.Rate;
+            }
+
+            return $"{symbol}{amount:N}";
+        }
+
+        public string BitcoinAmountFormatted(decimal balance)
+        {
+            var symbol = Constants.CURRENCY_SYMBOLS[BitcoinCurrencyCode];
+            decimal amount = balance;
+
+            if (BitcoinCurrencyCode == "SAT") amount *= 100_000_000;
+
+            return BitcoinCurrencyCode switch
+            {
+                "BTC" => $"{symbol}{amount}",
+                "SAT" => $"{(int)amount} {symbol}",
+                _ => $"{symbol}{amount}",
+            };
         }
     }
 }

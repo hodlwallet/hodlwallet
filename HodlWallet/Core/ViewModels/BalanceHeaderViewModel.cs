@@ -30,6 +30,8 @@ using Liviano.Interfaces;
 using System.Windows.Input;
 using Xamarin.Forms;
 using HodlWallet.Core.Services;
+using HodlWallet.Core.Utils;
+using System.Linq;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -90,7 +92,7 @@ namespace HodlWallet.Core.ViewModels
         void Setup()
         {
             PrecioService
-                .WhenAnyValue(service => service.Precio)
+                .WhenAnyValue(service => service.Rates)
                 .ObserveOn(RxApp.MainThreadScheduler)
                 .Subscribe(_ => UpdateBalanceFiat());
 
@@ -101,12 +103,12 @@ namespace HodlWallet.Core.ViewModels
 
         void UpdateBalanceFiat()
         {
-            BalanceFiat = $"{decimal.Parse(PrecioService.Precio.CRaw) * AccountBalance:C}";
+            BalanceFiat = DisplayCurrencyService.FiatAmountFormatted(AccountBalance);
         }
 
         void UpdateBalance()
         {
-            Balance = $"{AccountBalance} BTC";
+            Balance = DisplayCurrencyService.BitcoinAmountFormatted(AccountBalance);
 
             UpdateBalanceFiat();
         }
