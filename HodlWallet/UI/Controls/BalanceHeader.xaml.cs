@@ -23,15 +23,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using System.Diagnostics;
+using System.ComponentModel;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.CommunityToolkit.Extensions;
 
 using HodlWallet.Core.ViewModels;
-using System.ComponentModel;
 using HodlWallet.Core.Services;
 
 namespace HodlWallet.UI.Controls
@@ -47,18 +45,20 @@ namespace HodlWallet.UI.Controls
 
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;
 
-            ToggleTo(ViewModel.CurrencyType);
+            _ = ToggleTo(ViewModel.CurrencyType, animate: false);
         }
 
-        void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        async void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (!e.PropertyName.Equals(nameof(ViewModel.CurrencyType))) return;
 
-            ToggleTo(ViewModel.CurrencyType);
+            await ToggleTo(ViewModel.CurrencyType);
         }
 
-        void ToggleTo(DisplayCurrencyType displayCurrencyType)
+        async Task ToggleTo(DisplayCurrencyType displayCurrencyType, bool animate = true)
         {
+            if (animate) await Task.WhenAll(balanceLabel.FadeTo(0.00), balanceFiatLabel.FadeTo(0.00));
+
             if (displayCurrencyType == DisplayCurrencyType.Bitcoin)
             {
                 Grid.SetRow(balanceLabel, 0);
@@ -81,6 +81,8 @@ namespace HodlWallet.UI.Controls
                 balanceFiatLabel.Margin = new Thickness(0, 3, 0, 0);
                 balanceFiatLabel.FontSize = Device.GetNamedSize(NamedSize.Subtitle, typeof(Label));
             }
+
+            if (animate) await Task.WhenAll(balanceLabel.FadeTo(1.00), balanceFiatLabel.FadeTo(1.00));
         }
     }
 }
