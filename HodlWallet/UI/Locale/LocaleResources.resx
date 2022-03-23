@@ -1003,4 +1003,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="DisplayCurrency.sats" xml:space="preserve">
     <value>Satoshi (SAT)</value>
   </data>
+  <data name="BackupWord.noMnemonic" xml:space="preserve">
+    <value>Mnemonic not found!</value>
+  </data>
 </root>

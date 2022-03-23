@@ -49,7 +49,7 @@
                     Style="{DynamicResource CustomButton}"
                     BackgroundColor="{DynamicResource Bg2}"
                     CornerRadius="0"
-                    FontSize="Large"
+                    FontSize="Medium"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
                     Clicked="BackupWordsButton_Clicked" />

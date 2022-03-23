@@ -67,16 +67,16 @@ namespace HodlWallet.UI.Controls
                 balanceLabel.Margin = new Thickness(0, 3, 0, 0);
                 balanceLabel.FontSize = Device.GetNamedSize(NamedSize.Subtitle, typeof(Label));
 
-                balanceFiatLabel.Margin = new Thickness(0, -7, 0, 0);
-                balanceFiatLabel.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+                balanceFiatLabel.Margin = new Thickness(0, -4, 0, 0);
+                balanceFiatLabel.FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
             }
             else
             {
                 Grid.SetRow(balanceLabel, 1);
                 Grid.SetRow(balanceFiatLabel, 0);
 
-                balanceLabel.Margin = new Thickness(0, -7, 0, 0);
-                balanceLabel.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+                balanceLabel.Margin = new Thickness(0, -4, 0, 0);
+                balanceLabel.FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
 
                 balanceFiatLabel.Margin = new Thickness(0, 3, 0, 0);
                 balanceFiatLabel.FontSize = Device.GetNamedSize(NamedSize.Subtitle, typeof(Label));

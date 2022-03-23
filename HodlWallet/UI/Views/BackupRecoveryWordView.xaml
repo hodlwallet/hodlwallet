@@ -36,22 +36,22 @@
                         JustifyContent="SpaceAround"
                         AlignItems="Center"
                         BindableLayout.ItemsSource="{Binding Words}"
-                        BindableLayout.EmptyView="Mnemonic not found!"
+                        BindableLayout.EmptyView="{i18n:Translate Text=BackupWord.noMnemonic}"
                         Margin="15"
                         FlexLayout.Grow="4">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <ContentView BackgroundColor="{DynamicResource Bg2}"
-                                     Margin="2" >
-                            <StackLayout Orientation="Horizontal" Margin="2" Padding="10">
+                        <Frame CornerRadius="5" BackgroundColor="{DynamicResource Bg2}" Padding="15">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
                                 <Label Text="{Binding WordIndex}"
+                                       VerticalOptions="Center"
                                        FontFamily="{StaticResource Sans-Regular}"
                                        TextColor="{DynamicResource FgSuccess}"
                                        FontSize="Medium" />
                                 <Label Text="{Binding Word}"
                                        Style="{DynamicResource MnemonicLabel}" />
                             </StackLayout>
-                        </ContentView>
+                        </Frame>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </FlexLayout>

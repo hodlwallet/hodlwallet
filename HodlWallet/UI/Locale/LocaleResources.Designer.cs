@@ -547,6 +547,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mnemonic not found!.
+        /// </summary>
+        internal static string BackupWord_noMnemonic {
+            get {
+                return ResourceManager.GetString("BackupWord.noMnemonic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Previous.
         /// </summary>
         internal static string BackupWord_previous {
