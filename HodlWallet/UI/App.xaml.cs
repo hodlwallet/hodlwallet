@@ -96,11 +96,6 @@ namespace HodlWallet.UI
                 .Subscribe(cts.Token);
 
             DisplayCurrencyService.Load();
-
-            DisplayCurrencyService.FiatCurrencyCode = "USD";
-            DisplayCurrencyService.BitcoinCurrencyCode = "BTC";
-
-            DisplayCurrencyService.Save();
         }
 
         void RegisterServices()
