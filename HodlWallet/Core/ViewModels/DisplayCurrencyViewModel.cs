@@ -60,10 +60,27 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref selectedCurrency, value, nameof(SelectedCurrency));
         }
 
+        bool isBtcSelected = true;
+        public bool IsBtcSelected
+        {
+            get => isBtcSelected;
+            set => SetProperty(ref isBtcSelected, value, nameof(IsBtcSelected));
+        }
+
+        bool isSatSelected = false;
+        public bool IsSatSelected
+        {
+            get => isSatSelected;
+            set => SetProperty(ref isSatSelected, value, nameof(IsSatSelected));
+        }
+
         public DisplayCurrencyViewModel()
         {
             PopulateCurrency();
             SelectedCurrencyCommand = new Command(SaveSelectedCurrency);
+
+            IsBtcSelected = DisplayCurrencyService.BitcoinCurrencyCode == "BTC";
+            isSatSelected = !IsBtcSelected;
         }
 
         void SetSelectedCurrency()
@@ -112,6 +129,9 @@ namespace HodlWallet.Core.ViewModels
             DisplayCurrencyService.BitcoinCurrencyCode = currencyCode;
 
             DisplayCurrencyService.Save();
+
+            IsBtcSelected = DisplayCurrencyService.BitcoinCurrencyCode == "BTC";
+            IsSatSelected = !IsBtcSelected;
         }
     }
 }

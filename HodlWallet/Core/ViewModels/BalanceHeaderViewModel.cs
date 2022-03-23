@@ -68,10 +68,6 @@ namespace HodlWallet.Core.ViewModels
             if (WalletService.IsStarted) Setup();
             else WalletService.OnStarted += (_, _) => Setup();
 
-            DisplayCurrencyService
-                .WhenAnyValue(service => service.CurrencyType)
-                .ObserveOn(RxApp.MainThreadScheduler)
-                .Subscribe(_ => CurrencyType = DisplayCurrencyService.CurrencyType);
         }
 
         void SwitchCurrency(object _)
@@ -93,6 +89,16 @@ namespace HodlWallet.Core.ViewModels
                 .WhenAnyValue(service => service.Rates)
                 .ObserveOn(RxApp.MainThreadScheduler)
                 .Subscribe(_ => UpdateBalanceFiat());
+
+            DisplayCurrencyService
+                .WhenAnyValue(service => service.CurrencyType)
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Subscribe(_ => CurrencyType = DisplayCurrencyService.CurrencyType);
+
+            DisplayCurrencyService
+                .WhenAnyValue(service => service.BitcoinCurrencyCode, service => service.FiatCurrencyCode)
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Subscribe(_ => UpdateBalance());
 
             CurrentAccount.Txs.CollectionChanged += (_, _) => UpdateBalance();
 

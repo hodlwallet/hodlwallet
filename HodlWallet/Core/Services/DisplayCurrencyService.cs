@@ -30,6 +30,7 @@ using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Utils;
 using System.Linq;
+using System;
 
 [assembly: Dependency(typeof(DisplayCurrencyService))]
 namespace HodlWallet.Core.Services
@@ -88,8 +89,13 @@ namespace HodlWallet.Core.Services
                 rate = decimal.Parse(PrecioService.Precio.CRaw);
             else
                 rate = (decimal)PrecioService.Rates.FirstOrDefault(r => r.Code == FiatCurrencyCode).Rate;
-             
-            return $"{symbol}{rate * amount:N}";
+
+            var finalAmount = rate * amount;
+
+            // Do not format really small numbers
+            if (finalAmount < 0.01m) return $"{symbol}{finalAmount}";
+
+            return $"{symbol}{finalAmount:N}";
         }
 
         public string BitcoinAmountFormatted(decimal amount)
@@ -99,7 +105,7 @@ namespace HodlWallet.Core.Services
             return BitcoinCurrencyCode switch
             {
                 "BTC" => $"{symbol}{amount}",
-                "SAT" => $"{(int)amount * 100_000_000} {symbol}",
+                "SAT" => $"{(int)(amount * 100_000_000)} {symbol}",
                 _ => $"{symbol}{amount}",
             };
         }
