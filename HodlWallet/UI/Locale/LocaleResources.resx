@@ -939,7 +939,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>AMOUNT</value>
     <comment>label for amount section in receive view</comment>
   </data>
-  <data name="DisplayCurrency.sats" xml:space="preserve">
+  <data name="DisplayCurrency.bitcoinDisplayUnit" xml:space="preserve">
     <value>Bitcoin Display Unit</value>
     <comment>label for display currency switch to show Sats</comment>
   </data>
@@ -947,7 +947,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <value>Exchange Rate</value>
     <comment>label for display currency exchange rates</comment>
   </data>
-  <data name="DisplayCurrency.Title" xml:space="preserve">
+  <data name="DisplayCurrency.title" xml:space="preserve">
     <value>Display Currency</value>
     <comment>Display Currency View Title</comment>
   </data>
@@ -993,5 +993,14 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="Home.title" xml:space="preserve">
     <value>Overview</value>
     <comment>HomeView title</comment>
+  </data>
+  <data name="DisplayCurrency.bitcoin" xml:space="preserve">
+    <value>Bitcoin (BTC)</value>
+  </data>
+  <data name="DisplayCurrency.fiatCurrencyUnit" xml:space="preserve">
+    <value>Fiat Currency Unit</value>
+  </data>
+  <data name="DisplayCurrency.sats" xml:space="preserve">
+    <value>Satoshi (SAT)</value>
   </data>
 </root>

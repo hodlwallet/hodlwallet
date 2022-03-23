@@ -22,16 +22,14 @@
 // THE SOFTWARE.
 using System;
 using System.Reactive.Linq;
+using System.Windows.Input;
 
 using NBitcoin;
-using ReactiveUI;
-
 using Liviano.Interfaces;
-using System.Windows.Input;
+using ReactiveUI;
 using Xamarin.Forms;
+
 using HodlWallet.Core.Services;
-using HodlWallet.Core.Utils;
-using System.Linq;
 
 namespace HodlWallet.Core.ViewModels
 {

@@ -66,43 +66,52 @@ namespace HodlWallet.Core.ViewModels
             SelectedCurrencyCommand = new Command(SaveSelectedCurrency);
         }
 
-        //private void SetSelectedCurrency()
-        //{
-        //    //Lookup for the Currency previously saved
-        //    string currencyCode = SecureStorageService.GetCurrencyCode();
-        //    selectedCurrency = CurrencySymbolEntities.Where(p => p.Code == currencyCode).FirstOrDefault();
-        //    PrecioService.GetRateCurrency();
-        //}
+        void SetSelectedCurrency()
+        {
+            //Lookup for the Currency previously saved
+            string currencyCode = DisplayCurrencyService.FiatCurrencyCode;
+            SelectedCurrency = CurrencySymbolEntities.FirstOrDefault(p => p.Code == currencyCode);
+        }
 
         void SaveSelectedCurrency()
         {
             SecureStorageService.SetFiatCurrencyCode(SelectedCurrency.Code);
-            //SetSelectedCurrency();
+            DisplayCurrencyService.FiatCurrencyCode = selectedCurrency.Code;
+            DisplayCurrencyService.Save();
+
+            SetSelectedCurrency();
         }
 
         public void PopulateCurrency()
         {
-            //IsLoading = true;
-            //try
-            //{
-            //    var currencyEntities = PrecioService.CurrencyEntities;
-            //    foreach (var currencyEntity in currencyEntities)
-            //    {
-            //        CurrencySymbolEntities.Add(new CurrencySymbolEntity
-            //        {
-            //            Code = currencyEntity.Code,
-            //            Symbol = CurrencyUtils.GetSymbol(currencyEntity.Code),
-            //            Name = currencyEntity.Name,
-            //            Rate = currencyEntity.Rate
-            //        });
-            //    }
-            //    IsLoading = false;
-            //    SetSelectedCurrency();
-            //}
-            //catch (Exception e)
-            //{
-            //    Debug.WriteLine($"[PopulateCurrency] Exception on PopulateCurrencyt! => {e.Message}");
-            //}
+            IsLoading = true;
+            try
+            {
+                var currencyEntities = PrecioService.Rates;
+                foreach (var currencyEntity in currencyEntities)
+                {
+                    CurrencySymbolEntities.Add(new CurrencySymbolEntity
+                    {
+                        Code = currencyEntity.Code,
+                        Symbol = CurrencyUtils.GetSymbol(currencyEntity.Code),
+                        Name = currencyEntity.Name,
+                        Rate = currencyEntity.Rate
+                    });
+                }
+                IsLoading = false;
+                SetSelectedCurrency();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"[PopulateCurrency] Exception on PopulateCurrencyt! => {e.Message}");
+            }
+        }
+
+        public void SetBitcoinCurrencyCode(string currencyCode)
+        {
+            DisplayCurrencyService.BitcoinCurrencyCode = currencyCode;
+
+            DisplayCurrencyService.Save();
         }
     }
 }

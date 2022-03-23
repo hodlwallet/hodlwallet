@@ -6,7 +6,7 @@
              xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              x:Class="HodlWallet.UI.Views.DisplayCurrencyView"
-             Title="{i18n:Translate Text=DisplayCurrency.Title}"
+             Title="{i18n:Translate Text=DisplayCurrency.title}"
              BackgroundColor="{DynamicResource Bg}" >
     <ContentPage.BindingContext>
         <vm:DisplayCurrencyViewModel />
@@ -20,9 +20,10 @@
             <Label
                 Style="{DynamicResource CustomLabel}"
                 FontSize="Medium"
+                FontFamily="{StaticResource Key=Mono-Regular}"
                 Margin="5,0,0,0" >
                 <Label.Text>
-                    <MultiBinding StringFormat='1 BTC = {0} {1:n}'>
+                    <MultiBinding StringFormat='1 BTC = {0}{1:n}'>
                         <Binding Path="SelectedCurrency.Symbol" />
                         <Binding Path="SelectedCurrency.Rate" />
                     </MultiBinding>
@@ -33,19 +34,23 @@
                      HeightRequest="1" />
 
             <Label FontSize="Small"
-                   Text="{i18n:Translate Text=DisplayCurrency.sats}"
+                   Text="{i18n:Translate Text=DisplayCurrency.bitcoinDisplayUnit}"
                    TextColor="{DynamicResource Fg3}" />
 
             <StackLayout BackgroundColor="{DynamicResource Bg}" 
                          Orientation="Horizontal" >
 
-                <RadioButton Content="Bitcoin (BTC)"
+                <RadioButton Content="{i18n:Translate Text=DisplayCurrency.bitcoin}"
                              IsChecked="True"
                              Style="{DynamicResource CustomRadioButton}"
+                             Value="BTC"
+                             CheckedChanged="RadioButton_CheckedChanged"
                              HorizontalOptions="StartAndExpand"/>
 
-                <RadioButton Content="Satochi (SATS)"
+                <RadioButton Content="{i18n:Translate Text=DisplayCurrency.sats}"
                              Style="{DynamicResource CustomRadioButton}"
+                             Value="SAT"
+                             CheckedChanged="RadioButton_CheckedChanged"
                              HorizontalOptions="StartAndExpand"/>
 
             </StackLayout>
@@ -55,12 +60,15 @@
 
             <StackLayout>
                 <controls:NowLoadingIndicator />
-                <CollectionView 
-                    ItemsLayout="VerticalList"
-                    SelectionMode="Single"
-                    ItemsSource="{Binding CurrencySymbolEntities}"
-                    SelectedItem="{Binding SelectedCurrency}"
-                    SelectionChangedCommand="{Binding SelectedCurrencyCommand} ">
+                <Label FontSize="Small"
+                       Text="{i18n:Translate Text=DisplayCurrency.fiatCurrencyUnit}"
+                       TextColor="{DynamicResource Fg3}" />
+
+                <CollectionView ItemsLayout="VerticalList"
+                                SelectionMode="Single"
+                                ItemsSource="{Binding CurrencySymbolEntities}"
+                                SelectedItem="{Binding SelectedCurrency}"
+                                SelectionChangedCommand="{Binding SelectedCurrencyCommand}">
                     <CollectionView.EmptyView>
                         <Label HorizontalOptions="Center" Text="No Curriencies Available!" />
                     </CollectionView.EmptyView>

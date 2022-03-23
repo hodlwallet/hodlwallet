@@ -709,6 +709,33 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bitcoin (BTC).
+        /// </summary>
+        internal static string DisplayCurrency_bitcoin {
+            get {
+                return ResourceManager.GetString("DisplayCurrency.bitcoin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bitcoin Display Unit.
+        /// </summary>
+        internal static string DisplayCurrency_bitcoinDisplayUnit {
+            get {
+                return ResourceManager.GetString("DisplayCurrency.bitcoinDisplayUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fiat Currency Unit.
+        /// </summary>
+        internal static string DisplayCurrency_fiatCurrencyUnit {
+            get {
+                return ResourceManager.GetString("DisplayCurrency.fiatCurrencyUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exchange Rate.
         /// </summary>
         internal static string DisplayCurrency_rate {
@@ -718,7 +745,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bitcoin Display Unit.
+        ///   Looks up a localized string similar to Satoshi (SAT).
         /// </summary>
         internal static string DisplayCurrency_sats {
             get {
@@ -729,9 +756,9 @@ namespace HodlWallet.UI.Locale {
         /// <summary>
         ///   Looks up a localized string similar to Display Currency.
         /// </summary>
-        internal static string DisplayCurrency_Title {
+        internal static string DisplayCurrency_title {
             get {
-                return ResourceManager.GetString("DisplayCurrency.Title", resourceCulture);
+                return ResourceManager.GetString("DisplayCurrency.title", resourceCulture);
             }
         }
         
