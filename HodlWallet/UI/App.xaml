@@ -180,7 +180,7 @@
             <Style x:Key="SettingsButton"
                    TargetType="Button">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource Bg3}" />
+                        Value="{DynamicResource Bg}" />
                 <Setter Property="FlexLayout.AlignSelf"
                         Value="Stretch" />
                 <Setter Property="FlexLayout.Grow"
