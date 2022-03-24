@@ -177,6 +177,13 @@ namespace HodlWallet.Core.ViewModels
             }
         }
 
+        string[] colors = new string[] { "Red", "Blue", "Green" };
+        public string[] Colors
+        {
+            get => colors;
+            set => SetProperty(ref colors, value);
+        }
+
         public ICommand SwitchCurrencyCommand { get; }
         public ICommand SearchCommand { get; }
         public ICommand NavigateToTransactionDetailsCommand { get; }

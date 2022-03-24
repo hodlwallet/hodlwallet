@@ -20,14 +20,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using HodlWallet.Core.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -36,20 +28,9 @@ namespace HodlWallet.UI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DisplayCurrencyView : ContentPage
     {
-        DisplayCurrencyViewModel ViewModel => BindingContext as DisplayCurrencyViewModel;
-
         public DisplayCurrencyView()
         {
             InitializeComponent();
-        }
-
-        void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            var radioButton = sender as RadioButton;
-
-            if (!radioButton.IsChecked) return;
-
-            ViewModel.SetBitcoinCurrencyCode(radioButton.Value as string);            
         }
     }
 }

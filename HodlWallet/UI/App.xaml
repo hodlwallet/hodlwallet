@@ -20,15 +20,15 @@
             <!-- New colors better structure -->
             <Color x:Key="Bg">#2d2d2d</Color>
             <Color x:Key="Bg2">#131313</Color>
-            <Color x:Key="Bg3">#131313</Color>
-            <Color x:Key="Bg4">#131313</Color>
-            <Color x:Key="Bg5">#131313</Color>
+            <Color x:Key="Bg3">#222222</Color>
+            <Color x:Key="Bg4">#222222</Color>
+            <Color x:Key="Bg5">#222222</Color>
 
             <Color x:Key="Fg">#cccccc</Color>
             <Color x:Key="Fg2">#515151</Color>
-            <Color x:Key="Fg3">#515151</Color>
-            <Color x:Key="Fg4">#515151</Color>
-            <Color x:Key="Fg5">#515151</Color>
+            <Color x:Key="Fg3">#585858</Color>
+            <Color x:Key="Fg4">#585858</Color>
+            <Color x:Key="Fg5">#585858</Color>
 
             <Color x:Key="FgDark">#2d2d2d</Color> <!-- Same as in Bg, so for inverted situations -->
             <Color x:Key="FgSuccess">#daa829</Color>
@@ -180,7 +180,7 @@
             <Style x:Key="SettingsButton"
                    TargetType="Button">
                 <Setter Property="BackgroundColor"
-                        Value="{DynamicResource Bg}" />
+                        Value="{DynamicResource Bg3}" />
                 <Setter Property="FlexLayout.AlignSelf"
                         Value="Stretch" />
                 <Setter Property="FlexLayout.Grow"

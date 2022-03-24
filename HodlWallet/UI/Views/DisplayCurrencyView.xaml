@@ -17,11 +17,10 @@
                    Text="{i18n:Translate Text=DisplayCurrency.rate}"
                    TextColor="{DynamicResource Fg3}" />
 
-            <Label
-                Style="{DynamicResource CustomLabel}"
-                FontSize="Medium"
-                FontFamily="{StaticResource Key=Mono-Regular}"
-                Margin="5,0,0,0" >
+            <Label Style="{DynamicResource CustomLabel}"
+                   FontSize="Medium"
+                   FontFamily="{StaticResource Key=Mono-Regular}"
+                   Margin="5,0,0,0" >
                 <Label.Text>
                     <MultiBinding StringFormat='1 BTC = {0}{1:n}'>
                         <Binding Path="SelectedCurrency.Symbol" />
@@ -44,14 +43,12 @@
                              IsChecked="{Binding IsBtcSelected}"
                              Style="{DynamicResource CustomRadioButton}"
                              Value="BTC"
-                             CheckedChanged="RadioButton_CheckedChanged"
                              HorizontalOptions="StartAndExpand"/>
 
                 <RadioButton Content="{i18n:Translate Text=DisplayCurrency.sats}"
                              Style="{DynamicResource CustomRadioButton}"
                              IsChecked="{Binding IsSatSelected}"
                              Value="SAT"
-                             CheckedChanged="RadioButton_CheckedChanged"
                              HorizontalOptions="StartAndExpand"/>
 
             </StackLayout>
@@ -67,6 +64,7 @@
 
                 <CollectionView ItemsLayout="VerticalList"
                                 SelectionMode="Single"
+                                VerticalScrollBarVisibility="Default"
                                 ItemsSource="{Binding CurrencySymbolEntities}"
                                 SelectedItem="{Binding SelectedCurrency}"
                                 SelectionChangedCommand="{Binding SelectedCurrencyCommand}">

@@ -72,10 +72,10 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding ClearIsVisible}">
                         <ImageButton CornerRadius="50"
                                      Source="minus_filled.png"
-                                     WidthRequest="40"
-                                     HeightRequest="40"
+                                     WidthRequest="45"
+                                     HeightRequest="45"
                                      VerticalOptions="Center"
-                                     Padding="10"
+                                     Padding="8"
                                      BackgroundColor="{DynamicResource Bg2}"
                                      Command="{Binding ClearCommand}" />
                         <Label Text="{i18n:Translate Text=Receive.clear}"
@@ -92,10 +92,10 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding AddAmountIsVisible}">
                         <ImageButton CornerRadius="50"
                                      Source="plus_filled.png"
-                                     WidthRequest="40"
-                                     HeightRequest="40"
+                                     WidthRequest="45"
+                                     HeightRequest="45"
                                      VerticalOptions="Center"
-                                     Padding="10"
+                                     Padding="8"
                                      BackgroundColor="{DynamicResource Bg2}"
                                      Command="{Binding AddAmountCommand}" />
                         <Label Text="{i18n:Translate Text=Receive.addAmount}"
@@ -112,10 +112,10 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12">
                         <ImageButton CornerRadius="50"
                                      Source="share_filled.png"
-                                     WidthRequest="40"
-                                     HeightRequest="40"
+                                     WidthRequest="45"
+                                     HeightRequest="45"
                                      VerticalOptions="Center"
-                                     Padding="10"
+                                     Padding="8"
                                      BackgroundColor="{DynamicResource Bg2}"
                                      Command="{Binding ShareIntentCommand}" />
                         <Label Text="{i18n:Translate Text=Receive.share}"
