@@ -236,13 +236,18 @@ namespace HodlWallet.Core.Utils
         public const string SHARE_TEXT_INTENT_TITLE = "Share via";
 
         // MessagingCenter
-        public const string DISPLAY_ALERT_ERROR_TITLE = "Error";
-        public const string DISPLAY_ALERT_PASTE_MESSAGE = "Pasteboard is empty or invalid.";
-        public const string DISPLAY_ALERT_SCAN_MESSAGE = "Invalid QR code.";
-        public const string DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF = "Send to yourself is disabled.";
-        public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported.";
-        public const string DISPLAY_ALERT_TRANSACTION_MESSAGE = "There was an error broadcasting your transaction.";
+        public const string DISPLAY_ALERT_ERROR_TITLE = "Error"; 
+        public const string DISPLAY_ALERT_PASTE_MESSAGE = "Pasteboard is empty or invalid."; 
+        public const string DISPLAY_ALERT_SCAN_MESSAGE = "Invalid QR code."; 
+        public const string DISPLAY_ALERT_ERROR_SEND_TO_YOURSELF = "Send to yourself is disabled."; 
+        public const string DISPLAY_ALERT_ERROR_BIP70 = "BIP70 is not supported."; 
+        public const string DISPLAY_ALERT_TRANSACTION_MESSAGE = "There was an error broadcasting your transaction."; 
         public const string DISPLAY_ALERT_AMOUNT_MESSAGE = "Unable to send, check your amount, address and fee";
+        public const string DISPLAY_ALERT_CREATING_ACCOUNT_PROGRESS_MESSAGE = "Account creation in progress...";
+        public const string DISPLAY_ALERT_SUCCESS_ACCOUNT_CREATION_MESSAGE = "Account successfuly created";
+        public const string LABEL_ALERT_CREATING_ACCOUNT_PROGRESS_MESSAGE = "DisplayCreatingAccountNotification";
+        public const string LABEL_ALERT_SUCCESS_ACCOUNT_CREATION_MESSAGE = "DisplaySuccessAccountCreationNotification";
+        public const string LABEL_ERROR_ACCOUNT_CREATION_MESSAGE = "DisplayErrorCreatingAccount";
 
         // Temporary Values
         public const string USE_ADDRESS_FROM_CLIPBOARD = "The Bitcoin address '{0} is in your clipboard, would you like to send to that address?";

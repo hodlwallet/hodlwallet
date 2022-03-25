@@ -34,6 +34,7 @@ using Liviano.Models;
 using HodlWallet.Core.Models;
 using HodlWallet.Core.Utils;
 using HodlWallet.UI.Locale;
+using System.Diagnostics;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -223,14 +224,28 @@ namespace HodlWallet.Core.ViewModels
         {
             var uri = new Uri(string.Format(BlockExplorerAddressUri, Address));
 
-            await Browser.OpenAsync(uri, BrowserLaunchMode.External);
+            try
+            {
+                await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Could not open Browser --> " + e); 
+            }
         }
 
         async Task IdToBrowser()
         {
             var uri = new Uri(string.Format(BlockExplorerTransactionsUri, Id));
 
-            await Browser.OpenAsync(uri, BrowserLaunchMode.External);
+            try
+            {
+                await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Could not open Browser --> " + e);
+            }
         }
     }
 }
