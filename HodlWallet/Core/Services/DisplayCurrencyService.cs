@@ -84,7 +84,7 @@ namespace HodlWallet.Core.Services
         {
             var symbol = Constants.CURRENCY_SYMBOLS[FiatCurrencyCode];
 
-            if (PrecioService.Precio is null)
+            if (PrecioService.Precio is null || PrecioService.Rates is null)
                 return $"{symbol}{amount:N}";
 
             decimal rate;

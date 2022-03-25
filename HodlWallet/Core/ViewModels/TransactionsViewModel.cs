@@ -30,31 +30,59 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace HodlWallet.Core.ViewModels
 {
     class TransactionsViewModel : BaseViewModel
     {
         public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
+        
+        public ICommand NavigateToTransactionDetailsCommand { get; }
+
+        TransactionModel currentTransaction;
+        public TransactionModel CurrentTransaction
+        {
+            get => currentTransaction;
+            set => SetProperty(ref currentTransaction, value);
+        }
 
         IAccount CurrentAccount => WalletService.Wallet.CurrentAccount;
 
         public TransactionsViewModel()
         {
-            if (WalletService.IsStarted) Setup();
-            else WalletService.OnStarted += (_, _) => Setup();
+            NavigateToTransactionDetailsCommand = new Command(NavigateToTransactionDetails);
+
+            if (WalletService.IsStarted) Init();
+            else WalletService.OnStarted += (_, _) => Init();
         }
 
-        void Setup()
+        void Init()
         {
             LoadTxsFromWallet();
 
             CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
         }
 
+        void NavigateToTransactionDetails(object obj)
+        {
+            if (CurrentTransaction is null) return;
+
+            MessagingCenter.Send(this, "NavigateToTransactionDetail", CurrentTransaction);
+
+            CurrentTransaction = null;
+        }
+
         void LoadTxsFromWallet()
         {
-            foreach (var tx in CurrentAccount.Txs.OrderBy(tx => tx.CreatedAt).Take(3))
+            foreach (var tx in CurrentAccount.Txs.Where(tx =>
+            {
+                // FIXME this is a bug on the abandon abandon about mnemonic
+                // this code should not be used if the bug is fixed on Liviano
+                if (tx.IsSend) return tx.SentScriptPubKey is not null;
+                else return tx.ScriptPubKey is not null;
+            }).OrderByDescending(tx => tx.CreatedAt)) //.Take(100))
                 Transactions.Add(TransactionModel.FromTransactionData(tx));
         }
 
@@ -62,11 +90,18 @@ namespace HodlWallet.Core.ViewModels
         {
             if (e.NewItems is not null)
                 foreach (Tx item in e.NewItems)
+                {
+                    // FIXME this is a bug on the abandon abandon about mnemonic
+                    // this code should not be used if the bug is fixed on Liviano
+                    if (item.IsSend && item.ScriptPubKey is null) return;
+                    else if (item.IsReceive && item.ScriptPubKey is null) return;
+                    
                     Transactions.Insert(0, TransactionModel.FromTransactionData(item));
+                }
 
             if (e.OldItems is not null)
                 foreach (Tx item in e.OldItems)
-                    Transactions.Remove(TransactionModel.FromTransactionData(item));
+                    Transactions.Insert(0, TransactionModel.FromTransactionData(item));
         }
     }
 }

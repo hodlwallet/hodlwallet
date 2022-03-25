@@ -244,19 +244,6 @@ namespace HodlWallet.Core.ViewModels
             CurrentTransaction = null;
         }
 
-        private void Wallet_OnCurrentAccountChanged(object sender, EventArgs e)
-        {
-            LoadTransactions();
-
-            Balance = WalletService.Wallet.CurrentAccount.GetBalance().ToUnit(MoneyUnit.BTC);
-            AccountName = WalletService.Wallet.CurrentAccount.Name;
-
-            WalletService.Wallet.Disconnect();
-
-            Observable
-                .Start(async () => await WalletService.Wallet.Sync(), RxApp.TaskpoolScheduler);
-        }
-
         void Wallet_OnNewTransaction(object sender, TxEventArgs e)
         {
             AddToTransactionsCollectionWith(e);

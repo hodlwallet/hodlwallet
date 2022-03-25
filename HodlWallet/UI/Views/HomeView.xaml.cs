@@ -59,10 +59,10 @@ namespace HodlWallet.UI.Views
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<HomeViewModel, TransactionModel>(this, "NavigateToTransactionDetail", NavigateToTransactionDetail);
+            MessagingCenter.Subscribe<TransactionsViewModel, TransactionModel>(this, "NavigateToTransactionDetail", NavigateToTransactionDetail);
         }
 
-        async void NavigateToTransactionDetail(HomeViewModel _, TransactionModel txModel)
+        async void NavigateToTransactionDetail(TransactionsViewModel _, TransactionModel txModel)
         {
             var view = new TransactionDetailsView(txModel);
             var nav = new NavigationPage(view);
