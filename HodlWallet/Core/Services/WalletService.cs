@@ -44,6 +44,9 @@ using Liviano.Exceptions;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
+using System.Reactive.Linq;
+using ReactiveUI;
+using System.Diagnostics;
 
 [assembly: Dependency(typeof(WalletService))]
 namespace HodlWallet.Core.Services
@@ -60,14 +63,14 @@ namespace HodlWallet.Core.Services
 
         public static string USER_AGENT { get; } = $"{Liviano.Version.UserAgent}/hodlwallet:2.0/";
 
-        public const int PERIODIC_SAVE_TIMEOUT = 60_000;
+        public const int PERIODIC_SAVE_TIMEOUT = 30_000;
 
         readonly object @lock = new();
 
         Network network;
 
         string walletId;
-        CancellationTokenSource Cts;
+        CancellationTokenSource Cts = new();
 
         public Serilog.ILogger Logger { set; get; }
 
@@ -84,25 +87,19 @@ namespace HodlWallet.Core.Services
 
         public IWallet Wallet { get; private set; }
 
-        async Task PeriodicSave()
+        void PeriodicSave()
         {
-            while (true)
-            {
-                await Save();
-
-                await Task.Delay(PERIODIC_SAVE_TIMEOUT);
-            }
+            Observable
+                .Interval(TimeSpan.FromMilliseconds(PERIODIC_SAVE_TIMEOUT), RxApp.TaskpoolScheduler)
+                .Subscribe(_ => Save(), Cts.Token);
         }
 
-        async Task Save()
+        void Save()
         {
-            await Task.Factory.StartNew(() =>
+            lock (@lock)
             {
-                lock (@lock)
-                {
-                    Wallet.Storage.Save();
-                }
-            });
+                Wallet.Storage.Save();
+            }
         }
 
         public void InitializeWallet(string accountType = "standard")
@@ -134,8 +131,6 @@ namespace HodlWallet.Core.Services
             network = Hd.GetNetwork(networkStr ?? DEFAULT_NETWORK);
 
             walletId = guid ?? Guid.NewGuid().ToString();
-
-            Cts ??= new CancellationTokenSource();
 
             if (!SecureStorageService.HasMnemonic() || walletId == null)
             {
@@ -259,34 +254,40 @@ namespace HodlWallet.Core.Services
                 Logger.Debug($"Syncing time: {(end - start).TotalSeconds}");
             };
 
-            Task.Factory.StartNew(
-                () => PeriodicSave(),
-                Cts.Token,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
+            Observable
+                .Start(PeriodicSave, RxApp.TaskpoolScheduler)
+                .Subscribe(Cts.Token);
 
-            // TODO add ping
+            Observable
+                .Start(async () =>
+                {
+                    await Wallet.ElectrumPool.PeriodicPing(
+                        successCallback: (dt) =>
+                        {
+                            Debug.WriteLine($"[WalletService][Start] Ping successful at: {dt}");
+                        },
+                        failedCallback: (dt) =>
+                        {
+                            Debug.WriteLine($"[WalletService][Start] Ping failed at: {dt}");
+                        },
+                        null
+                    );
+                }, RxApp.TaskpoolScheduler)
+                .Subscribe(Cts.Token);
 
-            Task.Factory.StartNew(
-                () => Wallet.Sync(),
-                Cts.Token,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
-
-            Task.Factory.StartNew(
-                () => Wallet.Watch(),
-                Cts.Token,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
+            Observable
+                .Start(async () =>
+                {
+                    await Wallet.Sync();
+                    await Wallet.Watch();
+                }, RxApp.TaskpoolScheduler)
+                .Subscribe(Cts.Token);
 
             OnStarted?.Invoke(this, null);
             IsStarted = true;
         }
 
-        public async Task<(bool Success, string Error)> AddAccount(string type = "bip84", string name = null, string color = null )
+        public (bool Success, string Error) AddAccount(string type = "bip84", string name = null, string color = null)
         {
             bool addedAccount = false;
             string messageError = null;
@@ -300,14 +301,14 @@ namespace HodlWallet.Core.Services
                 else
                 {
                     Wallet.AddAccount(type, name);
-                    
-                    // To ensure the account is correctly associated to the current Wallet configured.
-                    await Save();
 
-                    string accountIdSaved = 
+                    // To ensure the account is correctly associated to the current Wallet configured.
+                    Save();
+
+                    string accountIdSaved =
                             (from account in Wallet.Accounts
-                            where account.Name == name
-                            select account.Id).LastOrDefault();
+                             where account.Name == name
+                             select account.Id).LastOrDefault();
 
                     if (string.IsNullOrWhiteSpace(accountIdSaved))
                     {

@@ -81,7 +81,7 @@ namespace HodlWallet.Core.ViewModels
             string keyType = GetKeyFromValue();
             DisplayCreatingAccountAlert(
                 Constants.LABEL_ALERT_CREATING_ACCOUNT_PROGRESS_MESSAGE);
-            (bool Success, string Error) = await WalletService.AddAccount(keyType, AccountName, AccountColor);
+            (bool Success, string Error) = WalletService.AddAccount(keyType, AccountName, AccountColor);
 
             if (!Success && !string.IsNullOrEmpty(Error))
             {

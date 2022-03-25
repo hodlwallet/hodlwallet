@@ -93,8 +93,8 @@ namespace HodlWallet.Core.ViewModels
                 {
                     // FIXME this is a bug on the abandon abandon about mnemonic
                     // this code should not be used if the bug is fixed on Liviano
-                    if (item.IsSend && item.SentScriptPubKey is null) return;
-                    else if (item.IsReceive && item.ScriptPubKey is null) return;
+                    if      (item.IsSend && item.SentScriptPubKey is null) continue;
+                    else if (item.IsReceive && item.ScriptPubKey is null) continue;
                     
                     Transactions.Insert(0, TransactionModel.FromTransactionData(item));
                 }

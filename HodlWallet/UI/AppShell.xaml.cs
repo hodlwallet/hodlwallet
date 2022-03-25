@@ -49,10 +49,7 @@ namespace HodlWallet.UI
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppShell : Shell
     {
-        readonly Serilog.ILogger logger;
-        readonly object @lock = new();
         IWalletService WalletService => DependencyService.Get<IWalletService>();
-        IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
         public ObservableCollection<AccountModel> AccountList { get; set; }  = new ();
         public ICommand GoToAccountCommand;
  
@@ -92,7 +89,6 @@ namespace HodlWallet.UI
             Cts ??= new();
             StartWalletAndPrecioService();
             InitializeComponent();
-            logger = WalletService.Logger;
             RegisterRoutes();
             SetupDefaultTab();
             ClearColorSelectedList();
@@ -117,7 +113,6 @@ namespace HodlWallet.UI
         void StartWalletAndPrecioService()
         {
             Observable.Start(() => WalletService.InitializeWallet(), RxApp.TaskpoolScheduler);
-            //Observable.Start(() => PrecioService.Init(), RxApp.TaskpoolScheduler);
         }
 
         async void GoToAccount(string accountId)
