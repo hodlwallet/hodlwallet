@@ -27,6 +27,7 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 
+using HodlWallet.Core.Utils;
 using HodlWallet.UI.Controls;
 using HodlWallet.UI.Converters;
 using HodlWallet.UI.Locale;
@@ -78,22 +79,32 @@ namespace HodlWallet.Core.ViewModels
             AccountColor = $"{colorCode}{color.ToHexString()}";
 
             string keyType = GetKeyFromValue();
-
+            DisplayCreatingAccountAlert(
+                Constants.LABEL_ALERT_CREATING_ACCOUNT_PROGRESS_MESSAGE);
             (bool Success, string Error) = await WalletService.AddAccount(keyType, AccountName, AccountColor);
 
             if (!Success && !string.IsNullOrEmpty(Error))
             {
-                DisplayProcessAccountErrorAlert(Error);
+                DisplayCreatingAccountAlert(
+                    Constants.LABEL_ERROR_ACCOUNT_CREATION_MESSAGE, Error);
             }
             else
             {
+                DisplayCreatingAccountAlert(
+                    Constants.LABEL_ALERT_SUCCESS_ACCOUNT_CREATION_MESSAGE);
                 await Shell.Current.GoToAsync("..");
             }
         }
 
-        void DisplayProcessAccountErrorAlert(string errorMessage)
+        void DisplayCreatingAccountAlert(string labelMessage, string errorMessage = "")
         {
-            MessagingCenter.Send(this, "DisplayErrorCreatingAccount", errorMessage);
+            var message = Constants.DISPLAY_ALERT_CREATING_ACCOUNT_PROGRESS_MESSAGE;
+            if (!string.IsNullOrEmpty(errorMessage))
+                message = errorMessage;
+            else if (labelMessage.Equals(Constants.LABEL_ALERT_SUCCESS_ACCOUNT_CREATION_MESSAGE))
+                message = Constants.DISPLAY_ALERT_SUCCESS_ACCOUNT_CREATION_MESSAGE; ;
+
+            MessagingCenter.Send(this, labelMessage, message);
         }
 
         string GetKeyFromValue()
