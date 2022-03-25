@@ -82,7 +82,7 @@ namespace HodlWallet.Core.ViewModels
                 // this code should not be used if the bug is fixed on Liviano
                 if (tx.IsSend) return tx.SentScriptPubKey is not null;
                 else return tx.ScriptPubKey is not null;
-            }).OrderByDescending(tx => tx.CreatedAt)) //.Take(100))
+            }).OrderByDescending(tx => tx.CreatedAt))
                 Transactions.Add(TransactionModel.FromTransactionData(tx));
         }
 
@@ -93,7 +93,7 @@ namespace HodlWallet.Core.ViewModels
                 {
                     // FIXME this is a bug on the abandon abandon about mnemonic
                     // this code should not be used if the bug is fixed on Liviano
-                    if (item.IsSend && item.ScriptPubKey is null) return;
+                    if (item.IsSend && item.SentScriptPubKey is null) return;
                     else if (item.IsReceive && item.ScriptPubKey is null) return;
                     
                     Transactions.Insert(0, TransactionModel.FromTransactionData(item));
