@@ -212,10 +212,9 @@ namespace HodlWallet.Core.ViewModels
         {
             isViewVisible = true;
 
-            InitializeWalletAndPrecio();
-            InitializePrecioAndWalletTimers(); // TODO see bellow
-            InitializeWalletServiceTransactions();
-            DisplayCurrentBalance();
+            //InitializeWallet();
+            //InitializeWalletServiceTransactions();
+            //DisplayCurrentBalance();
         }
 
         void DisplayCurrentBalance()
@@ -234,12 +233,10 @@ namespace HodlWallet.Core.ViewModels
             
         }
 
-        public void InitializeWalletAndPrecio()
+        public void InitializeWallet()
         {
             // FIXME This logic needs to change...
             if (attachedWalletListeners) return;
-
-            InitializePrecioAndWalletTimers();
 
             InitializeWalletServiceTransactions();
 

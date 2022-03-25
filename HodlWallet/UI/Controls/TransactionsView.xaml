@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+    xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+    HeightRequest="10"
+    x:Class="HodlWallet.UI.Controls.TransactionsView"
+    xmlns:converters="clr-namespace:HodlWallet.UI.Converters"
+    BackgroundColor="{DynamicResource Bg}">
+    <StackLayout.Resources>
+        <ResourceDictionary>
+            <converters:MemoToHeightConverter x:Key="MemoToHeightConverter" />
+            <converters:IsSendToStatusColorConverter x:Key="IsSendToStatusColorConverter" />
+            <converters:CreatedAtToDurationConverter x:Key="CreatedAtToDurationConverter" />
+            <converters:IsSendToIconConverter x:Key="IsSendToIconConverter" />
+        </ResourceDictionary>
+    </StackLayout.Resources>
+    <StackLayout.BindingContext>
+        <vm:TransactionsViewModel />
+    </StackLayout.BindingContext>
+    <CollectionView SelectionMode="Single"
+                    ItemsSource="{Binding Transactions}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource TransactionInfoLabel}"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           Grid.ColumnSpan="2"
+                           TextColor="{DynamicResource Fg}"
+                           Text="{Binding AddressText}" />
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</StackLayout>

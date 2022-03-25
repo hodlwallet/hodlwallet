@@ -114,6 +114,9 @@
 		<EmbeddedResource Update="UI\Controls\FlyoutHeader.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="UI\Controls\TransactionsView.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="UI\Locale\LocaleResources.es.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>LocaleResources.es.Designer.cs</LastGenOutput>

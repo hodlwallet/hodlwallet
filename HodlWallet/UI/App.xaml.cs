@@ -36,7 +36,6 @@ namespace HodlWallet.UI
 {
     public partial class App : Application
     {
-        IWalletService WalletService => DependencyService.Get<IWalletService>();
         IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
         IDisplayCurrencyService DisplayCurrencyService => DependencyService.Get<IDisplayCurrencyService>();
         ILocalize Localize => DependencyService.Get<ILocalize>();
@@ -95,13 +94,16 @@ namespace HodlWallet.UI
                 .Start(PrecioService.Start, RxApp.TaskpoolScheduler)
                 .Subscribe(cts.Token);
 
-            DisplayCurrencyService.Load();
+            Observable
+                .Start(DisplayCurrencyService.Load, RxApp.TaskpoolScheduler)
+                .Subscribe(cts.Token);
         }
 
         void RegisterServices()
         {
             DependencyService.Register<IWalletService>();
             DependencyService.Register<IPrecioService>();
+            DependencyService.Register<IDisplayCurrencyService>();
             DependencyService.Register<IShareIntent>();
             DependencyService.Register<IPermissions>();
             DependencyService.Register<IAuthenticationService>();

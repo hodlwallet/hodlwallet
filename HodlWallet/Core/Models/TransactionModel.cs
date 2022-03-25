@@ -38,7 +38,7 @@ namespace HodlWallet.Core.Models
 {
     public class TransactionModel : INotifyPropertyChanged
     {
-        string _AmountText;
+        string amountText;
         Network Network => DependencyService.Get<IWalletService>().GetNetwork();
 
         public uint256 Id { get; set; }
@@ -51,10 +51,10 @@ namespace HodlWallet.Core.Models
 
         public string AmountText
         {
-            get => _AmountText;
+            get => amountText;
             set
             {
-                _AmountText = value;
+                amountText = value;
                 OnPropertyChanged(nameof(AmountText));
             }
         }

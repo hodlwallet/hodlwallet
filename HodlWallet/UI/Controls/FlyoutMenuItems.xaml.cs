@@ -1,5 +1,5 @@
 ﻿//
-// TransactionCollectionView.xaml.cs
+// FlyoutMenuItems.xaml.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
