@@ -23,14 +23,14 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System.Linq;
+
 using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Utils;
-using System.Linq;
-using System;
 
 [assembly: Dependency(typeof(DisplayCurrencyService))]
 namespace HodlWallet.Core.Services
