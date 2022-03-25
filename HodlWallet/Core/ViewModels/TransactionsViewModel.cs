@@ -25,6 +25,7 @@ using Liviano.Interfaces;
 using Liviano.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -53,7 +54,7 @@ namespace HodlWallet.Core.ViewModels
 
         void LoadTxsFromWallet()
         {
-            foreach (var tx in CurrentAccount.Txs)
+            foreach (var tx in CurrentAccount.Txs.OrderBy(tx => tx.CreatedAt).Take(3))
                 Transactions.Add(TransactionModel.FromTransactionData(tx));
         }
 
@@ -61,7 +62,7 @@ namespace HodlWallet.Core.ViewModels
         {
             if (e.NewItems is not null)
                 foreach (Tx item in e.NewItems)
-                    Transactions.Add(TransactionModel.FromTransactionData(item));
+                    Transactions.Insert(0, TransactionModel.FromTransactionData(item));
 
             if (e.OldItems is not null)
                 foreach (Tx item in e.OldItems)

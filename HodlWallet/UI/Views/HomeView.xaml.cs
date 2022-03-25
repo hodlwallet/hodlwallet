@@ -57,30 +57,9 @@ namespace HodlWallet.UI.Views
             }
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            //PriceButton.Source = "price_tag_3_line.png";
-
-            ViewModel.View_OnAppearing();
-
-            //ViewModel.InitializeWalletAndPrecio();        
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-
-            ViewModel.View_OnDisappearing();
-
-            //BalanceNavigationTitleLabel.FadeTo(0, 50);
-        }
-
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<HomeViewModel, TransactionModel>(this, "NavigateToTransactionDetail", NavigateToTransactionDetail);
-            MessagingCenter.Subscribe<HomeViewModel>(this, "SwitchCurrency", SwitchCurrency);
         }
 
         async void NavigateToTransactionDetail(HomeViewModel _, TransactionModel txModel)
@@ -100,25 +79,6 @@ namespace HodlWallet.UI.Views
         {
             // TODO Display better information
             await this.DisplayToast("Syncing...");
-        }
-
-        //void PriceButton_Tapped(object sender, EventArgs e)
-        //{
-        //    PriceButton.Source = "price_tag_3_fill.png";
-
-        //    Navigation.PushModalAsync(new PriceView());
-        //}
-
-        void SwitchCurrency(HomeViewModel _)
-        {
-            if (ViewModel.IsBtcEnabled)
-            {
-                //BalanceScrollView.ScrollToAsync(0, BalanceAmountBTC.Y, true);
-            }
-            else
-            {
-                //BalanceScrollView.ScrollToAsync(0, BalanceAmountUSD.Y, true);
-            }
         }
 
         public async Task SwitchAccount(IAccount account)
@@ -148,26 +108,6 @@ namespace HodlWallet.UI.Views
         async void Sync_Clicked(object sender, EventArgs e)
         {
             await DisplaySyncingMessage();
-        }
-
-        void TransactionsScrollView_Scrolled(object sender, ScrolledEventArgs e)
-        {
-            //BalanceNavigationTitleLabel.Text = ViewModel.DisplaySymbol.ToString() + " " + ViewModel.DisplayBalance.ToString();
-            //if (BalanceLabel.Bounds.Bottom < e.ScrollY)
-            //{
-            //    BalanceNavigationTitleLabel.FadeTo(1, 100);
-            //}
-            //else
-            //{
-            //    BalanceNavigationTitleLabel.FadeTo(0, 50);
-            //}
-        }
-
-        async void Balance_Tapped(object sender, EventArgs args)
-        {
-            ViewModel.SwitchCurrency();
-
-            await this.DisplayToast($"Balance tapped, currency: {ViewModel.Currency}");
         }
     }
 }

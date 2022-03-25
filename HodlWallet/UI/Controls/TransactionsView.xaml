@@ -20,16 +20,39 @@
         <vm:TransactionsViewModel />
     </StackLayout.BindingContext>
     <CollectionView SelectionMode="Single"
+                    VerticalScrollBarVisibility="Always"
                     ItemsSource="{Binding Transactions}">
+        <!--<CollectionView.Header>
+            <Label Text="Igor" />
+        </CollectionView.Header>-->
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <StackLayout Orientation="Horizontal">
-                    <Label Style="{StaticResource TransactionInfoLabel}"
-                           Grid.Column="0"
-                           Grid.Row="1"
-                           Grid.ColumnSpan="2"
-                           TextColor="{DynamicResource Fg}"
-                           Text="{Binding AddressText}" />
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup Name="CommonStates">
+                            <VisualState Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState Name="Unselected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <StackLayout Orientation="Horizontal">
+                        <BoxView HeightRequest="0" WidthRequest="30" />
+                        <ImageButton Source="{Binding IsSend, Converter={StaticResource IsSendToIconConverter}}"
+                                     BackgroundColor="{DynamicResource Bg2}"
+                                     WidthRequest="45"
+                                     HeightRequest="45"
+                                     VerticalOptions="Center"
+                                     Padding="8"
+                                     CornerRadius="50"
+                                     IsEnabled="False" />
+                    </StackLayout>
                 </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>

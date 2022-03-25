@@ -44,7 +44,6 @@ namespace HodlWallet.UI.Controls
             InitializeComponent();
 
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;
-
             _ = ToggleTo(ViewModel.CurrencyType, animate: false);
         }
 

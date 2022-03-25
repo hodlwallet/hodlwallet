@@ -76,6 +76,7 @@
                                      HeightRequest="45"
                                      VerticalOptions="Center"
                                      Padding="8"
+                                     IsEnabled="False"
                                      BackgroundColor="{DynamicResource Bg2}"
                                      Command="{Binding ClearCommand}" />
                         <Label Text="{i18n:Translate Text=Receive.clear}"
@@ -96,8 +97,8 @@
                                      HeightRequest="45"
                                      VerticalOptions="Center"
                                      Padding="8"
-                                     BackgroundColor="{DynamicResource Bg2}"
-                                     Command="{Binding AddAmountCommand}" />
+                                     IsEnabled="False"
+                                     BackgroundColor="{DynamicResource Bg2}" />
                         <Label Text="{i18n:Translate Text=Receive.addAmount}"
                                VerticalOptions="CenterAndExpand"
                                TextColor="{DynamicResource FgSuccess}"
@@ -116,8 +117,8 @@
                                      HeightRequest="45"
                                      VerticalOptions="Center"
                                      Padding="8"
-                                     BackgroundColor="{DynamicResource Bg2}"
-                                     Command="{Binding ShareIntentCommand}" />
+                                     IsEnabled="False"
+                                     BackgroundColor="{DynamicResource Bg2}" />
                         <Label Text="{i18n:Translate Text=Receive.share}"
                                VerticalOptions="CenterAndExpand"
                                TextColor="{DynamicResource FgSuccess}"
