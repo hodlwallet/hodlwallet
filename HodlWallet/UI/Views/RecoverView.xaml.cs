@@ -125,7 +125,7 @@ namespace HodlWallet.UI.Views
 
         void DebugMnemonic_Tapped(object sender, EventArgs e)
         {
-#if WIPE_WALLET
+#if DEBUG
             for (int i = 1; i < 12; i++)
             {
                 var entry = FindByName($"Entry{i}") as Entry;
