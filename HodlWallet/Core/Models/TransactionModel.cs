@@ -179,9 +179,9 @@ namespace HodlWallet.Core.Models
         {
             try
             {
-                return TransactionData.IsSend == true
-                ? TransactionData.SentScriptPubKey.GetDestinationAddress(Network).ToString()
-                : TransactionData.ScriptPubKey.GetDestinationAddress(Network).ToString();
+                return TransactionData.IsSend
+                    ? TransactionData.SentScriptPubKey.GetDestinationAddress(Network).ToString()
+                    : TransactionData.ScriptPubKey.GetDestinationAddress(Network).ToString();
             }
             catch (Exception e)
             {
@@ -193,14 +193,14 @@ namespace HodlWallet.Core.Models
 
         string GetAddressText()
         {
-            return TransactionData.IsSend == true
+            return TransactionData.IsSend
                 ? LocaleResources.Transactions_isSendTo + $"{Address}"
                 : LocaleResources.Transactions_isSendAt + $"{Address}";
         }
 
         Money GetAmount()
         {
-            return TransactionData.IsSend == true
+            return TransactionData.IsSend
                 ? TransactionData.AmountSent
                 : TransactionData.AmountReceived;
         }
@@ -210,7 +210,7 @@ namespace HodlWallet.Core.Models
             decimal decimalAmount = Amount.ToDecimal(MoneyUnit.BTC);
             string amountStr = decimalAmount.Normalize().ToString();
 
-            if (TransactionData.IsSend == true)
+            if (TransactionData.IsSend)
                 amountStr = $"-{amountStr}";
 
             return amountStr;
@@ -234,7 +234,7 @@ namespace HodlWallet.Core.Models
 
         string GetAddressTitleText()
         {
-            if (TransactionData.IsSend == true)
+            if (TransactionData.IsSend)
                 return LocaleResources.TransactionDetails_sendAddressTitle;
 
             return LocaleResources.TransactionDetails_receivedAddressTitle;
