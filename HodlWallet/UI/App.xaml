@@ -33,7 +33,7 @@
             <Color x:Key="FgDark">#2d2d2d</Color> <!-- Same as in Bg, so for inverted situations -->
             <Color x:Key="FgSuccess">#daa829</Color>
             <Color x:Key="FgWarning">#cf021a</Color>
-            <Color x:Key="FgError">#eb99a3</Color>
+            <Color x:Key="FgError">#cf021a</Color>
             <Color x:Key="FgComment">#6C6C6C</Color>
             <Color x:Key="FgRed">#cf021a</Color>
             <Color x:Key="FgGreen">#1e884e</Color>
