@@ -76,14 +76,14 @@ namespace HodlWallet.Core.ViewModels
 
         void LoadTxsFromWallet()
         {
-            var txs = CurrentAccount.Txs.ToList().Where(tx =>
+            var txs = CurrentAccount.Txs.Where(tx =>
             {
                 // FIXME this is a bug on the abandon abandon about mnemonic
                 // this code should not be used if the bug is fixed on Liviano
                 if (tx.IsSend) return tx.SentScriptPubKey is not null;
                 else return tx.ScriptPubKey is not null;
             }).OrderByDescending(tx => tx.CreatedAt);
-            //var txs = CurrentAccount.Txs.ToList().OrderByDescending(tx => tx.CreatedAt);
+            // var txs = CurrentAccount.Txs.OrderByDescending(tx => tx.CreatedAt);
 
             foreach (var tx in txs) Transactions.Add(TransactionModel.FromTransactionData(tx));
         }
