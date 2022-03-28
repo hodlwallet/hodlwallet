@@ -59,6 +59,8 @@ namespace HodlWallet.Core.Services
             if (File.Exists(DbFile))
             {
                 json = File.ReadAllText(DbFile);
+
+                if (string.IsNullOrEmpty(json)) json = "{}";
             }
 
             lock (@lock) Data = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
