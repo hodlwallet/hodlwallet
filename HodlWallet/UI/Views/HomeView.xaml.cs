@@ -36,6 +36,8 @@ namespace HodlWallet.UI.Views
 {
     public partial class HomeView : ContentPage
     {
+        bool openingDetails = false;
+
         HomeViewModel ViewModel => BindingContext as HomeViewModel;
         IWalletService WalletService => DependencyService.Get<IWalletService>();
 
@@ -64,10 +66,15 @@ namespace HodlWallet.UI.Views
 
         async void NavigateToTransactionDetail(TransactionsViewModel _, TransactionModel txModel)
         {
+            if (openingDetails) return;
+            openingDetails = true;
+
             var view = new TransactionDetailsView(txModel);
             var nav = new NavigationPage(view);
 
             await Navigation.PushModalAsync(nav);
+
+            openingDetails = false;
         }
 
         async Task DisplaySearchNotImplementedMessage()

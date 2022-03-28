@@ -25,10 +25,11 @@
 // THE SOFTWARE.
 using System;
 using System.Diagnostics;
+using System.Reactive.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
+using ReactiveUI;
 using Xamarin.Forms;
 
 namespace HodlWallet.Core.ViewModels
@@ -45,11 +46,10 @@ namespace HodlWallet.Core.ViewModels
         public bool IsNotSelected => string.IsNullOrEmpty(AccountType);
 
         public ICommand AccountTypeSelectedCommand { get; }
-        CancellationTokenSource Cts { get; set; }
+        readonly CancellationTokenSource Cts = new();
 
         public RecoverAccountTypeViewModel()
         {
-            Cts ??= new CancellationTokenSource();
             AccountTypeSelectedCommand = new Command<string>(AccountTypeSelected);
         }
 
@@ -57,17 +57,14 @@ namespace HodlWallet.Core.ViewModels
         {
             IsLoading = true;
 
-            Task.Factory.StartNew(
-                () => WalletService.InitializeWallet(accountType),
-                Cts.Token,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
+            Observable
+                .Start(() => WalletService.InitializeWallet(accountType), RxApp.TaskpoolScheduler)
+                .Subscribe(Cts.Token);
 
             WalletService.OnStarted += WalletService_OnStarted;
         }
 
-        private void WalletService_OnStarted(object sender, EventArgs e)
+        void WalletService_OnStarted(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "InitAppShell");
 

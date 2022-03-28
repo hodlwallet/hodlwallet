@@ -24,9 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
+using ReactiveUI;
 using Xamarin.Forms;
 
 namespace HodlWallet.UI.Controls
@@ -42,25 +44,19 @@ namespace HodlWallet.UI.Controls
 
             Cts = new CancellationTokenSource();
 
-            Task.Factory.StartNew(
-                () => DoFlip(),
-                Cts.Token,
-                TaskCreationOptions.LongRunning,
-                TaskScheduler.Default
-            );
+            Observable
+                .Start(DoFlip, RxApp.MainThreadScheduler)
+                .Subscribe(Cts.Token);
         }
 
         async void DoFlip()
         {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                var fileName = (IconImageSource as FileImageSource).File;
-                var index = Array.IndexOf(states, fileName);
+            var fileName = (IconImageSource as FileImageSource).File;
+            var index = Array.IndexOf(states, fileName);
 
-                var newFileName = states[++index % 5];
+            var newFileName = states[++index % 5];
 
-                IconImageSource = newFileName;
-            });
+            IconImageSource = newFileName;
 
             await Task.Delay(1_000);
 

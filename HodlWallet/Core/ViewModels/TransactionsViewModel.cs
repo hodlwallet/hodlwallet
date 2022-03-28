@@ -38,7 +38,7 @@ namespace HodlWallet.Core.ViewModels
     class TransactionsViewModel : BaseViewModel
     {
         public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
-        
+
         public ICommand NavigateToTransactionDetailsCommand { get; }
 
         TransactionModel currentTransaction;
@@ -76,14 +76,16 @@ namespace HodlWallet.Core.ViewModels
 
         void LoadTxsFromWallet()
         {
-            foreach (var tx in CurrentAccount.Txs.Where(tx =>
+            var txs = CurrentAccount.Txs.ToList().Where(tx =>
             {
                 // FIXME this is a bug on the abandon abandon about mnemonic
                 // this code should not be used if the bug is fixed on Liviano
                 if (tx.IsSend) return tx.SentScriptPubKey is not null;
                 else return tx.ScriptPubKey is not null;
-            }).OrderByDescending(tx => tx.CreatedAt))
-                Transactions.Add(TransactionModel.FromTransactionData(tx));
+            }).OrderByDescending(tx => tx.CreatedAt);
+            //var txs = CurrentAccount.Txs.ToList().OrderByDescending(tx => tx.CreatedAt);
+
+            foreach (var tx in txs) Transactions.Add(TransactionModel.FromTransactionData(tx));
         }
 
         void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -93,15 +95,15 @@ namespace HodlWallet.Core.ViewModels
                 {
                     // FIXME this is a bug on the abandon abandon about mnemonic
                     // this code should not be used if the bug is fixed on Liviano
-                    if      (item.IsSend && item.SentScriptPubKey is null) continue;
+                    if (item.IsSend && item.SentScriptPubKey is null) continue;
                     else if (item.IsReceive && item.ScriptPubKey is null) continue;
-                    
+
                     Transactions.Insert(0, TransactionModel.FromTransactionData(item));
                 }
 
             if (e.OldItems is not null)
                 foreach (Tx item in e.OldItems)
-                    Transactions.Insert(0, TransactionModel.FromTransactionData(item));
+                    Transactions.Remove(TransactionModel.FromTransactionData(item));
         }
     }
 }

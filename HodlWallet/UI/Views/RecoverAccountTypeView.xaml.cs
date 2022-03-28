@@ -56,10 +56,7 @@ namespace HodlWallet.UI.Views
 
         void InitAppShell(RecoverAccountTypeViewModel vm)
         {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                Application.Current.MainPage = new AppShell();
-            });
+            Application.Current.MainPage = new AppShell();
         }
 
         void HideEmptyState(RecoverAccountTypeViewModel vm)
