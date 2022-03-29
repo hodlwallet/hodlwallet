@@ -5,14 +5,6 @@
              x:Class="HodlWallet.UI.Views.PinSettingsView"
              Title="{i18n:Translate PinSettings.title}"
              BackgroundColor="{DynamicResource Bg}">
-    
-    <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="CloseToolbarItem"
-                     Order="Primary"
-                     Text="{i18n:Translate Text=PinSettings.close}"
-                     Priority="0"
-                     Clicked="CloseToolbarItem_Clicked" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <FlexLayout>
             <ScrollView x:Name="MenuScroll">

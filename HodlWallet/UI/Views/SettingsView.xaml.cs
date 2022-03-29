@@ -129,10 +129,7 @@ namespace HodlWallet.UI.Views
 
         async void Security_Clicked(object sender, EventArgs e)
         {
-            var view = new SecuritySettingsView();
-            var nav = new NavigationPage(view);
-
-            await Navigation.PushModalAsync(nav);
+            await Navigation.PushAsync(new SecuritySettingsView());
         }
 
         async void AccountSettings_Clicked(object sender, EventArgs e)

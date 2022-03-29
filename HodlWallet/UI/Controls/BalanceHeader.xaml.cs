@@ -56,7 +56,7 @@ namespace HodlWallet.UI.Controls
 
         async Task ToggleTo(DisplayCurrencyType displayCurrencyType, bool animate = true)
         {
-            if (animate) await Task.WhenAll(balanceLabel.FadeTo(0.00), balanceFiatLabel.FadeTo(0.00));
+            if (animate) await Task.WhenAll(balanceLabel.FadeTo(0.15), balanceFiatLabel.FadeTo(0.15));
 
             if (displayCurrencyType == DisplayCurrencyType.Bitcoin)
             {

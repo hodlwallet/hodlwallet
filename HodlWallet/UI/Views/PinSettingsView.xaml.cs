@@ -41,11 +41,6 @@ namespace HodlWallet.UI.Views
             InitializeComponent();
         }
 
-        void CloseToolbarItem_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PopModalAsync();
-        }
-
         async void UpdatePin_Clicked(object sender, EventArgs e)
         {
             string lastLogin = Preferences.Get("lastLogin", "pin");

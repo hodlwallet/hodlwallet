@@ -34,11 +34,17 @@ using HodlWallet.Core.Utils;
 using HodlWallet.Core.Services;
 using System.Linq;
 using Liviano.Services.Models;
+using System.Reactive.Linq;
+using ReactiveUI;
+using System.Threading;
+using System.Reactive.Concurrency;
 
 namespace HodlWallet.Core.ViewModels 
 {
     class DisplayCurrencyViewModel : BaseViewModel
     {
+        readonly CancellationTokenSource cts = new();
+
         public ObservableCollection<CurrencySymbolEntity> CurrencySymbolEntities { get; set; } = new();
 
         public Command SelectedCurrencyCommand { get; }
@@ -94,17 +100,31 @@ namespace HodlWallet.Core.ViewModels
 
         public DisplayCurrencyViewModel()
         {
-            PopulateCurrency();
             SelectedCurrencyCommand = new Command(SaveSelectedCurrency);
 
+
             IsBtcSelected = DisplayCurrencyService.BitcoinCurrencyCode == "BTC";
-            isSatSelected = !IsBtcSelected;
+            IsSatSelected = !IsBtcSelected;
+
+            Observable
+                .Start(() =>
+                {
+                    IsLoading = true;
+
+                    PopulateFiatCurrencies();
+
+                    IsLoading = false;
+
+                    SetSelectedCurrency();
+                }, RxApp.TaskpoolScheduler)
+                .Subscribe(cts.Token);
         }
 
         void SetSelectedCurrency()
         {
             //Lookup for the Currency previously saved
             string currencyCode = DisplayCurrencyService.FiatCurrencyCode;
+
             SelectedCurrency = CurrencySymbolEntities.FirstOrDefault(p => p.Code == currencyCode);
         }
 
@@ -117,28 +137,17 @@ namespace HodlWallet.Core.ViewModels
             SetSelectedCurrency();
         }
 
-        public void PopulateCurrency()
+        void PopulateFiatCurrencies()
         {
-            IsLoading = true;
-            try
+            foreach (var rate in PrecioService.Rates)
             {
-                var currencyEntities = PrecioService.Rates;
-                foreach (var currencyEntity in currencyEntities)
+                CurrencySymbolEntities.Add(new CurrencySymbolEntity
                 {
-                    CurrencySymbolEntities.Add(new CurrencySymbolEntity
-                    {
-                        Code = currencyEntity.Code,
-                        Symbol = CurrencyUtils.GetSymbol(currencyEntity.Code),
-                        Name = currencyEntity.Name,
-                        Rate = currencyEntity.Rate
-                    });
-                }
-                IsLoading = false;
-                SetSelectedCurrency();
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine($"[PopulateCurrency] Exception on PopulateCurrencyt! => {e.Message}");
+                    Code = rate.Code,
+                    Symbol = CurrencyUtils.GetSymbol(rate.Code),
+                    Name = rate.Name,
+                    Rate = rate.Rate
+                });
             }
         }
     }

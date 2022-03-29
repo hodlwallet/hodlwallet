@@ -14,13 +14,13 @@
     <ContentPage.Content>
         <StackLayout Margin="10">
             <Label FontSize="Small"
-                   Text="{i18n:Translate Text=DisplayCurrency.rate}"
-                   TextColor="{DynamicResource Fg3}" />
+                       Text="{i18n:Translate Text=DisplayCurrency.rate}"
+                       TextColor="{DynamicResource Fg3}" />
 
             <Label Style="{DynamicResource CustomLabel}"
-                   FontSize="Medium"
-                   FontFamily="{StaticResource Key=Mono-Regular}"
-                   Margin="5,0,0,0" >
+                       FontSize="Medium"
+                       FontFamily="{StaticResource Key=Mono-Regular}"
+                       Margin="5,0,0,0" >
                 <Label.Text>
                     <MultiBinding StringFormat='1 BTC = {0}{1:n}'>
                         <Binding Path="SelectedCurrency.Symbol" />
@@ -30,98 +30,98 @@
             </Label>
 
             <BoxView BackgroundColor="{DynamicResource Fg3}"
-                     HeightRequest="1" />
+                         HeightRequest="1" />
 
             <Label FontSize="Small"
-                   Text="{i18n:Translate Text=DisplayCurrency.bitcoinDisplayUnit}"
-                   TextColor="{DynamicResource Fg3}" />
+                       Text="{i18n:Translate Text=DisplayCurrency.bitcoinDisplayUnit}"
+                       TextColor="{DynamicResource Fg3}" />
 
             <StackLayout BackgroundColor="{DynamicResource Bg}" 
-                         Orientation="Horizontal" >
+                             Orientation="Horizontal" >
 
                 <RadioButton Content="{i18n:Translate Text=DisplayCurrency.bitcoin}"
-                             IsChecked="{Binding IsBtcSelected}"
-                             Style="{DynamicResource CustomRadioButton}"
-                             Value="BTC"
-                             HorizontalOptions="StartAndExpand"/>
+                                 IsChecked="{Binding IsBtcSelected}"
+                                 Style="{DynamicResource CustomRadioButton}"
+                                 Value="BTC"
+                                 HorizontalOptions="StartAndExpand"/>
 
                 <RadioButton Content="{i18n:Translate Text=DisplayCurrency.sats}"
-                             Style="{DynamicResource CustomRadioButton}"
-                             IsChecked="{Binding IsSatSelected}"
-                             Value="SAT"
-                             HorizontalOptions="StartAndExpand"/>
+                                 Style="{DynamicResource CustomRadioButton}"
+                                 IsChecked="{Binding IsSatSelected}"
+                                 Value="SAT"
+                                 HorizontalOptions="StartAndExpand"/>
 
             </StackLayout>
 
             <BoxView BackgroundColor="{DynamicResource Fg3}"
                      HeightRequest="1" />
 
-            <StackLayout>
+            <AbsoluteLayout>
                 <controls:NowLoadingIndicator />
-                <Label FontSize="Small"
-                       Text="{i18n:Translate Text=DisplayCurrency.fiatCurrencyUnit}"
-                       TextColor="{DynamicResource Fg3}" />
 
-                <CollectionView ItemsLayout="VerticalList"
-                                SelectionMode="Single"
-                                VerticalScrollBarVisibility="Default"
-                                ItemsSource="{Binding CurrencySymbolEntities}"
-                                SelectedItem="{Binding SelectedCurrency}"
-                                SelectionChangedCommand="{Binding SelectedCurrencyCommand}">
-                    <CollectionView.EmptyView>
-                        <Label HorizontalOptions="Center" Text="No Curriencies Available!" />
-                    </CollectionView.EmptyView>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout>
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup x:Name="CommonStates">
-                                        <VisualState x:Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter TargetName="CheckIcon" Property="Image.IsVisible" Value="False" />
-                                                <Setter Property="Padding" Value="1" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                        <VisualState x:Name="Selected">
-                                            <VisualState.Setters>
-                                                <Setter TargetName="CheckIcon" Property="Image.IsVisible" Value="True" />
-                                                <Setter TargetName="CurrencyLabel" Property="Label.TextColor" Value="#DADADA" />
-                                                <Setter Property="Padding" Value="1" />
-                                                <Setter TargetName="CurrencyLabel" Property="Label.BackgroundColor" Value="Transparent" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-                                <Grid>
+                <StackLayout>
+                    <Label FontSize="Small"
+                           Text="{i18n:Translate Text=DisplayCurrency.fiatCurrencyUnit}"
+                           TextColor="{DynamicResource Fg3}" />
 
-                                    <Label 
-                                        x:Name="CurrencyLabel"
-                                        FontSize="Medium"
-                                        TextColor="{DynamicResource Fg3}" >
-                                        <Label.Text>
-                                            <MultiBinding StringFormat="{}{0} ({1})">
-                                                <Binding Path="Name" />
-                                                <Binding Path="Symbol" />
-                                            </MultiBinding>
-                                        </Label.Text>
-                                    </Label>
+                    <CollectionView ItemsLayout="VerticalList"
+                                    SelectionMode="Single"
+                                    VerticalScrollBarVisibility="Default"
+                                    ItemsSource="{Binding CurrencySymbolEntities}"
+                                    SelectedItem="{Binding SelectedCurrency}"
+                                    SelectionChangedCommand="{Binding SelectedCurrencyCommand}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter TargetName="CheckIcon" Property="Image.IsVisible" Value="False" />
+                                                    <Setter Property="Padding" Value="1" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter TargetName="CheckIcon" Property="Image.IsVisible" Value="True" />
+                                                    <Setter TargetName="CurrencyLabel" Property="Label.TextColor" Value="#DADADA" />
+                                                    <Setter Property="Padding" Value="1" />
+                                                    <Setter TargetName="CurrencyLabel" Property="Label.BackgroundColor" Value="Transparent" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <Grid>
 
-                                    <svg:Icon 
-                                          x:Name="CheckIcon"
-                                          ResourceId="HodlWallet.UI.Assets.circle_check_yellow.svg"
-                                          HeightRequest="25"
-                                          WidthRequest="25"
-                                          HorizontalOptions="End" 
-                                          VerticalOptions="End">
-                                        
-                                    </svg:Icon>
+                                        <Label 
+                                            x:Name="CurrencyLabel"
+                                            FontSize="Medium"
+                                            TextColor="{DynamicResource Fg3}" >
+                                            <Label.Text>
+                                                <MultiBinding StringFormat="{}{0} ({1})">
+                                                    <Binding Path="Name" />
+                                                    <Binding Path="Symbol" />
+                                                </MultiBinding>
+                                            </Label.Text>
+                                        </Label>
 
-                                </Grid>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
+                                        <svg:Icon 
+                                              x:Name="CheckIcon"
+                                              ResourceId="HodlWallet.UI.Assets.circle_check_yellow.svg"
+                                              HeightRequest="25"
+                                              WidthRequest="25"
+                                              HorizontalOptions="End" 
+                                              VerticalOptions="End">
+
+                                        </svg:Icon>
+
+                                    </Grid>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </AbsoluteLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

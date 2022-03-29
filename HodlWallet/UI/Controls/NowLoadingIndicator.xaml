@@ -16,6 +16,8 @@
                        AbsoluteLayout.LayoutFlags="PositionProportional" />
     <Label x:Name="NowLoadingLabel"
            Text="{Binding Text}"
+           TextColor="{DynamicResource Fg}"
+           FontFamily="{StaticResource Key=Sans-Regular}"
            FontSize="Subtitle"
            HorizontalTextAlignment="Center"
            AbsoluteLayout.LayoutBounds="0.5,0.36,-1,-1"
