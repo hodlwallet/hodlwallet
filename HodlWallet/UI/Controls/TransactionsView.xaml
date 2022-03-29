@@ -22,8 +22,11 @@
     </StackLayout.BindingContext>
 
     <BoxView HeightRequest="1" BackgroundColor="{DynamicResource Fg2}" />
-    <CollectionView SelectionMode="Single"
+    <CollectionView x:Name="TransactionsCollectionView"
+                    SelectionMode="Single"
                     VerticalScrollBarVisibility="Always"
+                    RemainingItemsThreshold="{Binding RemainingItemsThreshold}"
+                    RemainingItemsThresholdReachedCommand="{Binding RemainingItemsThresholdReachedCommand}"
                     ItemsSource="{Binding Transactions}"
                     SelectedItem="{Binding CurrentTransaction}"
                     SelectionChangedCommand="{Binding NavigateToTransactionDetailsCommand}">

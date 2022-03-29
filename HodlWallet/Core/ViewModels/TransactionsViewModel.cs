@@ -39,6 +39,10 @@ namespace HodlWallet.Core.ViewModels
     {
         public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
 
+        const int TXS_ITEMS_SIZE = 10;
+
+        public ICommand RemainingItemsThresholdReachedCommand { get; }
+
         public ICommand NavigateToTransactionDetailsCommand { get; }
 
         TransactionModel currentTransaction;
@@ -48,11 +52,20 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref currentTransaction, value);
         }
 
+        int remainingItemsThreshold = 20;
+
+        public int RemainingItemsThreshold
+        {
+            get => remainingItemsThreshold;
+            set => SetProperty(ref remainingItemsThreshold, value);
+        }
+
         IAccount CurrentAccount => WalletService.Wallet.CurrentAccount;
 
         public TransactionsViewModel()
         {
             NavigateToTransactionDetailsCommand = new Command(NavigateToTransactionDetails);
+            RemainingItemsThresholdReachedCommand = new Command(RemainingItemsThresholdReached);
 
             if (WalletService.IsStarted) Init();
             else WalletService.OnStarted += (_, _) => Init();
@@ -62,7 +75,13 @@ namespace HodlWallet.Core.ViewModels
         {
             LoadTxsFromWallet();
 
+            WalletService.Wallet.OnNewTransaction += Wallet_OnNewTransaction;
             CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
+        }
+
+        void Wallet_OnNewTransaction(object sender, Liviano.Events.TxEventArgs e)
+        {
+            Debug.WriteLine($"New transaction on wallet {e.Tx.Id}");
         }
 
         void NavigateToTransactionDetails(object obj)
@@ -80,12 +99,34 @@ namespace HodlWallet.Core.ViewModels
             {
                 // FIXME this is a bug on the abandon abandon about mnemonic
                 // this code should not be used if the bug is fixed on Liviano
-                if (tx.IsSend) return tx.SentScriptPubKey is not null;
-                else return tx.ScriptPubKey is not null;
+                return tx.ScriptPubKey is not null || tx.SentScriptPubKey is not null;
             }).OrderByDescending(tx => tx.CreatedAt);
-            // var txs = CurrentAccount.Txs.OrderByDescending(tx => tx.CreatedAt);
 
-            foreach (var tx in txs) Transactions.Add(TransactionModel.FromTransactionData(tx));
+            foreach (var tx in txs.Take(TXS_ITEMS_SIZE).ToList())
+            {
+                var txModel = TransactionModel.FromTransactionData(tx);
+
+                Device.BeginInvokeOnMainThread(() => TransactionsAddInPlace(txModel));
+            }
+
+            MessagingCenter.Send(this, "ScrollToTop");
+        }
+
+        void RemainingItemsThresholdReached(object _)
+        {
+            var txs = CurrentAccount.Txs.Where(tx =>
+            {
+                // FIXME this is a bug on the abandon abandon about mnemonic
+                // this code should not be used if the bug is fixed on Liviano
+                return tx.ScriptPubKey is not null || tx.SentScriptPubKey is not null;
+            }).OrderByDescending(tx => tx.CreatedAt);
+
+            foreach (var tx in txs.Skip(Transactions.Count).Take(TXS_ITEMS_SIZE).ToList())
+            {
+                var txModel = TransactionModel.FromTransactionData(tx);
+
+                Device.BeginInvokeOnMainThread(() => TransactionsAddInPlace(txModel));
+            }
         }
 
         void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -95,15 +136,49 @@ namespace HodlWallet.Core.ViewModels
                 {
                     // FIXME this is a bug on the abandon abandon about mnemonic
                     // this code should not be used if the bug is fixed on Liviano
-                    if (item.IsSend && item.SentScriptPubKey is null) continue;
-                    else if (item.IsReceive && item.ScriptPubKey is null) continue;
+                    if (item.SentScriptPubKey is null && item.ScriptPubKey is null) continue;
 
-                    Transactions.Insert(0, TransactionModel.FromTransactionData(item));
+                    var txModel = TransactionModel.FromTransactionData(item);
+
+                    Device.BeginInvokeOnMainThread(() => TransactionsAddInPlace(txModel));
                 }
 
             if (e.OldItems is not null)
                 foreach (Tx item in e.OldItems)
-                    Transactions.Remove(TransactionModel.FromTransactionData(item));
+                {
+                    var txModel = TransactionModel.FromTransactionData(item);
+
+                    Device.BeginInvokeOnMainThread(() => Transactions.Remove(txModel));
+                }
+
+            MessagingCenter.Send(this, "ScrollToTop");
+        }
+
+        void TransactionsAddInPlace(TransactionModel txModel)
+        {
+            if (Transactions.Contains(txModel)) return;
+
+            if (string.IsNullOrEmpty(txModel.Address))
+            {
+                txModel.IsSend = !txModel.IsSend;
+                txModel.IsReceive = !txModel.IsReceive;
+
+                if (string.IsNullOrEmpty(txModel.Address))
+                {
+                    return;
+                }
+            }
+
+            var newerTxs = Transactions
+                .Where(tx => tx.CreatedAt > txModel.CreatedAt)
+                .OrderByDescending(tx => tx.CreatedAt);
+
+            int index;
+            if (newerTxs.Any())
+                index = Transactions.IndexOf(newerTxs.ToArray()[0]);
+            else index = 0;
+
+            Transactions.Insert(index, txModel);
         }
     }
 }
