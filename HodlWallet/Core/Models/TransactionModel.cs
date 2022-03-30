@@ -34,6 +34,8 @@ using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Locale;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
+using HodlWallet.Core.Services;
+using System.Threading;
 
 namespace HodlWallet.Core.Models
 {
@@ -44,6 +46,8 @@ namespace HodlWallet.Core.Models
         IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
 
         IDisplayCurrencyService DisplayCurrencyService => DependencyService.Get<IDisplayCurrencyService>();
+
+        readonly CancellationTokenSource cts = new();
 
         public uint256 Id { get; set; }
         public string IdText { get; set; }
@@ -73,6 +77,14 @@ namespace HodlWallet.Core.Models
         {
             get => amountFiatText;
             set => SetProperty(ref amountFiatText, value);
+        }
+
+        DisplayCurrencyType currencyType = DisplayCurrencyType.Bitcoin;
+
+        public DisplayCurrencyType CurrencyType
+        {
+            get => currencyType;
+            set => SetProperty(ref currencyType, value);
         }
 
         public string AmountWithFeeText { get; set; }
@@ -133,10 +145,17 @@ namespace HodlWallet.Core.Models
             IsAvailableText = StatusText; // TODO why?
             ConfirmedBlockText = GetConfirmedBlockText();
 
+            CurrencyType = DisplayCurrencyService.CurrencyType;
+
             PrecioService
                 .WhenAnyValue(service => service.Rates, service => service.Precio)
                 .ObserveOn(RxApp.TaskpoolScheduler)
-                .Subscribe(_ => UpdateAmountsWithCurrency());
+                .Subscribe(_ => UpdateAmountsWithCurrency(), cts.Token);
+
+            DisplayCurrencyService
+                .WhenAnyValue(service => service.CurrencyType)
+                .ObserveOn(RxApp.TaskpoolScheduler)
+                .Subscribe(_ => CurrencyType = DisplayCurrencyService.CurrencyType, cts.Token);
         }
 
         void UpdateAmountsWithCurrency()

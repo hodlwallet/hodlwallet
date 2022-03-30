@@ -119,21 +119,103 @@ namespace HodlWallet.UI.Converters
         }
     }
 
-    //public class DisplayCurrencyTypeToRowConverter : IValueConverter
-    //{
-    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        var currencyType = (DisplayCurrencyType)value;
+    public class BitcoinCurrentCurrencyToRowConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var currencyType = (DisplayCurrencyType)value;
 
-    //        return currencyType == DisplayCurrencyType.Bitcoin : 0
-    //    }
+            return currencyType == DisplayCurrencyType.Bitcoin ? 0 : 1;
+        }
 
-    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
+    public class FiatCurrentCurrencyToRowConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var currencyType = (DisplayCurrencyType)value;
+
+            return currencyType == DisplayCurrencyType.Fiat ? 0 : 1;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class BitcoinCurrentCurrencyToFontSizeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var currencyType = (DisplayCurrencyType)value;
+
+            return currencyType == DisplayCurrencyType.Bitcoin ?
+                Device.GetNamedSize(NamedSize.Small, typeof(Label)) : Device.GetNamedSize(NamedSize.Micro, typeof(Label));
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class FiatCurrentCurrencyToFontSizeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var currencyType = (DisplayCurrencyType)value;
+
+            return currencyType == DisplayCurrencyType.Fiat ?
+                Device.GetNamedSize(NamedSize.Small, typeof(Label)) : Device.GetNamedSize(NamedSize.Micro, typeof(Label));
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class BitcoinCurrentCurrencyToTextColorConverter : IValueConverter
+    {
+        Color Fg => (Color)Application.Current.Resources["Fg"];
+        Color Fg2 => (Color)Application.Current.Resources["Fg2"];
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var currencyType = (DisplayCurrencyType)value;
+
+            return currencyType == DisplayCurrencyType.Bitcoin ? Fg : Fg2;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class FiatCurrentCurrencyToTextColorConverter : IValueConverter
+    {
+        Color Fg => (Color)Application.Current.Resources["Fg"];
+        Color Fg2 => (Color)Application.Current.Resources["Fg2"];
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var currencyType = (DisplayCurrencyType)value;
+
+            return currencyType == DisplayCurrencyType.Fiat ? Fg : Fg2;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
     public class CreatedAtToDurationConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

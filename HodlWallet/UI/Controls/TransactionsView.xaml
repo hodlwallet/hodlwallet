@@ -16,6 +16,12 @@
             <converters:IsSendToGlyphConverter x:Key="IsSendToGlyphConverter" />
             <converters:IsSendToRotationYConverter x:Key="IsSendToRotationYConverter" />
             <converters:IsSendToColorConverter x:Key="IsSendToColorConverter" />
+            <converters:BitcoinCurrentCurrencyToRowConverter x:Key="BitcoinCurrentCurrencyToRowConverter" />
+            <converters:FiatCurrentCurrencyToRowConverter x:Key="FiatCurrentCurrencyToRowConverter" />
+            <converters:BitcoinCurrentCurrencyToFontSizeConverter x:Key="BitcoinCurrentCurrencyToFontSizeConverter" />
+            <converters:FiatCurrentCurrencyToFontSizeConverter x:Key="FiatCurrentCurrencyToFontSizeConverter" />
+            <converters:BitcoinCurrentCurrencyToTextColorConverter x:Key="BitcoinCurrentCurrencyToTextColorConverter" />
+            <converters:FiatCurrentCurrencyToTextColorConverter x:Key="FiatCurrentCurrencyToTextColorConverter" />
         </ResourceDictionary>
     </StackLayout.Resources>
     <StackLayout.BindingContext>
@@ -79,8 +85,31 @@
                                     <ColumnDefinition Width="150" />
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Row="0" Text="{Binding AmountText}" FontSize="Small" FontFamily="{StaticResource Key=Mono-Regular}" LineBreakMode="MiddleTruncation" WidthRequest="200" />
-                                <Label Grid.Row="1" Text="{Binding AmountFiatText}" FontSize="Micro" FontFamily="{StaticResource Key=Mono-Regular}" TextColor="{DynamicResource Fg2}" />
+                                <Label Grid.Row="{Binding CurrencyType, Converter={StaticResource BitcoinCurrentCurrencyToRowConverter}}"
+                                       Text="{Binding AmountText}"
+                                       FontSize="Small"
+                                       FontFamily="{StaticResource Key=Mono-Regular}"
+                                       LineBreakMode="MiddleTruncation"
+                                       WidthRequest="200" />
+                                <Label Grid.Row="{Binding CurrencyType, Converter={StaticResource FiatCurrentCurrencyToRowConverter}}"
+                                       Text="{Binding AmountFiatText}"
+                                       FontSize="Micro"
+                                       FontFamily="{StaticResource Key=Mono-Regular}"
+                                       TextColor="{DynamicResource Fg2}" />
+
+                                <!--TODO This is how it supposed to work
+                                <Label Grid.Row="{Binding CurrencyType, Converter={StaticResource BitcoinCurrentCurrencyToRowConverter}}"
+                                       Text="{Binding AmountText}"
+                                       FontSize="{Binding CurrencyType, Converter={StaticResource BitcoinCurrentCurrencyToFontSizeConverter}}"
+                                       FontFamily="{StaticResource Key=Mono-Regular}"
+                                       TextColor="{Binding CurrencyType, Converter={StaticResource BitcoinCurrentCurrencyToTextColorConverter}}"
+                                       LineBreakMode="MiddleTruncation"
+                                       WidthRequest="200" />
+                                <Label Grid.Row="{Binding CurrencyType, Converter={StaticResource FiatCurrentCurrencyToRowConverter}}"
+                                       Text="{Binding AmountFiatText}"
+                                       FontSize="{Binding CurrencyType, Converter={StaticResource FiatCurrentCurrencyToTextColorConverter}}"
+                                       FontFamily="{StaticResource Key=Mono-Regular}"
+                                       TextColor="{DynamicResource Fg2}" />-->
                             </Grid>
                         </StackLayout>
                     </StackLayout>
