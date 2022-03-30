@@ -15,7 +15,13 @@
         <FlexLayout Direction="Column">
             <StackLayout FlexLayout.Grow="2" BackgroundColor="{DynamicResource Bg2}">
                 <StackLayout HeightRequest="50" Orientation="Horizontal" HorizontalOptions="Center">
-                    <Image Source="caret_down_filled.png" HeightRequest="40" />
+                    <Image HeightRequest="40" Margin="0,5,0,0">
+                        <Image.Source>
+                            <FontImageSource FontFamily="MaterialIcons-Regular"
+                                             Color="{DynamicResource FgGreen}"
+                                             Glyph="reply" />
+                        </Image.Source>
+                    </Image>
                 </StackLayout>
                 <Label Text="{i18n:Translate Text=Receive.uniqueAddress}"
                        HorizontalOptions="Center"
@@ -71,14 +77,19 @@
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="24">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding ClearIsVisible}">
                         <ImageButton CornerRadius="50"
-                                     Source="minus_filled.png"
                                      WidthRequest="45"
                                      HeightRequest="45"
                                      VerticalOptions="Center"
-                                     Padding="8"
+                                     Padding="10"
                                      IsEnabled="False"
                                      BackgroundColor="{DynamicResource Bg2}"
-                                     Command="{Binding ClearCommand}" />
+                                     Command="{Binding ClearCommand}">
+                            <ImageButton.Source>
+                                <FontImageSource FontFamily="MaterialIcons-Regular"
+                                                 Color="{DynamicResource FgSuccess}"
+                                                 Glyph="remove" />
+                            </ImageButton.Source>
+                        </ImageButton>
                         <Label Text="{i18n:Translate Text=Receive.clear}"
                                VerticalOptions="CenterAndExpand"
                                TextColor="{DynamicResource FgSuccess}"
@@ -92,13 +103,18 @@
                     
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding AddAmountIsVisible}">
                         <ImageButton CornerRadius="50"
-                                     Source="plus_filled.png"
                                      WidthRequest="45"
                                      HeightRequest="45"
                                      VerticalOptions="Center"
-                                     Padding="8"
+                                     Padding="10"
                                      IsEnabled="False"
-                                     BackgroundColor="{DynamicResource Bg2}" />
+                                     BackgroundColor="{DynamicResource Bg2}">
+                            <ImageButton.Source>
+                                <FontImageSource FontFamily="MaterialIcons-Regular"
+                                                 Color="{DynamicResource FgSuccess}"
+                                                 Glyph="add" />
+                            </ImageButton.Source>
+                        </ImageButton>
                         <Label Text="{i18n:Translate Text=Receive.addAmount}"
                                VerticalOptions="CenterAndExpand"
                                TextColor="{DynamicResource FgSuccess}"
@@ -112,13 +128,18 @@
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12">
                         <ImageButton CornerRadius="50"
-                                     Source="share_filled.png"
                                      WidthRequest="45"
                                      HeightRequest="45"
                                      VerticalOptions="Center"
-                                     Padding="8"
+                                     Padding="10"
                                      IsEnabled="False"
-                                     BackgroundColor="{DynamicResource Bg2}" />
+                                     BackgroundColor="{DynamicResource Bg2}">
+                            <ImageButton.Source>
+                                <FontImageSource FontFamily="MaterialIcons-Regular"
+                                                 Color="{DynamicResource FgSuccess}"
+                                                 Glyph="ios_share" />
+                            </ImageButton.Source>
+                        </ImageButton>
                         <Label Text="{i18n:Translate Text=Receive.share}"
                                VerticalOptions="CenterAndExpand"
                                TextColor="{DynamicResource FgSuccess}"

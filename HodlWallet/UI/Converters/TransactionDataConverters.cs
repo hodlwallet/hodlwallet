@@ -63,7 +63,7 @@ namespace HodlWallet.UI.Converters
         }
     }
 
-    public class IsSendToIconConverter : IValueConverter
+    public class IsSendToGlyphConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -72,6 +72,44 @@ namespace HodlWallet.UI.Converters
             return isSend
                 ? "caret_up_filled.png"
                 : "caret_down_filled.png";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class IsSendToRotationYConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            bool isSend = (bool)value;
+
+            return isSend
+                ? "180"
+                : "0";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class IsSendToColorConverter : IValueConverter
+    {
+        Color FgSuccess => (Color)Application.Current.Resources["FgSuccess"];
+        Color FgGreen => (Color)Application.Current.Resources["FgGreen"];
+
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            bool isSend = (bool)value;
+
+            return isSend
+                ? FgSuccess
+                : FgGreen;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

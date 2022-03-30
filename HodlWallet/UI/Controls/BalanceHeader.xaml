@@ -9,9 +9,14 @@
     </ContentView.BindingContext>
     <ContentView.Content>
         <StackLayout Orientation="Horizontal" BackgroundColor="{DynamicResource FgSuccess}">
-            <StackLayout Orientation="Horizontal">
-                <BoxView HeightRequest="0" WidthRequest="30" />
-                <Image Source="wallet.png" HeightRequest="40" WidthRequest="40" />
+            <StackLayout Orientation="Horizontal" Margin="40,0,0,0">
+                <Image HeightRequest="30" WidthRequest="30">
+                    <Image.Source>
+                        <FontImageSource FontFamily="MaterialIconsOutlined-Regular"
+                                         Color="{DynamicResource Bg2}"
+                                         Glyph="savings"/>
+                    </Image.Source>
+                </Image>
             </StackLayout>
             <StackLayout Spacing="0" WidthRequest="110" Padding="10,0,0,0">
                 <BoxView HeightRequest="10" />
