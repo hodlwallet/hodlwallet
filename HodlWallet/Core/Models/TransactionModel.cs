@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 
 using Liviano.Models;
@@ -31,12 +32,18 @@ using Xamarin.Forms;
 using HodlWallet.Core.Extensions;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Locale;
+using System.Reactive.Concurrency;
+using System.Reactive.Linq;
 
 namespace HodlWallet.Core.Models
 {
-    public class TransactionModel : ReactiveObject
+    public class TransactionModel : BindableModel
     {
         Network Network => DependencyService.Get<IWalletService>().GetNetwork();
+
+        IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
+
+        IDisplayCurrencyService DisplayCurrencyService => DependencyService.Get<IDisplayCurrencyService>();
 
         public uint256 Id { get; set; }
         public string IdText { get; set; }
@@ -51,22 +58,21 @@ namespace HodlWallet.Core.Models
         public string AmountText
         {
             get => amountText;
-            set
-            {
-                this.RaiseAndSetIfChanged(ref amountText, value);
-            }
+            set => SetProperty(ref amountText, value);
         }
 
-        public Money AmountFiat { get; set; }
+        Money amountFiat;
+        public Money AmountFiat
+        {
+            get => amountFiat;
+            set => SetProperty(ref amountFiat, value);
+        }
 
         string amountFiatText;
         public string AmountFiatText
         {
             get => amountFiatText;
-            set
-            {
-                this.RaiseAndSetIfChanged(ref amountFiatText, value);
-            }
+            set => SetProperty(ref amountFiatText, value);
         }
 
         public string AmountWithFeeText { get; set; }
@@ -94,8 +100,6 @@ namespace HodlWallet.Core.Models
 
         public Tx TransactionData { get; set; }
 
-        public TransactionModel() { }
-
         public TransactionModel(Tx transactionData)
         {
             TransactionData = transactionData;
@@ -110,7 +114,8 @@ namespace HodlWallet.Core.Models
             CreatedAtText = TransactionData.CreatedAt.ToString();
 
             Amount = GetAmount();
-            AmountText = GetAmountText();
+            AmountText = DisplayCurrencyService.BitcoinAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
+            AmountFiatText = DisplayCurrencyService.FiatAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
             AmountWithFeeText = GetAmountWithFeesText();
 
             Address = GetAddress();
@@ -127,6 +132,18 @@ namespace HodlWallet.Core.Models
             StatusText = GetStatusText();
             IsAvailableText = StatusText; // TODO why?
             ConfirmedBlockText = GetConfirmedBlockText();
+
+            PrecioService
+                .WhenAnyValue(service => service.Rates, service => service.Precio)
+                .ObserveOn(RxApp.TaskpoolScheduler)
+                .Subscribe(_ => UpdateAmountsWithCurrency());
+        }
+
+        void UpdateAmountsWithCurrency()
+        {
+            //Amount = new Money(Amount.ToDecimal(MoneyUnit.BTC) * 2, MoneyUnit.BTC);
+            AmountText = DisplayCurrencyService.BitcoinAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
+            AmountFiatText = DisplayCurrencyService.FiatAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
         }
 
         public static TransactionModel FromTransactionData(Tx transactionData)
@@ -203,9 +220,9 @@ namespace HodlWallet.Core.Models
 
         string GetAddressText()
         {
-            return TransactionData.IsSend
-                ? LocaleResources.Transactions_isSendTo + $"{Address}"
-                : LocaleResources.Transactions_isSendAt + $"{Address}";
+            var preposition = TransactionData.IsSend ? LocaleResources.Transactions_isSendTo : LocaleResources.Transactions_isSendAt;
+
+            return $"{preposition} {Address}";
         }
 
         Money GetAmount()
@@ -213,17 +230,6 @@ namespace HodlWallet.Core.Models
             return TransactionData.IsSend
                 ? TransactionData.AmountSent
                 : TransactionData.AmountReceived;
-        }
-
-        string GetAmountText()
-        {
-            decimal decimalAmount = Amount.ToDecimal(MoneyUnit.BTC);
-            string amountStr = decimalAmount.Normalize().ToString();
-
-            if (TransactionData.IsSend)
-                amountStr = $"-{amountStr}";
-
-            return amountStr;
         }
 
         string GetAmountWithFeesText()
@@ -237,9 +243,9 @@ namespace HodlWallet.Core.Models
             if (totalAmount == Money.Zero || totalFees == Money.Zero)
                 return AmountText;
 
-            string totalWithFees = (totalAmount + totalFees).Normalize().ToString();
+            var totalWithFees = totalAmount + totalFees;
 
-            return $"{totalWithFees} ({Amount.Normalize()} + {totalFees})";
+            return DisplayCurrencyService.BitcoinAmountFormatted(totalWithFees.ToDecimal(MoneyUnit.BTC), IsSend);
         }
 
         string GetAddressTitleText()

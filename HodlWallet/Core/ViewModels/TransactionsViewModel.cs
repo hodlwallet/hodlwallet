@@ -180,7 +180,8 @@ namespace HodlWallet.Core.ViewModels
 
             var newerTxs = Transactions
                 .Where(tx => tx.CreatedAt > txModel.CreatedAt)
-                .OrderByDescending(tx => tx.CreatedAt);
+                .OrderByDescending(tx => tx.CreatedAt)
+                .ToList();
 
             int index;
             if (newerTxs.Any())

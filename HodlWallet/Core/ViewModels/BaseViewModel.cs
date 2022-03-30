@@ -20,20 +20,14 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-using Refit;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Interfaces;
-using HodlWallet.Core.Utils;
+using HodlWallet.Core.Models;
 
 namespace HodlWallet.Core.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : BindableModel
     {
         public IWalletService WalletService => DependencyService.Get<IWalletService>();
         public IDisplayCurrencyService DisplayCurrencyService => DependencyService.Get<IDisplayCurrencyService>();
@@ -54,32 +48,6 @@ namespace HodlWallet.Core.ViewModels
         {
             get => title;
             set => SetProperty(ref title, value);
-        }
-
-        protected bool SetProperty<T>(
-            ref T backingStore,
-            T value,
-            [CallerMemberName] string propertyName = "",
-            Action onChanged = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
-
-            backingStore = value;
-            onChanged?.Invoke();
-            OnPropertyChanged(propertyName);
-
-            return true;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
-
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -80,12 +80,13 @@ namespace HodlWallet.Core.Services
             SecureStorageService.SetDisplayCurrencyType(CurrencyType);
         }
 
-        public string FiatAmountFormatted(decimal amount)
+        public string FiatAmountFormatted(decimal amount, bool negative = false)
         {
             var symbol = Constants.CURRENCY_SYMBOLS[FiatCurrencyCode];
+            var sign = negative ? "-" : "";
 
             if (PrecioService.Precio is null || PrecioService.Rates is null)
-                return $"{symbol}{amount:N}";
+                return $"{symbol}{sign}{amount:N}";
 
             decimal rate;
             if (FiatCurrencyCode == "USD")
@@ -96,20 +97,21 @@ namespace HodlWallet.Core.Services
             var finalAmount = rate * amount;
 
             // Do not format really small numbers
-            if (finalAmount < 0.01m) return $"{symbol}{finalAmount}";
+            if (finalAmount < 0.01m) return $"{symbol}{sign}{finalAmount}";
 
-            return $"{symbol}{finalAmount:N}";
+            return $"{symbol}{sign}{finalAmount:N}";
         }
 
-        public string BitcoinAmountFormatted(decimal amount)
+        public string BitcoinAmountFormatted(decimal amount, bool negative = false)
         {
             var symbol = Constants.CURRENCY_SYMBOLS[BitcoinCurrencyCode];
+            var sign = negative ? "-" : "";
 
             return BitcoinCurrencyCode switch
             {
-                "BTC" => $"{symbol}{amount}",
-                "SAT" => $"{(int)(amount * 100_000_000)} {symbol}",
-                _ => $"{symbol}{amount}",
+                "BTC" => $"{symbol}{sign}{amount}",
+                "SAT" => $"{sign}{(int)(amount * 100_000_000)} {symbol}",
+                _ => $"{symbol}{sign}{amount}",
             };
         }
     }

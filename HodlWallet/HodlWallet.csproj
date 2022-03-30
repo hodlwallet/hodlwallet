@@ -55,7 +55,6 @@
 		<PackageReference Include="Liviano" Version="0.1.10" />
 	</ItemGroup>
 	<ItemGroup>
-		<Folder Include="Core\Models\" />
 		<Folder Include="UI\Converters\" />
 		<Folder Include="UI\Extensions\" />
 		<Folder Include="UI\Renderers\" />

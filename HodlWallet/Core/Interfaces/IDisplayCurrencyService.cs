@@ -39,8 +39,8 @@ namespace HodlWallet.Core.Interfaces
 
         public void Save();
 
-        public string FiatAmountFormatted(decimal amount);
+        public string FiatAmountFormatted(decimal amount, bool negative = false);
 
-        public string BitcoinAmountFormatted(decimal amount);
+        public string BitcoinAmountFormatted(decimal amount, bool negative = false);
     }
 }

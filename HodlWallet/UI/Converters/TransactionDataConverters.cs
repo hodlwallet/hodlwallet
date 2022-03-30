@@ -22,6 +22,7 @@
 // THE SOFTWARE.
 using System;
 using System.Globalization;
+using HodlWallet.Core.Services;
 using HodlWallet.Core.Utils;
 using Xamarin.Forms;
 
@@ -117,6 +118,21 @@ namespace HodlWallet.UI.Converters
             throw new NotImplementedException();
         }
     }
+
+    //public class DisplayCurrencyTypeToRowConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        var currencyType = (DisplayCurrencyType)value;
+
+    //        return currencyType == DisplayCurrencyType.Bitcoin : 0
+    //    }
+
+    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 
     public class CreatedAtToDurationConverter : IValueConverter
     {

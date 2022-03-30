@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
-    xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
-    HeightRequest="10"
-    Spacing="0"
-    x:Class="HodlWallet.UI.Controls.TransactionsView"
-    xmlns:converters="clr-namespace:HodlWallet.UI.Converters"
-    BackgroundColor="{DynamicResource Bg}">
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             HeightRequest="10"
+             Spacing="0"
+             x:Class="HodlWallet.UI.Controls.TransactionsView"
+             xmlns:converters="clr-namespace:HodlWallet.UI.Converters"
+             BackgroundColor="{DynamicResource Bg}">
     <StackLayout.Resources>
         <ResourceDictionary>
             <converters:MemoToHeightConverter x:Key="MemoToHeightConverter" />
@@ -68,11 +67,21 @@
                         </ImageButton>
                         <StackLayout Spacing="2" Margin="10,0,0,0">
                             <Label Text="{Binding Address}" FontSize="Small" FontFamily="{StaticResource Key=Mono-Regular}" LineBreakMode="MiddleTruncation" WidthRequest="200" />
-                            <Label Text="{Binding CreatedAt, StringFormat='{0:MM/dd/yy}'}" FontSize="Small" FontFamily="{StaticResource Key=Sans-Regular}" TextColor="{DynamicResource Fg2}" />
+                            <Label Text="{Binding CreatedAt, StringFormat='{0:MM/dd/yy}'}" FontSize="Micro" FontFamily="{StaticResource Key=Sans-Regular}" TextColor="{DynamicResource Fg2}" />
                         </StackLayout>
                         <StackLayout Spacing="2" Margin="20,0,0,0">
-                            <Label Text="{Binding Amount}" FontSize="Small" FontFamily="{StaticResource Key=Mono-Regular}" LineBreakMode="MiddleTruncation" WidthRequest="200" />
-                            <Label Text="{Binding AmountText, StringFormat='{0:MM/dd/yy}'}" FontSize="Small" FontFamily="{StaticResource Key=Mono-Regular}" TextColor="{DynamicResource Fg2}" />
+                            <Grid RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Text="{Binding AmountText}" FontSize="Small" FontFamily="{StaticResource Key=Mono-Regular}" LineBreakMode="MiddleTruncation" WidthRequest="200" />
+                                <Label Grid.Row="1" Text="{Binding AmountFiatText}" FontSize="Micro" FontFamily="{StaticResource Key=Mono-Regular}" TextColor="{DynamicResource Fg2}" />
+                            </Grid>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>

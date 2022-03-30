@@ -1,5 +1,5 @@
 ﻿//
-// TransactionsView.xaml.cs
+// BindableModel.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -23,32 +23,40 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using Xamarin.Forms;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Text;
 
-using HodlWallet.Core.ViewModels;
-using HodlWallet.Core.Services;
-using System.Threading.Tasks;
-using Xamarin.Forms.Xaml;
-
-namespace HodlWallet.UI.Controls
+namespace HodlWallet.Core.Models
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TransactionsView : StackLayout
+    public class BindableModel : INotifyPropertyChanged
     {
-        public TransactionsView()
+        protected bool SetProperty<T>(
+            ref T backingStore,
+            T value,
+            [CallerMemberName] string propertyName = "",
+            Action onChanged = null)
         {
-            InitializeComponent();
-            SubscribeToMessages();
+            if (EqualityComparer<T>.Default.Equals(backingStore, value))
+                return false;
+
+            backingStore = value;
+            onChanged?.Invoke();
+            OnPropertyChanged(propertyName);
+
+            return true;
         }
 
-        void SubscribeToMessages()
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            MessagingCenter.Subscribe<TransactionsViewModel>(this, "ScrollToTop", ScrollToTop);
-        }
+            var changed = PropertyChanged;
+            if (changed == null)
+                return;
 
-        void ScrollToTop(TransactionsViewModel _)
-        {
-            TransactionsCollectionView.ScrollTo(0);
+            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
