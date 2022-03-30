@@ -33,8 +33,11 @@ namespace HodlWallet.UI.Controls
 {
     public partial class PinPad : ContentView
     {
-        private string _pin1 = string.Empty;
-        private string _pin2 = string.Empty;
+        string _pin1 = string.Empty;
+        string _pin2 = string.Empty;
+
+        Color FgSuccess => (Color)Application.Current.Resources["FgSuccess"];
+        Color Fg5 => (Color)Application.Current.Resources["Fg5"];
 
         public static readonly BindableProperty TitleProperty =
             BindableProperty.CreateAttached(
@@ -193,7 +196,7 @@ namespace HodlWallet.UI.Controls
                     return;
 
                 _pin1 = _pin1.Remove(_pin1.Length - 1);
-                PaintBoxView(Color.White, _pin1.Length + 1);
+                PaintBoxView(Fg5, _pin1.Length + 1);
             }
             else // "Reenter Pin"
             {
@@ -201,7 +204,7 @@ namespace HodlWallet.UI.Controls
                     return;
 
                 _pin2 = _pin2.Remove(_pin2.Length - 1);
-                PaintBoxView(Color.White, _pin2.Length + 1);
+                PaintBoxView(Fg5, _pin2.Length + 1);
             }
         }
 
@@ -212,7 +215,7 @@ namespace HodlWallet.UI.Controls
                 if (sender is Button button && _pin1.Length < 6)
                 {
                     _pin1 += Tags.GetTag(button);
-                    PaintBoxView(Color.Orange, _pin1.Length);
+                    PaintBoxView(FgSuccess, _pin1.Length);
                     if (_pin1.Length == 6)
                     {
                         await Task.Delay(300);
@@ -227,7 +230,7 @@ namespace HodlWallet.UI.Controls
                 if (sender is Button button && _pin2.Length < 6)
                 {
                     _pin2 += Tags.GetTag(button);
-                    PaintBoxView(Color.Orange, _pin2.Length + 6);
+                    PaintBoxView(FgSuccess, _pin2.Length + 6);
                     if (_pin2.Length == 6)
                     {
                         if (_pin1.Equals(_pin2))
@@ -280,7 +283,7 @@ namespace HodlWallet.UI.Controls
                         {
                             if (boxView is BoxView bxView)
                             {
-                                bxView.Color = Color.White;
+                                bxView.Color = Fg5;
                             }
                         }
                     }
