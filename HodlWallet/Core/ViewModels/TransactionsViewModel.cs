@@ -1,6 +1,9 @@
 ﻿//
 // TransactionsViewModel.cs
 //
+// Author:
+//       Igor Guerrero <igorgue@protonmail.com>
+//
 // Copyright (c) 2022 HODL Wallet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,18 +23,20 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using HodlWallet.Core.Models;
-using Liviano.Interfaces;
-using Liviano.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics;
-using System.Text;
+using System.Linq;
+using System.Reactive.Linq;
 using System.Windows.Input;
+
+using Liviano.Interfaces;
+using Liviano.Models;
+using ReactiveUI;
 using Xamarin.Forms;
+
+using HodlWallet.Core.Models;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -61,6 +66,15 @@ namespace HodlWallet.Core.ViewModels
         }
 
         IAccount CurrentAccount => WalletService.Wallet.CurrentAccount;
+
+        //List<Tx> Txs => CurrentAccount.Txs.Where(tx =>
+        //{
+        //    // FIXME this is a bug on the abandon abandon about mnemonic
+        //    // this code should not be used if the bug is fixed on Liviano
+        //    return tx.ScriptPubKey is not null || tx.SentScriptPubKey is not null;
+        //}).OrderByDescending(tx => tx.CreatedAt).ToList();
+
+        List<Tx> Txs => CurrentAccount.Txs.OrderByDescending(tx => tx.CreatedAt).ToList();
 
         public TransactionsViewModel()
         {
@@ -95,18 +109,10 @@ namespace HodlWallet.Core.ViewModels
 
         void LoadTxsFromWallet()
         {
-            var txs = CurrentAccount.Txs.Where(tx =>
-            {
-                // FIXME this is a bug on the abandon abandon about mnemonic
-                // this code should not be used if the bug is fixed on Liviano
-                return tx.ScriptPubKey is not null || tx.SentScriptPubKey is not null;
-            }).OrderByDescending(tx => tx.CreatedAt);
-
-            foreach (var tx in txs.Take(TXS_ITEMS_SIZE).ToList())
+            foreach (var tx in Txs.Take(TXS_ITEMS_SIZE))
             {
                 var txModel = TransactionModel.FromTransactionData(tx);
-
-                Device.BeginInvokeOnMainThread(() => TransactionsAddInPlace(txModel));
+                TransactionsAddInPlace(txModel);
             }
 
             MessagingCenter.Send(this, "ScrollToTop");
@@ -114,18 +120,10 @@ namespace HodlWallet.Core.ViewModels
 
         void RemainingItemsThresholdReached(object _)
         {
-            var txs = CurrentAccount.Txs.Where(tx =>
-            {
-                // FIXME this is a bug on the abandon abandon about mnemonic
-                // this code should not be used if the bug is fixed on Liviano
-                return tx.ScriptPubKey is not null || tx.SentScriptPubKey is not null;
-            }).OrderByDescending(tx => tx.CreatedAt);
-
-            foreach (var tx in txs.Skip(Transactions.Count).Take(TXS_ITEMS_SIZE).ToList())
+            foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_ITEMS_SIZE))
             {
                 var txModel = TransactionModel.FromTransactionData(tx);
-
-                Device.BeginInvokeOnMainThread(() => TransactionsAddInPlace(txModel));
+                TransactionsAddInPlace(txModel);
             }
         }
 
@@ -136,38 +134,45 @@ namespace HodlWallet.Core.ViewModels
                 {
                     // FIXME this is a bug on the abandon abandon about mnemonic
                     // this code should not be used if the bug is fixed on Liviano
-                    if (item.SentScriptPubKey is null && item.ScriptPubKey is null) continue;
+                    //if (item.SentScriptPubKey is null && item.ScriptPubKey is null) continue;
 
                     var txModel = TransactionModel.FromTransactionData(item);
-
-                    Device.BeginInvokeOnMainThread(() => TransactionsAddInPlace(txModel));
+                    TransactionsAddInPlace(txModel);
                 }
 
             if (e.OldItems is not null)
                 foreach (Tx item in e.OldItems)
                 {
                     var txModel = TransactionModel.FromTransactionData(item);
-
-                    Device.BeginInvokeOnMainThread(() => Transactions.Remove(txModel));
+                    TransactionsAddInPlace(txModel);
                 }
 
             MessagingCenter.Send(this, "ScrollToTop");
         }
 
+        /// <summary>
+        /// Tries to position a transaction in the right place
+        /// depending on the CreatedAt attribute of the model
+        /// </summary>
+        /// <param name="txModel">A model of a tx</param>
         void TransactionsAddInPlace(TransactionModel txModel)
         {
             if (Transactions.Contains(txModel)) return;
 
+            // TODO Remove this code, since it should never
+            // be the case that a transaction doesn't have any
+            // address to or from... is a bug on Liviano
             if (string.IsNullOrEmpty(txModel.Address))
             {
                 txModel.IsSend = !txModel.IsSend;
-                txModel.IsReceive = !txModel.IsReceive;
+                txModel.IsReceive = !txModel.IsSend;
 
                 if (string.IsNullOrEmpty(txModel.Address))
                 {
                     return;
                 }
             }
+            // Remove ^^
 
             var newerTxs = Transactions
                 .Where(tx => tx.CreatedAt > txModel.CreatedAt)
@@ -178,7 +183,8 @@ namespace HodlWallet.Core.ViewModels
                 index = Transactions.IndexOf(newerTxs.ToArray()[0]);
             else index = 0;
 
-            Transactions.Insert(index, txModel);
+            Observable
+                .Start(() => Transactions.Insert(index, txModel), RxApp.TaskpoolScheduler);
         }
     }
 }
