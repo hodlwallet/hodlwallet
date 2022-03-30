@@ -64,6 +64,10 @@
 		<Folder Include="UI\Views\Demos\" />
 	</ItemGroup>
 	<ItemGroup>
+		<None Remove="Resources\Fonts\materialdesignicons-webfont.ttf" />
+		<None Remove="Resources\Fonts\MaterialDesignIconsDesktop.ttf" />
+		<None Remove="Resources\Fonts\MaterialIcons-Regular.ttf" />
+		<None Remove="Resources\Fonts\MaterialIconsOutlined-Regular.otf" />
 		<None Remove="UI\Assets\circle_check_gray.svg" />
 		<None Remove="UI\Assets\circle_check_yellow.svg" />
 		<None Remove="UI\Assets\close.svg" />
@@ -84,6 +88,10 @@
 		<None Remove="Xamarin.CommunityToolkit" />
 	</ItemGroup>
 	<ItemGroup>
+		<EmbeddedResource Include="Resources\Fonts\materialdesignicons-webfont.ttf" />
+		<EmbeddedResource Include="Resources\Fonts\MaterialDesignIconsDesktop.ttf" />
+		<EmbeddedResource Include="Resources\Fonts\MaterialIcons-Regular.ttf" />
+		<EmbeddedResource Include="Resources\Fonts\MaterialIconsOutlined-Regular.otf" />
 		<EmbeddedResource Include="UI\Assets\circle_check_gray.svg" />
 		<EmbeddedResource Include="UI\Assets\circle_check_yellow.svg" />
 		<EmbeddedResource Include="UI\Assets\close.svg" />

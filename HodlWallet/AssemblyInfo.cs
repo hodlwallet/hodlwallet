@@ -20,6 +20,10 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+[assembly: ExportFont("MaterialIconsOutlined-Regular.otf", Alias = "MaterialIconsOutlined-Regular")]
+[assembly: ExportFont("MaterialIcons-Regular.ttf", Alias = "MaterialIcons-Regular")]
+[assembly: ExportFont("MaterialDesignIconsDesktop.ttf", Alias = "MaterialIconsCommunity-Regular")]
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
