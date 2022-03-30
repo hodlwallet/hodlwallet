@@ -85,7 +85,7 @@ namespace HodlWallet.UI.Views.Demos
 
             foreach (var fontName in _FontNames)
             {
-                var appFontName = (string)(OnPlatform<string>)Application.Current.Resources[fontName];
+                var appFontName = (string)Application.Current.Resources[fontName];
 
                 _Fonts.Add(appFontName);
             }

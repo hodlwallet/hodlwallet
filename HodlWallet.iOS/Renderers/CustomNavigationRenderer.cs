@@ -33,9 +33,7 @@ namespace HodlWallet.iOS.Renderers
     public class CustomNavigationRenderer : NavigationRenderer
     {
         UIColor Fg => ((Color)Xamarin.Forms.Application.Current.Resources["Fg"]).ToUIColor();
-        string SansFontName => (OnPlatform<string>)Xamarin.Forms.Application.Current.Resources["Sans-Regular"];
-
-        //string _SansBoldFontName => (OnPlatform<string>)Xamarin.Forms.Application.Current.Resources["Sans-Bold"];
+        string SansFontName => (string)Xamarin.Forms.Application.Current.Resources["Sans-Regular"];
 
         readonly UIControlState[] controlStates =
         {
