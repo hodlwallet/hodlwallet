@@ -44,7 +44,7 @@ namespace HodlWallet.Core.ViewModels
     {
         public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
 
-        const int TXS_ITEMS_SIZE = 10;
+        const int TXS_ITEMS_SIZE = 30;
 
         public ICommand RemainingItemsThresholdReachedCommand { get; }
 
@@ -57,7 +57,7 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref currentTransaction, value);
         }
 
-        int remainingItemsThreshold = 20;
+        int remainingItemsThreshold = 1;
 
         public int RemainingItemsThreshold
         {
@@ -109,7 +109,7 @@ namespace HodlWallet.Core.ViewModels
 
         void LoadTxsFromWallet()
         {
-            if (CurrentAccount is null) return;
+            IsLoading = true;
 
             foreach (var tx in Txs.Take(TXS_ITEMS_SIZE))
             {
@@ -118,17 +118,23 @@ namespace HodlWallet.Core.ViewModels
             }
 
             MessagingCenter.Send(this, "ScrollToTop");
+
+            IsLoading = false;
         }
 
         void RemainingItemsThresholdReached(object _)
         {
-            if (CurrentAccount is null) return;
+            if (IsLoading) return;
+
+            IsLoading = true;
 
             foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_ITEMS_SIZE))
             {
                 var txModel = TransactionModel.FromTransactionData(tx);
-                TransactionsAddInPlace(txModel);
+                TransactionsAddInPlace(txModel, expand: true);
             }
+
+            IsLoading = false;
         }
 
         void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -158,38 +164,47 @@ namespace HodlWallet.Core.ViewModels
         /// Tries to position a transaction in the right place
         /// depending on the CreatedAt attribute of the model
         /// </summary>
-        /// <param name="txModel">A model of a tx</param>
-        void TransactionsAddInPlace(TransactionModel txModel)
+        /// <param name="model">A model of a tx</param>
+        /// <param name="expand">if we need to add more or not</param>
+        void TransactionsAddInPlace(TransactionModel model, bool expand = false)
         {
-            if (Transactions.Contains(txModel)) return;
+            if (Transactions.Contains(model)) return;
 
             // TODO Remove this code, since it should never
             // be the case that a transaction doesn't have any
             // address to or from... is a bug on Liviano
-            if (string.IsNullOrEmpty(txModel.Address))
-            {
-                txModel.IsSend = !txModel.IsSend;
-                txModel.IsReceive = !txModel.IsSend;
+            //if (string.IsNullOrEmpty(txModel.Address))
+            //{
+            //    txModel.IsSend = !txModel.IsSend;
+            //    txModel.IsReceive = !txModel.IsSend;
 
-                if (string.IsNullOrEmpty(txModel.Address))
-                {
-                    return;
-                }
-            }
+            //    if (string.IsNullOrEmpty(txModel.Address))
+            //    {
+            //        return;
+            //    }
+            //}
             // Remove ^^
 
             var newerTxs = Transactions
-                .Where(tx => tx.CreatedAt > txModel.CreatedAt)
-                .OrderByDescending(tx => tx.CreatedAt)
-                .ToList();
+                .ToList()
+                .Where(tx => tx.CreatedAt > model.CreatedAt)
+                .OrderByDescending(tx => tx.CreatedAt);
 
             int index;
             if (newerTxs.Any())
-                index = Transactions.IndexOf(newerTxs.ToArray()[0]);
+                index = Transactions.IndexOf(newerTxs.FirstOrDefault());
             else index = 0;
 
             Observable
-                .Start(() => Transactions.Insert(index, txModel), RxApp.TaskpoolScheduler);
+                .Start(() =>
+                {
+                    Transactions.Insert(index, model);
+
+                    if (expand) return;
+                    if (Transactions.Count < TXS_ITEMS_SIZE) return;
+
+                    Transactions.RemoveAt(Transactions.Count);
+                }, RxApp.TaskpoolScheduler);
         }
     }
 }

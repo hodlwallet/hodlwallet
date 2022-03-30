@@ -21,21 +21,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
+using System.Reactive.Linq;
+using System.Threading;
 
 using Liviano.Models;
 using NBitcoin;
 using ReactiveUI;
 using Xamarin.Forms;
 
-using HodlWallet.Core.Extensions;
 using HodlWallet.Core.Interfaces;
-using HodlWallet.UI.Locale;
-using System.Reactive.Concurrency;
-using System.Reactive.Linq;
 using HodlWallet.Core.Services;
-using System.Threading;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.Core.Models
 {
@@ -63,28 +60,6 @@ namespace HodlWallet.Core.Models
         {
             get => amountText;
             set => SetProperty(ref amountText, value);
-        }
-
-        Money amountFiat;
-        public Money AmountFiat
-        {
-            get => amountFiat;
-            set => SetProperty(ref amountFiat, value);
-        }
-
-        string amountFiatText;
-        public string AmountFiatText
-        {
-            get => amountFiatText;
-            set => SetProperty(ref amountFiatText, value);
-        }
-
-        DisplayCurrencyType currencyType = DisplayCurrencyType.Bitcoin;
-
-        public DisplayCurrencyType CurrencyType
-        {
-            get => currencyType;
-            set => SetProperty(ref currencyType, value);
         }
 
         public string AmountWithFeeText { get; set; }
@@ -126,8 +101,9 @@ namespace HodlWallet.Core.Models
             CreatedAtText = TransactionData.CreatedAt.ToString();
 
             Amount = GetAmount();
-            AmountText = DisplayCurrencyService.BitcoinAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
-            AmountFiatText = DisplayCurrencyService.FiatAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
+
+            AmountText = GetAmountText();
+
             AmountWithFeeText = GetAmountWithFeesText();
 
             Address = GetAddress();
@@ -145,24 +121,31 @@ namespace HodlWallet.Core.Models
             IsAvailableText = StatusText; // TODO why?
             ConfirmedBlockText = GetConfirmedBlockText();
 
-            CurrencyType = DisplayCurrencyService.CurrencyType;
-
             PrecioService
                 .WhenAnyValue(service => service.Rates, service => service.Precio)
                 .ObserveOn(RxApp.TaskpoolScheduler)
-                .Subscribe(_ => UpdateAmountsWithCurrency(), cts.Token);
+                .Subscribe(_ => UpdateAmountText(), cts.Token);
 
             DisplayCurrencyService
-                .WhenAnyValue(service => service.CurrencyType)
+                .WhenAnyValue(service => service.CurrencyType, service => service.FiatCurrencyCode)
                 .ObserveOn(RxApp.TaskpoolScheduler)
-                .Subscribe(_ => CurrencyType = DisplayCurrencyService.CurrencyType, cts.Token);
+                .Subscribe(_ => UpdateAmountText(), cts.Token);
         }
 
-        void UpdateAmountsWithCurrency()
+        void UpdateAmountText()
         {
-            //Amount = new Money(Amount.ToDecimal(MoneyUnit.BTC) * 2, MoneyUnit.BTC);
-            AmountText = DisplayCurrencyService.BitcoinAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
-            AmountFiatText = DisplayCurrencyService.FiatAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
+            var amount = GetAmountText();
+
+            // This prevents updates that aren't not needed
+            if (amount != AmountText)
+                AmountText = amount;
+        }
+
+        string GetAmountText()
+        {
+            if (DisplayCurrencyService.CurrencyType == DisplayCurrencyType.Bitcoin)
+                return DisplayCurrencyService.BitcoinAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
+            return DisplayCurrencyService.FiatAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
         }
 
         public static TransactionModel FromTransactionData(Tx transactionData)
