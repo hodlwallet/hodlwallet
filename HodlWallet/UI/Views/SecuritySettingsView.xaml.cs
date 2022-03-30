@@ -37,11 +37,10 @@ namespace HodlWallet.UI.Views
 
         async void BackupMnemonic_Clicked(object sender, EventArgs e)
         {
-            //var view = new BackupView(action: "close");
-            //var nav = new NavigationPage(view);
+            var view = new BackupView(action: "close");
+            var nav = new NavigationPage(view);
 
-            //await Navigation.PushModalAsync(nav);
-            await Navigation.PushAsync(new BackupView());
+            await Navigation.PushModalAsync(nav);
         }
 
         async void PinButton_Clicked(object sender, EventArgs e)
@@ -51,10 +50,6 @@ namespace HodlWallet.UI.Views
 
         async void Biometrics_Clicked(object sender, EventArgs e)
         {
-            //var view = new BiometricsView();
-            //var nav = new NavigationPage(view);
-
-            //await Navigation.PushModalAsync(nav);
             await Navigation.PushAsync(new BiometricsView());
         }
     }
