@@ -67,32 +67,14 @@
                 FontFamily="Mono-Regular"
             -->
             <!-- Monospaced -->
-            <OnPlatform x:Key="Mono-Regular"
-                        x:TypeArguments="x:String"
-                        iOS="FiraMono-Regular"
-                        Android="FiraMono-Regular.ttf#FiraMono-Regular" />
-            <OnPlatform x:Key="Mono-Bold"
-                        x:TypeArguments="x:String"
-                        iOS="FiraMono-Bold"
-                        Android="FiraMono-Bold.ttf#FiraMono-Bold" />
+            <x:String x:Key="Mono-Regular">FiraMono-Regular</x:String>
+            <x:String x:Key="Mono-Bold">FiraMono-Bold</x:String>
 
             <!-- Sans -->
-            <OnPlatform x:Key="Sans-Regular"
-                        x:TypeArguments="x:String"
-                        iOS="FiraSans-Regular"
-                        Android="FiraSans-Regular.ttf#FiraSans-Regular" />
-            <OnPlatform x:Key="Sans-Bold"
-                        x:TypeArguments="x:String"
-                        iOS="FiraSans-Bold"
-                        Android="FiraSans-Bold.ttf#FiraSans-Bold" />
-            <OnPlatform x:Key="Sans-Italic"
-                        x:TypeArguments="x:String"
-                        iOS="FiraSans-LightItalic"
-                        Android="FiraSans-LightItalic.ttf#FiraSans-LightItalic" />
-            <OnPlatform x:Key="Sans-BoldItalic"
-                        x:TypeArguments="x:String"
-                        iOS="FiraSans-BoldItalic"
-                        Android="FiraSans-BoldItalic.ttf#FiraSans-BoldItalic" />
+            <x:String x:Key="Sans-Regular">FiraSans-Regular</x:String>
+            <x:String x:Key="Sans-Bold">FiraSans-Bold</x:String>
+            <x:String x:Key="Sans-Italic">FiraSans-Italic</x:String>
+            <x:String x:Key="Sans-BoldItalic">FiraSans-BoldItalic</x:String>
 
             <!-- Custom Styles -->
             <!-- Use these custom items as much as possible, as usual avoid naming things

@@ -156,24 +156,6 @@
     <ImageAsset Include="Assets.xcassets\logo.png.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <BundleResource Include="Resources\FiraSans-Bold.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\FiraSans-BoldItalic.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\FiraSans-Regular.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\FiraMono-Bold.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\FiraMono-Regular.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\FiraSans-LightItalic.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\NotificationIcon~ipad%402x.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -228,12 +210,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\large-icon.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <BundleResource Include="Resources\send.png" />
-    <BundleResource Include="Resources\send%402x.png" />
-    <BundleResource Include="Resources\send%403x.png" />
-    <BundleResource Include="Resources\receive.png" />
-    <BundleResource Include="Resources\receive%402x.png" />
-    <BundleResource Include="Resources\receive%403x.png" />
     <BundleResource Include="Resources\search.png" />
     <BundleResource Include="Resources\search%402x.png" />
     <BundleResource Include="Resources\search%403x.png" />
@@ -261,9 +237,6 @@
     <BundleResource Include="Resources\qr_code.png" />
     <BundleResource Include="Resources\qr_code%402x.png" />
     <BundleResource Include="Resources\qr_code%403x.png" />
-    <BundleResource Include="Resources\clock.png" />
-    <BundleResource Include="Resources\clock%402x.png" />
-    <BundleResource Include="Resources\clock%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -327,15 +300,6 @@
     <BundleResource Include="Resources\bitcoin_filled%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\wallet_filled.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\wallet_filled%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\wallet_filled%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\bitcoin_gold_filled.png" />
   </ItemGroup>
   <ItemGroup>
@@ -343,41 +307,5 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\bitcoin_gold_filled%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\wallet.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\wallet%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\wallet%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\caret_up_filled.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\caret_up_filled%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\caret_up_filled%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\caret_down_filled.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\caret_down_filled%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\caret_down_filled%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\share_filled.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\share_filled%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\share_filled%403x.png" />
   </ItemGroup>
 </Project>

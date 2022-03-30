@@ -26,4 +26,14 @@ using Xamarin.Forms.Xaml;
 [assembly: ExportFont("MaterialIconsOutlined-Regular.otf", Alias = "MaterialIconsOutlined-Regular")]
 [assembly: ExportFont("MaterialIcons-Regular.ttf", Alias = "MaterialIcons-Regular")]
 [assembly: ExportFont("MaterialDesignIconsDesktop.ttf", Alias = "MaterialIconsCommunity-Regular")]
+
+[assembly: ExportFont("FiraMono-Bold.ttf", Alias = "FiraMono-Bold")]
+[assembly: ExportFont("FiraMono-Medium.ttf", Alias = "FiraMono-Medium")]
+[assembly: ExportFont("FiraMono-Regular.ttf", Alias = "FiraMono-Regular")]
+
+[assembly: ExportFont("FiraSans-Regular.ttf", Alias = "FiraSans-Regular")]
+[assembly: ExportFont("FiraSans-Bold.ttf", Alias = "FiraSans-Bold")]
+[assembly: ExportFont("FiraSans-Italic.ttf", Alias = "FiraSans-Italic")]
+[assembly: ExportFont("FiraSans-BoldItalic.ttf", Alias = "FiraSans-BoldItalic")]
+
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]

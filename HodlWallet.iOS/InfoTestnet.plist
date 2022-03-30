@@ -28,14 +28,7 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>UIAppFonts</key>
-	<array>
-		<string>FiraMono-Regular.ttf</string>
-		<string>FiraMono-Bold.ttf</string>
-		<string>FiraSans-Regular.ttf</string>
-		<string>FiraSans-LightItalic.ttf</string>
-		<string>FiraSans-Bold.ttf</string>
-		<string>FiraSans-BoldItalic.ttf</string>
-	</array>
+	<array/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>UIStatusBarStyle</key>
