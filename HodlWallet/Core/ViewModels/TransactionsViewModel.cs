@@ -109,6 +109,8 @@ namespace HodlWallet.Core.ViewModels
 
         void LoadTxsFromWallet()
         {
+            if (CurrentAccount is null) return;
+
             foreach (var tx in Txs.Take(TXS_ITEMS_SIZE))
             {
                 var txModel = TransactionModel.FromTransactionData(tx);
@@ -120,6 +122,8 @@ namespace HodlWallet.Core.ViewModels
 
         void RemainingItemsThresholdReached(object _)
         {
+            if (CurrentAccount is null) return;
+
             foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_ITEMS_SIZE))
             {
                 var txModel = TransactionModel.FromTransactionData(tx);
