@@ -8,13 +8,6 @@
              BackgroundColor="{DynamicResource Bg}"
              NavigationPage.HasNavigationBar="True"
              x:Name="Header">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="CloseToolbarItem"
-                     Order="Primary"
-                     Text="{i18n:Translate Text=BiometricsSettings.close}"
-                     Priority="0"
-                     Clicked="CloseToolbarItem_Clicked" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Padding="20">

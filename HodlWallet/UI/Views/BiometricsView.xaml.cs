@@ -20,18 +20,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
+using Plugin.Fingerprint;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 
-using Plugin.Fingerprint;
-using Plugin.Fingerprint.Abstractions;
 using HodlWallet.UI.Locale;
 using HodlWallet.UI.Extensions;
 
@@ -42,29 +37,24 @@ namespace HodlWallet.UI.Views
     {
         public BiometricsView()
         {
-            bool value = Preferences.Get("biometricsAllow", true);
             InitializeComponent();
-            BiometricSwitch.IsToggled = value;
+
+            BiometricSwitch.IsToggled = Preferences.Get("biometricsAllow", true);
         }
 
-        private async void Switch_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        async void Switch_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (BiometricSwitch.IsToggled)
             {
-                bool availability = await CrossFingerprint.Current.IsAvailableAsync();
-                if (!availability)
+                if (!await CrossFingerprint.Current.IsAvailableAsync())
                 {
                     await this.DisplayToast(LocaleResources.Biometrics_notAvailableWarning);
                     BiometricSwitch.IsToggled = false;
+
                     return;
                 }
             }
             Preferences.Set("biometricsAllow", BiometricSwitch.IsToggled);
-        }
-
-        void CloseToolbarItem_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PopModalAsync();
         }
     }
 }
