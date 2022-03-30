@@ -53,7 +53,6 @@ namespace HodlWallet.Droid
 
             Popup.Init(this);
 
-            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
