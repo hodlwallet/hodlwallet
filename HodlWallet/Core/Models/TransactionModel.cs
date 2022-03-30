@@ -21,41 +21,51 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Xamarin.Forms;
-
-using NBitcoin;
+using System.Diagnostics;
 
 using Liviano.Models;
+using NBitcoin;
+using ReactiveUI;
+using Xamarin.Forms;
 
 using HodlWallet.Core.Extensions;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Locale;
-using System.Diagnostics;
 
 namespace HodlWallet.Core.Models
 {
-    public class TransactionModel : INotifyPropertyChanged
+    public class TransactionModel : ReactiveObject
     {
-        string amountText;
         Network Network => DependencyService.Get<IWalletService>().GetNetwork();
 
         public uint256 Id { get; set; }
         public string IdText { get; set; }
 
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
+
         public string CreatedAtText { get; set; }
 
         public Money Amount { get; set; }
 
+        string amountText;
         public string AmountText
         {
             get => amountText;
             set
             {
-                amountText = value;
-                OnPropertyChanged(nameof(AmountText));
+                this.RaiseAndSetIfChanged(ref amountText, value);
+            }
+        }
+
+        public Money AmountFiat { get; set; }
+
+        string amountFiatText;
+        public string AmountFiatText
+        {
+            get => amountFiatText;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref amountFiatText, value);
             }
         }
 
@@ -96,7 +106,7 @@ namespace HodlWallet.Core.Models
             IsSend = (bool)TransactionData.IsSend;
             IsReceive = (bool)TransactionData.IsReceive;
 
-            CreatedAt = TransactionData.CreatedAt;
+            CreatedAt = TransactionData.CreatedAt.GetValueOrDefault();
             CreatedAtText = TransactionData.CreatedAt.ToString();
 
             Amount = GetAmount();
@@ -238,13 +248,6 @@ namespace HodlWallet.Core.Models
                 return LocaleResources.TransactionDetails_sendAddressTitle;
 
             return LocaleResources.TransactionDetails_receivedAddressTitle;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public override int GetHashCode()
