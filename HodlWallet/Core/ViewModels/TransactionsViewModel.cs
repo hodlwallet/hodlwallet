@@ -37,6 +37,7 @@ using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
+using System.Reactive.Concurrency;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -45,6 +46,8 @@ namespace HodlWallet.Core.ViewModels
         public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
 
         const int TXS_ITEMS_SIZE = 30;
+
+        bool isLoadingCollection = false;
 
         public ICommand RemainingItemsThresholdReachedCommand { get; }
 
@@ -109,24 +112,30 @@ namespace HodlWallet.Core.ViewModels
 
         void LoadTxsFromWallet()
         {
-            IsLoading = true;
+            isLoadingCollection = true;
 
+            IsLoading = true;
             foreach (var tx in Txs.Take(TXS_ITEMS_SIZE))
             {
+                var count = Transactions.Count;
                 var txModel = TransactionModel.FromTransactionData(tx);
+
                 TransactionsAddInPlace(txModel);
+
+                if (count == TXS_ITEMS_SIZE / 3) IsLoading = false;
             }
+            IsLoading = false;
 
             MessagingCenter.Send(this, "ScrollToTop");
 
-            IsLoading = false;
+            isLoadingCollection = false;
         }
 
         void RemainingItemsThresholdReached(object _)
         {
-            if (IsLoading) return;
+            if (isLoadingCollection) return;
 
-            IsLoading = true;
+            isLoadingCollection = true;
 
             foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_ITEMS_SIZE))
             {
@@ -134,7 +143,7 @@ namespace HodlWallet.Core.ViewModels
                 TransactionsAddInPlace(txModel, expand: true);
             }
 
-            IsLoading = false;
+            isLoadingCollection = false;
         }
 
         void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -195,16 +204,15 @@ namespace HodlWallet.Core.ViewModels
                 index = Transactions.IndexOf(newerTxs.FirstOrDefault());
             else index = 0;
 
-            Observable
-                .Start(() =>
-                {
-                    Transactions.Insert(index, model);
+            RxApp.MainThreadScheduler.Schedule(() =>
+            {
+                Transactions.Insert(index, model);
 
-                    if (expand) return;
-                    if (Transactions.Count < TXS_ITEMS_SIZE) return;
+                if (expand) return;
+                if (Transactions.Count < TXS_ITEMS_SIZE) return;
 
-                    Transactions.RemoveAt(Transactions.Count);
-                }, RxApp.TaskpoolScheduler);
+                Transactions.RemoveAt(Transactions.Count - 1);
+            });
         }
     }
 }
