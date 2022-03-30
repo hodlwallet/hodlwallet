@@ -103,8 +103,8 @@ namespace HodlWallet.Core.Models
             Id = TransactionData.Id;
             IdText = TransactionData.Id.ToString();
 
-            IsSend = (bool)TransactionData.IsSend;
-            IsReceive = (bool)TransactionData.IsReceive;
+            IsSend = TransactionData.IsSend;
+            IsReceive = TransactionData.IsReceive;
 
             CreatedAt = TransactionData.CreatedAt.GetValueOrDefault();
             CreatedAtText = TransactionData.CreatedAt.ToString();
