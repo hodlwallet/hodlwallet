@@ -9,17 +9,19 @@
              Opacity="0.92"
              AbsoluteLayout.LayoutBounds="0,0,1,1"
              AbsoluteLayout.LayoutFlags="All" />
-    <ActivityIndicator IsRunning="{Binding IsLoading}"
-                       Scale="1.5"
-                       BackgroundColor="Transparent"
-                       AbsoluteLayout.LayoutBounds="0.5,0.42,-1,-1"
-                       AbsoluteLayout.LayoutFlags="PositionProportional" />
-    <Label x:Name="NowLoadingLabel"
-           Text="{Binding Text}"
-           TextColor="{DynamicResource Fg}"
-           FontFamily="{StaticResource Key=Sans-Regular}"
-           FontSize="Subtitle"
-           HorizontalTextAlignment="Center"
-           AbsoluteLayout.LayoutBounds="0.5,0.36,-1,-1"
-           AbsoluteLayout.LayoutFlags="PositionProportional" />
+    <StackLayout Spacing="10"
+                 AbsoluteLayout.LayoutBounds="0.5,0.42,-1,-1"
+                 AbsoluteLayout.LayoutFlags="PositionProportional"
+                 BackgroundColor="Transparent">
+        <ActivityIndicator IsRunning="{Binding IsLoading}"
+                           Scale="1.5"
+                           HorizontalOptions="Center" />
+        <Label x:Name="NowLoadingLabel"
+               Text="{Binding Text}"
+               TextColor="{DynamicResource Fg}"
+               FontFamily="{StaticResource Key=Sans-Regular}"
+               FontSize="Subtitle"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center" />
+    </StackLayout>
 </AbsoluteLayout>
