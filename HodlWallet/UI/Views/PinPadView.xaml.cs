@@ -42,19 +42,28 @@ namespace HodlWallet.UI.Views
             SubscribeToMessages();
 
             ViewModel.NextView = nextView;
+
             if (ViewModel.NextView == "PinPadChangeView")
             {
-                CloseToolbarItem.IsEnabled = true;
+                NavigationPage.SetHasBackButton(this, false);
             }
             else
             {
-                CloseToolbarItem.IsEnabled = false;
+                ToolbarItems.Clear();
+                NavigationPage.SetHasBackButton(this, true);
             }
         }
 
-        void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        async void CloseToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            if (ViewModel.NextView == "PinPadChangeView")
+            {
+                await Shell.Current.GoToAsync("//settings");
+
+                return;
+            }
+
+            await Navigation.PopModalAsync();
         }
 
         void SetPinPadControlBindings()

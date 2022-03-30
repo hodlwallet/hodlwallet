@@ -24,14 +24,13 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
+using Plugin.Fingerprint;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 using HodlWallet.Core.ViewModels;
 using HodlWallet.Core.Services;
 using HodlWallet.UI.Views.Demos;
-
-using Plugin.Fingerprint;
-using Xamarin.Essentials;
 
 namespace HodlWallet.UI.Views
 {
@@ -56,7 +55,10 @@ namespace HodlWallet.UI.Views
             if (ViewModel.Action == "update")
             {
                 LogoFront.IsVisible = false;
+
                 Header.Text = Locale.LocaleResources.Pin_updateHeader;
+                Title = Locale.LocaleResources.Pin_updateTitle;
+
                 NavigationPage.SetHasNavigationBar(this, true);
             }
             else
@@ -159,7 +161,9 @@ namespace HodlWallet.UI.Views
                 
                 return;
             }
+
             UnsubscribeToMessages();
+
             // Init app after startup, new wallet or restore
             Application.Current.MainPage = new AppShell();
         }
@@ -199,10 +203,14 @@ namespace HodlWallet.UI.Views
 
         void Logo_Tapped(object sender, EventArgs e)
         {
+#if DEBUG
             if (SecureStorageService.HasMnemonic())
                 Debug.WriteLine($"[Logo_Tapped] Seed: {SecureStorageService.GetMnemonic()}");
 
             Application.Current.MainPage = new ControlsDemoView();
+
+            UnsubscribeToMessages();
+#endif
         }
 
         async void FingerprintButtonClicked(object sender, EventArgs e)
@@ -220,9 +228,9 @@ namespace HodlWallet.UI.Views
             }
         }
 
-        void CloseToolbarItem_Clicked(object sender, EventArgs e)
+        async void CloseToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         }
     }
 }
