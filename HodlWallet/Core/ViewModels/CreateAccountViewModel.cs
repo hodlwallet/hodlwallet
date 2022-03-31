@@ -92,7 +92,7 @@ namespace HodlWallet.Core.ViewModels
             {
                 DisplayCreatingAccountAlert(
                     Constants.LABEL_ALERT_SUCCESS_ACCOUNT_CREATION_MESSAGE);
-                await Shell.Current.GoToAsync("..");
+                await Shell.Current.GoToAsync("../..");
             }
         }
 

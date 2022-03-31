@@ -38,6 +38,7 @@ using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
 using System.Reactive.Concurrency;
+using System.Threading.Tasks;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -98,7 +99,7 @@ namespace HodlWallet.Core.ViewModels
 
         void Wallet_OnNewTransaction(object sender, Liviano.Events.TxEventArgs e)
         {
-            Debug.WriteLine($"New transaction on wallet {e.Tx.Id}");
+            Debug.WriteLine($"[Wallet_OnNewTransaction] New transaction on wallet {e.Tx.Id}");
         }
 
         void NavigateToTransactionDetails(object obj)
@@ -110,7 +111,7 @@ namespace HodlWallet.Core.ViewModels
             CurrentTransaction = null;
         }
 
-        void LoadTxsFromWallet()
+        async void LoadTxsFromWallet()
         {
             isLoadingCollection = true;
 
@@ -122,8 +123,13 @@ namespace HodlWallet.Core.ViewModels
 
                 TransactionsAddInPlace(txModel);
 
-                if (count == TXS_ITEMS_SIZE / 3) IsLoading = false;
+                if (count == TXS_ITEMS_SIZE / 3)
+                {
+                    await Task.Delay(420);
+                    IsLoading = false;
+                }
             }
+            await Task.Delay(420);
             IsLoading = false;
 
             MessagingCenter.Send(this, "ScrollToTop");
@@ -133,7 +139,7 @@ namespace HodlWallet.Core.ViewModels
 
         void RemainingItemsThresholdReached(object _)
         {
-            //if (isLoadingCollection) return;
+            if (isLoadingCollection) return;
 
             //isLoadingCollection = true;
 

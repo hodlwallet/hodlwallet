@@ -8,12 +8,21 @@
              Title="{i18n:Translate Text=AddAccount.title}"
              BackgroundColor="{DynamicResource Bg}"
              NavigationPage.HasBackButton="False">
+    <NavigationPage.TitleView>
+        <controls:TitleView />
+    </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="CloseToolbarItem"
                      Order="Primary"
                      Text="{i18n:Translate Text=AddAccount.close}"
                      Priority="0"
-                     Clicked="CloseToolbarItem_Clicked" />
+                     Clicked="CloseToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialIcons-Regular"
+                                 Color="{DynamicResource FgSuccess}"
+                                 Glyph="close"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.BindingContext>
         <vm:CreateAccountViewModel />

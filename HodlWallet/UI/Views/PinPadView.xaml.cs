@@ -21,13 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+
+using Xamarin.Forms;
+
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Controls;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace HodlWallet.UI.Views
 {
@@ -58,7 +57,7 @@ namespace HodlWallet.UI.Views
         {
             if (ViewModel.NextView == "PinPadChangeView")
             {
-                await Shell.Current.GoToAsync("//settings");
+                await Shell.Current.GoToAsync("/settings");
 
                 return;
             }

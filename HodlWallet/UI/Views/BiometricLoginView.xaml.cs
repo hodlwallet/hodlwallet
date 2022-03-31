@@ -106,14 +106,14 @@ namespace HodlWallet.UI.Views
         {
             Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
 
+            UnsubscribeToMessages();
+
             if (ViewModel.Action == "pop") // Login after logout or timeout
             {
-                Navigation.PopModalAsync();
-                Navigation.PopModalAsync();
+                Shell.Current.GoToAsync("..");
 
                 return;
             }
-            UnsubscribeToMessages();
             // Init app after startup, new wallet or restore
             Application.Current.MainPage = new AppShell();
         }

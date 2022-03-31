@@ -3,10 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:HodlWallet.UI.Converters"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupRecoveryWordView"
              Title="{i18n:Translate BackupWord.title}"
              BackgroundColor="{DynamicResource Bg}">
+    <NavigationPage.TitleView>
+        <controls:TitleView />
+    </NavigationPage.TitleView>
     <ContentPage.BindingContext>
         <vm:BackupRecoveryWordViewModel />
     </ContentPage.BindingContext>
@@ -16,9 +20,14 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="SkipToolbarItem"
                      Order="Primary"
-                     Text="{i18n:Translate Text=Backup.skip}"
                      Priority="0"
-                     Clicked="SkipToolbarItem_Clicked" />
+                     Clicked="SkipToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialIcons-Regular"
+                                 Color="{DynamicResource FgSuccess}"
+                                 Glyph="check_circle"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <FlexLayout Direction="Column"

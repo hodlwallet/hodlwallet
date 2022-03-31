@@ -5,13 +5,17 @@
              x:Class="HodlWallet.UI.Views.PinPadChangeView"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{DynamicResource Bg}">
-    
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="CloseToolbarItem"
                      Order="Primary"
-                     Text="{i18n:Translate Text=PinSettings.close}"
                      Priority="0"
-                     Clicked="CloseToolbarItem_Clicked"/>
+                     Clicked="CloseToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialIcons-Regular"
+                                 Color="{DynamicResource FgSuccess}"
+                                 Glyph="close" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>

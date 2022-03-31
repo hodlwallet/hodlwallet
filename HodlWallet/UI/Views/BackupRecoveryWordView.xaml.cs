@@ -52,7 +52,7 @@ namespace HodlWallet.UI.Views
         {
             if (Application.Current.MainPage is AppShell)
             {
-                await Navigation.PopAsync();
+                await Shell.Current.GoToAsync("../..");
 
                 return;
             }

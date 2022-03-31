@@ -7,6 +7,9 @@
              x:Class="HodlWallet.UI.Views.RecoverAccountTypeView"
              x:DataType="vm:RecoverAccountTypeViewModel"
              Title="{i18n:Translate Text=AccountTypeSelection.title}">
+    <NavigationPage.TitleView>
+        <controls:TitleView />
+    </NavigationPage.TitleView>
     <ContentPage.BindingContext>
         <vm:RecoverAccountTypeViewModel />
     </ContentPage.BindingContext>

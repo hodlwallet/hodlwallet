@@ -51,7 +51,7 @@ namespace HodlWallet.UI.Views
 
         async void CloseToolbarItem_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("../..");
         }
 
         void SubscribeToMessages()

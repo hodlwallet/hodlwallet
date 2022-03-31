@@ -7,15 +7,23 @@
              x:Class="HodlWallet.UI.Views.PinPadView"
              Title="{i18n:Translate PinPad.Title}"
              BackgroundColor="{DynamicResource Bg}">
+    <NavigationPage.TitleView>
+        <controls:TitleView />
+    </NavigationPage.TitleView>
     <ContentPage.BindingContext>
         <vm:PinPadViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="CloseToolbarItem"
                      Order="Primary"
-                     Text="{i18n:Translate Text=PinPad.close}"
                      Priority="0"
-                     Clicked="CloseToolbarItem_Clicked" />
+                     Clicked="CloseToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialIcons-Regular"
+                                 Color="{DynamicResource FgSuccess}"
+                                 Glyph="close" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <FlexLayout>

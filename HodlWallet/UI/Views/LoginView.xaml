@@ -8,15 +8,23 @@
              x:Class="HodlWallet.UI.Views.LoginView"
              x:DataType="vm:LoginViewModel"
              ios:Page.UseSafeArea="True">
+    <NavigationPage.TitleView>
+        <controls:TitleView />
+    </NavigationPage.TitleView>
     <ContentPage.BindingContext>
         <vm:LoginViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="CloseToolbarItem"
                      Order="Primary"
-                     Text="{i18n:Translate Text=Login.close}"
                      Priority="0"
-                     Clicked="CloseToolbarItem_Clicked" />
+                     Clicked="CloseToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialIcons-Regular"
+                                 Color="{DynamicResource FgSuccess}"
+                                 Glyph="close" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <AbsoluteLayout>
