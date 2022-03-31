@@ -964,7 +964,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <comment>Total big title on the header</comment>
   </data>
   <data name="MyBitcoin.contextualInfo" xml:space="preserve">
-    <value>This is a contextual description information sample text long version</value>
+    <value>Bitcoin to an address or generate a new one to receive</value>
     <comment>Contextual Information</comment>
   </data>
   <data name="MyBitcoin.receiveBitcoin" xml:space="preserve">

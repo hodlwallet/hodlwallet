@@ -133,17 +133,17 @@ namespace HodlWallet.Core.ViewModels
 
         void RemainingItemsThresholdReached(object _)
         {
-            if (isLoadingCollection) return;
+            //if (isLoadingCollection) return;
 
-            isLoadingCollection = true;
+            //isLoadingCollection = true;
 
-            foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_ITEMS_SIZE))
-            {
-                var txModel = TransactionModel.FromTransactionData(tx);
-                TransactionsAddInPlace(txModel, expand: true);
-            }
+            //foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_ITEMS_SIZE))
+            //{
+            //    var txModel = TransactionModel.FromTransactionData(tx);
+            //    TransactionsAddInPlace(txModel, expand: true);
+            //}
 
-            isLoadingCollection = false;
+            //isLoadingCollection = false;
         }
 
         void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

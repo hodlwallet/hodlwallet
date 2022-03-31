@@ -32,11 +32,18 @@ namespace HodlWallet.iOS.Renderers
 {
     public class CustomShellRenderer : ShellRenderer
     {
+        string SansBoldFontName => (string)Xamarin.Forms.Application.Current.Resources["Sans-Bold"];
+        UIFont TitleFont => UIFont.FromName(SansBoldFontName, 20);
+
         protected override IShellSectionRenderer CreateShellSectionRenderer(ShellSection shellSection)
         {
             var renderer = base.CreateShellSectionRenderer(shellSection) as ShellSectionRenderer;
 
             renderer.NavigationBar.Translucent = false;
+            renderer.NavigationBar.TitleTextAttributes = new UIStringAttributes()
+            {
+                Font = TitleFont
+            };
 
             return renderer;
         }

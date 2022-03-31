@@ -1,5 +1,5 @@
 ﻿//
-// TransactionsView.xaml.cs
+// TitleView.xaml.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -22,38 +22,18 @@
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+// THE SOFTWARE.using Xamarin.Forms;
 using Xamarin.Forms;
-
-using HodlWallet.Core.ViewModels;
-using HodlWallet.Core.Services;
-using System.Threading.Tasks;
 using Xamarin.Forms.Xaml;
 
 namespace HodlWallet.UI.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TransactionsView : StackLayout
+    public partial class TitleView : StackLayout
     {
-        public TransactionsView()
+        public TitleView()
         {
             InitializeComponent();
-            SubscribeToMessages();
-        }
-
-        void SubscribeToMessages()
-        {
-            MessagingCenter.Subscribe<TransactionsViewModel>(this, "ScrollToTop", ScrollToTop);
-        }
-
-        void ScrollToTop(TransactionsViewModel _)
-        {
-            transactionsCollectionView.ScrollTo(0);
-        }
-
-        public void ScrollToTop()
-        {
-            ScrollToTop(null);
         }
     }
 }

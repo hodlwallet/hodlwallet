@@ -961,7 +961,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is a contextual description information sample text long version.
+        ///   Looks up a localized string similar to Bitcoin to an address or generate a new one to receive.
         /// </summary>
         internal static string MyBitcoin_contextualInfo {
             get {

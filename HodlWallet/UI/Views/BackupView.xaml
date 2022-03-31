@@ -3,10 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.BackupView"
              Title="{i18n:Translate Backup.title}"
              NavigationPage.HasBackButton="False">
+    <Shell.TitleView>
+        <controls:TitleView />
+    </Shell.TitleView>
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="CloseToolbarItem"
                      Order="Primary"

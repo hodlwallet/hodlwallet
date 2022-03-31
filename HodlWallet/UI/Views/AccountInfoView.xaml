@@ -8,6 +8,9 @@
     x:Class="HodlWallet.UI.Views.AccountInfoView"
     BackgroundColor="{DynamicResource Bg}"
     Title="{i18n:Translate AccountInfo.Title}">
+    <Shell.TitleView>
+        <controls:TitleView />
+    </Shell.TitleView>
     <ContentPage.BindingContext>
         <vm:AccountInfoViewModel />
     </ContentPage.BindingContext>

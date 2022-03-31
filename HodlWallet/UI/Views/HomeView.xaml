@@ -7,17 +7,33 @@
              BackgroundColor="{DynamicResource Bg}"
              Title="{i18n:Translate Text=Home.title}"
              x:Class="HodlWallet.UI.Views.HomeView">
+    <Shell.TitleView>
+        <controls:TitleView>
+            <controls:TitleView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TopView_DoubleTapped" NumberOfTapsRequired="2" />
+            </controls:TitleView.GestureRecognizers>
+        </controls:TitleView>
+    </Shell.TitleView>
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <controls:HideableToolbarItem x:Name="SearchToolBarItem" IsVisible="False" IconImageSource="search" Clicked="Search_Clicked" />
+        <controls:HideableToolbarItem x:Name="SearchToolBarItem" IsVisible="False" Clicked="Search_Clicked">
+            <controls:HideableToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialIcons-Regular"
+                                 Glyph="search" />
+            </controls:HideableToolbarItem.IconImageSource>
+        </controls:HideableToolbarItem>
         <controls:SyncingToolbarItem x:Name="SyncToolbarItem" IsVisible="False" Clicked="Sync_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <FlexLayout Direction="Column">
-            <controls:BalanceHeader FlexLayout.Grow="1" />
-            <controls:TransactionsView FlexLayout.Grow="9" />
+            <controls:BalanceHeader FlexLayout.Grow="1">
+                <controls:BalanceHeader.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TopView_DoubleTapped" NumberOfTapsRequired="2" />
+                </controls:BalanceHeader.GestureRecognizers>
+            </controls:BalanceHeader>
+            <controls:TransactionsView x:Name="transactionsView" FlexLayout.Grow="9" />
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

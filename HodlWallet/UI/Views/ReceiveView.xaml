@@ -2,12 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
-             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              x:Class="HodlWallet.UI.Views.ReceiveView"
              Title="{i18n:Translate Receive.title}"
              BackgroundColor="{DynamicResource Bg}">
+    <Shell.TitleView>
+        <controls:TitleView />
+    </Shell.TitleView>
     <ContentPage.BindingContext>
         <vm:ReceiveViewModel />
     </ContentPage.BindingContext>

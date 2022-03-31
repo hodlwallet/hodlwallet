@@ -7,6 +7,9 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              BackgroundColor="{DynamicResource Bg}"
              Title="{i18n:Translate Text=MyBitcoin.title}">
+    <Shell.TitleView>
+        <controls:TitleView />
+    </Shell.TitleView>
     <ContentPage.BindingContext>
         <vm:MyBitcoinViewModel />
     </ContentPage.BindingContext>
@@ -17,7 +20,13 @@
             <StackLayout FlexLayout.Grow="2.5" BackgroundColor="{DynamicResource Bg2}">
                 <StackLayout HeightRequest="80" VerticalOptions="End">
                     <BoxView HeightRequest="20" />
-                    <Image Source="bitcoin_gold_filled.png" HeightRequest="40" />
+                    <Image HeightRequest="40">
+                        <Image.Source>
+                            <FontImageSource FontFamily="MaterialIcons-Regular"
+                                             Color="{DynamicResource FgSuccess}"
+                                             Glyph="currency_bitcoin" />
+                        </Image.Source>
+                    </Image>
                 </StackLayout>
                 <StackLayout Spacing="0">
                     <Label Text="{i18n:Translate Text=MyBitcoin.sendSlashReceive}" FontFamily="{StaticResource Key=Sans-Bold}" XAlign="Center" />

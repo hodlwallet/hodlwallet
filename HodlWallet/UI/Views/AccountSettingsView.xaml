@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HodlWallet.UI.Views.AccountSettingsView"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              Title="{i18n:Translate AccountSettings.title}"
              NavigationPage.HasNavigationBar="True"
              BackgroundColor="{DynamicResource Bg}">
+    <Shell.TitleView>
+        <controls:TitleView />
+    </Shell.TitleView>
     <ContentPage.Content>
         <FlexLayout>
             <ScrollView x:Name="MenuScroll">
