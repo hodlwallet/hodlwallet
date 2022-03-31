@@ -306,11 +306,11 @@
     <comment>label for receive title</comment>
   </data>
   <data name="Receive.share" xml:space="preserve">
-    <value>S H A R E</value>
+    <value>SHARE</value>
     <comment>label for receive share button</comment>
   </data>
   <data name="Receive.addAmount" xml:space="preserve">
-    <value>A D D  A M O U N T</value>
+    <value>ADD AMOUNT</value>
     <comment>label for receive request amount button</comment>
   </data>
   <data name="Menu.title" xml:space="preserve">
@@ -956,11 +956,11 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <comment>title for the My Bitcoin view</comment>
   </data>
   <data name="BalanceHeader.balance" xml:space="preserve">
-    <value>B A L A N C E</value>
+    <value>BALANCE</value>
     <comment>Balance big title on the header</comment>
   </data>
   <data name="BalanceHeader.total" xml:space="preserve">
-    <value>T O T A L</value>
+    <value>TOTAL</value>
     <comment>Total big title on the header</comment>
   </data>
   <data name="MyBitcoin.contextualInfo" xml:space="preserve">
@@ -968,27 +968,27 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <comment>Contextual Information</comment>
   </data>
   <data name="MyBitcoin.receiveBitcoin" xml:space="preserve">
-    <value>R E C E I V E  B I T C O I N</value>
+    <value>RECEIVE BITCOIN</value>
   </data>
   <data name="MyBitcoin.receiveBitcoinInfo" xml:space="preserve">
     <value>Get an address to receive Bitcoin</value>
   </data>
   <data name="MyBitcoin.sendBitcoin" xml:space="preserve">
-    <value>S E N D  B I T C O I N</value>
+    <value>SEND BITCOIN</value>
   </data>
   <data name="MyBitcoin.sendBitcoinInfo" xml:space="preserve">
     <value>Scan an address and send Bitcoin</value>
   </data>
   <data name="MyBitcoin.sendSlashReceive" xml:space="preserve">
-    <value>S E N D  /  R E C E I V E</value>
+    <value>SEND / RECEIVE</value>
     <comment>Send / Receive title</comment>
   </data>
   <data name="Receive.uniqueAddress" xml:space="preserve">
-    <value>U N I Q U E  A D D R E S S</value>
+    <value>UNIQUE ADDRESS</value>
     <comment>Unique address main subtitle of receive</comment>
   </data>
   <data name="Receive.clear" xml:space="preserve">
-    <value>C L E A R</value>
+    <value>CLEAR</value>
   </data>
   <data name="Home.title" xml:space="preserve">
     <value>Overview</value>

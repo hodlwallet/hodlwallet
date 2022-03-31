@@ -57,7 +57,7 @@ namespace HodlWallet.UI.Views
         {
             if (ViewModel.NextView == "PinPadChangeView")
             {
-                await Shell.Current.GoToAsync("/settings");
+                await Shell.Current.GoToAsync("../..");
 
                 return;
             }

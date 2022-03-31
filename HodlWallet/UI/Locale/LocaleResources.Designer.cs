@@ -574,7 +574,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to B A L A N C E.
+        ///   Looks up a localized string similar to BALANCE.
         /// </summary>
         internal static string BalanceHeader_balance {
             get {
@@ -583,7 +583,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to T O T A L.
+        ///   Looks up a localized string similar to TOTAL.
         /// </summary>
         internal static string BalanceHeader_total {
             get {
@@ -970,7 +970,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R E C E I V E  B I T C O I N.
+        ///   Looks up a localized string similar to RECEIVE BITCOIN.
         /// </summary>
         internal static string MyBitcoin_receiveBitcoin {
             get {
@@ -988,7 +988,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to S E N D  B I T C O I N.
+        ///   Looks up a localized string similar to SEND BITCOIN.
         /// </summary>
         internal static string MyBitcoin_sendBitcoin {
             get {
@@ -1006,7 +1006,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to S E N D  /  R E C E I V E.
+        ///   Looks up a localized string similar to SEND / RECEIVE.
         /// </summary>
         internal static string MyBitcoin_sendSlashReceive {
             get {
@@ -1432,7 +1432,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A D D  A M O U N T.
+        ///   Looks up a localized string similar to ADD AMOUNT.
         /// </summary>
         internal static string Receive_addAmount {
             get {
@@ -1450,7 +1450,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C L E A R.
+        ///   Looks up a localized string similar to CLEAR.
         /// </summary>
         internal static string Receive_clear {
             get {
@@ -1459,7 +1459,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to S H A R E.
+        ///   Looks up a localized string similar to SHARE.
         /// </summary>
         internal static string Receive_share {
             get {
@@ -1477,7 +1477,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to U N I Q U E  A D D R E S S.
+        ///   Looks up a localized string similar to UNIQUE ADDRESS.
         /// </summary>
         internal static string Receive_uniqueAddress {
             get {

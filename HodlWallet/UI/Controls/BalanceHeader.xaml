@@ -21,13 +21,16 @@
             <StackLayout Spacing="0" WidthRequest="110" Padding="10,0,0,0">
                 <BoxView HeightRequest="10" />
                 <Label Text="{i18n:Translate Text=BalanceHeader.total}"
+                       FontAttributes="Bold"
+                       CharacterSpacing="3"
                        TextColor="{DynamicResource Bg}"
                        FontFamily="{StaticResource Key=Sans-Bold}"
-                       Margin="0,3,0,0" />
+                       Margin="0,5,0,0" />
                 <Label Text="{i18n:Translate Text=BalanceHeader.balance}"
+                       CharacterSpacing="3"
                        TextColor="{DynamicResource Bg}"
                        FontFamily="{StaticResource Key=Sans-Bold}"
-                       Margin="0,-5,0,0" />
+                       Margin="0,-2,0,0" />
                 <BoxView HeightRequest="10" />
             </StackLayout>
             <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
@@ -47,7 +50,7 @@
                            Text="{Binding Balance}"
                            TextColor="{DynamicResource Bg}"
                            FontFamily="{StaticResource Key=Mono-Bold}"
-                           FontSize="Subtitle" Margin="0,3,0,0">
+                           FontSize="Subtitle" Margin="0,5,0,0">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}" />
                         </Label.GestureRecognizers>
@@ -58,7 +61,7 @@
                            Text="{Binding BalanceFiat}"
                            TextColor="{DynamicResource Bg}"
                            FontFamily="{StaticResource Key=Mono-Bold}"
-                           FontSize="Micro" Margin="0,-4,0,0">
+                           FontSize="Micro">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}" />
                         </Label.GestureRecognizers>

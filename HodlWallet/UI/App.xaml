@@ -67,14 +67,14 @@
                 FontFamily="Mono-Regular"
             -->
             <!-- Monospaced -->
-            <x:String x:Key="Mono-Regular">FiraMono-Regular</x:String>
-            <x:String x:Key="Mono-Bold">FiraMono-Bold</x:String>
+            <x:String x:Key="Mono-Regular">CourierPrime-Regular</x:String>
+            <x:String x:Key="Mono-Bold">CourierPrime-Bold</x:String>
 
             <!-- Sans -->
-            <x:String x:Key="Sans-Regular">FiraSans-Regular</x:String>
-            <x:String x:Key="Sans-Bold">FiraSans-Bold</x:String>
-            <x:String x:Key="Sans-Italic">FiraSans-Italic</x:String>
-            <x:String x:Key="Sans-BoldItalic">FiraSans-BoldItalic</x:String>
+            <x:String x:Key="Sans-Regular">Montserrat-Regular</x:String>
+            <x:String x:Key="Sans-Bold">Montserrat-Bold</x:String>
+            <x:String x:Key="Sans-Italic">Montserrat-Italic</x:String>
+            <x:String x:Key="Sans-BoldItalic">Montserrat-BoldItalic</x:String>
 
             <!-- Custom Styles -->
             <!-- Use these custom items as much as possible, as usual avoid naming things

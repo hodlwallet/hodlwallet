@@ -62,8 +62,9 @@
 		<Folder Include="UI\Extensions\I18n\" />
 	</ItemGroup>
 	<ItemGroup>
+		<None Remove="Resources\Fonts\CourierPrime-Bold.ttf" />
+		<None Remove="Resources\Fonts\CourierPrime-Regular.ttf" />
 		<None Remove="Resources\Fonts\FiraMono-Bold.ttf" />
-		<None Remove="Resources\Fonts\FiraMono-Medium.ttf" />
 		<None Remove="Resources\Fonts\FiraMono-Regular.ttf" />
 		<None Remove="Resources\Fonts\FiraSans-Bold.ttf" />
 		<None Remove="Resources\Fonts\FiraSans-BoldItalic.ttf" />
@@ -73,6 +74,10 @@
 		<None Remove="Resources\Fonts\MaterialDesignIconsDesktop.ttf" />
 		<None Remove="Resources\Fonts\MaterialIcons-Regular.ttf" />
 		<None Remove="Resources\Fonts\MaterialIconsOutlined-Regular.otf" />
+		<None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
+		<None Remove="Resources\Fonts\Montserrat-BoldItalic.ttf" />
+		<None Remove="Resources\Fonts\Montserrat-Italic.ttf" />
+		<None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
 		<None Remove="UI\Assets\circle_check_gray.svg" />
 		<None Remove="UI\Assets\circle_check_yellow.svg" />
 		<None Remove="UI\Assets\close.svg" />
@@ -93,8 +98,9 @@
 		<None Remove="Xamarin.CommunityToolkit" />
 	</ItemGroup>
 	<ItemGroup>
+		<EmbeddedResource Include="Resources\Fonts\CourierPrime-Bold.ttf" />
+		<EmbeddedResource Include="Resources\Fonts\CourierPrime-Regular.ttf" />
 		<EmbeddedResource Include="Resources\Fonts\FiraMono-Bold.ttf" />
-		<EmbeddedResource Include="Resources\Fonts\FiraMono-Medium.ttf" />
 		<EmbeddedResource Include="Resources\Fonts\FiraMono-Regular.ttf" />
 		<EmbeddedResource Include="Resources\Fonts\FiraSans-Bold.ttf" />
 		<EmbeddedResource Include="Resources\Fonts\FiraSans-BoldItalic.ttf" />
@@ -104,6 +110,10 @@
 		<EmbeddedResource Include="Resources\Fonts\MaterialDesignIconsDesktop.ttf" />
 		<EmbeddedResource Include="Resources\Fonts\MaterialIcons-Regular.ttf" />
 		<EmbeddedResource Include="Resources\Fonts\MaterialIconsOutlined-Regular.otf" />
+		<EmbeddedResource Include="Resources\Fonts\Montserrat-Bold.ttf" />
+		<EmbeddedResource Include="Resources\Fonts\Montserrat-BoldItalic.ttf" />
+		<EmbeddedResource Include="Resources\Fonts\Montserrat-Italic.ttf" />
+		<EmbeddedResource Include="Resources\Fonts\Montserrat-Regular.ttf" />
 		<EmbeddedResource Include="UI\Assets\circle_check_gray.svg" />
 		<EmbeddedResource Include="UI\Assets\circle_check_yellow.svg" />
 		<EmbeddedResource Include="UI\Assets\close.svg" />

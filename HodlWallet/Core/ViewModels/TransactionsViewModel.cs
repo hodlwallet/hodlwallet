@@ -210,6 +210,8 @@ namespace HodlWallet.Core.ViewModels
                 index = Transactions.IndexOf(newerTxs.FirstOrDefault());
             else index = 0;
 
+            if (index < 0) index = 0;
+
             RxApp.MainThreadScheduler.Schedule(() =>
             {
                 Transactions.Insert(index, model);

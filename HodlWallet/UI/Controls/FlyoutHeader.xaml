@@ -6,6 +6,8 @@
     <ContentView.Content>
         <Grid HeightRequest="30">
             <Label Text="ACCOUNTS"
+                   FontFamily="{StaticResource Key=Sans-Bold}"
+                   CharacterSpacing="3"
                    TextColor="{DynamicResource Fg2}"
                    VerticalTextAlignment="Center"
                    HorizontalTextAlignment="Center" />

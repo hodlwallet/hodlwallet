@@ -30,6 +30,7 @@
                 <Label Text="{i18n:Translate Text=Receive.uniqueAddress}"
                        HorizontalOptions="Center"
                        FontSize="Subtitle"
+                       CharacterSpacing="3"
                        FontFamily="{StaticResource Key=Sans-Bold}" />
                 <Label Text="{Binding AddressFormatted}"
                        HorizontalOptions="Center"
@@ -67,13 +68,14 @@
                        Margin="30,0,30,10"
                        IsVisible="{Binding AmountFrameIsVisible}">
                     <StackLayout>
-                        <Label Text="{i18n:Translate Text=Receive.amountLabel}" FontFamily="{StaticResource Key=Sans-Bold}" TextColor="{DynamicResource Fg}" />
+                        <Label Text="{i18n:Translate Text=Receive.amountLabel}" FontFamily="{StaticResource Key=Sans-Bold}" TextColor="{DynamicResource Fg2}" CharacterSpacing="2" />
                         <Entry Placeholder="0.0"
                                FontFamily="{StaticResource Mono-Regular}"
                                Keyboard="Numeric"
                                ReturnType="Done"
                                PropertyChanged="AmountEntry_Changed"
                                Text="{Binding Amount}"
+                               PlaceholderColor="{DynamicResource Bg}"
                                TextColor="{DynamicResource FgSuccess}" />
                     </StackLayout>
                 </Frame>
@@ -98,7 +100,8 @@
                                VerticalOptions="CenterAndExpand"
                                TextColor="{DynamicResource FgSuccess}"
                                FontFamily="{StaticResource Key=Sans-Bold}"
-                               FontSize="Caption" />
+                               FontSize="Caption"
+                               CharacterSpacing="3" />
 
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ClearCommand}" NumberOfTapsRequired="1" />
@@ -123,7 +126,8 @@
                                VerticalOptions="CenterAndExpand"
                                TextColor="{DynamicResource FgSuccess}"
                                FontFamily="{StaticResource Key=Sans-Bold}"
-                               FontSize="Caption" />
+                               FontSize="Caption"
+                               CharacterSpacing="3" />
 
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding AddAmountCommand}" NumberOfTapsRequired="1" />
@@ -148,7 +152,8 @@
                                VerticalOptions="CenterAndExpand"
                                TextColor="{DynamicResource FgSuccess}"
                                FontFamily="{StaticResource Key=Sans-Bold}"
-                               FontSize="Caption" />
+                               FontSize="Caption"
+                               CharacterSpacing="3" />
 
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ShareIntentCommand}" NumberOfTapsRequired="1" />

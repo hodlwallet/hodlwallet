@@ -28,12 +28,19 @@ using Xamarin.Forms.Xaml;
 [assembly: ExportFont("MaterialDesignIconsDesktop.ttf", Alias = "MaterialIconsCommunity-Regular")]
 
 [assembly: ExportFont("FiraMono-Bold.ttf", Alias = "FiraMono-Bold")]
-[assembly: ExportFont("FiraMono-Medium.ttf", Alias = "FiraMono-Medium")]
 [assembly: ExportFont("FiraMono-Regular.ttf", Alias = "FiraMono-Regular")]
+
+[assembly: ExportFont("CourierPrime-Bold.ttf", Alias = "CourierPrime-Bold")]
+[assembly: ExportFont("CourierPrime-Regular.ttf", Alias = "CourierPrime-Regular")]
 
 [assembly: ExportFont("FiraSans-Regular.ttf", Alias = "FiraSans-Regular")]
 [assembly: ExportFont("FiraSans-Bold.ttf", Alias = "FiraSans-Bold")]
 [assembly: ExportFont("FiraSans-Italic.ttf", Alias = "FiraSans-Italic")]
 [assembly: ExportFont("FiraSans-BoldItalic.ttf", Alias = "FiraSans-BoldItalic")]
+
+[assembly: ExportFont("Montserrat-Regular.ttf", Alias = "Montserrat-Regular")]
+[assembly: ExportFont("Montserrat-Bold.ttf", Alias = "Montserrat-Bold")]
+[assembly: ExportFont("Montserrat-Italic.ttf", Alias = "Montserrat-Italic")]
+[assembly: ExportFont("Montserrat-BoldItalic.ttf", Alias = "Montserrat-BoldItalic")]
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
