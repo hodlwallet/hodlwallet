@@ -7,7 +7,7 @@
     <Label Text="{Binding Source={RelativeSource Self}, Path=Parent.Parent.Title}"
            FontFamily="{DynamicResource Key=Sans-Bold}"
            VerticalOptions="CenterAndExpand"
-           FontSize="Title">
+           FontSize="Medium">
         <Label.HorizontalOptions>
             <OnPlatform x:TypeArguments="LayoutOptions">
                 <On Platform="Android" Value="Start" />

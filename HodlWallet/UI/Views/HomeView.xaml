@@ -18,7 +18,7 @@
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <controls:HideableToolbarItem x:Name="SearchToolBarItem" IsVisible="False" Clicked="Search_Clicked">
+        <controls:HideableToolbarItem x:Name="SearchToolBarItem" IsVisible="True" Clicked="Search_Clicked">
             <controls:HideableToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="MaterialIcons-Regular"
                                  Glyph="search" />

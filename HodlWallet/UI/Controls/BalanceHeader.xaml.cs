@@ -56,14 +56,14 @@ namespace HodlWallet.UI.Controls
 
         async Task ToggleTo(DisplayCurrencyType displayCurrencyType, bool animate = true)
         {
-            if (animate) await Task.WhenAll(balanceLabel.FadeTo(0.15), balanceFiatLabel.FadeTo(0.15));
+            if (animate) await Task.WhenAll(balanceLabel.FadeTo(0.30), balanceFiatLabel.FadeTo(0.30));
 
             if (displayCurrencyType == DisplayCurrencyType.Bitcoin)
             {
                 Grid.SetRow(balanceLabel, 0);
                 Grid.SetRow(balanceFiatLabel, 1);
 
-                balanceLabel.Margin = new Thickness(0, 5, 0, 0);
+                balanceLabel.Margin = new Thickness(0, 4, 0, 0);
                 balanceLabel.FontSize = Device.GetNamedSize(NamedSize.Subtitle, typeof(Label));
 
                 balanceFiatLabel.Margin = new Thickness(0, 0, 0, 0);
@@ -77,7 +77,7 @@ namespace HodlWallet.UI.Controls
                 balanceLabel.Margin = new Thickness(0, 0, 0, 0);
                 balanceLabel.FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
 
-                balanceFiatLabel.Margin = new Thickness(0, 5, 0, 0);
+                balanceFiatLabel.Margin = new Thickness(0, 4, 0, 0);
                 balanceFiatLabel.FontSize = Device.GetNamedSize(NamedSize.Subtitle, typeof(Label));
             }
 

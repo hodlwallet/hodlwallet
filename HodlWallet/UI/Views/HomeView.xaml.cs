@@ -44,19 +44,45 @@ namespace HodlWallet.UI.Views
         public HomeView()
         {
             InitializeComponent();
-
             SubscribeToMessages();
 
-            if (WalletService.Syncing)
-            {
-                SyncToolbarItem.IsVisible = true;
-                SearchToolBarItem.IsVisible = false;
-            }
-            else
-            {
-                SyncToolbarItem.IsVisible = false;
-                SearchToolBarItem.IsVisible = true;
-            }
+            // FIXME this doesn't work
+            //if (WalletService.IsStarted)
+            //{
+            //    if (WalletService.Syncing)
+            //    {
+            //        SyncToolbarItem.IsVisible = true;
+            //        SearchToolBarItem.IsVisible = false;
+            //    }
+            //    else
+            //    {
+            //        SyncToolbarItem.IsVisible = false;
+            //        SearchToolBarItem.IsVisible = true;
+            //    }
+
+            //    WalletService.Wallet.OnSyncStarted += Wallet_OnSyncStarted;
+            //    WalletService.Wallet.OnSyncFinished += Wallet_OnSyncFinished;
+            //}
+            //else
+            //{
+            //    WalletService.OnStarted += (_, _) =>
+            //    {
+            //        WalletService.Wallet.OnSyncStarted += Wallet_OnSyncStarted;
+            //        WalletService.Wallet.OnSyncFinished += Wallet_OnSyncFinished;
+            //    };
+            //}
+        }
+
+        void Wallet_OnSyncFinished(object sender, EventArgs e)
+        {
+            SyncToolbarItem.IsVisible = false;
+            SearchToolBarItem.IsVisible = true;
+        }
+
+        void Wallet_OnSyncStarted(object sender, EventArgs e)
+        {
+            SyncToolbarItem.IsVisible = true;
+            SearchToolBarItem.IsVisible = false;
         }
 
         void SubscribeToMessages()

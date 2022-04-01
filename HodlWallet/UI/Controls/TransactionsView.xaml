@@ -38,6 +38,18 @@
                         ItemsSource="{Binding Transactions}"
                         SelectedItem="{Binding CurrentTransaction}"
                         SelectionChangedCommand="{Binding NavigateToTransactionDetailsCommand}">
+            <CollectionView.EmptyView>
+                <StackLayout x:Name="emptyView" IsVisible="False">
+                    <!-- TODO write a nice empty view-->
+                    <Label Text="Is empty, get some Bitcoin, sorry." HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.Header IsVisible="False">
+                <StackLayout x:Name="headerView" IsVisible="True">
+                    <!-- TODO write a nice empty view-->
+                    <Label Text="Header" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </CollectionView.Header>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Orientation="Vertical" Spacing="0">

@@ -23,22 +23,41 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
+using System.Reactive.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using ReactiveUI;
 
 using HodlWallet.Core.ViewModels;
-using HodlWallet.Core.Services;
-using System.Threading.Tasks;
-using Xamarin.Forms.Xaml;
 
 namespace HodlWallet.UI.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TransactionsView : StackLayout
     {
+        const int EMPTY_VIEW_DELAY_MS = 3_000;
+
+        readonly CancellationTokenSource cts = new();
+
         public TransactionsView()
         {
             InitializeComponent();
             SubscribeToMessages();
+
+            Observable
+                .Start(async () => await ShowEmptyAfterTimeout(), RxApp.MainThreadScheduler)
+                .Subscribe(cts.Token);
+        }
+
+        async Task ShowEmptyAfterTimeout()
+        {
+            await Task.Delay(EMPTY_VIEW_DELAY_MS);
+
+            emptyView.IsVisible = true;
         }
 
         void SubscribeToMessages()

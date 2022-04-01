@@ -139,6 +139,8 @@ namespace HodlWallet.Core.ViewModels
 
         void RemainingItemsThresholdReached(object _)
         {
+            if (WalletService.Wallet is null) return;
+            if (CurrentAccount is null) return;
             if (isLoadingCollection) return;
 
             isLoadingCollection = true;

@@ -28,7 +28,6 @@ using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-using ReactiveUI;
 using Xamarin.Forms;
 
 namespace HodlWallet.UI.Controls
@@ -38,6 +37,8 @@ namespace HodlWallet.UI.Controls
         readonly string[] states = new [] { "node", "node_0_connections", "node_1_connection", "node_2_connections", "node_3_connections" };
         readonly CancellationTokenSource Cts;
 
+        const int FLIP_DELAY_MS = 1_000;
+
         public SyncingToolbarItem()
         {
             InitializeComponent();
@@ -45,11 +46,11 @@ namespace HodlWallet.UI.Controls
             Cts = new CancellationTokenSource();
 
             Observable
-                .Start(DoFlip, RxApp.MainThreadScheduler)
-                .Subscribe(Cts.Token);
+                .Interval(TimeSpan.FromMilliseconds(FLIP_DELAY_MS))
+                .Subscribe(_ => DoFlip(), Cts.Token);
         }
 
-        async void DoFlip()
+        void DoFlip()
         {
             var fileName = (IconImageSource as FileImageSource).File;
             var index = Array.IndexOf(states, fileName);
@@ -57,10 +58,6 @@ namespace HodlWallet.UI.Controls
             var newFileName = states[++index % 5];
 
             IconImageSource = newFileName;
-
-            await Task.Delay(1_000);
-
-            DoFlip();
         }
     }
 }

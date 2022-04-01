@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HodlWallet.UI.Controls.BalanceHeader"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
-             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n">
+             x:Class="HodlWallet.UI.Controls.BalanceHeader">
     <ContentView.BindingContext>
         <vm:BalanceHeaderViewModel />
     </ContentView.BindingContext>
@@ -23,11 +23,13 @@
                 <Label Text="{i18n:Translate Text=BalanceHeader.total}"
                        FontAttributes="Bold"
                        CharacterSpacing="3"
+                       FontSize="Caption"
                        TextColor="{DynamicResource Bg}"
                        FontFamily="{StaticResource Key=Sans-Bold}"
-                       Margin="0,5,0,0" />
+                       Margin="0,7,0,0" />
                 <Label Text="{i18n:Translate Text=BalanceHeader.balance}"
                        CharacterSpacing="3"
+                       FontSize="Caption"
                        TextColor="{DynamicResource Bg}"
                        FontFamily="{StaticResource Key=Sans-Bold}"
                        Margin="0,-2,0,0" />
@@ -50,7 +52,7 @@
                            Text="{Binding Balance}"
                            TextColor="{DynamicResource Bg}"
                            FontFamily="{StaticResource Key=Mono-Bold}"
-                           FontSize="Subtitle" Margin="0,5,0,0">
+                           FontSize="Subtitle" Margin="0,4,0,0">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}" />
                         </Label.GestureRecognizers>
