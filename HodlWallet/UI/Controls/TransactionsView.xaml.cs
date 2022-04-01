@@ -33,6 +33,8 @@ using Xamarin.Forms.Xaml;
 using ReactiveUI;
 
 using HodlWallet.Core.ViewModels;
+using HodlWallet.Core.Models;
+using HodlWallet.UI.Views;
 
 namespace HodlWallet.UI.Controls
 {
@@ -40,6 +42,10 @@ namespace HodlWallet.UI.Controls
     public partial class TransactionsView : StackLayout
     {
         const int EMPTY_VIEW_DELAY_MS = 3_000;
+
+        bool openingDetails = false;
+
+        TransactionsViewModel ViewModel => BindingContext as TransactionsViewModel;
 
         readonly CancellationTokenSource cts = new();
 
@@ -63,16 +69,30 @@ namespace HodlWallet.UI.Controls
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<TransactionsViewModel>(this, "ScrollToTop", ScrollToTop);
+            MessagingCenter.Subscribe<TransactionsViewModel, TransactionModel>(this, "NavigateToTransactionDetail", NavigateToTransactionDetail);
         }
 
-        void ScrollToTop(TransactionsViewModel _)
+        async void NavigateToTransactionDetail(TransactionsViewModel _, TransactionModel model)
         {
-            transactionsCollectionView.ScrollTo(0);
+            if (openingDetails) return;
+
+            openingDetails = true;
+            await Navigation.PushAsync(new TransactionDetailsView(model));
+            openingDetails = false;
+        }
+
+        void ScrollToTop(TransactionsViewModel vm)
+        {
+            if (vm.Transactions.Count <= 0) return;
+
+            // TODO Add this when header is implemented
+            //if (headerView.IsVisible) transactionsCollectionView.ScrollTo(1);
+            else transactionsCollectionView.ScrollTo(0);
         }
 
         public void ScrollToTop()
         {
-            ScrollToTop(null);
+            ScrollToTop(ViewModel);
         }
     }
 }

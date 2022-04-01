@@ -429,7 +429,7 @@
     <comment>label for transactions list empty button</comment>
   </data>
   <data name="TransactionDetails.title" xml:space="preserve">
-    <value>Transaction Details</value>
+    <value>Details</value>
     <comment>label for transaction details title</comment>
   </data>
   <data name="TransactionDetails.statusTitle" xml:space="preserve">

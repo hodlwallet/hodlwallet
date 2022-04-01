@@ -95,7 +95,7 @@ namespace HodlWallet.Core.Services
             bool biometricsAllow = Preferences.Get("biometricsAllow", false);
             BiometricsAvailable = await CrossFingerprint.Current.IsAvailableAsync();
 
-            if (biometricsAllow & (lastLogin == "biometric" & BiometricsAvailable))
+            if (biometricsAllow && (lastLogin == "biometric" && BiometricsAvailable))
             {
                 var view = new BiometricLoginView(action);
 

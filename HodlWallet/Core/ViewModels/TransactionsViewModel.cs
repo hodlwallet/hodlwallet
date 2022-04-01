@@ -214,15 +214,16 @@ namespace HodlWallet.Core.ViewModels
 
             if (index < 0) index = 0;
 
-            RxApp.MainThreadScheduler.Schedule(() =>
-            {
-                Transactions.Insert(index, model);
+            Observable
+                .Start(() =>
+                {
+                    Transactions.Insert(index, model);
 
-                if (expand) return;
-                if (Transactions.Count < TXS_ITEMS_SIZE) return;
+                    if (expand) return;
+                    if (Transactions.Count < TXS_ITEMS_SIZE) return;
 
-                Transactions.RemoveAt(Transactions.Count - 1);
-            });
+                    Transactions.RemoveAt(Transactions.Count - 1);
+                }, RxApp.TaskpoolScheduler);
         }
     }
 }

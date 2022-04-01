@@ -24,83 +24,21 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
+using Liviano.Interfaces;
 using Xamarin.Forms;
 
-using HodlWallet.Core.Interfaces;
-using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
-using Liviano.Interfaces;
 
 namespace HodlWallet.UI.Views
 {
     public partial class HomeView : ContentPage
     {
-        bool openingDetails = false;
-
         HomeViewModel ViewModel => BindingContext as HomeViewModel;
-        IWalletService WalletService => DependencyService.Get<IWalletService>();
 
         public HomeView()
         {
             InitializeComponent();
-            SubscribeToMessages();
-
-            // FIXME this doesn't work
-            //if (WalletService.IsStarted)
-            //{
-            //    if (WalletService.Syncing)
-            //    {
-            //        SyncToolbarItem.IsVisible = true;
-            //        SearchToolBarItem.IsVisible = false;
-            //    }
-            //    else
-            //    {
-            //        SyncToolbarItem.IsVisible = false;
-            //        SearchToolBarItem.IsVisible = true;
-            //    }
-
-            //    WalletService.Wallet.OnSyncStarted += Wallet_OnSyncStarted;
-            //    WalletService.Wallet.OnSyncFinished += Wallet_OnSyncFinished;
-            //}
-            //else
-            //{
-            //    WalletService.OnStarted += (_, _) =>
-            //    {
-            //        WalletService.Wallet.OnSyncStarted += Wallet_OnSyncStarted;
-            //        WalletService.Wallet.OnSyncFinished += Wallet_OnSyncFinished;
-            //    };
-            //}
-        }
-
-        void Wallet_OnSyncFinished(object sender, EventArgs e)
-        {
-            SyncToolbarItem.IsVisible = false;
-            SearchToolBarItem.IsVisible = true;
-        }
-
-        void Wallet_OnSyncStarted(object sender, EventArgs e)
-        {
-            SyncToolbarItem.IsVisible = true;
-            SearchToolBarItem.IsVisible = false;
-        }
-
-        void SubscribeToMessages()
-        {
-            MessagingCenter.Subscribe<TransactionsViewModel, TransactionModel>(this, "NavigateToTransactionDetail", NavigateToTransactionDetail);
-        }
-
-        async void NavigateToTransactionDetail(TransactionsViewModel _, TransactionModel txModel)
-        {
-            if (openingDetails) return;
-            openingDetails = true;
-
-            var view = new TransactionDetailsView(txModel);
-            var nav = new NavigationPage(view);
-
-            await Navigation.PushModalAsync(nav);
-
-            openingDetails = false;
         }
 
         async Task DisplaySearchNotImplementedMessage()

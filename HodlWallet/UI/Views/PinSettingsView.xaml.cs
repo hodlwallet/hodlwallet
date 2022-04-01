@@ -43,7 +43,7 @@ namespace HodlWallet.UI.Views
             bool availability = Preferences.Get("biometricsAvailable", false);
 
             ContentPage view;
-            if (biometricsAllow & (lastLogin == "biometric" & availability))
+            if (biometricsAllow && (lastLogin == "biometric" && availability))
                 view = new BiometricLoginView("update");
             else
                 view = new LoginView("update");

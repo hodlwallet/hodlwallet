@@ -1999,7 +1999,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Transaction Details.
+        ///   Looks up a localized string similar to Details.
         /// </summary>
         internal static string TransactionDetails_title {
             get {

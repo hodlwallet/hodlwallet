@@ -39,32 +39,35 @@ namespace HodlWallet.UI.Views
         readonly uint incorrectPinAnimationTimeout = 50;
 
         Color DigitOnColor => (Color)Application.Current.Resources["FgSuccess"];
+        
         Color DigitOffColor => (Color)Application.Current.Resources["Fg5"];
-
+        
         LoginViewModel ViewModel => (LoginViewModel)BindingContext;
 
         public LoginView(string action = null)
         {
             InitializeComponent();
+            
             ViewModel.Action = action;
+            
             CheckBiometricsAvailabilityAsync();
             SubscribeToMessages();
 
             ViewModel.LastLogin = "pin";
 
-            if (ViewModel.Action == "update")
-            {
-                LogoFront.IsVisible = false;
-
-                Header.Text = Locale.LocaleResources.Pin_updateHeader;
-                Title = Locale.LocaleResources.Pin_updateTitle;
-
-                NavigationPage.SetHasNavigationBar(this, true);
-            }
-            else
+            if (ViewModel.Action != "update")
             {
                 NavigationPage.SetHasNavigationBar(this, false);
+
+                return;
             }
+
+            LogoFront.IsVisible = false;
+
+            Header.Text = Locale.LocaleResources.Pin_updateHeader;
+            Title = Locale.LocaleResources.Pin_updateTitle;
+
+            NavigationPage.SetHasNavigationBar(this, true);
         }
 
         protected override void OnAppearing()
@@ -72,16 +75,10 @@ namespace HodlWallet.UI.Views
             base.OnAppearing();
 
             ViewModel.LoginFormVisible = true;
-            bool biometricsAllow = Preferences.Get("biometricsAllow", false);
 
-            if (ViewModel.BiometricsAvailable & biometricsAllow)
-            {
-                FingerprintButton.IsVisible = true;
-            }
-            else
-            {
-                FingerprintButton.IsVisible = false;
-            }
+            var biometricsAllow = Preferences.Get("biometricsAllow", false);
+
+            FingerprintButton.IsVisible = ViewModel.BiometricsAvailable && biometricsAllow;
         }
 
         protected override void OnDisappearing()
@@ -98,7 +95,7 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitAdded", DigitAdded);
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitRemoved", DigitRemoved);
             MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", IncorrectPinAnimation);
-            MessagingCenter.Subscribe<LoginViewModel>(this, "StartAppShell", StartAppShell);
+            MessagingCenter.Subscribe<LoginViewModel>(this, "StartAppShell", async (vm) => await StartAppShell(vm));
             MessagingCenter.Subscribe<LoginViewModel>(this, "UpdatePin", UpdatePin);
             MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
         }
@@ -150,15 +147,15 @@ namespace HodlWallet.UI.Views
             await Task.Delay(500);
         }
 
-        void StartAppShell(LoginViewModel _)
+        async Task StartAppShell(LoginViewModel vm)
         {
             Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
             
             UnsubscribeToMessages();
 
-            if (ViewModel.Action == "pop") // Login after logout or timeout
+            if (vm.Action == "pop") // Login after logout or timeout
             {
-                Shell.Current.GoToAsync("../..");
+                await Shell.Current.GoToAsync("..");
 
                 return;
             }
