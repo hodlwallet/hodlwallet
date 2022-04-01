@@ -36,7 +36,7 @@
                        HorizontalOptions="Center"
                        WidthRequest="250"
                        XAlign="Center"
-                       FontSize="Caption"
+                       FontSize="Header"
                        TextColor="{DynamicResource Fg2}"
                        FontFamily="{StaticResource Key=Mono-Regular}">
                     <Label.GestureRecognizers>
