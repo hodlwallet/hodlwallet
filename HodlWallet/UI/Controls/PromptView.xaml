@@ -21,7 +21,7 @@
         <Frame HorizontalOptions="Center"
                BackgroundColor="{DynamicResource Bg}"
                Margin="17,0,17,0"
-               CornerRadius="10"
+               CornerRadius="15"
                Padding="0">
             <StackLayout Spacing="0">
                 <StackLayout Orientation="Horizontal"
