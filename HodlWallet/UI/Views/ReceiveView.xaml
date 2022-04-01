@@ -44,7 +44,7 @@
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
-            <StackLayout FlexLayout.Grow="8" BackgroundColor="{DynamicResource Bg}">
+            <StackLayout FlexLayout.Grow="8" BackgroundColor="{DynamicResource Bg3}">
                 <StackLayout HeightRequest="240" Orientation="Horizontal">
                     <zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
                                                  VerticalOptions="Center"
@@ -62,23 +62,52 @@
                     </zxing:ZXingBarcodeImageView>
                 </StackLayout>
 
-                <Frame HeightRequest="80"
-                       BackgroundColor="{DynamicResource Bg2}"
-                       CornerRadius="5"
+                <StackLayout HeightRequest="160"
                        Margin="30,0,30,10"
                        IsVisible="{Binding AmountFrameIsVisible}">
                     <StackLayout>
-                        <Label Text="{i18n:Translate Text=Receive.amountLabel}" FontFamily="{StaticResource Key=Sans-Bold}" TextColor="{DynamicResource Fg2}" CharacterSpacing="2" />
-                        <Entry Placeholder="0.0"
-                               FontFamily="{StaticResource Mono-Regular}"
-                               Keyboard="Numeric"
-                               ReturnType="Done"
-                               PropertyChanged="AmountEntry_Changed"
-                               Text="{Binding Amount}"
-                               PlaceholderColor="{DynamicResource Bg}"
-                               TextColor="{DynamicResource FgSuccess}" />
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,0,0,10">
+                            <ImageButton HeightRequest="40"
+                                         WidthRequest="40"
+                                         CornerRadius="50"
+                                         Padding="10"
+                                         IsEnabled="False"
+                                         VerticalOptions="Center"
+                                         BackgroundColor="{DynamicResource Bg2}">
+                                <ImageButton.Source>
+                                    <FontImageSource FontFamily="MaterialIcons-Regular"
+                                                     Color="{DynamicResource FgSuccess}"
+                                                     Glyph="money"/>
+                                </ImageButton.Source>
+                            </ImageButton>
+                            <Label Text="{i18n:Translate Text=Receive.amountLabel}"
+                                   FontFamily="{StaticResource Key=Sans-Bold}"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   VerticalOptions="Center"
+                                   CharacterSpacing="2" />
+                        </StackLayout>
+                        <Frame CornerRadius="15"
+                               HasShadow="False">
+                            <StackLayout>
+                                <Label Text="AMOUNT"
+                                       FontFamily="{StaticResource Key=Sans-Bold}"
+                                       FontSize="Caption"
+                                       CharacterSpacing="2" />
+                                <Entry Placeholder="0.0"
+                                       FontFamily="{StaticResource Mono-Regular}"
+                                       Keyboard="Numeric"
+                                       ReturnType="Done"
+                                       PropertyChanged="AmountEntry_Changed"
+                                       Text="{Binding Amount}"
+                                       PlaceholderColor="{DynamicResource Fg2}"
+                                       TextColor="{DynamicResource FgSuccess}"
+                                       BackgroundColor="{DynamicResource Bg}" />
+                            </StackLayout>
+                            
+                        </Frame>
+                        
                     </StackLayout>
-                </Frame>
+                </StackLayout>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="24">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding ClearIsVisible}">
@@ -130,7 +159,7 @@
                                CharacterSpacing="3" />
 
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding AddAmountCommand}" NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer Command="{Binding AddAmountCommand}" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
 
@@ -156,7 +185,7 @@
                                CharacterSpacing="3" />
 
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ShareIntentCommand}" NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer Command="{Binding ShareIntentCommand}" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </StackLayout>

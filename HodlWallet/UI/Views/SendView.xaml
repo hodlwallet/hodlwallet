@@ -16,7 +16,7 @@
         <vm:SendViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <FlexLayout Direction="Column">
+        <FlexLayout Direction="Column" BackgroundColor="{DynamicResource Bg3}">
             <ContentView FlexLayout.Grow="7">
                 <StackLayout Spacing="30"
                              Margin="20, 0, 20, 0">

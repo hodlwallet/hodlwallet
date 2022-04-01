@@ -1441,7 +1441,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AMOUNT.
+        ///   Looks up a localized string similar to REQUEST AMOUNT.
         /// </summary>
         internal static string Receive_amountLabel {
             get {

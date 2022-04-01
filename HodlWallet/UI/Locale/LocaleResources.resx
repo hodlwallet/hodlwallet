@@ -936,7 +936,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <comment>label for close button of LoginView</comment>
   </data>
   <data name="Receive.amountLabel" xml:space="preserve">
-    <value>AMOUNT</value>
+    <value>REQUEST AMOUNT</value>
     <comment>label for amount section in receive view</comment>
   </data>
   <data name="DisplayCurrency.bitcoinDisplayUnit" xml:space="preserve">

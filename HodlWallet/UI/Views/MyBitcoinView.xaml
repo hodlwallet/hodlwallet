@@ -35,7 +35,7 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                 </StackLayout>
             </StackLayout>
 
-            <StackLayout FlexLayout.Grow="6.5" Spacing="0" BackgroundColor="{DynamicResource Bg}">
+            <StackLayout FlexLayout.Grow="6.5" Spacing="0" BackgroundColor="{DynamicResource Bg3}">
                 <BoxView HeightRequest="2" Color="{DynamicResource Fg2}" />
 
                 <StackLayout Orientation="Horizontal" Padding="0,20,0,20">

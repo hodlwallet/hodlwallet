@@ -7,7 +7,7 @@
              x:Class="HodlWallet.UI.Controls.TransactionsView"
              HeightRequest="10"
              Spacing="0"
-             BackgroundColor="{DynamicResource Bg}">
+             BackgroundColor="{DynamicResource Bg3}">
     <StackLayout.Resources>
         <ResourceDictionary>
             <converters:IsSendToRotationYConverter x:Key="IsSendToRotationYConverter" />
