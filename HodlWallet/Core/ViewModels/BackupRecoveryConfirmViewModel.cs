@@ -51,6 +51,7 @@ namespace HodlWallet.Core.ViewModels
             TapUnorderedCommand = new Command(UnorderedTappedWord);
             TapOrderedCommand = new Command(OrderedTappedWord);
             GenerateShuffledMnemonics();
+            PopulateEmptyOrderedWords();
         }
 
         void GenerateShuffledMnemonics()
@@ -66,6 +67,14 @@ namespace HodlWallet.Core.ViewModels
             ShuffledWordsCollection = new ObservableCollection<BackupWordModel>(shuffledWordsList);
         }
 
+        private void PopulateEmptyOrderedWords()
+        {
+            for (int i = 0; i < OriginalWordsList.Count; i++)
+            {
+                OrderedWordsCollection.Add(new BackupWordModel { Word = String.Empty, WordIndex = i.ToString() });
+            }
+        }
+
         private void NextWord()
         {
             MessagingCenter.Send(this, "NavigateToRootView");
@@ -73,30 +82,75 @@ namespace HodlWallet.Core.ViewModels
 
         void UnorderedTappedWord(object obj)
         {
-            var tappedWord = obj as BackupWordModel;
+            BackupWordModel tappedWord = obj as BackupWordModel;
+            int nextIndexPositionInOrderedCollection = NextAvailablePosition(OrderedWordsCollection);
+            int actualIndexPositionInShuffledCollection = ShuffledWordsCollection.IndexOf(tappedWord);
 
+            // if tap in a free slot do nothing
+            if (tappedWord.Word == String.Empty || nextIndexPositionInOrderedCollection == -1)
+                return;
+
+            // Add the tapped word to OrderedWordsCollection.
             if (!OrderedWordsCollection.Contains(tappedWord))
-                OrderedWordsCollection.Add(tappedWord);
+            {
+                OrderedWordsCollection.RemoveAt(nextIndexPositionInOrderedCollection);
+                OrderedWordsCollection.Insert(nextIndexPositionInOrderedCollection, tappedWord);
+            }
 
-            ShuffledWordsCollection.Remove(tappedWord);
-            if (OrderedWordsCollection.Count() == OriginalWordsList.Count())
+            // Frees tapped word's slot.
+            if (actualIndexPositionInShuffledCollection >= 0)
+            {
+                ShuffledWordsCollection.RemoveAt(actualIndexPositionInShuffledCollection);
+                ShuffledWordsCollection.Insert(actualIndexPositionInShuffledCollection, new BackupWordModel { Word = String.Empty, WordIndex = actualIndexPositionInShuffledCollection.ToString() });
+            }
+
+            // Checks again for last word in Collection then verifies if mnemonic is correct
+            nextIndexPositionInOrderedCollection = NextAvailablePosition(OrderedWordsCollection);
+            if (nextIndexPositionInOrderedCollection == -1)
                 CheckWordLists();
-
         }
+
 
         void OrderedTappedWord(object obj)
         {
-            var tappedWord = obj as BackupWordModel;
-            if(!ShuffledWordsCollection.Contains(tappedWord))
-                ShuffledWordsCollection.Add(tappedWord);
+            BackupWordModel tappedWord = obj as BackupWordModel;
+            int nextIndexPositionInShuffledCollection = NextAvailablePosition(ShuffledWordsCollection);
+            int actualIndexPositionInOrderedCollection = OrderedWordsCollection.IndexOf(tappedWord);
 
-            OrderedWordsCollection.Remove(tappedWord);
-            collectionsEqual = false;
-            if (OrderedWordsCollection.Count() == (OriginalWordsList.Count() - 1))
+            // if tap in a free slot do nothing
+            if (tappedWord.Word == String.Empty || nextIndexPositionInShuffledCollection == -1)
+                return;
+
+            // Add the tapped word to ShuffledWordsCollection.
+            if (!ShuffledWordsCollection.Contains(tappedWord))
             {
-                SendStatusNotification();
-                ToggleErrorMessage();
+                ShuffledWordsCollection.RemoveAt(nextIndexPositionInShuffledCollection);
+                ShuffledWordsCollection.Insert(nextIndexPositionInShuffledCollection, tappedWord);
             }
+
+            // Frees tapped word's slot.
+            if (actualIndexPositionInOrderedCollection >= 0)
+            {
+                collectionsEqual = false;
+                OrderedWordsCollection.RemoveAt(actualIndexPositionInOrderedCollection);
+                OrderedWordsCollection.Insert(actualIndexPositionInOrderedCollection, new BackupWordModel { Word = String.Empty, WordIndex = actualIndexPositionInOrderedCollection.ToString() });
+                ToggleIncorrectMessage(!collectionsEqual);
+                ToggleDoneButton();
+            }
+        }
+
+        private int NextAvailablePosition(ObservableCollection<BackupWordModel> collection)
+        {
+            int idx = -1;
+            for (int i = 0; i < collection.Count; i++)
+            {
+                if (collection[i].Word == String.Empty)
+                {
+                    idx = i;
+                    break;
+                }
+            }
+            return idx;
         }
 
         void CheckWordLists()
@@ -106,26 +160,19 @@ namespace HodlWallet.Core.ViewModels
 
             collectionsEqual = string.Equals(orderedMnemonicStr, originalMnemonicStr);
             if (collectionsEqual)
-                SendStatusNotification();
-            else
-                ToggleErrorMessage();
+                ToggleDoneButton();
+
+            ToggleIncorrectMessage(collectionsEqual);
         }
 
-        void SendStatusNotification()
+        void ToggleDoneButton()
         {
             MessagingCenter.Send(this, "CollectionsAreEqual", collectionsEqual);
         }
 
-        void ToggleErrorMessage()
+        void ToggleIncorrectMessage(bool equals)
         {
-            if (OrderedWordsCollection.Count() != OriginalWordsList.Count())
-            {
-                MessagingCenter.Send(this, "ErrorMessageToggle", true);
-
-                return;
-            }
-
-            MessagingCenter.Send(this, "ErrorMessageToggle", collectionsEqual);
+            MessagingCenter.Send(this, "ErrorMessageToggle", equals);
         }
     }
 }
