@@ -46,8 +46,8 @@ namespace HodlWallet.UI.Extensions
             Guard.NotEmpty(message, nameof(message));
 
             var res = Application.Current.Resources;
-            var bg = (Color)res["Bg3"];
-            var fg = (Color)res["Fg"];
+            var bg = (Color)res["Bg2"];
+            var fg = (Color)res["Fg2"];
             var fontFamily = (string)res["Sans-Regular"];
             var font = Font.OfSize(fontFamily, Device.GetNamedSize(NamedSize.Medium, view));
 
