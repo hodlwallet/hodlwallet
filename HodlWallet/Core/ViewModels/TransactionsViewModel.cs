@@ -29,6 +29,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 using Liviano.Interfaces;
@@ -37,8 +38,6 @@ using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
-using System.Reactive.Concurrency;
-using System.Threading.Tasks;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -223,7 +222,7 @@ namespace HodlWallet.Core.ViewModels
                     if (Transactions.Count < TXS_ITEMS_SIZE) return;
 
                     Transactions.RemoveAt(Transactions.Count - 1);
-                }, RxApp.TaskpoolScheduler);
+                }, RxApp.MainThreadScheduler);
         }
     }
 }

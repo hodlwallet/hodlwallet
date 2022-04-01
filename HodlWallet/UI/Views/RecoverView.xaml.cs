@@ -126,15 +126,9 @@ namespace HodlWallet.UI.Views
         void DebugMnemonic_Tapped(object sender, EventArgs e)
         {
 #if DEBUG
-            for (int i = 1; i < 12; i++)
-            {
-                var entry = FindByName($"Entry{i}") as Entry;
+            var mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about".Split(' ');
 
-                entry.Text = "abandon";
-            }
-            var lastEntry = FindByName($"Entry{12}") as Entry;
-
-            lastEntry.Text = "about";
+            for (int i = 0; i < 12; i++) (FindByName($"Entry{i + 1}") as Entry).Text = mnemonic[i];
 #endif
         }
     }
