@@ -26,19 +26,16 @@
 using System;
 using System.Runtime.CompilerServices;
 
+using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
-using Rg.Plugins.Popup.Pages;
-
 using HodlWallet.UI.Locale;
-using Rg.Plugins.Popup.Services;
 
 namespace HodlWallet.UI.Controls
 {
     public partial class PromptView : PopupPage
     {
-        Color Fg => (Color)Application.Current.Resources["Fg"];
-
         public enum PromptResponses
         {
             NoReponse,
@@ -103,25 +100,25 @@ namespace HodlWallet.UI.Controls
             set => SetValue(OkTextProperty, value);
         }
 
-        public PromptView(string title, string message = null, string okButton = null, string cancelButton = null)
+        public PromptView(string title, string message = null, string okButtonText = null, string cancelButtonText = null)
         {
             InitializeComponent();
 
             Title = title;
             Message = message ?? string.Empty;
 
-            if (string.IsNullOrEmpty(okButton)) OkText = LocaleResources.Error_ok;
-            else OkText = okButton;
+            if (string.IsNullOrEmpty(okButtonText)) OkText = LocaleResources.Error_ok;
+            else OkText = okButtonText;
 
-            if (string.IsNullOrEmpty(cancelButton))
+            if (string.IsNullOrEmpty(cancelButtonText))
             {
-                OkButton.TextColor = Fg;
-                CancelButton.IsVisible = false;
+                cancelButton.IsVisible = false;
+                buttonSeparatorBoxView.IsVisible = false;
             }
             else
             {
-                CancelText = cancelButton;
-                CancelButton.IsVisible = true;
+                CancelText = cancelButtonText;
+                cancelButton.IsVisible = true;
             }
         }
 
@@ -152,22 +149,22 @@ namespace HodlWallet.UI.Controls
 
         void ChangeTitleTo(string title)
         {
-            TitleLabel.Text = title;
+            titleLabel.Text = title;
         }
 
         void ChangeMessageTo(string message)
         {
-            MessageLabel.Text = message;
+            messageLabel.Text = message;
         }
 
         void ChangeCancelTextTo(string cancelText)
         {
-            CancelButton.Text = cancelText;
+            cancelButton.Text = cancelText;
         }
 
         void ChangeOkTextTo(string okText)
         {
-            OkButton.Text = okText;
+            okButton.Text = okText;
         }
 
         async void CancelButton_Clicked(object sender, EventArgs e)

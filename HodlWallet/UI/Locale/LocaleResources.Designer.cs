@@ -673,7 +673,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No.
+        ///   Looks up a localized string similar to NO.
         /// </summary>
         internal static string Button_no {
             get {
@@ -682,7 +682,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yes.
+        ///   Looks up a localized string similar to YES.
         /// </summary>
         internal static string Button_yes {
             get {

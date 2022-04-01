@@ -92,11 +92,12 @@ namespace HodlWallet.UI.Views
         {
             Debug.WriteLine($"[SwitchAccount] AccountID: {account.Id}");
 
+            // TODO Make these ones locale
             var prompt = this.DisplayPrompt(
                 "Switch Account",
                 $"Switch account to \"{account.Name}\"",
-                "Ok",
-                "Cancel"
+                "OK",
+                "CANCEL"
             );
 
             if (!(await prompt)) return;
