@@ -10,6 +10,20 @@
        xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
        ios:Page.UseSafeArea="True"
        x:Name="self">
+    <!-- FIXME Setting the Icon on BackButtonBehavior doesn't work -->
+    <!--<Shell.BackButtonBehavior>
+        <BackButtonBehavior>
+            <BackButtonBehavior.IconOverride>
+                <FontImageSource FontFamily="MaterialIcons-Regular"
+                                 Glyph="arrow_back_ios_new" />
+            </BackButtonBehavior.IconOverride>
+        </BackButtonBehavior>
+    </Shell.BackButtonBehavior>-->
+    <!-- FIXME Setting the FlyoutIcon makes all the back buttons the same flyout icon -->
+    <!--<Shell.FlyoutIcon>
+        <FontImageSource FontFamily="MaterialIcons-Regular"
+                         Glyph="menu"/>
+    </Shell.FlyoutIcon>-->
     <Shell.Resources>
         <Style x:Key="BaseStyle" TargetType="Element">
             <Setter Property="Shell.BackgroundColor" Value="{DynamicResource Bg}" />
@@ -113,7 +127,7 @@
 
     </Shell.Resources>
 
-    <!-- TODO The FlyoutHeader doesn't render propertly in iOS
+    <!-- FIXME The FlyoutHeader doesn't render propertly in iOS
     <Shell.FlyoutHeader>
         <controls:FlyoutHeader />
     </Shell.FlyoutHeader>-->
@@ -126,8 +140,7 @@
                         <controls:FlyoutHeader />
                     </ContentView.Content>
                 </ContentView>
-                <CollectionView BindingContext="{x:Reference self}"
-                                ItemsSource="{Binding AccountList}">
+                <CollectionView BindingContext="{x:Reference self}" ItemsSource="{Binding AccountList}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <controls:FlyoutMenuItems />
