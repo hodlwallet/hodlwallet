@@ -21,14 +21,14 @@
             <Color x:Key="Bg">#2d2d2d</Color>
             <Color x:Key="Bg2">#131313</Color>
             <Color x:Key="Bg3">#222222</Color>
-            <Color x:Key="Bg4">#222222</Color>
-            <Color x:Key="Bg5">#222222</Color>
+            <Color x:Key="Bg4">#262525</Color>
+            <Color x:Key="Bg5">#000000</Color>
 
             <Color x:Key="Fg">#cccccc</Color>
             <Color x:Key="Fg2">#515151</Color>
-            <Color x:Key="Fg3">#585858</Color>
-            <Color x:Key="Fg4">#585858</Color>
-            <Color x:Key="Fg5">#585858</Color>
+            <Color x:Key="Fg3">#515959</Color>
+            <Color x:Key="Fg4">#5A5959</Color>
+            <Color x:Key="Fg5">#5A6262</Color>
 
             <Color x:Key="FgDark">#2d2d2d</Color> <!-- Same as in Bg, so for inverted situations -->
             <Color x:Key="FgSuccess">#daa829</Color>

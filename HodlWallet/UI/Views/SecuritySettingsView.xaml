@@ -6,7 +6,8 @@
              x:Class="HodlWallet.UI.Views.SecuritySettingsView"
              Title="{i18n:Translate Security.title}"
              NavigationPage.HasNavigationBar="True"
-             BackgroundColor="{DynamicResource Bg}">
+             BackgroundColor="{DynamicResource Bg}"
+             Shell.TabBarIsVisible="False">
     <Shell.TitleView>
         <controls:TitleView />
     </Shell.TitleView>

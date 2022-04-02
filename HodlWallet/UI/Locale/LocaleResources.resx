@@ -1027,4 +1027,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="TransactionDetails.to" xml:space="preserve">
     <value>TO:</value>
   </data>
+  <data name="CoinControl.title" xml:space="preserve">
+    <value>Coin Control</value>
+  </data>
 </root>

@@ -691,6 +691,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Coin Control.
+        /// </summary>
+        internal static string CoinControl_title {
+            get {
+                return ResourceManager.GetString("CoinControl.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Menu.
         /// </summary>
         internal static string Dashboard_menu {

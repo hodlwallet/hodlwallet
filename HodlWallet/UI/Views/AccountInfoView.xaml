@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
-    xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
-    xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
-    x:Class="HodlWallet.UI.Views.AccountInfoView"
-    BackgroundColor="{DynamicResource Bg}"
-    Title="{i18n:Translate AccountInfo.Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             x:Class="HodlWallet.UI.Views.AccountInfoView"
+             Shell.TabBarIsVisible="False"
+             BackgroundColor="{DynamicResource Bg}"
+             Title="{i18n:Translate AccountInfo.Title}">
     <Shell.TitleView>
         <controls:TitleView />
     </Shell.TitleView>

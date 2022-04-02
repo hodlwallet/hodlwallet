@@ -5,8 +5,8 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              Title="{i18n:Translate AccountSettings.title}"
-             NavigationPage.HasNavigationBar="True"
-             BackgroundColor="{DynamicResource Bg}">
+             BackgroundColor="{DynamicResource Bg}"
+             Shell.TabBarIsVisible="False">
     <Shell.TitleView>
         <controls:TitleView />
     </Shell.TitleView>

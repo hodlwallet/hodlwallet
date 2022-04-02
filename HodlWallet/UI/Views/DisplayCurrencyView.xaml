@@ -6,6 +6,7 @@
              xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              x:Class="HodlWallet.UI.Views.DisplayCurrencyView"
+             Shell.TabBarIsVisible="False"
              Title="{i18n:Translate Text=DisplayCurrency.title}"
              BackgroundColor="{DynamicResource Bg}">
     <Shell.TitleView>
