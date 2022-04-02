@@ -1945,6 +1945,24 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a note..
+        /// </summary>
+        internal static string TransactionDetails_addANote {
+            get {
+                return ResourceManager.GetString("TransactionDetails.addANote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AMOUNT:.
+        /// </summary>
+        internal static string TransactionDetails_amount {
+            get {
+                return ResourceManager.GetString("TransactionDetails.amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         internal static string TransactionDetails_amountTitle {
@@ -1963,11 +1981,38 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FEE:.
+        /// </summary>
+        internal static string TransactionDetails_fee {
+            get {
+                return ResourceManager.GetString("TransactionDetails.fee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FROM:.
+        /// </summary>
+        internal static string TransactionDetails_from {
+            get {
+                return ResourceManager.GetString("TransactionDetails.from", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Memo.
         /// </summary>
         internal static string TransactionDetails_memoTitle {
             get {
                 return ResourceManager.GetString("TransactionDetails.memoTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NOTE:.
+        /// </summary>
+        internal static string TransactionDetails_note {
+            get {
+                return ResourceManager.GetString("TransactionDetails.note", resourceCulture);
             }
         }
         
@@ -2004,6 +2049,24 @@ namespace HodlWallet.UI.Locale {
         internal static string TransactionDetails_title {
             get {
                 return ResourceManager.GetString("TransactionDetails.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TO:.
+        /// </summary>
+        internal static string TransactionDetails_to {
+            get {
+                return ResourceManager.GetString("TransactionDetails.to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TOTAL.
+        /// </summary>
+        internal static string TransactionDetails_total {
+            get {
+                return ResourceManager.GetString("TransactionDetails.total", resourceCulture);
             }
         }
         

@@ -7,6 +7,7 @@
              xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              x:Class="HodlWallet.UI.Views.ReceiveView"
+             Shell.TabBarIsVisible="False"
              Title="{i18n:Translate Receive.title}"
              BackgroundColor="{DynamicResource Bg}">
     <Shell.TitleView>

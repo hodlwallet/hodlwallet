@@ -1006,4 +1006,25 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="BackupWord.noMnemonic" xml:space="preserve">
     <value>Mnemonic not found!</value>
   </data>
+  <data name="TransactionDetails.total" xml:space="preserve">
+    <value>TOTAL</value>
+  </data>
+  <data name="TransactionDetails.addANote" xml:space="preserve">
+    <value>Add a note.</value>
+  </data>
+  <data name="TransactionDetails.amount" xml:space="preserve">
+    <value>AMOUNT:</value>
+  </data>
+  <data name="TransactionDetails.fee" xml:space="preserve">
+    <value>FEE:</value>
+  </data>
+  <data name="TransactionDetails.from" xml:space="preserve">
+    <value>FROM:</value>
+  </data>
+  <data name="TransactionDetails.note" xml:space="preserve">
+    <value>NOTE:</value>
+  </data>
+  <data name="TransactionDetails.to" xml:space="preserve">
+    <value>TO:</value>
+  </data>
 </root>

@@ -64,6 +64,8 @@ namespace HodlWallet.Core.Models
 
         public string AmountWithFeeText { get; set; }
 
+        public string Preposition { get; set; }
+
         public string Address { get; set; }
         public string AddressText { get; set; }
 
@@ -96,6 +98,8 @@ namespace HodlWallet.Core.Models
 
             IsSend = TransactionData.IsSend;
             IsReceive = TransactionData.IsReceive;
+
+            Preposition = IsSend ? LocaleResources.TransactionDetails_to : LocaleResources.TransactionDetails_from;
 
             CreatedAt = TransactionData.CreatedAt.GetValueOrDefault();
             CreatedAtText = TransactionData.CreatedAt.ToString();

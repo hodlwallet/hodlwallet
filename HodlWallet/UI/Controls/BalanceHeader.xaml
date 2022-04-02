@@ -14,7 +14,7 @@
                     <Image.Source>
                         <FontImageSource FontFamily="MaterialIconsOutlined-Regular"
                                          Color="{DynamicResource Bg2}"
-                                         Glyph="savings"/>
+                                         Glyph="savings" />
                     </Image.Source>
                 </Image>
             </StackLayout>

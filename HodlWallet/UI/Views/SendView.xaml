@@ -7,6 +7,7 @@
              xmlns:renderers="clr-namespace:HodlWallet.UI.Renderers"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              Title ="{i18n:Translate Send.title}"
+             Shell.TabBarIsVisible="False"
              x:Class="HodlWallet.UI.Views.SendView"
              BackgroundColor="{DynamicResource Bg}">
     <Shell.TitleView>

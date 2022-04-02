@@ -9,6 +9,7 @@
              x:Class="HodlWallet.UI.Views.TransactionDetailsView"
              BackgroundColor="{DynamicResource Bg}"
              Title="{i18n:Translate Text=TransactionDetails.title}"
+             Shell.TabBarIsVisible="False"
              ios:Page.UseSafeArea="true">
     <Shell.TitleView>
         <controls:TitleView />
@@ -20,89 +21,106 @@
         <converters:UpperCaseConverter x:Key="UpperCaseConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
-        <FlexLayout>
-            <StackLayout Spacing="15"
-                         Margin="15, 15, 15, 0">
-
-                <ScrollView>
-
+        <FlexLayout BackgroundColor="{DynamicResource Bg3}" Direction="Column">
+            <StackLayout FlexLayout.Grow="9">
+                <Frame CornerRadius="15" HasShadow="False" Margin="15,10,15,10">
                     <StackLayout>
-
-                        <!-- Main details -->
-                        <Label FontSize="Medium"
-                               Style="{StaticResource TransactionDetailLabel}"
-                               Text="{Binding AddressText}" />
-                        <Label FontSize="Medium"
-                               Style="{StaticResource TransactionDetailLabel}"
-                               Text="{Binding CreatedAtText}" />
-                        <Label FontSize="Medium"
-                               Style="{StaticResource TransactionDetailLabel}"
-                               Text="{Binding AmountText}"
-                               FontFamily="{StaticResource Mono-Regular}" />
-
-
-                        <!-- Item details -->
-                        <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
-
-                        <Label Style="{StaticResource TransactionDetailTitle}"
-                               Text="{Binding StatusTitle, Converter={StaticResource UpperCaseConverter}}" />
-                        <Label FontSize="Small"
-                               Style="{StaticResource TransactionDetailLabel}"
-                               Text="{Binding StatusText}" />
-
-                        <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
-
-                        <Label Style="{StaticResource TransactionDetailTitle}"
-                               Text="{Binding MemoTitle, Converter={StaticResource UpperCaseConverter}}" />
-                        <Entry BackgroundColor="Transparent"
-                               FontSize="Small"
-                               TextColor="{DynamicResource Fg}"
-                               Text="{Binding MemoText}"
-                               Completed="Memo_Completed"
-                               ReturnType="Done"/>
-
-                        <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
-                        <!-- Amount -->
-                        <Label Style="{StaticResource TransactionDetailTitle}"
-                               Text="{Binding AmountTitle, Converter={StaticResource UpperCaseConverter}}" />
-                        <Label FontSize="Small"
-                               Style="{StaticResource TransactionDetailLabel}"
-                               Text="{Binding AmountWithFeeText}"
-                               FontFamily="{StaticResource Mono-Bold}" />
-                        <!--<Label FontSize="Small"
-                                   Text="{Binding StartingBalanceText}"
-                                   />
-                            <Label FontSize="Small"
-                                   Text="{Binding EndingBalanceText}"
-                                   />-->
-
-                        <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
-
-                        <!-- To this Address -->
-                        <Label Style="{StaticResource TransactionDetailTitle}"
-                               Text="{Binding AddressTitle, Converter={StaticResource UpperCaseConverter}}" />
-                        <Button Command="{Binding BrowseAddressCommand}"
-                                Style="{StaticResource TransactionDetailsButton}"
-                                Text="{Binding Address}" />
-
-                        <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
-
-                        <!-- TxID  -->
-                        <Label Style="{StaticResource TransactionDetailTitle}"
-                               Text="{Binding TransactionIdTitle, Converter={StaticResource UpperCaseConverter}}" />
-                        <Button Command="{Binding BrowseTransactionIdCommand}"
-                                Style="{StaticResource TransactionDetailsButton}"
-                                Text="{Binding IdText}" />
-
-                        <BoxView Style="{StaticResource TransactionDetailsBoxView}" />
-
-                        <Label Style="{StaticResource TransactionDetailTitle}"
-                               Text="{Binding ConfirmedBlockTitle, Converter={StaticResource UpperCaseConverter}}" />
-                        <Label FontSize="Small"
-                               Style="{StaticResource TransactionDetailLabel}"
-                               Text="{Binding ConfirmedBlockText}" />
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Label Text="{Binding Preposition}"
+                                   FontSize="Small"
+                                   VerticalOptions="Center"
+                                   FontFamily="{DynamicResource Sans-Bold}" />
+                            <Label Text="{Binding Address}"
+                                   FontFamily="{DynamicResource Mono-Regular}"
+                                   VerticalOptions="Center"
+                                   LineBreakMode="MiddleTruncation"
+                                   HorizontalOptions="EndAndExpand"
+                                   WidthRequest="110" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Label Text="{i18n:Translate Text=TransactionDetails.amount}"
+                                   FontSize="Small"
+                                   VerticalOptions="Center"
+                                   FontFamily="{DynamicResource Sans-Bold}" />
+                            <Label Text="{Binding AmountText}"
+                                   FontFamily="{DynamicResource Mono-Regular}"
+                                   VerticalOptions="Center"
+                                   LineBreakMode="MiddleTruncation"
+                                   HorizontalOptions="EndAndExpand"
+                                   WidthRequest="110" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Label Text="{i18n:Translate Text=TransactionDetails.fee}"
+                                   FontSize="Small"
+                                   VerticalOptions="Center"
+                                   FontFamily="{DynamicResource Sans-Bold}" />
+                            <Label Text="{Binding AmountWithFeeText}"
+                                   FontFamily="{DynamicResource Mono-Regular}"
+                                   VerticalOptions="Center"
+                                   LineBreakMode="MiddleTruncation"
+                                   HorizontalOptions="EndAndExpand"
+                                   WidthRequest="110" />
+                        </StackLayout>
                     </StackLayout>
-                </ScrollView>
+                </Frame>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="15,0,0,10">
+                    <ImageButton HeightRequest="40"
+                                 WidthRequest="40"
+                                 CornerRadius="50"
+                                 Padding="10"
+                                 IsEnabled="False"
+                                 VerticalOptions="Center"
+                                 BackgroundColor="{DynamicResource Bg2}">
+                        <ImageButton.Source>
+                            <FontImageSource FontFamily="MaterialIconsOutlined-Regular"
+                                             Color="{DynamicResource FgSuccess}"
+                                             Glyph="sticky_note_2" />
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <Label Text="{i18n:Translate Text=TransactionDetails.note}"
+                           FontFamily="{StaticResource Key=Sans-Bold}"
+                           TextColor="{DynamicResource Fg}"
+                           VerticalOptions="Center"
+                           CharacterSpacing="2" />
+                </StackLayout>
+
+                <Frame CornerRadius="15" HasShadow="False" Margin="15,0,15,10" HeightRequest="120">
+                    <Editor x:Name="noteEditor"
+                            BackgroundColor="{DynamicResource Bg}"
+                            FontFamily="{StaticResource Sans-Regular}"
+                            FontSize="Caption"
+                            Placeholder="{i18n:Translate Text=TransactionDetails.addANote}"
+                            TextColor="{DynamicResource Fg}" />
+                </Frame>
+                
+            </StackLayout>
+
+            <StackLayout FlexLayout.Grow="1"
+                         BackgroundColor="{DynamicResource FgSuccess}"
+                         Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="40,0,0,0">
+                    <Image HeightRequest="30" WidthRequest="30">
+                        <Image.Source>
+                            <FontImageSource FontFamily="MaterialIconsOutlined-Regular"
+                                             Color="{DynamicResource Bg2}"
+                                             Glyph="savings" />
+                        </Image.Source>
+                    </Image>
+                </StackLayout>
+                <Label Text="{i18n:Translate Text=TransactionDetails.total}"
+                       VerticalOptions="Center"
+                       TextColor="{DynamicResource Bg2}"
+                       FontFamily="{StaticResource Sans-Bold}"
+                       FontSize="Large"
+                       CharacterSpacing="1" />
+                <Label Text="{Binding AmountText}"
+                       Margin="0,0,40,0"
+                       VerticalOptions="Center"
+                       HorizontalOptions="EndAndExpand"
+                       TextColor="{DynamicResource Bg2}"
+                       FontFamily="{StaticResource Mono-Bold}"
+                       FontSize="Medium" />
             </StackLayout>
         </FlexLayout>
     </ContentPage.Content>

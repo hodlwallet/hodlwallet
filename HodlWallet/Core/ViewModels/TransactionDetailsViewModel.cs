@@ -104,6 +104,13 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref amountText, value);
         }
 
+        string preposition;
+        public string Preposition
+        {
+            get => preposition;
+            set => SetProperty(ref preposition, value);
+        }
+
         string address;
         public string Address
         {
@@ -213,6 +220,7 @@ namespace HodlWallet.Core.ViewModels
             Id = transactionModel.Id;
             IdText = transactionModel.IdText;
             ConfirmedBlockText = transactionModel.ConfirmedBlockText;
+            Preposition = transactionModel.Preposition;
         }
 
         Task ShowFaq()

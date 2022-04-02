@@ -32,13 +32,17 @@ namespace HodlWallet.UI.Views
 {
     public partial class TransactionDetailsView : ContentPage
     {
+        TransactionDetailsViewModel ViewModel => BindingContext as TransactionDetailsViewModel;
+
         public TransactionDetailsView(TransactionModel txModel)
         {
             InitializeComponent();
 
-            var vm = (TransactionDetailsViewModel)BindingContext;
+            ViewModel.TransactionModel = txModel;
 
-            vm.TransactionModel = txModel;
+            // FIXME: Add it to XAML when Xamarin fixes this:
+            // https://github.com/xamarin/Xamarin.Forms/issues/5062
+            noteEditor.Keyboard = Keyboard.Create(KeyboardFlags.CapitalizeSentence | KeyboardFlags.Spellcheck | KeyboardFlags.Suggestions | KeyboardFlags.Spellcheck);
         }
 
         void Close_Tapped(object sender, EventArgs e)
@@ -48,9 +52,7 @@ namespace HodlWallet.UI.Views
 
         void Memo_Completed(object sender, EventArgs e)
         {
-            var vm = (TransactionDetailsViewModel)BindingContext;
-
-            vm.StoreMemo();
+            ViewModel.StoreMemo();
         }
     }
 }
