@@ -41,7 +41,7 @@
                        HorizontalOptions="Center"
                        x:Name="LogoFront">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Logo_Tapped" NumberOfTapsRequired="1" />
+                        <TapGestureRecognizer Tapped="Logo_Tapped" />
                     </Image.GestureRecognizers>
                 </Image>
 

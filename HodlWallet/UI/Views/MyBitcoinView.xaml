@@ -17,7 +17,7 @@
         <FlexLayout Direction="Column">
             <controls:BalanceHeader FlexLayout.Grow="1" />
 
-            <StackLayout FlexLayout.Grow="2.5" BackgroundColor="{DynamicResource Bg2}">
+            <StackLayout FlexLayout.Grow="2" BackgroundColor="{DynamicResource Bg2}">
                 <StackLayout HeightRequest="80" VerticalOptions="End">
                     <BoxView HeightRequest="20" />
                     <Image HeightRequest="40">
@@ -35,7 +35,7 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                 </StackLayout>
             </StackLayout>
 
-            <StackLayout FlexLayout.Grow="6.5" Spacing="0" BackgroundColor="{DynamicResource Bg3}">
+            <StackLayout FlexLayout.Grow="7" Spacing="0" BackgroundColor="{DynamicResource Bg3}">
                 <BoxView HeightRequest="2" Color="{DynamicResource Fg2}" />
 
                 <StackLayout Orientation="Horizontal" Padding="0,20,0,20">
@@ -91,7 +91,7 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                     </StackLayout>
                     <BoxView WidthRequest="5" />
                     <StackLayout>
-                        <Label Text="{i18n:Translate Text=MyBitcoin.receiveBitcoin}" FontFamily="{StaticResource Key=Sans-Bold}" FontSize="Caption" CharacterSpacing="3" LineHeight="14" />
+                        <Label Text="{i18n:Translate Text=MyBitcoin.receiveBitcoin}" FontFamily="{StaticResource Key=Sans-Bold}" FontSize="Caption" CharacterSpacing="3" />
                         <Label Text="{i18n:Translate Text=MyBitcoin.receiveBitcoinInfo}" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Key=Sans-Regular}" FontSize="Caption" WidthRequest="160" Margin="0,-5,0,0" />
                     </StackLayout>
                     <BoxView WidthRequest="60" />

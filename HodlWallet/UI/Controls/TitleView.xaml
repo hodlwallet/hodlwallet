@@ -7,6 +7,6 @@
     <Label Text="{Binding Source={RelativeSource Self}, Path=Parent.Parent.Title}"
            FontFamily="{DynamicResource Key=Sans-Bold}"
            VerticalOptions="CenterAndExpand"
-           FontSize="Medium"
+           FontSize="Large"
            HorizontalOptions="StartAndExpand" />
 </StackLayout>
