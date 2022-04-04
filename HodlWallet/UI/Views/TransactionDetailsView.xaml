@@ -67,7 +67,7 @@
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="15,0,0,10">
                     <ImageButton HeightRequest="40"
                                  WidthRequest="40"
-                                 CornerRadius="50"
+                                 CornerRadius="20"
                                  Padding="10"
                                  IsEnabled="False"
                                  VerticalOptions="Center"

@@ -47,6 +47,18 @@
             </StackLayout>
             <StackLayout FlexLayout.Grow="8" BackgroundColor="{DynamicResource Bg3}">
                 <StackLayout HeightRequest="240" Orientation="Horizontal">
+                    <!-- Keep this for debugging on iOS
+                    <Image VerticalOptions="Center"
+                           HorizontalOptions="CenterAndExpand"
+                           HeightRequest="180"
+                           WidthRequest="180">
+                        <Image.Source>
+                            <FontImageSource FontFamily="MaterialIcons-Regular"
+                                             Color="{DynamicResource Fg}"
+                                             Glyph="qr_code_scanner" />
+                        </Image.Source>
+                    </Image>
+                    -->
                     <zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
                                                  VerticalOptions="Center"
                                                  HorizontalOptions="CenterAndExpand"
@@ -70,7 +82,7 @@
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,0,0,10">
                             <ImageButton HeightRequest="40"
                                          WidthRequest="40"
-                                         CornerRadius="50"
+                                         CornerRadius="20"
                                          Padding="10"
                                          IsEnabled="False"
                                          VerticalOptions="Center"
@@ -78,7 +90,7 @@
                                 <ImageButton.Source>
                                     <FontImageSource FontFamily="MaterialIcons-Regular"
                                                      Color="{DynamicResource FgSuccess}"
-                                                     Glyph="money"/>
+                                                     Glyph="money" />
                                 </ImageButton.Source>
                             </ImageButton>
                             <Label Text="{i18n:Translate Text=Receive.amountLabel}"
@@ -112,7 +124,7 @@
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="24">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding ClearIsVisible}">
-                        <ImageButton CornerRadius="50"
+                        <ImageButton CornerRadius="20"
                                      WidthRequest="45"
                                      HeightRequest="45"
                                      VerticalOptions="Center"
@@ -139,7 +151,7 @@
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding AddAmountIsVisible}">
-                        <ImageButton CornerRadius="50"
+                        <ImageButton CornerRadius="20"
                                      WidthRequest="45"
                                      HeightRequest="45"
                                      VerticalOptions="Center"
@@ -165,11 +177,11 @@
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12">
-                        <ImageButton CornerRadius="50"
-                                     WidthRequest="45"
-                                     HeightRequest="45"
+                        <ImageButton CornerRadius="20"
                                      VerticalOptions="Center"
                                      Padding="10"
+                                     WidthRequest="45"
+                                     HeightRequest="45"
                                      IsEnabled="False"
                                      BackgroundColor="{DynamicResource Bg2}">
                             <ImageButton.Source>

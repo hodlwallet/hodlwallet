@@ -46,7 +46,7 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                                      IsEnabled="False"
                                      VerticalOptions="Center"
                                      Padding="10"
-                                     CornerRadius="50"
+                                     CornerRadius="20"
                                      RotationY="180"
                                      BackgroundColor="{DynamicResource Bg2}"
                                      Clicked="SendBitcoin_Tapped">
@@ -79,7 +79,7 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                                      IsEnabled="False"
                                      VerticalOptions="Center"
                                      Padding="10"
-                                     CornerRadius="50"
+                                     CornerRadius="20"
                                      BackgroundColor="{DynamicResource Bg2}"
                                      Clicked="ReceiveBitcoin_Tapped">
                             <ImageButton.Source>

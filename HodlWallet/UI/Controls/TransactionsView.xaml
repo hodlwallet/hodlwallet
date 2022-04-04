@@ -78,7 +78,7 @@
                                          VerticalOptions="Center"
                                          Padding="10"
                                          Margin="35,0,0,0"
-                                         CornerRadius="50"
+                                         CornerRadius="20"
                                          RotationY="{Binding IsSend, Converter={StaticResource IsSendToRotationYConverter}}"
                                          IsEnabled="False">
                                 <ImageButton.Source>
