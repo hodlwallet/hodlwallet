@@ -47,12 +47,11 @@
 
                 <BoxView HeightRequest="1" BackgroundColor="{DynamicResource Fg2}" />
 
-                <StackLayout Orientation="Horizontal"
-                             Spacing="0">
+                <StackLayout Orientation="Horizontal" Spacing="0">
                     <Button x:Name="cancelButton"
                             Style="{StaticResource NoBorderButton}"
                             HorizontalOptions="FillAndExpand"
-                            Margin="0"
+                            Margin="{OnPlatform Android=0,iOS='0,0,0,10'}"
                             Padding="0"
                             BackgroundColor="{DynamicResource Bg}"
                             Text="{Binding CancelText}"
@@ -63,7 +62,7 @@
                     <Button x:Name="okButton"
                             Style="{StaticResource NoBorderButton}"
                             HorizontalOptions="FillAndExpand"
-                            Margin="0"
+                            Margin="{OnPlatform Android=0,iOS='0,0,0,10'}"
                             Padding="0"
                             BackgroundColor="{DynamicResource Bg}"
                             Text="{Binding OkText}"

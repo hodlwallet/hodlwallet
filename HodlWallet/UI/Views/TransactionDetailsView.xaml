@@ -10,7 +10,7 @@
              BackgroundColor="{DynamicResource Bg}"
              Title="{i18n:Translate Text=TransactionDetails.title}"
              Shell.TabBarIsVisible="False"
-             ios:Page.UseSafeArea="true">
+             ios:Page.UseSafeArea="False">
     <Shell.TitleView>
         <controls:TitleView />
     </Shell.TitleView>
@@ -98,6 +98,7 @@
 
             <StackLayout FlexLayout.Grow="1"
                          BackgroundColor="{DynamicResource FgSuccess}"
+                         Padding="{OnPlatform Android=0,iOS='0,0,0,10'}"
                          Orientation="Horizontal">
                 <StackLayout Orientation="Horizontal" Margin="40,0,0,0">
                     <Image HeightRequest="30" WidthRequest="30">
