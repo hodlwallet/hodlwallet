@@ -25,9 +25,9 @@
             <FlexLayout Direction="Row"
                         Wrap="Wrap"
                         JustifyContent="SpaceAround"
+                        AlignItems="Center"
                         Margin="15"
-                        FlexLayout.Grow="{OnPlatform Android=1.5,iOS=1}"
-                        VerticalOptions="End">
+                        FlexLayout.Grow="{OnPlatform Android=1.6,iOS=1}">
 
                 <CollectionView ItemsSource="{Binding OrderedWordsCollection}"
                             ItemsLayout="VerticalGrid,3"
@@ -61,7 +61,7 @@
                         JustifyContent="SpaceAround"
                         AlignItems="Center"
                         Margin="15"
-                        FlexLayout.Grow="{OnPlatform Android=1.5,iOS=1}" >
+                        FlexLayout.Grow="{OnPlatform Android=1.6,iOS=1}">
                 <CollectionView ItemsSource="{Binding ShuffledWordsCollection}"
                             ItemsLayout="VerticalGrid,3"
                             VerticalOptions="CenterAndExpand" >
