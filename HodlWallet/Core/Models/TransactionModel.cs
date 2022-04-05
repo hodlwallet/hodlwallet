@@ -69,7 +69,19 @@ namespace HodlWallet.Core.Models
         public string Address { get; set; }
         public string AddressText { get; set; }
 
-        public string MemoText { get; set; }
+        string note;
+        public string Note
+        {
+            get => note;
+            set
+            {
+                if (value == note) return;
+                if (value is not null && string.Equals(note, value)) return;
+
+                SetProperty(ref note, value);
+                SecureStorageService.SetNote(IdText, note);
+            }
+        }
 
         public string AddressTitle { get; set; }
 
@@ -113,7 +125,7 @@ namespace HodlWallet.Core.Models
             Address = GetAddress();
             AddressText = GetAddressText();
 
-            MemoText = TransactionData.Memo;
+            Note = GetNote();
 
             AddressTitle = GetAddressTitleText();
 
@@ -134,6 +146,11 @@ namespace HodlWallet.Core.Models
                 .WhenAnyValue(service => service.CurrencyType, service => service.FiatCurrencyCode)
                 .ObserveOn(RxApp.TaskpoolScheduler)
                 .Subscribe(_ => UpdateAmountText(), cts.Token);
+        }
+
+        string GetNote()
+        {
+            return SecureStorageService.GetNote(IdText);
         }
 
         void UpdateAmountText()
@@ -175,7 +192,7 @@ namespace HodlWallet.Core.Models
             if (other.BlockHeight != BlockHeight) return false;
             if (other.Amount != Amount) return false;
             if (other.Address != Address) return false;
-            if (other.MemoText != MemoText) return false;
+            if (other.Note != Note) return false;
             if (other.ConfirmationsText != ConfirmationsText) return false;
             if (other.IsAvailableText != IsAvailableText) return false;
 

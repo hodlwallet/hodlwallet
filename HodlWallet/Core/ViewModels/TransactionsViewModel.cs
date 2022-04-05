@@ -135,7 +135,8 @@ namespace HodlWallet.Core.ViewModels
             await Task.Delay(420);
             IsLoading = false;
 
-            MessagingCenter.Send(this, "ScrollToTop");
+            // FIXME Bug on iOS
+            //MessagingCenter.Send(this, "ScrollToTop");
 
             isLoadingCollection = false;
         }

@@ -265,6 +265,16 @@ namespace HodlWallet.Core.Services
             return code;
         }
 
+        public static string GetNote(string txId)
+        {
+            return Get($"note:{txId}");
+        }
+
+        public static void SetNote(string txId, string content)
+        {
+            Set($"note:{txId}", content);
+        }
+
         public static bool UserDidSetup()
         {
             return HasPin() && HasMnemonic() && HasWalletId() && HasNetwork();

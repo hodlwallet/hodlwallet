@@ -1030,6 +1030,9 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="TransactionDetails.txId" xml:space="preserve">
     <value>TX ID:</value>
   </data>
+  <data name="TransactionDetails.date" xml:space="preserve">
+    <value>DATE:</value>
+  </data>
   <data name="CoinControl.title" xml:space="preserve">
     <value>Coin Control</value>
   </data>

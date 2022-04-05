@@ -1439,6 +1439,12 @@ namespace HodlWallet.UI.Locale {
             }
         }
         
+        internal static string TransactionDetails_date {
+            get {
+                return ResourceManager.GetString("TransactionDetails.date", resourceCulture);
+            }
+        }
+        
         internal static string CoinControl_title {
             get {
                 return ResourceManager.GetString("CoinControl.title", resourceCulture);

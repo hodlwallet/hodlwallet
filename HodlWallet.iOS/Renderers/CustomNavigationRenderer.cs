@@ -32,63 +32,12 @@ namespace HodlWallet.iOS.Renderers
 {
     public class CustomNavigationRenderer : NavigationRenderer
     {
-        UIColor Fg => ((Color)Xamarin.Forms.Application.Current.Resources["Fg"]).ToUIColor();
-        string SansFontName => (string)Xamarin.Forms.Application.Current.Resources["Sans-Regular"];
-
-        readonly UIControlState[] controlStates =
-        {
-            UIControlState.Normal,
-            UIControlState.Focused,
-            UIControlState.Highlighted,
-            UIControlState.Selected,
-            UIControlState.Disabled
-        };
-
-        UIFont TitleFont => UIFont.FromName(SansFontName, 20);
-        UIStringAttributes TitleStringAttributes => new()
-        {
-            ForegroundColor = Fg,
-            Font = TitleFont
-        };
-
-        UIFont ItemFont => UIFont.FromName(SansFontName, 16);
-        UITextAttributes ItemTextAttributes => new()
-        {
-            TextColor = Fg,
-            Font = ItemFont
-        };
-
-        public CustomNavigationRenderer()
-        {
-            //UpdateNavBarStyles();
-            //UpdateNavBarItemStyles();
-        }
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            //UpdateNavBarStyles();
-            //UpdateNavBarItemStyles();
-
             UpdateNavBar();
-            //UpdateNavBarItems();
-        }
-
-        void UpdateNavBarStyles()
-        {
-            UINavigationBar.Appearance.Translucent = false;
-            UINavigationBar.Appearance.ShadowImage = new UIImage();
-            UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarPosition.Any, UIBarMetrics.Default);
-
-            UINavigationBar.Appearance.TitleTextAttributes = TitleStringAttributes;
-        }
-
-        void UpdateNavBarItemStyles()
-        {
-            foreach (var controlState in controlStates)
-                UIBarButtonItem.Appearance.SetTitleTextAttributes(ItemTextAttributes, controlState);
-        }
+         }
 
         void UpdateNavBar()
         {
@@ -96,22 +45,6 @@ namespace HodlWallet.iOS.Renderers
             NavigationBar.Translucent = false;
             NavigationBar.ShadowImage = new UIImage();
             NavigationBar.SetBackgroundImage(new UIImage(), UIBarPosition.Any, UIBarMetrics.Default);
-
-            //NavigationBar.TitleTextAttributes = TitleStringAttributes;
-        }
-
-        void UpdateNavBarItems()
-        {
-            foreach (var navBarItem in NavigationBar.Items)
-            {
-                foreach (var buttonItem in new UIBarButtonItem[] { navBarItem.BackBarButtonItem, navBarItem.RightBarButtonItem, navBarItem.LeftBarButtonItem })
-                {
-                    if (buttonItem is null) continue;
-
-                    foreach (var controlState in controlStates)
-                        buttonItem.SetTitleTextAttributes(ItemTextAttributes, controlState);
-                }
-            }
         }
     }
 }

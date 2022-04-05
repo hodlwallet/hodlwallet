@@ -6,8 +6,10 @@
              xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              xmlns:renderers="clr-namespace:HodlWallet.UI.Renderers"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              Title ="{i18n:Translate Send.title}"
              Shell.TabBarIsVisible="False"
+             ios:Page.UseSafeArea="False"
              x:Class="HodlWallet.UI.Views.SendView"
              BackgroundColor="{DynamicResource Bg}">
     <Shell.TitleView>

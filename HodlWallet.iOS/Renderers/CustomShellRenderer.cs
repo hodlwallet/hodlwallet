@@ -20,30 +20,25 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 using HodlWallet.iOS.Renderers;
 using HodlWallet.UI;
-using UIKit;
 
 [assembly: ExportRenderer(typeof(AppShell), typeof(CustomShellRenderer))]
 namespace HodlWallet.iOS.Renderers
 {
     public class CustomShellRenderer : ShellRenderer
     {
-        string SansBoldFontName => (string)Xamarin.Forms.Application.Current.Resources["Sans-Bold"];
-        UIFont TitleFont => UIFont.FromName(SansBoldFontName, 20);
-
         protected override IShellSectionRenderer CreateShellSectionRenderer(ShellSection shellSection)
         {
             var renderer = base.CreateShellSectionRenderer(shellSection) as ShellSectionRenderer;
 
             renderer.NavigationBar.Translucent = false;
-            renderer.NavigationBar.TitleTextAttributes = new UIStringAttributes()
-            {
-                Font = TitleFont
-            };
+            renderer.NavigationBar.ShadowImage = null;
+            renderer.NavigationBar.SetBackgroundImage(new UIImage(), UIBarPosition.Any, UIBarMetrics.Default);
 
             return renderer;
         }
@@ -57,8 +52,19 @@ namespace HodlWallet.iOS.Renderers
             renderer.TabBar.ClipsToBounds = true;
             renderer.TabBar.Layer.BorderWidth = 0.0f;
 
-            foreach (var tabItem in renderer.TabBar.Items)
-                tabItem.ImageInsets = new UIEdgeInsets(5, 0, -5, 0);
+            // Centers all the icons
+            var count = renderer.TabBar.Items.Length;
+            for (int i = 0; i < count; i++)
+            {
+                var insets = new UIEdgeInsets(5, 0, -5, 0);
+                if (i == 0)
+                    insets = new UIEdgeInsets(5, 45, -5, -45);
+
+                if (i == count - 1)
+                    insets = new UIEdgeInsets(5, -45, -5, 45);
+
+                renderer.TabBar.Items[i].ImageInsets = insets;
+            }
 
             return renderer;
         }

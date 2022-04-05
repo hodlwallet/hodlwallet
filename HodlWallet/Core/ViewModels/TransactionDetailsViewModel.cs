@@ -72,7 +72,7 @@ namespace HodlWallet.Core.ViewModels
             {
                 SetProperty(ref transactionModel, value);
 
-                GetTransactionModelData();
+                SetupTransactionModelData();
             }
         }
 
@@ -139,16 +139,14 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref statusText, value);
         }
 
-        string memoText;
-        public string MemoText
+        string note;
+        public string Note
         {
-            get => memoText;
+            get => note;
             set
             {
-                if (value != null)
-                {
-                    SetProperty(ref memoText, value);
-                }
+                SetProperty(ref note, value);
+                TransactionModel.Note = Note;
             }
         }
 
@@ -201,20 +199,14 @@ namespace HodlWallet.Core.ViewModels
             BrowseTransactionIdCommand = new Command(() => _ = IdToBrowser());
         }
 
-        public void StoreMemo()
-        {
-            var tx = new Tx(TransactionModel.TransactionData) { Memo = MemoText };
-            //_WalletService.Wallet.UpdateCurrentTransaction(tx);
-        }
-
-        void GetTransactionModelData()
+        void SetupTransactionModelData()
         {
             AddressText = transactionModel.AddressText;
             AddressTitle = transactionModel.AddressTitle;
             CreatedAtText = transactionModel.CreatedAtText;
             AmountText = transactionModel.AmountText;
             StatusText = transactionModel.StatusText;
-            MemoText = transactionModel.MemoText;
+            Note = transactionModel.Note;
             AmountWithFeeText = transactionModel.AmountWithFeeText;
             Address = transactionModel.Address;
             Id = transactionModel.Id;

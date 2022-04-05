@@ -26,7 +26,6 @@ using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
 using HodlWallet.Core.ViewModels;
-using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Views
 {
@@ -48,11 +47,6 @@ namespace HodlWallet.UI.Views
         void Close_Tapped(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
-        }
-
-        void Memo_Completed(object sender, EventArgs e)
-        {
-            ViewModel.StoreMemo();
         }
     }
 }

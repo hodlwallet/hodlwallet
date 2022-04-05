@@ -62,6 +62,19 @@
                             </Label>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Label Text="{i18n:Translate Text=TransactionDetails.date}"
+                                   FontSize="Small"
+                                   VerticalOptions="Center"
+                                   FontFamily="{DynamicResource Sans-Bold}" />
+                            <Label Text="{Binding CreatedAtText}"
+                                   FontFamily="{DynamicResource Mono-Regular}"
+                                   FontSize="Micro"
+                                   VerticalOptions="Center"
+                                   LineBreakMode="NoWrap"
+                                   HorizontalOptions="EndAndExpand"
+                                   WidthRequest="200" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                             <Label Text="{i18n:Translate Text=TransactionDetails.amount}"
                                    FontSize="Small"
                                    VerticalOptions="Center"
@@ -71,7 +84,7 @@
                                    VerticalOptions="Center"
                                    LineBreakMode="NoWrap"
                                    HorizontalOptions="EndAndExpand"
-                                   WidthRequest="120" />
+                                   WidthRequest="140" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                             <Label Text="{i18n:Translate Text=TransactionDetails.fee}"
@@ -83,7 +96,7 @@
                                    VerticalOptions="Center"
                                    LineBreakMode="MiddleTruncation"
                                    HorizontalOptions="EndAndExpand"
-                                   WidthRequest="120" />
+                                   WidthRequest="140" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>
@@ -111,6 +124,8 @@
 
                 <Frame CornerRadius="15" HasShadow="False" Margin="15,0,15,10" HeightRequest="120">
                     <Editor x:Name="noteEditor"
+                            Text="{Binding Note}"
+                            MaxLength="200"
                             BackgroundColor="{DynamicResource Bg}"
                             FontFamily="{StaticResource Sans-Regular}"
                             FontSize="Small"

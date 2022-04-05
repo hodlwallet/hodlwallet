@@ -87,8 +87,7 @@ namespace HodlWallet.UI.Controls
 
             // TODO Add this when header is implemented
             //if (headerView.IsVisible) transactionsCollectionView.ScrollTo(1);
-            // FIXME This breaks on IOS
-            //else transactionsCollectionView.ScrollTo(0);
+            else transactionsCollectionView.ScrollTo(0);
         }
 
         public void ScrollToTop()
