@@ -26,20 +26,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.IO;
 
-using Newtonsoft.Json;
-
-using HodlWallet.Core.Utils;
 using Liviano.Bips;
 using Liviano.Exceptions;
 using Liviano.Utilities;
-using Xamarin.Essentials;
-
+using Newtonsoft.Json;
 #if !DEBUG
 using Xamarin.Essentials;
 #endif
+
+using HodlWallet.Core.Utils;
 
 namespace HodlWallet.Core.Services
 {
@@ -71,10 +68,13 @@ namespace HodlWallet.Core.Services
 
         public static void Set(string key, string val)
         {
-            lock (@lock) Data[key] = val;
+            lock (@lock)
+            {
+                Data[key] = val;
 
-            var json = JsonConvert.SerializeObject(Data);
-            File.WriteAllText(DbFile, json);
+                var json = JsonConvert.SerializeObject(Data);
+                File.WriteAllText(DbFile, json);
+            }
         }
 
         public static void RemoveAll()

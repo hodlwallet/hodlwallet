@@ -104,6 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\CustomShellRenderer.cs" />
+    <Compile Include="Renderers\CustomShellToolbarAppearanceTracker.cs" />
+    <Compile Include="Renderers\CustomTabBarAppearance.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\FeeSliderRenderer.cs" />

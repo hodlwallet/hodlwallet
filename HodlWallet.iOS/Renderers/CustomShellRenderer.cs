@@ -53,20 +53,25 @@ namespace HodlWallet.iOS.Renderers
             renderer.TabBar.Layer.BorderWidth = 0.0f;
 
             // Centers all the icons
-            var count = renderer.TabBar.Items.Length;
-            for (int i = 0; i < count; i++)
-            {
-                var insets = new UIEdgeInsets(5, 0, -5, 0);
-                if (i == 0)
-                    insets = new UIEdgeInsets(5, 45, -5, -45);
+            //var count = renderer.TabBar.Items.Length;
+            //for (int i = 0; i < count; i++)
+            //{
+            //    var insets = new UIEdgeInsets(5, 0, -5, 0);
+            //    if (i == 0)
+            //        insets = new UIEdgeInsets(5, 45, -5, -45);
 
-                if (i == count - 1)
-                    insets = new UIEdgeInsets(5, -45, -5, 45);
+            //    if (i == count - 1)
+            //        insets = new UIEdgeInsets(5, -45, -5, 45);
 
-                renderer.TabBar.Items[i].ImageInsets = insets;
-            }
+            //    renderer.TabBar.Items[i].ImageInsets = insets;
+            //}
 
             return renderer;
+        }
+
+        protected override IShellTabBarAppearanceTracker CreateTabBarAppearanceTracker()
+        {
+            return new CustomShellTabBarAppearanceTracker();
         }
     }
 }

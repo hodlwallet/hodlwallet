@@ -130,6 +130,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\CustomShellTabBarAppearanceTracker.cs" />
     <Compile Include="Renderers\FeeSliderRenderer.cs" />
     <Compile Include="Services\ShareIntent.cs" />
     <Compile Include="Services\iOSPermissions.cs" />
