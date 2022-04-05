@@ -13,24 +13,25 @@
                         JustifyContent="SpaceAround"
                         BackgroundColor="{DynamicResource Bg}"
                         VerticalOptions="Center">
+
             <BoxView ></BoxView>
+
             <Label Text="{i18n:Translate Text=BackupConfirm.header}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource FgSuccess}"
                        HorizontalTextAlignment="Center"
-                       Margin="0, 20"/>
+                       Margin="0, 20" />
 
             <FlexLayout Direction="Row"
                         Wrap="Wrap"
                         JustifyContent="SpaceAround"
                         Margin="15"
                         FlexLayout.Grow="{OnPlatform Android=1.5,iOS=1}"
-                        
                         VerticalOptions="End">
 
                 <CollectionView ItemsSource="{Binding OrderedWordsCollection}"
                             ItemsLayout="VerticalGrid,3"
-                                ItemSizingStrategy="MeasureAllItems"
+                            ItemSizingStrategy="MeasureAllItems"
                             VerticalOptions="CenterAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -38,14 +39,14 @@
                                 <Frame CornerRadius="5" BackgroundColor="{DynamicResource Bg2}" Padding="5" Margin="3">
                                     <Label Text="{Binding Word}"
                                         Style="{DynamicResource MnemonicLabel}"
-                                           HeightRequest="{OnPlatform iOS=20}">
+                                        HeightRequest="{OnPlatform iOS=20}">
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer
-                                            Command="{Binding
-                                                Source={RelativeSource
-                                                AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
-                                                Path=TapOrderedCommand}"
-                                            CommandParameter="{Binding .}" />
+                                                Command="{Binding
+                                                    Source={RelativeSource
+                                                    AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
+                                                    Path=TapOrderedCommand}"
+                                                CommandParameter="{Binding .}" />
                                         </Label.GestureRecognizers>
                                     </Label>
                                 </Frame>
@@ -60,8 +61,7 @@
                         JustifyContent="SpaceAround"
                         AlignItems="Center"
                         Margin="15"
-                        FlexLayout.Grow="{OnPlatform Android=1.5,iOS=1}"
-                        >
+                        FlexLayout.Grow="{OnPlatform Android=1.5,iOS=1}" >
                 <CollectionView ItemsSource="{Binding ShuffledWordsCollection}"
                             ItemsLayout="VerticalGrid,3"
                             VerticalOptions="CenterAndExpand" >
@@ -71,14 +71,14 @@
                                 <Frame CornerRadius="5" BackgroundColor="{DynamicResource Bg2}" Padding="5" Margin="3">
                                     <Label Text="{Binding Word}"
                                         Style="{DynamicResource MnemonicLabel}"
-                                           HeightRequest="{OnPlatform iOS=20}">
+                                        HeightRequest="{OnPlatform iOS=20}">
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer
-                                                    Command="{Binding
-                                                        Source={RelativeSource
-                                                        AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
-                                                        Path=TapUnorderedCommand}"
-                                                    CommandParameter="{Binding .}" />
+                                                Command="{Binding
+                                                    Source={RelativeSource
+                                                    AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
+                                                    Path=TapUnorderedCommand}"
+                                                CommandParameter="{Binding .}" />
                                         </Label.GestureRecognizers>
                                     </Label>
                                 </Frame>
