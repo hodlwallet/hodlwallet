@@ -26,16 +26,40 @@
                 <Frame CornerRadius="15" HasShadow="False" Margin="15,10,15,10">
                     <StackLayout>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Label Text="{i18n:Translate Text=TransactionDetails.txId}"
+                                   FontSize="Small"
+                                   VerticalOptions="Center"
+                                   LineBreakMode="NoWrap"
+                                   FontFamily="{DynamicResource Sans-Bold}" />
+                            <Label Text="{Binding Id}"
+                                   FontFamily="{DynamicResource Mono-Regular}"
+                                   FontSize="Micro"
+                                   LineBreakMode="MiddleTruncation"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="EndAndExpand"
+                                   WidthRequest="260">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BrowseTransactionIdCommand}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                             <Label Text="{Binding Preposition}"
                                    FontSize="Small"
                                    VerticalOptions="Center"
+                                   LineBreakMode="NoWrap"
                                    FontFamily="{DynamicResource Sans-Bold}" />
                             <Label Text="{Binding Address}"
                                    FontFamily="{DynamicResource Mono-Regular}"
-                                   VerticalOptions="Center"
+                                   FontSize="Micro"
                                    LineBreakMode="MiddleTruncation"
+                                   VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="EndAndExpand"
-                                   WidthRequest="110" />
+                                   WidthRequest="260">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BrowseAddressCommand}" />
+                                </Label.GestureRecognizers>
+                            </Label>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                             <Label Text="{i18n:Translate Text=TransactionDetails.amount}"
@@ -45,9 +69,9 @@
                             <Label Text="{Binding AmountText}"
                                    FontFamily="{DynamicResource Mono-Regular}"
                                    VerticalOptions="Center"
-                                   LineBreakMode="MiddleTruncation"
+                                   LineBreakMode="NoWrap"
                                    HorizontalOptions="EndAndExpand"
-                                   WidthRequest="110" />
+                                   WidthRequest="120" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                             <Label Text="{i18n:Translate Text=TransactionDetails.fee}"
@@ -59,7 +83,7 @@
                                    VerticalOptions="Center"
                                    LineBreakMode="MiddleTruncation"
                                    HorizontalOptions="EndAndExpand"
-                                   WidthRequest="110" />
+                                   WidthRequest="120" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>
@@ -89,7 +113,7 @@
                     <Editor x:Name="noteEditor"
                             BackgroundColor="{DynamicResource Bg}"
                             FontFamily="{StaticResource Sans-Regular}"
-                            FontSize="Caption"
+                            FontSize="Small"
                             Placeholder="{i18n:Translate Text=TransactionDetails.addANote}"
                             TextColor="{DynamicResource Fg}" />
                 </Frame>
