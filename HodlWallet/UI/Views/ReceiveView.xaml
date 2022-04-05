@@ -127,8 +127,8 @@
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="24">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding ClearIsVisible}">
                         <ImageButton CornerRadius="20"
-                                     WidthRequest="45"
-                                     HeightRequest="45"
+                                     WidthRequest="40"
+                                     HeightRequest="40"
                                      VerticalOptions="Center"
                                      Padding="10"
                                      IsEnabled="False"
@@ -154,8 +154,8 @@
                     
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding AddAmountIsVisible}">
                         <ImageButton CornerRadius="20"
-                                     WidthRequest="45"
-                                     HeightRequest="45"
+                                     WidthRequest="40"
+                                     HeightRequest="40"
                                      VerticalOptions="Center"
                                      Padding="10"
                                      IsEnabled="False"
@@ -182,8 +182,8 @@
                         <ImageButton CornerRadius="20"
                                      VerticalOptions="Center"
                                      Padding="10"
-                                     WidthRequest="45"
-                                     HeightRequest="45"
+                                     WidthRequest="40"
+                                     HeightRequest="40"
                                      IsEnabled="False"
                                      BackgroundColor="{DynamicResource Bg2}">
                             <ImageButton.Source>
