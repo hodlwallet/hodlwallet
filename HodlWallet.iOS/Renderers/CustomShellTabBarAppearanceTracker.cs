@@ -35,9 +35,11 @@ namespace HodlWallet.iOS.Renderers
         {
             base.SetAppearance(controller, appearance);
 
-            var tabBar = controller.TabBar;
-            tabBar.ItemWidth = 50;
-            tabBar.ItemPositioning = UITabBarItemPositioning.Centered;
+            // FIXME This doesn't work because of a bug on Shell, only on portrait
+            // so the trick is done elsewhere for now...
+            //var tabBar = controller.TabBar;
+            //tabBar.ItemWidth = 50;
+            //tabBar.ItemPositioning = UITabBarItemPositioning.Centered;
         }
     }
 }

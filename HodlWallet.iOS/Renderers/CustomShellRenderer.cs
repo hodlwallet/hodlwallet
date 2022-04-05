@@ -52,19 +52,21 @@ namespace HodlWallet.iOS.Renderers
             renderer.TabBar.ClipsToBounds = true;
             renderer.TabBar.Layer.BorderWidth = 0.0f;
 
-            // Centers all the icons
-            //var count = renderer.TabBar.Items.Length;
-            //for (int i = 0; i < count; i++)
-            //{
-            //    var insets = new UIEdgeInsets(5, 0, -5, 0);
-            //    if (i == 0)
-            //        insets = new UIEdgeInsets(5, 45, -5, -45);
+            // Centers all the icons,
+            // FIXME Should be done on CustomShellTabBarAppearanceTracker
+            // but we cannot because of abug on Xamarin probably on Shell
+            var count = renderer.TabBar.Items.Length;
+            for (int i = 0; i < count; i++)
+            {
+                var insets = new UIEdgeInsets(5, 0, -5, 0);
+                if (i == 0)
+                    insets = new UIEdgeInsets(5, 45, -5, -45);
 
-            //    if (i == count - 1)
-            //        insets = new UIEdgeInsets(5, -45, -5, 45);
+                if (i == count - 1)
+                    insets = new UIEdgeInsets(5, -45, -5, 45);
 
-            //    renderer.TabBar.Items[i].ImageInsets = insets;
-            //}
+                renderer.TabBar.Items[i].ImageInsets = insets;
+            }
 
             return renderer;
         }
