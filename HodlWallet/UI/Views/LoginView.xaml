@@ -34,6 +34,10 @@
                         JustifyContent="SpaceAround"
                         AlignItems="Center">
 
+                <StackLayout Orientation="Horizontal">
+                    <controls:HodlIcon Glyph="reply" />
+                </StackLayout>
+
                 <Image Source="logo_front.png"
                        FlexLayout.Grow="2"
                        HeightRequest="120"

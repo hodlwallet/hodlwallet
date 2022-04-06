@@ -1,5 +1,5 @@
 ﻿//
-// BindableModel.cs
+// HodlIconViewModel.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -23,41 +23,19 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using HodlWallet.Core.Models;
+using HodlWallet.UI.Controls;
 
 using Xamarin.Forms;
 
-namespace HodlWallet.Core.Models
+namespace HodlWallet.Core.ViewModels
 {
-    public class BindableModel : BindableObject, INotifyPropertyChanged
+    class HodlIconViewModel : BaseViewModel
     {
-        protected bool SetProperty<T>(
-            ref T backingStore,
-            T value,
-            [CallerMemberName] string propertyName = "",
-            Action onChanged = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
 
-            backingStore = value;
-            onChanged?.Invoke();
-            OnPropertyChanged(propertyName);
 
-            return true;
-        }
 
-        public new event PropertyChangedEventHandler PropertyChanged;
-        protected new void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
 
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+
     }
 }
