@@ -85,6 +85,8 @@ namespace HodlWallet.Core.Services
             var symbol = Constants.CURRENCY_SYMBOLS[FiatCurrencyCode];
             var sign = negative ? "-" : "";
 
+            if (amount == 0) return $"{symbol}0";
+
             if (PrecioService.Precio is null || PrecioService.Rates is null)
                 return $"{symbol}{sign}{amount:N}";
 
