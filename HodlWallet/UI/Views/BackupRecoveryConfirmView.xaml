@@ -3,8 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              x:Class="HodlWallet.UI.Views.BackupRecoveryConfirmView"
+             Title="{i18n:Translate BackupWord.title}"
              BackgroundColor="{DynamicResource Bg}">
+    <NavigationPage.TitleView>
+        <controls:TitleView />
+    </NavigationPage.TitleView>
     <ContentPage.BindingContext>
         <vm:BackupRecoveryConfirmViewModel />
     </ContentPage.BindingContext>

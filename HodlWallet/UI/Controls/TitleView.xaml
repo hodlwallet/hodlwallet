@@ -4,9 +4,18 @@
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              x:DataType="controls:TitleView"
              x:Class="HodlWallet.UI.Controls.TitleView">
-    <Label Text="{Binding Source={RelativeSource Self}, Path=Parent.Parent.Title}"
+    <!--TODO Ideally on iOS the titles should be centererd -->
+    <Label x:Name="titleLabel"
+           Text="{Binding Source={RelativeSource Self}, Path=Parent.Parent.Title}"
            FontFamily="{DynamicResource Key=Sans-Bold}"
            VerticalOptions="CenterAndExpand"
-           FontSize="Large"
-           HorizontalOptions="StartAndExpand" />
+           HorizontalOptions="StartAndExpand"
+           FontSize="Large">
+        <!--<Label.HorizontalOptions x:TypeArguments="LayoutOptions">
+            <OnPlatform x:TypeArguments="LayoutOptions">
+                <On Platform="iOS" Value="CenterAndExpand" />
+                <On Platform="Android" Value="StartAndExpand" />
+            </OnPlatform>
+        </Label.HorizontalOptions>-->
+    </Label>
 </StackLayout>
