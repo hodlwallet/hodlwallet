@@ -144,7 +144,7 @@
 		<EmbeddedResource Update="UI\Controls\FlyoutHeader.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
-		<EmbeddedResource Update="UI\Controls\HodlIcon.xaml">
+		<EmbeddedResource Update="UI\Controls\FontImageButton.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="UI\Controls\TitleView.xaml">
@@ -168,6 +168,9 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>            
 		</EmbeddedResource>
+		<Compile Update="UI\Controls\FontImageButton.xaml.cs">
+		  <DependentUpon>FontImageButton.xaml</DependentUpon>
+		</Compile>
 		<Compile Update="UI\Locale\LocaleResources.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>

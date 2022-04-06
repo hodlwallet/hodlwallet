@@ -1,5 +1,5 @@
 ﻿//
-// HodlIcon.xaml.cs
+// FontImageButton.xaml.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -29,37 +29,48 @@ using Xamarin.Forms.Xaml;
 namespace HodlWallet.UI.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HodlIcon : ImageButton
+    public partial class FontImageButton : ImageButton
     {
-        public static readonly BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor), typeof(Color), typeof(HodlIcon), defaultValueCreator: bindable => (Color)Application.Current.Resources["FgSuccess"]);
-        public Color IconColor
+        // Color
+        public static readonly BindableProperty ColorProperty = BindableProperty.Create(
+            nameof(Color),
+            typeof(Color),
+            typeof(FontImageButton),
+            (Color)Application.Current.Resources["FgSuccess"]
+        );
+        public Color Color
         {
-            get { return (Color)GetValue(IconColorProperty); }
-            set { SetValue(IconColorProperty, value); }
+            get { return (Color)GetValue(ColorProperty); }
+            set { SetValue(ColorProperty, value); }
         }
 
-        //public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(HodlIcon), defaultValueCreator: bindable => "MaterialIcons-Regular");
-        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(HodlIcon), defaultValueCreator: bindable => "MaterialIcons-Regular");
+        // Font
+        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(
+            nameof(FontFamily),
+            typeof(string),
+            typeof(FontImageButton),
+            "MaterialIcons-Regular"
+        );
         public string FontFamily
         {
             get { return (string)GetValue(FontFamilyProperty); }
             set { SetValue(FontFamilyProperty, value); }
         }
         
+        // Glyph
         public static readonly BindableProperty GlyphProperty = BindableProperty.Create(
             nameof(Glyph),
             typeof(string),
-            typeof(HodlIcon),
+            typeof(FontImageButton),
             "close"
         );
-
         public string Glyph
         {
             get { return (string)GetValue(GlyphProperty); }
             set { SetValue(GlyphProperty, value); }
         }
 
-        public HodlIcon()
+        public FontImageButton()
         {
             InitializeComponent();
         }
