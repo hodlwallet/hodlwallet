@@ -43,12 +43,12 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<BackupRecoveryConfirmViewModel, bool>(this, "ErrorMessageToggle", ErrorMessageToggle);
         }
 
-        void StartAppShell(BackupRecoveryConfirmViewModel _)
+        async void StartAppShell(BackupRecoveryConfirmViewModel _)
         {
             // If the recovery was launched later...
             if (Navigation.ModalStack.Count > 0)
             {
-                Navigation.PopModalAsync();
+                await Shell.Current.GoToAsync("../../..");
 
                 return;
             }
