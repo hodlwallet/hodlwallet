@@ -120,7 +120,6 @@ namespace HodlWallet.Core.ViewModels
             IsLoading = true;
             foreach (var tx in Txs.Take(TXS_ITEMS_SIZE))
             {
-                var count = Transactions.Count;
                 var txModel = TransactionModel.FromTransactionData(tx);
 
                 TransactionsAdd(txModel);
@@ -136,8 +135,6 @@ namespace HodlWallet.Core.ViewModels
 
         void RemainingItemsThresholdReached(object _)
         {
-            Debug.WriteLine("[RemainingItemsThresholdReached] Executed");
-
             if (WalletService.Wallet is null) return;
             if (CurrentAccount is null) return;
             if (isLoadingCollection) return;
@@ -181,7 +178,7 @@ namespace HodlWallet.Core.ViewModels
         /// </summary>
         /// <param name="model">A model of a tx</param>
         /// <param name="index">Index where to insert the tx</param>
-        async void TransactionsAdd(TransactionModel model, int index = -1)
+        void TransactionsAdd(TransactionModel model, int index = -1)
         {
             if (Transactions.Contains(model)) return;
 

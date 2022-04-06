@@ -17,26 +17,21 @@
                                     Color="{DynamicResource Bg2}"
                                     FontFamily="MaterialIconsOutlined-Regular" />
             </StackLayout>
-            <StackLayout Spacing="0" WidthRequest="110" Padding="10,0,0,0">
-                <BoxView HeightRequest="10" />
+            <StackLayout Spacing="3" Margin="10,0,0,0" VerticalOptions="Center">
                 <Label Text="{i18n:Translate Text=BalanceHeader.total}"
                        FontAttributes="Bold"
                        CharacterSpacing="3"
                        FontSize="Caption"
                        TextColor="{DynamicResource Bg2}"
-                       FontFamily="{StaticResource Key=Sans-Bold}"
-                       Margin="0,7,0,0" />
+                       FontFamily="{StaticResource Key=Sans-Bold}" />
                 <Label Text="{i18n:Translate Text=BalanceHeader.balance}"
                        CharacterSpacing="3"
                        FontSize="Caption"
                        TextColor="{DynamicResource Bg2}"
-                       FontFamily="{StaticResource Key=Sans-Bold}"
-                       Margin="0,-2,0,0" />
-                <BoxView HeightRequest="10" />
+                       FontFamily="{StaticResource Key=Sans-Bold}" />
             </StackLayout>
-            <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
-                <BoxView HeightRequest="10" />
-                <Grid RowSpacing="0">
+            <StackLayout Spacing="0" Margin="0,-5,40,0" HorizontalOptions="EndAndExpand">
+                <Grid RowSpacing="0" VerticalOptions="CenterAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -47,18 +42,18 @@
 
                     <Label x:Name="balanceLabel"
                            Grid.Row="0"
-                           HorizontalOptions="Start"
+                           HorizontalOptions="End"
                            Text="{Binding Balance}"
                            TextColor="{DynamicResource Bg2}"
                            FontFamily="{StaticResource Key=Mono-Bold}"
-                           FontSize="Subtitle" Margin="0,4,0,0">
+                           FontSize="Subtitle">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding SwitchCurrencyCommand}" />
                         </Label.GestureRecognizers>
                     </Label>
                     <Label x:Name="balanceFiatLabel"
                            Grid.Row="1"
-                           HorizontalOptions="Start"
+                           HorizontalOptions="End"
                            Text="{Binding BalanceFiat}"
                            TextColor="{DynamicResource Bg2}"
                            FontFamily="{StaticResource Key=Mono-Bold}"
@@ -68,7 +63,6 @@
                         </Label.GestureRecognizers>
                     </Label>
                 </Grid>
-                <BoxView HeightRequest="10" />
             </StackLayout>
         </StackLayout>
     </ContentView.Content>

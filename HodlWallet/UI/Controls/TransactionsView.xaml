@@ -76,11 +76,12 @@
                                        FontFamily="{StaticResource Key=Sans-Regular}"
                                        TextColor="{DynamicResource Fg2}" />
                             </StackLayout>
-                            <StackLayout Spacing="2" Margin="20,0,0,0" VerticalOptions="Center">
+                            <StackLayout Spacing="2" Margin="20,0,40,0">
                                 <Label Text="{Binding AmountText}"
-                                       FontSize="Subtitle"
+                                       FontSize="Header"
                                        FontFamily="{StaticResource Key=Mono-Regular}"
-                                       LineBreakMode="MiddleTruncation"
+                                       VerticalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="End"
                                        WidthRequest="200" />
                             </StackLayout>
                         </StackLayout>
