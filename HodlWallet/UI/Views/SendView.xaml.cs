@@ -145,9 +145,9 @@ namespace HodlWallet.UI.Views
             });
         }
 
-        async void FeeSlider_DragCompleted(object sender, EventArgs e)
+        void FeeSlider_DragCompleted(object sender, EventArgs e)
         {
-            await ViewModel.SetSliderValue();
+            //await ViewModel.SetSliderValue();
         }
     }
 }

@@ -122,13 +122,13 @@ namespace HodlWallet.Core.ViewModels
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
 
-            Task.Run(SetSliderValue);
+            //Task.Run(SetSliderValue);
 
             SubscribeToMessages();
         }
 
-        public async Task SetSliderValue()
-        {
+        //public async Task SetSliderValue()
+        //{
             //var currentFees = await PrecioHttpService.GetFeeEstimator();
 
             //if (SliderValue <= (MAX_SLIDER_VALUE * 0.25))
@@ -155,7 +155,7 @@ namespace HodlWallet.Core.ViewModels
             //    Fee = string.Empty;
 
             //TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, Fee);
-        }
+        //}
 
         void SubscribeToMessages()
         {
