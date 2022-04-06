@@ -12,7 +12,10 @@
         <FlexLayout Direction="Column"
                         JustifyContent="SpaceAround"
                         BackgroundColor="{DynamicResource Bg}"
-                        AlignItems="Center">
+                        VerticalOptions="Center">
+
+            <BoxView ></BoxView>
+
             <Label Text="{i18n:Translate Text=BackupConfirm.header}"
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource FgSuccess}"
@@ -24,30 +27,29 @@
                         JustifyContent="SpaceAround"
                         AlignItems="Center"
                         Margin="15"
-                        FlexLayout.Grow="2">
+                        FlexLayout.Grow="{OnPlatform Android=1.6,iOS=1}">
 
                 <CollectionView ItemsSource="{Binding OrderedWordsCollection}"
                             ItemsLayout="VerticalGrid,3"
-                                ItemSizingStrategy="MeasureAllItems"
+                            ItemSizingStrategy="MeasureAllItems"
                             VerticalOptions="CenterAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout>
-                                <Label Text="{Binding Word}"
-                                       Margin="2"
-                                       Padding="10"
-                                       FontSize="Medium"
-                                       Style="{DynamicResource MnemonicLabel}"
-                                       BackgroundColor="{DynamicResource Bg2}">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding
-                                                Source={RelativeSource
-                                                AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
-                                                Path=TapOrderedCommand}"
-                                            CommandParameter="{Binding .}" />
-                                    </Label.GestureRecognizers>
-                                </Label>
+                            <StackLayout >
+                                <Frame CornerRadius="5" BackgroundColor="{DynamicResource Bg2}" Padding="5" Margin="3">
+                                    <Label Text="{Binding Word}"
+                                        Style="{DynamicResource MnemonicLabel}"
+                                        HeightRequest="{OnPlatform iOS=20}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding
+                                                    Source={RelativeSource
+                                                    AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
+                                                    Path=TapOrderedCommand}"
+                                                CommandParameter="{Binding .}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Frame>
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -59,28 +61,27 @@
                         JustifyContent="SpaceAround"
                         AlignItems="Center"
                         Margin="15"
-                        FlexLayout.Grow="2">
+                        FlexLayout.Grow="{OnPlatform Android=1.6,iOS=1}">
                 <CollectionView ItemsSource="{Binding ShuffledWordsCollection}"
                             ItemsLayout="VerticalGrid,3"
-                                VerticalOptions="CenterAndExpand">
+                            VerticalOptions="CenterAndExpand" >
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout>
-                                <Label Text="{Binding Word}"
-                                       Margin="2"
-                                       Padding="10"
-                                       FontSize="Medium"
-                                       Style="{DynamicResource MnemonicLabel}"
-                                       BackgroundColor="{DynamicResource Bg2}">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer
+                            <StackLayout >
+                                <Frame CornerRadius="5" BackgroundColor="{DynamicResource Bg2}" Padding="5" Margin="3">
+                                    <Label Text="{Binding Word}"
+                                        Style="{DynamicResource MnemonicLabel}"
+                                        HeightRequest="{OnPlatform iOS=20}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
                                                 Command="{Binding
                                                     Source={RelativeSource
                                                     AncestorType={x:Type vm:BackupRecoveryConfirmViewModel}},
                                                     Path=TapUnorderedCommand}"
                                                 CommandParameter="{Binding .}" />
-                                    </Label.GestureRecognizers>
-                                </Label>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Frame>
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -92,6 +93,7 @@
                    Text="{i18n:Translate Text=BackupConfirm.incorrectOrder}"
                    FontSize="Micro"
                    Opacity="0.00"
+                   HorizontalTextAlignment="Center"
                    FlexLayout.Grow="1" />
 
             <Button x:Name="DoneButton"
