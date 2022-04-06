@@ -1,7 +1,7 @@
 ﻿//
-// BiometricsView.xaml.cs
+// BiometricsSettingsView.xaml.cs
 //
-// Copyright (c) 2021 HODL Wallet
+// Copyright (c) 2022 HODL Wallet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,9 +33,9 @@ using HodlWallet.UI.Extensions;
 namespace HodlWallet.UI.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BiometricsView : ContentPage
+    public partial class BiometricsSettingsView : ContentPage
     {
-        public BiometricsView()
+        public BiometricsSettingsView()
         {
             InitializeComponent();
 

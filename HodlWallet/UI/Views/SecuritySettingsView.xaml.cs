@@ -50,7 +50,7 @@ namespace HodlWallet.UI.Views
 
         async void Biometrics_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new BiometricsView());
+            await Navigation.PushAsync(new BiometricsSettingsView());
         }
     }
 }

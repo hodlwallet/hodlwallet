@@ -34,7 +34,6 @@ using System.Windows.Input;
 
 using Liviano.Interfaces;
 using Liviano.Models;
-using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
@@ -45,7 +44,7 @@ namespace HodlWallet.Core.ViewModels
     {
         public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
 
-        const int TXS_ITEMS_SIZE = 30;
+        const int TXS_ITEMS_SIZE = 10;
 
         bool isLoadingCollection = false;
 
@@ -124,13 +123,7 @@ namespace HodlWallet.Core.ViewModels
                 var count = Transactions.Count;
                 var txModel = TransactionModel.FromTransactionData(tx);
 
-                TransactionsAddInPlace(txModel);
-
-                if (count == TXS_ITEMS_SIZE / 3)
-                {
-                    await Task.Delay(420);
-                    IsLoading = false;
-                }
+                TransactionsAdd(txModel);
             }
             await Task.Delay(420);
             IsLoading = false;
@@ -143,6 +136,8 @@ namespace HodlWallet.Core.ViewModels
 
         void RemainingItemsThresholdReached(object _)
         {
+            Debug.WriteLine("[RemainingItemsThresholdReached] Executed");
+
             if (WalletService.Wallet is null) return;
             if (CurrentAccount is null) return;
             if (isLoadingCollection) return;
@@ -152,7 +147,7 @@ namespace HodlWallet.Core.ViewModels
             foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_ITEMS_SIZE))
             {
                 var txModel = TransactionModel.FromTransactionData(tx);
-                TransactionsAddInPlace(txModel, expand: true);
+                TransactionsAdd(txModel);
             }
 
             isLoadingCollection = false;
@@ -168,28 +163,32 @@ namespace HodlWallet.Core.ViewModels
                     //if (item.SentScriptPubKey is null && item.ScriptPubKey is null) continue;
 
                     var txModel = TransactionModel.FromTransactionData(item);
-                    TransactionsAddInPlace(txModel);
+                    TransactionsAdd(txModel, 0);
                 }
 
             if (e.OldItems is not null)
                 foreach (Tx item in e.OldItems)
                 {
                     var txModel = TransactionModel.FromTransactionData(item);
-                    TransactionsAddInPlace(txModel);
+                    Transactions.Remove(txModel);
                 }
 
             MessagingCenter.Send(this, "ScrollToTop");
         }
 
         /// <summary>
-        /// Tries to position a transaction in the right place
-        /// depending on the CreatedAt attribute of the model
+        /// Add to the observable collection not duplicating
         /// </summary>
         /// <param name="model">A model of a tx</param>
-        /// <param name="expand">if we need to add more or not</param>
-        void TransactionsAddInPlace(TransactionModel model, bool expand = false)
+        /// <param name="index">Index where to insert the tx</param>
+        async void TransactionsAdd(TransactionModel model, int index = -1)
         {
             if (Transactions.Contains(model)) return;
+
+            if (index < 0)
+                Transactions.Add(model);
+            else
+                Transactions.Insert(index, model);
 
             // TODO Remove this code, since it should never
             // be the case that a transaction doesn't have any
@@ -206,28 +205,35 @@ namespace HodlWallet.Core.ViewModels
             //}
             // Remove ^^
 
-            var newerTxs = Transactions
-                .ToList()
-                .Where(tx => tx.CreatedAt > model.CreatedAt)
-                .OrderByDescending(tx => tx.CreatedAt);
+            //var newerTxs = Transactions
+            //    .ToList()
+            //    .Where(tx => tx.CreatedAt > model.CreatedAt)
+            //    .OrderByDescending(tx => tx.CreatedAt);
 
-            int index;
-            if (newerTxs.Any())
-                index = Transactions.IndexOf(newerTxs.FirstOrDefault());
-            else index = 0;
+            //int index;
+            //if (newerTxs.Any())
+            //    index = Transactions.IndexOf(newerTxs.FirstOrDefault());
+            //else index = 0;
 
-            if (index < 0) index = 0;
+            //if (index < 0) index = 0;
 
-            Observable
-                .Start(() =>
-                {
-                    Transactions.Insert(index, model);
+            //Transactions.Insert(index, model);
 
-                    if (expand) return;
-                    if (Transactions.Count < TXS_ITEMS_SIZE) return;
+            //if (expand) return;
+            //if (Transactions.Count < TXS_ITEMS_SIZE) return;
 
-                    Transactions.RemoveAt(Transactions.Count - 1);
-                }, RxApp.MainThreadScheduler);
+            //Transactions.RemoveAt(Transactions.Count - 1);
+
+            //Observable
+            //    .Start(() =>
+            //    {
+            //        Transactions.Insert(index, model);
+
+            //        if (expand) return;
+            //        if (Transactions.Count < TXS_ITEMS_SIZE) return;
+
+            //        Transactions.RemoveAt(Transactions.Count - 1);
+            //    }, RxApp.MainThreadScheduler);
         }
     }
 }

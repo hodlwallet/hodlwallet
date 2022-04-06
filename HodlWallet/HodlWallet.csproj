@@ -179,6 +179,9 @@
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>LocaleResources.resx</DependentUpon>
 		</Compile>
+		<Compile Update="UI\Views\BiometricsSettingsView.xaml.cs">
+		  <DependentUpon>BiometricsSettingsView.xaml</DependentUpon>
+		</Compile>
 		<Compile Update="UI\Views\RecoverInfoView.xaml.cs">
 			<DependentUpon>RecoverInfoView.xaml</DependentUpon>
 		</Compile>
@@ -205,7 +208,7 @@
 	<EmbeddedResource Update="UI\Views\BiometricLoginView.xaml">
 	  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	</EmbeddedResource>
-	<EmbeddedResource Update="UI\Views\BiometricsView.xaml">
+	<EmbeddedResource Update="UI\Views\BiometricsSettingsView.xaml">
 		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	</EmbeddedResource>
 	<EmbeddedResource Update="UI\Views\CoinControlView.xaml">

@@ -4,11 +4,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
-             x:Class="HodlWallet.UI.Views.BiometricsView"
+             x:Class="HodlWallet.UI.Views.BiometricsSettingsView"
              Title="{i18n:Translate Biometrics.title}"
              BackgroundColor="{DynamicResource Bg}"
-             NavigationPage.HasNavigationBar="True"
-             x:Name="Header">
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="True">
     <Shell.TitleView>
         <controls:TitleView />
     </Shell.TitleView>

@@ -390,11 +390,11 @@
   </data>
   <data name="BiometricAuth.header" xml:space="preserve">
     <value>Use your biometric authentication to unlock your wallet and send money up to a set limit.</value>
-    <comment>label for biometric auth header in BiometricsView</comment>
+    <comment>label for biometric auth header in BiometricsSettingsView</comment>
   </data>
   <data name="BiometricAuth.switch" xml:space="preserve">
     <value>Enable Biometric Authentication for Hodl</value>
-    <comment>label for biometric auth slider BiometricsView</comment>
+    <comment>label for biometric auth slider BiometricsSettingsView</comment>
   </data>
   <data name="BiometricAuth.spendingLimit" xml:space="preserve">
     <value>Spending limit: </value>
@@ -905,7 +905,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   </data>
   <data name="Biometrics.title" xml:space="preserve">
     <value>Biometrics ID</value>
-    <comment>Label for BiometricsView title</comment>
+    <comment>Label for BiometricsSettingsView title</comment>
   </data>
   <data name="Login.useBiometric" xml:space="preserve">
     <value>Biometric Authentication</value>
@@ -921,11 +921,11 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   </data>
   <data name="Biometrics.notAvailableWarning" xml:space="preserve">
     <value>No biometrics authentication available, please check settings of the device.</value>
-    <comment>Warning message in BiometricsView</comment>
+    <comment>Warning message in BiometricsSettingsView</comment>
   </data>
   <data name="BiometricsSettings.close" xml:space="preserve">
     <value>Close</value>
-    <comment>Label of Close button in BiometricsView</comment>
+    <comment>Label of Close button in BiometricsSettingsView</comment>
   </data>
   <data name="Login.wayAuthentication" xml:space="preserve">
     <value>Select the way of autentication.</value>
