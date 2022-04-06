@@ -156,33 +156,27 @@
     </Shell.FlyoutFooter>
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" FlyoutItemIsVisible="False">
-        <Tab x:Name="homeTab"
-             Route="home">
+        <Tab x:Name="homeTab" Route="home">
             <Tab.Icon>
-                <FontImageSource FontFamily="MaterialIconsCommunity-Regular"
-                                 Glyph="&#xF02DC;" />
+                <FontImageSource FontFamily="MaterialIconsCommunity-Regular" Glyph="&#xF02DC;" />
             </Tab.Icon>
             <ShellContent>
                 <views:HomeView />
             </ShellContent>
         </Tab>
 
-        <Tab x:Name="bitcoinTab"
-             Route="bitcoin">
+        <Tab x:Name="bitcoinTab" Route="bitcoin">
             <Tab.Icon>
-                <FontImageSource FontFamily="MaterialIcons-Regular"
-                                 Glyph="currency_bitcoin" />
+                <FontImageSource FontFamily="MaterialIcons-Regular" Glyph="currency_bitcoin" />
             </Tab.Icon>
             <ShellContent>
                 <views:MyBitcoinView />
             </ShellContent>
         </Tab>
 
-        <Tab x:Name="settingsTab"
-             Route="settings">
+        <Tab x:Name="settingsTab" Route="settings">
             <Tab.Icon>
-                <FontImageSource FontFamily="MaterialIcons-Regular"
-                                 Glyph="tune"/>
+                <FontImageSource FontFamily="MaterialIcons-Regular" Glyph="tune"/>
             </Tab.Icon>
             <ShellContent>
                 <views:SettingsView />

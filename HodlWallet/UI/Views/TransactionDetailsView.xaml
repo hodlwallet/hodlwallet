@@ -102,19 +102,9 @@
                 </Frame>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="15,0,0,10">
-                    <ImageButton HeightRequest="40"
-                                 WidthRequest="40"
-                                 CornerRadius="20"
-                                 Padding="10"
-                                 IsEnabled="False"
-                                 VerticalOptions="Center"
-                                 BackgroundColor="{DynamicResource Bg2}">
-                        <ImageButton.Source>
-                            <FontImageSource FontFamily="MaterialIconsOutlined-Regular"
-                                             Color="{DynamicResource FgSuccess}"
-                                             Glyph="sticky_note_2" />
-                        </ImageButton.Source>
-                    </ImageButton>
+                    <controls:FontImageIcon FontFamily="MaterialIconsOutlined-Regular"
+                                            Color="{DynamicResource FgSuccess}"
+                                            Glyph="sticky_note_2" />
                     <Label Text="{i18n:Translate Text=TransactionDetails.note}"
                            FontFamily="{StaticResource Key=Sans-Bold}"
                            TextColor="{DynamicResource Fg}"
@@ -140,13 +130,11 @@
                          Padding="{OnPlatform Android=0,iOS='0,0,0,10'}"
                          Orientation="Horizontal">
                 <StackLayout Orientation="Horizontal" Margin="40,0,0,0">
-                    <Image HeightRequest="30" WidthRequest="30">
-                        <Image.Source>
-                            <FontImageSource FontFamily="MaterialIconsOutlined-Regular"
-                                             Color="{DynamicResource Bg2}"
-                                             Glyph="savings" />
-                        </Image.Source>
-                    </Image>
+                    <controls:FontImage HeightRequest="30"
+                                        WidthRequest="30"
+                                        FontFamily="MaterialIconsOutlined-Regular"
+                                        Color="{DynamicResource Bg2}"
+                                        Glyph="savings" />
                 </StackLayout>
                 <Label Text="{i18n:Translate Text=TransactionDetails.total}"
                        VerticalOptions="Center"

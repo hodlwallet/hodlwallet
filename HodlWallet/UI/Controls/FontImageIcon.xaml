@@ -2,8 +2,8 @@
 <ImageButton xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
-             x:DataType="controls:FontImageButton"
-             x:Class="HodlWallet.UI.Controls.FontImageButton"
+             x:DataType="controls:FontImageIcon"
+             x:Class="HodlWallet.UI.Controls.FontImageIcon"
              HeightRequest="40"
              WidthRequest="40"
              CornerRadius="20"
@@ -11,9 +11,9 @@
              IsEnabled="False"
              VerticalOptions="Center"
              BackgroundColor="{DynamicResource Bg2}"
-             x:Name="this">
+             x:Name="self">
     <ImageButton.Source>
-        <FontImageSource BindingContext="{x:Reference this}"
+        <FontImageSource BindingContext="{x:Reference self}"
                          FontFamily="{Binding FontFamily}"
                          Color="{Binding Color}"
                          Glyph="{Binding Glyph}" />

@@ -20,8 +20,7 @@
     <ContentPage.ToolbarItems>
         <controls:HideableToolbarItem x:Name="SearchToolBarItem" IsVisible="True" Clicked="Search_Clicked">
             <controls:HideableToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="MaterialIcons-Regular"
-                                 Glyph="search" />
+                <FontImageSource FontFamily="MaterialIcons-Regular" Glyph="search" />
             </controls:HideableToolbarItem.IconImageSource>
         </controls:HideableToolbarItem>
         <controls:SyncingToolbarItem x:Name="SyncToolbarItem" IsVisible="False" Clicked="Sync_Clicked" />

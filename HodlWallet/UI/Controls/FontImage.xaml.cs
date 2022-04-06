@@ -1,5 +1,5 @@
 ﻿//
-// FontImageButton.xaml.cs
+// FontImage.xaml.cs
 //
 // Author:
 //       Igor Guerrero <igorgue@protonmail.com>
@@ -29,13 +29,13 @@ using Xamarin.Forms.Xaml;
 namespace HodlWallet.UI.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FontImageButton : ImageButton
+    public partial class FontImage : Image
     {
         // Color
         public static readonly BindableProperty ColorProperty = BindableProperty.Create(
             nameof(Color),
             typeof(Color),
-            typeof(FontImageButton),
+            typeof(FontImage),
             (Color)Application.Current.Resources["FgSuccess"]
         );
         public Color Color
@@ -48,7 +48,7 @@ namespace HodlWallet.UI.Controls
         public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(
             nameof(FontFamily),
             typeof(string),
-            typeof(FontImageButton),
+            typeof(FontImage),
             "MaterialIcons-Regular"
         );
         public string FontFamily
@@ -61,7 +61,7 @@ namespace HodlWallet.UI.Controls
         public static readonly BindableProperty GlyphProperty = BindableProperty.Create(
             nameof(Glyph),
             typeof(string),
-            typeof(FontImageButton),
+            typeof(FontImage),
             "close"
         );
         public string Glyph
@@ -70,7 +70,7 @@ namespace HodlWallet.UI.Controls
             set { SetValue(GlyphProperty, value); }
         }
 
-        public FontImageButton()
+        public FontImage()
         {
             InitializeComponent();
         }

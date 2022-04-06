@@ -17,45 +17,30 @@
         <FlexLayout Direction="Column">
             <controls:BalanceHeader FlexLayout.Grow="1" />
 
-            <StackLayout FlexLayout.Grow="2" BackgroundColor="{DynamicResource Bg2}">
-                <StackLayout HeightRequest="80" VerticalOptions="End">
-                    <BoxView HeightRequest="20" />
-                    <Image HeightRequest="40">
-                        <Image.Source>
-                            <FontImageSource FontFamily="MaterialIcons-Regular"
-                                             Color="{DynamicResource FgSuccess}"
-                                             Glyph="currency_bitcoin" />
-                        </Image.Source>
-                    </Image>
-                </StackLayout>
-                <StackLayout Spacing="0">
-                    <Label Text="{i18n:Translate Text=MyBitcoin.sendSlashReceive}" FontFamily="{StaticResource Key=Sans-Bold}" CharacterSpacing="3" XAlign="Center" />
-                    <Label FontSize="Caption" Text="{i18n:Translate Text=MyBitcoin.contextualInfo}" LineBreakMode="WordWrap"
-XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Key=Sans-Regular}" Padding="90,0,90,0" />
-                </StackLayout>
+            <StackLayout FlexLayout.Grow="2"
+                         BackgroundColor="{DynamicResource Bg2}"
+                         Padding="0,15,0,0">
+                    <controls:FontImage Glyph="currency_bitcoin" />
+                    <Label Text="{i18n:Translate Text=MyBitcoin.sendSlashReceive}"
+                           FontFamily="{StaticResource Key=Sans-Bold}"
+                           CharacterSpacing="3"
+                           XAlign="Center" />
+                    <Label FontSize="Caption"
+                           Text="{i18n:Translate Text=MyBitcoin.contextualInfo}"
+                           LineBreakMode="WordWrap"
+                           XAlign="Center"
+                           TextColor="{DynamicResource Fg2}"
+                           FontFamily="{StaticResource Key=Sans-Regular}"
+                           Padding="90,0,90,0" />
             </StackLayout>
 
             <StackLayout FlexLayout.Grow="7" Spacing="0" BackgroundColor="{DynamicResource Bg3}">
-                <BoxView HeightRequest="2" Color="{DynamicResource Fg2}" />
+                <BoxView HeightRequest="1" Color="{DynamicResource Fg2}" />
 
                 <StackLayout Orientation="Horizontal" Padding="0,20,0,20">
                     <BoxView WidthRequest="30" />
                     <StackLayout Margin="0,5,0,0">
-                        <ImageButton WidthRequest="40"
-                                     HeightRequest="40"
-                                     IsEnabled="False"
-                                     VerticalOptions="Center"
-                                     Padding="10"
-                                     CornerRadius="20"
-                                     RotationY="180"
-                                     BackgroundColor="{DynamicResource Bg2}"
-                                     Clicked="SendBitcoin_Tapped">
-                            <ImageButton.Source>
-                                <FontImageSource FontFamily="MaterialIcons-Regular"
-                                                 Color="{DynamicResource FgSuccess}"
-                                                 Glyph="reply" />
-                            </ImageButton.Source>
-                        </ImageButton>
+                        <controls:FontImageIcon Glyph="reply" RotationY="180" Clicked="SendBitcoin_Tapped" />
                     </StackLayout>
                     <BoxView WidthRequest="5" />
                     <StackLayout>
@@ -69,25 +54,12 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
 
-                <BoxView HeightRequest="2" Color="{DynamicResource Fg2}" />
+                <BoxView HeightRequest="1" Color="{DynamicResource Fg2}" />
 
                 <StackLayout Orientation="Horizontal" Padding="0,20,0,20">
                     <BoxView WidthRequest="30" />
                     <StackLayout Margin="0,5,0,0">
-                        <ImageButton WidthRequest="40"
-                                     HeightRequest="40"
-                                     IsEnabled="False"
-                                     VerticalOptions="Center"
-                                     Padding="10"
-                                     CornerRadius="20"
-                                     BackgroundColor="{DynamicResource Bg2}"
-                                     Clicked="ReceiveBitcoin_Tapped">
-                            <ImageButton.Source>
-                                <FontImageSource FontFamily="MaterialIcons-Regular"
-                                                 Color="{DynamicResource FgGreen}"
-                                                 Glyph="reply" />
-                            </ImageButton.Source>
-                        </ImageButton>
+                        <controls:FontImageIcon Glyph="reply" Color="{DynamicResource FgGreen}" Clicked="ReceiveBitcoin_Tapped" />
                     </StackLayout>
                     <BoxView WidthRequest="5" />
                     <StackLayout>
@@ -101,7 +73,7 @@ XAlign="Center" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Ke
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
 
-                <BoxView HeightRequest="2" Color="{DynamicResource Fg2}" />
+                <BoxView HeightRequest="1" Color="{DynamicResource Fg2}" />
             </StackLayout>
         </FlexLayout>
     </ContentPage.Content>
