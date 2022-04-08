@@ -2017,15 +2017,6 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Memo.
-        /// </summary>
-        internal static string TransactionDetails_memoTitle {
-            get {
-                return ResourceManager.GetString("TransactionDetails.memoTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to NOTE:.
         /// </summary>
         internal static string TransactionDetails_note {

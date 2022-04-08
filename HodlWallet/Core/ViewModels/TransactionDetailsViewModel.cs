@@ -55,9 +55,7 @@ namespace HodlWallet.Core.ViewModels
         public ICommand BrowseTransactionIdCommand { get; }
 
         public string StatusTitle => LocaleResources.TransactionDetails_statusTitle;
-        
-        public string MemoTitle => LocaleResources.TransactionDetails_memoTitle;
-        
+                
         public string AmountTitle => LocaleResources.TransactionDetails_amountTitle;
         
         public string TransactionIdTitle => LocaleResources.TransactionDetails_transactionIdTitle;

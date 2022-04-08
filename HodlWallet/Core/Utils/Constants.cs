@@ -251,7 +251,6 @@ namespace HodlWallet.Core.Utils
 
         // Temporary Values
         public const string USE_ADDRESS_FROM_CLIPBOARD = "The Bitcoin address '{0} is in your clipboard, would you like to send to that address?";
-        public const string MEMO_LABEL = "In Progress";
 
         // Build info temp values
         public const string BUILD_INFO_CONTENT = "Branch {0}\nCommit: {1}";

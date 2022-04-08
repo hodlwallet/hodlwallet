@@ -436,10 +436,6 @@
     <value>Status</value>
     <comment>label for transaction status title</comment>
   </data>
-  <data name="TransactionDetails.memoTitle" xml:space="preserve">
-    <value>Memo</value>
-    <comment>label for transaction memo title</comment>
-  </data>
   <data name="TransactionDetails.amountTitle" xml:space="preserve">
     <value>Amount</value>
     <comment>label for transaction amount title</comment>
