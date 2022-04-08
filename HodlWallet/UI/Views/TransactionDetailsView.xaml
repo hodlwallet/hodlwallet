@@ -33,11 +33,11 @@
                                    FontFamily="{DynamicResource Sans-Bold}" />
                             <Label Text="{Binding Id}"
                                    FontFamily="{DynamicResource Mono-Regular}"
-                                   FontSize="Micro"
+                                   FontSize="Small"
                                    LineBreakMode="MiddleTruncation"
                                    VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="EndAndExpand"
-                                   WidthRequest="260">
+                                   WidthRequest="230">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding BrowseTransactionIdCommand}" />
                                 </Label.GestureRecognizers>
@@ -51,11 +51,11 @@
                                    FontFamily="{DynamicResource Sans-Bold}" />
                             <Label Text="{Binding Address}"
                                    FontFamily="{DynamicResource Mono-Regular}"
-                                   FontSize="Micro"
+                                   FontSize="Small"
                                    LineBreakMode="MiddleTruncation"
                                    VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="EndAndExpand"
-                                   WidthRequest="260">
+                                   WidthRequest="230">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding BrowseAddressCommand}" />
                                 </Label.GestureRecognizers>
@@ -68,11 +68,9 @@
                                    FontFamily="{DynamicResource Sans-Bold}" />
                             <Label Text="{Binding CreatedAtText}"
                                    FontFamily="{DynamicResource Mono-Regular}"
-                                   FontSize="Micro"
                                    VerticalOptions="Center"
                                    LineBreakMode="NoWrap"
-                                   HorizontalOptions="EndAndExpand"
-                                   WidthRequest="200" />
+                                   HorizontalOptions="EndAndExpand" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                             <Label Text="{i18n:Translate Text=TransactionDetails.amount}"
@@ -83,8 +81,7 @@
                                    FontFamily="{DynamicResource Mono-Regular}"
                                    VerticalOptions="Center"
                                    LineBreakMode="NoWrap"
-                                   HorizontalOptions="EndAndExpand"
-                                   WidthRequest="140" />
+                                   HorizontalOptions="EndAndExpand" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                             <Label Text="{i18n:Translate Text=TransactionDetails.fee}"
@@ -95,8 +92,7 @@
                                    FontFamily="{DynamicResource Mono-Regular}"
                                    VerticalOptions="Center"
                                    LineBreakMode="MiddleTruncation"
-                                   HorizontalOptions="EndAndExpand"
-                                   WidthRequest="140" />
+                                   HorizontalOptions="EndAndExpand" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>

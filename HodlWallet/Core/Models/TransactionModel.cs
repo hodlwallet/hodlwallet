@@ -76,7 +76,7 @@ namespace HodlWallet.Core.Models
             set
             {
                 if (value == note) return;
-                if (value is not null && string.Equals(note, value)) return;
+                if (note is null && value is null) return;
 
                 SetProperty(ref note, value);
                 SecureStorageService.SetNote(IdText, note);

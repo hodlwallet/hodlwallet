@@ -29,8 +29,6 @@ using Xamarin.Forms;
 
 using NBitcoin;
 
-using Liviano.Models;
-
 using HodlWallet.Core.Models;
 using HodlWallet.Core.Utils;
 using HodlWallet.UI.Locale;
@@ -228,7 +226,7 @@ namespace HodlWallet.Core.ViewModels
             }
             catch (Exception e)
             {
-                Debug.WriteLine("Could not open Browser --> " + e); 
+                Debug.WriteLine($"[IdToBrowser] Could not open Browser, error: {e}");
             }
         }
 
@@ -242,7 +240,7 @@ namespace HodlWallet.Core.ViewModels
             }
             catch (Exception e)
             {
-                Debug.WriteLine("Could not open Browser --> " + e);
+                Debug.WriteLine($"[IdToBrowser] Could not open Browser, error: {e}");
             }
         }
     }
