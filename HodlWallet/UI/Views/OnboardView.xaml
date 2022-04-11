@@ -2,13 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:Class="HodlWallet.UI.Views.OnboardView"
              BackgroundColor="{DynamicResource Bg2}"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             ios:Page.UseSafeArea="False">
 <ContentPage.Content>
     <FlexLayout Direction="Column">
-        <Frame FlexLayout.Grow="5"
-               BackgroundColor="Transparent">
+        <StackLayout FlexLayout.Grow="3"
+                     BackgroundColor="{DynamicResource Bg2}">
             <Image Source="logo_front.png"
                    Scale="0.5"
                    VerticalOptions="Center"
@@ -17,17 +19,21 @@
                     <TapGestureRecognizer Tapped="Logo_Tapped" />
                 </Image.GestureRecognizers>
             </Image>
-        </Frame>
+        </StackLayout>
 
-        <Button Text="{i18n:Translate Text=Onboard.create}"
-                Style="{DynamicResource BottomButton}"
-                FlexLayout.Grow="1"
-                Clicked="CreateButton_Clicked" />
+        <StackLayout FlexLayout.Grow="5" Background="{DynamicResource Bg}">
+                
+        </StackLayout>
 
-        <Button Text="{i18n:Translate Text=Onboard.recover}"
-                Style="{DynamicResource BottomButton}"
-                FlexLayout.Grow="1"
-                Clicked="RecoverButton_Clicked" />
+        <StackLayout FlexLayout.Grow="2" Background="{DynamicResource Bg}" Spacing="0">
+            <Button Text="{i18n:Translate Text=Onboard.create}"
+                    Style="{DynamicResource BottomButton}"
+                    Clicked="CreateButton_Clicked" />
+
+            <Button Text="{i18n:Translate Text=Onboard.recover}"
+                    Style="{DynamicResource BottomButton}"
+                    Clicked="RecoverButton_Clicked" />
+        </StackLayout>
     </FlexLayout>
 </ContentPage.Content>
 </ContentPage>
