@@ -24,8 +24,8 @@ using System;
 
 using Xamarin.Forms;
 
-using HodlWallet.UI.Extensions;
 using HodlWallet.Core.Services;
+using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.UI.Views
 {

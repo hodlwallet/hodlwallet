@@ -88,8 +88,6 @@
                    TargetType="Button">
                 <Setter Property="FontFamily"
                         Value="{StaticResource Sans-Bold}" />
-                <Setter Property="FontSize"
-                        Value="Medium" />
                 <Setter Property="TextColor"
                         Value="{DynamicResource Fg}" />
                 <Setter Property="BackgroundColor"
@@ -105,12 +103,12 @@
                    BasedOn="{StaticResource CustomButton}">
                 <Setter Property="Margin"
                         Value="30,0,30,0" />
+                <Setter Property="Padding"
+                        Value="25,25,25,25" />
                 <Setter Property="CharacterSpacing"
                         Value="3" />
                 <Setter Property="TextTransform"
                         Value="Uppercase" />
-                <Setter Property="Padding"
-                        Value="25,25,25,25" />
             </Style>
 
             <Style x:Key="SecondaryButton"
