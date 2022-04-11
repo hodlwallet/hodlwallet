@@ -7,7 +7,7 @@
              x:Class="HodlWallet.UI.Controls.FlyoutFooter">
     <ContentView.Content>
         <Button Text="{i18n:Translate Text=AddAccount.button}"
-                Style="{DynamicResource BottomButton}"
+                Style="{DynamicResource PrimaryButton}"
                 Clicked="CreateAccountButton_Clicked"
                 HeightRequest="70">
             <Button.Margin>

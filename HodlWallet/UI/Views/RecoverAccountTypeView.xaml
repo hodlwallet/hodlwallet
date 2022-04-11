@@ -44,7 +44,7 @@
                     <Label x:Name="PleaseSelectAccountTypeLabel" TextColor="{DynamicResource Fg2}" IsVisible="True"  Text="{i18n:Translate Text=AccountTypeSelection.pleaseSelect}" FontSize="Small"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
                 </StackLayout>
 
-                <Button x:Name="DoneButton" FlexLayout.Grow="1" Text="{i18n:Translate Text=AccountTypeSelection.doneButton}" IsVisible="False" FontSize="Large" Style="{DynamicResource BottomButtonSecondary}" Clicked="DoneButton_Clicked" />
+                <Button x:Name="DoneButton" FlexLayout.Grow="1" Text="{i18n:Translate Text=AccountTypeSelection.doneButton}" IsVisible="False" FontSize="Large" Style="{DynamicResource SecondaryButton}" Clicked="DoneButton_Clicked" />
 
             </FlexLayout>
             <controls:NowLoadingIndicator />

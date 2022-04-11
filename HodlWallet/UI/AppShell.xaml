@@ -176,7 +176,7 @@
 
         <Tab x:Name="settingsTab" Route="settings">
             <Tab.Icon>
-                <FontImageSource FontFamily="MaterialIcons-Regular" Glyph="tune"/>
+                <FontImageSource FontFamily="MaterialIcons-Regular" Glyph="tune" />
             </Tab.Icon>
             <ShellContent>
                 <views:SettingsView />

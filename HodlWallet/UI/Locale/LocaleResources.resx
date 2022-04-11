@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Onboard.create" xml:space="preserve">
-    <value>CREATE NEW WALLET</value>
+    <value>NEW WALLET</value>
     <comment>label for create button</comment>
   </data>
   <data name="Onboard.recover" xml:space="preserve">
@@ -1031,5 +1031,11 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   </data>
   <data name="CoinControl.title" xml:space="preserve">
     <value>Coin Control</value>
+  </data>
+  <data name="Onboard.welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="Onboard.welcomeText" xml:space="preserve">
+    <value>Manage your bitcoin blah blah blah Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae pretium mauris. Nam in ligula fringilla, feugiat metus ut, auctor ipsum. Praesent mattis egestas nulla varius consectetur.</value>
   </data>
 </root>

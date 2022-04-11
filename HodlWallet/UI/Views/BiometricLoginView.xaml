@@ -62,7 +62,7 @@
                 <BoxView BackgroundColor="{DynamicResource Fg3}" HeightRequest="1"  WidthRequest="500"/>
 
                 <Button Text="{i18n:Translate Text=Login.useBiometric}"
-                        Style="{DynamicResource BottomButton}"
+                        Style="{DynamicResource PrimaryButton}"
                         CornerRadius="0"
                         FontSize="Large"
                         FlexLayout.Grow="0.8"
@@ -73,7 +73,7 @@
                 <BoxView BackgroundColor="{DynamicResource Fg3}" HeightRequest="1" WidthRequest="500"/>
 
                 <Button Text="{i18n:Translate Text=Login.usePin}"
-                        Style="{DynamicResource BottomButton}"
+                        Style="{DynamicResource PrimaryButton}"
                         CornerRadius="0"
                         FontSize="Large"
                         FlexLayout.Grow="0.8"

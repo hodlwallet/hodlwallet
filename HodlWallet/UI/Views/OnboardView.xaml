@@ -9,31 +9,70 @@
              ios:Page.UseSafeArea="False">
 <ContentPage.Content>
     <FlexLayout Direction="Column">
-        <StackLayout FlexLayout.Grow="3"
-                     BackgroundColor="{DynamicResource Bg2}">
+        <StackLayout FlexLayout.Grow="4"
+                     BackgroundColor="{DynamicResource Bg2}"
+                     Orientation="Horizontal">
             <Image Source="logo_front.png"
-                   Scale="0.5"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center">
+                   Margin="0,0,0,35"
+                   VerticalOptions="EndAndExpand"
+                   HeightRequest="100"
+                   HorizontalOptions="CenterAndExpand">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Logo_Tapped" />
                 </Image.GestureRecognizers>
             </Image>
         </StackLayout>
 
-        <StackLayout FlexLayout.Grow="5" Background="{DynamicResource Bg}">
-                
+        <StackLayout FlexLayout.Grow="5"
+                     BackgroundColor="{DynamicResource Bg3}"
+                     Padding="0,30,0,0">
+            <Label Text="{i18n:Translate Text=Onboard.welcome}"
+                   HorizontalOptions="Center"
+                   FontFamily="{StaticResource Sans-Bold}"
+                   FontSize="Large" />
+            <BoxView HeightRequest="10" />
+
+            <Label Text="{i18n:Translate Text=Onboard.welcomeText}"
+                   Margin="65,0,65,0"
+                   XAlign="Center"
+                   FontFamily="{StaticResource Sans-Regular}"
+                   TextColor="{DynamicResource Fg2}" />
         </StackLayout>
 
-        <StackLayout FlexLayout.Grow="2" Background="{DynamicResource Bg}" Spacing="0">
-            <Button Text="{i18n:Translate Text=Onboard.create}"
-                    Style="{DynamicResource BottomButton}"
-                    Clicked="CreateButton_Clicked" />
+        <StackLayout FlexLayout.Grow="3"
+                     BackgroundColor="{DynamicResource Bg3}"
+                     Spacing="10">
+                <Button Text="{i18n:Translate Text=Onboard.create}"
+                        TextTransform="Uppercase"
+                        TextColor="{DynamicResource Fg}"
+                        BackgroundColor="{DynamicResource Bg2}"
+                        CornerRadius="10"
+                        Margin="30,0,30,0"
+                        CharacterSpacing="3"
+                        Padding="25,25,25,25"
+                        FontFamily="{StaticResource Key=Sans-Bold}"
+                        Clicked="CreateButton_Clicked">
+                <Button.ImageSource>
+                    <FontImageSource FontFamily="MaterialIcons-Regular" Glyph="add_circle" Color="{DynamicResource FgSuccess}" />
+                </Button.ImageSource>
+            </Button>
 
-            <Button Text="{i18n:Translate Text=Onboard.recover}"
-                    Style="{DynamicResource BottomButton}"
-                    Clicked="RecoverButton_Clicked" />
-        </StackLayout>
+
+                <Button Text="{i18n:Translate Text=Onboard.recover}"
+                        TextTransform="Uppercase"
+                        TextColor="{DynamicResource Fg}"
+                        BackgroundColor="{DynamicResource Bg2}"
+                        CornerRadius="10"
+                        Margin="30,0,30,0"
+                        CharacterSpacing="3"
+                        Padding="25,25,25,25"
+                        FontFamily="{StaticResource Key=Sans-Bold}"
+                        Clicked="RecoverButton_Clicked">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="MaterialIcons-Regular" Glyph="cloud_download" Color="{DynamicResource FgSuccess}" />
+                    </Button.ImageSource>
+                </Button>
+            </StackLayout>
     </FlexLayout>
 </ContentPage.Content>
 </ContentPage>

@@ -1081,7 +1081,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CREATE NEW WALLET.
+        ///   Looks up a localized string similar to NEW WALLET.
         /// </summary>
         internal static string Onboard_create {
             get {
@@ -1095,6 +1095,24 @@ namespace HodlWallet.UI.Locale {
         internal static string Onboard_recover {
             get {
                 return ResourceManager.GetString("Onboard.recover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome.
+        /// </summary>
+        internal static string Onboard_welcome {
+            get {
+                return ResourceManager.GetString("Onboard.welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage your bitcoin blah blah blah Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae pretium mauris. Nam in ligula fringilla, feugiat metus ut, auctor ipsum. Praesent mattis egestas nulla varius consectetur..
+        /// </summary>
+        internal static string Onboard_welcomeText {
+            get {
+                return ResourceManager.GetString("Onboard.welcomeText", resourceCulture);
             }
         }
         

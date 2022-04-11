@@ -189,7 +189,7 @@
                 </FlexLayout>
 
                 <Button Text="{i18n:Translate Text=Login.useBiometric}"
-                        Style="{DynamicResource BottomButtonSecondary}"
+                        Style="{DynamicResource SecondaryButton}"
                         FontSize="Large"
                         CornerRadius="0"
                         FlexLayout.Grow="0.8"

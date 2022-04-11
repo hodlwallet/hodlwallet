@@ -83,7 +83,7 @@
             <FlexLayout Direction="Row" FlexLayout.Grow="1">
                 <Button x:Name="AcknowledgeRiskTermsViewButton"
                         Text="{i18n:Translate Text=AckRisk.button}"
-                        Style="{DynamicResource BottomButtonSecondary}"
+                        Style="{DynamicResource SecondaryButton}"
                         FontSize="Large"
                         FlexLayout.Grow="1"
                         Clicked="AcknowledgeRiskTermsViewButton_Clicked" />

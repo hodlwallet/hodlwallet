@@ -33,7 +33,7 @@
 
             <Button x:Name="Button"
                     Text="{i18n:Translate Text=NewWallet.button}"
-                    Style="{DynamicResource BottomButtonSecondary}"
+                    Style="{DynamicResource SecondaryButton}"
                     FlexLayout.Grow="1"
                     Clicked="WalletInfoButton_Clicked" />
         </FlexLayout>

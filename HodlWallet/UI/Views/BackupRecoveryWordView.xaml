@@ -66,7 +66,7 @@
             </FlexLayout>
 
             <Button Text="{i18n:Translate Text=BackupWord.next}"
-                    Style="{DynamicResource BottomButton}"
+                    Style="{DynamicResource PrimaryButton}"
                     BackgroundColor="{DynamicResource Bg2}"
                     FlexLayout.AlignSelf="Stretch"
                     FlexLayout.Grow="1"
