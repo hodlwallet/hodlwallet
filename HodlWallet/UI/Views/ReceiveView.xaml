@@ -19,133 +19,138 @@
         <vm:ReceiveViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <FlexLayout Direction="Column">
-            <StackLayout FlexLayout.Grow="2" BackgroundColor="{DynamicResource Bg2}">
-                <controls:FontImage Margin="0,15,0,0"
-                                    Color="{DynamicResource FgGreen}"
-                                    Glyph="reply" />
-                <Label Text="{i18n:Translate Text=Receive.uniqueAddress}"
-                       HorizontalOptions="Center"
-                       FontSize="Subtitle"
-                       CharacterSpacing="3"
-                       FontFamily="{StaticResource Key=Sans-Bold}" />
-                <Label Text="{Binding AddressFormatted}"
-                       HorizontalOptions="Center"
-                       WidthRequest="250"
-                       XAlign="Center"
-                       FontSize="Header"
-                       TextColor="{DynamicResource Fg2}"
-                       FontFamily="{StaticResource Key=Mono-Regular}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Address_Tapped" NumberOfTapsRequired="1" />
-                    </Label.GestureRecognizers>
-                </Label>
-            </StackLayout>
-            <StackLayout FlexLayout.Grow="8" BackgroundColor="{DynamicResource Bg3}">
-                <StackLayout HeightRequest="240" Orientation="Horizontal">
-                    <!-- Keep this for debugging on iOS
-                    <controls:FontImage VerticalOptions="Center"
-                               Glyph="qr_code_scanner"
-                               Color="{DynamicResource Fg}"
-                               HorizontalOptions="CenterAndExpand"
-                               HeightRequest="180"
-                               WidthRequest="180" />
-                    -->
-                    <zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
-                                                 VerticalOptions="Center"
-                                                 HorizontalOptions="CenterAndExpand"
-                                                 BarcodeFormat="QR_CODE"
-                                                 BarcodeValue="{Binding AddressFormatted}"
-                                                 HeightRequest="180"
-                                                 WidthRequest="180">
-                        <zxing:ZXingBarcodeImageView.BarcodeOptions>
-                            <zxcm:EncodingOptions Height="180" Width="180" Margin="0" />
-                        </zxing:ZXingBarcodeImageView.BarcodeOptions>
-                        <zxing:ZXingBarcodeImageView.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Address_Tapped" NumberOfTapsRequired="1" />
-                        </zxing:ZXingBarcodeImageView.GestureRecognizers>
-                    </zxing:ZXingBarcodeImageView>
-                </StackLayout>
-
-                <StackLayout HeightRequest="160"
-                       Margin="30,0,30,10"
-                       IsVisible="{Binding AmountFrameIsVisible}">
-                    <StackLayout>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,0,0,10">
-                            <controls:FontImageIcon Glyph="money" />
-                            <Label Text="{i18n:Translate Text=Receive.amountLabel}"
-                                   FontFamily="{StaticResource Key=Sans-Bold}"
-                                   TextColor="{DynamicResource FgSuccess}"
-                                   VerticalOptions="Center"
-                                   CharacterSpacing="2" />
-                        </StackLayout>
-                        <Frame CornerRadius="15"
-                               HasShadow="False">
-                            <StackLayout>
-                                <Label Text="AMOUNT"
-                                       FontFamily="{StaticResource Key=Sans-Bold}"
-                                       FontSize="Caption"
-                                       CharacterSpacing="2" />
-                                <Entry Placeholder="0.0"
-                                       FontFamily="{StaticResource Mono-Regular}"
-                                       Keyboard="Numeric"
-                                       ReturnType="Done"
-                                       PropertyChanged="AmountEntry_Changed"
-                                       Text="{Binding Amount}"
-                                       PlaceholderColor="{DynamicResource Fg2}"
-                                       TextColor="{DynamicResource FgSuccess}"
-                                       BackgroundColor="{DynamicResource Bg}" />
-                            </StackLayout>
-                            
-                        </Frame>
+        <ScrollView BackgroundColor="{DynamicResource Bg3}">
+            <FlexLayout Direction="Column">
+                <ScrollView FlexLayout.Grow="2"
+                            BackgroundColor="{DynamicResource Bg2}">
+                    <StackLayout Padding="15,15,15,15" VerticalOptions="CenterAndExpand">
+                        <controls:FontImage Color="{DynamicResource FgGreen}"
+                                            Glyph="reply" />
+                        <Label Text="{i18n:Translate Text=Receive.uniqueAddress}"
+                               HorizontalOptions="Center"
+                               FontSize="Subtitle"
+                               CharacterSpacing="3"
+                               FontFamily="{StaticResource Key=Sans-Bold}" />
+                        <Label Text="{Binding AddressFormatted}"
+                               HorizontalOptions="Center"
+                               WidthRequest="250"
+                               XAlign="Center"
+                               FontSize="Header"
+                               TextColor="{DynamicResource Fg2}"
+                               FontFamily="{StaticResource Key=Mono-Regular}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Address_Tapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </ScrollView>
+                
+                <StackLayout FlexLayout.Grow="8" BackgroundColor="{DynamicResource Bg3}">
+                    <StackLayout HeightRequest="240" Orientation="Horizontal">
+                        <!-- Keep this for debugging on iOS -->
+                        <controls:FontImage VerticalOptions="Center"
+                                   Glyph="qr_code_scanner"
+                                   Color="{DynamicResource Fg}"
+                                   HorizontalOptions="CenterAndExpand"
+                                   HeightRequest="180"
+                                   WidthRequest="180" />
                         
+                        <!--<zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
+                                                     VerticalOptions="Center"
+                                                     HorizontalOptions="CenterAndExpand"
+                                                     BarcodeFormat="QR_CODE"
+                                                     BarcodeValue="{Binding AddressFormatted}"
+                                                     HeightRequest="180"
+                                                     WidthRequest="180">
+                            <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                                <zxcm:EncodingOptions Height="180" Width="180" Margin="0" />
+                            </zxing:ZXingBarcodeImageView.BarcodeOptions>
+                            <zxing:ZXingBarcodeImageView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Address_Tapped" />
+                            </zxing:ZXingBarcodeImageView.GestureRecognizers>
+                        </zxing:ZXingBarcodeImageView>-->
                     </StackLayout>
-                </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="24">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding ClearIsVisible}">
-                        <controls:FontImageIcon Glyph="remove" Command="{Binding ClearCommand}" />
-                        <Label Text="{i18n:Translate Text=Receive.clear}"
-                               VerticalOptions="CenterAndExpand"
-                               TextColor="{DynamicResource FgSuccess}"
-                               FontFamily="{StaticResource Key=Sans-Bold}"
-                               FontSize="Caption"
-                               CharacterSpacing="3" />
-
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ClearCommand}" NumberOfTapsRequired="1" />
-                        </StackLayout.GestureRecognizers>
+                    <StackLayout HeightRequest="160"
+                           Margin="30,0,30,10"
+                           IsVisible="{Binding AmountFrameIsVisible}">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,0,0,10">
+                                <controls:FontImageIcon Glyph="money" />
+                                <Label Text="{i18n:Translate Text=Receive.amountLabel}"
+                                       FontFamily="{StaticResource Key=Sans-Bold}"
+                                       TextColor="{DynamicResource FgSuccess}"
+                                       VerticalOptions="Center"
+                                       CharacterSpacing="2" />
+                            </StackLayout>
+                            <Frame CornerRadius="15"
+                                   HasShadow="False">
+                                <StackLayout>
+                                    <Label Text="AMOUNT"
+                                           FontFamily="{StaticResource Key=Sans-Bold}"
+                                           FontSize="Caption"
+                                           CharacterSpacing="2" />
+                                    <Entry Placeholder="0.0"
+                                           FontFamily="{StaticResource Mono-Regular}"
+                                           Keyboard="Numeric"
+                                           ReturnType="Done"
+                                           PropertyChanged="AmountEntry_Changed"
+                                           Text="{Binding Amount}"
+                                           PlaceholderColor="{DynamicResource Fg2}"
+                                           TextColor="{DynamicResource FgSuccess}"
+                                           BackgroundColor="{DynamicResource Bg}" />
+                                </StackLayout>
+                            
+                            </Frame>
+                        
+                        </StackLayout>
                     </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="24">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding ClearIsVisible}">
+                            <controls:FontImageIcon Glyph="remove" Command="{Binding ClearCommand}" />
+                            <Label Text="{i18n:Translate Text=Receive.clear}"
+                                   VerticalOptions="CenterAndExpand"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   FontFamily="{StaticResource Key=Sans-Bold}"
+                                   FontSize="Caption"
+                                   CharacterSpacing="3" />
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ClearCommand}" NumberOfTapsRequired="1" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
                     
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding AddAmountIsVisible}">
-                        <controls:FontImageIcon Glyph="add" />
-                        <Label Text="{i18n:Translate Text=Receive.addAmount}"
-                               VerticalOptions="CenterAndExpand"
-                               TextColor="{DynamicResource FgSuccess}"
-                               FontFamily="{StaticResource Key=Sans-Bold}"
-                               FontSize="Caption"
-                               CharacterSpacing="3" />
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12" IsVisible="{Binding AddAmountIsVisible}">
+                            <controls:FontImageIcon Glyph="add" />
+                            <Label Text="{i18n:Translate Text=Receive.addAmount}"
+                                   VerticalOptions="CenterAndExpand"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   FontFamily="{StaticResource Key=Sans-Bold}"
+                                   FontSize="Caption"
+                                   CharacterSpacing="3" />
 
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding AddAmountCommand}" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AddAmountCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
 
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12">
-                        <controls:FontImageIcon Glyph="ios_share" />
-                        <Label Text="{i18n:Translate Text=Receive.share}"
-                               VerticalOptions="CenterAndExpand"
-                               TextColor="{DynamicResource FgSuccess}"
-                               FontFamily="{StaticResource Key=Sans-Bold}"
-                               FontSize="Caption"
-                               CharacterSpacing="3" />
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="12">
+                            <controls:FontImageIcon Glyph="ios_share" />
+                            <Label Text="{i18n:Translate Text=Receive.share}"
+                                   VerticalOptions="CenterAndExpand"
+                                   TextColor="{DynamicResource FgSuccess}"
+                                   FontFamily="{StaticResource Key=Sans-Bold}"
+                                   FontSize="Caption"
+                                   CharacterSpacing="3" />
 
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ShareIntentCommand}" />
-                        </StackLayout.GestureRecognizers>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ShareIntentCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
                     </StackLayout>
                 </StackLayout>
-            </StackLayout>
-        </FlexLayout>
+            </FlexLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
