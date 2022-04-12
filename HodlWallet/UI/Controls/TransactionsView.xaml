@@ -7,6 +7,7 @@
              x:Class="HodlWallet.UI.Controls.TransactionsView"
              HeightRequest="10"
              Spacing="0"
+             FlexLayout.Grow="9"
              BackgroundColor="{DynamicResource Bg3}">
     <StackLayout.Resources>
         <ResourceDictionary>
@@ -18,7 +19,6 @@
         <vm:TransactionsViewModel />
     </StackLayout.BindingContext>
 
-    <BoxView HeightRequest="1" BackgroundColor="{DynamicResource Fg2}" />
     <AbsoluteLayout>
         <CollectionView x:Name="transactionsCollectionView"
                         SelectionMode="Single"
@@ -59,7 +59,7 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <BoxView HeightRequest="1" BackgroundColor="{DynamicResource Fg2}" />
+                        <BoxView HeightRequest="1" BackgroundColor="{DynamicResource Fg3}" />
                         <StackLayout Orientation="Horizontal" Margin="0,10,0,10" VerticalOptions="CenterAndExpand">
                             <controls:FontImageIcon Margin="35,0,0,0"
                                                     Glyph="reply"

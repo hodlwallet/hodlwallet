@@ -21,41 +21,26 @@
     <ContentPage.Content>
         <ScrollView BackgroundColor="{DynamicResource Bg3}">
             <FlexLayout Direction="Column">
-                <ScrollView FlexLayout.Grow="2"
-                            BackgroundColor="{DynamicResource Bg2}">
-                    <StackLayout Padding="15,15,15,15" VerticalOptions="CenterAndExpand">
-                        <controls:FontImage Color="{DynamicResource FgGreen}"
-                                            Glyph="reply" />
-                        <Label Text="{i18n:Translate Text=Receive.uniqueAddress}"
-                               HorizontalOptions="Center"
-                               FontSize="Subtitle"
-                               CharacterSpacing="3"
-                               FontFamily="{StaticResource Key=Sans-Bold}" />
-                        <Label Text="{Binding AddressFormatted}"
-                               HorizontalOptions="Center"
-                               WidthRequest="250"
-                               XAlign="Center"
-                               FontSize="Header"
-                               TextColor="{DynamicResource Fg2}"
-                               FontFamily="{StaticResource Key=Mono-Regular}">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Address_Tapped" />
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </StackLayout>
-                </ScrollView>
-                
+                <controls:ContentHeader Glyph="reply"
+                                        Color="{DynamicResource FgGreen}"
+                                        TitleText="{i18n:Translate Text=Receive.uniqueAddress}"
+                                        DescriptionText="{Binding AddressFormatted}"
+                                        DescriptionFontFamily="{StaticResource Mono-Regular}"
+                                        DescriptionFontSize="Header"
+                                        DescriptionTappedCommand="{Binding CopyAddressCommand}"
+                                        DescriptionPadding="10,0,10,0" />
+
                 <StackLayout FlexLayout.Grow="8" BackgroundColor="{DynamicResource Bg3}">
                     <StackLayout HeightRequest="240" Orientation="Horizontal">
                         <!-- Keep this for debugging on iOS -->
-                        <controls:FontImage VerticalOptions="Center"
+                        <!--<controls:FontImage VerticalOptions="Center"
                                    Glyph="qr_code_scanner"
                                    Color="{DynamicResource Fg}"
                                    HorizontalOptions="CenterAndExpand"
                                    HeightRequest="180"
-                                   WidthRequest="180" />
+                                   WidthRequest="180" />-->
                         
-                        <!--<zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
+                        <zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
                                                      VerticalOptions="Center"
                                                      HorizontalOptions="CenterAndExpand"
                                                      BarcodeFormat="QR_CODE"
@@ -66,9 +51,9 @@
                                 <zxcm:EncodingOptions Height="180" Width="180" Margin="0" />
                             </zxing:ZXingBarcodeImageView.BarcodeOptions>
                             <zxing:ZXingBarcodeImageView.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Address_Tapped" />
+                                <TapGestureRecognizer Command="{Binding CopyAddressCommand}" />
                             </zxing:ZXingBarcodeImageView.GestureRecognizers>
-                        </zxing:ZXingBarcodeImageView>-->
+                        </zxing:ZXingBarcodeImageView>
                     </StackLayout>
 
                     <StackLayout HeightRequest="160"
@@ -117,7 +102,7 @@
                                    CharacterSpacing="3" />
 
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ClearCommand}" NumberOfTapsRequired="1" />
+                                <TapGestureRecognizer Command="{Binding ClearCommand}" />
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
                     

@@ -44,7 +44,7 @@
                        MaxLength="32"
                        Margin="20,10" />
                 <ContentView.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" />
+                    <TapGestureRecognizer />
                 </ContentView.GestureRecognizers>
             </ContentView>
 

@@ -59,8 +59,7 @@
                            FlexLayout.AlignSelf="Center"
                            FlexLayout.Grow="1">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="BuildDate_Tapped"
-                                                  NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer Tapped="BuildDate_Tapped" />
                         </Label.GestureRecognizers>
                     </Label>
                 </FlexLayout>

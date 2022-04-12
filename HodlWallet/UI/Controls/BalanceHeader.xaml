@@ -4,7 +4,8 @@
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
-             x:Class="HodlWallet.UI.Controls.BalanceHeader">
+             x:Class="HodlWallet.UI.Controls.BalanceHeader"
+             FlexLayout.Grow="1">
     <ContentView.BindingContext>
         <vm:BalanceHeaderViewModel />
     </ContentView.BindingContext>

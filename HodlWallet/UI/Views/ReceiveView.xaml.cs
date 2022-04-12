@@ -39,6 +39,12 @@ namespace HodlWallet.UI.Views
         public ReceiveView()
         {
             InitializeComponent();
+            SubscribeToMessages();
+        }
+
+        void SubscribeToMessages()
+        {
+            MessagingCenter.Subscribe<ReceiveViewModel>(this, "CopiedAddressToast", CopiedAddressToast);
         }
 
         protected override void OnAppearing()
@@ -49,9 +55,8 @@ namespace HodlWallet.UI.Views
             base.OnAppearing();
         }
 
-        async void Address_Tapped(object sender, EventArgs e)
+        async void CopiedAddressToast(ReceiveViewModel vm)
         {
-            await Clipboard.SetTextAsync(ViewModel.AddressFormatted);
             await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
         }
 

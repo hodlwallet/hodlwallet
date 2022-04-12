@@ -27,12 +27,12 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <FlexLayout Direction="Column">
-            <controls:BalanceHeader FlexLayout.Grow="1">
+            <controls:BalanceHeader>
                 <controls:BalanceHeader.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TopView_DoubleTapped" NumberOfTapsRequired="2" />
                 </controls:BalanceHeader.GestureRecognizers>
             </controls:BalanceHeader>
-            <controls:TransactionsView x:Name="transactionsView" FlexLayout.Grow="9" />
+            <controls:TransactionsView x:Name="transactionsView" />
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

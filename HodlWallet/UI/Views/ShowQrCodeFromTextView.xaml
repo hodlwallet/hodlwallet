@@ -51,8 +51,7 @@
                             </zxing:ZXingBarcodeImageView.BarcodeOptions>
                         </zxing:ZXingBarcodeImageView>
                         <ContentView.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" 
-                                                  Tapped="QrCode_Tapped" />
+                            <TapGestureRecognizer Tapped="QrCode_Tapped" />
                         </ContentView.GestureRecognizers>
                 </ContentView>
 
@@ -64,8 +63,7 @@
                            Text="{Binding Text}"
                            VerticalOptions="Center">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Text_Tapped" 
-                                                  NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer Tapped="Text_Tapped" />
                        </Label.GestureRecognizers>
                     </Label>
                 </ContentView>

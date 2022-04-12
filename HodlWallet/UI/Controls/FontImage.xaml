@@ -4,8 +4,8 @@
        xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
        x:DataType="controls:FontImage"
        x:Class="HodlWallet.UI.Controls.FontImage"
-       HeightRequest="40"
-       WidthRequest="40"
+       HeightRequest="25"
+       WidthRequest="25"
        VerticalOptions="Center"
        x:Name="self">
     <Image.Source>

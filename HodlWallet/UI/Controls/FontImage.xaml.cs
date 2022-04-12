@@ -62,7 +62,7 @@ namespace HodlWallet.UI.Controls
             nameof(Glyph),
             typeof(string),
             typeof(FontImage),
-            "close"
+            "question_mark"
         );
         public string Glyph
         {

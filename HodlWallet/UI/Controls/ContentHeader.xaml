@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
+            x:DataType="controls:ContentHeader"
+            x:Class="HodlWallet.UI.Controls.ContentHeader"
+            x:Name="self"
+            FlexLayout.Grow="2"
+            BackgroundColor="{DynamicResource Bg2}">
+    <ScrollView.Content>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <controls:FontImage BindingContext="{x:Reference self}"
+                                FontFamily="{Binding ImageFontFamily}"
+                                Color="{Binding Color}"
+                                Glyph="{Binding Glyph}" />
+            <Label BindingContext="{x:Reference self}"
+                   Text="{Binding TitleText}"
+                   FontFamily="{Binding TitleFontFamily}"
+                   TextColor="{DynamicResource Fg}"
+                   CharacterSpacing="3"
+                   XAlign="Center" />
+            <Label BindingContext="{x:Reference self}"
+                   Text="{Binding DescriptionText}"
+                   FontFamily="{Binding DescriptionFontFamily}"
+                   FontSize="{Binding DescriptionFontSize}"
+                   LineBreakMode="WordWrap"
+                   XAlign="Center"
+                   TextColor="{DynamicResource Fg2}"
+                   Padding="{Binding DescriptionPadding}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DescriptionTappedCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </ScrollView.Content>
+</ScrollView>

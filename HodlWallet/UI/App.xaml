@@ -26,8 +26,8 @@
 
             <Color x:Key="Fg">#cccccc</Color>
             <Color x:Key="Fg2">#9B9B9B</Color>
-            <Color x:Key="Fg3">#515959</Color>
-            <Color x:Key="Fg4">#5A5959</Color>
+            <Color x:Key="Fg3">#444444</Color>
+            <Color x:Key="Fg4">#515959</Color>
             <Color x:Key="Fg5">#5A6262</Color>
 
             <Color x:Key="FgDark">#2d2d2d</Color> <!-- Same as in Bg, so for inverted situations -->

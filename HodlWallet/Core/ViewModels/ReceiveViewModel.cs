@@ -27,6 +27,7 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 using NBitcoin;
+using Xamarin.Essentials;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -35,6 +36,7 @@ namespace HodlWallet.Core.ViewModels
         public ICommand ShareIntentCommand { get; }
         public ICommand AddAmountCommand { get; }
         public ICommand ClearCommand { get; }
+        public ICommand CopyAddressCommand { get; }
 
         string addressFormatted;
         public string AddressFormatted
@@ -78,8 +80,16 @@ namespace HodlWallet.Core.ViewModels
             ShareIntentCommand = new Command(ShareIntent);
             AddAmountCommand = new Command(AddAmount);
             ClearCommand = new Command(Clear);
+            CopyAddressCommand = new Command(CopyAddress);
 
             RefreshAddressFromWalletService();
+        }
+
+        async void CopyAddress(object obj)
+        {
+            await Clipboard.SetTextAsync(AddressFormatted);
+
+            MessagingCenter.Send(this, "CopiedAddressToast");
         }
 
         public void RefreshAddressFromWalletService()
