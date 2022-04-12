@@ -33,6 +33,7 @@ using Rg.Plugins.Popup.Extensions;
 
 using Liviano.Utilities;
 using HodlWallet.UI.Controls;
+using System.Diagnostics;
 
 namespace HodlWallet.UI.Extensions
 {
@@ -64,7 +65,14 @@ namespace HodlWallet.UI.Extensions
                 CornerRadius = 5
             };
 
-            await view.DisplayToastAsync(toastOptions);
+            try
+            {
+                await view.DisplayToastAsync(toastOptions);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[DisplayToast] Failed to show toast, error: {ex}");
+            }
         }
 
         public static async Task<bool> DisplayPrompt(this ContentPage view, string title, string message = null, string okButton = null, string cancelButton = null)
