@@ -105,8 +105,10 @@
                         Value="30,0,30,0" />
                 <Setter Property="Padding"
                         Value="25,25,25,25" />
-                <Setter Property="CharacterSpacing"
-                        Value="3" />
+                <Setter Property="ContentLayout"
+                        Value="Left,10" />
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
                 <Setter Property="TextTransform"
                         Value="Uppercase" />
             </Style>

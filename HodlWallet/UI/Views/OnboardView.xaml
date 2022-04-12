@@ -40,11 +40,14 @@
         <StackLayout FlexLayout.Grow="3"
                      BackgroundColor="{DynamicResource Bg3}"
                      Spacing="10">
+
             <Button Text="{i18n:Translate Text=Onboard.create}"
                     Style="{DynamicResource PrimaryButton}"
                     Clicked="CreateButton_Clicked">
                 <Button.ImageSource>
-                    <FontImageSource FontFamily="MaterialIcons-Regular" Glyph="add_circle" Color="{DynamicResource FgSuccess}" />
+                    <FontImageSource FontFamily="MaterialIcons-Regular"
+                                     Glyph="add_circle"
+                                     Color="{DynamicResource FgSuccess}" />
                 </Button.ImageSource>
             </Button>
 
@@ -52,7 +55,9 @@
                     Style="{DynamicResource PrimaryButton}"
                     Clicked="RecoverButton_Clicked">
                 <Button.ImageSource>
-                    <FontImageSource FontFamily="MaterialIcons-Regular" Glyph="cloud_download" Color="{DynamicResource FgSuccess}" />
+                    <FontImageSource FontFamily="MaterialIcons-Regular"
+                                     Glyph="cloud_download"
+                                     Color="{DynamicResource FgSuccess}" />
                 </Button.ImageSource>
             </Button>
         </StackLayout>
