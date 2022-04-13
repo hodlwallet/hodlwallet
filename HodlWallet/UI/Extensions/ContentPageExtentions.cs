@@ -49,8 +49,8 @@ namespace HodlWallet.UI.Extensions
             var res = Application.Current.Resources;
             var bg = (Color)res["Bg2"];
             var fg = (Color)res["Fg2"];
-            var fontFamily = (string)res["Sans-Regular"];
-            var font = Font.OfSize(fontFamily, Device.GetNamedSize(NamedSize.Medium, view));
+            var fontFamily = (string)res["Sans-Bold"];
+            var font = Font.OfSize(fontFamily, Device.GetNamedSize(NamedSize.Medium, typeof(Label)));
 
             var toastOptions = new ToastOptions
             {

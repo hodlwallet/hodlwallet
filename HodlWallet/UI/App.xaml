@@ -252,6 +252,22 @@
                         Value="{DynamicResource Fg}" />
             </Style>
 
+            <Style x:Key="BuildInfoLabel"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="{DynamicResource Fg4}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Mono-Regular}" />
+                <Setter Property="HorizontalOptions"
+                        Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" 
+                        Value="EndAndExpand" />
+                <Setter Property="Padding" 
+                        Value="15,15,15,15" />
+                <Setter Property="FontSize" 
+                        Value="Micro" />
+            </Style>
+
             <Style x:Key="MnemonicLabel"
                    TargetType="Label">
                 <Setter Property="FontFamily"

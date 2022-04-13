@@ -41,8 +41,6 @@ namespace HodlWallet.UI.Views
         public SettingsView()
         {
             InitializeComponent();
-
-            SetBuiltOnDate();
         }
 
         void BackupMnemonic_Clicked(object sender, EventArgs e)
@@ -83,30 +81,23 @@ namespace HodlWallet.UI.Views
 
         async void BuildDate_Tapped(object sender, EventArgs e)
         {
-            string buildInfo = string.Format(
+            var buildInfo = string.Format(
                 Constants.BUILD_INFO_CONTENT,
                 BuildInfo.GitBranch,
                 BuildInfo.GitHead
             );
 
-            Debug.WriteLine(buildInfo);
+            Debug.WriteLine($"[BuildDate_Tapped] {buildInfo}");
 
             await Clipboard.SetTextAsync(buildInfo);
 
-            string msg = $"{buildInfo}\n\n{Constants.BUILD_INFO_COPIED_TO_CLIPBOARD}";
+            var msg = $"{buildInfo}\n\n{Constants.BUILD_INFO_COPIED_TO_CLIPBOARD}";
 
             await this.DisplayPrompt(
                 Constants.BUILD_INFO_MESSAGE_TITLE,
                 msg,
                 LocaleResources.Error_ok
             );
-        }
-
-        void SetBuiltOnDate()
-        {
-#if DEBUG || TESTNET
-            BuildDate.Text = $"Built on: {BuildInfo.BuildDateText}";
-#endif
         }
 
         async Task<bool> AskThisIsIrreversibleQuestion(string key)

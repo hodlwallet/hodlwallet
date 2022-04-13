@@ -17,6 +17,7 @@
                    Text="{Binding TitleText}"
                    FontFamily="{Binding TitleFontFamily}"
                    TextColor="{DynamicResource Fg}"
+                   TextTransform="Uppercase"
                    CharacterSpacing="3"
                    XAlign="Center" />
             <Label BindingContext="{x:Reference self}"

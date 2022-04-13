@@ -1612,7 +1612,7 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Backup Recovery Key.
+        ///   Looks up a localized string similar to BACKUP SEED.
         /// </summary>
         internal static string Security_backupRecoveryKey {
             get {
@@ -1621,11 +1621,29 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Biometrics.
+        ///   Looks up a localized string similar to Backup your seed on a physical location and verify.
+        /// </summary>
+        internal static string Security_backupRecoveryKeyDescription {
+            get {
+                return ResourceManager.GetString("Security.backupRecoveryKeyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BIOMETRICS.
         /// </summary>
         internal static string Security_biometrics {
             get {
                 return ResourceManager.GetString("Security.biometrics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable or disable biometrics login.
+        /// </summary>
+        internal static string Security_biometricsDescription {
+            get {
+                return ResourceManager.GetString("Security.biometricsDescription", resourceCulture);
             }
         }
         
@@ -1639,11 +1657,20 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pin.
+        ///   Looks up a localized string similar to PIN.
         /// </summary>
         internal static string Security_pin {
             get {
                 return ResourceManager.GetString("Security.pin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change your current PIN.
+        /// </summary>
+        internal static string Security_pinDescription {
+            get {
+                return ResourceManager.GetString("Security.pinDescription", resourceCulture);
             }
         }
         
@@ -1945,6 +1972,24 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to APPEARANCE.
+        /// </summary>
+        internal static string Settings_appearance {
+            get {
+                return ResourceManager.GetString("Settings.appearance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the look and feel of HODL.
+        /// </summary>
+        internal static string Settings_appearanceDescription {
+            get {
+                return ResourceManager.GetString("Settings.appearanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string Settings_button {
@@ -1963,11 +2008,65 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is contexual description information sample text long version.
+        /// </summary>
+        internal static string Settings_headerDescription {
+            get {
+                return ResourceManager.GetString("Settings.headerDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PERSONALIZE.
+        /// </summary>
+        internal static string Settings_headerTitle {
+            get {
+                return ResourceManager.GetString("Settings.headerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SECURITY.
+        /// </summary>
+        internal static string Settings_security {
+            get {
+                return ResourceManager.GetString("Settings.security", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change your login and backup your seed.
+        /// </summary>
+        internal static string Settings_securityDescription {
+            get {
+                return ResourceManager.GetString("Settings.securityDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string Settings_Title {
+        internal static string Settings_title {
             get {
-                return ResourceManager.GetString("Settings.Title", resourceCulture);
+                return ResourceManager.GetString("Settings.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WALLET.
+        /// </summary>
+        internal static string Settings_wallet {
+            get {
+                return ResourceManager.GetString("Settings.wallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change your wallet and account settings.
+        /// </summary>
+        internal static string Settings_walletDescription {
+            get {
+                return ResourceManager.GetString("Settings.walletDescription", resourceCulture);
             }
         }
         

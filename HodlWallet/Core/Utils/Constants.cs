@@ -253,7 +253,7 @@ namespace HodlWallet.Core.Utils
         public const string USE_ADDRESS_FROM_CLIPBOARD = "The Bitcoin address '{0} is in your clipboard, would you like to send to that address?";
 
         // Build info temp values
-        public const string BUILD_INFO_CONTENT = "Branch {0}\nCommit: {1}";
+        public const string BUILD_INFO_CONTENT = "Branch: {0}\nCommit: {1}";
         public const string BUILD_INFO_MESSAGE_TITLE = "Build Info";
         public const string BUILD_INFO_COPIED_TO_CLIPBOARD = "Build info has been copied to the clipboard!";
 

@@ -188,9 +188,6 @@
 		<Compile Update="UI\Views\RecoverInfoView.xaml.cs">
 			<DependentUpon>RecoverInfoView.xaml</DependentUpon>
 		</Compile>
-		<Compile Update="UI\Views\PinSettingsView.xaml.cs">
-			<DependentUpon>PinSettingsView.xaml</DependentUpon>
-		</Compile>
 		<Compile Update="UI\Views\RecoverView.xaml.cs">
 			<DependentUpon>RecoverView.xaml</DependentUpon>
 		</Compile>
@@ -227,9 +224,6 @@
 	  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	</EmbeddedResource>
 	<EmbeddedResource Update="UI\Views\PinPadChangeView.xaml">
-		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	</EmbeddedResource>
-	<EmbeddedResource Update="UI\Views\PinSettingsView.xaml">
 		<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	</EmbeddedResource>
 	<EmbeddedResource Update="UI\Views\SecuritySettingsView.xaml">

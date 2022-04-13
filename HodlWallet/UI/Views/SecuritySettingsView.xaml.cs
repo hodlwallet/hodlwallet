@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -45,7 +45,17 @@ namespace HodlWallet.UI.Views
 
         async void PinButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PinSettingsView());
+            var lastLogin = Preferences.Get("lastLogin", "pin");
+            var biometricsAllow = Preferences.Get("biometricsAllow", false);
+            var availability = Preferences.Get("biometricsAvailable", false);
+
+            ContentPage view;
+            if (biometricsAllow && (lastLogin == "biometric" && availability))
+                view = new BiometricLoginView("update");
+            else
+                view = new LoginView("update");
+
+            await Navigation.PushModalAsync(new NavigationPage(view));
         }
 
         async void Biometrics_Clicked(object sender, EventArgs e)

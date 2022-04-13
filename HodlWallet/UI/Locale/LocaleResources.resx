@@ -560,7 +560,7 @@
     <value>XPRV (PRIVATE KEY)</value>
     <comment>Account XPrv Title</comment>
   </data>
-  <data name="Settings.Title" xml:space="preserve">
+  <data name="Settings.title" xml:space="preserve">
     <value>Settings</value>
     <comment>Global Settings Title</comment>
   </data>
@@ -820,11 +820,11 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <comment>label for PinSettingsView title</comment>
   </data>
   <data name="Security.backupRecoveryKey" xml:space="preserve">
-    <value>Backup Recovery Key</value>
+    <value>BACKUP SEED</value>
     <comment>label for backup recovery key button</comment>
   </data>
   <data name="Security.biometrics" xml:space="preserve">
-    <value>Biometrics</value>
+    <value>BIOMETRICS</value>
     <comment>label for biometrics button</comment>
   </data>
   <data name="Security.close" xml:space="preserve">
@@ -832,7 +832,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
     <comment>label for close button of SecuritySettingsView</comment>
   </data>
   <data name="Security.pin" xml:space="preserve">
-    <value>Pin</value>
+    <value>PIN</value>
     <comment>label for pin button</comment>
   </data>
   <data name="Security.title" xml:space="preserve">
@@ -1037,5 +1037,38 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   </data>
   <data name="Onboard.welcomeText" xml:space="preserve">
     <value>Manage your bitcoin blah blah blah Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae pretium mauris. Nam in ligula fringilla, feugiat metus ut, auctor ipsum. Praesent mattis egestas nulla varius consectetur.</value>
+  </data>
+  <data name="Settings.appearance" xml:space="preserve">
+    <value>APPEARANCE</value>
+  </data>
+  <data name="Settings.appearanceDescription" xml:space="preserve">
+    <value>Change the look and feel of HODL</value>
+  </data>
+  <data name="Settings.headerDescription" xml:space="preserve">
+    <value>This is contexual description information sample text long version</value>
+  </data>
+  <data name="Settings.headerTitle" xml:space="preserve">
+    <value>PERSONALIZE</value>
+  </data>
+  <data name="Settings.security" xml:space="preserve">
+    <value>SECURITY</value>
+  </data>
+  <data name="Settings.securityDescription" xml:space="preserve">
+    <value>Change your login and backup your seed</value>
+  </data>
+  <data name="Settings.wallet" xml:space="preserve">
+    <value>WALLET</value>
+  </data>
+  <data name="Settings.walletDescription" xml:space="preserve">
+    <value>Change your wallet and account settings</value>
+  </data>
+  <data name="Security.backupRecoveryKeyDescription" xml:space="preserve">
+    <value>Backup your seed on a physical location and verify</value>
+  </data>
+  <data name="Security.biometricsDescription" xml:space="preserve">
+    <value>Enable or disable biometrics login</value>
+  </data>
+  <data name="Security.pinDescription" xml:space="preserve">
+    <value>Change your current PIN</value>
   </data>
 </root>

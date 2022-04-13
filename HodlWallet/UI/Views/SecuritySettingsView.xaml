@@ -6,45 +6,65 @@
              x:Class="HodlWallet.UI.Views.SecuritySettingsView"
              Title="{i18n:Translate Security.title}"
              NavigationPage.HasNavigationBar="True"
-             BackgroundColor="{DynamicResource Bg}"
-             Shell.TabBarIsVisible="False">
+             BackgroundColor="{DynamicResource Bg}">
     <Shell.TitleView>
         <controls:TitleView />
     </Shell.TitleView>
     <ContentPage.Content>
-        <FlexLayout>
-            <ScrollView x:Name="MenuScroll">
-                <FlexLayout Direction="Column">
-                    <BoxView FlexLayout.Grow="2" />
+        <FlexLayout Direction="Column">
+            <controls:ContentHeader Glyph="security" TitleText="{i18n:Translate Text=Settings.security}" DescriptionText="{i18n:Translate Text=Settings.securityDescription}" />
 
-                    <BoxView BackgroundColor="{DynamicResource Fg3}"
-                             HeightRequest="1" />
+            <StackLayout FlexLayout.Grow="7" Spacing="0" BackgroundColor="{DynamicResource Bg3}">
+                <BoxView HeightRequest="1" Color="{DynamicResource Fg3}" />
 
-                    <Button Text="{i18n:Translate Text=Security.backupRecoveryKey}"
-                            Style="{DynamicResource SettingsButton}"
-                            Clicked="BackupMnemonic_Clicked" />
+                <StackLayout Orientation="Horizontal" Padding="0,20,0,20">
+                    <StackLayout Margin="35,5,0,0">
+                        <controls:FontImageIcon Glyph="format_list_numbered" />
+                    </StackLayout>
+                    <StackLayout Margin="10,0,0,0">
+                        <Label Text="{i18n:Translate Text=Security.backupRecoveryKey}" FontFamily="{StaticResource Key=Sans-Bold}" CharacterSpacing="3" FontSize="Caption" />
+                        <Label Text="{i18n:Translate Text=Security.backupRecoveryKeyDescription}" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Key=Sans-Regular}" FontSize="Caption" WidthRequest="200" Margin="0,-5,0,0" />
+                    </StackLayout>
+                    <controls:FontImage Glyph="navigate_next" HeightRequest="35" Color="{DynamicResource Fg3}" HorizontalOptions="EndAndExpand" Margin="0,0,30,0" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackupMnemonic_Clicked" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
 
-                    <BoxView BackgroundColor="{DynamicResource Fg3}"
-                             HeightRequest="1" />
+                <BoxView HeightRequest="1" Color="{DynamicResource Fg3}" />
 
-                    <Button Text="{i18n:Translate Text=Security.pin}"
-                            Style="{DynamicResource SettingsButton}"
-                            Clicked="PinButton_Clicked" />
+                <StackLayout Orientation="Horizontal" Padding="0,20,0,20">
+                    <StackLayout Margin="35,5,0,0">
+                        <controls:FontImageIcon Glyph="pin" FontFamily="MaterialIconsOutlined-Regular" />
+                    </StackLayout>
+                    <StackLayout Margin="10,0,0,0">
+                        <Label Text="{i18n:Translate Text=Security.pin}" FontFamily="{StaticResource Key=Sans-Bold}" CharacterSpacing="3" FontSize="Caption" />
+                        <Label Text="{i18n:Translate Text=Security.pinDescription}" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Key=Sans-Regular}" FontSize="Caption" WidthRequest="200" Margin="0,-5,0,0" />
+                    </StackLayout>
+                    <controls:FontImage Glyph="navigate_next" HeightRequest="35" Color="{DynamicResource Fg3}" HorizontalOptions="EndAndExpand" Margin="0,0,30,0" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PinButton_Clicked" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
 
-                    <BoxView BackgroundColor="{DynamicResource Fg3}"
-                             HeightRequest="1" />
+                <BoxView HeightRequest="1" Color="{DynamicResource Fg3}" />
 
-                    <Button Text="{i18n:Translate Text=Security.biometrics}"
-                            Style="{DynamicResource SettingsButton}"
-                            Clicked="Biometrics_Clicked" />
+                <StackLayout Orientation="Horizontal" Padding="0,20,0,20">
+                    <StackLayout Margin="35,5,0,0">
+                        <controls:FontImageIcon Glyph="{OnPlatform Android=fingerprint, iOS=face}" FontFamily="MaterialIconsOutlined-Regular" />
+                    </StackLayout>
+                    <StackLayout Margin="10,0,0,0">
+                        <Label Text="{i18n:Translate Text=Security.biometrics}" FontFamily="{StaticResource Key=Sans-Bold}" CharacterSpacing="3" FontSize="Caption" />
+                        <Label Text="{i18n:Translate Text=Security.biometricsDescription}" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Key=Sans-Regular}" FontSize="Caption" WidthRequest="200" Margin="0,-5,0,0" />
+                    </StackLayout>
+                    <controls:FontImage Glyph="navigate_next" HeightRequest="35" Color="{DynamicResource Fg3}" HorizontalOptions="EndAndExpand" Margin="0,0,30,0" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Biometrics_Clicked" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
 
-                    <BoxView BackgroundColor="{DynamicResource Fg3}"
-                             HeightRequest="1" />
-
-                    <!-- Extra space -->
-                    <BoxView FlexLayout.Grow="3" />
-                </FlexLayout>
-            </ScrollView>
+                <BoxView HeightRequest="1" Color="{DynamicResource Fg3}" />
+            </StackLayout>
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
