@@ -31,6 +31,7 @@ using Xamarin.Essentials;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.Core.Services;
 using HodlWallet.UI.Views.Demos;
+using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.UI.Views
 {
@@ -197,11 +198,16 @@ namespace HodlWallet.UI.Views
             pin.Color = color;
         }
 
-        void Logo_Tapped(object sender, EventArgs e)
+        async void Logo_Tapped(object sender, EventArgs e)
         {
-#if DEBUG
+#if DEBUG || TESTNET
             if (SecureStorageService.HasMnemonic())
+            {
                 Debug.WriteLine($"[Logo_Tapped] Seed: {SecureStorageService.GetMnemonic()}");
+
+                await Clipboard.SetTextAsync(SecureStorageService.GetMnemonic());
+                await this.DisplayToast("Mnemonic copied to clipboard");
+            }
 
             Application.Current.MainPage = new ControlsDemoView();
 

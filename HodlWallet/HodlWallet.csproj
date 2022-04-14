@@ -9,7 +9,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DebugType>portable</DebugType>
 		<DebugSymbols>true</DebugSymbols>
-		<DefineConstants>TRACE;DEBUG</DefineConstants>
+		<DefineConstants>TRACE;DEBUG;TESTNET</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
 		<DebugType>portable</DebugType>
@@ -20,7 +20,7 @@
 	  <DebugType>portable</DebugType>
 	  <Optimize>false</Optimize>
 	  <OutputPath>bin\iPhone\Testnet\netstandard2.1</OutputPath>
-	  <DefineConstants></DefineConstants>
+	  <DefineConstants>TRACE;DEBUG;TESTNET</DefineConstants>
 	  <NoWarn></NoWarn>
 	  <LangVersion>Default</LangVersion>
 	  <NoStdLib>false</NoStdLib>
@@ -30,7 +30,7 @@
 	  <DebugType>portable</DebugType>
 	  <Optimize>false</Optimize>
 	  <OutputPath>bin\iPhoneSimulator\Testnet\netstandard2.1</OutputPath>
-	  <DefineConstants></DefineConstants>
+	  <DefineConstants>TRACE;DEBUG;TESTNET</DefineConstants>
 	  <NoWarn></NoWarn>
 	  <LangVersion>Default</LangVersion>
 	  <NoStdLib>false</NoStdLib>
