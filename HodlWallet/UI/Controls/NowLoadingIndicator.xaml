@@ -5,7 +5,7 @@
                 IsVisible="{Binding IsLoading}"
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
                 AbsoluteLayout.LayoutFlags="All">
-    <BoxView BackgroundColor="{DynamicResource Bg}"
+    <BoxView BackgroundColor="{DynamicResource Bg3}"
              Opacity="0.92"
              AbsoluteLayout.LayoutBounds="0,0,1,1"
              AbsoluteLayout.LayoutFlags="All" />
