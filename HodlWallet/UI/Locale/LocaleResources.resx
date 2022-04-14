@@ -1134,4 +1134,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="AppearanceSettings.themeDescription" xml:space="preserve">
     <value>This is contexual description information sample text long version</value>
   </data>
+  <data name="TransactionsView.empty" xml:space="preserve">
+    <value>No Transactions</value>
+  </data>
 </root>

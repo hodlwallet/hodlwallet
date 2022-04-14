@@ -179,6 +179,8 @@
                    BasedOn="{StaticResource CustomButton}">
                 <Setter Property="FontSize"
                         Value="Medium" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource Bg}" />
                 <Setter Property="FontFamily"
                         Value="{StaticResource Mono-Regular}" />
             </Style>

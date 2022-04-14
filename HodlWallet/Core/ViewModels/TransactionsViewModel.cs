@@ -95,7 +95,7 @@ namespace HodlWallet.Core.ViewModels
             SubscribeToEvents();
         }
 
-        private void SubscribeToEvents()
+        void SubscribeToEvents()
         {
             WalletService.Wallet.OnNewTransaction += Wallet_OnNewTransaction;
             CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;

@@ -4,6 +4,7 @@
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:converters="clr-namespace:HodlWallet.UI.Converters"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Controls.TransactionsView"
              HeightRequest="10"
              Spacing="0"
@@ -37,8 +38,8 @@
 
             <CollectionView.EmptyView>
                 <StackLayout x:Name="emptyView" IsVisible="False">
-                    <!-- TODO write a nice empty view -->
-                    <Label Text="Is empty, get some Bitcoin, sorry." HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                    <controls:FontImage Glyph="mood" Color="{DynamicResource Fg2}" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" />
+                    <Label Text="{i18n:Translate TransactionsView.empty}" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Sans-Regular}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" />
                 </StackLayout>
             </CollectionView.EmptyView>
 

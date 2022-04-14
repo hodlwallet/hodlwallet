@@ -2350,6 +2350,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Transactions.
+        /// </summary>
+        internal static string TransactionsView_empty {
+            get {
+                return ResourceManager.GetString("TransactionsView.empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ACCOUNT INFO.
         /// </summary>
         internal static string WalletSettings_accountInfo {
