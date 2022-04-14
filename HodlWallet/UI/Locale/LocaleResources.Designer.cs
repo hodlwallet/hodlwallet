@@ -430,6 +430,51 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DISPLAY CURRENCY.
+        /// </summary>
+        internal static string AppearanceSettings_displayCurrency {
+            get {
+                return ResourceManager.GetString("AppearanceSettings.displayCurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is contexual description information sample text long version.
+        /// </summary>
+        internal static string AppearanceSettings_displayCurrencyDescription {
+            get {
+                return ResourceManager.GetString("AppearanceSettings.displayCurrencyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is contexual description information sample text long version.
+        /// </summary>
+        internal static string AppearanceSettings_headerDescription {
+            get {
+                return ResourceManager.GetString("AppearanceSettings.headerDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to APPEARANCE.
+        /// </summary>
+        internal static string AppearanceSettings_headerTitle {
+            get {
+                return ResourceManager.GetString("AppearanceSettings.headerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Appearance.
+        /// </summary>
+        internal static string AppearanceSettings_title {
+            get {
+                return ResourceManager.GetString("AppearanceSettings.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Write Down Backup Recovery Key.
         /// </summary>
         internal static string Backup_button {
@@ -2274,6 +2319,42 @@ namespace HodlWallet.UI.Locale {
         internal static string Transactions_title {
             get {
                 return ResourceManager.GetString("Transactions.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ACCOUNT INFO.
+        /// </summary>
+        internal static string WalletSettings_accountInfo {
+            get {
+                return ResourceManager.GetString("WalletSettings.accountInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is contexual description information sample text long version.
+        /// </summary>
+        internal static string WalletSettings_accountInfoDescription {
+            get {
+                return ResourceManager.GetString("WalletSettings.accountInfoDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to COIN CONTROL.
+        /// </summary>
+        internal static string WalletSettings_coinControl {
+            get {
+                return ResourceManager.GetString("WalletSettings.coinControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is contexual description information sample text long version.
+        /// </summary>
+        internal static string WalletSettings_coinControlDescription {
+            get {
+                return ResourceManager.GetString("WalletSettings.coinControlDescription", resourceCulture);
             }
         }
         

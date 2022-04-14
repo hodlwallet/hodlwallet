@@ -22,17 +22,15 @@
 // THE SOFTWARE.
 using System;
 using System.Diagnostics;
+using System.Reactive.Concurrency;
 using System.Threading.Tasks;
 
-using Xamarin.Essentials;
+using ReactiveUI;
 using Xamarin.Forms;
 
-using HodlWallet.Core.Utils;
 using HodlWallet.UI.Locale;
 using HodlWallet.UI.Extensions;
 using HodlWallet.Core.ViewModels;
-using ReactiveUI;
-using System.Reactive.Concurrency;
 
 namespace HodlWallet.UI.Views
 {
@@ -43,6 +41,16 @@ namespace HodlWallet.UI.Views
         public WalletSettingsView()
         {
             InitializeComponent();
+        }
+
+        async void AccountInfo_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AccountInfoView());
+        }
+
+        async void CoinControl_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CoinControlView());
         }
 
         void Resync_Tapped(object sender, EventArgs e)
@@ -57,19 +65,12 @@ namespace HodlWallet.UI.Views
             });
         }
 
-        void Restore_Tapped(object sender, EventArgs e)
+        async void Restore_Tapped(object sender, EventArgs e)
         {
-            RxApp.MainThreadScheduler.Schedule(async () =>
-            {
-                var answer = await AskThisIsIrreversibleQuestion("restore");
+            var view = new RecoverInfoView(closeable: true);
+            var nav = new NavigationPage(view);
 
-                if (!answer) return;
-
-                var view = new RecoverInfoView(closeable: true);
-                var nav = new NavigationPage(view);
-
-                await Navigation.PushModalAsync(nav);
-            });
+            await Navigation.PushModalAsync(nav);
         }
 
         void Wipe_Tapped(object sender, EventArgs e)

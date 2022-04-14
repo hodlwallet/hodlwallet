@@ -208,9 +208,6 @@
 	</Compile>
 </ItemGroup>
 <ItemGroup>
-	<EmbeddedResource Update="UI\Views\AccountSettingsView.xaml">
-	  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	</EmbeddedResource>
 	<EmbeddedResource Update="UI\Views\BiometricLoginView.xaml">
 	  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	</EmbeddedResource>

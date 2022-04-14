@@ -1,7 +1,7 @@
 ﻿//
 // AppearanceSettingsView.xaml.cs
 //
-// Copyright (c) 2019 HODL Wallet
+// Copyright (c) 2022 HODL Wallet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,8 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
+
 using Xamarin.Forms;
 
 namespace HodlWallet.UI.Views
@@ -29,6 +31,11 @@ namespace HodlWallet.UI.Views
         public AppearanceSettingsView()
         {
             InitializeComponent();
+        }
+
+        async void DisplayCurrency_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DisplayCurrencyView());
         }
     }
 }

@@ -1098,4 +1098,31 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="WalletSettings.wipeDescription" xml:space="preserve">
     <value>This is contexual description information sample text long version</value>
   </data>
+  <data name="WalletSettings.accountInfo" xml:space="preserve">
+    <value>ACCOUNT INFO</value>
+  </data>
+  <data name="WalletSettings.accountInfoDescription" xml:space="preserve">
+    <value>This is contexual description information sample text long version</value>
+  </data>
+  <data name="WalletSettings.coinControl" xml:space="preserve">
+    <value>COIN CONTROL</value>
+  </data>
+  <data name="WalletSettings.coinControlDescription" xml:space="preserve">
+    <value>This is contexual description information sample text long version</value>
+  </data>
+  <data name="AppearanceSettings.displayCurrency" xml:space="preserve">
+    <value>DISPLAY CURRENCY</value>
+  </data>
+  <data name="AppearanceSettings.displayCurrencyDescription" xml:space="preserve">
+    <value>This is contexual description information sample text long version</value>
+  </data>
+  <data name="AppearanceSettings.headerDescription" xml:space="preserve">
+    <value>This is contexual description information sample text long version</value>
+  </data>
+  <data name="AppearanceSettings.headerTitle" xml:space="preserve">
+    <value>APPEARANCE</value>
+  </data>
+  <data name="AppearanceSettings.title" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
 </root>
