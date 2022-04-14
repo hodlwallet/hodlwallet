@@ -2276,5 +2276,86 @@ namespace HodlWallet.UI.Locale {
                 return ResourceManager.GetString("Transactions.title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is contexual description information sample text long version.
+        /// </summary>
+        internal static string WalletSettings_headerDescription {
+            get {
+                return ResourceManager.GetString("WalletSettings.headerDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WALLET.
+        /// </summary>
+        internal static string WalletSettings_headerTitle {
+            get {
+                return ResourceManager.GetString("WalletSettings.headerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RESTORE.
+        /// </summary>
+        internal static string WalletSettings_restore {
+            get {
+                return ResourceManager.GetString("WalletSettings.restore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is contexual description information sample text long version.
+        /// </summary>
+        internal static string WalletSettings_restoreDescription {
+            get {
+                return ResourceManager.GetString("WalletSettings.restoreDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RESYNC.
+        /// </summary>
+        internal static string WalletSettings_resync {
+            get {
+                return ResourceManager.GetString("WalletSettings.resync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is contexual description information sample text long version.
+        /// </summary>
+        internal static string WalletSettings_resyncDescription {
+            get {
+                return ResourceManager.GetString("WalletSettings.resyncDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallet.
+        /// </summary>
+        internal static string WalletSettings_title {
+            get {
+                return ResourceManager.GetString("WalletSettings.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WIPE.
+        /// </summary>
+        internal static string WalletSettings_wipe {
+            get {
+                return ResourceManager.GetString("WalletSettings.wipe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is contexual description information sample text long version.
+        /// </summary>
+        internal static string WalletSettings_wipeDescription {
+            get {
+                return ResourceManager.GetString("WalletSettings.wipeDescription", resourceCulture);
+            }
+        }
     }
 }

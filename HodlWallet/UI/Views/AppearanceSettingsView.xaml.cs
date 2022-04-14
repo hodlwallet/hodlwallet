@@ -1,5 +1,5 @@
 ﻿//
-// SettingsViewModel.cs
+// AppearanceSettingsView.xaml.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -20,22 +20,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using HodlWallet.Core.Utils;
+using Xamarin.Forms;
 
-namespace HodlWallet.Core.ViewModels
+namespace HodlWallet.UI.Views
 {
-    public class SettingsViewModel : BaseViewModel
+    public partial class AppearanceSettingsView : ContentPage
     {
-        public string BuildDate
+        public AppearanceSettingsView()
         {
-            get
-            {
-#if DEBUG || TESTNET
-                return $"Built on: {BuildInfo.BuildDateText}";
-#else
-                return string.Empty;
-#endif
-            }
+            InitializeComponent();
         }
     }
 }

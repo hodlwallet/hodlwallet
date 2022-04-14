@@ -1071,4 +1071,31 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="Security.pinDescription" xml:space="preserve">
     <value>Change your current PIN</value>
   </data>
+  <data name="WalletSettings.headerDescription" xml:space="preserve">
+    <value>This is contexual description information sample text long version</value>
+  </data>
+  <data name="WalletSettings.headerTitle" xml:space="preserve">
+    <value>WALLET</value>
+  </data>
+  <data name="WalletSettings.title" xml:space="preserve">
+    <value>Wallet</value>
+  </data>
+  <data name="WalletSettings.restore" xml:space="preserve">
+    <value>RESTORE</value>
+  </data>
+  <data name="WalletSettings.restoreDescription" xml:space="preserve">
+    <value>This is contexual description information sample text long version</value>
+  </data>
+  <data name="WalletSettings.resync" xml:space="preserve">
+    <value>RESYNC</value>
+  </data>
+  <data name="WalletSettings.resyncDescription" xml:space="preserve">
+    <value>This is contexual description information sample text long version</value>
+  </data>
+  <data name="WalletSettings.wipe" xml:space="preserve">
+    <value>WIPE</value>
+  </data>
+  <data name="WalletSettings.wipeDescription" xml:space="preserve">
+    <value>This is contexual description information sample text long version</value>
+  </data>
 </root>

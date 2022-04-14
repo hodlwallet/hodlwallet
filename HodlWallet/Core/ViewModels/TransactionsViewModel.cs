@@ -37,6 +37,8 @@ using Liviano.Models;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
+using ReactiveUI;
+using System.Reactive.Concurrency;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -167,7 +169,11 @@ namespace HodlWallet.Core.ViewModels
                 foreach (Tx item in e.OldItems)
                 {
                     var txModel = TransactionModel.FromTransactionData(item);
-                    Transactions.Remove(txModel);
+
+                    RxApp.MainThreadScheduler.Schedule(() =>
+                    {
+                        Transactions.Remove(txModel);
+                    });
                 }
 
             MessagingCenter.Send(this, "ScrollToTop");
@@ -182,11 +188,14 @@ namespace HodlWallet.Core.ViewModels
         {
             if (Transactions.Contains(model)) return;
 
-            if (index < 0)
-                Transactions.Add(model);
-            else
-                Transactions.Insert(index, model);
-
+            RxApp.MainThreadScheduler.Schedule(() =>
+            {
+                if (index < 0)
+                    Transactions.Add(model);
+                else
+                    Transactions.Insert(index, model);
+            });
+            
             // TODO Remove this code, since it should never
             // be the case that a transaction doesn't have any
             // address to or from... is a bug on Liviano

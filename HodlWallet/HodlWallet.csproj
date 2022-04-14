@@ -194,6 +194,12 @@
 		<Compile Update="UI\Views\RecoverAccountTypeView.xaml.cs">
 		<DependentUpon>RecoverAccountTypeView.xaml</DependentUpon>
 	</Compile>
+		<Compile Update="UI\Views\AppearanceSettingsView.xaml.cs">
+		  <DependentUpon>AppearanceSettingsView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="UI\Views\WalletSettingsView.xaml.cs">
+		  <DependentUpon>WalletSettingsView.xaml</DependentUpon>
+		</Compile>
 	<Compile Update="UI\Views\SettingsView.xaml.cs">
 		<DependentUpon>SettingsView.xaml</DependentUpon>
 	</Compile>

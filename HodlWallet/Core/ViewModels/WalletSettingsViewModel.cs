@@ -1,7 +1,7 @@
 ﻿//
-// SettingsViewModel.cs
+// WalletSettingsViewModel.cs
 //
-// Copyright (c) 2019 HODL Wallet
+// Copyright (c) 2022 HODL Wallet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,22 +20,20 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using HodlWallet.Core.Utils;
+using System.Threading.Tasks;
 
 namespace HodlWallet.Core.ViewModels
 {
-    public class SettingsViewModel : BaseViewModel
+    public class WalletSettingsViewModel : BaseViewModel
     {
-        public string BuildDate
+        public async Task ResyncWallet()
         {
-            get
-            {
-#if DEBUG || TESTNET
-                return $"Built on: {BuildInfo.BuildDateText}";
-#else
-                return string.Empty;
-#endif
-            }
+            await WalletService.Wallet.Resync();
+        }
+
+        public void WipeWallet()
+        {
+            WalletService.DestroyWallet();
         }
     }
 }

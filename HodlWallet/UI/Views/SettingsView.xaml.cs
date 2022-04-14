@@ -22,7 +22,6 @@
 // THE SOFTWARE.
 using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -30,53 +29,29 @@ using Xamarin.Forms;
 using HodlWallet.Core.Utils;
 using HodlWallet.UI.Locale;
 using HodlWallet.UI.Extensions;
-using HodlWallet.Core.ViewModels;
 
 namespace HodlWallet.UI.Views
 {
     public partial class SettingsView : ContentPage
     {
-        SettingsViewModel ViewModel => BindingContext as SettingsViewModel;
-
         public SettingsView()
         {
             InitializeComponent();
         }
 
-        void BackupMnemonic_Clicked(object sender, EventArgs e)
+        async void Security_Tapped(object sender, EventArgs e)
         {
-            var view = new BackupView(action: "close");
-            var nav = new NavigationPage(view);
-
-            Navigation.PushModalAsync(nav);
+            await Navigation.PushAsync(new SecuritySettingsView());
         }
 
-        void RestoreWallet_Clicked(object sender, EventArgs e)
+        async void Wallet_Tapped(object sender, EventArgs e)
         {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                var answer = await AskThisIsIrreversibleQuestion("restore-wallet");
-
-                if (!answer) return;
-
-                var view = new RecoverInfoView(closeable: true);
-                var nav = new NavigationPage(view);
-
-                await Navigation.PushModalAsync(nav);
-            });
+            await Navigation.PushAsync(new WalletSettingsView());
         }
 
-        void WipeWallet_Clicked(object sender, EventArgs e)
+        async void Appearance_Tapped(object sender, EventArgs e)
         {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                var answer = await AskThisIsIrreversibleQuestion("wipe-wallet");
-
-                if (!answer) return;
-
-                ViewModel.WipeWallet();
-                Process.GetCurrentProcess().Kill(); // die
-            });
+            await Navigation.PushAsync(new AppearanceSettingsView());
         }
 
         async void BuildDate_Tapped(object sender, EventArgs e)
@@ -98,39 +73,6 @@ namespace HodlWallet.UI.Views
                 msg,
                 LocaleResources.Error_ok
             );
-        }
-
-        async Task<bool> AskThisIsIrreversibleQuestion(string key)
-        {
-            var title = key switch
-            {
-                "wipe-wallet" => LocaleResources.Menu_wipeWallet,
-                "resync-wallet" => LocaleResources.Menu_resyncWallet,
-                "restore-wallet" => LocaleResources.Menu_restoreWallet,
-                _ => throw new ArgumentException($"Invalid question sent, key: {key}"),
-            };
-
-            return await this.DisplayPrompt(
-                title,
-                LocaleResources.Alert_irreversible,
-                LocaleResources.Button_yes,
-                LocaleResources.Button_no
-            );
-        }
-
-        async void Security_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new SecuritySettingsView());
-        }
-
-        async void AccountSettings_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AccountSettingsView());
-        }
-
-        async void Currency_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new DisplayCurrencyView());
         }
     }
 }

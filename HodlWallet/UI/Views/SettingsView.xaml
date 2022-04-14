@@ -30,7 +30,7 @@
                     </StackLayout>
                     <controls:FontImage Glyph="navigate_next" HeightRequest="35" Color="{DynamicResource Fg3}" HorizontalOptions="EndAndExpand" Margin="0,0,30,0" />
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Security_Clicked" />
+                        <TapGestureRecognizer Tapped="Security_Tapped" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
 
@@ -46,7 +46,7 @@
                     </StackLayout>
                     <controls:FontImage Glyph="navigate_next" HeightRequest="35" Color="{DynamicResource Fg3}" HorizontalOptions="EndAndExpand" Margin="0,0,30,0" />
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer />
+                        <TapGestureRecognizer Tapped="Wallet_Tapped" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
 
@@ -62,7 +62,7 @@
                     </StackLayout>
                     <controls:FontImage Glyph="navigate_next" HeightRequest="35" Color="{DynamicResource Fg3}" HorizontalOptions="EndAndExpand" Margin="0,0,30,0" />
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer />
+                        <TapGestureRecognizer Tapped="Appearance_Tapped" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
 

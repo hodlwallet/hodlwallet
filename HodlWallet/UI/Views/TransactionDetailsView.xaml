@@ -68,8 +68,9 @@
                                    FontFamily="{DynamicResource Sans-Bold}" />
                             <Label Text="{Binding CreatedAtText}"
                                    FontFamily="{DynamicResource Mono-Regular}"
+                                   FontSize="Small"
                                    VerticalOptions="Center"
-                                   LineBreakMode="NoWrap"
+                                   LineBreakMode="TailTruncation"
                                    HorizontalOptions="EndAndExpand" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center">
