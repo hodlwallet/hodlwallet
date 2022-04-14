@@ -52,6 +52,9 @@ namespace HodlWallet.UI.Controls
         public TransactionsView()
         {
             InitializeComponent();
+
+            emptyView.IsVisible = false;
+
             SubscribeToMessages();
 
             Observable

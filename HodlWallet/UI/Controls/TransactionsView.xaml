@@ -37,9 +37,20 @@
             </CollectionView.Header>-->
 
             <CollectionView.EmptyView>
-                <StackLayout x:Name="emptyView" IsVisible="False">
-                    <controls:FontImage Glyph="mood" Color="{DynamicResource Fg2}" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" />
-                    <Label Text="{i18n:Translate TransactionsView.empty}" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Sans-Regular}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" />
+                <StackLayout x:Name="emptyView">
+                    <controls:FontImage Glyph="mood"
+                                        Color="{DynamicResource Fg2}"
+                                        HeightRequest="45"
+                                        WidthRequest="45"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="EndAndExpand" />
+                    <Label Text="{i18n:Translate TransactionsView.empty}"
+                           TextColor="{DynamicResource Fg2}"
+                           FontFamily="{StaticResource Sans-Bold}"
+                           FontSize="Subtitle"
+                           CharacterSpacing="0.2"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="StartAndExpand" />
                 </StackLayout>
             </CollectionView.EmptyView>
 
