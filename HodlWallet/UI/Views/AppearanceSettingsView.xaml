@@ -30,6 +30,21 @@
                 </StackLayout>
 
                 <BoxView HeightRequest="1" Color="{DynamicResource Fg3}" />
+
+                <StackLayout Orientation="Horizontal" Padding="0,20,0,20">
+                    <StackLayout Margin="35,5,0,0">
+                        <controls:FontImageIcon Glyph="&#xF050E;" FontFamily="MaterialIconsCommunity-Regular" />
+                    </StackLayout>
+                    <StackLayout Margin="10,0,0,0">
+                        <Label Text="{i18n:Translate Text=AppearanceSettings.theme}" FontFamily="{StaticResource Key=Sans-Bold}" CharacterSpacing="3" FontSize="Caption" />
+                        <Label Text="{i18n:Translate Text=AppearanceSettings.themeDescription}" TextColor="{DynamicResource Fg2}" FontFamily="{StaticResource Key=Sans-Regular}" FontSize="Caption" WidthRequest="260" Margin="0,-5,0,0" />
+                    </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Theme_Tapped" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <BoxView HeightRequest="1" Color="{DynamicResource Fg3}" />
             </StackLayout>
         </FlexLayout>
     </ContentPage.Content>

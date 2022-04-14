@@ -1,5 +1,8 @@
 ﻿//
-// AppearanceSettingsView.xaml.cs
+// ThemeView.xaml.cs
+//
+// Author:
+//       Igor Guerrero <igorgue@protonmail.com>
 //
 // Copyright (c) 2022 HODL Wallet
 //
@@ -20,27 +23,17 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace HodlWallet.UI.Views
 {
-    public partial class AppearanceSettingsView : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ThemeView : ContentPage
     {
-        public AppearanceSettingsView()
+        public ThemeView()
         {
             InitializeComponent();
-        }
-
-        async void DisplayCurrency_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new DisplayCurrencyView());
-        }
-
-        async void Theme_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new ThemeView());
         }
     }
 }

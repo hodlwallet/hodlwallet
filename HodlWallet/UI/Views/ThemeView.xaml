@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
+             x:Class="HodlWallet.UI.Views.ThemeView"
+             xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+             Shell.TabBarIsVisible="False"
+             Title="{i18n:Translate Theme.title}">
+    <Shell.TitleView>
+        <controls:TitleView />
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to ThemeView!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

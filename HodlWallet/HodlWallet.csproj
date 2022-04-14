@@ -185,6 +185,9 @@
 		<Compile Update="UI\Views\BiometricsSettingsView.xaml.cs">
 		  <DependentUpon>BiometricsSettingsView.xaml</DependentUpon>
 		</Compile>
+		<Compile Update="UI\Views\ThemeView.xaml.cs">
+		  <DependentUpon>ThemeView.xaml</DependentUpon>
+		</Compile>
 		<Compile Update="UI\Views\RecoverInfoView.xaml.cs">
 			<DependentUpon>RecoverInfoView.xaml</DependentUpon>
 		</Compile>

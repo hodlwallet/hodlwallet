@@ -466,6 +466,24 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to THEME.
+        /// </summary>
+        internal static string AppearanceSettings_theme {
+            get {
+                return ResourceManager.GetString("AppearanceSettings.theme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is contexual description information sample text long version.
+        /// </summary>
+        internal static string AppearanceSettings_themeDescription {
+            get {
+                return ResourceManager.GetString("AppearanceSettings.themeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Appearance.
         /// </summary>
         internal static string AppearanceSettings_title {
@@ -2112,6 +2130,15 @@ namespace HodlWallet.UI.Locale {
         internal static string Settings_walletDescription {
             get {
                 return ResourceManager.GetString("Settings.walletDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        internal static string Theme_title {
+            get {
+                return ResourceManager.GetString("Theme.title", resourceCulture);
             }
         }
         

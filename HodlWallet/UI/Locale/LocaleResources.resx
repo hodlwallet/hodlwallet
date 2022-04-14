@@ -1125,4 +1125,13 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="AppearanceSettings.title" xml:space="preserve">
     <value>Appearance</value>
   </data>
+  <data name="Theme.title" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="AppearanceSettings.theme" xml:space="preserve">
+    <value>THEME</value>
+  </data>
+  <data name="AppearanceSettings.themeDescription" xml:space="preserve">
+    <value>This is contexual description information sample text long version</value>
+  </data>
 </root>
