@@ -60,7 +60,8 @@ namespace HodlWallet.UI.Views
 
             string title = LocaleResources.Send_transaction;
 
-            string message = string.Format(LocaleResources.Send_transactionMessage, total, totalOut, fees, SendAddress.Text);
+            //string message = string.Format(LocaleResources.Send_transactionMessage, total, totalOut, fees, SendAddress.Text);
+            string message = string.Format(LocaleResources.Send_transactionMessage, total, totalOut, fees, "????");
             string okButton = LocaleResources.Send_transactionOk;
             string cancelButton = LocaleResources.Send_transactionCancel;
 

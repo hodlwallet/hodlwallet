@@ -20,6 +20,48 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{DynamicResource Bg3}">
+            <ScrollView FlexLayout.Grow="7.5">
+                
+            </ScrollView>
+
+            <StackLayout FlexLayout.Grow="2.5" BackgroundColor="{DynamicResource Bg}" Padding="0,20,0,20">
+                <StackLayout Orientation="Horizontal" Margin="35,0,35,0">
+                    <Label Text="Fees"
+                           TextColor="{DynamicResource Fg3}"
+                           FontFamily="{StaticResource Sans-Bold}"
+                           CharacterSpacing="1"
+                           HorizontalOptions="StartAndExpand" />
+                    <Label Text="0.001"
+                           TextColor="{DynamicResource Fg3}"
+                           FontFamily="{StaticResource Mono-Regular}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="35,0,35,0">
+                    <Label Text="Balance"
+                           TextColor="{DynamicResource Fg3}"
+                           FontFamily="{StaticResource Sans-Bold}"
+                           CharacterSpacing="1"
+                           HorizontalOptions="StartAndExpand" />
+                    <Label Text="1.28"
+                           TextColor="{DynamicResource Fg3}"
+                           FontFamily="{StaticResource Mono-Regular}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="35,0,35,0">
+                    <Label Text="TOTAL"
+                           TextColor="{DynamicResource Fg}"
+                           FontFamily="{StaticResource Sans-Bold}"
+                           CharacterSpacing="2"
+                           HorizontalOptions="StartAndExpand" />
+                    <Label Text="B 000.12"
+                           TextColor="{DynamicResource Fg}"
+                           FontFamily="{StaticResource Mono-Bold}" />
+                </StackLayout>
+                <Button Text="{i18n:Translate Text=Send.buttonSend}"
+                        FontSize="Medium"
+                        Style="{DynamicResource NextButton}"
+                        VerticalOptions="EndAndExpand" />
+            </StackLayout>
+        </FlexLayout>
+        <!--<FlexLayout Direction="Column" BackgroundColor="{DynamicResource Bg3}">
             <ContentView FlexLayout.Grow="7">
                 <StackLayout Spacing="30"
                              Margin="20, 0, 20, 0">
@@ -74,7 +116,7 @@
                             </svg:Icon>
                         </StackLayout>
 
-                        <!--<StackLayout Orientation="Vertical"
+                        --><!--<StackLayout Orientation="Vertical"
                                      Margin="0,2,0,0"
                                      FlexLayout.Grow="1">
                             <Label Text="{i18n:Translate Text=Send.clear}"
@@ -89,7 +131,7 @@
                                     <TapGestureRecognizer Command="{Binding ClearAdressCommand}" />
                                 </svg:Icon.GestureRecognizers>
                             </svg:Icon>
-                        </StackLayout>-->
+                        </StackLayout>--><!--
                     </FlexLayout>
 
                     <FlexLayout Direction="Row"
@@ -134,7 +176,7 @@
                         </svg:Icon>
 
 
-                        <!--<svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
+                        --><!--<svg:Icon ResourceId="HodlWallet.UI.Assets.close.svg"
                                   FlexLayout.Grow="1"
                                   FlexLayout.AlignSelf="Center"
                                   WidthRequest="16"
@@ -143,7 +185,7 @@
                                 <TapGestureRecognizer
                                     Command="{Binding ClearAmountCommand}" />
                             </svg:Icon.GestureRecognizers>
-                        </svg:Icon>-->
+                        </svg:Icon>--><!--
                     </FlexLayout>
 
                     <StackLayout Orientation="Vertical">
@@ -213,6 +255,6 @@
                         HeightRequest="80"
                         Margin="65,0,65,0" />
             </StackLayout>
-        </FlexLayout>
+        </FlexLayout>-->
     </ContentPage.Content>
 </ContentPage>

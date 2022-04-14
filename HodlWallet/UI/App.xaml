@@ -101,10 +101,12 @@
             <Style x:Key="PrimaryButton"
                    TargetType="Button"
                    BasedOn="{StaticResource CustomButton}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Sans-Bold}" />
                 <Setter Property="Margin"
                         Value="30,0,30,0" />
                 <Setter Property="Padding"
-                        Value="25,25,25,25" />
+                        Value="25,15,25,15" />
                 <Setter Property="ContentLayout"
                         Value="Left,10" />
                 <Setter Property="HorizontalOptions"
