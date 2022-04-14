@@ -55,10 +55,11 @@
                            TextColor="{DynamicResource Fg}"
                            FontFamily="{StaticResource Mono-Bold}" />
                 </StackLayout>
+
                 <Button Text="{i18n:Translate Text=Send.buttonSend}"
                         FontSize="Medium"
-                        Style="{DynamicResource NextButton}"
-                        VerticalOptions="EndAndExpand" />
+                        Margin="30,15,30,0"
+                        Style="{DynamicResource NextButton}" />
             </StackLayout>
         </FlexLayout>
         <!--<FlexLayout Direction="Column" BackgroundColor="{DynamicResource Bg3}">
