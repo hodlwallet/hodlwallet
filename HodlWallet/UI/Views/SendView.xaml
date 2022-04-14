@@ -21,7 +21,20 @@
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{DynamicResource Bg3}">
             <ScrollView FlexLayout.Grow="7.5">
-                
+                <StackLayout Margin="15,15,15,15" Spacing="10">
+                    <Frame CornerRadius="10" HasShadow="False">
+                        <StackLayout>
+                            <Label Text="TO" />
+                            <Entry />
+                            <Label Text="AMOUNT" />
+                            <Entry Keyboard="Numeric" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame CornerRadius="10" HasShadow="False">
+                        <Label Text="Fee" />
+                    </Frame>
+                </StackLayout>
             </ScrollView>
 
             <StackLayout FlexLayout.Grow="2.5" BackgroundColor="{DynamicResource Bg}" Padding="0,20,0,20">
