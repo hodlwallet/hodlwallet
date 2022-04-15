@@ -73,21 +73,14 @@
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="{i18n:Translate Text=Receive.amount}"
-                                           FontFamily="{StaticResource Key=Sans-Bold}"
-                                           FontSize="Caption"
-                                           CharacterSpacing="2" />
-                                        <controls:CurrencySwitch />
+                                               FontFamily="{StaticResource Key=Sans-Bold}"
+                                               HorizontalOptions="StartAndExpand"
+                                               FontSize="Caption"
+                                               CharacterSpacing="2" />
+                                        <controls:CurrencySwitch HorizontalOptions="EndAndExpand" />
                                     </StackLayout>
 
-                                    <Entry Placeholder="₿ 0.0"
-                                           FontFamily="{StaticResource Mono-Regular}"
-                                           Keyboard="Numeric"
-                                           ReturnType="Done"
-                                           PropertyChanged="AmountEntry_Changed"
-                                           Text="{Binding Amount}"
-                                           PlaceholderColor="{DynamicResource Fg3}"
-                                           TextColor="{DynamicResource FgSuccess}"
-                                           BackgroundColor="{DynamicResource Bg}" />
+                                    <controls:AmountEntry />
                                 </StackLayout>
                             
                             </Frame>

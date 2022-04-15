@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Entry xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+       x:Class="HodlWallet.UI.Controls.AmountEntry"
+       FontFamily="{StaticResource Mono-Regular}"
+       Keyboard="Numeric"
+       ReturnType="Done"
+       PropertyChanged="AmountEntry_Changed"
+       PlaceholderColor="{DynamicResource Fg3}"
+       TextColor="{DynamicResource FgSuccess}"
+       BackgroundColor="{DynamicResource Bg}">
+    <Entry.BindingContext>
+        <vm:AmountEntryViewModel />
+    </Entry.BindingContext>
+    <Entry.Placeholder>
+        <MultiBinding StringFormat="{}{0}{1}">
+            <Binding Path="CurrencySymbol" />
+            <Binding Path="PlaceholderAmount" />
+        </MultiBinding>
+    </Entry.Placeholder>
+</Entry>
