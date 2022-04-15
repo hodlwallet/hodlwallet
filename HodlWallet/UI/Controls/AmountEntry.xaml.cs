@@ -23,16 +23,23 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.ComponentModel;
+using System.Linq;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using HodlWallet.Core.Services;
+using HodlWallet.Core.ViewModels;
 
 namespace HodlWallet.UI.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AmountEntry : Entry
     {
+        AmountEntryViewModel ViewModel => BindingContext as AmountEntryViewModel;
+
         public AmountEntry()
         {
             InitializeComponent();
@@ -40,7 +47,46 @@ namespace HodlWallet.UI.Controls
 
         void AmountEntry_Changed(object sender, PropertyChangedEventArgs e)
         {
+            var entry = (AmountEntry)sender;
+            var text = entry.Text;
 
+            if (string.IsNullOrEmpty(text)) return;
+
+            entry.Text = NormalizeText(text);
+        }
+
+        string NormalizeText(string text)
+        {
+            var amount = text.Split(ViewModel.CurrencySymbol, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault();
+
+            if (string.IsNullOrEmpty(amount) || !decimal.TryParse(amount, out _)) return text;
+
+            var symbol = ViewModel.CurrencySymbol;
+
+            string finalText;
+            if (ViewModel.DisplayCurrencyService.CurrencyType == DisplayCurrencyType.Bitcoin)
+            {
+                while (GetDecimalPlaces(amount) > 8) amount = amount[..^1];
+
+                finalText = $"{symbol}{amount:0.########}";
+            }
+            else
+            {
+                while (GetDecimalPlaces(amount) > 2) amount = amount[..^1];
+
+                finalText = $"{symbol}{amount:0.##}";
+            }
+
+            return finalText;
+        }
+
+        int GetDecimalPlaces(string amountStr)
+        {
+            var split = amountStr.Split(".");
+
+            if (split.Length != 2) return 0;
+
+            return split.Last().Length;
         }
     }
 }

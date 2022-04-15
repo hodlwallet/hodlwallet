@@ -28,6 +28,9 @@ using ReactiveUI;
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Utils;
 using NBitcoin;
+using System.Linq;
+using System.Diagnostics;
+using Liviano.Services.Models;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -51,7 +54,21 @@ namespace HodlWallet.Core.ViewModels
         public string AmountText
         {
             get { return amountText; }
-            set { SetProperty(ref amountText, value); }
+            set
+            {
+                try
+                {
+                    value = NormalizeAmountText(value);
+
+                    SetProperty(ref amountText, value);
+
+                    UpdateAmount();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine($"[AmountText_set] Error: {e}");
+                }
+            }
         }
 
         Money amount = Money.Zero;
@@ -82,8 +99,47 @@ namespace HodlWallet.Core.ViewModels
             UpdateCurrency(DisplayCurrencyService.FiatCurrencyCode);
         }
 
+        void UpdateAmount()
+        {
+            if (string.IsNullOrEmpty(AmountText))
+            {
+                Amount = Money.Zero;
+
+                return;
+            }
+
+            var value = AmountText.Split(CurrencySymbol).Last();
+            if (DisplayCurrencyService.CurrencyType == DisplayCurrencyType.Bitcoin)
+            {
+                Amount = Money.Parse(value);
+
+                return;
+            }
+
+            var finalAmount = decimal.Parse(value) / GetRate();
+
+            Amount = new Money(finalAmount, MoneyUnit.BTC);
+        }
+
         void UpdateCurrency(string cc)
         {
+            if (!string.IsNullOrEmpty(AmountText))
+            {
+                var rate = GetRate();
+                var amount = AmountText.Split(CurrencySymbol).FirstOrDefault();
+
+                if (decimal.TryParse(amount, out var amountDecimal)) return;
+
+                if (DisplayCurrencyService.CurrencyType == DisplayCurrencyType.Bitcoin)
+                {
+                    AmountText = (amountDecimal / rate).ToString();
+                }
+                else
+                {
+                    AmountText = (amountDecimal * rate).ToString();
+                }
+            }
+
             if (DisplayCurrencyService.CurrencyType == DisplayCurrencyType.Bitcoin)
             {
                 CurrencySymbol = "₿";
@@ -94,6 +150,35 @@ namespace HodlWallet.Core.ViewModels
                 CurrencySymbol = Constants.CURRENCY_SYMBOLS[cc];
                 PlaceholderAmount = "0.00";
             }
+        }
+
+        string NormalizeAmountText(string value)
+        {
+            if (string.IsNullOrEmpty(value) || value.Equals(CurrencySymbol))
+                return string.Empty;
+            else if (value.Equals("."))
+                return $"{CurrencySymbol}0.";
+            else if (value.EndsWith("."))
+                return value;
+            else if (!value.StartsWith(CurrencySymbol))
+                value = $"{CurrencySymbol}{value}";
+
+            return value;
+        }
+
+        decimal GetRate()
+        {
+            decimal rate;
+            if (DisplayCurrencyService.FiatCurrencyCode == "USD")
+            {
+                rate = decimal.Parse(PrecioService.Precio.CRaw);
+            }
+            else
+            {
+                rate = (decimal)PrecioService.Rates.FirstOrDefault(r => r.Code == DisplayCurrencyService.FiatCurrencyCode).Rate;
+            }
+
+            return rate;
         }
     }
 }
