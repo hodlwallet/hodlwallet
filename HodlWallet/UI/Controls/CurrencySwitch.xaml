@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+             x:Class="HodlWallet.UI.Controls.CurrencySwitch"
+             Spacing="0"
+             Orientation="Horizontal">
+    <StackLayout.BindingContext>
+        <vm:CurrencySwitchViewModel />
+    </StackLayout.BindingContext>
+    <Label x:Name="bitcoinLabel"
+           Text="₿"
+           TextColor="{DynamicResource Fg}" />
+    <Label Text=" / "
+           TextColor="{DynamicResource Fg}" />
+    <Label x:Name="fiatLabel"
+           Text="$"
+           TextColor="{DynamicResource Fg}" />
+
+    <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding ToggleCurrencyCommand}" />
+    </StackLayout.GestureRecognizers>
+</StackLayout>
