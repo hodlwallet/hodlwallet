@@ -73,10 +73,7 @@ namespace HodlWallet.Core.ViewModels
 
         internal void ToggleCurrency()
         {
-            var current = DisplayCurrencyService.CurrencyType;
-
-            if (current == DisplayCurrencyType.Bitcoin) DisplayCurrencyService.CurrencyType = DisplayCurrencyType.Fiat;
-            else DisplayCurrencyService.CurrencyType = DisplayCurrencyType.Bitcoin;
+            DisplayCurrencyService.ToggleCurrency();
         }
     }
 }

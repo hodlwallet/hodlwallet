@@ -80,6 +80,14 @@ namespace HodlWallet.Core.Services
             SecureStorageService.SetDisplayCurrencyType(CurrencyType);
         }
 
+        public void ToggleCurrency()
+        {
+            if (CurrencyType == DisplayCurrencyType.Bitcoin) CurrencyType = DisplayCurrencyType.Fiat;
+            else CurrencyType = DisplayCurrencyType.Bitcoin;
+
+            Save();
+        }
+
         public string FiatAmountFormatted(decimal amount, bool negative = false)
         {
             var symbol = Constants.CURRENCY_SYMBOLS[FiatCurrencyCode];
