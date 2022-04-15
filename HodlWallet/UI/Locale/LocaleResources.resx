@@ -1137,4 +1137,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="TransactionsView.empty" xml:space="preserve">
     <value>No Transactions</value>
   </data>
+  <data name="Receive.amount" xml:space="preserve">
+    <value>AMOUNT</value>
+  </data>
 </root>

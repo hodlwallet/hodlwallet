@@ -34,7 +34,9 @@ namespace HodlWallet.UI.Controls
     public partial class CurrencySwitch : StackLayout
     {
         Color ActivatedColor => (Color)Application.Current.Resources["Fg"];
-        Color DeactivatedColor => (Color)Application.Current.Resources["Fg3"];
+        Color DeactivatedColor => (Color)Application.Current.Resources["Fg2"];
+        string Bold => (string)Application.Current.Resources["Sans-Bold"];
+        string Regular => (string)Application.Current.Resources["Sans-Regular"];
 
         public CurrencySwitch()
         {
@@ -51,13 +53,19 @@ namespace HodlWallet.UI.Controls
         void ActivateFiat(CurrencySwitchViewModel _)
         {
             bitcoinLabel.TextColor = DeactivatedColor;
+            bitcoinLabel.FontFamily = Regular;
+
             fiatLabel.TextColor = ActivatedColor;
+            fiatLabel.FontFamily = Bold;
         }
 
         void ActivateBitcoin(CurrencySwitchViewModel _)
         {
             bitcoinLabel.TextColor = ActivatedColor;
+            bitcoinLabel.FontFamily = Bold;
+
             fiatLabel.TextColor = DeactivatedColor;
+            fiatLabel.FontFamily = Regular;
         }
     }
 }
