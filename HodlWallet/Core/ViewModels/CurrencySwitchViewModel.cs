@@ -21,7 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Windows.Input;
 
@@ -29,12 +28,20 @@ using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Services;
+using HodlWallet.Core.Utils;
 
 namespace HodlWallet.Core.ViewModels
 {
     public class CurrencySwitchViewModel : BaseViewModel
     {
         public ICommand ToggleCurrencyCommand { get; }
+
+        string fiatSymbol = "$";
+        public string FiatSymbol
+        {
+            get { return fiatSymbol; }
+            set { SetProperty(ref fiatSymbol, value); }
+        }
 
         public CurrencySwitchViewModel()
         {
@@ -54,15 +61,15 @@ namespace HodlWallet.Core.ViewModels
             DisplayCurrencyService
                 .WhenAnyValue(service => service.FiatCurrencyCode)
                 .ObserveOn(RxApp.MainThreadScheduler)
-                .Subscribe(cc => UpdateFiatCurrencyCode(cc));
+                .Subscribe(cc => UpdateFiatSymbol(cc));
 
             SwitchCurrencyTo(DisplayCurrencyService.CurrencyType);
-            UpdateFiatCurrencyCode(DisplayCurrencyService.FiatCurrencyCode);
+            UpdateFiatSymbol(DisplayCurrencyService.FiatCurrencyCode);
         }
 
-        void UpdateFiatCurrencyCode(string cc)
+        void UpdateFiatSymbol(string cc)
         {
-            Debug.WriteLine($"[UpdateCurrencyCodes] {cc}");
+            FiatSymbol = Constants.CURRENCY_SYMBOLS[cc];
         }
 
         void SwitchCurrencyTo(DisplayCurrencyType ct)

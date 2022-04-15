@@ -10,11 +10,14 @@
     </StackLayout.BindingContext>
     <Label x:Name="bitcoinLabel"
            Text="₿"
+           CharacterSpacing="3"
            TextColor="{DynamicResource Fg}" />
     <Label Text=" / "
+           CharacterSpacing="3"
            TextColor="{DynamicResource Fg}" />
     <Label x:Name="fiatLabel"
-           Text="$"
+           Text="{Binding FiatSymbol}"
+           CharacterSpacing="3"
            TextColor="{DynamicResource Fg}" />
 
     <StackLayout.GestureRecognizers>

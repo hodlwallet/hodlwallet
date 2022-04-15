@@ -23,10 +23,10 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using HodlWallet.Core.ViewModels;
-using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using HodlWallet.Core.ViewModels;
 
 namespace HodlWallet.UI.Controls
 {
