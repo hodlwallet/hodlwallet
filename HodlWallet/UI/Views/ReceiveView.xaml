@@ -80,7 +80,7 @@
                                         <controls:CurrencySwitch HorizontalOptions="EndAndExpand" />
                                     </StackLayout>
 
-                                    <controls:AmountEntry />
+                                    <controls:AmountEntry AmountChanged="AmountEntry_AmountChanged" />
                                 </StackLayout>
                             </Frame>
                         </StackLayout>

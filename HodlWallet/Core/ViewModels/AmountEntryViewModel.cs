@@ -90,12 +90,10 @@ namespace HodlWallet.Core.ViewModels
                 .ObserveOn(RxApp.MainThreadScheduler)
                 .Subscribe(_ => UpdateCurrency(DisplayCurrencyService.FiatCurrencyCode));
 
-            //DisplayCurrencyService
-            //    .WhenAnyValue(service => service.FiatCurrencyCode)
-            //    .ObserveOn(RxApp.MainThreadScheduler)
-            //    .Subscribe(cc => UpdateCurrency(cc));
-
-            //UpdateCurrency(DisplayCurrencyService.FiatCurrencyCode);
+            DisplayCurrencyService
+                .WhenAnyValue(service => service.FiatCurrencyCode)
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Subscribe(cc => UpdateCurrency(cc));
         }
 
         void UpdateAmount()

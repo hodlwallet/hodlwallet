@@ -38,7 +38,9 @@ namespace HodlWallet.UI.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AmountEntry : Entry
     {
-        AmountEntryViewModel ViewModel => BindingContext as AmountEntryViewModel;
+        public AmountEntryViewModel ViewModel => BindingContext as AmountEntryViewModel;
+
+        public event PropertyChangedEventHandler AmountChanged = (e, a) => { };
 
         public AmountEntry()
         {
@@ -53,6 +55,8 @@ namespace HodlWallet.UI.Controls
             if (string.IsNullOrEmpty(text)) return;
 
             entry.Text = NormalizeText(text);
+
+            AmountChanged?.Invoke(sender, e);
         }
 
         string NormalizeText(string text)

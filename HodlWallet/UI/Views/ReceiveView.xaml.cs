@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 
 using Xamarin.Essentials;
@@ -29,6 +30,8 @@ using Xamarin.Forms;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
 using HodlWallet.UI.Locale;
+using HodlWallet.UI.Controls;
+using NBitcoin;
 
 namespace HodlWallet.UI.Views
 {
@@ -60,8 +63,11 @@ namespace HodlWallet.UI.Views
             await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
         }
 
-        void AmountEntry_Changed(object sender, EventArgs e)
+        private void AmountEntry_AmountChanged(object sender, PropertyChangedEventArgs e)
         {
+            var amountEntry = (sender as AmountEntry);
+
+            ViewModel.Amount = amountEntry.ViewModel.Amount.ToDecimal(MoneyUnit.BTC).ToString("0.########");
             ViewModel.UpdateAddressFormatted();
         }
     }
