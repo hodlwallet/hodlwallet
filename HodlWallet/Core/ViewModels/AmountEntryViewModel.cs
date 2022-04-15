@@ -21,16 +21,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Reactive.Linq;
 
+using NBitcoin;
 using ReactiveUI;
 
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Utils;
-using NBitcoin;
-using System.Linq;
-using System.Diagnostics;
-using Liviano.Services.Models;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -91,12 +90,12 @@ namespace HodlWallet.Core.ViewModels
                 .ObserveOn(RxApp.MainThreadScheduler)
                 .Subscribe(_ => UpdateCurrency(DisplayCurrencyService.FiatCurrencyCode));
 
-            DisplayCurrencyService
-                .WhenAnyValue(service => service.FiatCurrencyCode)
-                .ObserveOn(RxApp.MainThreadScheduler)
-                .Subscribe(cc => UpdateCurrency(cc));
+            //DisplayCurrencyService
+            //    .WhenAnyValue(service => service.FiatCurrencyCode)
+            //    .ObserveOn(RxApp.MainThreadScheduler)
+            //    .Subscribe(cc => UpdateCurrency(cc));
 
-            UpdateCurrency(DisplayCurrencyService.FiatCurrencyCode);
+            //UpdateCurrency(DisplayCurrencyService.FiatCurrencyCode);
         }
 
         void UpdateAmount()
@@ -123,32 +122,48 @@ namespace HodlWallet.Core.ViewModels
 
         void UpdateCurrency(string cc)
         {
-            if (!string.IsNullOrEmpty(AmountText))
+            if (string.IsNullOrEmpty(AmountText))
             {
-                var rate = GetRate();
-                var amount = AmountText.Split(CurrencySymbol).FirstOrDefault();
-
-                if (decimal.TryParse(amount, out var amountDecimal)) return;
-
                 if (DisplayCurrencyService.CurrencyType == DisplayCurrencyType.Bitcoin)
                 {
-                    AmountText = (amountDecimal / rate).ToString();
+                    CurrencySymbol = "₿";
+                    PlaceholderAmount = "0.00000000";
                 }
                 else
                 {
-                    AmountText = (amountDecimal * rate).ToString();
+                    CurrencySymbol = Constants.CURRENCY_SYMBOLS[cc];
+                    PlaceholderAmount = "0.00";
                 }
+
+                return;
             }
 
+            var rate = GetRate();
+            string amount;
             if (DisplayCurrencyService.CurrencyType == DisplayCurrencyType.Bitcoin)
             {
-                CurrencySymbol = "₿";
-                PlaceholderAmount = "0.00000000";
+                var symbol = Constants.CURRENCY_SYMBOLS[cc];
+                amount = AmountText.Replace(symbol, string.Empty);
             }
             else
             {
-                CurrencySymbol = Constants.CURRENCY_SYMBOLS[cc];
-                PlaceholderAmount = "0.00";
+                amount = AmountText[1..];
+            }
+
+            if (decimal.TryParse(amount, out var amountDecimal))
+            {
+                if (DisplayCurrencyService.CurrencyType == DisplayCurrencyType.Bitcoin)
+                {
+                    CurrencySymbol = "₿";
+                    PlaceholderAmount = "0.00000000";
+                    AmountText = (amountDecimal / rate).ToString("0.########");
+                }
+                else
+                {
+                    CurrencySymbol = Constants.CURRENCY_SYMBOLS[cc];
+                    PlaceholderAmount = "0.00";
+                    AmountText = (amountDecimal * rate).ToString("0.##");
+                }
             }
         }
 
