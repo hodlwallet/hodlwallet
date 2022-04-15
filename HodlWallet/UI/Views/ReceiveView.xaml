@@ -82,9 +82,7 @@
 
                                     <controls:AmountEntry />
                                 </StackLayout>
-                            
                             </Frame>
-                        
                         </StackLayout>
                     </StackLayout>
 

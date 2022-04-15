@@ -9,7 +9,8 @@
        PropertyChanged="AmountEntry_Changed"
        PlaceholderColor="{DynamicResource Fg3}"
        TextColor="{DynamicResource FgSuccess}"
-       BackgroundColor="{DynamicResource Bg}">
+       BackgroundColor="{DynamicResource Bg}"
+       Text="{Binding AmountText}">
     <Entry.BindingContext>
         <vm:AmountEntryViewModel />
     </Entry.BindingContext>

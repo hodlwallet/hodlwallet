@@ -27,6 +27,7 @@ using ReactiveUI;
 
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Utils;
+using NBitcoin;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -44,6 +45,20 @@ namespace HodlWallet.Core.ViewModels
         {
             get { return placeholderAmount; }
             set { SetProperty(ref placeholderAmount, value); }
+        }
+
+        string amountText = "";
+        public string AmountText
+        {
+            get { return amountText; }
+            set { SetProperty(ref amountText, value); }
+        }
+
+        Money amount = Money.Zero;
+        public Money Amount
+        {
+            get { return amount; }
+            set { SetProperty(ref amount, value); }
         }
 
         public AmountEntryViewModel()
