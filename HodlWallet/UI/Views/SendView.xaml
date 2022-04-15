@@ -24,16 +24,80 @@
                 <StackLayout Margin="15,15,15,15" Spacing="10">
                     <Frame CornerRadius="10" HasShadow="False">
                         <StackLayout>
-                            <Label Text="TO" />
-                            <Entry />
-                            <Label Text="AMOUNT" />
-                            <Entry Keyboard="Numeric" />
+                            <Label Text="TO"
+                                   CharacterSpacing="3"
+                                   FontFamily="{StaticResource Sans-Bold}"
+                                   FontSize="Caption" />
+                            <Entry Placeholder="Bitcoin Address" FontFamily="{StaticResource Mono-Regular}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="AMOUNT"
+                                       CharacterSpacing="3"
+                                       FontFamily="{StaticResource Sans-Bold}"
+                                       FontSize="Caption"
+                                       HorizontalOptions="StartAndExpand" />
+                                <Label Text="₿/$"
+                                       CharacterSpacing="3"
+                                       FontFamily="{StaticResource Sans-Bold}"
+                                       FontSize="Caption"
+                                       HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+
+                            <Entry Keyboard="Numeric" Placeholder="₿ 0.0" FontFamily="{StaticResource Mono-Regular}" />
                         </StackLayout>
                     </Frame>
 
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <controls:FontImageIcon Glyph="bar_chart" />
+                        <Label Text="PRIORITY POOL"
+                               CharacterSpacing="3"
+                               FontFamily="{StaticResource Sans-Bold}"
+                               FontSize="Caption"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+
                     <Frame CornerRadius="10" HasShadow="False">
-                        <Label Text="Fee" />
+                        <StackLayout>
+                            <Label Text="Miner Fee"
+                                   CharacterSpacing="1.5"
+                                   FontFamily="{StaticResource Sans-Regular}"
+                                   FontSize="Subtitle" />
+                            <Label Text="AMOUNT"
+                                       CharacterSpacing="3"
+                                       FontFamily="{StaticResource Sans-Bold}"
+                                       FontSize="Caption"
+                                       HorizontalOptions="StartAndExpand" />
+                            <Entry Placeholder="Custom"
+                                   FontFamily="{StaticResource Mono-Regular}" />
+
+                            <renderers:FeeSlider MinimumTrackColor="{DynamicResource FgSuccess}"
+                                                 MaximumTrackColor="{DynamicResource Fg2}"
+                                                 Maximum="100"
+                                                 DragCompleted="FeeSlider_DragCompleted" />
+                        </StackLayout>
                     </Frame>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <controls:FontImageIcon Glyph="sticky_note_2"
+                                                FontFamily="MaterialIconsOutlined-Regular" />
+                        <Label Text="NOTE"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"
+                               CharacterSpacing="3"
+                               FontFamily="{StaticResource Sans-Bold}"
+                               FontSize="Caption" />
+
+                        <BoxView WidthRequest="10" />
+
+                        <controls:FontImageIcon Glyph="sticky_note_2"
+                                                FontFamily="MaterialIconsOutlined-Regular" />
+                        <Label Text="DETAILS"
+                               CharacterSpacing="3"
+                               FontFamily="{StaticResource Sans-Bold}"
+                               FontSize="Caption"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
 
