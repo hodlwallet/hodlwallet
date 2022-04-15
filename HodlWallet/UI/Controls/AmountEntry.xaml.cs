@@ -54,7 +54,12 @@ namespace HodlWallet.UI.Controls
 
             if (string.IsNullOrEmpty(text)) return;
 
-            entry.Text = NormalizeText(text);
+            if (text.Equals("."))
+                entry.Text = $"{ViewModel.CurrencySymbol}0.";
+            else if (text.Equals(ViewModel.CurrencySymbol))
+                entry.Text = string.Empty;
+            else
+                entry.Text = NormalizeText(text);
 
             AmountChanged?.Invoke(sender, e);
         }
