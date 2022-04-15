@@ -33,14 +33,14 @@
                 <StackLayout FlexLayout.Grow="8" BackgroundColor="{DynamicResource Bg3}">
                     <StackLayout HeightRequest="240" Orientation="Horizontal">
                         <!-- Keep this for debugging on iOS -->
-                        <controls:FontImage VerticalOptions="Center"
+                        <!--<controls:FontImage VerticalOptions="Center"
                                             Glyph="qr_code_scanner"
                                             Color="{DynamicResource Fg}"
                                             HorizontalOptions="CenterAndExpand"
                                             HeightRequest="180"
-                                            WidthRequest="180" />
+                                            WidthRequest="180" />-->
                         
-                        <!--<zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
+                        <zxing:ZXingBarcodeImageView x:Name="BarCodeImageView"
                                                      VerticalOptions="Center"
                                                      HorizontalOptions="CenterAndExpand"
                                                      BarcodeFormat="QR_CODE"
@@ -53,7 +53,7 @@
                             <zxing:ZXingBarcodeImageView.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CopyAddressCommand}" />
                             </zxing:ZXingBarcodeImageView.GestureRecognizers>
-                        </zxing:ZXingBarcodeImageView>-->
+                        </zxing:ZXingBarcodeImageView>
                     </StackLayout>
 
                     <StackLayout HeightRequest="160"
