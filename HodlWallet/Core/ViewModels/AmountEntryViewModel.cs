@@ -270,13 +270,9 @@ namespace HodlWallet.Core.ViewModels
         {
             decimal rate;
             if (DisplayCurrencyService.FiatCurrencyCode == "USD")
-            {
                 rate = decimal.Parse(PrecioService.Precio.CRaw);
-            }
             else
-            {
                 rate = (decimal)PrecioService.Rates.FirstOrDefault(r => r.Code == DisplayCurrencyService.FiatCurrencyCode).Rate;
-            }
 
             return rate;
         }
