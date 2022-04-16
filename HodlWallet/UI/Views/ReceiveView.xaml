@@ -80,7 +80,10 @@
                                         <controls:CurrencySwitch HorizontalOptions="EndAndExpand" />
                                     </StackLayout>
 
-                                    <controls:AmountEntry AmountChanged="AmountEntry_AmountChanged" />
+                                    <controls:AmountEntry AmountChanged="AmountEntry_AmountChanged"
+                                                          ShowBalanceAnimation="True"
+                                                          AddressToSend="mkHS9ne12qx9pS9VojpwU5xtRd4T7X7ZUt"
+                                                          Fee="2" />
                                 </StackLayout>
                             </Frame>
                         </StackLayout>

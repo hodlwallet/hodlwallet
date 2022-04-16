@@ -32,6 +32,7 @@ using Xamarin.Forms.Xaml;
 
 using HodlWallet.Core.Services;
 using HodlWallet.Core.ViewModels;
+using System.Threading.Tasks;
 
 namespace HodlWallet.UI.Controls
 {
@@ -40,11 +41,87 @@ namespace HodlWallet.UI.Controls
     {
         public AmountEntryViewModel ViewModel => BindingContext as AmountEntryViewModel;
 
+        Color FgSuccess => (Color)Application.Current.Resources["FgSuccess"];
+        Color FgError => (Color)Application.Current.Resources["FgError"];
+
         public event PropertyChangedEventHandler AmountChanged = (e, a) => { };
+
+        bool showBalanceAnimation;
+        public bool ShowBalanceAnimation
+        {
+            get { return showBalanceAnimation; }
+            set
+            {
+                showBalanceAnimation = value;
+                OnPropertyChanged(nameof(ShowBalanceAnimation));
+            }
+        }
+
+        string addressToSend;
+        public string AddressToSend
+        {
+            get { return addressToSend; }
+            set
+            {
+                addressToSend = value;
+                OnPropertyChanged(nameof(AddressToSend));
+            }
+        }
+
+        long fee = 1;
+        public long Fee
+        {
+            get { return fee; }
+            set
+            {
+                fee = value;
+                OnPropertyChanged(nameof(Fee));
+            }
+        }
 
         public AmountEntry()
         {
             InitializeComponent();
+            SubscribeToMessages();
+        }
+
+        void SubscribeToMessages()
+        {
+            MessagingCenter.Subscribe<AmountEntryViewModel>(this, "ShowBalanceError", ShowBalanceError);
+            MessagingCenter.Subscribe<AmountEntryViewModel>(this, "ShowBalanceSuccess", ShowBalanceSuccess);
+        }
+
+        async void AnimateControl()
+        {
+            uint timeout = 50;
+
+            await this.TranslateTo(-5, 0, timeout);
+            await this.TranslateTo(5, 0, timeout);
+            await this.TranslateTo(-4, 0, timeout);
+            await this.TranslateTo(4, 0, timeout);
+            await this.TranslateTo(-3, 0, timeout);
+            await this.TranslateTo(3, 0, timeout);
+            await this.TranslateTo(-2, 0, timeout);
+            await this.TranslateTo(2, 0, timeout);
+            await this.TranslateTo(-1, 0, timeout);
+            await this.TranslateTo(1, 0, timeout);
+
+            TranslationX = 0;
+        }
+
+        void ShowBalanceError(AmountEntryViewModel _)
+        {
+            if (TextColor == FgError) return;
+
+            TextColor = FgError;
+            AnimateControl();
+        }
+
+        void ShowBalanceSuccess(AmountEntryViewModel _)
+        {
+            if (TextColor == FgSuccess) return;
+
+            TextColor = FgSuccess;
         }
 
         void AmountEntry_Changed(object sender, PropertyChangedEventArgs e)
@@ -97,5 +174,24 @@ namespace HodlWallet.UI.Controls
 
             return split.Last().Length;
         }
+
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+
+            switch (propertyName)
+            {
+                case nameof(ShowBalanceAnimation):
+                    if (ShowBalanceAnimation) ViewModel.TrackBalance();
+                    break;
+                case nameof(AddressToSend):
+                    ViewModel.AddressToSend = AddressToSend;
+                    break;
+                case nameof(Fee):
+                    ViewModel.Fee = Fee;
+                    break;
+            }
+        }
+
     }
 }

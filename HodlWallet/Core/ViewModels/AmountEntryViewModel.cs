@@ -27,6 +27,7 @@ using System.Reactive.Linq;
 
 using NBitcoin;
 using ReactiveUI;
+using Xamarin.Forms;
 
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Utils;
@@ -61,7 +62,12 @@ namespace HodlWallet.Core.ViewModels
 
                     SetProperty(ref amountText, value);
 
-                    UpdateAmount();
+                    Observable
+                        .Start(() =>
+                        {
+                            UpdateAmount();
+                            ValidateWithBalance();
+                        }, RxApp.TaskpoolScheduler);
                 }
                 catch (Exception e)
                 {
@@ -75,6 +81,87 @@ namespace HodlWallet.Core.ViewModels
         {
             get { return amount; }
             set { SetProperty(ref amount, value); }
+        }
+
+        bool trackBalance = false;
+
+        Money balance = Money.Zero;
+        public Money Balance
+        {
+            get { return balance; }
+            set { SetProperty(ref balance, value); }
+        }
+
+        string addressToSend;
+        public string AddressToSend
+        {
+            get { return addressToSend; }
+            set { SetProperty(ref addressToSend, value); }
+        }
+
+        long fee = 1;
+        public long Fee
+        {
+            get { return fee; }
+            set { SetProperty(ref fee, value); }
+        }
+
+        internal void TrackBalance()
+        {
+            if (WalletService.IsStarted) DoTrackBalance();
+            else WalletService.OnStarted += (_, _) => DoTrackBalance();
+        }
+
+        void DoTrackBalance()
+        {
+            var acc = WalletService.Wallet.CurrentAccount;
+            Balance = acc.GetBalance();
+
+            trackBalance = true;
+
+            acc.Txs.CollectionChanged += (_, _) =>
+            {
+                Balance = acc.GetBalance();
+            };
+        }
+
+        void ValidateWithBalance()
+        {
+            if (!trackBalance) return;
+
+            var success = false;
+            var fees = 1m;
+            if (!string.IsNullOrEmpty(addressToSend))
+            {
+                try
+                {
+                    (success, _, fees, _) = WalletService.CreateTransaction(
+                        Amount.ToDecimal(MoneyUnit.BTC), AddressToSend, Fee, string.Empty
+                    );
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"[ValidateWithBalance] Error: {ex}");
+
+                    fees = 144 * Fee;
+                    success = true;
+                }
+            }
+
+            if (!success)
+            {
+                if (Amount > Balance)
+                    MessagingCenter.Send(this, "ShowBalanceError");
+                else
+                    MessagingCenter.Send(this, "ShowBalanceSuccess");
+
+                return;
+            }
+
+            if ((Amount + new Money(fees, MoneyUnit.Satoshi)) > Balance)
+                MessagingCenter.Send(this, "ShowBalanceError");
+            else
+                MessagingCenter.Send(this, "ShowBalanceSuccess");
         }
 
         public AmountEntryViewModel()
