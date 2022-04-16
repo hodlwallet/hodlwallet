@@ -24,25 +24,45 @@
                 <StackLayout Margin="15,15,15,15" Spacing="10">
                     <Frame CornerRadius="10" HasShadow="False">
                         <StackLayout>
-                            <Label Text="TO"
-                                   CharacterSpacing="3"
-                                   FontFamily="{StaticResource Sans-Bold}"
-                                   FontSize="Caption" />
-                            <Entry Placeholder="Bitcoin Address" FontFamily="{StaticResource Mono-Regular}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="TO"
+                                       CharacterSpacing="3"
+                                       FontFamily="{StaticResource Sans-Bold}"
+                                       FontSize="Caption" />
+                                <controls:FontImage Glyph="qr_code_scanner"
+                                                    HeightRequest="20"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Color="{DynamicResource Fg}">
+                                    <controls:FontImage.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ScanCommand}" />
+                                    </controls:FontImage.GestureRecognizers>
+                                </controls:FontImage>
+                                <controls:FontImage Glyph="content_paste"
+                                                    HeightRequest="20"
+                                                    HorizontalOptions="End"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Color="{DynamicResource Fg}">
+                                    <controls:FontImage.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding PasteCommand}" />
+                                    </controls:FontImage.GestureRecognizers>
+                                </controls:FontImage>
+                            </StackLayout>
+                            <Entry Placeholder="Bitcoin Address"
+                                   Text="{Binding AddressToSendTo}"
+                                   FontFamily="{StaticResource Mono-Regular}"
+                                   Keyboard="Plain"
+                                   BackgroundColor="{DynamicResource Bg}" />
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="AMOUNT"
                                        CharacterSpacing="3"
                                        FontFamily="{StaticResource Sans-Bold}"
                                        FontSize="Caption"
                                        HorizontalOptions="StartAndExpand" />
-                                <Label Text="₿/$"
-                                       CharacterSpacing="3"
-                                       FontFamily="{StaticResource Sans-Bold}"
-                                       FontSize="Caption"
-                                       HorizontalOptions="EndAndExpand" />
+                                <controls:CurrencySwitch HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
                             </StackLayout>
 
-                            <Entry Keyboard="Numeric" Placeholder="₿ 0.0" FontFamily="{StaticResource Mono-Regular}" />
+                            <controls:AmountEntry ShowBalanceAnimation="True" />
                         </StackLayout>
                     </Frame>
 
