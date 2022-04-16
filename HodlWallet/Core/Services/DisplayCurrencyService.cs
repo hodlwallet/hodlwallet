@@ -96,7 +96,7 @@ namespace HodlWallet.Core.Services
             if (amount == 0) return $"{symbol}0";
 
             if (PrecioService.Precio is null || PrecioService.Rates is null)
-                return $"{symbol}{sign}{amount:N}";
+                return $"{symbol}{sign}{amount:0.##}";
 
             decimal rate;
             if (FiatCurrencyCode == "USD")
@@ -109,7 +109,7 @@ namespace HodlWallet.Core.Services
             // Do not format really small numbers
             if (finalAmount < 0.01m) return $"{symbol}{sign}{finalAmount}";
 
-            return $"{symbol}{sign}{finalAmount:N}";
+            return $"{symbol}{sign}{finalAmount:0.##}";
         }
 
         public string BitcoinAmountFormatted(decimal amount, bool negative = false)
@@ -119,9 +119,9 @@ namespace HodlWallet.Core.Services
 
             return BitcoinCurrencyCode switch
             {
-                "BTC" => $"{symbol}{sign}{amount}",
+                "BTC" => $"{symbol}{sign}{amount:0.########}",
                 "SAT" => $"{sign}{(int)(amount * 100_000_000)} {symbol}",
-                _ => $"{symbol}{sign}{amount}",
+                _ => $"{symbol}{sign}{amount:0.########}",
             };
         }
     }
