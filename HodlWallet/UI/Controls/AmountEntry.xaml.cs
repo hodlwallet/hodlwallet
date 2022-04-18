@@ -25,14 +25,15 @@
 // THE SOFTWARE.
 using System;
 using System.ComponentModel;
+using System.Reactive.Concurrency;
 using System.Linq;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ReactiveUI;
 
 using HodlWallet.Core.Services;
 using HodlWallet.Core.ViewModels;
-using System.Threading.Tasks;
 
 namespace HodlWallet.UI.Controls
 {
@@ -113,15 +114,18 @@ namespace HodlWallet.UI.Controls
         {
             if (TextColor == FgError) return;
 
-            TextColor = FgError;
-            AnimateControl();
+            RxApp.MainThreadScheduler.Schedule(() =>
+            {
+                TextColor = FgError;
+                AnimateControl();
+            });
         }
 
         void ShowBalanceSuccess(AmountEntryViewModel _)
         {
             if (TextColor == FgSuccess) return;
 
-            TextColor = FgSuccess;
+            RxApp.MainThreadScheduler.Schedule(() => TextColor = FgSuccess);
         }
 
         void AmountEntry_Changed(object sender, PropertyChangedEventArgs e)

@@ -129,6 +129,12 @@ namespace HodlWallet.Core.ViewModels
         {
             if (!trackBalance) return;
 
+            if (Amount > Balance)
+            {
+                MessagingCenter.Send(this, "ShowBalanceError");
+                return;
+            }
+
             var success = false;
             var fees = 1m;
             if (!string.IsNullOrEmpty(addressToSend))
