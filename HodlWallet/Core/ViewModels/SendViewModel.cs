@@ -42,62 +42,62 @@ namespace HodlWallet.Core.ViewModels
 {
     public class SendViewModel : BaseViewModel
     {
-        string addressToSendTo;
-        string fee = string.Empty;
-        decimal amountToSend;
         //float rate => PrecioService.Rate.Rate;
-        string amountToSendText;
+        
         Transaction transactionToBroadcast;
 
         const double MAX_SLIDER_VALUE = 100;
-        double sliderValue;
 
         string transactionFeeText;
-        string estConfirmationText;
-        string isoLabel = "BTC";
-
         public string TransactionFeeText
         {
             get => transactionFeeText;
             set => SetProperty(ref transactionFeeText, value);
         }
 
+        string estConfirmationText;
         public string EstConfirmationText
         {
             get => estConfirmationText;
             set => SetProperty(ref estConfirmationText, value);
         }
 
+        double sliderValue;
         public double SliderValue
         {
             get => sliderValue;
             set => SetProperty(ref sliderValue, value);
         }
 
+        string addressToSendTo;
         public string AddressToSendTo
         {
             get => addressToSendTo;
             set => SetProperty(ref addressToSendTo, value);
         }
 
+        string fee = string.Empty;
         public string Fee
         {
             get => fee;
             set => SetProperty(ref fee, value);
         }
 
+        decimal amountToSend;
         public decimal AmountToSend
         {
             get => amountToSend;
             set => SetProperty(ref amountToSend, value);
         }
 
+        string amountToSendText;
         public string AmountToSendText
         {
             get => amountToSendText;
             set => SetProperty(ref amountToSendText, value);
         }
 
+        string isoLabel = "BTC";
         public string ISOLabel
         {
             get => isoLabel;
