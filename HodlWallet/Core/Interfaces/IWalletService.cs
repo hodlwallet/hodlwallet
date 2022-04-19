@@ -62,7 +62,7 @@ namespace HodlWallet.Core.Interfaces
         Network GetNetwork();
         IEnumerable<Tx> GetCurrentAccountTransactions();
         (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,
-            long feeSatsPerByte, string password);
+            decimal feeSatsPerByte, string password);
 
         (bool Success, string Error) AddAccount(string type, string name, string color);
         string GetWordListLanguage();

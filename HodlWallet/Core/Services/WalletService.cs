@@ -448,7 +448,7 @@ namespace HodlWallet.Core.Services
             return Wallet.CurrentAccount.Txs;
         }
 
-        public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, long feeSatsPerByte, string password)
+        public (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo, decimal feeSatsPerByte, string password)
         {
             // TODO
             Money btcAmount = new(amount, MoneyUnit.BTC);

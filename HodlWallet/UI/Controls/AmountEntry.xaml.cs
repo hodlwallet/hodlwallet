@@ -58,26 +58,28 @@ namespace HodlWallet.UI.Controls
             }
         }
 
-        string addressToSend;
+        public static readonly BindableProperty AddressToSendProperty = BindableProperty.Create(
+            nameof(AddressToSend),
+            typeof(string),
+            typeof(AmountEntry),
+            string.Empty
+        );
         public string AddressToSend
         {
-            get { return addressToSend; }
-            set
-            {
-                addressToSend = value;
-                OnPropertyChanged(nameof(AddressToSend));
-            }
+            get { return (string)GetValue(AddressToSendProperty); }
+            set { SetValue(AddressToSendProperty, value); }
         }
 
-        long fee = 1;
-        public long Fee
+        public static readonly BindableProperty FeeProperty = BindableProperty.Create(
+            nameof(Fee),
+            typeof(decimal),
+            typeof(AmountEntry),
+            1.0m
+        );
+        public decimal Fee
         {
-            get { return fee; }
-            set
-            {
-                fee = value;
-                OnPropertyChanged(nameof(Fee));
-            }
+            get { return (decimal)GetValue(FeeProperty); }
+            set { SetValue(FeeProperty, value); }
         }
 
         public AmountEntry()

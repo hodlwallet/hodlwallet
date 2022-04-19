@@ -62,7 +62,9 @@
                                 <controls:CurrencySwitch HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
                             </StackLayout>
 
-                            <controls:AmountEntry ShowBalanceAnimation="True" />
+                            <controls:AmountEntry ShowBalanceAnimation="True"
+                                                  AddressToSend="{Binding AddressToSendTo}"
+                                                  Fee="{Binding Fee}" />
                         </StackLayout>
                     </Frame>
 
@@ -83,11 +85,12 @@
                                    FontFamily="{StaticResource Sans-Regular}"
                                    FontSize="Subtitle" />
                             <Label Text="{i18n:Translate Send.amount}"
-                                       CharacterSpacing="3"
-                                       FontFamily="{StaticResource Sans-Bold}"
-                                       FontSize="Caption"
-                                       HorizontalOptions="StartAndExpand" />
+                                   CharacterSpacing="3"
+                                   FontFamily="{StaticResource Sans-Bold}"
+                                   FontSize="Caption"
+                                   HorizontalOptions="StartAndExpand" />
                             <Entry Placeholder="{i18n:Translate Send.customFee}"
+                                   Keyboard="Numeric"
                                    FontFamily="{StaticResource Mono-Regular}" />
 
                             <renderers:FeeSlider MinimumTrackColor="{DynamicResource FgSuccess}"

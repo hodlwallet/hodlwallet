@@ -99,8 +99,8 @@ namespace HodlWallet.Core.ViewModels
             set { SetProperty(ref addressToSend, value); }
         }
 
-        long fee = 1;
-        public long Fee
+        decimal fee = 1;
+        public decimal Fee
         {
             get { return fee; }
             set { SetProperty(ref fee, value); }
