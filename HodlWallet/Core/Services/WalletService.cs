@@ -426,19 +426,12 @@ namespace HodlWallet.Core.Services
 
         public long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed = false)
         {
-            var balance = Wallet.CurrentAccount.GetBalance();
-
-            // TODO Implement includeUnconfirmed condition
-
-            return balance.Satoshi;
+            return GetCurrentAccountBalanceInBTC(includeUnconfirmed).Satoshi;
         }
 
-        public decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed = false)
+        public Money GetCurrentAccountBalanceInBTC(bool includeUnconfirmed = false)
         {
-            long sats = GetCurrentAccountBalanceInSatoshis(includeUnconfirmed);
-            decimal satsPerBtc = 100_000_000m;
-
-            return decimal.Divide(new decimal(sats), satsPerBtc);
+            return Wallet.CurrentAccount.GetBalance();
         }
 
         public IEnumerable<Tx> GetCurrentAccountTransactions()

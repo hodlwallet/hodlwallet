@@ -56,7 +56,7 @@ namespace HodlWallet.Core.Interfaces
         void StartWalletWithWalletId(string accountType = "standard");
         void DestroyWallet(bool dryRun = false);
         bool IsAddressOwn(string address);
-        decimal GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);
+        Money GetCurrentAccountBalanceInBTC(bool includeUnconfirmed);
         long GetCurrentAccountBalanceInSatoshis(bool includeUnconfirmed);
         BitcoinAddress GetReceiveAddress();
         Network GetNetwork();
