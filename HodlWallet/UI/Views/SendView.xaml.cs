@@ -35,6 +35,8 @@ using HodlWallet.UI.Locale;
 using ReactiveUI;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
+using System.ComponentModel;
+using HodlWallet.UI.Controls;
 
 namespace HodlWallet.UI.Views
 {
@@ -167,6 +169,8 @@ namespace HodlWallet.UI.Views
                 .Start(() =>
                 {
                     amountEntry.Fee = decimal.Parse(entry.Text);
+
+                    ViewModel.CalculateTotals();
                 }, RxApp.TaskpoolScheduler);
         }
 
@@ -180,6 +184,21 @@ namespace HodlWallet.UI.Views
                 .Start(() =>
                 {
                     amountEntry.AddressToSend = entry.Text;
+
+                    ViewModel.CalculateTotals();
+                }, RxApp.TaskpoolScheduler);
+        }
+
+        void AmountEntry_AmountChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(amountEntry.Text)) return;
+
+            Observable
+                .Start(() =>
+                {
+                    ViewModel.Amount = amountEntry.ViewModel.Amount;
+
+                    ViewModel.CalculateTotals();
                 }, RxApp.TaskpoolScheduler);
         }
     }

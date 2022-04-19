@@ -63,7 +63,9 @@
                                 <controls:CurrencySwitch HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
                             </StackLayout>
 
-                            <controls:AmountEntry x:Name="amountEntry" ShowBalanceAnimation="True" />
+                            <controls:AmountEntry x:Name="amountEntry"
+                                                  ShowBalanceAnimation="True"
+                                                  AmountChanged="AmountEntry_AmountChanged" />
                         </StackLayout>
                     </Frame>
 

@@ -97,6 +97,13 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref amountToSendText, value);
         }
 
+        Money amount;
+        public Money Amount
+        {
+            get => amount;
+            set => SetProperty(ref amount, value);
+        }
+
         string isoLabel = "BTC";
         public string ISOLabel
         {
@@ -227,6 +234,22 @@ namespace HodlWallet.Core.ViewModels
                 AmountToSendText = $"{AmountToSend:F2}";
                 ISOLabel = "USD($)";
             }
+        }
+
+        internal void CalculateTotals()
+        {
+            if (Amount is null || Amount == Money.Zero) return;
+            if (string.IsNullOrEmpty(Fee)) return;
+            if (string.IsNullOrEmpty(AddressToSendTo)) return;
+
+            var (success, tx, fees, _) = WalletService.CreateTransaction(
+                Amount.ToDecimal(MoneyUnit.BTC), AddressToSendTo, decimal.Parse(Fee), string.Empty
+            );
+
+            if (!success) return;
+
+            TotalFee = DisplayCurrencyService.BitcoinAmountFormatted(new Money((long)fees).ToDecimal(MoneyUnit.BTC));
+            Total = DisplayCurrencyService.BitcoinAmountFormatted(tx.TotalOut.ToDecimal(MoneyUnit.BTC));
         }
 
         void Scan()
