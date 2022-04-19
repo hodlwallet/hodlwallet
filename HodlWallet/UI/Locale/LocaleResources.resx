@@ -270,7 +270,7 @@
     <comment>label for send view title</comment>
   </data>
   <data name="Send.to" xml:space="preserve">
-    <value>To</value>
+    <value>TO</value>
     <comment>label for send entry header</comment>
   </data>
   <data name="Send.scan" xml:space="preserve">
@@ -282,7 +282,7 @@
     <comment>label for send paste button</comment>
   </data>
   <data name="Send.amount" xml:space="preserve">
-    <value>Amount</value>
+    <value>AMOUNT</value>
     <comment>label for send amount entry</comment>
   </data>
   <data name="Send.transaction" xml:space="preserve">
@@ -1139,5 +1139,38 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   </data>
   <data name="Receive.amount" xml:space="preserve">
     <value>AMOUNT</value>
+  </data>
+  <data name="Send.addressPlaceholder" xml:space="preserve">
+    <value>Bitcoin Address</value>
+  </data>
+  <data name="Send.balance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="Send.details" xml:space="preserve">
+    <value>DETAILS</value>
+  </data>
+  <data name="Send.fees" xml:space="preserve">
+    <value>Fees</value>
+  </data>
+  <data name="Send.note" xml:space="preserve">
+    <value>NOTE</value>
+  </data>
+  <data name="Send.priorityPoolTitle" xml:space="preserve">
+    <value>PRIORITY POOL</value>
+  </data>
+  <data name="Send.total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TransactionsView.latestTransactions" xml:space="preserve">
+    <value>LATEST TRANSACTIONS</value>
+  </data>
+  <data name="TransactionsView.latestTransactionsDescription" xml:space="preserve">
+    <value>Showing last {0} transactions</value>
+  </data>
+  <data name="Send.minerFee" xml:space="preserve">
+    <value>Miner Fee</value>
+  </data>
+  <data name="Send.customFee" xml:space="preserve">
+    <value>Custom Fee</value>
   </data>
 </root>

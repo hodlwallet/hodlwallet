@@ -87,10 +87,7 @@ namespace HodlWallet.UI.Controls
         void ScrollToTop(TransactionsViewModel vm)
         {
             if (vm.Transactions.Count <= 0) return;
-
-            // TODO Add this when header is implemented
-            //if (headerView.IsVisible) transactionsCollectionView.ScrollTo(1);
-            else transactionsCollectionView.ScrollTo(0);
+            else transactionsCollectionView.ScrollTo(1);
         }
 
         public void ScrollToTop()

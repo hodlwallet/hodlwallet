@@ -54,6 +54,8 @@ namespace HodlWallet.UI.Extensions.I18n
 
         public string Text { get; set; }
 
+        public string StringFormat { get; set; }
+
         public TranslateExtension()
         {
             if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
@@ -78,6 +80,10 @@ namespace HodlWallet.UI.Extensions.I18n
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif
+            }
+            if (!string.IsNullOrWhiteSpace(StringFormat))
+            {
+                return string.Format(StringFormat, translation);
             }
 
             return translation;

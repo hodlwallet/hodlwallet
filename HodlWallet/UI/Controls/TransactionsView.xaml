@@ -29,12 +29,29 @@
                         ItemsSource="{Binding Transactions}"
                         SelectedItem="{Binding CurrentTransaction}"
                         SelectionChangedCommand="{Binding NavigateToTransactionDetailsCommand}">
-            <!--<CollectionView.Header>
-                <StackLayout x:Name="headerView" IsVisible="False">
-                    --><!-- TODO write a nice headerView --><!--
-                    <Label Text="Header" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            <CollectionView.Header>
+                <StackLayout HeightRequest="80"
+                             Orientation="Horizontal"
+                             BackgroundColor="{DynamicResource Bg2}">
+                    <controls:FontImageIcon Margin="35,0,0,0"
+                                            Glyph="sticky_note_2"
+                                            FontFamily="MaterialIconsOutlined-Regular"
+                                            Color="{DynamicResource FgSuccess}"
+                                            BackgroundColor="{DynamicResource Bg3}" />
+                    <StackLayout Spacing="2"
+                                 Margin="10,0,0,0"
+                                 VerticalOptions="CenterAndExpand">
+                        <Label Text="{i18n:Translate TransactionsView.latestTransactions}"
+                               CharacterSpacing="3"
+                               FontFamily="{StaticResource Sans-Bold}"
+                               FontSize="Micro" />
+                        <Label Text="{Binding Path=Transactions.Count, StringFormat={i18n:Translate TransactionsView.latestTransactionsDescription}}"
+                               TextColor="{DynamicResource Fg3}"
+                               FontFamily="{StaticResource Sans-Regular}"
+                               FontSize="Micro" />
+                    </StackLayout>
                 </StackLayout>
-            </CollectionView.Header>-->
+            </CollectionView.Header>
 
             <CollectionView.EmptyView>
                 <StackLayout x:Name="emptyView">
@@ -100,12 +117,24 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
 
-            <!--<CollectionView.Footer>
-                <StackLayout x:Name="footerView" IsVisible="False">
-                    --><!-- TODO Write footer view --><!--
-                    <Label Text="Footer" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            <CollectionView.Footer>
+                <StackLayout HeightRequest="80"
+                             Orientation="Horizontal"
+                             Spacing="3"
+                             HorizontalOptions="CenterAndExpand"
+                             BackgroundColor="{DynamicResource Bg3}">
+                    <Label Text="Fin."
+                           HorizontalOptions="EndAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           CharacterSpacing="2"
+                           FontFamily="{StaticResource Sans-Bold}"
+                           TextColor="{DynamicResource Fg3}" />
+                    <controls:FontImage Glyph="sentiment_very_satisfied"
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        Color="{DynamicResource Fg3}" />
                 </StackLayout>
-            </CollectionView.Footer>-->
+            </CollectionView.Footer>
         </CollectionView>
         <controls:NowLoadingIndicator />
     </AbsoluteLayout>

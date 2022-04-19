@@ -10,7 +10,7 @@
     <Shell.TitleView>
         <controls:TitleView>
             <controls:TitleView.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TopView_DoubleTapped" NumberOfTapsRequired="2" />
+                <TapGestureRecognizer Tapped="TopView_Tapped" />
             </controls:TitleView.GestureRecognizers>
         </controls:TitleView>
     </Shell.TitleView>
@@ -29,7 +29,7 @@
         <FlexLayout Direction="Column">
             <controls:BalanceHeader>
                 <controls:BalanceHeader.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TopView_DoubleTapped" NumberOfTapsRequired="2" />
+                    <TapGestureRecognizer Tapped="TopView_Tapped" />
                 </controls:BalanceHeader.GestureRecognizers>
             </controls:BalanceHeader>
             <controls:TransactionsView x:Name="transactionsView" />

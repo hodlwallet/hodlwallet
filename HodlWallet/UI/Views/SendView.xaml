@@ -25,7 +25,7 @@
                     <Frame CornerRadius="10" HasShadow="False">
                         <StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="TO"
+                                <Label Text="{i18n:Translate Send.to}"
                                        CharacterSpacing="3"
                                        FontFamily="{StaticResource Sans-Bold}"
                                        FontSize="Caption" />
@@ -48,13 +48,13 @@
                                     </controls:FontImage.GestureRecognizers>
                                 </controls:FontImage>
                             </StackLayout>
-                            <Entry Placeholder="Bitcoin Address"
+                            <Entry Placeholder="{i18n:Translate Send.addressPlaceholder}"
                                    Text="{Binding AddressToSendTo}"
                                    FontFamily="{StaticResource Mono-Regular}"
                                    Keyboard="Plain"
                                    BackgroundColor="{DynamicResource Bg}" />
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="AMOUNT"
+                                <Label Text="{i18n:Translate Send.amount}"
                                        CharacterSpacing="3"
                                        FontFamily="{StaticResource Sans-Bold}"
                                        FontSize="Caption"
@@ -68,7 +68,7 @@
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                         <controls:FontImageIcon Glyph="bar_chart" />
-                        <Label Text="PRIORITY POOL"
+                        <Label Text="{i18n:Translate Send.priorityPoolTitle}"
                                CharacterSpacing="3"
                                FontFamily="{StaticResource Sans-Bold}"
                                FontSize="Caption"
@@ -78,16 +78,16 @@
 
                     <Frame CornerRadius="10" HasShadow="False">
                         <StackLayout>
-                            <Label Text="Miner Fee"
+                            <Label Text="{i18n:Translate Send.minerFee}"
                                    CharacterSpacing="1.5"
                                    FontFamily="{StaticResource Sans-Regular}"
                                    FontSize="Subtitle" />
-                            <Label Text="AMOUNT"
+                            <Label Text="{i18n:Translate Send.amount}"
                                        CharacterSpacing="3"
                                        FontFamily="{StaticResource Sans-Bold}"
                                        FontSize="Caption"
                                        HorizontalOptions="StartAndExpand" />
-                            <Entry Placeholder="Custom"
+                            <Entry Placeholder="{i18n:Translate Send.customFee}"
                                    FontFamily="{StaticResource Mono-Regular}" />
 
                             <renderers:FeeSlider MinimumTrackColor="{DynamicResource FgSuccess}"
@@ -100,7 +100,7 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                         <controls:FontImageIcon Glyph="sticky_note_2"
                                                 FontFamily="MaterialIconsOutlined-Regular" />
-                        <Label Text="NOTE"
+                        <Label Text="{i18n:Translate Send.note}"
                                VerticalOptions="CenterAndExpand"
                                HorizontalOptions="CenterAndExpand"
                                CharacterSpacing="3"
@@ -111,7 +111,7 @@
 
                         <controls:FontImageIcon Glyph="sticky_note_2"
                                                 FontFamily="MaterialIconsOutlined-Regular" />
-                        <Label Text="DETAILS"
+                        <Label Text="{i18n:Translate Send.details}"
                                CharacterSpacing="3"
                                FontFamily="{StaticResource Sans-Bold}"
                                FontSize="Caption"
@@ -123,7 +123,7 @@
 
             <StackLayout FlexLayout.Grow="2.5" BackgroundColor="{DynamicResource Bg}" Padding="0,20,0,20">
                 <StackLayout Orientation="Horizontal" Margin="35,0,35,0">
-                    <Label Text="Fees"
+                    <Label Text="{i18n:Translate Send.fees}"
                            TextColor="{DynamicResource Fg3}"
                            FontFamily="{StaticResource Sans-Bold}"
                            CharacterSpacing="1"
@@ -133,7 +133,7 @@
                            FontFamily="{StaticResource Mono-Regular}" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Margin="35,0,35,0">
-                    <Label Text="Balance"
+                    <Label Text="{i18n:Translate Send.balance}"
                            TextColor="{DynamicResource Fg3}"
                            FontFamily="{StaticResource Sans-Bold}"
                            CharacterSpacing="1"
@@ -143,7 +143,7 @@
                            FontFamily="{StaticResource Mono-Regular}" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Margin="35,0,35,0">
-                    <Label Text="TOTAL"
+                    <Label Text="{i18n:Translate Send.total}"
                            TextColor="{DynamicResource Fg}"
                            FontFamily="{StaticResource Sans-Bold}"
                            CharacterSpacing="2"

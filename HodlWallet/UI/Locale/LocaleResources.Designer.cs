@@ -1882,11 +1882,29 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Amount.
+        ///   Looks up a localized string similar to Bitcoin Address.
+        /// </summary>
+        internal static string Send_addressPlaceholder {
+            get {
+                return ResourceManager.GetString("Send.addressPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AMOUNT.
         /// </summary>
         internal static string Send_amount {
             get {
                 return ResourceManager.GetString("Send.amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Balance.
+        /// </summary>
+        internal static string Send_balance {
+            get {
+                return ResourceManager.GetString("Send.balance", resourceCulture);
             }
         }
         
@@ -1905,6 +1923,24 @@ namespace HodlWallet.UI.Locale {
         internal static string Send_clear {
             get {
                 return ResourceManager.GetString("Send.clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom Fee.
+        /// </summary>
+        internal static string Send_customFee {
+            get {
+                return ResourceManager.GetString("Send.customFee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DETAILS.
+        /// </summary>
+        internal static string Send_details {
+            get {
+                return ResourceManager.GetString("Send.details", resourceCulture);
             }
         }
         
@@ -1936,11 +1972,29 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fees.
+        /// </summary>
+        internal static string Send_fees {
+            get {
+                return ResourceManager.GetString("Send.fees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to High.
         /// </summary>
         internal static string Send_highFee {
             get {
                 return ResourceManager.GetString("Send.highFee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Miner Fee.
+        /// </summary>
+        internal static string Send_minerFee {
+            get {
+                return ResourceManager.GetString("Send.minerFee", resourceCulture);
             }
         }
         
@@ -1954,11 +2008,29 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NOTE.
+        /// </summary>
+        internal static string Send_note {
+            get {
+                return ResourceManager.GetString("Send.note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Paste.
         /// </summary>
         internal static string Send_paste {
             get {
                 return ResourceManager.GetString("Send.paste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PRIORITY POOL.
+        /// </summary>
+        internal static string Send_priorityPoolTitle {
+            get {
+                return ResourceManager.GetString("Send.priorityPoolTitle", resourceCulture);
             }
         }
         
@@ -1981,11 +2053,20 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To.
+        ///   Looks up a localized string similar to TO.
         /// </summary>
         internal static string Send_to {
             get {
                 return ResourceManager.GetString("Send.to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        internal static string Send_total {
+            get {
+                return ResourceManager.GetString("Send.total", resourceCulture);
             }
         }
         
@@ -2364,6 +2445,24 @@ namespace HodlWallet.UI.Locale {
         internal static string TransactionsView_empty {
             get {
                 return ResourceManager.GetString("TransactionsView.empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LATEST TRANSACTIONS.
+        /// </summary>
+        internal static string TransactionsView_latestTransactions {
+            get {
+                return ResourceManager.GetString("TransactionsView.latestTransactions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Showing last {0} transactions.
+        /// </summary>
+        internal static string TransactionsView_latestTransactionsDescription {
+            get {
+                return ResourceManager.GetString("TransactionsView.latestTransactionsDescription", resourceCulture);
             }
         }
         

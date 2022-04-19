@@ -82,7 +82,7 @@ namespace HodlWallet.UI.Views
             await DisplaySyncingMessage();
         }
 
-        void TopView_DoubleTapped(object sender, EventArgs e)
+        void TopView_Tapped(object sender, EventArgs e)
         {
             transactionsView.ScrollToTop();
         }
