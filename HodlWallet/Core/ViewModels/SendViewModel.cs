@@ -104,6 +104,27 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref isoLabel, value);
         }
 
+        string balance = string.Empty;
+        public string Balance
+        {
+            get => balance;
+            set => SetProperty(ref balance, value);
+        }
+
+        string totalFee = string.Empty;
+        public string TotalFee
+        {
+            get => totalFee;
+            set => SetProperty(ref totalFee, value);
+        }
+
+        string total = string.Empty;
+        public string Total
+        {
+            get => total;
+            set => SetProperty(ref total, value);
+        }
+
         public ICommand ScanCommand { get; }
         public ICommand PasteCommand { get; }
         public ICommand ClearAdressCommand { get; }

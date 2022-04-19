@@ -132,7 +132,7 @@
                            FontFamily="{StaticResource Sans-Bold}"
                            CharacterSpacing="1"
                            HorizontalOptions="StartAndExpand" />
-                    <Label Text="0.001"
+                    <Label Text="{Binding TotalFee}"
                            TextColor="{DynamicResource Fg3}"
                            FontFamily="{StaticResource Mono-Regular}" />
                 </StackLayout>
@@ -142,7 +142,7 @@
                            FontFamily="{StaticResource Sans-Bold}"
                            CharacterSpacing="1"
                            HorizontalOptions="StartAndExpand" />
-                    <Label Text="1.28"
+                    <Label Text="{Binding Balance}"
                            TextColor="{DynamicResource Fg3}"
                            FontFamily="{StaticResource Mono-Regular}" />
                 </StackLayout>
@@ -152,7 +152,7 @@
                            FontFamily="{StaticResource Sans-Bold}"
                            CharacterSpacing="2"
                            HorizontalOptions="StartAndExpand" />
-                    <Label Text="B 000.12"
+                    <Label Text="{Binding Total}"
                            TextColor="{DynamicResource Fg}"
                            FontFamily="{StaticResource Mono-Bold}" />
                 </StackLayout>
