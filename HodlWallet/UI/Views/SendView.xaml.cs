@@ -65,8 +65,7 @@ namespace HodlWallet.UI.Views
 
             string title = LocaleResources.Send_transaction;
 
-            //string message = string.Format(LocaleResources.Send_transactionMessage, total, totalOut, fees, SendAddress.Text);
-            string message = string.Format(LocaleResources.Send_transactionMessage, total, totalOut, fees, "????");
+            string message = string.Format(LocaleResources.Send_transactionMessage, total, totalOut, fees, ViewModel.AddressToSendTo);
             string okButton = LocaleResources.Send_transactionOk;
             string cancelButton = LocaleResources.Send_transactionCancel;
 
@@ -74,7 +73,7 @@ namespace HodlWallet.UI.Views
 
             if (!res) return;
 
-            MessagingCenter.Send(this, "BroadcastTransaction");
+            ViewModel.BroadcastTransaction();
         }
 
         async void OpenBarcodeScanner(SendViewModel _)
@@ -87,7 +86,7 @@ namespace HodlWallet.UI.Views
                     MobileBarcodeScanner scanner = new();
                     ZXing.Result resultAndroid = await scanner.Scan();
 
-                    MessagingCenter.Send(this, "BarcodeScannerResult", resultAndroid.Text);
+                    ViewModel.ProcessBarcodeScannerResult(resultAndroid.Text);
                 });
             }
             else if (Device.RuntimePlatform == Device.iOS)
@@ -126,7 +125,7 @@ namespace HodlWallet.UI.Views
 
                     RxApp.MainThreadScheduler.Schedule(async () =>
                     {
-                        MessagingCenter.Send(this, "BarcodeScannerResult", resultIOS.Text);
+                        ViewModel.ProcessBarcodeScannerResult(resultIOS.Text);
 
                         await Navigation.PopAsync();
                     });
@@ -153,6 +152,19 @@ namespace HodlWallet.UI.Views
         void FeeSlider_DragCompleted(object sender, EventArgs e)
         {
             //await ViewModel.SetSliderValue();
+        }
+
+        void AmountEntry_AmountChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(amountEntry.Text)) return;
+
+            Observable
+                .Start(() =>
+                {
+                    ViewModel.Amount = amountEntry.ViewModel.Amount;
+
+                    ViewModel.CalculateTotals();
+                }, RxApp.TaskpoolScheduler);
         }
 
         // FIXME These two following functions should not exists
@@ -184,19 +196,6 @@ namespace HodlWallet.UI.Views
                 .Start(() =>
                 {
                     amountEntry.AddressToSend = entry.Text;
-
-                    ViewModel.CalculateTotals();
-                }, RxApp.TaskpoolScheduler);
-        }
-
-        void AmountEntry_AmountChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(amountEntry.Text)) return;
-
-            Observable
-                .Start(() =>
-                {
-                    ViewModel.Amount = amountEntry.ViewModel.Amount;
 
                     ViewModel.CalculateTotals();
                 }, RxApp.TaskpoolScheduler);

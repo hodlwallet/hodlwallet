@@ -48,20 +48,6 @@ namespace HodlWallet.Core.ViewModels
 
         const double MAX_SLIDER_VALUE = 100;
 
-        string transactionFeeText;
-        public string TransactionFeeText
-        {
-            get => transactionFeeText;
-            set => SetProperty(ref transactionFeeText, value);
-        }
-
-        string estConfirmationText;
-        public string EstConfirmationText
-        {
-            get => estConfirmationText;
-            set => SetProperty(ref estConfirmationText, value);
-        }
-
         double sliderValue;
         public double SliderValue
         {
@@ -83,32 +69,11 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref fee, value);
         }
 
-        decimal amountToSend;
-        public decimal AmountToSend
-        {
-            get => amountToSend;
-            set => SetProperty(ref amountToSend, value);
-        }
-
-        string amountToSendText;
-        public string AmountToSendText
-        {
-            get => amountToSendText;
-            set => SetProperty(ref amountToSendText, value);
-        }
-
         Money amount;
         public Money Amount
         {
             get => amount;
             set => SetProperty(ref amount, value);
-        }
-
-        string isoLabel = "BTC";
-        public string ISOLabel
-        {
-            get => isoLabel;
-            set => SetProperty(ref isoLabel, value);
         }
 
         string balance = null;
@@ -137,25 +102,44 @@ namespace HodlWallet.Core.ViewModels
         public ICommand ClearAdressCommand { get; }
         public ICommand SendCommand { get; }
         public ICommand SwitchCurrencyCommand { get; }
-        public ICommand ClearAmountCommand { get; }
 
         public SendViewModel()
         {
             ScanCommand = new Command(Scan);
-            PasteCommand = new Command(() => _ = Paste());
-            ClearAdressCommand = new Command(ClearAdress);
+            PasteCommand = new Command(async () => await Paste());
             SendCommand = new Command(Send);
-            SwitchCurrencyCommand = new Command(SwitchCurrency);
-            ClearAmountCommand = new Command(ClearAmount);
 
             SliderValue = MAX_SLIDER_VALUE * 0.5;
 
             //Task.Run(SetSliderValue);
 
-            SubscribeToMessages();
-
             if (WalletService.IsStarted) Setup();
             else WalletService.OnStarted += (_, _) => Setup();
+        }
+
+        public async void BroadcastTransaction()
+        {
+            if (transactionToBroadcast is null) return;
+
+            var (sent, error) = await WalletService.SendTransaction(transactionToBroadcast);
+
+            if (sent)
+            {
+                await Shell.Current.GoToAsync("../send");
+                SliderValue = MAX_SLIDER_VALUE * 0.5;
+                DisplayProcessAddressErrorAlert(LocaleResources.Send_transactionSentMessage);
+            }
+            else
+            {
+                DisplayProcessAddressErrorAlert($"{Constants.DISPLAY_ALERT_TRANSACTION_MESSAGE}\n{error}");
+            }
+        }
+
+        public void ProcessBarcodeScannerResult(string result)
+        {
+            if (string.IsNullOrEmpty(result)) return;
+
+            TryProcessAddress(result, Constants.DISPLAY_ALERT_SCAN_MESSAGE);
         }
 
         void Setup()
@@ -195,47 +179,6 @@ namespace HodlWallet.Core.ViewModels
         //TransactionFeeText = string.Format(Constants.SAT_PER_BYTE_UNIT_LABEL, Fee);
         //}
 
-        void SubscribeToMessages()
-        {
-            MessagingCenter.Subscribe<SendView>(this, "BroadcastTransaction", BroadcastTransaction);
-        }
-
-        async void BroadcastTransaction(SendView _)
-        {
-            if (transactionToBroadcast is null) return;
-
-            var (sent, error) = await WalletService.SendTransaction(transactionToBroadcast);
-
-            if (sent == true)
-            {
-                await Shell.Current.GoToAsync("../send");
-                AddressToSendTo = "";
-                AmountToSend = 0;
-                SliderValue = MAX_SLIDER_VALUE * 0.5;
-                DisplayProcessAddressErrorAlert(LocaleResources.Send_transactionSentMessage);
-            }
-            else
-            {
-                DisplayProcessAddressErrorAlert($"{Constants.DISPLAY_ALERT_TRANSACTION_MESSAGE}\n{error}");
-            }
-        }
-
-        void SwitchCurrency()
-        {
-            if (ISOLabel == "USD($)") //TODO: Refactor with more user currencies
-            {
-                //AmountToSend = Convert.ToDecimal(AmountToSendText) / (decimal)rate;
-                AmountToSendText = AmountToSend.ToString();
-                ISOLabel = "BTC";
-            }
-            else
-            {
-                //AmountToSend = Convert.ToDecimal(AmountToSend) * (decimal)rate;
-                AmountToSendText = $"{AmountToSend:F2}";
-                ISOLabel = "USD($)";
-            }
-        }
-
         internal void CalculateTotals()
         {
             if (Amount is null || Amount == Money.Zero) return;
@@ -259,13 +202,6 @@ namespace HodlWallet.Core.ViewModels
             if (!IsCameraAvailable) return;
 
             MessagingCenter.Send(this, "OpenBarcodeScanner");
-
-            MessagingCenter.Subscribe<SendView, string>(this, "BarcodeScannerResult", (v, result) =>
-            {
-                if (string.IsNullOrEmpty(result)) return;
-
-                TryProcessAddress(result, Constants.DISPLAY_ALERT_SCAN_MESSAGE);
-            });
         }
 
         async Task Paste()
@@ -277,36 +213,9 @@ namespace HodlWallet.Core.ViewModels
                 return;
             }
 
-            if (WalletService.IsStarted)
-            {
-                string address = await Clipboard.GetTextAsync();
+            var address = await Clipboard.GetTextAsync();
 
-                TryProcessAddress(address, Constants.DISPLAY_ALERT_PASTE_MESSAGE);
-
-                return;
-            }
-
-            WalletService.OnStarted += _WalletService_OnStarted_PasteAddress;
-        }
-
-        void ClearAdress()
-        {
-            AddressToSendTo = "";
-        }
-
-        void ClearAmount()
-        {
-            AmountToSend = 0;
-        }
-
-        void _WalletService_OnStarted_PasteAddress(object sender, EventArgs e)
-        {
-            Device.InvokeOnMainThreadAsync(async () =>
-            {
-                string address = await Clipboard.GetTextAsync();
-
-                TryProcessAddress(address, Constants.DISPLAY_ALERT_PASTE_MESSAGE);
-            });
+            TryProcessAddress(address, Constants.DISPLAY_ALERT_PASTE_MESSAGE);
         }
 
         void DisplayProcessAddressErrorAlert(string errorMessage, string title = null)
@@ -342,7 +251,7 @@ namespace HodlWallet.Core.ViewModels
                     // TODO This has to decide depending on the currency,
                     // if the user is in USD we should switch them to BTC
                     // once currency flip is available then we can do this
-                    AmountToSend = amount.ToDecimal(MoneyUnit.BTC);
+                    Amount = amount;
                 }
             }
             catch (WalletException we)
@@ -371,15 +280,17 @@ namespace HodlWallet.Core.ViewModels
 
         void Send()
         {
-            string password = "";
+            string password = string.Empty;
 
-            if (AmountToSend <= 0.00m || string.IsNullOrEmpty(AddressToSendTo) || long.Parse(Fee) <= 0)
+            var amount = Amount.ToDecimal(MoneyUnit.BTC);
+
+            if (amount <= 0.00m || string.IsNullOrEmpty(AddressToSendTo) || long.Parse(Fee) <= 0)
             {
                 DisplayProcessAddressErrorAlert(Constants.DISPLAY_ALERT_AMOUNT_MESSAGE);
                 return;
             }
 
-            var (Success, Tx, Fees, Error) = WalletService.CreateTransaction(AmountToSend, AddressToSendTo, long.Parse(Fee), password);
+            var (Success, Tx, Fees, Error) = WalletService.CreateTransaction(amount, AddressToSendTo, long.Parse(Fee), password);
 
             Debug.WriteLine($"Creating a tx: success = {Success}, tx = {Tx.ToString()}, fees = {Fees} and error = {Error}");
 
@@ -388,12 +299,12 @@ namespace HodlWallet.Core.ViewModels
                 var totalOut = Tx.TotalOut.ToDecimal(MoneyUnit.BTC);
                 transactionToBroadcast = Tx;
 
-                MessagingCenter.Send(this, "AskToBroadcastTransaction", (AmountToSend, Fees));
+                MessagingCenter.Send(this, "AskToBroadcastTransaction", (amount, Fees));
             }
             else
             {
                 string errorMsg = string.Format("Error trying to create a transaction.\nAmount to send: {0}, address: {1}, fee: {2}, password: {3}.\nFull Error: {4}",
-                    AmountToSend,
+                    amount,
                     AddressToSendTo,
                     Fee,
                     password,
@@ -402,7 +313,7 @@ namespace HodlWallet.Core.ViewModels
                 DisplayProcessAddressErrorAlert(errorMsg, Constants.DISPLAY_ALERT_ERROR_TITLE);
 
                 // TODO show error screen for now just log it.
-                Debug.WriteLine($"Error trying to create a transaction.\nAmount to send: {AmountToSend}, address: {AddressToSendTo}, fee: {Fee}, password: {password}.\nFull Error: {Error}");
+                Debug.WriteLine($"Error trying to create a transaction.\nAmount to send: {amount}, address: {AddressToSendTo}, fee: {Fee}, password: {password}.\nFull Error: {Error}");
             }
         }
     }
