@@ -125,8 +125,8 @@ namespace HodlWallet.Core.ViewModels
 
             if (sent)
             {
-                await Shell.Current.GoToAsync("../send");
-                SliderValue = MAX_SLIDER_VALUE * 0.5;
+                //await Shell.Current.GoToAsync("");
+                //SliderValue = MAX_SLIDER_VALUE * 0.5;
                 DisplayProcessAddressErrorAlert(LocaleResources.Send_transactionSentMessage);
             }
             else
