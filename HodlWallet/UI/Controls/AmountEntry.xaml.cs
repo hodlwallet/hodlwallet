@@ -28,6 +28,7 @@ using System.ComponentModel;
 using System.Reactive.Concurrency;
 using System.Linq;
 
+using NBitcoin;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ReactiveUI;
@@ -88,6 +89,11 @@ namespace HodlWallet.UI.Controls
             SubscribeToMessages();
         }
 
+        public string GetBitcoinAmountFormatted()
+        {
+            return ViewModel.Amount.ToDecimal(MoneyUnit.BTC).ToString("0.########");
+        }
+
         void SubscribeToMessages()
         {
             MessagingCenter.Subscribe<AmountEntryViewModel>(this, "ShowBalanceError", ShowBalanceError);
@@ -144,7 +150,7 @@ namespace HodlWallet.UI.Controls
             else
                 entry.Text = NormalizeText(text);
 
-            AmountChanged?.Invoke(sender, e);
+            AmountChanged?.Invoke(entry, e);
         }
 
         string NormalizeText(string text)

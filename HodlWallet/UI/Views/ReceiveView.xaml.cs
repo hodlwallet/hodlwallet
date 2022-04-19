@@ -20,18 +20,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
 using System.ComponentModel;
 using System.Diagnostics;
 
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
 using HodlWallet.UI.Locale;
 using HodlWallet.UI.Controls;
-using NBitcoin;
 
 namespace HodlWallet.UI.Views
 {
@@ -50,25 +47,25 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<ReceiveViewModel>(this, "CopiedAddressToast", CopiedAddressToast);
         }
 
+        async void CopiedAddressToast(ReceiveViewModel vm)
+        {
+            await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
+        }
+
+        void AmountEntry_AmountChanged(object sender, PropertyChangedEventArgs e)
+        {
+            var amountEntry = (sender as AmountEntry);
+
+            ViewModel.Amount = amountEntry.GetBitcoinAmountFormatted();
+            ViewModel.UpdateAddressFormatted();
+        }
+        
         protected override void OnAppearing()
         {
             ViewModel.RefreshAddressFromWalletService();
             Debug.WriteLine($"[ReceiveView][OnAppearing] Showing Address: {ViewModel.AddressFormatted}");
 
             base.OnAppearing();
-        }
-
-        async void CopiedAddressToast(ReceiveViewModel vm)
-        {
-            await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
-        }
-
-        private void AmountEntry_AmountChanged(object sender, PropertyChangedEventArgs e)
-        {
-            var amountEntry = (sender as AmountEntry);
-
-            ViewModel.Amount = amountEntry.ViewModel.Amount.ToDecimal(MoneyUnit.BTC).ToString("0.########");
-            ViewModel.UpdateAddressFormatted();
         }
     }
 }
