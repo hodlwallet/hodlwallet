@@ -32,6 +32,8 @@ using HodlWallet.Core.Utils;
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
 using HodlWallet.UI.Locale;
+using ReactiveUI;
+using System.Reactive.Concurrency;
 
 namespace HodlWallet.UI.Views
 {
@@ -77,7 +79,7 @@ namespace HodlWallet.UI.Views
             // Android
             if (Device.RuntimePlatform == Device.Android)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                RxApp.MainThreadScheduler.Schedule(async () =>
                 {
                     MobileBarcodeScanner scanner = new();
                     ZXing.Result resultAndroid = await scanner.Scan();
@@ -119,7 +121,7 @@ namespace HodlWallet.UI.Views
                 {
                     scanPage.IsScanning = false;
 
-                    Device.BeginInvokeOnMainThread(async () =>
+                    RxApp.MainThreadScheduler.Schedule(async () =>
                     {
                         MessagingCenter.Send(this, "BarcodeScannerResult", resultIOS.Text);
 
@@ -140,15 +142,36 @@ namespace HodlWallet.UI.Views
             string title = messageAndTitle[0] ?? Constants.DISPLAY_ALERT_ERROR_TITLE;
             string message = messageAndTitle[1];
 
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await this.DisplayToast(message ?? string.Join("", messageAndTitle));
-            });
+            RxApp.MainThreadScheduler.Schedule(async () =>
+                await this.DisplayToast(message ?? string.Join("", messageAndTitle))
+            );
         }
 
         void FeeSlider_DragCompleted(object sender, EventArgs e)
         {
             //await ViewModel.SetSliderValue();
+        }
+
+        // FIXME These two following functions should not exists
+        // I do not understand binding propertly looks like...
+
+        void CustomFee_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var entry = (sender as Entry);
+
+            if (string.IsNullOrEmpty(entry.Text)) return;
+            if (entry.Text.EndsWith(".")) return;
+
+            amountEntry.Fee = decimal.Parse(entry.Text);
+        }
+
+        void Address_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var entry = (sender as Entry);
+
+            if (string.IsNullOrEmpty(entry.Text)) return;
+
+            amountEntry.AddressToSend = entry.Text;
         }
     }
 }

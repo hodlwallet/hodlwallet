@@ -52,6 +52,7 @@
                                    Text="{Binding AddressToSendTo}"
                                    FontFamily="{StaticResource Mono-Regular}"
                                    Keyboard="Plain"
+                                   TextChanged="Address_TextChanged"
                                    BackgroundColor="{DynamicResource Bg}" />
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{i18n:Translate Send.amount}"
@@ -62,9 +63,7 @@
                                 <controls:CurrencySwitch HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
                             </StackLayout>
 
-                            <controls:AmountEntry ShowBalanceAnimation="True"
-                                                  AddressToSend="{Binding AddressToSendTo}"
-                                                  Fee="{Binding Fee}" />
+                            <controls:AmountEntry x:Name="amountEntry" ShowBalanceAnimation="True" />
                         </StackLayout>
                     </Frame>
 
@@ -90,7 +89,9 @@
                                    FontSize="Caption"
                                    HorizontalOptions="StartAndExpand" />
                             <Entry Placeholder="{i18n:Translate Send.customFee}"
+                                   Text="{Binding Fee}"
                                    Keyboard="Numeric"
+                                   TextChanged="CustomFee_TextChanged"
                                    FontFamily="{StaticResource Mono-Regular}" />
 
                             <renderers:FeeSlider MinimumTrackColor="{DynamicResource FgSuccess}"

@@ -96,14 +96,22 @@ namespace HodlWallet.Core.ViewModels
         public string AddressToSend
         {
             get { return addressToSend; }
-            set { SetProperty(ref addressToSend, value); }
+            set
+            {
+                SetProperty(ref addressToSend, value);
+                ValidateWithBalance();
+            }
         }
 
         decimal fee = 1;
         public decimal Fee
         {
             get { return fee; }
-            set { SetProperty(ref fee, value); }
+            set
+            {
+                SetProperty(ref fee, value);
+                ValidateWithBalance();
+            }
         }
 
         internal void TrackBalance()

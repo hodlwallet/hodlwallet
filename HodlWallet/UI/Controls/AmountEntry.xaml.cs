@@ -68,7 +68,11 @@ namespace HodlWallet.UI.Controls
         public string AddressToSend
         {
             get { return (string)GetValue(AddressToSendProperty); }
-            set { SetValue(AddressToSendProperty, value); }
+            set
+            {
+                SetValue(AddressToSendProperty, value);
+                OnPropertyChanged(nameof(AddressToSend));
+            }
         }
 
         public static readonly BindableProperty FeeProperty = BindableProperty.Create(
@@ -80,7 +84,11 @@ namespace HodlWallet.UI.Controls
         public decimal Fee
         {
             get { return (decimal)GetValue(FeeProperty); }
-            set { SetValue(FeeProperty, value); }
+            set
+            {
+                SetValue(FeeProperty, value);
+                OnPropertyChanged(nameof(Fee));
+            }
         }
 
         public AmountEntry()
