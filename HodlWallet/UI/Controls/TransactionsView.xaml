@@ -109,8 +109,9 @@
                                        FontSize="Header"
                                        FontFamily="{StaticResource Key=Mono-Regular}"
                                        VerticalOptions="CenterAndExpand"
+                                       LineBreakMode="NoWrap"
                                        HorizontalTextAlignment="End"
-                                       MinimumWidthRequest="100" />
+                                       MinimumWidthRequest="110" />
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>

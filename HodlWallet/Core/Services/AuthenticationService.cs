@@ -62,7 +62,7 @@ namespace HodlWallet.Core.Services
                 if (expiration < now)
                     isAuthenticated = false;
 
-                return isAuthenticated;
+                return isAuthenticated && SecureStorageService.UserDidSetup();
             }
 
             set

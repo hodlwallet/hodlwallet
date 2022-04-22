@@ -56,16 +56,7 @@ namespace HodlWallet.UI
 
             RegisterServices();
 
-            if (SecureStorageService.UserDidSetup())
-            {
-                AuthenticationService.ShowLogin();
-
-                return;
-            }
-
-            CollectExistingKeys();
-
-            if (SecureStorageService.UserDidSetup())
+            if (!AuthenticationService.IsAuthenticated)
             {
                 AuthenticationService.ShowLogin();
 
@@ -82,8 +73,10 @@ namespace HodlWallet.UI
 
         protected override void OnResume()
         {
-            if (SecureStorageService.UserDidSetup() && !AuthenticationService.IsAuthenticated && !AuthenticationService.ShowingLoginForm)
-                AuthenticationService.ShowLogin(action: "pop");
+            if (AuthenticationService.IsAuthenticated || AuthenticationService.ShowingLoginForm)
+                return;
+
+            AuthenticationService.ShowLogin(action: "pop");
         }
 
         protected override void OnStart()
@@ -119,6 +112,7 @@ namespace HodlWallet.UI
 
         void CollectExistingKeys()
         {
+            // TODO would be cool to use this to migrate old users
             try
             {
                 var mnemonic = LegacySecureKeyService.GetMnemonic();
