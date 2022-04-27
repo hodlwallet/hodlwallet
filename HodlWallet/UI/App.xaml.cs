@@ -56,14 +56,19 @@ namespace HodlWallet.UI
 
             RegisterServices();
 
+            if (!SecureStorageService.UserDidSetup())
+            {
+                MainPage = new NavigationPage(new OnboardView());
+
+                return;
+            }
+
             if (!AuthenticationService.IsAuthenticated)
             {
                 AuthenticationService.ShowLogin();
 
                 return;
             }
-
-            MainPage = new NavigationPage(new OnboardView());
         }
 
         protected override void OnSleep()
