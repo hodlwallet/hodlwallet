@@ -94,6 +94,7 @@ namespace HodlWallet.Core.ViewModels
                 .Subscribe(_ => UpdateBalance());
 
             CurrentAccount.Txs.CollectionChanged += (_, _) => UpdateBalance();
+            WalletService.Wallet.OnSyncFinished += (_, _) => UpdateBalance();
 
             UpdateBalance();
         }
