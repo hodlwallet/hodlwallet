@@ -119,21 +119,22 @@
             </CollectionView.ItemTemplate>
 
             <CollectionView.Footer>
-                <StackLayout HeightRequest="80"
-                             Orientation="Horizontal"
-                             Spacing="3"
-                             HorizontalOptions="CenterAndExpand"
-                             BackgroundColor="{DynamicResource Bg3}">
-                    <Label Text="Fin."
-                           HorizontalOptions="EndAndExpand"
-                           VerticalOptions="CenterAndExpand"
-                           CharacterSpacing="2"
-                           FontFamily="{StaticResource Sans-Bold}"
-                           TextColor="{DynamicResource Fg3}" />
-                    <controls:FontImage Glyph="sentiment_very_satisfied"
-                                        HorizontalOptions="StartAndExpand"
-                                        VerticalOptions="CenterAndExpand"
-                                        Color="{DynamicResource Fg3}" />
+                <StackLayout>
+                    <StackLayout HeightRequest="80"
+                                 Spacing="3"
+                                 HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 Orientation="Horizontal"
+                                 BackgroundColor="{DynamicResource Bg3}">
+                        <Label Text="Fin."
+                               VerticalOptions="CenterAndExpand"
+                               CharacterSpacing="2"
+                               FontFamily="{StaticResource Sans-Bold}"
+                               TextColor="{DynamicResource Fg3}" />
+                        <controls:FontImage Glyph="sentiment_very_satisfied"
+                                            VerticalOptions="CenterAndExpand"
+                                            Color="{DynamicResource Fg3}" />
+                    </StackLayout>
                 </StackLayout>
             </CollectionView.Footer>
         </CollectionView>
