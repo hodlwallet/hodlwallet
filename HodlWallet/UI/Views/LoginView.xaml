@@ -8,9 +8,9 @@
              x:Class="HodlWallet.UI.Views.LoginView"
              x:DataType="vm:LoginViewModel"
              ios:Page.UseSafeArea="True">
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <controls:TitleView />
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
     <ContentPage.BindingContext>
         <vm:LoginViewModel />
     </ContentPage.BindingContext>
