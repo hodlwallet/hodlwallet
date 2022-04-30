@@ -108,12 +108,12 @@ namespace HodlWallet.Core.Models
             Id = TransactionData.Id;
             IdText = TransactionData.Id.ToString();
 
-            IsSend = TransactionData.IsSend;
-            IsReceive = TransactionData.IsReceive;
+            IsSend = TransactionData.Type == TxType.Send;
+            IsReceive = TransactionData.Type == TxType.Receive;
 
             Preposition = IsSend ? LocaleResources.TransactionDetails_to : LocaleResources.TransactionDetails_from;
 
-            CreatedAt = TransactionData.CreatedAt.GetValueOrDefault();
+            CreatedAt = TransactionData.CreatedAt;
             CreatedAtText = TransactionData.CreatedAt.ToString();
 
             Amount = GetAmount();
@@ -129,9 +129,9 @@ namespace HodlWallet.Core.Models
 
             AddressTitle = GetAddressTitleText();
 
-            BlockHeight = (int)(TransactionData.BlockHeight ?? -1);
+            BlockHeight = (int)(TransactionData.Height);
 
-            IsSpendable = TransactionData.IsSpendable();
+            IsSpendable = true;
 
             StatusText = GetStatusText();
             IsAvailableText = StatusText; // TODO why?
@@ -164,9 +164,10 @@ namespace HodlWallet.Core.Models
 
         string GetAmountText()
         {
+            var amount = Amount ?? Money.Zero;
             if (DisplayCurrencyService.CurrencyType == DisplayCurrencyType.Bitcoin)
-                return DisplayCurrencyService.BitcoinAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
-            return DisplayCurrencyService.FiatAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
+                return DisplayCurrencyService.BitcoinAmountFormatted(amount.ToDecimal(MoneyUnit.BTC), IsSend);
+            return DisplayCurrencyService.FiatAmountFormatted(amount.ToDecimal(MoneyUnit.BTC), IsSend);
         }
 
         public static TransactionModel FromTransactionData(Tx transactionData)
@@ -211,16 +212,16 @@ namespace HodlWallet.Core.Models
 
         string GetConfirmedBlockText()
         {
-            var blockHeight = TransactionData.BlockHeight;
+            var blockHeight = TransactionData.Height;
 
-            return blockHeight is null
+            return blockHeight <= 0
                 ? LocaleResources.Transactions_awaitingConfirmation
                 : blockHeight.ToString();
         }
 
         string GetStatusText()
         {
-            return TransactionData.IsConfirmed()
+            return TransactionData.Height > 0
                 ? LocaleResources.Transactions_confirmed
                 : LocaleResources.Transactions_awaitingConfirmation;
         }
@@ -229,9 +230,7 @@ namespace HodlWallet.Core.Models
         {
             try
             {
-                return TransactionData.IsSend
-                    ? TransactionData.SentScriptPubKey.GetDestinationAddress(Network).ToString()
-                    : TransactionData.ScriptPubKey.GetDestinationAddress(Network).ToString();
+                return TransactionData.ScriptPubKey.GetDestinationAddress(Network).ToString();
             }
             catch (Exception e)
             {
@@ -243,25 +242,23 @@ namespace HodlWallet.Core.Models
 
         string GetAddressText()
         {
-            var preposition = TransactionData.IsSend ? LocaleResources.Transactions_isSendTo : LocaleResources.Transactions_isSendAt;
+            var preposition = TransactionData.Type == TxType.Send ? LocaleResources.Transactions_isSendTo : LocaleResources.Transactions_isSendAt;
 
             return $"{preposition} {Address}";
         }
 
         Money GetAmount()
         {
-            return TransactionData.IsSend
-                ? TransactionData.AmountSent
-                : TransactionData.AmountReceived;
+            return TransactionData.Amount;
         }
 
         string GetAmountWithFeesText()
         {
-            if (TransactionData.TotalFees == Money.Zero)
+            if (TransactionData.Fees == Money.Zero)
                 return AmountText;
 
-            var totalAmount = TransactionData.TotalAmount ?? Money.Zero;
-            var totalFees = TransactionData.TotalFees ?? Money.Zero;
+            var totalAmount = TransactionData.Amount ?? Money.Zero;
+            var totalFees = TransactionData.Fees ?? Money.Zero;
 
             if (totalAmount == Money.Zero || totalFees == Money.Zero)
                 return AmountText;
@@ -273,7 +270,7 @@ namespace HodlWallet.Core.Models
 
         string GetAddressTitleText()
         {
-            if (TransactionData.IsSend)
+            if (TransactionData.Type == TxType.Send)
                 return LocaleResources.TransactionDetails_sendAddressTitle;
 
             return LocaleResources.TransactionDetails_receivedAddressTitle;
