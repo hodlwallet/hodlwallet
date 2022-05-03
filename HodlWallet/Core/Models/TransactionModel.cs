@@ -36,7 +36,7 @@ using HodlWallet.UI.Locale;
 
 namespace HodlWallet.Core.Models
 {
-    public class TransactionModel : BindableModel
+    public class TransactionModel : BindableModel, IComparable<TransactionModel>, IEquatable<TransactionModel>
     {
         Network Network => DependencyService.Get<IWalletService>().GetNetwork();
 
@@ -175,31 +175,6 @@ namespace HodlWallet.Core.Models
             return new TransactionModel(transactionData);
         }
 
-        /// <summary>
-        /// Check if the tx is equal to another tx by value not object equality
-        /// </summary>
-        /// <param name="obj">The other tx model</param>
-        /// <returns>A <see cref="bool"/> that represents if they're equal or not</returns>
-        public override bool Equals(object obj)
-        {
-            var other = obj as TransactionModel;
-
-            if (other.Id != Id) return false;
-            if (other.IsReceive != IsReceive) return false;
-            if (other.IsSend != IsSend) return false;
-            if (other.CreatedAt != CreatedAt) return false;
-            if (other.IsSpendable != IsSpendable) return false;
-            if (other.IsConfirmed != IsConfirmed) return false;
-            if (other.BlockHeight != BlockHeight) return false;
-            if (other.Amount != Amount) return false;
-            if (other.Address != Address) return false;
-            if (other.Note != Note) return false;
-            if (other.ConfirmationsText != ConfirmationsText) return false;
-            if (other.IsAvailableText != IsAvailableText) return false;
-
-            return true;
-        }
-
         public static bool operator ==(TransactionModel x, TransactionModel y)
         {
             return x.Equals(y);
@@ -284,6 +259,42 @@ namespace HodlWallet.Core.Models
         public override string ToString()
         {
             return base.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as TransactionModel);
+        }
+
+        public bool Equals(TransactionModel other)
+        {
+            if (other.Id != Id) return false;
+            if (other.IsReceive != IsReceive) return false;
+            if (other.IsSend != IsSend) return false;
+            if (other.CreatedAt != CreatedAt) return false;
+            if (other.IsSpendable != IsSpendable) return false;
+            if (other.IsConfirmed != IsConfirmed) return false;
+            if (other.BlockHeight != BlockHeight) return false;
+            if (other.Amount != Amount) return false;
+            if (other.Address != Address) return false;
+            if (other.Note != Note) return false;
+            if (other.ConfirmationsText != ConfirmationsText) return false;
+            if (other.IsAvailableText != IsAvailableText) return false;
+
+            return true;
+        }
+
+        public int CompareTo(TransactionModel other)
+        {
+            if (other != null)
+            {
+                if (other.Equals(this)) return 0;
+
+                if (other.CreatedAt < CreatedAt) return -1;
+                else return 1;
+            }
+            else
+                throw new ArgumentException("Object is not a TransactionModel");
         }
     }
 }

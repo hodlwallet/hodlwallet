@@ -28,17 +28,18 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
+using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 using Liviano.Interfaces;
 using Liviano.Models;
+using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
-using ReactiveUI;
-using System.Reactive.Concurrency;
+using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -122,6 +123,7 @@ namespace HodlWallet.Core.ViewModels
             IsLoading = true;
             foreach (var tx in Txs.Take(TXS_ITEMS_SIZE))
             {
+                //Console.WriteLine($"tx: {tx.ScriptPubKey.GetDestinationAddress(Network.TestNet)}");
                 var txModel = TransactionModel.FromTransactionData(tx);
 
                 TransactionsAdd(txModel);
@@ -170,13 +172,38 @@ namespace HodlWallet.Core.ViewModels
                 {
                     var txModel = TransactionModel.FromTransactionData(item);
 
-                    RxApp.MainThreadScheduler.Schedule(() =>
-                    {
-                        Transactions.Remove(txModel);
-                    });
+                    TransactionChanged(txModel);
                 }
 
+            Transactions.Sort();
+
             MessagingCenter.Send(this, "ScrollToTop");
+        }
+
+        void TransactionChanged(TransactionModel model)
+        {
+            int index = -1;
+            for (int i = 0, count = Txs.Count; i < count; i++)
+            {
+                if (Txs[i].Id == model.Id)
+                {
+                    index = i;
+
+                    break;
+                }
+            }
+
+            RxApp.TaskpoolScheduler.Schedule(() =>
+            {
+                if (index == -1)
+                {
+                    Transactions.Remove(model);
+                }
+                else
+                {
+                    Transactions[index] = model;
+                }
+            });
         }
 
         /// <summary>
@@ -186,9 +213,7 @@ namespace HodlWallet.Core.ViewModels
         /// <param name="index">Index where to insert the tx</param>
         void TransactionsAdd(TransactionModel model, int index = -1)
         {
-            if (Transactions.Contains(model)) return;
-
-            RxApp.MainThreadScheduler.Schedule(() =>
+            RxApp.TaskpoolScheduler.Schedule(() =>
             {
                 if (index < 0)
                     Transactions.Add(model);

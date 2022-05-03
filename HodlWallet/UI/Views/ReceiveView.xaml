@@ -21,7 +21,7 @@
     <ContentPage.Content>
         <ScrollView BackgroundColor="{DynamicResource Bg3}">
             <FlexLayout Direction="Column">
-                <controls:ContentHeader Glyph="reply"
+                <controls:ContentHeader Glyph="arrow_downward"
                                         Color="{DynamicResource FgGreen}"
                                         TitleText="{i18n:Translate Text=Receive.uniqueAddress}"
                                         DescriptionText="{Binding AddressFormatted}"
