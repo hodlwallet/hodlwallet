@@ -193,7 +193,7 @@ namespace HodlWallet.Core.ViewModels
                 }
             }
 
-            RxApp.TaskpoolScheduler.Schedule(() =>
+            RxApp.MainThreadScheduler.Schedule(() =>
             {
                 if (index == -1)
                 {
@@ -213,7 +213,7 @@ namespace HodlWallet.Core.ViewModels
         /// <param name="index">Index where to insert the tx</param>
         void TransactionsAdd(TransactionModel model, int index = -1)
         {
-            RxApp.TaskpoolScheduler.Schedule(() =>
+            RxApp.MainThreadScheduler.Schedule(() =>
             {
                 if (index < 0)
                     Transactions.Add(model);
