@@ -6,11 +6,11 @@
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              x:Class="HodlWallet.UI.Views.LoginView"
-             x:DataType="vm:LoginViewModel"
-             ios:Page.UseSafeArea="True">
-    <Shell.TitleView>
+             ios:Page.UseSafeArea="True"
+             Title="{i18n:Translate Pin.updateTitle}">
+    <NavigationPage.TitleView>
         <controls:TitleView />
-    </Shell.TitleView>
+    </NavigationPage.TitleView>
     <ContentPage.BindingContext>
         <vm:LoginViewModel />
     </ContentPage.BindingContext>
@@ -61,42 +61,57 @@
                 <Grid x:Name="InputGrid"
                       Padding="10">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="25" />
+                        <RowDefinition Height="15" />
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25" />
-                        <ColumnDefinition Width="25" />
-                        <ColumnDefinition Width="25" />
-                        <ColumnDefinition Width="25" />
-                        <ColumnDefinition Width="25" />
-                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="15" />
+                        <ColumnDefinition Width="15" />
+                        <ColumnDefinition Width="15" />
+                        <ColumnDefinition Width="15" />
+                        <ColumnDefinition Width="15" />
+                        <ColumnDefinition Width="15" />
+                        <ColumnDefinition Width="15" />
+                        <ColumnDefinition Width="15" />
+                        <ColumnDefinition Width="15" />
+                        <ColumnDefinition Width="15" />
+                        <ColumnDefinition Width="15" />
                     </Grid.ColumnDefinitions>
-
-                    <BoxView x:Name="Pin1"
-                             Color="{DynamicResource Fg5}"
-                             Grid.Row="0"
+                    
+                    <Ellipse x:Name="Pin1" 
+                             Fill="{DynamicResource Fg5}" 
+                             Grid.Row="0" 
                              Grid.Column="0" />
-                    <BoxView x:Name="Pin2"
-                             Color="{DynamicResource Fg5}"
-                             Grid.Row="0"
-                             Grid.Column="1" />
-                    <BoxView x:Name="Pin3"
-                             Color="{DynamicResource Fg5}"
-                             Grid.Row="0"
+                    <BoxView Grid.Row="0" Grid.Column="1"/>
+                    
+                    <Ellipse x:Name="Pin2" 
+                             Fill="{DynamicResource Fg5}" 
+                             Grid.Row="0" 
                              Grid.Column="2" />
-                    <BoxView x:Name="Pin4"
-                             Color="{DynamicResource Fg5}"
-                             Grid.Row="0"
-                             Grid.Column="3" />
-                    <BoxView x:Name="Pin5"
-                             Color="{DynamicResource Fg5}"
+                    <BoxView Grid.Row="0" Grid.Column="3"/>
+
+                    <Ellipse x:Name="Pin3"
+                             Fill="{DynamicResource Fg5}"
                              Grid.Row="0"
                              Grid.Column="4" />
-                    <BoxView x:Name="Pin6"
-                             Color="{DynamicResource Fg5}"
+                    <BoxView Grid.Row="0" Grid.Column="5" />
+                    
+                    <Ellipse x:Name="Pin4"
+                             Fill="{DynamicResource Fg5}"
                              Grid.Row="0"
-                             Grid.Column="5" />
+                             Grid.Column="6" />
+                    <BoxView Grid.Row="0" Grid.Column="7" />
+                    
+                    <Ellipse x:Name="Pin5"
+                             Fill="{DynamicResource Fg5}"
+                             Grid.Row="0"
+                             Grid.Column="8" />
+                    <BoxView Grid.Row="0" Grid.Column="9" />
+                    
+                    <Ellipse x:Name="Pin6"
+                             Fill="{DynamicResource Fg5}"
+                             Grid.Row="0"
+                             Grid.Column="10" />
                 </Grid>
 
                 <BoxView HeightRequest="30" />
@@ -104,7 +119,7 @@
                 <FlexLayout Direction="Row"
                             FlexLayout.Grow="1">
 
-                    <Button Text="1"
+                    <Button Text="1"                            
                             FlexLayout.Grow="1"
                             Command="{Binding DigitCommand}"
                             CommandParameter="1"

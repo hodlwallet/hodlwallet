@@ -50,8 +50,8 @@ namespace HodlWallet.UI.Views
             InitializeComponent();
             
             ViewModel.Action = action;
-            
-            CheckBiometricsAvailabilityAsync();
+
+	        CheckBiometricsAvailabilityAsync();
             SubscribeToMessages();
 
             ViewModel.LastLogin = "pin";
@@ -178,24 +178,37 @@ namespace HodlWallet.UI.Views
         {
             Debug.WriteLine($"[SubscribeToMessage][ResetPin]");
 
-            ColorDigitTo(Pin1, DigitOffColor);
-            ColorDigitTo(Pin2, DigitOffColor);
-            ColorDigitTo(Pin3, DigitOffColor);
-            ColorDigitTo(Pin4, DigitOffColor);
-            ColorDigitTo(Pin5, DigitOffColor);
-            ColorDigitTo(Pin6, DigitOffColor);
+            Pin1.Fill = DigitOffColor;
+            Pin2.Fill = DigitOffColor;
+            Pin3.Fill = DigitOffColor;
+            Pin4.Fill = DigitOffColor;
+            Pin5.Fill = DigitOffColor;
+            Pin6.Fill = DigitOffColor;
         }
 
         void ColorDigitTo(int index, Color color)
         {
-            var pin = (BoxView)FindByName($"Pin{index}");
-
-            ColorDigitTo(pin, color);
-        }
-
-        void ColorDigitTo(BoxView pin, Color color)
-        {
-            pin.Color = color;
+            switch (index)
+            {
+                case 1:
+                    Pin1.Fill = color;
+                    break;
+                case 2:
+                    Pin2.Fill = color;
+                    break;
+                case 3:
+                    Pin3.Fill = color;
+                    break;
+                case 4:
+                    Pin4.Fill = color;
+                    break;
+                case 5:
+                    Pin5.Fill = color;
+                    break;
+                case 6:
+                    Pin6.Fill = color;
+                    break;
+            }
         }
 
         async void Logo_Tapped(object sender, EventArgs e)
