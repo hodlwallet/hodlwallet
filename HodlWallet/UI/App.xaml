@@ -25,6 +25,7 @@
             <Color x:Key="Bg5">#000000</Color>
 
             <Color x:Key="Fg">#cccccc</Color>
+            <Color x:Key="Fg1">#ffffff</Color>
             <Color x:Key="Fg2">#9B9B9B</Color>
             <Color x:Key="Fg3">#444444</Color>
             <Color x:Key="Fg4">#515959</Color>
@@ -179,12 +180,12 @@
             <Style x:Key="LoginDigitButton"
                    TargetType="Button"
                    BasedOn="{StaticResource CustomButton}">
+                <Setter Property="TextColor"
+                        Value="{DynamicResource Fg1}" />
                 <Setter Property="FontSize"
-                        Value="Medium" />
+                        Value="Large" />
                 <Setter Property="BackgroundColor"
                         Value="{StaticResource Bg}" />
-                <Setter Property="FontFamily"
-                        Value="{StaticResource Mono-Regular}" />
             </Style>
 
             <Style x:Key="SettingsButton"
