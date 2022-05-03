@@ -50,7 +50,7 @@
 		<PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
 		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
-		<PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.1" />
+		<PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="UI\Converters\" />
