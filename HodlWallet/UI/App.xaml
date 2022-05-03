@@ -25,7 +25,6 @@
             <Color x:Key="Bg5">#000000</Color>
 
             <Color x:Key="Fg">#cccccc</Color>
-            <Color x:Key="Fg1">#ffffff</Color>
             <Color x:Key="Fg2">#9B9B9B</Color>
             <Color x:Key="Fg3">#444444</Color>
             <Color x:Key="Fg4">#515959</Color>
@@ -181,7 +180,7 @@
                    TargetType="Button"
                    BasedOn="{StaticResource CustomButton}">
                 <Setter Property="TextColor"
-                        Value="{DynamicResource Fg1}" />
+                        Value="{DynamicResource Fg}" />
                 <Setter Property="FontSize"
                         Value="Large" />
                 <Setter Property="BackgroundColor"
