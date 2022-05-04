@@ -33,12 +33,21 @@
                         BackgroundColor="{DynamicResource Bg}"
                         JustifyContent="SpaceAround"
                         AlignItems="Center">
+
+                <controls:ContentHeader
+                    x:Name="ContHeader"
+                    Glyph="pin"
+                    TitleText="{i18n:Translate Text=Pin.enter}"
+                    DescriptionText="{i18n:Translate Text=Pin.header}"
+                    IsVisible="false" />
+
                 <Image Source="logo_front.png"
                        FlexLayout.Grow="2"
                        HeightRequest="120"
                        VerticalOptions="Center"
                        HorizontalOptions="Center"
-                       x:Name="LogoFront">
+                       x:Name="LogoFront" >
+
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Logo_Tapped" />
                     </Image.GestureRecognizers>
@@ -53,10 +62,14 @@
                        HorizontalTextAlignment="Center" />
 
                 <Label x:Name="Header"
+                       CharacterSpacing="3"
+                       FontFamily="{Binding TitleFontFamily}"
                        FlexLayout.Grow="1"
+                       FontAttributes="Bold"
+                       FontSize="Title"
+                       HorizontalTextAlignment="Center"
                        Text="{i18n:Translate Text=Pin.enter}"
-                       FontSize="Subtitle"
-                       HorizontalTextAlignment="Center" />
+                       TextTransform="Uppercase" />
 
                 <Grid x:Name="InputGrid"
                       Padding="10">
@@ -196,11 +209,16 @@
                             CommandParameter="0"
                             Style="{DynamicResource LoginDigitButton}" />
 
-                    <Button Text="{DynamicResource LoginBackButtonText}"
-                            FlexLayout.Grow="1"
+                    <Frame BorderColor="Transparent"
+                           FlexLayout.Grow="1"
+                           Margin="0,0,6,0"
+                           BackgroundColor="{DynamicResource Bg}">
+                        <controls:FontImageIcon
+                            Glyph="backspace"
                             Command="{Binding BackspaceCommand}"
-                            TextColor="{StaticResource FgSuccess}"
-                            Style="{DynamicResource LoginDigitButton}" />
+                            BackgroundColor="{DynamicResource Bg}" />
+                    </Frame>
+
                 </FlexLayout>
 
                 <Button Text="{i18n:Translate Text=Login.useBiometric}"

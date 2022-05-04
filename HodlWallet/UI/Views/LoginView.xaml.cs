@@ -64,9 +64,12 @@ namespace HodlWallet.UI.Views
             }
 
             LogoFront.IsVisible = false;
+            ContHeader.IsVisible = true;
+            Header.IsVisible = false;
 
-            Header.Text = Locale.LocaleResources.Pin_updateHeader;
+            //Header.Text = Locale.LocaleResources.Pin_updateHeader;
             Title = Locale.LocaleResources.Pin_updateTitle;
+
 
             NavigationPage.SetHasNavigationBar(this, true);
         }
