@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HodlWallet.UI.Controls.PinPadDigits"
+             BackgroundColor="{DynamicResource Bg}">
+    <Grid x:Name="InputGrid" Margin="62,0,0,0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="15" />
+        </Grid.ColumnDefinitions>
+
+        <Ellipse x:Name="Pin1"
+                 Fill="{DynamicResource Fg5}" 
+                 Grid.Row="0" 
+                 Grid.Column="0" />
+        <BoxView Grid.Row="0" Grid.Column="1" />
+
+        <Ellipse x:Name="Pin2"
+                 Fill="{DynamicResource Fg5}" 
+                 Grid.Row="0" 
+                 Grid.Column="2" />
+        <BoxView Grid.Row="0" Grid.Column="3" />
+
+        <Ellipse x:Name="Pin3"
+                 Fill="{DynamicResource Fg5}"
+                 Grid.Row="0"
+                 Grid.Column="4" />
+        <BoxView Grid.Row="0" Grid.Column="5" />
+
+        <Ellipse x:Name="Pin4"
+                 Fill="{DynamicResource Fg5}"
+                 Grid.Row="0"
+                 Grid.Column="6" />
+        <BoxView Grid.Row="0" Grid.Column="7" />
+
+        <Ellipse x:Name="Pin5"
+                 Fill="{DynamicResource Fg5}"
+                 Grid.Row="0"
+                 Grid.Column="8" />
+        <BoxView Grid.Row="0" Grid.Column="9" />
+
+        <Ellipse x:Name="Pin6"
+                 Fill="{DynamicResource Fg5}"
+                 Grid.Row="0"
+                 Grid.Column="10" />
+
+    </Grid>
+
+    <BoxView HeightRequest="30" />
+
+    <FlexLayout Direction="Row" FlexLayout.Grow="1">
+
+        <Button Text="1"
+                FlexLayout.Grow="1"
+                Clicked="PinButtonClicked"
+                Style="{DynamicResource LoginDigitButton}" />
+
+        <Button Text="2"
+                FlexLayout.Grow="1"
+                Clicked="PinButtonClicked"
+                Style="{DynamicResource LoginDigitButton}" />
+
+        <Button Text="3"
+                FlexLayout.Grow="1"
+                Clicked="PinButtonClicked"
+                Style="{DynamicResource LoginDigitButton}" />
+
+    </FlexLayout>
+
+    <FlexLayout Direction="Row" FlexLayout.Grow="1">
+
+        <Button Text="4"
+                FlexLayout.Grow="1"
+                Clicked="PinButtonClicked"
+                Style="{DynamicResource LoginDigitButton}" />
+
+        <Button Text="5"
+                FlexLayout.Grow="1"
+                Clicked="PinButtonClicked"
+                Style="{DynamicResource LoginDigitButton}" />
+
+        <Button Text="6"
+                FlexLayout.Grow="1"
+                Clicked="PinButtonClicked"
+                Style="{DynamicResource LoginDigitButton}" />
+
+    </FlexLayout>
+
+    <FlexLayout Direction="Row" FlexLayout.Grow="1">
+
+        <Button Text="7"
+                FlexLayout.Grow="1"
+                Clicked="PinButtonClicked"
+                Style="{DynamicResource LoginDigitButton}" />
+
+        <Button Text="8"
+                FlexLayout.Grow="1"
+                Clicked="PinButtonClicked"
+                Style="{DynamicResource LoginDigitButton}" />
+
+        <Button Text="9"
+                FlexLayout.Grow="1"
+                Clicked="PinButtonClicked"
+                Style="{DynamicResource LoginDigitButton}" />
+
+    </FlexLayout>
+
+    <FlexLayout Direction="Row" FlexLayout.Grow="1">
+
+        <Button Text=""
+                FlexLayout.Grow="1"
+                Style="{DynamicResource LoginDigitButton}" />
+
+        <Button Text="0"
+                FlexLayout.Grow="1"
+                Clicked="PinButtonClicked"
+                Style="{DynamicResource LoginDigitButton}" />
+
+        <Frame BorderColor="Transparent"
+               FlexLayout.Grow="1"
+               Margin="0,0,6,0"
+               BackgroundColor="{DynamicResource Bg}">
+
+            <ImageButton IsEnabled="True"
+                         HeightRequest="40"
+                         WidthRequest="40" 
+                         CornerRadius="20"
+                         Padding="10"
+                         VerticalOptions="Center"
+                         BackgroundColor="{DynamicResource Bg}"
+                         Clicked="BackspaceClicked"
+                         x:Name="ClickableImg">
+                <ImageButton.Source>
+                    <FontImageSource BindingContext="{x:Reference Name=ClickableImg}"
+                                     Glyph="backspace"
+                                     Color="{DynamicResource FgSuccess}"
+                                     FontFamily="MaterialIcons-Regular" />
+                </ImageButton.Source>
+            </ImageButton>
+        </Frame>
+
+    </FlexLayout>
+</StackLayout>
