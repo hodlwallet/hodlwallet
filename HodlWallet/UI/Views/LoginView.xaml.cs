@@ -104,7 +104,6 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
         }
 
-
         void UnsubscribeToMessages()
         {
             MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "DigitAdded");

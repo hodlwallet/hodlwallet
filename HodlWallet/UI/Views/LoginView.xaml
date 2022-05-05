@@ -47,10 +47,10 @@
                        VerticalOptions="Center"
                        HorizontalOptions="Center"
                        x:Name="LogoFront" >
-
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Logo_Tapped" />
                     </Image.GestureRecognizers>
+
                 </Image>
 
                 <BoxView FlexLayout.Grow="1" />
@@ -62,14 +62,13 @@
                        HorizontalTextAlignment="Center" />
 
                 <Label x:Name="Header"
-                       CharacterSpacing="3"
+                       CharacterSpacing="2"
                        FontFamily="{Binding TitleFontFamily}"
                        FlexLayout.Grow="1"
                        FontAttributes="Bold"
                        FontSize="Title"
                        HorizontalTextAlignment="Center"
-                       Text="{i18n:Translate Text=Pin.enter}"
-                       TextTransform="Uppercase" />
+                       Text="{i18n:Translate Text=Pin.enter}" />
 
                 <Grid x:Name="InputGrid"
                       Padding="10">
@@ -228,7 +227,7 @@
                         FlexLayout.Grow="0.8"
                         x:Name="FingerprintButton"
                         FlexLayout.AlignSelf="Stretch"
-                        Clicked="FingerprintButtonClicked"/>
+                        Clicked="FingerprintButtonClicked" />
             </FlexLayout>
             <controls:NowLoadingIndicator />
         </AbsoluteLayout>
