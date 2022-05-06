@@ -63,7 +63,7 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref currentTransaction, value);
         }
 
-        int remainingItemsThreshold = 1;
+        int remainingItemsThreshold = -1;
 
         public int RemainingItemsThreshold
         {
@@ -77,6 +77,8 @@ namespace HodlWallet.Core.ViewModels
 
         public TransactionsViewModel()
         {
+            isLoadingCollection = true;
+
             NavigateToTransactionDetailsCommand = new Command(NavigateToTransactionDetails);
             RemainingItemsThresholdReachedCommand = new Command(RemainingItemsThresholdReached);
 
@@ -124,6 +126,7 @@ namespace HodlWallet.Core.ViewModels
         async void LoadTxsFromWallet(int size = -1)
         {
             isLoadingCollection = true;
+
             if (size == -1) size = TXS_DEFAULT_ITEMS_SIZE;
 
             IsLoading = true;
@@ -145,8 +148,10 @@ namespace HodlWallet.Core.ViewModels
         void RemainingItemsThresholdReached(object _)
         {
             if (WalletService.Wallet is null) return;
+            if (!WalletService.IsStarted) return;
             if (CurrentAccount is null) return;
             if (isLoadingCollection) return;
+            if (Transactions.Count < TXS_DEFAULT_ITEMS_SIZE) return;
 
             isLoadingCollection = true;
 
@@ -199,10 +204,13 @@ namespace HodlWallet.Core.ViewModels
         {
             RxApp.MainThreadScheduler.Schedule(() =>
             {
-                if (index < 0)
-                    Transactions.Add(model);
-                else
-                    Transactions.Insert(index, model);
+                lock (Transactions)
+                {
+                    if (index < 0)
+                        Transactions.Add(model);
+                    else
+                        Transactions.Insert(index, model);
+                }
             });
         }
     }

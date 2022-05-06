@@ -26,6 +26,7 @@ using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Threading;
 
+using CommunityToolkit.Mvvm.ComponentModel;
 using Liviano.Interfaces;
 using Liviano.Models;
 using NBitcoin;
@@ -38,7 +39,7 @@ using HodlWallet.UI.Locale;
 
 namespace HodlWallet.Core.Models
 {
-    public class TransactionModel : BindableModel, IComparable<TransactionModel>, IEquatable<TransactionModel>
+    public partial class TransactionModel : ObservableObject, IComparable<TransactionModel>, IEquatable<TransactionModel>
     {
         Network Network => WalletService.GetNetwork();
 
@@ -53,27 +54,33 @@ namespace HodlWallet.Core.Models
         readonly CancellationTokenSource cts = new();
 
         public uint256 Id { get; set; }
+
         public string IdText { get; set; }
 
-        public DateTimeOffset CreatedAt { get; set; }
+        [ObservableProperty]
+        //[AlsoNotifyChangeFor(nameof(CreatedAtText))]
+        DateTimeOffset createdAt;
 
-        public string CreatedAtText { get; set; }
+        [ObservableProperty]
+        string createdAtText;
 
-        public Money Amount { get; set; }
+        [ObservableProperty]
+        Money amount;
 
+        [ObservableProperty]
         string amountText;
-        public string AmountText
-        {
-            get => amountText;
-            set => SetProperty(ref amountText, value);
-        }
 
-        public string AmountWithFeeText { get; set; }
+        [ObservableProperty]
+        string amountWithFeeText;
 
-        public string Preposition { get; set; }
+        [ObservableProperty]
+        string preposition;
 
-        public string Address { get; set; }
-        public string AddressText { get; set; }
+        [ObservableProperty]
+        string address;
+
+        [ObservableProperty]
+        string addressText;
 
         string note;
         public string Note
@@ -89,59 +96,42 @@ namespace HodlWallet.Core.Models
             }
         }
 
-        public string AddressTitle { get; set; }
+        [ObservableProperty]
+        string addressTitle;
 
-        public string StatusText { get; set; }
-        public string ConfirmedBlockText { get; set; }
+        [ObservableProperty]
+        string statusText;
 
-        public bool IsReceive { get; set; }
-        public bool IsSend { get; set; }
+        [ObservableProperty]
+        string confirmedBlockText;
 
-        public bool IsSpendable { get; set; }
-        public bool IsConfirmed { get; set; }
+        [ObservableProperty]
+        bool isReceive;
 
-        public int BlockHeight { get; set; }
+        [ObservableProperty]
+        bool isSend;
 
-        public string ConfirmationsText { get; set; }
-        public string IsAvailableText { get; set; }
+        [ObservableProperty]
+        bool isSpendable;
 
-        public Tx TransactionData { get; set; }
+        [ObservableProperty]
+        bool isConfirmed;
+
+        [ObservableProperty]
+        int blockHeight;
+
+        [ObservableProperty]
+        string confirmationsText;
+
+        [ObservableProperty]
+        string isAvailableText;
+
+        [ObservableProperty]
+        Tx transactionData;
 
         public TransactionModel(Tx transactionData)
         {
-            TransactionData = transactionData;
-
-            Id = TransactionData.Id;
-            IdText = TransactionData.Id.ToString();
-
-            IsSend = TransactionData.Type == TxType.Send;
-            IsReceive = TransactionData.Type == TxType.Receive;
-
-            Preposition = IsSend ? LocaleResources.TransactionDetails_to : LocaleResources.TransactionDetails_from;
-
-            CreatedAt = TransactionData.CreatedAt;
-            CreatedAtText = TransactionData.CreatedAt.ToString();
-
-            Amount = GetAmount();
-
-            AmountText = GetAmountText();
-
-            AmountWithFeeText = GetAmountWithFeesText();
-
-            Address = GetAddress();
-            AddressText = GetAddressText();
-
-            Note = GetNote();
-
-            AddressTitle = GetAddressTitleText();
-
-            BlockHeight = (int)(TransactionData.Height);
-
-            IsSpendable = true;
-
-            StatusText = GetStatusText();
-            IsAvailableText = StatusText; // TODO why?
-            ConfirmedBlockText = GetConfirmedBlockText();
+            UpdateFromTxData(transactionData);
 
             PrecioService
                 .WhenAnyValue(service => service.Rates, service => service.Precio)
