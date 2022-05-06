@@ -21,10 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Threading;
 
+using Liviano.Interfaces;
 using Liviano.Models;
 using NBitcoin;
 using ReactiveUI;
@@ -38,7 +40,11 @@ namespace HodlWallet.Core.Models
 {
     public class TransactionModel : BindableModel, IComparable<TransactionModel>, IEquatable<TransactionModel>
     {
-        Network Network => DependencyService.Get<IWalletService>().GetNetwork();
+        Network Network => WalletService.GetNetwork();
+
+        IAccount CurrentAccount => WalletService.Wallet.CurrentAccount;
+
+        IWalletService WalletService => DependencyService.Get<IWalletService>();
 
         IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
 
@@ -146,6 +152,59 @@ namespace HodlWallet.Core.Models
                 .WhenAnyValue(service => service.CurrencyType, service => service.FiatCurrencyCode)
                 .ObserveOn(RxApp.TaskpoolScheduler)
                 .Subscribe(_ => UpdateAmountText(), cts.Token);
+
+            CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
+        }
+
+        void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.OldItems is null)
+                return;
+
+            foreach (Tx item in e.OldItems)
+            {
+                if (item.Id == Id)
+                {
+                    UpdateFromTxData(item);
+                }
+            }
+        }
+
+        void UpdateFromTxData(Tx tx)
+        {
+            TransactionData = tx;
+
+            Id = TransactionData.Id;
+            IdText = TransactionData.Id.ToString();
+
+            IsSend = TransactionData.Type == TxType.Send;
+            IsReceive = TransactionData.Type == TxType.Receive;
+
+            Preposition = IsSend ? LocaleResources.TransactionDetails_to : LocaleResources.TransactionDetails_from;
+
+            CreatedAt = TransactionData.CreatedAt;
+            CreatedAtText = TransactionData.CreatedAt.ToString();
+
+            Amount = GetAmount();
+
+            AmountText = GetAmountText();
+
+            AmountWithFeeText = GetAmountWithFeesText();
+
+            Address = GetAddress();
+            AddressText = GetAddressText();
+
+            Note = GetNote();
+
+            AddressTitle = GetAddressTitleText();
+
+            BlockHeight = (int)(TransactionData.Height);
+
+            IsSpendable = true;
+
+            StatusText = GetStatusText();
+            IsAvailableText = StatusText; // TODO why?
+            ConfirmedBlockText = GetConfirmedBlockText();
         }
 
         string GetNote()

@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.IO;
 using System.Reactive.Linq;
 using System.Threading;
 
@@ -51,7 +52,7 @@ namespace HodlWallet.UI
             InitializeComponent();
 
 #if WIPE_WALLET
-            SecureStorageService.RemoveAll();
+            WipeWallet();
 #endif
 
             RegisterServices();
@@ -113,6 +114,16 @@ namespace HodlWallet.UI
 
             LocaleResources.Culture = ci; // set the RESX for resource localization
             Localize.SetLocale(ci); // set the Thread for locale-aware methods
+        }
+
+        void WipeWallet()
+        {
+            var path = $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/wallets";
+
+            if (Directory.Exists(path))
+                Directory.Delete(path, true);
+
+            SecureStorageService.RemoveAll();
         }
 
         void CollectExistingKeys()
