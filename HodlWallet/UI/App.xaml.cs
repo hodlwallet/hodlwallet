@@ -116,7 +116,9 @@ namespace HodlWallet.UI
             Localize.SetLocale(ci); // set the Thread for locale-aware methods
         }
 
+#pragma warning disable IDE0051 // Remove unused private members
         void WipeWallet()
+#pragma warning restore IDE0051 // Remove unused private members
         {
             var path = $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/wallets";
 
@@ -126,7 +128,9 @@ namespace HodlWallet.UI
             SecureStorageService.RemoveAll();
         }
 
+#pragma warning disable IDE0051 // Remove unused private members
         void CollectExistingKeys()
+#pragma warning restore IDE0051 // Remove unused private members
         {
             // TODO would be cool to use this to migrate old users
             try

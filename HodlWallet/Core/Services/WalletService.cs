@@ -25,13 +25,16 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.IO;
+using System.Reactive.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Threading;
 
 using Xamarin.Forms;
-
+using ReactiveUI;
 using NBitcoin;
 
 using Liviano;
@@ -44,9 +47,6 @@ using Liviano.Exceptions;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
-using System.Reactive.Linq;
-using ReactiveUI;
-using System.Diagnostics;
 
 [assembly: Dependency(typeof(WalletService))]
 namespace HodlWallet.Core.Services
@@ -371,23 +371,11 @@ namespace HodlWallet.Core.Services
         /// <param name="dryRun">Do not delete anything just try</param>
         public void DestroyWallet(bool dryRun = false)
         {
-            if (network == null)
-            {
-                string networkStr = SecureStorageService.GetNetwork();
+            var path = $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/wallets";
 
-                network = Network.GetNetwork(networkStr);
-            }
+            if (Directory.Exists(path))
+                Directory.Delete(path, true);
 
-            if (dryRun) return;
-
-            lock (@lock)
-            {
-                // Database cleanup
-                // Delete method in FileSystemStorage
-                Wallet.Storage.Delete();
-            }
-
-            // TODO Make sure that removing all secure storage is the right thing to do
             SecureStorageService.RemoveAll();
         }
 

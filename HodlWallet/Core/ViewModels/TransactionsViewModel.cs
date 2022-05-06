@@ -23,30 +23,37 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
-using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Input;
 
 using Liviano.Interfaces;
 using Liviano.Models;
+using NBitcoin;
 using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
-using HodlWallet.UI.Extensions;
-using System;
+using System.Collections.Concurrent;
+using System.Reactive.Concurrency;
 
 namespace HodlWallet.Core.ViewModels
 {
     class TransactionsViewModel : BaseViewModel
     {
-        public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
+        ObservableCollection<TransactionModel> transactions = new();
+        public ObservableCollection<TransactionModel> Transactions
+        {
+            get => transactions;
+            set => SetProperty(ref transactions, value);
+        }
 
         const int TXS_DEFAULT_ITEMS_SIZE = 10;
 
@@ -75,10 +82,10 @@ namespace HodlWallet.Core.ViewModels
 
         List<Tx> Txs => CurrentAccount.Txs.OrderByDescending(tx => tx.CreatedAt).ToList();
 
+        readonly ConcurrentQueue<uint256> queue = new();
+
         public TransactionsViewModel()
         {
-            isLoadingCollection = true;
-
             NavigateToTransactionDetailsCommand = new Command(NavigateToTransactionDetails);
             RemainingItemsThresholdReachedCommand = new Command(RemainingItemsThresholdReached);
 
@@ -88,30 +95,88 @@ namespace HodlWallet.Core.ViewModels
 
         void Init()
         {
-            LoadTxsFromWallet();
             SubscribeToEvents();
+            LoadTxsFromWallet();
+
+            Observable.Start(async () => await ProcessQueue(), RxApp.MainThreadScheduler);
         }
 
         void SubscribeToEvents()
         {
-            WalletService.Wallet.OnNewTransaction += Wallet_OnNewTransaction;
             CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
             WalletService.OnSyncFinished += Wallet_OnSyncFinished;
         }
 
-        void Wallet_OnSyncFinished(object sender, DateTimeOffset e)
+        async Task ProcessQueue()
         {
-            Observable.Start(() =>
-            {
-                Transactions.Clear();
+            IsLoading = true;
 
-                LoadTxsFromWallet();
-            }, RxApp.MainThreadScheduler);
+            while (queue.TryDequeue(out var id))
+            {
+                var tx = Txs.FirstOrDefault(tx => tx.Id == id);
+                var model = Transactions.FirstOrDefault(tx => tx.Id == id);
+
+                if (tx is null)
+                {
+                    var res = model is not null;
+
+                    // Remove
+                    res = Transactions.Remove(model);
+
+                    if (res) Debug.WriteLine("[ProcessQueue] Removed tx: {txId}", id);
+                    else Debug.WriteLine("[ProcessQueue] Failed to remove tx: {txId}", id);
+
+                    continue;
+                }
+
+                if (model is null) model = TransactionModel.FromTransactionData(tx);
+
+                if (Transactions.Contains(model))
+                {
+                    var index = Transactions.IndexOf(model);
+
+                    // Change
+                    Transactions.RemoveAt(index);
+                    Transactions.Insert(index, model);
+                }
+                else
+                {
+                    // Add
+                    Transactions.Add(model);
+                }
+            }
+
+            await Task.Delay(420);
+
+            IsLoading = false;
+
+            await Task.CompletedTask;
         }
 
-        void Wallet_OnNewTransaction(object sender, Liviano.Events.TxEventArgs e)
+        void Wallet_OnSyncFinished(object sender, DateTimeOffset e)
         {
-            Debug.WriteLine($"[Wallet_OnNewTransaction] New transaction on wallet {e.Tx.Id}");
+            // Check changes and removal
+            foreach (var model in Transactions)
+            {
+                var tx = Txs.FirstOrDefault(x => x.Id == model.Id);
+
+                if (tx is null) // Remove
+                    queue.Enqueue(model.Id);
+                else if (TransactionModel.FromTransactionData(tx) != model) // Change
+                    queue.Enqueue(model.Id);
+            }
+
+            // Check for new txs
+            var added = 0;
+            foreach (var tx in Txs.Take(Transactions.Count))
+            {
+                if (!Transactions.Any(x => x.Id == tx.Id))
+                {
+                    queue.Enqueue(tx.Id);
+
+                    added++;
+                }
+            }
         }
 
         void NavigateToTransactionDetails(object obj)
@@ -123,95 +188,43 @@ namespace HodlWallet.Core.ViewModels
             CurrentTransaction = null;
         }
 
-        async void LoadTxsFromWallet(int size = -1)
+        void LoadTxsFromWallet(int size = -1)
         {
-            isLoadingCollection = true;
+            IsLoading = true;
 
             if (size == -1) size = TXS_DEFAULT_ITEMS_SIZE;
 
-            IsLoading = true;
             foreach (var tx in Txs.Take(size))
-            {
-                var txModel = TransactionModel.FromTransactionData(tx);
-
-                TransactionsAdd(txModel);
-            }
-            await Task.Delay(420);
-            IsLoading = false;
-
-            // FIXME Bug on iOS
-            //MessagingCenter.Send(this, "ScrollToTop");
-
-            isLoadingCollection = false;
+                queue.Enqueue(tx.Id);
         }
 
         void RemainingItemsThresholdReached(object _)
         {
-            if (WalletService.Wallet is null) return;
-            if (!WalletService.IsStarted) return;
-            if (CurrentAccount is null) return;
-            if (isLoadingCollection) return;
-            if (Transactions.Count < TXS_DEFAULT_ITEMS_SIZE) return;
-
-            isLoadingCollection = true;
+            Debug.WriteLine("[RemainingItemsThresholdReached] Triggerred");
 
             foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_DEFAULT_ITEMS_SIZE))
-            {
-                var txModel = TransactionModel.FromTransactionData(tx);
-                TransactionsAdd(txModel);
-            }
+                queue.Enqueue(tx.Id);
 
-            isLoadingCollection = false;
+            Observable.Start(async () => await ProcessQueue(), RxApp.MainThreadScheduler).Wait();
         }
 
         void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems is not null)
-            {
-                var size = Transactions.Count + e.NewItems.Count;
-
-                Transactions.Clear();
-
-                LoadTxsFromWallet(size);
-            }
-
-            //if (e.NewItems is not null)
-            //    foreach (Tx item in e.NewItems)
-            //    {
-            //        var txModel = TransactionModel.FromTransactionData(item);
-            //        TransactionsAdd(txModel, 0);
-            //    }
-
-            //if (e.OldItems is not null)
-            //    foreach (Tx item in e.OldItems)
-            //    {
-            //        var txModel = TransactionModel.FromTransactionData(item);
-            //        TransactionChanged(txModel);
-            //    }
-
-            ////Transactions.Sort();
-
-            // FIXME this performs poorly
-            //MessagingCenter.Send(this, "ScrollToTop");
-        }
-
-        /// <summary>
-        /// Add to the observable collection not duplicating
-        /// </summary>
-        /// <param name="model">A model of a tx</param>
-        /// <param name="index">Index where to insert the tx</param>
-        void TransactionsAdd(TransactionModel model, int index = -1)
-        {
-            RxApp.MainThreadScheduler.Schedule(() =>
-            {
-                lock (Transactions)
+                foreach (Tx item in e.NewItems)
                 {
-                    if (index < 0)
-                        Transactions.Add(model);
-                    else
-                        Transactions.Insert(index, model);
+                    queue.Enqueue(item.Id);
                 }
-            });
+
+            if (e.OldItems is not null)
+                foreach (Tx item in e.OldItems)
+                {
+                    queue.Enqueue(item.Id);
+                }
+
+            Observable.Start(async () => await ProcessQueue(), RxApp.MainThreadScheduler).Wait();
+
+            MessagingCenter.Send(this, "ScrollToTop");
         }
     }
 }

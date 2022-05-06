@@ -142,22 +142,6 @@ namespace HodlWallet.Core.Models
                 .WhenAnyValue(service => service.CurrencyType, service => service.FiatCurrencyCode)
                 .ObserveOn(RxApp.TaskpoolScheduler)
                 .Subscribe(_ => UpdateAmountText(), cts.Token);
-
-            CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
-        }
-
-        void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.OldItems is null)
-                return;
-
-            foreach (Tx item in e.OldItems)
-            {
-                if (item.Id == Id)
-                {
-                    UpdateFromTxData(item);
-                }
-            }
         }
 
         void UpdateFromTxData(Tx tx)
