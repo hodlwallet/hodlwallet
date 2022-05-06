@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HodlWallet.UI.Controls.PinPadDigits"
              BackgroundColor="{DynamicResource Bg}">
-    <Grid x:Name="InputGrid" Margin="40,0,0,0">
+    <Grid
+        x:Name="InputGrid"
+        Margin="0,0,0,0"
+        HorizontalOptions="CenterAndExpand">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="15" />
@@ -62,21 +65,23 @@
 
     <BoxView HeightRequest="10" />
 
-    <StackLayout Orientation="Horizontal" FlexLayout.Grow="1">
+    <StackLayout
+        Orientation="Horizontal"
+        FlexLayout.Grow="1" >
 
         <Button Text="1"
-                FlexLayout.Grow="1"
                 Clicked="PinButtonClicked"
+                HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
         <Button Text="2"
-                FlexLayout.Grow="1"
                 Clicked="PinButtonClicked"
+                HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
         <Button Text="3"
-                FlexLayout.Grow="1"
                 Clicked="PinButtonClicked"
+                HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
     </StackLayout>
@@ -84,18 +89,18 @@
     <StackLayout Orientation="Horizontal" FlexLayout.Grow="1">
 
         <Button Text="4"
-                FlexLayout.Grow="1"
                 Clicked="PinButtonClicked"
+                HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
         <Button Text="5"
-                FlexLayout.Grow="1"
                 Clicked="PinButtonClicked"
+                HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
         <Button Text="6"
-                FlexLayout.Grow="1"
                 Clicked="PinButtonClicked"
+                HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
     </StackLayout>
@@ -103,51 +108,63 @@
     <StackLayout Orientation="Horizontal" FlexLayout.Grow="1">
 
         <Button Text="7"
-                FlexLayout.Grow="1"
                 Clicked="PinButtonClicked"
+                HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
         <Button Text="8"
                 FlexLayout.Grow="1"
                 Clicked="PinButtonClicked"
+                HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
         <Button Text="9"
                 FlexLayout.Grow="1"
                 Clicked="PinButtonClicked"
+                HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
     </StackLayout>
 
-    <StackLayout Orientation="Horizontal" FlexLayout.Grow="1">
+    <StackLayout
+        Orientation="Horizontal"
+        FlexLayout.Grow="1">
 
-        <Button Text=""
-                FlexLayout.Grow="1"
-                Style="{DynamicResource LoginDigitButton}"
-                IsEnabled="False"/>
+        <StackLayout VerticalOptions="FillAndExpand" >
+            <Button Text=""
+                    Style="{DynamicResource LoginDigitButton}"
+                    HorizontalOptions="CenterAndExpand"
+                    IsEnabled="False"/>
+        </StackLayout>
 
-        <Button Text="0"
-                FlexLayout.Grow="1"
+        <StackLayout VerticalOptions="CenterAndExpand" >
+            <Button Text="0"
                 Clicked="PinButtonClicked"
+                HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
+        </StackLayout>
+
+
+        <StackLayout VerticalOptions="Center" BackgroundColor="GreenYellow" HorizontalOptions="CenterAndExpand">
             <ImageButton IsEnabled="True"
-                         HeightRequest="40"
-                         WidthRequest="40" 
-                         CornerRadius="10"
-                         Padding="10"
-                         Margin="25,0,0,0"
-                         VerticalOptions="Center"
-                         BackgroundColor="{DynamicResource Bg}"
-                         Clicked="BackspaceClicked"
-                         x:Name="ClickableImg">
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            CornerRadius="0"
+                            Padding="5"
+                            Margin="0,0,0,0"
+                            VerticalOptions="Center"
+                            BackgroundColor="{DynamicResource Bg}"
+                            Clicked="BackspaceClicked"
+                            x:Name="ClickableImg">
                 <ImageButton.Source>
                     <FontImageSource BindingContext="{x:Reference Name=ClickableImg}"
-                                     Glyph="backspace"
-                                     Color="{DynamicResource FgSuccess}"
-                                     FontFamily="MaterialIcons-Regular" />
+                                        Glyph="backspace"
+                                        Color="{DynamicResource FgSuccess}"
+                                        FontFamily="MaterialIcons-Regular" />
                 </ImageButton.Source>
             </ImageButton>
+        </StackLayout>
 
     </StackLayout>
 </StackLayout>
