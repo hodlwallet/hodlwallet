@@ -66,6 +66,10 @@ namespace HodlWallet.UI.Views
             LogoFront.IsVisible = false;
             ContHeader.IsVisible = true;
             Header.IsVisible = false;
+            fingerprint.IsVisible = false;
+            fingerprintspacer.IsVisible = true;
+            enterlabelspacer.IsVisible = true;
+
 
             //Header.Text = Locale.LocaleResources.Pin_updateHeader;
             Title = Locale.LocaleResources.Pin_updateTitle;
@@ -82,7 +86,7 @@ namespace HodlWallet.UI.Views
 
             var biometricsAllow = Preferences.Get("biometricsAllow", false);
 
-            FingerprintButton.IsVisible = ViewModel.BiometricsAvailable && biometricsAllow;
+            //FingerprintButton.IsVisible = ViewModel.BiometricsAvailable && biometricsAllow;
         }
 
         protected override void OnDisappearing()
@@ -96,20 +100,16 @@ namespace HodlWallet.UI.Views
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitAdded", DigitAdded);
-            MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitRemoved", DigitRemoved);
-            MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", IncorrectPinAnimation);
+           // MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitAdded", DigitAdded);
+           // MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitRemoved", DigitRemoved);
+           // MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", IncorrectPinAnimation);
             MessagingCenter.Subscribe<LoginViewModel>(this, "StartAppShell", async (vm) => await StartAppShell(vm));
             MessagingCenter.Subscribe<LoginViewModel>(this, "UpdatePin", UpdatePin);
-            MessagingCenter.Subscribe<LoginViewModel>(this, "ResetPin", ResetPin);
         }
 
         void UnsubscribeToMessages()
         {
-            MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "DigitAdded");
-            MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "DigitRemoved");
-            MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "IncorrectPinAnimation");
-            MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "ResetPin");
+           // MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "IncorrectPinAnimation");
             MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "StartAppShell");
             MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "UpdatePin");
         }
@@ -118,19 +118,19 @@ namespace HodlWallet.UI.Views
         {
             ViewModel.BiometricsAvailable = await CrossFingerprint.Current.IsAvailableAsync();
         }
-
+/*
         void DigitAdded(LoginViewModel _, int index)
         {
             Debug.WriteLine($"[SubscribeToMessage][DigitAdded] Add digit: {index}");
 
-            ColorDigitTo(index, DigitOnColor);
+            //ColorDigitTo(index, DigitOnColor);
         }
 
         void DigitRemoved(LoginViewModel _, int index)
         {
             Debug.WriteLine($"[SubscribeToMessage][DigitRemoved] Remove digit: {index}");
 
-            ColorDigitTo(index, DigitOffColor);
+            //ColorDigitTo(index, DigitOffColor);
         }
 
         async void IncorrectPinAnimation(LoginViewModel _)
@@ -149,7 +149,7 @@ namespace HodlWallet.UI.Views
 
             await Task.Delay(500);
         }
-
+        */
         async Task StartAppShell(LoginViewModel vm)
         {
             Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
@@ -174,43 +174,6 @@ namespace HodlWallet.UI.Views
             await Navigation.PushAsync(new PinPadView("PinPadChangeView"));
             UnsubscribeToMessages();
             return;
-        }
-
-        void ResetPin(LoginViewModel _)
-        {
-            Debug.WriteLine($"[SubscribeToMessage][ResetPin]");
-
-            Pin1.Fill = DigitOffColor;
-            Pin2.Fill = DigitOffColor;
-            Pin3.Fill = DigitOffColor;
-            Pin4.Fill = DigitOffColor;
-            Pin5.Fill = DigitOffColor;
-            Pin6.Fill = DigitOffColor;
-        }
-
-        void ColorDigitTo(int index, Color color)
-        {
-            switch (index)
-            {
-                case 1:
-                    Pin1.Fill = color;
-                    break;
-                case 2:
-                    Pin2.Fill = color;
-                    break;
-                case 3:
-                    Pin3.Fill = color;
-                    break;
-                case 4:
-                    Pin4.Fill = color;
-                    break;
-                case 5:
-                    Pin5.Fill = color;
-                    break;
-                case 6:
-                    Pin6.Fill = color;
-                    break;
-            }
         }
 
         async void Logo_Tapped(object sender, EventArgs e)

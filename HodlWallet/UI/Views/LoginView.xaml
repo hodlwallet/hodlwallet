@@ -27,9 +27,8 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>-->
             <FlexLayout Direction="Column"
-                        Margin="20"
                         BackgroundColor="{DynamicResource Bg}"
                         JustifyContent="SpaceAround"
                         AlignItems="Center">
@@ -53,8 +52,6 @@
 
                 </Image>
 
-                <BoxView FlexLayout.Grow="1" />
-
                 <Label IsVisible="false"
                        FlexLayout.Grow="1"
                        Text="{i18n:Translate Text=Pin.updateTitle}"
@@ -70,166 +67,41 @@
                        HorizontalTextAlignment="Center"
                        Text="{i18n:Translate Text=Pin.enter}" />
 
-                <Grid x:Name="InputGrid"
-                      Padding="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="15" />
-                    </Grid.RowDefinitions>
+            <BoxView x:Name="enterlabelspacer" FlexLayout.Grow="1" IsVisible="false"/>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="15" />
-                        <ColumnDefinition Width="15" />
-                        <ColumnDefinition Width="15" />
-                        <ColumnDefinition Width="15" />
-                        <ColumnDefinition Width="15" />
-                        <ColumnDefinition Width="15" />
-                        <ColumnDefinition Width="15" />
-                        <ColumnDefinition Width="15" />
-                        <ColumnDefinition Width="15" />
-                        <ColumnDefinition Width="15" />
-                        <ColumnDefinition Width="15" />
-                    </Grid.ColumnDefinitions>
-                    
-                    <Ellipse x:Name="Pin1" 
-                             Fill="{DynamicResource Fg5}" 
-                             Grid.Row="0" 
-                             Grid.Column="0" />
-                    <BoxView Grid.Row="0" Grid.Column="1"/>
-                    
-                    <Ellipse x:Name="Pin2" 
-                             Fill="{DynamicResource Fg5}" 
-                             Grid.Row="0" 
-                             Grid.Column="2" />
-                    <BoxView Grid.Row="0" Grid.Column="3"/>
+            <controls:PinPadDigits x:Name="PinPadControl" />
 
-                    <Ellipse x:Name="Pin3"
-                             Fill="{DynamicResource Fg5}"
-                             Grid.Row="0"
-                             Grid.Column="4" />
-                    <BoxView Grid.Row="0" Grid.Column="5" />
-                    
-                    <Ellipse x:Name="Pin4"
-                             Fill="{DynamicResource Fg5}"
-                             Grid.Row="0"
-                             Grid.Column="6" />
-                    <BoxView Grid.Row="0" Grid.Column="7" />
-                    
-                    <Ellipse x:Name="Pin5"
-                             Fill="{DynamicResource Fg5}"
-                             Grid.Row="0"
-                             Grid.Column="8" />
-                    <BoxView Grid.Row="0" Grid.Column="9" />
-                    
-                    <Ellipse x:Name="Pin6"
-                             Fill="{DynamicResource Fg5}"
-                             Grid.Row="0"
-                             Grid.Column="10" />
-                </Grid>
-
-                <BoxView HeightRequest="30" />
-
-                <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1">
-
-                    <Button Text="1"                            
-                            FlexLayout.Grow="1"
-                            Command="{Binding DigitCommand}"
-                            CommandParameter="1"
-                            Style="{DynamicResource LoginDigitButton}" />
-
-                    <Button Text="2"
-                            FlexLayout.Grow="1"
-                            Command="{Binding DigitCommand}"
-                            CommandParameter="2"
-                            Style="{DynamicResource LoginDigitButton}" />
-
-                    <Button Text="3"
-                            FlexLayout.Grow="1"
-                            Command="{Binding DigitCommand}"
-                            CommandParameter="3"
-                            Style="{DynamicResource LoginDigitButton}" />
-                </FlexLayout>
-
-                <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1">
-
-                    <Button Text="4"
-                            FlexLayout.Grow="1"
-                            Command="{Binding DigitCommand}"
-                            CommandParameter="4"
-                            Style="{DynamicResource LoginDigitButton}" />
-
-                    <Button Text="5"
-                            FlexLayout.Grow="1"
-                            Command="{Binding DigitCommand}"
-                            CommandParameter="5"
-                            Style="{DynamicResource LoginDigitButton}" />
-
-                    <Button Text="6"
-                            FlexLayout.Grow="1"
-                            Command="{Binding DigitCommand}"
-                            CommandParameter="6"
-                            Style="{DynamicResource LoginDigitButton}" />
-
-                </FlexLayout>
-
-                <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1">
-
-                    <Button Text="7"
-                            FlexLayout.Grow="1"
-                            Command="{Binding DigitCommand}"
-                            CommandParameter="7"
-                            Style="{DynamicResource LoginDigitButton}" />
-
-                    <Button Text="8"
-                            FlexLayout.Grow="1"
-                            Command="{Binding DigitCommand}"
-                            CommandParameter="8"
-                            Style="{DynamicResource LoginDigitButton}" />
-
-                    <Button Text="9"
-                            FlexLayout.Grow="1"
-                            Command="{Binding DigitCommand}"
-                            CommandParameter="9"
-                            Style="{DynamicResource LoginDigitButton}" />
-                </FlexLayout>
-
-                <FlexLayout Direction="Row"
-                            FlexLayout.Grow="1">
-
-                    <Button Text=""
-                            FlexLayout.Grow="1"
-                            Style="{DynamicResource LoginDigitButton}" />
-
-                    <Button Text="0"
-                            FlexLayout.Grow="1"
-                            Command="{Binding DigitCommand}"
-                            CommandParameter="0"
-                            Style="{DynamicResource LoginDigitButton}" />
-
-                    <Frame BorderColor="Transparent"
-                           FlexLayout.Grow="1"
-                           Margin="0,0,6,0"
-                           BackgroundColor="{DynamicResource Bg}">
-                        <controls:FontImageIcon
-                            Glyph="backspace"
-                            Command="{Binding BackspaceCommand}"
-                            BackgroundColor="{DynamicResource Bg}" />
-                    </Frame>
-
-                </FlexLayout>
-
-                <Button Text="{i18n:Translate Text=Login.useBiometric}"
+                <!--<Button Text="{i18n:Translate Text=Login.useBiometric}"
                         Style="{DynamicResource SecondaryButton}"
                         FontSize="Large"
                         CornerRadius="0"
                         FlexLayout.Grow="0.8"
                         x:Name="FingerprintButton"
                         FlexLayout.AlignSelf="Stretch"
-                        Clicked="FingerprintButtonClicked" />
-            </FlexLayout>
-            <controls:NowLoadingIndicator />
-        </AbsoluteLayout>
+                        Clicked="FingerprintButtonClicked" />-->
+
+            <ImageButton
+                     HeightRequest="60"
+                     WidthRequest="60"
+                     CornerRadius="20"
+                     Padding="10"
+                     VerticalOptions="Center"
+                     BackgroundColor="{DynamicResource Bg}"
+                     x:Name="fingerprint"
+                     FlexLayout.Grow="1"
+                     Clicked="FingerprintButtonClicked">
+                <ImageButton.Source>
+                    <FontImageSource BindingContext="{x:Reference fingerprint}"
+                         FontFamily="MaterialIcons-Regular"
+                         Color="{DynamicResource FgSuccess}"
+                         Glyph="{OnPlatform Android=fingerprint,iOS=screen_attention}" />
+                </ImageButton.Source>
+            </ImageButton>
+
+            <BoxView HeightRequest="60" x:Name="fingerprintspacer" FlexLayout.Grow="1" IsVisible="false"/>
+
+        </FlexLayout>
+            <!--<controls:NowLoadingIndicator />-->
+        <!--</AbsoluteLayout>-->
     </ContentPage.Content>
 </ContentPage>

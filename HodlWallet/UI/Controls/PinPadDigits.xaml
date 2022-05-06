@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HodlWallet.UI.Controls.PinPadDigits"
              BackgroundColor="{DynamicResource Bg}">
-    <Grid x:Name="InputGrid" Margin="62,0,0,0">
+    <Grid x:Name="InputGrid" Margin="40,0,0,0">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="15" />
@@ -60,9 +60,9 @@
 
     </Grid>
 
-    <BoxView HeightRequest="30" />
+    <BoxView HeightRequest="10" />
 
-    <FlexLayout Direction="Row" FlexLayout.Grow="1">
+    <StackLayout Orientation="Horizontal" FlexLayout.Grow="1">
 
         <Button Text="1"
                 FlexLayout.Grow="1"
@@ -79,9 +79,9 @@
                 Clicked="PinButtonClicked"
                 Style="{DynamicResource LoginDigitButton}" />
 
-    </FlexLayout>
+    </StackLayout>
 
-    <FlexLayout Direction="Row" FlexLayout.Grow="1">
+    <StackLayout Orientation="Horizontal" FlexLayout.Grow="1">
 
         <Button Text="4"
                 FlexLayout.Grow="1"
@@ -98,9 +98,9 @@
                 Clicked="PinButtonClicked"
                 Style="{DynamicResource LoginDigitButton}" />
 
-    </FlexLayout>
+    </StackLayout>
 
-    <FlexLayout Direction="Row" FlexLayout.Grow="1">
+    <StackLayout Orientation="Horizontal" FlexLayout.Grow="1">
 
         <Button Text="7"
                 FlexLayout.Grow="1"
@@ -117,29 +117,26 @@
                 Clicked="PinButtonClicked"
                 Style="{DynamicResource LoginDigitButton}" />
 
-    </FlexLayout>
+    </StackLayout>
 
-    <FlexLayout Direction="Row" FlexLayout.Grow="1">
+    <StackLayout Orientation="Horizontal" FlexLayout.Grow="1">
 
         <Button Text=""
                 FlexLayout.Grow="1"
-                Style="{DynamicResource LoginDigitButton}" />
+                Style="{DynamicResource LoginDigitButton}"
+                IsEnabled="False"/>
 
         <Button Text="0"
                 FlexLayout.Grow="1"
                 Clicked="PinButtonClicked"
                 Style="{DynamicResource LoginDigitButton}" />
 
-        <Frame BorderColor="Transparent"
-               FlexLayout.Grow="1"
-               Margin="0,0,6,0"
-               BackgroundColor="{DynamicResource Bg}">
-
             <ImageButton IsEnabled="True"
                          HeightRequest="40"
                          WidthRequest="40" 
-                         CornerRadius="20"
+                         CornerRadius="10"
                          Padding="10"
+                         Margin="25,0,0,0"
                          VerticalOptions="Center"
                          BackgroundColor="{DynamicResource Bg}"
                          Clicked="BackspaceClicked"
@@ -151,7 +148,6 @@
                                      FontFamily="MaterialIcons-Regular" />
                 </ImageButton.Source>
             </ImageButton>
-        </Frame>
 
-    </FlexLayout>
+    </StackLayout>
 </StackLayout>
