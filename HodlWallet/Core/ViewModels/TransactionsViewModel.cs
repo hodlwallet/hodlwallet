@@ -27,11 +27,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using System.Threading;
 using System.Windows.Input;
 
 using Liviano.Interfaces;
@@ -41,8 +41,6 @@ using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
-using System.Collections.Concurrent;
-using System.Reactive.Concurrency;
 using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.Core.ViewModels
@@ -85,8 +83,6 @@ namespace HodlWallet.Core.ViewModels
 
         public TransactionsViewModel()
         {
-            IsLoading = false;
-
             NavigateToTransactionDetailsCommand = new Command(NavigateToTransactionDetails);
             RemainingItemsThresholdReachedCommand = new Command(RemainingItemsThresholdReached);
 
@@ -110,21 +106,35 @@ namespace HodlWallet.Core.ViewModels
 
         async Task ProcessQueue()
         {
+            try
+            {
+                await DoProcessQueue();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("[ProcessQueue] {msg}", ex.Message);
+
+                IsLoading = false;
+            }
+        }
+
+        async Task DoProcessQueue()
+        {
             if (queue.IsEmpty) return;
 
             while (queue.TryDequeue(out var id))
             {
                 var tx = Txs.FirstOrDefault(tx => tx.Id == id);
-                var model = Transactions.FirstOrDefault(tx => tx.Id == id);
+                var currentModel = Transactions.FirstOrDefault(tx => tx.Id == id);
 
                 if (tx is null)
                 {
                     IsLoading = true;
 
-                    var res = model is not null;
+                    var res = currentModel is not null;
 
                     // Remove
-                    res = Transactions.Remove(model);
+                    res = Transactions.Remove(currentModel);
 
                     if (res) Debug.WriteLine("[ProcessQueue] Removed tx: {txId}", id);
                     else Debug.WriteLine("[ProcessQueue] Failed to remove tx: {txId}", id);
@@ -140,10 +150,10 @@ namespace HodlWallet.Core.ViewModels
 
                 IsLoading = true;
 
-                if (model is null) model = TransactionModel.FromTransactionData(tx);
-
-                if (Transactions.Any(x => x == model))
+                var model = TransactionModel.FromTransactionData(tx);
+                if (currentModel is not null && Transactions.Any(x => x.Id == currentModel.Id))
                 {
+
                     var index = Transactions.IndexOf(model);
 
                     // Change
@@ -157,9 +167,9 @@ namespace HodlWallet.Core.ViewModels
                 }
             }
 
-            IsLoading = false;
-            
             Transactions.Sort();
+
+            IsLoading = false;
 
             await Task.CompletedTask;
         }
@@ -205,8 +215,6 @@ namespace HodlWallet.Core.ViewModels
 
         void LoadTxsFromWallet(int size = -1)
         {
-            IsLoading = true;
-
             if (size == -1) size = TXS_DEFAULT_ITEMS_SIZE;
 
             foreach (var tx in Txs.Take(size))
@@ -218,6 +226,7 @@ namespace HodlWallet.Core.ViewModels
             if (WalletService.Wallet is null) return;
             if (CurrentAccount is null) return;
             if (Txs is null) return;
+            if (Transactions.Count == Txs.Count) return;
 
             foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_DEFAULT_ITEMS_SIZE))
                 queue.Enqueue(tx.Id);
@@ -241,7 +250,7 @@ namespace HodlWallet.Core.ViewModels
 
             Observable.Start(async () => await ProcessQueue(), RxApp.MainThreadScheduler);
 
-            MessagingCenter.Send(this, "ScrollToTop");
+            //MessagingCenter.Send(this, "ScrollToTop");
         }
     }
 }

@@ -23,6 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using HodlWallet.Core.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -31,10 +32,9 @@ namespace HodlWallet.UI.Extensions
 {
     public static class ObservableCollectionExtensions
     {
-        public static void Sort<T>(this ObservableCollection<T> collection)
-        where T : IComparable<T>, IEquatable<T>
+        public static void Sort(this ObservableCollection<TransactionModel> collection)
         {
-            var sorted = collection.OrderBy(x => x).ToList();
+            var sorted = collection.OrderByDescending(x => x.CreatedAt).ToList();
 
             int i = 0;
             while (i < sorted.Count - 1)
@@ -59,6 +59,35 @@ namespace HodlWallet.UI.Extensions
 
             return -1; // decide how to handle error case
         }
+
+        //public static void Sort<T>(this ObservableCollection<T> collection)
+        //where T : IComparable<T>, IEquatable<T>
+        //{
+        //    var sorted = collection.OrderBy(x => x).ToList();
+
+        //    int i = 0;
+        //    while (i < sorted.Count - 1)
+        //    {
+        //        if (!collection[i].Equals(sorted[i]))
+        //        {
+        //            int idx = Search(collection, i + 1, sorted[i]);
+        //            collection.Move(idx, i);
+        //        }
+
+        //        i++;
+        //    }
+        //}
+
+        //public static int Search<T>(ObservableCollection<T> collection, int startIndex, T other)
+        //{
+        //    for (int i = startIndex; i < collection.Count; i++)
+        //    {
+        //        if (other.Equals(collection[i]))
+        //            return i;
+        //    }
+
+        //    return -1; // decide how to handle error case
+        //}
 
     }
 }
