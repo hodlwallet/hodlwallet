@@ -43,6 +43,7 @@ using Xamarin.Forms;
 using HodlWallet.Core.Models;
 using System.Collections.Concurrent;
 using System.Reactive.Concurrency;
+using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -151,23 +152,14 @@ namespace HodlWallet.Core.ViewModels
                 }
                 else
                 {
-                    var index = 0;
-                    for (int i = 0, count = Transactions.Count; i < count; i++)
-                    {
-                        if (Transactions[i].CreatedAt < tx.CreatedAt)
-                        {
-                            index = i;
-
-                            break;
-                        }
-                    }
-
                     // Add
-                    Transactions.Insert(index, model);
+                    Transactions.Add(model);
                 }
             }
 
             IsLoading = false;
+            
+            Transactions.Sort();
 
             await Task.CompletedTask;
         }
@@ -224,6 +216,8 @@ namespace HodlWallet.Core.ViewModels
         void RemainingItemsThresholdReached(object _)
         {
             if (WalletService.Wallet is null) return;
+            if (CurrentAccount is null) return;
+            if (Txs is null) return;
 
             foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_DEFAULT_ITEMS_SIZE))
                 queue.Enqueue(tx.Id);
