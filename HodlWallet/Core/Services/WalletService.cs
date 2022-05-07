@@ -283,8 +283,8 @@ namespace HodlWallet.Core.Services
                 }, RxApp.TaskpoolScheduler)
                 .Subscribe(Cts.Token);
 
-            OnStarted?.Invoke(this, null);
             IsStarted = true;
+            OnStarted?.Invoke(this, null);
         }
 
         public (bool Success, string Error) AddAccount(string type = "bip84", string name = null, string color = null)

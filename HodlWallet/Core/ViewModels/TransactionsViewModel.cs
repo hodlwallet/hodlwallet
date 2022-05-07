@@ -57,8 +57,6 @@ namespace HodlWallet.Core.ViewModels
 
         const int TXS_DEFAULT_ITEMS_SIZE = 10;
 
-        bool isLoadingCollection = false;
-
         public ICommand RemainingItemsThresholdReachedCommand { get; }
 
         public ICommand NavigateToTransactionDetailsCommand { get; }
@@ -70,7 +68,7 @@ namespace HodlWallet.Core.ViewModels
             set => SetProperty(ref currentTransaction, value);
         }
 
-        int remainingItemsThreshold = -1;
+        int remainingItemsThreshold = 1;
 
         public int RemainingItemsThreshold
         {
@@ -86,6 +84,8 @@ namespace HodlWallet.Core.ViewModels
 
         public TransactionsViewModel()
         {
+            IsLoading = false;
+
             NavigateToTransactionDetailsCommand = new Command(NavigateToTransactionDetails);
             RemainingItemsThresholdReachedCommand = new Command(RemainingItemsThresholdReached);
 
@@ -109,7 +109,7 @@ namespace HodlWallet.Core.ViewModels
 
         async Task ProcessQueue()
         {
-            IsLoading = true;
+            if (queue.IsEmpty) return;
 
             while (queue.TryDequeue(out var id))
             {
@@ -118,6 +118,8 @@ namespace HodlWallet.Core.ViewModels
 
                 if (tx is null)
                 {
+                    IsLoading = true;
+
                     var res = model is not null;
 
                     // Remove
@@ -129,9 +131,17 @@ namespace HodlWallet.Core.ViewModels
                     continue;
                 }
 
+                // Do not add partial txs...
+                // FIXME This makes partial txs pointless in HODL
+                // shouldn't be that way, but, the Collection
+                // is having a hard time updating them
+                if (tx.Type == TxType.Partial) continue;
+
+                IsLoading = true;
+
                 if (model is null) model = TransactionModel.FromTransactionData(tx);
 
-                if (Transactions.Contains(model))
+                if (Transactions.Any(x => x == model))
                 {
                     var index = Transactions.IndexOf(model);
 
@@ -141,12 +151,21 @@ namespace HodlWallet.Core.ViewModels
                 }
                 else
                 {
+                    var index = 0;
+                    for (int i = 0, count = Transactions.Count; i < count; i++)
+                    {
+                        if (Transactions[i].CreatedAt < tx.CreatedAt)
+                        {
+                            index = i;
+
+                            break;
+                        }
+                    }
+
                     // Add
-                    Transactions.Add(model);
+                    Transactions.Insert(index, model);
                 }
             }
-
-            await Task.Delay(420);
 
             IsLoading = false;
 
@@ -155,8 +174,10 @@ namespace HodlWallet.Core.ViewModels
 
         void Wallet_OnSyncFinished(object sender, DateTimeOffset e)
         {
+            var models = Transactions.ToList();
+
             // Check changes and removal
-            foreach (var model in Transactions)
+            foreach (var model in models)
             {
                 var tx = Txs.FirstOrDefault(x => x.Id == model.Id);
 
@@ -168,15 +189,17 @@ namespace HodlWallet.Core.ViewModels
 
             // Check for new txs
             var added = 0;
-            foreach (var tx in Txs.Take(Transactions.Count))
+            foreach (var tx in Txs.Take(models.Count))
             {
-                if (!Transactions.Any(x => x.Id == tx.Id))
+                if (!models.Any(x => x.Id == tx.Id))
                 {
                     queue.Enqueue(tx.Id);
 
                     added++;
                 }
             }
+
+            Observable.Start(async () => await ProcessQueue(), RxApp.MainThreadScheduler);
         }
 
         void NavigateToTransactionDetails(object obj)
@@ -200,12 +223,12 @@ namespace HodlWallet.Core.ViewModels
 
         void RemainingItemsThresholdReached(object _)
         {
-            Debug.WriteLine("[RemainingItemsThresholdReached] Triggerred");
+            if (WalletService.Wallet is null) return;
 
             foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_DEFAULT_ITEMS_SIZE))
                 queue.Enqueue(tx.Id);
 
-            Observable.Start(async () => await ProcessQueue(), RxApp.MainThreadScheduler).Wait();
+            Observable.Start(async () => await ProcessQueue(), RxApp.MainThreadScheduler);
         }
 
         void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -222,7 +245,7 @@ namespace HodlWallet.Core.ViewModels
                     queue.Enqueue(item.Id);
                 }
 
-            Observable.Start(async () => await ProcessQueue(), RxApp.MainThreadScheduler).Wait();
+            Observable.Start(async () => await ProcessQueue(), RxApp.MainThreadScheduler);
 
             MessagingCenter.Send(this, "ScrollToTop");
         }
