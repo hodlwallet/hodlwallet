@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Entry xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
+       xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+       x:Class="HodlWallet.UI.Controls.AddressEntry"
+       FontFamily="{StaticResource Mono-Regular}"
+       Placeholder="{i18n:Translate Send.addressPlaceholder}"
+       Keyboard="Plain"
+       PropertyChanged="AddressEntry_Changed"
+       PlaceholderColor="{DynamicResource Fg3}"
+       TextColor="{Binding FgColor}"
+       BackgroundColor="{DynamicResource Bg}"
+       Text="{Binding Address}">
+    <Entry.BindingContext>
+        <vm:AddressEntryViewModel />
+    </Entry.BindingContext>
+</Entry>

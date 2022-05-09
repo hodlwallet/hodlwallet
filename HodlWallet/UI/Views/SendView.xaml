@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
              xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
-             xmlns:svg="clr-namespace:HodlWallet.Core.Utils"
              xmlns:renderers="clr-namespace:HodlWallet.UI.Renderers"
              xmlns:i18n="clr-namespace:HodlWallet.UI.Extensions.I18n"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
@@ -20,114 +19,115 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <FlexLayout Direction="Column" BackgroundColor="{DynamicResource Bg3}">
-            <ScrollView FlexLayout.Grow="7.5">
+            <controls:BalanceHeader />
+            <ScrollView FlexLayout.Grow="7">
                 <StackLayout Margin="15,15,15,15" Spacing="10">
                     <Frame CornerRadius="10" HasShadow="False">
                         <StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{i18n:Translate Send.to}"
-                                       CharacterSpacing="3"
-                                       FontFamily="{StaticResource Sans-Bold}"
-                                       FontSize="Caption" />
+                                    CharacterSpacing="3"
+                                    FontFamily="{StaticResource Sans-Bold}"
+                                    FontSize="Caption" />
                                 <controls:FontImage Glyph="qr_code_scanner"
-                                                    HeightRequest="20"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    VerticalOptions="CenterAndExpand"
-                                                    Color="{DynamicResource Fg}">
+                                                HeightRequest="20"
+                                                HorizontalOptions="EndAndExpand"
+                                                VerticalOptions="CenterAndExpand"
+                                                Color="{DynamicResource Fg}">
                                     <controls:FontImage.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ScanCommand}" />
                                     </controls:FontImage.GestureRecognizers>
                                 </controls:FontImage>
                                 <controls:FontImage Glyph="content_paste"
-                                                    HeightRequest="20"
-                                                    HorizontalOptions="End"
-                                                    VerticalOptions="CenterAndExpand"
-                                                    Color="{DynamicResource Fg}">
+                                                HeightRequest="20"
+                                                HorizontalOptions="End"
+                                                VerticalOptions="CenterAndExpand"
+                                                Color="{DynamicResource Fg}">
                                     <controls:FontImage.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding PasteCommand}" />
                                     </controls:FontImage.GestureRecognizers>
                                 </controls:FontImage>
                             </StackLayout>
                             <Entry Placeholder="{i18n:Translate Send.addressPlaceholder}"
-                                   Text="{Binding AddressToSendTo}"
-                                   FontFamily="{StaticResource Mono-Regular}"
-                                   Keyboard="Plain"
-                                   TextChanged="Address_TextChanged"
-                                   BackgroundColor="{DynamicResource Bg}" />
+                                Text="{Binding AddressToSendTo}"
+                                FontFamily="{StaticResource Mono-Regular}"
+                                Keyboard="Plain"
+                                TextChanged="Address_TextChanged"
+                                BackgroundColor="{DynamicResource Bg}" />
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{i18n:Translate Send.amount}"
-                                       CharacterSpacing="3"
-                                       FontFamily="{StaticResource Sans-Bold}"
-                                       FontSize="Caption"
-                                       HorizontalOptions="StartAndExpand" />
+                                    CharacterSpacing="3"
+                                    FontFamily="{StaticResource Sans-Bold}"
+                                    FontSize="Caption"
+                                    HorizontalOptions="StartAndExpand" />
                                 <controls:CurrencySwitch HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
                             </StackLayout>
 
                             <controls:AmountEntry x:Name="amountEntry"
-                                                  ShowBalanceAnimation="True"
-                                                  AmountChanged="AmountEntry_AmountChanged" />
+                                                ShowBalanceAnimation="True"
+                                                AmountChanged="AmountEntry_AmountChanged" />
                         </StackLayout>
                     </Frame>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                         <controls:FontImageIcon Glyph="bar_chart" />
                         <Label Text="{i18n:Translate Send.priorityPoolTitle}"
-                               CharacterSpacing="3"
-                               FontFamily="{StaticResource Sans-Bold}"
-                               FontSize="Caption"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="CenterAndExpand" />
+                            CharacterSpacing="3"
+                            FontFamily="{StaticResource Sans-Bold}"
+                            FontSize="Caption"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand" />
                     </StackLayout>
 
                     <Frame CornerRadius="10" HasShadow="False">
                         <StackLayout>
                             <Label Text="{i18n:Translate Send.minerFee}"
-                                   CharacterSpacing="1.5"
-                                   FontFamily="{StaticResource Sans-Regular}"
-                                   FontSize="Subtitle" />
+                                CharacterSpacing="1.5"
+                                FontFamily="{StaticResource Sans-Regular}"
+                                FontSize="Subtitle" />
                             <Label Text="{i18n:Translate Send.amount}"
-                                   CharacterSpacing="3"
-                                   FontFamily="{StaticResource Sans-Bold}"
-                                   FontSize="Caption"
-                                   HorizontalOptions="StartAndExpand" />
+                                CharacterSpacing="3"
+                                FontFamily="{StaticResource Sans-Bold}"
+                                FontSize="Caption"
+                                HorizontalOptions="StartAndExpand" />
                             <Entry Placeholder="{i18n:Translate Send.customFee}"
-                                   Text="{Binding Fee}"
-                                   Keyboard="Numeric"
-                                   TextChanged="CustomFee_TextChanged"
-                                   FontFamily="{StaticResource Mono-Regular}" />
+                                Text="{Binding Fee}"
+                                Keyboard="Numeric"
+                                TextChanged="CustomFee_TextChanged"
+                                FontFamily="{StaticResource Mono-Regular}" />
 
                             <renderers:FeeSlider MinimumTrackColor="{DynamicResource FgSuccess}"
-                                                 MaximumTrackColor="{DynamicResource Fg2}"
-                                                 Maximum="100"
-                                                 DragCompleted="FeeSlider_DragCompleted" />
+                                                MaximumTrackColor="{DynamicResource Fg2}"
+                                                Maximum="100"
+                                                DragCompleted="FeeSlider_DragCompleted" />
                         </StackLayout>
                     </Frame>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                         <controls:FontImageIcon Glyph="sticky_note_2"
-                                                FontFamily="MaterialIconsOutlined-Regular" />
+                                            FontFamily="MaterialIconsOutlined-Regular" />
                         <Label Text="{i18n:Translate Send.note}"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="CenterAndExpand"
-                               CharacterSpacing="3"
-                               FontFamily="{StaticResource Sans-Bold}"
-                               FontSize="Caption" />
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand"
+                            CharacterSpacing="3"
+                            FontFamily="{StaticResource Sans-Bold}"
+                            FontSize="Caption" />
 
                         <BoxView WidthRequest="10" />
 
                         <controls:FontImageIcon Glyph="sticky_note_2"
-                                                FontFamily="MaterialIconsOutlined-Regular" />
+                                            FontFamily="MaterialIconsOutlined-Regular" />
                         <Label Text="{i18n:Translate Send.details}"
-                               CharacterSpacing="3"
-                               FontFamily="{StaticResource Sans-Bold}"
-                               FontSize="Caption"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="CenterAndExpand" />
+                            CharacterSpacing="3"
+                            FontFamily="{StaticResource Sans-Bold}"
+                            FontSize="Caption"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand" />
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
 
-            <StackLayout FlexLayout.Grow="2.5" BackgroundColor="{DynamicResource Bg}" Padding="0,20,0,20">
+            <StackLayout FlexLayout.Grow="3" BackgroundColor="{DynamicResource Bg}" Padding="0,20,0,20">
                 <StackLayout Orientation="Horizontal" Margin="35,0,35,0">
                     <Label Text="{i18n:Translate Send.fees}"
                            TextColor="{DynamicResource Fg3}"

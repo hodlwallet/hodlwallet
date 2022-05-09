@@ -176,6 +176,9 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>LocaleResources.Designer.cs</LastGenOutput>            
 		</EmbeddedResource>
+		<Compile Update="UI\Controls\AddressEntry.xaml.cs">
+		  <DependentUpon>AddressEntry.xaml</DependentUpon>
+		</Compile>
 		<Compile Update="UI\Controls\FontImage.xaml.cs">
 		  <DependentUpon>FontImage.xaml</DependentUpon>
 		</Compile>
