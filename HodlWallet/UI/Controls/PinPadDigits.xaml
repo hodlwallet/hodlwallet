@@ -65,8 +65,8 @@
 
     <BoxView HeightRequest="10" />
 
-    <StackLayout
-        Orientation="Horizontal"
+    <FlexLayout
+        JustifyContent="SpaceEvenly"
         FlexLayout.Grow="1" >
 
         <Button Text="1"
@@ -84,9 +84,9 @@
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-    </StackLayout>
+    </FlexLayout>
 
-    <StackLayout Orientation="Horizontal" FlexLayout.Grow="1">
+    <FlexLayout JustifyContent="SpaceEvenly" FlexLayout.Grow="1">
 
         <Button Text="4"
                 Clicked="PinButtonClicked"
@@ -103,9 +103,12 @@
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-    </StackLayout>
+    </FlexLayout>
 
-    <StackLayout Orientation="Horizontal" FlexLayout.Grow="1">
+    <FlexLayout
+        JustifyContent="SpaceEvenly"
+        HorizontalOptions="StartAndExpand"
+        FlexLayout.Grow="1">
 
         <Button Text="7"
                 Clicked="PinButtonClicked"
@@ -113,58 +116,49 @@
                 Style="{DynamicResource LoginDigitButton}" />
 
         <Button Text="8"
-                FlexLayout.Grow="1"
                 Clicked="PinButtonClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
         <Button Text="9"
-                FlexLayout.Grow="1"
                 Clicked="PinButtonClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-    </StackLayout>
+    </FlexLayout>
 
-    <StackLayout
-        Orientation="Horizontal"
+    <FlexLayout
+        JustifyContent="SpaceEvenly"
         FlexLayout.Grow="1">
 
-        <StackLayout VerticalOptions="FillAndExpand" >
             <Button Text=""
                     Style="{DynamicResource LoginDigitButton}"
                     HorizontalOptions="CenterAndExpand"
                     IsEnabled="False"/>
-        </StackLayout>
 
-        <StackLayout VerticalOptions="CenterAndExpand" >
             <Button Text="0"
                 Clicked="PinButtonClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-        </StackLayout>
+            <Frame Padding="{OnPlatform iOS=0}"
+                   BackgroundColor="Transparent" >
+                <ImageButton IsEnabled="True"
+                             HeightRequest="25"
+                             WidthRequest="25"
+                             CornerRadius="0"
+                             Margin="{OnPlatform Android='12,0,20,0',iOS='6,0,10,0'}"
+                             BackgroundColor="Transparent"
+                             Clicked="BackspaceClicked"
+                             x:Name="ClickableImg">
+                    <ImageButton.Source>
+                        <FontImageSource BindingContext="{x:Reference Name=ClickableImg}"
+                                         Glyph="backspace"
+                                         Color="{DynamicResource FgSuccess}"
+                                         FontFamily="MaterialIcons-Regular" />
+                    </ImageButton.Source>
+                </ImageButton>
+            </Frame>
 
-
-        <StackLayout VerticalOptions="Center" BackgroundColor="GreenYellow" HorizontalOptions="CenterAndExpand">
-            <ImageButton IsEnabled="True"
-                            HeightRequest="40"
-                            WidthRequest="40"
-                            CornerRadius="0"
-                            Padding="5"
-                            Margin="0,0,0,0"
-                            VerticalOptions="Center"
-                            BackgroundColor="{DynamicResource Bg}"
-                            Clicked="BackspaceClicked"
-                            x:Name="ClickableImg">
-                <ImageButton.Source>
-                    <FontImageSource BindingContext="{x:Reference Name=ClickableImg}"
-                                        Glyph="backspace"
-                                        Color="{DynamicResource FgSuccess}"
-                                        FontFamily="MaterialIcons-Regular" />
-                </ImageButton.Source>
-            </ImageButton>
-        </StackLayout>
-
-    </StackLayout>
+    </FlexLayout>
 </StackLayout>
