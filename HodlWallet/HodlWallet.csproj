@@ -10,6 +10,7 @@
 		<DebugType>portable</DebugType>
 		<DebugSymbols>true</DebugSymbols>
 		<DefineConstants>TRACE;DEBUG;TESTNET</DefineConstants>
+		<!--<DefineConstants>TRACE;DEBUG;TESTNET;WIPE_WALLET</DefineConstants>-->
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
 		<DebugType>portable</DebugType>
@@ -39,7 +40,7 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
 		<PackageReference Include="Plugin.Fingerprint" Version="2.1.5" />
 		<PackageReference Include="Refit.Newtonsoft.Json" Version="6.3.2" />
-		<PackageReference Include="Xamarin.Essentials" Version="1.7.2" />
+		<PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
 		<PackageReference Include="SkiaSharp" Version="2.80.3" />
 		<PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
 		<PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
