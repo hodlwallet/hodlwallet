@@ -27,14 +27,14 @@
         </Grid.ColumnDefinitions>
 
         <Ellipse x:Name="Pin1"
-                 Fill="{DynamicResource Fg5}" 
-                 Grid.Row="0" 
+                 Fill="{DynamicResource Fg5}"
+                 Grid.Row="0"
                  Grid.Column="0" />
         <BoxView Grid.Row="0" Grid.Column="1" />
 
         <Ellipse x:Name="Pin2"
-                 Fill="{DynamicResource Fg5}" 
-                 Grid.Row="0" 
+                 Fill="{DynamicResource Fg5}"
+                 Grid.Row="0"
                  Grid.Column="2" />
         <BoxView Grid.Row="0" Grid.Column="3" />
 
@@ -86,7 +86,9 @@
 
     </FlexLayout>
 
-    <FlexLayout JustifyContent="SpaceEvenly" FlexLayout.Grow="1">
+    <FlexLayout
+        JustifyContent="SpaceEvenly"
+        FlexLayout.Grow="1">
 
         <Button Text="4"
                 Clicked="PinButtonClicked"
@@ -107,8 +109,7 @@
 
     <FlexLayout
         JustifyContent="SpaceEvenly"
-        HorizontalOptions="StartAndExpand"
-        FlexLayout.Grow="1">
+        FlexLayout.Grow="1" >
 
         <Button Text="7"
                 Clicked="PinButtonClicked"
@@ -144,10 +145,10 @@
             <Frame Padding="{OnPlatform iOS=0}"
                    BackgroundColor="Transparent" >
                 <ImageButton IsEnabled="True"
-                             HeightRequest="25"
-                             WidthRequest="25"
+                             HeightRequest="40"
+                             WidthRequest="40"
                              CornerRadius="0"
-                             Margin="{OnPlatform Android='12,0,20,0',iOS='6,0,10,0'}"
+                             Margin="{OnPlatform Android='4,-8,15,-8',iOS='-5,0,5,0'}"
                              BackgroundColor="Transparent"
                              Clicked="BackspaceClicked"
                              x:Name="ClickableImg">
