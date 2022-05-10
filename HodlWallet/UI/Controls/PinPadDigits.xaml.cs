@@ -21,8 +21,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -38,49 +41,105 @@ namespace HodlWallet.UI.Controls
 
         const int MAX_DIGITS = 6;
 
-        Stack<string> numbers = new Stack<string>(MAX_DIGITS);
+        Stack<string> digits = new Stack<string>(MAX_DIGITS);
+
+        public enum PinActions
+        {
+            IncorrectAnimation,
+            Reset
+        }
+
+        protected readonly CompositeDisposable SubscriptionDisposables = new CompositeDisposable();
 
         public PinPadDigits()
         {
             InitializeComponent();
+            SetupReactiveBehavior();
         }
 
-        public void PinButtonClicked(object sender, EventArgs e)
+        void SetupReactiveBehavior()
         {
-            Button digit = sender as Button;
-            string index = digit.Text;
-            Debug.WriteLine($"[PinButtonClicked][Event] Digit: {index}");
-            DigitAdded(index);
-        }
+            Observable
+                .Merge(
+                    Observable
+                        .FromEventPattern(
+                            x => button1.Clicked += x,
+                            x => button1.Clicked -= x),
+                    Observable
+                        .FromEventPattern(
+                            x => button2.Clicked += x,
+                            x => button2.Clicked -= x),
+                    Observable
+                        .FromEventPattern(
+                            x => button3.Clicked += x,
+                            x => button3.Clicked -= x),
+                    Observable
+                        .FromEventPattern(
+                            x => button4.Clicked += x,
+                            x => button4.Clicked -= x),
+                    Observable
+                        .FromEventPattern(
+                            x => button5.Clicked += x,
+                            x => button5.Clicked -= x),
+                    Observable
+                        .FromEventPattern(
+                            x => button6.Clicked += x,
+                            x => button6.Clicked -= x),
+                    Observable
+                        .FromEventPattern(
+                            x => button7.Clicked += x,
+                            x => button7.Clicked -= x),
+                    Observable
+                        .FromEventPattern(
+                            x => button8.Clicked += x,
+                            x => button8.Clicked -= x),
+                    Observable
+                        .FromEventPattern(
+                            x => button9.Clicked += x,
+                            x => button9.Clicked -= x),
+                    Observable
+                        .FromEventPattern(
+                            x => button0.Clicked += x,
+                            x => button0.Clicked -= x))
+                .Select(digit => ((Button)digit.Sender).Text)
+                .Do(text => DigitAdded(text))
+                .Subscribe()
+                .DisposeWith(SubscriptionDisposables);
 
-        public void BackspaceClicked(object sender, EventArgs e)
-        {
-            Debug.WriteLine($"[BackspaceClicked][Event] Call remove...");
-            DigitRemoved();
+            Observable
+                .FromEventPattern(
+                    x => buttonImg.Clicked += x,
+                    x => buttonImg.Clicked -= x)
+                .Do(_ => DigitRemoved())
+                .Subscribe()
+                .DisposeWith(SubscriptionDisposables);
         }
 
         void DigitAdded(string index)
         {
-            Debug.WriteLine($"[DigitAdded] Try to add: {index} - ableToAddDigit?: {numbers.Count < MAX_DIGITS} ");
-            if (numbers.Count < MAX_DIGITS)
+            if (digits.Count < MAX_DIGITS)
             {
-                numbers.Push(index);
+                digits.Push(index);
                 Debug.WriteLine($"[DigitAdded] Added digit: {index}");
-                int idx = numbers.Count;
+                int idx = digits.Count;
                 ColorDigitTo(idx, DigitOnColor);
             }
             // Validate PIN
-            if (numbers.Count == MAX_DIGITS)
-                Debug.WriteLine($"[PinButtonClicked][Validate PIN]");
+            if (digits.Count == MAX_DIGITS)
+            {
+                Stack stackReverse = new Stack(digits.ToArray());
+                string pin = string.Join(string.Empty, stackReverse.ToArray());
+                Debug.WriteLine($"[PinButtonClicked][Validate PIN] pin: {pin}");
+            }
         }
-
+       
         void DigitRemoved()
         {
-            int idx = numbers.Count;
+            int idx = digits.Count;
             Debug.WriteLine($"[DigitRemoved] Remove digit: {idx}");
 
             string resultPop;
-            numbers.TryPop(out resultPop);
+            digits.TryPop(out resultPop);
 
             if (resultPop?.Length > 0)
                 ColorDigitTo(idx, DigitOffColor);
