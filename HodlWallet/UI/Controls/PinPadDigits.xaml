@@ -139,7 +139,6 @@
 
             <Button x:Name="button0"
                 Text="0"
-                Clicked="PinButtonClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
@@ -151,7 +150,6 @@
                              CornerRadius="0"
                              Margin="{OnPlatform Android='4,-8,15,-8',iOS='-5,0,5,0'}"
                              BackgroundColor="Transparent"
-                             Clicked="BackspaceClicked"
                              x:Name="buttonImg">
                     <ImageButton.Source>
                         <FontImageSource BindingContext="{x:Reference Name=buttonImg}"
