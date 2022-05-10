@@ -27,14 +27,14 @@
         </Grid.ColumnDefinitions>
 
         <Ellipse x:Name="Pin1"
-                 Fill="{DynamicResource Fg5}" 
-                 Grid.Row="0" 
+                 Fill="{DynamicResource Fg5}"
+                 Grid.Row="0"
                  Grid.Column="0" />
         <BoxView Grid.Row="0" Grid.Column="1" />
 
         <Ellipse x:Name="Pin2"
-                 Fill="{DynamicResource Fg5}" 
-                 Grid.Row="0" 
+                 Fill="{DynamicResource Fg5}"
+                 Grid.Row="0"
                  Grid.Column="2" />
         <BoxView Grid.Row="0" Grid.Column="3" />
 
@@ -65,8 +65,8 @@
 
     <BoxView HeightRequest="10" />
 
-    <StackLayout
-        Orientation="Horizontal"
+    <FlexLayout
+        JustifyContent="SpaceEvenly"
         FlexLayout.Grow="1" >
 
         <Button x:Name="button1"
@@ -84,9 +84,11 @@
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-    </StackLayout>
+    </FlexLayout>
 
-    <StackLayout Orientation="Horizontal" FlexLayout.Grow="1">
+    <FlexLayout
+        JustifyContent="SpaceEvenly"
+        FlexLayout.Grow="1">
 
         <Button x:Name="button4"
                 Text="4"
@@ -103,9 +105,11 @@
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-    </StackLayout>
+    </FlexLayout>
 
-    <StackLayout Orientation="Horizontal" FlexLayout.Grow="1">
+    <FlexLayout
+        JustifyContent="SpaceEvenly"
+        FlexLayout.Grow="1" >
 
         <Button x:Name="button7"
                 Text="7"
@@ -114,56 +118,49 @@
 
         <Button x:Name="button8"
                 Text="8"
-                FlexLayout.Grow="1"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
         <Button x:Name="button9"
                 Text="9"
-                FlexLayout.Grow="1"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-    </StackLayout>
+    </FlexLayout>
 
-    <StackLayout
-        Orientation="Horizontal"
+    <FlexLayout
+        JustifyContent="SpaceEvenly"
         FlexLayout.Grow="1">
 
-        <StackLayout VerticalOptions="FillAndExpand" >
             <Button Text=""
                     Style="{DynamicResource LoginDigitButton}"
                     HorizontalOptions="CenterAndExpand"
                     IsEnabled="False"/>
-        </StackLayout>
 
-        <StackLayout VerticalOptions="CenterAndExpand" >
             <Button x:Name="button0"
                 Text="0"
+                Clicked="PinButtonClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-        </StackLayout>
+            <Frame Padding="{OnPlatform iOS=0}"
+                   BackgroundColor="Transparent" >
+                <ImageButton IsEnabled="True"
+                             HeightRequest="40"
+                             WidthRequest="40"
+                             CornerRadius="0"
+                             Margin="{OnPlatform Android='4,-8,15,-8',iOS='-5,0,5,0'}"
+                             BackgroundColor="Transparent"
+                             Clicked="BackspaceClicked"
+                             x:Name="buttonImg">
+                    <ImageButton.Source>
+                        <FontImageSource BindingContext="{x:Reference Name=buttonImg}"
+                                         Glyph="backspace"
+                                         Color="{DynamicResource FgSuccess}"
+                                         FontFamily="MaterialIcons-Regular" />
+                    </ImageButton.Source>
+                </ImageButton>
+            </Frame>
 
-
-        <StackLayout VerticalOptions="Center" BackgroundColor="GreenYellow" HorizontalOptions="CenterAndExpand">
-            <ImageButton x:Name="buttonImg"
-                         IsEnabled="True"
-                         HeightRequest="40"
-                         WidthRequest="40"
-                         CornerRadius="0"
-                         Padding="5"
-                         Margin="0,0,0,0"
-                         VerticalOptions="Center"
-                         BackgroundColor="{DynamicResource Bg}">
-                <ImageButton.Source>
-                    <FontImageSource BindingContext="{x:Reference Name=buttonImg}"
-                                        Glyph="backspace"
-                                        Color="{DynamicResource FgSuccess}"
-                                        FontFamily="MaterialIcons-Regular" />
-                </ImageButton.Source>
-            </ImageButton>
-        </StackLayout>
-
-    </StackLayout>
+    </FlexLayout>
 </StackLayout>
