@@ -26,34 +26,36 @@
                         <StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{i18n:Translate Send.to}"
-                                    CharacterSpacing="3"
-                                    FontFamily="{StaticResource Sans-Bold}"
-                                    FontSize="Caption" />
+                                       CharacterSpacing="3"
+                                       FontFamily="{StaticResource Sans-Bold}"
+                                       FontSize="Caption" />
                                 <controls:FontImage Glyph="qr_code_scanner"
-                                                HeightRequest="20"
-                                                HorizontalOptions="EndAndExpand"
-                                                VerticalOptions="CenterAndExpand"
-                                                Color="{DynamicResource Fg}">
+                                                    HeightRequest="20"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Color="{DynamicResource Fg}">
                                     <controls:FontImage.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ScanCommand}" />
                                     </controls:FontImage.GestureRecognizers>
                                 </controls:FontImage>
                                 <controls:FontImage Glyph="content_paste"
-                                                HeightRequest="20"
-                                                HorizontalOptions="End"
-                                                VerticalOptions="CenterAndExpand"
-                                                Color="{DynamicResource Fg}">
+                                                    HeightRequest="20"
+                                                    HorizontalOptions="End"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Color="{DynamicResource Fg}">
                                     <controls:FontImage.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding PasteCommand}" />
                                     </controls:FontImage.GestureRecognizers>
                                 </controls:FontImage>
                             </StackLayout>
-                            <Entry Placeholder="{i18n:Translate Send.addressPlaceholder}"
+                            <!--<Entry Placeholder="{i18n:Translate Send.addressPlaceholder}"
                                 Text="{Binding AddressToSendTo}"
                                 FontFamily="{StaticResource Mono-Regular}"
                                 Keyboard="Plain"
                                 TextChanged="Address_TextChanged"
-                                BackgroundColor="{DynamicResource Bg}" />
+                                BackgroundColor="{DynamicResource Bg}" />-->
+                            <controls:AddressEntry Text="{Binding AddressToSendTo}"
+                                                   AddressChanged="Address_Changed" />
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{i18n:Translate Send.amount}"
                                     CharacterSpacing="3"

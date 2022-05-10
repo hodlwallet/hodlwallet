@@ -23,7 +23,9 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using HodlWallet.Core.ViewModels;
 using System.ComponentModel;
+using System.Diagnostics;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -33,7 +35,23 @@ namespace HodlWallet.UI.Controls;
 [XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class AddressEntry : Entry
 {
+    AddressEntryViewModel ViewModel => (BindingContext as AddressEntryViewModel);
+
+    public event PropertyChangedEventHandler AddressChanged = (e, a) => { };
+
+    public AddressEntry()
+    {
+        InitializeComponent();
+    }
+
     void AddressEntry_Changed(object sender, PropertyChangedEventArgs e)
     {
+        var entry = sender as AddressEntry;
+
+        if (string.IsNullOrEmpty(entry.Text)) return;
+
+        ViewModel.Address = (sender as AddressEntry).Text;
+
+        // AddressChanged?.Invoke(sender, e);
     }
 }

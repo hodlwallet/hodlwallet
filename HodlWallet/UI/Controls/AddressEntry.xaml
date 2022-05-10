@@ -10,8 +10,7 @@
        PropertyChanged="AddressEntry_Changed"
        PlaceholderColor="{DynamicResource Fg3}"
        TextColor="{Binding FgColor}"
-       BackgroundColor="{DynamicResource Bg}"
-       Text="{Binding Address}">
+       BackgroundColor="{DynamicResource Bg}">
     <Entry.BindingContext>
         <vm:AddressEntryViewModel />
     </Entry.BindingContext>

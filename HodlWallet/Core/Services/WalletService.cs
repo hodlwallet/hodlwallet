@@ -70,7 +70,7 @@ namespace HodlWallet.Core.Services
         Network network;
 
         string walletId;
-        CancellationTokenSource Cts = new();
+        readonly CancellationTokenSource cts = new();
 
         public Serilog.ILogger Logger { set; get; }
 
@@ -91,7 +91,7 @@ namespace HodlWallet.Core.Services
         {
             Observable
                 .Interval(TimeSpan.FromMilliseconds(PERIODIC_SAVE_TIMEOUT), RxApp.TaskpoolScheduler)
-                .Subscribe(_ => Save(), Cts.Token);
+                .Subscribe(_ => Save(), cts.Token);
         }
 
         void Save()
@@ -197,8 +197,6 @@ namespace HodlWallet.Core.Services
 
             Wallet = new Wallet { Id = walletId };
 
-            Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(WalletService)).Assembly;
-
             Wallet.Init(mnemonic, password, null, network, createdAt, storage);
 
             Wallet.AddAccount("bip84");
@@ -256,7 +254,7 @@ namespace HodlWallet.Core.Services
 
             Observable
                 .Start(PeriodicSave, RxApp.TaskpoolScheduler)
-                .Subscribe(Cts.Token);
+                .Subscribe(cts.Token);
 
             Observable
                 .Start(async () =>
@@ -273,7 +271,7 @@ namespace HodlWallet.Core.Services
                         null
                     );
                 }, RxApp.TaskpoolScheduler)
-                .Subscribe(Cts.Token);
+                .Subscribe(cts.Token);
 
             Observable
                 .Start(async () =>
@@ -281,7 +279,7 @@ namespace HodlWallet.Core.Services
                     await Wallet.Sync();
                     await Wallet.Watch();
                 }, RxApp.TaskpoolScheduler)
-                .Subscribe(Cts.Token);
+                .Subscribe(cts.Token);
 
             IsStarted = true;
             OnStarted?.Invoke(this, null);
