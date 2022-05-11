@@ -26,15 +26,21 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using HodlWallet.Core.Interfaces;
 
 namespace HodlWallet.UI.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PinPadDigits
     {
+        IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
+
+        protected readonly CompositeDisposable SubscriptionDisposables = new CompositeDisposable();
         Color DigitOnColor => (Color)Application.Current.Resources["FgSuccess"];
 
         Color DigitOffColor => (Color)Application.Current.Resources["Fg5"];
@@ -42,14 +48,21 @@ namespace HodlWallet.UI.Controls
         const int MAX_DIGITS = 6;
 
         Stack<string> digits = new Stack<string>(MAX_DIGITS);
-
+        
         public enum PinActions
         {
-            IncorrectAnimation,
-            Reset
+            IsValidPin,
+            ResetPin
         }
 
-        protected readonly CompositeDisposable SubscriptionDisposables = new CompositeDisposable();
+        PinActions pinAction;
+
+        public PinActions PinAction
+        {
+            get => pinAction;
+            set => pinAction = value;
+        }
+
 
         public PinPadDigits()
         {
@@ -102,7 +115,7 @@ namespace HodlWallet.UI.Controls
                             x => button0.Clicked += x,
                             x => button0.Clicked -= x))
                 .Select(digit => ((Button)digit.Sender).Text)
-                .Do(text => DigitAdded(text))
+                .Do(async text => await DigitAdded(text))
                 .Subscribe()
                 .DisposeWith(SubscriptionDisposables);
 
@@ -115,7 +128,7 @@ namespace HodlWallet.UI.Controls
                 .DisposeWith(SubscriptionDisposables);
         }
 
-        void DigitAdded(string index)
+        async Task DigitAdded(string index)
         {
             if (digits.Count < MAX_DIGITS)
             {
@@ -130,6 +143,21 @@ namespace HodlWallet.UI.Controls
                 Stack stackReverse = new Stack(digits.ToArray());
                 string pin = string.Join(string.Empty, stackReverse.ToArray());
                 Debug.WriteLine($"[PinButtonClicked][Validate PIN] pin: {pin}");
+                // Check if it's the pin
+                if (AuthenticationService.Authenticate(pin))
+                {
+                    pinAction = PinActions.IsValidPin;
+                    Debug.WriteLine($"[DigitAdded] Authenticated! IsValidPin: {pinAction}");
+                }
+                else
+                {   
+                    pinAction = PinActions.ResetPin;
+                    Debug.WriteLine($"[DigitAdded] After time 65 - Incorrect PIN - DO Animation: {pinAction}");
+                    await IncorrectPinAnimation();
+                    // Whenever the pin is incorrect, clear the stack to fill out again
+                    digits.Clear();
+                    ColorOffPad();
+                }
             }
         }
        
@@ -143,6 +171,16 @@ namespace HodlWallet.UI.Controls
 
             if (resultPop?.Length > 0)
                 ColorDigitTo(idx, DigitOffColor);
+        }
+
+        void ColorOffPad()
+        {
+            Pin1.Fill = DigitOffColor;
+            Pin2.Fill = DigitOffColor;
+            Pin3.Fill = DigitOffColor;
+            Pin4.Fill = DigitOffColor;
+            Pin5.Fill = DigitOffColor;
+            Pin6.Fill = DigitOffColor;
         }
 
         void ColorDigitTo(int index, Color color)
@@ -168,6 +206,22 @@ namespace HodlWallet.UI.Controls
                     Pin6.Fill = color;
                     break;
             }
+        }
+
+        readonly uint incorrectPinAnimationTimeout = 50;
+        async Task IncorrectPinAnimation()
+        {
+            Debug.WriteLine("[IncorrectPinAnimation]");
+
+            // Shake ContentView Re-Enter PIN
+            await InputGrid.TranslateTo(-15, 0, incorrectPinAnimationTimeout);
+            await InputGrid.TranslateTo(15, 0, incorrectPinAnimationTimeout);
+            await InputGrid.TranslateTo(-10, 0, incorrectPinAnimationTimeout);
+            await InputGrid.TranslateTo(10, 0, incorrectPinAnimationTimeout);
+            await InputGrid.TranslateTo(-5, 0, incorrectPinAnimationTimeout);
+            await InputGrid.TranslateTo(5, 0, incorrectPinAnimationTimeout);
+
+            InputGrid.TranslationX = 0;
         }
     }
 }
