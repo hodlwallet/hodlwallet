@@ -50,6 +50,9 @@
                                FontFamily="{StaticResource Sans-Regular}"
                                FontSize="Micro" />
                     </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LogDebugInfoCommand}" />
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
             </CollectionView.Header>
 

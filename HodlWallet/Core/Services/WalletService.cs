@@ -364,15 +364,21 @@ namespace HodlWallet.Core.Services
         }
 
         /// <summary>
-        /// Destroy wallet, deletes wallets file and disconnects from nodes
+        /// Destroy wallet, deletes wallet files
         /// </summary>
         /// <param name="dryRun">Do not delete anything just try</param>
         public void DestroyWallet(bool dryRun = false)
         {
             var path = $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/wallets";
 
-            if (Directory.Exists(path))
-                Directory.Delete(path, true);
+            if (dryRun)
+            {
+                Debug.WriteLine($"[DestroyWallet] Would delete `{path}`... but dry");
+
+                return;
+            }
+
+            if (Directory.Exists(path)) Directory.Delete(path, true);
 
             SecureStorageService.RemoveAll();
         }

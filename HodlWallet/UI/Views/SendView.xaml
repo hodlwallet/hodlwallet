@@ -54,8 +54,8 @@
                                 Keyboard="Plain"
                                 TextChanged="Address_TextChanged"
                                 BackgroundColor="{DynamicResource Bg}" />-->
-                            <controls:AddressEntry Text="{Binding AddressToSendTo}"
-                                                   AddressChanged="Address_Changed" />
+                            <!--<controls:AddressEntry Text="{Binding AddressToSendTo}"
+                                                   AddressChanged="Address_Changed" />-->
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{i18n:Translate Send.amount}"
                                     CharacterSpacing="3"
