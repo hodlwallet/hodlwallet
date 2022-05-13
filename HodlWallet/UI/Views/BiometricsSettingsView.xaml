@@ -21,7 +21,7 @@
                           HorizontalOptions="Center"
                           x:Name="BiometricIcon"
                           Scale="2"/>
-                
+
                 <BoxView HeightRequest="70"/>
 
                 <Label Text="{i18n:Translate Text=BiometricAuth.header}"
@@ -31,7 +31,7 @@
                        FontFamily="{StaticResource Sans-Regular}"
                        TextColor="{DynamicResource Fg}"
                        HorizontalTextAlignment="Start" />
-                
+
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" Padding="20, 0">
@@ -43,14 +43,14 @@
                        HorizontalOptions="Start"
                        HorizontalTextAlignment="Start" />
 
-                <Switch x:Name="BiometricSwitch" PropertyChanged="Switch_PropertyChanged" HorizontalOptions="EndAndExpand"/>
+                <Switch x:Name="BiometricSwitch" Toggled="Switch_PropertyChanged" HorizontalOptions="EndAndExpand"/>
+
             </StackLayout>
 
-            
             <StackLayout Padding="20, 0" VerticalOptions="Start">
                 <BoxView BackgroundColor="{DynamicResource Fg3}"
                          HeightRequest="1" VerticalOptions="Start"/>
-                
+
                 <Label Text="{i18n:Translate Text=BiometricAuth.spendingLimit}"
                        Padding="0, 10"
                        FontSize="Body"
@@ -72,9 +72,8 @@
                        TextColor="{DynamicResource FgSuccess}"
                        HorizontalOptions="StartAndExpand"
                        HorizontalTextAlignment="Start" />
+
             </StackLayout>
-
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

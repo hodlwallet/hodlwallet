@@ -38,8 +38,7 @@ namespace HodlWallet.UI.Views
         public BiometricsSettingsView()
         {
             InitializeComponent();
-
-            BiometricSwitch.IsToggled = Preferences.Get("biometricsAllow", true);
+            BiometricSwitch.IsToggled = Preferences.Get("biometricsAllow", false);
         }
 
         async void Switch_PropertyChanged(object sender, PropertyChangedEventArgs e)
