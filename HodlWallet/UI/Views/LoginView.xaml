@@ -27,7 +27,6 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <!--<AbsoluteLayout>-->
             <FlexLayout Direction="Column"
                         BackgroundColor="{DynamicResource Bg}"
                         JustifyContent="SpaceAround"
@@ -71,15 +70,6 @@
 
             <controls:PinPadDigits x:Name="PinPadControl" />
 
-                <!--<Button Text="{i18n:Translate Text=Login.useBiometric}"
-                        Style="{DynamicResource SecondaryButton}"
-                        FontSize="Large"
-                        CornerRadius="0"
-                        FlexLayout.Grow="0.8"
-                        x:Name="FingerprintButton"
-                        FlexLayout.AlignSelf="Stretch"
-                        Clicked="FingerprintButtonClicked" />-->
-
             <ImageButton
                      HeightRequest="60"
                      WidthRequest="60"
@@ -94,14 +84,12 @@
                     <FontImageSource BindingContext="{x:Reference fingerprint}"
                          FontFamily="MaterialIcons-Regular"
                          Color="{DynamicResource FgSuccess}"
-                         Glyph="{OnPlatform Android=fingerprint,iOS=screen_attention}" />
+                         Glyph="{OnPlatform Android='fingerprint',iOS='face'}" />
                 </ImageButton.Source>
             </ImageButton>
 
             <BoxView HeightRequest="60" x:Name="fingerprintspacer" FlexLayout.Grow="1" IsVisible="false"/>
 
         </FlexLayout>
-            <!--<controls:NowLoadingIndicator />-->
-        <!--</AbsoluteLayout>-->
     </ContentPage.Content>
 </ContentPage>

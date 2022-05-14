@@ -32,6 +32,9 @@ using HodlWallet.Core.ViewModels;
 using HodlWallet.Core.Services;
 using HodlWallet.UI.Views.Demos;
 using HodlWallet.UI.Extensions;
+using Plugin.Fingerprint.Abstractions;
+using HodlWallet.Core.Utils;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Views
 {
@@ -66,8 +69,6 @@ namespace HodlWallet.UI.Views
             LogoFront.IsVisible = false;
             ContHeader.IsVisible = true;
             Header.IsVisible = false;
-            fingerprint.IsVisible = false;
-            fingerprintspacer.IsVisible = true;
             enterlabelspacer.IsVisible = true;
 
 
@@ -86,7 +87,8 @@ namespace HodlWallet.UI.Views
 
             var biometricsAllow = Preferences.Get("biometricsAllow", false);
 
-            //FingerprintButton.IsVisible = ViewModel.BiometricsAvailable && biometricsAllow;
+            fingerprint.IsVisible = ViewModel.BiometricsAvailable && biometricsAllow;
+            fingerprintspacer.IsVisible = !(ViewModel.BiometricsAvailable && biometricsAllow);
         }
 
         protected override void OnDisappearing()
@@ -195,16 +197,15 @@ namespace HodlWallet.UI.Views
 
         async void FingerprintButtonClicked(object sender, EventArgs e)
         {
-            UnsubscribeToMessages();
-            var view = new BiometricLoginView(ViewModel.Action);
-            if (ViewModel.Action == "update")
+            var authResult = await CrossFingerprint.Current.AuthenticateAsync(
+                new AuthenticationRequestConfiguration(Constants.HODL_WALLET, LocaleResources.BiometricLogin_askAuth));
+
+            if (authResult.Authenticated)
             {
-                await Navigation.PushAsync(view);
-            }
-            else
-            {
-                var nav = new NavigationPage(view);
-                await Navigation.PushModalAsync(nav);
+                ViewModel.IsLoading = true;
+                // DONE! We navigate to the root view
+                await Task.Delay(65);
+                await StartAppShell(ViewModel);
             }
         }
 
