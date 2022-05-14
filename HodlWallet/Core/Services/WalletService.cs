@@ -87,6 +87,8 @@ namespace HodlWallet.Core.Services
 
         public IWallet Wallet { get; private set; }
 
+        IBackgroundService BackgroundService => DependencyService.Get<IBackgroundService>();
+
         void PeriodicSave()
         {
             Observable
@@ -252,34 +254,28 @@ namespace HodlWallet.Core.Services
                 Logger.Debug($"Syncing time: {(end - start).TotalSeconds}");
             };
 
-            Observable
-                .Start(PeriodicSave, RxApp.TaskpoolScheduler)
-                .Subscribe(cts.Token);
+            PeriodicSave();
 
-            Observable
-                .Start(async () =>
-                {
-                    await Wallet.ElectrumPool.PeriodicPing(
-                        successCallback: (dt) =>
-                        {
-                            Debug.WriteLine($"[WalletService][Start] Ping successful at: {dt}");
-                        },
-                        failedCallback: (dt) =>
-                        {
-                            Debug.WriteLine($"[WalletService][Start] Ping failed at: {dt}");
-                        },
-                        null
-                    );
-                }, RxApp.TaskpoolScheduler)
-                .Subscribe(cts.Token);
+            BackgroundService.Start("PeriodicPingJob", async () =>
+            {
+                await Wallet.ElectrumPool.PeriodicPing(
+                    successCallback: (dt) =>
+                    {
+                        Debug.WriteLine($"[WalletService][Start] Ping successful at: {dt}");
+                    },
+                    failedCallback: (dt) =>
+                    {
+                        Debug.WriteLine($"[WalletService][Start] Ping failed at: {dt}");
+                    },
+                    null
+                );
+            });
 
-            Observable
-                .Start(async () =>
-                {
-                    await Wallet.Sync();
-                    await Wallet.Watch();
-                }, RxApp.TaskpoolScheduler)
-                .Subscribe(cts.Token);
+            BackgroundService.Start("SyncWatchJob", async () =>
+            {
+                await Wallet.Sync();
+                await Wallet.Watch();
+            });
 
             IsStarted = true;
             OnStarted?.Invoke(this, null);

@@ -132,6 +132,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\CustomShellTabBarAppearanceTracker.cs" />
     <Compile Include="Renderers\FeeSliderRenderer.cs" />
+    <Compile Include="Services\BackgroundService.cs" />
     <Compile Include="Services\ShareIntent.cs" />
     <Compile Include="Services\iOSPermissions.cs" />
     <Compile Include="Effects\HideTabbarEffect.cs" />

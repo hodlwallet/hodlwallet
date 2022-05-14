@@ -33,8 +33,10 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Threading;
 
 using Liviano.Interfaces;
+using Liviano.Events;
 using Liviano.Models;
 using NBitcoin;
 using ReactiveUI;
@@ -42,7 +44,6 @@ using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
 using HodlWallet.UI.Extensions;
-using Liviano.Events;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -54,6 +55,8 @@ namespace HodlWallet.Core.ViewModels
             get => transactions;
             set => SetProperty(ref transactions, value);
         }
+
+        readonly CancellationTokenSource cts = new();
 
         const int TXS_DEFAULT_ITEMS_SIZE = 10;
 
@@ -101,7 +104,9 @@ namespace HodlWallet.Core.ViewModels
             SubscribeToEvents();
             LoadTxsFromWallet();
 
-            Observable.Start(async () => await ProcessQueue(), RxApp.TaskpoolScheduler);
+            Observable
+                .Interval(TimeSpan.FromMilliseconds(100), RxApp.TaskpoolScheduler)
+                .Subscribe(async _ => await ProcessQueue(), cts.Token);
         }
 
         void SubscribeToEvents()
@@ -134,6 +139,8 @@ namespace HodlWallet.Core.ViewModels
 
         async Task ProcessQueue()
         {
+            if (IsLoading) return;
+
             try
             {
                 await DoProcessQueue();
@@ -144,9 +151,6 @@ namespace HodlWallet.Core.ViewModels
 
                 IsLoading = false;
             }
-
-            await Task.Delay(100);
-            await ProcessQueue();
         }
 
         async Task DoProcessQueue()
@@ -156,6 +160,8 @@ namespace HodlWallet.Core.ViewModels
             var txs = Transactions.ToList();
             while (queue.TryDequeue(out var id))
             {
+                IsLoading = true;
+
                 var tx = Txs.FirstOrDefault(tx => tx.Id == id);
                 var currentModel = txs.FirstOrDefault(tx => tx.Id == id);
 
@@ -180,8 +186,6 @@ namespace HodlWallet.Core.ViewModels
                 // is having a hard time updating them
                 if (tx.Type == TxType.Partial) continue;
 
-                IsLoading = true;
-
                 var model = TransactionModel.FromTransactionData(tx);
                 int index = currentModel is null ? -1 : txs.FindIndex(t => t.Id == currentModel.Id);
                 if (currentModel is not null && index > -1)
@@ -197,7 +201,7 @@ namespace HodlWallet.Core.ViewModels
                         catch (Exception ex)
                         {
                             Debug.WriteLine("[DoProcessQueue] Error {msg}", ex.Message);
-                             
+
                             queue.Enqueue(id);
                         }
 
@@ -306,10 +310,11 @@ namespace HodlWallet.Core.ViewModels
             // TODO this would be nice...
             //MessagingCenter.Send(this, "ScrollToTop");
         }
-        
+
         void LogDebugInfo(object obj)
         {
-            Debug.WriteLine("[LogDebugInfo]");
+#if DEBUG
+            Debug.Write("[LogDebugInfo] ");
 
             var txs = CurrentAccount.Txs.ToList();
             var count = txs.Count();
@@ -319,8 +324,9 @@ namespace HodlWallet.Core.ViewModels
             for (int i = 0; i < count; i++)
             {
                 var tx = txs[i];
-                Debug.WriteLine("tx: {0}", tx.Id);
+                Debug.WriteLine("\tTx: {0} (type: {1})", tx.Id, tx.Type);
             }
+#endif
         }
     }
 }

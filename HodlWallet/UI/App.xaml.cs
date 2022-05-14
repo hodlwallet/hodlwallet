@@ -32,6 +32,8 @@ using HodlWallet.Core.Services;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
 using HodlWallet.UI.Locale;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace HodlWallet.UI
 {
@@ -42,20 +44,19 @@ namespace HodlWallet.UI
         ILocalize Localize => DependencyService.Get<ILocalize>();
         ILegacySecureKeyService LegacySecureKeyService => DependencyService.Get<ILegacySecureKeyService>();
         IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
+        IBackgroundService BackgroundService => DependencyService.Get<IBackgroundService>();
 
         readonly CancellationTokenSource cts = new();
 
         public App()
         {
+            RegisterServices();
             SetupCultureInfo();
-
             InitializeComponent();
 
 #if WIPE_WALLET
             WipeWallet();
 #endif
-
-            RegisterServices();
 
             if (!SecureStorageService.UserDidSetup())
             {
@@ -74,11 +75,15 @@ namespace HodlWallet.UI
 
         protected override void OnSleep()
         {
+            base.OnSleep();
+
             AuthenticationService.LastAuth = DateTimeOffset.UtcNow;
         }
 
         protected override void OnResume()
         {
+            base.OnResume();
+
             if (AuthenticationService.IsAuthenticated || AuthenticationService.ShowingLoginForm)
                 return;
 
@@ -89,13 +94,19 @@ namespace HodlWallet.UI
         {
             base.OnStart();
 
-            Observable
-                .Start(PrecioService.Start, RxApp.TaskpoolScheduler)
-                .Subscribe(cts.Token);
+            Observable.Start(DisplayCurrencyService.Load, RxApp.TaskpoolScheduler).Subscribe(cts.Token);
+            Observable.Start(PrecioService.Start, RxApp.TaskpoolScheduler).Subscribe(cts.Token);
 
-            Observable
-                .Start(DisplayCurrencyService.Load, RxApp.TaskpoolScheduler)
-                .Subscribe(cts.Token);
+            // TODO Technically we need  these to be BackgroundService tasks too,
+            // But these ones are periodic service tasks though and that's not implemented yet
+            // the following are examples of how they should look
+            //BackgroundService.Start("DisplayCurrencyServiceLoadJob", async () =>
+            //    await DisplayCurrencyService.Load()
+            //);
+
+            //BackgroundService.Start("PrecioServiceStartJob", async () => 
+            //    await PrecioService.Start()
+            //);
         }
 
         void RegisterServices()
@@ -105,7 +116,9 @@ namespace HodlWallet.UI
             DependencyService.Register<IDisplayCurrencyService>();
             DependencyService.Register<IShareIntent>();
             DependencyService.Register<IPermissions>();
+            DependencyService.Register<ILocalize>();
             DependencyService.Register<IAuthenticationService>();
+            DependencyService.Register<IBackgroundService>();
         }
 
         void SetupCultureInfo()

@@ -22,7 +22,6 @@
 // THE SOFTWARE.
 using ReactiveUI;
 using System.Reactive.Linq;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace HodlWallet.Core.ViewModels
@@ -35,7 +34,10 @@ namespace HodlWallet.Core.ViewModels
             {
                 MessagingCenter.Send(this, "ClearTransactions");
 
-                WalletService.Wallet.Resync();
+                BackgroundService.Start("ResyncJob", async () =>
+                {
+                    await WalletService.Wallet.Resync();
+                });
             }, RxApp.TaskpoolScheduler);
         }
 

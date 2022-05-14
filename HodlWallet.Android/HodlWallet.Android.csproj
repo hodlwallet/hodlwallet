@@ -113,6 +113,7 @@
     <Compile Include="Effects\HideTabLabelsEffect.cs" />
     <Compile Include="Extensions\ViewExtensions.cs" />
     <Compile Include="Services\AndroidPermissions.cs" />
+    <Compile Include="Services\BackgroundService.cs" />
     <Compile Include="Services\ShareIntent.cs" />
     <Compile Include="Effects\HideTabbarEffect.cs" />
     <Compile Include="Services\Localize.cs" />
@@ -214,7 +215,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionHodlWalletAndroidHideInfoBar="True" XamarinHotReloadUnhandledDeviceExceptionHodlWalletAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadUnhandledDeviceExceptionHodlWalletAndroidHideInfoBar="True" XamarinHotReloadDebuggerTimeoutExceptionHodlWalletAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

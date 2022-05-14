@@ -35,6 +35,7 @@ namespace HodlWallet.Core.ViewModels
         public IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
         public IPermissions PermissionsService => DependencyService.Get<IPermissions>();
         public IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
+        public IBackgroundService BackgroundService => DependencyService.Get<IBackgroundService>();
 
         bool isLoading;
         public bool IsLoading
