@@ -40,12 +40,6 @@ namespace HodlWallet.UI.Views
 {
     public partial class LoginView : ContentPage
     {
-        readonly uint incorrectPinAnimationTimeout = 50;
-
-        Color DigitOnColor => (Color)Application.Current.Resources["FgSuccess"];
-        
-        Color DigitOffColor => (Color)Application.Current.Resources["Fg5"];
-        
         LoginViewModel ViewModel => (LoginViewModel)BindingContext;
 
         public LoginView(string action = null)
@@ -102,16 +96,12 @@ namespace HodlWallet.UI.Views
 
         void SubscribeToMessages()
         {
-           // MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitAdded", DigitAdded);
-           // MessagingCenter.Subscribe<LoginViewModel, int>(this, "DigitRemoved", DigitRemoved);
-           // MessagingCenter.Subscribe<LoginViewModel>(this, "IncorrectPinAnimation", IncorrectPinAnimation);
             MessagingCenter.Subscribe<LoginViewModel>(this, "StartAppShell", async (vm) => await StartAppShell(vm));
             MessagingCenter.Subscribe<LoginViewModel>(this, "UpdatePin", UpdatePin);
         }
 
         void UnsubscribeToMessages()
         {
-           // MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "IncorrectPinAnimation");
             MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "StartAppShell");
             MessagingCenter.Unsubscribe<LoginViewModel, int>(this, "UpdatePin");
         }
@@ -120,38 +110,7 @@ namespace HodlWallet.UI.Views
         {
             ViewModel.BiometricsAvailable = await CrossFingerprint.Current.IsAvailableAsync();
         }
-/*
-        void DigitAdded(LoginViewModel _, int index)
-        {
-            Debug.WriteLine($"[SubscribeToMessage][DigitAdded] Add digit: {index}");
 
-            //ColorDigitTo(index, DigitOnColor);
-        }
-
-        void DigitRemoved(LoginViewModel _, int index)
-        {
-            Debug.WriteLine($"[SubscribeToMessage][DigitRemoved] Remove digit: {index}");
-
-            //ColorDigitTo(index, DigitOffColor);
-        }
-
-        async void IncorrectPinAnimation(LoginViewModel _)
-        {
-            Debug.WriteLine($"[SubscribeToMessage][IncorrectPinAnimation]");
-
-            // Shake ContentView Re-Enter PIN
-            await InputGrid.TranslateTo(-15, 0, incorrectPinAnimationTimeout);
-            await InputGrid.TranslateTo(15, 0, incorrectPinAnimationTimeout);
-            await InputGrid.TranslateTo(-10, 0, incorrectPinAnimationTimeout);
-            await InputGrid.TranslateTo(10, 0, incorrectPinAnimationTimeout);
-            await InputGrid.TranslateTo(-5, 0, incorrectPinAnimationTimeout);
-            await InputGrid.TranslateTo(5, 0, incorrectPinAnimationTimeout);
-
-            InputGrid.TranslationX = 0;
-
-            await Task.Delay(500);
-        }
-        */
         async Task StartAppShell(LoginViewModel vm)
         {
             Debug.WriteLine($"[SubscribeToMessage][StartAppShell]");
