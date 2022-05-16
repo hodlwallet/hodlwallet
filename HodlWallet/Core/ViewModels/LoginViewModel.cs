@@ -21,26 +21,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 using Xamarin.Essentials;
 using Xamarin.Forms;
+
+using ReactiveUI;
+using System.Threading;
 
 namespace HodlWallet.Core.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        readonly List<int> pin = new ();
-        readonly object @lock = new ();
-
-        public ICommand DigitCommand { get; }
-        public ICommand BackspaceCommand { get; }
-
+        readonly CancellationTokenSource cts = new();
         public string Action { get; set; }
-
+        
         bool loginFormVisible = false;
         public bool LoginFormVisible
         {
@@ -51,7 +48,7 @@ namespace HodlWallet.Core.ViewModels
 
             set
             {
-                loginFormVisible = value;
+                loginFormVisible = SetProperty(ref loginFormVisible,value);
 
                 AuthenticationService.ShowingLoginForm = loginFormVisible;
             }
@@ -97,80 +94,30 @@ namespace HodlWallet.Core.ViewModels
 
         public LoginViewModel()
         {
-            DigitCommand = new Command<string>((s) => _ = AddDigit(int.Parse(s)));
-            BackspaceCommand = new Command(RemoveDigit);
+            AuthenticationService
+               .WhenAnyValue(x => x.IsAuthenticated)
+               .Where(x => x is true)
+               .Do(async _ => await AuthenticationProcess())
+               .Subscribe(cts.Token);
         }
 
-        async Task AddDigit(int digit)
+        async Task AuthenticationProcess()
         {
-            Debug.WriteLine($"[AddDigit] Adding: {digit}");
-
-            // Digit has already being inputed
-            if (pin.Count >= 6) return;
-
-            lock (@lock)
+            if (Action == "update")
             {
-                pin.Add(digit);
-            }
-
-            MessagingCenter.Send(this, "DigitAdded", pin.Count);
-
-            // Digit is not complete, input more
-            if (pin.Count != 6) return;
-
-            // _Pin.Count == 6 now...
-            // We're done inputting our PIN
-
-            string input = string.Join(string.Empty, pin.ToArray());
-
-            // Check if it's the pin
-            if (AuthenticationService.Authenticate(input))
-            {
-                if (Action == "update")
-                {
-                    Debug.WriteLine("[AddDigit] Authenticated!");
-                    MessagingCenter.Send(this, "UpdatePin");
-                }
-                else
-                {
-                    Debug.WriteLine("[AddDigit] Logged in!");
-
-                    IsLoading = true;
-
-                    // DONE! We navigate to the root view
-                    await Task.Delay(65);
-                    MessagingCenter.Send(this, "StartAppShell");
-                }
-                return;
+                Debug.WriteLine("[AuthenticationProcess] Authenticated!");
+                MessagingCenter.Send(this, "UpdatePin");
             }
             else
             {
+                Debug.WriteLine("[AuthenticationProcess] Logged in!");
+
+                IsLoading = true;
+
+                // DONE! We navigate to the root view
                 await Task.Delay(65);
-                MessagingCenter.Send(this, "ResetPin");
+                MessagingCenter.Send(this, "StartAppShell");
             }
-
-            await Task.Delay(350);
-
-            Debug.WriteLine($"[AddDigit] Incorrect PIN: {input}");
-
-            // Sadly it's not the pin! We clear and launch an animation
-            pin.Clear();
-
-            MessagingCenter.Send(this, "IncorrectPinAnimation");
-        }
-
-        void RemoveDigit()
-        {
-            Debug.WriteLine("[RemoveDigit]");
-
-            if (pin.Count <= 0) return;
-
-            lock (@lock)
-            {
-                pin.RemoveAt(pin.Count - 1);
-
-                MessagingCenter.Send(this, "DigitRemoved", pin.Count + 1);
-            }
-        }
+        }        
     }
 }
