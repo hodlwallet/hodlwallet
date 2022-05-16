@@ -34,11 +34,12 @@ using HodlWallet.UI;
 using Xamarin.Essentials;
 
 using Plugin.Fingerprint;
+using ReactiveUI;
 
 [assembly: Dependency(typeof(AuthenticationService))]
 namespace HodlWallet.Core.Services
 {
-    public sealed class AuthenticationService : IAuthenticationService
+    public sealed class AuthenticationService : ReactiveObject, IAuthenticationService
     {
 #if DEBUG
         const int EXPIRATION_TIME = 10_000; // 10 seconds in ms
@@ -69,7 +70,7 @@ namespace HodlWallet.Core.Services
             {
                 if (value) LastAuth = DateTimeOffset.UtcNow;
 
-                isAuthenticated = value;
+                this.RaiseAndSetIfChanged(ref isAuthenticated, value);
             }
         }
 
