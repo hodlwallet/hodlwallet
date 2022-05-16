@@ -36,6 +36,7 @@
 	  <NoStdLib>false</NoStdLib>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
 		<PackageReference Include="Liviano.Services" Version="0.1.12" />
 		<PackageReference Include="Plugin.Fingerprint" Version="2.1.5" />
 		<PackageReference Include="Refit.Newtonsoft.Json" Version="6.3.2" />
@@ -55,6 +56,7 @@
 		<PackageReference Include="Liviano" Version="0.1.12" />
 	</ItemGroup>
 	<ItemGroup>
+		<Folder Include="Properties\" />
 		<Folder Include="UI\Converters\" />
 		<Folder Include="UI\Extensions\" />
 		<Folder Include="UI\Renderers\" />
@@ -156,6 +158,9 @@
 		<EmbeddedResource Update="UI\Controls\FontImageIcon.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="UI\Controls\PinPadDigits.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="UI\Controls\TitleView.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
@@ -182,6 +187,9 @@
 		</Compile>
 		<Compile Update="UI\Controls\FontImageIcon.xaml.cs">
 		  <DependentUpon>FontImageIcon.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="UI\Controls\PinPadDigits.xaml.cs">
+		  <DependentUpon>PinPadDigits.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="UI\Locale\LocaleResources.Designer.cs">
 		  <DesignTime>True</DesignTime>
