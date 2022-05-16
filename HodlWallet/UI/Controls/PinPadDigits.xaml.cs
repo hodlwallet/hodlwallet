@@ -40,7 +40,6 @@ namespace HodlWallet.UI.Controls
     {
         IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
 
-        protected readonly CompositeDisposable SubscriptionDisposables = new CompositeDisposable();
         Color DigitOnColor => (Color)Application.Current.Resources["FgSuccess"];
 
         Color DigitOffColor => (Color)Application.Current.Resources["Fg5"];
@@ -49,87 +48,14 @@ namespace HodlWallet.UI.Controls
 
         Stack<string> digits = new Stack<string>(MAX_DIGITS);
         
-        public enum PinActions
-        {
-            IsValidPin,
-            ResetPin
-        }
-
-        PinActions pinAction;
-
-        public PinActions PinAction
-        {
-            get => pinAction;
-            set => pinAction = value;
-        }
-
-
         public PinPadDigits()
         {
             InitializeComponent();
-            SetupReactiveBehavior();
         }
 
-        void SetupReactiveBehavior()
+        async void DigitClicked(object sender, EventArgs e)
         {
-            Observable
-                .Merge(
-                    Observable
-                        .FromEventPattern(
-                            x => button1.Clicked += x,
-                            x => button1.Clicked -= x),
-                    Observable
-                        .FromEventPattern(
-                            x => button2.Clicked += x,
-                            x => button2.Clicked -= x),
-                    Observable
-                        .FromEventPattern(
-                            x => button3.Clicked += x,
-                            x => button3.Clicked -= x),
-                    Observable
-                        .FromEventPattern(
-                            x => button4.Clicked += x,
-                            x => button4.Clicked -= x),
-                    Observable
-                        .FromEventPattern(
-                            x => button5.Clicked += x,
-                            x => button5.Clicked -= x),
-                    Observable
-                        .FromEventPattern(
-                            x => button6.Clicked += x,
-                            x => button6.Clicked -= x),
-                    Observable
-                        .FromEventPattern(
-                            x => button7.Clicked += x,
-                            x => button7.Clicked -= x),
-                    Observable
-                        .FromEventPattern(
-                            x => button8.Clicked += x,
-                            x => button8.Clicked -= x),
-                    Observable
-                        .FromEventPattern(
-                            x => button9.Clicked += x,
-                            x => button9.Clicked -= x),
-                    Observable
-                        .FromEventPattern(
-                            x => button0.Clicked += x,
-                            x => button0.Clicked -= x))
-                .Select(digit => ((Button)digit.Sender).Text)
-                .Do(async text => await DigitAdded(text))
-                .Subscribe()
-                .DisposeWith(SubscriptionDisposables);
-
-            Observable
-                .FromEventPattern(
-                    x => buttonImg.Clicked += x,
-                    x => buttonImg.Clicked -= x)
-                .Do(_ => DigitRemoved())
-                .Subscribe()
-                .DisposeWith(SubscriptionDisposables);
-        }
-
-        async Task DigitAdded(string index)
-        {
+            string index = (sender as Button).Text;
             if (digits.Count < MAX_DIGITS)
             {
                 digits.Push(index);
@@ -144,24 +70,18 @@ namespace HodlWallet.UI.Controls
                 string pin = string.Join(string.Empty, stackReverse.ToArray());
                 Debug.WriteLine($"[PinButtonClicked][Validate PIN] pin: {pin}");
                 // Check if it's the pin
-                if (AuthenticationService.Authenticate(pin))
+                if (!AuthenticationService.Authenticate(pin))
                 {
-                    pinAction = PinActions.IsValidPin;
-                    Debug.WriteLine($"[DigitAdded] Authenticated! IsValidPin: {pinAction}");
-                }
-                else
-                {   
-                    pinAction = PinActions.ResetPin;
-                    Debug.WriteLine($"[DigitAdded] After time 65 - Incorrect PIN - DO Animation: {pinAction}");
-                    await IncorrectPinAnimation();
                     // Whenever the pin is incorrect, clear the stack to fill out again
+                    Debug.WriteLine($"[DigitAdded] Incorrect PIN - DO Animation.");
+                    await IncorrectPinAnimation();
                     digits.Clear();
                     ColorOffPad();
                 }
             }
         }
-       
-        void DigitRemoved()
+
+        private void BackSpaceClicked(object sender, EventArgs e)
         {
             int idx = digits.Count;
             Debug.WriteLine($"[DigitRemoved] Remove digit: {idx}");

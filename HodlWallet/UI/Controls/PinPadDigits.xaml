@@ -69,18 +69,18 @@
         JustifyContent="SpaceEvenly"
         FlexLayout.Grow="1" >
 
-        <Button x:Name="button1"
-                Text="1"
+        <Button Text="1"
+                Clicked="DigitClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-        <Button x:Name="button2"
-                Text="2"
+        <Button Text="2"
+                Clicked="DigitClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-        <Button x:Name="button3"
-                Text="3"
+        <Button Text="3"
+                Clicked="DigitClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
@@ -90,18 +90,18 @@
         JustifyContent="SpaceEvenly"
         FlexLayout.Grow="1">
 
-        <Button x:Name="button4"
-                Text="4"
+        <Button Text="4"
+                Clicked="DigitClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-        <Button x:Name="button5"
-                Text="5"
+        <Button Text="5"
+                Clicked="DigitClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-        <Button x:Name="button6"
-                Text="6"
+        <Button Text="6"
+                Clicked="DigitClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
@@ -111,18 +111,18 @@
         JustifyContent="SpaceEvenly"
         FlexLayout.Grow="1" >
 
-        <Button x:Name="button7"
-                Text="7"
+        <Button Text="7"
+                Clicked="DigitClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-        <Button x:Name="button8"
-                Text="8"
+        <Button Text="8"
+                Clicked="DigitClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
-        <Button x:Name="button9"
-                Text="9"
+        <Button Text="9"
+                Clicked="DigitClicked"
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource LoginDigitButton}" />
 
@@ -137,14 +137,15 @@
                     HorizontalOptions="CenterAndExpand"
                     IsEnabled="False"/>
 
-            <Button x:Name="button0"
-                Text="0"
-                HorizontalOptions="CenterAndExpand"
-                Style="{DynamicResource LoginDigitButton}" />
+            <Button Clicked="DigitClicked"
+                    Text="0"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{DynamicResource LoginDigitButton}" />
 
             <Frame Padding="{OnPlatform iOS=0}"
                    BackgroundColor="Transparent" >
                 <ImageButton IsEnabled="True"
+                             Clicked="BackSpaceClicked"
                              HeightRequest="40"
                              WidthRequest="40"
                              CornerRadius="0"
