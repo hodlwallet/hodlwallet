@@ -62,12 +62,11 @@ namespace HodlWallet.Core.ViewModels
 
                     SetProperty(ref amountText, value);
 
-                    Observable
-                        .Start(() =>
-                        {
-                            UpdateAmount();
-                            ValidateWithBalance();
-                        }, RxApp.TaskpoolScheduler);
+                    Observable.Start(() =>
+                    {
+                        UpdateAmount();
+                        ValidateWithBalance();
+                    }, RxApp.TaskpoolScheduler);
                 }
                 catch (Exception e)
                 {

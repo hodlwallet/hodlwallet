@@ -29,11 +29,12 @@ using Android.Views;
 using Xamarin.Forms.Platform.Android;
 
 using Serilog;
+using Plugin.Fingerprint;
 using Rg.Plugins.Popup;
 
 using HodlWallet.UI;
 using HodlWallet.Core.Interfaces;
-using Plugin.Fingerprint;
+using HodlWallet.Droid.Services;
 
 [assembly: global::Xamarin.Forms.ResolutionGroupName("HodlWallet")]
 namespace HodlWallet.Droid
@@ -43,20 +44,22 @@ namespace HodlWallet.Droid
     {
         IWalletService WalletService => global::Xamarin.Forms.DependencyService.Get<IWalletService>();
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle bundle)
         {
             Instance = this;
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            base.OnCreate(savedInstanceState);
+            BackgroundService.Init(this);
+
+            base.OnCreate(bundle);
 
             Popup.Init(this);
 
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            global::Xamarin.Forms.Forms.Init(this, bundle);
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
-            global::Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            global::Xamarin.Essentials.Platform.Init(this, bundle);
             CrossFingerprint.SetCurrentActivityResolver(() =>
                 Xamarin.Essentials.Platform.CurrentActivity);
 

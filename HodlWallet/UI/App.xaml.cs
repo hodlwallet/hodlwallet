@@ -21,10 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Reactive.Linq;
+using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 
-using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Services;
@@ -41,20 +41,19 @@ namespace HodlWallet.UI
         ILocalize Localize => DependencyService.Get<ILocalize>();
         ILegacySecureKeyService LegacySecureKeyService => DependencyService.Get<ILegacySecureKeyService>();
         IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
+        IBackgroundService BackgroundService => DependencyService.Get<IBackgroundService>();
 
         readonly CancellationTokenSource cts = new();
 
         public App()
         {
+            RegisterServices();
             SetupCultureInfo();
-
             InitializeComponent();
 
 #if WIPE_WALLET
-            SecureStorageService.RemoveAll();
+            WipeWallet();
 #endif
-
-            RegisterServices();
 
             if (!SecureStorageService.UserDidSetup())
             {
@@ -73,11 +72,15 @@ namespace HodlWallet.UI
 
         protected override void OnSleep()
         {
+            base.OnSleep();
+
             AuthenticationService.LastAuth = DateTimeOffset.UtcNow;
         }
 
         protected override void OnResume()
         {
+            base.OnResume();
+
             if (AuthenticationService.IsAuthenticated || AuthenticationService.ShowingLoginForm)
                 return;
 
@@ -88,13 +91,7 @@ namespace HodlWallet.UI
         {
             base.OnStart();
 
-            Observable
-                .Start(PrecioService.Start, RxApp.TaskpoolScheduler)
-                .Subscribe(cts.Token);
-
-            Observable
-                .Start(DisplayCurrencyService.Load, RxApp.TaskpoolScheduler)
-                .Subscribe(cts.Token);
+            StartJobs();
         }
 
         void RegisterServices()
@@ -104,7 +101,26 @@ namespace HodlWallet.UI
             DependencyService.Register<IDisplayCurrencyService>();
             DependencyService.Register<IShareIntent>();
             DependencyService.Register<IPermissions>();
+            DependencyService.Register<ILocalize>();
             DependencyService.Register<IAuthenticationService>();
+            DependencyService.Register<IBackgroundService>();
+        }
+
+        void StartJobs()
+        {
+            BackgroundService.Start("DisplayCurrencyServiceLoadJob", async () =>
+            {
+                DisplayCurrencyService.Load();
+
+                await Task.CompletedTask;
+            });
+
+            BackgroundService.Start("PrecioServiceStartJob", async () =>
+            {
+                PrecioService.Start();
+
+                await Task.CompletedTask;
+            });
         }
 
         void SetupCultureInfo()
@@ -115,7 +131,21 @@ namespace HodlWallet.UI
             Localize.SetLocale(ci); // set the Thread for locale-aware methods
         }
 
+#pragma warning disable IDE0051 // Remove unused private members
+        void WipeWallet()
+#pragma warning restore IDE0051 // Remove unused private members
+        {
+            var path = $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/wallets";
+
+            if (Directory.Exists(path))
+                Directory.Delete(path, true);
+
+            SecureStorageService.RemoveAll();
+        }
+
+#pragma warning disable IDE0051 // Remove unused private members
         void CollectExistingKeys()
+#pragma warning restore IDE0051 // Remove unused private members
         {
             // TODO would be cool to use this to migrate old users
             try

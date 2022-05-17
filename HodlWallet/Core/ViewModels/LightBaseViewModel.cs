@@ -1,5 +1,5 @@
 ﻿//
-// BaseViewModel.cs
+// LightBaseViewModel.cs
 //
 // Copyright (c) 2019 HODL Wallet
 //
@@ -20,35 +20,26 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using CommunityToolkit.Mvvm.ComponentModel;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Interfaces;
-using HodlWallet.Core.Models;
 
-namespace HodlWallet.Core.ViewModels
+namespace HodlWallet.Core.ViewModels;
+
+public partial class LightBaseViewModel : ObservableObject
 {
-    public class BaseViewModel : BindableModel
-    {
-        public IWalletService WalletService => DependencyService.Get<IWalletService>();
-        public IDisplayCurrencyService DisplayCurrencyService => DependencyService.Get<IDisplayCurrencyService>();
-        public IShareIntent ShareIntentService => DependencyService.Get<IShareIntent>();
-        public IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
-        public IPermissions PermissionsService => DependencyService.Get<IPermissions>();
-        public IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
-        public IBackgroundService BackgroundService => DependencyService.Get<IBackgroundService>();
+    public IWalletService WalletService => DependencyService.Get<IWalletService>();
+    public IDisplayCurrencyService DisplayCurrencyService => DependencyService.Get<IDisplayCurrencyService>();
+    public IShareIntent ShareIntentService => DependencyService.Get<IShareIntent>();
+    public IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
+    public IPermissions PermissionsService => DependencyService.Get<IPermissions>();
+    public IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
+    public IBackgroundService BackgroundService => DependencyService.Get<IBackgroundService>();
 
-        bool isLoading;
-        public bool IsLoading
-        {
-            get => isLoading;
-            set => SetProperty(ref isLoading, value);
-        }
+    [ObservableProperty]
+    bool isLoading;
 
-        string title;
-        public string Title
-        {
-            get => title;
-            set => SetProperty(ref title, value);
-        }
-    }
+    [ObservableProperty]
+    string title;
 }

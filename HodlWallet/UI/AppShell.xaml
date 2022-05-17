@@ -160,27 +160,21 @@
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIconsCommunity-Regular" Glyph="&#xF02DC;" />
             </Tab.Icon>
-            <ShellContent>
-                <views:HomeView />
-            </ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate views:HomeView}" />
         </Tab>
 
         <Tab x:Name="bitcoinTab" Route="bitcoin">
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcons-Regular" Glyph="currency_bitcoin" />
             </Tab.Icon>
-            <ShellContent>
-                <views:MyBitcoinView />
-            </ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate views:MyBitcoinView}" />
         </Tab>
 
         <Tab x:Name="settingsTab" Route="settings">
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcons-Regular" Glyph="tune" />
             </Tab.Icon>
-            <ShellContent>
-                <views:SettingsView />
-            </ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate views:SettingsView}" />
         </Tab>
     </FlyoutItem>
 </Shell>

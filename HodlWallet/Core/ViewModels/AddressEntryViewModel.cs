@@ -1,5 +1,5 @@
 ﻿//
-// WalletSettingsViewModel.cs
+// AddressEntryViewModel.cs
 //
 // Copyright (c) 2022 HODL Wallet
 //
@@ -20,36 +20,26 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System.Reactive.Linq;
-using System.Threading.Tasks;
-
-using ReactiveUI;
+using CommunityToolkit.Mvvm.ComponentModel;
+using NBitcoin;
 using Xamarin.Forms;
 
-namespace HodlWallet.Core.ViewModels
+namespace HodlWallet.Core.ViewModels;
+
+public partial class AddressEntryViewModel : LightBaseViewModel
 {
-    public class WalletSettingsViewModel : BaseViewModel
-    {
-        public void ResyncWallet()
-        {
-            BackgroundService.Start("ResyncJob", async () =>
-            {
-                MessagingCenter.Send(this, "ClearTransactions");
+    [ObservableProperty]
+    [AlsoNotifyChangeFor(nameof(IsValid))]
+    [AlsoNotifyChangeFor(nameof(FgColor))]
+    string address;
 
-                await Task.Delay(420);
+    public BitcoinAddress BitcoinAddress => WalletService.GetNetwork().Parse<BitcoinAddress>(Address);
 
-                await WalletService.Wallet.Resync();
-            });
-        }
+    public bool IsValid => BitcoinAddress is not null;
 
-        public void WipeWallet()
-        {
-            BackgroundService.Start("DestroyWalletJob", async () =>
-            {
-                WalletService.DestroyWallet();
+    Color Fg => (Color)Application.Current.Resources["Fg"];
+    
+    Color FgError => (Color)Application.Current.Resources["FgError"];
 
-                await Task.CompletedTask;
-            });
-        }
-    }
+    public Color FgColor => IsValid ? Fg : FgError;
 }

@@ -23,89 +23,260 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Threading;
 
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Liviano.Interfaces;
+using Liviano.Events;
 using Liviano.Models;
+using NBitcoin;
+using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
-using ReactiveUI;
-using System.Reactive.Concurrency;
+using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.Core.ViewModels
 {
-    class TransactionsViewModel : BaseViewModel
+    public partial class TransactionsViewModel : LightBaseViewModel
     {
-        public ObservableCollection<TransactionModel> Transactions { get; } = new ObservableCollection<TransactionModel>();
+        const int TXS_DEFAULT_ITEMS_SIZE = 10;
 
-        const int TXS_ITEMS_SIZE = 10;
-
-        bool isLoadingCollection = false;
-
-        public ICommand RemainingItemsThresholdReachedCommand { get; }
-
-        public ICommand NavigateToTransactionDetailsCommand { get; }
-
-        TransactionModel currentTransaction;
-        public TransactionModel CurrentTransaction
-        {
-            get => currentTransaction;
-            set => SetProperty(ref currentTransaction, value);
-        }
-
-        int remainingItemsThreshold = 1;
-
-        public int RemainingItemsThreshold
-        {
-            get => remainingItemsThreshold;
-            set => SetProperty(ref remainingItemsThreshold, value);
-        }
+        readonly CancellationTokenSource cts = new();
 
         IAccount CurrentAccount => WalletService.Wallet.CurrentAccount;
 
-        //List<Tx> Txs => CurrentAccount.Txs.Where(tx =>
-        //{
-        //    // FIXME this is a bug on the abandon abandon about mnemonic
-        //    // this code should not be used if the bug is fixed on Liviano
-        //    return tx.ScriptPubKey is not null || tx.SentScriptPubKey is not null;
-        //}).OrderByDescending(tx => tx.CreatedAt).ToList();
-
         List<Tx> Txs => CurrentAccount.Txs.OrderByDescending(tx => tx.CreatedAt).ToList();
+
+        readonly ConcurrentQueue<uint256> queue = new();
+
+        [ObservableProperty]
+        ObservableCollection<TransactionModel> transactions = new();
+
+        [ObservableProperty]
+        TransactionModel currentTransaction;
+
+        [ObservableProperty]
+        int remainingItemsThreshold = 1;
 
         public TransactionsViewModel()
         {
-            NavigateToTransactionDetailsCommand = new Command(NavigateToTransactionDetails);
-            RemainingItemsThresholdReachedCommand = new Command(RemainingItemsThresholdReached);
-
             if (WalletService.IsStarted) Init();
             else WalletService.OnStarted += (_, _) => Init();
         }
 
         void Init()
         {
-            LoadTxsFromWallet();
+            SubscribeToMessages();
             SubscribeToEvents();
+            LoadTxsFromWallet();
+            SetupBackgroundJobs();
+        }
+
+        void SubscribeToMessages()
+        {
+            MessagingCenter.Subscribe<WalletSettingsViewModel>(this, "ClearTransactions", ClearTransactions);
         }
 
         void SubscribeToEvents()
         {
-            WalletService.Wallet.OnNewTransaction += Wallet_OnNewTransaction;
             CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
+            WalletService.OnSyncFinished += Wallet_OnSyncFinished;
+            WalletService.Wallet.OnNewTransaction += Wallet_OnNewTransaction;
+            WalletService.Wallet.OnUpdateTransaction += Wallet_OnUpdateTransaction;
         }
 
-        void Wallet_OnNewTransaction(object sender, Liviano.Events.TxEventArgs e)
+        void LoadTxsFromWallet(int size = -1)
         {
-            Debug.WriteLine($"[Wallet_OnNewTransaction] New transaction on wallet {e.Tx.Id}");
+            if (size == -1) size = TXS_DEFAULT_ITEMS_SIZE;
+
+            foreach (var tx in Txs.Take(size))
+                queue.Enqueue(tx.Id);
         }
 
+        void SetupBackgroundJobs()
+        {
+            BackgroundService.Start("ProcessQueueJob", async () =>
+            {
+                Observable
+                    .Interval(TimeSpan.FromMilliseconds(100), RxApp.TaskpoolScheduler)
+                    .Subscribe(async _ => await ProcessQueue(), cts.Token);
+
+                await Task.CompletedTask;
+            });
+        }
+
+        void ClearTransactions(WalletSettingsViewModel _)
+        {
+            Transactions.Clear();
+        }
+
+        async Task ProcessQueue()
+        {
+            if (IsLoading) return;
+
+            try
+            {
+                await DoProcessQueue();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("[ProcessQueue] {msg}", ex.Message);
+
+                IsLoading = false;
+            }
+        }
+
+        async Task DoProcessQueue()
+        {
+            if (queue.IsEmpty) return;
+
+            var txs = Transactions.ToList();
+            while (queue.TryDequeue(out var id))
+            {
+                IsLoading = true;
+
+                var tx = Txs.FirstOrDefault(tx => tx.Id == id);
+                var currentModel = txs.FirstOrDefault(tx => tx.Id == id);
+
+                if (tx is null)
+                {
+                    IsLoading = true;
+
+                    var res = currentModel is not null;
+
+                    // Remove
+                    Device.BeginInvokeOnMainThread(() => res = Transactions.Remove(currentModel));
+
+                    if (res) Debug.WriteLine("[ProcessQueue] Removed tx: {txId}", id);
+                    else Debug.WriteLine("[ProcessQueue] Failed to remove tx: {txId}", id);
+
+                    continue;
+                }
+
+                // Do not add partial txs...
+                // FIXME This makes partial txs pointless in HODL
+                // shouldn't be that way, but, the Collection
+                // is having a hard time updating them
+                if (tx.Type == TxType.Partial) continue;
+
+                var model = TransactionModel.FromTransactionData(tx);
+                int index = currentModel is null ? -1 : txs.FindIndex(t => t.Id == currentModel.Id);
+                if (currentModel is not null && index > -1)
+                {
+                    // Change
+                    try
+                    {
+                        Transactions[index] = model;
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("[DoProcessQueue] Error {msg}", ex.Message);
+
+                        if (!queue.Contains(id)) queue.Enqueue(id);
+                    }
+
+                    txs = Transactions.ToList();
+                }
+                else
+                {
+                    try
+                    {
+                        Transactions.Add(model);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("[DoProcessQueue] Error {msg}", ex.Message);
+
+                        if (queue.Contains(id)) queue.Enqueue(id);
+                    }
+
+                    txs = Transactions.ToList();
+                }
+            }
+
+            Transactions.Sort();
+
+            IsLoading = false;
+
+            await Task.CompletedTask;
+        }
+
+        void Wallet_OnUpdateTransaction(object sender, TxEventArgs e)
+        {
+            var id = e.Tx.Id;
+
+            if (queue.Contains(id)) return;
+
+            queue.Enqueue(id);
+        }
+
+        void Wallet_OnNewTransaction(object sender, TxEventArgs e)
+        {
+            var id = e.Tx.Id;
+
+            if (queue.Contains(id)) return;
+
+            queue.Enqueue(id);
+        }
+
+        void Wallet_OnSyncFinished(object sender, DateTimeOffset e)
+        {
+            var models = Transactions.ToList();
+
+            // Check changes and removal
+            foreach (var model in models)
+            {
+                var tx = Txs.FirstOrDefault(x => x.Id == model.Id);
+
+                if (tx is null) // Remove
+                    queue.Enqueue(model.Id);
+                else if (TransactionModel.FromTransactionData(tx) != model) // Change
+                    queue.Enqueue(model.Id);
+            }
+
+            // Check for new txs
+            var added = 0;
+            foreach (var tx in Txs)
+            {
+                if (!models.Any(x => x.Id == tx.Id))
+                {
+                    queue.Enqueue(tx.Id);
+
+                    added++;
+                }
+            }
+        }
+
+        void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems is not null)
+                foreach (Tx item in e.NewItems)
+                {
+                    queue.Enqueue(item.Id);
+                }
+
+            if (e.OldItems is not null)
+                foreach (Tx item in e.OldItems)
+                {
+                    queue.Enqueue(item.Id);
+                }
+
+            MessagingCenter.Send(this, "ScrollToTop");
+        }
+
+        [ICommand]
         void NavigateToTransactionDetails(object obj)
         {
             if (CurrentTransaction is null) return;
@@ -115,131 +286,38 @@ namespace HodlWallet.Core.ViewModels
             CurrentTransaction = null;
         }
 
-        async void LoadTxsFromWallet()
-        {
-            isLoadingCollection = true;
 
-            IsLoading = true;
-            foreach (var tx in Txs.Take(TXS_ITEMS_SIZE))
-            {
-                var txModel = TransactionModel.FromTransactionData(tx);
-
-                TransactionsAdd(txModel);
-            }
-            await Task.Delay(420);
-            IsLoading = false;
-
-            // FIXME Bug on iOS
-            //MessagingCenter.Send(this, "ScrollToTop");
-
-            isLoadingCollection = false;
-        }
-
+        [ICommand]
         void RemainingItemsThresholdReached(object _)
         {
             if (WalletService.Wallet is null) return;
             if (CurrentAccount is null) return;
-            if (isLoadingCollection) return;
+            if (Txs is null) return;
+            if (Transactions.Count == Txs.Count) return;
+            if (WalletService.Wallet.SyncStatus.StatusType == SyncStatusTypes.Syncing) return;
 
-            isLoadingCollection = true;
+            foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_DEFAULT_ITEMS_SIZE))
+                queue.Enqueue(tx.Id);
+        }
 
-            foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_ITEMS_SIZE))
+        [ICommand]
+        void LogDebugInfo(object obj)
+        {
+#if DEBUG
+            Debug.Write("[LogDebugInfo] ");
+
+            var txs = CurrentAccount.Txs.ToList();
+            var count = txs.Count();
+
+            Debug.WriteLine("Wallet transactions ({0}):", count);
+
+            for (int i = 0; i < count; i++)
             {
-                var txModel = TransactionModel.FromTransactionData(tx);
-                TransactionsAdd(txModel);
+                var tx = txs[i];
+                Debug.WriteLine("\tTx: {0} (type: {1})", tx.Id, tx.Type);
             }
-
-            isLoadingCollection = false;
+#endif
         }
 
-        void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems is not null)
-                foreach (Tx item in e.NewItems)
-                {
-                    // FIXME this is a bug on the abandon abandon about mnemonic
-                    // this code should not be used if the bug is fixed on Liviano
-                    //if (item.SentScriptPubKey is null && item.ScriptPubKey is null) continue;
-
-                    var txModel = TransactionModel.FromTransactionData(item);
-                    TransactionsAdd(txModel, 0);
-                }
-
-            if (e.OldItems is not null)
-                foreach (Tx item in e.OldItems)
-                {
-                    var txModel = TransactionModel.FromTransactionData(item);
-
-                    RxApp.MainThreadScheduler.Schedule(() =>
-                    {
-                        Transactions.Remove(txModel);
-                    });
-                }
-
-            MessagingCenter.Send(this, "ScrollToTop");
-        }
-
-        /// <summary>
-        /// Add to the observable collection not duplicating
-        /// </summary>
-        /// <param name="model">A model of a tx</param>
-        /// <param name="index">Index where to insert the tx</param>
-        void TransactionsAdd(TransactionModel model, int index = -1)
-        {
-            if (Transactions.Contains(model)) return;
-
-            RxApp.MainThreadScheduler.Schedule(() =>
-            {
-                if (index < 0)
-                    Transactions.Add(model);
-                else
-                    Transactions.Insert(index, model);
-            });
-            
-            // TODO Remove this code, since it should never
-            // be the case that a transaction doesn't have any
-            // address to or from... is a bug on Liviano
-            //if (string.IsNullOrEmpty(txModel.Address))
-            //{
-            //    txModel.IsSend = !txModel.IsSend;
-            //    txModel.IsReceive = !txModel.IsSend;
-
-            //    if (string.IsNullOrEmpty(txModel.Address))
-            //    {
-            //        return;
-            //    }
-            //}
-            // Remove ^^
-
-            //var newerTxs = Transactions
-            //    .ToList()
-            //    .Where(tx => tx.CreatedAt > model.CreatedAt)
-            //    .OrderByDescending(tx => tx.CreatedAt);
-
-            //int index;
-            //if (newerTxs.Any())
-            //    index = Transactions.IndexOf(newerTxs.FirstOrDefault());
-            //else index = 0;
-
-            //if (index < 0) index = 0;
-
-            //Transactions.Insert(index, model);
-
-            //if (expand) return;
-            //if (Transactions.Count < TXS_ITEMS_SIZE) return;
-
-            //Transactions.RemoveAt(Transactions.Count - 1);
-
-            //Observable
-            //    .Start(() =>
-            //    {
-            //        Transactions.Insert(index, model);
-
-            //        if (expand) return;
-            //        if (Transactions.Count < TXS_ITEMS_SIZE) return;
-
-            //        Transactions.RemoveAt(Transactions.Count - 1);
-            //    }, RxApp.MainThreadScheduler);
-        }
     }
 }

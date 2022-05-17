@@ -71,8 +71,8 @@ namespace HodlWallet.UI.Converters
             bool isSend = (bool)value;
 
             return isSend
-                ? "caret_up_filled.png"
-                : "caret_down_filled.png";
+                ? "arrow_upward"
+                : "arrow_downward";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
