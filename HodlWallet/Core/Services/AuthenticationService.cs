@@ -92,38 +92,17 @@ namespace HodlWallet.Core.Services
 
         public async void ShowLogin(string action = null)
         {
-            string lastLogin = Preferences.Get("lastLogin", "pin");
-            bool biometricsAllow = Preferences.Get("biometricsAllow", false);
-            BiometricsAvailable = await CrossFingerprint.Current.IsAvailableAsync();
+            var view = new LoginView(action);
 
-            if (biometricsAllow && (lastLogin == "biometric" && BiometricsAvailable))
+            if (action == "pop")
             {
-                var view = new BiometricLoginView(action);
+                if (Application.Current.MainPage is AppShell appShell)
+                    await appShell.Navigation.PushModalAsync(view);
 
-                if (action == "pop")
-                {
-                    if (Application.Current.MainPage is AppShell appShell)
-                        await appShell.Navigation.PushModalAsync(view);
-                        
-                    return;
-                }
-
-                Application.Current.MainPage = view;
+                return;
             }
-            else
-            {
-                var view = new LoginView(action);
 
-                if (action == "pop")
-                {
-                    if (Application.Current.MainPage is AppShell appShell)
-                        await appShell.Navigation.PushModalAsync(view);
-
-                    return;
-                }
-                
-                Application.Current.MainPage = view;
-            }
+            Application.Current.MainPage = view;
         }
 
         public bool Authenticate(string input)
