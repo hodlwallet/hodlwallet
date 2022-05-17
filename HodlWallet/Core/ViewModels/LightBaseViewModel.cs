@@ -25,21 +25,22 @@ using Xamarin.Forms;
 
 using HodlWallet.Core.Interfaces;
 
-namespace HodlWallet.Core.ViewModels;
-
-public partial class LightBaseViewModel : ObservableObject
+namespace HodlWallet.Core.ViewModels
 {
-    public IWalletService WalletService => DependencyService.Get<IWalletService>();
-    public IDisplayCurrencyService DisplayCurrencyService => DependencyService.Get<IDisplayCurrencyService>();
-    public IShareIntent ShareIntentService => DependencyService.Get<IShareIntent>();
-    public IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
-    public IPermissions PermissionsService => DependencyService.Get<IPermissions>();
-    public IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
-    public IBackgroundService BackgroundService => DependencyService.Get<IBackgroundService>();
+    public partial class LightBaseViewModel : ObservableObject
+    {
+        public IWalletService WalletService => DependencyService.Get<IWalletService>();
+        public IDisplayCurrencyService DisplayCurrencyService => DependencyService.Get<IDisplayCurrencyService>();
+        public IShareIntent ShareIntentService => DependencyService.Get<IShareIntent>();
+        public IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
+        public IPermissions PermissionsService => DependencyService.Get<IPermissions>();
+        public IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
+        public IBackgroundService BackgroundService => DependencyService.Get<IBackgroundService>();
 
-    [ObservableProperty]
-    bool isLoading;
+        [ObservableProperty]
+        bool isLoading;
 
-    [ObservableProperty]
-    string title;
+        [ObservableProperty]
+        string title;
+    }
 }

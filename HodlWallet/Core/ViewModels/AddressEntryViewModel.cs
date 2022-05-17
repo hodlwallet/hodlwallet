@@ -24,22 +24,23 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using NBitcoin;
 using Xamarin.Forms;
 
-namespace HodlWallet.Core.ViewModels;
-
-public partial class AddressEntryViewModel : LightBaseViewModel
+namespace HodlWallet.Core.ViewModels
 {
-    [ObservableProperty]
-    [AlsoNotifyChangeFor(nameof(IsValid))]
-    [AlsoNotifyChangeFor(nameof(FgColor))]
-    string address;
+    public partial class AddressEntryViewModel : LightBaseViewModel
+    {
+        [ObservableProperty]
+        [AlsoNotifyChangeFor(nameof(IsValid))]
+        [AlsoNotifyChangeFor(nameof(FgColor))]
+        string address;
 
-    public BitcoinAddress BitcoinAddress => WalletService.GetNetwork().Parse<BitcoinAddress>(Address);
+        public BitcoinAddress BitcoinAddress => WalletService.GetNetwork().Parse<BitcoinAddress>(Address);
 
-    public bool IsValid => BitcoinAddress is not null;
+        public bool IsValid => BitcoinAddress is not null;
 
-    Color Fg => (Color)Application.Current.Resources["Fg"];
-    
-    Color FgError => (Color)Application.Current.Resources["FgError"];
+        Color Fg => (Color)Application.Current.Resources["Fg"];
 
-    public Color FgColor => IsValid ? Fg : FgError;
+        Color FgError => (Color)Application.Current.Resources["FgError"];
+
+        public Color FgColor => IsValid ? Fg : FgError;
+    }
 }

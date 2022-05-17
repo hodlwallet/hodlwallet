@@ -30,28 +30,29 @@ using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace HodlWallet.UI.Controls;
-
-[XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class AddressEntry : Entry
+namespace HodlWallet.UI.Controls
 {
-    AddressEntryViewModel ViewModel => (BindingContext as AddressEntryViewModel);
-
-    public event PropertyChangedEventHandler AddressChanged = (e, a) => { };
-
-    public AddressEntry()
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AddressEntry : Entry
     {
-        InitializeComponent();
-    }
+        AddressEntryViewModel ViewModel => (BindingContext as AddressEntryViewModel);
 
-    void AddressEntry_Changed(object sender, PropertyChangedEventArgs e)
-    {
-        var entry = sender as AddressEntry;
+        public event PropertyChangedEventHandler AddressChanged = (e, a) => { };
 
-        if (string.IsNullOrEmpty(entry.Text)) return;
+        public AddressEntry()
+        {
+            InitializeComponent();
+        }
 
-        ViewModel.Address = (sender as AddressEntry).Text;
+        void AddressEntry_Changed(object sender, PropertyChangedEventArgs e)
+        {
+            var entry = sender as AddressEntry;
 
-        // AddressChanged?.Invoke(sender, e);
+            if (string.IsNullOrEmpty(entry.Text)) return;
+
+            ViewModel.Address = (sender as AddressEntry).Text;
+
+            // AddressChanged?.Invoke(sender, e);
+        }
     }
 }

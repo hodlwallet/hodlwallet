@@ -55,6 +55,8 @@ namespace HodlWallet.Core.ViewModels
 
         readonly CancellationTokenSource cts = new();
 
+        readonly object @lock = new();
+
         IAccount CurrentAccount => WalletService.Wallet.CurrentAccount;
 
         List<Tx> Txs => CurrentAccount.Txs.OrderByDescending(tx => tx.CreatedAt).ToList();
@@ -157,7 +159,7 @@ namespace HodlWallet.Core.ViewModels
                     var res = currentModel is not null;
 
                     // Remove
-                    Device.BeginInvokeOnMainThread(() => res = Transactions.Remove(currentModel));
+                    lock (@lock) Device.BeginInvokeOnMainThread(() => res = Transactions.Remove(currentModel));
 
                     if (res) Debug.WriteLine("[ProcessQueue] Removed tx: {txId}", id);
                     else Debug.WriteLine("[ProcessQueue] Failed to remove tx: {txId}", id);
@@ -178,7 +180,7 @@ namespace HodlWallet.Core.ViewModels
                     // Change
                     try
                     {
-                        Transactions[index] = model;
+                        lock (@lock) Device.BeginInvokeOnMainThread(() => Transactions[index] = model);
                     }
                     catch (Exception ex)
                     {
@@ -193,7 +195,7 @@ namespace HodlWallet.Core.ViewModels
                 {
                     try
                     {
-                        Transactions.Add(model);
+                        lock (@lock) Device.BeginInvokeOnMainThread(() => Transactions.Add(model));
                     }
                     catch (Exception ex)
                     {
@@ -206,7 +208,7 @@ namespace HodlWallet.Core.ViewModels
                 }
             }
 
-            Transactions.Sort();
+            lock (@lock) Device.BeginInvokeOnMainThread(() => Transactions.Sort());
 
             IsLoading = false;
 
@@ -264,16 +266,17 @@ namespace HodlWallet.Core.ViewModels
             if (e.NewItems is not null)
                 foreach (Tx item in e.NewItems)
                 {
-                    queue.Enqueue(item.Id);
+                    if (!queue.Contains(item.Id)) queue.Enqueue(item.Id);
                 }
 
             if (e.OldItems is not null)
                 foreach (Tx item in e.OldItems)
                 {
-                    queue.Enqueue(item.Id);
+                    if (!queue.Contains(item.Id)) queue.Enqueue(item.Id);
                 }
 
-            MessagingCenter.Send(this, "ScrollToTop");
+            // FIXME This breaks the UI
+            // MessagingCenter.Send(this, "ScrollToTop");
         }
 
         [ICommand]
@@ -314,7 +317,11 @@ namespace HodlWallet.Core.ViewModels
             for (int i = 0; i < count; i++)
             {
                 var tx = txs[i];
-                Debug.WriteLine("\tTx: {0} (type: {1})", tx.Id, tx.Type);
+
+                Debug.WriteLine(
+                    "\tTx: {0} (type: {1}, address: {2})",
+                    tx.Id, tx.Type, tx.ScriptPubKey.GetDestinationAddress(CurrentAccount.Network)
+                );
             }
 #endif
         }
