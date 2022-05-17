@@ -21,21 +21,60 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
+using Android.App;
+using Android.Content;
+using Android.OS;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Droid.Services;
+using Android.Runtime;
 
 [assembly: Dependency(typeof(BackgroundService))]
 namespace HodlWallet.Droid.Services
 {
-    class BackgroundService : IBackgroundService
+    [Service]
+    public class BackgroundService : Service, IBackgroundService
     {
+        static ContextWrapper context;
+        static bool isRunning;
+        static Func<Task> func;
+
+        public static void Init(ContextWrapper context)
+        {
+            BackgroundService.context = context;
+        }
+
+        public override IBinder OnBind(Intent intent)
+        {
+            return null;
+        }
+
         public Task Start(string name, Func<Task> func)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Debug.WriteLine($"[Start] Starting {name} service");
+
+            BackgroundService.func = func;
+            var intent = new Intent(context, typeof(BackgroundService));
+
+            context.StartService(intent);
+
+            return Task.CompletedTask;
+        }
+
+        public override StartCommandResult OnStartCommand(Intent intent, [GeneratedEnum] StartCommandFlags flags, int startId)
+        {
+            if (!isRunning)
+            {
+                isRunning = true;
+                func.Invoke().Wait();
+                isRunning = false;
+            }
+
+            return StartCommandResult.Sticky;
         }
     }
 }
