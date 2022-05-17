@@ -21,17 +21,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Xamarin.Forms;
+using ReactiveUI;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Droid.Services;
 using Android.Runtime;
+using System.Reactive.Linq;
 
 [assembly: Dependency(typeof(BackgroundService))]
 namespace HodlWallet.Droid.Services
@@ -40,8 +41,7 @@ namespace HodlWallet.Droid.Services
     public class BackgroundService : Service, IBackgroundService
     {
         static ContextWrapper context;
-        static bool isRunning;
-        static Func<Task> func;
+        static readonly JavaDictionary<string, Func<Task>> store = new JavaDictionary<string, Func<Task>>();
 
         public static void Init(ContextWrapper context)
         {
@@ -55,10 +55,11 @@ namespace HodlWallet.Droid.Services
 
         public Task Start(string name, Func<Task> func)
         {
-            System.Diagnostics.Debug.WriteLine($"[Start] Starting {name} service");
+            Log($"[Start] Starting {name} service");
 
-            BackgroundService.func = func;
-            var intent = new Intent(context, typeof(BackgroundService));
+            store[name] = func;
+
+            var intent = new Intent(name, null, context, typeof(BackgroundService));
 
             context.StartService(intent);
 
@@ -67,14 +68,14 @@ namespace HodlWallet.Droid.Services
 
         public override StartCommandResult OnStartCommand(Intent intent, [GeneratedEnum] StartCommandFlags flags, int startId)
         {
-            if (!isRunning)
-            {
-                isRunning = true;
-                func.Invoke().Wait();
-                isRunning = false;
-            }
+            Observable.Start(async () => await store[intent.Action].Invoke(), RxApp.TaskpoolScheduler);
 
             return StartCommandResult.Sticky;
+        }
+
+        void Log(params string[] args)
+        {
+            System.Diagnostics.Debug.WriteLine(args);
         }
     }
 }
