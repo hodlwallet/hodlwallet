@@ -55,7 +55,7 @@ namespace HodlWallet.Droid.Services
 
         public Task Start(string name, Func<Task> func)
         {
-            Log($"[Start] Starting {name} service");
+            Log($"[BackgroundService] [Start] Starting {name} service");
 
             store[name] = func;
 
@@ -68,6 +68,8 @@ namespace HodlWallet.Droid.Services
 
         public override StartCommandResult OnStartCommand(Intent intent, [GeneratedEnum] StartCommandFlags flags, int startId)
         {
+            Log($"[BackgroundService] [OnStartCommand] {intent.Action} service");
+
             Observable.Start(async () => await store[intent.Action].Invoke(), RxApp.TaskpoolScheduler);
 
             return StartCommandResult.Sticky;
