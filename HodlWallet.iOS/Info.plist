@@ -53,10 +53,6 @@
 	<string>en</string>
 	<key>CFBundleName</key>
 	<string>HODL</string>
-	<key>CFBundleVersion</key>
-	<string>29</string>
-	<key>CFBundleShortVersionString</key>
-	<string>19.0.7</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>NSFaceIDUsageDescription</key>
@@ -65,5 +61,9 @@
 	<array>
 		<string>fetch</string>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>30</string>
+	<key>CFBundleShortVersionString</key>
+	<string>19.0.8</string>
 </dict>
 </plist>
