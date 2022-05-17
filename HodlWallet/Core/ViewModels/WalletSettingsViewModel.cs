@@ -20,8 +20,10 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using ReactiveUI;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
+
+using ReactiveUI;
 using Xamarin.Forms;
 
 namespace HodlWallet.Core.ViewModels
@@ -30,20 +32,24 @@ namespace HodlWallet.Core.ViewModels
     {
         public void ResyncWallet()
         {
-            Observable.Start(() =>
+            BackgroundService.Start("ResyncJob", async () =>
             {
                 MessagingCenter.Send(this, "ClearTransactions");
 
-                BackgroundService.Start("ResyncJob", async () =>
-                {
-                    await WalletService.Wallet.Resync();
-                });
-            }, RxApp.TaskpoolScheduler);
+                await Task.Delay(420);
+
+                await WalletService.Wallet.Resync();
+            });
         }
 
         public void WipeWallet()
         {
-            WalletService.DestroyWallet();
+            BackgroundService.Start("DestroyWalletJob", async () =>
+            {
+                WalletService.DestroyWallet();
+
+                await Task.CompletedTask;
+            });
         }
     }
 }

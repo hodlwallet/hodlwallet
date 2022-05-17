@@ -22,18 +22,15 @@
 // THE SOFTWARE.
 using System;
 using System.IO;
-using System.Reactive.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
-using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Interfaces;
 using HodlWallet.UI.Views;
 using HodlWallet.UI.Locale;
-using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace HodlWallet.UI
 {
@@ -94,19 +91,7 @@ namespace HodlWallet.UI
         {
             base.OnStart();
 
-            Observable.Start(DisplayCurrencyService.Load, RxApp.TaskpoolScheduler).Subscribe(cts.Token);
-            Observable.Start(PrecioService.Start, RxApp.TaskpoolScheduler).Subscribe(cts.Token);
-
-            // TODO Technically we need  these to be BackgroundService tasks too,
-            // But these ones are periodic service tasks though and that's not implemented yet
-            // the following are examples of how they should look
-            //BackgroundService.Start("DisplayCurrencyServiceLoadJob", async () =>
-            //    await DisplayCurrencyService.Load()
-            //);
-
-            //BackgroundService.Start("PrecioServiceStartJob", async () => 
-            //    await PrecioService.Start()
-            //);
+            StartJobs();
         }
 
         void RegisterServices()
@@ -119,6 +104,23 @@ namespace HodlWallet.UI
             DependencyService.Register<ILocalize>();
             DependencyService.Register<IAuthenticationService>();
             DependencyService.Register<IBackgroundService>();
+        }
+
+        void StartJobs()
+        {
+            BackgroundService.Start("DisplayCurrencyServiceLoadJob", async () =>
+            {
+                DisplayCurrencyService.Load();
+
+                await Task.CompletedTask;
+            });
+
+            BackgroundService.Start("PrecioServiceStartJob", async () =>
+            {
+                PrecioService.Start();
+
+                await Task.CompletedTask;
+            });
         }
 
         void SetupCultureInfo()

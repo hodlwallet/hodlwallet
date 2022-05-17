@@ -35,6 +35,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Threading;
 
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Liviano.Interfaces;
 using Liviano.Events;
 using Liviano.Models;
@@ -47,39 +49,11 @@ using HodlWallet.UI.Extensions;
 
 namespace HodlWallet.Core.ViewModels
 {
-    class TransactionsViewModel : BaseViewModel
+    public partial class TransactionsViewModel : LightBaseViewModel
     {
-        ObservableCollection<TransactionModel> transactions = new();
-        public ObservableCollection<TransactionModel> Transactions
-        {
-            get => transactions;
-            set => SetProperty(ref transactions, value);
-        }
-
-        readonly CancellationTokenSource cts = new();
-
         const int TXS_DEFAULT_ITEMS_SIZE = 10;
 
-        public ICommand RemainingItemsThresholdReachedCommand { get; }
-
-        public ICommand NavigateToTransactionDetailsCommand { get; }
-
-        public ICommand LogDebugInfoCommand { get; }
-
-        TransactionModel currentTransaction;
-        public TransactionModel CurrentTransaction
-        {
-            get => currentTransaction;
-            set => SetProperty(ref currentTransaction, value);
-        }
-
-        int remainingItemsThreshold = 1;
-
-        public int RemainingItemsThreshold
-        {
-            get => remainingItemsThreshold;
-            set => SetProperty(ref remainingItemsThreshold, value);
-        }
+        readonly CancellationTokenSource cts = new();
 
         IAccount CurrentAccount => WalletService.Wallet.CurrentAccount;
 
@@ -87,54 +61,65 @@ namespace HodlWallet.Core.ViewModels
 
         readonly ConcurrentQueue<uint256> queue = new();
 
+        [ObservableProperty]
+        ObservableCollection<TransactionModel> transactions = new();
+
+        [ObservableProperty]
+        TransactionModel currentTransaction;
+
+        [ObservableProperty]
+        int remainingItemsThreshold = 1;
+
         public TransactionsViewModel()
         {
-            NavigateToTransactionDetailsCommand = new Command(NavigateToTransactionDetails);
-            RemainingItemsThresholdReachedCommand = new Command(RemainingItemsThresholdReached);
-            LogDebugInfoCommand = new Command(LogDebugInfo);
-
             if (WalletService.IsStarted) Init();
             else WalletService.OnStarted += (_, _) => Init();
-
-            MessagingCenter.Subscribe<WalletSettingsViewModel>(this, "ClearTransactions", ClearTransactions);
         }
 
         void Init()
         {
+            SubscribeToMessages();
             SubscribeToEvents();
             LoadTxsFromWallet();
+            SetupBackgroundJobs();
+        }
 
-            Observable
-                .Interval(TimeSpan.FromMilliseconds(100), RxApp.TaskpoolScheduler)
-                .Subscribe(async _ => await ProcessQueue(), cts.Token);
+        void SubscribeToMessages()
+        {
+            MessagingCenter.Subscribe<WalletSettingsViewModel>(this, "ClearTransactions", ClearTransactions);
         }
 
         void SubscribeToEvents()
         {
-            //CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
+            CurrentAccount.Txs.CollectionChanged += Txs_CollectionChanged;
             WalletService.OnSyncFinished += Wallet_OnSyncFinished;
             WalletService.Wallet.OnNewTransaction += Wallet_OnNewTransaction;
             WalletService.Wallet.OnUpdateTransaction += Wallet_OnUpdateTransaction;
         }
 
+        void LoadTxsFromWallet(int size = -1)
+        {
+            if (size == -1) size = TXS_DEFAULT_ITEMS_SIZE;
+
+            foreach (var tx in Txs.Take(size))
+                queue.Enqueue(tx.Id);
+        }
+
+        void SetupBackgroundJobs()
+        {
+            BackgroundService.Start("ProcessQueueJob", async () =>
+            {
+                Observable
+                    .Interval(TimeSpan.FromMilliseconds(100), RxApp.TaskpoolScheduler)
+                    .Subscribe(async _ => await ProcessQueue(), cts.Token);
+
+                await Task.CompletedTask;
+            });
+        }
+
         void ClearTransactions(WalletSettingsViewModel _)
         {
             Transactions.Clear();
-        }
-
-
-        void Wallet_OnUpdateTransaction(object sender, TxEventArgs e)
-        {
-            var id = e.Tx.Id;
-
-            queue.Enqueue(id);
-        }
-
-        void Wallet_OnNewTransaction(object sender, TxEventArgs e)
-        {
-            var id = e.Tx.Id;
-
-            queue.Enqueue(id);
         }
 
         async Task ProcessQueue()
@@ -191,49 +176,59 @@ namespace HodlWallet.Core.ViewModels
                 if (currentModel is not null && index > -1)
                 {
                     // Change
-                    Device.BeginInvokeOnMainThread(() =>
+                    try
                     {
-                        try
-                        {
-                            Transactions.RemoveAt(index);
-                            Transactions.Insert(index, model);
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.WriteLine("[DoProcessQueue] Error {msg}", ex.Message);
+                        Transactions[index] = model;
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("[DoProcessQueue] Error {msg}", ex.Message);
 
-                            queue.Enqueue(id);
-                        }
+                        if (!queue.Contains(id)) queue.Enqueue(id);
+                    }
 
-                        txs = Transactions.ToList();
-                    });
+                    txs = Transactions.ToList();
                 }
                 else
                 {
-                    // Add
-                    Device.BeginInvokeOnMainThread(() =>
+                    try
                     {
-                        try
-                        {
-                            Transactions.Add(model);
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.WriteLine("[DoProcessQueue] Error {msg}", ex.Message);
+                        Transactions.Add(model);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("[DoProcessQueue] Error {msg}", ex.Message);
 
-                            queue.Enqueue(id);
-                        }
-                    });
+                        if (queue.Contains(id)) queue.Enqueue(id);
+                    }
 
                     txs = Transactions.ToList();
                 }
             }
 
-            Device.BeginInvokeOnMainThread(() => Transactions.Sort());
+            Transactions.Sort();
 
             IsLoading = false;
 
             await Task.CompletedTask;
+        }
+
+        void Wallet_OnUpdateTransaction(object sender, TxEventArgs e)
+        {
+            var id = e.Tx.Id;
+
+            if (queue.Contains(id)) return;
+
+            queue.Enqueue(id);
+        }
+
+        void Wallet_OnNewTransaction(object sender, TxEventArgs e)
+        {
+            var id = e.Tx.Id;
+
+            if (queue.Contains(id)) return;
+
+            queue.Enqueue(id);
         }
 
         void Wallet_OnSyncFinished(object sender, DateTimeOffset e)
@@ -264,35 +259,6 @@ namespace HodlWallet.Core.ViewModels
             }
         }
 
-        void NavigateToTransactionDetails(object obj)
-        {
-            if (CurrentTransaction is null) return;
-
-            MessagingCenter.Send(this, "NavigateToTransactionDetail", CurrentTransaction);
-
-            CurrentTransaction = null;
-        }
-
-        void LoadTxsFromWallet(int size = -1)
-        {
-            if (size == -1) size = TXS_DEFAULT_ITEMS_SIZE;
-
-            foreach (var tx in Txs.Take(size))
-                queue.Enqueue(tx.Id);
-        }
-
-        void RemainingItemsThresholdReached(object _)
-        {
-            if (WalletService.Wallet is null) return;
-            if (CurrentAccount is null) return;
-            if (Txs is null) return;
-            if (Transactions.Count == Txs.Count) return;
-            if (WalletService.Wallet.SyncStatus.StatusType == SyncStatusTypes.Syncing) return;
-
-            foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_DEFAULT_ITEMS_SIZE))
-                queue.Enqueue(tx.Id);
-        }
-
         void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems is not null)
@@ -307,10 +273,34 @@ namespace HodlWallet.Core.ViewModels
                     queue.Enqueue(item.Id);
                 }
 
-            // TODO this would be nice...
-            //MessagingCenter.Send(this, "ScrollToTop");
+            MessagingCenter.Send(this, "ScrollToTop");
         }
 
+        [ICommand]
+        void NavigateToTransactionDetails(object obj)
+        {
+            if (CurrentTransaction is null) return;
+
+            MessagingCenter.Send(this, "NavigateToTransactionDetail", CurrentTransaction);
+
+            CurrentTransaction = null;
+        }
+
+
+        [ICommand]
+        void RemainingItemsThresholdReached(object _)
+        {
+            if (WalletService.Wallet is null) return;
+            if (CurrentAccount is null) return;
+            if (Txs is null) return;
+            if (Transactions.Count == Txs.Count) return;
+            if (WalletService.Wallet.SyncStatus.StatusType == SyncStatusTypes.Syncing) return;
+
+            foreach (var tx in Txs.Skip(Transactions.Count).Take(TXS_DEFAULT_ITEMS_SIZE))
+                queue.Enqueue(tx.Id);
+        }
+
+        [ICommand]
         void LogDebugInfo(object obj)
         {
 #if DEBUG
@@ -328,5 +318,6 @@ namespace HodlWallet.Core.ViewModels
             }
 #endif
         }
+
     }
 }
