@@ -20,11 +20,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 using HodlWallet.Core.Services;
+using ReactiveUI;
 
 namespace HodlWallet.Core.ViewModels
 {
@@ -46,7 +48,7 @@ namespace HodlWallet.Core.ViewModels
             if (SecureStorageService.HasMnemonic())
             {
                 if (!WalletService.IsStarted)
-                    Task.Run(() => WalletService.StartWalletWithWalletId());
+                    Observable.Start(() => WalletService.StartWalletWithWalletId(), RxApp.TaskpoolScheduler);
 
                 return;
             }

@@ -163,7 +163,7 @@ namespace HodlWallet.Core.ViewModels
 
         void WalletService_OnStarted(object sender, EventArgs e)
         {
-            SetAddressFromWalletService();
+            Device.BeginInvokeOnMainThread(() => SetAddressFromWalletService());
         }
 
         void SetAddressFromWalletService()

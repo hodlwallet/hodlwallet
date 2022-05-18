@@ -21,7 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Concurrent;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 
@@ -42,7 +41,7 @@ namespace HodlWallet.Droid.Services
     public class BackgroundService : Service, IBackgroundService
     {
         static ContextWrapper context;
-        static readonly ConcurrentDictionary<string, Func<Task>> store = new ConcurrentDictionary<string, Func<Task>>();
+        static readonly JavaDictionary<string, Func<Task>> store = new JavaDictionary<string, Func<Task>>();
 
         public static void Init(ContextWrapper context)
         {
@@ -58,11 +57,22 @@ namespace HodlWallet.Droid.Services
         {
             Debug_WriteLine("[BackgroundService] [Start] Starting {0} service", name);
 
-            store[name] = func;
+            //await func.Invoke();
 
-            var intent = new Intent(name, null, context, typeof(BackgroundService));
+            Observable.Start(async () =>
+            {
+                await func.Invoke();
+            }, RxApp.TaskpoolScheduler);
 
-            context.StartService(intent);
+            // FIXME iOS background is okay, so we have to keep this funcion,
+            // But I notice Android kills my threads rather quickly or has a limit on how many I can
+            // run... maybe this code should only be used for syncing... maybe, but for now
+            // it's gonna stay kinda disabled, still will run on an Observable.Start though.
+            //store[name] = func;
+
+            //var intent = new Intent(name, null, context, typeof(BackgroundService));
+
+            //context.StartService(intent);
 
             return Task.CompletedTask;
         }
@@ -74,9 +84,7 @@ namespace HodlWallet.Droid.Services
             Observable.Start(async () =>
             {
                 await store[intent.Action].Invoke();
-
-                context.StopService(intent);
-            }, RxApp.TaskpoolScheduler);
+            }, RxApp.TaskpoolScheduler).Wait();
 
             return StartCommandResult.Sticky;
         }

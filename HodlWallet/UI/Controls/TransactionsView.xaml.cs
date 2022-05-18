@@ -51,11 +51,11 @@ namespace HodlWallet.UI.Controls
 
         public TransactionsView()
         {
+            SubscribeToMessages();
+
             InitializeComponent();
 
             HideNonContentViews(null);
-
-            SubscribeToMessages();
 
             Observable
                 .Start(async () => await ShowEmptyAfterTimeout(), RxApp.TaskpoolScheduler)

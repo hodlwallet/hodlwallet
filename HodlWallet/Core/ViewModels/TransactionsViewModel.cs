@@ -76,7 +76,7 @@ namespace HodlWallet.Core.ViewModels
         public TransactionsViewModel()
         {
             if (WalletService.IsStarted) Init();
-            else WalletService.OnStarted += (_, _) => Init();
+            else WalletService.OnStarted += (_, _) => Device.BeginInvokeOnMainThread(() => Init());
         }
 
         void Init()

@@ -66,7 +66,7 @@ namespace HodlWallet.Core.ViewModels
             SwitchCurrencyCommand = new Command(SwitchCurrency);
 
             if (WalletService.IsStarted) Setup();
-            else WalletService.OnStarted += (_, _) => Setup();
+            else WalletService.OnStarted += (_, _) => Device.BeginInvokeOnMainThread(() => Setup());
         }
 
         void SwitchCurrency(object _)

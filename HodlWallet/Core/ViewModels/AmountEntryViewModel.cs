@@ -116,7 +116,7 @@ namespace HodlWallet.Core.ViewModels
         internal void TrackBalance()
         {
             if (WalletService.IsStarted) DoTrackBalance();
-            else WalletService.OnStarted += (_, _) => DoTrackBalance();
+            else WalletService.OnStarted += (_, _) => Device.BeginInvokeOnMainThread(() => DoTrackBalance());
         }
 
         void DoTrackBalance()
@@ -180,7 +180,7 @@ namespace HodlWallet.Core.ViewModels
         public AmountEntryViewModel()
         {
             if (WalletService.IsStarted) Setup();
-            else WalletService.OnStarted += (_, _) => Setup();
+            else WalletService.OnStarted += (_, _) => Device.BeginInvokeOnMainThread(() => Setup());
         }
 
         void Setup()

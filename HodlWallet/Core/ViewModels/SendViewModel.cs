@@ -114,7 +114,7 @@ namespace HodlWallet.Core.ViewModels
             //Task.Run(SetSliderValue);
 
             if (WalletService.IsStarted) Setup();
-            else WalletService.OnStarted += (_, _) => Setup();
+            else WalletService.OnStarted += (_, _) => Device.BeginInvokeOnMainThread(() => Setup());
         }
 
         public async void BroadcastTransaction()
