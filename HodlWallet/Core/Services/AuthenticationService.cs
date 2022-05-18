@@ -29,11 +29,12 @@ using Xamarin.Forms;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
+using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Views;
 using HodlWallet.UI;
+
 using Xamarin.Essentials;
 
-using Plugin.Fingerprint;
 using ReactiveUI;
 
 [assembly: Dependency(typeof(AuthenticationService))]
@@ -108,6 +109,7 @@ namespace HodlWallet.Core.Services
         public bool Authenticate(string input)
         {
             IsAuthenticated = input == SecureStorageService.GetPin();
+            LoginViewModel.SetLastLoginAs("pin");
 
             return IsAuthenticated;
         }

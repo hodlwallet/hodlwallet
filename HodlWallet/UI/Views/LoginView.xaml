@@ -27,10 +27,11 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+         <AbsoluteLayout >
             <FlexLayout Direction="Column"
-                        BackgroundColor="{DynamicResource Bg}"
-                        JustifyContent="SpaceAround"
-                        AlignItems="Center">
+                BackgroundColor="{DynamicResource Bg}"
+                JustifyContent="SpaceAround"
+                AlignItems="Center">
 
                 <controls:ContentHeader
                     x:Name="ContHeader"
@@ -48,7 +49,6 @@
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Logo_Tapped" />
                     </Image.GestureRecognizers>
-
                 </Image>
 
                 <Label IsVisible="false"
@@ -59,18 +59,20 @@
 
                 <Label x:Name="Header"
                        CharacterSpacing="2"
-                       FontFamily="{Binding TitleFontFamily}"
+                       FontFamily="Sans-Bold"
                        FlexLayout.Grow="1"
                        FontAttributes="Bold"
                        FontSize="Title"
+                       Margin="0,25,0,25"
+                       VerticalTextAlignment="Center"
                        HorizontalTextAlignment="Center"
                        Text="{i18n:Translate Text=Pin.enter}" />
 
-            <BoxView x:Name="enterlabelspacer" FlexLayout.Grow="1" IsVisible="false"/>
+                <BoxView HeightRequest="40" x:Name="enterlabelspacer" FlexLayout.Grow="1" IsVisible="false"/>
 
-            <controls:PinPadDigits x:Name="PinPadControl" />
+                <controls:PinPadDigits x:Name="PinPadControl" />
 
-            <ImageButton
+                <ImageButton
                      HeightRequest="60"
                      WidthRequest="60"
                      CornerRadius="20"
@@ -79,17 +81,20 @@
                      BackgroundColor="{DynamicResource Bg}"
                      x:Name="fingerprint"
                      FlexLayout.Grow="1"
+                     IsVisible="false"
                      Clicked="FingerprintButtonClicked">
-                <ImageButton.Source>
-                    <FontImageSource BindingContext="{x:Reference fingerprint}"
-                         FontFamily="MaterialIcons-Regular"
-                         Color="{DynamicResource FgSuccess}"
-                         Glyph="{OnPlatform Android='fingerprint',iOS='face'}" />
-                </ImageButton.Source>
-            </ImageButton>
+                    <ImageButton.Source>
+                        <FontImageSource BindingContext="{x:Reference fingerprint}"
+                             FontFamily="MaterialIcons-Regular"
+                             Color="{DynamicResource FgSuccess}"
+                             Glyph="{OnPlatform Android='fingerprint',iOS='face'}" />
+                    </ImageButton.Source>
+                </ImageButton>
 
-            <BoxView HeightRequest="60" x:Name="fingerprintspacer" FlexLayout.Grow="1" IsVisible="false"/>
+                <BoxView HeightRequest="60" x:Name="fingerprintspacer" FlexLayout.Grow="1" IsVisible="true"/>
 
-        </FlexLayout>
+            </FlexLayout>
+            <controls:NowLoadingIndicator />
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

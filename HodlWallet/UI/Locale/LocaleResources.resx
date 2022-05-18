@@ -210,7 +210,7 @@
     <comment>label for re-enter pin title</comment>
   </data>
   <data name="Pin.updateTitle" xml:space="preserve">
-    <value>Update PIN</value>
+    <value>Set PIN</value>
     <comment>label for update wallet pin</comment>
   </data>
   <data name="Pin.updateHeader" xml:space="preserve">

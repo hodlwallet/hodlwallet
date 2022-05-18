@@ -45,17 +45,21 @@ namespace HodlWallet.UI.Views
         public LoginView(string action = null)
         {
             InitializeComponent();
-            
             ViewModel.Action = action;
-
-	        CheckBiometricsAvailabilityAsync();
             SubscribeToMessages();
 
-            ViewModel.LastLogin = "pin";
+            ViewModel.LastLogin = Preferences.Get("lastLogin", "pin");
+
 
             if (ViewModel.Action != "update")
             {
+                CheckBiometricsAvailabilityAsync();
                 NavigationPage.SetHasNavigationBar(this, false);
+
+                if (ViewModel.LastLogin == "biometric")
+                {
+                    FingerprintButtonClicked(this, new EventArgs());
+                }
 
                 return;
             }
@@ -65,10 +69,7 @@ namespace HodlWallet.UI.Views
             Header.IsVisible = false;
             enterlabelspacer.IsVisible = true;
 
-
-            //Header.Text = Locale.LocaleResources.Pin_updateHeader;
             Title = Locale.LocaleResources.Pin_updateTitle;
-
 
             NavigationPage.SetHasNavigationBar(this, true);
         }
@@ -81,8 +82,11 @@ namespace HodlWallet.UI.Views
 
             var biometricsAllow = Preferences.Get("biometricsAllow", false);
 
-            fingerprint.IsVisible = ViewModel.BiometricsAvailable && biometricsAllow;
-            fingerprintspacer.IsVisible = !(ViewModel.BiometricsAvailable && biometricsAllow);
+            if (ViewModel.Action != "update")
+            {
+                fingerprint.IsVisible = ViewModel.BiometricsAvailable && biometricsAllow;
+                fingerprintspacer.IsVisible = !(ViewModel.BiometricsAvailable && biometricsAllow);
+            }
         }
 
         protected override void OnDisappearing()
@@ -162,6 +166,7 @@ namespace HodlWallet.UI.Views
             if (authResult.Authenticated)
             {
                 ViewModel.IsLoading = true;
+                LoginViewModel.SetLastLoginAs("biometric");
                 // DONE! We navigate to the root view
                 await Task.Delay(65);
                 await StartAppShell(ViewModel);
