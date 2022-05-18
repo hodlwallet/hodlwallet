@@ -1,26 +1,31 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
-             x:Class="HodlWallet.UI.Controls.CurrencySwitch"
-             Spacing="0"
-             Orientation="Horizontal">
-    <StackLayout.BindingContext>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:vm="clr-namespace:HodlWallet.Core.ViewModels"
+       xmlns:controls="clr-namespace:HodlWallet.UI.Controls"
+       x:Class="HodlWallet.UI.Controls.CurrencySwitch"
+       CornerRadius="5"
+       Margin="0"
+       Padding="6"
+       HasShadow="false"
+       BorderColor="{DynamicResource Fg5}">
+    <Frame.BindingContext>
         <vm:CurrencySwitchViewModel />
-    </StackLayout.BindingContext>
-    <Label x:Name="bitcoinLabel"
-           Text="₿"
-           CharacterSpacing="3"
-           TextColor="{DynamicResource Fg}" />
-    <Label Text=" / "
-           CharacterSpacing="3"
-           TextColor="{DynamicResource Fg}" />
-    <Label x:Name="fiatLabel"
-           Text="{Binding FiatSymbol}"
-           CharacterSpacing="3"
-           TextColor="{DynamicResource Fg}" />
+    </Frame.BindingContext>
+    <StackLayout Spacing="0"
+                 Orientation="Horizontal">
+        <Label x:Name="bitcoinLabel"
+               Text="₿"
+               CharacterSpacing="3"
+               TextColor="{DynamicResource Fg5}" />
+        <controls:FontImage Glyph="autorenew" Color="{DynamicResource Fg5}" HeightRequest="16" />
+        <Label x:Name="fiatLabel"
+               Text="{Binding FiatSymbol}"
+               CharacterSpacing="3"
+               TextColor="{DynamicResource Fg5}" />
 
-    <StackLayout.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding ToggleCurrencyCommand}" />
-    </StackLayout.GestureRecognizers>
-</StackLayout>
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding ToggleCurrencyCommand}" />
+        </StackLayout.GestureRecognizers>
+    </StackLayout>
+</Frame>

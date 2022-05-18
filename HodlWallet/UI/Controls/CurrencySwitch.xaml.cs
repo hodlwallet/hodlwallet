@@ -23,6 +23,9 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System.Reactive.Linq;
+
+using ReactiveUI;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -31,12 +34,10 @@ using HodlWallet.Core.ViewModels;
 namespace HodlWallet.UI.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CurrencySwitch : StackLayout
+    public partial class CurrencySwitch : Frame
     {
         Color ActivatedColor => (Color)Application.Current.Resources["Fg"];
-        Color DeactivatedColor => (Color)Application.Current.Resources["Fg2"];
-        string Bold => (string)Application.Current.Resources["Sans-Bold"];
-        string Regular => (string)Application.Current.Resources["Sans-Regular"];
+        Color DeactivatedColor => (Color)Application.Current.Resources["Fg5"];
 
         public CurrencySwitch()
         {
@@ -46,26 +47,26 @@ namespace HodlWallet.UI.Controls
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<CurrencySwitchViewModel>(this, "ActivateBitcoin", ActivateBitcoin);
-            MessagingCenter.Subscribe<CurrencySwitchViewModel>(this, "ActivateFiat", ActivateFiat);
+            MessagingCenter.Subscribe<CurrencySwitchViewModel>(this, nameof(ActivateBitcoin), ActivateBitcoin);
+            MessagingCenter.Subscribe<CurrencySwitchViewModel>(this, nameof(ActivateFiat), ActivateFiat);
         }
 
         void ActivateFiat(CurrencySwitchViewModel _)
         {
-            bitcoinLabel.TextColor = DeactivatedColor;
-            bitcoinLabel.FontFamily = Regular;
-
-            fiatLabel.TextColor = ActivatedColor;
-            fiatLabel.FontFamily = Bold;
+            Observable.Start(() =>
+            {
+                bitcoinLabel.TextColor = DeactivatedColor;
+                fiatLabel.TextColor = ActivatedColor;
+            }, RxApp.MainThreadScheduler);
         }
 
         void ActivateBitcoin(CurrencySwitchViewModel _)
         {
-            bitcoinLabel.TextColor = ActivatedColor;
-            bitcoinLabel.FontFamily = Bold;
-
-            fiatLabel.TextColor = DeactivatedColor;
-            fiatLabel.FontFamily = Regular;
+            Observable.Start(() =>
+            {
+                bitcoinLabel.TextColor = ActivatedColor;
+                fiatLabel.TextColor = DeactivatedColor;
+            }, RxApp.MainThreadScheduler);
         }
     }
 }

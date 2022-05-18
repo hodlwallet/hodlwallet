@@ -65,6 +65,7 @@
                                 <Label Text="{i18n:Translate Text=Receive.amountLabel}"
                                        FontFamily="{StaticResource Key=Sans-Bold}"
                                        TextColor="{DynamicResource FgSuccess}"
+                                       FontSize="Caption"
                                        VerticalOptions="Center"
                                        CharacterSpacing="2" />
                             </StackLayout>
@@ -75,9 +76,10 @@
                                         <Label Text="{i18n:Translate Text=Receive.amount}"
                                                FontFamily="{StaticResource Key=Sans-Bold}"
                                                HorizontalOptions="StartAndExpand"
+                                               VerticalOptions="Center"
                                                FontSize="Caption"
                                                CharacterSpacing="2" />
-                                        <controls:CurrencySwitch HorizontalOptions="EndAndExpand" />
+                                        <controls:CurrencySwitch HorizontalOptions="EndAndExpand" VerticalOptions="Center" />
                                     </StackLayout>
 
                                     <controls:AmountEntry AmountChanged="AmountEntry_AmountChanged" />

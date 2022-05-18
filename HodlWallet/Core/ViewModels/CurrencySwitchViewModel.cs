@@ -24,6 +24,8 @@ using System;
 using System.Reactive.Linq;
 using System.Windows.Input;
 
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using ReactiveUI;
 using Xamarin.Forms;
 
@@ -32,21 +34,13 @@ using HodlWallet.Core.Utils;
 
 namespace HodlWallet.Core.ViewModels
 {
-    public class CurrencySwitchViewModel : BaseViewModel
+    public partial class CurrencySwitchViewModel : LightBaseViewModel
     {
-        public ICommand ToggleCurrencyCommand { get; }
-
+        [ObservableProperty]
         string fiatSymbol = "$";
-        public string FiatSymbol
-        {
-            get { return fiatSymbol; }
-            set { SetProperty(ref fiatSymbol, value); }
-        }
 
         public CurrencySwitchViewModel()
         {
-            ToggleCurrencyCommand = new Command(ToggleCurrency);
-
             if (WalletService.IsStarted) Setup();
             else WalletService.OnStarted += (_, _) => Setup();
         }
@@ -78,7 +72,8 @@ namespace HodlWallet.Core.ViewModels
             else MessagingCenter.Send(this, "ActivateFiat");
         }
 
-        internal void ToggleCurrency()
+        [ICommand]
+        void ToggleCurrency()
         {
             DisplayCurrencyService.ToggleCurrency();
         }
