@@ -171,12 +171,6 @@ namespace HodlWallet.Core.ViewModels
                     continue;
                 }
 
-                // Do not add partial txs...
-                // FIXME This makes partial txs pointless in HODL
-                // shouldn't be that way, but, the Collection
-                // is having a hard time updating them
-                //if (tx.Type == TxType.Partial) continue;
-
                 var model = TransactionModel.FromTransactionData(tx);
                 int index = currentModel is null ? -1 : txs.FindIndex(t => t.Id == currentModel.Id);
                 if (currentModel is not null && index > -1)
@@ -252,6 +246,7 @@ namespace HodlWallet.Core.ViewModels
         void Wallet_OnSyncFinished(object sender, DateTimeOffset e)
         {
             var models = Transactions.ToList();
+            var changesNeeded = false;
 
             // Check changes and removal
             foreach (var model in models)
@@ -259,22 +254,30 @@ namespace HodlWallet.Core.ViewModels
                 var tx = Txs.FirstOrDefault(x => x.Id == model.Id);
 
                 if (tx is null) // Remove
+                {
                     queue.Enqueue(model.Id);
-                else if (TransactionModel.FromTransactionData(tx) != model) // Change
+                    changesNeeded = true;
+                }
+                else if (!TransactionModel.FromTransactionData(tx).Equals(model)) // Change
+                {
                     queue.Enqueue(model.Id);
+                    changesNeeded = true;
+                }
             }
 
             // Check for new txs
-            var added = 0;
             foreach (var tx in Txs)
             {
                 if (!models.Any(x => x.Id == tx.Id))
                 {
                     queue.Enqueue(tx.Id);
 
-                    added++;
+                    changesNeeded = true;
                 }
             }
+
+            if (!changesNeeded)
+                lock (Transactions) Device.BeginInvokeOnMainThread(() => Transactions.Sort());
         }
 
         void Txs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

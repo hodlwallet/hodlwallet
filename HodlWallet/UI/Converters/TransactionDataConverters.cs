@@ -28,6 +28,7 @@ using Xamarin.Forms;
 
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Utils;
+using HodlWallet.UI.Locale;
 
 namespace HodlWallet.UI.Converters
 {
@@ -58,6 +59,24 @@ namespace HodlWallet.UI.Converters
                 TxType.Receive => "arrow_downward",
                 _ => "question_mark",
             };
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class TxCreatedAtConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var tx = (Tx)value;
+
+            if (tx.Type == TxType.Partial && tx.CreatedAt == default) return LocaleResources.Transactions_createdAtUndefined;
+            if (tx.CreatedAt == default) return LocaleResources.Transactions_awaitingConfirmation;
+            
+            return $"{tx.CreatedAt:MM/dd/yy}";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

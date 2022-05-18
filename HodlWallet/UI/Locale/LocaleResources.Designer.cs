@@ -2404,6 +2404,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Undefined.
+        /// </summary>
+        internal static string Transactions_createdAtUndefined {
+            get {
+                return ResourceManager.GetString("Transactions.createdAtUndefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No transactions received yet.
         /// </summary>
         internal static string Transactions_empty {

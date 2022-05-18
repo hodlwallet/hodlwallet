@@ -14,6 +14,7 @@
         <ResourceDictionary>
             <converters:TxTypeToGlyphConverter x:Key="TxTypeToGlyphConverter" />
             <converters:TxTypeToColorConverter x:Key="TxTypeToColorConverter" />
+            <converters:TxCreatedAtConverter x:Key="TxCreatedAtConverter" />
         </ResourceDictionary>
     </StackLayout.Resources>
     <StackLayout.BindingContext>
@@ -102,7 +103,7 @@
                                        FontSize="Body"
                                        FontFamily="{StaticResource Key=Mono-Regular}"
                                        LineBreakMode="MiddleTruncation" />
-                                <Label Text="{Binding CreatedAt, StringFormat='{0:MM/dd/yy}'}"
+                                <Label Text="{Binding TransactionData, Converter={StaticResource TxCreatedAtConverter}}"
                                        FontSize="Caption"
                                        FontFamily="{StaticResource Key=Sans-Regular}"
                                        TextColor="{DynamicResource Fg2}" />

@@ -1176,4 +1176,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="Receive.textCopied" xml:space="preserve">
     <value>Address Copied.</value>
   </data>
+  <data name="Transactions.createdAtUndefined" xml:space="preserve">
+    <value>Undefined</value>
+  </data>
 </root>
