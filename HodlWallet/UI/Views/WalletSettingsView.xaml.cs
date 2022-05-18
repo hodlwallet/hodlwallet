@@ -56,16 +56,13 @@ namespace HodlWallet.UI.Views
             await Navigation.PushAsync(new CoinControlView());
         }
 
-        void Resync_Tapped(object sender, EventArgs e)
+        async void Resync_Tapped(object sender, EventArgs e)
         {
-            RxApp.MainThreadScheduler.Schedule(async () =>
-            {
-                var answer = await AskThisIsIrreversibleQuestion("resync");
+            var answer = await AskThisIsIrreversibleQuestion("resync");
 
-                if (!answer) return;
+            if (!answer) return;
 
-                ViewModel.ResyncWallet();
-            });
+            ViewModel.ResyncWallet();
         }
 
         async void Restore_Tapped(object sender, EventArgs e)
@@ -76,17 +73,14 @@ namespace HodlWallet.UI.Views
             await Navigation.PushModalAsync(nav);
         }
 
-        void Wipe_Tapped(object sender, EventArgs e)
+        async void Wipe_Tapped(object sender, EventArgs e)
         {
-            RxApp.MainThreadScheduler.Schedule(async () =>
-            {
-                var answer = await AskThisIsIrreversibleQuestion("wipe");
+            var answer = await AskThisIsIrreversibleQuestion("wipe");
 
-                if (!answer) return;
+            if (!answer) return;
 
-                ViewModel.WipeWallet();
-                Process.GetCurrentProcess().Kill(); // die
-            });
+            ViewModel.WipeWallet();
+            Process.GetCurrentProcess().Kill(); // die
         }
 
         async Task<bool> AskThisIsIrreversibleQuestion(string key)

@@ -32,12 +32,10 @@ namespace HodlWallet.Core.ViewModels
     {
         public void ResyncWallet()
         {
+            MessagingCenter.Send(this, "ClearTransactions");
+
             BackgroundService.Start("ResyncJob", async () =>
             {
-                MessagingCenter.Send(this, "ClearTransactions");
-
-                await Task.Delay(420);
-
                 await WalletService.Wallet.Resync();
             });
         }

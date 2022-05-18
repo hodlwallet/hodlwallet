@@ -41,7 +41,7 @@ namespace HodlWallet.UI.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TransactionsView : StackLayout
     {
-        const int EMPTY_VIEW_DELAY_MS = 3_000;
+        const int EMPTY_VIEW_DELAY_MS = 7_200;
 
         bool openingDetails = false;
 
@@ -53,12 +53,12 @@ namespace HodlWallet.UI.Controls
         {
             InitializeComponent();
 
-            emptyView.IsVisible = false;
+            HideNonContentViews(null);
 
             SubscribeToMessages();
 
             Observable
-                .Start(async () => await ShowEmptyAfterTimeout(), RxApp.MainThreadScheduler)
+                .Start(async () => await ShowEmptyAfterTimeout(), RxApp.TaskpoolScheduler)
                 .Subscribe(cts.Token);
         }
 
@@ -66,13 +66,36 @@ namespace HodlWallet.UI.Controls
         {
             await Task.Delay(EMPTY_VIEW_DELAY_MS);
 
-            emptyView.IsVisible = true;
+            Device.BeginInvokeOnMainThread(() => emptyView.IsVisible = true);
         }
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<TransactionsViewModel>(this, "ScrollToTop", ScrollToTop);
-            MessagingCenter.Subscribe<TransactionsViewModel, TransactionModel>(this, "NavigateToTransactionDetail", NavigateToTransactionDetail);
+            MessagingCenter.Subscribe<TransactionsViewModel>(this, nameof(ScrollToTop), ScrollToTop);
+            MessagingCenter.Subscribe<TransactionsViewModel>(this, nameof(ShowNonContentViews), ShowNonContentViews);
+            MessagingCenter.Subscribe<TransactionsViewModel>(this, nameof(HideNonContentViews), HideNonContentViews);
+            MessagingCenter.Subscribe<TransactionsViewModel>(this, nameof(ShowEmptyAfterTimeout), async _ => await ShowEmptyAfterTimeout());
+            MessagingCenter.Subscribe<TransactionsViewModel, TransactionModel>(this, nameof(NavigateToTransactionDetail), NavigateToTransactionDetail);
+        }
+
+        void ShowNonContentViews(TransactionsViewModel _)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                emptyView.IsVisible = true;
+                headerView.IsVisible = true;
+                footerView.IsVisible = true;
+            });
+        }
+
+        void HideNonContentViews(TransactionsViewModel _)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                emptyView.IsVisible = false;
+                headerView.IsVisible = false;
+                footerView.IsVisible = false;
+            });
         }
 
         async void NavigateToTransactionDetail(TransactionsViewModel _, TransactionModel model)

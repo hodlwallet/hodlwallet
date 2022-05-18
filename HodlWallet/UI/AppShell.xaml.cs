@@ -33,8 +33,8 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Windows.Input;
 using System.Threading;
+using System.Threading.Tasks;
 
-using ReactiveUI;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -50,6 +50,7 @@ namespace HodlWallet.UI
     public partial class AppShell : Shell
     {
         IWalletService WalletService => DependencyService.Get<IWalletService>();
+        IBackgroundService BackgroundService => DependencyService.Get<IBackgroundService>();
         public ObservableCollection<AccountModel> AccountList { get; set; }  = new ();
         public ICommand GoToAccountCommand;
  
@@ -87,7 +88,7 @@ namespace HodlWallet.UI
         public AppShell()
         {
             Cts ??= new();
-            StartWalletAndPrecioService();
+            InitializeWalletService();
             InitializeComponent();
             RegisterRoutes();
             SetupDefaultTab();
@@ -110,9 +111,14 @@ namespace HodlWallet.UI
             CurrentItem.CurrentItem = tab;
         }
 
-        void StartWalletAndPrecioService()
+        void InitializeWalletService()
         {
-            Observable.Start(() => WalletService.InitializeWallet(), RxApp.TaskpoolScheduler);
+            BackgroundService.Start("InitializeWalletJob", async () =>
+            {
+                WalletService.InitializeWallet();
+
+                await Task.CompletedTask;
+            });
         }
 
         async void GoToAccount(string accountId)
@@ -213,7 +219,7 @@ namespace HodlWallet.UI
             Routing.RegisterRoute("send", typeof(SendView));
             Routing.RegisterRoute("home", typeof(HomeView));
             Routing.RegisterRoute("receive", typeof(ReceiveView));
-            Routing.RegisterRoute("settings", typeof(WalletSettingsView));
+            Routing.RegisterRoute("settings", typeof(SettingsView));
             Routing.RegisterRoute("create-account", typeof(CreateAccountView));
         }
     }

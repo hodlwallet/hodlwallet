@@ -30,7 +30,8 @@
                         SelectedItem="{Binding CurrentTransaction}"
                         SelectionChangedCommand="{Binding NavigateToTransactionDetailsCommand}">
             <CollectionView.Header>
-                <StackLayout HeightRequest="80"
+                <StackLayout x:Name="headerView"
+                             HeightRequest="80"
                              Orientation="Horizontal"
                              BackgroundColor="{DynamicResource Bg2}">
                     <controls:FontImageIcon Margin="35,0,0,0"
@@ -121,7 +122,7 @@
             </CollectionView.ItemTemplate>
 
             <CollectionView.Footer>
-                <StackLayout>
+                <StackLayout x:Name="footerView">
                     <StackLayout HeightRequest="80"
                                  Spacing="3"
                                  HorizontalOptions="CenterAndExpand"
