@@ -132,8 +132,6 @@ namespace HodlWallet.Core.ViewModels
 
         async Task ProcessQueue()
         {
-            if (IsLoading) return;
-
             try
             {
                 await DoProcessQueue();
@@ -142,9 +140,9 @@ namespace HodlWallet.Core.ViewModels
             {
                 Debug.WriteLine("[ProcessQueue] Error: {msg}", ex.Message);
                 Debug.WriteLine("[ProcessQueue] Retrying!");
-
-                IsLoading = false;
             }
+
+            IsLoading = false;
         }
 
         async Task DoProcessQueue()
@@ -154,15 +152,13 @@ namespace HodlWallet.Core.ViewModels
             var txs = Transactions.ToList();
             while (queue.TryDequeue(out var id))
             {
-                IsLoading = true;
+                if (isEmpty && !IsLoading) IsLoading = true;
 
                 var tx = Txs.FirstOrDefault(tx => tx.Id == id);
                 var currentModel = txs.FirstOrDefault(tx => tx.Id == id);
 
                 if (tx is null)
                 {
-                    IsLoading = true;
-
                     var res = currentModel is not null;
 
                     // Remove
@@ -179,7 +175,7 @@ namespace HodlWallet.Core.ViewModels
                 // FIXME This makes partial txs pointless in HODL
                 // shouldn't be that way, but, the Collection
                 // is having a hard time updating them
-                if (tx.Type == TxType.Partial) continue;
+                //if (tx.Type == TxType.Partial) continue;
 
                 var model = TransactionModel.FromTransactionData(tx);
                 int index = currentModel is null ? -1 : txs.FindIndex(t => t.Id == currentModel.Id);
@@ -206,12 +202,14 @@ namespace HodlWallet.Core.ViewModels
                     {
                         // Add
                         lock (Transactions) Device.BeginInvokeOnMainThread(() => Transactions.Add(model));
+
                         await Task.Delay(PROCESS_QUEUE_JOB_DELAY_MS);
 
                         if (isEmpty)
                         {
                             MessagingCenter.Send(this, "ShowNonContentViews");
 
+                            IsLoading = false;
                             isEmpty = false;
                         }
                     }

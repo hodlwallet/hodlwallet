@@ -34,7 +34,10 @@ namespace HodlWallet.UI.Extensions
     {
         public static void Sort(this ObservableCollection<TransactionModel> collection)
         {
-            var sorted = collection.OrderByDescending(x => x.CreatedAt).ToList();
+            var sorted = collection
+                .OrderByDescending(x => x.CreatedAt)
+                .OrderByDescending(x => x.CreatedAt == default)
+                .ToList();
 
             int i = 0;
             while (i < sorted.Count - 1)
@@ -49,45 +52,15 @@ namespace HodlWallet.UI.Extensions
             }
         }
 
-        public static int Search<T>(ObservableCollection<T> collection, int startIndex, T other)
+        public static int Search(ObservableCollection<TransactionModel> collection, int startIndex, TransactionModel other)
         {
             for (int i = startIndex; i < collection.Count; i++)
             {
-                if (other.Equals(collection[i]))
+                if (other.Id == collection[i].Id)
                     return i;
             }
 
             return -1; // decide how to handle error case
         }
-
-        //public static void Sort<T>(this ObservableCollection<T> collection)
-        //where T : IComparable<T>, IEquatable<T>
-        //{
-        //    var sorted = collection.OrderBy(x => x).ToList();
-
-        //    int i = 0;
-        //    while (i < sorted.Count - 1)
-        //    {
-        //        if (!collection[i].Equals(sorted[i]))
-        //        {
-        //            int idx = Search(collection, i + 1, sorted[i]);
-        //            collection.Move(idx, i);
-        //        }
-
-        //        i++;
-        //    }
-        //}
-
-        //public static int Search<T>(ObservableCollection<T> collection, int startIndex, T other)
-        //{
-        //    for (int i = startIndex; i < collection.Count; i++)
-        //    {
-        //        if (other.Equals(collection[i]))
-        //            return i;
-        //    }
-
-        //    return -1; // decide how to handle error case
-        //}
-
     }
 }

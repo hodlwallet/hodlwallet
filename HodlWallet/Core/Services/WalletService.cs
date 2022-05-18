@@ -65,6 +65,8 @@ namespace HodlWallet.Core.Services
 
         public const int PERIODIC_SAVE_TIMEOUT = 30_000;
 
+        const int SYNC_WATCH_DELAY_MS = 420;
+
         readonly object @lock = new();
 
         Network network;
@@ -274,6 +276,7 @@ namespace HodlWallet.Core.Services
             BackgroundService.Start("SyncWatchJob", async () =>
             {
                 await Wallet.Sync();
+                await Task.Delay(SYNC_WATCH_DELAY_MS);
                 await Wallet.Watch();
             });
 

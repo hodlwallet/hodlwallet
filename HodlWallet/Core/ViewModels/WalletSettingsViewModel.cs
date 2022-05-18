@@ -42,12 +42,7 @@ namespace HodlWallet.Core.ViewModels
 
         public void WipeWallet()
         {
-            BackgroundService.Start("DestroyWalletJob", async () =>
-            {
-                WalletService.DestroyWallet();
-
-                await Task.CompletedTask;
-            });
+            WalletService.DestroyWallet();
         }
     }
 }

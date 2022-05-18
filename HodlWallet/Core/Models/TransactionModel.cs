@@ -236,6 +236,10 @@ namespace HodlWallet.Core.Models
 
         string GetAddress()
         {
+            // On a partial tx, so we can move on, we'll use the tx id as data to show
+            if (TransactionData.Type == TxType.Partial)
+                return TransactionData.Id.ToString();
+
             try
             {
                 return TransactionData.ScriptPubKey.GetDestinationAddress(Network).ToString();
