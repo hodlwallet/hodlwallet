@@ -21,18 +21,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Concurrent;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Runtime;
 using Xamarin.Forms;
 using ReactiveUI;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Droid.Services;
-using Android.Runtime;
-using System.Reactive.Linq;
 
 [assembly: Dependency(typeof(BackgroundService))]
 namespace HodlWallet.Droid.Services
@@ -41,7 +42,7 @@ namespace HodlWallet.Droid.Services
     public class BackgroundService : Service, IBackgroundService
     {
         static ContextWrapper context;
-        static readonly JavaDictionary<string, Func<Task>> store = new JavaDictionary<string, Func<Task>>();
+        static readonly ConcurrentDictionary<string, Func<Task>> store = new ConcurrentDictionary<string, Func<Task>>();
 
         public static void Init(ContextWrapper context)
         {
@@ -55,7 +56,7 @@ namespace HodlWallet.Droid.Services
 
         public Task Start(string name, Func<Task> func)
         {
-            Log($"[BackgroundService] [Start] Starting {name} service");
+            Debug_WriteLine("[BackgroundService] [Start] Starting {0} service", name);
 
             store[name] = func;
 
@@ -68,14 +69,19 @@ namespace HodlWallet.Droid.Services
 
         public override StartCommandResult OnStartCommand(Intent intent, [GeneratedEnum] StartCommandFlags flags, int startId)
         {
-            Log($"[BackgroundService] [OnStartCommand] {intent.Action} service");
+            Debug_WriteLine($"[BackgroundService] [OnStartCommand] {intent.Action} service");
 
-            Observable.Start(async () => await store[intent.Action].Invoke(), RxApp.TaskpoolScheduler);
+            Observable.Start(async () =>
+            {
+                await store[intent.Action].Invoke();
+
+                context.StopService(intent);
+            }, RxApp.TaskpoolScheduler);
 
             return StartCommandResult.Sticky;
         }
 
-        void Log(params string[] args)
+        void Debug_WriteLine(params string[] args)
         {
             System.Diagnostics.Debug.WriteLine(args);
         }

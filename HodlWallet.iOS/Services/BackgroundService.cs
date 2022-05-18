@@ -21,15 +21,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Threading;
+using System.Diagnostics;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 
+using ReactiveUI;
 using Xamarin.Forms;
 using UIKit;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.iOS.Services;
-using System.Diagnostics;
 
 [assembly: Dependency(typeof(BackgroundService))]
 namespace HodlWallet.iOS.Services
@@ -38,14 +39,14 @@ namespace HodlWallet.iOS.Services
     {
         public async Task Start(string name, Func<Task> func)
         {
-            Debug.WriteLine("[BackgroundService] {0} started at {1}", name, DateTime.UtcNow.ToLocalTime());
-            
             var taskId = UIApplication.SharedApplication.BeginBackgroundTask(name, () =>
                 Debug.WriteLine("[BackgroundService] expired at {0}", DateTime.UtcNow.ToLocalTime())
             );
+            
+            Debug.WriteLine("[BackgroundService] {0} started at {1}", name, DateTime.UtcNow.ToLocalTime());
 
-            await func.Invoke();
-
+            await Observable.Start(async () => await func.Invoke(), RxApp.TaskpoolScheduler);
+            
             UIApplication.SharedApplication.EndBackgroundTask(taskId);
 
             Debug.WriteLine("[BackgroundService] {0} stopped at {1}", name, DateTime.UtcNow.ToLocalTime());
