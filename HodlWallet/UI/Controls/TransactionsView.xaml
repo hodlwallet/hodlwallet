@@ -101,7 +101,6 @@
                                 <Label Text="{Binding Address}"
                                        FontSize="Body"
                                        FontFamily="{StaticResource Key=Mono-Regular}"
-                                       WidthRequest="160"
                                        LineBreakMode="MiddleTruncation" />
                                 <Label Text="{Binding CreatedAt, StringFormat='{0:MM/dd/yy}'}"
                                        FontSize="Caption"
