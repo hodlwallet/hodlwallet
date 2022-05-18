@@ -186,9 +186,9 @@ namespace HodlWallet.UI.Views
                 }, RxApp.TaskpoolScheduler);
         }
 
-        void Address_TextChanged(object sender, TextChangedEventArgs e)
+        void Address_Changed(object sender, PropertyChangedEventArgs e)
         {
-            var entry = (sender as Entry);
+            var entry = (sender as AddressEntry);
 
             if (string.IsNullOrEmpty(entry.Text)) return;
 

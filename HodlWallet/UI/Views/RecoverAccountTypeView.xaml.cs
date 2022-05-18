@@ -30,14 +30,13 @@ using Xamarin.Forms;
 
 using HodlWallet.Core.ViewModels;
 using HodlWallet.UI.Extensions;
+using System.Threading.Tasks;
 
 namespace HodlWallet.UI.Views
 {
     public partial class RecoverAccountTypeView : ContentPage
     {
         bool initialLoad = true;
-
-        RecoverAccountTypeViewModel ViewModel => BindingContext as RecoverAccountTypeViewModel;
 
         Color SELECTED_COLOR => (Color)Application.Current.Resources["FgSuccess"];
         Color UNSELECTED_COLOR => (Color)Application.Current.Resources["Bg2"];
@@ -54,9 +53,13 @@ namespace HodlWallet.UI.Views
             MessagingCenter.Subscribe<RecoverAccountTypeViewModel>(this, "InitAppShell", InitAppShell);
         }
 
-        void InitAppShell(RecoverAccountTypeViewModel vm)
+        async void InitAppShell(RecoverAccountTypeViewModel vm)
         {
-            Device.BeginInvokeOnMainThread(() => Application.Current.MainPage = new AppShell());
+            NavigationPage.SetHasBackButton(this, false);
+
+            await Task.Delay(50); // Give some time so the is loading is shown...
+
+            Application.Current.MainPage = new AppShell();
         }
 
         void HideEmptyState(RecoverAccountTypeViewModel vm)
@@ -98,13 +101,6 @@ namespace HodlWallet.UI.Views
 
             initialLoad = false;
             DoneButton.IsVisible = true;
-        }
-
-        void DoneButton_Clicked(object sender, EventArgs e)
-        {
-            Debug.WriteLine($"[DoneButton_Clicked] Account type selected: {ViewModel.AccountType}");
-
-            ViewModel.InitializeWallet(ViewModel.AccountType);
         }
     }
 }

@@ -21,10 +21,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Threading;
 
+using CommunityToolkit.Mvvm.ComponentModel;
+using Liviano.Interfaces;
 using Liviano.Models;
 using NBitcoin;
 using ReactiveUI;
@@ -36,9 +39,13 @@ using HodlWallet.UI.Locale;
 
 namespace HodlWallet.Core.Models
 {
-    public class TransactionModel : BindableModel
+    public partial class TransactionModel : ObservableObject, IComparable<TransactionModel>, IEquatable<TransactionModel>
     {
-        Network Network => DependencyService.Get<IWalletService>().GetNetwork();
+        Network Network => WalletService.GetNetwork();
+
+        IAccount CurrentAccount => WalletService.Wallet.CurrentAccount;
+
+        IWalletService WalletService => DependencyService.Get<IWalletService>();
 
         IPrecioService PrecioService => DependencyService.Get<IPrecioService>();
 
@@ -47,27 +54,33 @@ namespace HodlWallet.Core.Models
         readonly CancellationTokenSource cts = new();
 
         public uint256 Id { get; set; }
+
         public string IdText { get; set; }
 
-        public DateTimeOffset CreatedAt { get; set; }
+        [ObservableProperty]
+        //[AlsoNotifyChangeFor(nameof(CreatedAtText))]
+        DateTimeOffset createdAt;
 
-        public string CreatedAtText { get; set; }
+        [ObservableProperty]
+        string createdAtText;
 
-        public Money Amount { get; set; }
+        [ObservableProperty]
+        Money amount;
 
+        [ObservableProperty]
         string amountText;
-        public string AmountText
-        {
-            get => amountText;
-            set => SetProperty(ref amountText, value);
-        }
 
-        public string AmountWithFeeText { get; set; }
+        [ObservableProperty]
+        string amountWithFeeText;
 
-        public string Preposition { get; set; }
+        [ObservableProperty]
+        string preposition;
 
-        public string Address { get; set; }
-        public string AddressText { get; set; }
+        [ObservableProperty]
+        string address;
+
+        [ObservableProperty]
+        string addressText;
 
         string note;
         public string Note
@@ -83,37 +96,67 @@ namespace HodlWallet.Core.Models
             }
         }
 
-        public string AddressTitle { get; set; }
+        [ObservableProperty]
+        string addressTitle;
 
-        public string StatusText { get; set; }
-        public string ConfirmedBlockText { get; set; }
+        [ObservableProperty]
+        string statusText;
 
-        public bool IsReceive { get; set; }
-        public bool IsSend { get; set; }
+        [ObservableProperty]
+        string confirmedBlockText;
 
-        public bool IsSpendable { get; set; }
-        public bool IsConfirmed { get; set; }
+        [ObservableProperty]
+        bool isReceive;
 
-        public int BlockHeight { get; set; }
+        [ObservableProperty]
+        bool isSend;
 
-        public string ConfirmationsText { get; set; }
-        public string IsAvailableText { get; set; }
+        [ObservableProperty]
+        bool isSpendable;
 
-        public Tx TransactionData { get; set; }
+        [ObservableProperty]
+        bool isConfirmed;
+
+        [ObservableProperty]
+        int blockHeight;
+
+        [ObservableProperty]
+        string confirmationsText;
+
+        [ObservableProperty]
+        string isAvailableText;
+
+        [ObservableProperty]
+        Tx transactionData;
 
         public TransactionModel(Tx transactionData)
         {
-            TransactionData = transactionData;
+            UpdateFromTxData(transactionData);
+
+            PrecioService
+                .WhenAnyValue(service => service.Rates, service => service.Precio)
+                .ObserveOn(RxApp.TaskpoolScheduler)
+                .Subscribe(_ => UpdateAmountText(), cts.Token);
+
+            DisplayCurrencyService
+                .WhenAnyValue(service => service.CurrencyType, service => service.FiatCurrencyCode)
+                .ObserveOn(RxApp.TaskpoolScheduler)
+                .Subscribe(_ => UpdateAmountText(), cts.Token);
+        }
+
+        void UpdateFromTxData(Tx tx)
+        {
+            TransactionData = tx;
 
             Id = TransactionData.Id;
             IdText = TransactionData.Id.ToString();
 
-            IsSend = TransactionData.IsSend;
-            IsReceive = TransactionData.IsReceive;
+            IsSend = TransactionData.Type == TxType.Send;
+            IsReceive = TransactionData.Type == TxType.Receive;
 
             Preposition = IsSend ? LocaleResources.TransactionDetails_to : LocaleResources.TransactionDetails_from;
 
-            CreatedAt = TransactionData.CreatedAt.GetValueOrDefault();
+            CreatedAt = TransactionData.CreatedAt;
             CreatedAtText = TransactionData.CreatedAt.ToString();
 
             Amount = GetAmount();
@@ -129,23 +172,13 @@ namespace HodlWallet.Core.Models
 
             AddressTitle = GetAddressTitleText();
 
-            BlockHeight = (int)(TransactionData.BlockHeight ?? -1);
+            BlockHeight = (int)(TransactionData.Height);
 
-            IsSpendable = TransactionData.IsSpendable();
+            IsSpendable = true;
 
             StatusText = GetStatusText();
             IsAvailableText = StatusText; // TODO why?
             ConfirmedBlockText = GetConfirmedBlockText();
-
-            PrecioService
-                .WhenAnyValue(service => service.Rates, service => service.Precio)
-                .ObserveOn(RxApp.TaskpoolScheduler)
-                .Subscribe(_ => UpdateAmountText(), cts.Token);
-
-            DisplayCurrencyService
-                .WhenAnyValue(service => service.CurrencyType, service => service.FiatCurrencyCode)
-                .ObserveOn(RxApp.TaskpoolScheduler)
-                .Subscribe(_ => UpdateAmountText(), cts.Token);
         }
 
         string GetNote()
@@ -164,9 +197,10 @@ namespace HodlWallet.Core.Models
 
         string GetAmountText()
         {
+            var amount = Amount ?? Money.Zero;
             if (DisplayCurrencyService.CurrencyType == DisplayCurrencyType.Bitcoin)
-                return DisplayCurrencyService.BitcoinAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
-            return DisplayCurrencyService.FiatAmountFormatted(Amount.ToDecimal(MoneyUnit.BTC), IsSend);
+                return DisplayCurrencyService.BitcoinAmountFormatted(amount.ToDecimal(MoneyUnit.BTC), IsSend);
+            return DisplayCurrencyService.FiatAmountFormatted(amount.ToDecimal(MoneyUnit.BTC), IsSend);
         }
 
         public static TransactionModel FromTransactionData(Tx transactionData)
@@ -174,15 +208,99 @@ namespace HodlWallet.Core.Models
             return new TransactionModel(transactionData);
         }
 
-        /// <summary>
-        /// Check if the tx is equal to another tx by value not object equality
-        /// </summary>
-        /// <param name="obj">The other tx model</param>
-        /// <returns>A <see cref="bool"/> that represents if they're equal or not</returns>
+        public static bool operator ==(TransactionModel x, TransactionModel y)
+        {
+            return x.Equals(y);
+        }
+
+        public static bool operator !=(TransactionModel x, TransactionModel y)
+        {
+            return !(x == y);
+        }
+
+        string GetConfirmedBlockText()
+        {
+            var blockHeight = TransactionData.Height;
+
+            return blockHeight <= 0
+                ? LocaleResources.Transactions_awaitingConfirmation
+                : blockHeight.ToString();
+        }
+
+        string GetStatusText()
+        {
+            return TransactionData.Height > 0
+                ? LocaleResources.Transactions_confirmed
+                : LocaleResources.Transactions_awaitingConfirmation;
+        }
+
+        string GetAddress()
+        {
+            try
+            {
+                return TransactionData.ScriptPubKey.GetDestinationAddress(Network).ToString();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"[GetAddress] Error: {e.Message}");
+            }
+
+            return string.Empty;
+        }
+
+        string GetAddressText()
+        {
+            var preposition = TransactionData.Type == TxType.Send ? LocaleResources.Transactions_isSendTo : LocaleResources.Transactions_isSendAt;
+
+            return $"{preposition} {Address}";
+        }
+
+        Money GetAmount()
+        {
+            return TransactionData.Amount;
+        }
+
+        string GetAmountWithFeesText()
+        {
+            if (TransactionData.Fees == Money.Zero)
+                return AmountText;
+
+            var totalAmount = TransactionData.Amount ?? Money.Zero;
+            var totalFees = TransactionData.Fees ?? Money.Zero;
+
+            if (totalAmount == Money.Zero || totalFees == Money.Zero)
+                return AmountText;
+
+            var totalWithFees = totalAmount + totalFees;
+
+            return DisplayCurrencyService.BitcoinAmountFormatted(totalWithFees.ToDecimal(MoneyUnit.BTC), IsSend);
+        }
+
+        string GetAddressTitleText()
+        {
+            if (TransactionData.Type == TxType.Send)
+                return LocaleResources.TransactionDetails_sendAddressTitle;
+
+            return LocaleResources.TransactionDetails_receivedAddressTitle;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
         public override bool Equals(object obj)
         {
-            var other = obj as TransactionModel;
+            return Equals(obj as TransactionModel);
+        }
 
+        public bool Equals(TransactionModel other)
+        {
             if (other.Id != Id) return false;
             if (other.IsReceive != IsReceive) return false;
             if (other.IsSend != IsSend) return false;
@@ -199,94 +317,17 @@ namespace HodlWallet.Core.Models
             return true;
         }
 
-        public static bool operator ==(TransactionModel x, TransactionModel y)
+        public int CompareTo(TransactionModel other)
         {
-            return x.Equals(y);
-        }
-
-        public static bool operator !=(TransactionModel x, TransactionModel y)
-        {
-            return !(x == y);
-        }
-
-        string GetConfirmedBlockText()
-        {
-            var blockHeight = TransactionData.BlockHeight;
-
-            return blockHeight is null
-                ? LocaleResources.Transactions_awaitingConfirmation
-                : blockHeight.ToString();
-        }
-
-        string GetStatusText()
-        {
-            return TransactionData.IsConfirmed()
-                ? LocaleResources.Transactions_confirmed
-                : LocaleResources.Transactions_awaitingConfirmation;
-        }
-
-        string GetAddress()
-        {
-            try
+            if (other != null)
             {
-                return TransactionData.IsSend
-                    ? TransactionData.SentScriptPubKey.GetDestinationAddress(Network).ToString()
-                    : TransactionData.ScriptPubKey.GetDestinationAddress(Network).ToString();
+                if (other.Equals(this)) return 0;
+
+                if (other.CreatedAt < CreatedAt) return -1;
+                else return 1;
             }
-            catch (Exception e)
-            {
-                Debug.WriteLine($"[GetAddress] Error: {e.Message}");
-            }
-
-            return string.Empty;
-        }
-
-        string GetAddressText()
-        {
-            var preposition = TransactionData.IsSend ? LocaleResources.Transactions_isSendTo : LocaleResources.Transactions_isSendAt;
-
-            return $"{preposition} {Address}";
-        }
-
-        Money GetAmount()
-        {
-            return TransactionData.IsSend
-                ? TransactionData.AmountSent
-                : TransactionData.AmountReceived;
-        }
-
-        string GetAmountWithFeesText()
-        {
-            if (TransactionData.TotalFees == Money.Zero)
-                return AmountText;
-
-            var totalAmount = TransactionData.TotalAmount ?? Money.Zero;
-            var totalFees = TransactionData.TotalFees ?? Money.Zero;
-
-            if (totalAmount == Money.Zero || totalFees == Money.Zero)
-                return AmountText;
-
-            var totalWithFees = totalAmount + totalFees;
-
-            return DisplayCurrencyService.BitcoinAmountFormatted(totalWithFees.ToDecimal(MoneyUnit.BTC), IsSend);
-        }
-
-        string GetAddressTitleText()
-        {
-            if (TransactionData.IsSend)
-                return LocaleResources.TransactionDetails_sendAddressTitle;
-
-            return LocaleResources.TransactionDetails_receivedAddressTitle;
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
+            else
+                throw new ArgumentException("Object is not a TransactionModel");
         }
     }
 }

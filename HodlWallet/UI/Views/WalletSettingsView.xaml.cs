@@ -64,7 +64,7 @@ namespace HodlWallet.UI.Views
 
                 if (!answer) return;
 
-                await ViewModel.ResyncWallet();
+                ViewModel.ResyncWallet();
             });
         }
 

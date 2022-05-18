@@ -61,5 +61,9 @@
 	<true/>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Use your biometric authentication to unlock.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+	</array>
 </dict>
 </plist>

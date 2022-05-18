@@ -25,13 +25,16 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.IO;
+using System.Reactive.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Threading;
 
 using Xamarin.Forms;
-
+using ReactiveUI;
 using NBitcoin;
 
 using Liviano;
@@ -44,9 +47,6 @@ using Liviano.Exceptions;
 
 using HodlWallet.Core.Interfaces;
 using HodlWallet.Core.Services;
-using System.Reactive.Linq;
-using ReactiveUI;
-using System.Diagnostics;
 
 [assembly: Dependency(typeof(WalletService))]
 namespace HodlWallet.Core.Services
@@ -70,7 +70,7 @@ namespace HodlWallet.Core.Services
         Network network;
 
         string walletId;
-        CancellationTokenSource Cts = new();
+        readonly CancellationTokenSource cts = new();
 
         public Serilog.ILogger Logger { set; get; }
 
@@ -87,11 +87,13 @@ namespace HodlWallet.Core.Services
 
         public IWallet Wallet { get; private set; }
 
+        IBackgroundService BackgroundService => DependencyService.Get<IBackgroundService>();
+
         void PeriodicSave()
         {
             Observable
                 .Interval(TimeSpan.FromMilliseconds(PERIODIC_SAVE_TIMEOUT), RxApp.TaskpoolScheduler)
-                .Subscribe(_ => Save(), Cts.Token);
+                .Subscribe(_ => Save(), cts.Token);
         }
 
         void Save()
@@ -197,8 +199,6 @@ namespace HodlWallet.Core.Services
 
             Wallet = new Wallet { Id = walletId };
 
-            Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(WalletService)).Assembly;
-
             Wallet.Init(mnemonic, password, null, network, createdAt, storage);
 
             Wallet.AddAccount("bip84");
@@ -254,37 +254,31 @@ namespace HodlWallet.Core.Services
                 Logger.Debug($"Syncing time: {(end - start).TotalSeconds}");
             };
 
-            Observable
-                .Start(PeriodicSave, RxApp.TaskpoolScheduler)
-                .Subscribe(Cts.Token);
+            PeriodicSave();
 
-            Observable
-                .Start(async () =>
-                {
-                    await Wallet.ElectrumPool.PeriodicPing(
-                        successCallback: (dt) =>
-                        {
-                            Debug.WriteLine($"[WalletService][Start] Ping successful at: {dt}");
-                        },
-                        failedCallback: (dt) =>
-                        {
-                            Debug.WriteLine($"[WalletService][Start] Ping failed at: {dt}");
-                        },
-                        null
-                    );
-                }, RxApp.TaskpoolScheduler)
-                .Subscribe(Cts.Token);
+            BackgroundService.Start("PeriodicPingJob", async () =>
+            {
+                await Wallet.ElectrumPool.PeriodicPing(
+                    successCallback: (dt) =>
+                    {
+                        Debug.WriteLine($"[WalletService][Start] Ping successful at: {dt}");
+                    },
+                    failedCallback: (dt) =>
+                    {
+                        Debug.WriteLine($"[WalletService][Start] Ping failed at: {dt}");
+                    },
+                    null
+                );
+            });
 
-            Observable
-                .Start(async () =>
-                {
-                    await Wallet.Sync();
-                    await Wallet.Watch();
-                }, RxApp.TaskpoolScheduler)
-                .Subscribe(Cts.Token);
+            BackgroundService.Start("SyncWatchJob", async () =>
+            {
+                await Wallet.Sync();
+                await Wallet.Watch();
+            });
 
-            OnStarted?.Invoke(this, null);
             IsStarted = true;
+            OnStarted?.Invoke(this, null);
         }
 
         public (bool Success, string Error) AddAccount(string type = "bip84", string name = null, string color = null)
@@ -366,28 +360,22 @@ namespace HodlWallet.Core.Services
         }
 
         /// <summary>
-        /// Destroy wallet, deletes wallets file and disconnects from nodes
+        /// Destroy wallet, deletes wallet files
         /// </summary>
         /// <param name="dryRun">Do not delete anything just try</param>
         public void DestroyWallet(bool dryRun = false)
         {
-            if (network == null)
-            {
-                string networkStr = SecureStorageService.GetNetwork();
+            var path = $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/wallets";
 
-                network = Network.GetNetwork(networkStr);
+            if (dryRun)
+            {
+                Debug.WriteLine($"[DestroyWallet] Would delete `{path}`... but dry");
+
+                return;
             }
 
-            if (dryRun) return;
+            if (Directory.Exists(path)) Directory.Delete(path, true);
 
-            lock (@lock)
-            {
-                // Database cleanup
-                // Delete method in FileSystemStorage
-                Wallet.Storage.Delete();
-            }
-
-            // TODO Make sure that removing all secure storage is the right thing to do
             SecureStorageService.RemoveAll();
         }
 

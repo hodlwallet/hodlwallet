@@ -81,7 +81,7 @@ namespace HodlWallet.Core.ViewModels
             PrecioService
                 .WhenAnyValue(service => service.Rates)
                 .ObserveOn(RxApp.MainThreadScheduler)
-                .Subscribe(_ => UpdateBalanceFiat());
+                .Subscribe(_ => UpdateBalances());
 
             DisplayCurrencyService
                 .WhenAnyValue(service => service.CurrencyType)
@@ -91,12 +91,12 @@ namespace HodlWallet.Core.ViewModels
             DisplayCurrencyService
                 .WhenAnyValue(service => service.BitcoinCurrencyCode, service => service.FiatCurrencyCode)
                 .ObserveOn(RxApp.MainThreadScheduler)
-                .Subscribe(_ => UpdateBalance());
+                .Subscribe(_ => UpdateBalances());
 
-            CurrentAccount.Txs.CollectionChanged += (_, _) => UpdateBalance();
-            WalletService.Wallet.OnSyncFinished += (_, _) => UpdateBalance();
+            CurrentAccount.Txs.CollectionChanged += (_, _) => UpdateBalances();
+            WalletService.Wallet.OnSyncFinished += (_, _) => UpdateBalances();
 
-            UpdateBalance();
+            UpdateBalances();
         }
 
         void UpdateBalanceFiat()
@@ -104,10 +104,14 @@ namespace HodlWallet.Core.ViewModels
             BalanceFiat = DisplayCurrencyService.FiatAmountFormatted(AccountBalance);
         }
 
-        void UpdateBalance()
+        void UpdateBalanceBtc()
         {
             Balance = DisplayCurrencyService.BitcoinAmountFormatted(AccountBalance);
+        }
 
+        void UpdateBalances()
+        {
+            UpdateBalanceBtc();
             UpdateBalanceFiat();
         }
 

@@ -61,8 +61,10 @@ namespace HodlWallet.Core.Interfaces
         BitcoinAddress GetReceiveAddress();
         Network GetNetwork();
         IEnumerable<Tx> GetCurrentAccountTransactions();
-        (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(decimal amount, string addressTo,
-            decimal feeSatsPerByte, string password);
+        (bool Success, Transaction Tx, decimal Fees, string Error) CreateTransaction(
+            decimal amount, string addressTo,
+            decimal feeSatsPerByte, string password
+        );
 
         (bool Success, string Error) AddAccount(string type, string name, string color);
         string GetWordListLanguage();

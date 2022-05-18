@@ -22,7 +22,7 @@
 
                 <StackLayout Orientation="Horizontal" Padding="0,20,0,20">
                     <StackLayout Margin="35,5,0,0">
-                        <controls:FontImageIcon Glyph="reply" RotationY="180" Clicked="SendBitcoin_Tapped" />
+                        <controls:FontImageIcon Glyph="arrow_upward" Clicked="SendBitcoin_Tapped" />
                     </StackLayout>
                     <StackLayout Margin="10,0,0,0">
                         <Label Text="{i18n:Translate Text=MyBitcoin.sendBitcoin}" FontFamily="{StaticResource Key=Sans-Bold}" CharacterSpacing="3" FontSize="Caption" />
@@ -38,7 +38,7 @@
 
                 <StackLayout Orientation="Horizontal" Padding="0,20,0,20">
                     <StackLayout Margin="35,5,0,0">
-                        <controls:FontImageIcon Glyph="reply" Color="{DynamicResource FgGreen}" Clicked="ReceiveBitcoin_Tapped" />
+                        <controls:FontImageIcon Glyph="arrow_downward" Color="{DynamicResource FgGreen}" Clicked="ReceiveBitcoin_Tapped" />
                     </StackLayout>
                     <StackLayout Margin="10,0,0,0">
                         <Label Text="{i18n:Translate Text=MyBitcoin.receiveBitcoin}" FontFamily="{StaticResource Key=Sans-Bold}" FontSize="Caption" CharacterSpacing="3" />

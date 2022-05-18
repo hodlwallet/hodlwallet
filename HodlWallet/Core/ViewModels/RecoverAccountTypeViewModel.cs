@@ -27,14 +27,16 @@ using System;
 using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
+using CommunityToolkit.Mvvm.Input;
 using ReactiveUI;
 using Xamarin.Forms;
 
 namespace HodlWallet.Core.ViewModels
 {
-    class RecoverAccountTypeViewModel : BaseViewModel
+    partial class RecoverAccountTypeViewModel : BaseViewModel
     {
         string accountType = null;
         public string AccountType
@@ -53,22 +55,16 @@ namespace HodlWallet.Core.ViewModels
             AccountTypeSelectedCommand = new Command<string>(AccountTypeSelected);
         }
 
-        public void InitializeWallet(string accountType)
+        [ICommand]
+        public void InitializeWallet()
         {
             IsLoading = true;
 
             Observable
-                .Start(() => WalletService.InitializeWallet(accountType), RxApp.TaskpoolScheduler)
+                .Start(() => WalletService.InitializeWallet(AccountType), RxApp.TaskpoolScheduler)
                 .Subscribe(Cts.Token);
 
-            WalletService.OnStarted += WalletService_OnStarted;
-        }
-
-        void WalletService_OnStarted(object sender, EventArgs e)
-        {
             MessagingCenter.Send(this, "InitAppShell");
-
-            IsLoading = false;
         }
 
         void AccountTypeSelected(string typeSelected)
