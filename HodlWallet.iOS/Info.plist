@@ -62,8 +62,8 @@
 		<string>fetch</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>31</string>
+	<string>32</string>
 	<key>CFBundleShortVersionString</key>
-	<string>19.0.9</string>
+	<string>19.0.10</string>
 </dict>
 </plist>
