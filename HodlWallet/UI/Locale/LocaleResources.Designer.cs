@@ -1567,6 +1567,15 @@ namespace HodlWallet.UI.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address Copied..
+        /// </summary>
+        internal static string Receive_textCopied {
+            get {
+                return ResourceManager.GetString("Receive.textCopied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Receive Bitcoin.
         /// </summary>
         internal static string Receive_title {

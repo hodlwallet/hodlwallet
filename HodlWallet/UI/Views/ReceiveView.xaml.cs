@@ -49,7 +49,7 @@ namespace HodlWallet.UI.Views
 
         async void CopiedAddressToast(ReceiveViewModel vm)
         {
-            await this.DisplayToast(LocaleResources.SecretContentView_textCopied);
+            await this.DisplayToast(LocaleResources.Receive_textCopied);
         }
 
         void AmountEntry_AmountChanged(object sender, PropertyChangedEventArgs e)

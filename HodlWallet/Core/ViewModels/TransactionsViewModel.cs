@@ -41,7 +41,6 @@ using Liviano.Interfaces;
 using Liviano.Events;
 using Liviano.Models;
 using NBitcoin;
-using ReactiveUI;
 using Xamarin.Forms;
 
 using HodlWallet.Core.Models;
@@ -141,7 +140,8 @@ namespace HodlWallet.Core.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("[ProcessQueue] {msg}", ex.Message);
+                Debug.WriteLine("[ProcessQueue] Error: {msg}", ex.Message);
+                Debug.WriteLine("[ProcessQueue] Retrying!");
 
                 IsLoading = false;
             }
@@ -167,6 +167,7 @@ namespace HodlWallet.Core.ViewModels
 
                     // Remove
                     lock (Transactions) Device.BeginInvokeOnMainThread(() => res = Transactions.Remove(currentModel));
+                    await Task.Delay(PROCESS_QUEUE_JOB_DELAY_MS);
 
                     if (res) Debug.WriteLine("[ProcessQueue] Removed tx: {txId}", id);
                     else Debug.WriteLine("[ProcessQueue] Failed to remove tx: {txId}", id);
@@ -188,6 +189,7 @@ namespace HodlWallet.Core.ViewModels
                     try
                     {
                         lock (Transactions) Device.BeginInvokeOnMainThread(() => Transactions[index] = model);
+                        await Task.Delay(PROCESS_QUEUE_JOB_DELAY_MS);
                     }
                     catch (Exception ex)
                     {
@@ -204,6 +206,7 @@ namespace HodlWallet.Core.ViewModels
                     {
                         // Add
                         lock (Transactions) Device.BeginInvokeOnMainThread(() => Transactions.Add(model));
+                        await Task.Delay(PROCESS_QUEUE_JOB_DELAY_MS);
 
                         if (isEmpty)
                         {
@@ -304,7 +307,6 @@ namespace HodlWallet.Core.ViewModels
             CurrentTransaction = null;
         }
 
-
         [ICommand]
         void RemainingItemsThresholdReached(object _)
         {
@@ -340,6 +342,5 @@ namespace HodlWallet.Core.ViewModels
             }
 #endif
         }
-
     }
 }

@@ -1173,4 +1173,7 @@ All you have to do is safety store the wallets backup recovery key and you'll al
   <data name="Send.customFee" xml:space="preserve">
     <value>Custom Fee</value>
   </data>
+  <data name="Receive.textCopied" xml:space="preserve">
+    <value>Address Copied.</value>
+  </data>
 </root>

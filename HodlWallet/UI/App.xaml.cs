@@ -43,8 +43,6 @@ namespace HodlWallet.UI
         IAuthenticationService AuthenticationService => DependencyService.Get<IAuthenticationService>();
         IBackgroundService BackgroundService => DependencyService.Get<IBackgroundService>();
 
-        readonly CancellationTokenSource cts = new();
-
         public App()
         {
             RegisterServices();
