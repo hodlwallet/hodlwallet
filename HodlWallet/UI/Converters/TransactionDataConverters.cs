@@ -22,9 +22,12 @@
 // THE SOFTWARE.
 using System;
 using System.Globalization;
+
+using Liviano.Models;
+using Xamarin.Forms;
+
 using HodlWallet.Core.Services;
 using HodlWallet.Core.Utils;
-using Xamarin.Forms;
 
 namespace HodlWallet.UI.Converters
 {
@@ -44,18 +47,17 @@ namespace HodlWallet.UI.Converters
         }
     }
 
-    public class IsSendToStatusColorConverter : IValueConverter
+    public class TxTypeToGlyphConverter : IValueConverter
     {
-        Color SendColor => (Color)Application.Current.Resources["FgSuccess"];
-        Color ReceiveColor => (Color)Application.Current.Resources["Fg2"];
-
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            bool isSend = (bool)value;
-
-            return isSend
-                ? SendColor
-                : ReceiveColor;
+            return (TxType)value switch
+            {
+                TxType.Partial => "question_mark",
+                TxType.Send => "arrow_upward",
+                TxType.Receive => "arrow_downward",
+                _ => "question_mark",
+            };
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -64,53 +66,22 @@ namespace HodlWallet.UI.Converters
         }
     }
 
-    public class IsSendToGlyphConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            bool isSend = (bool)value;
-
-            return isSend
-                ? "arrow_upward"
-                : "arrow_downward";
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class IsSendToRotationYConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            bool isSend = (bool)value;
-
-            return isSend
-                ? "180"
-                : "0";
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class IsSendToColorConverter : IValueConverter
+    public class TxTypeToColorConverter : IValueConverter
     {
         Color FgSuccess => (Color)Application.Current.Resources["FgSuccess"];
         Color FgGreen => (Color)Application.Current.Resources["FgGreen"];
+        Color Fg5 => (Color)Application.Current.Resources["Fg5"];
 
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            bool isSend = (bool)value;
-
-            return isSend
-                ? FgSuccess
-                : FgGreen;
+            return (TxType)value switch
+            {
+                TxType.Partial => Fg5,
+                TxType.Send => FgSuccess,
+                TxType.Receive => FgGreen,
+                _ => Fg5,
+            };
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

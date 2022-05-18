@@ -45,7 +45,8 @@ namespace HodlWallet.UI.Extensions
                 if (!collection[i].Equals(sorted[i]))
                 {
                     int idx = Search(collection, i + 1, sorted[i]);
-                    collection.Move(idx, i);
+
+                    if (idx != -1) collection.Move(idx, i);
                 }
 
                 i++;
