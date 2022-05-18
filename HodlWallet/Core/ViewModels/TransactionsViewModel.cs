@@ -113,11 +113,11 @@ namespace HodlWallet.Core.ViewModels
         {
             BackgroundService.Start("ProcessQueueJob", async () =>
             {
-                Observable
-                    .Interval(TimeSpan.FromMilliseconds(PROCESS_QUEUE_JOB_DELAY_MS), RxApp.TaskpoolScheduler)
-                    .Subscribe(async _ => await ProcessQueue(), cts.Token);
-
-                await Task.CompletedTask;
+                while (true)
+                {
+                    await ProcessQueue();
+                    await Task.Delay(PROCESS_QUEUE_JOB_DELAY_MS);
+                }
             });
         }
 
@@ -127,6 +127,8 @@ namespace HodlWallet.Core.ViewModels
             MessagingCenter.Send(this, "ShowEmptyAfterTimeout");
 
             Transactions.Clear();
+
+            isEmpty = true;
         }
 
         async Task ProcessQueue()
