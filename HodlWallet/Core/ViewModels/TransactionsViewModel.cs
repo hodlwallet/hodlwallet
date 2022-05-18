@@ -53,9 +53,11 @@ namespace HodlWallet.Core.ViewModels
     {
         const int TXS_DEFAULT_ITEMS_SIZE = 10;
 
+        const int PROCESS_QUEUE_JOB_DELAY_MS = 420;
+
         readonly CancellationTokenSource cts = new();
 
-        readonly object @lock = new();
+        bool isEmpty = true;
 
         IAccount CurrentAccount => WalletService.Wallet.CurrentAccount;
 
@@ -88,7 +90,7 @@ namespace HodlWallet.Core.ViewModels
 
         void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<WalletSettingsViewModel>(this, "ClearTransactions", ClearTransactions);
+            MessagingCenter.Subscribe<WalletSettingsViewModel>(this, nameof(ClearTransactions), ClearTransactions);
         }
 
         void SubscribeToEvents()
@@ -112,7 +114,7 @@ namespace HodlWallet.Core.ViewModels
             BackgroundService.Start("ProcessQueueJob", async () =>
             {
                 Observable
-                    .Interval(TimeSpan.FromMilliseconds(100), RxApp.TaskpoolScheduler)
+                    .Interval(TimeSpan.FromMilliseconds(PROCESS_QUEUE_JOB_DELAY_MS), RxApp.TaskpoolScheduler)
                     .Subscribe(async _ => await ProcessQueue(), cts.Token);
 
                 await Task.CompletedTask;
@@ -121,6 +123,9 @@ namespace HodlWallet.Core.ViewModels
 
         void ClearTransactions(WalletSettingsViewModel _)
         {
+            MessagingCenter.Send(this, "HideNonContentViews");
+            MessagingCenter.Send(this, "ShowEmptyAfterTimeout");
+
             Transactions.Clear();
         }
 
@@ -159,7 +164,7 @@ namespace HodlWallet.Core.ViewModels
                     var res = currentModel is not null;
 
                     // Remove
-                    lock (@lock) Device.BeginInvokeOnMainThread(() => res = Transactions.Remove(currentModel));
+                    lock (Transactions) Device.BeginInvokeOnMainThread(() => res = Transactions.Remove(currentModel));
 
                     if (res) Debug.WriteLine("[ProcessQueue] Removed tx: {txId}", id);
                     else Debug.WriteLine("[ProcessQueue] Failed to remove tx: {txId}", id);
@@ -180,7 +185,7 @@ namespace HodlWallet.Core.ViewModels
                     // Change
                     try
                     {
-                        lock (@lock) Device.BeginInvokeOnMainThread(() => Transactions[index] = model);
+                        lock (Transactions) Device.BeginInvokeOnMainThread(() => Transactions[index] = model);
                     }
                     catch (Exception ex)
                     {
@@ -195,7 +200,15 @@ namespace HodlWallet.Core.ViewModels
                 {
                     try
                     {
-                        lock (@lock) Device.BeginInvokeOnMainThread(() => Transactions.Add(model));
+                        // Add
+                        lock (Transactions) Device.BeginInvokeOnMainThread(() => Transactions.Add(model));
+
+                        if (isEmpty)
+                        {
+                            MessagingCenter.Send(this, "ShowNonContentViews");
+
+                            isEmpty = false;
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -208,7 +221,7 @@ namespace HodlWallet.Core.ViewModels
                 }
             }
 
-            lock (@lock) Device.BeginInvokeOnMainThread(() => Transactions.Sort());
+            lock (Transactions) Device.BeginInvokeOnMainThread(() => Transactions.Sort());
 
             IsLoading = false;
 
