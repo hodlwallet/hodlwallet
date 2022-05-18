@@ -101,20 +101,20 @@
                                 <Label Text="{Binding Address}"
                                        FontSize="Body"
                                        FontFamily="{StaticResource Key=Mono-Regular}"
+                                       WidthRequest="160"
                                        LineBreakMode="MiddleTruncation" />
                                 <Label Text="{Binding CreatedAt, StringFormat='{0:MM/dd/yy}'}"
                                        FontSize="Caption"
                                        FontFamily="{StaticResource Key=Sans-Regular}"
                                        TextColor="{DynamicResource Fg2}" />
                             </StackLayout>
-                            <StackLayout Spacing="2" Margin="10,0,40,0">
+                            <StackLayout Spacing="2" Margin="10,0,40,0" HorizontalOptions="EndAndExpand">
                                 <Label Text="{Binding AmountText}"
                                        FontSize="Header"
                                        FontFamily="{StaticResource Key=Mono-Regular}"
                                        VerticalOptions="CenterAndExpand"
                                        LineBreakMode="NoWrap"
-                                       HorizontalTextAlignment="End"
-                                       MinimumWidthRequest="110" />
+                                       MinimumWidthRequest="160" />
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
